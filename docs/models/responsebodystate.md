@@ -1,15 +1,17 @@
 # ResponseBodyState
 
+Current provisioning state
+
 ## Example Usage
 
 ```typescript
-import { ResponseBodyState } from "@vercel/sdk/models/updateflagop.js";
+import { ResponseBodyState } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody219type.js";
 
-let value: ResponseBodyState = "archived";
+let value: ResponseBodyState = "TIMEOUT";
 ```
 
 ## Values
 
 ```typescript
-"active" | "archived"
+"COMPLETE" | "PENDING" | "TIMEOUT"
 ```

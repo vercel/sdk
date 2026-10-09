@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyRateLimit } from "@vercel/sdk/models/getprojectslink8.js";
+import { GetProjectsResponseBodyRateLimit } from "@vercel/sdk/models/getprojectsresponsebodyreadysubstate.js";
 
 let value: GetProjectsResponseBodyRateLimit = {
   algo: "fixed_window",

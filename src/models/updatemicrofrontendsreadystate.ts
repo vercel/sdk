@@ -671,7 +671,7 @@ export type UpdateMicrofrontendsLabel = ClosedEnum<
 >;
 
 /**
- * Internal assignment, intentionally excluded from API input/output schemas.
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
 export type UpdateMicrofrontendsElasticBuildMachine = {
   cores: number;
@@ -704,7 +704,7 @@ export type UpdateMicrofrontendsDefaultResourceConfig = {
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
   /**
-   * Internal assignment, intentionally excluded from API input/output schemas.
+   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
    */
   elasticBuildMachine?: UpdateMicrofrontendsElasticBuildMachine | undefined;
 };

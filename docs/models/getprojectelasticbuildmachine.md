@@ -1,6 +1,6 @@
 # GetProjectElasticBuildMachine
 
-Internal assignment, intentionally excluded from API input/output schemas.
+Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
 
 ## Example Usage
 

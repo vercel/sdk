@@ -5,7 +5,7 @@ Which tracing destination this rule applies to. `internal` is the hidden Vercel 
 ## Example Usage
 
 ```typescript
-import { CreateProjectDestination } from "@vercel/sdk/models/createprojecttoprojects2.js";
+import { CreateProjectDestination } from "@vercel/sdk/models/createprojectfrom.js";
 
 let value: CreateProjectDestination = "external";
 ```

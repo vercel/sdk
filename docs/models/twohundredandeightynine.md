@@ -9,14 +9,10 @@ import { TwoHundredAndEightyNine } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndEightyNine = {
   next: {
-    functionDefaultRegions: [
-      "<value 1>",
-    ],
+    functionDefaultTimeout: 3866.64,
   },
   previous: {
-    functionDefaultRegions: [
-      "<value 1>",
-    ],
+    functionDefaultTimeout: 3100.71,
   },
   projectId: "<id>",
   projectName: "<value>",

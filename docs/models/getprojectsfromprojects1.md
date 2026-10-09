@@ -5,7 +5,7 @@ The source envs on the trusted project that are allowed to access `to`.
 ## Example Usage
 
 ```typescript
-import { GetProjectsFromProjects1 } from "@vercel/sdk/models/getprojectslink8.js";
+import { GetProjectsFromProjects1 } from "@vercel/sdk/models/getprojectsresponsebodyreadysubstate.js";
 
 let value: GetProjectsFromProjects1 = {
   slugs: [

@@ -1,0 +1,26 @@
+# DeleteProjectAvatarMicrofrontends3
+
+## Example Usage
+
+```typescript
+import { DeleteProjectAvatarMicrofrontends3 } from "@vercel/sdk/models/deleteprojectavatarresponsebody.js";
+
+let value: DeleteProjectAvatarMicrofrontends3 = {
+  enabled: false,
+  groupIds: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  updatedAt: 913.63,
+};
+```
+
+## Fields
+
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `enabled`                    | *false*                      | :heavy_check_mark:           | N/A                          |
+| `freeProjectForLegacyLimits` | *boolean*                    | :heavy_minus_sign:           | N/A                          |
+| `groupIds`                   | *any*[]                      | :heavy_check_mark:           | N/A                          |
+| `updatedAt`                  | *number*                     | :heavy_check_mark:           | N/A                          |

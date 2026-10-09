@@ -640,7 +640,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType =
 /**
  * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
  */
-export const GetMicrofrontendsInGroupLabel = {
+export const GetMicrofrontendsInGroupMicrofrontendsLabel = {
   Enhanced: "enhanced",
   Standard: "standard",
   Turbo: "turbo",
@@ -648,19 +648,19 @@ export const GetMicrofrontendsInGroupLabel = {
 /**
  * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
  */
-export type GetMicrofrontendsInGroupLabel = ClosedEnum<
-  typeof GetMicrofrontendsInGroupLabel
+export type GetMicrofrontendsInGroupMicrofrontendsLabel = ClosedEnum<
+  typeof GetMicrofrontendsInGroupMicrofrontendsLabel
 >;
 
 /**
- * Internal assignment, intentionally excluded from API input/output schemas.
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
-export type GetMicrofrontendsInGroupElasticBuildMachine = {
+export type GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine = {
   cores: number;
   /**
    * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
    */
-  label: GetMicrofrontendsInGroupLabel;
+  label: GetMicrofrontendsInGroupMicrofrontendsLabel;
   memory: number;
 };
 
@@ -690,9 +690,11 @@ export type GetMicrofrontendsInGroupDefaultResourceConfig = {
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
   /**
-   * Internal assignment, intentionally excluded from API input/output schemas.
+   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
    */
-  elasticBuildMachine?: GetMicrofrontendsInGroupElasticBuildMachine | undefined;
+  elasticBuildMachine?:
+    | GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine
+    | undefined;
 };
 
 /**
@@ -2610,35 +2612,34 @@ export const GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType$inb
   );
 
 /** @internal */
-export const GetMicrofrontendsInGroupLabel$inboundSchema: z.ZodNativeEnum<
-  typeof GetMicrofrontendsInGroupLabel
-> = z.nativeEnum(GetMicrofrontendsInGroupLabel);
+export const GetMicrofrontendsInGroupMicrofrontendsLabel$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsLabel> = z
+    .nativeEnum(GetMicrofrontendsInGroupMicrofrontendsLabel);
 
 /** @internal */
-export const GetMicrofrontendsInGroupElasticBuildMachine$inboundSchema:
+export const GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine$inboundSchema:
   z.ZodType<
-    GetMicrofrontendsInGroupElasticBuildMachine,
+    GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine,
     z.ZodTypeDef,
     unknown
   > = z.object({
     cores: types.number(),
-    label: GetMicrofrontendsInGroupLabel$inboundSchema,
+    label: GetMicrofrontendsInGroupMicrofrontendsLabel$inboundSchema,
     memory: types.number(),
   });
 
-export function getMicrofrontendsInGroupElasticBuildMachineFromJSON(
+export function getMicrofrontendsInGroupMicrofrontendsElasticBuildMachineFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetMicrofrontendsInGroupElasticBuildMachine,
+  GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetMicrofrontendsInGroupElasticBuildMachine$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetMicrofrontendsInGroupElasticBuildMachine' from JSON`,
+      GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine' from JSON`,
   );
 }
 
@@ -2678,7 +2679,9 @@ export const GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema:
     functionZeroConfigFailover: types.optional(types.boolean()),
     isNSNBDisabled: types.optional(types.boolean()),
     elasticBuildMachine: types.optional(
-      z.lazy(() => GetMicrofrontendsInGroupElasticBuildMachine$inboundSchema),
+      z.lazy(() =>
+        GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine$inboundSchema
+      ),
     ),
   });
 

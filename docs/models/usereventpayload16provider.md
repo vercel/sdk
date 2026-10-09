@@ -5,7 +5,7 @@ Present on new events only. Equivalent to "stripe" when absent.
 ## Example Usage
 
 ```typescript
-import { UserEventPayload16Provider } from "@vercel/sdk/models/via3.js";
+import { UserEventPayload16Provider } from "@vercel/sdk/models/principal.js";
 
 let value: UserEventPayload16Provider = "stripe";
 ```

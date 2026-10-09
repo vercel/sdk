@@ -1765,6 +1765,33 @@ export type GetMicrofrontendsInGroupFunctionDefaultMemoryType = ClosedEnum<
   typeof GetMicrofrontendsInGroupFunctionDefaultMemoryType
 >;
 
+/**
+ * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ */
+export const GetMicrofrontendsInGroupLabel = {
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+/**
+ * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ */
+export type GetMicrofrontendsInGroupLabel = ClosedEnum<
+  typeof GetMicrofrontendsInGroupLabel
+>;
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type GetMicrofrontendsInGroupElasticBuildMachine = {
+  cores: number;
+  /**
+   * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+   */
+  label: GetMicrofrontendsInGroupLabel;
+  memory: number;
+};
+
 export type GetMicrofrontendsInGroupResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -1788,6 +1815,10 @@ export type GetMicrofrontendsInGroupResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
+  /**
+   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+   */
+  elasticBuildMachine?: GetMicrofrontendsInGroupElasticBuildMachine | undefined;
 };
 
 /**
@@ -4445,6 +4476,39 @@ export const GetMicrofrontendsInGroupFunctionDefaultMemoryType$inboundSchema:
     .nativeEnum(GetMicrofrontendsInGroupFunctionDefaultMemoryType);
 
 /** @internal */
+export const GetMicrofrontendsInGroupLabel$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupLabel
+> = z.nativeEnum(GetMicrofrontendsInGroupLabel);
+
+/** @internal */
+export const GetMicrofrontendsInGroupElasticBuildMachine$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsInGroupElasticBuildMachine,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: GetMicrofrontendsInGroupLabel$inboundSchema,
+    memory: types.number(),
+  });
+
+export function getMicrofrontendsInGroupElasticBuildMachineFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetMicrofrontendsInGroupElasticBuildMachine,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupElasticBuildMachine$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsInGroupElasticBuildMachine' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupResourceConfig$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupResourceConfig,
   z.ZodTypeDef,
@@ -4480,6 +4544,9 @@ export const GetMicrofrontendsInGroupResourceConfig$inboundSchema: z.ZodType<
   functionDefaultTimeout: types.optional(types.number()),
   functionZeroConfigFailover: types.optional(types.boolean()),
   isNSNBDisabled: types.optional(types.boolean()),
+  elasticBuildMachine: types.optional(
+    z.lazy(() => GetMicrofrontendsInGroupElasticBuildMachine$inboundSchema),
+  ),
 });
 
 export function getMicrofrontendsInGroupResourceConfigFromJSON(

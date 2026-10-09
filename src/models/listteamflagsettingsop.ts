@@ -55,12 +55,10 @@ export type ListTeamFlagSettingsResponseBodyMetadata = {
   segmentCount: number;
 };
 
-export const ListTeamFlagSettingsResponseBodyTypeName = {
+export const ResponseBodyTypeName = {
   Settings: "settings",
 } as const;
-export type ListTeamFlagSettingsResponseBodyTypeName = ClosedEnum<
-  typeof ListTeamFlagSettingsResponseBodyTypeName
->;
+export type ResponseBodyTypeName = ClosedEnum<typeof ResponseBodyTypeName>;
 
 export type ResponseBodyData = {
   createdAt?: number | undefined;
@@ -70,7 +68,7 @@ export type ResponseBodyData = {
   metadata: ListTeamFlagSettingsResponseBodyMetadata;
   ownerId?: string | undefined;
   projectId: string;
-  typeName: ListTeamFlagSettingsResponseBodyTypeName;
+  typeName: ResponseBodyTypeName;
   updatedAt?: number | undefined;
 };
 
@@ -214,9 +212,9 @@ export function listTeamFlagSettingsResponseBodyMetadataFromJSON(
 }
 
 /** @internal */
-export const ListTeamFlagSettingsResponseBodyTypeName$inboundSchema:
-  z.ZodNativeEnum<typeof ListTeamFlagSettingsResponseBodyTypeName> = z
-    .nativeEnum(ListTeamFlagSettingsResponseBodyTypeName);
+export const ResponseBodyTypeName$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTypeName
+> = z.nativeEnum(ResponseBodyTypeName);
 
 /** @internal */
 export const ResponseBodyData$inboundSchema: z.ZodType<
@@ -233,7 +231,7 @@ export const ResponseBodyData$inboundSchema: z.ZodType<
   ),
   ownerId: types.optional(types.string()),
   projectId: types.string(),
-  typeName: ListTeamFlagSettingsResponseBodyTypeName$inboundSchema,
+  typeName: ResponseBodyTypeName$inboundSchema,
   updatedAt: types.optional(types.number()),
 });
 

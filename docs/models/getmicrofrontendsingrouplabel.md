@@ -5,7 +5,7 @@ Machine types an elastic decision can effectively apply or persist. The algorith
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupLabel } from "@vercel/sdk/models/getmicrofrontendsingroupreadysubstate.js";
+import { GetMicrofrontendsInGroupLabel } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
 
 let value: GetMicrofrontendsInGroupLabel = "enhanced";
 ```

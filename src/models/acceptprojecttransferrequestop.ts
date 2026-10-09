@@ -8,7 +8,6 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
-import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type PaidFeatures = {
@@ -48,44 +47,39 @@ export type AcceptProjectTransferRequestRequest = {
   requestBody?: AcceptProjectTransferRequestRequestBody | undefined;
 };
 
-export type AcceptProjectTransferRequestResponseBody2 = {};
+export type AcceptProjectTransferRequestError = {};
 
-export type AcceptProjectTransferRequestResponseBodyError = {};
-
-export const AcceptProjectTransferRequestResponseBodyStatus = {
+export const AcceptProjectTransferRequestStatus = {
   Errored: "errored",
   Fulfilled: "fulfilled",
 } as const;
-export type AcceptProjectTransferRequestResponseBodyStatus = ClosedEnum<
-  typeof AcceptProjectTransferRequestResponseBodyStatus
+export type AcceptProjectTransferRequestStatus = ClosedEnum<
+  typeof AcceptProjectTransferRequestStatus
 >;
 
-export type AcceptProjectTransferRequestResponseBodyResult = {
+export type AcceptProjectTransferRequestResult = {
   code?: string | undefined;
-  error?: AcceptProjectTransferRequestResponseBodyError | undefined;
-  status: AcceptProjectTransferRequestResponseBodyStatus;
+  error?: AcceptProjectTransferRequestError | undefined;
+  status: AcceptProjectTransferRequestStatus;
 };
 
 export type PartnerCalls = {
   installationId: string;
   resourceIds: Array<string>;
-  result: AcceptProjectTransferRequestResponseBodyResult;
+  result: AcceptProjectTransferRequestResult;
 };
 
 export type ResourceTransferErrors = {};
 
-export type AcceptProjectTransferRequestResponseBody1 = {
-  partnerCalls: Array<PartnerCalls>;
-  resourceTransferErrors: Array<ResourceTransferErrors>;
-  transferredStoreIds: Array<string>;
-};
-
 /**
  * The project has been transferred successfully.
  */
-export type AcceptProjectTransferRequestResponseBody =
-  | AcceptProjectTransferRequestResponseBody1
-  | AcceptProjectTransferRequestResponseBody2;
+export type AcceptProjectTransferRequestResponseBody = {
+  partnerCalls: Array<PartnerCalls>;
+  projectName: string;
+  resourceTransferErrors: Array<ResourceTransferErrors>;
+  transferredStoreIds: Array<string>;
+};
 
 /** @internal */
 export type PaidFeatures$Outbound = {
@@ -210,84 +204,48 @@ export function acceptProjectTransferRequestRequestToJSON(
 }
 
 /** @internal */
-export const AcceptProjectTransferRequestResponseBody2$inboundSchema: z.ZodType<
-  AcceptProjectTransferRequestResponseBody2,
+export const AcceptProjectTransferRequestError$inboundSchema: z.ZodType<
+  AcceptProjectTransferRequestError,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function acceptProjectTransferRequestResponseBody2FromJSON(
+export function acceptProjectTransferRequestErrorFromJSON(
   jsonString: string,
-): SafeParseResult<
-  AcceptProjectTransferRequestResponseBody2,
-  SDKValidationError
-> {
+): SafeParseResult<AcceptProjectTransferRequestError, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      AcceptProjectTransferRequestResponseBody2$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AcceptProjectTransferRequestResponseBody2' from JSON`,
+    (x) => AcceptProjectTransferRequestError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcceptProjectTransferRequestError' from JSON`,
   );
 }
 
 /** @internal */
-export const AcceptProjectTransferRequestResponseBodyError$inboundSchema:
-  z.ZodType<
-    AcceptProjectTransferRequestResponseBodyError,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
+export const AcceptProjectTransferRequestStatus$inboundSchema: z.ZodNativeEnum<
+  typeof AcceptProjectTransferRequestStatus
+> = z.nativeEnum(AcceptProjectTransferRequestStatus);
 
-export function acceptProjectTransferRequestResponseBodyErrorFromJSON(
+/** @internal */
+export const AcceptProjectTransferRequestResult$inboundSchema: z.ZodType<
+  AcceptProjectTransferRequestResult,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.optional(types.string()),
+  error: types.optional(
+    z.lazy(() => AcceptProjectTransferRequestError$inboundSchema),
+  ),
+  status: AcceptProjectTransferRequestStatus$inboundSchema,
+});
+
+export function acceptProjectTransferRequestResultFromJSON(
   jsonString: string,
-): SafeParseResult<
-  AcceptProjectTransferRequestResponseBodyError,
-  SDKValidationError
-> {
+): SafeParseResult<AcceptProjectTransferRequestResult, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      AcceptProjectTransferRequestResponseBodyError$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AcceptProjectTransferRequestResponseBodyError' from JSON`,
-  );
-}
-
-/** @internal */
-export const AcceptProjectTransferRequestResponseBodyStatus$inboundSchema:
-  z.ZodNativeEnum<typeof AcceptProjectTransferRequestResponseBodyStatus> = z
-    .nativeEnum(AcceptProjectTransferRequestResponseBodyStatus);
-
-/** @internal */
-export const AcceptProjectTransferRequestResponseBodyResult$inboundSchema:
-  z.ZodType<
-    AcceptProjectTransferRequestResponseBodyResult,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    code: types.optional(types.string()),
-    error: types.optional(
-      z.lazy(() => AcceptProjectTransferRequestResponseBodyError$inboundSchema),
-    ),
-    status: AcceptProjectTransferRequestResponseBodyStatus$inboundSchema,
-  });
-
-export function acceptProjectTransferRequestResponseBodyResultFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AcceptProjectTransferRequestResponseBodyResult,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AcceptProjectTransferRequestResponseBodyResult$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AcceptProjectTransferRequestResponseBodyResult' from JSON`,
+      AcceptProjectTransferRequestResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AcceptProjectTransferRequestResult' from JSON`,
   );
 }
 
@@ -299,9 +257,7 @@ export const PartnerCalls$inboundSchema: z.ZodType<
 > = z.object({
   installationId: types.string(),
   resourceIds: z.array(types.string()),
-  result: z.lazy(() =>
-    AcceptProjectTransferRequestResponseBodyResult$inboundSchema
-  ),
+  result: z.lazy(() => AcceptProjectTransferRequestResult$inboundSchema),
 });
 
 export function partnerCallsFromJSON(
@@ -332,43 +288,18 @@ export function resourceTransferErrorsFromJSON(
 }
 
 /** @internal */
-export const AcceptProjectTransferRequestResponseBody1$inboundSchema: z.ZodType<
-  AcceptProjectTransferRequestResponseBody1,
+export const AcceptProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
+  AcceptProjectTransferRequestResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   partnerCalls: z.array(z.lazy(() => PartnerCalls$inboundSchema)),
+  projectName: types.string(),
   resourceTransferErrors: z.array(
     z.lazy(() => ResourceTransferErrors$inboundSchema),
   ),
   transferredStoreIds: z.array(types.string()),
 });
-
-export function acceptProjectTransferRequestResponseBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  AcceptProjectTransferRequestResponseBody1,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AcceptProjectTransferRequestResponseBody1$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'AcceptProjectTransferRequestResponseBody1' from JSON`,
-  );
-}
-
-/** @internal */
-export const AcceptProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
-  AcceptProjectTransferRequestResponseBody,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => AcceptProjectTransferRequestResponseBody1$inboundSchema),
-  z.lazy(() => AcceptProjectTransferRequestResponseBody2$inboundSchema),
-]);
 
 export function acceptProjectTransferRequestResponseBodyFromJSON(
   jsonString: string,

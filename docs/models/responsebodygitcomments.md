@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyGitComments } from "@vercel/sdk/models/getprojectslink8.js";
+import { ResponseBodyGitComments } from "@vercel/sdk/models/getprojectsresponsebodyreadysubstate.js";
 
 let value: ResponseBodyGitComments = {
   onCommit: true,

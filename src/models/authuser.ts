@@ -215,6 +215,22 @@ export type AuthUserSecurity = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   rateLimit?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  securityLists?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  teamLevelConditions?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  teamLevelRules?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  teamLevelRulesets?: number | undefined;
 };
 
 /**
@@ -921,6 +937,10 @@ export const AuthUserSecurity$inboundSchema: z.ZodType<
   ipBlocks: types.optional(types.number()),
   ipBypass: types.optional(types.number()),
   rateLimit: types.optional(types.number()),
+  securityLists: types.optional(types.number()),
+  teamLevelConditions: types.optional(types.number()),
+  teamLevelRules: types.optional(types.number()),
+  teamLevelRulesets: types.optional(types.number()),
 });
 
 export function authUserSecurityFromJSON(

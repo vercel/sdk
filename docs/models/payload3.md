@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Payload3 } from "@vercel/sdk/models/via3.js";
+import { Payload3 } from "@vercel/sdk/models/principal.js";
 
 let value: Payload3 = {
   action: "unarchived",

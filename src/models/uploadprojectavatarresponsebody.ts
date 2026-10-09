@@ -1754,6 +1754,33 @@ export type UploadProjectAvatarProjectsFunctionDefaultMemoryType = ClosedEnum<
   typeof UploadProjectAvatarProjectsFunctionDefaultMemoryType
 >;
 
+/**
+ * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ */
+export const UploadProjectAvatarProjectsLabel = {
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+/**
+ * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ */
+export type UploadProjectAvatarProjectsLabel = ClosedEnum<
+  typeof UploadProjectAvatarProjectsLabel
+>;
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type UploadProjectAvatarProjectsElasticBuildMachine = {
+  cores: number;
+  /**
+   * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+   */
+  label: UploadProjectAvatarProjectsLabel;
+  memory: number;
+};
+
 export type UploadProjectAvatarResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -1777,6 +1804,12 @@ export type UploadProjectAvatarResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
+  /**
+   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+   */
+  elasticBuildMachine?:
+    | UploadProjectAvatarProjectsElasticBuildMachine
+    | undefined;
 };
 
 /**
@@ -4297,6 +4330,39 @@ export const UploadProjectAvatarProjectsFunctionDefaultMemoryType$inboundSchema:
     z.nativeEnum(UploadProjectAvatarProjectsFunctionDefaultMemoryType);
 
 /** @internal */
+export const UploadProjectAvatarProjectsLabel$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarProjectsLabel
+> = z.nativeEnum(UploadProjectAvatarProjectsLabel);
+
+/** @internal */
+export const UploadProjectAvatarProjectsElasticBuildMachine$inboundSchema:
+  z.ZodType<
+    UploadProjectAvatarProjectsElasticBuildMachine,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: UploadProjectAvatarProjectsLabel$inboundSchema,
+    memory: types.number(),
+  });
+
+export function uploadProjectAvatarProjectsElasticBuildMachineFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UploadProjectAvatarProjectsElasticBuildMachine,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarProjectsElasticBuildMachine$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UploadProjectAvatarProjectsElasticBuildMachine' from JSON`,
+  );
+}
+
+/** @internal */
 export const UploadProjectAvatarResourceConfig$inboundSchema: z.ZodType<
   UploadProjectAvatarResourceConfig,
   z.ZodTypeDef,
@@ -4330,6 +4396,9 @@ export const UploadProjectAvatarResourceConfig$inboundSchema: z.ZodType<
   functionDefaultTimeout: types.optional(types.number()),
   functionZeroConfigFailover: types.optional(types.boolean()),
   isNSNBDisabled: types.optional(types.boolean()),
+  elasticBuildMachine: types.optional(
+    z.lazy(() => UploadProjectAvatarProjectsElasticBuildMachine$inboundSchema),
+  ),
 });
 
 export function uploadProjectAvatarResourceConfigFromJSON(

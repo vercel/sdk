@@ -5,20 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyFive } from "@vercel/sdk/models/threehundredandsixtysix.js";
+import { ThreeHundredAndSeventyFive } from "@vercel/sdk/models/threehundredandsixtyeight.js";
 
-let value: ThreeHundredAndSeventyFive = {
-  store: {
-    id: "<id>",
-    type: "integration",
-  },
-  transferRequestCode: "<value>",
-};
+let value: ThreeHundredAndSeventyFive = {};
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |
-| `transferRequestCode`              | *string*                           | :heavy_check_mark:                 | N/A                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |

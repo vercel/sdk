@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyFour } from "@vercel/sdk/models/payloadscopes.js";
+import { EightyFour } from "@vercel/sdk/models/sixtysix.js";
 
 let value: EightyFour = {
   bulkRedirectsLimit: 3203.03,

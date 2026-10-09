@@ -1767,6 +1767,33 @@ export type GetProjectProjectsFunctionDefaultMemoryType = ClosedEnum<
   typeof GetProjectProjectsFunctionDefaultMemoryType
 >;
 
+/**
+ * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ */
+export const GetProjectProjectsLabel = {
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+/**
+ * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ */
+export type GetProjectProjectsLabel = ClosedEnum<
+  typeof GetProjectProjectsLabel
+>;
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type GetProjectProjectsElasticBuildMachine = {
+  cores: number;
+  /**
+   * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+   */
+  label: GetProjectProjectsLabel;
+  memory: number;
+};
+
 export type GetProjectResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -1788,6 +1815,10 @@ export type GetProjectResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
+  /**
+   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+   */
+  elasticBuildMachine?: GetProjectProjectsElasticBuildMachine | undefined;
 };
 
 /**
@@ -4242,6 +4273,33 @@ export const GetProjectProjectsFunctionDefaultMemoryType$inboundSchema:
     .nativeEnum(GetProjectProjectsFunctionDefaultMemoryType);
 
 /** @internal */
+export const GetProjectProjectsLabel$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectProjectsLabel
+> = z.nativeEnum(GetProjectProjectsLabel);
+
+/** @internal */
+export const GetProjectProjectsElasticBuildMachine$inboundSchema: z.ZodType<
+  GetProjectProjectsElasticBuildMachine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cores: types.number(),
+  label: GetProjectProjectsLabel$inboundSchema,
+  memory: types.number(),
+});
+
+export function getProjectProjectsElasticBuildMachineFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectProjectsElasticBuildMachine, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectProjectsElasticBuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectProjectsElasticBuildMachine' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectResourceConfig$inboundSchema: z.ZodType<
   GetProjectResourceConfig,
   z.ZodTypeDef,
@@ -4273,6 +4331,9 @@ export const GetProjectResourceConfig$inboundSchema: z.ZodType<
   functionDefaultTimeout: types.optional(types.number()),
   functionZeroConfigFailover: types.optional(types.boolean()),
   isNSNBDisabled: types.optional(types.boolean()),
+  elasticBuildMachine: types.optional(
+    z.lazy(() => GetProjectProjectsElasticBuildMachine$inboundSchema),
+  ),
 });
 
 export function getProjectResourceConfigFromJSON(

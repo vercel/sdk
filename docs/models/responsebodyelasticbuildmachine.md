@@ -1,11 +1,11 @@
 # ResponseBodyElasticBuildMachine
 
-Internal assignment, intentionally excluded from API input/output schemas.
+Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
 
 ## Example Usage
 
 ```typescript
-import { ResponseBodyElasticBuildMachine } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3checksconclusion.js";
+import { ResponseBodyElasticBuildMachine } from "@vercel/sdk/models/getprojectsresponsebody.js";
 
 let value: ResponseBodyElasticBuildMachine = {
   cores: 1437.93,

@@ -1597,7 +1597,7 @@ export const UpdateProjectLabel = {
 export type UpdateProjectLabel = ClosedEnum<typeof UpdateProjectLabel>;
 
 /**
- * Internal assignment, intentionally excluded from API input/output schemas.
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
 export type UpdateProjectElasticBuildMachine = {
   cores: number;
@@ -1632,7 +1632,7 @@ export type UpdateProjectDefaultResourceConfig = {
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
   /**
-   * Internal assignment, intentionally excluded from API input/output schemas.
+   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
    */
   elasticBuildMachine?: UpdateProjectElasticBuildMachine | undefined;
 };

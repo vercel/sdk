@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PrevProjectWebAnalytics } from "@vercel/sdk/models/threehundredandone.js";
+import { PrevProjectWebAnalytics } from "@vercel/sdk/models/threehundredandthree.js";
 
 let value: PrevProjectWebAnalytics = {
   id: "<id>",

@@ -49,8 +49,6 @@ import {
   UpdateProjectProjectsEnv$inboundSchema,
   UpdateProjectProjectsFramework,
   UpdateProjectProjectsFramework$inboundSchema,
-  UpdateProjectProjectsLogHeaders,
-  UpdateProjectProjectsLogHeaders$inboundSchema,
   UpdateProjectProjectsNodeVersion,
   UpdateProjectProjectsNodeVersion$inboundSchema,
   UpdateProjectProjectsOidcTokenConfig,
@@ -75,7 +73,7 @@ import {
   UpdateProjectRollbackDescription$inboundSchema,
   UpdateProjectRollingRelease,
   UpdateProjectRollingRelease$inboundSchema,
-} from "./updateprojectprojectslogheaders.js";
+} from "./updateprojectprojectsresponse200action.js";
 import {
   UpdateProjectAlias,
   UpdateProjectAlias$inboundSchema,
@@ -99,6 +97,17 @@ import {
   UpdateProjectDeploymentExpiration$inboundSchema,
 } from "./updateprojectsourcesprojects2.js";
 
+export const UpdateProjectLogHeadersProjects2 = {
+  Wildcard: "*",
+} as const;
+export type UpdateProjectLogHeadersProjects2 = ClosedEnum<
+  typeof UpdateProjectLogHeadersProjects2
+>;
+
+export type UpdateProjectProjectsLogHeaders =
+  | Array<string>
+  | UpdateProjectLogHeadersProjects2;
+
 export const UpdateProjectAlgo = {
   FixedWindow: "fixed_window",
   TokenBucket: "token_bucket",
@@ -121,7 +130,7 @@ export type UpdateProjectRulesets = {
   action: UpdateProjectProjectsResponse200Action;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
-  logHeaders?: UpdateProjectProjectsLogHeaders | undefined;
+  logHeaders?: Array<string> | UpdateProjectLogHeadersProjects2 | undefined;
   rateLimit?: UpdateProjectRateLimit | null | undefined;
   redirect?: UpdateProjectRedirect | null | undefined;
 };
@@ -910,6 +919,31 @@ export type UpdateProjectResponseBody = {
 };
 
 /** @internal */
+export const UpdateProjectLogHeadersProjects2$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectLogHeadersProjects2
+> = z.nativeEnum(UpdateProjectLogHeadersProjects2);
+
+/** @internal */
+export const UpdateProjectProjectsLogHeaders$inboundSchema: z.ZodType<
+  UpdateProjectProjectsLogHeaders,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.array(types.string()),
+  UpdateProjectLogHeadersProjects2$inboundSchema,
+]);
+
+export function updateProjectProjectsLogHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectProjectsLogHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectProjectsLogHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectProjectsLogHeaders' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectAlgo$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectAlgo
 > = z.nativeEnum(UpdateProjectAlgo);
@@ -965,7 +999,12 @@ export const UpdateProjectRulesets$inboundSchema: z.ZodType<
   action: UpdateProjectProjectsResponse200Action$inboundSchema,
   actionDuration: z.nullable(types.string()).optional(),
   bypassSystem: z.nullable(types.boolean()).optional(),
-  logHeaders: types.optional(UpdateProjectProjectsLogHeaders$inboundSchema),
+  logHeaders: types.optional(
+    smartUnion([
+      z.array(types.string()),
+      UpdateProjectLogHeadersProjects2$inboundSchema,
+    ]),
+  ),
   rateLimit: z.nullable(z.lazy(() => UpdateProjectRateLimit$inboundSchema))
     .optional(),
   redirect: z.nullable(z.lazy(() => UpdateProjectRedirect$inboundSchema))

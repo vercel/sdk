@@ -7,14 +7,14 @@ The payload of the event, if requested.
 ```typescript
 import { TwoHundredAndSeventySix } from "@vercel/sdk/models/siftroute.js";
 
-let value: TwoHundredAndSeventySix = {
-  projectId: "<id>",
-};
+let value: TwoHundredAndSeventySix = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
 | `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `target`           | *string*[]         | :heavy_minus_sign: | N/A                |
+| `updated`          | *boolean*          | :heavy_minus_sign: | N/A                |

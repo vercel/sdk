@@ -1,11 +1,11 @@
 # GetMicrofrontendsInGroupElasticBuildMachine
 
-Internal assignment, intentionally excluded from API input/output schemas.
+Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
 
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupElasticBuildMachine } from "@vercel/sdk/models/getmicrofrontendsingroupreadysubstate.js";
+import { GetMicrofrontendsInGroupElasticBuildMachine } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
 
 let value: GetMicrofrontendsInGroupElasticBuildMachine = {
   cores: 1463.02,

@@ -9,10 +9,10 @@ import { TwoHundredAndNinety } from "@vercel/sdk/models/siftroute.js";
 
 let value: TwoHundredAndNinety = {
   next: {
-    functionZeroConfigFailover: true,
+    functionDefaultMemoryType: "<value>",
   },
   previous: {
-    functionZeroConfigFailover: false,
+    functionDefaultMemoryType: "<value>",
   },
   projectId: "<id>",
   projectName: "<value>",

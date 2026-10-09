@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { MostSpecificSubdivision } from "@vercel/sdk/models/lasteditedbyprincipal2.js";
+import { MostSpecificSubdivision } from "@vercel/sdk/models/onehundredandseventytwo.js";
 
 let value: MostSpecificSubdivision = {
   names: {

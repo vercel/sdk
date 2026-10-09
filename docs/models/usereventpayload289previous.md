@@ -6,10 +6,7 @@
 import { UserEventPayload289Previous } from "@vercel/sdk/models/siftroute.js";
 
 let value: UserEventPayload289Previous = {
-  functionDefaultRegions: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  functionDefaultTimeout: 5906.92,
 };
 ```
 
@@ -17,4 +14,4 @@ let value: UserEventPayload289Previous = {
 
 | Field                    | Type                     | Required                 | Description              |
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |
+| `functionDefaultTimeout` | *number*                 | :heavy_check_mark:       | N/A                      |

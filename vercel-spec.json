@@ -127106,7 +127106,22 @@
                     },
                     "passwordProtection": {
                       "nullable": true,
-                      "type": "object"
+                      "properties": {
+                        "deploymentType": {
+                          "type": "string",
+                          "enum": [
+                            "all",
+                            "all_except_custom_domains",
+                            "preview",
+                            "prod_deployment_urls_and_all_previews"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "deploymentType"
+                      ],
+                      "type": "object",
+                      "description": "Password protection settings returned without the secret password hash."
                     },
                     "paused": {
                       "type": "boolean",

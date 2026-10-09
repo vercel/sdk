@@ -499,7 +499,9 @@ export type GetProjectPassport = {
   deploymentType: GetProjectDeploymentType;
 };
 
-export type GetProjectPasswordProtection = {};
+export type GetProjectPasswordProtection = {
+  deploymentType: GetProjectDeploymentType;
+};
 
 /**
  * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -3711,7 +3713,9 @@ export const GetProjectPasswordProtection$inboundSchema: z.ZodType<
   GetProjectPasswordProtection,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  deploymentType: GetProjectDeploymentType$inboundSchema,
+});
 
 export function getProjectPasswordProtectionFromJSON(
   jsonString: string,

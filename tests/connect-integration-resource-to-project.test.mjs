@@ -26,7 +26,7 @@ test("preserves the focused test command during generation", async () => {
   const generatorConfig = await readFile(".speakeasy/gen.yaml", "utf8");
   assert.match(
     generatorConfig,
-    /additionalScripts:\n\s+test: npm run test:connect-environments/,
+    /additionalScripts:\n\s+test: npm run build && node --test tests\/\*\.test\.mjs/,
   );
   assert.match(
     generatorConfig,

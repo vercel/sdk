@@ -10,16 +10,40 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetProjectsLink8,
-  GetProjectsLink8$inboundSchema,
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+} from "./getprojectsresponsebodyprojectsresponse200applicationjson2projectsaliasdeploymenttype.js";
+import {
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
+  GetProjectsResponseBodyAliasError,
+  GetProjectsResponseBodyAliasError$inboundSchema,
+  GetProjectsResponseBodyBuilds,
+  GetProjectsResponseBodyBuilds$inboundSchema,
+  GetProjectsResponseBodyChecksConclusion,
+  GetProjectsResponseBodyChecksConclusion$inboundSchema,
+  GetProjectsResponseBodyChecksState,
+  GetProjectsResponseBodyChecksState$inboundSchema,
   GetProjectsResponseBodyCreator,
   GetProjectsResponseBodyCreator$inboundSchema,
+  GetProjectsResponseBodyOidcTokenClaims,
+  GetProjectsResponseBodyOidcTokenClaims$inboundSchema,
+  GetProjectsResponseBodyPlan,
+  GetProjectsResponseBodyPlan$inboundSchema,
+  GetProjectsResponseBodyProjectsCreator,
+  GetProjectsResponseBodyProjectsCreator$inboundSchema,
+  GetProjectsResponseBodyReadyState,
+  GetProjectsResponseBodyReadyState$inboundSchema,
+  GetProjectsResponseBodyReadySubstate,
+  GetProjectsResponseBodyReadySubstate$inboundSchema,
   ResponseBodyAlias,
   ResponseBodyAlias$inboundSchema,
+  ResponseBodyAliasAssigned,
+  ResponseBodyAliasAssigned$inboundSchema,
   ResponseBodyAnalytics,
   ResponseBodyAnalytics$inboundSchema,
+  ResponseBodyBranchMatcher,
+  ResponseBodyBranchMatcher$inboundSchema,
   ResponseBodyDeploymentExpiration,
   ResponseBodyDeploymentExpiration$inboundSchema,
   ResponseBodyEnv,
@@ -34,14 +58,94 @@ import {
   ResponseBodyInternalRoutes$inboundSchema,
   ResponseBodyIpBuckets,
   ResponseBodyIpBuckets$inboundSchema,
-  ResponseBodyLatestDeployments,
-  ResponseBodyLatestDeployments$inboundSchema,
-} from "./getprojectslink8.js";
-import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjson2builds.js";
+} from "./getprojectsresponsebodyreadysubstate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsResponseBodyProjectsType = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type GetProjectsResponseBodyProjectsType = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsType
+>;
+
+export type ResponseBodyLatestDeployments = {
+  alias?: Array<string> | undefined;
+  aliasAssigned?: ResponseBodyAliasAssigned | null | undefined;
+  aliasError?: GetProjectsResponseBodyAliasError | null | undefined;
+  aliasFinal?: string | null | undefined;
+  automaticAliases?: Array<string> | undefined;
+  branchMatcher?: ResponseBodyBranchMatcher | undefined;
+  buildingAt?: number | undefined;
+  builds?: Array<GetProjectsResponseBodyBuilds> | undefined;
+  checksConclusion?: GetProjectsResponseBodyChecksConclusion | undefined;
+  checksState?: GetProjectsResponseBodyChecksState | undefined;
+  connectBuildsEnabled?: boolean | undefined;
+  connectConfigurationId?: string | undefined;
+  createdAt: number;
+  createdIn: string;
+  creator: GetProjectsResponseBodyProjectsCreator | null;
+  deletedAt?: number | undefined;
+  deploymentHostname: string;
+  forced?: boolean | undefined;
+  id: string;
+  meta?: { [k: string]: string } | undefined;
+  monorepoManager?: string | null | undefined;
+  name: string;
+  oidcTokenClaims?: GetProjectsResponseBodyOidcTokenClaims | undefined;
+  plan: GetProjectsResponseBodyPlan;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
+  previewCommentsEnabled?: boolean | undefined;
+  private: boolean;
+  readyAt?: number | undefined;
+  readyState: GetProjectsResponseBodyReadyState;
+  readySubstate?: GetProjectsResponseBodyReadySubstate | undefined;
+  requestedAt?: number | undefined;
+  target?: string | null | undefined;
+  teamId?: string | null | undefined;
+  type: GetProjectsResponseBodyProjectsType;
+  url: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
+  withCache?: boolean | undefined;
+};
+
+export type GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody18DeployHooks =
+  {
+    createdAt?: number | undefined;
+    id: string;
+    name: string;
+    ref: string;
+    url: string;
+  };
+
+export type GetProjectsLink8 = {
+  createdAt?: number | undefined;
+  deployHooks: Array<
+    GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody18DeployHooks
+  >;
+  gitCredentialId: string;
+  /**
+   * Owner (namespace) slug, e.g. `acme`.
+   */
+  owner: string;
+  /**
+   * Origin namespace id (`ns_…`) of the owner.
+   */
+  ownerId: string;
+  productionBranch: string;
+  repo: string;
+  /**
+   * Origin repository id.
+   */
+  repoId: string;
+  sourceless?: boolean | undefined;
+  type: "cursor-origin";
+  updatedAt?: number | undefined;
+};
 
 export type GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks =
   {
@@ -352,6 +456,31 @@ export type ResponseBodyFunctionDefaultMemoryType = ClosedEnum<
   typeof ResponseBodyFunctionDefaultMemoryType
 >;
 
+/**
+ * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ */
+export const ResponseBodyLabel = {
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+/**
+ * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ */
+export type ResponseBodyLabel = ClosedEnum<typeof ResponseBodyLabel>;
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type ResponseBodyElasticBuildMachine = {
+  cores: number;
+  /**
+   * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+   */
+  label: ResponseBodyLabel;
+  memory: number;
+};
+
 export type GetProjectsResponseBodyResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?: ResponseBodyBuildMachineElasticReason | undefined;
@@ -369,6 +498,10 @@ export type GetProjectsResponseBodyResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
+  /**
+   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+   */
+  elasticBuildMachine?: ResponseBodyElasticBuildMachine | undefined;
 };
 
 /**
@@ -545,9 +678,7 @@ export type GetProjectsValue2 = {
   suf?: string | undefined;
 };
 
-export type GetProjectsResponseBodyProjectsResponseValue =
-  | string
-  | GetProjectsValue2;
+export type GetProjectsResponseBodyProjectsValue = string | GetProjectsValue2;
 
 export type GetProjectsResponseBodyHas = {
   key?: string | undefined;
@@ -593,9 +724,7 @@ export type GetProjectsValueProjects2 = {
   suf?: string | undefined;
 };
 
-export type GetProjectsResponseBodyProjectsValue =
-  | string
-  | GetProjectsValueProjects2;
+export type GetProjectsResponseBodyValue = string | GetProjectsValueProjects2;
 
 export type GetProjectsResponseBodyMissing = {
   key?: string | undefined;
@@ -1350,6 +1479,134 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const GetProjectsResponseBodyProjectsType$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyProjectsType
+> = z.nativeEnum(GetProjectsResponseBodyProjectsType);
+
+/** @internal */
+export const ResponseBodyLatestDeployments$inboundSchema: z.ZodType<
+  ResponseBodyLatestDeployments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: z.nullable(ResponseBodyAliasAssigned$inboundSchema).optional(),
+  aliasError: z.nullable(GetProjectsResponseBodyAliasError$inboundSchema)
+    .optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  automaticAliases: types.optional(z.array(types.string())),
+  branchMatcher: types.optional(ResponseBodyBranchMatcher$inboundSchema),
+  buildingAt: types.optional(types.number()),
+  builds: types.optional(z.array(GetProjectsResponseBodyBuilds$inboundSchema)),
+  checksConclusion: types.optional(
+    GetProjectsResponseBodyChecksConclusion$inboundSchema,
+  ),
+  checksState: types.optional(GetProjectsResponseBodyChecksState$inboundSchema),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  createdAt: types.number(),
+  createdIn: types.string(),
+  creator: types.nullable(GetProjectsResponseBodyProjectsCreator$inboundSchema),
+  deletedAt: types.optional(types.number()),
+  deploymentHostname: types.string(),
+  forced: types.optional(types.boolean()),
+  id: types.string(),
+  meta: types.optional(z.record(types.string())),
+  monorepoManager: z.nullable(types.string()).optional(),
+  name: types.string(),
+  oidcTokenClaims: types.optional(
+    GetProjectsResponseBodyOidcTokenClaims$inboundSchema,
+  ),
+  plan: GetProjectsResponseBodyPlan$inboundSchema,
+  previewCommentsEnabled: types.optional(types.boolean()),
+  private: types.boolean(),
+  readyAt: types.optional(types.number()),
+  readyState: GetProjectsResponseBodyReadyState$inboundSchema,
+  readySubstate: types.optional(
+    GetProjectsResponseBodyReadySubstate$inboundSchema,
+  ),
+  requestedAt: types.optional(types.number()),
+  target: z.nullable(types.string()).optional(),
+  teamId: z.nullable(types.string()).optional(),
+  type: GetProjectsResponseBodyProjectsType$inboundSchema,
+  url: types.string(),
+  userId: types.optional(types.string()),
+  withCache: types.optional(types.boolean()),
+});
+
+export function responseBodyLatestDeploymentsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyLatestDeployments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyLatestDeployments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyLatestDeployments' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody18DeployHooks$inboundSchema:
+  z.ZodType<
+    GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody18DeployHooks,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  });
+
+export function getProjectsLinkProjectsResponse200ApplicationJSONResponseBody18DeployHooksFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody18DeployHooks,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody18DeployHooks$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody18DeployHooks' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsLink8$inboundSchema: z.ZodType<
+  GetProjectsLink8,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.optional(types.number()),
+  deployHooks: z.array(
+    z.lazy(() =>
+      GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody18DeployHooks$inboundSchema
+    ),
+  ),
+  gitCredentialId: types.string(),
+  owner: types.string(),
+  ownerId: types.string(),
+  productionBranch: types.string(),
+  repo: types.string(),
+  repoId: types.string(),
+  sourceless: types.optional(types.boolean()),
+  type: types.literal("cursor-origin"),
+  updatedAt: types.optional(types.number()),
+});
+
+export function getProjectsLink8FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsLink8, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsLink8$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsLink8' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks$inboundSchema:
   z.ZodType<
     GetProjectsLinkProjectsResponse200ApplicationJSONResponseBody1DeployHooks,
@@ -1776,7 +2033,7 @@ export const ResponseBodyLink$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsLink5$inboundSchema),
   z.lazy(() => GetProjectsLink6$inboundSchema),
   z.lazy(() => GetProjectsLink7$inboundSchema),
-  GetProjectsLink8$inboundSchema,
+  z.lazy(() => GetProjectsLink8$inboundSchema),
 ]);
 
 export function responseBodyLinkFromJSON(
@@ -1943,6 +2200,32 @@ export const ResponseBodyFunctionDefaultMemoryType$inboundSchema:
   );
 
 /** @internal */
+export const ResponseBodyLabel$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyLabel
+> = z.nativeEnum(ResponseBodyLabel);
+
+/** @internal */
+export const ResponseBodyElasticBuildMachine$inboundSchema: z.ZodType<
+  ResponseBodyElasticBuildMachine,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cores: types.number(),
+  label: ResponseBodyLabel$inboundSchema,
+  memory: types.number(),
+});
+
+export function responseBodyElasticBuildMachineFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyElasticBuildMachine, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyElasticBuildMachine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyElasticBuildMachine' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsResponseBodyResourceConfig$inboundSchema: z.ZodType<
   GetProjectsResponseBodyResourceConfig,
   z.ZodTypeDef,
@@ -1972,6 +2255,9 @@ export const GetProjectsResponseBodyResourceConfig$inboundSchema: z.ZodType<
   functionDefaultTimeout: types.optional(types.number()),
   functionZeroConfigFailover: types.optional(types.boolean()),
   isNSNBDisabled: types.optional(types.boolean()),
+  elasticBuildMachine: types.optional(
+    z.lazy(() => ResponseBodyElasticBuildMachine$inboundSchema),
+  ),
 });
 
 export function getProjectsResponseBodyResourceConfigFromJSON(
@@ -2135,29 +2421,20 @@ export function getProjectsValue2FromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsResponseValue$inboundSchema:
-  z.ZodType<
-    GetProjectsResponseBodyProjectsResponseValue,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    types.string(),
-    z.lazy(() => GetProjectsValue2$inboundSchema),
-  ]);
+export const GetProjectsResponseBodyProjectsValue$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyProjectsValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.lazy(() => GetProjectsValue2$inboundSchema)]);
 
-export function getProjectsResponseBodyProjectsResponseValueFromJSON(
+export function getProjectsResponseBodyProjectsValueFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetProjectsResponseBodyProjectsResponseValue,
-  SDKValidationError
-> {
+): SafeParseResult<GetProjectsResponseBodyProjectsValue, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      GetProjectsResponseBodyProjectsResponseValue$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetProjectsResponseBodyProjectsResponseValue' from JSON`,
+      GetProjectsResponseBodyProjectsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyProjectsValue' from JSON`,
   );
 }
 
@@ -2224,8 +2501,8 @@ export function getProjectsValueProjects2FromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsValue$inboundSchema: z.ZodType<
-  GetProjectsResponseBodyProjectsValue,
+export const GetProjectsResponseBodyValue$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyValue,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -2233,14 +2510,13 @@ export const GetProjectsResponseBodyProjectsValue$inboundSchema: z.ZodType<
   z.lazy(() => GetProjectsValueProjects2$inboundSchema),
 ]);
 
-export function getProjectsResponseBodyProjectsValueFromJSON(
+export function getProjectsResponseBodyValueFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsResponseBodyProjectsValue, SDKValidationError> {
+): SafeParseResult<GetProjectsResponseBodyValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetProjectsResponseBodyProjectsValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsResponseBodyProjectsValue' from JSON`,
+    (x) => GetProjectsResponseBodyValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyValue' from JSON`,
   );
 }
 
@@ -3590,7 +3866,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   ),
   ipBuckets: types.optional(z.array(ResponseBodyIpBuckets$inboundSchema)),
   latestDeployments: types.optional(
-    z.array(ResponseBodyLatestDeployments$inboundSchema),
+    z.array(z.lazy(() => ResponseBodyLatestDeployments$inboundSchema)),
   ),
   link: types.optional(
     z.union([
@@ -3601,7 +3877,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => GetProjectsLink5$inboundSchema),
       z.lazy(() => GetProjectsLink6$inboundSchema),
       z.lazy(() => GetProjectsLink7$inboundSchema),
-      GetProjectsLink8$inboundSchema,
+      z.lazy(() => GetProjectsLink8$inboundSchema),
     ]),
   ),
   live: types.optional(types.boolean()),

@@ -644,7 +644,7 @@ export type UploadProjectAvatarLabel = ClosedEnum<
 >;
 
 /**
- * Internal assignment, intentionally excluded from API input/output schemas.
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
 export type UploadProjectAvatarElasticBuildMachine = {
   cores: number;
@@ -677,7 +677,7 @@ export type UploadProjectAvatarDefaultResourceConfig = {
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
   /**
-   * Internal assignment, intentionally excluded from API input/output schemas.
+   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
    */
   elasticBuildMachine?: UploadProjectAvatarElasticBuildMachine | undefined;
 };

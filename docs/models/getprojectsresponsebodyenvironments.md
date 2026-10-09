@@ -3,19 +3,19 @@
 
 ## Supported Types
 
-### `models.GetProjectsEnvironments1`
+### `models.GetProjectsEnvironmentsProjects1`
 
 ```typescript
-const value: models.GetProjectsEnvironments1 = {
+const value: models.GetProjectsEnvironmentsProjects1 = {
   target: "preview",
   type: "system",
 };
 ```
 
-### `models.GetProjectsEnvironments2`
+### `models.GetProjectsEnvironmentsProjects2`
 
 ```typescript
-const value: models.GetProjectsEnvironments2 = {
+const value: models.GetProjectsEnvironmentsProjects2 = {
   environmentId: "<id>",
   type: "custom",
 };

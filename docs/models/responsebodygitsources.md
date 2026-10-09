@@ -21,8 +21,8 @@ let value: ResponseBodyGitSources = {
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `enabled`                                              | *boolean*                                              | :heavy_check_mark:                                     | N/A                                                    |
-| `environments`                                         | *models.GetProjectsResponseBodyProjectsEnvironments*[] | :heavy_check_mark:                                     | N/A                                                    |
-| `sources`                                              | *models.GetProjectsResponseBodySources*[]              | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `enabled`                                      | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
+| `environments`                                 | *models.GetProjectsResponseBodyEnvironments*[] | :heavy_check_mark:                             | N/A                                            |
+| `sources`                                      | *models.GetProjectsResponseBodySources*[]      | :heavy_check_mark:                             | N/A                                            |

@@ -740,7 +740,7 @@ export type ResponseBodyLambdas = {
 /**
  * Current provisioning state
  */
-export const GetDeploymentResponseBodyDeploymentsState = {
+export const ResponseBodyState = {
   Complete: "COMPLETE",
   Pending: "PENDING",
   Timeout: "TIMEOUT",
@@ -748,9 +748,7 @@ export const GetDeploymentResponseBodyDeploymentsState = {
 /**
  * Current provisioning state
  */
-export type GetDeploymentResponseBodyDeploymentsState = ClosedEnum<
-  typeof GetDeploymentResponseBodyDeploymentsState
->;
+export type ResponseBodyState = ClosedEnum<typeof ResponseBodyState>;
 
 /**
  * Present when deployment was created with manual provisioning enabled, either explicitly or via the experimental BYOC git flow. The deployment stays in INITIALIZING until /continue is called.
@@ -763,7 +761,7 @@ export type ResponseBodyManualProvisioning = {
   /**
    * Current provisioning state
    */
-  state: GetDeploymentResponseBodyDeploymentsState;
+  state: ResponseBodyState;
 };
 
 /**
@@ -1227,13 +1225,13 @@ export type GetDeploymentResponseBodyBuilds = {
   use: string;
 };
 
-export const GetDeploymentResponseBodyDeploymentsResponseState = {
+export const GetDeploymentResponseBodyDeploymentsState = {
   Failed: "failed",
   Pending: "pending",
   Succeeded: "succeeded",
 } as const;
-export type GetDeploymentResponseBodyDeploymentsResponseState = ClosedEnum<
-  typeof GetDeploymentResponseBodyDeploymentsResponseState
+export type GetDeploymentResponseBodyDeploymentsState = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsState
 >;
 
 /**
@@ -1242,7 +1240,7 @@ export type GetDeploymentResponseBodyDeploymentsResponseState = ClosedEnum<
 export type GetDeploymentResponseBodyDeploymentAlias = {
   completedAt?: number | undefined;
   startedAt: number;
-  state: GetDeploymentResponseBodyDeploymentsResponseState;
+  state: GetDeploymentResponseBodyDeploymentsState;
 };
 
 export type ResponseBodyChecks = {
@@ -3167,9 +3165,9 @@ export function responseBodyLambdasFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsState$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsState> = z
-    .nativeEnum(GetDeploymentResponseBodyDeploymentsState);
+export const ResponseBodyState$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyState
+> = z.nativeEnum(ResponseBodyState);
 
 /** @internal */
 export const ResponseBodyManualProvisioning$inboundSchema: z.ZodType<
@@ -3178,7 +3176,7 @@ export const ResponseBodyManualProvisioning$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   completedAt: types.optional(types.number()),
-  state: GetDeploymentResponseBodyDeploymentsState$inboundSchema,
+  state: ResponseBodyState$inboundSchema,
 });
 
 export function responseBodyManualProvisioningFromJSON(
@@ -3734,9 +3732,9 @@ export function getDeploymentResponseBodyBuildsFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsResponseState$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsResponseState> = z
-    .nativeEnum(GetDeploymentResponseBodyDeploymentsResponseState);
+export const GetDeploymentResponseBodyDeploymentsState$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsState> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsState);
 
 /** @internal */
 export const GetDeploymentResponseBodyDeploymentAlias$inboundSchema: z.ZodType<
@@ -3746,7 +3744,7 @@ export const GetDeploymentResponseBodyDeploymentAlias$inboundSchema: z.ZodType<
 > = z.object({
   completedAt: types.optional(types.number()),
   startedAt: types.number(),
-  state: GetDeploymentResponseBodyDeploymentsResponseState$inboundSchema,
+  state: GetDeploymentResponseBodyDeploymentsState$inboundSchema,
 });
 
 export function getDeploymentResponseBodyDeploymentAliasFromJSON(

@@ -5,14 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFiftyTwo } from "@vercel/sdk/models/fourhundredandtwentyseven.js";
+import { FourHundredAndFiftyTwo } from "@vercel/sdk/models/fourhundredandtwentynine.js";
 
 let value: FourHundredAndFiftyTwo = {
-  next: {
-    enabled: false,
-    totpVerified: false,
-  },
-  previous: {
+  mfa: {
     enabled: false,
     totpVerified: false,
   },
@@ -21,7 +17,6 @@ let value: FourHundredAndFiftyTwo = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload452Next](../models/usereventpayload452next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload452Previous](../models/usereventpayload452previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `mfa`                          | [models.Mfa](../models/mfa.md) | :heavy_check_mark:             | N/A                            |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResourceConfig } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2projectssecuritymanagedrulesaction.js";
+import { GetProjectsResponseBodyProjectsResourceConfig } from "@vercel/sdk/models/getprojectslogheadersprojectsresponse2.js";
 
 let value: GetProjectsResponseBodyProjectsResourceConfig = {
   functionDefaultRegions: [],
@@ -28,3 +28,4 @@ let value: GetProjectsResponseBodyProjectsResourceConfig = {
 | `functionDefaultTimeout`                                                                                                         | *number*                                                                                                                         | :heavy_minus_sign:                                                                                                               | N/A                                                                                                                              |
 | `functionZeroConfigFailover`                                                                                                     | *boolean*                                                                                                                        | :heavy_minus_sign:                                                                                                               | N/A                                                                                                                              |
 | `isNSNBDisabled`                                                                                                                 | *boolean*                                                                                                                        | :heavy_minus_sign:                                                                                                               | N/A                                                                                                                              |
+| `elasticBuildMachine`                                                                                                            | [models.GetProjectsResponseBodyElasticBuildMachine](../models/getprojectsresponsebodyelasticbuildmachine.md)                     | :heavy_minus_sign:                                                                                                               | Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.  |

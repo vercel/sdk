@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectProjectsResourceConfig } from "@vercel/sdk/models/updateprojectprojectslogheaders.js";
+import { UpdateProjectProjectsResourceConfig } from "@vercel/sdk/models/updateprojectprojectsresponse200action.js";
 
 let value: UpdateProjectProjectsResourceConfig = {
   functionDefaultRegions: [],
@@ -28,3 +28,4 @@ let value: UpdateProjectProjectsResourceConfig = {
 | `functionDefaultTimeout`                                                                                                                     | *number*                                                                                                                                     | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
 | `functionZeroConfigFailover`                                                                                                                 | *boolean*                                                                                                                                    | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
 | `isNSNBDisabled`                                                                                                                             | *boolean*                                                                                                                                    | :heavy_minus_sign:                                                                                                                           | N/A                                                                                                                                          |
+| `elasticBuildMachine`                                                                                                                        | [models.UpdateProjectProjectsElasticBuildMachine](../models/updateprojectprojectselasticbuildmachine.md)                                     | :heavy_minus_sign:                                                                                                                           | Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.              |

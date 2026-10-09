@@ -1,17 +1,20 @@
 # UserEventPayloadTarget
 
-environments this env variable targets
 
-## Example Usage
+## Supported Types
 
-```typescript
-import { UserEventPayloadTarget } from "@vercel/sdk/models/usereventjobaction.js";
-
-let value: UserEventPayloadTarget = "production";
-```
-
-## Values
+### `string`
 
 ```typescript
-"development" | "preview" | "production"
+const value: string = "<value>";
 ```
+
+### `string[]`
+
+```typescript
+const value: string[] = [
+  "<value 1>",
+  "<value 2>",
+];
+```
+

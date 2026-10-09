@@ -10,6 +10,7 @@ import { projectsCreateProjectEnv } from "../funcs/projectsCreateProjectEnv.js";
 import { projectsCreateProjectTransferRequest } from "../funcs/projectsCreateProjectTransferRequest.js";
 import { projectsCreateTraceSession } from "../funcs/projectsCreateTraceSession.js";
 import { projectsDeleteProject } from "../funcs/projectsDeleteProject.js";
+import { projectsDeleteProjectAvatar } from "../funcs/projectsDeleteProjectAvatar.js";
 import { projectsEditProjectEnv } from "../funcs/projectsEditProjectEnv.js";
 import { projectsFilterProjectEnvs } from "../funcs/projectsFilterProjectEnvs.js";
 import { projectsGetProject } from "../funcs/projectsGetProject.js";
@@ -60,6 +61,8 @@ import {
   CreateTraceSessionRequest,
   CreateTraceSessionResponseBody,
 } from "../models/createtracesessionop.js";
+import { DeleteProjectAvatarRequest } from "../models/deleteprojectavatarreadysubstate.js";
+import { DeleteProjectAvatarResponseBody } from "../models/deleteprojectavatarresponsebody.js";
 import { DeleteProjectRequest } from "../models/deleteprojectop.js";
 import {
   EditProjectEnvRequest,
@@ -283,6 +286,23 @@ export class Projects extends ClientSDK {
     options?: RequestOptions,
   ): Promise<UploadProjectAvatarResponseBody> {
     return unwrapAsync(projectsUploadProjectAvatar(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete a project avatar
+   *
+   * @remarks
+   * Remove the avatar of the project identified by `idOrName`. Deletes the chosen avatar field so the next production deploy can run auto-detection again. Does not delete the stored image.
+   */
+  async deleteProjectAvatar(
+    request: DeleteProjectAvatarRequest,
+    options?: RequestOptions,
+  ): Promise<DeleteProjectAvatarResponseBody> {
+    return unwrapAsync(projectsDeleteProjectAvatar(
       this,
       request,
       options,

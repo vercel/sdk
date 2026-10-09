@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectTrustedIpsProtectionMode } from "@vercel/sdk/models/createprojecttoprojects2.js";
+import { CreateProjectTrustedIpsProtectionMode } from "@vercel/sdk/models/createprojectfrom.js";
 
 let value: CreateProjectTrustedIpsProtectionMode = "exclusive";
 ```

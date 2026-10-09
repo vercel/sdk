@@ -1,0 +1,19 @@
+# DeleteProjectAvatarExpiration2
+
+## Example Usage
+
+```typescript
+import { DeleteProjectAvatarExpiration2 } from "@vercel/sdk/models/deleteprojectavatarreadysubstate.js";
+
+let value: DeleteProjectAvatarExpiration2 = {
+  lockedAt: 4678.52,
+  lockedBy: "<value>",
+};
+```
+
+## Fields
+
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `lockedAt`                                                     | *number*                                                       | :heavy_check_mark:                                             | Unix ms timestamp when the project was locked.                 |
+| `lockedBy`                                                     | *string*                                                       | :heavy_check_mark:                                             | userId of the actor that triggered the lock (system or admin). |

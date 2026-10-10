@@ -5,70 +5,70 @@ Provider configuration fields for the connector type.
 
 ## Supported Types
 
-### `models.ConnectConnectorUpdateDataTypeOauth`
+### `models.TypeOauth`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypeOauth = {};
+const value: models.TypeOauth = {};
 ```
 
-### `models.ConnectConnectorUpdateDataTypeApiKey`
+### `models.TypeApiKey`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypeApiKey = {};
+const value: models.TypeApiKey = {};
 ```
 
-### `models.ConnectConnectorUpdateDataTypeGithub`
+### `models.TypeGithub`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypeGithub = {};
+const value: models.TypeGithub = {};
 ```
 
-### `models.ConnectConnectorUpdateDataTypeLinear`
+### `models.TypeLinear`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypeLinear = {};
+const value: models.TypeLinear = {};
 ```
 
-### `models.ConnectConnectorUpdateDataTypeSalesforce`
+### `models.TypeSalesforce`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypeSalesforce = {};
+const value: models.TypeSalesforce = {};
 ```
 
-### `models.ConnectConnectorUpdateDataTypeSlack`
+### `models.TypeSlack`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypeSlack = {};
+const value: models.TypeSlack = {};
 ```
 
-### `models.ConnectConnectorUpdateDataTypeSnowflake`
+### `models.TypeSnowflake`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypeSnowflake = {};
+const value: models.TypeSnowflake = {};
 ```
 
-### `models.ConnectConnectorUpdateDataTypeSnowflakeWif`
+### `models.TypeSnowflakeWif`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypeSnowflakeWif = {};
+const value: models.TypeSnowflakeWif = {};
 ```
 
-### `models.ConnectConnectorUpdateDataTypeLinq`
+### `models.TypeLinq`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypeLinq = {};
+const value: models.TypeLinq = {};
 ```
 
-### `models.ConnectConnectorUpdateDataTypeSendblue`
+### `models.TypeSendblue`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypeSendblue = {};
+const value: models.TypeSendblue = {};
 ```
 
-### `models.ConnectConnectorUpdateDataTypePhoton`
+### `models.TypePhoton`
 
 ```typescript
-const value: models.ConnectConnectorUpdateDataTypePhoton = {};
+const value: models.TypePhoton = {};
 ```
 
 ### `{ [k: string]: any }`

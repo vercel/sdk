@@ -156,6 +156,7 @@ export const ConnectConnectorType = {
   Slack: "slack",
   Snowflake: "snowflake",
   SnowflakeWif: "snowflake-wif",
+  StripeApiKey: "stripe-api-key",
 } as const;
 /**
  * Connector implementation type.

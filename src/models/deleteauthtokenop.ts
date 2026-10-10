@@ -4,11 +4,43 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * Identifies an explicit logout for the deletion event. Only applies when tokenId is current.
+ */
+export const QueryParamReason = {
+  Logout: "logout",
+} as const;
+/**
+ * Identifies an explicit logout for the deletion event. Only applies when tokenId is current.
+ */
+export type QueryParamReason = ClosedEnum<typeof QueryParamReason>;
+
+/**
+ * The product the caller is logging out of. Only applies when reason is logout and tokenId is current.
+ */
+export const QueryParamLogoutSource = {
+  V0: "v0",
+  Vercel: "vercel",
+} as const;
+/**
+ * The product the caller is logging out of. Only applies when reason is logout and tokenId is current.
+ */
+export type QueryParamLogoutSource = ClosedEnum<typeof QueryParamLogoutSource>;
+
 export type DeleteAuthTokenRequest = {
+  /**
+   * Identifies an explicit logout for the deletion event. Only applies when tokenId is current.
+   */
+  reason?: QueryParamReason | undefined;
+  /**
+   * The product the caller is logging out of. Only applies when reason is logout and tokenId is current.
+   */
+  logoutSource?: QueryParamLogoutSource | undefined;
   /**
    * The identifier of the token to invalidate. The special value "current" may be supplied, which invalidates the token that the HTTP request was authenticated with.
    */
@@ -26,7 +58,19 @@ export type DeleteAuthTokenResponseBody = {
 };
 
 /** @internal */
+export const QueryParamReason$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamReason
+> = z.nativeEnum(QueryParamReason);
+
+/** @internal */
+export const QueryParamLogoutSource$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamLogoutSource
+> = z.nativeEnum(QueryParamLogoutSource);
+
+/** @internal */
 export type DeleteAuthTokenRequest$Outbound = {
+  reason?: string | undefined;
+  logoutSource?: string | undefined;
   tokenId: string;
 };
 
@@ -36,6 +80,8 @@ export const DeleteAuthTokenRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeleteAuthTokenRequest
 > = z.object({
+  reason: QueryParamReason$outboundSchema.optional(),
+  logoutSource: QueryParamLogoutSource$outboundSchema.optional(),
   tokenId: z.string(),
 });
 

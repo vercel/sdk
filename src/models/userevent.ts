@@ -13,14 +13,78 @@ import {
   Categories$inboundSchema,
   Entities,
   Entities$inboundSchema,
-} from "./fourhundredandtwentynine.js";
+} from "./fourhundredandthirtyfour.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Payload,
   Payload$inboundSchema,
-  Principal,
-  Principal$inboundSchema,
-} from "./principal.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
+  UserEventPrincipal4Type,
+  UserEventPrincipal4Type$inboundSchema,
+} from "./usereventprincipal4type.js";
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Principal4 = {
+  type: UserEventPrincipal4Type;
+};
+
+export const UserEventPrincipal3Type = {
+  External: "external",
+} as const;
+export type UserEventPrincipal3Type = ClosedEnum<
+  typeof UserEventPrincipal3Type
+>;
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Principal3 = {
+  email?: string | undefined;
+  id: string;
+  name: string;
+  type: UserEventPrincipal3Type;
+};
+
+export const UserEventPrincipalType = {
+  App: "app",
+} as const;
+export type UserEventPrincipalType = ClosedEnum<typeof UserEventPrincipalType>;
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Principal2 = {
+  /**
+   * The OAuth 2.0 client ID, which may be a CIMD URL.
+   */
+  clientId: string;
+  /**
+   * The backing Vercel App ID. When absent, defaults to `clientId`.
+   */
+  id?: string | undefined;
+  name: string;
+  type: UserEventPrincipalType;
+};
+
+export const PrincipalType = {
+  User: "user",
+} as const;
+export type PrincipalType = ClosedEnum<typeof PrincipalType>;
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Principal1 = {
+  avatar: string;
+  email: string;
+  slug?: string | undefined;
+  type?: PrincipalType | undefined;
+  uid: string;
+  username: string;
+};
+
+export type Principal = Principal1 | Principal2 | Principal3 | Principal4;
 
 /**
  * The type of the event.
@@ -36,6 +100,8 @@ export const UserEventType = {
     "admin-agentic-provisioning-account-unlinked",
   AdminPlanUpdated: "admin-plan-updated",
   AdminPreviewDeploymentSuffixClear: "admin-preview-deployment-suffix-clear",
+  AdminSamlIdpMaterialDeleted: "admin-saml-idp-material-deleted",
+  AdminSamlIdpMaterialSet: "admin-saml-idp-material-set",
   AdminSecondaryEmailAdded: "admin-secondary-email-added",
   AdminSecondaryEmailRemoved: "admin-secondary-email-removed",
   AdminTeamNameUpdate: "admin-team-name-update",
@@ -604,6 +670,8 @@ export const UserEventType = {
   SandboxAliasDelete: "sandbox-alias-delete",
   SandboxDriveCreated: "sandbox-drive-created",
   SandboxDriveDeleted: "sandbox-drive-deleted",
+  SandboxDriveSnapshotCreated: "sandbox-drive-snapshot-created",
+  SandboxDriveSnapshotDeleted: "sandbox-drive-snapshot-deleted",
   SandboxSignedCommitIdentityConfigured:
     "sandbox-signed-commit-identity-configured",
   SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",
@@ -788,6 +856,7 @@ export const UserEventType = {
   VercelAppInstalled: "vercel-app-installed",
   VercelAppTokensRevoked: "vercel-app-tokens-revoked",
   VercelAppUninstalled: "vercel-app-uninstalled",
+  VercelCiRepositorySettingsUpdated: "vercel-ci-repository-settings-updated",
   VercelToolbar: "vercel-toolbar",
   VpcPeeringConnectionAccepted: "vpc-peering-connection-accepted",
   VpcPeeringConnectionDeleted: "vpc-peering-connection-deleted",
@@ -904,7 +973,7 @@ export type UserEvent = {
    */
   id: string;
   payload?: Payload | undefined;
-  principal?: Principal | undefined;
+  principal?: Principal1 | Principal2 | Principal3 | Principal4 | undefined;
   /**
    * The ID of the principal who generated the event. The principal is typically a user, but it could also be an app, an integration, etc. The principal may have delegated its authority to an acting party, and so {@link viaIds} should be checked as well.
    */
@@ -943,6 +1012,130 @@ export type UserEvent = {
    */
   viaIds?: Array<string> | undefined;
 };
+
+/** @internal */
+export const Principal4$inboundSchema: z.ZodType<
+  Principal4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UserEventPrincipal4Type$inboundSchema,
+});
+
+export function principal4FromJSON(
+  jsonString: string,
+): SafeParseResult<Principal4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal4' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPrincipal3Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPrincipal3Type
+> = z.nativeEnum(UserEventPrincipal3Type);
+
+/** @internal */
+export const Principal3$inboundSchema: z.ZodType<
+  Principal3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
+  type: UserEventPrincipal3Type$inboundSchema,
+});
+
+export function principal3FromJSON(
+  jsonString: string,
+): SafeParseResult<Principal3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPrincipalType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPrincipalType
+> = z.nativeEnum(UserEventPrincipalType);
+
+/** @internal */
+export const Principal2$inboundSchema: z.ZodType<
+  Principal2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  clientId: types.string(),
+  id: types.optional(types.string()),
+  name: types.string(),
+  type: UserEventPrincipalType$inboundSchema,
+});
+
+export function principal2FromJSON(
+  jsonString: string,
+): SafeParseResult<Principal2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal2' from JSON`,
+  );
+}
+
+/** @internal */
+export const PrincipalType$inboundSchema: z.ZodNativeEnum<
+  typeof PrincipalType
+> = z.nativeEnum(PrincipalType);
+
+/** @internal */
+export const Principal1$inboundSchema: z.ZodType<
+  Principal1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  avatar: types.string(),
+  email: types.string(),
+  slug: types.optional(types.string()),
+  type: types.optional(PrincipalType$inboundSchema),
+  uid: types.string(),
+  username: types.string(),
+});
+
+export function principal1FromJSON(
+  jsonString: string,
+): SafeParseResult<Principal1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Principal$inboundSchema: z.ZodType<
+  Principal,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => Principal1$inboundSchema),
+  z.lazy(() => Principal2$inboundSchema),
+  z.lazy(() => Principal3$inboundSchema),
+  z.lazy(() => Principal4$inboundSchema),
+]);
+
+export function principalFromJSON(
+  jsonString: string,
+): SafeParseResult<Principal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal' from JSON`,
+  );
+}
 
 /** @internal */
 export const UserEventType$inboundSchema: z.ZodNativeEnum<
@@ -1093,7 +1286,14 @@ export const UserEvent$inboundSchema: z.ZodType<
   entities: z.array(Entities$inboundSchema),
   id: types.string(),
   payload: types.optional(Payload$inboundSchema),
-  principal: types.optional(Principal$inboundSchema),
+  principal: types.optional(
+    smartUnion([
+      z.lazy(() => Principal1$inboundSchema),
+      z.lazy(() => Principal2$inboundSchema),
+      z.lazy(() => Principal3$inboundSchema),
+      z.lazy(() => Principal4$inboundSchema),
+    ]),
+  ),
   principalId: types.string(),
   requestId: types.optional(types.string()),
   sessionId: types.optional(types.string()),

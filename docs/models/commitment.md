@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Commitment } from "@vercel/sdk/models/principal.js";
+import { Commitment } from "@vercel/sdk/models/usereventprincipal4type.js";
 
 let value: Commitment = {
   deferredInvoiceTargetBalance: "<value>",

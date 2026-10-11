@@ -5,7 +5,7 @@ Client credentials grant settings.
 ## Example Usage
 
 ```typescript
-import { ClientCredentials } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { ClientCredentials } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: ClientCredentials = {
   enabled: true,

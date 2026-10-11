@@ -3,24 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { TypeSlack } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { TypeSlack } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
-let value: TypeSlack = {
-  appId: "<id>",
-  appName: "<value>",
-  clientId: "<id>",
-  clientSecret: "<value>",
-};
+let value: TypeSlack = {};
 ```
 
 ## Fields
 
 | Field                                                      | Type                                                       | Required                                                   | Description                                                |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `appId`                                                    | *string*                                                   | :heavy_check_mark:                                         | Slack app ID.                                              |
-| `appName`                                                  | *string*                                                   | :heavy_check_mark:                                         | Slack app display name.                                    |
-| `clientId`                                                 | *string*                                                   | :heavy_check_mark:                                         | OAuth client ID assigned by Slack.                         |
-| `clientSecret`                                             | *string*                                                   | :heavy_check_mark:                                         | Slack app OAuth client secret.                             |
+| `appId`                                                    | *string*                                                   | :heavy_minus_sign:                                         | Slack app ID.                                              |
+| `appName`                                                  | *string*                                                   | :heavy_minus_sign:                                         | Slack app display name.                                    |
+| `clientId`                                                 | *string*                                                   | :heavy_minus_sign:                                         | Slack app OAuth client ID.                                 |
+| `clientSecret`                                             | *string*                                                   | :heavy_minus_sign:                                         | Slack app OAuth client secret.                             |
 | `slackTeam`                                                | [models.SlackTeam](../models/slackteam.md)                 | :heavy_minus_sign:                                         | Slack workspace metadata.                                  |
 | `signingSecret`                                            | *string*                                                   | :heavy_minus_sign:                                         | Slack request signing secret.                              |
 | `verificationToken`                                        | *string*                                                   | :heavy_minus_sign:                                         | Legacy Slack webhook verification token.                   |

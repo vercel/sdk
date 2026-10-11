@@ -3,18 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { TypeSnowflake } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { TypeSnowflake } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
-let value: TypeSnowflake = {
-  accountIdentifier: "<value>",
-};
+let value: TypeSnowflake = {};
 ```
 
 ## Fields
 
-| Field                                                   | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `clientName`                                            | *string*                                                | :heavy_minus_sign:                                      | Snowflake OAuth client name.                            |
-| `accountIdentifier`                                     | *string*                                                | :heavy_check_mark:                                      | Snowflake account identifier.                           |
-| `defaultSessionRole`                                    | *string*                                                | :heavy_minus_sign:                                      | Default Snowflake role for created sessions.            |
-| `extras`                                                | Record<string, *any*>                                   | :heavy_minus_sign:                                      | Additional provider metadata stored with the connector. |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `accountIdentifier`                          | *string*                                     | :heavy_minus_sign:                           | Snowflake account identifier.                |
+| `defaultSessionRole`                         | *string*                                     | :heavy_minus_sign:                           | Default Snowflake role for created sessions. |

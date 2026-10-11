@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadStaticIps } from "@vercel/sdk/models/threehundredandthree.js";
+import { PayloadStaticIps } from "@vercel/sdk/models/threehundredandeight.js";
 
 let value: PayloadStaticIps = {
   enabled: false,

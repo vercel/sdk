@@ -5,7 +5,7 @@ Refresh token settings.
 ## Example Usage
 
 ```typescript
-import { RefreshTokens } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { RefreshTokens } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: RefreshTokens = {
   enabled: false,

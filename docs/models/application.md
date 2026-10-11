@@ -5,7 +5,7 @@ Linear OAuth application metadata.
 ## Example Usage
 
 ```typescript
-import { Application } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { Application } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: Application = {
   id: "<id>",

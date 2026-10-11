@@ -20,6 +20,7 @@
 * [listSessionCommands](#listsessioncommands) - List commands
 * [getSessionCommand](#getsessioncommand) - Get a command
 * [killSessionCommand](#killsessioncommand) - Kill a command
+* [writeSessionCommandStdin](#writesessioncommandstdin) - Write to command stdin
 * [stopSession](#stopsession) - Stop a session
 * [extendSessionTimeout](#extendsessiontimeout) - Extend session timeout
 * [updateSessionNetworkPolicy](#updatesessionnetworkpolicy) - Update network policy
@@ -1288,6 +1289,93 @@ run();
 ### Response
 
 **Promise\<[models.KillSessionCommandResponseBody](../../models/killsessioncommandresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## writeSessionCommandStdin
+
+Writes data to the stdin of a running command, and optionally closes it. The command must have been started with `attachStdin` set to true. Writes are applied in the order they are received. Send them one at a time to keep the data in order. A write returns once the command has accepted the data, and fails with a 504 after 30 seconds if the command is not reading stdin. Each write counts against the sandbox control plane rate limit, so batch small writes where possible. Set `offset` to the position in stdin where `data` starts to make a request safe to resend, for example after a 502 or 504: bytes the command has already received are skipped, and an offset past them fails with a 409. The response returns `bytesWritten`, the total written so far, and a 504 includes it in the error when the sandbox reports it. A request with no `data` and no `close` writes nothing and returns it. If a request with an `offset` gets a response without `bytesWritten`, the sandbox predates offsets and ignored it, so resending that request is not safe.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="writeSessionCommandStdin" method="post" path="/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/stdin" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.sandboxes.writeSessionCommandStdin({
+    cmdId: "cmd_abc123",
+    sessionId: "sbx_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      data: "aGVsbG8K",
+      offset: 0,
+    },
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { sandboxesWriteSessionCommandStdin } from "@vercel/sdk/funcs/sandboxesWriteSessionCommandStdin.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await sandboxesWriteSessionCommandStdin(vercel, {
+    cmdId: "cmd_abc123",
+    sessionId: "sbx_abc123",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+    requestBody: {
+      data: "aGVsbG8K",
+      offset: 0,
+    },
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("sandboxesWriteSessionCommandStdin failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.WriteSessionCommandStdinRequest](../../models/writesessioncommandstdinrequest.md)                                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.WriteSessionCommandStdinResponseBody](../../models/writesessioncommandstdinresponsebody.md)\>**
 
 ### Errors
 

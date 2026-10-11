@@ -5,7 +5,7 @@ Linear organization that owns the OAuth application.
 ## Example Usage
 
 ```typescript
-import { OwnerOrganization } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { OwnerOrganization } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: OwnerOrganization = {
   id: "<id>",

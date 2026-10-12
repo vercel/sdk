@@ -5,7 +5,7 @@ User authorization grant settings.
 ## Example Usage
 
 ```typescript
-import { UserAuthorization } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { UserAuthorization } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: UserAuthorization = {
   enabled: true,

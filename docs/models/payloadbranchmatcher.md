@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadBranchMatcher } from "@vercel/sdk/models/siftroute.js";
+import { PayloadBranchMatcher } from "@vercel/sdk/models/usereventpayloadnext.js";
 
 let value: PayloadBranchMatcher = {
   pattern: "<value>",

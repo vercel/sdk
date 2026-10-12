@@ -5,7 +5,7 @@ Claim matchers an OIDC token must satisfy to use the policy.
 ## Example Usage
 
 ```typescript
-import { PayloadClaims } from "@vercel/sdk/models/fourhundredandtwentynine.js";
+import { PayloadClaims } from "@vercel/sdk/models/fourhundredandthirtyfour.js";
 
 let value: PayloadClaims = {
   name: "<value>",
@@ -15,7 +15,7 @@ let value: PayloadClaims = {
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `name`                                                                 | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `values`                                                               | [models.UserEventPayloadValues](../models/usereventpayloadvalues.md)[] | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `name`                                               | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `values`                                             | [models.PayloadValues](../models/payloadvalues.md)[] | :heavy_check_mark:                                   | N/A                                                  |

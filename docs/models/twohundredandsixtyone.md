@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyOne } from "@vercel/sdk/models/siftroute.js";
+import { TwoHundredAndSixtyOne } from "@vercel/sdk/models/usereventpayloadnext.js";
 
 let value: TwoHundredAndSixtyOne = {
   branch: "<value>",

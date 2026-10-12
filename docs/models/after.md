@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { After } from "@vercel/sdk/models/sixtysix.js";
+import { After } from "@vercel/sdk/models/after.js";
 
 let value: After = {};
 ```

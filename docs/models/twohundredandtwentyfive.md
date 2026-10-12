@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyFive } from "@vercel/sdk/models/onehundredandseventytwo.js";
+import { TwoHundredAndTwentyFive } from "@vercel/sdk/models/oldenvvar.js";
 
 let value: TwoHundredAndTwentyFive = {
   directoryGroupId: "<id>",
@@ -15,10 +15,12 @@ let value: TwoHundredAndTwentyFive = {
     organizationPermissions: [
       "OrgAdmin",
     ],
-    teamRoles: [
-      "SECURITY",
-    ],
-    teams: {},
+    teamRoles: [],
+    teams: {
+      "key": {
+        teamRoles: [],
+      },
+    },
   },
   organizationId: "<id>",
 };

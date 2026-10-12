@@ -5,22 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSix } from "@vercel/sdk/models/threehundredandsixtyeight.js";
+import { FourHundredAndSix } from "@vercel/sdk/models/usereventpayload373previous.js";
 
 let value: FourHundredAndSix = {
-  requestedTeamName: "<value>",
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Grayson.Bayer",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `bitbucketUsername`                                                  | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `githubUsername`                                                     | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `gitlabUsername`                                                     | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `gitUsername`                                                        | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `requestedTeamName`                                                  | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `requestedTeamSlug`                                                  | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `requestedUserName`                                                  | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `source`                                                             | [models.UserEventPayloadSource](../models/usereventpayloadsource.md) | :heavy_minus_sign:                                                   | N/A                                                                  |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `entitlement`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `user`                                         | [models.PayloadUser](../models/payloaduser.md) | :heavy_check_mark:                             | N/A                                            |

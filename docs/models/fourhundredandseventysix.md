@@ -5,40 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeventySix } from "@vercel/sdk/models/fourhundredandtwentynine.js";
+import { FourHundredAndSeventySix } from "@vercel/sdk/models/fourhundredandthirtyfour.js";
 
 let value: FourHundredAndSeventySix = {
-  chatId: "<id>",
-  events: [
-    {
-      cacheCreationInputTokens: 8264.37,
-      cacheReadInputTokens: 921.19,
-      eventId: "<id>",
-      inputTokens: 4741.19,
-      modelId: "<id>",
-      outputTokens: 6106.82,
-      timestamp: "<value>",
-      totalTokens: 9845.35,
-    },
-  ],
-  inputTokens: 727,
-  messageId: "<id>",
-  model: "CTS",
-  outputTokens: 9784.59,
-  timestamp: 457.53,
-  useCase: "<value>",
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `chatId`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `events`                               | [models.Events](../models/events.md)[] | :heavy_check_mark:                     | N/A                                    |
-| `inputTokens`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `model`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `outputTokens`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `timestamp`                            | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `useCase`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `configuration`                                                                          | [models.UserEventPayload476Configuration](../models/usereventpayload476configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `newName`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.UserEventPayloadPeering](../models/usereventpayloadpeering.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `team`                                                                                   | [models.UserEventPayload476Team](../models/usereventpayload476team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

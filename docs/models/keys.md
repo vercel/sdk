@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Keys } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { Keys } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: Keys = {
   kty: "<value>",

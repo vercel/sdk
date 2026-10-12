@@ -3,12 +3,9 @@
 ## Example Usage
 
 ```typescript
-import { TypeLinear } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { TypeLinear } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
-let value: TypeLinear = {
-  clientId: "<id>",
-  clientSecret: "<value>",
-};
+let value: TypeLinear = {};
 ```
 
 ## Fields
@@ -17,8 +14,8 @@ let value: TypeLinear = {
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | `appId`                                                    | *string*                                                   | :heavy_minus_sign:                                         | Linear application ID.                                     |
 | `appName`                                                  | *string*                                                   | :heavy_minus_sign:                                         | Linear application name.                                   |
-| `clientId`                                                 | *string*                                                   | :heavy_check_mark:                                         | OAuth client ID assigned by Linear.                        |
-| `clientSecret`                                             | *string*                                                   | :heavy_check_mark:                                         | Linear OAuth client secret.                                |
+| `clientId`                                                 | *string*                                                   | :heavy_minus_sign:                                         | Linear OAuth client ID.                                    |
+| `clientSecret`                                             | *string*                                                   | :heavy_minus_sign:                                         | Linear OAuth client secret.                                |
 | `webhookSecret`                                            | *string*                                                   | :heavy_minus_sign:                                         | Linear webhook verification secret.                        |
 | `appScopes`                                                | *string*[]                                                 | :heavy_minus_sign:                                         | OAuth scopes requested for Linear application tokens.      |
 | `userScopes`                                               | *string*[]                                                 | :heavy_minus_sign:                                         | OAuth scopes requested for Linear user tokens.             |

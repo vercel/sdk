@@ -5,7 +5,7 @@ JWT bearer grant settings.
 ## Example Usage
 
 ```typescript
-import { JwtBearer } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { JwtBearer } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: JwtBearer = {};
 ```

@@ -8,6 +8,7 @@ import { vercelCiGetVercelCiInvocationTree } from "../funcs/vercelCiGetVercelCiI
 import { vercelCiGetVercelCiJobDefinition } from "../funcs/vercelCiGetVercelCiJobDefinition.js";
 import { vercelCiGetVercelCiJobRun } from "../funcs/vercelCiGetVercelCiJobRun.js";
 import { vercelCiGetVercelCiJobRunLogs } from "../funcs/vercelCiGetVercelCiJobRunLogs.js";
+import { vercelCiGetVercelCiRepositorySettings } from "../funcs/vercelCiGetVercelCiRepositorySettings.js";
 import { vercelCiGetVercelCiTaskLogs } from "../funcs/vercelCiGetVercelCiTaskLogs.js";
 import { vercelCiGetVercelCiTaskRunLogs } from "../funcs/vercelCiGetVercelCiTaskRunLogs.js";
 import { vercelCiListVercelCiBranches } from "../funcs/vercelCiListVercelCiBranches.js";
@@ -19,6 +20,7 @@ import { vercelCiListVercelCiTaskDefinitions } from "../funcs/vercelCiListVercel
 import { vercelCiListVercelCiTaskRuns } from "../funcs/vercelCiListVercelCiTaskRuns.js";
 import { vercelCiRetryVercelCiInvocation } from "../funcs/vercelCiRetryVercelCiInvocation.js";
 import { vercelCiSearchVercelCiLogs } from "../funcs/vercelCiSearchVercelCiLogs.js";
+import { vercelCiUpdateVercelCiRepositorySettings } from "../funcs/vercelCiUpdateVercelCiRepositorySettings.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
   GetVercelCiInvocationLogsRequest,
@@ -44,6 +46,10 @@ import {
   GetVercelCiJobRunRequest,
   GetVercelCiJobRunResponseBody,
 } from "../models/getvercelcijobrunop.js";
+import {
+  GetVercelCiRepositorySettingsRequest,
+  GetVercelCiRepositorySettingsResponseBody,
+} from "../models/getvercelcirepositorysettingsop.js";
 import {
   GetVercelCiTaskLogsRequest,
   GetVercelCiTaskLogsResponseBody,
@@ -88,9 +94,47 @@ import {
   SearchVercelCiLogsRequest,
   SearchVercelCiLogsResponseBody,
 } from "../models/searchvercelcilogsop.js";
+import {
+  UpdateVercelCiRepositorySettingsRequest,
+  UpdateVercelCiRepositorySettingsResponseBody,
+} from "../models/updatevercelcirepositorysettingsop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class VercelCi extends ClientSDK {
+  /**
+   * Get Vercel CI settings for a connected repository
+   *
+   * @remarks
+   * Get Repository Settings
+   */
+  async getVercelCiRepositorySettings(
+    request: GetVercelCiRepositorySettingsRequest,
+    options?: RequestOptions,
+  ): Promise<GetVercelCiRepositorySettingsResponseBody> {
+    return unwrapAsync(vercelCiGetVercelCiRepositorySettings(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Enable or disable Vercel CI for a connected repository
+   *
+   * @remarks
+   * Update Repository Settings
+   */
+  async updateVercelCiRepositorySettings(
+    request: UpdateVercelCiRepositorySettingsRequest,
+    options?: RequestOptions,
+  ): Promise<UpdateVercelCiRepositorySettingsResponseBody> {
+    return unwrapAsync(vercelCiUpdateVercelCiRepositorySettings(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * List invocations for a team, optionally filtered by repository and invocation metadata
    *

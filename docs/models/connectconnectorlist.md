@@ -24,7 +24,7 @@ let value: ConnectConnectorList = {
       supportsInstallation: false,
       supportsRevocation: false,
       supportsTriggers: true,
-      type: "microsoft-teams",
+      type: "oauth",
       typeName: "<value>",
       uid: "<id>",
       updatedAt: 469.31,

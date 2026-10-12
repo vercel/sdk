@@ -210,7 +210,7 @@ export const Speed = {
 export type Speed = ClosedEnum<typeof Speed>;
 
 /**
- * Public response shape for virtual model configs. Used so OpenAPI generation can avoid ElectroDB's recursive EntityItem types.
+ * Active and archived router configurations owned by the authenticated team.
  */
 export type AiGatewayVirtualModelConfig = {
   /**

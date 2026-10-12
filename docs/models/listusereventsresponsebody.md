@@ -25,8 +25,8 @@ let value: ListUserEventsResponseBody = {
       payload: {
         amount: 1688.33,
         invoiceId: "<id>",
-        lineItemCount: 666.15,
-        refundReason: "<value>",
+        newInvoiceId: "<id>",
+        settlementMethod: "credited-paid",
       },
       principalId: "<id>",
       text: "You logged in via GitHub",

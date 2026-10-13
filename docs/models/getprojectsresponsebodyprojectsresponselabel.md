@@ -5,7 +5,7 @@ Machine types an elastic decision can effectively apply or persist. The algorith
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponseLabel } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2projectsaliasdeploymenttype.js";
+import { GetProjectsResponseBodyProjectsResponseLabel } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2aliaserror.js";
 
 let value: GetProjectsResponseBodyProjectsResponseLabel = "enhanced";
 ```

@@ -61,8 +61,6 @@ import {
   UpdateProjectProjectsPasswordProtection$inboundSchema,
   UpdateProjectProjectsResourceConfig,
   UpdateProjectProjectsResourceConfig$inboundSchema,
-  UpdateProjectProjectsResponse200Action,
-  UpdateProjectProjectsResponse200Action$inboundSchema,
   UpdateProjectProjectsSandbox,
   UpdateProjectProjectsSandbox$inboundSchema,
   UpdateProjectProtectionBypass,
@@ -73,7 +71,7 @@ import {
   UpdateProjectRollbackDescription$inboundSchema,
   UpdateProjectRollingRelease,
   UpdateProjectRollingRelease$inboundSchema,
-} from "./updateprojectprojectsresponse200action.js";
+} from "./updateprojectmanagedrules.js";
 import {
   UpdateProjectAlias,
   UpdateProjectAlias$inboundSchema,
@@ -96,6 +94,19 @@ import {
   UpdateProjectDeploymentExpiration,
   UpdateProjectDeploymentExpiration$inboundSchema,
 } from "./updateprojectsourcesprojects2.js";
+
+export const UpdateProjectProjectsResponse200Action = {
+  Allow: "allow",
+  Bypass: "bypass",
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+  RateLimit: "rate_limit",
+  Redirect: "redirect",
+} as const;
+export type UpdateProjectProjectsResponse200Action = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200Action
+>;
 
 export const UpdateProjectLogHeadersProjects2 = {
   Wildcard: "*",
@@ -309,15 +320,16 @@ export type UpdateProjectCve55182MigrationAppliedFrom = ClosedEnum<
   typeof UpdateProjectCve55182MigrationAppliedFrom
 >;
 
-export const UpdateProjectProjectsResponse200DeploymentType = {
+export const UpdateProjectProjectsResponse200ApplicationJSONDeploymentType = {
   All: "all",
   AllExceptCustomDomains: "all_except_custom_domains",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
-export type UpdateProjectProjectsResponse200DeploymentType = ClosedEnum<
-  typeof UpdateProjectProjectsResponse200DeploymentType
->;
+export type UpdateProjectProjectsResponse200ApplicationJSONDeploymentType =
+  ClosedEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONDeploymentType
+  >;
 
 export type UpdateProjectProjectsSsoProtection = {
   april2026SecurityIncidentMigrationAppliedFrom?:
@@ -328,7 +340,7 @@ export type UpdateProjectProjectsSsoProtection = {
     | UpdateProjectCve55182MigrationAppliedFrom
     | null
     | undefined;
-  deploymentType: UpdateProjectProjectsResponse200DeploymentType;
+  deploymentType: UpdateProjectProjectsResponse200ApplicationJSONDeploymentType;
 };
 
 export type UpdateProjectProjectsStaticIps = {
@@ -863,6 +875,9 @@ export type UpdateProjectResponseBody = {
   outputDirectory?: string | null | undefined;
   passiveConnectConfigurationId?: string | null | undefined;
   passport?: UpdateProjectProjectsPassport | null | undefined;
+  /**
+   * Password protection settings returned without the secret password hash.
+   */
   passwordProtection?:
     | UpdateProjectProjectsPasswordProtection
     | null
@@ -917,6 +932,12 @@ export type UpdateProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UpdateProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const UpdateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
+    UpdateProjectProjectsResponse200Action,
+  );
 
 /** @internal */
 export const UpdateProjectLogHeadersProjects2$inboundSchema: z.ZodNativeEnum<
@@ -1132,9 +1153,12 @@ export const UpdateProjectCve55182MigrationAppliedFrom$inboundSchema:
     .nativeEnum(UpdateProjectCve55182MigrationAppliedFrom);
 
 /** @internal */
-export const UpdateProjectProjectsResponse200DeploymentType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200DeploymentType> = z
-    .nativeEnum(UpdateProjectProjectsResponse200DeploymentType);
+export const UpdateProjectProjectsResponse200ApplicationJSONDeploymentType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONDeploymentType
+  > = z.nativeEnum(
+    UpdateProjectProjectsResponse200ApplicationJSONDeploymentType,
+  );
 
 /** @internal */
 export const UpdateProjectProjectsSsoProtection$inboundSchema: z.ZodType<
@@ -1148,7 +1172,8 @@ export const UpdateProjectProjectsSsoProtection$inboundSchema: z.ZodType<
   cve55182MigrationAppliedFrom: z.nullable(
     UpdateProjectCve55182MigrationAppliedFrom$inboundSchema,
   ).optional(),
-  deploymentType: UpdateProjectProjectsResponse200DeploymentType$inboundSchema,
+  deploymentType:
+    UpdateProjectProjectsResponse200ApplicationJSONDeploymentType$inboundSchema,
 });
 
 export function updateProjectProjectsSsoProtectionFromJSON(

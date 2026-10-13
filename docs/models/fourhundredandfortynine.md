@@ -5,24 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFortyNine } from "@vercel/sdk/models/fourhundredandtwentynine.js";
+import { FourHundredAndFortyNine } from "@vercel/sdk/models/fourhundredandthirtysix.js";
 
 let value: FourHundredAndFortyNine = {
-  next: {
-    enabled: false,
-    totpVerified: false,
-  },
-  previous: {
-    enabled: true,
-    totpVerified: true,
-  },
+  actorId: "<id>",
+  actorType: "admin",
+  enabled: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `method`                                                                       | [models.PayloadMethod](../models/payloadmethod.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload449Next](../models/usereventpayload449next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload449Previous](../models/usereventpayload449previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload449ActorType](../models/usereventpayload449actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `enabled`                                                                        | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |

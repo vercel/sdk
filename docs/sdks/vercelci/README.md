@@ -4,8 +4,13 @@
 
 ### Available Operations
 
+* [getVercelCiRepositorySettings](#getvercelcirepositorysettings) - Get Vercel CI settings for a connected repository
+* [updateVercelCiRepositorySettings](#updatevercelcirepositorysettings) - Enable or disable Vercel CI for a connected repository
 * [listVercelCiInvocations](#listvercelciinvocations) - List invocations for a team, optionally filtered by repository and invocation metadata
 * [listVercelCiBranches](#listvercelcibranches) - List Vercel CI branch suggestions for a team
+* [createVercelCiTaskAnalysis](#createvercelcitaskanalysis) - Start an asynchronous Vercel CI task analysis
+* [getVercelCiTaskAnalysis](#getvercelcitaskanalysis) - Get the current status of a Vercel CI task analysis
+* [listVercelCiTaskAnalysisTasks](#listvercelcitaskanalysistasks) - List discovered tasks for a completed Vercel CI task analysis
 * [listVercelCiInvocationAttempts](#listvercelciinvocationattempts) - List all attempts for an invocation
 * [getVercelCiInvocationTree](#getvercelciinvocationtree) - Get an invocation with its jobs and tasks
 * [getVercelCiInvocation](#getvercelciinvocation) - Get a specific invocation attempt
@@ -21,6 +26,176 @@
 * [searchVercelCiLogs](#searchvercelcilogs) - Search the task logs of several invocation attempts
 * [getVercelCiJobRunLogs](#getvercelcijobrunlogs) - Get log lines for a specific job run attempt
 * [getVercelCiTaskRunLogs](#getvercelcitaskrunlogs) - Get log lines for a specific task run attempt
+
+## getVercelCiRepositorySettings
+
+Get Repository Settings
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getVercelCiRepositorySettings" method="get" path="/v1/vercel-ci/repository-settings" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.vercelCi.getVercelCiRepositorySettings({
+    provider: "cursor-origin",
+    organizationId: "<id>",
+    repository: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { vercelCiGetVercelCiRepositorySettings } from "@vercel/sdk/funcs/vercelCiGetVercelCiRepositorySettings.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await vercelCiGetVercelCiRepositorySettings(vercel, {
+    provider: "cursor-origin",
+    organizationId: "<id>",
+    repository: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("vercelCiGetVercelCiRepositorySettings failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetVercelCiRepositorySettingsRequest](../../models/getvercelcirepositorysettingsrequest.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetVercelCiRepositorySettingsResponseBody](../../models/getvercelcirepositorysettingsresponsebody.md)\>**
+
+### Errors
+
+| Error Type                                                          | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| models.GetVercelCiRepositorySettingsVercelCiResponseBody            | 401                                                                 | application/json                                                    |
+| models.GetVercelCiRepositorySettingsVercelCiResponseResponseBody    | 403                                                                 | application/json                                                    |
+| models.GetVercelCiRepositorySettingsVercelCiResponse429ResponseBody | 429                                                                 | application/json                                                    |
+| models.GetVercelCiRepositorySettingsVercelCiResponse500ResponseBody | 500                                                                 | application/json                                                    |
+| models.SDKError                                                     | 4XX, 5XX                                                            | \*/\*                                                               |
+
+## updateVercelCiRepositorySettings
+
+Update Repository Settings
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updateVercelCiRepositorySettings" method="patch" path="/v1/vercel-ci/repository-settings" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.vercelCi.updateVercelCiRepositorySettings({
+    provider: "vercel",
+    organizationId: "<id>",
+    repository: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { vercelCiUpdateVercelCiRepositorySettings } from "@vercel/sdk/funcs/vercelCiUpdateVercelCiRepositorySettings.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await vercelCiUpdateVercelCiRepositorySettings(vercel, {
+    provider: "vercel",
+    organizationId: "<id>",
+    repository: "<value>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("vercelCiUpdateVercelCiRepositorySettings failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.UpdateVercelCiRepositorySettingsRequest](../../models/updatevercelcirepositorysettingsrequest.md)                                                                      | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.UpdateVercelCiRepositorySettingsResponseBody](../../models/updatevercelcirepositorysettingsresponsebody.md)\>**
+
+### Errors
+
+| Error Type                                                             | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| models.UpdateVercelCiRepositorySettingsVercelCiResponseBody            | 401                                                                    | application/json                                                       |
+| models.UpdateVercelCiRepositorySettingsVercelCiResponseResponseBody    | 403                                                                    | application/json                                                       |
+| models.UpdateVercelCiRepositorySettingsVercelCiResponse429ResponseBody | 429                                                                    | application/json                                                       |
+| models.UpdateVercelCiRepositorySettingsVercelCiResponse500ResponseBody | 500                                                                    | application/json                                                       |
+| models.SDKError                                                        | 4XX, 5XX                                                               | \*/\*                                                                  |
 
 ## listVercelCiInvocations
 
@@ -179,6 +354,247 @@ run();
 | models.ListVercelCiBranchesVercelCiResponse429ResponseBody | 429                                                        | application/json                                           |
 | models.ListVercelCiBranchesVercelCiResponse500ResponseBody | 500                                                        | application/json                                           |
 | models.SDKError                                            | 4XX, 5XX                                                   | \*/\*                                                      |
+
+## createVercelCiTaskAnalysis
+
+Create task analysis
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="createVercelCiTaskAnalysis" method="post" path="/v1/vercel-ci/task-analyses" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.vercelCi.createVercelCiTaskAnalysis({
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { vercelCiCreateVercelCiTaskAnalysis } from "@vercel/sdk/funcs/vercelCiCreateVercelCiTaskAnalysis.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await vercelCiCreateVercelCiTaskAnalysis(vercel, {
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("vercelCiCreateVercelCiTaskAnalysis failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.CreateVercelCiTaskAnalysisRequest](../../models/createvercelcitaskanalysisrequest.md)                                                                                  | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.CreateVercelCiTaskAnalysisResponseBody](../../models/createvercelcitaskanalysisresponsebody.md)\>**
+
+### Errors
+
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| models.CreateVercelCiTaskAnalysisVercelCiResponseBody            | 401                                                              | application/json                                                 |
+| models.CreateVercelCiTaskAnalysisVercelCiResponseResponseBody    | 403                                                              | application/json                                                 |
+| models.CreateVercelCiTaskAnalysisVercelCiResponse429ResponseBody | 429                                                              | application/json                                                 |
+| models.CreateVercelCiTaskAnalysisVercelCiResponse500ResponseBody | 500                                                              | application/json                                                 |
+| models.SDKError                                                  | 4XX, 5XX                                                         | \*/\*                                                            |
+
+## getVercelCiTaskAnalysis
+
+Get task analysis
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getVercelCiTaskAnalysis" method="get" path="/v1/vercel-ci/task-analyses/{analysisId}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.vercelCi.getVercelCiTaskAnalysis({
+    analysisId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { vercelCiGetVercelCiTaskAnalysis } from "@vercel/sdk/funcs/vercelCiGetVercelCiTaskAnalysis.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await vercelCiGetVercelCiTaskAnalysis(vercel, {
+    analysisId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("vercelCiGetVercelCiTaskAnalysis failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetVercelCiTaskAnalysisRequest](../../models/getvercelcitaskanalysisrequest.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetVercelCiTaskAnalysisResponseBody](../../models/getvercelcitaskanalysisresponsebody.md)\>**
+
+### Errors
+
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| models.GetVercelCiTaskAnalysisVercelCiResponseBody            | 401                                                           | application/json                                              |
+| models.GetVercelCiTaskAnalysisVercelCiResponseResponseBody    | 403                                                           | application/json                                              |
+| models.GetVercelCiTaskAnalysisVercelCiResponse429ResponseBody | 429                                                           | application/json                                              |
+| models.GetVercelCiTaskAnalysisVercelCiResponse500ResponseBody | 500                                                           | application/json                                              |
+| models.SDKError                                               | 4XX, 5XX                                                      | \*/\*                                                         |
+
+## listVercelCiTaskAnalysisTasks
+
+List task analysis tasks
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="listVercelCiTaskAnalysisTasks" method="get" path="/v1/vercel-ci/task-analyses/{analysisId}/tasks" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.vercelCi.listVercelCiTaskAnalysisTasks({
+    analysisId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { vercelCiListVercelCiTaskAnalysisTasks } from "@vercel/sdk/funcs/vercelCiListVercelCiTaskAnalysisTasks.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await vercelCiListVercelCiTaskAnalysisTasks(vercel, {
+    analysisId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("vercelCiListVercelCiTaskAnalysisTasks failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.ListVercelCiTaskAnalysisTasksRequest](../../models/listvercelcitaskanalysistasksrequest.md)                                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.ListVercelCiTaskAnalysisTasksResponseBody](../../models/listvercelcitaskanalysistasksresponsebody.md)\>**
+
+### Errors
+
+| Error Type                                                          | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| models.ListVercelCiTaskAnalysisTasksVercelCiResponseBody            | 401                                                                 | application/json                                                    |
+| models.ListVercelCiTaskAnalysisTasksVercelCiResponseResponseBody    | 403                                                                 | application/json                                                    |
+| models.ListVercelCiTaskAnalysisTasksVercelCiResponse429ResponseBody | 429                                                                 | application/json                                                    |
+| models.ListVercelCiTaskAnalysisTasksVercelCiResponse500ResponseBody | 500                                                                 | application/json                                                    |
+| models.SDKError                                                     | 4XX, 5XX                                                            | \*/\*                                                               |
 
 ## listVercelCiInvocationAttempts
 

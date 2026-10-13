@@ -12,7 +12,7 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjson2projectsaliasdeploymenttype.js";
+} from "./getprojectsresponsebodyprojectsresponse200applicationjson2aliaserror.js";
 import {
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
@@ -34,8 +34,6 @@ import {
   GetProjectsResponseBodyProjectsCreator$inboundSchema,
   GetProjectsResponseBodyReadyState,
   GetProjectsResponseBodyReadyState$inboundSchema,
-  GetProjectsResponseBodyReadySubstate,
-  GetProjectsResponseBodyReadySubstate$inboundSchema,
   ResponseBodyAlias,
   ResponseBodyAlias$inboundSchema,
   ResponseBodyAliasAssigned,
@@ -58,8 +56,17 @@ import {
   ResponseBodyInternalRoutes$inboundSchema,
   ResponseBodyIpBuckets,
   ResponseBodyIpBuckets$inboundSchema,
-} from "./getprojectsresponsebodyreadysubstate.js";
+} from "./getprojectsresponsebodyreadystate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsResponseBodyReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type GetProjectsResponseBodyReadySubstate = ClosedEnum<
+  typeof GetProjectsResponseBodyReadySubstate
+>;
 
 export const GetProjectsResponseBodyProjectsType = {
   Lambdas: "LAMBDAS",
@@ -1477,6 +1484,12 @@ export type GetProjectsResponseBody =
   | GetProjectsResponseBody2
   | GetProjectsResponseBody3
   | Array<GetProjectsResponseBody1>;
+
+/** @internal */
+export const GetProjectsResponseBodyReadySubstate$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyReadySubstate> = z.nativeEnum(
+    GetProjectsResponseBodyReadySubstate,
+  );
 
 /** @internal */
 export const GetProjectsResponseBodyProjectsType$inboundSchema: z.ZodNativeEnum<

@@ -12,19 +12,19 @@ let value: GetVercelCiTaskLogsResponseBody = {
     {
       jobDefinitionId: "<id>",
       jobName: "<value>",
-      jobRunAttempt: 3400.16,
+      jobRunAttempt: 411.78,
       taskDefinitionId: "<id>",
       taskName: "<value>",
       lines: [
         {
           level: "<value>",
-          timestamp: 1902.12,
+          timestamp: 6379.9,
           message: "<value>",
         },
       ],
     },
   ],
-  hasMore: true,
+  hasMore: false,
 };
 ```
 
@@ -32,5 +32,5 @@ let value: GetVercelCiTaskLogsResponseBody = {
 
 | Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
 | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `tasks`                                                                                                         | [models.Tasks](../models/tasks.md)[]                                                                            | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
+| `tasks`                                                                                                         | [models.GetVercelCiTaskLogsTasks](../models/getvercelcitasklogstasks.md)[]                                      | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
 | `hasMore`                                                                                                       | *boolean*                                                                                                       | :heavy_check_mark:                                                                                              | Whether more tasks matched the filters than were returned. With `search`, whether more than 1000 lines matched. |

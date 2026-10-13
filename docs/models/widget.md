@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Widget } from "@vercel/sdk/models/siftroute.js";
+import { Widget } from "@vercel/sdk/models/twohundredandforty.js";
 
 let value: Widget = "speed-insights-cls";
 ```

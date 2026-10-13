@@ -233,7 +233,7 @@ export type GetVercelCiTaskLogsLines = {
   message: string;
 };
 
-export type Tasks = {
+export type GetVercelCiTaskLogsTasks = {
   jobDefinitionId: string;
   jobName: string;
   jobRunAttempt: number;
@@ -253,7 +253,7 @@ export type Tasks = {
  * Successfully fetched task log lines.
  */
 export type GetVercelCiTaskLogsResponseBody = {
-  tasks: Array<Tasks>;
+  tasks: Array<GetVercelCiTaskLogsTasks>;
   /**
    * Whether more tasks matched the filters than were returned. With `search`, whether more than 1000 lines matched.
    */
@@ -607,32 +607,35 @@ export function getVercelCiTaskLogsLinesFromJSON(
 }
 
 /** @internal */
-export const Tasks$inboundSchema: z.ZodType<Tasks, z.ZodTypeDef, unknown> = z
-  .object({
-    jobDefinitionId: types.string(),
-    jobName: types.string(),
-    jobRunAttempt: types.number(),
-    taskDefinitionId: types.string(),
-    taskName: types.string(),
-    taskRunAttempt: types.optional(types.number()),
-    conclusion: types.optional(
-      z.union([
-        z.lazy(() => Conclusion1$inboundSchema),
-        z.lazy(() => Conclusion2$inboundSchema),
-        z.lazy(() => Conclusion3$inboundSchema),
-        z.lazy(() => Conclusion4$inboundSchema),
-      ]),
-    ),
-    lines: z.array(z.lazy(() => GetVercelCiTaskLogsLines$inboundSchema)),
-  });
+export const GetVercelCiTaskLogsTasks$inboundSchema: z.ZodType<
+  GetVercelCiTaskLogsTasks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  jobDefinitionId: types.string(),
+  jobName: types.string(),
+  jobRunAttempt: types.number(),
+  taskDefinitionId: types.string(),
+  taskName: types.string(),
+  taskRunAttempt: types.optional(types.number()),
+  conclusion: types.optional(
+    z.union([
+      z.lazy(() => Conclusion1$inboundSchema),
+      z.lazy(() => Conclusion2$inboundSchema),
+      z.lazy(() => Conclusion3$inboundSchema),
+      z.lazy(() => Conclusion4$inboundSchema),
+    ]),
+  ),
+  lines: z.array(z.lazy(() => GetVercelCiTaskLogsLines$inboundSchema)),
+});
 
-export function tasksFromJSON(
+export function getVercelCiTaskLogsTasksFromJSON(
   jsonString: string,
-): SafeParseResult<Tasks, SDKValidationError> {
+): SafeParseResult<GetVercelCiTaskLogsTasks, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Tasks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Tasks' from JSON`,
+    (x) => GetVercelCiTaskLogsTasks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetVercelCiTaskLogsTasks' from JSON`,
   );
 }
 
@@ -642,7 +645,7 @@ export const GetVercelCiTaskLogsResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tasks: z.array(z.lazy(() => Tasks$inboundSchema)),
+  tasks: z.array(z.lazy(() => GetVercelCiTaskLogsTasks$inboundSchema)),
   hasMore: types.boolean(),
 });
 

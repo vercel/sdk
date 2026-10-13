@@ -486,7 +486,22 @@ export type DeleteProjectAvatarPassport = {
   deploymentType: DeleteProjectAvatarDeploymentType;
 };
 
-export type DeleteProjectAvatarPasswordProtection = {};
+export const DeleteProjectAvatarProjectsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type DeleteProjectAvatarProjectsDeploymentType = ClosedEnum<
+  typeof DeleteProjectAvatarProjectsDeploymentType
+>;
+
+/**
+ * Password protection settings returned without the secret password hash.
+ */
+export type DeleteProjectAvatarPasswordProtection = {
+  deploymentType: DeleteProjectAvatarProjectsDeploymentType;
+};
 
 /**
  * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -2356,14 +2371,14 @@ export type DeleteProjectAvatarCve55182MigrationAppliedFrom = ClosedEnum<
   typeof DeleteProjectAvatarCve55182MigrationAppliedFrom
 >;
 
-export const DeleteProjectAvatarProjectsDeploymentType = {
+export const DeleteProjectAvatarProjectsResponseDeploymentType = {
   All: "all",
   AllExceptCustomDomains: "all_except_custom_domains",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
-export type DeleteProjectAvatarProjectsDeploymentType = ClosedEnum<
-  typeof DeleteProjectAvatarProjectsDeploymentType
+export type DeleteProjectAvatarProjectsResponseDeploymentType = ClosedEnum<
+  typeof DeleteProjectAvatarProjectsResponseDeploymentType
 >;
 
 export type DeleteProjectAvatarSsoProtection = {
@@ -2375,7 +2390,7 @@ export type DeleteProjectAvatarSsoProtection = {
     | DeleteProjectAvatarCve55182MigrationAppliedFrom
     | null
     | undefined;
-  deploymentType: DeleteProjectAvatarProjectsDeploymentType;
+  deploymentType: DeleteProjectAvatarProjectsResponseDeploymentType;
 };
 
 export type DeleteProjectAvatarStaticIps = {
@@ -2925,6 +2940,9 @@ export type DeleteProjectAvatarResponseBody = {
   outputDirectory?: string | null | undefined;
   passiveConnectConfigurationId?: string | null | undefined;
   passport?: DeleteProjectAvatarPassport | null | undefined;
+  /**
+   * Password protection settings returned without the secret password hash.
+   */
   passwordProtection?: DeleteProjectAvatarPasswordProtection | null | undefined;
   paused?: boolean | undefined;
   /**
@@ -3756,11 +3774,18 @@ export function deleteProjectAvatarPassportFromJSON(
 }
 
 /** @internal */
+export const DeleteProjectAvatarProjectsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsDeploymentType> = z
+    .nativeEnum(DeleteProjectAvatarProjectsDeploymentType);
+
+/** @internal */
 export const DeleteProjectAvatarPasswordProtection$inboundSchema: z.ZodType<
   DeleteProjectAvatarPasswordProtection,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  deploymentType: DeleteProjectAvatarProjectsDeploymentType$inboundSchema,
+});
 
 export function deleteProjectAvatarPasswordProtectionFromJSON(
   jsonString: string,
@@ -5004,9 +5029,9 @@ export const DeleteProjectAvatarCve55182MigrationAppliedFrom$inboundSchema:
     .nativeEnum(DeleteProjectAvatarCve55182MigrationAppliedFrom);
 
 /** @internal */
-export const DeleteProjectAvatarProjectsDeploymentType$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsDeploymentType> = z
-    .nativeEnum(DeleteProjectAvatarProjectsDeploymentType);
+export const DeleteProjectAvatarProjectsResponseDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponseDeploymentType> = z
+    .nativeEnum(DeleteProjectAvatarProjectsResponseDeploymentType);
 
 /** @internal */
 export const DeleteProjectAvatarSsoProtection$inboundSchema: z.ZodType<
@@ -5020,7 +5045,8 @@ export const DeleteProjectAvatarSsoProtection$inboundSchema: z.ZodType<
   cve55182MigrationAppliedFrom: z.nullable(
     DeleteProjectAvatarCve55182MigrationAppliedFrom$inboundSchema,
   ).optional(),
-  deploymentType: DeleteProjectAvatarProjectsDeploymentType$inboundSchema,
+  deploymentType:
+    DeleteProjectAvatarProjectsResponseDeploymentType$inboundSchema,
 });
 
 export function deleteProjectAvatarSsoProtectionFromJSON(

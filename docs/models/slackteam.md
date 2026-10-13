@@ -5,7 +5,7 @@ Slack workspace metadata.
 ## Example Usage
 
 ```typescript
-import { SlackTeam } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { SlackTeam } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: SlackTeam = {
   id: "<id>",

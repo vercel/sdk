@@ -499,7 +499,22 @@ export type GetProjectPassport = {
   deploymentType: GetProjectDeploymentType;
 };
 
-export type GetProjectPasswordProtection = {};
+export const GetProjectProjectsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type GetProjectProjectsDeploymentType = ClosedEnum<
+  typeof GetProjectProjectsDeploymentType
+>;
+
+/**
+ * Password protection settings returned without the secret password hash.
+ */
+export type GetProjectPasswordProtection = {
+  deploymentType: GetProjectProjectsDeploymentType;
+};
 
 /**
  * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -2345,14 +2360,14 @@ export type GetProjectCve55182MigrationAppliedFrom = ClosedEnum<
   typeof GetProjectCve55182MigrationAppliedFrom
 >;
 
-export const GetProjectProjectsDeploymentType = {
+export const GetProjectProjectsResponseDeploymentType = {
   All: "all",
   AllExceptCustomDomains: "all_except_custom_domains",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
-export type GetProjectProjectsDeploymentType = ClosedEnum<
-  typeof GetProjectProjectsDeploymentType
+export type GetProjectProjectsResponseDeploymentType = ClosedEnum<
+  typeof GetProjectProjectsResponseDeploymentType
 >;
 
 export type GetProjectSsoProtection = {
@@ -2364,7 +2379,7 @@ export type GetProjectSsoProtection = {
     | GetProjectCve55182MigrationAppliedFrom
     | null
     | undefined;
-  deploymentType: GetProjectProjectsDeploymentType;
+  deploymentType: GetProjectProjectsResponseDeploymentType;
 };
 
 export type GetProjectStaticIps = {
@@ -2898,6 +2913,9 @@ export type GetProjectResponseBody = {
   outputDirectory?: string | null | undefined;
   passiveConnectConfigurationId?: string | null | undefined;
   passport?: GetProjectPassport | null | undefined;
+  /**
+   * Password protection settings returned without the secret password hash.
+   */
   passwordProtection?: GetProjectPasswordProtection | null | undefined;
   paused?: boolean | undefined;
   /**
@@ -3707,11 +3725,18 @@ export function getProjectPassportFromJSON(
 }
 
 /** @internal */
+export const GetProjectProjectsDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectProjectsDeploymentType
+> = z.nativeEnum(GetProjectProjectsDeploymentType);
+
+/** @internal */
 export const GetProjectPasswordProtection$inboundSchema: z.ZodType<
   GetProjectPasswordProtection,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  deploymentType: GetProjectProjectsDeploymentType$inboundSchema,
+});
 
 export function getProjectPasswordProtectionFromJSON(
   jsonString: string,
@@ -4920,9 +4945,9 @@ export const GetProjectCve55182MigrationAppliedFrom$inboundSchema:
   );
 
 /** @internal */
-export const GetProjectProjectsDeploymentType$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectProjectsDeploymentType
-> = z.nativeEnum(GetProjectProjectsDeploymentType);
+export const GetProjectProjectsResponseDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectProjectsResponseDeploymentType> = z
+    .nativeEnum(GetProjectProjectsResponseDeploymentType);
 
 /** @internal */
 export const GetProjectSsoProtection$inboundSchema: z.ZodType<
@@ -4936,7 +4961,7 @@ export const GetProjectSsoProtection$inboundSchema: z.ZodType<
   cve55182MigrationAppliedFrom: z.nullable(
     GetProjectCve55182MigrationAppliedFrom$inboundSchema,
   ).optional(),
-  deploymentType: GetProjectProjectsDeploymentType$inboundSchema,
+  deploymentType: GetProjectProjectsResponseDeploymentType$inboundSchema,
 });
 
 export function getProjectSsoProtectionFromJSON(

@@ -493,7 +493,22 @@ export type UpdateMicrofrontendsPassport = {
   deploymentType: UpdateMicrofrontendsDeploymentType;
 };
 
-export type UpdateMicrofrontendsPasswordProtection = {};
+export const UpdateMicrofrontendsProjectsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type UpdateMicrofrontendsProjectsDeploymentType = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsDeploymentType
+>;
+
+/**
+ * Password protection settings returned without the secret password hash.
+ */
+export type UpdateMicrofrontendsPasswordProtection = {
+  deploymentType: UpdateMicrofrontendsProjectsDeploymentType;
+};
 
 /**
  * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -2363,14 +2378,14 @@ export type UpdateMicrofrontendsCve55182MigrationAppliedFrom = ClosedEnum<
   typeof UpdateMicrofrontendsCve55182MigrationAppliedFrom
 >;
 
-export const UpdateMicrofrontendsProjectsDeploymentType = {
+export const UpdateMicrofrontendsProjectsResponseDeploymentType = {
   All: "all",
   AllExceptCustomDomains: "all_except_custom_domains",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
-export type UpdateMicrofrontendsProjectsDeploymentType = ClosedEnum<
-  typeof UpdateMicrofrontendsProjectsDeploymentType
+export type UpdateMicrofrontendsProjectsResponseDeploymentType = ClosedEnum<
+  typeof UpdateMicrofrontendsProjectsResponseDeploymentType
 >;
 
 export type UpdateMicrofrontendsSsoProtection = {
@@ -2382,7 +2397,7 @@ export type UpdateMicrofrontendsSsoProtection = {
     | UpdateMicrofrontendsCve55182MigrationAppliedFrom
     | null
     | undefined;
-  deploymentType: UpdateMicrofrontendsProjectsDeploymentType;
+  deploymentType: UpdateMicrofrontendsProjectsResponseDeploymentType;
 };
 
 export type UpdateMicrofrontendsStaticIps = {
@@ -2937,6 +2952,9 @@ export type UpdateMicrofrontendsResponseBody = {
   outputDirectory?: string | null | undefined;
   passiveConnectConfigurationId?: string | null | undefined;
   passport?: UpdateMicrofrontendsPassport | null | undefined;
+  /**
+   * Password protection settings returned without the secret password hash.
+   */
   passwordProtection?:
     | UpdateMicrofrontendsPasswordProtection
     | null
@@ -3781,11 +3799,18 @@ export function updateMicrofrontendsPassportFromJSON(
 }
 
 /** @internal */
+export const UpdateMicrofrontendsProjectsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsDeploymentType> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsDeploymentType);
+
+/** @internal */
 export const UpdateMicrofrontendsPasswordProtection$inboundSchema: z.ZodType<
   UpdateMicrofrontendsPasswordProtection,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  deploymentType: UpdateMicrofrontendsProjectsDeploymentType$inboundSchema,
+});
 
 export function updateMicrofrontendsPasswordProtectionFromJSON(
   jsonString: string,
@@ -5042,9 +5067,9 @@ export const UpdateMicrofrontendsCve55182MigrationAppliedFrom$inboundSchema:
     .nativeEnum(UpdateMicrofrontendsCve55182MigrationAppliedFrom);
 
 /** @internal */
-export const UpdateMicrofrontendsProjectsDeploymentType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsDeploymentType> = z
-    .nativeEnum(UpdateMicrofrontendsProjectsDeploymentType);
+export const UpdateMicrofrontendsProjectsResponseDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsProjectsResponseDeploymentType> = z
+    .nativeEnum(UpdateMicrofrontendsProjectsResponseDeploymentType);
 
 /** @internal */
 export const UpdateMicrofrontendsSsoProtection$inboundSchema: z.ZodType<
@@ -5058,7 +5083,8 @@ export const UpdateMicrofrontendsSsoProtection$inboundSchema: z.ZodType<
   cve55182MigrationAppliedFrom: z.nullable(
     UpdateMicrofrontendsCve55182MigrationAppliedFrom$inboundSchema,
   ).optional(),
-  deploymentType: UpdateMicrofrontendsProjectsDeploymentType$inboundSchema,
+  deploymentType:
+    UpdateMicrofrontendsProjectsResponseDeploymentType$inboundSchema,
 });
 
 export function updateMicrofrontendsSsoProtectionFromJSON(

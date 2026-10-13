@@ -81,6 +81,7 @@ export type NamedSandboxMountsMode = ClosedEnum<typeof NamedSandboxMountsMode>;
 export type Mounts = {
   drive: string;
   mode?: NamedSandboxMountsMode | undefined;
+  snapshot?: string | undefined;
 };
 
 export const NamedSandboxMode = {
@@ -278,6 +279,7 @@ export const Mounts$inboundSchema: z.ZodType<Mounts, z.ZodTypeDef, unknown> = z
   .object({
     drive: types.string(),
     mode: types.optional(NamedSandboxMountsMode$inboundSchema),
+    snapshot: types.optional(types.string()),
   });
 
 export function mountsFromJSON(

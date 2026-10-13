@@ -25,6 +25,7 @@ import { sandboxesListSessionSnapshots } from "../funcs/sandboxesListSessionSnap
 import { sandboxesReadSessionFile } from "../funcs/sandboxesReadSessionFile.js";
 import { sandboxesStopSession } from "../funcs/sandboxesStopSession.js";
 import { sandboxesUpdateSessionNetworkPolicy } from "../funcs/sandboxesUpdateSessionNetworkPolicy.js";
+import { sandboxesWriteSessionCommandStdin } from "../funcs/sandboxesWriteSessionCommandStdin.js";
 import { sandboxesWriteSessionFiles } from "../funcs/sandboxesWriteSessionFiles.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
@@ -113,6 +114,10 @@ import {
   UpdateSessionNetworkPolicyRequest,
   UpdateSessionNetworkPolicyResponseBody,
 } from "../models/updatesessionnetworkpolicyop.js";
+import {
+  WriteSessionCommandStdinRequest,
+  WriteSessionCommandStdinResponseBody,
+} from "../models/writesessioncommandstdinop.js";
 import {
   WriteSessionFilesRequest,
   WriteSessionFilesResponseBody,
@@ -386,6 +391,23 @@ export class Sandboxes extends ClientSDK {
     options?: RequestOptions,
   ): Promise<KillSessionCommandResponseBody> {
     return unwrapAsync(sandboxesKillSessionCommand(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Write to command stdin
+   *
+   * @remarks
+   * Writes data to the stdin of a running command, and optionally closes it. The command must have been started with `attachStdin` set to true. Writes are applied in the order they are received. Send them one at a time to keep the data in order. A write returns once the command has accepted the data, and fails with a 504 after 30 seconds if the command is not reading stdin. Each write counts against the sandbox control plane rate limit, so batch small writes where possible. Set `offset` to the position in stdin where `data` starts to make a request safe to resend, for example after a 502 or 504: bytes the command has already received are skipped, and an offset past them fails with a 409. The response returns `bytesWritten`, the total written so far, and a 504 includes it in the error when the sandbox reports it. A request with no `data` and no `close` writes nothing and returns it. If a request with an `offset` gets a response without `bytesWritten`, the sandbox predates offsets and ignored it, so resending that request is not safe.
+   */
+  async writeSessionCommandStdin(
+    request: WriteSessionCommandStdinRequest,
+    options?: RequestOptions,
+  ): Promise<WriteSessionCommandStdinResponseBody> {
+    return unwrapAsync(sandboxesWriteSessionCommandStdin(
       this,
       request,
       options,

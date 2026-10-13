@@ -13,6 +13,7 @@ import { aiGatewayGetAiGatewayVirtualModelConfig } from "../funcs/aiGatewayGetAi
 import { aiGatewayGetAiGatewayVirtualModelConfigBySlug } from "../funcs/aiGatewayGetAiGatewayVirtualModelConfigBySlug.js";
 import { aiGatewayListAiGatewayBudgetDefaults } from "../funcs/aiGatewayListAiGatewayBudgetDefaults.js";
 import { aiGatewayListAiGatewayBudgets } from "../funcs/aiGatewayListAiGatewayBudgets.js";
+import { aiGatewayListAiGatewayRouters } from "../funcs/aiGatewayListAiGatewayRouters.js";
 import { aiGatewayListAiGatewayRules } from "../funcs/aiGatewayListAiGatewayRules.js";
 import { aiGatewayListAiGatewayVirtualModelConfigs } from "../funcs/aiGatewayListAiGatewayVirtualModelConfigs.js";
 import { aiGatewayUpdateAiGatewayRule } from "../funcs/aiGatewayUpdateAiGatewayRule.js";
@@ -25,6 +26,7 @@ import { AiGatewayBudget } from "../models/aigatewaybudget.js";
 import { AiGatewayBudgetDefault } from "../models/aigatewaybudgetdefault.js";
 import { AiGatewayBudgetDefaultList } from "../models/aigatewaybudgetdefaultlist.js";
 import { AiGatewayBudgetList } from "../models/aigatewaybudgetlist.js";
+import { AiGatewayRouterList } from "../models/aigatewayrouterlist.js";
 import { AiGatewayRule } from "../models/aigatewayrule.js";
 import { AiGatewayRuleList } from "../models/aigatewayrulelist.js";
 import { AiGatewayVirtualModelConfig } from "../models/aigatewayvirtualmodelconfig.js";
@@ -43,6 +45,7 @@ import {
 } from "../models/getaigatewayvirtualmodelconfigop.js";
 import { ListAiGatewayBudgetDefaultsRequest } from "../models/listaigatewaybudgetdefaultsop.js";
 import { ListAiGatewayBudgetsRequest } from "../models/listaigatewaybudgetsop.js";
+import { ListAiGatewayRoutersRequest } from "../models/listaigatewayroutersop.js";
 import { ListAiGatewayRulesRequest } from "../models/listaigatewayrulesop.js";
 import { ListAiGatewayVirtualModelConfigsRequest } from "../models/listaigatewayvirtualmodelconfigsop.js";
 import { UpdateAiGatewayRuleRequest } from "../models/updateaigatewayruleop.js";
@@ -183,6 +186,23 @@ export class AiGateway extends ClientSDK {
     options?: RequestOptions,
   ): Promise<any> {
     return unwrapAsync(aiGatewayDeleteAiGatewayVirtualModelConfigBySlug(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List AI Gateway routers
+   *
+   * @remarks
+   * List the authenticated team's active and archived custom routers.
+   */
+  async listAiGatewayRouters(
+    request: ListAiGatewayRoutersRequest,
+    options?: RequestOptions,
+  ): Promise<AiGatewayRouterList> {
+    return unwrapAsync(aiGatewayListAiGatewayRouters(
       this,
       request,
       options,

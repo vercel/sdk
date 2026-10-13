@@ -495,7 +495,22 @@ export type GetMicrofrontendsInGroupPassport = {
   deploymentType: GetMicrofrontendsInGroupDeploymentType;
 };
 
-export type GetMicrofrontendsInGroupPasswordProtection = {};
+export const GetMicrofrontendsInGroupMicrofrontendsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type GetMicrofrontendsInGroupMicrofrontendsDeploymentType = ClosedEnum<
+  typeof GetMicrofrontendsInGroupMicrofrontendsDeploymentType
+>;
+
+/**
+ * Password protection settings returned without the secret password hash.
+ */
+export type GetMicrofrontendsInGroupPasswordProtection = {
+  deploymentType: GetMicrofrontendsInGroupMicrofrontendsDeploymentType;
+};
 
 /**
  * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -2381,15 +2396,16 @@ export type GetMicrofrontendsInGroupCve55182MigrationAppliedFrom = ClosedEnum<
   typeof GetMicrofrontendsInGroupCve55182MigrationAppliedFrom
 >;
 
-export const GetMicrofrontendsInGroupMicrofrontendsDeploymentType = {
+export const GetMicrofrontendsInGroupMicrofrontendsResponseDeploymentType = {
   All: "all",
   AllExceptCustomDomains: "all_except_custom_domains",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
-export type GetMicrofrontendsInGroupMicrofrontendsDeploymentType = ClosedEnum<
-  typeof GetMicrofrontendsInGroupMicrofrontendsDeploymentType
->;
+export type GetMicrofrontendsInGroupMicrofrontendsResponseDeploymentType =
+  ClosedEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponseDeploymentType
+  >;
 
 export type GetMicrofrontendsInGroupSsoProtection = {
   april2026SecurityIncidentMigrationAppliedFrom?:
@@ -2400,7 +2416,7 @@ export type GetMicrofrontendsInGroupSsoProtection = {
     | GetMicrofrontendsInGroupCve55182MigrationAppliedFrom
     | null
     | undefined;
-  deploymentType: GetMicrofrontendsInGroupMicrofrontendsDeploymentType;
+  deploymentType: GetMicrofrontendsInGroupMicrofrontendsResponseDeploymentType;
 };
 
 export type GetMicrofrontendsInGroupStaticIps = {
@@ -2985,6 +3001,9 @@ export type GetMicrofrontendsInGroupProjects = {
   outputDirectory?: string | null | undefined;
   passiveConnectConfigurationId?: string | null | undefined;
   passport?: GetMicrofrontendsInGroupPassport | null | undefined;
+  /**
+   * Password protection settings returned without the secret password hash.
+   */
   passwordProtection?:
     | GetMicrofrontendsInGroupPasswordProtection
     | null
@@ -3871,9 +3890,17 @@ export function getMicrofrontendsInGroupPassportFromJSON(
 }
 
 /** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsDeploymentType> =
+    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsDeploymentType);
+
+/** @internal */
 export const GetMicrofrontendsInGroupPasswordProtection$inboundSchema:
   z.ZodType<GetMicrofrontendsInGroupPasswordProtection, z.ZodTypeDef, unknown> =
-    z.object({});
+    z.object({
+      deploymentType:
+        GetMicrofrontendsInGroupMicrofrontendsDeploymentType$inboundSchema,
+    });
 
 export function getMicrofrontendsInGroupPasswordProtectionFromJSON(
   jsonString: string,
@@ -5192,9 +5219,12 @@ export const GetMicrofrontendsInGroupCve55182MigrationAppliedFrom$inboundSchema:
     z.nativeEnum(GetMicrofrontendsInGroupCve55182MigrationAppliedFrom);
 
 /** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsDeploymentType$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsDeploymentType> =
-    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsDeploymentType);
+export const GetMicrofrontendsInGroupMicrofrontendsResponseDeploymentType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsResponseDeploymentType
+  > = z.nativeEnum(
+    GetMicrofrontendsInGroupMicrofrontendsResponseDeploymentType,
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupSsoProtection$inboundSchema: z.ZodType<
@@ -5209,7 +5239,7 @@ export const GetMicrofrontendsInGroupSsoProtection$inboundSchema: z.ZodType<
     GetMicrofrontendsInGroupCve55182MigrationAppliedFrom$inboundSchema,
   ).optional(),
   deploymentType:
-    GetMicrofrontendsInGroupMicrofrontendsDeploymentType$inboundSchema,
+    GetMicrofrontendsInGroupMicrofrontendsResponseDeploymentType$inboundSchema,
 });
 
 export function getMicrofrontendsInGroupSsoProtectionFromJSON(

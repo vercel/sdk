@@ -5,7 +5,7 @@ Machine types an elastic decision can effectively apply or persist. The algorith
 ## Example Usage
 
 ```typescript
-import { CreateProjectLabel } from "@vercel/sdk/models/createprojectfrom.js";
+import { CreateProjectLabel } from "@vercel/sdk/models/createprojectfrom1.js";
 
 let value: CreateProjectLabel = "enhanced";
 ```

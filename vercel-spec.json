@@ -2455,6 +2455,80 @@
         ]
       }
     },
+    "/v1/ai-gateway/routers": {
+      "get": {
+        "description": "List the authenticated team's active and archived custom routers.",
+        "operationId": "listAiGatewayRouters",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List AI Gateway routers",
+        "tags": [
+          "ai-gateway"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AiGatewayRouterList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "ownerId",
+            "description": "The owner (team) ID to list routers for. Only trusted-origin callers use this. Public callers select their team with `teamId` or `slug`, and a supplied ownerId never overrides the authenticated team.",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "The owner (team) ID to list routers for. Only trusted-origin callers use this. Public callers select their team with `teamId` or `slug`, and a supplied ownerId never overrides the authenticated team."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
     "/ai-gateway/rules": {
       "post": {
         "description": "Create a routing rule",
@@ -87033,7 +87107,22 @@
                           },
                           "passwordProtection": {
                             "nullable": true,
-                            "type": "object"
+                            "properties": {
+                              "deploymentType": {
+                                "type": "string",
+                                "enum": [
+                                  "all",
+                                  "all_except_custom_domains",
+                                  "preview",
+                                  "prod_deployment_urls_and_all_previews"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "deploymentType"
+                            ],
+                            "type": "object",
+                            "description": "Password protection settings returned without the secret password hash."
                           },
                           "paused": {
                             "type": "boolean",
@@ -110468,7 +110557,22 @@
                               },
                               "passwordProtection": {
                                 "nullable": true,
-                                "type": "object"
+                                "properties": {
+                                  "deploymentType": {
+                                    "type": "string",
+                                    "enum": [
+                                      "all",
+                                      "all_except_custom_domains",
+                                      "preview",
+                                      "prod_deployment_urls_and_all_previews"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "deploymentType"
+                                ],
+                                "type": "object",
+                                "description": "Password protection settings returned without the secret password hash."
                               },
                               "paused": {
                                 "type": "boolean",
@@ -118644,7 +118748,22 @@
                     },
                     "passwordProtection": {
                       "nullable": true,
-                      "type": "object"
+                      "properties": {
+                        "deploymentType": {
+                          "type": "string",
+                          "enum": [
+                            "all",
+                            "all_except_custom_domains",
+                            "preview",
+                            "prod_deployment_urls_and_all_previews"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "deploymentType"
+                      ],
+                      "type": "object",
+                      "description": "Password protection settings returned without the secret password hash."
                     },
                     "paused": {
                       "type": "boolean",
@@ -127106,7 +127225,22 @@
                     },
                     "passwordProtection": {
                       "nullable": true,
-                      "type": "object"
+                      "properties": {
+                        "deploymentType": {
+                          "type": "string",
+                          "enum": [
+                            "all",
+                            "all_except_custom_domains",
+                            "preview",
+                            "prod_deployment_urls_and_all_previews"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "deploymentType"
+                      ],
+                      "type": "object",
+                      "description": "Password protection settings returned without the secret password hash."
                     },
                     "paused": {
                       "type": "boolean",
@@ -134836,7 +134970,22 @@
                     },
                     "passwordProtection": {
                       "nullable": true,
-                      "type": "object"
+                      "properties": {
+                        "deploymentType": {
+                          "type": "string",
+                          "enum": [
+                            "all",
+                            "all_except_custom_domains",
+                            "preview",
+                            "prod_deployment_urls_and_all_previews"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "deploymentType"
+                      ],
+                      "type": "object",
+                      "description": "Password protection settings returned without the secret password hash."
                     },
                     "paused": {
                       "type": "boolean",
@@ -143897,7 +144046,22 @@
                     },
                     "passwordProtection": {
                       "nullable": true,
-                      "type": "object"
+                      "properties": {
+                        "deploymentType": {
+                          "type": "string",
+                          "enum": [
+                            "all",
+                            "all_except_custom_domains",
+                            "preview",
+                            "prod_deployment_urls_and_all_previews"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "deploymentType"
+                      ],
+                      "type": "object",
+                      "description": "Password protection settings returned without the secret password hash."
                     },
                     "paused": {
                       "type": "boolean",
@@ -151640,7 +151804,22 @@
                     },
                     "passwordProtection": {
                       "nullable": true,
-                      "type": "object"
+                      "properties": {
+                        "deploymentType": {
+                          "type": "string",
+                          "enum": [
+                            "all",
+                            "all_except_custom_domains",
+                            "preview",
+                            "prod_deployment_urls_and_all_previews"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "deploymentType"
+                      ],
+                      "type": "object",
+                      "description": "Password protection settings returned without the secret password hash."
                     },
                     "paused": {
                       "type": "boolean",
@@ -172524,7 +172703,22 @@
                     },
                     "passwordProtection": {
                       "nullable": true,
-                      "type": "object"
+                      "properties": {
+                        "deploymentType": {
+                          "type": "string",
+                          "enum": [
+                            "all",
+                            "all_except_custom_domains",
+                            "preview",
+                            "prod_deployment_urls_and_all_previews"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "deploymentType"
+                      ],
+                      "type": "object",
+                      "description": "Password protection settings returned without the secret password hash."
                     },
                     "paused": {
                       "type": "boolean",
@@ -177155,6 +177349,9 @@
           },
           "502": {
             "description": ""
+          },
+          "503": {
+            "description": ""
           }
         },
         "parameters": [
@@ -177778,7 +177975,6 @@
                         "mode": {
                           "type": "string",
                           "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
-                          "default": "read-write",
                           "enum": [
                             "snapshot",
                             "read-write"
@@ -179270,6 +179466,9 @@
           },
           "502": {
             "description": ""
+          },
+          "503": {
+            "description": ""
           }
         },
         "parameters": [
@@ -179431,6 +179630,9 @@
             "description": ""
           },
           "502": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },
@@ -180063,7 +180265,6 @@
                         "mode": {
                           "type": "string",
                           "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
-                          "default": "read-write",
                           "enum": [
                             "snapshot",
                             "read-write"
@@ -180606,6 +180807,11 @@
                     "minimum": 100,
                     "maximum": 18000000,
                     "example": 30000
+                  },
+                  "attachStdin": {
+                    "type": "boolean",
+                    "description": "If true, keeps the command stdin open so it can be written to with the stdin endpoint while the command runs. When false, the command reads from an empty stdin.",
+                    "default": false
                   }
                 }
               }
@@ -180844,6 +181050,148 @@
                     "type": "number",
                     "description": "The POSIX signal number to send to the process. Common values: 15 (SIGTERM) for graceful termination, 9 (SIGKILL) for forced termination.",
                     "example": 15
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/stdin": {
+      "post": {
+        "description": "Writes data to the stdin of a running command, and optionally closes it. The command must have been started with `attachStdin` set to true. Writes are applied in the order they are received. Send them one at a time to keep the data in order. A write returns once the command has accepted the data, and fails with a 504 after 30 seconds if the command is not reading stdin. Each write counts against the sandbox control plane rate limit, so batch small writes where possible. Set `offset` to the position in stdin where `data` starts to make a request safe to resend, for example after a 502 or 504: bytes the command has already received are skipped, and an offset past them fails with a 409. The response returns `bytesWritten`, the total written so far, and a 504 includes it in the error when the sandbox reports it. A request with no `data` and no `close` writes nothing and returns it. If a request with an `offset` gets a response without `bytesWritten`, the sandbox predates offsets and ignored it, so resending that request is not safe.",
+        "operationId": "writeSessionCommandStdin",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Write to command stdin",
+        "tags": [
+          "sandboxes"
+        ],
+        "responses": {
+          "200": {
+            "description": "The data was written to the command's stdin.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "bytesWritten": {
+                      "type": "number"
+                    },
+                    "command": {
+                      "$ref": "#/components/schemas/SessionCommand"
+                    }
+                  },
+                  "required": [
+                    "command"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "422": {
+            "description": ""
+          },
+          "429": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "502": {
+            "description": ""
+          },
+          "504": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "cmdId",
+            "description": "The unique identifier of the command to write to.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the command to write to.",
+              "example": "cmd_abc123"
+            }
+          },
+          {
+            "name": "sessionId",
+            "description": "The unique identifier of the session containing the command.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique identifier of the session containing the command.",
+              "example": "sbx_abc123"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "data": {
+                    "type": "string",
+                    "description": "Base64-encoded bytes to write to the command stdin. The request body is limited to 1 MB, so send at most about 700 KB of data per request.",
+                    "maxLength": 1000000,
+                    "example": "aGVsbG8K"
+                  },
+                  "offset": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "The position in the command stdin where `data` starts. Bytes before the total already written are skipped, so a resent request does not write them twice. Fails with 409 if it is past the bytes written so far. Without it, `data` is appended.",
+                    "example": 0
+                  },
+                  "close": {
+                    "type": "boolean",
+                    "description": "If true, closes the command stdin after writing `data`. Use this for commands that wait for end of input.",
+                    "default": false
                   }
                 }
               }
@@ -182220,6 +182568,9 @@
           },
           "502": {
             "description": ""
+          },
+          "503": {
+            "description": ""
           }
         },
         "parameters": [
@@ -182757,7 +183108,6 @@
                         "mode": {
                           "type": "string",
                           "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
-                          "default": "read-write",
                           "enum": [
                             "snapshot",
                             "read-write"
@@ -182996,6 +183346,9 @@
             "description": ""
           },
           "502": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },
@@ -183608,7 +183961,6 @@
                         "mode": {
                           "type": "string",
                           "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
-                          "default": "read-write",
                           "enum": [
                             "snapshot",
                             "read-write"
@@ -183967,6 +184319,9 @@
           },
           "502": {
             "description": ""
+          },
+          "503": {
+            "description": ""
           }
         },
         "parameters": [
@@ -184504,7 +184859,6 @@
                         "mode": {
                           "type": "string",
                           "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
-                          "default": "read-write",
                           "enum": [
                             "snapshot",
                             "read-write"
@@ -184750,6 +185104,9 @@
             "description": ""
           },
           "502": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },
@@ -185362,7 +185719,6 @@
                         "mode": {
                           "type": "string",
                           "description": "Mount the drive as read-write, or as a read-only snapshot. One writer is permitted at a time.",
-                          "default": "read-write",
                           "enum": [
                             "snapshot",
                             "read-write"
@@ -208541,6 +208897,33 @@
         },
         "parameters": [
           {
+            "name": "reason",
+            "description": "Identifies an explicit logout for the deletion event. Only applies when tokenId is current.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "logout"
+              ],
+              "description": "Identifies an explicit logout for the deletion event. Only applies when tokenId is current."
+            }
+          },
+          {
+            "name": "logoutSource",
+            "description": "The product the caller is logging out of. Only applies when reason is logout and tokenId is current.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "v0",
+                "vercel"
+              ],
+              "description": "The product the caller is logging out of. Only applies when reason is logout and tokenId is current."
+            }
+          },
+          {
             "name": "tokenId",
             "description": "The identifier of the token to invalidate. The special value \"current\" may be supplied, which invalidates the token that the HTTP request was authenticated with.",
             "in": "path",
@@ -211391,6 +211774,552 @@
         ]
       }
     },
+    "/v1/vercel-ci/repository-settings": {
+      "get": {
+        "description": "Get Repository Settings",
+        "operationId": "getVercelCiRepositorySettings",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get Vercel CI settings for a connected repository",
+        "tags": [
+          "vercel-ci"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched the repository settings.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "provider": {
+                      "anyOf": [
+                        {
+                          "const": "bitbucket",
+                          "type": "string"
+                        },
+                        {
+                          "const": "cursor-origin",
+                          "type": "string"
+                        },
+                        {
+                          "const": "github",
+                          "type": "string"
+                        },
+                        {
+                          "const": "gitlab",
+                          "type": "string"
+                        },
+                        {
+                          "const": "vercel",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "organizationId": {
+                      "type": "string"
+                    },
+                    "repository": {
+                      "type": "string"
+                    },
+                    "ciEnabled": {
+                      "type": "boolean"
+                    },
+                    "ciEnabledAt": {
+                      "type": "number"
+                    },
+                    "updatedAt": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "provider",
+                    "organizationId",
+                    "repository",
+                    "ciEnabled"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "limit": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "name",
+                        "message",
+                        "limit"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "bitbucket",
+                "cursor-origin",
+                "github",
+                "gitlab",
+                "vercel"
+              ]
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "repository",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
+      "patch": {
+        "description": "Update Repository Settings",
+        "operationId": "updateVercelCiRepositorySettings",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Enable or disable Vercel CI for a connected repository",
+        "tags": [
+          "vercel-ci"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the repository settings.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "provider": {
+                      "anyOf": [
+                        {
+                          "const": "bitbucket",
+                          "type": "string"
+                        },
+                        {
+                          "const": "cursor-origin",
+                          "type": "string"
+                        },
+                        {
+                          "const": "github",
+                          "type": "string"
+                        },
+                        {
+                          "const": "gitlab",
+                          "type": "string"
+                        },
+                        {
+                          "const": "vercel",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "organizationId": {
+                      "type": "string"
+                    },
+                    "repository": {
+                      "type": "string"
+                    },
+                    "ciEnabled": {
+                      "type": "boolean"
+                    },
+                    "ciEnabledAt": {
+                      "type": "number"
+                    },
+                    "updatedAt": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "provider",
+                    "organizationId",
+                    "repository",
+                    "ciEnabled"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "limit": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "name",
+                        "message",
+                        "limit"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "bitbucket",
+                "cursor-origin",
+                "github",
+                "gitlab",
+                "vercel"
+              ]
+            }
+          },
+          {
+            "name": "organizationId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "repository",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "ciEnabled"
+                ],
+                "properties": {
+                  "ciEnabled": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/vercel-ci/invocations": {
       "get": {
         "description": "List Invocations",
@@ -212289,6 +213218,715 @@
               "type": "number",
               "minimum": 1,
               "maximum": 50
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/vercel-ci/task-analyses": {
+      "post": {
+        "description": "Create task analysis",
+        "operationId": "createVercelCiTaskAnalysis",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Start an asynchronous Vercel CI task analysis",
+        "tags": [
+          "vercel-ci"
+        ],
+        "responses": {
+          "202": {
+            "description": "Task analysis was accepted.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "analysisId": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "anyOf": [
+                        {
+                          "const": "pending",
+                          "type": "string"
+                        },
+                        {
+                          "const": "completed",
+                          "type": "string"
+                        },
+                        {
+                          "const": "failed",
+                          "type": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "analysisId",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "limit": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "name",
+                        "message",
+                        "limit"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "owner",
+                  "repo"
+                ],
+                "properties": {
+                  "owner": {
+                    "type": "string",
+                    "maxLength": 100
+                  },
+                  "repo": {
+                    "type": "string",
+                    "maxLength": 100
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/vercel-ci/task-analyses/{analysisId}": {
+      "get": {
+        "description": "Get task analysis",
+        "operationId": "getVercelCiTaskAnalysis",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get the current status of a Vercel CI task analysis",
+        "tags": [
+          "vercel-ci"
+        ],
+        "responses": {
+          "200": {
+            "description": "Current task analysis status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "analysisId": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "anyOf": [
+                        {
+                          "const": "pending",
+                          "type": "string"
+                        },
+                        {
+                          "const": "completed",
+                          "type": "string"
+                        },
+                        {
+                          "const": "failed",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "failureReason": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "analysisId",
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "limit": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "name",
+                        "message",
+                        "limit"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "analysisId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/vercel-ci/task-analyses/{analysisId}/tasks": {
+      "get": {
+        "description": "List task analysis tasks",
+        "operationId": "listVercelCiTaskAnalysisTasks",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List discovered tasks for a completed Vercel CI task analysis",
+        "tags": [
+          "vercel-ci"
+        ],
+        "responses": {
+          "200": {
+            "description": "Discovered task analysis tasks.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "tasks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string"
+                          },
+                          "configPath": {
+                            "type": "string"
+                          },
+                          "recommendationReasons": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [
+                          "name",
+                          "configPath",
+                          "recommendationReasons"
+                        ]
+                      }
+                    },
+                    "pagination": {
+                      "type": "object",
+                      "properties": {
+                        "nextCursor": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "tasks",
+                    "pagination"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "limit": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "name",
+                        "message",
+                        "limit"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "analysisId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
             }
           },
           {
@@ -224994,7 +226632,7 @@
           "virtualModelSlug"
         ],
         "type": "object",
-        "description": "Public response shape for virtual model configs. Used so OpenAPI generation can avoid ElectroDB's recursive EntityItem types."
+        "description": "Active and archived router configurations owned by the authenticated team."
       },
       "AiGatewayVirtualModelConfigList": {
         "properties": {
@@ -225014,6 +226652,21 @@
         "required": [
           "cursor",
           "virtualModelConfigs"
+        ],
+        "type": "object"
+      },
+      "AiGatewayRouterList": {
+        "properties": {
+          "routers": {
+            "items": {
+              "$ref": "#/components/schemas/AiGatewayVirtualModelConfig"
+            },
+            "type": "array",
+            "description": "Active and archived router configurations owned by the authenticated team."
+          }
+        },
+        "required": [
+          "routers"
         ],
         "type": "object"
       },
@@ -225853,7 +227506,8 @@
               "sendblue",
               "slack",
               "snowflake",
-              "snowflake-wif"
+              "snowflake-wif",
+              "stripe-api-key"
             ],
             "description": "Connector implementation type."
           },
@@ -226362,7 +228016,8 @@
               "sendblue",
               "slack",
               "snowflake",
-              "snowflake-wif"
+              "snowflake-wif",
+              "stripe-api-key"
             ],
             "description": "Connector implementation type."
           },
@@ -227598,6 +229253,11 @@
         ]
       },
       "ConnectCreateConnectorRequest": {
+        "not": {
+          "required": [
+            "externalId"
+          ]
+        },
         "type": "object",
         "required": [
           "data"
@@ -242013,8 +243673,7 @@
                         "items": {
                           "type": "string",
                           "enum": [
-                            "OrgAdmin",
-                            "OrgViewer"
+                            "OrgAdmin"
                           ]
                         },
                         "type": "array"
@@ -247112,6 +248771,123 @@
               },
               {
                 "properties": {
+                  "connectionId": {
+                    "type": "string"
+                  },
+                  "actorName": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  }
+                },
+                "required": [
+                  "actorType",
+                  "connectionId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "connectionId": {
+                    "type": "string"
+                  },
+                  "actorName": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  },
+                  "created": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  }
+                },
+                "required": [
+                  "actorType",
+                  "connectionId",
+                  "created"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "connectionId": {
+                    "type": "string"
+                  },
+                  "actorName": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  },
+                  "keyId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "actorType",
+                  "connectionId",
+                  "keyId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "connectionId": {
+                    "type": "string"
+                  },
+                  "actorName": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  },
+                  "keyId": {
+                    "type": "string"
+                  },
+                  "signingEnabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "signingKeyId": {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "actorType",
+                  "connectionId",
+                  "keyId",
+                  "signingEnabled",
+                  "signingKeyId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "alias": {
                     "type": "string"
                   },
@@ -247152,6 +248928,38 @@
                   "projectId",
                   "projectName",
                   "region"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "driveName": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "region": {
+                    "type": "string"
+                  },
+                  "snapshotId": {
+                    "type": "string"
+                  },
+                  "snapshotName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "driveName",
+                  "projectId",
+                  "projectName",
+                  "region",
+                  "snapshotId",
+                  "snapshotName"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -251358,6 +253166,30 @@
               },
               {
                 "properties": {
+                  "ciEnabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "repository": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "ciEnabled",
+                  "organizationId",
+                  "repository"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "protectedProjectCount": {
                     "type": "number"
                   },
@@ -252570,6 +254402,13 @@
                       true
                     ]
                   },
+                  "logoutSource": {
+                    "type": "string",
+                    "enum": [
+                      "v0",
+                      "vercel"
+                    ]
+                  },
                   "origin": {
                     "type": "string",
                     "enum": [
@@ -252590,6 +254429,12 @@
                       "saml",
                       "sms",
                       "token-exchange-oidc"
+                    ]
+                  },
+                  "reason": {
+                    "type": "string",
+                    "enum": [
+                      "logout"
                     ]
                   },
                   "reqId": {
@@ -252869,6 +254714,10 @@
               "admin-agentic-provisioning-account-unlinked",
               "admin-plan-updated",
               "admin-preview-deployment-suffix-clear",
+              "admin-saml-idp-material-deleted",
+              "admin-saml-idp-material-set",
+              "admin-saml-sp-signing-key-created",
+              "admin-saml-sp-signing-key-updated",
               "admin-secondary-email-added",
               "admin-secondary-email-removed",
               "admin-team-name-update",
@@ -253217,6 +255066,7 @@
               "organization-dsync-delete",
               "organization-dsync-group-delete",
               "organization-dsync-group-upsert",
+              "organization-dsync-sync-start",
               "organization-emu-domains-merged",
               "organization-emu-team-updated",
               "organization-emu-updated",
@@ -253390,6 +255240,8 @@
               "sandbox-alias-delete",
               "sandbox-drive-created",
               "sandbox-drive-deleted",
+              "sandbox-drive-snapshot-created",
+              "sandbox-drive-snapshot-deleted",
               "sandbox-signed-commit-identity-configured",
               "sandbox-snapshot-regions-updated",
               "scale",
@@ -253564,6 +255416,7 @@
               "vercel-app-installed",
               "vercel-app-tokens-revoked",
               "vercel-app-uninstalled",
+              "vercel-ci-repository-settings-updated",
               "vercel-toolbar",
               "vpc-peering-connection-accepted",
               "vpc-peering-connection-deleted",
@@ -253804,6 +255657,10 @@
               "admin-agentic-provisioning-account-unlinked",
               "admin-plan-updated",
               "admin-preview-deployment-suffix-clear",
+              "admin-saml-idp-material-deleted",
+              "admin-saml-idp-material-set",
+              "admin-saml-sp-signing-key-created",
+              "admin-saml-sp-signing-key-updated",
               "admin-secondary-email-added",
               "admin-secondary-email-removed",
               "admin-team-name-update",
@@ -254152,6 +256009,7 @@
               "organization-dsync-delete",
               "organization-dsync-group-delete",
               "organization-dsync-group-upsert",
+              "organization-dsync-sync-start",
               "organization-emu-domains-merged",
               "organization-emu-team-updated",
               "organization-emu-updated",
@@ -254325,6 +256183,8 @@
               "sandbox-alias-delete",
               "sandbox-drive-created",
               "sandbox-drive-deleted",
+              "sandbox-drive-snapshot-created",
+              "sandbox-drive-snapshot-deleted",
               "sandbox-signed-commit-identity-configured",
               "sandbox-snapshot-regions-updated",
               "scale",
@@ -254499,6 +256359,7 @@
               "vercel-app-installed",
               "vercel-app-tokens-revoked",
               "vercel-app-uninstalled",
+              "vercel-ci-repository-settings-updated",
               "vercel-toolbar",
               "vpc-peering-connection-accepted",
               "vpc-peering-connection-deleted",
@@ -254527,6 +256388,10 @@
                 "admin-agentic-provisioning-account-unlinked",
                 "admin-plan-updated",
                 "admin-preview-deployment-suffix-clear",
+                "admin-saml-idp-material-deleted",
+                "admin-saml-idp-material-set",
+                "admin-saml-sp-signing-key-created",
+                "admin-saml-sp-signing-key-updated",
                 "admin-secondary-email-added",
                 "admin-secondary-email-removed",
                 "admin-team-name-update",
@@ -254875,6 +256740,7 @@
                 "organization-dsync-delete",
                 "organization-dsync-group-delete",
                 "organization-dsync-group-upsert",
+                "organization-dsync-sync-start",
                 "organization-emu-domains-merged",
                 "organization-emu-team-updated",
                 "organization-emu-updated",
@@ -255048,6 +256914,8 @@
                 "sandbox-alias-delete",
                 "sandbox-drive-created",
                 "sandbox-drive-deleted",
+                "sandbox-drive-snapshot-created",
+                "sandbox-drive-snapshot-deleted",
                 "sandbox-signed-commit-identity-configured",
                 "sandbox-snapshot-regions-updated",
                 "scale",
@@ -255222,6 +257090,7 @@
                 "vercel-app-installed",
                 "vercel-app-tokens-revoked",
                 "vercel-app-uninstalled",
+                "vercel-ci-repository-settings-updated",
                 "vercel-toolbar",
                 "vpc-peering-connection-accepted",
                 "vpc-peering-connection-deleted",
@@ -256917,6 +258786,9 @@
                     "read-write",
                     "snapshot"
                   ]
+                },
+                "snapshot": {
+                  "type": "string"
                 }
               },
               "required": [

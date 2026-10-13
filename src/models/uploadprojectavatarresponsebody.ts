@@ -486,7 +486,22 @@ export type UploadProjectAvatarPassport = {
   deploymentType: UploadProjectAvatarDeploymentType;
 };
 
-export type UploadProjectAvatarPasswordProtection = {};
+export const UploadProjectAvatarProjectsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type UploadProjectAvatarProjectsDeploymentType = ClosedEnum<
+  typeof UploadProjectAvatarProjectsDeploymentType
+>;
+
+/**
+ * Password protection settings returned without the secret password hash.
+ */
+export type UploadProjectAvatarPasswordProtection = {
+  deploymentType: UploadProjectAvatarProjectsDeploymentType;
+};
 
 /**
  * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -2356,14 +2371,14 @@ export type UploadProjectAvatarCve55182MigrationAppliedFrom = ClosedEnum<
   typeof UploadProjectAvatarCve55182MigrationAppliedFrom
 >;
 
-export const UploadProjectAvatarProjectsDeploymentType = {
+export const UploadProjectAvatarProjectsResponseDeploymentType = {
   All: "all",
   AllExceptCustomDomains: "all_except_custom_domains",
   Preview: "preview",
   ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
 } as const;
-export type UploadProjectAvatarProjectsDeploymentType = ClosedEnum<
-  typeof UploadProjectAvatarProjectsDeploymentType
+export type UploadProjectAvatarProjectsResponseDeploymentType = ClosedEnum<
+  typeof UploadProjectAvatarProjectsResponseDeploymentType
 >;
 
 export type UploadProjectAvatarSsoProtection = {
@@ -2375,7 +2390,7 @@ export type UploadProjectAvatarSsoProtection = {
     | UploadProjectAvatarCve55182MigrationAppliedFrom
     | null
     | undefined;
-  deploymentType: UploadProjectAvatarProjectsDeploymentType;
+  deploymentType: UploadProjectAvatarProjectsResponseDeploymentType;
 };
 
 export type UploadProjectAvatarStaticIps = {
@@ -2925,6 +2940,9 @@ export type UploadProjectAvatarResponseBody = {
   outputDirectory?: string | null | undefined;
   passiveConnectConfigurationId?: string | null | undefined;
   passport?: UploadProjectAvatarPassport | null | undefined;
+  /**
+   * Password protection settings returned without the secret password hash.
+   */
   passwordProtection?: UploadProjectAvatarPasswordProtection | null | undefined;
   paused?: boolean | undefined;
   /**
@@ -3756,11 +3774,18 @@ export function uploadProjectAvatarPassportFromJSON(
 }
 
 /** @internal */
+export const UploadProjectAvatarProjectsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsDeploymentType> = z
+    .nativeEnum(UploadProjectAvatarProjectsDeploymentType);
+
+/** @internal */
 export const UploadProjectAvatarPasswordProtection$inboundSchema: z.ZodType<
   UploadProjectAvatarPasswordProtection,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = z.object({
+  deploymentType: UploadProjectAvatarProjectsDeploymentType$inboundSchema,
+});
 
 export function uploadProjectAvatarPasswordProtectionFromJSON(
   jsonString: string,
@@ -5004,9 +5029,9 @@ export const UploadProjectAvatarCve55182MigrationAppliedFrom$inboundSchema:
     .nativeEnum(UploadProjectAvatarCve55182MigrationAppliedFrom);
 
 /** @internal */
-export const UploadProjectAvatarProjectsDeploymentType$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsDeploymentType> = z
-    .nativeEnum(UploadProjectAvatarProjectsDeploymentType);
+export const UploadProjectAvatarProjectsResponseDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseDeploymentType> = z
+    .nativeEnum(UploadProjectAvatarProjectsResponseDeploymentType);
 
 /** @internal */
 export const UploadProjectAvatarSsoProtection$inboundSchema: z.ZodType<
@@ -5020,7 +5045,8 @@ export const UploadProjectAvatarSsoProtection$inboundSchema: z.ZodType<
   cve55182MigrationAppliedFrom: z.nullable(
     UploadProjectAvatarCve55182MigrationAppliedFrom$inboundSchema,
   ).optional(),
-  deploymentType: UploadProjectAvatarProjectsDeploymentType$inboundSchema,
+  deploymentType:
+    UploadProjectAvatarProjectsResponseDeploymentType$inboundSchema,
 });
 
 export function uploadProjectAvatarSsoProtectionFromJSON(

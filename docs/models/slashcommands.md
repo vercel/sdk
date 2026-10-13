@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SlashCommands } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { SlashCommands } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: SlashCommands = {
   command: "<value>",

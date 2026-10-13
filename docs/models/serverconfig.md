@@ -5,7 +5,7 @@ Authorization server metadata. Values override discovered metadata. Empty known 
 ## Example Usage
 
 ```typescript
-import { ServerConfig } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { ServerConfig } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: ServerConfig = {};
 ```

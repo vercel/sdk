@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Endpoint } from "@vercel/sdk/models/siftroute.js";
+import { Endpoint } from "@vercel/sdk/models/twohundredandforty.js";
 
 let value: Endpoint = {
   awsServiceName: "<value>",

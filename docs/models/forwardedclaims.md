@@ -5,7 +5,7 @@ Allow-list of extra claims to propagate, keyed by source (idToken). Only claims 
 ## Example Usage
 
 ```typescript
-import { ForwardedClaims } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { ForwardedClaims } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: ForwardedClaims = {};
 ```

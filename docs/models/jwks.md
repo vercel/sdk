@@ -5,7 +5,7 @@ Inline authorization server JSON Web Key Set.
 ## Example Usage
 
 ```typescript
-import { Jwks } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { Jwks } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: Jwks = {
   keys: [

@@ -9,8 +9,10 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  CreateProjectFrom,
-  CreateProjectFrom$inboundSchema,
+  CreateProjectFrom1,
+  CreateProjectFrom1$inboundSchema,
+  CreateProjectFrom2,
+  CreateProjectFrom2$inboundSchema,
   CreateProjectIpBuckets,
   CreateProjectIpBuckets$inboundSchema,
   CreateProjectMicrofrontends,
@@ -71,7 +73,7 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojectfrom.js";
+} from "./createprojectfrom1.js";
 import {
   Alias,
   Alias$inboundSchema,
@@ -111,6 +113,8 @@ import {
   GitProviderOptions$inboundSchema,
 } from "./internalroutesmitigate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateProjectFrom = CreateProjectFrom1 | CreateProjectFrom2;
 
 export const CreateProjectToProjectsResponse200Preset = {
   AllCustom: "all-custom",
@@ -156,7 +160,7 @@ export type CreateProjectProjectsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type CreateProjectCustomAllow = {
-  from: CreateProjectFrom;
+  from: CreateProjectFrom1 | CreateProjectFrom2;
   to: CreateProjectToProjects1 | CreateProjectToProjects2;
 };
 
@@ -294,6 +298,9 @@ export type CreateProjectResponseBody = {
   outputDirectory?: string | null | undefined;
   passiveConnectConfigurationId?: string | null | undefined;
   passport?: CreateProjectPassport | null | undefined;
+  /**
+   * Password protection settings returned without the secret password hash.
+   */
   passwordProtection?: CreateProjectPasswordProtection | null | undefined;
   paused?: boolean | undefined;
   /**
@@ -341,6 +348,26 @@ export type CreateProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: CreateProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const CreateProjectFrom$inboundSchema: z.ZodType<
+  CreateProjectFrom,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  CreateProjectFrom1$inboundSchema,
+  CreateProjectFrom2$inboundSchema,
+]);
+
+export function createProjectFromFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectFrom, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectFrom' from JSON`,
+  );
+}
 
 /** @internal */
 export const CreateProjectToProjectsResponse200Preset$inboundSchema:
@@ -419,7 +446,10 @@ export const CreateProjectCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: CreateProjectFrom$inboundSchema,
+  from: smartUnion([
+    CreateProjectFrom1$inboundSchema,
+    CreateProjectFrom2$inboundSchema,
+  ]),
   to: smartUnion([
     z.lazy(() => CreateProjectToProjects1$inboundSchema),
     z.lazy(() => CreateProjectToProjects2$inboundSchema),

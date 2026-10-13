@@ -7,7 +7,7 @@ import { remap as remap$ } from "../lib/primitives.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
-export type ConnectConnectorUpdateDataTypePhoton = {
+export type TypePhoton = {
   /**
    * Photon project secret.
    */
@@ -22,7 +22,7 @@ export type ConnectConnectorUpdateDataTypePhoton = {
   repairWebhook?: boolean | undefined;
 };
 
-export type ConnectConnectorUpdateDataTypeSendblue = {
+export type TypeSendblue = {
   /**
    * Sendblue API key id (`sb-api-key-id`).
    */
@@ -37,7 +37,7 @@ export type ConnectConnectorUpdateDataTypeSendblue = {
   phoneNumbers?: Array<string> | undefined;
 };
 
-export type ConnectConnectorUpdateDataTypeLinq = {
+export type TypeLinq = {
   /**
    * Linq partner API token for the shared line.
    */
@@ -45,14 +45,14 @@ export type ConnectConnectorUpdateDataTypeLinq = {
   phoneNumbers?: Array<string> | undefined;
 };
 
-export type ConnectConnectorUpdateDataTypeSnowflakeWif = {
+export type TypeSnowflakeWif = {
   /**
    * Snowflake account identifier.
    */
   accountIdentifier?: string | undefined;
 };
 
-export type ConnectConnectorUpdateDataTypeSnowflake = {
+export type TypeSnowflake = {
   /**
    * Snowflake account identifier.
    */
@@ -66,7 +66,7 @@ export type ConnectConnectorUpdateDataTypeSnowflake = {
 /**
  * Slack workspace metadata.
  */
-export type ConnectConnectorUpdateDataSlackTeam = {
+export type SlackTeam = {
   /**
    * Slack workspace ID.
    */
@@ -81,7 +81,7 @@ export type ConnectConnectorUpdateDataSlackTeam = {
   domain?: string | undefined;
 };
 
-export type ConnectConnectorUpdateDataSlashCommands = {
+export type SlashCommands = {
   /**
    * Slash command including its leading slash.
    */
@@ -114,7 +114,7 @@ export type ConnectConnectorUpdateData6Type = ClosedEnum<
   typeof ConnectConnectorUpdateData6Type
 >;
 
-export type ConnectConnectorUpdateDataShortcuts = {
+export type Shortcuts = {
   /**
    * Where Slack exposes the shortcut.
    */
@@ -133,7 +133,7 @@ export type ConnectConnectorUpdateDataShortcuts = {
   description: string;
 };
 
-export type ConnectConnectorUpdateDataTypeSlack = {
+export type TypeSlack = {
   /**
    * Slack app ID.
    */
@@ -153,7 +153,7 @@ export type ConnectConnectorUpdateDataTypeSlack = {
   /**
    * Slack workspace metadata.
    */
-  slackTeam?: ConnectConnectorUpdateDataSlackTeam | undefined;
+  slackTeam?: SlackTeam | undefined;
   /**
    * Slack request signing secret.
    */
@@ -173,18 +173,18 @@ export type ConnectConnectorUpdateDataTypeSlack = {
   /**
    * Slash commands configured for the managed Slack app.
    */
-  slashCommands?: Array<ConnectConnectorUpdateDataSlashCommands> | undefined;
+  slashCommands?: Array<SlashCommands> | undefined;
   /**
    * Global and message shortcuts configured for the Slack app.
    */
-  shortcuts?: Array<ConnectConnectorUpdateDataShortcuts> | undefined;
+  shortcuts?: Array<Shortcuts> | undefined;
   /**
    * Additional provider metadata stored with the connector.
    */
   extras?: { [k: string]: any } | undefined;
 };
 
-export type ConnectConnectorUpdateDataTypeSalesforce = {
+export type TypeSalesforce = {
   /**
    * Salesforce connected app consumer key.
    */
@@ -202,7 +202,7 @@ export type ConnectConnectorUpdateDataTypeSalesforce = {
 /**
  * Linear organization that owns the OAuth application.
  */
-export type ConnectConnectorUpdateDataOwnerOrganization = {
+export type OwnerOrganization = {
   /**
    * Linear organization ID.
    */
@@ -224,7 +224,7 @@ export type ConnectConnectorUpdateDataOwnerOrganization = {
 /**
  * Linear OAuth application metadata.
  */
-export type ConnectConnectorUpdateDataApplication = {
+export type Application = {
   /**
    * Linear OAuth application ID.
    */
@@ -283,7 +283,7 @@ export type ConnectConnectorUpdateDataApplication = {
   updatedAt?: string | undefined;
 };
 
-export type ConnectConnectorUpdateDataTypeLinear = {
+export type TypeLinear = {
   /**
    * Linear application ID.
    */
@@ -315,11 +315,11 @@ export type ConnectConnectorUpdateDataTypeLinear = {
   /**
    * Linear organization that owns the OAuth application.
    */
-  ownerOrganization?: ConnectConnectorUpdateDataOwnerOrganization | undefined;
+  ownerOrganization?: OwnerOrganization | undefined;
   /**
    * Linear OAuth application metadata.
    */
-  application?: ConnectConnectorUpdateDataApplication | undefined;
+  application?: Application | undefined;
   /**
    * Additional provider metadata stored with the connector.
    */
@@ -345,7 +345,7 @@ export type ConnectConnectorUpdateDataType = ClosedEnum<
 /**
  * GitHub App owner.
  */
-export type ConnectConnectorUpdateDataOwner = {
+export type Owner = {
   /**
    * GitHub App owner type.
    */
@@ -364,7 +364,7 @@ export type ConnectConnectorUpdateDataOwner = {
   name?: string | undefined;
 };
 
-export type ConnectConnectorUpdateDataTypeGithub = {
+export type TypeGithub = {
   /**
    * GitHub App numeric ID.
    */
@@ -384,7 +384,7 @@ export type ConnectConnectorUpdateDataTypeGithub = {
   /**
    * GitHub App owner.
    */
-  owner?: ConnectConnectorUpdateDataOwner | undefined;
+  owner?: Owner | undefined;
   /**
    * GitHub App OAuth client secret.
    */
@@ -442,7 +442,7 @@ export type ToUpdate = {
   expiresAt?: number | string | undefined;
 };
 
-export type ConnectConnectorUpdateDataTypeApiKey = {
+export type TypeApiKey = {
   /**
    * Stored API key value IDs to delete.
    */
@@ -464,18 +464,16 @@ export type ConnectConnectorUpdateDataTypeApiKey = {
 /**
  * Intended key use: signing or encryption.
  */
-export const ConnectConnectorUpdateDataUse = {
+export const Use = {
   Sig: "sig",
   Enc: "enc",
 } as const;
 /**
  * Intended key use: signing or encryption.
  */
-export type ConnectConnectorUpdateDataUse = ClosedEnum<
-  typeof ConnectConnectorUpdateDataUse
->;
+export type Use = ClosedEnum<typeof Use>;
 
-export type ConnectConnectorUpdateDataKeys = {
+export type Keys = {
   /**
    * JSON Web Key type.
    */
@@ -487,7 +485,7 @@ export type ConnectConnectorUpdateDataKeys = {
   /**
    * Intended key use: signing or encryption.
    */
-  use?: ConnectConnectorUpdateDataUse | undefined;
+  use?: Use | undefined;
   /**
    * Operations permitted for this key.
    */
@@ -502,18 +500,18 @@ export type ConnectConnectorUpdateDataKeys = {
 /**
  * Inline authorization server JSON Web Key Set.
  */
-export type ConnectConnectorUpdateDataJwks = {
+export type Jwks = {
   /**
    * JSON Web Keys published by the authorization server.
    */
-  keys: Array<ConnectConnectorUpdateDataKeys>;
+  keys: Array<Keys>;
   additionalProperties?: { [k: string]: any } | undefined;
 };
 
 /**
  * Authorization server metadata. Values override discovered metadata. Empty known string fields remove their stored overrides.
  */
-export type ConnectConnectorUpdateDataServerConfig = {
+export type ServerConfig = {
   /**
    * Authorization server issuer URL.
    */
@@ -537,7 +535,7 @@ export type ConnectConnectorUpdateDataServerConfig = {
   /**
    * Inline authorization server JSON Web Key Set.
    */
-  jwks?: ConnectConnectorUpdateDataJwks | undefined;
+  jwks?: Jwks | undefined;
   /**
    * OAuth token revocation endpoint URL.
    */
@@ -668,7 +666,7 @@ export type ConnectConnectorUpdateDataServerConfig = {
 /**
  * User authorization grant settings.
  */
-export type ConnectConnectorUpdateDataUserAuthorization = {
+export type UserAuthorization = {
   /**
    * Whether this OAuth grant is enabled.
    */
@@ -682,7 +680,7 @@ export type ConnectConnectorUpdateDataUserAuthorization = {
 /**
  * Refresh token settings.
  */
-export type ConnectConnectorUpdateDataRefreshTokens = {
+export type RefreshTokens = {
   /**
    * Whether this OAuth grant is enabled.
    */
@@ -692,7 +690,7 @@ export type ConnectConnectorUpdateDataRefreshTokens = {
 /**
  * Client credentials grant settings.
  */
-export type ConnectConnectorUpdateDataClientCredentials = {
+export type ClientCredentials = {
   /**
    * Whether this OAuth grant is enabled.
    */
@@ -706,7 +704,7 @@ export type ConnectConnectorUpdateDataClientCredentials = {
 /**
  * Allow-list of extra claims to propagate, keyed by source (idToken). Only claims named here and present in that source are exposed.
  */
-export type ConnectConnectorUpdateDataForwardedClaims = {
+export type ForwardedClaims = {
   /**
    * ID token claim names that Connect can expose.
    */
@@ -716,7 +714,7 @@ export type ConnectConnectorUpdateDataForwardedClaims = {
 /**
  * JWT bearer grant settings.
  */
-export type ConnectConnectorUpdateDataJwtBearer = {
+export type JwtBearer = {
   /**
    * Whether JWT bearer grants are enabled.
    */
@@ -754,7 +752,7 @@ export type ConnectConnectorUpdateDataJwtBearer = {
 /**
  * `private_key_jwt` client assertion settings.
  */
-export type ConnectConnectorUpdateDataClientAssertion = {
+export type ClientAssertion = {
   /**
    * OAuth client assertion type. Defaults to urn:ietf:params:oauth:client-assertion-type:jwt-bearer. An empty string clears the configured type.
    */
@@ -769,7 +767,7 @@ export type ConnectConnectorUpdateDataClientAssertion = {
   claims?: { [k: string]: any } | undefined;
 };
 
-export type ConnectConnectorUpdateDataTypeOauth = {
+export type TypeOauth = {
   /**
    * Authorization server base URL used for discovery.
    */
@@ -777,7 +775,7 @@ export type ConnectConnectorUpdateDataTypeOauth = {
   /**
    * Authorization server metadata. Values override discovered metadata. Empty known string fields remove their stored overrides.
    */
-  serverConfig?: ConnectConnectorUpdateDataServerConfig | undefined;
+  serverConfig?: ServerConfig | undefined;
   /**
    * OAuth client ID.
    */
@@ -809,19 +807,19 @@ export type ConnectConnectorUpdateDataTypeOauth = {
   /**
    * User authorization grant settings.
    */
-  userAuthorization?: ConnectConnectorUpdateDataUserAuthorization | undefined;
+  userAuthorization?: UserAuthorization | undefined;
   /**
    * Refresh token settings.
    */
-  refreshTokens?: ConnectConnectorUpdateDataRefreshTokens | undefined;
+  refreshTokens?: RefreshTokens | undefined;
   /**
    * Client credentials grant settings.
    */
-  clientCredentials?: ConnectConnectorUpdateDataClientCredentials | undefined;
+  clientCredentials?: ClientCredentials | undefined;
   /**
    * Allow-list of extra claims to propagate, keyed by source (idToken). Only claims named here and present in that source are exposed.
    */
-  forwardedClaims?: ConnectConnectorUpdateDataForwardedClaims | undefined;
+  forwardedClaims?: ForwardedClaims | undefined;
   /**
    * Default audience used when a token request omits one. An empty string clears the default.
    */
@@ -841,196 +839,160 @@ export type ConnectConnectorUpdateDataTypeOauth = {
   /**
    * JWT bearer grant settings.
    */
-  jwtBearer?: ConnectConnectorUpdateDataJwtBearer | undefined;
+  jwtBearer?: JwtBearer | undefined;
   /**
    * `private_key_jwt` client assertion settings.
    */
-  clientAssertion?: ConnectConnectorUpdateDataClientAssertion | undefined;
+  clientAssertion?: ClientAssertion | undefined;
 };
 
 /**
  * Provider configuration fields for the connector type.
  */
 export type ConnectConnectorUpdateData =
-  | ConnectConnectorUpdateDataTypeOauth
-  | ConnectConnectorUpdateDataTypeApiKey
-  | ConnectConnectorUpdateDataTypeGithub
-  | ConnectConnectorUpdateDataTypeLinear
-  | ConnectConnectorUpdateDataTypeSalesforce
-  | ConnectConnectorUpdateDataTypeSlack
-  | ConnectConnectorUpdateDataTypeSnowflake
-  | ConnectConnectorUpdateDataTypeSnowflakeWif
-  | ConnectConnectorUpdateDataTypeLinq
-  | ConnectConnectorUpdateDataTypeSendblue
-  | ConnectConnectorUpdateDataTypePhoton
+  | TypeOauth
+  | TypeApiKey
+  | TypeGithub
+  | TypeLinear
+  | TypeSalesforce
+  | TypeSlack
+  | TypeSnowflake
+  | TypeSnowflakeWif
+  | TypeLinq
+  | TypeSendblue
+  | TypePhoton
   | { [k: string]: any };
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypePhoton$Outbound = {
+export type TypePhoton$Outbound = {
   projectSecret?: string | undefined;
   webhookSecret?: string | undefined;
   repairWebhook?: boolean | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypePhoton$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataTypePhoton$Outbound,
+export const TypePhoton$outboundSchema: z.ZodType<
+  TypePhoton$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataTypePhoton
+  TypePhoton
 > = z.object({
   projectSecret: z.string().optional(),
   webhookSecret: z.string().optional(),
   repairWebhook: z.boolean().optional(),
 });
 
-export function connectConnectorUpdateDataTypePhotonToJSON(
-  connectConnectorUpdateDataTypePhoton: ConnectConnectorUpdateDataTypePhoton,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataTypePhoton$outboundSchema.parse(
-      connectConnectorUpdateDataTypePhoton,
-    ),
-  );
+export function typePhotonToJSON(typePhoton: TypePhoton): string {
+  return JSON.stringify(TypePhoton$outboundSchema.parse(typePhoton));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypeSendblue$Outbound = {
+export type TypeSendblue$Outbound = {
   apiKeyId?: string | undefined;
   apiSecretKey?: string | undefined;
   phoneNumbers?: Array<string> | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypeSendblue$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataTypeSendblue$Outbound,
+export const TypeSendblue$outboundSchema: z.ZodType<
+  TypeSendblue$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataTypeSendblue
+  TypeSendblue
 > = z.object({
   apiKeyId: z.string().optional(),
   apiSecretKey: z.string().optional(),
   phoneNumbers: z.array(z.string()).optional(),
 });
 
-export function connectConnectorUpdateDataTypeSendblueToJSON(
-  connectConnectorUpdateDataTypeSendblue:
-    ConnectConnectorUpdateDataTypeSendblue,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataTypeSendblue$outboundSchema.parse(
-      connectConnectorUpdateDataTypeSendblue,
-    ),
-  );
+export function typeSendblueToJSON(typeSendblue: TypeSendblue): string {
+  return JSON.stringify(TypeSendblue$outboundSchema.parse(typeSendblue));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypeLinq$Outbound = {
+export type TypeLinq$Outbound = {
   apiToken?: string | undefined;
   phoneNumbers?: Array<string> | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypeLinq$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataTypeLinq$Outbound,
+export const TypeLinq$outboundSchema: z.ZodType<
+  TypeLinq$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataTypeLinq
+  TypeLinq
 > = z.object({
   apiToken: z.string().optional(),
   phoneNumbers: z.array(z.string()).optional(),
 });
 
-export function connectConnectorUpdateDataTypeLinqToJSON(
-  connectConnectorUpdateDataTypeLinq: ConnectConnectorUpdateDataTypeLinq,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataTypeLinq$outboundSchema.parse(
-      connectConnectorUpdateDataTypeLinq,
-    ),
-  );
+export function typeLinqToJSON(typeLinq: TypeLinq): string {
+  return JSON.stringify(TypeLinq$outboundSchema.parse(typeLinq));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypeSnowflakeWif$Outbound = {
+export type TypeSnowflakeWif$Outbound = {
   accountIdentifier?: string | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypeSnowflakeWif$outboundSchema:
-  z.ZodType<
-    ConnectConnectorUpdateDataTypeSnowflakeWif$Outbound,
-    z.ZodTypeDef,
-    ConnectConnectorUpdateDataTypeSnowflakeWif
-  > = z.object({
-    accountIdentifier: z.string().optional(),
-  });
+export const TypeSnowflakeWif$outboundSchema: z.ZodType<
+  TypeSnowflakeWif$Outbound,
+  z.ZodTypeDef,
+  TypeSnowflakeWif
+> = z.object({
+  accountIdentifier: z.string().optional(),
+});
 
-export function connectConnectorUpdateDataTypeSnowflakeWifToJSON(
-  connectConnectorUpdateDataTypeSnowflakeWif:
-    ConnectConnectorUpdateDataTypeSnowflakeWif,
+export function typeSnowflakeWifToJSON(
+  typeSnowflakeWif: TypeSnowflakeWif,
 ): string {
   return JSON.stringify(
-    ConnectConnectorUpdateDataTypeSnowflakeWif$outboundSchema.parse(
-      connectConnectorUpdateDataTypeSnowflakeWif,
-    ),
+    TypeSnowflakeWif$outboundSchema.parse(typeSnowflakeWif),
   );
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypeSnowflake$Outbound = {
+export type TypeSnowflake$Outbound = {
   accountIdentifier?: string | undefined;
   defaultSessionRole?: string | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypeSnowflake$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataTypeSnowflake$Outbound,
+export const TypeSnowflake$outboundSchema: z.ZodType<
+  TypeSnowflake$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataTypeSnowflake
+  TypeSnowflake
 > = z.object({
   accountIdentifier: z.string().optional(),
   defaultSessionRole: z.string().optional(),
 });
 
-export function connectConnectorUpdateDataTypeSnowflakeToJSON(
-  connectConnectorUpdateDataTypeSnowflake:
-    ConnectConnectorUpdateDataTypeSnowflake,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataTypeSnowflake$outboundSchema.parse(
-      connectConnectorUpdateDataTypeSnowflake,
-    ),
-  );
+export function typeSnowflakeToJSON(typeSnowflake: TypeSnowflake): string {
+  return JSON.stringify(TypeSnowflake$outboundSchema.parse(typeSnowflake));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataSlackTeam$Outbound = {
+export type SlackTeam$Outbound = {
   id: string;
   name?: string | undefined;
   domain?: string | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataSlackTeam$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataSlackTeam$Outbound,
+export const SlackTeam$outboundSchema: z.ZodType<
+  SlackTeam$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataSlackTeam
+  SlackTeam
 > = z.object({
   id: z.string(),
   name: z.string().optional(),
   domain: z.string().optional(),
 });
 
-export function connectConnectorUpdateDataSlackTeamToJSON(
-  connectConnectorUpdateDataSlackTeam: ConnectConnectorUpdateDataSlackTeam,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataSlackTeam$outboundSchema.parse(
-      connectConnectorUpdateDataSlackTeam,
-    ),
-  );
+export function slackTeamToJSON(slackTeam: SlackTeam): string {
+  return JSON.stringify(SlackTeam$outboundSchema.parse(slackTeam));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataSlashCommands$Outbound = {
+export type SlashCommands$Outbound = {
   command: string;
   description: string;
   usageHint?: string | undefined;
@@ -1038,10 +1000,10 @@ export type ConnectConnectorUpdateDataSlashCommands$Outbound = {
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataSlashCommands$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataSlashCommands$Outbound,
+export const SlashCommands$outboundSchema: z.ZodType<
+  SlashCommands$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataSlashCommands
+  SlashCommands
 > = z.object({
   command: z.string(),
   description: z.string(),
@@ -1049,15 +1011,8 @@ export const ConnectConnectorUpdateDataSlashCommands$outboundSchema: z.ZodType<
   shouldEscape: z.boolean().optional(),
 });
 
-export function connectConnectorUpdateDataSlashCommandsToJSON(
-  connectConnectorUpdateDataSlashCommands:
-    ConnectConnectorUpdateDataSlashCommands,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataSlashCommands$outboundSchema.parse(
-      connectConnectorUpdateDataSlashCommands,
-    ),
-  );
+export function slashCommandsToJSON(slashCommands: SlashCommands): string {
+  return JSON.stringify(SlashCommands$outboundSchema.parse(slashCommands));
 }
 
 /** @internal */
@@ -1066,7 +1021,7 @@ export const ConnectConnectorUpdateData6Type$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ConnectConnectorUpdateData6Type);
 
 /** @internal */
-export type ConnectConnectorUpdateDataShortcuts$Outbound = {
+export type Shortcuts$Outbound = {
   type: string;
   name: string;
   callbackId: string;
@@ -1074,10 +1029,10 @@ export type ConnectConnectorUpdateDataShortcuts$Outbound = {
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataShortcuts$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataShortcuts$Outbound,
+export const Shortcuts$outboundSchema: z.ZodType<
+  Shortcuts$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataShortcuts
+  Shortcuts
 > = z.object({
   type: ConnectConnectorUpdateData6Type$outboundSchema,
   name: z.string(),
@@ -1085,100 +1040,74 @@ export const ConnectConnectorUpdateDataShortcuts$outboundSchema: z.ZodType<
   description: z.string(),
 });
 
-export function connectConnectorUpdateDataShortcutsToJSON(
-  connectConnectorUpdateDataShortcuts: ConnectConnectorUpdateDataShortcuts,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataShortcuts$outboundSchema.parse(
-      connectConnectorUpdateDataShortcuts,
-    ),
-  );
+export function shortcutsToJSON(shortcuts: Shortcuts): string {
+  return JSON.stringify(Shortcuts$outboundSchema.parse(shortcuts));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypeSlack$Outbound = {
+export type TypeSlack$Outbound = {
   appId?: string | undefined;
   appName?: string | undefined;
   clientId?: string | undefined;
   clientSecret?: string | undefined;
-  slackTeam?: ConnectConnectorUpdateDataSlackTeam$Outbound | undefined;
+  slackTeam?: SlackTeam$Outbound | undefined;
   signingSecret?: string | undefined;
   verificationToken?: string | undefined;
   botScopes?: Array<string> | undefined;
   userScopes?: Array<string> | undefined;
-  slashCommands?:
-    | Array<ConnectConnectorUpdateDataSlashCommands$Outbound>
-    | undefined;
-  shortcuts?: Array<ConnectConnectorUpdateDataShortcuts$Outbound> | undefined;
+  slashCommands?: Array<SlashCommands$Outbound> | undefined;
+  shortcuts?: Array<Shortcuts$Outbound> | undefined;
   extras?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypeSlack$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataTypeSlack$Outbound,
+export const TypeSlack$outboundSchema: z.ZodType<
+  TypeSlack$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataTypeSlack
+  TypeSlack
 > = z.object({
   appId: z.string().optional(),
   appName: z.string().optional(),
   clientId: z.string().optional(),
   clientSecret: z.string().optional(),
-  slackTeam: z.lazy(() => ConnectConnectorUpdateDataSlackTeam$outboundSchema)
-    .optional(),
+  slackTeam: z.lazy(() => SlackTeam$outboundSchema).optional(),
   signingSecret: z.string().optional(),
   verificationToken: z.string().optional(),
   botScopes: z.array(z.string()).optional(),
   userScopes: z.array(z.string()).optional(),
-  slashCommands: z.array(
-    z.lazy(() => ConnectConnectorUpdateDataSlashCommands$outboundSchema),
-  ).optional(),
-  shortcuts: z.array(
-    z.lazy(() => ConnectConnectorUpdateDataShortcuts$outboundSchema),
-  ).optional(),
+  slashCommands: z.array(z.lazy(() => SlashCommands$outboundSchema)).optional(),
+  shortcuts: z.array(z.lazy(() => Shortcuts$outboundSchema)).optional(),
   extras: z.record(z.any()).optional(),
 });
 
-export function connectConnectorUpdateDataTypeSlackToJSON(
-  connectConnectorUpdateDataTypeSlack: ConnectConnectorUpdateDataTypeSlack,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataTypeSlack$outboundSchema.parse(
-      connectConnectorUpdateDataTypeSlack,
-    ),
-  );
+export function typeSlackToJSON(typeSlack: TypeSlack): string {
+  return JSON.stringify(TypeSlack$outboundSchema.parse(typeSlack));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypeSalesforce$Outbound = {
+export type TypeSalesforce$Outbound = {
   consumerKey?: string | undefined;
   consumerSecret?: string | undefined;
   loginHost?: string | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypeSalesforce$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataTypeSalesforce$Outbound,
+export const TypeSalesforce$outboundSchema: z.ZodType<
+  TypeSalesforce$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataTypeSalesforce
+  TypeSalesforce
 > = z.object({
   consumerKey: z.string().optional(),
   consumerSecret: z.string().optional(),
   loginHost: z.string().optional(),
 });
 
-export function connectConnectorUpdateDataTypeSalesforceToJSON(
-  connectConnectorUpdateDataTypeSalesforce:
-    ConnectConnectorUpdateDataTypeSalesforce,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataTypeSalesforce$outboundSchema.parse(
-      connectConnectorUpdateDataTypeSalesforce,
-    ),
-  );
+export function typeSalesforceToJSON(typeSalesforce: TypeSalesforce): string {
+  return JSON.stringify(TypeSalesforce$outboundSchema.parse(typeSalesforce));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataOwnerOrganization$Outbound = {
+export type OwnerOrganization$Outbound = {
   id: string;
   slug: string;
   name: string;
@@ -1186,31 +1115,27 @@ export type ConnectConnectorUpdateDataOwnerOrganization$Outbound = {
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataOwnerOrganization$outboundSchema:
-  z.ZodType<
-    ConnectConnectorUpdateDataOwnerOrganization$Outbound,
-    z.ZodTypeDef,
-    ConnectConnectorUpdateDataOwnerOrganization
-  > = z.object({
-    id: z.string(),
-    slug: z.string(),
-    name: z.string(),
-    logoUrl: z.nullable(z.string()).optional(),
-  });
+export const OwnerOrganization$outboundSchema: z.ZodType<
+  OwnerOrganization$Outbound,
+  z.ZodTypeDef,
+  OwnerOrganization
+> = z.object({
+  id: z.string(),
+  slug: z.string(),
+  name: z.string(),
+  logoUrl: z.nullable(z.string()).optional(),
+});
 
-export function connectConnectorUpdateDataOwnerOrganizationToJSON(
-  connectConnectorUpdateDataOwnerOrganization:
-    ConnectConnectorUpdateDataOwnerOrganization,
+export function ownerOrganizationToJSON(
+  ownerOrganization: OwnerOrganization,
 ): string {
   return JSON.stringify(
-    ConnectConnectorUpdateDataOwnerOrganization$outboundSchema.parse(
-      connectConnectorUpdateDataOwnerOrganization,
-    ),
+    OwnerOrganization$outboundSchema.parse(ownerOrganization),
   );
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataApplication$Outbound = {
+export type Application$Outbound = {
   id: string;
   clientId: string;
   name: string;
@@ -1228,10 +1153,10 @@ export type ConnectConnectorUpdateDataApplication$Outbound = {
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataApplication$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataApplication$Outbound,
+export const Application$outboundSchema: z.ZodType<
+  Application$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataApplication
+  Application
 > = z.object({
   id: z.string(),
   clientId: z.string(),
@@ -1249,18 +1174,12 @@ export const ConnectConnectorUpdateDataApplication$outboundSchema: z.ZodType<
   updatedAt: z.string().optional(),
 });
 
-export function connectConnectorUpdateDataApplicationToJSON(
-  connectConnectorUpdateDataApplication: ConnectConnectorUpdateDataApplication,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataApplication$outboundSchema.parse(
-      connectConnectorUpdateDataApplication,
-    ),
-  );
+export function applicationToJSON(application: Application): string {
+  return JSON.stringify(Application$outboundSchema.parse(application));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypeLinear$Outbound = {
+export type TypeLinear$Outbound = {
   appId?: string | undefined;
   appName?: string | undefined;
   clientId?: string | undefined;
@@ -1268,18 +1187,16 @@ export type ConnectConnectorUpdateDataTypeLinear$Outbound = {
   webhookSecret?: string | undefined;
   appScopes?: Array<string> | undefined;
   userScopes?: Array<string> | undefined;
-  ownerOrganization?:
-    | ConnectConnectorUpdateDataOwnerOrganization$Outbound
-    | undefined;
-  application?: ConnectConnectorUpdateDataApplication$Outbound | undefined;
+  ownerOrganization?: OwnerOrganization$Outbound | undefined;
+  application?: Application$Outbound | undefined;
   extras?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypeLinear$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataTypeLinear$Outbound,
+export const TypeLinear$outboundSchema: z.ZodType<
+  TypeLinear$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataTypeLinear
+  TypeLinear
 > = z.object({
   appId: z.string().optional(),
   appName: z.string().optional(),
@@ -1288,23 +1205,13 @@ export const ConnectConnectorUpdateDataTypeLinear$outboundSchema: z.ZodType<
   webhookSecret: z.string().optional(),
   appScopes: z.array(z.string()).optional(),
   userScopes: z.array(z.string()).optional(),
-  ownerOrganization: z.lazy(() =>
-    ConnectConnectorUpdateDataOwnerOrganization$outboundSchema
-  ).optional(),
-  application: z.lazy(() =>
-    ConnectConnectorUpdateDataApplication$outboundSchema
-  ).optional(),
+  ownerOrganization: z.lazy(() => OwnerOrganization$outboundSchema).optional(),
+  application: z.lazy(() => Application$outboundSchema).optional(),
   extras: z.record(z.any()).optional(),
 });
 
-export function connectConnectorUpdateDataTypeLinearToJSON(
-  connectConnectorUpdateDataTypeLinear: ConnectConnectorUpdateDataTypeLinear,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataTypeLinear$outboundSchema.parse(
-      connectConnectorUpdateDataTypeLinear,
-    ),
-  );
+export function typeLinearToJSON(typeLinear: TypeLinear): string {
+  return JSON.stringify(TypeLinear$outboundSchema.parse(typeLinear));
 }
 
 /** @internal */
@@ -1313,7 +1220,7 @@ export const ConnectConnectorUpdateDataType$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ConnectConnectorUpdateDataType);
 
 /** @internal */
-export type ConnectConnectorUpdateDataOwner$Outbound = {
+export type Owner$Outbound = {
   type: string;
   id: number;
   slug: string;
@@ -1321,10 +1228,10 @@ export type ConnectConnectorUpdateDataOwner$Outbound = {
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataOwner$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataOwner$Outbound,
+export const Owner$outboundSchema: z.ZodType<
+  Owner$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataOwner
+  Owner
 > = z.object({
   type: ConnectConnectorUpdateDataType$outboundSchema,
   id: z.number().int(),
@@ -1332,23 +1239,17 @@ export const ConnectConnectorUpdateDataOwner$outboundSchema: z.ZodType<
   name: z.string().optional(),
 });
 
-export function connectConnectorUpdateDataOwnerToJSON(
-  connectConnectorUpdateDataOwner: ConnectConnectorUpdateDataOwner,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataOwner$outboundSchema.parse(
-      connectConnectorUpdateDataOwner,
-    ),
-  );
+export function ownerToJSON(owner: Owner): string {
+  return JSON.stringify(Owner$outboundSchema.parse(owner));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypeGithub$Outbound = {
+export type TypeGithub$Outbound = {
   appId?: number | undefined;
   appSlug?: string | undefined;
   appName?: string | undefined;
   clientId?: string | undefined;
-  owner?: ConnectConnectorUpdateDataOwner$Outbound | undefined;
+  owner?: Owner$Outbound | undefined;
   clientSecret?: string | undefined;
   privateKeyPem?: string | undefined;
   webhookSecret?: string | undefined;
@@ -1356,31 +1257,24 @@ export type ConnectConnectorUpdateDataTypeGithub$Outbound = {
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypeGithub$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataTypeGithub$Outbound,
+export const TypeGithub$outboundSchema: z.ZodType<
+  TypeGithub$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataTypeGithub
+  TypeGithub
 > = z.object({
   appId: z.number().int().optional(),
   appSlug: z.string().optional(),
   appName: z.string().optional(),
   clientId: z.string().optional(),
-  owner: z.lazy(() => ConnectConnectorUpdateDataOwner$outboundSchema)
-    .optional(),
+  owner: z.lazy(() => Owner$outboundSchema).optional(),
   clientSecret: z.string().optional(),
   privateKeyPem: z.string().optional(),
   webhookSecret: z.string().optional(),
   extras: z.record(z.any()).optional(),
 });
 
-export function connectConnectorUpdateDataTypeGithubToJSON(
-  connectConnectorUpdateDataTypeGithub: ConnectConnectorUpdateDataTypeGithub,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataTypeGithub$outboundSchema.parse(
-      connectConnectorUpdateDataTypeGithub,
-    ),
-  );
+export function typeGithubToJSON(typeGithub: TypeGithub): string {
+  return JSON.stringify(TypeGithub$outboundSchema.parse(typeGithub));
 }
 
 /** @internal */
@@ -1444,7 +1338,7 @@ export function toUpdateToJSON(toUpdate: ToUpdate): string {
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypeApiKey$Outbound = {
+export type TypeApiKey$Outbound = {
   toDelete?: Array<string> | undefined;
   toAdd?: Array<ToAdd$Outbound> | undefined;
   toUpdate?: Array<ToUpdate$Outbound> | undefined;
@@ -1452,10 +1346,10 @@ export type ConnectConnectorUpdateDataTypeApiKey$Outbound = {
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypeApiKey$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataTypeApiKey$Outbound,
+export const TypeApiKey$outboundSchema: z.ZodType<
+  TypeApiKey$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataTypeApiKey
+  TypeApiKey
 > = z.object({
   toDelete: z.array(z.string()).optional(),
   toAdd: z.array(z.lazy(() => ToAdd$outboundSchema)).optional(),
@@ -1463,23 +1357,17 @@ export const ConnectConnectorUpdateDataTypeApiKey$outboundSchema: z.ZodType<
   instructions: z.string().optional(),
 });
 
-export function connectConnectorUpdateDataTypeApiKeyToJSON(
-  connectConnectorUpdateDataTypeApiKey: ConnectConnectorUpdateDataTypeApiKey,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataTypeApiKey$outboundSchema.parse(
-      connectConnectorUpdateDataTypeApiKey,
-    ),
-  );
+export function typeApiKeyToJSON(typeApiKey: TypeApiKey): string {
+  return JSON.stringify(TypeApiKey$outboundSchema.parse(typeApiKey));
 }
 
 /** @internal */
-export const ConnectConnectorUpdateDataUse$outboundSchema: z.ZodNativeEnum<
-  typeof ConnectConnectorUpdateDataUse
-> = z.nativeEnum(ConnectConnectorUpdateDataUse);
+export const Use$outboundSchema: z.ZodNativeEnum<typeof Use> = z.nativeEnum(
+  Use,
+);
 
 /** @internal */
-export type ConnectConnectorUpdateDataKeys$Outbound = {
+export type Keys$Outbound = {
   kty: string;
   kid?: string | undefined;
   use?: string | undefined;
@@ -1489,78 +1377,60 @@ export type ConnectConnectorUpdateDataKeys$Outbound = {
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataKeys$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataKeys$Outbound,
-  z.ZodTypeDef,
-  ConnectConnectorUpdateDataKeys
-> = z.object({
-  kty: z.string(),
-  kid: z.string().optional(),
-  use: ConnectConnectorUpdateDataUse$outboundSchema.optional(),
-  keyOps: z.array(z.string()).optional(),
-  alg: z.string().optional(),
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      keyOps: "key_ops",
-      additionalProperties: null,
-    }),
-  };
-});
+export const Keys$outboundSchema: z.ZodType<Keys$Outbound, z.ZodTypeDef, Keys> =
+  z.object({
+    kty: z.string(),
+    kid: z.string().optional(),
+    use: Use$outboundSchema.optional(),
+    keyOps: z.array(z.string()).optional(),
+    alg: z.string().optional(),
+    additionalProperties: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        keyOps: "key_ops",
+        additionalProperties: null,
+      }),
+    };
+  });
 
-export function connectConnectorUpdateDataKeysToJSON(
-  connectConnectorUpdateDataKeys: ConnectConnectorUpdateDataKeys,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataKeys$outboundSchema.parse(
-      connectConnectorUpdateDataKeys,
-    ),
-  );
+export function keysToJSON(keys: Keys): string {
+  return JSON.stringify(Keys$outboundSchema.parse(keys));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataJwks$Outbound = {
-  keys: Array<ConnectConnectorUpdateDataKeys$Outbound>;
+export type Jwks$Outbound = {
+  keys: Array<Keys$Outbound>;
   [additionalProperties: string]: unknown;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataJwks$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataJwks$Outbound,
-  z.ZodTypeDef,
-  ConnectConnectorUpdateDataJwks
-> = z.object({
-  keys: z.array(z.lazy(() => ConnectConnectorUpdateDataKeys$outboundSchema)),
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      additionalProperties: null,
-    }),
-  };
-});
+export const Jwks$outboundSchema: z.ZodType<Jwks$Outbound, z.ZodTypeDef, Jwks> =
+  z.object({
+    keys: z.array(z.lazy(() => Keys$outboundSchema)),
+    additionalProperties: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        additionalProperties: null,
+      }),
+    };
+  });
 
-export function connectConnectorUpdateDataJwksToJSON(
-  connectConnectorUpdateDataJwks: ConnectConnectorUpdateDataJwks,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataJwks$outboundSchema.parse(
-      connectConnectorUpdateDataJwks,
-    ),
-  );
+export function jwksToJSON(jwks: Jwks): string {
+  return JSON.stringify(Jwks$outboundSchema.parse(jwks));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataServerConfig$Outbound = {
+export type ServerConfig$Outbound = {
   issuer?: string | undefined;
   authorization_endpoint?: string | undefined;
   token_endpoint?: string | undefined;
   userinfo_endpoint?: string | undefined;
   jwks_uri?: string | undefined;
-  jwks?: ConnectConnectorUpdateDataJwks$Outbound | undefined;
+  jwks?: Jwks$Outbound | undefined;
   revocation_endpoint?: string | undefined;
   introspection_endpoint?: string | undefined;
   end_session_endpoint?: string | undefined;
@@ -1596,17 +1466,17 @@ export type ConnectConnectorUpdateDataServerConfig$Outbound = {
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataServerConfig$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataServerConfig$Outbound,
+export const ServerConfig$outboundSchema: z.ZodType<
+  ServerConfig$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataServerConfig
+  ServerConfig
 > = z.object({
   issuer: z.string().optional(),
   authorizationEndpoint: z.string().optional(),
   tokenEndpoint: z.string().optional(),
   userinfoEndpoint: z.string().optional(),
   jwksUri: z.string().optional(),
-  jwks: z.lazy(() => ConnectConnectorUpdateDataJwks$outboundSchema).optional(),
+  jwks: z.lazy(() => Jwks$outboundSchema).optional(),
   revocationEndpoint: z.string().optional(),
   introspectionEndpoint: z.string().optional(),
   endSessionEndpoint: z.string().optional(),
@@ -1691,126 +1561,98 @@ export const ConnectConnectorUpdateDataServerConfig$outboundSchema: z.ZodType<
   };
 });
 
-export function connectConnectorUpdateDataServerConfigToJSON(
-  connectConnectorUpdateDataServerConfig:
-    ConnectConnectorUpdateDataServerConfig,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataServerConfig$outboundSchema.parse(
-      connectConnectorUpdateDataServerConfig,
-    ),
-  );
+export function serverConfigToJSON(serverConfig: ServerConfig): string {
+  return JSON.stringify(ServerConfig$outboundSchema.parse(serverConfig));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataUserAuthorization$Outbound = {
+export type UserAuthorization$Outbound = {
   enabled: boolean;
   scopes?: Array<string> | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataUserAuthorization$outboundSchema:
-  z.ZodType<
-    ConnectConnectorUpdateDataUserAuthorization$Outbound,
-    z.ZodTypeDef,
-    ConnectConnectorUpdateDataUserAuthorization
-  > = z.object({
-    enabled: z.boolean(),
-    scopes: z.array(z.string()).optional(),
-  });
+export const UserAuthorization$outboundSchema: z.ZodType<
+  UserAuthorization$Outbound,
+  z.ZodTypeDef,
+  UserAuthorization
+> = z.object({
+  enabled: z.boolean(),
+  scopes: z.array(z.string()).optional(),
+});
 
-export function connectConnectorUpdateDataUserAuthorizationToJSON(
-  connectConnectorUpdateDataUserAuthorization:
-    ConnectConnectorUpdateDataUserAuthorization,
+export function userAuthorizationToJSON(
+  userAuthorization: UserAuthorization,
 ): string {
   return JSON.stringify(
-    ConnectConnectorUpdateDataUserAuthorization$outboundSchema.parse(
-      connectConnectorUpdateDataUserAuthorization,
-    ),
+    UserAuthorization$outboundSchema.parse(userAuthorization),
   );
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataRefreshTokens$Outbound = {
+export type RefreshTokens$Outbound = {
   enabled: boolean;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataRefreshTokens$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataRefreshTokens$Outbound,
+export const RefreshTokens$outboundSchema: z.ZodType<
+  RefreshTokens$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataRefreshTokens
+  RefreshTokens
 > = z.object({
   enabled: z.boolean(),
 });
 
-export function connectConnectorUpdateDataRefreshTokensToJSON(
-  connectConnectorUpdateDataRefreshTokens:
-    ConnectConnectorUpdateDataRefreshTokens,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataRefreshTokens$outboundSchema.parse(
-      connectConnectorUpdateDataRefreshTokens,
-    ),
-  );
+export function refreshTokensToJSON(refreshTokens: RefreshTokens): string {
+  return JSON.stringify(RefreshTokens$outboundSchema.parse(refreshTokens));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataClientCredentials$Outbound = {
+export type ClientCredentials$Outbound = {
   enabled: boolean;
   scopes?: Array<string> | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataClientCredentials$outboundSchema:
-  z.ZodType<
-    ConnectConnectorUpdateDataClientCredentials$Outbound,
-    z.ZodTypeDef,
-    ConnectConnectorUpdateDataClientCredentials
-  > = z.object({
-    enabled: z.boolean(),
-    scopes: z.array(z.string()).optional(),
-  });
+export const ClientCredentials$outboundSchema: z.ZodType<
+  ClientCredentials$Outbound,
+  z.ZodTypeDef,
+  ClientCredentials
+> = z.object({
+  enabled: z.boolean(),
+  scopes: z.array(z.string()).optional(),
+});
 
-export function connectConnectorUpdateDataClientCredentialsToJSON(
-  connectConnectorUpdateDataClientCredentials:
-    ConnectConnectorUpdateDataClientCredentials,
+export function clientCredentialsToJSON(
+  clientCredentials: ClientCredentials,
 ): string {
   return JSON.stringify(
-    ConnectConnectorUpdateDataClientCredentials$outboundSchema.parse(
-      connectConnectorUpdateDataClientCredentials,
-    ),
+    ClientCredentials$outboundSchema.parse(clientCredentials),
   );
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataForwardedClaims$Outbound = {
+export type ForwardedClaims$Outbound = {
   idToken?: Array<string> | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataForwardedClaims$outboundSchema:
-  z.ZodType<
-    ConnectConnectorUpdateDataForwardedClaims$Outbound,
-    z.ZodTypeDef,
-    ConnectConnectorUpdateDataForwardedClaims
-  > = z.object({
-    idToken: z.array(z.string()).optional(),
-  });
+export const ForwardedClaims$outboundSchema: z.ZodType<
+  ForwardedClaims$Outbound,
+  z.ZodTypeDef,
+  ForwardedClaims
+> = z.object({
+  idToken: z.array(z.string()).optional(),
+});
 
-export function connectConnectorUpdateDataForwardedClaimsToJSON(
-  connectConnectorUpdateDataForwardedClaims:
-    ConnectConnectorUpdateDataForwardedClaims,
+export function forwardedClaimsToJSON(
+  forwardedClaims: ForwardedClaims,
 ): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataForwardedClaims$outboundSchema.parse(
-      connectConnectorUpdateDataForwardedClaims,
-    ),
-  );
+  return JSON.stringify(ForwardedClaims$outboundSchema.parse(forwardedClaims));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataJwtBearer$Outbound = {
+export type JwtBearer$Outbound = {
   enabled?: boolean | undefined;
   scopes?: Array<string> | undefined;
   sub?: string | undefined;
@@ -1822,10 +1664,10 @@ export type ConnectConnectorUpdateDataJwtBearer$Outbound = {
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataJwtBearer$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataJwtBearer$Outbound,
+export const JwtBearer$outboundSchema: z.ZodType<
+  JwtBearer$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataJwtBearer
+  JwtBearer
 > = z.object({
   enabled: z.boolean().optional(),
   scopes: z.array(z.string()).optional(),
@@ -1837,50 +1679,38 @@ export const ConnectConnectorUpdateDataJwtBearer$outboundSchema: z.ZodType<
   useClientCredentials: z.boolean().optional(),
 });
 
-export function connectConnectorUpdateDataJwtBearerToJSON(
-  connectConnectorUpdateDataJwtBearer: ConnectConnectorUpdateDataJwtBearer,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataJwtBearer$outboundSchema.parse(
-      connectConnectorUpdateDataJwtBearer,
-    ),
-  );
+export function jwtBearerToJSON(jwtBearer: JwtBearer): string {
+  return JSON.stringify(JwtBearer$outboundSchema.parse(jwtBearer));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataClientAssertion$Outbound = {
+export type ClientAssertion$Outbound = {
   type?: string | undefined;
   ttl?: number | undefined;
   claims?: { [k: string]: any } | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataClientAssertion$outboundSchema:
-  z.ZodType<
-    ConnectConnectorUpdateDataClientAssertion$Outbound,
-    z.ZodTypeDef,
-    ConnectConnectorUpdateDataClientAssertion
-  > = z.object({
-    type: z.string().optional(),
-    ttl: z.number().optional(),
-    claims: z.record(z.any()).optional(),
-  });
+export const ClientAssertion$outboundSchema: z.ZodType<
+  ClientAssertion$Outbound,
+  z.ZodTypeDef,
+  ClientAssertion
+> = z.object({
+  type: z.string().optional(),
+  ttl: z.number().optional(),
+  claims: z.record(z.any()).optional(),
+});
 
-export function connectConnectorUpdateDataClientAssertionToJSON(
-  connectConnectorUpdateDataClientAssertion:
-    ConnectConnectorUpdateDataClientAssertion,
+export function clientAssertionToJSON(
+  clientAssertion: ClientAssertion,
 ): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataClientAssertion$outboundSchema.parse(
-      connectConnectorUpdateDataClientAssertion,
-    ),
-  );
+  return JSON.stringify(ClientAssertion$outboundSchema.parse(clientAssertion));
 }
 
 /** @internal */
-export type ConnectConnectorUpdateDataTypeOauth$Outbound = {
+export type TypeOauth$Outbound = {
   serverUrl?: string | undefined;
-  serverConfig?: ConnectConnectorUpdateDataServerConfig$Outbound | undefined;
+  serverConfig?: ServerConfig$Outbound | undefined;
   clientId?: string | undefined;
   clientName?: string | undefined;
   clientSecret?: string | undefined;
@@ -1888,36 +1718,26 @@ export type ConnectConnectorUpdateDataTypeOauth$Outbound = {
   responseType?: string | undefined;
   pkceRequired?: boolean | undefined;
   codeChallengeMethod?: string | undefined;
-  userAuthorization?:
-    | ConnectConnectorUpdateDataUserAuthorization$Outbound
-    | undefined;
-  refreshTokens?: ConnectConnectorUpdateDataRefreshTokens$Outbound | undefined;
-  clientCredentials?:
-    | ConnectConnectorUpdateDataClientCredentials$Outbound
-    | undefined;
-  forwardedClaims?:
-    | ConnectConnectorUpdateDataForwardedClaims$Outbound
-    | undefined;
+  userAuthorization?: UserAuthorization$Outbound | undefined;
+  refreshTokens?: RefreshTokens$Outbound | undefined;
+  clientCredentials?: ClientCredentials$Outbound | undefined;
+  forwardedClaims?: ForwardedClaims$Outbound | undefined;
   defaultAudience?: string | undefined;
   defaultResource?: string | undefined;
   defaultTokenExpiresIn?: number | undefined;
   authorizationUrlParams?: { [k: string]: string } | undefined;
-  jwtBearer?: ConnectConnectorUpdateDataJwtBearer$Outbound | undefined;
-  clientAssertion?:
-    | ConnectConnectorUpdateDataClientAssertion$Outbound
-    | undefined;
+  jwtBearer?: JwtBearer$Outbound | undefined;
+  clientAssertion?: ClientAssertion$Outbound | undefined;
 };
 
 /** @internal */
-export const ConnectConnectorUpdateDataTypeOauth$outboundSchema: z.ZodType<
-  ConnectConnectorUpdateDataTypeOauth$Outbound,
+export const TypeOauth$outboundSchema: z.ZodType<
+  TypeOauth$Outbound,
   z.ZodTypeDef,
-  ConnectConnectorUpdateDataTypeOauth
+  TypeOauth
 > = z.object({
   serverUrl: z.string().optional(),
-  serverConfig: z.lazy(() =>
-    ConnectConnectorUpdateDataServerConfig$outboundSchema
-  ).optional(),
+  serverConfig: z.lazy(() => ServerConfig$outboundSchema).optional(),
   clientId: z.string().optional(),
   clientName: z.string().optional(),
   clientSecret: z.string().optional(),
@@ -1925,52 +1745,35 @@ export const ConnectConnectorUpdateDataTypeOauth$outboundSchema: z.ZodType<
   responseType: z.string().optional(),
   pkceRequired: z.boolean().optional(),
   codeChallengeMethod: z.string().optional(),
-  userAuthorization: z.lazy(() =>
-    ConnectConnectorUpdateDataUserAuthorization$outboundSchema
-  ).optional(),
-  refreshTokens: z.lazy(() =>
-    ConnectConnectorUpdateDataRefreshTokens$outboundSchema
-  ).optional(),
-  clientCredentials: z.lazy(() =>
-    ConnectConnectorUpdateDataClientCredentials$outboundSchema
-  ).optional(),
-  forwardedClaims: z.lazy(() =>
-    ConnectConnectorUpdateDataForwardedClaims$outboundSchema
-  ).optional(),
+  userAuthorization: z.lazy(() => UserAuthorization$outboundSchema).optional(),
+  refreshTokens: z.lazy(() => RefreshTokens$outboundSchema).optional(),
+  clientCredentials: z.lazy(() => ClientCredentials$outboundSchema).optional(),
+  forwardedClaims: z.lazy(() => ForwardedClaims$outboundSchema).optional(),
   defaultAudience: z.string().optional(),
   defaultResource: z.string().optional(),
   defaultTokenExpiresIn: z.number().optional(),
   authorizationUrlParams: z.record(z.string()).optional(),
-  jwtBearer: z.lazy(() => ConnectConnectorUpdateDataJwtBearer$outboundSchema)
-    .optional(),
-  clientAssertion: z.lazy(() =>
-    ConnectConnectorUpdateDataClientAssertion$outboundSchema
-  ).optional(),
+  jwtBearer: z.lazy(() => JwtBearer$outboundSchema).optional(),
+  clientAssertion: z.lazy(() => ClientAssertion$outboundSchema).optional(),
 });
 
-export function connectConnectorUpdateDataTypeOauthToJSON(
-  connectConnectorUpdateDataTypeOauth: ConnectConnectorUpdateDataTypeOauth,
-): string {
-  return JSON.stringify(
-    ConnectConnectorUpdateDataTypeOauth$outboundSchema.parse(
-      connectConnectorUpdateDataTypeOauth,
-    ),
-  );
+export function typeOauthToJSON(typeOauth: TypeOauth): string {
+  return JSON.stringify(TypeOauth$outboundSchema.parse(typeOauth));
 }
 
 /** @internal */
 export type ConnectConnectorUpdateData$Outbound =
-  | ConnectConnectorUpdateDataTypeOauth$Outbound
-  | ConnectConnectorUpdateDataTypeApiKey$Outbound
-  | ConnectConnectorUpdateDataTypeGithub$Outbound
-  | ConnectConnectorUpdateDataTypeLinear$Outbound
-  | ConnectConnectorUpdateDataTypeSalesforce$Outbound
-  | ConnectConnectorUpdateDataTypeSlack$Outbound
-  | ConnectConnectorUpdateDataTypeSnowflake$Outbound
-  | ConnectConnectorUpdateDataTypeSnowflakeWif$Outbound
-  | ConnectConnectorUpdateDataTypeLinq$Outbound
-  | ConnectConnectorUpdateDataTypeSendblue$Outbound
-  | ConnectConnectorUpdateDataTypePhoton$Outbound
+  | TypeOauth$Outbound
+  | TypeApiKey$Outbound
+  | TypeGithub$Outbound
+  | TypeLinear$Outbound
+  | TypeSalesforce$Outbound
+  | TypeSlack$Outbound
+  | TypeSnowflake$Outbound
+  | TypeSnowflakeWif$Outbound
+  | TypeLinq$Outbound
+  | TypeSendblue$Outbound
+  | TypePhoton$Outbound
   | { [k: string]: any };
 
 /** @internal */
@@ -1979,17 +1782,17 @@ export const ConnectConnectorUpdateData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ConnectConnectorUpdateData
 > = smartUnion([
-  z.lazy(() => ConnectConnectorUpdateDataTypeOauth$outboundSchema),
-  z.lazy(() => ConnectConnectorUpdateDataTypeApiKey$outboundSchema),
-  z.lazy(() => ConnectConnectorUpdateDataTypeGithub$outboundSchema),
-  z.lazy(() => ConnectConnectorUpdateDataTypeLinear$outboundSchema),
-  z.lazy(() => ConnectConnectorUpdateDataTypeSalesforce$outboundSchema),
-  z.lazy(() => ConnectConnectorUpdateDataTypeSlack$outboundSchema),
-  z.lazy(() => ConnectConnectorUpdateDataTypeSnowflake$outboundSchema),
-  z.lazy(() => ConnectConnectorUpdateDataTypeSnowflakeWif$outboundSchema),
-  z.lazy(() => ConnectConnectorUpdateDataTypeLinq$outboundSchema),
-  z.lazy(() => ConnectConnectorUpdateDataTypeSendblue$outboundSchema),
-  z.lazy(() => ConnectConnectorUpdateDataTypePhoton$outboundSchema),
+  z.lazy(() => TypeOauth$outboundSchema),
+  z.lazy(() => TypeApiKey$outboundSchema),
+  z.lazy(() => TypeGithub$outboundSchema),
+  z.lazy(() => TypeLinear$outboundSchema),
+  z.lazy(() => TypeSalesforce$outboundSchema),
+  z.lazy(() => TypeSlack$outboundSchema),
+  z.lazy(() => TypeSnowflake$outboundSchema),
+  z.lazy(() => TypeSnowflakeWif$outboundSchema),
+  z.lazy(() => TypeLinq$outboundSchema),
+  z.lazy(() => TypeSendblue$outboundSchema),
+  z.lazy(() => TypePhoton$outboundSchema),
   z.record(z.any()),
 ]);
 

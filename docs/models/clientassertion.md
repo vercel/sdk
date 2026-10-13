@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { ClientAssertion } from "@vercel/sdk/models/connectconnectorcreatedata.js";
+import { ClientAssertion } from "@vercel/sdk/models/connectconnectorupdatedata.js";
 
 let value: ClientAssertion = {};
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectProjectsBuildMachineElasticTransition } from "@vercel/sdk/models/createprojectfrom.js";
+import { CreateProjectProjectsBuildMachineElasticTransition } from "@vercel/sdk/models/createprojectfrom1.js";
 
 let value: CreateProjectProjectsBuildMachineElasticTransition = {
   algorithmVersion: "<value>",

@@ -9,11 +9,32 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
+import { BudgetItem, BudgetItem$inboundSchema } from "./budgetitem.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  UserEventPayload375Previous,
-  UserEventPayload375Previous$inboundSchema,
-} from "./usereventpayload375previous.js";
+
+export type UserEventPayload376Budget = {
+  /**
+   * Represents a budget for tracking and notifying teams on their spending.
+   */
+  budgetItem: BudgetItem;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type ThreeHundredAndSeventySix = {
+  budget: UserEventPayload376Budget;
+  /**
+   * Stored for project budgets. Same value as `budget.scopeId`.
+   */
+  projectId?: string | undefined;
+  projectName?: string | undefined;
+};
+
+export type UserEventPayload375Previous = {
+  sampleRatePercent: number | null;
+  spendLimitInDollars: number | null;
+};
 
 /**
  * The payload of the event, if requested.
@@ -1210,25 +1231,65 @@ export const UserEventPayloadRole = {
 } as const;
 export type UserEventPayloadRole = ClosedEnum<typeof UserEventPayloadRole>;
 
-export type PayloadProjects = {
-  membershipCreatedAt: number;
-  projectId: string;
-  role: UserEventPayloadRole;
-};
+/** @internal */
+export const UserEventPayload376Budget$inboundSchema: z.ZodType<
+  UserEventPayload376Budget,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  budgetItem: BudgetItem$inboundSchema,
+});
 
-export type TeamMembership = {
-  uid: string;
-  username?: string | undefined;
-};
+export function userEventPayload376BudgetFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload376Budget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload376Budget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload376Budget' from JSON`,
+  );
+}
 
-/**
- * The payload of the event, if requested.
- */
-export type ThreeHundredAndTwelve = {
-  directoryType?: string | undefined;
-  projects: Array<PayloadProjects>;
-  teamMembership?: TeamMembership | undefined;
-};
+/** @internal */
+export const ThreeHundredAndSeventySix$inboundSchema: z.ZodType<
+  ThreeHundredAndSeventySix,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  budget: z.lazy(() => UserEventPayload376Budget$inboundSchema),
+  projectId: types.optional(types.string()),
+  projectName: types.optional(types.string()),
+});
+
+export function threeHundredAndSeventySixFromJSON(
+  jsonString: string,
+): SafeParseResult<ThreeHundredAndSeventySix, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ThreeHundredAndSeventySix$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThreeHundredAndSeventySix' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload375Previous$inboundSchema: z.ZodType<
+  UserEventPayload375Previous,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  sampleRatePercent: types.nullable(types.number()),
+  spendLimitInDollars: types.nullable(types.number()),
+});
+
+export function userEventPayload375PreviousFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload375Previous, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload375Previous$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload375Previous' from JSON`,
+  );
+}
 
 /** @internal */
 export const ThreeHundredAndSeventyFive$inboundSchema: z.ZodType<
@@ -1237,7 +1298,7 @@ export const ThreeHundredAndSeventyFive$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   analyticsId: types.optional(types.string()),
-  previous: UserEventPayload375Previous$inboundSchema,
+  previous: z.lazy(() => UserEventPayload375Previous$inboundSchema),
   projectId: types.optional(types.string()),
   projectName: types.optional(types.string()),
   sampleRatePercent: types.nullable(types.number()),
@@ -3886,65 +3947,3 @@ export function threeHundredAndThirteenFromJSON(
 export const UserEventPayloadRole$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayloadRole
 > = z.nativeEnum(UserEventPayloadRole);
-
-/** @internal */
-export const PayloadProjects$inboundSchema: z.ZodType<
-  PayloadProjects,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  membershipCreatedAt: types.number(),
-  projectId: types.string(),
-  role: UserEventPayloadRole$inboundSchema,
-});
-
-export function payloadProjectsFromJSON(
-  jsonString: string,
-): SafeParseResult<PayloadProjects, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PayloadProjects$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadProjects' from JSON`,
-  );
-}
-
-/** @internal */
-export const TeamMembership$inboundSchema: z.ZodType<
-  TeamMembership,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  uid: types.string(),
-  username: types.optional(types.string()),
-});
-
-export function teamMembershipFromJSON(
-  jsonString: string,
-): SafeParseResult<TeamMembership, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TeamMembership$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TeamMembership' from JSON`,
-  );
-}
-
-/** @internal */
-export const ThreeHundredAndTwelve$inboundSchema: z.ZodType<
-  ThreeHundredAndTwelve,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  directoryType: types.optional(types.string()),
-  projects: z.array(z.lazy(() => PayloadProjects$inboundSchema)),
-  teamMembership: types.optional(z.lazy(() => TeamMembership$inboundSchema)),
-});
-
-export function threeHundredAndTwelveFromJSON(
-  jsonString: string,
-): SafeParseResult<ThreeHundredAndTwelve, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThreeHundredAndTwelve$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThreeHundredAndTwelve' from JSON`,
-  );
-}

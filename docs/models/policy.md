@@ -5,7 +5,7 @@ A full point-in-time snapshot of an OIDC exchange policy, captured on every life
 ## Example Usage
 
 ```typescript
-import { Policy } from "@vercel/sdk/models/fourhundredandthirtysix.js";
+import { Policy } from "@vercel/sdk/models/env.js";
 
 let value: Policy = {
   claims: [

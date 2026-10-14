@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyOne } from "@vercel/sdk/models/usereventjobpayload120headinfo.js";
+import { OneHundredAndFiftyOne } from "@vercel/sdk/models/usereventjobpayload1206provider.js";
 
 let value: OneHundredAndFiftyOne = {
   drainUrl: "https://unsteady-travel.biz",

@@ -482,18 +482,6 @@ export type Addresses = {
 };
 
 /**
- * exclusive: ip match is enough to bypass deployment protection (regardless of other settings). additional: ip must match + any other protection should be also provided (password, vercel auth, shareable link, automation bypass header, automation bypass query param)
- */
-export const ProtectionMode = {
-  Exclusive: "exclusive",
-  Additional: "additional",
-} as const;
-/**
- * exclusive: ip match is enough to bypass deployment protection (regardless of other settings). additional: ip must match + any other protection should be also provided (password, vercel auth, shareable link, automation bypass header, automation bypass query param)
- */
-export type ProtectionMode = ClosedEnum<typeof ProtectionMode>;
-
-/**
  * Restricts access to deployments based on the incoming request IP address
  */
 export type UpdateProjectTrustedIps = {
@@ -502,10 +490,6 @@ export type UpdateProjectTrustedIps = {
    */
   deploymentType: UpdateProjectProjectsRequestRequestBodyDeploymentType;
   addresses: Array<Addresses>;
-  /**
-   * exclusive: ip match is enough to bypass deployment protection (regardless of other settings). additional: ip must match + any other protection should be also provided (password, vercel auth, shareable link, automation bypass header, automation bypass query param)
-   */
-  protectionMode: ProtectionMode;
 };
 
 export const ToPreset = {
@@ -1744,6 +1728,14 @@ export type UpdateProjectSourcesProjects2 = {
   provider: "gitlab";
 };
 
+export const UpdateProjectSourcesProjectsResponse200Provider = {
+  Bitbucket: "bitbucket",
+  Github: "github",
+} as const;
+export type UpdateProjectSourcesProjectsResponse200Provider = ClosedEnum<
+  typeof UpdateProjectSourcesProjectsResponse200Provider
+>;
+
 /** @internal */
 export const UpdateProjectFramework$outboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectFramework
@@ -2156,15 +2148,9 @@ export function addressesToJSON(addresses: Addresses): string {
 }
 
 /** @internal */
-export const ProtectionMode$outboundSchema: z.ZodNativeEnum<
-  typeof ProtectionMode
-> = z.nativeEnum(ProtectionMode);
-
-/** @internal */
 export type UpdateProjectTrustedIps$Outbound = {
   deploymentType: string;
   addresses: Array<Addresses$Outbound>;
-  protectionMode: string;
 };
 
 /** @internal */
@@ -2176,7 +2162,6 @@ export const UpdateProjectTrustedIps$outboundSchema: z.ZodType<
   deploymentType:
     UpdateProjectProjectsRequestRequestBodyDeploymentType$outboundSchema,
   addresses: z.array(z.lazy(() => Addresses$outboundSchema)),
-  protectionMode: ProtectionMode$outboundSchema,
 });
 
 export function updateProjectTrustedIpsToJSON(
@@ -4532,3 +4517,8 @@ export function updateProjectSourcesProjects2FromJSON(
     `Failed to parse 'UpdateProjectSourcesProjects2' from JSON`,
   );
 }
+
+/** @internal */
+export const UpdateProjectSourcesProjectsResponse200Provider$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectSourcesProjectsResponse200Provider> = z
+    .nativeEnum(UpdateProjectSourcesProjectsResponse200Provider);

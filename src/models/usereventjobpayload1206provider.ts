@@ -10,13 +10,114 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  NewEnvVar,
-  NewEnvVar$inboundSchema,
-  UserEventLastEditedByPrincipalPayload1,
-  UserEventLastEditedByPrincipalPayload1$inboundSchema,
-  UserEventLastEditedByPrincipalPayload2,
-  UserEventLastEditedByPrincipalPayload2$inboundSchema,
-} from "./usereventlasteditedbyprincipalpayload1.js";
+  PayloadLastEditedByPrincipal,
+  PayloadLastEditedByPrincipal$inboundSchema,
+  UserEventPayload173Target,
+  UserEventPayload173Target$inboundSchema,
+  UserEventPayload173Type,
+  UserEventPayload173Type$inboundSchema,
+} from "./usereventpayload173type.js";
+
+export type NewEnvVar = {
+  /**
+   * whether or not this env varible applies to custom environments
+   */
+  applyToAllCustomEnvironments?: boolean | undefined;
+  /**
+   * A user provided comment that describes what this Shared Env Var is for.
+   */
+  comment?: string | undefined;
+  /**
+   * The date when the Shared Env Var was created.
+   */
+  created?: Date | undefined;
+  /**
+   * Timestamp for when the Shared Env Var was created.
+   */
+  createdAt?: number | undefined;
+  /**
+   * The unique identifier of the user who created the Shared Env Var.
+   */
+  createdBy?: string | null | undefined;
+  /**
+   * The custom environment IDs that this Shared Env Var is scoped to.
+   */
+  customEnvironmentIds?: Array<string> | undefined;
+  /**
+   * whether or not this env variable is decrypted
+   */
+  decrypted?: boolean | undefined;
+  /**
+   * Timestamp for when the Shared Env Var was (soft) deleted.
+   */
+  deletedAt?: number | undefined;
+  /**
+   * The unique identifier of the user who deleted the Shared Env Var.
+   */
+  deletedBy?: string | null | undefined;
+  /**
+   * The unique identifier of the Shared Env Var.
+   */
+  id?: string | undefined;
+  /**
+   * The name of the Shared Env Var.
+   */
+  key?: string | undefined;
+  /**
+   * The last editor full name or username.
+   */
+  lastEditedByDisplayName?: string | undefined;
+  lastEditedByPrincipal?: PayloadLastEditedByPrincipal | undefined;
+  /**
+   * The unique identifier of the owner (team) the Shared Env Var was created for.
+   */
+  ownerId?: string | null | undefined;
+  /**
+   * The unique identifiers of the projects which the Shared Env Var is linked to.
+   */
+  projectId?: Array<string> | undefined;
+  /**
+   * environments this env variable targets
+   */
+  target?: Array<UserEventPayload173Target> | undefined;
+  /**
+   * The type of this cosmos doc instance, if blank, assume secret.
+   */
+  type?: UserEventPayload173Type | undefined;
+  /**
+   * Timestamp for when the Shared Env Var was last updated.
+   */
+  updatedAt?: number | undefined;
+  /**
+   * The unique identifier of the user who last updated the Shared Env Var.
+   */
+  updatedBy?: string | null | undefined;
+  /**
+   * The value of the Shared Env Var.
+   */
+  value?: string | undefined;
+};
+
+/**
+ * The principal that last edited this env var, when the editor id resolves to a known user or app. Lets clients render the right avatar instead of assuming every editor is a user.
+ */
+export type UserEventLastEditedByPrincipalPayload2 = {
+  avatar?: string | undefined;
+  id: string;
+  name: string;
+  type: "app";
+};
+
+/**
+ * The principal that last edited this env var, when the editor id resolves to a known user or app. Lets clients render the right avatar instead of assuming every editor is a user.
+ */
+export type UserEventLastEditedByPrincipalPayload1 = {
+  avatar?: string | undefined;
+  id: string;
+  name?: string | null | undefined;
+  type: "user";
+  username: string;
+};
 
 export type UserEventPayloadLastEditedByPrincipal =
   | UserEventLastEditedByPrincipalPayload1
@@ -1055,6 +1156,7 @@ export type UserEventPayload123Deployment = {
 export type OneHundredAndTwentyThree = {
   deployment: UserEventPayload123Deployment;
   deploymentId: string;
+  projectId?: string | undefined;
   url: string;
 };
 
@@ -1708,90 +1810,92 @@ export type UserEventJobPayload1206Provider = ClosedEnum<
   typeof UserEventJobPayload1206Provider
 >;
 
-export type Job6 = {
-  authorized?: boolean | undefined;
-  authorizedBy?: string | undefined;
-  commit?: Commit | undefined;
-  /**
-   * Since 6 Nov 2025 The verification status of the commit. - 'verified' if the commit is verified - 'unverified' if the commit is not verified - 'unknown' if the commit verification status is unknown or not supported
-   */
-  commitVerification?: UserEventJobPayloadCommitVerification | undefined;
-  /**
-   * Since April 2023 Cached count of how many projects are connected to the repo. Saves a few Cosmos queries down the road in the main flow.
-   */
-  connectedProjectCount?: number | undefined;
-  createdAt?: number | undefined;
-  customEnvId?: string | null | undefined;
-  deployHook?: UserEventJobPayload120DeployHook | undefined;
-  deploymentId?: string | undefined;
-  eventful?: boolean | undefined;
-  forceNew?: boolean | undefined;
-  /**
-   * Since June 2023 Determines if comments should be posted to the git host. Replaces `github.silent` in the vercel.json.
-   */
-  gitComments?: UserEventJobPayload1206GitComments | undefined;
-  /**
-   * Since February 2022 All the hashtag-vercel tags found in the commit message triggering the deploy. For example, #VERCEL_DO_SOMETHING
-   */
-  gitHashtagVercel?: Array<UserEventJobPayloadGitHashtagVercel> | undefined;
-  /**
-   * GitLab
-   */
-  headInfo: UserEventJobPayload1206HeadInfo;
-  /**
-   * Since 28 Feb 2024 If set to true, identifies that the git job was created for a manual git deployment
-   */
-  isManualGitDeploy?: boolean | undefined;
-  /**
-   * Since December 2022 Pairs of projects and owner ids to build for this build request.
-   */
-  jobPairs?: Array<Array<string>> | undefined;
-  /**
-   * Since December 2022 All project ids associated to this job. Think monorepo. This job will be for one of these project.
-   */
-  jobProjectIds?: Array<string> | undefined;
-  linkedProjectId?: string | undefined;
-  /**
-   * Since March 2026 Records a successful NSNB auto-add result so later GitHub PR comments can deterministically explain why this SHA was allowed to deploy.
-   */
-  nsnbSideEffect?: UserEventJobPayloadNsnbSideEffect | undefined;
-  prId?: number | undefined;
-  /**
-   * Since April 2023 If set then it is a cached result of asking the remote for the PR ID the commit that triggered this Job. Or zero if it was not a PR. This prevents a few git round trips by the git updater.
-   */
-  prIdOrZero?: number | undefined;
-  project: JobProject;
-  projectId?: string | undefined;
-  provider: UserEventJobPayload1206Provider;
-  ref: string;
-  repoPushedAt?: number | null | undefined;
-  sha: string;
-  silent?: boolean | undefined;
-  /**
-   * Since June 2024 Pairs of projects and owner ids to immediately finish (without building) because we want to create them in a skipped state.
-   */
-  skippedJobPairs?: Array<Array<string>> | undefined;
-  target?: string | null | undefined;
-  type: "gitlab-push";
-  url?: string | undefined;
-  withCache?: boolean | undefined;
-};
+/** @internal */
+export const NewEnvVar$inboundSchema: z.ZodType<
+  NewEnvVar,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  applyToAllCustomEnvironments: types.optional(types.boolean()),
+  comment: types.optional(types.string()),
+  created: types.optional(types.date()),
+  createdAt: types.optional(types.number()),
+  createdBy: z.nullable(types.string()).optional(),
+  customEnvironmentIds: types.optional(z.array(types.string())),
+  decrypted: types.optional(types.boolean()),
+  deletedAt: types.optional(types.number()),
+  deletedBy: z.nullable(types.string()).optional(),
+  id: types.optional(types.string()),
+  key: types.optional(types.string()),
+  lastEditedByDisplayName: types.optional(types.string()),
+  lastEditedByPrincipal: types.optional(
+    PayloadLastEditedByPrincipal$inboundSchema,
+  ),
+  ownerId: z.nullable(types.string()).optional(),
+  projectId: types.optional(z.array(types.string())),
+  target: types.optional(z.array(UserEventPayload173Target$inboundSchema)),
+  type: types.optional(UserEventPayload173Type$inboundSchema),
+  updatedAt: types.optional(types.number()),
+  updatedBy: z.nullable(types.string()).optional(),
+  value: types.optional(types.string()),
+});
 
-export type UserEventJobPayload120GitComments = {
-  onCommit: boolean;
-  onPullRequest: boolean;
-};
+export function newEnvVarFromJSON(
+  jsonString: string,
+): SafeParseResult<NewEnvVar, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NewEnvVar$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NewEnvVar' from JSON`,
+  );
+}
 
-/**
- * Information about the head commit/branch for a GitHub repository
- */
-export type UserEventJobPayload120HeadInfo = {
-  org: string;
-  ref: string;
-  repo: string;
-  repoId: number;
-  sha: string;
-};
+/** @internal */
+export const UserEventLastEditedByPrincipalPayload2$inboundSchema: z.ZodType<
+  UserEventLastEditedByPrincipalPayload2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  avatar: types.optional(types.string()),
+  id: types.string(),
+  name: types.string(),
+  type: types.literal("app"),
+});
+
+export function userEventLastEditedByPrincipalPayload2FromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventLastEditedByPrincipalPayload2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UserEventLastEditedByPrincipalPayload2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventLastEditedByPrincipalPayload2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventLastEditedByPrincipalPayload1$inboundSchema: z.ZodType<
+  UserEventLastEditedByPrincipalPayload1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  avatar: types.optional(types.string()),
+  id: types.string(),
+  name: z.nullable(types.string()).optional(),
+  type: types.literal("user"),
+  username: types.string(),
+});
+
+export function userEventLastEditedByPrincipalPayload1FromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventLastEditedByPrincipalPayload1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UserEventLastEditedByPrincipalPayload1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventLastEditedByPrincipalPayload1' from JSON`,
+  );
+}
 
 /** @internal */
 export const UserEventPayloadLastEditedByPrincipal$inboundSchema: z.ZodType<
@@ -1799,8 +1903,8 @@ export const UserEventPayloadLastEditedByPrincipal$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  UserEventLastEditedByPrincipalPayload1$inboundSchema,
-  UserEventLastEditedByPrincipalPayload2$inboundSchema,
+  z.lazy(() => UserEventLastEditedByPrincipalPayload1$inboundSchema),
+  z.lazy(() => UserEventLastEditedByPrincipalPayload2$inboundSchema),
 ]);
 
 export function userEventPayloadLastEditedByPrincipalFromJSON(
@@ -1844,8 +1948,8 @@ export const OldEnvVar$inboundSchema: z.ZodType<
   lastEditedByDisplayName: types.optional(types.string()),
   lastEditedByPrincipal: types.optional(
     z.union([
-      UserEventLastEditedByPrincipalPayload1$inboundSchema,
-      UserEventLastEditedByPrincipalPayload2$inboundSchema,
+      z.lazy(() => UserEventLastEditedByPrincipalPayload1$inboundSchema),
+      z.lazy(() => UserEventLastEditedByPrincipalPayload2$inboundSchema),
     ]),
   ),
   ownerId: z.nullable(types.string()).optional(),
@@ -1957,7 +2061,7 @@ export const OneHundredAndSeventyThree$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  newEnvVar: types.optional(NewEnvVar$inboundSchema),
+  newEnvVar: types.optional(z.lazy(() => NewEnvVar$inboundSchema)),
   oldEnvVar: types.optional(z.lazy(() => OldEnvVar$inboundSchema)),
   updateDiff: types.optional(z.lazy(() => PayloadUpdateDiff$inboundSchema)),
 });
@@ -3578,6 +3682,7 @@ export const OneHundredAndTwentyThree$inboundSchema: z.ZodType<
 > = z.object({
   deployment: z.lazy(() => UserEventPayload123Deployment$inboundSchema),
   deploymentId: types.string(),
+  projectId: types.optional(types.string()),
   url: types.string(),
 });
 
@@ -4450,104 +4555,3 @@ export function jobProjectFromJSON(
 export const UserEventJobPayload1206Provider$inboundSchema: z.ZodNativeEnum<
   typeof UserEventJobPayload1206Provider
 > = z.nativeEnum(UserEventJobPayload1206Provider);
-
-/** @internal */
-export const Job6$inboundSchema: z.ZodType<Job6, z.ZodTypeDef, unknown> = z
-  .object({
-    authorized: types.optional(types.boolean()),
-    authorizedBy: types.optional(types.string()),
-    commit: types.optional(z.lazy(() => Commit$inboundSchema)),
-    commitVerification: types.optional(
-      UserEventJobPayloadCommitVerification$inboundSchema,
-    ),
-    connectedProjectCount: types.optional(types.number()),
-    createdAt: types.optional(types.number()),
-    customEnvId: z.nullable(types.string()).optional(),
-    deployHook: types.optional(
-      z.lazy(() => UserEventJobPayload120DeployHook$inboundSchema),
-    ),
-    deploymentId: types.optional(types.string()),
-    eventful: types.optional(types.boolean()),
-    forceNew: types.optional(types.boolean()),
-    gitComments: types.optional(
-      z.lazy(() => UserEventJobPayload1206GitComments$inboundSchema),
-    ),
-    gitHashtagVercel: types.optional(
-      z.array(UserEventJobPayloadGitHashtagVercel$inboundSchema),
-    ),
-    headInfo: z.lazy(() => UserEventJobPayload1206HeadInfo$inboundSchema),
-    isManualGitDeploy: types.optional(types.boolean()),
-    jobPairs: types.optional(z.array(z.array(types.string()))),
-    jobProjectIds: types.optional(z.array(types.string())),
-    linkedProjectId: types.optional(types.string()),
-    nsnbSideEffect: types.optional(
-      z.lazy(() => UserEventJobPayloadNsnbSideEffect$inboundSchema),
-    ),
-    prId: types.optional(types.number()),
-    prIdOrZero: types.optional(types.number()),
-    project: z.lazy(() => JobProject$inboundSchema),
-    projectId: types.optional(types.string()),
-    provider: UserEventJobPayload1206Provider$inboundSchema,
-    ref: types.string(),
-    repoPushedAt: z.nullable(types.number()).optional(),
-    sha: types.string(),
-    silent: types.optional(types.boolean()),
-    skippedJobPairs: types.optional(z.array(z.array(types.string()))),
-    target: z.nullable(types.string()).optional(),
-    type: types.literal("gitlab-push"),
-    url: types.optional(types.string()),
-    withCache: types.optional(types.boolean()),
-  });
-
-export function job6FromJSON(
-  jsonString: string,
-): SafeParseResult<Job6, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Job6$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Job6' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventJobPayload120GitComments$inboundSchema: z.ZodType<
-  UserEventJobPayload120GitComments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  onCommit: types.boolean(),
-  onPullRequest: types.boolean(),
-});
-
-export function userEventJobPayload120GitCommentsFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventJobPayload120GitComments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventJobPayload120GitComments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventJobPayload120GitComments' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventJobPayload120HeadInfo$inboundSchema: z.ZodType<
-  UserEventJobPayload120HeadInfo,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  org: types.string(),
-  ref: types.string(),
-  repo: types.string(),
-  repoId: types.number(),
-  sha: types.string(),
-});
-
-export function userEventJobPayload120HeadInfoFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventJobPayload120HeadInfo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventJobPayload120HeadInfo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventJobPayload120HeadInfo' from JSON`,
-  );
-}

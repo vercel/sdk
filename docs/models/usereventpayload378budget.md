@@ -5,7 +5,7 @@ Represents a budget for tracking and notifying teams on their spending.
 ## Example Usage
 
 ```typescript
-import { UserEventPayload378Budget } from "@vercel/sdk/models/usereventpayload375previous.js";
+import { UserEventPayload378Budget } from "@vercel/sdk/models/budgetitem.js";
 
 let value: UserEventPayload378Budget = {
   createdAt: 804.84,

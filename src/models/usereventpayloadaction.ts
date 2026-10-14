@@ -9,12 +9,93 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  UserEventPayload66Permissions,
-  UserEventPayload66Permissions$inboundSchema,
-  UserEventPayloadItems,
-  UserEventPayloadItems$inboundSchema,
-} from "./usereventpayloaditems.js";
+
+export const UserEventPayload66Permissions = {
+  ManageSpeedInsights: "manage:speed-insights",
+  ManageWebAnalytics: "manage:web-analytics",
+  ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
+  ReadWriteAiGatewayGuardrails: "read-write:ai-gateway-guardrails",
+  ReadWriteAiGatewayPrivateModels: "read-write:ai-gateway-private-models",
+  ReadWriteAiGatewayRules: "read-write:ai-gateway-rules",
+  ReadWriteAiGatewayVirtualModelConfigs:
+    "read-write:ai-gateway-virtual-model-configs",
+  ReadWriteAlerts: "read-write:alerts",
+  ReadWriteAutomations: "read-write:automations",
+  ReadWriteBilling: "read-write:billing",
+  ReadWriteBlob: "read-write:blob",
+  ReadWriteConnect: "read-write:connect",
+  ReadWriteDeployment: "read-write:deployment",
+  ReadWriteDomain: "read-write:domain",
+  ReadWriteDomainRegistrar: "read-write:domain-registrar",
+  ReadWriteDrains: "read-write:drains",
+  ReadWriteEdgeCache: "read-write:edge-cache",
+  ReadWriteEdgeConfig: "read-write:edge-config",
+  ReadWriteFirewall: "read-write:firewall",
+  ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
+  ReadWriteIntegrationResource: "read-write:integration-resource",
+  ReadWriteKms: "read-write:kms",
+  ReadWriteMessageboard: "read-write:messageboard",
+  ReadWriteProject: "read-write:project",
+  ReadWriteProjectEnvVars: "read-write:project-env-vars",
+  ReadWriteProjectEnvVarsNonProduction:
+    "read-write:project-env-vars-non-production",
+  ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
+  ReadWriteProjectFlagsNonProduction: "read-write:project-flags-non-production",
+  ReadWriteProjectFlagsProduction: "read-write:project-flags-production",
+  ReadWriteProjectProtectionBypass: "read-write:project-protection-bypass",
+  ReadWriteProjectTrustedSources: "read-write:project-trusted-sources",
+  ReadWriteRemoteCache: "read-write:remote-cache",
+  ReadWriteSandbox: "read-write:sandbox",
+  ReadWriteSchedule: "read-write:schedule",
+  ReadWriteTeamMembers: "read-write:team-members",
+  ReadWriteVcr: "read-write:vcr",
+  ReadAccessGroup: "read:access-group",
+  ReadAiGatewayGuardrails: "read:ai-gateway-guardrails",
+  ReadAiGatewayPrivateModels: "read:ai-gateway-private-models",
+  ReadAiGatewayRules: "read:ai-gateway-rules",
+  ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
+  ReadAlerts: "read:alerts",
+  ReadAutomations: "read:automations",
+  ReadBilling: "read:billing",
+  ReadConnect: "read:connect",
+  ReadDeployment: "read:deployment",
+  ReadDomain: "read:domain",
+  ReadEvent: "read:event",
+  ReadFirewall: "read:firewall",
+  ReadIntegrationConfiguration: "read:integration-configuration",
+  ReadIntegrationResource: "read:integration-resource",
+  ReadKms: "read:kms",
+  ReadMessageboard: "read:messageboard",
+  ReadMonitoring: "read:monitoring",
+  ReadProject: "read:project",
+  ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
+  ReadProjectEnvVarsProduction: "read:project-env-vars-production",
+  ReadProjectFlags: "read:project-flags",
+  ReadProjectTrustedSources: "read:project-trusted-sources",
+  ReadRemoteCache: "read:remote-cache",
+  ReadSandbox: "read:sandbox",
+  ReadSchedule: "read:schedule",
+  ReadSpeedInsights: "read:speed-insights",
+  ReadTeam: "read:team",
+  ReadVcr: "read:vcr",
+  ReadWebAnalytics: "read:web-analytics",
+  ReadWebhooks: "read:webhooks",
+  UseAiGateway: "use:ai-gateway",
+} as const;
+export type UserEventPayload66Permissions = ClosedEnum<
+  typeof UserEventPayload66Permissions
+>;
+
+export const UserEventPayload66AfterType = {
+  String: "string",
+} as const;
+export type UserEventPayload66AfterType = ClosedEnum<
+  typeof UserEventPayload66AfterType
+>;
+
+export type UserEventPayloadItems = {
+  type: UserEventPayload66AfterType;
+};
 
 export const UserEventPayload66Type = {
   List: "list",
@@ -1591,38 +1672,34 @@ export const UserEventPayloadAction = {
 } as const;
 export type UserEventPayloadAction = ClosedEnum<typeof UserEventPayloadAction>;
 
-/**
- * The payload of the event, if requested.
- */
-export type Four = {
-  action: UserEventPayloadAction;
-  id: string;
-  name: string;
-  projectId: string;
-  projectName?: string | undefined;
-  slug: string;
-  state: string;
-};
+/** @internal */
+export const UserEventPayload66Permissions$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66Permissions
+> = z.nativeEnum(UserEventPayload66Permissions);
 
-export const PayloadAction = {
-  Archived: "archived",
-  Created: "created",
-  Deleted: "deleted",
-  Unarchived: "unarchived",
-  Updated: "updated",
-} as const;
-export type PayloadAction = ClosedEnum<typeof PayloadAction>;
+/** @internal */
+export const UserEventPayload66AfterType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload66AfterType
+> = z.nativeEnum(UserEventPayload66AfterType);
 
-/**
- * The payload of the event, if requested.
- */
-export type Payload3 = {
-  action: PayloadAction;
-  id: string;
-  projectId: string;
-  projectName?: string | undefined;
-  slug: string;
-};
+/** @internal */
+export const UserEventPayloadItems$inboundSchema: z.ZodType<
+  UserEventPayloadItems,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: UserEventPayload66AfterType$inboundSchema,
+});
+
+export function userEventPayloadItemsFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayloadItems, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayloadItems$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayloadItems' from JSON`,
+  );
+}
 
 /** @internal */
 export const UserEventPayload66Type$inboundSchema: z.ZodNativeEnum<
@@ -1635,7 +1712,7 @@ export const UserEventPayloadProjectIds$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  items: UserEventPayloadItems$inboundSchema,
+  items: z.lazy(() => UserEventPayloadItems$inboundSchema),
   required: types.literal(true),
   type: UserEventPayload66Type$inboundSchema,
 });
@@ -3994,53 +4071,3 @@ export function fiveFromJSON(
 export const UserEventPayloadAction$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayloadAction
 > = z.nativeEnum(UserEventPayloadAction);
-
-/** @internal */
-export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
-  .object({
-    action: UserEventPayloadAction$inboundSchema,
-    id: types.string(),
-    name: types.string(),
-    projectId: types.string(),
-    projectName: types.optional(types.string()),
-    slug: types.string(),
-    state: types.string(),
-  });
-
-export function fourFromJSON(
-  jsonString: string,
-): SafeParseResult<Four, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Four$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Four' from JSON`,
-  );
-}
-
-/** @internal */
-export const PayloadAction$inboundSchema: z.ZodNativeEnum<
-  typeof PayloadAction
-> = z.nativeEnum(PayloadAction);
-
-/** @internal */
-export const Payload3$inboundSchema: z.ZodType<
-  Payload3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: PayloadAction$inboundSchema,
-  id: types.string(),
-  projectId: types.string(),
-  projectName: types.optional(types.string()),
-  slug: types.string(),
-});
-
-export function payload3FromJSON(
-  jsonString: string,
-): SafeParseResult<Payload3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Payload3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Payload3' from JSON`,
-  );
-}

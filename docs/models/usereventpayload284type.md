@@ -5,7 +5,7 @@ The type of matching to perform
 ## Example Usage
 
 ```typescript
-import { UserEventPayload284Type } from "@vercel/sdk/models/twohundredandforty.js";
+import { UserEventPayload284Type } from "@vercel/sdk/models/usereventpayloadkind.js";
 
 let value: UserEventPayload284Type = "startsWith";
 ```

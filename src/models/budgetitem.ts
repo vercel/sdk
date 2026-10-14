@@ -8,7 +8,31 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
+import { Env, Env$inboundSchema } from "./env.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const UserEventPayload436Type = {
+  HeadSampling: "head_sampling",
+} as const;
+export type UserEventPayload436Type = ClosedEnum<
+  typeof UserEventPayload436Type
+>;
+
+export type Sampling = {
+  env?: Env | undefined;
+  rate: number;
+  requestPath?: string | undefined;
+  type: UserEventPayload436Type;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type FourHundredAndThirtySix = {
+  projectId: string;
+  projectName: string;
+  sampling?: Array<Sampling> | undefined;
+};
 
 export const UserEventPayload435ActorType = {
   Admin: "admin",
@@ -1851,29 +1875,53 @@ export type BudgetItem = {
   webhookNotified?: boolean | undefined;
 };
 
-export type UserEventPayload376Budget = {
-  /**
-   * Represents a budget for tracking and notifying teams on their spending.
-   */
-  budgetItem: BudgetItem;
-};
+/** @internal */
+export const UserEventPayload436Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload436Type
+> = z.nativeEnum(UserEventPayload436Type);
 
-/**
- * The payload of the event, if requested.
- */
-export type ThreeHundredAndSeventySix = {
-  budget: UserEventPayload376Budget;
-  /**
-   * Stored for project budgets. Same value as `budget.scopeId`.
-   */
-  projectId?: string | undefined;
-  projectName?: string | undefined;
-};
+/** @internal */
+export const Sampling$inboundSchema: z.ZodType<
+  Sampling,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  env: types.optional(Env$inboundSchema),
+  rate: types.number(),
+  requestPath: types.optional(types.string()),
+  type: UserEventPayload436Type$inboundSchema,
+});
 
-export type UserEventPayload375Previous = {
-  sampleRatePercent: number | null;
-  spendLimitInDollars: number | null;
-};
+export function samplingFromJSON(
+  jsonString: string,
+): SafeParseResult<Sampling, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Sampling$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sampling' from JSON`,
+  );
+}
+
+/** @internal */
+export const FourHundredAndThirtySix$inboundSchema: z.ZodType<
+  FourHundredAndThirtySix,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  projectId: types.string(),
+  projectName: types.string(),
+  sampling: types.optional(z.array(z.lazy(() => Sampling$inboundSchema))),
+});
+
+export function fourHundredAndThirtySixFromJSON(
+  jsonString: string,
+): SafeParseResult<FourHundredAndThirtySix, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FourHundredAndThirtySix$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FourHundredAndThirtySix' from JSON`,
+  );
+}
 
 /** @internal */
 export const UserEventPayload435ActorType$inboundSchema: z.ZodNativeEnum<
@@ -4123,65 +4171,5 @@ export function budgetItemFromJSON(
     jsonString,
     (x) => BudgetItem$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'BudgetItem' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload376Budget$inboundSchema: z.ZodType<
-  UserEventPayload376Budget,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  budgetItem: z.lazy(() => BudgetItem$inboundSchema),
-});
-
-export function userEventPayload376BudgetFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload376Budget, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload376Budget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload376Budget' from JSON`,
-  );
-}
-
-/** @internal */
-export const ThreeHundredAndSeventySix$inboundSchema: z.ZodType<
-  ThreeHundredAndSeventySix,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  budget: z.lazy(() => UserEventPayload376Budget$inboundSchema),
-  projectId: types.optional(types.string()),
-  projectName: types.optional(types.string()),
-});
-
-export function threeHundredAndSeventySixFromJSON(
-  jsonString: string,
-): SafeParseResult<ThreeHundredAndSeventySix, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThreeHundredAndSeventySix$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThreeHundredAndSeventySix' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload375Previous$inboundSchema: z.ZodType<
-  UserEventPayload375Previous,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  sampleRatePercent: types.nullable(types.number()),
-  spendLimitInDollars: types.nullable(types.number()),
-});
-
-export function userEventPayload375PreviousFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload375Previous, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload375Previous$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload375Previous' from JSON`,
   );
 }

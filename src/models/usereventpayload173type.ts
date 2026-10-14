@@ -10,6 +10,49 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+import {
+  ApprovalScope,
+  ApprovalScope$inboundSchema,
+  UserEventPayloadKind,
+  UserEventPayloadKind$inboundSchema,
+} from "./usereventpayloadkind.js";
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndFortyTwo = {
+  approvalScope?: ApprovalScope | undefined;
+  justification: string;
+  kind?: UserEventPayloadKind | undefined;
+  previousStatus: string;
+  projectId: string;
+  url: string;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndFortyOne = {
+  connectSrcCount: number;
+  connectSrcNormalizationRulesCleared?: boolean | undefined;
+  connectSrcOriginCount: number;
+  connectSrcUserNormalizationRuleCount?: number | undefined;
+  deletedCount: number;
+  headerCount: number;
+  projectId: string;
+  projectName: string;
+  scriptCount: number;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwoHundredAndForty = {
+  headerName: string;
+  justification: string | null;
+  previousStatus: string;
+  projectId: string;
+};
 
 /**
  * The payload of the event, if requested.
@@ -1394,109 +1437,78 @@ export type UserEventPayload173Type = ClosedEnum<
   typeof UserEventPayload173Type
 >;
 
-export type NewEnvVar = {
-  /**
-   * whether or not this env varible applies to custom environments
-   */
-  applyToAllCustomEnvironments?: boolean | undefined;
-  /**
-   * A user provided comment that describes what this Shared Env Var is for.
-   */
-  comment?: string | undefined;
-  /**
-   * The date when the Shared Env Var was created.
-   */
-  created?: Date | undefined;
-  /**
-   * Timestamp for when the Shared Env Var was created.
-   */
-  createdAt?: number | undefined;
-  /**
-   * The unique identifier of the user who created the Shared Env Var.
-   */
-  createdBy?: string | null | undefined;
-  /**
-   * The custom environment IDs that this Shared Env Var is scoped to.
-   */
-  customEnvironmentIds?: Array<string> | undefined;
-  /**
-   * whether or not this env variable is decrypted
-   */
-  decrypted?: boolean | undefined;
-  /**
-   * Timestamp for when the Shared Env Var was (soft) deleted.
-   */
-  deletedAt?: number | undefined;
-  /**
-   * The unique identifier of the user who deleted the Shared Env Var.
-   */
-  deletedBy?: string | null | undefined;
-  /**
-   * The unique identifier of the Shared Env Var.
-   */
-  id?: string | undefined;
-  /**
-   * The name of the Shared Env Var.
-   */
-  key?: string | undefined;
-  /**
-   * The last editor full name or username.
-   */
-  lastEditedByDisplayName?: string | undefined;
-  lastEditedByPrincipal?:
-    | UserEventLastEditedByPrincipal1
-    | UserEventLastEditedByPrincipal2
-    | undefined;
-  /**
-   * The unique identifier of the owner (team) the Shared Env Var was created for.
-   */
-  ownerId?: string | null | undefined;
-  /**
-   * The unique identifiers of the projects which the Shared Env Var is linked to.
-   */
-  projectId?: Array<string> | undefined;
-  /**
-   * environments this env variable targets
-   */
-  target?: Array<UserEventPayload173Target> | undefined;
-  /**
-   * The type of this cosmos doc instance, if blank, assume secret.
-   */
-  type?: UserEventPayload173Type | undefined;
-  /**
-   * Timestamp for when the Shared Env Var was last updated.
-   */
-  updatedAt?: number | undefined;
-  /**
-   * The unique identifier of the user who last updated the Shared Env Var.
-   */
-  updatedBy?: string | null | undefined;
-  /**
-   * The value of the Shared Env Var.
-   */
-  value?: string | undefined;
-};
+/** @internal */
+export const TwoHundredAndFortyTwo$inboundSchema: z.ZodType<
+  TwoHundredAndFortyTwo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  approvalScope: types.optional(ApprovalScope$inboundSchema),
+  justification: types.string(),
+  kind: types.optional(UserEventPayloadKind$inboundSchema),
+  previousStatus: types.string(),
+  projectId: types.string(),
+  url: types.string(),
+});
 
-/**
- * The principal that last edited this env var, when the editor id resolves to a known user or app. Lets clients render the right avatar instead of assuming every editor is a user.
- */
-export type UserEventLastEditedByPrincipalPayload2 = {
-  avatar?: string | undefined;
-  id: string;
-  name: string;
-  type: "app";
-};
+export function twoHundredAndFortyTwoFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndFortyTwo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndFortyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndFortyTwo' from JSON`,
+  );
+}
 
-/**
- * The principal that last edited this env var, when the editor id resolves to a known user or app. Lets clients render the right avatar instead of assuming every editor is a user.
- */
-export type UserEventLastEditedByPrincipalPayload1 = {
-  avatar?: string | undefined;
-  id: string;
-  name?: string | null | undefined;
-  type: "user";
-  username: string;
-};
+/** @internal */
+export const TwoHundredAndFortyOne$inboundSchema: z.ZodType<
+  TwoHundredAndFortyOne,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  connectSrcCount: types.number(),
+  connectSrcNormalizationRulesCleared: types.optional(types.boolean()),
+  connectSrcOriginCount: types.number(),
+  connectSrcUserNormalizationRuleCount: types.optional(types.number()),
+  deletedCount: types.number(),
+  headerCount: types.number(),
+  projectId: types.string(),
+  projectName: types.string(),
+  scriptCount: types.number(),
+});
+
+export function twoHundredAndFortyOneFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndFortyOne, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndFortyOne$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndFortyOne' from JSON`,
+  );
+}
+
+/** @internal */
+export const TwoHundredAndForty$inboundSchema: z.ZodType<
+  TwoHundredAndForty,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  headerName: types.string(),
+  justification: types.nullable(types.string()),
+  previousStatus: types.string(),
+  projectId: types.string(),
+});
+
+export function twoHundredAndFortyFromJSON(
+  jsonString: string,
+): SafeParseResult<TwoHundredAndForty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TwoHundredAndForty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TwoHundredAndForty' from JSON`,
+  );
+}
 
 /** @internal */
 export const TwoHundredAndThirtyNine$inboundSchema: z.ZodType<
@@ -4164,93 +4176,3 @@ export const UserEventPayload173Target$inboundSchema: z.ZodNativeEnum<
 export const UserEventPayload173Type$inboundSchema: z.ZodNativeEnum<
   typeof UserEventPayload173Type
 > = z.nativeEnum(UserEventPayload173Type);
-
-/** @internal */
-export const NewEnvVar$inboundSchema: z.ZodType<
-  NewEnvVar,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  applyToAllCustomEnvironments: types.optional(types.boolean()),
-  comment: types.optional(types.string()),
-  created: types.optional(types.date()),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
-  deletedAt: types.optional(types.number()),
-  deletedBy: z.nullable(types.string()).optional(),
-  id: types.optional(types.string()),
-  key: types.optional(types.string()),
-  lastEditedByDisplayName: types.optional(types.string()),
-  lastEditedByPrincipal: types.optional(
-    z.union([
-      z.lazy(() => UserEventLastEditedByPrincipal1$inboundSchema),
-      z.lazy(() => UserEventLastEditedByPrincipal2$inboundSchema),
-    ]),
-  ),
-  ownerId: z.nullable(types.string()).optional(),
-  projectId: types.optional(z.array(types.string())),
-  target: types.optional(z.array(UserEventPayload173Target$inboundSchema)),
-  type: types.optional(UserEventPayload173Type$inboundSchema),
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.optional(types.string()),
-});
-
-export function newEnvVarFromJSON(
-  jsonString: string,
-): SafeParseResult<NewEnvVar, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => NewEnvVar$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'NewEnvVar' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventLastEditedByPrincipalPayload2$inboundSchema: z.ZodType<
-  UserEventLastEditedByPrincipalPayload2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  avatar: types.optional(types.string()),
-  id: types.string(),
-  name: types.string(),
-  type: types.literal("app"),
-});
-
-export function userEventLastEditedByPrincipalPayload2FromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventLastEditedByPrincipalPayload2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UserEventLastEditedByPrincipalPayload2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventLastEditedByPrincipalPayload2' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventLastEditedByPrincipalPayload1$inboundSchema: z.ZodType<
-  UserEventLastEditedByPrincipalPayload1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  avatar: types.optional(types.string()),
-  id: types.string(),
-  name: z.nullable(types.string()).optional(),
-  type: types.literal("user"),
-  username: types.string(),
-});
-
-export function userEventLastEditedByPrincipalPayload1FromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventLastEditedByPrincipalPayload1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      UserEventLastEditedByPrincipalPayload1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventLastEditedByPrincipalPayload1' from JSON`,
-  );
-}

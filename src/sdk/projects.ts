@@ -129,7 +129,7 @@ import {
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { UpdateProjectRequest } from "../models/updateprojectsourcesprojects2.js";
+import { UpdateProjectRequest } from "../models/updateprojectsourcesprojectsresponse200provider.js";
 import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarreadysubstate.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
 import {

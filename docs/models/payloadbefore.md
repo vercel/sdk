@@ -5,7 +5,7 @@ A full point-in-time snapshot of an OIDC exchange policy, captured on every life
 ## Example Usage
 
 ```typescript
-import { PayloadBefore } from "@vercel/sdk/models/fourhundredandthirtysix.js";
+import { PayloadBefore } from "@vercel/sdk/models/env.js";
 
 let value: PayloadBefore = {
   claims: [

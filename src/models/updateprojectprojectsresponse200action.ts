@@ -18,15 +18,9 @@ import {
   UpdateProjectProjectsEnvironments$inboundSchema,
   UpdateProjectSourcesProjects2,
   UpdateProjectSourcesProjects2$inboundSchema,
-} from "./updateprojectsourcesprojects2.js";
-
-export const UpdateProjectSourcesProjectsResponse200Provider = {
-  Bitbucket: "bitbucket",
-  Github: "github",
-} as const;
-export type UpdateProjectSourcesProjectsResponse200Provider = ClosedEnum<
-  typeof UpdateProjectSourcesProjectsResponse200Provider
->;
+  UpdateProjectSourcesProjectsResponse200Provider,
+  UpdateProjectSourcesProjectsResponse200Provider$inboundSchema,
+} from "./updateprojectsourcesprojectsresponse200provider.js";
 
 /**
  * Allowlist entry for GitHub and Bitbucket, whose repos are identified by a flat `org`/`repo` (Bitbucket's workspace/owner maps to `org`, its repo slug to `repo`). Omit `repo` to match any repo in the org. Org is matched case-insensitively.
@@ -2762,10 +2756,18 @@ export type UpdateProjectManagedRules = {
   vercelRuleset: UpdateProjectVercelRuleset;
 };
 
-/** @internal */
-export const UpdateProjectSourcesProjectsResponse200Provider$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectSourcesProjectsResponse200Provider> = z
-    .nativeEnum(UpdateProjectSourcesProjectsResponse200Provider);
+export const UpdateProjectProjectsResponse200Action = {
+  Allow: "allow",
+  Bypass: "bypass",
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+  RateLimit: "rate_limit",
+  Redirect: "redirect",
+} as const;
+export type UpdateProjectProjectsResponse200Action = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200Action
+>;
 
 /** @internal */
 export const UpdateProjectSourcesProjects1$inboundSchema: z.ZodType<
@@ -5992,3 +5994,9 @@ export function updateProjectManagedRulesFromJSON(
     `Failed to parse 'UpdateProjectManagedRules' from JSON`,
   );
 }
+
+/** @internal */
+export const UpdateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
+    UpdateProjectProjectsResponse200Action,
+  );

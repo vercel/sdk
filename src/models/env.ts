@@ -210,6 +210,22 @@ export type UserEventPayload489Reason = ClosedEnum<
   typeof UserEventPayload489Reason
 >;
 
+export const UserEventPayload489Scope = {
+  Project: "project",
+  Team: "team",
+  User: "user",
+} as const;
+export type UserEventPayload489Scope = ClosedEnum<
+  typeof UserEventPayload489Scope
+>;
+
+export const UserEventPayload489Source = {
+  V0: "v0",
+} as const;
+export type UserEventPayload489Source = ClosedEnum<
+  typeof UserEventPayload489Source
+>;
+
 /**
  * The payload of the event, if requested.
  */
@@ -218,6 +234,7 @@ export type FourHundredAndEightyNine = {
    * The token's public ID.
    */
   actorTokenId: string;
+  createdByParentTeamId?: string | undefined;
   expired?: boolean | undefined;
   geolocation?: UserEventPayload489Geolocation | null | undefined;
   ip?: string | null | undefined;
@@ -228,6 +245,8 @@ export type FourHundredAndEightyNine = {
   reqId?: string | undefined;
   reqUrl?: string | undefined;
   revoked?: boolean | undefined;
+  scope?: UserEventPayload489Scope | undefined;
+  source?: UserEventPayload489Source | undefined;
   teamId?: string | undefined;
   tokenId: string;
   tokenName: string;
@@ -322,6 +341,13 @@ export type UserEventPayload488Scope = ClosedEnum<
   typeof UserEventPayload488Scope
 >;
 
+export const UserEventPayload488Source = {
+  V0: "v0",
+} as const;
+export type UserEventPayload488Source = ClosedEnum<
+  typeof UserEventPayload488Source
+>;
+
 /**
  * The token prefix used when showing a safe checksum-style fingerprint.
  */
@@ -337,6 +363,7 @@ export type PayloadTokenPrefix = ClosedEnum<typeof PayloadTokenPrefix>;
  * The payload of the event, if requested.
  */
 export type FourHundredAndEightyEight = {
+  createdByParentTeamId?: string | undefined;
   /**
    * Unix epoch milliseconds. Absent when the token never expires.
    */
@@ -369,6 +396,7 @@ export type FourHundredAndEightyEight = {
    * Scope of the token: - `'user'`: full-account token (not tied to any team). - `'team'`: scoped to a single team. - `'project'`: scoped to a single project within a team.
    */
   scope: UserEventPayload488Scope;
+  source?: UserEventPayload488Source | undefined;
   /**
    * Present when `scope` is `'team'` or `'project'`.
    */
@@ -1463,29 +1491,6 @@ export const Env = {
 } as const;
 export type Env = ClosedEnum<typeof Env>;
 
-export const UserEventPayload436Type = {
-  HeadSampling: "head_sampling",
-} as const;
-export type UserEventPayload436Type = ClosedEnum<
-  typeof UserEventPayload436Type
->;
-
-export type Sampling = {
-  env?: Env | undefined;
-  rate: number;
-  requestPath?: string | undefined;
-  type: UserEventPayload436Type;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type FourHundredAndThirtySix = {
-  projectId: string;
-  projectName: string;
-  sampling?: Array<Sampling> | undefined;
-};
-
 /** @internal */
 export const Categories$inboundSchema: z.ZodNativeEnum<typeof Categories> = z
   .nativeEnum(Categories);
@@ -1868,12 +1873,23 @@ export const UserEventPayload489Reason$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UserEventPayload489Reason);
 
 /** @internal */
+export const UserEventPayload489Scope$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload489Scope
+> = z.nativeEnum(UserEventPayload489Scope);
+
+/** @internal */
+export const UserEventPayload489Source$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload489Source
+> = z.nativeEnum(UserEventPayload489Source);
+
+/** @internal */
 export const FourHundredAndEightyNine$inboundSchema: z.ZodType<
   FourHundredAndEightyNine,
   z.ZodTypeDef,
   unknown
 > = z.object({
   actorTokenId: types.string(),
+  createdByParentTeamId: types.optional(types.string()),
   expired: types.optional(types.boolean()),
   geolocation: z.nullable(
     z.lazy(() => UserEventPayload489Geolocation$inboundSchema),
@@ -1886,6 +1902,8 @@ export const FourHundredAndEightyNine$inboundSchema: z.ZodType<
   reqId: types.optional(types.string()),
   reqUrl: types.optional(types.string()),
   revoked: types.optional(types.boolean()),
+  scope: types.optional(UserEventPayload489Scope$inboundSchema),
+  source: types.optional(UserEventPayload489Source$inboundSchema),
   teamId: types.optional(types.string()),
   tokenId: types.string(),
   tokenName: types.string(),
@@ -2072,6 +2090,11 @@ export const UserEventPayload488Scope$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UserEventPayload488Scope);
 
 /** @internal */
+export const UserEventPayload488Source$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload488Source
+> = z.nativeEnum(UserEventPayload488Source);
+
+/** @internal */
 export const PayloadTokenPrefix$inboundSchema: z.ZodNativeEnum<
   typeof PayloadTokenPrefix
 > = z.nativeEnum(PayloadTokenPrefix);
@@ -2082,6 +2105,7 @@ export const FourHundredAndEightyEight$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  createdByParentTeamId: types.optional(types.string()),
   expiresAt: types.optional(types.number()),
   geolocation: z.nullable(
     z.lazy(() => UserEventPayload488Geolocation$inboundSchema),
@@ -2095,6 +2119,7 @@ export const FourHundredAndEightyEight$inboundSchema: z.ZodType<
   reqId: types.optional(types.string()),
   reqUrl: types.optional(types.string()),
   scope: UserEventPayload488Scope$inboundSchema,
+  source: types.optional(UserEventPayload488Source$inboundSchema),
   teamId: types.optional(types.string()),
   teamSlug: types.optional(types.string()),
   tokenId: types.string(),
@@ -4098,51 +4123,3 @@ export function fourHundredAndThirtySevenFromJSON(
 
 /** @internal */
 export const Env$inboundSchema: z.ZodNativeEnum<typeof Env> = z.nativeEnum(Env);
-
-/** @internal */
-export const UserEventPayload436Type$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload436Type
-> = z.nativeEnum(UserEventPayload436Type);
-
-/** @internal */
-export const Sampling$inboundSchema: z.ZodType<
-  Sampling,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  env: types.optional(Env$inboundSchema),
-  rate: types.number(),
-  requestPath: types.optional(types.string()),
-  type: UserEventPayload436Type$inboundSchema,
-});
-
-export function samplingFromJSON(
-  jsonString: string,
-): SafeParseResult<Sampling, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Sampling$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sampling' from JSON`,
-  );
-}
-
-/** @internal */
-export const FourHundredAndThirtySix$inboundSchema: z.ZodType<
-  FourHundredAndThirtySix,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  projectId: types.string(),
-  projectName: types.string(),
-  sampling: types.optional(z.array(z.lazy(() => Sampling$inboundSchema))),
-});
-
-export function fourHundredAndThirtySixFromJSON(
-  jsonString: string,
-): SafeParseResult<FourHundredAndThirtySix, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FourHundredAndThirtySix$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FourHundredAndThirtySix' from JSON`,
-  );
-}

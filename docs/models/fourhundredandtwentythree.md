@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentyThree } from "@vercel/sdk/models/usereventpayload375previous.js";
+import { FourHundredAndTwentyThree } from "@vercel/sdk/models/budgetitem.js";
 
 let value: FourHundredAndTwentyThree = {
   decision: "keep_on",

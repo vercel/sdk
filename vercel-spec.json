@@ -15334,6 +15334,9 @@
               }
             }
           },
+          "503": {
+            "description": ""
+          },
           "504": {
             "description": ""
           }
@@ -139581,20 +139584,11 @@
                           "additionalProperties": false
                         },
                         "minItems": 1
-                      },
-                      "protectionMode": {
-                        "description": "exclusive: ip match is enough to bypass deployment protection (regardless of other settings). additional: ip must match + any other protection should be also provided (password, vercel auth, shareable link, automation bypass header, automation bypass query param)",
-                        "enum": [
-                          "exclusive",
-                          "additional"
-                        ],
-                        "type": "string"
                       }
                     },
                     "required": [
                       "deploymentType",
-                      "addresses",
-                      "protectionMode"
+                      "addresses"
                     ],
                     "type": "object",
                     "nullable": true
@@ -179614,9 +179608,6 @@
           "404": {
             "description": ""
           },
-          "409": {
-            "description": ""
-          },
           "410": {
             "description": ""
           },
@@ -179624,15 +179615,9 @@
             "description": ""
           },
           "429": {
-            "description": "The concurrency limit has been exceeded."
+            "description": ""
           },
           "500": {
-            "description": ""
-          },
-          "502": {
-            "description": ""
-          },
-          "503": {
             "description": ""
           }
         },
@@ -213700,6 +213685,254 @@
         ]
       }
     },
+    "/v1/vercel-ci/task-analyses/{analysisId}/pull-request": {
+      "post": {
+        "description": "Create task configuration pull request",
+        "operationId": "createVercelCiTaskConfigurationPullRequest",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create a GitHub pull request that adds Vercel CI tags for the completed analysis",
+        "tags": [
+          "vercel-ci"
+        ],
+        "responses": {
+          "201": {
+            "description": "Task configuration pull request created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "changedTaskNames": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "url",
+                    "changedTaskNames"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "limit": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "name",
+                        "message",
+                        "limit"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "analysisId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "tasks"
+                ],
+                "properties": {
+                  "tasks": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "name",
+                        "configPath"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "configPath": {
+                          "type": "string",
+                          "maxLength": 2000
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/vercel-ci/task-analyses/{analysisId}/tasks": {
       "get": {
         "description": "List task analysis tasks",
@@ -239278,6 +239511,9 @@
                   "deploymentId": {
                     "type": "string"
                   },
+                  "projectId": {
+                    "type": "string"
+                  },
                   "url": {
                     "type": "string"
                   }
@@ -254130,6 +254366,9 @@
               },
               {
                 "properties": {
+                  "createdByParentTeamId": {
+                    "type": "string"
+                  },
                   "expiresAt": {
                     "type": "number",
                     "description": "Unix epoch milliseconds. Absent when the token never expires."
@@ -254269,6 +254508,12 @@
                     ],
                     "description": "Scope of the token: - `'user'`: full-account token (not tied to any team). - `'team'`: scoped to a single team. - `'project'`: scoped to a single project within a team."
                   },
+                  "source": {
+                    "type": "string",
+                    "enum": [
+                      "v0"
+                    ]
+                  },
                   "teamId": {
                     "type": "string",
                     "description": "Present when `scope` is `'team'` or `'project'`."
@@ -254314,6 +254559,9 @@
                   "actorTokenId": {
                     "type": "string",
                     "description": "The token's public ID."
+                  },
+                  "createdByParentTeamId": {
+                    "type": "string"
                   },
                   "expired": {
                     "type": "boolean",
@@ -254448,6 +254696,20 @@
                     "enum": [
                       false,
                       true
+                    ]
+                  },
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "project",
+                      "team",
+                      "user"
+                    ]
+                  },
+                  "source": {
+                    "type": "string",
+                    "enum": [
+                      "v0"
                     ]
                   },
                   "teamId": {
@@ -260278,6 +260540,13 @@
                 },
                 "type": "array"
               },
+              "isOrgBackingTeamMembership": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ]
+              },
               "joinedFrom": {
                 "properties": {
                   "commitId": {
@@ -260961,6 +261230,13 @@
                   "type": "object"
                 },
                 "type": "array"
+              },
+              "isOrgBackingTeamMembership": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ]
               },
               "joinedFrom": {
                 "properties": {

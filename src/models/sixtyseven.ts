@@ -12,21 +12,118 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
+  Commit,
+  Commit$inboundSchema,
   Job10,
   Job10$inboundSchema,
-  Job6,
-  Job6$inboundSchema,
   Job7,
   Job7$inboundSchema,
   Job8,
   Job8$inboundSchema,
   Job9,
   Job9$inboundSchema,
-  UserEventJobPayload120GitComments,
-  UserEventJobPayload120GitComments$inboundSchema,
-  UserEventJobPayload120HeadInfo,
-  UserEventJobPayload120HeadInfo$inboundSchema,
-} from "./usereventjobpayload120headinfo.js";
+  JobProject,
+  JobProject$inboundSchema,
+  UserEventJobPayload1206GitComments,
+  UserEventJobPayload1206GitComments$inboundSchema,
+  UserEventJobPayload1206HeadInfo,
+  UserEventJobPayload1206HeadInfo$inboundSchema,
+  UserEventJobPayload1206Provider,
+  UserEventJobPayload1206Provider$inboundSchema,
+  UserEventJobPayload120DeployHook,
+  UserEventJobPayload120DeployHook$inboundSchema,
+  UserEventJobPayloadCommitVerification,
+  UserEventJobPayloadCommitVerification$inboundSchema,
+  UserEventJobPayloadGitHashtagVercel,
+  UserEventJobPayloadGitHashtagVercel$inboundSchema,
+  UserEventJobPayloadNsnbSideEffect,
+  UserEventJobPayloadNsnbSideEffect$inboundSchema,
+} from "./usereventjobpayload1206provider.js";
+
+export type Job6 = {
+  authorized?: boolean | undefined;
+  authorizedBy?: string | undefined;
+  commit?: Commit | undefined;
+  /**
+   * Since 6 Nov 2025 The verification status of the commit. - 'verified' if the commit is verified - 'unverified' if the commit is not verified - 'unknown' if the commit verification status is unknown or not supported
+   */
+  commitVerification?: UserEventJobPayloadCommitVerification | undefined;
+  /**
+   * Since April 2023 Cached count of how many projects are connected to the repo. Saves a few Cosmos queries down the road in the main flow.
+   */
+  connectedProjectCount?: number | undefined;
+  createdAt?: number | undefined;
+  customEnvId?: string | null | undefined;
+  deployHook?: UserEventJobPayload120DeployHook | undefined;
+  deploymentId?: string | undefined;
+  eventful?: boolean | undefined;
+  forceNew?: boolean | undefined;
+  /**
+   * Since June 2023 Determines if comments should be posted to the git host. Replaces `github.silent` in the vercel.json.
+   */
+  gitComments?: UserEventJobPayload1206GitComments | undefined;
+  /**
+   * Since February 2022 All the hashtag-vercel tags found in the commit message triggering the deploy. For example, #VERCEL_DO_SOMETHING
+   */
+  gitHashtagVercel?: Array<UserEventJobPayloadGitHashtagVercel> | undefined;
+  /**
+   * GitLab
+   */
+  headInfo: UserEventJobPayload1206HeadInfo;
+  /**
+   * Since 28 Feb 2024 If set to true, identifies that the git job was created for a manual git deployment
+   */
+  isManualGitDeploy?: boolean | undefined;
+  /**
+   * Since December 2022 Pairs of projects and owner ids to build for this build request.
+   */
+  jobPairs?: Array<Array<string>> | undefined;
+  /**
+   * Since December 2022 All project ids associated to this job. Think monorepo. This job will be for one of these project.
+   */
+  jobProjectIds?: Array<string> | undefined;
+  linkedProjectId?: string | undefined;
+  /**
+   * Since March 2026 Records a successful NSNB auto-add result so later GitHub PR comments can deterministically explain why this SHA was allowed to deploy.
+   */
+  nsnbSideEffect?: UserEventJobPayloadNsnbSideEffect | undefined;
+  prId?: number | undefined;
+  /**
+   * Since April 2023 If set then it is a cached result of asking the remote for the PR ID the commit that triggered this Job. Or zero if it was not a PR. This prevents a few git round trips by the git updater.
+   */
+  prIdOrZero?: number | undefined;
+  project: JobProject;
+  projectId?: string | undefined;
+  provider: UserEventJobPayload1206Provider;
+  ref: string;
+  repoPushedAt?: number | null | undefined;
+  sha: string;
+  silent?: boolean | undefined;
+  /**
+   * Since June 2024 Pairs of projects and owner ids to immediately finish (without building) because we want to create them in a skipped state.
+   */
+  skippedJobPairs?: Array<Array<string>> | undefined;
+  target?: string | null | undefined;
+  type: "gitlab-push";
+  url?: string | undefined;
+  withCache?: boolean | undefined;
+};
+
+export type UserEventJobPayload120GitComments = {
+  onCommit: boolean;
+  onPullRequest: boolean;
+};
+
+/**
+ * Information about the head commit/branch for a GitHub repository
+ */
+export type UserEventJobPayload120HeadInfo = {
+  org: string;
+  ref: string;
+  repo: string;
+  repoId: number;
+  sha: string;
+};
 
 export const UserEventJobPayload1205Provider = {
   Github: "github",
@@ -1613,92 +1710,104 @@ export type SixtySeven = {
   resources?: Resources | undefined;
 };
 
-export const UserEventPayload66Permissions = {
-  ManageSpeedInsights: "manage:speed-insights",
-  ManageWebAnalytics: "manage:web-analytics",
-  ReadWriteAiGatewayApiKey: "read-write:ai-gateway-api-key",
-  ReadWriteAiGatewayGuardrails: "read-write:ai-gateway-guardrails",
-  ReadWriteAiGatewayPrivateModels: "read-write:ai-gateway-private-models",
-  ReadWriteAiGatewayRules: "read-write:ai-gateway-rules",
-  ReadWriteAiGatewayVirtualModelConfigs:
-    "read-write:ai-gateway-virtual-model-configs",
-  ReadWriteAlerts: "read-write:alerts",
-  ReadWriteAutomations: "read-write:automations",
-  ReadWriteBilling: "read-write:billing",
-  ReadWriteBlob: "read-write:blob",
-  ReadWriteConnect: "read-write:connect",
-  ReadWriteDeployment: "read-write:deployment",
-  ReadWriteDomain: "read-write:domain",
-  ReadWriteDomainRegistrar: "read-write:domain-registrar",
-  ReadWriteDrains: "read-write:drains",
-  ReadWriteEdgeCache: "read-write:edge-cache",
-  ReadWriteEdgeConfig: "read-write:edge-config",
-  ReadWriteFirewall: "read-write:firewall",
-  ReadWriteIntegrationConfiguration: "read-write:integration-configuration",
-  ReadWriteIntegrationResource: "read-write:integration-resource",
-  ReadWriteKms: "read-write:kms",
-  ReadWriteMessageboard: "read-write:messageboard",
-  ReadWriteProject: "read-write:project",
-  ReadWriteProjectEnvVars: "read-write:project-env-vars",
-  ReadWriteProjectEnvVarsNonProduction:
-    "read-write:project-env-vars-non-production",
-  ReadWriteProjectEnvVarsProduction: "read-write:project-env-vars-production",
-  ReadWriteProjectFlagsNonProduction: "read-write:project-flags-non-production",
-  ReadWriteProjectFlagsProduction: "read-write:project-flags-production",
-  ReadWriteProjectProtectionBypass: "read-write:project-protection-bypass",
-  ReadWriteProjectTrustedSources: "read-write:project-trusted-sources",
-  ReadWriteRemoteCache: "read-write:remote-cache",
-  ReadWriteSandbox: "read-write:sandbox",
-  ReadWriteSchedule: "read-write:schedule",
-  ReadWriteTeamMembers: "read-write:team-members",
-  ReadWriteVcr: "read-write:vcr",
-  ReadAccessGroup: "read:access-group",
-  ReadAiGatewayGuardrails: "read:ai-gateway-guardrails",
-  ReadAiGatewayPrivateModels: "read:ai-gateway-private-models",
-  ReadAiGatewayRules: "read:ai-gateway-rules",
-  ReadAiGatewayVirtualModelConfigs: "read:ai-gateway-virtual-model-configs",
-  ReadAlerts: "read:alerts",
-  ReadAutomations: "read:automations",
-  ReadBilling: "read:billing",
-  ReadConnect: "read:connect",
-  ReadDeployment: "read:deployment",
-  ReadDomain: "read:domain",
-  ReadEvent: "read:event",
-  ReadFirewall: "read:firewall",
-  ReadIntegrationConfiguration: "read:integration-configuration",
-  ReadIntegrationResource: "read:integration-resource",
-  ReadKms: "read:kms",
-  ReadMessageboard: "read:messageboard",
-  ReadMonitoring: "read:monitoring",
-  ReadProject: "read:project",
-  ReadProjectEnvVarsNonProduction: "read:project-env-vars-non-production",
-  ReadProjectEnvVarsProduction: "read:project-env-vars-production",
-  ReadProjectFlags: "read:project-flags",
-  ReadProjectTrustedSources: "read:project-trusted-sources",
-  ReadRemoteCache: "read:remote-cache",
-  ReadSandbox: "read:sandbox",
-  ReadSchedule: "read:schedule",
-  ReadSpeedInsights: "read:speed-insights",
-  ReadTeam: "read:team",
-  ReadVcr: "read:vcr",
-  ReadWebAnalytics: "read:web-analytics",
-  ReadWebhooks: "read:webhooks",
-  UseAiGateway: "use:ai-gateway",
-} as const;
-export type UserEventPayload66Permissions = ClosedEnum<
-  typeof UserEventPayload66Permissions
->;
+/** @internal */
+export const Job6$inboundSchema: z.ZodType<Job6, z.ZodTypeDef, unknown> = z
+  .object({
+    authorized: types.optional(types.boolean()),
+    authorizedBy: types.optional(types.string()),
+    commit: types.optional(Commit$inboundSchema),
+    commitVerification: types.optional(
+      UserEventJobPayloadCommitVerification$inboundSchema,
+    ),
+    connectedProjectCount: types.optional(types.number()),
+    createdAt: types.optional(types.number()),
+    customEnvId: z.nullable(types.string()).optional(),
+    deployHook: types.optional(UserEventJobPayload120DeployHook$inboundSchema),
+    deploymentId: types.optional(types.string()),
+    eventful: types.optional(types.boolean()),
+    forceNew: types.optional(types.boolean()),
+    gitComments: types.optional(
+      UserEventJobPayload1206GitComments$inboundSchema,
+    ),
+    gitHashtagVercel: types.optional(
+      z.array(UserEventJobPayloadGitHashtagVercel$inboundSchema),
+    ),
+    headInfo: UserEventJobPayload1206HeadInfo$inboundSchema,
+    isManualGitDeploy: types.optional(types.boolean()),
+    jobPairs: types.optional(z.array(z.array(types.string()))),
+    jobProjectIds: types.optional(z.array(types.string())),
+    linkedProjectId: types.optional(types.string()),
+    nsnbSideEffect: types.optional(
+      UserEventJobPayloadNsnbSideEffect$inboundSchema,
+    ),
+    prId: types.optional(types.number()),
+    prIdOrZero: types.optional(types.number()),
+    project: JobProject$inboundSchema,
+    projectId: types.optional(types.string()),
+    provider: UserEventJobPayload1206Provider$inboundSchema,
+    ref: types.string(),
+    repoPushedAt: z.nullable(types.number()).optional(),
+    sha: types.string(),
+    silent: types.optional(types.boolean()),
+    skippedJobPairs: types.optional(z.array(z.array(types.string()))),
+    target: z.nullable(types.string()).optional(),
+    type: types.literal("gitlab-push"),
+    url: types.optional(types.string()),
+    withCache: types.optional(types.boolean()),
+  });
 
-export const UserEventPayload66AfterType = {
-  String: "string",
-} as const;
-export type UserEventPayload66AfterType = ClosedEnum<
-  typeof UserEventPayload66AfterType
->;
+export function job6FromJSON(
+  jsonString: string,
+): SafeParseResult<Job6, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Job6$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Job6' from JSON`,
+  );
+}
 
-export type UserEventPayloadItems = {
-  type: UserEventPayload66AfterType;
-};
+/** @internal */
+export const UserEventJobPayload120GitComments$inboundSchema: z.ZodType<
+  UserEventJobPayload120GitComments,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  onCommit: types.boolean(),
+  onPullRequest: types.boolean(),
+});
+
+export function userEventJobPayload120GitCommentsFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventJobPayload120GitComments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventJobPayload120GitComments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventJobPayload120GitComments' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventJobPayload120HeadInfo$inboundSchema: z.ZodType<
+  UserEventJobPayload120HeadInfo,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  org: types.string(),
+  ref: types.string(),
+  repo: types.string(),
+  repoId: types.number(),
+  sha: types.string(),
+});
+
+export function userEventJobPayload120HeadInfoFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventJobPayload120HeadInfo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventJobPayload120HeadInfo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventJobPayload120HeadInfo' from JSON`,
+  );
+}
 
 /** @internal */
 export const UserEventJobPayload1205Provider$inboundSchema: z.ZodNativeEnum<
@@ -1714,9 +1823,9 @@ export const Job5$inboundSchema: z.ZodType<Job5, z.ZodTypeDef, unknown> = z
     customHost: types.optional(types.string()),
     eventful: types.optional(types.boolean()),
     gitComments: types.optional(
-      UserEventJobPayload120GitComments$inboundSchema,
+      z.lazy(() => UserEventJobPayload120GitComments$inboundSchema),
     ),
-    headInfo: UserEventJobPayload120HeadInfo$inboundSchema,
+    headInfo: z.lazy(() => UserEventJobPayload120HeadInfo$inboundSchema),
     installationId: types.number(),
     isPrivate: types.boolean(),
     linkedProjectId: types.optional(types.string()),
@@ -2341,7 +2450,7 @@ export const PayloadJob$inboundSchema: z.ZodType<
   z.lazy(() => Job3$inboundSchema),
   z.lazy(() => Job4$inboundSchema),
   z.lazy(() => Job5$inboundSchema),
-  Job6$inboundSchema,
+  z.lazy(() => Job6$inboundSchema),
   Job7$inboundSchema,
   Job8$inboundSchema,
   Job9$inboundSchema,
@@ -2370,7 +2479,7 @@ export const OneHundredAndTwenty$inboundSchema: z.ZodType<
     z.lazy(() => Job3$inboundSchema),
     z.lazy(() => Job4$inboundSchema),
     z.lazy(() => Job5$inboundSchema),
-    Job6$inboundSchema,
+    z.lazy(() => Job6$inboundSchema),
     Job7$inboundSchema,
     Job8$inboundSchema,
     Job9$inboundSchema,
@@ -4311,34 +4420,5 @@ export function sixtySevenFromJSON(
     jsonString,
     (x) => SixtySeven$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'SixtySeven' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload66Permissions$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload66Permissions
-> = z.nativeEnum(UserEventPayload66Permissions);
-
-/** @internal */
-export const UserEventPayload66AfterType$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload66AfterType
-> = z.nativeEnum(UserEventPayload66AfterType);
-
-/** @internal */
-export const UserEventPayloadItems$inboundSchema: z.ZodType<
-  UserEventPayloadItems,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  type: UserEventPayload66AfterType$inboundSchema,
-});
-
-export function userEventPayloadItemsFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayloadItems, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayloadItems$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayloadItems' from JSON`,
   );
 }

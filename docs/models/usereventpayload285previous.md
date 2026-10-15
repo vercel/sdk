@@ -1,0 +1,15 @@
+# UserEventPayload285Previous
+
+## Example Usage
+
+```typescript
+import { UserEventPayload285Previous } from "@vercel/sdk/models/usereventpayloadkind.js";
+
+let value: UserEventPayload285Previous = {};
+```
+
+## Fields
+
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `branchMatcher`                                                  | [models.PayloadBranchMatcher](../models/payloadbranchmatcher.md) | :heavy_minus_sign:                                               | N/A                                                              |

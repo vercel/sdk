@@ -19,3 +19,11 @@ const value: models.StatusResponseBody2 = {
 };
 ```
 
+### `models.ResponseBody3`
+
+```typescript
+const value: models.ResponseBody3 = {
+  status: "paused",
+};
+```
+

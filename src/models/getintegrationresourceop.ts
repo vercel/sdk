@@ -21,7 +21,11 @@ export type GetIntegrationResourceRequest = {
   resourceId: string;
 };
 
-export type GetIntegrationResourceClaims = string | number | boolean;
+export type GetIntegrationResourceClaims =
+  | string
+  | number
+  | Array<string>
+  | boolean;
 
 export type GetIntegrationResourceWhen = {
   environment?: Array<string> | undefined;
@@ -29,7 +33,7 @@ export type GetIntegrationResourceWhen = {
 };
 
 export type GetIntegrationResourceClaimRules = {
-  claims: { [k: string]: string | number | boolean | null };
+  claims: { [k: string]: string | number | Array<string> | boolean | null };
   when?: GetIntegrationResourceWhen | undefined;
 };
 
@@ -194,7 +198,12 @@ export const GetIntegrationResourceClaims$inboundSchema: z.ZodType<
   GetIntegrationResourceClaims,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
+> = smartUnion([
+  types.string(),
+  types.number(),
+  z.array(types.string()),
+  types.boolean(),
+]);
 
 export function getIntegrationResourceClaimsFromJSON(
   jsonString: string,
@@ -234,7 +243,12 @@ export const GetIntegrationResourceClaimRules$inboundSchema: z.ZodType<
 > = z.object({
   claims: z.record(
     types.nullable(
-      smartUnion([types.string(), types.number(), types.boolean()]),
+      smartUnion([
+        types.string(),
+        types.number(),
+        z.array(types.string()),
+        types.boolean(),
+      ]),
     ),
   ),
   when: types.optional(z.lazy(() => GetIntegrationResourceWhen$inboundSchema)),

@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  * List virtual model configs
  *
  * @remarks
- * List virtual model configs. With `ownerId`, returns all of that team's VMCs. Without it, pages through VMCs across all teams (newest-first, `limit`/`cursor`).
+ * List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -100,6 +100,7 @@ async function $do(
 
   const query = encodeFormQuery({
     "cursor": payload.cursor,
+    "includeArchived": payload.includeArchived,
     "limit": payload.limit,
     "ownerId": payload.ownerId,
     "slug": payload.slug,

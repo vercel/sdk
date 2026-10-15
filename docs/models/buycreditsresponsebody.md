@@ -41,16 +41,17 @@ const value: models.BuyCreditsResponseBody2 = {
 };
 ```
 
-### `models.ResponseBody3`
+### `models.BuyCreditsResponseBody3`
 
 ```typescript
-const value: models.ResponseBody3 = {
+const value: models.BuyCreditsResponseBody3 = {
   orbSubscriptionIntent: {
     configuration: {
       options: {
-        addedResourceIds: [],
         productAlias: "<value>",
-        removedResourceIds: [],
+        resourceIds: [
+          "<value 1>",
+        ],
       },
       output: {
         effectiveBehavior: "immediate",
@@ -58,19 +59,17 @@ const value: models.ResponseBody3 = {
         pricingSource: "orb",
         productId: "<id>",
       },
-      type: "adjust_plan_item_quantity",
+      type: "increase_plan_item_quantity",
     },
-    createdAt: "1717358285269",
+    createdAt: "1729837603767",
     id: "<id>",
     orbSubscriptionId: "<id>",
     orbUpdate: {
-      appliedAt: "<value>",
-      mode: "async",
-      status: "succeeded",
+      mode: "sync",
     },
     ownerId: "<id>",
-    status: "succeeded",
-    updatedAt: "1735674038069",
+    status: "pending",
+    updatedAt: "1735643411946",
   },
 };
 ```

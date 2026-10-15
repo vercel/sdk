@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventySix } from "@vercel/sdk/models/usereventlasteditedbyprincipalpayload1.js";
+import { OneHundredAndSeventySix } from "@vercel/sdk/models/usereventpayload174type.js";
 
 let value: OneHundredAndSeventySix = {
-  configVersion: "<value>",
   projectId: "<id>",
-  projectName: "<value>",
+  scope: "<value>",
+  source: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `configVersion`        | *models.ConfigVersion* | :heavy_check_mark:     | N/A                    |
-| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `scope`            | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |

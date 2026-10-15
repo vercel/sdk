@@ -3,17 +3,63 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
+import * as types from "../types/primitives.js";
 import {
   AiGatewayBudget,
   AiGatewayBudget$inboundSchema,
 } from "./aigatewaybudget.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * Paged requests only: `source: 'default'` rows per scope type across the whole `scopeType`-filtered list, independent of the page and of `includeDefaultCovered`.
+ */
+export type DefaultCoveredCounts = {
+  apiKey: number;
+  project: number;
+  team: number;
+  user: number;
+};
+
 export type AiGatewayBudgetList = {
   budgets: Array<AiGatewayBudget>;
+  /**
+   * Paged requests only: `source: 'default'` rows per scope type across the whole `scopeType`-filtered list, independent of the page and of `includeDefaultCovered`.
+   */
+  defaultCoveredCounts?: DefaultCoveredCounts | undefined;
+  /**
+   * Paged requests only (`limit` or `cursor` set): pass as `cursor` to read the next page; null on the last page.
+   */
+  nextCursor?: string | null | undefined;
 };
+
+/** @internal */
+export const DefaultCoveredCounts$inboundSchema: z.ZodType<
+  DefaultCoveredCounts,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  "api-key": types.number(),
+  project: types.number(),
+  team: types.number(),
+  user: types.number(),
+}).transform((v) => {
+  return remap$(v, {
+    "api-key": "apiKey",
+  });
+});
+
+export function defaultCoveredCountsFromJSON(
+  jsonString: string,
+): SafeParseResult<DefaultCoveredCounts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DefaultCoveredCounts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DefaultCoveredCounts' from JSON`,
+  );
+}
 
 /** @internal */
 export const AiGatewayBudgetList$inboundSchema: z.ZodType<
@@ -22,6 +68,10 @@ export const AiGatewayBudgetList$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   budgets: z.array(AiGatewayBudget$inboundSchema),
+  defaultCoveredCounts: types.optional(
+    z.lazy(() => DefaultCoveredCounts$inboundSchema),
+  ),
+  nextCursor: z.nullable(types.string()).optional(),
 });
 
 export function aiGatewayBudgetListFromJSON(

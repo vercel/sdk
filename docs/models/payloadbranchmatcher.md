@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadBranchMatcher } from "@vercel/sdk/models/twohundredandforty.js";
+import { PayloadBranchMatcher } from "@vercel/sdk/models/usereventpayloadkind.js";
 
 let value: PayloadBranchMatcher = {
   pattern: "<value>",
@@ -16,4 +16,4 @@ let value: PayloadBranchMatcher = {
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `pattern`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | The pattern to match against branch names                                              |
-| `type`                                                                                 | [models.UserEventPayload284PreviousType](../models/usereventpayload284previoustype.md) | :heavy_check_mark:                                                                     | The type of matching to perform                                                        |
+| `type`                                                                                 | [models.UserEventPayload285PreviousType](../models/usereventpayload285previoustype.md) | :heavy_check_mark:                                                                     | The type of matching to perform                                                        |

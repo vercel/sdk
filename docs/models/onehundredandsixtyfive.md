@@ -5,9 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyFive } from "@vercel/sdk/models/usereventjobpayload120headinfo.js";
+import { OneHundredAndSixtyFive } from "@vercel/sdk/models/usereventjobpayload1216provider.js";
 
 let value: OneHundredAndSixtyFive = {
+  previousRule: {
+    email: "Russell_Kreiger20@gmail.com",
+  },
   team: {
     id: "<id>",
   },
@@ -18,6 +21,5 @@ let value: OneHundredAndSixtyFive = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
 | `team`                                                                 | [models.UserEventPayload165Team](../models/usereventpayload165team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

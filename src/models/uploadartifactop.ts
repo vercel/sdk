@@ -57,9 +57,6 @@ export type UploadArtifactRequest = {
  * File successfully uploaded
  */
 export type UploadArtifactResponseBody = {
-  /**
-   * Array of URLs where the artifact was updated
-   */
   urls: Array<string>;
 };
 

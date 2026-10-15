@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  * List rules
  *
  * @remarks
- * List the authenticated team's routing rules
+ * List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts the team's rules server-side, which is fine at current rule counts.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -98,7 +98,9 @@ async function $do(
   const path = pathToFunc("/ai-gateway/rules")();
 
   const query = encodeFormQuery({
+    "cursor": payload.cursor,
     "includeDisabled": payload.includeDisabled,
+    "limit": payload.limit,
     "slug": payload.slug,
     "teamId": payload.teamId,
   });

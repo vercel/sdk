@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyThree } from "@vercel/sdk/models/usereventpayloaditems.js";
+import { NinetyThree } from "@vercel/sdk/models/sixtyseven.js";
 
 let value: NinetyThree = {
   gitOwnerName: "<value>",
@@ -27,5 +27,5 @@ let value: NinetyThree = {
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
 | `gitOwnerName`                                         | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
 | `gitRepositoryName`                                    | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `next`                                                 | [models.Next](../models/next.md)                       | :heavy_check_mark:                                     | N/A                                                    |
+| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |
 | `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |

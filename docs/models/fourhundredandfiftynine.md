@@ -5,23 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFiftyNine } from "@vercel/sdk/models/fourhundredandthirtysix.js";
+import { FourHundredAndFiftyNine } from "@vercel/sdk/models/env.js";
 
 let value: FourHundredAndFiftyNine = {
-  next: {
-    enabled: false,
-    totpVerified: false,
-  },
-  previous: {
-    enabled: true,
-    totpVerified: false,
-  },
+  enabled: false,
+  totpVerified: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload459Next](../models/usereventpayload459next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload459Previous](../models/usereventpayload459previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |

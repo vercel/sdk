@@ -9,13 +9,14 @@ import { UploadArtifactResponseBody } from "@vercel/sdk/models/uploadartifactop.
 
 let value: UploadArtifactResponseBody = {
   urls: [
-    "https://api.vercel.com/v2/now/artifact/12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```
 
 ## Fields
 
-| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `urls`                                                                    | *string*[]                                                                | :heavy_check_mark:                                                        | Array of URLs where the artifact was updated                              | [<br/>"https://api.vercel.com/v2/now/artifact/12HKQaOmR5t5Uy6vdcQsNIiZgHGB"<br/>] |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `urls`             | *string*[]         | :heavy_check_mark: | N/A                |

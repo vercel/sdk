@@ -3,19 +3,18 @@
 ## Example Usage
 
 ```typescript
-import { Previous } from "@vercel/sdk/models/payload3.js";
+import { Previous } from "@vercel/sdk/models/deploymentcheckupdatedpayload.js";
 
 let value: Previous = {
-  maximumMonthlySpend: "<value>",
-  minimumBalance: "<value>",
-  targetBalance: "<value>",
+  targets: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `maximumMonthlySpend` | *string*              | :heavy_check_mark:    | N/A                   |
-| `minimumBalance`      | *string*              | :heavy_check_mark:    | N/A                   |
-| `targetBalance`       | *string*              | :heavy_check_mark:    | N/A                   |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `targets`          | *string*[]         | :heavy_check_mark: | N/A                |

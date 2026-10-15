@@ -9,11 +9,6 @@ import { GetDeploymentServicesDaemon } from "@vercel/sdk/models/getdeploymentser
 
 let value: GetDeploymentServicesDaemon = {
   entrypoint: "<value>",
-  replicas: {
-    "key": 7279.42,
-    "key1": 1495.75,
-    "key2": 8938.05,
-  },
   root: "<value>",
   name: "<value>",
 };
@@ -25,7 +20,9 @@ let value: GetDeploymentServicesDaemon = {
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
 | `command`                                                                            | *string*[]                                                                           | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `entrypoint`                                                                         | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `replicas`                                                                           | Record<string, *number*>                                                             | :heavy_check_mark:                                                                   | Replica counts by region.                                                            |
+| `instances`                                                                          | Record<string, *number*>                                                             | :heavy_minus_sign:                                                                   | Instance counts by region.                                                           |
+| `replicas`                                                                           | Record<string, *number*>                                                             | :heavy_minus_sign:                                                                   | Instance counts by region.                                                           |
 | `resources`                                                                          | [models.GetDeploymentServicesResources](../models/getdeploymentservicesresources.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `root`                                                                               | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `terminationGracePeriodSeconds`                                                      | *number*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
 | `name`                                                                               | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |

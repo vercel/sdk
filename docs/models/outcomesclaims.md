@@ -3,21 +3,18 @@
 
 ## Supported Types
 
-### `string`
+### `models.Claims1`
 
 ```typescript
-const value: string = "<value>";
+const value: models.Claims1 = 5242.15;
 ```
 
-### `number`
+### `string[]`
 
 ```typescript
-const value: number = 1284.03;
-```
-
-### `boolean`
-
-```typescript
-const value: boolean = true;
+const value: string[] = [
+  "<value 1>",
+  "<value 2>",
+];
 ```
 

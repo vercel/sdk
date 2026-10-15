@@ -5,7 +5,7 @@ Since March 2026 Records a successful NSNB auto-add result so later GitHub PR co
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayloadNsnbSideEffect } from "@vercel/sdk/models/usereventjobpayload120headinfo.js";
+import { UserEventJobPayloadNsnbSideEffect } from "@vercel/sdk/models/usereventjobpayload1216provider.js";
 
 let value: UserEventJobPayloadNsnbSideEffect = {
   action: "auto-approved-pending-invite",
@@ -17,5 +17,5 @@ let value: UserEventJobPayloadNsnbSideEffect = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `action`                                                                         | [models.UserEventJobPayload120Action](../models/usereventjobpayload120action.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `action`                                                                         | [models.UserEventJobPayload121Action](../models/usereventjobpayload121action.md) | :heavy_check_mark:                                                               | N/A                                                                              |
 | `gitUserLogin`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

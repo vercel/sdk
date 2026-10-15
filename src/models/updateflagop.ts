@@ -729,6 +729,7 @@ export type UpdateFlagResponseBody = {
   projectId: string;
   revision: number;
   seed: number;
+  seenInProduction?: boolean | undefined;
   slug: string;
   state: UpdateFlagFeatureFlagsState;
   tags?: Array<string> | undefined;
@@ -2579,6 +2580,7 @@ export const UpdateFlagResponseBody$inboundSchema: z.ZodType<
   projectId: types.string(),
   revision: types.number(),
   seed: types.number(),
+  seenInProduction: types.optional(types.boolean()),
   slug: types.string(),
   state: UpdateFlagFeatureFlagsState$inboundSchema,
   tags: types.optional(z.array(types.string())),

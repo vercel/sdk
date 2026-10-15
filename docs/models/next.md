@@ -3,11 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { Next } from "@vercel/sdk/models/usereventpayloaditems.js";
+import { Next } from "@vercel/sdk/models/deploymentcheckupdatedpayload.js";
 
 let value: Next = {
-  autoAddReviewers: true,
-  enabled: false,
+  targets: [],
 };
 ```
 
@@ -15,5 +14,4 @@ let value: Next = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `autoAddReviewers` | *boolean*          | :heavy_check_mark: | N/A                |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `targets`          | *string*[]         | :heavy_check_mark: | N/A                |

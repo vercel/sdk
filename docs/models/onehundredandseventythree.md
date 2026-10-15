@@ -5,56 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyThree } from "@vercel/sdk/models/usereventjobpayload120headinfo.js";
+import { OneHundredAndSeventyThree } from "@vercel/sdk/models/usereventjobpayload1216provider.js";
 
 let value: OneHundredAndSeventyThree = {
-  newEnvVar: {
-    created: new Date("2021-02-10T13:11:49.180Z"),
-    createdAt: 1609492210000,
-    createdBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
-    deletedAt: 1609492210000,
-    deletedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
-    id: "env_XCG7t7AIHuO2SBA8667zNUiM",
-    key: "my-api-key",
-    ownerId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
-    projectId: [
-      "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
-      "prj_2WjyKQmM8ZnGcJsPWMrasEFg",
-    ],
-    target: [
-      "production",
-    ],
-    type: "encrypted",
-    updatedAt: 1609492210000,
-    updatedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
-  },
-  oldEnvVar: {
-    created: new Date("2021-02-10T13:11:49.180Z"),
-    createdAt: 1609492210000,
-    createdBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
-    deletedAt: 1609492210000,
-    deletedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
-    id: "env_XCG7t7AIHuO2SBA8667zNUiM",
-    key: "my-api-key",
-    ownerId: "team_LLHUOMOoDlqOp8wPE4kFo9pE",
-    projectId: [
-      "prj_2WjyKQmM8ZnGcJsPWMrHRHrE",
-      "prj_2WjyKQmM8ZnGcJsPWMrasEFg",
-    ],
-    target: [
-      "production",
-    ],
-    type: "encrypted",
-    updatedAt: 1609492210000,
-    updatedBy: "2qDDuGFTWXBLDNnqZfWPDp1A",
-  },
+  envId: "<id>",
+  envKey: "<value>",
+  organizationId: "<id>",
+  provider: "<value>",
+  repository: "<value>",
+  target: [
+    "preview",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `newEnvVar`                                                | [models.NewEnvVar](../models/newenvvar.md)                 | :heavy_minus_sign:                                         | N/A                                                        |
-| `oldEnvVar`                                                | [models.OldEnvVar](../models/oldenvvar.md)                 | :heavy_minus_sign:                                         | N/A                                                        |
-| `updateDiff`                                               | [models.PayloadUpdateDiff](../models/payloadupdatediff.md) | :heavy_minus_sign:                                         | N/A                                                        |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `envId`                                                                      | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `envKey`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `organizationId`                                                             | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `provider`                                                                   | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `repository`                                                                 | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `target`                                                                     | [models.UserEventPayload173Target](../models/usereventpayload173target.md)[] | :heavy_check_mark:                                                           | N/A                                                                          |

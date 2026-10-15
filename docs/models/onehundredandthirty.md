@@ -5,13 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirty } from "@vercel/sdk/models/usereventjobpayload120headinfo.js";
+import { OneHundredAndThirty } from "@vercel/sdk/models/usereventjobpayload1216provider.js";
 
 let value: OneHundredAndThirty = {
-  action: "add",
-  domain: "simplistic-statue.name",
+  domain: "deadly-republican.org",
   id: "<id>",
-  initiator: "system",
   name: "<value>",
   type: "<value>",
   value: "<value>",
@@ -20,15 +18,11 @@ let value: OneHundredAndThirty = {
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload130Action](../models/usereventpayload130action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `domain`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `id`                                                                       | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `initiator`                                                                | [models.Initiator](../models/initiator.md)                                 | :heavy_check_mark:                                                         | N/A                                                                        |
-| `mxPriority`                                                               | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `name`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `previousValue`                                                            | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `source`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `type`                                                                     | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `value`                                                                    | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *string*           | :heavy_check_mark: | N/A                |
+| `value`            | *string*           | :heavy_check_mark: | N/A                |

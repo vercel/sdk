@@ -5,35 +5,73 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndEightyEight } from "@vercel/sdk/models/fourhundredandthirtysix.js";
+import { FourHundredAndEightyEight } from "@vercel/sdk/models/env.js";
 
 let value: FourHundredAndEightyEight = {
-  origin: "otp",
-  scope: "project",
-  tokenId: "<id>",
-  tokenName: "<value>",
+  after: {
+    claims: [
+      {
+        name: "<value>",
+        values: [],
+      },
+    ],
+    clientId: "<id>",
+    createdAt: 3265.64,
+    issuerUrl: "https://emotional-lawmaker.name",
+    name: null,
+    permissions: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    policyId: "<id>",
+    resources: {
+      projectIds: [
+        "<value 1>",
+        "<value 2>",
+      ],
+    },
+    teamId: "<id>",
+    updatedAt: 6691.9,
+  },
+  before: {
+    claims: [
+      {
+        name: "<value>",
+        values: [
+          {
+            value: "<value>",
+            wildcards: false,
+          },
+        ],
+      },
+    ],
+    clientId: "<id>",
+    createdAt: 3272.77,
+    issuerUrl: "https://beloved-amnesty.com",
+    name: "<value>",
+    permissions: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+    policyId: "<id>",
+    resources: {
+      projectIds: [
+        "<value 1>",
+        "<value 2>",
+      ],
+    },
+    teamId: "<id>",
+    updatedAt: 6995.95,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                    | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `expiresAt`                                                                                                                                                              | *number*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | Unix epoch milliseconds. Absent when the token never expires.                                                                                                            |
-| `geolocation`                                                                                                                                                            | [models.UserEventPayload488Geolocation](../models/usereventpayload488geolocation.md)                                                                                     | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
-| `hasAuthorizationDetails`                                                                                                                                                | *boolean*                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                       | Whether the token was issued with RFC 9396 authorization details.                                                                                                        |
-| `ip`                                                                                                                                                                     | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
-| `origin`                                                                                                                                                                 | [models.Origin](../models/origin.md)                                                                                                                                     | :heavy_check_mark:                                                                                                                                                       | How the token was issued. Always `'manual'` for explicit PAT creation.                                                                                                   |
-| `projectId`                                                                                                                                                              | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | Present when `scope` is `'project'`.                                                                                                                                     |
-| `projectName`                                                                                                                                                            | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | Present when `scope` is `'project'`.                                                                                                                                     |
-| `projectScope`                                                                                                                                                           | [models.ProjectScope](../models/projectscope.md)                                                                                                                         | :heavy_minus_sign:                                                                                                                                                       | Present when `scope` is `'project'`.                                                                                                                                     |
-| `reqId`                                                                                                                                                                  | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
-| `reqUrl`                                                                                                                                                                 | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
-| `scope`                                                                                                                                                                  | [models.UserEventPayload488Scope](../models/usereventpayload488scope.md)                                                                                                 | :heavy_check_mark:                                                                                                                                                       | Scope of the token: - `'user'`: full-account token (not tied to any team). - `'team'`: scoped to a single team. - `'project'`: scoped to a single project within a team. |
-| `teamId`                                                                                                                                                                 | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | Present when `scope` is `'team'` or `'project'`.                                                                                                                         |
-| `teamSlug`                                                                                                                                                               | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | Present when `scope` is `'team'` or `'project'`.                                                                                                                         |
-| `tokenId`                                                                                                                                                                | *string*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | The token's public ID.                                                                                                                                                   |
-| `tokenName`                                                                                                                                                              | *string*                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                       | User-supplied name of the token.                                                                                                                                         |
-| `tokenPrefix`                                                                                                                                                            | [models.PayloadTokenPrefix](../models/payloadtokenprefix.md)                                                                                                             | :heavy_minus_sign:                                                                                                                                                       | The token prefix used when showing a safe checksum-style fingerprint.                                                                                                    |
-| `tokenSuffix`                                                                                                                                                            | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | The token checksum suffix.                                                                                                                                               |
-| `userAgent`                                                                                                                                                              | *string*                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
+| Field                                                                                                                                                                                                                | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `after`                                                                                                                                                                                                              | [models.PayloadAfter](../models/payloadafter.md)                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
+| `before`                                                                                                                                                                                                             | [models.PayloadBefore](../models/payloadbefore.md)                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
+| `appName`                                                                                                                                                                                                            | *string*                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |

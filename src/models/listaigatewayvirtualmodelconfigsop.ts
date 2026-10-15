@@ -3,11 +3,19 @@
  */
 
 import * as z from "zod/v3";
+import { ClosedEnum } from "../types/enums.js";
+
+export const IncludeArchived = {
+  True: "true",
+  False: "false",
+} as const;
+export type IncludeArchived = ClosedEnum<typeof IncludeArchived>;
 
 export type ListAiGatewayVirtualModelConfigsRequest = {
   ownerId?: string | undefined;
   limit?: number | undefined;
   cursor?: string | undefined;
+  includeArchived?: IncludeArchived | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -19,10 +27,16 @@ export type ListAiGatewayVirtualModelConfigsRequest = {
 };
 
 /** @internal */
+export const IncludeArchived$outboundSchema: z.ZodNativeEnum<
+  typeof IncludeArchived
+> = z.nativeEnum(IncludeArchived);
+
+/** @internal */
 export type ListAiGatewayVirtualModelConfigsRequest$Outbound = {
   ownerId?: string | undefined;
   limit?: number | undefined;
   cursor?: string | undefined;
+  includeArchived?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -36,6 +50,7 @@ export const ListAiGatewayVirtualModelConfigsRequest$outboundSchema: z.ZodType<
   ownerId: z.string().optional(),
   limit: z.number().int().optional(),
   cursor: z.string().optional(),
+  includeArchived: IncludeArchived$outboundSchema.optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

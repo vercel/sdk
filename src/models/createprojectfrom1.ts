@@ -2740,18 +2740,16 @@ export type TrustedIpsDeploymentType = ClosedEnum<
   typeof TrustedIpsDeploymentType
 >;
 
-export const CreateProjectTrustedIpsProtectionMode = {
+export const ProtectionMode = {
   Additional: "additional",
   Exclusive: "exclusive",
 } as const;
-export type CreateProjectTrustedIpsProtectionMode = ClosedEnum<
-  typeof CreateProjectTrustedIpsProtectionMode
->;
+export type ProtectionMode = ClosedEnum<typeof ProtectionMode>;
 
 export type TrustedIps1 = {
   addresses: Array<CreateProjectTrustedIpsAddresses>;
   deploymentType: TrustedIpsDeploymentType;
-  protectionMode: CreateProjectTrustedIpsProtectionMode;
+  protectionMode: ProtectionMode;
 };
 
 export type CreateProjectTrustedIps = TrustedIps1 | TrustedIps2;
@@ -5620,10 +5618,9 @@ export const TrustedIpsDeploymentType$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(TrustedIpsDeploymentType);
 
 /** @internal */
-export const CreateProjectTrustedIpsProtectionMode$inboundSchema:
-  z.ZodNativeEnum<typeof CreateProjectTrustedIpsProtectionMode> = z.nativeEnum(
-    CreateProjectTrustedIpsProtectionMode,
-  );
+export const ProtectionMode$inboundSchema: z.ZodNativeEnum<
+  typeof ProtectionMode
+> = z.nativeEnum(ProtectionMode);
 
 /** @internal */
 export const TrustedIps1$inboundSchema: z.ZodType<
@@ -5635,7 +5632,7 @@ export const TrustedIps1$inboundSchema: z.ZodType<
     z.lazy(() => CreateProjectTrustedIpsAddresses$inboundSchema),
   ),
   deploymentType: TrustedIpsDeploymentType$inboundSchema,
-  protectionMode: CreateProjectTrustedIpsProtectionMode$inboundSchema,
+  protectionMode: ProtectionMode$inboundSchema,
 });
 
 export function trustedIps1FromJSON(

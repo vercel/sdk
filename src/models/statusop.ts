@@ -21,6 +21,22 @@ export type StatusRequest = {
   slug?: string | undefined;
 };
 
+export const ResponseBodyStatus = {
+  Disabled: "disabled",
+  Enabled: "enabled",
+  OverLimit: "over_limit",
+  Paused: "paused",
+} as const;
+export type ResponseBodyStatus = ClosedEnum<typeof ResponseBodyStatus>;
+
+export type ResponseBody3 = {
+  /**
+   * Present and `true` when the token can read artifacts but cannot upload them.
+   */
+  readOnly?: boolean | undefined;
+  status: ResponseBodyStatus;
+};
+
 export const StatusResponseBodyStatus = {
   Disabled: "disabled",
   Enabled: "enabled",
@@ -39,7 +55,10 @@ export type StatusResponseBody1 = {
   status: string;
 };
 
-export type StatusResponseBody = StatusResponseBody1 | StatusResponseBody2;
+export type StatusResponseBody =
+  | StatusResponseBody1
+  | StatusResponseBody2
+  | ResponseBody3;
 
 /** @internal */
 export type StatusRequest$Outbound = {
@@ -59,6 +78,31 @@ export const StatusRequest$outboundSchema: z.ZodType<
 
 export function statusRequestToJSON(statusRequest: StatusRequest): string {
   return JSON.stringify(StatusRequest$outboundSchema.parse(statusRequest));
+}
+
+/** @internal */
+export const ResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyStatus
+> = z.nativeEnum(ResponseBodyStatus);
+
+/** @internal */
+export const ResponseBody3$inboundSchema: z.ZodType<
+  ResponseBody3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  readOnly: types.optional(types.boolean()),
+  status: ResponseBodyStatus$inboundSchema,
+});
+
+export function responseBody3FromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBody3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBody3' from JSON`,
+  );
 }
 
 /** @internal */
@@ -112,6 +156,7 @@ export const StatusResponseBody$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => StatusResponseBody1$inboundSchema),
   z.lazy(() => StatusResponseBody2$inboundSchema),
+  z.lazy(() => ResponseBody3$inboundSchema),
 ]);
 
 export function statusResponseBodyFromJSON(

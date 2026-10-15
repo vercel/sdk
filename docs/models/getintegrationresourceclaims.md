@@ -15,6 +15,15 @@ const value: string = "<value>";
 const value: number = 1284.03;
 ```
 
+### `string[]`
+
+```typescript
+const value: string[] = [
+  "<value 1>",
+  "<value 2>",
+];
+```
+
 ### `boolean`
 
 ```typescript

@@ -155,14 +155,16 @@ export type UpdateResourceWhen = {
   environment?: Array<string> | undefined;
 };
 
-export type UpdateResourceClaims = string | number | boolean;
+export type UpdateResourceClaims1 = string | number | boolean;
+
+export type UpdateResourceClaims = string | number | boolean | Array<string>;
 
 export type UpdateResourceClaimRules = {
   when?: UpdateResourceWhen | undefined;
   /**
-   * Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed.
+   * Claims to set (string, number, boolean, or array of strings), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed.
    */
-  claims: { [k: string]: string | number | boolean | null };
+  claims: { [k: string]: string | number | boolean | Array<string> | null };
 };
 
 /**
@@ -562,14 +564,39 @@ export function updateResourceWhenToJSON(
 }
 
 /** @internal */
-export type UpdateResourceClaims$Outbound = string | number | boolean;
+export type UpdateResourceClaims1$Outbound = string | number | boolean;
+
+/** @internal */
+export const UpdateResourceClaims1$outboundSchema: z.ZodType<
+  UpdateResourceClaims1$Outbound,
+  z.ZodTypeDef,
+  UpdateResourceClaims1
+> = smartUnion([z.string(), z.number(), z.boolean()]);
+
+export function updateResourceClaims1ToJSON(
+  updateResourceClaims1: UpdateResourceClaims1,
+): string {
+  return JSON.stringify(
+    UpdateResourceClaims1$outboundSchema.parse(updateResourceClaims1),
+  );
+}
+
+/** @internal */
+export type UpdateResourceClaims$Outbound =
+  | string
+  | number
+  | boolean
+  | Array<string>;
 
 /** @internal */
 export const UpdateResourceClaims$outboundSchema: z.ZodType<
   UpdateResourceClaims$Outbound,
   z.ZodTypeDef,
   UpdateResourceClaims
-> = smartUnion([z.string(), z.number(), z.boolean()]);
+> = smartUnion([
+  smartUnion([z.string(), z.number(), z.boolean()]),
+  z.array(z.string()),
+]);
 
 export function updateResourceClaimsToJSON(
   updateResourceClaims: UpdateResourceClaims,
@@ -582,7 +609,7 @@ export function updateResourceClaimsToJSON(
 /** @internal */
 export type UpdateResourceClaimRules$Outbound = {
   when?: UpdateResourceWhen$Outbound | undefined;
-  claims: { [k: string]: string | number | boolean | null };
+  claims: { [k: string]: string | number | boolean | Array<string> | null };
 };
 
 /** @internal */
@@ -593,7 +620,12 @@ export const UpdateResourceClaimRules$outboundSchema: z.ZodType<
 > = z.object({
   when: z.lazy(() => UpdateResourceWhen$outboundSchema).optional(),
   claims: z.record(
-    z.nullable(smartUnion([z.string(), z.number(), z.boolean()])),
+    z.nullable(
+      smartUnion([
+        smartUnion([z.string(), z.number(), z.boolean()]),
+        z.array(z.string()),
+      ]),
+    ),
   ),
 });
 

@@ -3,21 +3,18 @@
 
 ## Supported Types
 
-### `string`
+### `models.UpdateResourceClaims1`
 
 ```typescript
-const value: string = "<value>";
+const value: models.UpdateResourceClaims1 = false;
 ```
 
-### `number`
+### `string[]`
 
 ```typescript
-const value: number = 1284.03;
-```
-
-### `boolean`
-
-```typescript
-const value: boolean = true;
+const value: string[] = [
+  "<value 1>",
+  "<value 2>",
+];
 ```
 

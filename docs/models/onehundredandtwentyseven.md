@@ -5,23 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentySeven } from "@vercel/sdk/models/usereventjobpayload120headinfo.js";
+import { OneHundredAndTwentySeven } from "@vercel/sdk/models/usereventjobpayload1216provider.js";
 
 let value: OneHundredAndTwentySeven = {
-  deploymentId: "<id>",
-  deploymentName: null,
-  deploymentUrl: "https://amazing-privilege.name/",
-  projectId: "<id>",
-  projectName: "<value>",
+  mode: "all",
+  previousMode: "none",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentName`   | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `mode`                                                         | [models.PayloadMode](../models/payloadmode.md)                 | :heavy_check_mark:                                             | N/A                                                            |
+| `previousMode`                                                 | [models.PayloadPreviousMode](../models/payloadpreviousmode.md) | :heavy_check_mark:                                             | N/A                                                            |

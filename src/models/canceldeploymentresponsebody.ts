@@ -600,11 +600,16 @@ export type Daemon = {
   command?: Array<string> | undefined;
   entrypoint: string;
   /**
-   * Replica counts by region.
+   * Instance counts by region.
    */
-  replicas: { [k: string]: number };
+  instances?: { [k: string]: number } | undefined;
+  /**
+   * Instance counts by region.
+   */
+  replicas?: { [k: string]: number } | undefined;
   resources?: CancelDeploymentServicesResources | undefined;
   root: string;
+  terminationGracePeriodSeconds?: number | undefined;
   name: string;
 };
 
@@ -2474,11 +2479,13 @@ export const Daemon$inboundSchema: z.ZodType<Daemon, z.ZodTypeDef, unknown> = z
   .object({
     command: types.optional(z.array(types.string())),
     entrypoint: types.string(),
-    replicas: z.record(types.number()),
+    instances: types.optional(z.record(types.number())),
+    replicas: types.optional(z.record(types.number())),
     resources: types.optional(
       z.lazy(() => CancelDeploymentServicesResources$inboundSchema),
     ),
     root: types.string(),
+    terminationGracePeriodSeconds: types.optional(types.number()),
     name: types.string(),
   });
 

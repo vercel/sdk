@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFourteen } from "@vercel/sdk/models/usereventlasteditedbyprincipalpayload1.js";
+import { TwoHundredAndFourteen } from "@vercel/sdk/models/usereventpayload174type.js";
 
 let value: TwoHundredAndFourteen = {
-  periods: [],
+  invoiceCollection: true,
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `invoiceCollection` | *boolean*           | :heavy_check_mark:  | N/A                 |

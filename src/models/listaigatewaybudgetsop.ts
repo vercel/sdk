@@ -19,11 +19,35 @@ export const QueryParamScopeType = {
  */
 export type QueryParamScopeType = ClosedEnum<typeof QueryParamScopeType>;
 
+/**
+ * Whether to include rows inherited from a budget default (`source: "default"`). Defaults to true.
+ */
+export const IncludeDefaultCovered = {
+  True: "true",
+  False: "false",
+} as const;
+/**
+ * Whether to include rows inherited from a budget default (`source: "default"`). Defaults to true.
+ */
+export type IncludeDefaultCovered = ClosedEnum<typeof IncludeDefaultCovered>;
+
 export type ListAiGatewayBudgetsRequest = {
   /**
    * Restrict the list to a single budget scope.
    */
   scopeType?: QueryParamScopeType | undefined;
+  /**
+   * Whether to include rows inherited from a budget default (`source: "default"`). Defaults to true.
+   */
+  includeDefaultCovered?: IncludeDefaultCovered | undefined;
+  /**
+   * Maximum number of budgets to return (capped at 200). Enables pagination.
+   */
+  limit?: number | undefined;
+  /**
+   * Opaque cursor returned by a prior call as nextCursor.
+   */
+  cursor?: string | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -40,8 +64,16 @@ export const QueryParamScopeType$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(QueryParamScopeType);
 
 /** @internal */
+export const IncludeDefaultCovered$outboundSchema: z.ZodNativeEnum<
+  typeof IncludeDefaultCovered
+> = z.nativeEnum(IncludeDefaultCovered);
+
+/** @internal */
 export type ListAiGatewayBudgetsRequest$Outbound = {
   scopeType?: string | undefined;
+  includeDefaultCovered?: string | undefined;
+  limit?: number | undefined;
+  cursor?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -53,6 +85,9 @@ export const ListAiGatewayBudgetsRequest$outboundSchema: z.ZodType<
   ListAiGatewayBudgetsRequest
 > = z.object({
   scopeType: QueryParamScopeType$outboundSchema.optional(),
+  includeDefaultCovered: IncludeDefaultCovered$outboundSchema.optional(),
+  limit: z.number().int().optional(),
+  cursor: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

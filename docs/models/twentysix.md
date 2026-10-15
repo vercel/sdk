@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwentySix } from "@vercel/sdk/models/payload3.js";
+import { TwentySix } from "@vercel/sdk/models/usereventpayloadaction.js";
 
 let value: TwentySix = {
   change: "disable",
@@ -14,9 +14,9 @@ let value: TwentySix = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `change`                                           | [models.PayloadChange](../models/payloadchange.md) | :heavy_check_mark:                                 | N/A                                                |
-| `commitment`                                       | [models.Commitment](../models/commitment.md)       | :heavy_minus_sign:                                 | N/A                                                |
-| `previous`                                         | [models.Previous](../models/previous.md)           | :heavy_minus_sign:                                 | N/A                                                |
-| `settings`                                         | [models.Settings](../models/settings.md)           | :heavy_minus_sign:                                 | N/A                                                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `change`                                                                 | [models.PayloadChange](../models/payloadchange.md)                       | :heavy_check_mark:                                                       | N/A                                                                      |
+| `commitment`                                                             | [models.Commitment](../models/commitment.md)                             | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `previous`                                                               | [models.UserEventPayloadPrevious](../models/usereventpayloadprevious.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `settings`                                                               | [models.Settings](../models/settings.md)                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

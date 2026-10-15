@@ -1,6 +1,6 @@
 # BuyCreditsResponseBodyStatus
 
-The status of the Orb subscription intent.
+The status of the Purchase Intent.
 
 ## Example Usage
 

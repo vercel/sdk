@@ -161,7 +161,7 @@ export class ListVercelCiTaskAnalysisTasksVercelCiResponseBody
   }
 }
 
-export type Tasks = {
+export type ListVercelCiTaskAnalysisTasksTasks = {
   name: string;
   configPath: string;
   recommendationReasons: Array<string>;
@@ -175,7 +175,7 @@ export type ListVercelCiTaskAnalysisTasksPagination = {
  * Discovered task analysis tasks.
  */
 export type ListVercelCiTaskAnalysisTasksResponseBody = {
-  tasks: Array<Tasks>;
+  tasks: Array<ListVercelCiTaskAnalysisTasksTasks>;
   pagination: ListVercelCiTaskAnalysisTasksPagination;
 };
 
@@ -397,20 +397,24 @@ export const ListVercelCiTaskAnalysisTasksVercelCiResponseBody$inboundSchema:
     });
 
 /** @internal */
-export const Tasks$inboundSchema: z.ZodType<Tasks, z.ZodTypeDef, unknown> = z
-  .object({
-    name: types.string(),
-    configPath: types.string(),
-    recommendationReasons: z.array(types.string()),
-  });
+export const ListVercelCiTaskAnalysisTasksTasks$inboundSchema: z.ZodType<
+  ListVercelCiTaskAnalysisTasksTasks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.string(),
+  configPath: types.string(),
+  recommendationReasons: z.array(types.string()),
+});
 
-export function tasksFromJSON(
+export function listVercelCiTaskAnalysisTasksTasksFromJSON(
   jsonString: string,
-): SafeParseResult<Tasks, SDKValidationError> {
+): SafeParseResult<ListVercelCiTaskAnalysisTasksTasks, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Tasks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Tasks' from JSON`,
+    (x) =>
+      ListVercelCiTaskAnalysisTasksTasks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListVercelCiTaskAnalysisTasksTasks' from JSON`,
   );
 }
 
@@ -445,7 +449,9 @@ export const ListVercelCiTaskAnalysisTasksResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tasks: z.array(z.lazy(() => Tasks$inboundSchema)),
+  tasks: z.array(
+    z.lazy(() => ListVercelCiTaskAnalysisTasksTasks$inboundSchema),
+  ),
   pagination: z.lazy(() =>
     ListVercelCiTaskAnalysisTasksPagination$inboundSchema
   ),

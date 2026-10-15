@@ -27,7 +27,7 @@ import {
 import {
   UpdateProjectRequest,
   UpdateProjectRequest$outboundSchema,
-} from "../models/updateprojectsourcesprojects2.js";
+} from "../models/updateprojectsourcesprojectsresponse200provider.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";

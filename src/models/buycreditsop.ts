@@ -754,7 +754,7 @@ export type OrbUpdate = OrbUpdate3 | OrbUpdate2 | OrbUpdate1;
 /**
  * The status of the Orb subscription intent.
  */
-export const BuyCreditsResponseBodyStatus = {
+export const BuyCreditsResponseBodyBillingStatus = {
   Failed: "failed",
   Pending: "pending",
   Succeeded: "succeeded",
@@ -762,8 +762,8 @@ export const BuyCreditsResponseBodyStatus = {
 /**
  * The status of the Orb subscription intent.
  */
-export type BuyCreditsResponseBodyStatus = ClosedEnum<
-  typeof BuyCreditsResponseBodyStatus
+export type BuyCreditsResponseBodyBillingStatus = ClosedEnum<
+  typeof BuyCreditsResponseBodyBillingStatus
 >;
 
 export type OrbSubscriptionIntent = {
@@ -796,14 +796,14 @@ export type OrbSubscriptionIntent = {
   /**
    * The status of the Orb subscription intent.
    */
-  status: BuyCreditsResponseBodyStatus;
+  status: BuyCreditsResponseBodyBillingStatus;
   /**
    * The ISO 8601 date-time that the intent was last updated.
    */
   updatedAt: string;
 };
 
-export type ResponseBody3 = {
+export type BuyCreditsResponseBody3 = {
   orbSubscriptionIntent: OrbSubscriptionIntent;
 };
 
@@ -1439,7 +1439,7 @@ export type ResponseBodyProvider = {
 /**
  * The status of the Purchase Intent.
  */
-export const BuyCreditsResponseBodyBillingStatus = {
+export const BuyCreditsResponseBodyStatus = {
   Failed: "failed",
   Pending: "pending",
   Succeeded: "succeeded",
@@ -1447,8 +1447,8 @@ export const BuyCreditsResponseBodyBillingStatus = {
 /**
  * The status of the Purchase Intent.
  */
-export type BuyCreditsResponseBodyBillingStatus = ClosedEnum<
-  typeof BuyCreditsResponseBodyBillingStatus
+export type BuyCreditsResponseBodyStatus = ClosedEnum<
+  typeof BuyCreditsResponseBodyStatus
 >;
 
 /**
@@ -1503,7 +1503,7 @@ export type PurchaseIntent = {
   /**
    * The status of the Purchase Intent.
    */
-  status: BuyCreditsResponseBodyBillingStatus;
+  status: BuyCreditsResponseBodyStatus;
   /**
    * The subtotal of the Purchase Intent.
    */
@@ -1537,7 +1537,7 @@ export type BuyCreditsResponseBody1 = {
 export type BuyCreditsResponseBody =
   | BuyCreditsResponseBody1
   | BuyCreditsResponseBody2
-  | ResponseBody3;
+  | BuyCreditsResponseBody3;
 
 /** @internal */
 export const BuyCreditsType$outboundSchema: z.ZodNativeEnum<
@@ -2361,9 +2361,9 @@ export function orbUpdateFromJSON(
 }
 
 /** @internal */
-export const BuyCreditsResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
-  typeof BuyCreditsResponseBodyStatus
-> = z.nativeEnum(BuyCreditsResponseBodyStatus);
+export const BuyCreditsResponseBodyBillingStatus$inboundSchema: z.ZodNativeEnum<
+  typeof BuyCreditsResponseBodyBillingStatus
+> = z.nativeEnum(BuyCreditsResponseBodyBillingStatus);
 
 /** @internal */
 export const OrbSubscriptionIntent$inboundSchema: z.ZodType<
@@ -2387,7 +2387,7 @@ export const OrbSubscriptionIntent$inboundSchema: z.ZodType<
   ]),
   ownerId: types.string(),
   purchaseIntentId: types.optional(types.string()),
-  status: BuyCreditsResponseBodyStatus$inboundSchema,
+  status: BuyCreditsResponseBodyBillingStatus$inboundSchema,
   updatedAt: types.string(),
 });
 
@@ -2402,21 +2402,21 @@ export function orbSubscriptionIntentFromJSON(
 }
 
 /** @internal */
-export const ResponseBody3$inboundSchema: z.ZodType<
-  ResponseBody3,
+export const BuyCreditsResponseBody3$inboundSchema: z.ZodType<
+  BuyCreditsResponseBody3,
   z.ZodTypeDef,
   unknown
 > = z.object({
   orbSubscriptionIntent: z.lazy(() => OrbSubscriptionIntent$inboundSchema),
 });
 
-export function responseBody3FromJSON(
+export function buyCreditsResponseBody3FromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBody3, SDKValidationError> {
+): SafeParseResult<BuyCreditsResponseBody3, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBody3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBody3' from JSON`,
+    (x) => BuyCreditsResponseBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsResponseBody3' from JSON`,
   );
 }
 
@@ -3293,9 +3293,9 @@ export function responseBodyProviderFromJSON(
 }
 
 /** @internal */
-export const BuyCreditsResponseBodyBillingStatus$inboundSchema: z.ZodNativeEnum<
-  typeof BuyCreditsResponseBodyBillingStatus
-> = z.nativeEnum(BuyCreditsResponseBodyBillingStatus);
+export const BuyCreditsResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
+  typeof BuyCreditsResponseBodyStatus
+> = z.nativeEnum(BuyCreditsResponseBodyStatus);
 
 /** @internal */
 export const PurchaseIntent$inboundSchema: z.ZodType<
@@ -3322,7 +3322,7 @@ export const PurchaseIntent$inboundSchema: z.ZodType<
   provider: z.lazy(() => ResponseBodyProvider$inboundSchema),
   refund: types.optional(types.string()),
   returnUrl: types.optional(types.string()),
-  status: BuyCreditsResponseBodyBillingStatus$inboundSchema,
+  status: BuyCreditsResponseBodyStatus$inboundSchema,
   subtotal: types.string(),
   tax: types.string(),
   total: types.string(),
@@ -3386,7 +3386,7 @@ export const BuyCreditsResponseBody$inboundSchema: z.ZodType<
 > = smartUnion([
   z.lazy(() => BuyCreditsResponseBody1$inboundSchema),
   z.lazy(() => BuyCreditsResponseBody2$inboundSchema),
-  z.lazy(() => ResponseBody3$inboundSchema),
+  z.lazy(() => BuyCreditsResponseBody3$inboundSchema),
 ]);
 
 export function buyCreditsResponseBodyFromJSON(

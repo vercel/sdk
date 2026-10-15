@@ -333,7 +333,7 @@ export class Sandboxes extends ClientSDK {
    * Delete a sandbox
    *
    * @remarks
-   * Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata. Returns 404 if the sandbox does not exist or was deleted by a concurrent request.
+   * Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata. When the config item is already missing, the returned sandbox uses stored metadata and defaults; config fields may be stale.
    */
   async deleteSandbox(
     request: DeleteSandboxRequest,

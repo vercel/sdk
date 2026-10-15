@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyEight } from "@vercel/sdk/models/usereventpayload375previous.js";
+import { ThreeHundredAndNinetyEight } from "@vercel/sdk/models/budgetitem.js";
 
 let value: ThreeHundredAndNinetyEight = {
-  next: {},
-  previous: {},
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload398Next](../models/usereventpayload398next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload398Previous](../models/usereventpayload398previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload398Scope](../models/usereventpayload398scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

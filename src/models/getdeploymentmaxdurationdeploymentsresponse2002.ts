@@ -1511,11 +1511,16 @@ export type GetDeploymentServicesDeploymentsDaemon = {
   command?: Array<string> | undefined;
   entrypoint: string;
   /**
-   * Replica counts by region.
+   * Instance counts by region.
    */
-  replicas: { [k: string]: number };
+  instances?: { [k: string]: number } | undefined;
+  /**
+   * Instance counts by region.
+   */
+  replicas?: { [k: string]: number } | undefined;
   resources?: GetDeploymentServicesDeploymentsResources | undefined;
   root: string;
+  terminationGracePeriodSeconds?: number | undefined;
   name: string;
 };
 
@@ -4243,11 +4248,13 @@ export const GetDeploymentServicesDeploymentsDaemon$inboundSchema: z.ZodType<
 > = z.object({
   command: types.optional(z.array(types.string())),
   entrypoint: types.string(),
-  replicas: z.record(types.number()),
+  instances: types.optional(z.record(types.number())),
+  replicas: types.optional(z.record(types.number())),
   resources: types.optional(
     z.lazy(() => GetDeploymentServicesDeploymentsResources$inboundSchema),
   ),
   root: types.string(),
+  terminationGracePeriodSeconds: types.optional(types.number()),
   name: types.string(),
 });
 

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload246Type } from "@vercel/sdk/models/onehundredandninetytwo.js";
+import { UserEventPayload246Type } from "@vercel/sdk/models/usereventpayloadkind.js";
 
-let value: UserEventPayload246Type = "blob";
+let value: UserEventPayload246Type = "connectSrc";
 ```
 
 ## Values
 
 ```typescript
-"integration" | "redis" | "postgres" | "edge-config" | "blob"
+"connectSrc"
 ```

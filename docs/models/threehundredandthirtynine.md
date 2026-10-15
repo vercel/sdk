@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyNine } from "@vercel/sdk/models/threehundredandtwelve.js";
+import { ThreeHundredAndThirtyNine } from "@vercel/sdk/models/usereventpayloadrole.js";
 
 let value: ThreeHundredAndThirtyNine = {
-  inheritDeploymentProtection: true,
   projectId: "<id>",
   projectName: "<value>",
+  protectedSourcemaps: true,
 };
 ```
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `inheritDeploymentProtection` | *boolean*                     | :heavy_check_mark:            | N/A                           |
-| `projectId`                   | *string*                      | :heavy_check_mark:            | N/A                           |
-| `projectName`                 | *string*                      | :heavy_check_mark:            | N/A                           |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `projectName`         | *string*              | :heavy_check_mark:    | N/A                   |
+| `protectedSourcemaps` | *boolean*             | :heavy_check_mark:    | N/A                   |

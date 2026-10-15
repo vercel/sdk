@@ -3,25 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { PayloadNext } from "@vercel/sdk/models/usereventlasteditedbyprincipalpayload1.js";
+import { PayloadNext } from "@vercel/sdk/models/sixtyseven.js";
 
 let value: PayloadNext = {
-  organizationPermissions: [],
-  teamRoles: [
-    "VIEWER_FOR_PLUS",
-  ],
-  teams: {
-    "key": {
-      teamRoles: [],
-    },
-  },
+  autoAddReviewers: true,
+  enabled: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `organizationPermissions`                                                    | [models.OrganizationPermissions](../models/organizationpermissions.md)[]     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `teamRoles`                                                                  | [models.UserEventPayloadTeamRoles](../models/usereventpayloadteamroles.md)[] | :heavy_check_mark:                                                           | N/A                                                                          |
-| `teams`                                                                      | Record<string, [models.Teams](../models/teams.md)>                           | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `autoAddReviewers` | *boolean*          | :heavy_check_mark: | N/A                |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

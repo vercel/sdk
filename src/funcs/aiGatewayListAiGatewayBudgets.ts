@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  * List AI Gateway budgets
  *
  * @remarks
- * List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope.
+ * List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -98,6 +98,9 @@ async function $do(
   const path = pathToFunc("/ai-gateway/budgets/list")();
 
   const query = encodeFormQuery({
+    "cursor": payload.cursor,
+    "includeDefaultCovered": payload.includeDefaultCovered,
+    "limit": payload.limit,
     "scopeType": payload.scopeType,
     "slug": payload.slug,
     "teamId": payload.teamId,

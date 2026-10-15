@@ -5,7 +5,7 @@ The Vercel region sandboxes in this project are created in by default.
 ## Example Usage
 
 ```typescript
-import { UpdateProjectRegion } from "@vercel/sdk/models/updateprojectsourcesprojects2.js";
+import { UpdateProjectRegion } from "@vercel/sdk/models/updateprojectsourcesprojectsresponse200provider.js";
 
 let value: UpdateProjectRegion = "iad1";
 ```

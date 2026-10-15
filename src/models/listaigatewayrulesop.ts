@@ -14,6 +14,14 @@ export type IncludeDisabled = ClosedEnum<typeof IncludeDisabled>;
 export type ListAiGatewayRulesRequest = {
   includeDisabled?: IncludeDisabled | undefined;
   /**
+   * Maximum number of rules to return (capped at 200). Enables pagination.
+   */
+  limit?: number | undefined;
+  /**
+   * Opaque cursor returned by a prior call as nextCursor.
+   */
+  cursor?: string | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -31,6 +39,8 @@ export const IncludeDisabled$outboundSchema: z.ZodNativeEnum<
 /** @internal */
 export type ListAiGatewayRulesRequest$Outbound = {
   includeDisabled?: string | undefined;
+  limit?: number | undefined;
+  cursor?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -42,6 +52,8 @@ export const ListAiGatewayRulesRequest$outboundSchema: z.ZodType<
   ListAiGatewayRulesRequest
 > = z.object({
   includeDisabled: IncludeDisabled$outboundSchema.optional(),
+  limit: z.number().int().optional(),
+  cursor: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

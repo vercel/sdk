@@ -330,7 +330,7 @@ run();
 
 ## listAiGatewayVirtualModelConfigs
 
-List virtual model configs. With `ownerId`, returns all of that team's VMCs. Without it, pages through VMCs across all teams (newest-first, `limit`/`cursor`).
+List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.
 
 ### Example Usage
 
@@ -786,7 +786,7 @@ run();
 
 ## listAiGatewayRules
 
-List the authenticated team's routing rules
+List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts the team's rules server-side, which is fine at current rule counts.
 
 ### Example Usage
 
@@ -1013,7 +1013,7 @@ run();
 
 ## listAiGatewayBudgets
 
-List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope.
+List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.
 
 ### Example Usage
 

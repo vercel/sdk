@@ -61,6 +61,8 @@ import {
   UpdateProjectProjectsPasswordProtection$inboundSchema,
   UpdateProjectProjectsResourceConfig,
   UpdateProjectProjectsResourceConfig$inboundSchema,
+  UpdateProjectProjectsResponse200Action,
+  UpdateProjectProjectsResponse200Action$inboundSchema,
   UpdateProjectProjectsSandbox,
   UpdateProjectProjectsSandbox$inboundSchema,
   UpdateProjectProtectionBypass,
@@ -71,7 +73,7 @@ import {
   UpdateProjectRollbackDescription$inboundSchema,
   UpdateProjectRollingRelease,
   UpdateProjectRollingRelease$inboundSchema,
-} from "./updateprojectmanagedrules.js";
+} from "./updateprojectprojectsresponse200action.js";
 import {
   UpdateProjectAlias,
   UpdateProjectAlias$inboundSchema,
@@ -93,20 +95,7 @@ import {
   UpdateProjectDefaultResourceConfig$inboundSchema,
   UpdateProjectDeploymentExpiration,
   UpdateProjectDeploymentExpiration$inboundSchema,
-} from "./updateprojectsourcesprojects2.js";
-
-export const UpdateProjectProjectsResponse200Action = {
-  Allow: "allow",
-  Bypass: "bypass",
-  Challenge: "challenge",
-  Deny: "deny",
-  Log: "log",
-  RateLimit: "rate_limit",
-  Redirect: "redirect",
-} as const;
-export type UpdateProjectProjectsResponse200Action = ClosedEnum<
-  typeof UpdateProjectProjectsResponse200Action
->;
+} from "./updateprojectsourcesprojectsresponse200provider.js";
 
 export const UpdateProjectLogHeadersProjects2 = {
   Wildcard: "*",
@@ -932,12 +921,6 @@ export type UpdateProjectResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UpdateProjectWebAnalytics | undefined;
 };
-
-/** @internal */
-export const UpdateProjectProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
-    UpdateProjectProjectsResponse200Action,
-  );
 
 /** @internal */
 export const UpdateProjectLogHeadersProjects2$inboundSchema: z.ZodNativeEnum<

@@ -315,6 +315,7 @@ export type Flag = {
   projectId: string;
   revision: number;
   seed: number;
+  seenInProduction?: boolean | undefined;
   slug: string;
   state: State;
   tags?: Array<string> | undefined;
@@ -1137,6 +1138,7 @@ export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
     projectId: types.string(),
     revision: types.number(),
     seed: types.number(),
+    seenInProduction: types.optional(types.boolean()),
     slug: types.string(),
     state: State$inboundSchema,
     tags: types.optional(z.array(types.string())),

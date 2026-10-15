@@ -5,16 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixteen } from "@vercel/sdk/models/threehundredandtwelve.js";
+import { ThreeHundredAndSixteen } from "@vercel/sdk/models/usereventpayloadrole.js";
 
 let value: ThreeHundredAndSixteen = {
   project: {
+    invitedUserName: "<value>",
     name: "<value>",
-  },
-  removedMembership: {
-    createdAt: 9734.41,
-    role: "PROJECT_GUEST",
-    uid: "<id>",
+    role: "PROJECT_VIEWER",
   },
 };
 ```
@@ -24,4 +21,3 @@ let value: ThreeHundredAndSixteen = {
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `project`                                                                    | [models.UserEventPayload316Project](../models/usereventpayload316project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

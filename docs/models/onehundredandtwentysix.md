@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentySix } from "@vercel/sdk/models/usereventjobpayload120headinfo.js";
+import { OneHundredAndTwentySix } from "@vercel/sdk/models/usereventjobpayload1216provider.js";
 
 let value: OneHundredAndTwentySix = {
-  mode: "all",
-  previousMode: "all",
+  mode: "none",
+  previousMode: "none",
+  scope: "organization",
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `mode`                                                         | [models.PayloadMode](../models/payloadmode.md)                 | :heavy_check_mark:                                             | N/A                                                            |
-| `previousMode`                                                 | [models.PayloadPreviousMode](../models/payloadpreviousmode.md) | :heavy_check_mark:                                             | N/A                                                            |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `mode`                                                                   | [models.UserEventPayload126Mode](../models/usereventpayload126mode.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `previousMode`                                                           | [models.PreviousMode](../models/previousmode.md)                         | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload126Scope](../models/usereventpayload126scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

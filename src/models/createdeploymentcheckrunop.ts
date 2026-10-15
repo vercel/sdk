@@ -65,13 +65,13 @@ export type CreateDeploymentCheckRunResponseBodyRequires = ClosedEnum<
   typeof CreateDeploymentCheckRunResponseBodyRequires
 >;
 
-export const CreateDeploymentCheckRunResponseBodyStatus = {
+export const CreateDeploymentCheckRunResponseBodyChecksV2Status = {
   Completed: "completed",
   Queued: "queued",
   Running: "running",
 } as const;
-export type CreateDeploymentCheckRunResponseBodyStatus = ClosedEnum<
-  typeof CreateDeploymentCheckRunResponseBodyStatus
+export type CreateDeploymentCheckRunResponseBodyChecksV2Status = ClosedEnum<
+  typeof CreateDeploymentCheckRunResponseBodyChecksV2Status
 >;
 
 export type ResponseBodyTaskSummary = {
@@ -142,7 +142,7 @@ export type CreateDeploymentCheckRunResponseBody2 = {
   projectId?: string | undefined;
   requires?: CreateDeploymentCheckRunResponseBodyRequires | undefined;
   startedAt?: number | undefined;
-  status: CreateDeploymentCheckRunResponseBodyStatus;
+  status: CreateDeploymentCheckRunResponseBodyChecksV2Status;
   targets?: Array<string> | undefined;
   taskSummary?: ResponseBodyTaskSummary | undefined;
   timeout: number;
@@ -187,12 +187,14 @@ export const ResponseBodyRequires = {
 } as const;
 export type ResponseBodyRequires = ClosedEnum<typeof ResponseBodyRequires>;
 
-export const ResponseBodyStatus = {
+export const CreateDeploymentCheckRunResponseBodyStatus = {
   Completed: "completed",
   Queued: "queued",
   Running: "running",
 } as const;
-export type ResponseBodyStatus = ClosedEnum<typeof ResponseBodyStatus>;
+export type CreateDeploymentCheckRunResponseBodyStatus = ClosedEnum<
+  typeof CreateDeploymentCheckRunResponseBodyStatus
+>;
 
 export type TaskSummary = {
   failed: number;
@@ -351,7 +353,7 @@ export type CreateDeploymentCheckRunResponseBody1 = {
   projectId?: string | undefined;
   requires?: ResponseBodyRequires | undefined;
   startedAt?: number | undefined;
-  status: ResponseBodyStatus;
+  status: CreateDeploymentCheckRunResponseBodyStatus;
   targets?: Array<string> | undefined;
   taskSummary?: TaskSummary | undefined;
   timeout: number;
@@ -466,9 +468,9 @@ export const CreateDeploymentCheckRunResponseBodyRequires$inboundSchema:
     .nativeEnum(CreateDeploymentCheckRunResponseBodyRequires);
 
 /** @internal */
-export const CreateDeploymentCheckRunResponseBodyStatus$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentCheckRunResponseBodyStatus> = z
-    .nativeEnum(CreateDeploymentCheckRunResponseBodyStatus);
+export const CreateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentCheckRunResponseBodyChecksV2Status> = z
+    .nativeEnum(CreateDeploymentCheckRunResponseBodyChecksV2Status);
 
 /** @internal */
 export const ResponseBodyTaskSummary$inboundSchema: z.ZodType<
@@ -611,7 +613,7 @@ export const CreateDeploymentCheckRunResponseBody2$inboundSchema: z.ZodType<
     CreateDeploymentCheckRunResponseBodyRequires$inboundSchema,
   ),
   startedAt: types.optional(types.number()),
-  status: CreateDeploymentCheckRunResponseBodyStatus$inboundSchema,
+  status: CreateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema,
   targets: types.optional(z.array(types.string())),
   taskSummary: types.optional(
     z.lazy(() => ResponseBodyTaskSummary$inboundSchema),
@@ -673,9 +675,9 @@ export const ResponseBodyRequires$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ResponseBodyRequires);
 
 /** @internal */
-export const ResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyStatus
-> = z.nativeEnum(ResponseBodyStatus);
+export const CreateDeploymentCheckRunResponseBodyStatus$inboundSchema:
+  z.ZodNativeEnum<typeof CreateDeploymentCheckRunResponseBodyStatus> = z
+    .nativeEnum(CreateDeploymentCheckRunResponseBodyStatus);
 
 /** @internal */
 export const TaskSummary$inboundSchema: z.ZodType<
@@ -1001,7 +1003,7 @@ export const CreateDeploymentCheckRunResponseBody1$inboundSchema: z.ZodType<
   projectId: types.optional(types.string()),
   requires: types.optional(ResponseBodyRequires$inboundSchema),
   startedAt: types.optional(types.number()),
-  status: ResponseBodyStatus$inboundSchema,
+  status: CreateDeploymentCheckRunResponseBodyStatus$inboundSchema,
   targets: types.optional(z.array(types.string())),
   taskSummary: types.optional(z.lazy(() => TaskSummary$inboundSchema)),
   timeout: types.number(),

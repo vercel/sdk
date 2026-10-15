@@ -3,6 +3,7 @@
  */
 
 import { vercelCiCreateVercelCiTaskAnalysis } from "../funcs/vercelCiCreateVercelCiTaskAnalysis.js";
+import { vercelCiCreateVercelCiTaskConfigurationPullRequest } from "../funcs/vercelCiCreateVercelCiTaskConfigurationPullRequest.js";
 import { vercelCiGetVercelCiInvocation } from "../funcs/vercelCiGetVercelCiInvocation.js";
 import { vercelCiGetVercelCiInvocationLogs } from "../funcs/vercelCiGetVercelCiInvocationLogs.js";
 import { vercelCiGetVercelCiInvocationTree } from "../funcs/vercelCiGetVercelCiInvocationTree.js";
@@ -29,6 +30,10 @@ import {
   CreateVercelCiTaskAnalysisRequest,
   CreateVercelCiTaskAnalysisResponseBody,
 } from "../models/createvercelcitaskanalysisop.js";
+import {
+  CreateVercelCiTaskConfigurationPullRequestRequest,
+  CreateVercelCiTaskConfigurationPullRequestResponseBody,
+} from "../models/createvercelcitaskconfigurationpullrequestop.js";
 import {
   GetVercelCiInvocationLogsRequest,
   GetVercelCiInvocationLogsResponseBody,
@@ -212,6 +217,23 @@ export class VercelCi extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetVercelCiTaskAnalysisResponseBody> {
     return unwrapAsync(vercelCiGetVercelCiTaskAnalysis(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create a GitHub pull request that adds Vercel CI tags for the completed analysis
+   *
+   * @remarks
+   * Create task configuration pull request
+   */
+  async createVercelCiTaskConfigurationPullRequest(
+    request: CreateVercelCiTaskConfigurationPullRequestRequest,
+    options?: RequestOptions,
+  ): Promise<CreateVercelCiTaskConfigurationPullRequestResponseBody> {
+    return unwrapAsync(vercelCiCreateVercelCiTaskConfigurationPullRequest(
       this,
       request,
       options,

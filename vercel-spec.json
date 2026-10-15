@@ -2112,7 +2112,7 @@
     },
     "/ai-gateway/virtual-model-configs/list": {
       "get": {
-        "description": "List virtual model configs. With `ownerId`, returns all of that team's VMCs. Without it, pages through VMCs across all teams (newest-first, `limit`/`cursor`).",
+        "description": "List virtual model configs. For a team, returns all of its VMCs, or with `limit` or `cursor` one page ordered by `virtualModelSlug`. Across teams, pages newest-first. `includeArchived=false` omits archived VMCs.",
         "operationId": "listAiGatewayVirtualModelConfigs",
         "security": [
           {
@@ -2174,6 +2174,17 @@
             "in": "query",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "includeArchived",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ]
             }
           },
           {
@@ -2597,7 +2608,7 @@
         ]
       },
       "get": {
-        "description": "List the authenticated team's routing rules",
+        "description": "List the authenticated team's routing rules, oldest first. Without `limit` or `cursor`, returns every rule. With either, returns one page and a `nextCursor` for the next page (null on the last page). Paging reads and sorts the team's rules server-side, which is fine at current rule counts.",
         "operationId": "listAiGatewayRules",
         "security": [
           {
@@ -2648,6 +2659,25 @@
                 "true",
                 "false"
               ]
+            }
+          },
+          {
+            "name": "limit",
+            "description": "Maximum number of rules to return (capped at 200). Enables pagination.",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Maximum number of rules to return (capped at 200). Enables pagination."
+            }
+          },
+          {
+            "name": "cursor",
+            "description": "Opaque cursor returned by a prior call as nextCursor.",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Opaque cursor returned by a prior call as nextCursor."
             }
           },
           {
@@ -2807,7 +2837,7 @@
     },
     "/ai-gateway/budgets/list": {
       "get": {
-        "description": "List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope.",
+        "description": "List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.",
         "operationId": "listAiGatewayBudgets",
         "security": [
           {
@@ -2862,6 +2892,38 @@
                 "api-key"
               ],
               "description": "Restrict the list to a single budget scope."
+            }
+          },
+          {
+            "name": "includeDefaultCovered",
+            "description": "Whether to include rows inherited from a budget default (`source: \"default\"`). Defaults to true.",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "true",
+                "false"
+              ],
+              "description": "Whether to include rows inherited from a budget default (`source: \"default\"`). Defaults to true."
+            }
+          },
+          {
+            "name": "limit",
+            "description": "Maximum number of budgets to return (capped at 200). Enables pagination.",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Maximum number of budgets to return (capped at 200). Enables pagination."
+            }
+          },
+          {
+            "name": "cursor",
+            "description": "Opaque cursor returned by a prior call as nextCursor.",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "description": "Opaque cursor returned by a prior call as nextCursor."
             }
           },
           {
@@ -3542,6 +3604,31 @@
                         "status"
                       ],
                       "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "readOnly": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Present and `true` when the token can read artifacts but cannot upload them."
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "disabled",
+                            "enabled",
+                            "over_limit",
+                            "paused"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "status"
+                      ],
+                      "type": "object"
                     }
                   ]
                 }
@@ -3613,11 +3700,7 @@
                       "items": {
                         "type": "string"
                       },
-                      "type": "array",
-                      "description": "Array of URLs where the artifact was updated",
-                      "example": [
-                        "https://api.vercel.com/v2/now/artifact/12HKQaOmR5t5Uy6vdcQsNIiZgHGB"
-                      ]
+                      "type": "array"
                     }
                   },
                   "required": [
@@ -15334,6 +15417,9 @@
               }
             }
           },
+          "503": {
+            "description": ""
+          },
           "504": {
             "description": ""
           }
@@ -18740,20 +18826,30 @@
                                   "claims": {
                                     "type": "object",
                                     "additionalProperties": {
-                                      "nullable": true,
-                                      "oneOf": [
+                                      "anyOf": [
                                         {
-                                          "type": "string"
+                                          "nullable": true,
+                                          "oneOf": [
+                                            {
+                                              "type": "string"
+                                            },
+                                            {
+                                              "type": "number"
+                                            },
+                                            {
+                                              "type": "boolean"
+                                            }
+                                          ]
                                         },
                                         {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "type": "boolean"
+                                          "type": "array",
+                                          "items": {
+                                            "type": "string"
+                                          }
                                         }
                                       ]
                                     },
-                                    "description": "Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed."
+                                    "description": "Claims to set (string, number, boolean, or array of strings), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed."
                                   }
                                 },
                                 "additionalProperties": false
@@ -22588,12 +22684,19 @@
                                               "entrypoint": {
                                                 "type": "string"
                                               },
+                                              "instances": {
+                                                "additionalProperties": {
+                                                  "type": "number"
+                                                },
+                                                "type": "object",
+                                                "description": "Instance counts by region."
+                                              },
                                               "replicas": {
                                                 "additionalProperties": {
                                                   "type": "number"
                                                 },
                                                 "type": "object",
-                                                "description": "Replica counts by region."
+                                                "description": "Instance counts by region."
                                               },
                                               "resources": {
                                                 "properties": {
@@ -22623,6 +22726,9 @@
                                               "root": {
                                                 "type": "string"
                                               },
+                                              "terminationGracePeriodSeconds": {
+                                                "type": "number"
+                                              },
                                               "name": {
                                                 "type": "string"
                                               }
@@ -22630,7 +22736,6 @@
                                             "required": [
                                               "entrypoint",
                                               "name",
-                                              "replicas",
                                               "root"
                                             ],
                                             "type": "object",
@@ -23264,12 +23369,19 @@
                                               "entrypoint": {
                                                 "type": "string"
                                               },
+                                              "instances": {
+                                                "additionalProperties": {
+                                                  "type": "number"
+                                                },
+                                                "type": "object",
+                                                "description": "Instance counts by region."
+                                              },
                                               "replicas": {
                                                 "additionalProperties": {
                                                   "type": "number"
                                                 },
                                                 "type": "object",
-                                                "description": "Replica counts by region."
+                                                "description": "Instance counts by region."
                                               },
                                               "resources": {
                                                 "properties": {
@@ -23299,6 +23411,9 @@
                                               "root": {
                                                 "type": "string"
                                               },
+                                              "terminationGracePeriodSeconds": {
+                                                "type": "number"
+                                              },
                                               "name": {
                                                 "type": "string"
                                               }
@@ -23306,7 +23421,6 @@
                                             "required": [
                                               "entrypoint",
                                               "name",
-                                              "replicas",
                                               "root"
                                             ],
                                             "type": "object",
@@ -31340,12 +31454,19 @@
                                               "entrypoint": {
                                                 "type": "string"
                                               },
+                                              "instances": {
+                                                "additionalProperties": {
+                                                  "type": "number"
+                                                },
+                                                "type": "object",
+                                                "description": "Instance counts by region."
+                                              },
                                               "replicas": {
                                                 "additionalProperties": {
                                                   "type": "number"
                                                 },
                                                 "type": "object",
-                                                "description": "Replica counts by region."
+                                                "description": "Instance counts by region."
                                               },
                                               "resources": {
                                                 "properties": {
@@ -31375,6 +31496,9 @@
                                               "root": {
                                                 "type": "string"
                                               },
+                                              "terminationGracePeriodSeconds": {
+                                                "type": "number"
+                                              },
                                               "name": {
                                                 "type": "string"
                                               }
@@ -31382,7 +31506,6 @@
                                             "required": [
                                               "entrypoint",
                                               "name",
-                                              "replicas",
                                               "root"
                                             ],
                                             "type": "object",
@@ -32016,12 +32139,19 @@
                                               "entrypoint": {
                                                 "type": "string"
                                               },
+                                              "instances": {
+                                                "additionalProperties": {
+                                                  "type": "number"
+                                                },
+                                                "type": "object",
+                                                "description": "Instance counts by region."
+                                              },
                                               "replicas": {
                                                 "additionalProperties": {
                                                   "type": "number"
                                                 },
                                                 "type": "object",
-                                                "description": "Replica counts by region."
+                                                "description": "Instance counts by region."
                                               },
                                               "resources": {
                                                 "properties": {
@@ -32051,6 +32181,9 @@
                                               "root": {
                                                 "type": "string"
                                               },
+                                              "terminationGracePeriodSeconds": {
+                                                "type": "number"
+                                              },
                                               "name": {
                                                 "type": "string"
                                               }
@@ -32058,7 +32191,6 @@
                                             "required": [
                                               "entrypoint",
                                               "name",
-                                              "replicas",
                                               "root"
                                             ],
                                             "type": "object",
@@ -39076,12 +39208,19 @@
                                           "entrypoint": {
                                             "type": "string"
                                           },
+                                          "instances": {
+                                            "additionalProperties": {
+                                              "type": "number"
+                                            },
+                                            "type": "object",
+                                            "description": "Instance counts by region."
+                                          },
                                           "replicas": {
                                             "additionalProperties": {
                                               "type": "number"
                                             },
                                             "type": "object",
-                                            "description": "Replica counts by region."
+                                            "description": "Instance counts by region."
                                           },
                                           "resources": {
                                             "properties": {
@@ -39111,6 +39250,9 @@
                                           "root": {
                                             "type": "string"
                                           },
+                                          "terminationGracePeriodSeconds": {
+                                            "type": "number"
+                                          },
                                           "name": {
                                             "type": "string"
                                           }
@@ -39118,7 +39260,6 @@
                                         "required": [
                                           "entrypoint",
                                           "name",
-                                          "replicas",
                                           "root"
                                         ],
                                         "type": "object",
@@ -39752,12 +39893,19 @@
                                           "entrypoint": {
                                             "type": "string"
                                           },
+                                          "instances": {
+                                            "additionalProperties": {
+                                              "type": "number"
+                                            },
+                                            "type": "object",
+                                            "description": "Instance counts by region."
+                                          },
                                           "replicas": {
                                             "additionalProperties": {
                                               "type": "number"
                                             },
                                             "type": "object",
-                                            "description": "Replica counts by region."
+                                            "description": "Instance counts by region."
                                           },
                                           "resources": {
                                             "properties": {
@@ -39787,6 +39935,9 @@
                                           "root": {
                                             "type": "string"
                                           },
+                                          "terminationGracePeriodSeconds": {
+                                            "type": "number"
+                                          },
                                           "name": {
                                             "type": "string"
                                           }
@@ -39794,7 +39945,6 @@
                                         "required": [
                                           "entrypoint",
                                           "name",
-                                          "replicas",
                                           "root"
                                         ],
                                         "type": "object",
@@ -63093,6 +63243,13 @@
                     "seed": {
                       "type": "number"
                     },
+                    "seenInProduction": {
+                      "type": "boolean",
+                      "enum": [
+                        false,
+                        true
+                      ]
+                    },
                     "slug": {
                       "type": "string"
                     },
@@ -64706,6 +64863,13 @@
                     },
                     "seed": {
                       "type": "number"
+                    },
+                    "seenInProduction": {
+                      "type": "boolean",
+                      "enum": [
+                        false,
+                        true
+                      ]
                     },
                     "slug": {
                       "type": "string"
@@ -71607,6 +71771,12 @@
                                       "type": "number"
                                     },
                                     {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    },
+                                    {
                                       "type": "boolean",
                                       "enum": [
                                         false,
@@ -72202,20 +72372,30 @@
                             "claims": {
                               "type": "object",
                               "additionalProperties": {
-                                "nullable": true,
-                                "oneOf": [
+                                "anyOf": [
                                   {
-                                    "type": "string"
+                                    "nullable": true,
+                                    "oneOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
                                   },
                                   {
-                                    "type": "number"
-                                  },
-                                  {
-                                    "type": "boolean"
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
                                   }
                                 ]
                               },
-                              "description": "Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed."
+                              "description": "Claims to set (string, number, boolean, or array of strings), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed."
                             }
                           },
                           "additionalProperties": false
@@ -72598,20 +72778,30 @@
                             "claims": {
                               "type": "object",
                               "additionalProperties": {
-                                "nullable": true,
-                                "oneOf": [
+                                "anyOf": [
                                   {
-                                    "type": "string"
+                                    "nullable": true,
+                                    "oneOf": [
+                                      {
+                                        "type": "string"
+                                      },
+                                      {
+                                        "type": "number"
+                                      },
+                                      {
+                                        "type": "boolean"
+                                      }
+                                    ]
                                   },
                                   {
-                                    "type": "number"
-                                  },
-                                  {
-                                    "type": "boolean"
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
                                   }
                                 ]
                               },
-                              "description": "Claims to set (string, number, or boolean), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed."
+                              "description": "Claims to set (string, number, boolean, or array of strings), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed."
                             }
                           },
                           "additionalProperties": false
@@ -139581,20 +139771,11 @@
                           "additionalProperties": false
                         },
                         "minItems": 1
-                      },
-                      "protectionMode": {
-                        "description": "exclusive: ip match is enough to bypass deployment protection (regardless of other settings). additional: ip must match + any other protection should be also provided (password, vercel auth, shareable link, automation bypass header, automation bypass query param)",
-                        "enum": [
-                          "exclusive",
-                          "additional"
-                        ],
-                        "type": "string"
                       }
                     },
                     "required": [
                       "deploymentType",
-                      "addresses",
-                      "protectionMode"
+                      "addresses"
                     ],
                     "type": "object",
                     "nullable": true
@@ -179614,9 +179795,6 @@
           "404": {
             "description": ""
           },
-          "409": {
-            "description": ""
-          },
           "410": {
             "description": ""
           },
@@ -179624,15 +179802,9 @@
             "description": ""
           },
           "429": {
-            "description": "The concurrency limit has been exceeded."
+            "description": ""
           },
           "500": {
-            "description": ""
-          },
-          "502": {
-            "description": ""
-          },
-          "503": {
             "description": ""
           }
         },
@@ -180342,7 +180514,7 @@
         }
       },
       "delete": {
-        "description": "Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata. Returns 404 if the sandbox does not exist or was deleted by a concurrent request.",
+        "description": "Deletes a sandbox by name. If sandboxes are currently running, they will be stopped first. This operation deletes all sandbox entities with the given name and the named sandbox metadata. When the config item is already missing, the returned sandbox uses stored metadata and defaults; config fields may be stale.",
         "operationId": "deleteSandbox",
         "security": [
           {
@@ -213700,6 +213872,254 @@
         ]
       }
     },
+    "/v1/vercel-ci/task-analyses/{analysisId}/pull-request": {
+      "post": {
+        "description": "Create task configuration pull request",
+        "operationId": "createVercelCiTaskConfigurationPullRequest",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create a GitHub pull request that adds Vercel CI tags for the completed analysis",
+        "tags": [
+          "vercel-ci"
+        ],
+        "responses": {
+          "201": {
+            "description": "Task configuration pull request created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "changedTaskNames": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "url",
+                    "changedTaskNames"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "limit": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "name",
+                        "message",
+                        "limit"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "analysisId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "tasks"
+                ],
+                "properties": {
+                  "tasks": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "name",
+                        "configPath"
+                      ],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "configPath": {
+                          "type": "string",
+                          "maxLength": 2000
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/vercel-ci/task-analyses/{analysisId}/tasks": {
       "get": {
         "description": "List task analysis tasks",
@@ -226154,6 +226574,9 @@
           "404": {
             "description": "The deployment was not found"
           },
+          "409": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -226747,6 +227170,10 @@
       },
       "AiGatewayRuleList": {
         "properties": {
+          "nextCursor": {
+            "nullable": true,
+            "type": "string"
+          },
           "rules": {
             "items": {
               "$ref": "#/components/schemas/AiGatewayRule"
@@ -226755,6 +227182,7 @@
           }
         },
         "required": [
+          "nextCursor",
           "rules"
         ],
         "type": "object"
@@ -226862,6 +227290,35 @@
               "$ref": "#/components/schemas/AiGatewayBudget"
             },
             "type": "array"
+          },
+          "defaultCoveredCounts": {
+            "properties": {
+              "api-key": {
+                "type": "number"
+              },
+              "project": {
+                "type": "number"
+              },
+              "team": {
+                "type": "number"
+              },
+              "user": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "api-key",
+              "project",
+              "team",
+              "user"
+            ],
+            "type": "object",
+            "description": "Paged requests only: `source: 'default'` rows per scope type across the whole `scopeType`-filtered list, independent of the page and of `includeDefaultCovered`."
+          },
+          "nextCursor": {
+            "nullable": true,
+            "type": "string",
+            "description": "Paged requests only (`limit` or `cursor` set): pass as `cursor` to read the next page; null on the last page."
           }
         },
         "required": [
@@ -232288,6 +232745,58 @@
         "type": "object",
         "description": "The Global Config."
       },
+      "DeploymentCheckUpdatedPayload": {
+        "properties": {
+          "checkId": {
+            "type": "string"
+          },
+          "checkName": {
+            "type": "string"
+          },
+          "next": {
+            "properties": {
+              "targets": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "targets"
+            ],
+            "type": "object"
+          },
+          "previous": {
+            "properties": {
+              "targets": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "targets"
+            ],
+            "type": "object"
+          },
+          "projectId": {
+            "type": "string"
+          },
+          "projectName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "checkId",
+          "checkName",
+          "projectId",
+          "projectName"
+        ],
+        "type": "object",
+        "description": "The payload of the event, if requested."
+      },
       "UserEvent": {
         "properties": {
           "categories": {
@@ -236612,6 +237121,9 @@
                 "description": "The payload of the event, if requested."
               },
               {
+                "$ref": "#/components/schemas/DeploymentCheckUpdatedPayload"
+              },
+              {
                 "properties": {
                   "alias": {
                     "items": {
@@ -239276,6 +239788,9 @@
                     "type": "object"
                   },
                   "deploymentId": {
+                    "type": "string"
+                  },
+                  "projectId": {
                     "type": "string"
                   },
                   "url": {
@@ -254130,6 +254645,9 @@
               },
               {
                 "properties": {
+                  "createdByParentTeamId": {
+                    "type": "string"
+                  },
                   "expiresAt": {
                     "type": "number",
                     "description": "Unix epoch milliseconds. Absent when the token never expires."
@@ -254269,6 +254787,12 @@
                     ],
                     "description": "Scope of the token: - `'user'`: full-account token (not tied to any team). - `'team'`: scoped to a single team. - `'project'`: scoped to a single project within a team."
                   },
+                  "source": {
+                    "type": "string",
+                    "enum": [
+                      "v0"
+                    ]
+                  },
                   "teamId": {
                     "type": "string",
                     "description": "Present when `scope` is `'team'` or `'project'`."
@@ -254314,6 +254838,9 @@
                   "actorTokenId": {
                     "type": "string",
                     "description": "The token's public ID."
+                  },
+                  "createdByParentTeamId": {
+                    "type": "string"
                   },
                   "expired": {
                     "type": "boolean",
@@ -254448,6 +254975,20 @@
                     "enum": [
                       false,
                       true
+                    ]
+                  },
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "project",
+                      "team",
+                      "user"
+                    ]
+                  },
+                  "source": {
+                    "type": "string",
+                    "enum": [
+                      "v0"
                     ]
                   },
                   "teamId": {
@@ -257833,6 +258374,13 @@
           "seed": {
             "type": "number"
           },
+          "seenInProduction": {
+            "type": "boolean",
+            "enum": [
+              false,
+              true
+            ]
+          },
           "slug": {
             "type": "string"
           },
@@ -260278,6 +260826,13 @@
                 },
                 "type": "array"
               },
+              "isOrgBackingTeamMembership": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ]
+              },
               "joinedFrom": {
                 "properties": {
                   "commitId": {
@@ -260961,6 +261516,13 @@
                   "type": "object"
                 },
                 "type": "array"
+              },
+              "isOrgBackingTeamMembership": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ]
               },
               "joinedFrom": {
                 "properties": {

@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyFive } from "@vercel/sdk/models/usereventlasteditedbyprincipalpayload1.js";
+import { TwoHundredAndThirtyFive } from "@vercel/sdk/models/usereventpayload174type.js";
 
 let value: TwoHundredAndThirtyFive = {
   cause: "<value>",
@@ -16,9 +16,10 @@ let value: TwoHundredAndThirtyFive = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `blockReason`                              | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
+| `cause`                                    | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `ownerId`                                  | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `siftRoute`                                | [models.SiftRoute](../models/siftroute.md) | :heavy_minus_sign:                         | N/A                                        |
+| `source`                                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |

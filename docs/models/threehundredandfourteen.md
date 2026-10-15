@@ -5,23 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFourteen } from "@vercel/sdk/models/threehundredandtwelve.js";
+import { ThreeHundredAndFourteen } from "@vercel/sdk/models/usereventpayloadrole.js";
 
 let value: ThreeHundredAndFourteen = {
-  project: {
-    name: "<value>",
-  },
-  projectMembership: {
-    createdAt: 7424.31,
-    role: "PROJECT_GUEST",
-    uid: "<id>",
-  },
+  domain: "raw-remark.net",
+  projectId: "<id>",
+  projectName: "<value>",
+  target: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload314Project](../models/usereventpayload314project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `configuredBy`     | *string*           | :heavy_minus_sign: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `prevConfiguredBy` | *string*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `target`           | *string*           | :heavy_check_mark: | N/A                |

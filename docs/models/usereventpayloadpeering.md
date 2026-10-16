@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadPeering } from "@vercel/sdk/models/env.js";
+import { UserEventPayloadPeering } from "@vercel/sdk/models/fourhundredandthirtyeight.js";
 
 let value: UserEventPayloadPeering = {
   id: "<id>",

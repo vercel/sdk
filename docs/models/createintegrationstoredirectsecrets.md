@@ -18,3 +18,4 @@ let value: CreateIntegrationStoreDirectSecrets = {
 | `frameworkPublishable` | *boolean*              | :heavy_minus_sign:     | N/A                    |
 | `length`               | *number*               | :heavy_check_mark:     | N/A                    |
 | `name`                 | *string*               | :heavy_check_mark:     | N/A                    |
+| `nonSensitive`         | *boolean*              | :heavy_minus_sign:     | N/A                    |

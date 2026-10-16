@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Sampling } from "@vercel/sdk/models/budgetitem.js";
+import { Sampling } from "@vercel/sdk/models/usereventpayload377type.js";
 
 let value: Sampling = {
   rate: 1983.19,

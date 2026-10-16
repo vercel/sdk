@@ -5,7 +5,7 @@ Project-level rolling release configuration that defines how deployments should 
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyRollingRelease } from "@vercel/sdk/models/responsebodyfirewallroutes.js";
+import { GetProjectsResponseBodyRollingRelease } from "@vercel/sdk/models/getprojectsresponsebodyprojectsop.js";
 
 let value: GetProjectsResponseBodyRollingRelease = {
   canaryResponseHeader: false,

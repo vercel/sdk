@@ -7,7 +7,7 @@ import { GetSecurityFirewallConfigRulesConditions } from "@vercel/sdk/models/get
 
 let value: GetSecurityFirewallConfigRulesConditions = {
   op: "ninc",
-  type: "ja3_digest",
+  type: "ja4_digest",
 };
 ```
 

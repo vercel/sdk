@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Delete a Team
  *
  * @remarks
- * Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional array of reasons for deletion may also be sent.
+ * Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional array of reasons for deletion may also be sent. Enterprise teams can only be deleted in test billing mode and when not linked to an organization.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

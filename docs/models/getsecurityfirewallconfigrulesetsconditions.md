@@ -7,7 +7,7 @@ import { GetSecurityFirewallConfigRulesetsConditions } from "@vercel/sdk/models/
 
 let value: GetSecurityFirewallConfigRulesetsConditions = {
   op: "eq",
-  type: "method",
+  type: "path",
 };
 ```
 

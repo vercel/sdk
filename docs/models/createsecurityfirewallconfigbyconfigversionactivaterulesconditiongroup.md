@@ -10,7 +10,7 @@ let value:
     conditions: [
       {
         op: "lte",
-        type: "domain_environment",
+        type: "environment",
       },
     ],
   };

@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyOp } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { ResponseBodyOp } from "@vercel/sdk/models/getconditionalbypassop.js";
 
-let value: ResponseBodyOp = "append";
+let value: ResponseBodyOp = "nex";
 ```
 
 ## Values
 
 ```typescript
-"append"
+"eq" | "ex" | "gt" | "gte" | "inc" | "list" | "lt" | "lte" | "neq" | "nex" | "ninc" | "pre" | "re" | "sub" | "suf"
 ```

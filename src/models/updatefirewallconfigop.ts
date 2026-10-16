@@ -254,6 +254,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest12Type = {
   SharedCondition: "shared_condition",
   TrafficSource: "traffic_source",
   Ruleset: "ruleset",
+  ResponseCode: "response_code",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityRequest12Type = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityRequest12Type
@@ -433,6 +434,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest11Type = {
   SharedCondition: "shared_condition",
   TrafficSource: "traffic_source",
   Ruleset: "ruleset",
+  ResponseCode: "response_code",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityRequest11Type = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityRequest11Type
@@ -684,6 +686,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequest6Type = {
   SharedCondition: "shared_condition",
   TrafficSource: "traffic_source",
   Ruleset: "ruleset",
+  ResponseCode: "response_code",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityRequest6Type = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityRequest6Type
@@ -791,6 +794,7 @@ export const UpdateFirewallConfigRequestBodySecurityRequestType = {
   SharedCondition: "shared_condition",
   TrafficSource: "traffic_source",
   Ruleset: "ruleset",
+  ResponseCode: "response_code",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityRequestType = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityRequestType
@@ -928,6 +932,7 @@ export const UpdateFirewallConfigRequestBodySecurityType = {
   SharedCondition: "shared_condition",
   TrafficSource: "traffic_source",
   Ruleset: "ruleset",
+  ResponseCode: "response_code",
 } as const;
 export type UpdateFirewallConfigRequestBodySecurityType = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodySecurityType
@@ -1050,6 +1055,7 @@ export const UpdateFirewallConfigRequestBodyType = {
   SharedCondition: "shared_condition",
   TrafficSource: "traffic_source",
   Ruleset: "ruleset",
+  ResponseCode: "response_code",
 } as const;
 export type UpdateFirewallConfigRequestBodyType = ClosedEnum<
   typeof UpdateFirewallConfigRequestBodyType

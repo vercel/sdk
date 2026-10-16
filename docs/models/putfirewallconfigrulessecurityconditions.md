@@ -7,7 +7,7 @@ import { PutFirewallConfigRulesSecurityConditions } from "@vercel/sdk/models/put
 
 let value: PutFirewallConfigRulesSecurityConditions = {
   op: "lte",
-  type: "raw_path",
+  type: "region",
 };
 ```
 

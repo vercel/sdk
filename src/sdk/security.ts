@@ -3,11 +3,14 @@
  */
 
 import { securityAddBypassIp } from "../funcs/securityAddBypassIp.js";
+import { securityCreateConditionalBypass } from "../funcs/securityCreateConditionalBypass.js";
 import { securityCreateSecurityFirewallConfigByConfigVersionActivate } from "../funcs/securityCreateSecurityFirewallConfigByConfigVersionActivate.js";
+import { securityDeleteConditionalBypass } from "../funcs/securityDeleteConditionalBypass.js";
 import { securityDeleteSecurityFirewallConfigByConfigVersion } from "../funcs/securityDeleteSecurityFirewallConfigByConfigVersion.js";
 import { securityGenerateFirewallRule } from "../funcs/securityGenerateFirewallRule.js";
 import { securityGetActiveAttackStatus } from "../funcs/securityGetActiveAttackStatus.js";
 import { securityGetBypassIp } from "../funcs/securityGetBypassIp.js";
+import { securityGetConditionalBypass } from "../funcs/securityGetConditionalBypass.js";
 import { securityGetFirewallConfig } from "../funcs/securityGetFirewallConfig.js";
 import { securityGetSecurityFirewallConfig } from "../funcs/securityGetSecurityFirewallConfig.js";
 import { securityGetSecurityFirewallEvents } from "../funcs/securityGetSecurityFirewallEvents.js";
@@ -22,9 +25,17 @@ import {
   AddBypassIpResponseBody,
 } from "../models/addbypassipop.js";
 import {
+  CreateConditionalBypassRequest,
+  CreateConditionalBypassResponseBody,
+} from "../models/createconditionalbypassop.js";
+import {
   CreateSecurityFirewallConfigByConfigVersionActivateRequest,
   CreateSecurityFirewallConfigByConfigVersionActivateResponseBody,
 } from "../models/createsecurityfirewallconfigbyconfigversionactivateop.js";
+import {
+  DeleteConditionalBypassRequest,
+  DeleteConditionalBypassResponseBody,
+} from "../models/deleteconditionalbypassop.js";
 import {
   DeleteSecurityFirewallConfigByConfigVersionRequest,
   DeleteSecurityFirewallConfigByConfigVersionResponseBody,
@@ -41,6 +52,10 @@ import {
   GetBypassIpRequest,
   GetBypassIpResponseBody,
 } from "../models/getbypassipop.js";
+import {
+  GetConditionalBypassRequest,
+  GetConditionalBypassResponseBody,
+} from "../models/getconditionalbypassop.js";
 import {
   GetFirewallConfigRequest,
   GetFirewallConfigResponseBody,
@@ -254,6 +269,57 @@ export class Security extends ClientSDK {
     options?: RequestOptions,
   ): Promise<RemoveBypassIpResponseBody> {
     return unwrapAsync(securityRemoveBypassIp(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get conditional firewall bypasses
+   *
+   * @remarks
+   * Retrieve conditional firewall bypass rules for a project.
+   */
+  async getConditionalBypass(
+    request: GetConditionalBypassRequest,
+    options?: RequestOptions,
+  ): Promise<GetConditionalBypassResponseBody> {
+    return unwrapAsync(securityGetConditionalBypass(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create conditional firewall bypass
+   *
+   * @remarks
+   * Create a conditional firewall bypass rule for a project domain.
+   */
+  async createConditionalBypass(
+    request: CreateConditionalBypassRequest,
+    options?: RequestOptions,
+  ): Promise<CreateConditionalBypassResponseBody> {
+    return unwrapAsync(securityCreateConditionalBypass(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete conditional firewall bypass
+   *
+   * @remarks
+   * Delete a conditional firewall bypass rule from a project domain.
+   */
+  async deleteConditionalBypass(
+    request: DeleteConditionalBypassRequest,
+    options?: RequestOptions,
+  ): Promise<DeleteConditionalBypassResponseBody> {
+    return unwrapAsync(securityDeleteConditionalBypass(
       this,
       request,
       options,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SsoProtectionCve55182MigrationAppliedFrom } from "@vercel/sdk/models/usereventpayloadrole.js";
+import { SsoProtectionCve55182MigrationAppliedFrom } from "@vercel/sdk/models/threehundredandfourteen.js";
 
 let value: SsoProtectionCve55182MigrationAppliedFrom =
   "all_except_custom_domains";

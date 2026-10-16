@@ -8,7 +8,7 @@ import { UpdateFirewallConfigRequestBodySecurityRequest12ConditionGroup } from "
 let value: UpdateFirewallConfigRequestBodySecurityRequest12ConditionGroup = {
   conditions: [
     {
-      type: "geo_continent",
+      type: "geo_country",
       op: "sub",
     },
   ],

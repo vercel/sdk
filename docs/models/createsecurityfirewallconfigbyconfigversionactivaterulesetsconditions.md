@@ -8,7 +8,7 @@ import { CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditions }
 let value:
   CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditions = {
     op: "lt",
-    type: "region",
+    type: "response_code",
   };
 ```
 

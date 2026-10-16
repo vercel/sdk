@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtyEight } from "@vercel/sdk/models/env.js";
+import { FourHundredAndThirtyEight } from "@vercel/sdk/models/fourhundredandthirtyeight.js";
 
 let value: FourHundredAndThirtyEight = {
   reason: "limits-exceeded",

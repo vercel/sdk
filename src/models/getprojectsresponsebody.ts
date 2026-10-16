@@ -10,10 +10,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjson2aliaserror.js";
-import {
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
   GetProjectsResponseBodyAliasError,
@@ -26,14 +22,6 @@ import {
   GetProjectsResponseBodyChecksState$inboundSchema,
   GetProjectsResponseBodyCreator,
   GetProjectsResponseBodyCreator$inboundSchema,
-  GetProjectsResponseBodyOidcTokenClaims,
-  GetProjectsResponseBodyOidcTokenClaims$inboundSchema,
-  GetProjectsResponseBodyPlan,
-  GetProjectsResponseBodyPlan$inboundSchema,
-  GetProjectsResponseBodyProjectsCreator,
-  GetProjectsResponseBodyProjectsCreator$inboundSchema,
-  GetProjectsResponseBodyReadyState,
-  GetProjectsResponseBodyReadyState$inboundSchema,
   ResponseBodyAlias,
   ResponseBodyAlias$inboundSchema,
   ResponseBodyAliasAssigned,
@@ -56,8 +44,58 @@ import {
   ResponseBodyInternalRoutes$inboundSchema,
   ResponseBodyIpBuckets,
   ResponseBodyIpBuckets$inboundSchema,
-} from "./getprojectsresponsebodyreadystate.js";
+} from "./getprojectsresponsebodychecksstate.js";
+import {
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+} from "./getprojectsresponsebodyprojectsresponse200applicationjson2aliaserror.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectsResponseBodyProjectsCreator = {
+  email: string;
+  githubLogin?: string | undefined;
+  gitlabLogin?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+export type GetProjectsResponseBodyOidcTokenClaims = {
+  aud: string;
+  customEnvironmentId?: string | undefined;
+  deploymentId?: string | undefined;
+  environment: string;
+  iss: string;
+  mfeGroupIds?: Array<string> | undefined;
+  owner: string;
+  ownerId: string;
+  plan?: string | undefined;
+  project: string;
+  projectId: string;
+  scope: string;
+  sub: string;
+};
+
+export const GetProjectsResponseBodyPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type GetProjectsResponseBodyPlan = ClosedEnum<
+  typeof GetProjectsResponseBodyPlan
+>;
+
+export const GetProjectsResponseBodyReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type GetProjectsResponseBodyReadyState = ClosedEnum<
+  typeof GetProjectsResponseBodyReadyState
+>;
 
 export const GetProjectsResponseBodyReadySubstate = {
   Promoted: "PROMOTED",
@@ -685,7 +723,9 @@ export type GetProjectsValue2 = {
   suf?: string | undefined;
 };
 
-export type GetProjectsResponseBodyProjectsValue = string | GetProjectsValue2;
+export type GetProjectsResponseBodyProjectsResponseValue =
+  | string
+  | GetProjectsValue2;
 
 export type GetProjectsResponseBodyHas = {
   key?: string | undefined;
@@ -794,6 +834,41 @@ export type GetProjectsResponseBodyMitigate = {
   ttl?: number | undefined;
 };
 
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesResponseHasType =
+  {
+    ResponseStatus: "response_status",
+  } as const;
+export type GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesResponseHasType =
+  ClosedEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesResponseHasType
+  >;
+
+export type GetProjectsValueProjectsResponse2 = {
+  eq?: string | undefined;
+  gt?: number | undefined;
+  gte?: number | undefined;
+  inc?: Array<string> | undefined;
+  list?: string | undefined;
+  lt?: number | undefined;
+  lte?: number | undefined;
+  neq?: string | undefined;
+  ninc?: Array<string> | undefined;
+  pre?: string | undefined;
+  re?: string | undefined;
+  suf?: string | undefined;
+};
+
+export type GetProjectsResponseBodyProjectsValue =
+  | string
+  | GetProjectsValueProjectsResponse2;
+
+export type ResponseHas = {
+  key?: string | undefined;
+  type:
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesResponseHasType;
+  value?: string | GetProjectsValueProjectsResponse2 | undefined;
+};
+
 export type Src2 = {
   eq?: string | undefined;
   gt?: number | undefined;
@@ -816,10 +891,12 @@ export const TierRequirement = {
 } as const;
 export type TierRequirement = ClosedEnum<typeof TierRequirement>;
 
-export const ResponseBodyOp = {
+export const GetProjectsResponseBodyOp = {
   Append: "append",
 } as const;
-export type ResponseBodyOp = ClosedEnum<typeof ResponseBodyOp>;
+export type GetProjectsResponseBodyOp = ClosedEnum<
+  typeof GetProjectsResponseBodyOp
+>;
 
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson1Target = {
   key: string;
@@ -836,7 +913,7 @@ export type GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFi
 
 export type GetProjectsResponseBodyTransforms = {
   args: string;
-  op: ResponseBodyOp;
+  op: GetProjectsResponseBodyOp;
   target: GetProjectsResponseBodyProjectsResponse200ApplicationJson1Target;
   type:
     GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesTransformsType;
@@ -848,6 +925,7 @@ export type FirewallRoutes = {
   has?: Array<GetProjectsResponseBodyHas> | undefined;
   missing?: Array<GetProjectsResponseBodyMissing> | undefined;
   mitigate?: GetProjectsResponseBodyMitigate | undefined;
+  responseHas?: Array<ResponseHas> | undefined;
   src?: string | Src2 | undefined;
   status?: number | undefined;
   tierRequirement?: TierRequirement | undefined;
@@ -1486,6 +1564,80 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const GetProjectsResponseBodyProjectsCreator$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyProjectsCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.string(),
+  githubLogin: types.optional(types.string()),
+  gitlabLogin: types.optional(types.string()),
+  uid: types.string(),
+  username: types.string(),
+});
+
+export function getProjectsResponseBodyProjectsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsResponseBodyProjectsCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsResponseBodyProjectsCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyProjectsCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyOidcTokenClaims$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyOidcTokenClaims,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  aud: types.string(),
+  custom_environment_id: types.optional(types.string()),
+  deployment_id: types.optional(types.string()),
+  environment: types.string(),
+  iss: types.string(),
+  mfe_group_ids: types.optional(z.array(types.string())),
+  owner: types.string(),
+  owner_id: types.string(),
+  plan: types.optional(types.string()),
+  project: types.string(),
+  project_id: types.string(),
+  scope: types.string(),
+  sub: types.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "custom_environment_id": "customEnvironmentId",
+    "deployment_id": "deploymentId",
+    "mfe_group_ids": "mfeGroupIds",
+    "owner_id": "ownerId",
+    "project_id": "projectId",
+  });
+});
+
+export function getProjectsResponseBodyOidcTokenClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsResponseBodyOidcTokenClaims, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsResponseBodyOidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyOidcTokenClaims' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyPlan$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyPlan
+> = z.nativeEnum(GetProjectsResponseBodyPlan);
+
+/** @internal */
+export const GetProjectsResponseBodyReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyReadyState
+> = z.nativeEnum(GetProjectsResponseBodyReadyState);
+
+/** @internal */
 export const GetProjectsResponseBodyReadySubstate$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsResponseBodyReadySubstate> = z.nativeEnum(
     GetProjectsResponseBodyReadySubstate,
@@ -1519,7 +1671,9 @@ export const ResponseBodyLatestDeployments$inboundSchema: z.ZodType<
   connectConfigurationId: types.optional(types.string()),
   createdAt: types.number(),
   createdIn: types.string(),
-  creator: types.nullable(GetProjectsResponseBodyProjectsCreator$inboundSchema),
+  creator: types.nullable(
+    z.lazy(() => GetProjectsResponseBodyProjectsCreator$inboundSchema),
+  ),
   deletedAt: types.optional(types.number()),
   deploymentHostname: types.string(),
   forced: types.optional(types.boolean()),
@@ -1528,7 +1682,7 @@ export const ResponseBodyLatestDeployments$inboundSchema: z.ZodType<
   monorepoManager: z.nullable(types.string()).optional(),
   name: types.string(),
   oidcTokenClaims: types.optional(
-    GetProjectsResponseBodyOidcTokenClaims$inboundSchema,
+    z.lazy(() => GetProjectsResponseBodyOidcTokenClaims$inboundSchema),
   ),
   plan: GetProjectsResponseBodyPlan$inboundSchema,
   previewCommentsEnabled: types.optional(types.boolean()),
@@ -2434,20 +2588,29 @@ export function getProjectsValue2FromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsValue$inboundSchema: z.ZodType<
-  GetProjectsResponseBodyProjectsValue,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.lazy(() => GetProjectsValue2$inboundSchema)]);
+export const GetProjectsResponseBodyProjectsResponseValue$inboundSchema:
+  z.ZodType<
+    GetProjectsResponseBodyProjectsResponseValue,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.string(),
+    z.lazy(() => GetProjectsValue2$inboundSchema),
+  ]);
 
-export function getProjectsResponseBodyProjectsValueFromJSON(
+export function getProjectsResponseBodyProjectsResponseValueFromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsResponseBodyProjectsValue, SDKValidationError> {
+): SafeParseResult<
+  GetProjectsResponseBodyProjectsResponseValue,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
     (x) =>
-      GetProjectsResponseBodyProjectsValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsResponseBodyProjectsValue' from JSON`,
+      GetProjectsResponseBodyProjectsResponseValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectsResponseBodyProjectsResponseValue' from JSON`,
   );
 }
 
@@ -2661,6 +2824,92 @@ export function getProjectsResponseBodyMitigateFromJSON(
 }
 
 /** @internal */
+export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesResponseHasType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesResponseHasType
+  > = z.nativeEnum(
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesResponseHasType,
+  );
+
+/** @internal */
+export const GetProjectsValueProjectsResponse2$inboundSchema: z.ZodType<
+  GetProjectsValueProjectsResponse2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  eq: types.optional(types.string()),
+  gt: types.optional(types.number()),
+  gte: types.optional(types.number()),
+  inc: types.optional(z.array(types.string())),
+  list: types.optional(types.string()),
+  lt: types.optional(types.number()),
+  lte: types.optional(types.number()),
+  neq: types.optional(types.string()),
+  ninc: types.optional(z.array(types.string())),
+  pre: types.optional(types.string()),
+  re: types.optional(types.string()),
+  suf: types.optional(types.string()),
+});
+
+export function getProjectsValueProjectsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsValueProjectsResponse2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsValueProjectsResponse2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsValueProjectsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsValue$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyProjectsValue,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  types.string(),
+  z.lazy(() => GetProjectsValueProjectsResponse2$inboundSchema),
+]);
+
+export function getProjectsResponseBodyProjectsValueFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsResponseBodyProjectsValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsResponseBodyProjectsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyProjectsValue' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseHas$inboundSchema: z.ZodType<
+  ResponseHas,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.optional(types.string()),
+  type:
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesResponseHasType$inboundSchema,
+  value: types.optional(
+    smartUnion([
+      types.string(),
+      z.lazy(() => GetProjectsValueProjectsResponse2$inboundSchema),
+    ]),
+  ),
+});
+
+export function responseHasFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseHas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseHas' from JSON`,
+  );
+}
+
+/** @internal */
 export const Src2$inboundSchema: z.ZodType<Src2, z.ZodTypeDef, unknown> = z
   .object({
     eq: types.optional(types.string()),
@@ -2707,9 +2956,9 @@ export const TierRequirement$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(TierRequirement);
 
 /** @internal */
-export const ResponseBodyOp$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyOp
-> = z.nativeEnum(ResponseBodyOp);
+export const GetProjectsResponseBodyOp$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyOp
+> = z.nativeEnum(GetProjectsResponseBodyOp);
 
 /** @internal */
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson1Target$inboundSchema:
@@ -2751,7 +3000,7 @@ export const GetProjectsResponseBodyTransforms$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   args: types.string(),
-  op: ResponseBodyOp$inboundSchema,
+  op: GetProjectsResponseBodyOp$inboundSchema,
   target: z.lazy(() =>
     GetProjectsResponseBodyProjectsResponse200ApplicationJson1Target$inboundSchema
   ),
@@ -2786,6 +3035,9 @@ export const FirewallRoutes$inboundSchema: z.ZodType<
   mitigate: types.optional(
     z.lazy(() => GetProjectsResponseBodyMitigate$inboundSchema),
   ),
+  response_has: types.optional(
+    z.array(z.lazy(() => ResponseHas$inboundSchema)),
+  ),
   src: types.optional(
     smartUnion([types.string(), z.lazy(() => Src2$inboundSchema)]),
   ),
@@ -2794,6 +3046,10 @@ export const FirewallRoutes$inboundSchema: z.ZodType<
   transforms: types.optional(
     z.array(z.lazy(() => GetProjectsResponseBodyTransforms$inboundSchema)),
   ),
+}).transform((v) => {
+  return remap$(v, {
+    "response_has": "responseHas",
+  });
 });
 
 export function firewallRoutesFromJSON(

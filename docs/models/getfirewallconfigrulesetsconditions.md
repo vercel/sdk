@@ -7,7 +7,7 @@ import { GetFirewallConfigRulesetsConditions } from "@vercel/sdk/models/getfirew
 
 let value: GetFirewallConfigRulesetsConditions = {
   op: "gte",
-  type: "scheme",
+  type: "ruleset",
 };
 ```
 

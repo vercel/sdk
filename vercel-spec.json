@@ -9096,6 +9096,7 @@
           "content": {
             "application/json": {
               "schema": {
+                "additionalProperties": false,
                 "properties": {
                   "name": {
                     "type": "string"
@@ -14573,6 +14574,9 @@
           },
           "410": {
             "description": ""
+          },
+          "500": {
+            "description": ""
           }
         },
         "parameters": [
@@ -14837,6 +14841,9 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "500": {
             "description": ""
           }
         },
@@ -101500,6 +101507,80 @@
                                       ],
                                       "type": "object"
                                     },
+                                    "response_has": {
+                                      "items": {
+                                        "properties": {
+                                          "key": {
+                                            "type": "string"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "response_status"
+                                            ]
+                                          },
+                                          "value": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string"
+                                              },
+                                              {
+                                                "properties": {
+                                                  "eq": {
+                                                    "type": "string"
+                                                  },
+                                                  "gt": {
+                                                    "type": "number"
+                                                  },
+                                                  "gte": {
+                                                    "type": "number"
+                                                  },
+                                                  "inc": {
+                                                    "items": {
+                                                      "type": "string"
+                                                    },
+                                                    "type": "array"
+                                                  },
+                                                  "list": {
+                                                    "type": "string"
+                                                  },
+                                                  "lt": {
+                                                    "type": "number"
+                                                  },
+                                                  "lte": {
+                                                    "type": "number"
+                                                  },
+                                                  "neq": {
+                                                    "type": "string"
+                                                  },
+                                                  "ninc": {
+                                                    "items": {
+                                                      "type": "string"
+                                                    },
+                                                    "type": "array"
+                                                  },
+                                                  "pre": {
+                                                    "type": "string"
+                                                  },
+                                                  "re": {
+                                                    "type": "string"
+                                                  },
+                                                  "suf": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "type": "object"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "type"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": "array"
+                                    },
                                     "src": {
                                       "oneOf": [
                                         {
@@ -105831,6 +105912,80 @@
                                             "rule_id"
                                           ],
                                           "type": "object"
+                                        },
+                                        "response_has": {
+                                          "items": {
+                                            "properties": {
+                                              "key": {
+                                                "type": "string"
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "response_status"
+                                                ]
+                                              },
+                                              "value": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string"
+                                                  },
+                                                  {
+                                                    "properties": {
+                                                      "eq": {
+                                                        "type": "string"
+                                                      },
+                                                      "gt": {
+                                                        "type": "number"
+                                                      },
+                                                      "gte": {
+                                                        "type": "number"
+                                                      },
+                                                      "inc": {
+                                                        "items": {
+                                                          "type": "string"
+                                                        },
+                                                        "type": "array"
+                                                      },
+                                                      "list": {
+                                                        "type": "string"
+                                                      },
+                                                      "lt": {
+                                                        "type": "number"
+                                                      },
+                                                      "lte": {
+                                                        "type": "number"
+                                                      },
+                                                      "neq": {
+                                                        "type": "string"
+                                                      },
+                                                      "ninc": {
+                                                        "items": {
+                                                          "type": "string"
+                                                        },
+                                                        "type": "array"
+                                                      },
+                                                      "pre": {
+                                                        "type": "string"
+                                                      },
+                                                      "re": {
+                                                        "type": "string"
+                                                      },
+                                                      "suf": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "type": "object"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "type"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": "array"
                                         },
                                         "src": {
                                           "oneOf": [
@@ -186291,6 +186446,7 @@
                                               "rate_limit_api_id",
                                               "raw_path",
                                               "region",
+                                              "response_code",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -187049,6 +187205,7 @@
                                                   "rate_limit_api_id",
                                                   "raw_path",
                                                   "region",
+                                                  "response_code",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -187311,6 +187468,7 @@
                                                   "rate_limit_api_id",
                                                   "raw_path",
                                                   "region",
+                                                  "response_code",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -187467,6 +187625,7 @@
                                                   "rate_limit_api_id",
                                                   "raw_path",
                                                   "region",
+                                                  "response_code",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -187872,6 +188031,7 @@
                                               "rate_limit_api_id",
                                               "raw_path",
                                               "region",
+                                              "response_code",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -188630,6 +188790,7 @@
                                                   "rate_limit_api_id",
                                                   "raw_path",
                                                   "region",
+                                                  "response_code",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -188892,6 +189053,7 @@
                                                   "rate_limit_api_id",
                                                   "raw_path",
                                                   "region",
+                                                  "response_code",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -189048,6 +189210,7 @@
                                                   "rate_limit_api_id",
                                                   "raw_path",
                                                   "region",
+                                                  "response_code",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -189453,6 +189616,7 @@
                                                 "rate_limit_api_id",
                                                 "raw_path",
                                                 "region",
+                                                "response_code",
                                                 "route",
                                                 "ruleset",
                                                 "scheme",
@@ -190211,6 +190375,7 @@
                                                     "rate_limit_api_id",
                                                     "raw_path",
                                                     "region",
+                                                    "response_code",
                                                     "route",
                                                     "ruleset",
                                                     "scheme",
@@ -190473,6 +190638,7 @@
                                                     "rate_limit_api_id",
                                                     "raw_path",
                                                     "region",
+                                                    "response_code",
                                                     "route",
                                                     "ruleset",
                                                     "scheme",
@@ -190629,6 +190795,7 @@
                                                     "rate_limit_api_id",
                                                     "raw_path",
                                                     "region",
+                                                    "response_code",
                                                     "route",
                                                     "ruleset",
                                                     "scheme",
@@ -191083,6 +191250,7 @@
                                               "rate_limit_api_id",
                                               "raw_path",
                                               "region",
+                                              "response_code",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -191853,6 +192021,7 @@
                                                   "rate_limit_api_id",
                                                   "raw_path",
                                                   "region",
+                                                  "response_code",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -192115,6 +192284,7 @@
                                                   "rate_limit_api_id",
                                                   "raw_path",
                                                   "region",
+                                                  "response_code",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -192271,6 +192441,7 @@
                                                   "rate_limit_api_id",
                                                   "raw_path",
                                                   "region",
+                                                  "response_code",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -192959,7 +193130,8 @@
                                         "bot_protection",
                                         "shared_condition",
                                         "traffic_source",
-                                        "ruleset"
+                                        "ruleset",
+                                        "response_code"
                                       ],
                                       "description": "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
                                     },
@@ -193235,7 +193407,8 @@
                                             "bot_protection",
                                             "shared_condition",
                                             "traffic_source",
-                                            "ruleset"
+                                            "ruleset",
+                                            "response_code"
                                           ]
                                         },
                                         "op": {
@@ -193581,7 +193754,8 @@
                                           "bot_protection",
                                           "shared_condition",
                                           "traffic_source",
-                                          "ruleset"
+                                          "ruleset",
+                                          "response_code"
                                         ]
                                       },
                                       "op": {
@@ -193769,7 +193943,8 @@
                                           "bot_protection",
                                           "shared_condition",
                                           "traffic_source",
-                                          "ruleset"
+                                          "ruleset",
+                                          "response_code"
                                         ]
                                       },
                                       "op": {
@@ -194005,7 +194180,8 @@
                                           "bot_protection",
                                           "shared_condition",
                                           "traffic_source",
-                                          "ruleset"
+                                          "ruleset",
+                                          "response_code"
                                         ]
                                       },
                                       "op": {
@@ -194170,7 +194346,8 @@
                                           "bot_protection",
                                           "shared_condition",
                                           "traffic_source",
-                                          "ruleset"
+                                          "ruleset",
+                                          "response_code"
                                         ]
                                       },
                                       "op": {
@@ -194446,7 +194623,8 @@
                                           "bot_protection",
                                           "shared_condition",
                                           "traffic_source",
-                                          "ruleset"
+                                          "ruleset",
+                                          "response_code"
                                         ]
                                       },
                                       "op": {
@@ -194733,7 +194911,8 @@
                                           "bot_protection",
                                           "shared_condition",
                                           "traffic_source",
-                                          "ruleset"
+                                          "ruleset",
+                                          "response_code"
                                         ]
                                       },
                                       "op": {
@@ -195439,6 +195618,7 @@
                                           "rate_limit_api_id",
                                           "raw_path",
                                           "region",
+                                          "response_code",
                                           "route",
                                           "ruleset",
                                           "scheme",
@@ -196209,6 +196389,7 @@
                                               "rate_limit_api_id",
                                               "raw_path",
                                               "region",
+                                              "response_code",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -196471,6 +196652,7 @@
                                               "rate_limit_api_id",
                                               "raw_path",
                                               "region",
+                                              "response_code",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -196627,6 +196809,7 @@
                                               "rate_limit_api_id",
                                               "raw_path",
                                               "region",
+                                              "response_code",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -197156,6 +197339,7 @@
                                           "rate_limit_api_id",
                                           "raw_path",
                                           "region",
+                                          "response_code",
                                           "route",
                                           "ruleset",
                                           "scheme",
@@ -197914,6 +198098,7 @@
                                               "rate_limit_api_id",
                                               "raw_path",
                                               "region",
+                                              "response_code",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -198176,6 +198361,7 @@
                                               "rate_limit_api_id",
                                               "raw_path",
                                               "region",
+                                              "response_code",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -198332,6 +198518,7 @@
                                               "rate_limit_api_id",
                                               "raw_path",
                                               "region",
+                                              "response_code",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -199479,6 +199666,846 @@
             }
           }
         }
+      }
+    },
+    "/v1/security/firewall/bypass/rules": {
+      "get": {
+        "description": "Retrieve conditional firewall bypass rules for a project.",
+        "operationId": "getConditionalBypass",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get conditional firewall bypasses",
+        "tags": [
+          "security"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "result": {
+                          "items": {
+                            "properties": {
+                              "conditions": {
+                                "items": {
+                                  "properties": {
+                                    "key": {
+                                      "type": "string"
+                                    },
+                                    "neg": {
+                                      "type": "boolean",
+                                      "enum": [
+                                        false,
+                                        true
+                                      ]
+                                    },
+                                    "op": {
+                                      "type": "string",
+                                      "enum": [
+                                        "eq",
+                                        "ex",
+                                        "gt",
+                                        "gte",
+                                        "inc",
+                                        "list",
+                                        "lt",
+                                        "lte",
+                                        "neq",
+                                        "nex",
+                                        "ninc",
+                                        "pre",
+                                        "re",
+                                        "sub",
+                                        "suf"
+                                      ]
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "bot_category",
+                                        "bot_name",
+                                        "bot_protection",
+                                        "bot_status",
+                                        "cookie",
+                                        "domain_environment",
+                                        "environment",
+                                        "geo_as_number",
+                                        "geo_city",
+                                        "geo_continent",
+                                        "geo_country",
+                                        "geo_country_region",
+                                        "header",
+                                        "host",
+                                        "ip_address",
+                                        "ja3_digest",
+                                        "ja4_digest",
+                                        "method",
+                                        "path",
+                                        "protocol",
+                                        "query",
+                                        "rate_limit_api_id",
+                                        "raw_path",
+                                        "region",
+                                        "response_code",
+                                        "route",
+                                        "ruleset",
+                                        "scheme",
+                                        "server_action",
+                                        "shared_condition",
+                                        "target_path",
+                                        "traffic_source",
+                                        "trusted_source",
+                                        "user_agent"
+                                      ]
+                                    },
+                                    "value": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "op",
+                                    "type"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": "array"
+                              }
+                            },
+                            "required": [
+                              "conditions"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "result"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "pagination": {
+                          "properties": {
+                            "next": {
+                              "nullable": true,
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "next"
+                          ],
+                          "type": "object"
+                        },
+                        "result": {
+                          "items": {
+                            "properties": {
+                              "conditionGroup": {
+                                "items": {
+                                  "properties": {
+                                    "conditions": {
+                                      "items": {
+                                        "properties": {
+                                          "key": {
+                                            "type": "string"
+                                          },
+                                          "neg": {
+                                            "type": "boolean",
+                                            "enum": [
+                                              false,
+                                              true
+                                            ]
+                                          },
+                                          "op": {
+                                            "type": "string",
+                                            "enum": [
+                                              "eq",
+                                              "ex",
+                                              "gt",
+                                              "gte",
+                                              "inc",
+                                              "list",
+                                              "lt",
+                                              "lte",
+                                              "neq",
+                                              "nex",
+                                              "ninc",
+                                              "pre",
+                                              "re",
+                                              "sub",
+                                              "suf"
+                                            ]
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "bot_category",
+                                              "bot_name",
+                                              "bot_protection",
+                                              "bot_status",
+                                              "cookie",
+                                              "domain_environment",
+                                              "environment",
+                                              "geo_as_number",
+                                              "geo_city",
+                                              "geo_continent",
+                                              "geo_country",
+                                              "geo_country_region",
+                                              "header",
+                                              "host",
+                                              "ip_address",
+                                              "ja3_digest",
+                                              "ja4_digest",
+                                              "method",
+                                              "path",
+                                              "protocol",
+                                              "query",
+                                              "rate_limit_api_id",
+                                              "raw_path",
+                                              "region",
+                                              "response_code",
+                                              "route",
+                                              "ruleset",
+                                              "scheme",
+                                              "server_action",
+                                              "shared_condition",
+                                              "target_path",
+                                              "traffic_source",
+                                              "trusted_source",
+                                              "user_agent"
+                                            ]
+                                          },
+                                          "value": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string"
+                                              },
+                                              {
+                                                "type": "number"
+                                              },
+                                              {
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "type": "array"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "op",
+                                          "type"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": "array"
+                                    }
+                                  },
+                                  "required": [
+                                    "conditions"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": "array"
+                              },
+                              "domain": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "conditionGroup",
+                              "domain"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "pagination",
+                        "result"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 512
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          }
+        ]
+      },
+      "post": {
+        "description": "Create a conditional firewall bypass rule for a project domain.",
+        "operationId": "createConditionalBypass",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create conditional firewall bypass",
+        "tags": [
+          "security"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "result": {
+                      "properties": {
+                        "condition": {
+                          "type": "string"
+                        },
+                        "conditionGroup": {
+                          "items": {
+                            "properties": {
+                              "conditions": {
+                                "items": {
+                                  "properties": {
+                                    "key": {
+                                      "type": "string"
+                                    },
+                                    "neg": {
+                                      "type": "boolean",
+                                      "enum": [
+                                        false,
+                                        true
+                                      ]
+                                    },
+                                    "op": {
+                                      "type": "string",
+                                      "enum": [
+                                        "eq",
+                                        "ex",
+                                        "gt",
+                                        "gte",
+                                        "inc",
+                                        "list",
+                                        "lt",
+                                        "lte",
+                                        "neq",
+                                        "nex",
+                                        "ninc",
+                                        "pre",
+                                        "re",
+                                        "sub",
+                                        "suf"
+                                      ]
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "bot_category",
+                                        "bot_name",
+                                        "bot_protection",
+                                        "bot_status",
+                                        "cookie",
+                                        "domain_environment",
+                                        "environment",
+                                        "geo_as_number",
+                                        "geo_city",
+                                        "geo_continent",
+                                        "geo_country",
+                                        "geo_country_region",
+                                        "header",
+                                        "host",
+                                        "ip_address",
+                                        "ja3_digest",
+                                        "ja4_digest",
+                                        "method",
+                                        "path",
+                                        "protocol",
+                                        "query",
+                                        "rate_limit_api_id",
+                                        "raw_path",
+                                        "region",
+                                        "response_code",
+                                        "route",
+                                        "ruleset",
+                                        "scheme",
+                                        "server_action",
+                                        "shared_condition",
+                                        "target_path",
+                                        "traffic_source",
+                                        "trusted_source",
+                                        "user_agent"
+                                      ]
+                                    },
+                                    "value": {
+                                      "oneOf": [
+                                        {
+                                          "type": "string"
+                                        },
+                                        {
+                                          "type": "number"
+                                        },
+                                        {
+                                          "items": {
+                                            "type": "string"
+                                          },
+                                          "type": "array"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "op",
+                                    "type"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": "array"
+                              }
+                            },
+                            "required": [
+                              "conditions"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "domain": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "note": {
+                          "type": "string"
+                        },
+                        "projectId": {
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "condition",
+                        "conditionGroup",
+                        "createdAt",
+                        "domain",
+                        "id",
+                        "projectId",
+                        "updatedAt"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "result"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "domain",
+                  "conditionGroup"
+                ],
+                "properties": {
+                  "domain": {
+                    "type": "string"
+                  },
+                  "conditionGroup": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 25,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "conditions"
+                      ],
+                      "properties": {
+                        "conditions": {
+                          "type": "array",
+                          "minItems": 1,
+                          "maxItems": 65,
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "type",
+                                  "op",
+                                  "value"
+                                ],
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "user_agent"
+                                    ]
+                                  },
+                                  "op": {
+                                    "type": "string",
+                                    "enum": [
+                                      "eq",
+                                      "pre",
+                                      "suf",
+                                      "sub"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "maxLength": 500
+                                  },
+                                  "key": {
+                                    "type": "string",
+                                    "enum": [
+                                      "user-agent"
+                                    ]
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "type",
+                                  "op",
+                                  "value"
+                                ],
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "path"
+                                    ]
+                                  },
+                                  "op": {
+                                    "type": "string",
+                                    "enum": [
+                                      "eq",
+                                      "pre",
+                                      "suf",
+                                      "sub"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "maxLength": 500
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "type",
+                                  "op",
+                                  "key",
+                                  "value"
+                                ],
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "header"
+                                    ]
+                                  },
+                                  "op": {
+                                    "type": "string",
+                                    "enum": [
+                                      "eq",
+                                      "pre",
+                                      "suf",
+                                      "sub"
+                                    ]
+                                  },
+                                  "key": {
+                                    "type": "string",
+                                    "maxLength": 128,
+                                    "pattern": "^[!#$%&'*+.^_`|~0-9A-Za-z-]+$"
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "maxLength": 500
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "type",
+                                  "op",
+                                  "key"
+                                ],
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "header"
+                                    ]
+                                  },
+                                  "op": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ex"
+                                    ]
+                                  },
+                                  "key": {
+                                    "type": "string",
+                                    "maxLength": 128,
+                                    "pattern": "^[!#$%&'*+.^_`|~0-9A-Za-z-]+$"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a conditional firewall bypass rule from a project domain.",
+        "operationId": "deleteConditionalBypass",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Delete conditional firewall bypass",
+        "tags": [
+          "security"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        false,
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          }
+        ]
       }
     },
     "/v1/security/firewall/events": {
@@ -205265,6 +206292,13 @@
                               },
                               "name": {
                                 "type": "string"
+                              },
+                              "nonSensitive": {
+                                "type": "boolean",
+                                "enum": [
+                                  false,
+                                  true
+                                ]
                               }
                             },
                             "required": [
@@ -208202,7 +209236,7 @@
     },
     "/v1/teams/{teamId}": {
       "delete": {
-        "description": "Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional array of reasons for deletion may also be sent.",
+        "description": "Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional array of reasons for deletion may also be sent. Enterprise teams can only be deleted in test billing mode and when not linked to an organization.",
         "operationId": "deleteTeam",
         "security": [
           {
@@ -235002,6 +236036,7 @@
                         "manage:speed-insights",
                         "manage:web-analytics",
                         "read-write:ai-gateway-api-key",
+                        "read-write:ai-gateway-budgets",
                         "read-write:ai-gateway-guardrails",
                         "read-write:ai-gateway-private-models",
                         "read-write:ai-gateway-rules",
@@ -235028,6 +236063,7 @@
                         "read-write:project-env-vars-production",
                         "read-write:project-flags-non-production",
                         "read-write:project-flags-production",
+                        "read-write:project-members",
                         "read-write:project-protection-bypass",
                         "read-write:project-trusted-sources",
                         "read-write:remote-cache",
@@ -235036,11 +236072,13 @@
                         "read-write:team-members",
                         "read-write:vcr",
                         "read:access-group",
+                        "read:ai-gateway-budgets",
                         "read:ai-gateway-guardrails",
                         "read:ai-gateway-private-models",
                         "read:ai-gateway-rules",
                         "read:ai-gateway-virtual-model-configs",
                         "read:alerts",
+                        "read:audit-log",
                         "read:automations",
                         "read:billing",
                         "read:connect",
@@ -235057,6 +236095,7 @@
                         "read:project-env-vars-non-production",
                         "read:project-env-vars-production",
                         "read:project-flags",
+                        "read:project-members",
                         "read:project-trusted-sources",
                         "read:remote-cache",
                         "read:sandbox",
@@ -235123,6 +236162,7 @@
                         "manage:speed-insights",
                         "manage:web-analytics",
                         "read-write:ai-gateway-api-key",
+                        "read-write:ai-gateway-budgets",
                         "read-write:ai-gateway-guardrails",
                         "read-write:ai-gateway-private-models",
                         "read-write:ai-gateway-rules",
@@ -235149,6 +236189,7 @@
                         "read-write:project-env-vars-production",
                         "read-write:project-flags-non-production",
                         "read-write:project-flags-production",
+                        "read-write:project-members",
                         "read-write:project-protection-bypass",
                         "read-write:project-trusted-sources",
                         "read-write:remote-cache",
@@ -235157,11 +236198,13 @@
                         "read-write:team-members",
                         "read-write:vcr",
                         "read:access-group",
+                        "read:ai-gateway-budgets",
                         "read:ai-gateway-guardrails",
                         "read:ai-gateway-private-models",
                         "read:ai-gateway-rules",
                         "read:ai-gateway-virtual-model-configs",
                         "read:alerts",
+                        "read:audit-log",
                         "read:automations",
                         "read:billing",
                         "read:connect",
@@ -235178,6 +236221,7 @@
                         "read:project-env-vars-non-production",
                         "read:project-env-vars-production",
                         "read:project-flags",
+                        "read:project-members",
                         "read:project-trusted-sources",
                         "read:remote-cache",
                         "read:sandbox",
@@ -235224,6 +236268,7 @@
                             "manage:speed-insights",
                             "manage:web-analytics",
                             "read-write:ai-gateway-api-key",
+                            "read-write:ai-gateway-budgets",
                             "read-write:ai-gateway-guardrails",
                             "read-write:ai-gateway-private-models",
                             "read-write:ai-gateway-rules",
@@ -235250,6 +236295,7 @@
                             "read-write:project-env-vars-production",
                             "read-write:project-flags-non-production",
                             "read-write:project-flags-production",
+                            "read-write:project-members",
                             "read-write:project-protection-bypass",
                             "read-write:project-trusted-sources",
                             "read-write:remote-cache",
@@ -235258,11 +236304,13 @@
                             "read-write:team-members",
                             "read-write:vcr",
                             "read:access-group",
+                            "read:ai-gateway-budgets",
                             "read:ai-gateway-guardrails",
                             "read:ai-gateway-private-models",
                             "read:ai-gateway-rules",
                             "read:ai-gateway-virtual-model-configs",
                             "read:alerts",
+                            "read:audit-log",
                             "read:automations",
                             "read:billing",
                             "read:connect",
@@ -235279,6 +236327,7 @@
                             "read:project-env-vars-non-production",
                             "read:project-env-vars-production",
                             "read:project-flags",
+                            "read:project-members",
                             "read:project-trusted-sources",
                             "read:remote-cache",
                             "read:sandbox",
@@ -235356,6 +236405,7 @@
                             "manage:speed-insights",
                             "manage:web-analytics",
                             "read-write:ai-gateway-api-key",
+                            "read-write:ai-gateway-budgets",
                             "read-write:ai-gateway-guardrails",
                             "read-write:ai-gateway-private-models",
                             "read-write:ai-gateway-rules",
@@ -235382,6 +236432,7 @@
                             "read-write:project-env-vars-production",
                             "read-write:project-flags-non-production",
                             "read-write:project-flags-production",
+                            "read-write:project-members",
                             "read-write:project-protection-bypass",
                             "read-write:project-trusted-sources",
                             "read-write:remote-cache",
@@ -235390,11 +236441,13 @@
                             "read-write:team-members",
                             "read-write:vcr",
                             "read:access-group",
+                            "read:ai-gateway-budgets",
                             "read:ai-gateway-guardrails",
                             "read:ai-gateway-private-models",
                             "read:ai-gateway-rules",
                             "read:ai-gateway-virtual-model-configs",
                             "read:alerts",
+                            "read:audit-log",
                             "read:automations",
                             "read:billing",
                             "read:connect",
@@ -235411,6 +236464,7 @@
                             "read:project-env-vars-non-production",
                             "read:project-env-vars-production",
                             "read:project-flags",
+                            "read:project-members",
                             "read:project-trusted-sources",
                             "read:remote-cache",
                             "read:sandbox",
@@ -235498,6 +236552,7 @@
                         "manage:speed-insights",
                         "manage:web-analytics",
                         "read-write:ai-gateway-api-key",
+                        "read-write:ai-gateway-budgets",
                         "read-write:ai-gateway-guardrails",
                         "read-write:ai-gateway-private-models",
                         "read-write:ai-gateway-rules",
@@ -235524,6 +236579,7 @@
                         "read-write:project-env-vars-production",
                         "read-write:project-flags-non-production",
                         "read-write:project-flags-production",
+                        "read-write:project-members",
                         "read-write:project-protection-bypass",
                         "read-write:project-trusted-sources",
                         "read-write:remote-cache",
@@ -235532,11 +236588,13 @@
                         "read-write:team-members",
                         "read-write:vcr",
                         "read:access-group",
+                        "read:ai-gateway-budgets",
                         "read:ai-gateway-guardrails",
                         "read:ai-gateway-private-models",
                         "read:ai-gateway-rules",
                         "read:ai-gateway-virtual-model-configs",
                         "read:alerts",
+                        "read:audit-log",
                         "read:automations",
                         "read:billing",
                         "read:connect",
@@ -235553,6 +236611,7 @@
                         "read:project-env-vars-non-production",
                         "read:project-env-vars-production",
                         "read:project-flags",
+                        "read:project-members",
                         "read:project-trusted-sources",
                         "read:remote-cache",
                         "read:sandbox",
@@ -250749,14 +251808,10 @@
                       "type"
                     ],
                     "type": "object"
-                  },
-                  "transferRequestCode": {
-                    "type": "string"
                   }
                 },
                 "required": [
-                  "store",
-                  "transferRequestCode"
+                  "store"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -250787,9 +251842,6 @@
                       "type"
                     ],
                     "type": "object"
-                  },
-                  "transferRequestCode": {
-                    "type": "string"
                   },
                   "destinationTeamId": {
                     "type": "string"
@@ -250801,8 +251853,7 @@
                 "required": [
                   "destinationTeamId",
                   "destinationTeamName",
-                  "store",
-                  "transferRequestCode"
+                  "store"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -250834,9 +251885,6 @@
                     ],
                     "type": "object"
                   },
-                  "transferRequestCode": {
-                    "type": "string"
-                  },
                   "originTeamId": {
                     "type": "string"
                   },
@@ -250847,8 +251895,7 @@
                 "required": [
                   "originTeamId",
                   "originTeamName",
-                  "store",
-                  "transferRequestCode"
+                  "store"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -254305,6 +255352,22 @@
               },
               {
                 "properties": {
+                  "domain": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "domain",
+                  "projectId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "policy": {
                     "properties": {
                       "claims": {
@@ -255493,6 +256556,8 @@
               "experiment-updated",
               "firewall-bypass-created",
               "firewall-bypass-deleted",
+              "firewall-conditional-bypass-created",
+              "firewall-conditional-bypass-deleted",
               "firewall-config-modified",
               "firewall-config-promoted",
               "firewall-config-removed",
@@ -256436,6 +257501,8 @@
               "experiment-updated",
               "firewall-bypass-created",
               "firewall-bypass-deleted",
+              "firewall-conditional-bypass-created",
+              "firewall-conditional-bypass-deleted",
               "firewall-config-modified",
               "firewall-config-promoted",
               "firewall-config-removed",
@@ -257167,6 +258234,8 @@
                 "experiment-updated",
                 "firewall-bypass-created",
                 "firewall-bypass-deleted",
+                "firewall-conditional-bypass-created",
+                "firewall-conditional-bypass-deleted",
                 "firewall-config-modified",
                 "firewall-config-promoted",
                 "firewall-config-removed",
@@ -263455,10 +264524,7 @@
       },
       "VercelBaseError": {
         "type": "object",
-        "required": [
-          "code",
-          "message"
-        ],
+        "required": ["code","message"],
         "properties": {
           "code": {
             "type": "string"
@@ -263470,9 +264536,7 @@
       },
       "VercelForbiddenError": {
         "type": "object",
-        "required": [
-          "error"
-        ],
+        "required": ["error"],
         "properties": {
           "error": {
             "allOf": [
@@ -263481,9 +264545,7 @@
               },
               {
                 "type": "object",
-                "required": [
-                  "code"
-                ],
+                "required": ["code"],
                 "properties": {
                   "code": {
                     "type": "string"
@@ -263496,9 +264558,7 @@
       },
       "VercelNotFoundError": {
         "type": "object",
-        "required": [
-          "error"
-        ],
+        "required": ["error"],
         "properties": {
           "error": {
             "allOf": [
@@ -263507,9 +264567,7 @@
               },
               {
                 "type": "object",
-                "required": [
-                  "code"
-                ],
+                "required": ["code"],
                 "properties": {
                   "code": {
                     "type": "string"
@@ -263525,9 +264583,7 @@
       },
       "VercelBadRequestError": {
         "type": "object",
-        "required": [
-          "error"
-        ],
+        "required": ["error"],
         "properties": {
           "error": {
             "allOf": [
@@ -263536,9 +264592,7 @@
               },
               {
                 "type": "object",
-                "required": [
-                  "code"
-                ],
+                "required": ["code"],
                 "properties": {
                   "code": {
                     "type": "string"
@@ -263554,9 +264608,7 @@
       },
       "VercelRateLimitError": {
         "type": "object",
-        "required": [
-          "error"
-        ],
+        "required": ["error"],
         "properties": {
           "error": {
             "allOf": [
@@ -263565,9 +264617,7 @@
               },
               {
                 "type": "object",
-                "required": [
-                  "code"
-                ],
+                "required": ["code"],
                 "properties": {
                   "code": {
                     "type": "string"
@@ -263583,12 +264633,7 @@
       },
       "RateLimitNotice": {
         "type": "object",
-        "required": [
-          "remaining",
-          "reset",
-          "resetMs",
-          "total"
-        ],
+        "required": ["remaining","reset","resetMs","total"],
         "properties": {
           "remaining": {
             "type": "integer",

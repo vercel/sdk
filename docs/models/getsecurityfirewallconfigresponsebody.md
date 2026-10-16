@@ -59,7 +59,7 @@ let value: GetSecurityFirewallConfigResponseBody = {
               conditions: [
                 {
                   op: "eq",
-                  type: "ja3_digest",
+                  type: "ja4_digest",
                 },
               ],
             },

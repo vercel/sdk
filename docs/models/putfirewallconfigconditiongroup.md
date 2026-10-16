@@ -9,7 +9,7 @@ let value: PutFirewallConfigConditionGroup = {
   conditions: [
     {
       op: "suf",
-      type: "ja4_digest",
+      type: "method",
     },
   ],
 };

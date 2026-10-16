@@ -7,7 +7,7 @@ import { GetSecurityFirewallConfigRulesSecurityResponse200Conditions } from "@ve
 
 let value: GetSecurityFirewallConfigRulesSecurityResponse200Conditions = {
   op: "list",
-  type: "protocol",
+  type: "query",
 };
 ```
 

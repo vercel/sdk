@@ -9,7 +9,7 @@ let value: GetSecurityFirewallConfigRulesSecurityResponseConditionGroup = {
   conditions: [
     {
       op: "ninc",
-      type: "raw_path",
+      type: "region",
     },
   ],
 };

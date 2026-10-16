@@ -7,7 +7,7 @@ import { PutFirewallConfigRulesetsConditions } from "@vercel/sdk/models/putfirew
 
 let value: PutFirewallConfigRulesetsConditions = {
   op: "list",
-  type: "method",
+  type: "path",
 };
 ```
 

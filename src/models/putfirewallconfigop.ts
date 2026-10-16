@@ -270,6 +270,7 @@ export const PutFirewallConfigType = {
   SharedCondition: "shared_condition",
   TrafficSource: "traffic_source",
   Ruleset: "ruleset",
+  ResponseCode: "response_code",
 } as const;
 /**
  * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
@@ -433,6 +434,7 @@ export const RulesetsType = {
   SharedCondition: "shared_condition",
   TrafficSource: "traffic_source",
   Ruleset: "ruleset",
+  ResponseCode: "response_code",
 } as const;
 export type RulesetsType = ClosedEnum<typeof RulesetsType>;
 
@@ -596,6 +598,7 @@ export const PutFirewallConfigSecurityType = {
   RateLimitApiId: "rate_limit_api_id",
   RawPath: "raw_path",
   Region: "region",
+  ResponseCode: "response_code",
   Route: "route",
   Ruleset: "ruleset",
   Scheme: "scheme",
@@ -1146,6 +1149,7 @@ export const PutFirewallConfigRulesSecurityType = {
   RateLimitApiId: "rate_limit_api_id",
   RawPath: "raw_path",
   Region: "region",
+  ResponseCode: "response_code",
   Route: "route",
   Ruleset: "ruleset",
   Scheme: "scheme",
@@ -1311,6 +1315,7 @@ export const PutFirewallConfigRulesType = {
   RateLimitApiId: "rate_limit_api_id",
   RawPath: "raw_path",
   Region: "region",
+  ResponseCode: "response_code",
   Route: "route",
   Ruleset: "ruleset",
   Scheme: "scheme",
@@ -1469,6 +1474,7 @@ export const PutFirewallConfigRulesetsType = {
   RateLimitApiId: "rate_limit_api_id",
   RawPath: "raw_path",
   Region: "region",
+  ResponseCode: "response_code",
   Route: "route",
   Ruleset: "ruleset",
   Scheme: "scheme",

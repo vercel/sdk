@@ -14,7 +14,7 @@ const value: models.GetSecurityFirewallConfigRulesSecurity1 = {
       conditions: [
         {
           op: "eq",
-          type: "ja3_digest",
+          type: "ja4_digest",
         },
       ],
     },

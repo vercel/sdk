@@ -148,6 +148,7 @@ export type CreateIntegrationStoreDirectSecrets = {
   frameworkPublishable?: boolean | undefined;
   length: number;
   name: string;
+  nonSensitive?: boolean | undefined;
 };
 
 /**
@@ -393,6 +394,7 @@ export const CreateIntegrationStoreDirectSecrets$inboundSchema: z.ZodType<
   frameworkPublishable: types.optional(types.boolean()),
   length: types.number(),
   name: types.string(),
+  nonSensitive: types.optional(types.boolean()),
 });
 
 export function createIntegrationStoreDirectSecretsFromJSON(

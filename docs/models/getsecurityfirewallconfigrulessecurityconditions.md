@@ -7,7 +7,7 @@ import { GetSecurityFirewallConfigRulesSecurityConditions } from "@vercel/sdk/mo
 
 let value: GetSecurityFirewallConfigRulesSecurityConditions = {
   op: "gt",
-  type: "bot_status",
+  type: "cookie",
 };
 ```
 

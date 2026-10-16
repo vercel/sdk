@@ -12,7 +12,7 @@ let value: UpdateFirewallConfigRequestBodySecurityRequest12Value = {
     {
       conditions: [
         {
-          type: "geo_continent",
+          type: "geo_country",
           op: "sub",
         },
       ],

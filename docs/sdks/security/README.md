@@ -15,6 +15,9 @@
 * [getBypassIp](#getbypassip) - Read System Bypass
 * [addBypassIp](#addbypassip) - Create System Bypass Rule
 * [removeBypassIp](#removebypassip) - Remove System Bypass Rule
+* [getConditionalBypass](#getconditionalbypass) - Get conditional firewall bypasses
+* [createConditionalBypass](#createconditionalbypass) - Create conditional firewall bypass
+* [deleteConditionalBypass](#deleteconditionalbypass) - Delete conditional firewall bypass
 * [getSecurityFirewallEvents](#getsecurityfirewallevents) - Read Firewall Actions by Project
 * [getSecurityFirewallEventsSummary](#getsecurityfirewalleventssummary) - Read Firewall Actions Summary by Project
 * [generateFirewallRule](#generatefirewallrule) - Generate a firewall rule from natural language
@@ -854,6 +857,239 @@ run();
 ### Response
 
 **Promise\<[models.RemoveBypassIpResponseBody](../../models/removebypassipresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getConditionalBypass
+
+Retrieve conditional firewall bypass rules for a project.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="getConditionalBypass" method="get" path="/v1/security/firewall/bypass/rules" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.security.getConditionalBypass({
+    projectId: "<id>",
+    slug: "my-team-url-slug",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { securityGetConditionalBypass } from "@vercel/sdk/funcs/securityGetConditionalBypass.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await securityGetConditionalBypass(vercel, {
+    projectId: "<id>",
+    slug: "my-team-url-slug",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("securityGetConditionalBypass failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.GetConditionalBypassRequest](../../models/getconditionalbypassrequest.md)                                                                                              | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.GetConditionalBypassResponseBody](../../models/getconditionalbypassresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## createConditionalBypass
+
+Create a conditional firewall bypass rule for a project domain.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="createConditionalBypass" method="post" path="/v1/security/firewall/bypass/rules" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.security.createConditionalBypass({
+    projectId: "<id>",
+    slug: "my-team-url-slug",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { securityCreateConditionalBypass } from "@vercel/sdk/funcs/securityCreateConditionalBypass.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await securityCreateConditionalBypass(vercel, {
+    projectId: "<id>",
+    slug: "my-team-url-slug",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("securityCreateConditionalBypass failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.CreateConditionalBypassRequest](../../models/createconditionalbypassrequest.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.CreateConditionalBypassResponseBody](../../models/createconditionalbypassresponsebody.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## deleteConditionalBypass
+
+Delete a conditional firewall bypass rule from a project domain.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="deleteConditionalBypass" method="delete" path="/v1/security/firewall/bypass/rules" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.security.deleteConditionalBypass({
+    projectId: "<id>",
+    slug: "my-team-url-slug",
+    domain: "narrow-wheel.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { securityDeleteConditionalBypass } from "@vercel/sdk/funcs/securityDeleteConditionalBypass.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await securityDeleteConditionalBypass(vercel, {
+    projectId: "<id>",
+    slug: "my-team-url-slug",
+    domain: "narrow-wheel.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("securityDeleteConditionalBypass failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.DeleteConditionalBypassRequest](../../models/deleteconditionalbypassrequest.md)                                                                                        | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.DeleteConditionalBypassResponseBody](../../models/deleteconditionalbypassresponsebody.md)\>**
 
 ### Errors
 

@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyTwo } from "@vercel/sdk/models/usereventjobpayload1216provider.js";
+import { OneHundredAndSeventyTwo } from "@vercel/sdk/models/jobproject.js";
 
 let value: OneHundredAndSeventyTwo = {
   created: new Date("2021-02-10T13:11:49.180Z"),

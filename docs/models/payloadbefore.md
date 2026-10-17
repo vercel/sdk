@@ -5,7 +5,7 @@ A full point-in-time snapshot of an OIDC exchange policy, captured on every life
 ## Example Usage
 
 ```typescript
-import { PayloadBefore } from "@vercel/sdk/models/fourhundredandthirtyeight.js";
+import { PayloadBefore } from "@vercel/sdk/models/fourhundredandfortyone.js";
 
 let value: PayloadBefore = {
   claims: [
@@ -51,6 +51,6 @@ let value: PayloadBefore = {
 | `name`                                                                                       | *string*                                                                                     | :heavy_check_mark:                                                                           | Human-readable policy name, or `null` when unnamed.                                          |
 | `permissions`                                                                                | *string*[]                                                                                   | :heavy_check_mark:                                                                           | Permission boundary (`['*']` = the app's full declared permissions).                         |
 | `policyId`                                                                                   | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `resources`                                                                                  | [models.UserEventPayload489BeforeResources](../models/usereventpayload489beforeresources.md) | :heavy_check_mark:                                                                           | Resource boundary, or `null` when the policy has none.                                       |
+| `resources`                                                                                  | [models.UserEventPayload492BeforeResources](../models/usereventpayload492beforeresources.md) | :heavy_check_mark:                                                                           | Resource boundary, or `null` when the policy has none.                                       |
 | `teamId`                                                                                     | *string*                                                                                     | :heavy_check_mark:                                                                           | N/A                                                                                          |
 | `updatedAt`                                                                                  | *number*                                                                                     | :heavy_check_mark:                                                                           | Last-update time (epoch ms).                                                                 |

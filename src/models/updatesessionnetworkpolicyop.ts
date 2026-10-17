@@ -186,7 +186,7 @@ export type UpdateSessionNetworkPolicyRequestBody2 = {
 /**
  * The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
  */
-export const RequestBodyMode = {
+export const UpdateSessionNetworkPolicyRequestBodyMode = {
   AllowAll: "allow-all",
   DenyAll: "deny-all",
   Custom: "custom",
@@ -196,7 +196,9 @@ export const RequestBodyMode = {
 /**
  * The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
  */
-export type RequestBodyMode = ClosedEnum<typeof RequestBodyMode>;
+export type UpdateSessionNetworkPolicyRequestBodyMode = ClosedEnum<
+  typeof UpdateSessionNetworkPolicyRequestBodyMode
+>;
 
 /**
  * Match on the request path. Comparison is case-sensitive.
@@ -334,7 +336,7 @@ export type UpdateSessionNetworkPolicyRequestBody1 = {
   /**
    * The network access policy mode. Use \"allow-all\" to permit all outbound traffic. Use \"deny-all\" to block all outbound traffic. Use \"custom\" to specify explicit allow/deny rules.
    */
-  mode: RequestBodyMode;
+  mode: UpdateSessionNetworkPolicyRequestBodyMode;
   /**
    * List of domain names the sandbox is allowed to connect to. Only applies when mode is \"custom\". Supports wildcard patterns (e.g., \"*.example.com\" matches all subdomains).
    */
@@ -793,9 +795,9 @@ export function updateSessionNetworkPolicyRequestBody2ToJSON(
 }
 
 /** @internal */
-export const RequestBodyMode$outboundSchema: z.ZodNativeEnum<
-  typeof RequestBodyMode
-> = z.nativeEnum(RequestBodyMode);
+export const UpdateSessionNetworkPolicyRequestBodyMode$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateSessionNetworkPolicyRequestBodyMode> = z
+    .nativeEnum(UpdateSessionNetworkPolicyRequestBodyMode);
 
 /** @internal */
 export type RequestBodyPath$Outbound = {
@@ -1046,7 +1048,7 @@ export const UpdateSessionNetworkPolicyRequestBody1$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyRequestBody1
 > = z.object({
-  mode: RequestBodyMode$outboundSchema,
+  mode: UpdateSessionNetworkPolicyRequestBodyMode$outboundSchema,
   allowedDomains: z.array(z.string()).optional(),
   allowedCIDRs: z.array(z.string()).optional(),
   deniedCIDRs: z.array(z.string()).optional(),

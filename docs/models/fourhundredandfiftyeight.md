@@ -5,11 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFiftyEight } from "@vercel/sdk/models/fourhundredandthirtyeight.js";
+import { FourHundredAndFiftyEight } from "@vercel/sdk/models/fourhundredandfortyone.js";
 
 let value: FourHundredAndFiftyEight = {
-  mfa: {
+  next: {
     enabled: true,
+    totpVerified: false,
+  },
+  previous: {
+    enabled: false,
     totpVerified: false,
   },
 };
@@ -17,6 +21,8 @@ let value: FourHundredAndFiftyEight = {
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `mfa`                          | [models.Mfa](../models/mfa.md) | :heavy_check_mark:             | N/A                            |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `method`                                                                       | [models.PayloadMethod](../models/payloadmethod.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload458Next](../models/usereventpayload458next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload458Previous](../models/usereventpayload458previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

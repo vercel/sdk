@@ -663,6 +663,7 @@ export const GetDeploymentResponseBodyNodeVersion = {
   TwentyDotX: "20.x",
   TwentyTwoDotX: "22.x",
   TwentyFourDotX: "24.x",
+  TwentySixDotX: "26.x",
   EightDot10DotX: "8.10.x",
 } as const;
 /**
@@ -878,6 +879,7 @@ export const GetDeploymentResponseBodyDeploymentsNodeVersion = {
   TwentyDotX: "20.x",
   TwentyTwoDotX: "22.x",
   TwentyFourDotX: "24.x",
+  TwentySixDotX: "26.x",
   EightDot10DotX: "8.10.x",
 } as const;
 export type GetDeploymentResponseBodyDeploymentsNodeVersion = ClosedEnum<
@@ -1018,7 +1020,7 @@ export type GetDeploymentResponseBodySelectionSource = ClosedEnum<
  */
 export type ResponseBodyBuildMachine = {
   /**
-   * Number of cores the build machine ran with. Set at dispatch time once the build lands on a hive.
+   * Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing.
    */
   cores?: number | undefined;
   /**
@@ -1034,7 +1036,7 @@ export type ResponseBodyBuildMachine = {
     | GetDeploymentResponseBodyMachineSelectionType
     | undefined;
   /**
-   * Memory, in MiB, the build machine ran with. Set at dispatch time once the build lands on a hive.
+   * Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing.
    */
   memory?: number | undefined;
   /**

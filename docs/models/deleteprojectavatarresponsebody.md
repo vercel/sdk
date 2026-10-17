@@ -44,7 +44,7 @@ let value: DeleteProjectAvatarResponseBody = {
     },
   ],
   name: "<value>",
-  nodeVersion: "24.x",
+  nodeVersion: "26.x",
   resourceConfig: {
     functionDefaultRegions: [
       "<value 1>",

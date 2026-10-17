@@ -204,7 +204,7 @@ export type CreateConditionalBypassSecurityConditionGroup = {
   conditions: Array<CreateConditionalBypassSecurityConditions>;
 };
 
-export type CreateConditionalBypassResult = {
+export type CreateConditionalBypassResponseBody = {
   condition: string;
   conditionGroup: Array<CreateConditionalBypassSecurityConditionGroup>;
   createdAt: string;
@@ -213,10 +213,6 @@ export type CreateConditionalBypassResult = {
   note?: string | undefined;
   projectId: string;
   updatedAt: string;
-};
-
-export type CreateConditionalBypassResponseBody = {
-  result: CreateConditionalBypassResult;
 };
 
 /** @internal */
@@ -574,8 +570,8 @@ export function createConditionalBypassSecurityConditionGroupFromJSON(
 }
 
 /** @internal */
-export const CreateConditionalBypassResult$inboundSchema: z.ZodType<
-  CreateConditionalBypassResult,
+export const CreateConditionalBypassResponseBody$inboundSchema: z.ZodType<
+  CreateConditionalBypassResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -589,25 +585,6 @@ export const CreateConditionalBypassResult$inboundSchema: z.ZodType<
   note: types.optional(types.string()),
   projectId: types.string(),
   updatedAt: types.string(),
-});
-
-export function createConditionalBypassResultFromJSON(
-  jsonString: string,
-): SafeParseResult<CreateConditionalBypassResult, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => CreateConditionalBypassResult$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CreateConditionalBypassResult' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateConditionalBypassResponseBody$inboundSchema: z.ZodType<
-  CreateConditionalBypassResponseBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  result: z.lazy(() => CreateConditionalBypassResult$inboundSchema),
 });
 
 export function createConditionalBypassResponseBodyFromJSON(

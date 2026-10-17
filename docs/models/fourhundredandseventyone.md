@@ -5,25 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeventyOne } from "@vercel/sdk/models/fourhundredandthirtyeight.js";
+import { FourHundredAndSeventyOne } from "@vercel/sdk/models/fourhundredandfortyone.js";
 
 let value: FourHundredAndSeventyOne = {
   projectId: "<id>",
   projectName: "<value>",
-  removedTeamIds: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
   repositoryName: "<value>",
+  sharedWithTeamId: "<id>",
+  sharedWithTeamSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `removedTeamIds`   | *string*[]         | :heavy_check_mark: | N/A                |
-| `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
+| `repositoryName`     | *string*             | :heavy_check_mark:   | N/A                  |
+| `sharedWithTeamId`   | *string*             | :heavy_check_mark:   | N/A                  |
+| `sharedWithTeamSlug` | *string*             | :heavy_check_mark:   | N/A                  |

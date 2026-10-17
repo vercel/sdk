@@ -14,16 +14,10 @@ export type GetConditionalBypassRequest = {
   projectId: string;
   slug?: string | undefined;
   domain?: string | undefined;
-  limit?: number | undefined;
-  offset?: string | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
-};
-
-export type GetConditionalBypassResponseBodyPagination = {
-  next: string | null;
 };
 
 export const GetConditionalBypassResponseBodyOp = {
@@ -100,18 +94,23 @@ export type GetConditionalBypassResponseBodyConditions = {
   value?: string | number | Array<string> | undefined;
 };
 
-export type ResponseBodyConditionGroup = {
+export type GetConditionalBypassResponseBodyConditionGroup = {
   conditions: Array<GetConditionalBypassResponseBodyConditions>;
 };
 
-export type GetConditionalBypassResponseBodySecurityResult = {
-  conditionGroup: Array<ResponseBodyConditionGroup>;
+export type ResponseBodyRules = {
+  condition: string;
+  conditionGroup: Array<GetConditionalBypassResponseBodyConditionGroup>;
+  createdAt: string;
   domain: string;
+  id: string;
+  note?: string | undefined;
+  projectId: string;
+  updatedAt: string;
 };
 
 export type GetConditionalBypassResponseBody2 = {
-  pagination: GetConditionalBypassResponseBodyPagination;
-  result: Array<GetConditionalBypassResponseBodySecurityResult>;
+  rules: Array<ResponseBodyRules>;
 };
 
 export const ResponseBodyOp = {
@@ -186,25 +185,30 @@ export type ResponseBodyConditions = {
   value?: string | number | Array<string> | undefined;
 };
 
-export type GetConditionalBypassResponseBodyResult = {
+export type ResponseBodyConditionGroup = {
   conditions: Array<ResponseBodyConditions>;
 };
 
 export type GetConditionalBypassResponseBody1 = {
-  result: Array<GetConditionalBypassResponseBodyResult>;
+  condition: string;
+  conditionGroup: Array<ResponseBodyConditionGroup>;
+  createdAt: string;
+  domain: string;
+  id: string;
+  note?: string | undefined;
+  projectId: string;
+  updatedAt: string;
 };
 
 export type GetConditionalBypassResponseBody =
-  | GetConditionalBypassResponseBody2
-  | GetConditionalBypassResponseBody1;
+  | GetConditionalBypassResponseBody1
+  | GetConditionalBypassResponseBody2;
 
 /** @internal */
 export type GetConditionalBypassRequest$Outbound = {
   projectId: string;
   slug?: string | undefined;
   domain?: string | undefined;
-  limit?: number | undefined;
-  offset?: string | undefined;
   teamId?: string | undefined;
 };
 
@@ -217,8 +221,6 @@ export const GetConditionalBypassRequest$outboundSchema: z.ZodType<
   projectId: z.string(),
   slug: z.string().optional(),
   domain: z.string().optional(),
-  limit: z.number().optional(),
-  offset: z.string().optional(),
   teamId: z.string().optional(),
 });
 
@@ -229,29 +231,6 @@ export function getConditionalBypassRequestToJSON(
     GetConditionalBypassRequest$outboundSchema.parse(
       getConditionalBypassRequest,
     ),
-  );
-}
-
-/** @internal */
-export const GetConditionalBypassResponseBodyPagination$inboundSchema:
-  z.ZodType<GetConditionalBypassResponseBodyPagination, z.ZodTypeDef, unknown> =
-    z.object({
-      next: types.nullable(types.string()),
-    });
-
-export function getConditionalBypassResponseBodyPaginationFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetConditionalBypassResponseBodyPagination,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetConditionalBypassResponseBodyPagination$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetConditionalBypassResponseBodyPagination' from JSON`,
   );
 }
 
@@ -319,52 +298,58 @@ export function getConditionalBypassResponseBodyConditionsFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyConditionGroup$inboundSchema: z.ZodType<
-  ResponseBodyConditionGroup,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  conditions: z.array(
-    z.lazy(() => GetConditionalBypassResponseBodyConditions$inboundSchema),
-  ),
-});
-
-export function responseBodyConditionGroupFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyConditionGroup, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyConditionGroup$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyConditionGroup' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetConditionalBypassResponseBodySecurityResult$inboundSchema:
+export const GetConditionalBypassResponseBodyConditionGroup$inboundSchema:
   z.ZodType<
-    GetConditionalBypassResponseBodySecurityResult,
+    GetConditionalBypassResponseBodyConditionGroup,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    conditionGroup: z.array(
-      z.lazy(() => ResponseBodyConditionGroup$inboundSchema),
+    conditions: z.array(
+      z.lazy(() => GetConditionalBypassResponseBodyConditions$inboundSchema),
     ),
-    domain: types.string(),
   });
 
-export function getConditionalBypassResponseBodySecurityResultFromJSON(
+export function getConditionalBypassResponseBodyConditionGroupFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  GetConditionalBypassResponseBodySecurityResult,
+  GetConditionalBypassResponseBodyConditionGroup,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      GetConditionalBypassResponseBodySecurityResult$inboundSchema.parse(
+      GetConditionalBypassResponseBodyConditionGroup$inboundSchema.parse(
         JSON.parse(x),
       ),
-    `Failed to parse 'GetConditionalBypassResponseBodySecurityResult' from JSON`,
+    `Failed to parse 'GetConditionalBypassResponseBodyConditionGroup' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyRules$inboundSchema: z.ZodType<
+  ResponseBodyRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  condition: types.string(),
+  conditionGroup: z.array(
+    z.lazy(() => GetConditionalBypassResponseBodyConditionGroup$inboundSchema),
+  ),
+  createdAt: types.string(),
+  domain: types.string(),
+  id: types.string(),
+  note: types.optional(types.string()),
+  projectId: types.string(),
+  updatedAt: types.string(),
+});
+
+export function responseBodyRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyRules' from JSON`,
   );
 }
 
@@ -374,12 +359,7 @@ export const GetConditionalBypassResponseBody2$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  pagination: z.lazy(() =>
-    GetConditionalBypassResponseBodyPagination$inboundSchema
-  ),
-  result: z.array(
-    z.lazy(() => GetConditionalBypassResponseBodySecurityResult$inboundSchema),
-  ),
+  rules: z.array(z.lazy(() => ResponseBodyRules$inboundSchema)),
 });
 
 export function getConditionalBypassResponseBody2FromJSON(
@@ -447,22 +427,21 @@ export function responseBodyConditionsFromJSON(
 }
 
 /** @internal */
-export const GetConditionalBypassResponseBodyResult$inboundSchema: z.ZodType<
-  GetConditionalBypassResponseBodyResult,
+export const ResponseBodyConditionGroup$inboundSchema: z.ZodType<
+  ResponseBodyConditionGroup,
   z.ZodTypeDef,
   unknown
 > = z.object({
   conditions: z.array(z.lazy(() => ResponseBodyConditions$inboundSchema)),
 });
 
-export function getConditionalBypassResponseBodyResultFromJSON(
+export function responseBodyConditionGroupFromJSON(
   jsonString: string,
-): SafeParseResult<GetConditionalBypassResponseBodyResult, SDKValidationError> {
+): SafeParseResult<ResponseBodyConditionGroup, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetConditionalBypassResponseBodyResult$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetConditionalBypassResponseBodyResult' from JSON`,
+    (x) => ResponseBodyConditionGroup$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyConditionGroup' from JSON`,
   );
 }
 
@@ -472,9 +451,16 @@ export const GetConditionalBypassResponseBody1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  result: z.array(
-    z.lazy(() => GetConditionalBypassResponseBodyResult$inboundSchema),
+  condition: types.string(),
+  conditionGroup: z.array(
+    z.lazy(() => ResponseBodyConditionGroup$inboundSchema),
   ),
+  createdAt: types.string(),
+  domain: types.string(),
+  id: types.string(),
+  note: types.optional(types.string()),
+  projectId: types.string(),
+  updatedAt: types.string(),
 });
 
 export function getConditionalBypassResponseBody1FromJSON(
@@ -493,8 +479,8 @@ export const GetConditionalBypassResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => GetConditionalBypassResponseBody2$inboundSchema),
   z.lazy(() => GetConditionalBypassResponseBody1$inboundSchema),
+  z.lazy(() => GetConditionalBypassResponseBody2$inboundSchema),
 ]);
 
 export function getConditionalBypassResponseBodyFromJSON(

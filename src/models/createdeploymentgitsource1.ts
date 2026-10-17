@@ -416,6 +416,7 @@ export type Framework = ClosedEnum<typeof Framework>;
  * Override the Node.js version that should be used for this deployment
  */
 export const NodeVersion = {
+  TwentySixDotX: "26.x",
   TwentyFourDotX: "24.x",
   TwentyTwoDotX: "22.x",
   TwentyDotX: "20.x",

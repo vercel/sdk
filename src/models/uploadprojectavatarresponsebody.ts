@@ -432,6 +432,7 @@ export const UploadProjectAvatarNodeVersion = {
   TwentyDotX: "20.x",
   TwentyTwoDotX: "22.x",
   TwentyFourDotX: "24.x",
+  TwentySixDotX: "26.x",
   EightDot10DotX: "8.10.x",
 } as const;
 export type UploadProjectAvatarNodeVersion = ClosedEnum<

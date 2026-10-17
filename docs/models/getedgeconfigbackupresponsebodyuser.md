@@ -1,5 +1,7 @@
 # GetEdgeConfigBackupResponseBodyUser
 
+Omitted when the caller cannot list team members.
+
 ## Example Usage
 
 ```typescript

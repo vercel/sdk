@@ -97,8 +97,6 @@ async function $do(
 
   const query = encodeFormQuery({
     "domain": payload.domain,
-    "limit": payload.limit,
-    "offset": payload.offset,
     "projectId": payload.projectId,
     "slug": payload.slug,
     "teamId": payload.teamId,

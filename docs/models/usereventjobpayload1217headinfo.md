@@ -5,7 +5,7 @@ GitLab
 ## Example Usage
 
 ```typescript
-import { UserEventJobPayload1217HeadInfo } from "@vercel/sdk/models/jobproject.js";
+import { UserEventJobPayload1217HeadInfo } from "@vercel/sdk/models/usereventjobproject.js";
 
 let value: UserEventJobPayload1217HeadInfo = {
   project: {

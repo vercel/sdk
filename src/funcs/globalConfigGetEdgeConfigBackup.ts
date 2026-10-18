@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Get Global Config backup
  *
  * @remarks
- * Retrieves a specific version of a Global Config from backup storage.
+ * Retrieves a specific version of a Global Config from backup storage. The `user` field is only included when the caller can list team members.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

@@ -5,11 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyEight } from "@vercel/sdk/models/approvalscope.js";
+import { TwoHundredAndEightyEight } from "@vercel/sdk/models/twohundredandfiftyone.js";
 
 let value: TwoHundredAndEightyEight = {
   customEnvironmentId: "<id>",
   customEnvironmentSlug: "<value>",
+  next: {},
+  previous: {},
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,9 +19,11 @@ let value: TwoHundredAndEightyEight = {
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `customEnvironmentId`   | *string*                | :heavy_check_mark:      | N/A                     |
-| `customEnvironmentSlug` | *string*                | :heavy_check_mark:      | N/A                     |
-| `projectId`             | *string*                | :heavy_check_mark:      | N/A                     |
-| `projectName`           | *string*                | :heavy_check_mark:      | N/A                     |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `customEnvironmentId`                                                          | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `customEnvironmentSlug`                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload288Next](../models/usereventpayload288next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload288Previous](../models/usereventpayload288previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

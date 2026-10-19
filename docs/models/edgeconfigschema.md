@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EdgeConfigSchema } from "@vercel/sdk/models/jobproject.js";
+import { EdgeConfigSchema } from "@vercel/sdk/models/usereventjobproject.js";
 
 let value: EdgeConfigSchema = {};
 ```

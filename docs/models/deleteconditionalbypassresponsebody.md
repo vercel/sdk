@@ -5,13 +5,11 @@
 ```typescript
 import { DeleteConditionalBypassResponseBody } from "@vercel/sdk/models/deleteconditionalbypassop.js";
 
-let value: DeleteConditionalBypassResponseBody = {
-  ok: true,
-};
+let value: DeleteConditionalBypassResponseBody = "";
 ```
 
-## Fields
+## Values
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `ok`               | *boolean*          | :heavy_check_mark: | N/A                |
+```typescript
+""
+```

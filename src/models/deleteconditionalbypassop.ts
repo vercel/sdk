@@ -3,10 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
-import { Result as SafeParseResult } from "../types/fp.js";
-import * as types from "../types/primitives.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
+import { ClosedEnum } from "../types/enums.js";
 
 export type DeleteConditionalBypassRequest = {
   projectId: string;
@@ -18,9 +15,12 @@ export type DeleteConditionalBypassRequest = {
   teamId?: string | undefined;
 };
 
-export type DeleteConditionalBypassResponseBody = {
-  ok: boolean;
-};
+export const DeleteConditionalBypassResponseBody = {
+  Unknown: "",
+} as const;
+export type DeleteConditionalBypassResponseBody = ClosedEnum<
+  typeof DeleteConditionalBypassResponseBody
+>;
 
 /** @internal */
 export type DeleteConditionalBypassRequest$Outbound = {
@@ -53,21 +53,6 @@ export function deleteConditionalBypassRequestToJSON(
 }
 
 /** @internal */
-export const DeleteConditionalBypassResponseBody$inboundSchema: z.ZodType<
-  DeleteConditionalBypassResponseBody,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ok: types.boolean(),
-});
-
-export function deleteConditionalBypassResponseBodyFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteConditionalBypassResponseBody, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      DeleteConditionalBypassResponseBody$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteConditionalBypassResponseBody' from JSON`,
-  );
-}
+export const DeleteConditionalBypassResponseBody$inboundSchema: z.ZodNativeEnum<
+  typeof DeleteConditionalBypassResponseBody
+> = z.nativeEnum(DeleteConditionalBypassResponseBody);

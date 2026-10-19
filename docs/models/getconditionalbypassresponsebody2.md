@@ -6,22 +6,19 @@
 import { GetConditionalBypassResponseBody2 } from "@vercel/sdk/models/getconditionalbypassop.js";
 
 let value: GetConditionalBypassResponseBody2 = {
-  pagination: {
-    next: "<value>",
-  },
-  result: [
+  rules: [
     {
+      condition: "<value>",
       conditionGroup: [
         {
-          conditions: [
-            {
-              op: "lt",
-              type: "region",
-            },
-          ],
+          conditions: [],
         },
       ],
-      domain: "weekly-middle.net",
+      createdAt: "1732509291835",
+      domain: "thorough-unibody.name",
+      id: "<id>",
+      projectId: "<id>",
+      updatedAt: "1735674161939",
     },
   ],
 };
@@ -29,7 +26,6 @@ let value: GetConditionalBypassResponseBody2 = {
 
 ## Fields
 
-| Field                                                                                                                  | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `pagination`                                                                                                           | [models.GetConditionalBypassResponseBodyPagination](../models/getconditionalbypassresponsebodypagination.md)           | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
-| `result`                                                                                                               | [models.GetConditionalBypassResponseBodySecurityResult](../models/getconditionalbypassresponsebodysecurityresult.md)[] | :heavy_check_mark:                                                                                                     | N/A                                                                                                                    |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `rules`                                                      | [models.ResponseBodyRules](../models/responsebodyrules.md)[] | :heavy_check_mark:                                           | N/A                                                          |

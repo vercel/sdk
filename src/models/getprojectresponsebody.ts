@@ -449,6 +449,7 @@ export const GetProjectNodeVersion = {
   TwentyDotX: "20.x",
   TwentyTwoDotX: "22.x",
   TwentyFourDotX: "24.x",
+  TwentySixDotX: "26.x",
   EightDot10DotX: "8.10.x",
 } as const;
 export type GetProjectNodeVersion = ClosedEnum<typeof GetProjectNodeVersion>;

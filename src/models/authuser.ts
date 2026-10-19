@@ -18,7 +18,7 @@ export type ManagedTeams = {
   workEmail: string;
 };
 
-export type Organization = {
+export type AuthUserOrganization = {
   id: string;
   name: string;
   slug: string;
@@ -33,7 +33,7 @@ export type AccountUpdateContext = {
    */
   canOptOut: boolean;
   managedTeams: Array<ManagedTeams>;
-  organization?: Organization | undefined;
+  organization?: AuthUserOrganization | undefined;
   verifiedEmuDomains: Array<string>;
 };
 
@@ -543,8 +543,8 @@ export function managedTeamsFromJSON(
 }
 
 /** @internal */
-export const Organization$inboundSchema: z.ZodType<
-  Organization,
+export const AuthUserOrganization$inboundSchema: z.ZodType<
+  AuthUserOrganization,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -553,13 +553,13 @@ export const Organization$inboundSchema: z.ZodType<
   slug: types.string(),
 });
 
-export function organizationFromJSON(
+export function authUserOrganizationFromJSON(
   jsonString: string,
-): SafeParseResult<Organization, SDKValidationError> {
+): SafeParseResult<AuthUserOrganization, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Organization$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Organization' from JSON`,
+    (x) => AuthUserOrganization$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthUserOrganization' from JSON`,
   );
 }
 
@@ -571,7 +571,9 @@ export const AccountUpdateContext$inboundSchema: z.ZodType<
 > = z.object({
   canOptOut: types.boolean(),
   managedTeams: z.array(z.lazy(() => ManagedTeams$inboundSchema)),
-  organization: types.optional(z.lazy(() => Organization$inboundSchema)),
+  organization: types.optional(
+    z.lazy(() => AuthUserOrganization$inboundSchema),
+  ),
   verifiedEmuDomains: z.array(types.string()),
 });
 

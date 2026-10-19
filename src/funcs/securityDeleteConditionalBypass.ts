@@ -164,7 +164,7 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
-    M.json(200, DeleteConditionalBypassResponseBody$inboundSchema),
+    M.json(204, DeleteConditionalBypassResponseBody$inboundSchema),
     M.fail([400, 401, 403, 404, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);

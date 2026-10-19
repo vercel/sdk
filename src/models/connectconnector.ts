@@ -26,6 +26,7 @@ export type AppTokens = {
    * Whether one app token can be used across installations.
    */
   crossInstallation: boolean;
+  isStaticCredential: boolean;
   /**
    * Link to the page on the service where this connector's app-level permissions are declared and granted, when the service has one and it differs from `clientUrl`.
    */
@@ -222,6 +223,7 @@ export type UserTokens = {
    * Whether one user token can be used across installations.
    */
   crossInstallation: boolean;
+  isStaticCredential: boolean;
   /**
    * User authorization is completed by the Connect consent screen submitting a credential instead of an OAuth redirect.
    */
@@ -365,7 +367,7 @@ export type ConnectConnector = {
    */
   target?: string | undefined;
   /**
-   * Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`.
+   * Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`. Computed routing environments are stored internally, not returned here.
    */
   triggerDestinations?: Array<ConnectTriggerDestination> | undefined;
   /**
@@ -413,6 +415,7 @@ export const AppTokens$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   crossInstallation: types.boolean(),
+  isStaticCredential: types.boolean(),
   permissionsUrl: types.optional(types.string()),
   requiresReinstallation: types.optional(types.boolean()),
   scopes: types.optional(z.array(types.string())),
@@ -632,6 +635,7 @@ export const UserTokens$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   crossInstallation: types.boolean(),
+  isStaticCredential: types.boolean(),
   manualCredentialInput: types.optional(types.boolean()),
   scopes: types.optional(z.array(types.string())),
   supportedAuthorizationDetails: types.optional(z.array(types.string())),

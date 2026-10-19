@@ -69,6 +69,7 @@ import { Marketplace } from "./marketplace.js";
 import { Microfrontends } from "./microfrontends.js";
 import { Networking } from "./networking.js";
 import { Observability } from "./observability.js";
+import { Organizations } from "./organizations.js";
 import { ProjectMembers } from "./projectmembers.js";
 import { ProjectRoutes } from "./projectroutes.js";
 import { Projects } from "./projects.js";
@@ -218,6 +219,11 @@ export class Vercel extends ClientSDK {
   private _observability?: Observability;
   get observability(): Observability {
     return (this._observability ??= new Observability(this._options));
+  }
+
+  private _organizations?: Organizations;
+  get organizations(): Organizations {
+    return (this._organizations ??= new Organizations(this._options));
   }
 
   private _projectMembers?: ProjectMembers;

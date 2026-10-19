@@ -7,7 +7,13 @@
 
 ```typescript
 const value: models.GetConditionalBypassResponseBody1 = {
-  result: [],
+  condition: "<value>",
+  conditionGroup: [],
+  createdAt: "1712378350690",
+  domain: "muffled-editor.org",
+  id: "<id>",
+  projectId: "<id>",
+  updatedAt: "1735628864577",
 };
 ```
 
@@ -15,22 +21,19 @@ const value: models.GetConditionalBypassResponseBody1 = {
 
 ```typescript
 const value: models.GetConditionalBypassResponseBody2 = {
-  pagination: {
-    next: "<value>",
-  },
-  result: [
+  rules: [
     {
+      condition: "<value>",
       conditionGroup: [
         {
-          conditions: [
-            {
-              op: "lt",
-              type: "region",
-            },
-          ],
+          conditions: [],
         },
       ],
-      domain: "weekly-middle.net",
+      createdAt: "1732509291835",
+      domain: "thorough-unibody.name",
+      id: "<id>",
+      projectId: "<id>",
+      updatedAt: "1735674161939",
     },
   ],
 };

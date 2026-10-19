@@ -21433,6 +21433,7 @@
                             "20.x",
                             "22.x",
                             "24.x",
+                            "26.x",
                             "8.10.x"
                           ],
                           "description": "If set it overrides the `projectSettings.nodeVersion` for this deployment."
@@ -21745,6 +21746,7 @@
                                 "20.x",
                                 "22.x",
                                 "24.x",
+                                "26.x",
                                 "8.10.x"
                               ]
                             },
@@ -21869,7 +21871,7 @@
                               "properties": {
                                 "cores": {
                                   "type": "number",
-                                  "description": "Number of cores the build machine ran with. Set at dispatch time once the build lands on a hive."
+                                  "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
                                 },
                                 "defaultPurchaseType": {
                                   "type": "string",
@@ -21891,7 +21893,7 @@
                                 },
                                 "memory": {
                                   "type": "number",
-                                  "description": "Memory, in MiB, the build machine ran with. Set at dispatch time once the build lands on a hive."
+                                  "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
                                 },
                                 "purchaseType": {
                                   "type": "string",
@@ -27275,6 +27277,7 @@
                             "20.x",
                             "22.x",
                             "24.x",
+                            "26.x",
                             "8.10.x"
                           ],
                           "description": "If set it overrides the `projectSettings.nodeVersion` for this deployment."
@@ -30203,6 +30206,7 @@
                             "20.x",
                             "22.x",
                             "24.x",
+                            "26.x",
                             "8.10.x"
                           ],
                           "description": "If set it overrides the `projectSettings.nodeVersion` for this deployment."
@@ -30515,6 +30519,7 @@
                                 "20.x",
                                 "22.x",
                                 "24.x",
+                                "26.x",
                                 "8.10.x"
                               ]
                             },
@@ -30639,7 +30644,7 @@
                               "properties": {
                                 "cores": {
                                   "type": "number",
-                                  "description": "Number of cores the build machine ran with. Set at dispatch time once the build lands on a hive."
+                                  "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
                                 },
                                 "defaultPurchaseType": {
                                   "type": "string",
@@ -30661,7 +30666,7 @@
                                 },
                                 "memory": {
                                   "type": "number",
-                                  "description": "Memory, in MiB, the build machine ran with. Set at dispatch time once the build lands on a hive."
+                                  "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
                                 },
                                 "purchaseType": {
                                   "type": "string",
@@ -35480,6 +35485,7 @@
                       "nodeVersion": {
                         "description": "Override the Node.js version that should be used for this deployment",
                         "enum": [
+                          "26.x",
                           "24.x",
                           "22.x",
                           "20.x",
@@ -37957,6 +37963,7 @@
                         "20.x",
                         "22.x",
                         "24.x",
+                        "26.x",
                         "8.10.x"
                       ],
                       "description": "If set it overrides the `projectSettings.nodeVersion` for this deployment."
@@ -38269,6 +38276,7 @@
                             "20.x",
                             "22.x",
                             "24.x",
+                            "26.x",
                             "8.10.x"
                           ]
                         },
@@ -38393,7 +38401,7 @@
                           "properties": {
                             "cores": {
                               "type": "number",
-                              "description": "Number of cores the build machine ran with. Set at dispatch time once the build lands on a hive."
+                              "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
                             },
                             "defaultPurchaseType": {
                               "type": "string",
@@ -38415,7 +38423,7 @@
                             },
                             "memory": {
                               "type": "number",
-                              "description": "Memory, in MiB, the build machine ran with. Set at dispatch time once the build lands on a hive."
+                              "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
                             },
                             "purchaseType": {
                               "type": "string",
@@ -59563,7 +59571,7 @@
     },
     "/v1/global-config/{edgeConfigId}/backups/{edgeConfigBackupVersionId}": {
       "get": {
-        "description": "Retrieves a specific version of a Global Config from backup storage.",
+        "description": "Retrieves a specific version of a Global Config from backup storage. The `user` field is only included when the caller can list team members.",
         "operationId": "getEdgeConfigBackup",
         "security": [
           {
@@ -59675,7 +59683,8 @@
                             "id",
                             "username"
                           ],
-                          "type": "object"
+                          "type": "object",
+                          "description": "Omitted when the caller cannot list team members."
                         }
                       },
                       "required": [
@@ -87225,6 +87234,7 @@
                               "20.x",
                               "22.x",
                               "24.x",
+                              "26.x",
                               "8.10.x"
                             ]
                           },
@@ -92393,6 +92403,624 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/organizations": {
+      "post": {
+        "description": "Create a new Organization. This endpoint is in private beta. Contact your Vercel account team for access.",
+        "operationId": "createOrganization",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create an Organization",
+        "tags": [
+          "organizations"
+        ],
+        "responses": {
+          "202": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Organization"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.\nThe slug is already in use"
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "slug"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "pattern": "^(?!-)(?:[a-z0-9-]{1,48})(?<!-)$",
+                    "description": "The desired slug for the organization."
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 256,
+                    "description": "The desired name for the organization. Generated from the slug if not provided."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "description": "List the organizations where the authenticated user holds the OrgAdmin or OrgViewer permission on the organization's root or backing team — the same criteria as GET /v1/organizations/:organizationId/teams. This endpoint is in private beta. Contact your Vercel account team for access.",
+        "operationId": "listOrganizations",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List Organizations",
+        "tags": [
+          "organizations"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "organizations": {
+                      "items": {
+                        "$ref": "#/components/schemas/Organization"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "organizations"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": ""
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/v1/organizations/{organizationId}": {
+      "get": {
+        "description": "Get a single organization by ID. This endpoint is in private beta. Contact your Vercel account team for access.",
+        "operationId": "getOrganization",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get an Organization",
+        "tags": [
+          "organizations"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Organization"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "description": "The ID of the organization to retrieve.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the organization to retrieve."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      },
+      "patch": {
+        "description": "Update an organization's slug, name, or avatar. Upload avatar images through the existing files API before setting their hash. The organization avatar is independent of the root team's avatar. This endpoint is in private beta. Contact your Vercel account team for access.",
+        "operationId": "updateOrganization",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update an Organization",
+        "tags": [
+          "organizations"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Organization"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "description": "The ID of the organization to update.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the organization to update."
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "minProperties": 1,
+                "additionalProperties": false,
+                "properties": {
+                  "avatar": {
+                    "type": "string",
+                    "maxLength": 40,
+                    "pattern": "^[0-9a-f]+$",
+                    "description": "The hash value of an uploaded image, or `null` to clear the organization avatar. Omit to leave it unchanged.",
+                    "nullable": true
+                  },
+                  "name": {
+                    "type": "string",
+                    "maxLength": 256,
+                    "description": "The new display name for the organization."
+                  },
+                  "slug": {
+                    "type": "string",
+                    "maxLength": 48,
+                    "pattern": "^(?!-)(?:[a-z0-9-]{1,48})(?<!-)$",
+                    "description": "The new slug for the organization."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/organizations/{organizationId}/teams": {
+      "get": {
+        "description": "List up to 100 teams in an organization, each enriched with the team's slug, name, and avatar. Set `includeMemberCount` to include counts that include pending memberships but exclude email invitations without a membership record. Teams whose underlying record no longer exists are omitted, so a page may contain fewer teams than the page size (or be empty) while still returning a `cursor`; paginate until `cursor` is absent. This endpoint is in private beta. Contact your Vercel account team for access.",
+        "operationId": "listOrganizationTeams",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List Organization Teams",
+        "tags": [
+          "organizations"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "cursor": {
+                      "type": "string"
+                    },
+                    "teams": {
+                      "items": {
+                        "$ref": "#/components/schemas/OrganizationTeamListItem"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "teams"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "description": "The ID of the organization.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the organization."
+            }
+          },
+          {
+            "name": "cursor",
+            "description": "Pagination cursor.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Pagination cursor."
+            }
+          },
+          {
+            "name": "includeMemberCount",
+            "description": "When true, includes each team's member count in the response.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "When true, includes each team's member count in the response."
+            }
+          }
+        ]
+      },
+      "post": {
+        "description": "Create a new team under an organization, or add an existing team. `mode: \"create\"` creates a brand-new child team from `slug` + `name` — a platform child by default, or an enterprise child (billed on the organization root's flex subscription) when `billingPlan: \"enterprise\"` is supplied. `mode: \"link\"` links an existing team identified by `teamId` or `slug`; the child's billing profile is derived from the target team's plan (enterprise team → enterprise child, else platform), or explicitly supplied. Both modes respond with the resulting organization-team link. This endpoint is in private beta. Contact your Vercel account team for access.",
+        "operationId": "addOrganizationTeam",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create or Add Team to Organization",
+        "tags": [
+          "organizations"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationTeam"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.\nThe slug is already in use"
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "description": "The ID of the organization to create or add a team under.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the organization to create or add a team under."
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "mode"
+                ],
+                "oneOf": [
+                  {
+                    "required": [
+                      "mode",
+                      "slug",
+                      "name"
+                    ],
+                    "properties": {
+                      "mode": {
+                        "enum": [
+                          "create"
+                        ]
+                      },
+                      "name": {}
+                    }
+                  },
+                  {
+                    "required": [
+                      "mode",
+                      "teamId"
+                    ],
+                    "properties": {
+                      "mode": {
+                        "enum": [
+                          "link"
+                        ]
+                      }
+                    },
+                    "not": {
+                      "required": [
+                        "name"
+                      ]
+                    }
+                  },
+                  {
+                    "required": [
+                      "mode",
+                      "slug"
+                    ],
+                    "properties": {
+                      "mode": {
+                        "enum": [
+                          "link"
+                        ]
+                      }
+                    },
+                    "not": {
+                      "required": [
+                        "name"
+                      ]
+                    }
+                  }
+                ],
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "create",
+                      "link"
+                    ],
+                    "description": "Whether to create a new team under the organization (\\\"create\\\") or link an existing one (\\\"link\\\")."
+                  },
+                  "teamId": {
+                    "type": "string",
+                    "description": "The ID of an existing team to add to the organization (link mode)."
+                  },
+                  "slug": {
+                    "type": "string",
+                    "description": "The slug of an existing team to link, or the slug for a new team to create."
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "The display name for a new team. Required in create mode; rejected in link mode."
+                  },
+                  "billingPlan": {
+                    "type": "string",
+                    "enum": [
+                      "enterprise",
+                      "platform"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/organizations/{organizationId}/teams/{targetTeamId}": {
+      "delete": {
+        "description": "Delete a team from an organization. This endpoint is in private beta. Contact your Vercel account team for access.",
+        "operationId": "removeOrganizationTeam",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Delete Team from Organization",
+        "tags": [
+          "organizations"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "organizationId": {
+                      "type": "string"
+                    },
+                    "teamId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "organizationId",
+                    "teamId"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "organizationId",
+            "description": "The ID of the organization.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the organization."
+            }
+          },
+          {
+            "name": "targetTeamId",
+            "description": "The ID of the team to remove.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the team to remove."
             }
           }
         ]
@@ -100824,6 +101452,7 @@
                               "20.x",
                               "22.x",
                               "24.x",
+                              "26.x",
                               "8.10.x"
                             ]
                           },
@@ -105230,6 +105859,7 @@
                                   "20.x",
                                   "22.x",
                                   "24.x",
+                                  "26.x",
                                   "8.10.x"
                                 ]
                               },
@@ -110823,6 +111453,7 @@
                                   "20.x",
                                   "22.x",
                                   "24.x",
+                                  "26.x",
                                   "8.10.x"
                                 ]
                               },
@@ -119014,6 +119645,7 @@
                         "20.x",
                         "22.x",
                         "24.x",
+                        "26.x",
                         "8.10.x"
                       ]
                     },
@@ -127491,6 +128123,7 @@
                         "20.x",
                         "22.x",
                         "24.x",
+                        "26.x",
                         "8.10.x"
                       ]
                     },
@@ -135236,6 +135869,7 @@
                         "20.x",
                         "22.x",
                         "24.x",
+                        "26.x",
                         "8.10.x"
                       ]
                     },
@@ -139437,6 +140071,7 @@
                   },
                   "nodeVersion": {
                     "enum": [
+                      "26.x",
                       "24.x",
                       "22.x",
                       "20.x",
@@ -144303,6 +144938,7 @@
                         "20.x",
                         "22.x",
                         "24.x",
+                        "26.x",
                         "8.10.x"
                       ]
                     },
@@ -152061,6 +152697,7 @@
                         "20.x",
                         "22.x",
                         "24.x",
+                        "26.x",
                         "8.10.x"
                       ]
                     },
@@ -172960,6 +173597,7 @@
                         "20.x",
                         "22.x",
                         "24.x",
+                        "26.x",
                         "8.10.x"
                       ]
                     },
@@ -177409,7 +178047,7 @@
     },
     "/v2/sandboxes": {
       "get": {
-        "description": "Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix or status.",
+        "description": "Retrieves a paginated list of named sandboxes belonging to a specific project. Results can be sorted by creation time or name, and optionally filtered by name prefix or status. Overdue sessions for running and stopping sandboxes are recovered before returning the page, so an entry may no longer match its queried status after recovery.",
         "operationId": "listNamedSandboxes",
         "security": [
           {
@@ -199690,362 +200328,6 @@
                   "oneOf": [
                     {
                       "properties": {
-                        "result": {
-                          "items": {
-                            "properties": {
-                              "conditions": {
-                                "items": {
-                                  "properties": {
-                                    "key": {
-                                      "type": "string"
-                                    },
-                                    "neg": {
-                                      "type": "boolean",
-                                      "enum": [
-                                        false,
-                                        true
-                                      ]
-                                    },
-                                    "op": {
-                                      "type": "string",
-                                      "enum": [
-                                        "eq",
-                                        "ex",
-                                        "gt",
-                                        "gte",
-                                        "inc",
-                                        "list",
-                                        "lt",
-                                        "lte",
-                                        "neq",
-                                        "nex",
-                                        "ninc",
-                                        "pre",
-                                        "re",
-                                        "sub",
-                                        "suf"
-                                      ]
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "bot_category",
-                                        "bot_name",
-                                        "bot_protection",
-                                        "bot_status",
-                                        "cookie",
-                                        "domain_environment",
-                                        "environment",
-                                        "geo_as_number",
-                                        "geo_city",
-                                        "geo_continent",
-                                        "geo_country",
-                                        "geo_country_region",
-                                        "header",
-                                        "host",
-                                        "ip_address",
-                                        "ja3_digest",
-                                        "ja4_digest",
-                                        "method",
-                                        "path",
-                                        "protocol",
-                                        "query",
-                                        "rate_limit_api_id",
-                                        "raw_path",
-                                        "region",
-                                        "response_code",
-                                        "route",
-                                        "ruleset",
-                                        "scheme",
-                                        "server_action",
-                                        "shared_condition",
-                                        "target_path",
-                                        "traffic_source",
-                                        "trusted_source",
-                                        "user_agent"
-                                      ]
-                                    },
-                                    "value": {
-                                      "oneOf": [
-                                        {
-                                          "type": "string"
-                                        },
-                                        {
-                                          "type": "number"
-                                        },
-                                        {
-                                          "items": {
-                                            "type": "string"
-                                          },
-                                          "type": "array"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "op",
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              }
-                            },
-                            "required": [
-                              "conditions"
-                            ],
-                            "type": "object"
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "required": [
-                        "result"
-                      ],
-                      "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "pagination": {
-                          "properties": {
-                            "next": {
-                              "nullable": true,
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "next"
-                          ],
-                          "type": "object"
-                        },
-                        "result": {
-                          "items": {
-                            "properties": {
-                              "conditionGroup": {
-                                "items": {
-                                  "properties": {
-                                    "conditions": {
-                                      "items": {
-                                        "properties": {
-                                          "key": {
-                                            "type": "string"
-                                          },
-                                          "neg": {
-                                            "type": "boolean",
-                                            "enum": [
-                                              false,
-                                              true
-                                            ]
-                                          },
-                                          "op": {
-                                            "type": "string",
-                                            "enum": [
-                                              "eq",
-                                              "ex",
-                                              "gt",
-                                              "gte",
-                                              "inc",
-                                              "list",
-                                              "lt",
-                                              "lte",
-                                              "neq",
-                                              "nex",
-                                              "ninc",
-                                              "pre",
-                                              "re",
-                                              "sub",
-                                              "suf"
-                                            ]
-                                          },
-                                          "type": {
-                                            "type": "string",
-                                            "enum": [
-                                              "bot_category",
-                                              "bot_name",
-                                              "bot_protection",
-                                              "bot_status",
-                                              "cookie",
-                                              "domain_environment",
-                                              "environment",
-                                              "geo_as_number",
-                                              "geo_city",
-                                              "geo_continent",
-                                              "geo_country",
-                                              "geo_country_region",
-                                              "header",
-                                              "host",
-                                              "ip_address",
-                                              "ja3_digest",
-                                              "ja4_digest",
-                                              "method",
-                                              "path",
-                                              "protocol",
-                                              "query",
-                                              "rate_limit_api_id",
-                                              "raw_path",
-                                              "region",
-                                              "response_code",
-                                              "route",
-                                              "ruleset",
-                                              "scheme",
-                                              "server_action",
-                                              "shared_condition",
-                                              "target_path",
-                                              "traffic_source",
-                                              "trusted_source",
-                                              "user_agent"
-                                            ]
-                                          },
-                                          "value": {
-                                            "oneOf": [
-                                              {
-                                                "type": "string"
-                                              },
-                                              {
-                                                "type": "number"
-                                              },
-                                              {
-                                                "items": {
-                                                  "type": "string"
-                                                },
-                                                "type": "array"
-                                              }
-                                            ]
-                                          }
-                                        },
-                                        "required": [
-                                          "op",
-                                          "type"
-                                        ],
-                                        "type": "object"
-                                      },
-                                      "type": "array"
-                                    }
-                                  },
-                                  "required": [
-                                    "conditions"
-                                  ],
-                                  "type": "object"
-                                },
-                                "type": "array"
-                              },
-                              "domain": {
-                                "type": "string"
-                              }
-                            },
-                            "required": [
-                              "conditionGroup",
-                              "domain"
-                            ],
-                            "type": "object"
-                          },
-                          "type": "array"
-                        }
-                      },
-                      "required": [
-                        "pagination",
-                        "result"
-                      ],
-                      "type": "object"
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid."
-          },
-          "401": {
-            "description": "The request is not authorized."
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": ""
-          },
-          "410": {
-            "description": ""
-          }
-        },
-        "parameters": [
-          {
-            "name": "projectId",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "slug",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "example": "my-team-url-slug"
-            }
-          },
-          {
-            "name": "domain",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "number",
-              "minimum": 1,
-              "maximum": 100
-            }
-          },
-          {
-            "name": "offset",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "maxLength": 512
-            }
-          },
-          {
-            "description": "The Team identifier to perform the request on behalf of.",
-            "in": "query",
-            "name": "teamId",
-            "schema": {
-              "type": "string",
-              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-            }
-          }
-        ]
-      },
-      "post": {
-        "description": "Create a conditional firewall bypass rule for a project domain.",
-        "operationId": "createConditionalBypass",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Create conditional firewall bypass",
-        "tags": [
-          "security"
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "result": {
-                      "properties": {
                         "condition": {
                           "type": "string"
                         },
@@ -200186,10 +200468,376 @@
                         "updatedAt"
                       ],
                       "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "rules": {
+                          "items": {
+                            "properties": {
+                              "condition": {
+                                "type": "string"
+                              },
+                              "conditionGroup": {
+                                "items": {
+                                  "properties": {
+                                    "conditions": {
+                                      "items": {
+                                        "properties": {
+                                          "key": {
+                                            "type": "string"
+                                          },
+                                          "neg": {
+                                            "type": "boolean",
+                                            "enum": [
+                                              false,
+                                              true
+                                            ]
+                                          },
+                                          "op": {
+                                            "type": "string",
+                                            "enum": [
+                                              "eq",
+                                              "ex",
+                                              "gt",
+                                              "gte",
+                                              "inc",
+                                              "list",
+                                              "lt",
+                                              "lte",
+                                              "neq",
+                                              "nex",
+                                              "ninc",
+                                              "pre",
+                                              "re",
+                                              "sub",
+                                              "suf"
+                                            ]
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "bot_category",
+                                              "bot_name",
+                                              "bot_protection",
+                                              "bot_status",
+                                              "cookie",
+                                              "domain_environment",
+                                              "environment",
+                                              "geo_as_number",
+                                              "geo_city",
+                                              "geo_continent",
+                                              "geo_country",
+                                              "geo_country_region",
+                                              "header",
+                                              "host",
+                                              "ip_address",
+                                              "ja3_digest",
+                                              "ja4_digest",
+                                              "method",
+                                              "path",
+                                              "protocol",
+                                              "query",
+                                              "rate_limit_api_id",
+                                              "raw_path",
+                                              "region",
+                                              "response_code",
+                                              "route",
+                                              "ruleset",
+                                              "scheme",
+                                              "server_action",
+                                              "shared_condition",
+                                              "target_path",
+                                              "traffic_source",
+                                              "trusted_source",
+                                              "user_agent"
+                                            ]
+                                          },
+                                          "value": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string"
+                                              },
+                                              {
+                                                "type": "number"
+                                              },
+                                              {
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "type": "array"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "op",
+                                          "type"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": "array"
+                                    }
+                                  },
+                                  "required": [
+                                    "conditions"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": "array"
+                              },
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "domain": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              },
+                              "note": {
+                                "type": "string"
+                              },
+                              "projectId": {
+                                "type": "string"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "condition",
+                              "conditionGroup",
+                              "createdAt",
+                              "domain",
+                              "id",
+                              "projectId",
+                              "updatedAt"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "required": [
+                        "rules"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          },
+          {
+            "name": "domain",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          }
+        ]
+      },
+      "post": {
+        "description": "Create a conditional firewall bypass rule for a project domain.",
+        "operationId": "createConditionalBypass",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Create conditional firewall bypass",
+        "tags": [
+          "security"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "conditionGroup": {
+                      "items": {
+                        "properties": {
+                          "conditions": {
+                            "items": {
+                              "properties": {
+                                "key": {
+                                  "type": "string"
+                                },
+                                "neg": {
+                                  "type": "boolean",
+                                  "enum": [
+                                    false,
+                                    true
+                                  ]
+                                },
+                                "op": {
+                                  "type": "string",
+                                  "enum": [
+                                    "eq",
+                                    "ex",
+                                    "gt",
+                                    "gte",
+                                    "inc",
+                                    "list",
+                                    "lt",
+                                    "lte",
+                                    "neq",
+                                    "nex",
+                                    "ninc",
+                                    "pre",
+                                    "re",
+                                    "sub",
+                                    "suf"
+                                  ]
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "bot_category",
+                                    "bot_name",
+                                    "bot_protection",
+                                    "bot_status",
+                                    "cookie",
+                                    "domain_environment",
+                                    "environment",
+                                    "geo_as_number",
+                                    "geo_city",
+                                    "geo_continent",
+                                    "geo_country",
+                                    "geo_country_region",
+                                    "header",
+                                    "host",
+                                    "ip_address",
+                                    "ja3_digest",
+                                    "ja4_digest",
+                                    "method",
+                                    "path",
+                                    "protocol",
+                                    "query",
+                                    "rate_limit_api_id",
+                                    "raw_path",
+                                    "region",
+                                    "response_code",
+                                    "route",
+                                    "ruleset",
+                                    "scheme",
+                                    "server_action",
+                                    "shared_condition",
+                                    "target_path",
+                                    "traffic_source",
+                                    "trusted_source",
+                                    "user_agent"
+                                  ]
+                                },
+                                "value": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "op",
+                                "type"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "conditions"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string"
+                    },
+                    "projectId": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
                     }
                   },
                   "required": [
-                    "result"
+                    "condition",
+                    "conditionGroup",
+                    "createdAt",
+                    "domain",
+                    "id",
+                    "projectId",
+                    "updatedAt"
                   ],
                   "type": "object"
                 }
@@ -200432,24 +201080,15 @@
           "security"
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "ok": {
-                      "type": "boolean",
-                      "enum": [
-                        false,
-                        true
-                      ]
-                    }
-                  },
-                  "required": [
-                    "ok"
-                  ],
-                  "type": "object"
+                  "type": "string",
+                  "enum": [
+                    ""
+                  ]
                 }
               }
             }
@@ -227085,6 +227724,7 @@
                                   "20.x",
                                   "22.x",
                                   "24.x",
+                                  "26.x",
                                   "8.10.x"
                                 ]
                               },
@@ -228670,7 +229310,7 @@
           "projectId"
         ],
         "type": "object",
-        "description": "Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`."
+        "description": "Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`. Computed routing environments are stored internally, not returned here."
       },
       "ConnectTriggerConfiguration": {
         "properties": {
@@ -228704,6 +229344,13 @@
                   true
                 ],
                 "description": "Whether one app token can be used across installations."
+              },
+              "isStaticCredential": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ]
               },
               "permissionsUrl": {
                 "type": "string",
@@ -228750,6 +229397,7 @@
             },
             "required": [
               "crossInstallation",
+              "isStaticCredential",
               "supportsRefinement"
             ],
             "type": "object",
@@ -228973,7 +229621,7 @@
               "$ref": "#/components/schemas/ConnectTriggerDestination"
             },
             "type": "array",
-            "description": "Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`."
+            "description": "Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`. Computed routing environments are stored internally, not returned here."
           },
           "triggers": {
             "$ref": "#/components/schemas/ConnectTriggerConfiguration",
@@ -229092,6 +229740,13 @@
                 ],
                 "description": "Whether one user token can be used across installations."
               },
+              "isStaticCredential": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ]
+              },
               "manualCredentialInput": {
                 "type": "boolean",
                 "enum": [
@@ -229133,6 +229788,7 @@
             },
             "required": [
               "crossInstallation",
+              "isStaticCredential",
               "supportsRefinement"
             ],
             "type": "object",
@@ -229213,6 +229869,13 @@
                 ],
                 "description": "Whether one app token can be used across installations."
               },
+              "isStaticCredential": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ]
+              },
               "permissionsUrl": {
                 "type": "string",
                 "description": "Link to the page on the service where this connector's app-level permissions are declared and granted, when the service has one and it differs from `clientUrl`."
@@ -229258,6 +229921,7 @@
             },
             "required": [
               "crossInstallation",
+              "isStaticCredential",
               "supportsRefinement"
             ],
             "type": "object",
@@ -229483,7 +230147,7 @@
               "$ref": "#/components/schemas/ConnectTriggerDestination"
             },
             "type": "array",
-            "description": "Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`."
+            "description": "Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`. Computed routing environments are stored internally, not returned here."
           },
           "triggers": {
             "$ref": "#/components/schemas/ConnectTriggerConfiguration",
@@ -229604,6 +230268,13 @@
                 ],
                 "description": "Whether one user token can be used across installations."
               },
+              "isStaticCredential": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ]
+              },
               "manualCredentialInput": {
                 "type": "boolean",
                 "enum": [
@@ -229645,6 +230316,7 @@
             },
             "required": [
               "crossInstallation",
+              "isStaticCredential",
               "supportsRefinement"
             ],
             "type": "object",
@@ -235500,8 +236172,7 @@
                   }
                 },
                 "required": [
-                  "accessGroup",
-                  "author"
+                  "accessGroup"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -236035,6 +236706,7 @@
                         "*",
                         "manage:speed-insights",
                         "manage:web-analytics",
+                        "read-write:access-group",
                         "read-write:ai-gateway-api-key",
                         "read-write:ai-gateway-budgets",
                         "read-write:ai-gateway-guardrails",
@@ -236161,6 +236833,7 @@
                         "*",
                         "manage:speed-insights",
                         "manage:web-analytics",
+                        "read-write:access-group",
                         "read-write:ai-gateway-api-key",
                         "read-write:ai-gateway-budgets",
                         "read-write:ai-gateway-guardrails",
@@ -236267,6 +236940,7 @@
                           "enum": [
                             "manage:speed-insights",
                             "manage:web-analytics",
+                            "read-write:access-group",
                             "read-write:ai-gateway-api-key",
                             "read-write:ai-gateway-budgets",
                             "read-write:ai-gateway-guardrails",
@@ -236404,6 +237078,7 @@
                           "enum": [
                             "manage:speed-insights",
                             "manage:web-analytics",
+                            "read-write:access-group",
                             "read-write:ai-gateway-api-key",
                             "read-write:ai-gateway-budgets",
                             "read-write:ai-gateway-guardrails",
@@ -236551,6 +237226,7 @@
                       "enum": [
                         "manage:speed-insights",
                         "manage:web-analytics",
+                        "read-write:access-group",
                         "read-write:ai-gateway-api-key",
                         "read-write:ai-gateway-budgets",
                         "read-write:ai-gateway-guardrails",
@@ -237791,6 +238467,9 @@
                     },
                     "type": "array"
                   },
+                  "eventName": {
+                    "type": "string"
+                  },
                   "fields": {
                     "items": {
                       "type": "string"
@@ -237815,6 +238494,9 @@
                       "app",
                       "user"
                     ]
+                  },
+                  "subscriptionId": {
+                    "type": "string"
                   },
                   "tokenCount": {
                     "type": "number"
@@ -245466,6 +246148,22 @@
               },
               {
                 "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "organizationId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "organizationId": {
                     "type": "string"
                   },
@@ -246721,6 +247419,58 @@
                       "awsServiceName": {
                         "type": "string"
                       },
+                      "configurationId": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "privateDnsNames": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "vercelRegion": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "awsServiceName",
+                      "configurationId",
+                      "id",
+                      "name",
+                      "vercelRegion"
+                    ],
+                    "type": "object"
+                  },
+                  "networkName": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "network"
+                    ]
+                  }
+                },
+                "required": [
+                  "endpoint",
+                  "scope"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "endpoint": {
+                    "properties": {
+                      "awsServiceName": {
+                        "type": "string"
+                      },
                       "id": {
                         "type": "string"
                       },
@@ -246751,6 +247501,12 @@
                   },
                   "projectName": {
                     "type": "string"
+                  },
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "project"
+                    ]
                   }
                 },
                 "required": [
@@ -246781,11 +247537,103 @@
                   },
                   "projectName": {
                     "type": "string"
+                  },
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "project"
+                    ]
                   }
                 },
                 "required": [
                   "privateLinkEndpoint",
                   "projectId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "current": {
+                    "properties": {
+                      "awsServiceName": {
+                        "type": "string"
+                      },
+                      "configurationId": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "privateDnsNames": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "vercelRegion": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "awsServiceName",
+                      "configurationId",
+                      "id",
+                      "name",
+                      "vercelRegion"
+                    ],
+                    "type": "object"
+                  },
+                  "networkName": {
+                    "type": "string"
+                  },
+                  "prev": {
+                    "properties": {
+                      "awsServiceName": {
+                        "type": "string"
+                      },
+                      "configurationId": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "privateDnsNames": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "vercelRegion": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "awsServiceName",
+                      "configurationId",
+                      "id",
+                      "name",
+                      "vercelRegion"
+                    ],
+                    "type": "object"
+                  },
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "network"
+                    ]
+                  }
+                },
+                "required": [
+                  "current",
+                  "prev",
+                  "scope"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -246860,6 +247708,12 @@
                   },
                   "projectName": {
                     "type": "string"
+                  },
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "project"
+                    ]
                   }
                 },
                 "required": [
@@ -246926,6 +247780,12 @@
                   },
                   "projectName": {
                     "type": "string"
+                  },
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "project"
+                    ]
                   }
                 },
                 "required": [
@@ -256431,6 +257291,7 @@
               "connect-attach-project",
               "connect-bitbucket",
               "connect-bitbucket-app",
+              "connect-cancel-mcp-event-subscription",
               "connect-configuration-created",
               "connect-configuration-deleted",
               "connect-configuration-link-updated",
@@ -256438,6 +257299,7 @@
               "connect-configuration-unlinked",
               "connect-configuration-updated",
               "connect-create-connector",
+              "connect-create-mcp-event-subscription",
               "connect-delete-connector",
               "connect-delete-installation",
               "connect-detach-project",
@@ -256676,6 +257538,7 @@
               "organization-emu-domains-merged",
               "organization-emu-team-updated",
               "organization-emu-updated",
+              "organization-name-update",
               "organization-slug-update",
               "organization-sso-enforced",
               "organization-team-add",
@@ -257376,6 +258239,7 @@
               "connect-attach-project",
               "connect-bitbucket",
               "connect-bitbucket-app",
+              "connect-cancel-mcp-event-subscription",
               "connect-configuration-created",
               "connect-configuration-deleted",
               "connect-configuration-link-updated",
@@ -257383,6 +258247,7 @@
               "connect-configuration-unlinked",
               "connect-configuration-updated",
               "connect-create-connector",
+              "connect-create-mcp-event-subscription",
               "connect-delete-connector",
               "connect-delete-installation",
               "connect-detach-project",
@@ -257621,6 +258486,7 @@
               "organization-emu-domains-merged",
               "organization-emu-team-updated",
               "organization-emu-updated",
+              "organization-name-update",
               "organization-slug-update",
               "organization-sso-enforced",
               "organization-team-add",
@@ -258109,6 +258975,7 @@
                 "connect-attach-project",
                 "connect-bitbucket",
                 "connect-bitbucket-app",
+                "connect-cancel-mcp-event-subscription",
                 "connect-configuration-created",
                 "connect-configuration-deleted",
                 "connect-configuration-link-updated",
@@ -258116,6 +258983,7 @@
                 "connect-configuration-unlinked",
                 "connect-configuration-updated",
                 "connect-create-connector",
+                "connect-create-mcp-event-subscription",
                 "connect-delete-connector",
                 "connect-delete-installation",
                 "connect-detach-project",
@@ -258354,6 +259222,7 @@
                 "organization-emu-domains-merged",
                 "organization-emu-team-updated",
                 "organization-emu-updated",
+                "organization-name-update",
                 "organization-slug-update",
                 "organization-sso-enforced",
                 "organization-team-add",
@@ -260280,6 +261149,158 @@
           "update"
         ],
         "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+      },
+      "Organization": {
+        "properties": {
+          "avatar": {
+            "nullable": true,
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "description": "The organization's display name. Optional: organizations created before the name attribute existed have no stored value. New orgs always get one (provided or slug-derived) via the service layer."
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "teamCount": {
+            "type": "number"
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "userRole": {
+            "type": "string",
+            "description": "The authenticated user's role in the organization. Present on read endpoints when the user holds an organization role."
+          }
+        },
+        "required": [
+          "avatar",
+          "createdAt",
+          "organizationId",
+          "ownerId",
+          "slug",
+          "teamCount",
+          "teamId",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
+      "OrganizationTeamListItem": {
+        "properties": {
+          "avatar": {
+            "nullable": true,
+            "type": "string",
+            "description": "The ID of the file used as the Team's avatar, or `null` if none."
+          },
+          "billingPlan": {
+            "type": "string",
+            "enum": [
+              "enterprise",
+              "platform"
+            ],
+            "description": "Billing profile of the organization link: how this team settles within the organization. This is not the team's billing.plan or planIteration. Links with `enterprise` billing participate in organization-level billing and usage rollups. This field is optional for legacy links that have no stored profile."
+          },
+          "createdAt": {
+            "type": "string",
+            "description": "ISO timestamp of when the team was linked to the organization."
+          },
+          "memberCount": {
+            "type": "number",
+            "description": "Present only when the request sets `includeMemberCount=true`. Number of members on the Team, including pending memberships. Excludes email invitations that do not have a membership record."
+          },
+          "name": {
+            "nullable": true,
+            "type": "string",
+            "description": "The Team's display name, or `null` if none has been set."
+          },
+          "organizationId": {
+            "type": "string",
+            "description": "The ID of the organization the team belongs to."
+          },
+          "slug": {
+            "type": "string",
+            "description": "The Team's slug, unique across Vercel."
+          },
+          "ssoMode": {
+            "type": "string",
+            "enum": [
+              "organization",
+              "team"
+            ]
+          },
+          "teamId": {
+            "type": "string",
+            "description": "The Team's unique identifier."
+          },
+          "updatedAt": {
+            "type": "string",
+            "description": "ISO timestamp of when the link was last updated."
+          }
+        },
+        "required": [
+          "avatar",
+          "createdAt",
+          "name",
+          "organizationId",
+          "slug",
+          "ssoMode",
+          "teamId",
+          "updatedAt"
+        ],
+        "type": "object",
+        "description": "An org-team link enriched with the linked team's display fields, as returned by the list-teams endpoint. We project to an explicit flat interface instead of spreading the ElectroDB `OrganizationTeamItem` because its recursive generics break the OpenAPI generator (which would silently drop the route)."
+      },
+      "OrganizationTeam": {
+        "properties": {
+          "billingPlan": {
+            "type": "string",
+            "enum": [
+              "enterprise",
+              "platform"
+            ],
+            "description": "The child team's billing profile within the organization. Optional: links created before this attribute existed have no stored value."
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "organizationId": {
+            "type": "string"
+          },
+          "ssoMode": {
+            "type": "string",
+            "enum": [
+              "organization",
+              "team"
+            ]
+          },
+          "teamId": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "createdAt",
+          "organizationId",
+          "ssoMode",
+          "teamId",
+          "updatedAt"
+        ],
+        "type": "object"
       },
       "NamedSandbox": {
         "properties": {

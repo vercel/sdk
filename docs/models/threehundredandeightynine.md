@@ -5,17 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyNine } from "@vercel/sdk/models/usereventpayload377type.js";
+import { ThreeHundredAndEightyNine } from "@vercel/sdk/models/usereventpayload380type.js";
 
-let value: ThreeHundredAndEightyNine = {};
+let value: ThreeHundredAndEightyNine = {
+  id: "<id>",
+  type: "postgres",
+};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `actorId`                                                                        | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload389ActorType](../models/usereventpayload389actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `caseNumber`                                                                     | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `client`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `access`                                                               | [models.Access](../models/access.md)                                   | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `computeUnitsMax`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `computeUnitsMin`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `name`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `suspendTimeoutSeconds`                                                | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload389Type](../models/usereventpayload389type.md) | :heavy_check_mark:                                                     | N/A                                                                    |

@@ -56,7 +56,7 @@ let value: GetProjectsResponseBody1 = {
     },
   ],
   name: "<value>",
-  nodeVersion: "20.x",
+  nodeVersion: "22.x",
   resourceConfig: {
     functionDefaultRegions: [
       "<value 1>",

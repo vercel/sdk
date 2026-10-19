@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyTwo } from "@vercel/sdk/models/approvalscope.js";
+import { TwoHundredAndSeventyTwo } from "@vercel/sdk/models/twohundredandfiftyone.js";
 
 let value: TwoHundredAndSeventyTwo = {
-  productionDeploymentsFastLane: false,
+  enableAffectedProjectsDeployments: false,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -16,8 +16,8 @@ let value: TwoHundredAndSeventyTwo = {
 
 ## Fields
 
-| Field                           | Type                            | Required                        | Description                     |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `productionDeploymentsFastLane` | *boolean*                       | :heavy_check_mark:              | N/A                             |
-| `projectId`                     | *string*                        | :heavy_check_mark:              | N/A                             |
-| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |
+| Field                               | Type                                | Required                            | Description                         |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `enableAffectedProjectsDeployments` | *boolean*                           | :heavy_check_mark:                  | N/A                                 |
+| `projectId`                         | *string*                            | :heavy_check_mark:                  | N/A                                 |
+| `projectName`                       | *string*                            | :heavy_check_mark:                  | N/A                                 |

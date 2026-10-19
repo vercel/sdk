@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFive } from "@vercel/sdk/models/approvalscope.js";
+import { ThreeHundredAndFive } from "@vercel/sdk/models/twohundredandfiftyone.js";
 
 let value: ThreeHundredAndFive = {
-  gitCommitStatus: true,
   projectId: "<id>",
   projectName: "<value>",
+  requireVerifiedCommits: true,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `gitCommitStatus`  | *boolean*          | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `projectId`              | *string*                 | :heavy_check_mark:       | N/A                      |
+| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
+| `requireVerifiedCommits` | *boolean*                | :heavy_check_mark:       | N/A                      |

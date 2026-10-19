@@ -5,21 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyTwo } from "@vercel/sdk/models/usereventpayload377type.js";
+import { ThreeHundredAndNinetyTwo } from "@vercel/sdk/models/usereventpayload380type.js";
 
-let value: ThreeHundredAndNinetyTwo = {
-  amount: "434.02",
-  currency: "Kip",
-  expiresAt: "1746116490702",
-  trialCreditsIssuedAt: 9720,
-};
+let value: ThreeHundredAndNinetyTwo = {};
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `actorId`                                                                        | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload392ActorType](../models/usereventpayload392actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `caseNumber`                                                                     | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `client`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

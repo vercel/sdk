@@ -90,6 +90,9 @@ export type GetEdgeConfigBackupResponseBodyMetadata = {
   updatedBy?: string | undefined;
 };
 
+/**
+ * Omitted when the caller cannot list team members.
+ */
 export type GetEdgeConfigBackupResponseBodyUser = {
   avatar?: string | undefined;
   email: string;
@@ -106,6 +109,9 @@ export type GetEdgeConfigBackupResponseBody1 = {
   id: string;
   lastModified: number;
   metadata: GetEdgeConfigBackupResponseBodyMetadata;
+  /**
+   * Omitted when the caller cannot list team members.
+   */
   user?: GetEdgeConfigBackupResponseBodyUser | undefined;
 };
 

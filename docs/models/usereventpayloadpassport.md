@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadPassport } from "@vercel/sdk/models/approvalscope.js";
+import { UserEventPayloadPassport } from "@vercel/sdk/models/twohundredandfiftyone.js";
 
 let value: UserEventPayloadPassport = {
   connectorId: "<id>",
@@ -16,4 +16,4 @@ let value: UserEventPayloadPassport = {
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `connectorId`                                                                              | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `deploymentType`                                                                           | [models.UserEventPayload252DeploymentType](../models/usereventpayload252deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `deploymentType`                                                                           | [models.UserEventPayload253DeploymentType](../models/usereventpayload253deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

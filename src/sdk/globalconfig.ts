@@ -336,7 +336,7 @@ export class GlobalConfig extends ClientSDK {
    * Get Global Config backup
    *
    * @remarks
-   * Retrieves a specific version of a Global Config from backup storage.
+   * Retrieves a specific version of a Global Config from backup storage. The `user` field is only included when the caller can list team members.
    */
   async getEdgeConfigBackup(
     request: GetEdgeConfigBackupRequest,

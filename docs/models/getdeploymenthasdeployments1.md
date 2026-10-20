@@ -13,7 +13,7 @@ let value: GetDeploymentHasDeployments1 = {
 
 ## Fields
 
-| Field                                             | Type                                              | Required                                          | Description                                       |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `type`                                            | *"host"*                                          | :heavy_check_mark:                                | N/A                                               |
-| `value`                                           | *models.GetDeploymentHasDeploymentsResponseValue* | :heavy_check_mark:                                | N/A                                               |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `type`                                               | *"host"*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `value`                                              | *models.GetDeploymentHasDeploymentsResponse200Value* | :heavy_check_mark:                                   | N/A                                                  |

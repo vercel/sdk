@@ -121,7 +121,7 @@ export type AggregatePageviewsRequest = {
   slug?: string | undefined;
 };
 
-export type Data2 = {
+export type AggregatePageviewsData2 = {
   browserName: string;
   country: string;
   deviceType: string;
@@ -143,7 +143,7 @@ export type Data2 = {
   additionalProperties?: { [k: string]: number | null } | undefined;
 };
 
-export type Data1 = {
+export type AggregatePageviewsData1 = {
   browserName?: string | undefined;
   country?: string | undefined;
   deviceType?: string | undefined;
@@ -165,7 +165,9 @@ export type Data1 = {
   timestamp: Date;
 };
 
-export type AggregatePageviewsData = Array<Data1> | Array<Data2>;
+export type AggregatePageviewsData =
+  | Array<AggregatePageviewsData1>
+  | Array<AggregatePageviewsData2>;
 
 export const GroupBy2 = {
   BrowserName: "browserName",
@@ -196,7 +198,7 @@ export type Query = {
 };
 
 export type AggregatePageviewsResponseBody = {
-  data: Array<Data1> | Array<Data2>;
+  data: Array<AggregatePageviewsData1> | Array<AggregatePageviewsData2>;
   query: Query;
   version: number;
 };
@@ -281,73 +283,79 @@ export function aggregatePageviewsRequestToJSON(
 }
 
 /** @internal */
-export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> =
-  collectExtraKeys$(
-    z.object({
-      browserName: types.string(),
-      country: types.string(),
-      deviceType: types.string(),
-      environment: types.string(),
-      flags: types.string(),
-      osName: types.string(),
-      projectId: types.string(),
-      projectName: types.string(),
-      referrerHostname: types.string(),
-      requestHostname: types.string(),
-      requestPath: types.string(),
-      route: types.string(),
-      utmCampaign: types.string(),
-      utmContent: types.string(),
-      utmMedium: types.string(),
-      utmSource: types.string(),
-      utmTerm: types.string(),
-      visitorId: types.string(),
-    }).catchall(types.number()),
-    "additionalProperties",
-    true,
-  );
+export const AggregatePageviewsData2$inboundSchema: z.ZodType<
+  AggregatePageviewsData2,
+  z.ZodTypeDef,
+  unknown
+> = collectExtraKeys$(
+  z.object({
+    browserName: types.string(),
+    country: types.string(),
+    deviceType: types.string(),
+    environment: types.string(),
+    flags: types.string(),
+    osName: types.string(),
+    projectId: types.string(),
+    projectName: types.string(),
+    referrerHostname: types.string(),
+    requestHostname: types.string(),
+    requestPath: types.string(),
+    route: types.string(),
+    utmCampaign: types.string(),
+    utmContent: types.string(),
+    utmMedium: types.string(),
+    utmSource: types.string(),
+    utmTerm: types.string(),
+    visitorId: types.string(),
+  }).catchall(types.number()),
+  "additionalProperties",
+  true,
+);
 
-export function data2FromJSON(
+export function aggregatePageviewsData2FromJSON(
   jsonString: string,
-): SafeParseResult<Data2, SDKValidationError> {
+): SafeParseResult<AggregatePageviewsData2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data2' from JSON`,
+    (x) => AggregatePageviewsData2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AggregatePageviewsData2' from JSON`,
   );
 }
 
 /** @internal */
-export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
-  .object({
-    browserName: types.optional(types.string()),
-    country: types.optional(types.string()),
-    deviceType: types.optional(types.string()),
-    environment: types.optional(types.string()),
-    flags: types.optional(types.string()),
-    osName: types.optional(types.string()),
-    projectId: types.optional(types.string()),
-    projectName: types.optional(types.string()),
-    referrerHostname: types.optional(types.string()),
-    requestHostname: types.optional(types.string()),
-    requestPath: types.optional(types.string()),
-    route: types.optional(types.string()),
-    utmCampaign: types.optional(types.string()),
-    utmContent: types.optional(types.string()),
-    utmMedium: types.optional(types.string()),
-    utmSource: types.optional(types.string()),
-    utmTerm: types.optional(types.string()),
-    visitorId: types.optional(types.string()),
-    timestamp: types.date(),
-  });
+export const AggregatePageviewsData1$inboundSchema: z.ZodType<
+  AggregatePageviewsData1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  browserName: types.optional(types.string()),
+  country: types.optional(types.string()),
+  deviceType: types.optional(types.string()),
+  environment: types.optional(types.string()),
+  flags: types.optional(types.string()),
+  osName: types.optional(types.string()),
+  projectId: types.optional(types.string()),
+  projectName: types.optional(types.string()),
+  referrerHostname: types.optional(types.string()),
+  requestHostname: types.optional(types.string()),
+  requestPath: types.optional(types.string()),
+  route: types.optional(types.string()),
+  utmCampaign: types.optional(types.string()),
+  utmContent: types.optional(types.string()),
+  utmMedium: types.optional(types.string()),
+  utmSource: types.optional(types.string()),
+  utmTerm: types.optional(types.string()),
+  visitorId: types.optional(types.string()),
+  timestamp: types.date(),
+});
 
-export function data1FromJSON(
+export function aggregatePageviewsData1FromJSON(
   jsonString: string,
-): SafeParseResult<Data1, SDKValidationError> {
+): SafeParseResult<AggregatePageviewsData1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Data1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Data1' from JSON`,
+    (x) => AggregatePageviewsData1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AggregatePageviewsData1' from JSON`,
   );
 }
 
@@ -357,8 +365,8 @@ export const AggregatePageviewsData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.array(z.lazy(() => Data1$inboundSchema)),
-  z.array(z.lazy(() => Data2$inboundSchema)),
+  z.array(z.lazy(() => AggregatePageviewsData1$inboundSchema)),
+  z.array(z.lazy(() => AggregatePageviewsData2$inboundSchema)),
 ]);
 
 export function aggregatePageviewsDataFromJSON(
@@ -418,8 +426,8 @@ export const AggregatePageviewsResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   data: smartUnion([
-    z.array(z.lazy(() => Data1$inboundSchema)),
-    z.array(z.lazy(() => Data2$inboundSchema)),
+    z.array(z.lazy(() => AggregatePageviewsData1$inboundSchema)),
+    z.array(z.lazy(() => AggregatePageviewsData2$inboundSchema)),
   ]),
   query: z.lazy(() => Query$inboundSchema),
   version: types.number(),

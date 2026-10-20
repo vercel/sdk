@@ -5,7 +5,7 @@ A single document included in a bulk compliance download.
 ## Example Usage
 
 ```typescript
-import { Documents } from "@vercel/sdk/models/seventythree.js";
+import { Documents } from "@vercel/sdk/models/settlementmethod.js";
 
 let value: Documents = {
   documentId: "<id>",

@@ -26,14 +26,16 @@ export type Production = ClosedEnum<typeof Production>;
 /**
  * Filters on the target of the domain. Can be either "production", "preview"
  */
-export const QueryParamTarget = {
+export const GetProjectDomainsQueryParamTarget = {
   Production: "production",
   Preview: "preview",
 } as const;
 /**
  * Filters on the target of the domain. Can be either "production", "preview"
  */
-export type QueryParamTarget = ClosedEnum<typeof QueryParamTarget>;
+export type GetProjectDomainsQueryParamTarget = ClosedEnum<
+  typeof GetProjectDomainsQueryParamTarget
+>;
 
 /**
  * Excludes redirect project domains when "false". Includes redirect project domains when "true" (default).
@@ -83,7 +85,7 @@ export type GetProjectDomainsRequest = {
   /**
    * Filters on the target of the domain. Can be either "production", "preview"
    */
-  target?: QueryParamTarget | undefined;
+  target?: GetProjectDomainsQueryParamTarget | undefined;
   /**
    * The unique custom environment identifier within the project
    */
@@ -221,9 +223,9 @@ export const Production$outboundSchema: z.ZodNativeEnum<typeof Production> = z
   .nativeEnum(Production);
 
 /** @internal */
-export const QueryParamTarget$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamTarget
-> = z.nativeEnum(QueryParamTarget);
+export const GetProjectDomainsQueryParamTarget$outboundSchema: z.ZodNativeEnum<
+  typeof GetProjectDomainsQueryParamTarget
+> = z.nativeEnum(GetProjectDomainsQueryParamTarget);
 
 /** @internal */
 export const QueryParamRedirects$outboundSchema: z.ZodNativeEnum<
@@ -265,7 +267,7 @@ export const GetProjectDomainsRequest$outboundSchema: z.ZodType<
 > = z.object({
   idOrName: z.string(),
   production: Production$outboundSchema.default("false"),
-  target: QueryParamTarget$outboundSchema.optional(),
+  target: GetProjectDomainsQueryParamTarget$outboundSchema.optional(),
   customEnvironmentId: z.string().optional(),
   gitBranch: z.string().optional(),
   redirects: QueryParamRedirects$outboundSchema.default("true"),

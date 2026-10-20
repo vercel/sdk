@@ -1,6 +1,6 @@
 # DefaultDeploymentProtection
 
-Default deployment protection for this team null indicates protection is disabled
+Deployment protection defaults for new projects in this team. When no Vercel Authentication default is saved, `ssoProtection` shows Standard Protection. An explicitly saved `null` remains disabled. Organization policy may override the team default during project creation.
 
 ## Example Usage
 

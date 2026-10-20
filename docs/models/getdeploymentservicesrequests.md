@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentServicesRequests } from "@vercel/sdk/models/getdeploymentservicesmiddlewareruntime.js";
+import { GetDeploymentServicesRequests } from "@vercel/sdk/models/getdeploymentmaxdurationdeploymentsresponse2002.js";
 
 let value: GetDeploymentServicesRequests = {
   memory: "1Gi",
@@ -12,6 +12,6 @@ let value: GetDeploymentServicesRequests = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `memory`                                                                       | [models.GetDeploymentServicesMemory](../models/getdeploymentservicesmemory.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `memory`                                                                                             | [models.GetDeploymentServicesDeploymentsMemory](../models/getdeploymentservicesdeploymentsmemory.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

@@ -841,6 +841,10 @@ export type ResponseBodyPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  connexClientAccess?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   connexClientProject?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -1006,6 +1010,10 @@ export type ResponseBodyPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   gitCredentialGrant?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  githubUsage?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -4287,6 +4295,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   connectConfigurationLink: types.optional(z.array(ACLAction$inboundSchema)),
   connectLogs: types.optional(z.array(ACLAction$inboundSchema)),
   connexClient: types.optional(z.array(ACLAction$inboundSchema)),
+  connexClientAccess: types.optional(z.array(ACLAction$inboundSchema)),
   connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
   connexContact: types.optional(z.array(ACLAction$inboundSchema)),
   connexInstallation: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4333,6 +4342,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   fileUpload: types.optional(z.array(ACLAction$inboundSchema)),
   flagsExplorerSubscription: types.optional(z.array(ACLAction$inboundSchema)),
   gitCredentialGrant: types.optional(z.array(ACLAction$inboundSchema)),
+  githubUsage: types.optional(z.array(ACLAction$inboundSchema)),
   gitRepository: types.optional(z.array(ACLAction$inboundSchema)),
   imageOptimizationNewPrice: types.optional(z.array(ACLAction$inboundSchema)),
   integration: types.optional(z.array(ACLAction$inboundSchema)),

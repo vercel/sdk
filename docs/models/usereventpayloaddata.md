@@ -1,18 +1,29 @@
 # UserEventPayloadData
 
-## Example Usage
+
+## Supported Types
+
+### `models.Data1`
 
 ```typescript
-import { UserEventPayloadData } from "@vercel/sdk/models/seventythree.js";
-
-let value: UserEventPayloadData = {
-  planSlug: "v0_business",
+const value: models.Data1 = {
+  planSlug: "v0_teams",
 };
 ```
 
-## Fields
+### `models.Data1`
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `planSlug`                                                               | [models.PlanSlug](../models/planslug.md)                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `reason`                                                                 | [models.UserEventPayload80Reason](../models/usereventpayload80reason.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+```typescript
+const value: models.Data1 = {
+  planSlug: "v0_teams",
+};
+```
+
+### `models.Data2`
+
+```typescript
+const value: models.Data2 = {
+  planSlug: "hobby",
+};
+```
+

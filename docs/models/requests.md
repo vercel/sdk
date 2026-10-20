@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { Requests } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
+import { Requests } from "@vercel/sdk/models/getprojectboxesop.js";
 
 let value: Requests = {
-  memory: "8Gi",
+  memory: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `memory`                             | [models.Memory](../models/memory.md) | :heavy_check_mark:                   | N/A                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `memory`           | *string*           | :heavy_check_mark: | N/A                |

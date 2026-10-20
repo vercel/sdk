@@ -786,7 +786,7 @@ const value: models.SeventyNine = {
 const value: models.Eighty = {
   action: "cancel_plan",
   data: {
-    planSlug: "v0_teams",
+    planSlug: "hobby",
   },
 };
 ```

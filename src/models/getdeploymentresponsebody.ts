@@ -25,8 +25,6 @@ import {
   GetDeploymentResponseBodyChecksConclusion$inboundSchema,
   GetDeploymentResponseBodyChecksState,
   GetDeploymentResponseBodyChecksState$inboundSchema,
-  GetDeploymentResponseBodyConfig,
-  GetDeploymentResponseBodyConfig$inboundSchema,
   GetDeploymentResponseBodyCreator,
   GetDeploymentResponseBodyCreator$inboundSchema,
   GetDeploymentResponseBodyCrons,
@@ -43,6 +41,8 @@ import {
   ResponseBodyAliasWarning$inboundSchema,
   ResponseBodyChecks,
   ResponseBodyChecks$inboundSchema,
+  ResponseBodyConfig,
+  ResponseBodyConfig$inboundSchema,
   ResponseBodyCustomEnvironment,
   ResponseBodyCustomEnvironment$inboundSchema,
   ResponseBodyDuration,
@@ -318,14 +318,16 @@ export type GetDeploymentResponseBodyStatus = ClosedEnum<
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
-export const ResponseBodyTarget = {
+export const GetDeploymentResponseBodyTarget = {
   Production: "production",
   Staging: "staging",
 } as const;
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
-export type ResponseBodyTarget = ClosedEnum<typeof ResponseBodyTarget>;
+export type GetDeploymentResponseBodyTarget = ClosedEnum<
+  typeof GetDeploymentResponseBodyTarget
+>;
 
 /**
  * The team that owns the deployment if any
@@ -392,7 +394,7 @@ export type GetDeploymentResponseBody2 = {
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
    */
-  config?: GetDeploymentResponseBodyConfig | undefined;
+  config?: ResponseBodyConfig | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   /**
@@ -526,7 +528,7 @@ export type GetDeploymentResponseBody2 = {
   /**
    * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
    */
-  target?: ResponseBodyTarget | null | undefined;
+  target?: GetDeploymentResponseBodyTarget | null | undefined;
   /**
    * The team that owns the deployment if any
    */
@@ -623,16 +625,14 @@ export type GetDeploymentResponseBodyDeploymentsReadyState = ClosedEnum<
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
-export const GetDeploymentResponseBodyDeploymentsTarget = {
+export const ResponseBodyTarget = {
   Production: "production",
   Staging: "staging",
 } as const;
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
-export type GetDeploymentResponseBodyDeploymentsTarget = ClosedEnum<
-  typeof GetDeploymentResponseBodyDeploymentsTarget
->;
+export type ResponseBodyTarget = ClosedEnum<typeof ResponseBodyTarget>;
 
 /**
  * Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.
@@ -665,7 +665,7 @@ export type GetDeploymentResponseBody1 = {
   /**
    * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
    */
-  target?: GetDeploymentResponseBodyDeploymentsTarget | null | undefined;
+  target?: ResponseBodyTarget | null | undefined;
 };
 
 /**
@@ -1020,9 +1020,9 @@ export const GetDeploymentResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetDeploymentResponseBodyStatus);
 
 /** @internal */
-export const ResponseBodyTarget$inboundSchema: z.ZodNativeEnum<
-  typeof ResponseBodyTarget
-> = z.nativeEnum(ResponseBodyTarget);
+export const GetDeploymentResponseBodyTarget$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentResponseBodyTarget
+> = z.nativeEnum(GetDeploymentResponseBodyTarget);
 
 /** @internal */
 export const GetDeploymentResponseBodyTeam$inboundSchema: z.ZodType<
@@ -1090,7 +1090,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   checksState: types.optional(
     GetDeploymentResponseBodyChecksState$inboundSchema,
   ),
-  config: types.optional(GetDeploymentResponseBodyConfig$inboundSchema),
+  config: types.optional(ResponseBodyConfig$inboundSchema),
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdAt: types.number(),
@@ -1180,7 +1180,7 @@ export const GetDeploymentResponseBody2$inboundSchema: z.ZodType<
   softDeletedByRetention: types.optional(types.boolean()),
   source: types.optional(GetDeploymentResponseBodySource$inboundSchema),
   status: GetDeploymentResponseBodyStatus$inboundSchema,
-  target: z.nullable(ResponseBodyTarget$inboundSchema).optional(),
+  target: z.nullable(GetDeploymentResponseBodyTarget$inboundSchema).optional(),
   team: types.optional(
     z.lazy(() => GetDeploymentResponseBodyTeam$inboundSchema),
   ),
@@ -1297,9 +1297,9 @@ export const GetDeploymentResponseBodyDeploymentsReadyState$inboundSchema:
     .nativeEnum(GetDeploymentResponseBodyDeploymentsReadyState);
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsTarget$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsTarget> = z
-    .nativeEnum(GetDeploymentResponseBodyDeploymentsTarget);
+export const ResponseBodyTarget$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTarget
+> = z.nativeEnum(ResponseBodyTarget);
 
 /** @internal */
 export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
@@ -1324,8 +1324,7 @@ export const GetDeploymentResponseBody1$inboundSchema: z.ZodType<
   errorMessage: z.nullable(types.string()).optional(),
   id: types.string(),
   readyState: GetDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
-  target: z.nullable(GetDeploymentResponseBodyDeploymentsTarget$inboundSchema)
-    .optional(),
+  target: z.nullable(ResponseBodyTarget$inboundSchema).optional(),
 });
 
 export function getDeploymentResponseBody1FromJSON(

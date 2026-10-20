@@ -13,7 +13,7 @@ let value: CancelDeploymentHas1 = {
 
 ## Fields
 
-| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `type`                                                                                     | *"host"*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `value`                                                                                    | *models.CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue* | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `type`                                       | *"host"*                                     | :heavy_check_mark:                           | N/A                                          |
+| `value`                                      | *models.CancelDeploymentHasDeploymentsValue* | :heavy_check_mark:                           | N/A                                          |

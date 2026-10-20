@@ -844,7 +844,7 @@ export type CreateDeploymentResponseBodyResourceConfig = {
 /**
  * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
  */
-export type ResponseBodyConfig = {
+export type CreateDeploymentResponseBodyConfig = {
   functionMemoryType: ResponseBodyFunctionMemoryType;
   functionTimeout: number | null;
   functionType: ResponseBodyFunctionType;
@@ -2852,8 +2852,8 @@ export function createDeploymentResponseBodyResourceConfigFromJSON(
 }
 
 /** @internal */
-export const ResponseBodyConfig$inboundSchema: z.ZodType<
-  ResponseBodyConfig,
+export const CreateDeploymentResponseBodyConfig$inboundSchema: z.ZodType<
+  CreateDeploymentResponseBodyConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2869,13 +2869,14 @@ export const ResponseBodyConfig$inboundSchema: z.ZodType<
   version: types.optional(types.number()),
 });
 
-export function responseBodyConfigFromJSON(
+export function createDeploymentResponseBodyConfigFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyConfig, SDKValidationError> {
+): SafeParseResult<CreateDeploymentResponseBodyConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyConfig' from JSON`,
+    (x) =>
+      CreateDeploymentResponseBodyConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentResponseBodyConfig' from JSON`,
   );
 }
 

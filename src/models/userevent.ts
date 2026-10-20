@@ -317,18 +317,20 @@ import {
   FortyThree$inboundSchema,
   FortyTwo,
   FortyTwo$inboundSchema,
-  Fourteen,
-  Fourteen$inboundSchema,
   Nineteen,
   Nineteen$inboundSchema,
-  Provider,
-  Provider$inboundSchema,
+  PayloadProvider,
+  PayloadProvider$inboundSchema,
   Seventeen,
   Seventeen$inboundSchema,
   Seventy,
   Seventy$inboundSchema,
+  SeventyFour,
+  SeventyFour$inboundSchema,
   SeventyOne,
   SeventyOne$inboundSchema,
+  SeventyThree,
+  SeventyThree$inboundSchema,
   SeventyTwo,
   SeventyTwo$inboundSchema,
   Sixteen,
@@ -393,7 +395,7 @@ import {
   TwentyThree$inboundSchema,
   TwentyTwo,
   TwentyTwo$inboundSchema,
-} from "./provider.js";
+} from "./payloadprovider.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Eighty,
@@ -482,17 +484,13 @@ import {
   SeventyEight$inboundSchema,
   SeventyFive,
   SeventyFive$inboundSchema,
-  SeventyFour,
-  SeventyFour$inboundSchema,
   SeventyNine,
   SeventyNine$inboundSchema,
   SeventySeven,
   SeventySeven$inboundSchema,
   SeventySix,
   SeventySix$inboundSchema,
-  SeventyThree,
-  SeventyThree$inboundSchema,
-} from "./seventythree.js";
+} from "./settlementmethod.js";
 import {
   ThreeHundredAndEighteen,
   ThreeHundredAndEighteen$inboundSchema,
@@ -997,6 +995,41 @@ import {
   ThreeHundredAndNinetyTwo,
   ThreeHundredAndNinetyTwo$inboundSchema,
 } from "./usereventpayload380type.js";
+
+/**
+ * The payload of the event, if requested.
+ */
+export type Fourteen = {
+  /**
+   * Present on new events only. Equivalent to "stripe" when absent.
+   */
+  provider?: PayloadProvider | undefined;
+  /**
+   * Present on new events only. Equivalent to `stripeAccount` when absent.
+   */
+  providerAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe". Equivalent to `providerAccount`.
+   */
+  stripeAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe".
+   */
+  stripeOrganisation?: string | undefined;
+  teamId: string;
+};
+
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export const Provider = {
+  Chatgpt: "chatgpt",
+  Stripe: "stripe",
+} as const;
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export type Provider = ClosedEnum<typeof Provider>;
 
 /**
  * The payload of the event, if requested.
@@ -3172,6 +3205,33 @@ export type UserEvent = {
 };
 
 /** @internal */
+export const Fourteen$inboundSchema: z.ZodType<
+  Fourteen,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  provider: types.optional(PayloadProvider$inboundSchema),
+  providerAccount: types.optional(types.string()),
+  stripeAccount: types.optional(types.string()),
+  stripeOrganisation: types.optional(types.string()),
+  teamId: types.string(),
+});
+
+export function fourteenFromJSON(
+  jsonString: string,
+): SafeParseResult<Fourteen, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Fourteen$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Fourteen' from JSON`,
+  );
+}
+
+/** @internal */
+export const Provider$inboundSchema: z.ZodNativeEnum<typeof Provider> = z
+  .nativeEnum(Provider);
+
+/** @internal */
 export const Thirteen$inboundSchema: z.ZodType<
   Thirteen,
   z.ZodTypeDef,
@@ -3795,7 +3855,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     FourHundredAndNinety$inboundSchema,
     FourHundredAndNinetyTwo$inboundSchema,
     FourHundredAndNinetyFive$inboundSchema,
-    Fourteen$inboundSchema,
+    z.lazy(() => Fourteen$inboundSchema),
     Twenty$inboundSchema,
     TwentyOne$inboundSchema,
     TwentyThree$inboundSchema,
@@ -4581,7 +4641,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       FourHundredAndNinety$inboundSchema,
       FourHundredAndNinetyTwo$inboundSchema,
       FourHundredAndNinetyFive$inboundSchema,
-      Fourteen$inboundSchema,
+      z.lazy(() => Fourteen$inboundSchema),
       Twenty$inboundSchema,
       TwentyOne$inboundSchema,
       TwentyThree$inboundSchema,

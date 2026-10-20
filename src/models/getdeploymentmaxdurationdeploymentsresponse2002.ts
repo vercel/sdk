@@ -1131,7 +1131,7 @@ export type GetDeploymentValue2 = {
   suf?: string | undefined;
 };
 
-export type GetDeploymentHasDeploymentsValue = string | GetDeploymentValue2;
+export type GetDeploymentHasValue = string | GetDeploymentValue2;
 
 export type GetDeploymentHas2 = {
   key: string;
@@ -1155,7 +1155,7 @@ export type GetDeploymentValueDeploymentsResponse2002 = {
   suf?: string | undefined;
 };
 
-export type GetDeploymentHasValue =
+export type GetDeploymentHasDeploymentsValue =
   | string
   | GetDeploymentValueDeploymentsResponse2002;
 
@@ -1498,12 +1498,12 @@ export type GetDeploymentServicesDeploymentsMemory = ClosedEnum<
   typeof GetDeploymentServicesDeploymentsMemory
 >;
 
-export type GetDeploymentServicesDeploymentsRequests = {
+export type GetDeploymentServicesRequests = {
   memory: GetDeploymentServicesDeploymentsMemory;
 };
 
-export type GetDeploymentServicesDeploymentsResources = {
-  requests: GetDeploymentServicesDeploymentsRequests;
+export type GetDeploymentServicesResources = {
+  requests: GetDeploymentServicesRequests;
 };
 
 /**
@@ -1520,7 +1520,7 @@ export type GetDeploymentServicesDeploymentsDaemon = {
    * Instance counts by region.
    */
   replicas?: { [k: string]: number } | undefined;
-  resources?: GetDeploymentServicesDeploymentsResources | undefined;
+  resources?: GetDeploymentServicesResources | undefined;
   root: string;
   terminationGracePeriodSeconds?: number | undefined;
   name: string;
@@ -3363,8 +3363,8 @@ export function getDeploymentValue2FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentHasDeploymentsValue$inboundSchema: z.ZodType<
-  GetDeploymentHasDeploymentsValue,
+export const GetDeploymentHasValue$inboundSchema: z.ZodType<
+  GetDeploymentHasValue,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -3372,13 +3372,13 @@ export const GetDeploymentHasDeploymentsValue$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentValue2$inboundSchema),
 ]);
 
-export function getDeploymentHasDeploymentsValueFromJSON(
+export function getDeploymentHasValueFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentHasDeploymentsValue, SDKValidationError> {
+): SafeParseResult<GetDeploymentHasValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDeploymentHasDeploymentsValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentHasDeploymentsValue' from JSON`,
+    (x) => GetDeploymentHasValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentHasValue' from JSON`,
   );
 }
 
@@ -3467,8 +3467,8 @@ export function getDeploymentValueDeploymentsResponse2002FromJSON(
 }
 
 /** @internal */
-export const GetDeploymentHasValue$inboundSchema: z.ZodType<
-  GetDeploymentHasValue,
+export const GetDeploymentHasDeploymentsValue$inboundSchema: z.ZodType<
+  GetDeploymentHasDeploymentsValue,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
@@ -3476,13 +3476,13 @@ export const GetDeploymentHasValue$inboundSchema: z.ZodType<
   z.lazy(() => GetDeploymentValueDeploymentsResponse2002$inboundSchema),
 ]);
 
-export function getDeploymentHasValueFromJSON(
+export function getDeploymentHasDeploymentsValueFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentHasValue, SDKValidationError> {
+): SafeParseResult<GetDeploymentHasDeploymentsValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDeploymentHasValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentHasValue' from JSON`,
+    (x) => GetDeploymentHasDeploymentsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentHasDeploymentsValue' from JSON`,
   );
 }
 
@@ -4191,54 +4191,40 @@ export const GetDeploymentServicesDeploymentsMemory$inboundSchema:
   );
 
 /** @internal */
-export const GetDeploymentServicesDeploymentsRequests$inboundSchema: z.ZodType<
-  GetDeploymentServicesDeploymentsRequests,
+export const GetDeploymentServicesRequests$inboundSchema: z.ZodType<
+  GetDeploymentServicesRequests,
   z.ZodTypeDef,
   unknown
 > = z.object({
   memory: GetDeploymentServicesDeploymentsMemory$inboundSchema,
 });
 
-export function getDeploymentServicesDeploymentsRequestsFromJSON(
+export function getDeploymentServicesRequestsFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetDeploymentServicesDeploymentsRequests,
-  SDKValidationError
-> {
+): SafeParseResult<GetDeploymentServicesRequests, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetDeploymentServicesDeploymentsRequests$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDeploymentServicesDeploymentsRequests' from JSON`,
+    (x) => GetDeploymentServicesRequests$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesRequests' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDeploymentServicesDeploymentsResources$inboundSchema: z.ZodType<
-  GetDeploymentServicesDeploymentsResources,
+export const GetDeploymentServicesResources$inboundSchema: z.ZodType<
+  GetDeploymentServicesResources,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  requests: z.lazy(() =>
-    GetDeploymentServicesDeploymentsRequests$inboundSchema
-  ),
+  requests: z.lazy(() => GetDeploymentServicesRequests$inboundSchema),
 });
 
-export function getDeploymentServicesDeploymentsResourcesFromJSON(
+export function getDeploymentServicesResourcesFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetDeploymentServicesDeploymentsResources,
-  SDKValidationError
-> {
+): SafeParseResult<GetDeploymentServicesResources, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetDeploymentServicesDeploymentsResources$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDeploymentServicesDeploymentsResources' from JSON`,
+    (x) => GetDeploymentServicesResources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesResources' from JSON`,
   );
 }
 
@@ -4253,7 +4239,7 @@ export const GetDeploymentServicesDeploymentsDaemon$inboundSchema: z.ZodType<
   instances: types.optional(z.record(types.number())),
   replicas: types.optional(z.record(types.number())),
   resources: types.optional(
-    z.lazy(() => GetDeploymentServicesDeploymentsResources$inboundSchema),
+    z.lazy(() => GetDeploymentServicesResources$inboundSchema),
   ),
   root: types.string(),
   terminationGracePeriodSeconds: types.optional(types.number()),

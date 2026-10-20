@@ -3,19 +3,15 @@
 
 ## Supported Types
 
-### `models.Data1[]`
+### `models.AggregatePageviewsData1[]`
 
 ```typescript
-const value: models.Data1[] = [
-  {
-    timestamp: new Date("2025-02-08T23:54:22.302Z"),
-  },
-];
+const value: models.AggregatePageviewsData1[] = [];
 ```
 
-### `models.Data2[]`
+### `models.AggregatePageviewsData2[]`
 
 ```typescript
-const value: models.Data2[] = [];
+const value: models.AggregatePageviewsData2[] = [];
 ```
 

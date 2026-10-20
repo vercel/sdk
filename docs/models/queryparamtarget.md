@@ -1,11 +1,11 @@
 # QueryParamTarget
 
-Filters on the target of the domain. Can be either "production", "preview"
+The deployment target for the daemon configuration.
 
 ## Example Usage
 
 ```typescript
-import { QueryParamTarget } from "@vercel/sdk/models/getprojectdomainsop.js";
+import { QueryParamTarget } from "@vercel/sdk/models/putprojectdaemoninstancesop.js";
 
 let value: QueryParamTarget = "production";
 ```

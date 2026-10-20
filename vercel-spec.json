@@ -17248,6 +17248,762 @@
         }
       }
     },
+    "/v1/projects/{idOrName}/daemons": {
+      "get": {
+        "description": "Lists project daemons.",
+        "operationId": "getProjectBoxes",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get project daemons",
+        "tags": [
+          "daemons"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "daemons": {
+                      "items": {
+                        "properties": {
+                          "config": {
+                            "properties": {
+                              "command": {
+                                "items": {
+                                  "type": "string"
+                                },
+                                "type": "array"
+                              },
+                              "configuredReplicas": {
+                                "oneOf": [
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "additionalProperties": {
+                                      "type": "number"
+                                    },
+                                    "type": "object",
+                                    "description": "Configured replicas before the overrides. Present only when overrides exist."
+                                  }
+                                ]
+                              },
+                              "image": {
+                                "properties": {
+                                  "requested": {
+                                    "type": "string"
+                                  },
+                                  "resolved": {
+                                    "type": "string"
+                                  },
+                                  "vhs": {
+                                    "oneOf": [
+                                      {
+                                        "properties": {
+                                          "config": {
+                                            "properties": {
+                                              "command": {
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "type": "array"
+                                              },
+                                              "entrypoint": {
+                                                "items": {
+                                                  "type": "string"
+                                                },
+                                                "type": "array"
+                                              },
+                                              "workingDir": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "type": "object"
+                                          },
+                                          "digest": {
+                                            "type": "string"
+                                          },
+                                          "path": {
+                                            "type": "string"
+                                          },
+                                          "repositoryName": {
+                                            "type": "string"
+                                          },
+                                          "sizeInBytes": {
+                                            "type": "number"
+                                          }
+                                        },
+                                        "required": [
+                                          "digest",
+                                          "path",
+                                          "repositoryName"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      {
+                                        "properties": {
+                                          "repositoryName": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "repositoryName"
+                                        ],
+                                        "type": "object"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "requested",
+                                  "resolved"
+                                ],
+                                "type": "object"
+                              },
+                              "livenessProbe": {
+                                "properties": {
+                                  "failureThreshold": {
+                                    "type": "number"
+                                  },
+                                  "httpGet": {
+                                    "properties": {
+                                      "host": {
+                                        "type": "string"
+                                      },
+                                      "httpHeaders": {
+                                        "items": {
+                                          "properties": {
+                                            "name": {
+                                              "type": "string"
+                                            },
+                                            "value": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "name",
+                                            "value"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": "array"
+                                      },
+                                      "path": {
+                                        "type": "string"
+                                      },
+                                      "port": {
+                                        "type": "number"
+                                      },
+                                      "scheme": {
+                                        "type": "string",
+                                        "enum": [
+                                          "HTTP",
+                                          "HTTPS"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "path",
+                                      "port",
+                                      "scheme"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  "initialDelaySeconds": {
+                                    "type": "number"
+                                  },
+                                  "periodSeconds": {
+                                    "type": "number"
+                                  },
+                                  "successThreshold": {
+                                    "type": "number"
+                                  },
+                                  "timeoutSeconds": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "httpGet"
+                                ],
+                                "type": "object"
+                              },
+                              "replicas": {
+                                "oneOf": [
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "additionalProperties": {
+                                      "type": "number"
+                                    },
+                                    "type": "object",
+                                    "description": "Configured replicas with the overrides applied."
+                                  }
+                                ]
+                              },
+                              "resources": {
+                                "properties": {
+                                  "requests": {
+                                    "properties": {
+                                      "memory": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "memory"
+                                    ],
+                                    "type": "object"
+                                  }
+                                },
+                                "required": [
+                                  "requests"
+                                ],
+                                "type": "object"
+                              },
+                              "terminationGracePeriodSeconds": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "image",
+                              "replicas",
+                              "resources"
+                            ],
+                            "type": "object"
+                          },
+                          "createdAt": {
+                            "type": "string"
+                          },
+                          "deploymentId": {
+                            "type": "string",
+                            "description": "The deployment whose daemons this configuration comes from. Absent for daemons managed through the daemons API."
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "replicas": {
+                            "properties": {
+                              "desired": {
+                                "type": "number"
+                              },
+                              "items": {
+                                "items": {
+                                  "properties": {
+                                    "alive": {
+                                      "type": "boolean",
+                                      "enum": [
+                                        false,
+                                        true
+                                      ]
+                                    },
+                                    "id": {
+                                      "type": "string"
+                                    },
+                                    "image": {
+                                      "type": "string"
+                                    },
+                                    "iroh": {
+                                      "properties": {
+                                        "publicKeyCiphertext": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "publicKeyCiphertext"
+                                      ],
+                                      "type": "object",
+                                      "description": "Encrypted Iroh endpoint data for internal consumers."
+                                    },
+                                    "lastCheckedAt": {
+                                      "type": "string"
+                                    },
+                                    "memoryMiB": {
+                                      "type": "number"
+                                    },
+                                    "region": {
+                                      "type": "string"
+                                    },
+                                    "startedAt": {
+                                      "type": "string"
+                                    },
+                                    "stoppedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id",
+                                    "region",
+                                    "startedAt"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": "array"
+                              },
+                              "ready": {
+                                "type": "number"
+                              },
+                              "total": {
+                                "type": "number"
+                              }
+                            },
+                            "required": [
+                              "desired",
+                              "items",
+                              "ready",
+                              "total"
+                            ],
+                            "type": "object"
+                          },
+                          "scope": {
+                            "oneOf": [
+                              {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "target"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "enum": [
+                                      "development",
+                                      "preview",
+                                      "production"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "value"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "branch"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "value"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "customEnvironment"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "value"
+                                ],
+                                "type": "object"
+                              }
+                            ]
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "ready",
+                              "reconciling",
+                              "stopped"
+                            ]
+                          },
+                          "updatedAt": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "config",
+                          "createdAt",
+                          "name",
+                          "replicas",
+                          "scope",
+                          "status",
+                          "updatedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "pagination": {
+                      "properties": {
+                        "count": {
+                          "type": "number"
+                        },
+                        "next": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "count"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "daemons",
+                    "pagination"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique project identifier or the project name"
+            }
+          },
+          {
+            "name": "limit",
+            "description": "Maximum daemons to return (default: 10, max: 100)",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Maximum daemons to return (default: 10, max: 100)"
+            }
+          },
+          {
+            "name": "cursor",
+            "description": "Pagination cursor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Pagination cursor"
+            }
+          },
+          {
+            "name": "scopeType",
+            "description": "Filter by scope type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Filter by scope type",
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "string",
+              "enum": [
+                "target",
+                "branch",
+                "customEnvironment"
+              ]
+            }
+          },
+          {
+            "name": "scopeValue",
+            "description": "Filter by scope value (requires scopeType)",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by scope value (requires scopeType)"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/projects/{idOrName}/daemons/{daemonName}/instances": {
+      "put": {
+        "description": "Override an existing daemon's instance counts by region. Each region in the map replaces the configured count for that region. Regions not in the map keep their configured count. An empty map removes the overrides. The daemon configuration is not changed. Missing or deleted daemons return 404. Repeating the same overrides succeeds without a storage write or reconciliation event.",
+        "operationId": "putProjectDaemonInstances",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Override a project daemon's instance counts",
+        "tags": [
+          "daemons"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        false,
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique project identifier or the project name"
+            }
+          },
+          {
+            "name": "daemonName",
+            "description": "The name of the daemon to scale",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The name of the daemon to scale",
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_-]+$"
+            }
+          },
+          {
+            "name": "target",
+            "description": "The deployment target for the daemon configuration.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "production",
+                "preview"
+              ],
+              "default": "production",
+              "description": "The deployment target for the daemon configuration."
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "description": "Instance count overrides by region, for example { \\\"iad1\\\": 1 }. Regions not in the map keep their configured count. An empty map removes the overrides.",
+                "type": "object",
+                "additionalProperties": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 100
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/projects/{idOrName}/daemons/{daemonName}/instances/{instanceId}/restart": {
+      "post": {
+        "description": "Force restarts the user container of one running daemon instance. The instance's controller stops the current user container and starts a new one from the same configuration, so in-flight requests are interrupted and any state that only lives inside the container is lost. The instance keeps its ID and region. The response returns as soon as the controller accepts the restart, before the new container is running. Only production instances can be restarted. Accepts a Vercel token that can update the project, or a production project OIDC token issued for the same project. No request body or Content-Type header is required.",
+        "operationId": "restartProjectDaemonInstance",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Force restart a project daemon instance",
+        "tags": [
+          "daemons"
+        ],
+        "responses": {
+          "202": {
+            "description": "The restart was accepted. The new user container starts asynchronously.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "ok": {
+                      "type": "boolean",
+                      "enum": [
+                        false,
+                        true
+                      ]
+                    }
+                  },
+                  "required": [
+                    "ok"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": "The daemon has no running production instance with this ID."
+          },
+          "409": {
+            "description": "The instance is still starting and cannot be restarted yet."
+          },
+          "410": {
+            "description": ""
+          },
+          "500": {
+            "description": "The instance controller did not accept the restart."
+          }
+        },
+        "parameters": [
+          {
+            "name": "idOrName",
+            "description": "The unique project identifier or the project name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The unique project identifier or the project name"
+            }
+          },
+          {
+            "name": "daemonName",
+            "description": "The name of the daemon that owns the instance",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$schema": "http://json-schema.org/draft-07/schema#",
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "description": "The name of the daemon that owns the instance"
+            }
+          },
+          {
+            "name": "instanceId",
+            "description": "The ID of the daemon instance whose user container is restarted, for example `dmni_01k7d0q5w3x8y9z0a1b2c3d4e5`",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^dmni_[0-9a-hjkmnp-tv-z]{26}$",
+              "description": "The ID of the daemon instance whose user container is restarted, for example `dmni_01k7d0q5w3x8y9z0a1b2c3d4e5`"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
     "/v3/deployments/{idOrUrl}/events": {
       "get": {
         "description": "Get the build logs of a deployment by deployment ID and build ID. It can work as an infinite stream of logs or as a JSON endpoint depending on the input parameters.",
@@ -73594,9 +74350,21 @@
                       "type": "string",
                       "description": "Additional memo for the invoice."
                     },
+                    "outstandingTotal": {
+                      "type": "string",
+                      "description": "Amount still owed on the invoice, per the payment processor. Can be positive even for states \"refunded\" or \"refund_requested\", since a refund does not settle an unpaid remainder. A dollar-based decimal string. Absent when no payment data is available yet."
+                    },
                     "paidAt": {
                       "type": "string",
                       "description": "Moment the invoice was paid. ISO 8601 timestamp."
+                    },
+                    "paidTotal": {
+                      "type": "string",
+                      "description": "Total amount paid and retained: payments received minus refunds applied. A dollar-based decimal string. Absent when no payment data is available yet."
+                    },
+                    "pendingRefundTotal": {
+                      "type": "string",
+                      "description": "Requested refund amount not yet applied by the payment processor: \"refundTotal\" minus \"refundedTotal\". A dollar-based decimal string. Only present when a refund was requested or applied."
                     },
                     "period": {
                       "properties": {
@@ -73618,13 +74386,17 @@
                       "type": "string",
                       "description": "Most recent moment the invoice was refunded. ISO 8601 timestamp."
                     },
+                    "refundedTotal": {
+                      "type": "string",
+                      "description": "Total refund amount applied by the payment processor, on the same pre-tax basis as \"refundTotal\". Counts both money returned and debt cancelled on unpaid invoices. May be lower than \"refundTotal\", which is the requested amount. A dollar-based decimal string. Only present when a refund was requested or applied."
+                    },
                     "refundReason": {
                       "type": "string",
-                      "description": "The reason for refund. Only applicable for states \"refunded\" or \"refund_request\"."
+                      "description": "The reason for refund. Only present when a refund has been requested."
                     },
                     "refundTotal": {
                       "type": "string",
-                      "description": "Refund amount. Only applicable for states \"refunded\" or \"refund_request\". A dollar-based decimal string."
+                      "description": "Total refund amount requested. Only present when a refund has been requested. A dollar-based decimal string."
                     },
                     "state": {
                       "type": "string",
@@ -73639,7 +74411,7 @@
                         "refunded",
                         "scheduled"
                       ],
-                      "description": "Invoice state."
+                      "description": "Invoice state. Reports the payment state of the invoice; refund progress is reported separately via \"refundedTotal\" and \"pendingRefundTotal\". The states \"refunded\" and \"refund_requested\" only appear when the payment state cannot be determined."
                     },
                     "test": {
                       "type": "boolean",
@@ -87739,6 +88511,13 @@
                                 "type": "array",
                                 "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                               },
+                              "connexClientAccess": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
                               "connexClientProject": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -88027,6 +88806,13 @@
                                 "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                               },
                               "gitCredentialGrant": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
+                              "githubUsage": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -111958,6 +112744,13 @@
                                     "type": "array",
                                     "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                                   },
+                                  "connexClientAccess": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
                                   "connexClientProject": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -112246,6 +113039,13 @@
                                     "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                                   },
                                   "gitCredentialGrant": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
+                                  "githubUsage": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -120150,6 +120950,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "connexClientAccess": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "connexClientProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -120438,6 +121245,13 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "gitCredentialGrant": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "githubUsage": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -128628,6 +129442,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "connexClientAccess": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "connexClientProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -128916,6 +129737,13 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "gitCredentialGrant": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "githubUsage": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -136374,6 +137202,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "connexClientAccess": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "connexClientProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -136662,6 +137497,13 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "gitCredentialGrant": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "githubUsage": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -145443,6 +146285,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "connexClientAccess": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "connexClientProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -145731,6 +146580,13 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "gitCredentialGrant": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "githubUsage": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -153202,6 +154058,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "connexClientAccess": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "connexClientProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -153490,6 +154353,13 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "gitCredentialGrant": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "githubUsage": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -174102,6 +174972,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "connexClientAccess": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "connexClientProject": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -174390,6 +175267,13 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "gitCredentialGrant": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "githubUsage": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -181582,58 +182466,6 @@
                         "stream"
                       ],
                       "type": "object"
-                    },
-                    {
-                      "oneOf": [
-                        {
-                          "properties": {
-                            "data": {
-                              "properties": {
-                                "code": {
-                                  "type": "string",
-                                  "enum": [
-                                    "sandbox_stream_closed"
-                                  ]
-                                },
-                                "message": {
-                                  "type": "string",
-                                  "enum": [
-                                    "Sandbox stream was closed and is not accepting commands."
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "code",
-                                "message"
-                              ],
-                              "type": "object"
-                            },
-                            "stream": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "data",
-                            "stream"
-                          ],
-                          "type": "object"
-                        },
-                        {
-                          "properties": {
-                            "data": {
-                              "type": "string"
-                            },
-                            "stream": {
-                              "type": "string"
-                            }
-                          },
-                          "required": [
-                            "data",
-                            "stream"
-                          ],
-                          "type": "object"
-                        }
-                      ]
                     }
                   ]
                 }
@@ -181675,17 +182507,6 @@
               "type": "string",
               "description": "The unique identifier of the session in which to execute the command.",
               "example": "sbx_abc123"
-            }
-          },
-          {
-            "name": "cmdId",
-            "description": "The unique identifier of the command to stream logs for.",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "The unique identifier of the command to stream logs for.",
-              "example": "cmd_abc123"
             }
           },
           {
@@ -182025,7 +182846,7 @@
     },
     "/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/stdin": {
       "post": {
-        "description": "Writes data to the stdin of a running command, and optionally closes it. The command must have been started with `attachStdin` set to true. Writes are applied in the order they are received. Send them one at a time to keep the data in order. A write returns once the command has accepted the data, and fails with a 504 after 30 seconds if the command is not reading stdin. Each write counts against the sandbox control plane rate limit, so batch small writes where possible. Set `offset` to the position in stdin where `data` starts to make a request safe to resend, for example after a 502 or 504: bytes the command has already received are skipped, and an offset past them fails with a 409. The response returns `bytesWritten`, the total written so far, and a 504 includes it in the error when the sandbox reports it. A request with no `data` and no `close` writes nothing and returns it. If a request with an `offset` gets a response without `bytesWritten`, the sandbox predates offsets and ignored it, so resending that request is not safe.",
+        "description": "Writes data to the stdin of a running command, and optionally closes it. The command must have been started with `attachStdin` set to true. Writes are applied in the order they are received. Send them one at a time to keep the data in order. A write returns once the command has accepted the data, and fails with a 504 after 30 seconds if the command is not reading stdin. Each write counts against the sandbox control plane rate limit, so batch small writes where possible. Set `offset` to the position in stdin where `data` starts to make a request safe to resend, for example after a 502 or 504: bytes the command has already received are skipped, and an offset past them fails with a 409. The response returns `bytesWritten`, the total written so far, and a 504 includes it in the error when the sandbox reports it. A request with no `data` and no `close` writes nothing and returns it.",
         "operationId": "writeSessionCommandStdin",
         "security": [
           {
@@ -236778,7 +237599,8 @@
                         "read:vcr",
                         "read:web-analytics",
                         "read:webhooks",
-                        "use:ai-gateway"
+                        "use:ai-gateway",
+                        "use:github"
                       ]
                     },
                     "type": "array"
@@ -236905,7 +237727,8 @@
                         "read:vcr",
                         "read:web-analytics",
                         "read:webhooks",
-                        "use:ai-gateway"
+                        "use:ai-gateway",
+                        "use:github"
                       ]
                     },
                     "type": "array"
@@ -237628,25 +238451,43 @@
                     ]
                   },
                   "data": {
-                    "properties": {
-                      "planSlug": {
-                        "type": "string",
-                        "enum": [
-                          "v0_business",
-                          "v0_teams"
-                        ]
+                    "oneOf": [
+                      {
+                        "properties": {
+                          "planSlug": {
+                            "type": "string",
+                            "enum": [
+                              "v0_business",
+                              "v0_teams"
+                            ]
+                          },
+                          "reason": {
+                            "type": "string",
+                            "enum": [
+                              "non-payment"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "planSlug"
+                        ],
+                        "type": "object"
                       },
-                      "reason": {
-                        "type": "string",
-                        "enum": [
-                          "non-payment"
-                        ]
+                      {
+                        "properties": {
+                          "planSlug": {
+                            "type": "string",
+                            "enum": [
+                              "hobby"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "planSlug"
+                        ],
+                        "type": "object"
                       }
-                    },
-                    "required": [
-                      "planSlug"
-                    ],
-                    "type": "object"
+                    ]
                   }
                 },
                 "type": "object",
@@ -262316,7 +263157,7 @@
               }
             },
             "type": "object",
-            "description": "Default deployment protection for this team null indicates protection is disabled"
+            "description": "Deployment protection defaults for new projects in this team. When no Vercel Authentication default is saved, `ssoProtection` shows Standard Protection. An explicitly saved `null` remains disabled. Organization policy may override the team default during project creation."
           },
           "defaultExpirationSettings": {
             "properties": {
@@ -263528,6 +264369,7 @@
           "billing",
           "createdAt",
           "creatorId",
+          "defaultDeploymentProtection",
           "description",
           "id",
           "limited",

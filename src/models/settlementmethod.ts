@@ -1531,14 +1531,14 @@ export type UserEventPayload81Action = ClosedEnum<
   typeof UserEventPayload81Action
 >;
 
-export const PayloadPlanSlug = {
+export const PlanSlug = {
   V0Business: "v0_business",
   V0Teams: "v0_teams",
 } as const;
-export type PayloadPlanSlug = ClosedEnum<typeof PayloadPlanSlug>;
+export type PlanSlug = ClosedEnum<typeof PlanSlug>;
 
 export type PayloadData = {
-  planSlug: PayloadPlanSlug;
+  planSlug: PlanSlug;
 };
 
 /**
@@ -1557,23 +1557,30 @@ export type UserEventPayload80Action = ClosedEnum<
   typeof UserEventPayload80Action
 >;
 
-export const PlanSlug = {
+export type Data2 = {
+  planSlug: "hobby";
+};
+
+export const UserEventDataPlanSlug = {
   V0Business: "v0_business",
   V0Teams: "v0_teams",
 } as const;
-export type PlanSlug = ClosedEnum<typeof PlanSlug>;
+export type UserEventDataPlanSlug = ClosedEnum<typeof UserEventDataPlanSlug>;
 
-export const UserEventPayload80Reason = {
+export const DataReason = {
   NonPayment: "non-payment",
 } as const;
-export type UserEventPayload80Reason = ClosedEnum<
-  typeof UserEventPayload80Reason
->;
+export type DataReason = ClosedEnum<typeof DataReason>;
 
-export type UserEventPayloadData = {
-  planSlug: PlanSlug;
-  reason?: UserEventPayload80Reason | undefined;
+export type Data1 = {
+  planSlug: UserEventDataPlanSlug;
+  reason?: DataReason | undefined;
 };
+
+export type UserEventPayloadData =
+  | (Data1 & { planSlug: "v0_business" })
+  | (Data1 & { planSlug: "v0_teams" })
+  | Data2;
 
 /**
  * The payload of the event, if requested.
@@ -1581,7 +1588,10 @@ export type UserEventPayloadData = {
 export type Eighty = {
   subscriptionId?: string | undefined;
   action: UserEventPayload80Action;
-  data: UserEventPayloadData;
+  data:
+    | (Data1 & { planSlug: "v0_business" })
+    | (Data1 & { planSlug: "v0_teams" })
+    | Data2;
 };
 
 /**
@@ -1640,26 +1650,6 @@ export const SettlementMethod = {
   RefundedPaymentPending: "refunded-payment-pending",
 } as const;
 export type SettlementMethod = ClosedEnum<typeof SettlementMethod>;
-
-/**
- * The payload of the event, if requested.
- */
-export type SeventyFour = {
-  amount: number;
-  invoiceId: string;
-  newInvoiceId: string;
-  settlementMethod: SettlementMethod;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type SeventyThree = {
-  amount: number;
-  invoiceId: string;
-  lineItemCount: number;
-  refundReason: string;
-};
 
 /** @internal */
 export const UserEventJobPayload1217Provider$inboundSchema: z.ZodNativeEnum<
@@ -4128,9 +4118,8 @@ export const UserEventPayload81Action$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UserEventPayload81Action);
 
 /** @internal */
-export const PayloadPlanSlug$inboundSchema: z.ZodNativeEnum<
-  typeof PayloadPlanSlug
-> = z.nativeEnum(PayloadPlanSlug);
+export const PlanSlug$inboundSchema: z.ZodNativeEnum<typeof PlanSlug> = z
+  .nativeEnum(PlanSlug);
 
 /** @internal */
 export const PayloadData$inboundSchema: z.ZodType<
@@ -4138,7 +4127,7 @@ export const PayloadData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  planSlug: PayloadPlanSlug$inboundSchema,
+  planSlug: PlanSlug$inboundSchema,
 });
 
 export function payloadDataFromJSON(
@@ -4178,23 +4167,61 @@ export const UserEventPayload80Action$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UserEventPayload80Action);
 
 /** @internal */
-export const PlanSlug$inboundSchema: z.ZodNativeEnum<typeof PlanSlug> = z
-  .nativeEnum(PlanSlug);
+export const Data2$inboundSchema: z.ZodType<Data2, z.ZodTypeDef, unknown> = z
+  .object({
+    planSlug: types.literal("hobby"),
+  });
+
+export function data2FromJSON(
+  jsonString: string,
+): SafeParseResult<Data2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Data2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Data2' from JSON`,
+  );
+}
 
 /** @internal */
-export const UserEventPayload80Reason$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload80Reason
-> = z.nativeEnum(UserEventPayload80Reason);
+export const UserEventDataPlanSlug$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventDataPlanSlug
+> = z.nativeEnum(UserEventDataPlanSlug);
+
+/** @internal */
+export const DataReason$inboundSchema: z.ZodNativeEnum<typeof DataReason> = z
+  .nativeEnum(DataReason);
+
+/** @internal */
+export const Data1$inboundSchema: z.ZodType<Data1, z.ZodTypeDef, unknown> = z
+  .object({
+    planSlug: UserEventDataPlanSlug$inboundSchema,
+    reason: types.optional(DataReason$inboundSchema),
+  });
+
+export function data1FromJSON(
+  jsonString: string,
+): SafeParseResult<Data1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Data1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Data1' from JSON`,
+  );
+}
 
 /** @internal */
 export const UserEventPayloadData$inboundSchema: z.ZodType<
   UserEventPayloadData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  planSlug: PlanSlug$inboundSchema,
-  reason: types.optional(UserEventPayload80Reason$inboundSchema),
-});
+> = z.union([
+  z.lazy(() => Data1$inboundSchema).and(
+    z.object({ planSlug: z.literal("v0_business") }),
+  ),
+  z.lazy(() => Data1$inboundSchema).and(
+    z.object({ planSlug: z.literal("v0_teams") }),
+  ),
+  z.lazy(() => Data2$inboundSchema),
+]);
 
 export function userEventPayloadDataFromJSON(
   jsonString: string,
@@ -4211,7 +4238,15 @@ export const Eighty$inboundSchema: z.ZodType<Eighty, z.ZodTypeDef, unknown> = z
   .object({
     subscriptionId: types.optional(types.string()),
     action: UserEventPayload80Action$inboundSchema,
-    data: z.lazy(() => UserEventPayloadData$inboundSchema),
+    data: z.union([
+      z.lazy(() => Data1$inboundSchema).and(
+        z.object({ planSlug: z.literal("v0_business") }),
+      ),
+      z.lazy(() => Data1$inboundSchema).and(
+        z.object({ planSlug: z.literal("v0_teams") }),
+      ),
+      z.lazy(() => Data2$inboundSchema),
+    ]),
   });
 
 export function eightyFromJSON(
@@ -4332,47 +4367,3 @@ export function seventyFiveFromJSON(
 export const SettlementMethod$inboundSchema: z.ZodNativeEnum<
   typeof SettlementMethod
 > = z.nativeEnum(SettlementMethod);
-
-/** @internal */
-export const SeventyFour$inboundSchema: z.ZodType<
-  SeventyFour,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  amount: types.number(),
-  invoiceId: types.string(),
-  newInvoiceId: types.string(),
-  settlementMethod: SettlementMethod$inboundSchema,
-});
-
-export function seventyFourFromJSON(
-  jsonString: string,
-): SafeParseResult<SeventyFour, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SeventyFour$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SeventyFour' from JSON`,
-  );
-}
-
-/** @internal */
-export const SeventyThree$inboundSchema: z.ZodType<
-  SeventyThree,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  amount: types.number(),
-  invoiceId: types.string(),
-  lineItemCount: types.number(),
-  refundReason: types.string(),
-});
-
-export function seventyThreeFromJSON(
-  jsonString: string,
-): SafeParseResult<SeventyThree, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SeventyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SeventyThree' from JSON`,
-  );
-}

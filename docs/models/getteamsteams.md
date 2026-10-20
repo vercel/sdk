@@ -13,6 +13,7 @@ const value: models.Team = {
   },
   createdAt: 1630748523395,
   creatorId: "R6efeCJQ2HKXywuasPDc0fOWB",
+  defaultDeploymentProtection: {},
   description: "Our mission is to make cloud computing accessible to everyone.",
   emailDomain: "example.com",
   id: "team_nllPyCtREAqxxdyFKbbMDlxd",

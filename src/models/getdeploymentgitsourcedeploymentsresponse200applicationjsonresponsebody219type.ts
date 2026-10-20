@@ -888,15 +888,15 @@ export type GetDeploymentResponseBodyDeploymentsStatus = ClosedEnum<
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
-export const GetDeploymentResponseBodyTarget = {
+export const GetDeploymentResponseBodyDeploymentsTarget = {
   Production: "production",
   Staging: "staging",
 } as const;
 /**
  * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
  */
-export type GetDeploymentResponseBodyTarget = ClosedEnum<
-  typeof GetDeploymentResponseBodyTarget
+export type GetDeploymentResponseBodyDeploymentsTarget = ClosedEnum<
+  typeof GetDeploymentResponseBodyDeploymentsTarget
 >;
 
 /**
@@ -1065,7 +1065,7 @@ export type GetDeploymentResponseBody3 = {
   /**
    * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
    */
-  target?: GetDeploymentResponseBodyTarget | null | undefined;
+  target?: GetDeploymentResponseBodyDeploymentsTarget | null | undefined;
   /**
    * The team that owns the deployment if any
    */
@@ -1371,7 +1371,7 @@ export type GetDeploymentResponseBodyDeploymentsResourceConfig = {
 /**
  * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
  */
-export type GetDeploymentResponseBodyConfig = {
+export type ResponseBodyConfig = {
   functionMemoryType: GetDeploymentResponseBodyFunctionMemoryType;
   functionTimeout: number | null;
   functionType: GetDeploymentResponseBodyFunctionType;
@@ -3281,9 +3281,9 @@ export const GetDeploymentResponseBodyDeploymentsStatus$inboundSchema:
     .nativeEnum(GetDeploymentResponseBodyDeploymentsStatus);
 
 /** @internal */
-export const GetDeploymentResponseBodyTarget$inboundSchema: z.ZodNativeEnum<
-  typeof GetDeploymentResponseBodyTarget
-> = z.nativeEnum(GetDeploymentResponseBodyTarget);
+export const GetDeploymentResponseBodyDeploymentsTarget$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsTarget> = z
+    .nativeEnum(GetDeploymentResponseBodyDeploymentsTarget);
 
 /** @internal */
 export const ResponseBodyTeam$inboundSchema: z.ZodType<
@@ -3409,7 +3409,8 @@ export const GetDeploymentResponseBody3$inboundSchema: z.ZodType<
     GetDeploymentResponseBodyDeploymentsSource$inboundSchema,
   ),
   status: GetDeploymentResponseBodyDeploymentsStatus$inboundSchema,
-  target: z.nullable(GetDeploymentResponseBodyTarget$inboundSchema).optional(),
+  target: z.nullable(GetDeploymentResponseBodyDeploymentsTarget$inboundSchema)
+    .optional(),
   team: types.optional(z.lazy(() => ResponseBodyTeam$inboundSchema)),
   ttyBuildLogs: types.optional(types.boolean()),
   type: GetDeploymentResponseBodyDeploymentsType$inboundSchema,
@@ -3906,8 +3907,8 @@ export function getDeploymentResponseBodyDeploymentsResourceConfigFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentResponseBodyConfig$inboundSchema: z.ZodType<
-  GetDeploymentResponseBodyConfig,
+export const ResponseBodyConfig$inboundSchema: z.ZodType<
+  ResponseBodyConfig,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3925,13 +3926,13 @@ export const GetDeploymentResponseBodyConfig$inboundSchema: z.ZodType<
   version: types.optional(types.number()),
 });
 
-export function getDeploymentResponseBodyConfigFromJSON(
+export function responseBodyConfigFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentResponseBodyConfig, SDKValidationError> {
+): SafeParseResult<ResponseBodyConfig, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDeploymentResponseBodyConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentResponseBodyConfig' from JSON`,
+    (x) => ResponseBodyConfig$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyConfig' from JSON`,
   );
 }
 

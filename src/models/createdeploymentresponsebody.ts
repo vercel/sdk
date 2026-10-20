@@ -15,6 +15,8 @@ import {
   CreateDeploymentResponseBodyChecksConclusion$inboundSchema,
   CreateDeploymentResponseBodyChecksState,
   CreateDeploymentResponseBodyChecksState$inboundSchema,
+  CreateDeploymentResponseBodyConfig,
+  CreateDeploymentResponseBodyConfig$inboundSchema,
   CreateDeploymentResponseBodyCreator,
   CreateDeploymentResponseBodyCreator$inboundSchema,
   CreateDeploymentResponseBodyCustomEnvironment,
@@ -35,8 +37,6 @@ import {
   ResponseBodyBuild$inboundSchema,
   ResponseBodyBuilds,
   ResponseBodyBuilds$inboundSchema,
-  ResponseBodyConfig,
-  ResponseBodyConfig$inboundSchema,
   ResponseBodyCrons,
   ResponseBodyCrons$inboundSchema,
   ResponseBodyFlags,
@@ -1388,7 +1388,7 @@ export type CreateDeploymentResponseBody2 = {
   /**
    * Since February 2025 the configuration must include snapshot data at the time of deployment creation to capture properties for the /deployments/:id/config endpoint utilized for displaying Deployment Configuration on the frontend This is optional because older deployments may not have this data captured
    */
-  config?: ResponseBodyConfig | undefined;
+  config?: CreateDeploymentResponseBodyConfig | undefined;
   connectBuildsEnabled?: boolean | undefined;
   connectConfigurationId?: string | undefined;
   /**
@@ -4731,7 +4731,7 @@ export const CreateDeploymentResponseBody2$inboundSchema: z.ZodType<
   checksState: types.optional(
     CreateDeploymentResponseBodyChecksState$inboundSchema,
   ),
-  config: types.optional(ResponseBodyConfig$inboundSchema),
+  config: types.optional(CreateDeploymentResponseBodyConfig$inboundSchema),
   connectBuildsEnabled: types.optional(types.boolean()),
   connectConfigurationId: types.optional(types.string()),
   createdAt: types.number(),

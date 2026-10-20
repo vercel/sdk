@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadData } from "@vercel/sdk/models/seventythree.js";
+import { PayloadData } from "@vercel/sdk/models/settlementmethod.js";
 
 let value: PayloadData = {
   planSlug: "v0_business",
@@ -12,6 +12,6 @@ let value: PayloadData = {
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `planSlug`                                             | [models.PayloadPlanSlug](../models/payloadplanslug.md) | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `planSlug`                               | [models.PlanSlug](../models/planslug.md) | :heavy_check_mark:                       | N/A                                      |

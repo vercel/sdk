@@ -9,6 +9,30 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+import {
+  SettlementMethod,
+  SettlementMethod$inboundSchema,
+} from "./settlementmethod.js";
+
+/**
+ * The payload of the event, if requested.
+ */
+export type SeventyFour = {
+  amount: number;
+  invoiceId: string;
+  newInvoiceId: string;
+  settlementMethod: SettlementMethod;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type SeventyThree = {
+  amount: number;
+  invoiceId: string;
+  lineItemCount: number;
+  refundReason: string;
+};
 
 /**
  * The payload of the event, if requested.
@@ -534,6 +558,7 @@ export const NextPermissions = {
   ReadWebAnalytics: "read:web-analytics",
   ReadWebhooks: "read:webhooks",
   UseAiGateway: "use:ai-gateway",
+  UseGithub: "use:github",
 } as const;
 export type NextPermissions = ClosedEnum<typeof NextPermissions>;
 
@@ -642,6 +667,7 @@ export const Permissions = {
   ReadWebAnalytics: "read:web-analytics",
   ReadWebhooks: "read:webhooks",
   UseAiGateway: "use:ai-gateway",
+  UseGithub: "use:github",
 } as const;
 export type Permissions = ClosedEnum<typeof Permissions>;
 
@@ -1727,40 +1753,49 @@ export const PayloadProvider = {
  */
 export type PayloadProvider = ClosedEnum<typeof PayloadProvider>;
 
-/**
- * The payload of the event, if requested.
- */
-export type Fourteen = {
-  /**
-   * Present on new events only. Equivalent to "stripe" when absent.
-   */
-  provider?: PayloadProvider | undefined;
-  /**
-   * Present on new events only. Equivalent to `stripeAccount` when absent.
-   */
-  providerAccount?: string | undefined;
-  /**
-   * Present when `provider` is "stripe". Equivalent to `providerAccount`.
-   */
-  stripeAccount?: string | undefined;
-  /**
-   * Present when `provider` is "stripe".
-   */
-  stripeOrganisation?: string | undefined;
-  teamId: string;
-};
+/** @internal */
+export const SeventyFour$inboundSchema: z.ZodType<
+  SeventyFour,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  amount: types.number(),
+  invoiceId: types.string(),
+  newInvoiceId: types.string(),
+  settlementMethod: SettlementMethod$inboundSchema,
+});
 
-/**
- * Present on new events only. Equivalent to "stripe" when absent.
- */
-export const Provider = {
-  Chatgpt: "chatgpt",
-  Stripe: "stripe",
-} as const;
-/**
- * Present on new events only. Equivalent to "stripe" when absent.
- */
-export type Provider = ClosedEnum<typeof Provider>;
+export function seventyFourFromJSON(
+  jsonString: string,
+): SafeParseResult<SeventyFour, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SeventyFour$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SeventyFour' from JSON`,
+  );
+}
+
+/** @internal */
+export const SeventyThree$inboundSchema: z.ZodType<
+  SeventyThree,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  amount: types.number(),
+  invoiceId: types.string(),
+  lineItemCount: types.number(),
+  refundReason: types.string(),
+});
+
+export function seventyThreeFromJSON(
+  jsonString: string,
+): SafeParseResult<SeventyThree, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SeventyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SeventyThree' from JSON`,
+  );
+}
 
 /** @internal */
 export const SeventyTwo$inboundSchema: z.ZodType<
@@ -4160,30 +4195,3 @@ export function fifteenFromJSON(
 export const PayloadProvider$inboundSchema: z.ZodNativeEnum<
   typeof PayloadProvider
 > = z.nativeEnum(PayloadProvider);
-
-/** @internal */
-export const Fourteen$inboundSchema: z.ZodType<
-  Fourteen,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  provider: types.optional(PayloadProvider$inboundSchema),
-  providerAccount: types.optional(types.string()),
-  stripeAccount: types.optional(types.string()),
-  stripeOrganisation: types.optional(types.string()),
-  teamId: types.string(),
-});
-
-export function fourteenFromJSON(
-  jsonString: string,
-): SafeParseResult<Fourteen, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Fourteen$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Fourteen' from JSON`,
-  );
-}
-
-/** @internal */
-export const Provider$inboundSchema: z.ZodNativeEnum<typeof Provider> = z
-  .nativeEnum(Provider);

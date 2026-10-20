@@ -1,6 +1,6 @@
 # GetInvoiceState
 
-Invoice state.
+Invoice state. Reports the payment state of the invoice; refund progress is reported separately via "refundedTotal" and "pendingRefundTotal". The states "refunded" and "refund_requested" only appear when the payment state cannot be determined.
 
 ## Example Usage
 

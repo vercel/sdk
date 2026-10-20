@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServicesRequests } from "@vercel/sdk/models/canceldeploymentmissingdeploymentsresponse2.js";
+import { ServicesRequests } from "@vercel/sdk/models/canceldeploymentresponsebody.js";
 
 let value: ServicesRequests = {
   memory: "1Gi",
@@ -12,6 +12,6 @@ let value: ServicesRequests = {
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `memory`                                             | [models.ServicesMemory](../models/servicesmemory.md) | :heavy_check_mark:                                   | N/A                                                  |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `memory`                             | [models.Memory](../models/memory.md) | :heavy_check_mark:                   | N/A                                  |

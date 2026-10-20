@@ -103,7 +103,7 @@ export type GetInvoicePeriod = {
 };
 
 /**
- * Invoice state.
+ * Invoice state. Reports the payment state of the invoice; refund progress is reported separately via "refundedTotal" and "pendingRefundTotal". The states "refunded" and "refund_requested" only appear when the payment state cannot be determined.
  */
 export const GetInvoiceState = {
   Draft: "draft",
@@ -117,7 +117,7 @@ export const GetInvoiceState = {
   Scheduled: "scheduled",
 } as const;
 /**
- * Invoice state.
+ * Invoice state. Reports the payment state of the invoice; refund progress is reported separately via "refundedTotal" and "pendingRefundTotal". The states "refunded" and "refund_requested" only appear when the payment state cannot be determined.
  */
 export type GetInvoiceState = ClosedEnum<typeof GetInvoiceState>;
 
@@ -155,9 +155,21 @@ export type GetInvoiceResponseBody = {
    */
   memo?: string | undefined;
   /**
+   * Amount still owed on the invoice, per the payment processor. Can be positive even for states "refunded" or "refund_requested", since a refund does not settle an unpaid remainder. A dollar-based decimal string. Absent when no payment data is available yet.
+   */
+  outstandingTotal?: string | undefined;
+  /**
    * Moment the invoice was paid. ISO 8601 timestamp.
    */
   paidAt?: string | undefined;
+  /**
+   * Total amount paid and retained: payments received minus refunds applied. A dollar-based decimal string. Absent when no payment data is available yet.
+   */
+  paidTotal?: string | undefined;
+  /**
+   * Requested refund amount not yet applied by the payment processor: "refundTotal" minus "refundedTotal". A dollar-based decimal string. Only present when a refund was requested or applied.
+   */
+  pendingRefundTotal?: string | undefined;
   /**
    * Subscription period for this billing cycle. ISO 8601 timestamps.
    */
@@ -167,15 +179,19 @@ export type GetInvoiceResponseBody = {
    */
   refundedAt?: string | undefined;
   /**
-   * The reason for refund. Only applicable for states "refunded" or "refund_request".
+   * Total refund amount applied by the payment processor, on the same pre-tax basis as "refundTotal". Counts both money returned and debt cancelled on unpaid invoices. May be lower than "refundTotal", which is the requested amount. A dollar-based decimal string. Only present when a refund was requested or applied.
+   */
+  refundedTotal?: string | undefined;
+  /**
+   * The reason for refund. Only present when a refund has been requested.
    */
   refundReason?: string | undefined;
   /**
-   * Refund amount. Only applicable for states "refunded" or "refund_request". A dollar-based decimal string.
+   * Total refund amount requested. Only present when a refund has been requested. A dollar-based decimal string.
    */
   refundTotal?: string | undefined;
   /**
-   * Invoice state.
+   * Invoice state. Reports the payment state of the invoice; refund progress is reported separately via "refundedTotal" and "pendingRefundTotal". The states "refunded" and "refund_requested" only appear when the payment state cannot be determined.
    */
   state: GetInvoiceState;
   /**
@@ -310,9 +326,13 @@ export const GetInvoiceResponseBody$inboundSchema: z.ZodType<
   invoiceNumber: types.optional(types.string()),
   items: z.array(z.lazy(() => GetInvoiceItems$inboundSchema)),
   memo: types.optional(types.string()),
+  outstandingTotal: types.optional(types.string()),
   paidAt: types.optional(types.string()),
+  paidTotal: types.optional(types.string()),
+  pendingRefundTotal: types.optional(types.string()),
   period: z.lazy(() => GetInvoicePeriod$inboundSchema),
   refundedAt: types.optional(types.string()),
+  refundedTotal: types.optional(types.string()),
   refundReason: types.optional(types.string()),
   refundTotal: types.optional(types.string()),
   state: GetInvoiceState$inboundSchema,

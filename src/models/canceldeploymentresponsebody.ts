@@ -253,7 +253,7 @@ export type CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBo
     suf?: string | undefined;
   };
 
-export type CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value =
+export type CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue =
   | string
   | CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2Routes12;
 
@@ -286,7 +286,7 @@ export type CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBo
     suf?: string | undefined;
   };
 
-export type CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue =
+export type CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value =
   | string
   | CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2Routes2;
 
@@ -585,12 +585,12 @@ export const Memory = {
 } as const;
 export type Memory = ClosedEnum<typeof Memory>;
 
-export type Requests = {
+export type ServicesRequests = {
   memory: Memory;
 };
 
-export type CancelDeploymentServicesResources = {
-  requests: Requests;
+export type ServicesResources = {
+  requests: ServicesRequests;
 };
 
 /**
@@ -607,7 +607,7 @@ export type Daemon = {
    * Instance counts by region.
    */
   replicas?: { [k: string]: number } | undefined;
-  resources?: CancelDeploymentServicesResources | undefined;
+  resources?: ServicesResources | undefined;
   root: string;
   terminationGracePeriodSeconds?: number | undefined;
   name: string;
@@ -1562,9 +1562,9 @@ export function cancelDeploymentValueDeploymentsResponse200ApplicationJSONRespon
 }
 
 /** @internal */
-export const CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value$inboundSchema:
+export const CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue$inboundSchema:
   z.ZodType<
-    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value,
+    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
@@ -1574,18 +1574,18 @@ export const CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBod
     ),
   ]);
 
-export function cancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2ValueFromJSON(
+export function cancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value,
+  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value$inboundSchema
+      CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value' from JSON`,
+    `Failed to parse 'CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue' from JSON`,
   );
 }
 
@@ -1681,9 +1681,9 @@ export function cancelDeploymentValueDeploymentsResponse200ApplicationJSONRespon
 }
 
 /** @internal */
-export const CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue$inboundSchema:
+export const CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value$inboundSchema:
   z.ZodType<
-    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue,
+    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
@@ -1693,18 +1693,18 @@ export const CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBod
     ),
   ]);
 
-export function cancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValueFromJSON(
+export function cancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2ValueFromJSON(
   jsonString: string,
 ): SafeParseResult<
-  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue,
+  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value,
   SDKValidationError
 > {
   return safeParse(
     jsonString,
     (x) =>
-      CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue$inboundSchema
+      CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value$inboundSchema
         .parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2RoutesValue' from JSON`,
+    `Failed to parse 'CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServices2Value' from JSON`,
   );
 }
 
@@ -2437,40 +2437,40 @@ export const Memory$inboundSchema: z.ZodNativeEnum<typeof Memory> = z
   .nativeEnum(Memory);
 
 /** @internal */
-export const Requests$inboundSchema: z.ZodType<
-  Requests,
+export const ServicesRequests$inboundSchema: z.ZodType<
+  ServicesRequests,
   z.ZodTypeDef,
   unknown
 > = z.object({
   memory: Memory$inboundSchema,
 });
 
-export function requestsFromJSON(
+export function servicesRequestsFromJSON(
   jsonString: string,
-): SafeParseResult<Requests, SDKValidationError> {
+): SafeParseResult<ServicesRequests, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Requests$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Requests' from JSON`,
+    (x) => ServicesRequests$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesRequests' from JSON`,
   );
 }
 
 /** @internal */
-export const CancelDeploymentServicesResources$inboundSchema: z.ZodType<
-  CancelDeploymentServicesResources,
+export const ServicesResources$inboundSchema: z.ZodType<
+  ServicesResources,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  requests: z.lazy(() => Requests$inboundSchema),
+  requests: z.lazy(() => ServicesRequests$inboundSchema),
 });
 
-export function cancelDeploymentServicesResourcesFromJSON(
+export function servicesResourcesFromJSON(
   jsonString: string,
-): SafeParseResult<CancelDeploymentServicesResources, SDKValidationError> {
+): SafeParseResult<ServicesResources, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => CancelDeploymentServicesResources$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'CancelDeploymentServicesResources' from JSON`,
+    (x) => ServicesResources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesResources' from JSON`,
   );
 }
 
@@ -2481,9 +2481,7 @@ export const Daemon$inboundSchema: z.ZodType<Daemon, z.ZodTypeDef, unknown> = z
     entrypoint: types.string(),
     instances: types.optional(z.record(types.number())),
     replicas: types.optional(z.record(types.number())),
-    resources: types.optional(
-      z.lazy(() => CancelDeploymentServicesResources$inboundSchema),
-    ),
+    resources: types.optional(z.lazy(() => ServicesResources$inboundSchema)),
     root: types.string(),
     terminationGracePeriodSeconds: types.optional(types.number()),
     name: types.string(),

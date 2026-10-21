@@ -10,8 +10,12 @@ import { UpdateDeploymentCheckRunSource5 } from "@vercel/sdk/models/updatedeploy
 let value: UpdateDeploymentCheckRunSource5 = {
   origin: "api",
   selection: {
-    job: "Central Group Architect",
-    kind: "job",
+    filters: [
+      "<value 1>",
+    ],
+    job: "Turborepo",
+    kind: "turborepo",
+    task: "<value>",
   },
   subKind: "vercel-ci-check",
 };

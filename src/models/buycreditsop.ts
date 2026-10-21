@@ -808,6 +808,54 @@ export type BuyCreditsResponseBody3 = {
 };
 
 /**
+ * Additional source subscriptions replaced by this purchase
+ */
+export type AdditionalSubscriptions = {
+  /**
+   * The end of the additional source subscription billing cycle
+   */
+  currentCycleEndDate: string;
+  /**
+   * The additional source Orb subscription ID
+   */
+  orbSubscriptionId: string;
+  /**
+   * The ID of the plan assigned to the additional source subscription
+   */
+  planId: string;
+};
+
+export const ConfigurationModel = {
+  Unit: "unit",
+} as const;
+export type ConfigurationModel = ClosedEnum<typeof ConfigurationModel>;
+
+/**
+ * The absolute price that replaces the plan item price, after any rate variant
+ */
+export type ConfigurationPrice = {
+  model: ConfigurationModel;
+  /**
+   * The non-negative per-unit USD amount, with at most two decimal places
+   */
+  unitAmount: string;
+};
+
+/**
+ * The current plan item price overrides
+ */
+export type ConfigurationPlanItemPrices = {
+  /**
+   * The ID of the plan item to set the price for
+   */
+  planItemId: string;
+  /**
+   * The absolute price that replaces the plan item price, after any rate variant
+   */
+  price: ConfigurationPrice;
+};
+
+/**
  * The current plan item quantities
  */
 export type ConfigurationPlanItemQuantities = {
@@ -830,6 +878,10 @@ export type ConfigurationPlanItemQuantities = {
  */
 export type ConfigurationFromPlan = {
   /**
+   * Additional source subscriptions replaced by this purchase
+   */
+  additionalSubscriptions?: Array<AdditionalSubscriptions> | undefined;
+  /**
    * The end of the current plan billing cycle
    */
   currentCycleEndDate: string;
@@ -842,6 +894,10 @@ export type ConfigurationFromPlan = {
    */
   planId: string;
   /**
+   * The current plan item price overrides
+   */
+  planItemPrices?: Array<ConfigurationPlanItemPrices> | undefined;
+  /**
    * The current plan item quantities
    */
   planItemQuantities?: Array<ConfigurationPlanItemQuantities> | undefined;
@@ -849,6 +905,36 @@ export type ConfigurationFromPlan = {
    * The rate variant currently assigned
    */
   rateVariantKey?: string | undefined;
+};
+
+export const Model = {
+  Unit: "unit",
+} as const;
+export type Model = ClosedEnum<typeof Model>;
+
+/**
+ * The absolute price that replaces the plan item price, after any rate variant
+ */
+export type Price = {
+  model: Model;
+  /**
+   * The non-negative per-unit USD amount, with at most two decimal places
+   */
+  unitAmount: string;
+};
+
+/**
+ * The plan item prices to set for the subscription, independent of quantities
+ */
+export type PlanItemPrices = {
+  /**
+   * The ID of the plan item to set the price for
+   */
+  planItemId: string;
+  /**
+   * The absolute price that replaces the plan item price, after any rate variant
+   */
+  price: Price;
 };
 
 /**
@@ -881,6 +967,10 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions = {
    * The ID of the plan to subscribe to
    */
   planId: string;
+  /**
+   * The plan item prices to set for the subscription, independent of quantities
+   */
+  planItemPrices?: Array<PlanItemPrices> | undefined;
   /**
    * The plan item quantities to set for the subscription
    */
@@ -2421,6 +2511,72 @@ export function buyCreditsResponseBody3FromJSON(
 }
 
 /** @internal */
+export const AdditionalSubscriptions$inboundSchema: z.ZodType<
+  AdditionalSubscriptions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  currentCycleEndDate: types.string(),
+  orbSubscriptionId: types.string(),
+  planId: types.string(),
+});
+
+export function additionalSubscriptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<AdditionalSubscriptions, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AdditionalSubscriptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AdditionalSubscriptions' from JSON`,
+  );
+}
+
+/** @internal */
+export const ConfigurationModel$inboundSchema: z.ZodNativeEnum<
+  typeof ConfigurationModel
+> = z.nativeEnum(ConfigurationModel);
+
+/** @internal */
+export const ConfigurationPrice$inboundSchema: z.ZodType<
+  ConfigurationPrice,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  model: ConfigurationModel$inboundSchema,
+  unitAmount: types.string(),
+});
+
+export function configurationPriceFromJSON(
+  jsonString: string,
+): SafeParseResult<ConfigurationPrice, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConfigurationPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConfigurationPrice' from JSON`,
+  );
+}
+
+/** @internal */
+export const ConfigurationPlanItemPrices$inboundSchema: z.ZodType<
+  ConfigurationPlanItemPrices,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  planItemId: types.string(),
+  price: z.lazy(() => ConfigurationPrice$inboundSchema),
+});
+
+export function configurationPlanItemPricesFromJSON(
+  jsonString: string,
+): SafeParseResult<ConfigurationPlanItemPrices, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConfigurationPlanItemPrices$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConfigurationPlanItemPrices' from JSON`,
+  );
+}
+
+/** @internal */
 export const ConfigurationPlanItemQuantities$inboundSchema: z.ZodType<
   ConfigurationPlanItemQuantities,
   z.ZodTypeDef,
@@ -2447,9 +2603,15 @@ export const ConfigurationFromPlan$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  additionalSubscriptions: types.optional(
+    z.array(z.lazy(() => AdditionalSubscriptions$inboundSchema)),
+  ),
   currentCycleEndDate: types.string(),
   orbSubscriptionId: types.string(),
   planId: types.string(),
+  planItemPrices: types.optional(
+    z.array(z.lazy(() => ConfigurationPlanItemPrices$inboundSchema)),
+  ),
   planItemQuantities: types.optional(
     z.array(z.lazy(() => ConfigurationPlanItemQuantities$inboundSchema)),
   ),
@@ -2463,6 +2625,48 @@ export function configurationFromPlanFromJSON(
     jsonString,
     (x) => ConfigurationFromPlan$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ConfigurationFromPlan' from JSON`,
+  );
+}
+
+/** @internal */
+export const Model$inboundSchema: z.ZodNativeEnum<typeof Model> = z.nativeEnum(
+  Model,
+);
+
+/** @internal */
+export const Price$inboundSchema: z.ZodType<Price, z.ZodTypeDef, unknown> = z
+  .object({
+    model: Model$inboundSchema,
+    unitAmount: types.string(),
+  });
+
+export function priceFromJSON(
+  jsonString: string,
+): SafeParseResult<Price, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Price$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Price' from JSON`,
+  );
+}
+
+/** @internal */
+export const PlanItemPrices$inboundSchema: z.ZodType<
+  PlanItemPrices,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  planItemId: types.string(),
+  price: z.lazy(() => Price$inboundSchema),
+});
+
+export function planItemPricesFromJSON(
+  jsonString: string,
+): SafeParseResult<PlanItemPrices, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PlanItemPrices$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PlanItemPrices' from JSON`,
   );
 }
 
@@ -2496,6 +2700,9 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inb
   > = z.object({
     fromPlan: types.optional(z.lazy(() => ConfigurationFromPlan$inboundSchema)),
     planId: types.string(),
+    planItemPrices: types.optional(
+      z.array(z.lazy(() => PlanItemPrices$inboundSchema)),
+    ),
     planItemQuantities: types.optional(
       z.array(z.lazy(() => PlanItemQuantities$inboundSchema)),
     ),

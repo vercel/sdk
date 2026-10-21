@@ -156,7 +156,7 @@ run();
 
 ## getOrganization
 
-Get a single organization by ID. This endpoint is in private beta. Contact your Vercel account team for access.
+Get a single organization by ID or slug. This endpoint is in private beta. Contact your Vercel account team for access.
 
 ### Example Usage
 

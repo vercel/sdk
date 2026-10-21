@@ -111,10 +111,10 @@ export type UpdateProjectNodeVersion = ClosedEnum<
 >;
 
 export const UpdateProjectBuildMachineType = {
+  Standard: "standard",
   Basic: "basic",
   Enhanced: "enhanced",
   Turbo: "turbo",
-  Standard: "standard",
   Elastic: "elastic",
 } as const;
 export type UpdateProjectBuildMachineType = ClosedEnum<

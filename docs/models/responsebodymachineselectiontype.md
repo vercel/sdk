@@ -5,7 +5,7 @@ Whether the build ran on a fixed or elastic machine. Used to drive billing for t
 ## Example Usage
 
 ```typescript
-import { ResponseBodyMachineSelectionType } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse2.js";
+import { ResponseBodyMachineSelectionType } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse200applicationjsonresponsebodyvalue.js";
 
 let value: ResponseBodyMachineSelectionType = "fixed";
 ```

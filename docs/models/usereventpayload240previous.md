@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload240Previous } from "@vercel/sdk/models/configchanges.js";
+import { UserEventPayload240Previous } from "@vercel/sdk/models/rulegroups.js";
 
 let value: UserEventPayload240Previous = {
   allowUnsafeScriptSrcKeywords: false,

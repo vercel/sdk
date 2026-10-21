@@ -58,30 +58,9 @@ export type GetProjectBoxesRequest = {
 
 export type ConfiguredReplicas = number | { [k: string]: number };
 
-export type Vhs2 = {
-  repositoryName: string;
-};
-
-export type VhsConfig = {
-  command?: Array<string> | undefined;
-  entrypoint?: Array<string> | undefined;
-  workingDir?: string | undefined;
-};
-
-export type Vhs1 = {
-  config?: VhsConfig | undefined;
-  digest: string;
-  path: string;
-  repositoryName: string;
-  sizeInBytes?: number | undefined;
-};
-
-export type Vhs = Vhs1 | Vhs2;
-
 export type Image = {
   requested: string;
   resolved: string;
-  vhs?: Vhs1 | Vhs2 | undefined;
 };
 
 export type HttpHeaders = {
@@ -132,21 +111,10 @@ export type GetProjectBoxesConfig = {
   terminationGracePeriodSeconds?: number | undefined;
 };
 
-/**
- * Encrypted Iroh endpoint data for internal consumers.
- */
-export type Iroh = {
-  publicKeyCiphertext: string;
-};
-
 export type GetProjectBoxesItems = {
   alive?: boolean | undefined;
   id: string;
   image?: string | undefined;
-  /**
-   * Encrypted Iroh endpoint data for internal consumers.
-   */
-  iroh?: Iroh | undefined;
   lastCheckedAt?: string | undefined;
   memoryMiB?: number | undefined;
   region: string;
@@ -276,90 +244,10 @@ export function configuredReplicasFromJSON(
 }
 
 /** @internal */
-export const Vhs2$inboundSchema: z.ZodType<Vhs2, z.ZodTypeDef, unknown> = z
-  .object({
-    repositoryName: types.string(),
-  });
-
-export function vhs2FromJSON(
-  jsonString: string,
-): SafeParseResult<Vhs2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Vhs2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Vhs2' from JSON`,
-  );
-}
-
-/** @internal */
-export const VhsConfig$inboundSchema: z.ZodType<
-  VhsConfig,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  command: types.optional(z.array(types.string())),
-  entrypoint: types.optional(z.array(types.string())),
-  workingDir: types.optional(types.string()),
-});
-
-export function vhsConfigFromJSON(
-  jsonString: string,
-): SafeParseResult<VhsConfig, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => VhsConfig$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VhsConfig' from JSON`,
-  );
-}
-
-/** @internal */
-export const Vhs1$inboundSchema: z.ZodType<Vhs1, z.ZodTypeDef, unknown> = z
-  .object({
-    config: types.optional(z.lazy(() => VhsConfig$inboundSchema)),
-    digest: types.string(),
-    path: types.string(),
-    repositoryName: types.string(),
-    sizeInBytes: types.optional(types.number()),
-  });
-
-export function vhs1FromJSON(
-  jsonString: string,
-): SafeParseResult<Vhs1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Vhs1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Vhs1' from JSON`,
-  );
-}
-
-/** @internal */
-export const Vhs$inboundSchema: z.ZodType<Vhs, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Vhs1$inboundSchema),
-    z.lazy(() => Vhs2$inboundSchema),
-  ]);
-
-export function vhsFromJSON(
-  jsonString: string,
-): SafeParseResult<Vhs, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Vhs$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Vhs' from JSON`,
-  );
-}
-
-/** @internal */
 export const Image$inboundSchema: z.ZodType<Image, z.ZodTypeDef, unknown> = z
   .object({
     requested: types.string(),
     resolved: types.string(),
-    vhs: types.optional(
-      smartUnion([
-        z.lazy(() => Vhs1$inboundSchema),
-        z.lazy(() => Vhs2$inboundSchema),
-      ]),
-    ),
   });
 
 export function imageFromJSON(
@@ -525,22 +413,6 @@ export function getProjectBoxesConfigFromJSON(
 }
 
 /** @internal */
-export const Iroh$inboundSchema: z.ZodType<Iroh, z.ZodTypeDef, unknown> = z
-  .object({
-    publicKeyCiphertext: types.string(),
-  });
-
-export function irohFromJSON(
-  jsonString: string,
-): SafeParseResult<Iroh, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Iroh$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Iroh' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetProjectBoxesItems$inboundSchema: z.ZodType<
   GetProjectBoxesItems,
   z.ZodTypeDef,
@@ -549,7 +421,6 @@ export const GetProjectBoxesItems$inboundSchema: z.ZodType<
   alive: types.optional(types.boolean()),
   id: types.string(),
   image: types.optional(types.string()),
-  iroh: types.optional(z.lazy(() => Iroh$inboundSchema)),
   lastCheckedAt: types.optional(types.string()),
   memoryMiB: types.optional(types.number()),
   region: types.string(),

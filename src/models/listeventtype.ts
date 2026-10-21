@@ -400,13 +400,13 @@ export const Name = {
   MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
   MarketplaceIntegrationAllowlistUpdated:
     "marketplace-integration-allowlist-updated",
+  MessageboardChannelCreated: "messageboard-channel-created",
+  MessageboardChannelUpdated: "messageboard-channel-updated",
   MessageboardCreated: "messageboard-created",
+  MessageboardPrivateChannelCreated: "messageboard-private-channel-created",
+  MessageboardPrivateChannelUpdated: "messageboard-private-channel-updated",
   MessageboardPrivateCreated: "messageboard-private-created",
-  MessageboardPrivateSpaceCreated: "messageboard-private-space-created",
-  MessageboardPrivateSpaceUpdated: "messageboard-private-space-updated",
   MessageboardSchemaRegistered: "messageboard-schema-registered",
-  MessageboardSpaceCreated: "messageboard-space-created",
-  MessageboardSpaceUpdated: "messageboard-space-updated",
   MessageboardVisibilityUpdated: "messageboard-visibility-updated",
   MicrofrontendGroupAdded: "microfrontend-group-added",
   MicrofrontendGroupDeleted: "microfrontend-group-deleted",
@@ -834,6 +834,7 @@ export const Name = {
   WebhookDeleted: "webhook-deleted",
   WebhookUpdated: "webhook-updated",
   WorkflowDeploymentKeyAccessed: "workflow-deployment-key-accessed",
+  XaaUpdated: "xaa-updated",
 } as const;
 /**
  * The name of the event type.
@@ -1196,13 +1197,13 @@ export const ReplacedBy = {
   MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
   MarketplaceIntegrationAllowlistUpdated:
     "marketplace-integration-allowlist-updated",
+  MessageboardChannelCreated: "messageboard-channel-created",
+  MessageboardChannelUpdated: "messageboard-channel-updated",
   MessageboardCreated: "messageboard-created",
+  MessageboardPrivateChannelCreated: "messageboard-private-channel-created",
+  MessageboardPrivateChannelUpdated: "messageboard-private-channel-updated",
   MessageboardPrivateCreated: "messageboard-private-created",
-  MessageboardPrivateSpaceCreated: "messageboard-private-space-created",
-  MessageboardPrivateSpaceUpdated: "messageboard-private-space-updated",
   MessageboardSchemaRegistered: "messageboard-schema-registered",
-  MessageboardSpaceCreated: "messageboard-space-created",
-  MessageboardSpaceUpdated: "messageboard-space-updated",
   MessageboardVisibilityUpdated: "messageboard-visibility-updated",
   MicrofrontendGroupAdded: "microfrontend-group-added",
   MicrofrontendGroupDeleted: "microfrontend-group-deleted",
@@ -1630,6 +1631,7 @@ export const ReplacedBy = {
   WebhookDeleted: "webhook-deleted",
   WebhookUpdated: "webhook-updated",
   WorkflowDeploymentKeyAccessed: "workflow-deployment-key-accessed",
+  XaaUpdated: "xaa-updated",
 } as const;
 /**
  * Event type names that supersede this deprecated event type.

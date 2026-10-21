@@ -23,15 +23,6 @@ const value: models.ListDeploymentCheckRunsSelection2 = {
 
 ```typescript
 const value: models.ListDeploymentCheckRunsSelection3 = {
-  job: "Senior Identity Officer",
-  kind: "job",
-};
-```
-
-### `models.ListDeploymentCheckRunsSelection4`
-
-```typescript
-const value: models.ListDeploymentCheckRunsSelection4 = {
   filters: [],
   job: "Turborepo",
   kind: "turborepo",

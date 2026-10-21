@@ -299,10 +299,10 @@ export type OidcTokenConfig = {
 };
 
 export const BuildMachineType = {
+  Standard: "standard",
   Basic: "basic",
   Enhanced: "enhanced",
   Turbo: "turbo",
-  Standard: "standard",
   Elastic: "elastic",
 } as const;
 export type BuildMachineType = ClosedEnum<typeof BuildMachineType>;

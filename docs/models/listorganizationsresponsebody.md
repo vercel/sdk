@@ -11,7 +11,6 @@ let value: ListOrganizationsResponseBody = {
       avatar: "https://picsum.photos/seed/z4oCL/3461/3177",
       createdAt: "1711416668904",
       organizationId: "<id>",
-      ownerId: "<id>",
       slug: "<value>",
       teamCount: 1770.76,
       teamId: "<id>",

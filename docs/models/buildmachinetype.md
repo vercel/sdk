@@ -5,11 +5,11 @@
 ```typescript
 import { BuildMachineType } from "@vercel/sdk/models/internalroutesmitigate.js";
 
-let value: BuildMachineType = "enhanced";
+let value: BuildMachineType = "basic";
 ```
 
 ## Values
 
 ```typescript
-"basic" | "enhanced" | "turbo" | "standard" | "elastic"
+"standard" | "basic" | "enhanced" | "turbo" | "elastic"
 ```

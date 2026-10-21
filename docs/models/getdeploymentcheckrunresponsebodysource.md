@@ -43,7 +43,7 @@ const value: models.GetDeploymentCheckRunSource4 = {};
 const value: models.GetDeploymentCheckRunSource5 = {
   origin: "api",
   selection: {
-    kind: "deployment",
+    kind: "invocation",
   },
   subKind: "vercel-ci-check",
 };

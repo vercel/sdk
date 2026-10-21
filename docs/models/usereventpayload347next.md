@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload347Next } from "@vercel/sdk/models/threehundredandseventeen.js";
+import { UserEventPayload347Next } from "@vercel/sdk/models/usereventpayload318project.js";
 
 let value: UserEventPayload347Next = {
   skewProtectionMaxAge: 3074.71,

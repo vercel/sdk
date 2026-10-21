@@ -6,7 +6,7 @@ import * as z from "zod/v3";
 
 export type GetOrganizationRequest = {
   /**
-   * The ID of the organization to retrieve.
+   * The ID or slug of the organization to retrieve.
    */
   organizationId: string;
   /**

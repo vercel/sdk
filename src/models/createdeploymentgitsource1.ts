@@ -1206,6 +1206,10 @@ export type ResponseBodyFunctions = {
     | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   includeFiles?: string | undefined;
+  /**
+   * Overrides how dependencies are installed for this function. An empty string skips the install. Only honored by `@vercel/node`.
+   */
+  installCommand?: string | undefined;
   maxConcurrency?: number | undefined;
   maxDuration?: number | CreateDeploymentMaxDuration2 | undefined;
   memory?: number | undefined;
@@ -3413,6 +3417,7 @@ export const ResponseBodyFunctions$inboundSchema: z.ZodType<
   ),
   functionFailoverRegions: types.optional(z.array(types.string())),
   includeFiles: types.optional(types.string()),
+  installCommand: types.optional(types.string()),
   maxConcurrency: types.optional(types.number()),
   maxDuration: types.optional(
     smartUnion([types.number(), CreateDeploymentMaxDuration2$inboundSchema]),

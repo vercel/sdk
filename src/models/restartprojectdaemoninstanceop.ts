@@ -18,7 +18,7 @@ export type RestartProjectDaemonInstanceRequest = {
    */
   daemonName: string;
   /**
-   * The ID of the daemon instance whose user container is restarted, for example `dmni_01k7d0q5w3x8y9z0a1b2c3d4e5`
+   * The ID of the daemon instance to restart
    */
   instanceId: string;
   /**

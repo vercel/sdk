@@ -5,7 +5,7 @@ Set when this build produces the named daemon.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentServicesDaemon } from "@vercel/sdk/models/getdeploymentservicesmiddlewareruntime.js";
+import { GetDeploymentServicesDaemon } from "@vercel/sdk/models/getdeploymentservicesmiddlewarematcher.js";
 
 let value: GetDeploymentServicesDaemon = {
   entrypoint: "<value>",

@@ -17,4 +17,3 @@ let value: Image = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `requested`        | *string*           | :heavy_check_mark: | N/A                |
 | `resolved`         | *string*           | :heavy_check_mark: | N/A                |
-| `vhs`              | *models.Vhs*       | :heavy_minus_sign: | N/A                |

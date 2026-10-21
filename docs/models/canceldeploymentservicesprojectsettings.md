@@ -3,26 +3,27 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentServicesProjectSettings } from "@vercel/sdk/models/canceldeploymentmissingdeploymentsresponse2.js";
+import { CancelDeploymentServicesProjectSettings } from "@vercel/sdk/models/canceldeploymentmissingdeploymentsresponse200applicationjsonresponsebodyservicesvalue.js";
 
 let value: CancelDeploymentServicesProjectSettings = {};
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `autoExposeSystemEnvs`            | *boolean*                         | :heavy_minus_sign:                | N/A                               |
-| `buildCommand`                    | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `commandForIgnoringBuildStep`     | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `createdAt`                       | *number*                          | :heavy_minus_sign:                | N/A                               |
-| `devCommand`                      | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `directoryListing`                | *boolean*                         | :heavy_minus_sign:                | N/A                               |
-| `framework`                       | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `gitForkProtection`               | *boolean*                         | :heavy_minus_sign:                | N/A                               |
-| `installCommand`                  | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `monorepoManager`                 | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `nodeVersion`                     | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `outputDirectory`                 | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `rootDirectory`                   | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `sourceFilesOutsideRootDirectory` | *boolean*                         | :heavy_minus_sign:                | N/A                               |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `autoExposeSystemEnvs`                                         | *boolean*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
+| `buildCommand`                                                 | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `commandForIgnoringBuildStep`                                  | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `createdAt`                                                    | *number*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `devCommand`                                                   | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `directoryListing`                                             | *boolean*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
+| `framework`                                                    | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `gitForkProtection`                                            | *boolean*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
+| `installCommand`                                               | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `monorepoManager`                                              | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `nodeVersion`                                                  | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `outputDirectory`                                              | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `rootDirectory`                                                | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `sourceFilesOutsideRootDirectory`                              | *boolean*                                                      | :heavy_minus_sign:                                             | N/A                                                            |
+| `vercelFlags`                                                  | [models.ServicesVercelFlags](../models/servicesvercelflags.md) | :heavy_minus_sign:                                             | N/A                                                            |

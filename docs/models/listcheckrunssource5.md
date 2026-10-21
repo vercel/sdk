@@ -10,7 +10,7 @@ import { ListCheckRunsSource5 } from "@vercel/sdk/models/listcheckrunsop.js";
 let value: ListCheckRunsSource5 = {
   origin: "api",
   selection: {
-    kind: "deployment",
+    kind: "invocation",
   },
   subKind: "vercel-ci-check",
 };

@@ -639,6 +639,10 @@ export type Functions = {
     | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   includeFiles?: string | undefined;
+  /**
+   * Overrides how dependencies are installed for this function. An empty string skips the install. Only honored by `@vercel/node`.
+   */
+  installCommand?: string | undefined;
   maxConcurrency?: number | undefined;
   maxDuration?: number | MaxDuration2 | undefined;
   memory?: number | undefined;
@@ -2609,6 +2613,7 @@ export const Functions$inboundSchema: z.ZodType<
   ),
   functionFailoverRegions: types.optional(z.array(types.string())),
   includeFiles: types.optional(types.string()),
+  installCommand: types.optional(types.string()),
   maxConcurrency: types.optional(types.number()),
   maxDuration: types.optional(
     smartUnion([types.number(), MaxDuration2$inboundSchema]),

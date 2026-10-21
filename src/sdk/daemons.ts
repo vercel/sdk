@@ -25,7 +25,7 @@ export class Daemons extends ClientSDK {
    * Get project daemons
    *
    * @remarks
-   * Lists project daemons.
+   * List the daemons of a project.
    */
   async getProjectBoxes(
     request: GetProjectBoxesRequest,
@@ -42,7 +42,7 @@ export class Daemons extends ClientSDK {
    * Override a project daemon's instance counts
    *
    * @remarks
-   * Override an existing daemon's instance counts by region. Each region in the map replaces the configured count for that region. Regions not in the map keep their configured count. An empty map removes the overrides. The daemon configuration is not changed. Missing or deleted daemons return 404. Repeating the same overrides succeeds without a storage write or reconciliation event.
+   * Override the instance counts of a daemon by region, without changing its configuration. An empty map removes the overrides.
    */
   async putProjectDaemonInstances(
     request: PutProjectDaemonInstancesRequest,
@@ -59,7 +59,7 @@ export class Daemons extends ClientSDK {
    * Force restart a project daemon instance
    *
    * @remarks
-   * Force restarts the user container of one running daemon instance. The instance's controller stops the current user container and starts a new one from the same configuration, so in-flight requests are interrupted and any state that only lives inside the container is lost. The instance keeps its ID and region. The response returns as soon as the controller accepts the restart, before the new container is running. Only production instances can be restarted. Accepts a Vercel token that can update the project, or a production project OIDC token issued for the same project. No request body or Content-Type header is required.
+   * Force restart a running production daemon instance. The new container starts asynchronously after the restart is accepted.
    */
   async restartProjectDaemonInstance(
     request: RestartProjectDaemonInstanceRequest,

@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Get project daemons
  *
  * @remarks
- * Lists project daemons.
+ * List the daemons of a project.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

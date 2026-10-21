@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Force restart a project daemon instance
  *
  * @remarks
- * Force restarts the user container of one running daemon instance. The instance's controller stops the current user container and starts a new one from the same configuration, so in-flight requests are interrupted and any state that only lives inside the container is lost. The instance keeps its ID and region. The response returns as soon as the controller accepts the restart, before the new container is running. Only production instances can be restarted. Accepts a Vercel token that can update the project, or a production project OIDC token issued for the same project. No request body or Content-Type header is required.
+ * Force restart a running production daemon instance. The new container starts asynchronously after the restart is accepted.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

@@ -215,17 +215,12 @@ export type CreateDeploymentCheckRunSelectionJob = ClosedEnum<
   typeof CreateDeploymentCheckRunSelectionJob
 >;
 
-export type Selection4 = {
+export type Selection3 = {
   failIfNoMatch?: boolean | undefined;
   filters: Array<string>;
   job: CreateDeploymentCheckRunSelectionJob;
   kind: "turborepo";
   task: string;
-};
-
-export type Selection3 = {
-  job: string;
-  kind: "job";
 };
 
 export type Selection2 = {
@@ -236,7 +231,7 @@ export type Selection1 = {
   kind: "invocation";
 };
 
-export type Selection = Selection1 | Selection2 | Selection3 | Selection4;
+export type Selection = Selection1 | Selection2 | Selection3;
 
 export const SourceSubKind = {
   VercelCiCheck: "vercel-ci-check",
@@ -248,7 +243,7 @@ export type SourceSubKind = ClosedEnum<typeof SourceSubKind>;
  */
 export type Source5 = {
   origin: SourceOrigin;
-  selection: Selection1 | Selection2 | Selection3 | Selection4;
+  selection: Selection1 | Selection2 | Selection3;
   subKind: SourceSubKind;
 };
 
@@ -712,8 +707,8 @@ export const CreateDeploymentCheckRunSelectionJob$inboundSchema:
   );
 
 /** @internal */
-export const Selection4$inboundSchema: z.ZodType<
-  Selection4,
+export const Selection3$inboundSchema: z.ZodType<
+  Selection3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -722,26 +717,6 @@ export const Selection4$inboundSchema: z.ZodType<
   job: CreateDeploymentCheckRunSelectionJob$inboundSchema,
   kind: types.literal("turborepo"),
   task: types.string(),
-});
-
-export function selection4FromJSON(
-  jsonString: string,
-): SafeParseResult<Selection4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Selection4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Selection4' from JSON`,
-  );
-}
-
-/** @internal */
-export const Selection3$inboundSchema: z.ZodType<
-  Selection3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  job: types.string(),
-  kind: types.literal("job"),
 });
 
 export function selection3FromJSON(
@@ -801,7 +776,6 @@ export const Selection$inboundSchema: z.ZodType<
   z.lazy(() => Selection1$inboundSchema),
   z.lazy(() => Selection2$inboundSchema),
   z.lazy(() => Selection3$inboundSchema),
-  z.lazy(() => Selection4$inboundSchema),
 ]);
 
 export function selectionFromJSON(
@@ -827,7 +801,6 @@ export const Source5$inboundSchema: z.ZodType<Source5, z.ZodTypeDef, unknown> =
       z.lazy(() => Selection1$inboundSchema),
       z.lazy(() => Selection2$inboundSchema),
       z.lazy(() => Selection3$inboundSchema),
-      z.lazy(() => Selection4$inboundSchema),
     ]),
     subKind: SourceSubKind$inboundSchema,
   });

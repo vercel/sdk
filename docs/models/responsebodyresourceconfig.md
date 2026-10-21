@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyResourceConfig } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse2.js";
+import { ResponseBodyResourceConfig } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse200applicationjsonresponsebodyvalue.js";
 
 let value: ResponseBodyResourceConfig = {};
 ```

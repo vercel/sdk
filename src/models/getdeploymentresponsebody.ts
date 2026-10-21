@@ -99,10 +99,25 @@ import {
   GetDeploymentServicesIncludeFiles$inboundSchema,
   GetDeploymentServicesMiddlewareMatcher,
   GetDeploymentServicesMiddlewareMatcher$inboundSchema,
-  GetDeploymentServicesMiddlewareRuntime,
-  GetDeploymentServicesMiddlewareRuntime$inboundSchema,
-} from "./getdeploymentservicesmiddlewareruntime.js";
+} from "./getdeploymentservicesmiddlewarematcher.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * Enforced runtime for explicitly configured Routing Middleware.
+ */
+export const GetDeploymentServicesMiddlewareRuntime = {
+  Nodejs: "nodejs",
+} as const;
+/**
+ * Enforced runtime for explicitly configured Routing Middleware.
+ */
+export type GetDeploymentServicesMiddlewareRuntime = ClosedEnum<
+  typeof GetDeploymentServicesMiddlewareRuntime
+>;
+
+export type GetDeploymentServicesVercelFlags = {
+  enabledAt?: number | undefined;
+};
 
 export type GetDeploymentServicesDeploymentsProjectSettings = {
   autoExposeSystemEnvs?: boolean | undefined;
@@ -119,6 +134,7 @@ export type GetDeploymentServicesDeploymentsProjectSettings = {
   outputDirectory?: string | null | undefined;
   rootDirectory?: string | null | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
+  vercelFlags?: GetDeploymentServicesVercelFlags | undefined;
 };
 
 export type GetDeploymentServicesEntrypoints = {
@@ -681,6 +697,31 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1;
 
 /** @internal */
+export const GetDeploymentServicesMiddlewareRuntime$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentServicesMiddlewareRuntime> = z.nativeEnum(
+    GetDeploymentServicesMiddlewareRuntime,
+  );
+
+/** @internal */
+export const GetDeploymentServicesVercelFlags$inboundSchema: z.ZodType<
+  GetDeploymentServicesVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function getDeploymentServicesVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentServicesDeploymentsProjectSettings$inboundSchema:
   z.ZodType<
     GetDeploymentServicesDeploymentsProjectSettings,
@@ -701,6 +742,9 @@ export const GetDeploymentServicesDeploymentsProjectSettings$inboundSchema:
     outputDirectory: z.nullable(types.string()).optional(),
     rootDirectory: z.nullable(types.string()).optional(),
     sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+    vercelFlags: types.optional(
+      z.lazy(() => GetDeploymentServicesVercelFlags$inboundSchema),
+    ),
   });
 
 export function getDeploymentServicesDeploymentsProjectSettingsFromJSON(

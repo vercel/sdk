@@ -47,8 +47,10 @@ import {
   ResponseBodyGitRepo$inboundSchema,
 } from "./createdeploymentgitsource1.js";
 import {
-  CreateDeploymentHasDeploymentsResponse2,
-  CreateDeploymentHasDeploymentsResponse2$inboundSchema,
+  CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyType,
+  CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyValue,
+  CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyValue$inboundSchema,
   CreateDeploymentResponseBodyDeploymentsReadyState,
   CreateDeploymentResponseBodyDeploymentsReadyState$inboundSchema,
   CreateDeploymentResponseBodyGitSource,
@@ -93,8 +95,17 @@ import {
   ResponseBodySeatBlock$inboundSchema,
   ServicesBindings,
   ServicesBindings$inboundSchema,
-} from "./createdeploymenthasdeploymentsresponse2.js";
+} from "./createdeploymenthasdeploymentsresponse200applicationjsonresponsebodyvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentHasDeploymentsResponse2 = {
+  key: string;
+  type:
+    CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyType;
+  value?:
+    | CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyValue
+    | undefined;
+};
 
 export type CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Eq =
   | string
@@ -1066,6 +1077,10 @@ export type CreateDeploymentServicesDeploymentsResponseFunctions = {
     | undefined;
   functionFailoverRegions?: Array<string> | undefined;
   includeFiles?: string | undefined;
+  /**
+   * Overrides how dependencies are installed for this function. An empty string skips the install. Only honored by `@vercel/node`.
+   */
+  installCommand?: string | undefined;
   maxConcurrency?: number | undefined;
   maxDuration?:
     | number
@@ -1094,6 +1109,10 @@ export type CreateDeploymentServicesMiddlewareRuntime = ClosedEnum<
   typeof CreateDeploymentServicesMiddlewareRuntime
 >;
 
+export type CreateDeploymentServicesVercelFlags = {
+  enabledAt?: number | undefined;
+};
+
 export type CreateDeploymentServicesProjectSettings = {
   autoExposeSystemEnvs?: boolean | undefined;
   buildCommand?: string | null | undefined;
@@ -1109,6 +1128,7 @@ export type CreateDeploymentServicesProjectSettings = {
   outputDirectory?: string | null | undefined;
   rootDirectory?: string | null | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
+  vercelFlags?: CreateDeploymentServicesVercelFlags | undefined;
 };
 
 export type CreateDeploymentServicesEntrypoints = {
@@ -1670,6 +1690,36 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentHasDeploymentsResponse2$inboundSchema: z.ZodType<
+  CreateDeploymentHasDeploymentsResponse2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.string(),
+  type:
+    CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  value: types.optional(
+    CreateDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyValue$inboundSchema,
+  ),
+});
+
+export function createDeploymentHasDeploymentsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentHasDeploymentsResponse2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentHasDeploymentsResponse2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateDeploymentHasDeploymentsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Eq$inboundSchema:
   z.ZodType<
     CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Eq,
@@ -1793,13 +1843,13 @@ export const CreateDeploymentServicesDeploymentsHas$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => CreateDeploymentHasDeploymentsResponse1$inboundSchema),
-  CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+  z.lazy(() => CreateDeploymentHasDeploymentsResponse2$inboundSchema).and(
     z.object({ type: z.literal("cookie") }),
   ),
-  CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+  z.lazy(() => CreateDeploymentHasDeploymentsResponse2$inboundSchema).and(
     z.object({ type: z.literal("header") }),
   ),
-  CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+  z.lazy(() => CreateDeploymentHasDeploymentsResponse2$inboundSchema).and(
     z.object({ type: z.literal("query") }),
   ),
 ]);
@@ -2103,13 +2153,13 @@ export const CreateDeploymentServicesRedirects$inboundSchema: z.ZodType<
   has: types.optional(
     z.array(z.union([
       z.lazy(() => CreateDeploymentHasDeploymentsResponse1$inboundSchema),
-      CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
-        z.object({ type: z.literal("cookie") }),
-      ),
-      CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+      z.lazy(() =>
+        CreateDeploymentHasDeploymentsResponse2$inboundSchema
+      ).and(z.object({ type: z.literal("cookie") })),
+      z.lazy(() => CreateDeploymentHasDeploymentsResponse2$inboundSchema).and(
         z.object({ type: z.literal("header") }),
       ),
-      CreateDeploymentHasDeploymentsResponse2$inboundSchema.and(
+      z.lazy(() => CreateDeploymentHasDeploymentsResponse2$inboundSchema).and(
         z.object({ type: z.literal("query") }),
       ),
     ])),
@@ -4238,6 +4288,7 @@ export const CreateDeploymentServicesDeploymentsResponseFunctions$inboundSchema:
     ),
     functionFailoverRegions: types.optional(z.array(types.string())),
     includeFiles: types.optional(types.string()),
+    installCommand: types.optional(types.string()),
     maxConcurrency: types.optional(types.number()),
     maxDuration: types.optional(
       smartUnion([
@@ -4314,6 +4365,26 @@ export const CreateDeploymentServicesMiddlewareRuntime$inboundSchema:
     .nativeEnum(CreateDeploymentServicesMiddlewareRuntime);
 
 /** @internal */
+export const CreateDeploymentServicesVercelFlags$inboundSchema: z.ZodType<
+  CreateDeploymentServicesVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function createDeploymentServicesVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateDeploymentServicesVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentServicesVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentServicesVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentServicesProjectSettings$inboundSchema: z.ZodType<
   CreateDeploymentServicesProjectSettings,
   z.ZodTypeDef,
@@ -4333,6 +4404,9 @@ export const CreateDeploymentServicesProjectSettings$inboundSchema: z.ZodType<
   outputDirectory: z.nullable(types.string()).optional(),
   rootDirectory: z.nullable(types.string()).optional(),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+  vercelFlags: types.optional(
+    z.lazy(() => CreateDeploymentServicesVercelFlags$inboundSchema),
+  ),
 });
 
 export function createDeploymentServicesProjectSettingsFromJSON(

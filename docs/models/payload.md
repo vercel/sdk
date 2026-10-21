@@ -88,8 +88,8 @@ const value: models.Eight = {
 ```typescript
 const value: models.Nine = {
   boardId: "<id>",
+  channelId: "<id>",
   operationId: "<id>",
-  spaceId: "<id>",
 };
 ```
 
@@ -98,11 +98,11 @@ const value: models.Nine = {
 ```typescript
 const value: models.Ten = {
   boardId: "<id>",
+  channelId: "<id>",
   fields: [
     "<value 1>",
   ],
   operationId: "<id>",
-  spaceId: "<id>",
 };
 ```
 
@@ -5287,11 +5287,18 @@ const value: models.FourHundredAndEightyEight = {
 
 ```typescript
 const value: models.FourHundredAndEightyNine = {
-  appName: "<value>",
-  atTTL: 9982.08,
-  authMethod: "manual",
-  grantType: "urn:ietf:params:oauth:grant-type:device_code",
-  scope: "<value>",
+  next: {
+    enabled: false,
+    issuerUrls: [
+      "<value 1>",
+      "<value 2>",
+    ],
+  },
+  previous: {
+    enabled: false,
+    issuerUrls: [],
+  },
+  scope: "team",
 };
 ```
 
@@ -5299,8 +5306,11 @@ const value: models.FourHundredAndEightyNine = {
 
 ```typescript
 const value: models.FourHundredAndNinety = {
-  domain: "teeming-defendant.name",
-  projectId: "<id>",
+  appName: "<value>",
+  atTTL: 8404.35,
+  authMethod: "chatgpt",
+  grantType: "urn:ietf:params:oauth:grant-type:device_code",
+  scope: "<value>",
 };
 ```
 
@@ -5308,32 +5318,8 @@ const value: models.FourHundredAndNinety = {
 
 ```typescript
 const value: models.FourHundredAndNinetyOne = {
-  policy: {
-    claims: [
-      {
-        name: "<value>",
-        values: [],
-      },
-    ],
-    clientId: "<id>",
-    createdAt: 1192.44,
-    issuerUrl: "https://unhealthy-noon.info/",
-    name: "<value>",
-    permissions: [
-      "<value 1>",
-      "<value 2>",
-    ],
-    policyId: "<id>",
-    resources: {
-      projectIds: [
-        "<value 1>",
-        "<value 2>",
-        "<value 3>",
-      ],
-    },
-    teamId: "<id>",
-    updatedAt: 4769.45,
-  },
+  domain: "purple-carnival.info",
+  projectId: "<id>",
 };
 ```
 
@@ -5341,7 +5327,7 @@ const value: models.FourHundredAndNinetyOne = {
 
 ```typescript
 const value: models.FourHundredAndNinetyTwo = {
-  after: {
+  policy: {
     claims: [],
     clientId: "<id>",
     createdAt: 9229.55,
@@ -5352,6 +5338,40 @@ const value: models.FourHundredAndNinetyTwo = {
     resources: null,
     teamId: "<id>",
     updatedAt: 8366.71,
+  },
+};
+```
+
+### `models.FourHundredAndNinetyThree`
+
+```typescript
+const value: models.FourHundredAndNinetyThree = {
+  after: {
+    claims: [
+      {
+        name: "<value>",
+        values: [
+          {
+            value: "<value>",
+            wildcards: false,
+          },
+        ],
+      },
+    ],
+    clientId: "<id>",
+    createdAt: 8895.8,
+    issuerUrl: "https://growing-tuba.info",
+    name: "<value>",
+    permissions: [],
+    policyId: "<id>",
+    resources: {
+      projectIds: [
+        "<value 1>",
+        "<value 2>",
+      ],
+    },
+    teamId: "<id>",
+    updatedAt: 2997.27,
   },
   before: {
     claims: [
@@ -5366,9 +5386,9 @@ const value: models.FourHundredAndNinetyTwo = {
       },
     ],
     clientId: "<id>",
-    createdAt: 2465.77,
-    issuerUrl: "https://complete-swing.info",
-    name: "<value>",
+    createdAt: 5603.36,
+    issuerUrl: "https://profitable-lid.name",
+    name: null,
     permissions: [
       "<value 1>",
       "<value 2>",
@@ -5382,19 +5402,8 @@ const value: models.FourHundredAndNinetyTwo = {
       ],
     },
     teamId: "<id>",
-    updatedAt: 8268.1,
+    updatedAt: 1356.43,
   },
-};
-```
-
-### `models.FourHundredAndNinetyThree`
-
-```typescript
-const value: models.FourHundredAndNinetyThree = {
-  origin: "saml",
-  scope: "team",
-  tokenId: "<id>",
-  tokenName: "<value>",
 };
 ```
 
@@ -5402,10 +5411,10 @@ const value: models.FourHundredAndNinetyThree = {
 
 ```typescript
 const value: models.FourHundredAndNinetyFour = {
-  actorTokenId: "<id>",
+  origin: "token-exchange-oidc",
+  scope: "team",
   tokenId: "<id>",
   tokenName: "<value>",
-  tokenType: "<value>",
 };
 ```
 
@@ -5414,7 +5423,18 @@ const value: models.FourHundredAndNinetyFour = {
 ```typescript
 const value: models.FourHundredAndNinetyFive = {
   actorTokenId: "<id>",
-  deletedCount: 5432.9,
+  tokenId: "<id>",
+  tokenName: "<value>",
+  tokenType: "<value>",
+};
+```
+
+### `models.FourHundredAndNinetySix`
+
+```typescript
+const value: models.FourHundredAndNinetySix = {
+  actorTokenId: "<id>",
+  deletedCount: 3905.94,
 };
 ```
 

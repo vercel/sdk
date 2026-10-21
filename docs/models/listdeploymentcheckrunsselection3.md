@@ -6,14 +6,19 @@
 import { ListDeploymentCheckRunsSelection3 } from "@vercel/sdk/models/listdeploymentcheckrunsop.js";
 
 let value: ListDeploymentCheckRunsSelection3 = {
-  job: "Senior Identity Officer",
-  kind: "job",
+  filters: [],
+  job: "Turborepo",
+  kind: "turborepo",
+  task: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `job`              | *string*           | :heavy_check_mark: | N/A                |
-| `kind`             | *"job"*            | :heavy_check_mark: | N/A                |
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `failIfNoMatch`                                                                                | *boolean*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `filters`                                                                                      | *string*[]                                                                                     | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `job`                                                                                          | [models.ListDeploymentCheckRunsSelectionJob](../models/listdeploymentcheckrunsselectionjob.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `kind`                                                                                         | *"turborepo"*                                                                                  | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `task`                                                                                         | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |

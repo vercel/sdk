@@ -16,7 +16,6 @@ export type Organization = {
    */
   name?: string | undefined;
   organizationId: string;
-  ownerId: string;
   slug: string;
   teamCount: number;
   teamId: string;
@@ -37,7 +36,6 @@ export const Organization$inboundSchema: z.ZodType<
   createdAt: types.string(),
   name: types.optional(types.string()),
   organizationId: types.string(),
-  ownerId: types.string(),
   slug: types.string(),
   teamCount: types.number(),
   teamId: types.string(),

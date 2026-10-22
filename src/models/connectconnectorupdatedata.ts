@@ -133,6 +133,38 @@ export type Shortcuts = {
   description: string;
 };
 
+/**
+ * App Home settings for the managed Slack app. Updates preserve omitted settings.
+ */
+export type AppHome = {
+  /**
+   * Enable the Home tab for views.publish. Defaults to false for new apps.
+   */
+  homeTabEnabled?: boolean | undefined;
+  /**
+   * Enable the Messages tab. Defaults to true for new apps.
+   */
+  messagesTabEnabled?: boolean | undefined;
+  /**
+   * Make the Messages tab read-only. Defaults to false for new apps.
+   */
+  messagesTabReadOnlyEnabled?: boolean | undefined;
+};
+
+/**
+ * Work Object preview settings for the managed Slack app. Updates preserve omitted settings.
+ */
+export type RichPreviews = {
+  /**
+   * Enable Work Object previews. Defaults to false for new apps.
+   */
+  isActive?: boolean | undefined;
+  /**
+   * Entity types to preview. An empty array clears the configured types.
+   */
+  entityTypes?: Array<string> | undefined;
+};
+
 export type TypeSlack = {
   /**
    * Slack app ID.
@@ -178,6 +210,14 @@ export type TypeSlack = {
    * Global and message shortcuts configured for the Slack app.
    */
   shortcuts?: Array<Shortcuts> | undefined;
+  /**
+   * App Home settings for the managed Slack app. Updates preserve omitted settings.
+   */
+  appHome?: AppHome | undefined;
+  /**
+   * Work Object preview settings for the managed Slack app. Updates preserve omitted settings.
+   */
+  richPreviews?: RichPreviews | undefined;
   /**
    * Additional provider metadata stored with the connector.
    */
@@ -1045,6 +1085,48 @@ export function shortcutsToJSON(shortcuts: Shortcuts): string {
 }
 
 /** @internal */
+export type AppHome$Outbound = {
+  homeTabEnabled?: boolean | undefined;
+  messagesTabEnabled?: boolean | undefined;
+  messagesTabReadOnlyEnabled?: boolean | undefined;
+};
+
+/** @internal */
+export const AppHome$outboundSchema: z.ZodType<
+  AppHome$Outbound,
+  z.ZodTypeDef,
+  AppHome
+> = z.object({
+  homeTabEnabled: z.boolean().optional(),
+  messagesTabEnabled: z.boolean().optional(),
+  messagesTabReadOnlyEnabled: z.boolean().optional(),
+});
+
+export function appHomeToJSON(appHome: AppHome): string {
+  return JSON.stringify(AppHome$outboundSchema.parse(appHome));
+}
+
+/** @internal */
+export type RichPreviews$Outbound = {
+  isActive?: boolean | undefined;
+  entityTypes?: Array<string> | undefined;
+};
+
+/** @internal */
+export const RichPreviews$outboundSchema: z.ZodType<
+  RichPreviews$Outbound,
+  z.ZodTypeDef,
+  RichPreviews
+> = z.object({
+  isActive: z.boolean().optional(),
+  entityTypes: z.array(z.string()).optional(),
+});
+
+export function richPreviewsToJSON(richPreviews: RichPreviews): string {
+  return JSON.stringify(RichPreviews$outboundSchema.parse(richPreviews));
+}
+
+/** @internal */
 export type TypeSlack$Outbound = {
   appId?: string | undefined;
   appName?: string | undefined;
@@ -1057,6 +1139,8 @@ export type TypeSlack$Outbound = {
   userScopes?: Array<string> | undefined;
   slashCommands?: Array<SlashCommands$Outbound> | undefined;
   shortcuts?: Array<Shortcuts$Outbound> | undefined;
+  appHome?: AppHome$Outbound | undefined;
+  richPreviews?: RichPreviews$Outbound | undefined;
   extras?: { [k: string]: any } | undefined;
 };
 
@@ -1077,6 +1161,8 @@ export const TypeSlack$outboundSchema: z.ZodType<
   userScopes: z.array(z.string()).optional(),
   slashCommands: z.array(z.lazy(() => SlashCommands$outboundSchema)).optional(),
   shortcuts: z.array(z.lazy(() => Shortcuts$outboundSchema)).optional(),
+  appHome: z.lazy(() => AppHome$outboundSchema).optional(),
+  richPreviews: z.lazy(() => RichPreviews$outboundSchema).optional(),
   extras: z.record(z.any()).optional(),
 });
 

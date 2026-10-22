@@ -13,5 +13,5 @@ let value: CancelDeploymentPurchaseType = "enhanced";
 ## Values
 
 ```typescript
-"basic" | "enhanced" | "standard" | "turbo"
+"14cpu-28gb" | "basic" | "enhanced" | "standard" | "turbo"
 ```

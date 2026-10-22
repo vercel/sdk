@@ -13,6 +13,8 @@ import { featureFlagsGetFlag } from "../funcs/featureFlagsGetFlag.js";
 import { featureFlagsGetFlagSegment } from "../funcs/featureFlagsGetFlagSegment.js";
 import { featureFlagsGetFlagSettings } from "../funcs/featureFlagsGetFlagSettings.js";
 import { featureFlagsGetSDKKeys } from "../funcs/featureFlagsGetSDKKeys.js";
+import { featureFlagsListFlagLabelCounts } from "../funcs/featureFlagsListFlagLabelCounts.js";
+import { featureFlagsListFlagLabels } from "../funcs/featureFlagsListFlagLabels.js";
 import { featureFlagsListFlags } from "../funcs/featureFlagsListFlags.js";
 import { featureFlagsListFlagSegments } from "../funcs/featureFlagsListFlagSegments.js";
 import { featureFlagsListFlagsV2 } from "../funcs/featureFlagsListFlagsV2.js";
@@ -20,6 +22,7 @@ import { featureFlagsListFlagVersions } from "../funcs/featureFlagsListFlagVersi
 import { featureFlagsListTeamFlags } from "../funcs/featureFlagsListTeamFlags.js";
 import { featureFlagsListTeamFlagSettings } from "../funcs/featureFlagsListTeamFlagSettings.js";
 import { featureFlagsListTeamFlagsV2 } from "../funcs/featureFlagsListTeamFlagsV2.js";
+import { featureFlagsLookupFlagLabels } from "../funcs/featureFlagsLookupFlagLabels.js";
 import { featureFlagsUpdateFlag } from "../funcs/featureFlagsUpdateFlag.js";
 import { featureFlagsUpdateFlagSegment } from "../funcs/featureFlagsUpdateFlagSegment.js";
 import { featureFlagsUpdateFlagSettings } from "../funcs/featureFlagsUpdateFlagSettings.js";
@@ -53,6 +56,14 @@ import {
   GetSDKKeysResponseBody,
 } from "../models/getsdkkeysop.js";
 import {
+  ListFlagLabelCountsRequest,
+  ListFlagLabelCountsResponseBody,
+} from "../models/listflaglabelcountsop.js";
+import {
+  ListFlagLabelsRequest,
+  ListFlagLabelsResponseBody,
+} from "../models/listflaglabelsop.js";
+import {
   ListFlagSegmentsRequest,
   ListFlagSegmentsResponseBody,
 } from "../models/listflagsegmentsop.js";
@@ -80,6 +91,10 @@ import {
   ListTeamFlagsV2Request,
   ListTeamFlagsV2ResponseBody,
 } from "../models/listteamflagsv2op.js";
+import {
+  LookupFlagLabelsRequest,
+  LookupFlagLabelsResponseBody,
+} from "../models/lookupflaglabelsop.js";
 import { Segment } from "../models/segment.js";
 import {
   UpdateFlagRequest,
@@ -240,6 +255,57 @@ export class FeatureFlags extends ClientSDK {
     options?: RequestOptions,
   ): Promise<UpdateFlagSettingsResponse> {
     return unwrapAsync(featureFlagsUpdateFlagSettings(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List attribute labels
+   *
+   * @remarks
+   * List labels for one entity attribute. Search can return a short or empty page with a continuation cursor; continue until pagination.next is null.
+   */
+  async listFlagLabels(
+    request: ListFlagLabelsRequest,
+    options?: RequestOptions,
+  ): Promise<ListFlagLabelsResponseBody> {
+    return unwrapAsync(featureFlagsListFlagLabels(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List attribute label counts
+   *
+   * @remarks
+   * List label counts for configured entity attributes, including empty ones.
+   */
+  async listFlagLabelCounts(
+    request: ListFlagLabelCountsRequest,
+    options?: RequestOptions,
+  ): Promise<ListFlagLabelCountsResponseBody> {
+    return unwrapAsync(featureFlagsListFlagLabelCounts(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Look up attribute labels
+   *
+   * @remarks
+   * Look up at most 100 labels by entity kind, attribute key, and value. Duplicate keys are returned once; absent values are listed in missing.
+   */
+  async lookupFlagLabels(
+    request: LookupFlagLabelsRequest,
+    options?: RequestOptions,
+  ): Promise<LookupFlagLabelsResponseBody> {
+    return unwrapAsync(featureFlagsLookupFlagLabels(
       this,
       request,
       options,

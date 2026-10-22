@@ -5,7 +5,7 @@ Set when this build produces the named daemon.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesDeploymentsDaemon } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse200applicationjsonresponsebodyvalue.js";
+import { CreateDeploymentServicesDeploymentsDaemon } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2eq.js";
 
 let value: CreateDeploymentServicesDeploymentsDaemon = {
   entrypoint: "<value>",
@@ -18,6 +18,7 @@ let value: CreateDeploymentServicesDeploymentsDaemon = {
 
 | Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `bindings`                                                                                                       | [models.CreateDeploymentServicesDeploymentsBindings](../models/createdeploymentservicesdeploymentsbindings.md)[] | :heavy_minus_sign:                                                                                               | Bindings to services in the same deployment.                                                                     |
 | `command`                                                                                                        | *string*[]                                                                                                       | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
 | `entrypoint`                                                                                                     | *string*                                                                                                         | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
 | `instances`                                                                                                      | Record<string, *number*>                                                                                         | :heavy_minus_sign:                                                                                               | Instance counts by region.                                                                                       |

@@ -250,6 +250,7 @@ export type ElasticConcurrency = ClosedEnum<typeof ElasticConcurrency>;
  * Machine type that was used for the build.
  */
 export const CancelDeploymentPurchaseType = {
+  Fourteencpu28gb: "14cpu-28gb",
   Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",

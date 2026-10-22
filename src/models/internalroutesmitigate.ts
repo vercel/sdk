@@ -1076,7 +1076,7 @@ export type CreateProjectFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 /**
- * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
  */
 export const Label = {
   Enhanced: "enhanced",
@@ -1084,7 +1084,7 @@ export const Label = {
   Turbo: "turbo",
 } as const;
 /**
- * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
  */
 export type Label = ClosedEnum<typeof Label>;
 
@@ -1094,7 +1094,7 @@ export type Label = ClosedEnum<typeof Label>;
 export type ElasticBuildMachine = {
   cores: number;
   /**
-   * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+   * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
    */
   label: Label;
   memory: number;

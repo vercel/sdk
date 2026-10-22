@@ -46,6 +46,9 @@ export type PutProjectDaemonInstancesRequest = {
   requestBody?: { [k: string]: number } | undefined;
 };
 
+/**
+ * The instance count overrides are saved.
+ */
 export type PutProjectDaemonInstancesResponseBody = {
   ok: boolean;
 };

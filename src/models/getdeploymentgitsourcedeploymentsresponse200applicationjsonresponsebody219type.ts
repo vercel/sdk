@@ -1330,7 +1330,8 @@ export type GetDeploymentResponseBodyElasticConcurrency = ClosedEnum<
 /**
  * Machine type that was used for the build.
  */
-export const GetDeploymentResponseBodyDeploymentsPurchaseType = {
+export const GetDeploymentResponseBodyPurchaseType = {
+  Fourteencpu28gb: "14cpu-28gb",
   Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
@@ -1339,18 +1340,15 @@ export const GetDeploymentResponseBodyDeploymentsPurchaseType = {
 /**
  * Machine type that was used for the build.
  */
-export type GetDeploymentResponseBodyDeploymentsPurchaseType = ClosedEnum<
-  typeof GetDeploymentResponseBodyDeploymentsPurchaseType
+export type GetDeploymentResponseBodyPurchaseType = ClosedEnum<
+  typeof GetDeploymentResponseBodyPurchaseType
 >;
 
 export type GetDeploymentResponseBodyBuildMachine = {
   /**
    * Machine type that was used for the build.
    */
-  purchaseType?:
-    | GetDeploymentResponseBodyDeploymentsPurchaseType
-    | null
-    | undefined;
+  purchaseType?: GetDeploymentResponseBodyPurchaseType | null | undefined;
 };
 
 /**
@@ -3850,9 +3848,10 @@ export const GetDeploymentResponseBodyElasticConcurrency$inboundSchema:
     .nativeEnum(GetDeploymentResponseBodyElasticConcurrency);
 
 /** @internal */
-export const GetDeploymentResponseBodyDeploymentsPurchaseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentResponseBodyDeploymentsPurchaseType> = z
-    .nativeEnum(GetDeploymentResponseBodyDeploymentsPurchaseType);
+export const GetDeploymentResponseBodyPurchaseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentResponseBodyPurchaseType> = z.nativeEnum(
+    GetDeploymentResponseBodyPurchaseType,
+  );
 
 /** @internal */
 export const GetDeploymentResponseBodyBuildMachine$inboundSchema: z.ZodType<
@@ -3860,9 +3859,8 @@ export const GetDeploymentResponseBodyBuildMachine$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  purchaseType: z.nullable(
-    GetDeploymentResponseBodyDeploymentsPurchaseType$inboundSchema,
-  ).optional(),
+  purchaseType: z.nullable(GetDeploymentResponseBodyPurchaseType$inboundSchema)
+    .optional(),
 });
 
 export function getDeploymentResponseBodyBuildMachineFromJSON(

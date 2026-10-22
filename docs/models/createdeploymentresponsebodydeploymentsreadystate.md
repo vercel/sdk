@@ -5,7 +5,7 @@ The state of the deployment depending on the process of deploying, or if it is r
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyDeploymentsReadyState } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse200applicationjsonresponsebodyvalue.js";
+import { CreateDeploymentResponseBodyDeploymentsReadyState } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2eq.js";
 
 let value: CreateDeploymentResponseBodyDeploymentsReadyState = "READY";
 ```

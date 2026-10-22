@@ -1,5 +1,7 @@
 # GetProjectBoxesResponseBody
 
+The daemons of the project and the pagination details.
+
 ## Example Usage
 
 ```typescript

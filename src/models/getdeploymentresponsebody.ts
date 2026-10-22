@@ -85,22 +85,154 @@ import {
   ResponseBodyProjectSettings$inboundSchema,
   ResponseBodyReadyState,
   ResponseBodyReadyState$inboundSchema,
-} from "./getdeploymentmaxdurationdeploymentsresponse2002.js";
+} from "./getdeploymentservicesdeploymentsdaemon.js";
 import {
   GetDeploymentServices2,
   GetDeploymentServices2$inboundSchema,
   GetDeploymentServicesDaemon,
   GetDeploymentServicesDaemon$inboundSchema,
-  GetDeploymentServicesDeploymentsFunctions,
-  GetDeploymentServicesDeploymentsFunctions$inboundSchema,
   GetDeploymentServicesExcludeFiles,
   GetDeploymentServicesExcludeFiles$inboundSchema,
-  GetDeploymentServicesIncludeFiles,
-  GetDeploymentServicesIncludeFiles$inboundSchema,
-  GetDeploymentServicesMiddlewareMatcher,
-  GetDeploymentServicesMiddlewareMatcher$inboundSchema,
-} from "./getdeploymentservicesmiddlewarematcher.js";
+} from "./getdeploymentservicesexcludefiles.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetDeploymentServicesDeploymentsMode = {
+  Strict: "strict",
+} as const;
+export type GetDeploymentServicesDeploymentsMode = ClosedEnum<
+  typeof GetDeploymentServicesDeploymentsMode
+>;
+
+export type GetDeploymentServicesDeploymentsAffinity = {
+  mode: GetDeploymentServicesDeploymentsMode;
+};
+
+export const GetDeploymentServicesDeploymentsArchitecture = {
+  Arm64: "arm64",
+  X8664: "x86_64",
+} as const;
+export type GetDeploymentServicesDeploymentsArchitecture = ClosedEnum<
+  typeof GetDeploymentServicesDeploymentsArchitecture
+>;
+
+export type GetDeploymentExperimentalTriggersDeploymentsResponse3 = {
+  /**
+   * Event type - must be "schedule/v1beta" (REQUIRED)
+   */
+  type: "schedule/v1beta";
+};
+
+/**
+ * Queue trigger input event for v2beta (from vercel.json config). Consumer name is implicitly derived from the function path. Only one trigger per function is allowed.
+ */
+export type GetDeploymentExperimentalTriggersDeploymentsResponse2 = {
+  /**
+   * Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+   */
+  initialDelaySeconds?: number | undefined;
+  /**
+   * Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxConcurrency?: number | undefined;
+  /**
+   * Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxDeliveries?: number | undefined;
+  /**
+   * Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+   */
+  retryAfterSeconds?: number | undefined;
+  /**
+   * Name of the queue topic to consume from (REQUIRED)
+   */
+  topic: string;
+  /**
+   * Event type - must be "queue/v2beta" (REQUIRED)
+   */
+  type: "queue/v2beta";
+};
+
+/**
+ * Queue trigger input event for v1beta (from vercel.json config). Requires explicit consumer name.
+ */
+export type GetDeploymentExperimentalTriggersDeploymentsResponse1 = {
+  /**
+   * Name of the consumer group for this trigger (REQUIRED)
+   */
+  consumer: string;
+  /**
+   * Initial delay in seconds before first execution attempt (OPTIONAL) Must be 0 or greater. Use 0 for no initial delay. Behavior when not specified depends on the server's default configuration.
+   */
+  initialDelaySeconds?: number | undefined;
+  /**
+   * Maximum number of concurrent executions for this consumer (OPTIONAL) Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxConcurrency?: number | undefined;
+  /**
+   * Maximum number of delivery attempts for message processing (OPTIONAL) This represents the total number of times a message can be delivered, not the number of retries. Must be at least 1 if specified. Behavior when not specified depends on the server's default configuration.
+   */
+  maxDeliveries?: number | undefined;
+  /**
+   * Delay in seconds before retrying failed executions (OPTIONAL) Behavior when not specified depends on the server's default configuration.
+   */
+  retryAfterSeconds?: number | undefined;
+  /**
+   * Name of the queue topic to consume from (REQUIRED)
+   */
+  topic: string;
+  /**
+   * Event type - must be "queue/v1beta" (REQUIRED)
+   */
+  type: "queue/v1beta";
+};
+
+export type GetDeploymentServicesDeploymentsExperimentalTriggers =
+  | GetDeploymentExperimentalTriggersDeploymentsResponse1
+  | GetDeploymentExperimentalTriggersDeploymentsResponse2
+  | GetDeploymentExperimentalTriggersDeploymentsResponse3;
+
+export const GetDeploymentMaxDurationDeploymentsResponse2 = {
+  Max: "max",
+} as const;
+export type GetDeploymentMaxDurationDeploymentsResponse2 = ClosedEnum<
+  typeof GetDeploymentMaxDurationDeploymentsResponse2
+>;
+
+export type GetDeploymentServicesDeploymentsMaxDuration =
+  | number
+  | GetDeploymentMaxDurationDeploymentsResponse2;
+
+export type GetDeploymentServicesDeploymentsFunctions = {
+  affinity?: GetDeploymentServicesDeploymentsAffinity | undefined;
+  architecture?: GetDeploymentServicesDeploymentsArchitecture | undefined;
+  excludeFiles?: string | undefined;
+  experimentalTriggers?:
+    | Array<
+      | GetDeploymentExperimentalTriggersDeploymentsResponse1
+      | GetDeploymentExperimentalTriggersDeploymentsResponse2
+      | GetDeploymentExperimentalTriggersDeploymentsResponse3
+    >
+    | undefined;
+  functionFailoverRegions?: Array<string> | undefined;
+  includeFiles?: string | undefined;
+  /**
+   * Overrides how dependencies are installed for this function. An empty string skips the install. Only honored by `@vercel/node`.
+   */
+  installCommand?: string | undefined;
+  maxConcurrency?: number | undefined;
+  maxDuration?:
+    | number
+    | GetDeploymentMaxDurationDeploymentsResponse2
+    | undefined;
+  memory?: number | undefined;
+  regions?: Array<string> | undefined;
+  runtime?: string | undefined;
+  supportsCancellation?: boolean | undefined;
+};
+
+export type GetDeploymentServicesIncludeFiles = string | Array<string>;
+
+export type GetDeploymentServicesMiddlewareMatcher = string | Array<string>;
 
 /**
  * Enforced runtime for explicitly configured Routing Middleware.
@@ -184,12 +316,12 @@ export type GetDeploymentServicesDeploymentsConfig = {
     | undefined;
   helpers?: boolean | undefined;
   import?: { [k: string]: string } | undefined;
-  includeFiles?: GetDeploymentServicesIncludeFiles | undefined;
+  includeFiles?: string | Array<string> | undefined;
   installCommand?: string | undefined;
   ldsflags?: string | undefined;
   maxLambdaSize?: string | undefined;
   middleware?: boolean | undefined;
-  middlewareMatcher?: GetDeploymentServicesMiddlewareMatcher | undefined;
+  middlewareMatcher?: string | Array<string> | undefined;
   /**
    * Enforced runtime for explicitly configured Routing Middleware.
    */
@@ -362,9 +494,6 @@ export type GetDeploymentResponseBodyType = ClosedEnum<
   typeof GetDeploymentResponseBodyType
 >;
 
-/**
- * Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
- */
 export type GetDeploymentResponseBody2 = {
   /**
    * A list of all the aliases (default aliases, staging aliases and production aliases) that were assigned upon deployment creation
@@ -688,13 +817,296 @@ export type GetDeploymentResponseBody1 = {
  * Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.
  *
  * @remarks
- * Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
  * Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.
  */
 export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody2
   | GetDeploymentResponseBody3
   | GetDeploymentResponseBody1;
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsMode$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentServicesDeploymentsMode> = z.nativeEnum(
+    GetDeploymentServicesDeploymentsMode,
+  );
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsAffinity$inboundSchema: z.ZodType<
+  GetDeploymentServicesDeploymentsAffinity,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  mode: GetDeploymentServicesDeploymentsMode$inboundSchema,
+});
+
+export function getDeploymentServicesDeploymentsAffinityFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsAffinity,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsAffinity$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsAffinity' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsArchitecture$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentServicesDeploymentsArchitecture> = z
+    .nativeEnum(GetDeploymentServicesDeploymentsArchitecture);
+
+/** @internal */
+export const GetDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema:
+  z.ZodType<
+    GetDeploymentExperimentalTriggersDeploymentsResponse3,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    type: types.literal("schedule/v1beta"),
+  });
+
+export function getDeploymentExperimentalTriggersDeploymentsResponse3FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentExperimentalTriggersDeploymentsResponse3,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentExperimentalTriggersDeploymentsResponse3' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema:
+  z.ZodType<
+    GetDeploymentExperimentalTriggersDeploymentsResponse2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    initialDelaySeconds: types.optional(types.number()),
+    maxConcurrency: types.optional(types.number()),
+    maxDeliveries: types.optional(types.number()),
+    retryAfterSeconds: types.optional(types.number()),
+    topic: types.string(),
+    type: types.literal("queue/v2beta"),
+  });
+
+export function getDeploymentExperimentalTriggersDeploymentsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentExperimentalTriggersDeploymentsResponse2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentExperimentalTriggersDeploymentsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema:
+  z.ZodType<
+    GetDeploymentExperimentalTriggersDeploymentsResponse1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    consumer: types.string(),
+    initialDelaySeconds: types.optional(types.number()),
+    maxConcurrency: types.optional(types.number()),
+    maxDeliveries: types.optional(types.number()),
+    retryAfterSeconds: types.optional(types.number()),
+    topic: types.string(),
+    type: types.literal("queue/v1beta"),
+  });
+
+export function getDeploymentExperimentalTriggersDeploymentsResponse1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentExperimentalTriggersDeploymentsResponse1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentExperimentalTriggersDeploymentsResponse1' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsExperimentalTriggers$inboundSchema:
+  z.ZodType<
+    GetDeploymentServicesDeploymentsExperimentalTriggers,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() =>
+      GetDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
+    ),
+    z.lazy(() =>
+      GetDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
+    ),
+    z.lazy(() =>
+      GetDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema
+    ),
+  ]);
+
+export function getDeploymentServicesDeploymentsExperimentalTriggersFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsExperimentalTriggers,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsExperimentalTriggers$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsExperimentalTriggers' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentMaxDurationDeploymentsResponse2$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentMaxDurationDeploymentsResponse2> = z
+    .nativeEnum(GetDeploymentMaxDurationDeploymentsResponse2);
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsMaxDuration$inboundSchema:
+  z.ZodType<
+    GetDeploymentServicesDeploymentsMaxDuration,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.number(),
+    GetDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
+  ]);
+
+export function getDeploymentServicesDeploymentsMaxDurationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsMaxDuration,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsMaxDuration$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsMaxDuration' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsFunctions$inboundSchema: z.ZodType<
+  GetDeploymentServicesDeploymentsFunctions,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  affinity: types.optional(
+    z.lazy(() => GetDeploymentServicesDeploymentsAffinity$inboundSchema),
+  ),
+  architecture: types.optional(
+    GetDeploymentServicesDeploymentsArchitecture$inboundSchema,
+  ),
+  excludeFiles: types.optional(types.string()),
+  experimentalTriggers: types.optional(
+    z.array(z.union([
+      z.lazy(() =>
+        GetDeploymentExperimentalTriggersDeploymentsResponse1$inboundSchema
+      ),
+      z.lazy(() =>
+        GetDeploymentExperimentalTriggersDeploymentsResponse2$inboundSchema
+      ),
+      z.lazy(() =>
+        GetDeploymentExperimentalTriggersDeploymentsResponse3$inboundSchema
+      ),
+    ])),
+  ),
+  functionFailoverRegions: types.optional(z.array(types.string())),
+  includeFiles: types.optional(types.string()),
+  installCommand: types.optional(types.string()),
+  maxConcurrency: types.optional(types.number()),
+  maxDuration: types.optional(
+    smartUnion([
+      types.number(),
+      GetDeploymentMaxDurationDeploymentsResponse2$inboundSchema,
+    ]),
+  ),
+  memory: types.optional(types.number()),
+  regions: types.optional(z.array(types.string())),
+  runtime: types.optional(types.string()),
+  supportsCancellation: types.optional(types.boolean()),
+});
+
+export function getDeploymentServicesDeploymentsFunctionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsFunctions,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsFunctions$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsFunctions' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesIncludeFiles$inboundSchema: z.ZodType<
+  GetDeploymentServicesIncludeFiles,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function getDeploymentServicesIncludeFilesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesIncludeFiles, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesIncludeFiles$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesIncludeFiles' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesMiddlewareMatcher$inboundSchema: z.ZodType<
+  GetDeploymentServicesMiddlewareMatcher,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.string(), z.array(types.string())]);
+
+export function getDeploymentServicesMiddlewareMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesMiddlewareMatcher, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesMiddlewareMatcher$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesMiddlewareMatcher' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetDeploymentServicesMiddlewareRuntime$inboundSchema:
@@ -823,17 +1235,21 @@ export const GetDeploymentServicesDeploymentsConfig$inboundSchema: z.ZodType<
   excludeFiles: types.optional(GetDeploymentServicesExcludeFiles$inboundSchema),
   framework: z.nullable(types.string()).optional(),
   functions: types.optional(
-    z.record(GetDeploymentServicesDeploymentsFunctions$inboundSchema),
+    z.record(z.lazy(() =>
+      GetDeploymentServicesDeploymentsFunctions$inboundSchema
+    )),
   ),
   helpers: types.optional(types.boolean()),
   import: types.optional(z.record(types.string())),
-  includeFiles: types.optional(GetDeploymentServicesIncludeFiles$inboundSchema),
+  includeFiles: types.optional(
+    smartUnion([types.string(), z.array(types.string())]),
+  ),
   installCommand: types.optional(types.string()),
   ldsflags: types.optional(types.string()),
   maxLambdaSize: types.optional(types.string()),
   middleware: types.optional(types.boolean()),
   middlewareMatcher: types.optional(
-    GetDeploymentServicesMiddlewareMatcher$inboundSchema,
+    smartUnion([types.string(), z.array(types.string())]),
   ),
   middlewareRuntime: types.optional(
     GetDeploymentServicesMiddlewareRuntime$inboundSchema,

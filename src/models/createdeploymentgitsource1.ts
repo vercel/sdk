@@ -804,7 +804,8 @@ export type ResponseBodyElasticConcurrency = ClosedEnum<
 /**
  * Machine type that was used for the build.
  */
-export const CreateDeploymentResponseBodyPurchaseType = {
+export const ResponseBodyPurchaseType = {
+  Fourteencpu28gb: "14cpu-28gb",
   Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
@@ -813,15 +814,15 @@ export const CreateDeploymentResponseBodyPurchaseType = {
 /**
  * Machine type that was used for the build.
  */
-export type CreateDeploymentResponseBodyPurchaseType = ClosedEnum<
-  typeof CreateDeploymentResponseBodyPurchaseType
+export type ResponseBodyPurchaseType = ClosedEnum<
+  typeof ResponseBodyPurchaseType
 >;
 
 export type CreateDeploymentResponseBodyDeploymentsBuildMachine = {
   /**
    * Machine type that was used for the build.
    */
-  purchaseType?: CreateDeploymentResponseBodyPurchaseType | null | undefined;
+  purchaseType?: ResponseBodyPurchaseType | null | undefined;
 };
 
 /**
@@ -2790,9 +2791,9 @@ export const ResponseBodyElasticConcurrency$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ResponseBodyElasticConcurrency);
 
 /** @internal */
-export const CreateDeploymentResponseBodyPurchaseType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyPurchaseType> = z
-    .nativeEnum(CreateDeploymentResponseBodyPurchaseType);
+export const ResponseBodyPurchaseType$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyPurchaseType
+> = z.nativeEnum(ResponseBodyPurchaseType);
 
 /** @internal */
 export const CreateDeploymentResponseBodyDeploymentsBuildMachine$inboundSchema:
@@ -2801,9 +2802,7 @@ export const CreateDeploymentResponseBodyDeploymentsBuildMachine$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
-    purchaseType: z.nullable(
-      CreateDeploymentResponseBodyPurchaseType$inboundSchema,
-    ).optional(),
+    purchaseType: z.nullable(ResponseBodyPurchaseType$inboundSchema).optional(),
   });
 
 export function createDeploymentResponseBodyDeploymentsBuildMachineFromJSON(

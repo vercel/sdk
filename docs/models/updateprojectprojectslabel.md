@@ -1,6 +1,6 @@
 # UpdateProjectProjectsLabel
 
-Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
 
 ## Example Usage
 

@@ -1,7 +1,5 @@
 # GetDeploymentResponseBody2
 
-Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.
-
 ## Example Usage
 
 ```typescript

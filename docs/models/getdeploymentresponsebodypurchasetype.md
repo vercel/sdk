@@ -1,17 +1,17 @@
 # GetDeploymentResponseBodyPurchaseType
 
-Machine type which was purchased/selected for this build. `basic` is the 2vCPU tier, recorded on the deployment so the build pipeline can detect a basic build without consulting the project.
+Machine type that was used for the build.
 
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyPurchaseType } from "@vercel/sdk/models/getdeploymentmaxdurationdeploymentsresponse2002.js";
+import { GetDeploymentResponseBodyPurchaseType } from "@vercel/sdk/models/getdeploymentgitsourcedeploymentsresponse200applicationjsonresponsebody219type.js";
 
-let value: GetDeploymentResponseBodyPurchaseType = "basic";
+let value: GetDeploymentResponseBodyPurchaseType = "14cpu-28gb";
 ```
 
 ## Values
 
 ```typescript
-"basic" | "enhanced" | "standard" | "turbo"
+"14cpu-28gb" | "basic" | "enhanced" | "standard" | "turbo"
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyOutput } from "@vercel/sdk/models/getdeploymentmaxdurationdeploymentsresponse2002.js";
+import { ResponseBodyOutput } from "@vercel/sdk/models/getdeploymentservicesdeploymentsdaemon.js";
 
 let value: ResponseBodyOutput = {
   functionName: "<value>",

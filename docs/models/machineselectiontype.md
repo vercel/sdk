@@ -1,17 +1,17 @@
 # MachineSelectionType
 
-Whether the build ran on a fixed or elastic machine. Used to drive billing for the build.
+The build ran on an elastic machine. Drives billing.
 
 ## Example Usage
 
 ```typescript
-import { MachineSelectionType } from "@vercel/sdk/models/canceldeploymentmissingdeploymentsresponse200applicationjsonresponsebodyservicesvalue.js";
+import { MachineSelectionType } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse2.js";
 
-let value: MachineSelectionType = "fixed";
+let value: MachineSelectionType = "elastic";
 ```
 
 ## Values
 
 ```typescript
-"elastic" | "fixed"
+"elastic"
 ```

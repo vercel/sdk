@@ -623,7 +623,7 @@ export type DeleteProjectAvatarFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 /**
- * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
  */
 export const DeleteProjectAvatarLabel = {
   Enhanced: "enhanced",
@@ -631,7 +631,7 @@ export const DeleteProjectAvatarLabel = {
   Turbo: "turbo",
 } as const;
 /**
- * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
  */
 export type DeleteProjectAvatarLabel = ClosedEnum<
   typeof DeleteProjectAvatarLabel
@@ -643,7 +643,7 @@ export type DeleteProjectAvatarLabel = ClosedEnum<
 export type DeleteProjectAvatarElasticBuildMachine = {
   cores: number;
   /**
-   * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+   * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
    */
   label: DeleteProjectAvatarLabel;
   memory: number;

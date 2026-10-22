@@ -16691,6 +16691,9 @@
                         "id": {
                           "type": "string"
                         },
+                        "service": {
+                          "type": "string"
+                        },
                         "type": {
                           "type": "string"
                         },
@@ -17276,7 +17279,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "The daemons of the project and the pagination details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17292,7 +17295,7 @@
                                 },
                                 "type": "array"
                               },
-                              "configuredReplicas": {
+                              "configuredInstances": {
                                 "oneOf": [
                                   {
                                     "type": "number"
@@ -17302,7 +17305,7 @@
                                       "type": "number"
                                     },
                                     "type": "object",
-                                    "description": "Configured replicas before the overrides. Present only when overrides exist."
+                                    "description": "Configured instances before the overrides. Present only when overrides exist."
                                   }
                                 ]
                               },
@@ -17320,6 +17323,19 @@
                                   "resolved"
                                 ],
                                 "type": "object"
+                              },
+                              "instances": {
+                                "oneOf": [
+                                  {
+                                    "type": "number"
+                                  },
+                                  {
+                                    "additionalProperties": {
+                                      "type": "number"
+                                    },
+                                    "type": "object"
+                                  }
+                                ]
                               },
                               "livenessProbe": {
                                 "properties": {
@@ -17388,19 +17404,6 @@
                                 ],
                                 "type": "object"
                               },
-                              "replicas": {
-                                "oneOf": [
-                                  {
-                                    "type": "number"
-                                  },
-                                  {
-                                    "additionalProperties": {
-                                      "type": "number"
-                                    },
-                                    "type": "object"
-                                  }
-                                ]
-                              },
                               "resources": {
                                 "properties": {
                                   "requests": {
@@ -17426,7 +17429,7 @@
                             },
                             "required": [
                               "image",
-                              "replicas",
+                              "instances",
                               "resources"
                             ],
                             "type": "object"
@@ -17438,10 +17441,7 @@
                             "type": "string",
                             "description": "The deployment whose daemons this configuration comes from. Absent for daemons managed through the daemons API."
                           },
-                          "name": {
-                            "type": "string"
-                          },
-                          "replicas": {
+                          "instances": {
                             "properties": {
                               "desired": {
                                 "type": "number"
@@ -17501,6 +17501,9 @@
                               "total"
                             ],
                             "type": "object"
+                          },
+                          "name": {
+                            "type": "string"
                           },
                           "scope": {
                             "oneOf": [
@@ -17580,8 +17583,8 @@
                         "required": [
                           "config",
                           "createdAt",
+                          "instances",
                           "name",
-                          "replicas",
                           "scope",
                           "status",
                           "updatedAt"
@@ -17615,7 +17618,7 @@
             }
           },
           "400": {
-            "description": "One of the provided values in the request query is invalid."
+            "description": "One of the provided values in the request query is invalid.\nThe scope filter is invalid."
           },
           "401": {
             "description": "The request is not authorized."
@@ -17723,7 +17726,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "The instance count overrides are saved.",
             "content": {
               "application/json": {
                 "schema": {
@@ -17754,7 +17757,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
-            "description": ""
+            "description": "The daemon does not exist for this target."
           },
           "410": {
             "description": ""
@@ -17877,7 +17880,7 @@
             "description": "The request is not authorized."
           },
           "403": {
-            "description": "You do not have permission to access this resource."
+            "description": "You do not have permission to access this resource.\nThe OIDC token is not a production token for this project."
           },
           "404": {
             "description": "The daemon has no running production instance with this ID."
@@ -19596,7 +19599,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.\nReturns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata.\nReturns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.",
+            "description": "Returns a reduced view of the deployment with public information only. Private fields are omitted when the requester is not the deployment owner.\nReturns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.",
             "content": {
               "application/json": {
                 "schema": {
@@ -20162,6 +20165,7 @@
                                       "nullable": true,
                                       "type": "string",
                                       "enum": [
+                                        "14cpu-28gb",
                                         "basic",
                                         "enhanced",
                                         "standard",
@@ -22571,58 +22575,118 @@
                         "resourceConfig": {
                           "properties": {
                             "buildMachine": {
-                              "properties": {
-                                "cores": {
-                                  "type": "number",
-                                  "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
-                                },
-                                "defaultPurchaseType": {
-                                  "type": "string",
-                                  "enum": [
-                                    "basic",
-                                    "enhanced",
-                                    "none",
-                                    "standard"
+                              "oneOf": [
+                                {
+                                  "properties": {
+                                    "machineSelectionType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "elastic"
+                                      ],
+                                      "description": "The build ran on an elastic machine. Drives billing."
+                                    },
+                                    "purchaseType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "14cpu-28gb",
+                                        "basic",
+                                        "enhanced",
+                                        "standard",
+                                        "turbo"
+                                      ],
+                                      "description": "Machine type purchased for this build. `basic` is the 2vCPU tier, recorded so the build pipeline can detect a basic build without consulting the project."
+                                    },
+                                    "cores": {
+                                      "type": "number",
+                                      "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
+                                    },
+                                    "defaultPurchaseType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "basic",
+                                        "enhanced",
+                                        "none",
+                                        "standard"
+                                      ],
+                                      "description": "The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type."
+                                    },
+                                    "memory": {
+                                      "type": "number",
+                                      "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
+                                    },
+                                    "selectionSource": {
+                                      "type": "string",
+                                      "enum": [
+                                        "deployment-override",
+                                        "elastic-algorithm",
+                                        "plan-default",
+                                        "project-setting",
+                                        "team-entitlement",
+                                        "team-setting"
+                                      ],
+                                      "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                                    }
+                                  },
+                                  "required": [
+                                    "machineSelectionType"
                                   ],
-                                  "description": "The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type."
+                                  "type": "object",
+                                  "description": "Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`."
                                 },
-                                "machineSelectionType": {
-                                  "type": "string",
-                                  "enum": [
-                                    "elastic",
-                                    "fixed"
-                                  ],
-                                  "description": "Whether the build ran on a fixed or elastic machine. Used to drive billing for the build."
-                                },
-                                "memory": {
-                                  "type": "number",
-                                  "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
-                                },
-                                "purchaseType": {
-                                  "type": "string",
-                                  "enum": [
-                                    "basic",
-                                    "enhanced",
-                                    "standard",
-                                    "turbo"
-                                  ],
-                                  "description": "Machine type which was purchased/selected for this build. `basic` is the 2vCPU tier, recorded on the deployment so the build pipeline can detect a basic build without consulting the project."
-                                },
-                                "selectionSource": {
-                                  "type": "string",
-                                  "enum": [
-                                    "deployment-override",
-                                    "elastic-algorithm",
-                                    "plan-default",
-                                    "project-setting",
-                                    "team-entitlement",
-                                    "team-setting"
-                                  ],
-                                  "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                                {
+                                  "properties": {
+                                    "machineSelectionType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "fixed"
+                                      ],
+                                      "description": "The build ran on a fixed machine. Drives billing."
+                                    },
+                                    "purchaseType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "basic",
+                                        "enhanced",
+                                        "standard",
+                                        "turbo"
+                                      ],
+                                      "description": "Machine type purchased for this build."
+                                    },
+                                    "cores": {
+                                      "type": "number",
+                                      "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
+                                    },
+                                    "defaultPurchaseType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "basic",
+                                        "enhanced",
+                                        "none",
+                                        "standard"
+                                      ],
+                                      "description": "The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type."
+                                    },
+                                    "memory": {
+                                      "type": "number",
+                                      "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
+                                    },
+                                    "selectionSource": {
+                                      "type": "string",
+                                      "enum": [
+                                        "deployment-override",
+                                        "elastic-algorithm",
+                                        "plan-default",
+                                        "project-setting",
+                                        "team-entitlement",
+                                        "team-setting"
+                                      ],
+                                      "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                                    }
+                                  },
+                                  "type": "object",
+                                  "description": "Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`."
                                 }
-                              },
-                              "type": "object",
-                              "description": "Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`."
+                              ]
                             }
                           },
                           "type": "object"
@@ -23387,6 +23451,43 @@
                                           },
                                           "daemon": {
                                             "properties": {
+                                              "bindings": {
+                                                "items": {
+                                                  "properties": {
+                                                    "env": {
+                                                      "type": "string",
+                                                      "description": "Environment variable name that will store the generated value"
+                                                    },
+                                                    "format": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "url"
+                                                      ],
+                                                      "description": "Generated value shape, must be `\"url\"`."
+                                                    },
+                                                    "service": {
+                                                      "type": "string",
+                                                      "description": "Target service name from `services`."
+                                                    },
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "service"
+                                                      ],
+                                                      "description": "If present, must be `\"service\"` for Service-to-Service HTTP bindings."
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "env",
+                                                    "format",
+                                                    "service"
+                                                  ],
+                                                  "type": "object",
+                                                  "description": "Bindings to services in the same deployment."
+                                                },
+                                                "type": "array",
+                                                "description": "Bindings to services in the same deployment."
+                                              },
                                               "command": {
                                                 "items": {
                                                   "type": "string"
@@ -24084,6 +24185,43 @@
                                           },
                                           "daemon": {
                                             "properties": {
+                                              "bindings": {
+                                                "items": {
+                                                  "properties": {
+                                                    "env": {
+                                                      "type": "string",
+                                                      "description": "Environment variable name that will store the generated value"
+                                                    },
+                                                    "format": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "url"
+                                                      ],
+                                                      "description": "Generated value shape, must be `\"url\"`."
+                                                    },
+                                                    "service": {
+                                                      "type": "string",
+                                                      "description": "Target service name from `services`."
+                                                    },
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "service"
+                                                      ],
+                                                      "description": "If present, must be `\"service\"` for Service-to-Service HTTP bindings."
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "env",
+                                                    "format",
+                                                    "service"
+                                                  ],
+                                                  "type": "object",
+                                                  "description": "Bindings to services in the same deployment."
+                                                },
+                                                "type": "array",
+                                                "description": "Bindings to services in the same deployment."
+                                              },
                                               "command": {
                                                 "items": {
                                                   "type": "string"
@@ -26746,8 +26884,7 @@
                         "url",
                         "version"
                       ],
-                      "type": "object",
-                      "description": "Returns the deployment object for the authenticated owner, including private fields such as environment variables, build log URLs, and internal metadata."
+                      "type": "object"
                     },
                     {
                       "properties": {
@@ -28967,6 +29104,7 @@
                                       "nullable": true,
                                       "type": "string",
                                       "enum": [
+                                        "14cpu-28gb",
                                         "basic",
                                         "enhanced",
                                         "standard",
@@ -31376,58 +31514,118 @@
                         "resourceConfig": {
                           "properties": {
                             "buildMachine": {
-                              "properties": {
-                                "cores": {
-                                  "type": "number",
-                                  "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
-                                },
-                                "defaultPurchaseType": {
-                                  "type": "string",
-                                  "enum": [
-                                    "basic",
-                                    "enhanced",
-                                    "none",
-                                    "standard"
+                              "oneOf": [
+                                {
+                                  "properties": {
+                                    "machineSelectionType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "elastic"
+                                      ],
+                                      "description": "The build ran on an elastic machine. Drives billing."
+                                    },
+                                    "purchaseType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "14cpu-28gb",
+                                        "basic",
+                                        "enhanced",
+                                        "standard",
+                                        "turbo"
+                                      ],
+                                      "description": "Machine type purchased for this build. `basic` is the 2vCPU tier, recorded so the build pipeline can detect a basic build without consulting the project."
+                                    },
+                                    "cores": {
+                                      "type": "number",
+                                      "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
+                                    },
+                                    "defaultPurchaseType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "basic",
+                                        "enhanced",
+                                        "none",
+                                        "standard"
+                                      ],
+                                      "description": "The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type."
+                                    },
+                                    "memory": {
+                                      "type": "number",
+                                      "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
+                                    },
+                                    "selectionSource": {
+                                      "type": "string",
+                                      "enum": [
+                                        "deployment-override",
+                                        "elastic-algorithm",
+                                        "plan-default",
+                                        "project-setting",
+                                        "team-entitlement",
+                                        "team-setting"
+                                      ],
+                                      "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                                    }
+                                  },
+                                  "required": [
+                                    "machineSelectionType"
                                   ],
-                                  "description": "The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type."
+                                  "type": "object",
+                                  "description": "Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`."
                                 },
-                                "machineSelectionType": {
-                                  "type": "string",
-                                  "enum": [
-                                    "elastic",
-                                    "fixed"
-                                  ],
-                                  "description": "Whether the build ran on a fixed or elastic machine. Used to drive billing for the build."
-                                },
-                                "memory": {
-                                  "type": "number",
-                                  "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
-                                },
-                                "purchaseType": {
-                                  "type": "string",
-                                  "enum": [
-                                    "basic",
-                                    "enhanced",
-                                    "standard",
-                                    "turbo"
-                                  ],
-                                  "description": "Machine type which was purchased/selected for this build. `basic` is the 2vCPU tier, recorded on the deployment so the build pipeline can detect a basic build without consulting the project."
-                                },
-                                "selectionSource": {
-                                  "type": "string",
-                                  "enum": [
-                                    "deployment-override",
-                                    "elastic-algorithm",
-                                    "plan-default",
-                                    "project-setting",
-                                    "team-entitlement",
-                                    "team-setting"
-                                  ],
-                                  "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                                {
+                                  "properties": {
+                                    "machineSelectionType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "fixed"
+                                      ],
+                                      "description": "The build ran on a fixed machine. Drives billing."
+                                    },
+                                    "purchaseType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "basic",
+                                        "enhanced",
+                                        "standard",
+                                        "turbo"
+                                      ],
+                                      "description": "Machine type purchased for this build."
+                                    },
+                                    "cores": {
+                                      "type": "number",
+                                      "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
+                                    },
+                                    "defaultPurchaseType": {
+                                      "type": "string",
+                                      "enum": [
+                                        "basic",
+                                        "enhanced",
+                                        "none",
+                                        "standard"
+                                      ],
+                                      "description": "The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type."
+                                    },
+                                    "memory": {
+                                      "type": "number",
+                                      "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
+                                    },
+                                    "selectionSource": {
+                                      "type": "string",
+                                      "enum": [
+                                        "deployment-override",
+                                        "elastic-algorithm",
+                                        "plan-default",
+                                        "project-setting",
+                                        "team-entitlement",
+                                        "team-setting"
+                                      ],
+                                      "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                                    }
+                                  },
+                                  "type": "object",
+                                  "description": "Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`."
                                 }
-                              },
-                              "type": "object",
-                              "description": "Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`."
+                              ]
                             }
                           },
                           "type": "object"
@@ -32192,6 +32390,43 @@
                                           },
                                           "daemon": {
                                             "properties": {
+                                              "bindings": {
+                                                "items": {
+                                                  "properties": {
+                                                    "env": {
+                                                      "type": "string",
+                                                      "description": "Environment variable name that will store the generated value"
+                                                    },
+                                                    "format": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "url"
+                                                      ],
+                                                      "description": "Generated value shape, must be `\"url\"`."
+                                                    },
+                                                    "service": {
+                                                      "type": "string",
+                                                      "description": "Target service name from `services`."
+                                                    },
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "service"
+                                                      ],
+                                                      "description": "If present, must be `\"service\"` for Service-to-Service HTTP bindings."
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "env",
+                                                    "format",
+                                                    "service"
+                                                  ],
+                                                  "type": "object",
+                                                  "description": "Bindings to services in the same deployment."
+                                                },
+                                                "type": "array",
+                                                "description": "Bindings to services in the same deployment."
+                                              },
                                               "command": {
                                                 "items": {
                                                   "type": "string"
@@ -32889,6 +33124,43 @@
                                           },
                                           "daemon": {
                                             "properties": {
+                                              "bindings": {
+                                                "items": {
+                                                  "properties": {
+                                                    "env": {
+                                                      "type": "string",
+                                                      "description": "Environment variable name that will store the generated value"
+                                                    },
+                                                    "format": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "url"
+                                                      ],
+                                                      "description": "Generated value shape, must be `\"url\"`."
+                                                    },
+                                                    "service": {
+                                                      "type": "string",
+                                                      "description": "Target service name from `services`."
+                                                    },
+                                                    "type": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "service"
+                                                      ],
+                                                      "description": "If present, must be `\"service\"` for Service-to-Service HTTP bindings."
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "env",
+                                                    "format",
+                                                    "service"
+                                                  ],
+                                                  "type": "object",
+                                                  "description": "Bindings to services in the same deployment."
+                                                },
+                                                "type": "array",
+                                                "description": "Bindings to services in the same deployment."
+                                              },
                                               "command": {
                                                 "items": {
                                                   "type": "string"
@@ -36756,6 +37028,7 @@
                                   "nullable": true,
                                   "type": "string",
                                   "enum": [
+                                    "14cpu-28gb",
                                     "basic",
                                     "enhanced",
                                     "standard",
@@ -39165,58 +39438,118 @@
                     "resourceConfig": {
                       "properties": {
                         "buildMachine": {
-                          "properties": {
-                            "cores": {
-                              "type": "number",
-                              "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
-                            },
-                            "defaultPurchaseType": {
-                              "type": "string",
-                              "enum": [
-                                "basic",
-                                "enhanced",
-                                "none",
-                                "standard"
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "machineSelectionType": {
+                                  "type": "string",
+                                  "enum": [
+                                    "elastic"
+                                  ],
+                                  "description": "The build ran on an elastic machine. Drives billing."
+                                },
+                                "purchaseType": {
+                                  "type": "string",
+                                  "enum": [
+                                    "14cpu-28gb",
+                                    "basic",
+                                    "enhanced",
+                                    "standard",
+                                    "turbo"
+                                  ],
+                                  "description": "Machine type purchased for this build. `basic` is the 2vCPU tier, recorded so the build pipeline can detect a basic build without consulting the project."
+                                },
+                                "cores": {
+                                  "type": "number",
+                                  "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
+                                },
+                                "defaultPurchaseType": {
+                                  "type": "string",
+                                  "enum": [
+                                    "basic",
+                                    "enhanced",
+                                    "none",
+                                    "standard"
+                                  ],
+                                  "description": "The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type."
+                                },
+                                "memory": {
+                                  "type": "number",
+                                  "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
+                                },
+                                "selectionSource": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deployment-override",
+                                    "elastic-algorithm",
+                                    "plan-default",
+                                    "project-setting",
+                                    "team-entitlement",
+                                    "team-setting"
+                                  ],
+                                  "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                                }
+                              },
+                              "required": [
+                                "machineSelectionType"
                               ],
-                              "description": "The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type."
+                              "type": "object",
+                              "description": "Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`."
                             },
-                            "machineSelectionType": {
-                              "type": "string",
-                              "enum": [
-                                "elastic",
-                                "fixed"
-                              ],
-                              "description": "Whether the build ran on a fixed or elastic machine. Used to drive billing for the build."
-                            },
-                            "memory": {
-                              "type": "number",
-                              "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
-                            },
-                            "purchaseType": {
-                              "type": "string",
-                              "enum": [
-                                "basic",
-                                "enhanced",
-                                "standard",
-                                "turbo"
-                              ],
-                              "description": "Machine type which was purchased/selected for this build. `basic` is the 2vCPU tier, recorded on the deployment so the build pipeline can detect a basic build without consulting the project."
-                            },
-                            "selectionSource": {
-                              "type": "string",
-                              "enum": [
-                                "deployment-override",
-                                "elastic-algorithm",
-                                "plan-default",
-                                "project-setting",
-                                "team-entitlement",
-                                "team-setting"
-                              ],
-                              "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                            {
+                              "properties": {
+                                "machineSelectionType": {
+                                  "type": "string",
+                                  "enum": [
+                                    "fixed"
+                                  ],
+                                  "description": "The build ran on a fixed machine. Drives billing."
+                                },
+                                "purchaseType": {
+                                  "type": "string",
+                                  "enum": [
+                                    "basic",
+                                    "enhanced",
+                                    "standard",
+                                    "turbo"
+                                  ],
+                                  "description": "Machine type purchased for this build."
+                                },
+                                "cores": {
+                                  "type": "number",
+                                  "description": "Build cores. Deployment creation sets the requested value; dispatch replaces it with the cores assigned by routing."
+                                },
+                                "defaultPurchaseType": {
+                                  "type": "string",
+                                  "enum": [
+                                    "basic",
+                                    "enhanced",
+                                    "none",
+                                    "standard"
+                                  ],
+                                  "description": "The build machine tier included with the customer's plan. For most customers this is standard; enhanced entitlements include enhanced, while `none` means every build is billed at its purchase type."
+                                },
+                                "memory": {
+                                  "type": "number",
+                                  "description": "Build memory, in MiB. Deployment creation sets the requested value; dispatch replaces it with the memory assigned by routing."
+                                },
+                                "selectionSource": {
+                                  "type": "string",
+                                  "enum": [
+                                    "deployment-override",
+                                    "elastic-algorithm",
+                                    "plan-default",
+                                    "project-setting",
+                                    "team-entitlement",
+                                    "team-setting"
+                                  ],
+                                  "description": "The setting which selected the build machine when the deployment was created. Frozen here so later project or team changes do not rewrite its history."
+                                }
+                              },
+                              "type": "object",
+                              "description": "Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`."
                             }
-                          },
-                          "type": "object",
-                          "description": "Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`."
+                          ]
                         }
                       },
                       "type": "object"
@@ -39981,6 +40314,43 @@
                                       },
                                       "daemon": {
                                         "properties": {
+                                          "bindings": {
+                                            "items": {
+                                              "properties": {
+                                                "env": {
+                                                  "type": "string",
+                                                  "description": "Environment variable name that will store the generated value"
+                                                },
+                                                "format": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "url"
+                                                  ],
+                                                  "description": "Generated value shape, must be `\"url\"`."
+                                                },
+                                                "service": {
+                                                  "type": "string",
+                                                  "description": "Target service name from `services`."
+                                                },
+                                                "type": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "service"
+                                                  ],
+                                                  "description": "If present, must be `\"service\"` for Service-to-Service HTTP bindings."
+                                                }
+                                              },
+                                              "required": [
+                                                "env",
+                                                "format",
+                                                "service"
+                                              ],
+                                              "type": "object",
+                                              "description": "Bindings to services in the same deployment."
+                                            },
+                                            "type": "array",
+                                            "description": "Bindings to services in the same deployment."
+                                          },
                                           "command": {
                                             "items": {
                                               "type": "string"
@@ -40678,6 +41048,43 @@
                                       },
                                       "daemon": {
                                         "properties": {
+                                          "bindings": {
+                                            "items": {
+                                              "properties": {
+                                                "env": {
+                                                  "type": "string",
+                                                  "description": "Environment variable name that will store the generated value"
+                                                },
+                                                "format": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "url"
+                                                  ],
+                                                  "description": "Generated value shape, must be `\"url\"`."
+                                                },
+                                                "service": {
+                                                  "type": "string",
+                                                  "description": "Target service name from `services`."
+                                                },
+                                                "type": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "service"
+                                                  ],
+                                                  "description": "If present, must be `\"service\"` for Service-to-Service HTTP bindings."
+                                                }
+                                              },
+                                              "required": [
+                                                "env",
+                                                "format",
+                                                "service"
+                                              ],
+                                              "type": "object",
+                                              "description": "Bindings to services in the same deployment."
+                                            },
+                                            "type": "array",
+                                            "description": "Bindings to services in the same deployment."
+                                          },
                                           "command": {
                                             "items": {
                                               "type": "string"
@@ -68158,6 +68565,491 @@
         }
       }
     },
+    "/v1/projects/{projectIdOrName}/feature-flags/labels": {
+      "get": {
+        "description": "List labels for one entity attribute. Search can return a short or empty page with a continuation cursor; continue until pagination.next is null.",
+        "operationId": "listFlagLabels",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List attribute labels",
+        "tags": [
+          "feature-flags"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "attributeKey": {
+                            "type": "string"
+                          },
+                          "entityKind": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "attributeKey",
+                          "entityKind",
+                          "label",
+                          "value"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "pagination": {
+                      "properties": {
+                        "next": {
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "next"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "pagination"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "402": {
+            "description": "The account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "description": "The continuation cursor from the previous response.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 4096,
+              "description": "The continuation cursor from the previous response."
+            }
+          },
+          {
+            "name": "search",
+            "description": "Case-insensitive substring search on the value and label.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128,
+              "description": "Case-insensitive substring search on the value and label."
+            }
+          },
+          {
+            "name": "entityKind",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "attributeKey",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "projectIdOrName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/projects/{projectIdOrName}/feature-flags/labels/counts": {
+      "get": {
+        "description": "List label counts for configured entity attributes, including empty ones.",
+        "operationId": "listFlagLabelCounts",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List attribute label counts",
+        "tags": [
+          "feature-flags"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "attributeKey": {
+                            "type": "string"
+                          },
+                          "entityKind": {
+                            "type": "string"
+                          },
+                          "count": {
+                            "type": "number"
+                          }
+                        },
+                        "required": [
+                          "attributeKey",
+                          "count",
+                          "entityKind"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "pagination": {
+                      "properties": {
+                        "next": {
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "next"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "pagination"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "402": {
+            "description": "The account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "entityKind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 128
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20,
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "description": "The continuation cursor from the previous response.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 4096,
+              "description": "The continuation cursor from the previous response."
+            }
+          },
+          {
+            "name": "projectIdOrName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/projects/{projectIdOrName}/feature-flags/labels/lookup": {
+      "post": {
+        "description": "Look up at most 100 labels by entity kind, attribute key, and value. Duplicate keys are returned once; absent values are listed in missing.",
+        "operationId": "lookupFlagLabels",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Look up attribute labels",
+        "tags": [
+          "feature-flags"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "properties": {
+                          "attributeKey": {
+                            "type": "string"
+                          },
+                          "entityKind": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "attributeKey",
+                          "entityKind",
+                          "label",
+                          "value"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "missing": {
+                      "items": {
+                        "properties": {
+                          "attributeKey": {
+                            "type": "string"
+                          },
+                          "entityKind": {
+                            "type": "string"
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "attributeKey",
+                          "entityKind",
+                          "value"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "data",
+                    "missing"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "402": {
+            "description": "The account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "503": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectIdOrName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "items"
+                ],
+                "properties": {
+                  "items": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "entityKind",
+                        "attributeKey",
+                        "value"
+                      ],
+                      "properties": {
+                        "value": {
+                          "type": "string",
+                          "maxLength": 128
+                        },
+                        "entityKind": {
+                          "type": "string",
+                          "maxLength": 128
+                        },
+                        "attributeKey": {
+                          "type": "string",
+                          "maxLength": 128
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/teams/{teamId}/feature-flags/settings": {
       "get": {
         "description": "Retrieve feature flag settings for projects in a team.",
@@ -85524,7 +86416,7 @@
                                       "standard",
                                       "turbo"
                                     ],
-                                    "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                                    "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                                   },
                                   "memory": {
                                     "type": "number"
@@ -90430,7 +91322,7 @@
                                       "standard",
                                       "turbo"
                                     ],
-                                    "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                                    "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                                   },
                                   "memory": {
                                     "type": "number"
@@ -93327,7 +94219,7 @@
         }
       },
       "get": {
-        "description": "List the organizations where the authenticated user holds the OrgAdmin or OrgViewer permission on the organization's root or backing team — the same criteria as GET /v1/organizations/:organizationId/teams. This endpoint is in private beta. Contact your Vercel account team for access.",
+        "description": "List the organizations where the authenticated user holds the OrgAdmin or OrgViewer permission on the organization's root or backing team — the same criteria as GET /v1/organizations/:organizationId/teams. A token without user scope, such as a team SSO session, lists only the organizations where it is authenticated to at least one team of the organization: the root team, the backing team, or a child team. This endpoint is in private beta. Contact your Vercel account team for access.",
         "operationId": "listOrganizations",
         "security": [
           {
@@ -102475,7 +103367,7 @@
                                       "standard",
                                       "turbo"
                                     ],
-                                    "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                                    "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                                   },
                                   "memory": {
                                     "type": "number"
@@ -106882,7 +107774,7 @@
                                           "standard",
                                           "turbo"
                                         ],
-                                        "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                                        "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                                       },
                                       "memory": {
                                         "type": "number"
@@ -109757,7 +110649,7 @@
                                           "standard",
                                           "turbo"
                                         ],
-                                        "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                                        "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                                       },
                                       "memory": {
                                         "type": "number"
@@ -114663,7 +115555,7 @@
                                           "standard",
                                           "turbo"
                                         ],
-                                        "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                                        "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                                       },
                                       "memory": {
                                         "type": "number"
@@ -117963,7 +118855,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -122869,7 +123761,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -126424,7 +127316,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -131361,7 +132253,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -134224,7 +135116,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -139121,7 +140013,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -143298,7 +144190,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -148204,7 +149096,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -151071,7 +151963,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -155977,7 +156869,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -171985,7 +172877,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -176891,7 +177783,7 @@
                                 "standard",
                                 "turbo"
                               ],
-                              "description": "Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective."
+                              "description": "Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier."
                             },
                             "memory": {
                               "type": "number"
@@ -232181,6 +233073,43 @@
                 },
                 "description": "Global and message shortcuts configured for the Slack app."
               },
+              "appHome": {
+                "type": "object",
+                "properties": {
+                  "homeTabEnabled": {
+                    "type": "boolean",
+                    "description": "Enable the Home tab for views.publish. Defaults to false for new apps."
+                  },
+                  "messagesTabEnabled": {
+                    "type": "boolean",
+                    "description": "Enable the Messages tab. Defaults to true for new apps."
+                  },
+                  "messagesTabReadOnlyEnabled": {
+                    "type": "boolean",
+                    "description": "Make the Messages tab read-only. Defaults to false for new apps."
+                  }
+                },
+                "additionalProperties": false,
+                "description": "App Home settings for the managed Slack app. Updates preserve omitted settings."
+              },
+              "richPreviews": {
+                "type": "object",
+                "properties": {
+                  "isActive": {
+                    "type": "boolean",
+                    "description": "Enable Work Object previews. Defaults to false for new apps."
+                  },
+                  "entityTypes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Entity types to preview. An empty array clears the configured types."
+                  }
+                },
+                "additionalProperties": false,
+                "description": "Work Object preview settings for the managed Slack app. Updates preserve omitted settings."
+              },
               "extras": {
                 "type": "object",
                 "additionalProperties": {},
@@ -233535,6 +234464,43 @@
                   "additionalProperties": false
                 },
                 "description": "Global and message shortcuts configured for the Slack app."
+              },
+              "appHome": {
+                "type": "object",
+                "properties": {
+                  "homeTabEnabled": {
+                    "type": "boolean",
+                    "description": "Enable the Home tab for views.publish. Defaults to false for new apps."
+                  },
+                  "messagesTabEnabled": {
+                    "type": "boolean",
+                    "description": "Enable the Messages tab. Defaults to true for new apps."
+                  },
+                  "messagesTabReadOnlyEnabled": {
+                    "type": "boolean",
+                    "description": "Make the Messages tab read-only. Defaults to false for new apps."
+                  }
+                },
+                "additionalProperties": false,
+                "description": "App Home settings for the managed Slack app. Updates preserve omitted settings."
+              },
+              "richPreviews": {
+                "type": "object",
+                "properties": {
+                  "isActive": {
+                    "type": "boolean",
+                    "description": "Enable Work Object previews. Defaults to false for new apps."
+                  },
+                  "entityTypes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "description": "Entity types to preview. An empty array clears the configured types."
+                  }
+                },
+                "additionalProperties": false,
+                "description": "Work Object preview settings for the managed Slack app. Updates preserve omitted settings."
               },
               "extras": {
                 "type": "object",
@@ -237603,6 +238569,7 @@
                         "read-write:schedule",
                         "read-write:team-members",
                         "read-write:vcr",
+                        "read-write:webhooks",
                         "read:access-group",
                         "read:ai-gateway-budgets",
                         "read:ai-gateway-guardrails",
@@ -237731,6 +238698,7 @@
                         "read-write:schedule",
                         "read-write:team-members",
                         "read-write:vcr",
+                        "read-write:webhooks",
                         "read:access-group",
                         "read:ai-gateway-budgets",
                         "read:ai-gateway-guardrails",
@@ -237839,6 +238807,7 @@
                             "read-write:schedule",
                             "read-write:team-members",
                             "read-write:vcr",
+                            "read-write:webhooks",
                             "read:access-group",
                             "read:ai-gateway-budgets",
                             "read:ai-gateway-guardrails",
@@ -237977,6 +238946,7 @@
                             "read-write:schedule",
                             "read-write:team-members",
                             "read-write:vcr",
+                            "read-write:webhooks",
                             "read:access-group",
                             "read:ai-gateway-budgets",
                             "read:ai-gateway-guardrails",
@@ -238125,6 +239095,7 @@
                         "read-write:schedule",
                         "read-write:team-members",
                         "read-write:vcr",
+                        "read-write:webhooks",
                         "read:access-group",
                         "read:ai-gateway-budgets",
                         "read:ai-gateway-guardrails",
@@ -253117,6 +254088,10 @@
                   "projectName": {
                     "type": "string"
                   },
+                  "scopeName": {
+                    "type": "string",
+                    "description": "Stored when activity clients can't resolve the name, as for products."
+                  },
                   "webhookUrl": {
                     "type": "string"
                   }
@@ -253245,6 +254220,10 @@
                   },
                   "projectName": {
                     "type": "string"
+                  },
+                  "scopeName": {
+                    "type": "string",
+                    "description": "Stored when activity clients can't resolve the name, as for products."
                   }
                 },
                 "required": [
@@ -253485,6 +254464,10 @@
                   "projectName": {
                     "type": "string",
                     "description": "Injected at read time from `payload.projectId`."
+                  },
+                  "scopeName": {
+                    "type": "string",
+                    "description": "Stored when activity clients can't resolve the name, as for products."
                   },
                   "webhookUrl": {
                     "type": "string"

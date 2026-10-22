@@ -1,17 +1,17 @@
 # ResponseBodyPurchaseType
 
-Machine type which was purchased/selected for this build. `basic` is the 2vCPU tier, recorded on the deployment so the build pipeline can detect a basic build without consulting the project.
+Machine type that was used for the build.
 
 ## Example Usage
 
 ```typescript
-import { ResponseBodyPurchaseType } from "@vercel/sdk/models/createdeploymenthasdeploymentsresponse200applicationjsonresponsebodyvalue.js";
+import { ResponseBodyPurchaseType } from "@vercel/sdk/models/createdeploymentgitsource1.js";
 
-let value: ResponseBodyPurchaseType = "enhanced";
+let value: ResponseBodyPurchaseType = "basic";
 ```
 
 ## Values
 
 ```typescript
-"basic" | "enhanced" | "standard" | "turbo"
+"14cpu-28gb" | "basic" | "enhanced" | "standard" | "turbo"
 ```

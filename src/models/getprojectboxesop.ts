@@ -56,12 +56,14 @@ export type GetProjectBoxesRequest = {
   slug?: string | undefined;
 };
 
-export type ConfiguredReplicas = number | { [k: string]: number };
+export type ConfiguredInstances = number | { [k: string]: number };
 
 export type Image = {
   requested: string;
   resolved: string;
 };
+
+export type GetProjectBoxesInstances = number | { [k: string]: number };
 
 export type HttpHeaders = {
   name: string;
@@ -91,8 +93,6 @@ export type LivenessProbe = {
   timeoutSeconds?: number | undefined;
 };
 
-export type GetProjectBoxesReplicas = number | { [k: string]: number };
-
 export type Requests = {
   memory: string;
 };
@@ -103,10 +103,10 @@ export type GetProjectBoxesResources = {
 
 export type GetProjectBoxesConfig = {
   command?: Array<string> | undefined;
-  configuredReplicas?: number | { [k: string]: number } | undefined;
+  configuredInstances?: number | { [k: string]: number } | undefined;
   image: Image;
+  instances: number | { [k: string]: number };
   livenessProbe?: LivenessProbe | undefined;
-  replicas: number | { [k: string]: number };
   resources: GetProjectBoxesResources;
   terminationGracePeriodSeconds?: number | undefined;
 };
@@ -122,7 +122,7 @@ export type GetProjectBoxesItems = {
   stoppedAt?: string | undefined;
 };
 
-export type Replicas = {
+export type Instances = {
   desired: number;
   items: Array<GetProjectBoxesItems>;
   ready: number;
@@ -170,8 +170,8 @@ export type Daemons = {
    * The deployment whose daemons this configuration comes from. Absent for daemons managed through the daemons API.
    */
   deploymentId?: string | undefined;
+  instances: Instances;
   name: string;
-  replicas: Replicas;
   scope: GetProjectBoxesScope1 | GetProjectBoxesScope2 | Scope3;
   status: GetProjectBoxesStatus;
   updatedAt: string;
@@ -182,6 +182,9 @@ export type GetProjectBoxesPagination = {
   next?: string | undefined;
 };
 
+/**
+ * The daemons of the project and the pagination details.
+ */
 export type GetProjectBoxesResponseBody = {
   daemons: Array<Daemons>;
   pagination: GetProjectBoxesPagination;
@@ -227,19 +230,19 @@ export function getProjectBoxesRequestToJSON(
 }
 
 /** @internal */
-export const ConfiguredReplicas$inboundSchema: z.ZodType<
-  ConfiguredReplicas,
+export const ConfiguredInstances$inboundSchema: z.ZodType<
+  ConfiguredInstances,
   z.ZodTypeDef,
   unknown
 > = smartUnion([types.number(), z.record(types.number())]);
 
-export function configuredReplicasFromJSON(
+export function configuredInstancesFromJSON(
   jsonString: string,
-): SafeParseResult<ConfiguredReplicas, SDKValidationError> {
+): SafeParseResult<ConfiguredInstances, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ConfiguredReplicas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ConfiguredReplicas' from JSON`,
+    (x) => ConfiguredInstances$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConfiguredInstances' from JSON`,
   );
 }
 
@@ -257,6 +260,23 @@ export function imageFromJSON(
     jsonString,
     (x) => Image$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Image' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectBoxesInstances$inboundSchema: z.ZodType<
+  GetProjectBoxesInstances,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.number(), z.record(types.number())]);
+
+export function getProjectBoxesInstancesFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectBoxesInstances, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectBoxesInstances$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectBoxesInstances' from JSON`,
   );
 }
 
@@ -331,23 +351,6 @@ export function livenessProbeFromJSON(
 }
 
 /** @internal */
-export const GetProjectBoxesReplicas$inboundSchema: z.ZodType<
-  GetProjectBoxesReplicas,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.number(), z.record(types.number())]);
-
-export function getProjectBoxesReplicasFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectBoxesReplicas, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectBoxesReplicas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectBoxesReplicas' from JSON`,
-  );
-}
-
-/** @internal */
 export const Requests$inboundSchema: z.ZodType<
   Requests,
   z.ZodTypeDef,
@@ -392,12 +395,12 @@ export const GetProjectBoxesConfig$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   command: types.optional(z.array(types.string())),
-  configuredReplicas: types.optional(
+  configuredInstances: types.optional(
     smartUnion([types.number(), z.record(types.number())]),
   ),
   image: z.lazy(() => Image$inboundSchema),
+  instances: smartUnion([types.number(), z.record(types.number())]),
   livenessProbe: types.optional(z.lazy(() => LivenessProbe$inboundSchema)),
-  replicas: smartUnion([types.number(), z.record(types.number())]),
   resources: z.lazy(() => GetProjectBoxesResources$inboundSchema),
   terminationGracePeriodSeconds: types.optional(types.number()),
 });
@@ -439,8 +442,8 @@ export function getProjectBoxesItemsFromJSON(
 }
 
 /** @internal */
-export const Replicas$inboundSchema: z.ZodType<
-  Replicas,
+export const Instances$inboundSchema: z.ZodType<
+  Instances,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -450,13 +453,13 @@ export const Replicas$inboundSchema: z.ZodType<
   total: types.number(),
 });
 
-export function replicasFromJSON(
+export function instancesFromJSON(
   jsonString: string,
-): SafeParseResult<Replicas, SDKValidationError> {
+): SafeParseResult<Instances, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Replicas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Replicas' from JSON`,
+    (x) => Instances$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Instances' from JSON`,
   );
 }
 
@@ -553,8 +556,8 @@ export const Daemons$inboundSchema: z.ZodType<Daemons, z.ZodTypeDef, unknown> =
     config: z.lazy(() => GetProjectBoxesConfig$inboundSchema),
     createdAt: types.string(),
     deploymentId: types.optional(types.string()),
+    instances: z.lazy(() => Instances$inboundSchema),
     name: types.string(),
-    replicas: z.lazy(() => Replicas$inboundSchema),
     scope: z.union([
       z.lazy(() => GetProjectBoxesScope1$inboundSchema),
       z.lazy(() => GetProjectBoxesScope2$inboundSchema),

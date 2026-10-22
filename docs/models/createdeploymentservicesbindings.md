@@ -1,0 +1,24 @@
+# CreateDeploymentServicesBindings
+
+Bindings to services in the same deployment.
+
+## Example Usage
+
+```typescript
+import { CreateDeploymentServicesBindings } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+
+let value: CreateDeploymentServicesBindings = {
+  env: "<value>",
+  format: "url",
+  service: "<value>",
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                              | Type                                                                                                                                                                               | Required                                                                                                                                                                           | Description                                                                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                                                                                                                                                              | *string*                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                 | Environment variable name that will store the generated value                                                                                                                      |
+| `format`                                                                                                                                                                           | [models.CreateDeploymentServicesFormat](../models/createdeploymentservicesformat.md)                                                                                               | :heavy_check_mark:                                                                                                                                                                 | Generated value shape, must be `"url"`.                                                                                                                                            |
+| `service`                                                                                                                                                                          | *string*                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                                 | Target service name from `services`.                                                                                                                                               |
+| `type`                                                                                                                                                                             | [models.CreateDeploymentServicesDeploymentsResponse200ApplicationJSONResponseBodyType](../models/createdeploymentservicesdeploymentsresponse200applicationjsonresponsebodytype.md) | :heavy_minus_sign:                                                                                                                                                                 | If present, must be `"service"` for Service-to-Service HTTP bindings.                                                                                                              |

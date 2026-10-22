@@ -10,7 +10,7 @@ let value: GetProjectBoxesConfig = {
     requested: "<value>",
     resolved: "<value>",
   },
-  replicas: {
+  instances: {
     "key": 5100.59,
   },
   resources: {
@@ -26,9 +26,9 @@ let value: GetProjectBoxesConfig = {
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `command`                                                                | *string*[]                                                               | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `configuredReplicas`                                                     | *models.ConfiguredReplicas*                                              | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `configuredInstances`                                                    | *models.ConfiguredInstances*                                             | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `image`                                                                  | [models.Image](../models/image.md)                                       | :heavy_check_mark:                                                       | N/A                                                                      |
+| `instances`                                                              | *models.GetProjectBoxesInstances*                                        | :heavy_check_mark:                                                       | N/A                                                                      |
 | `livenessProbe`                                                          | [models.LivenessProbe](../models/livenessprobe.md)                       | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `replicas`                                                               | *models.GetProjectBoxesReplicas*                                         | :heavy_check_mark:                                                       | N/A                                                                      |
 | `resources`                                                              | [models.GetProjectBoxesResources](../models/getprojectboxesresources.md) | :heavy_check_mark:                                                       | N/A                                                                      |
 | `terminationGracePeriodSeconds`                                          | *number*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

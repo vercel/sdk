@@ -503,7 +503,7 @@ export type ResponseBodyFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 /**
- * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
  */
 export const ResponseBodyLabel = {
   Enhanced: "enhanced",
@@ -511,7 +511,7 @@ export const ResponseBodyLabel = {
   Turbo: "turbo",
 } as const;
 /**
- * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
  */
 export type ResponseBodyLabel = ClosedEnum<typeof ResponseBodyLabel>;
 
@@ -521,7 +521,7 @@ export type ResponseBodyLabel = ClosedEnum<typeof ResponseBodyLabel>;
 export type ResponseBodyElasticBuildMachine = {
   cores: number;
   /**
-   * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+   * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
    */
   label: ResponseBodyLabel;
   memory: number;

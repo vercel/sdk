@@ -1543,6 +1543,10 @@ export type ThreeHundredAndEightyThree = {
    * Injected at read time from `payload.projectId`.
    */
   projectName?: string | undefined;
+  /**
+   * Stored when activity clients can't resolve the name, as for products.
+   */
+  scopeName?: string | undefined;
   webhookUrl?: string | undefined;
 };
 
@@ -1669,6 +1673,10 @@ export type ThreeHundredAndEightyTwo = {
    */
   projectId?: string | undefined;
   projectName?: string | undefined;
+  /**
+   * Stored when activity clients can't resolve the name, as for products.
+   */
+  scopeName?: string | undefined;
 };
 
 /**
@@ -3944,6 +3952,7 @@ export const ThreeHundredAndEightyThree$inboundSchema: z.ZodType<
   prevWebhookUrl: types.optional(types.string()),
   projectId: types.optional(types.string()),
   projectName: types.optional(types.string()),
+  scopeName: types.optional(types.string()),
   webhookUrl: types.optional(types.string()),
 });
 
@@ -4014,6 +4023,7 @@ export const ThreeHundredAndEightyTwo$inboundSchema: z.ZodType<
   budget: z.lazy(() => UserEventPayload382Budget$inboundSchema),
   projectId: types.optional(types.string()),
   projectName: types.optional(types.string()),
+  scopeName: types.optional(types.string()),
 });
 
 export function threeHundredAndEightyTwoFromJSON(

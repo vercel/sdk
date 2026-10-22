@@ -28,6 +28,10 @@ export type ThreeHundredAndEightyOne = {
    */
   projectId?: string | undefined;
   projectName?: string | undefined;
+  /**
+   * Stored when activity clients can't resolve the name, as for products.
+   */
+  scopeName?: string | undefined;
   webhookUrl?: string | undefined;
 };
 
@@ -1326,6 +1330,7 @@ export const ThreeHundredAndEightyOne$inboundSchema: z.ZodType<
   budget: UserEventPayload381Budget$inboundSchema,
   projectId: types.optional(types.string()),
   projectName: types.optional(types.string()),
+  scopeName: types.optional(types.string()),
   webhookUrl: types.optional(types.string()),
 });
 

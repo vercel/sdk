@@ -1790,7 +1790,7 @@ export type GetMicrofrontendsInGroupFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 /**
- * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
  */
 export const GetMicrofrontendsInGroupLabel = {
   Enhanced: "enhanced",
@@ -1798,7 +1798,7 @@ export const GetMicrofrontendsInGroupLabel = {
   Turbo: "turbo",
 } as const;
 /**
- * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+ * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
  */
 export type GetMicrofrontendsInGroupLabel = ClosedEnum<
   typeof GetMicrofrontendsInGroupLabel
@@ -1810,7 +1810,7 @@ export type GetMicrofrontendsInGroupLabel = ClosedEnum<
 export type GetMicrofrontendsInGroupElasticBuildMachine = {
   cores: number;
   /**
-   * Machine types an elastic decision can effectively apply or persist. The algorithm may consider Basic, but Basic is normalized to standard before an elastic decision becomes effective.
+   * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
    */
   label: GetMicrofrontendsInGroupLabel;
   memory: number;

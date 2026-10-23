@@ -5,15 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEleven } from "@vercel/sdk/models/rulegroups.js";
+import { TwoHundredAndEleven } from "@vercel/sdk/models/onehundredandeightyfive.js";
 
 let value: TwoHundredAndEleven = {
-  provider: "github",
+  logDrainUrl: "https://hurtful-pants.net/",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `provider`                                                                     | [models.UserEventPayload211Provider](../models/usereventpayload211provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |

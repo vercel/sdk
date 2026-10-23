@@ -5,12 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundred } from "@vercel/sdk/models/usereventpayload252previousdeploymenttype.js";
+import { ThreeHundred } from "@vercel/sdk/models/usereventpayload256next.js";
 
 let value: ThreeHundred = {
-  gitProvider: "github-custom-host",
-  gitRepoId: "<id>",
-  gitRepositoryName: "<value>",
+  next: {
+    functionZeroConfigFailover: true,
+  },
+  previous: {
+    functionZeroConfigFailover: true,
+  },
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -18,10 +21,9 @@ let value: ThreeHundred = {
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `gitProvider`                                  | [models.GitProvider](../models/gitprovider.md) | :heavy_check_mark:                             | N/A                                            |
-| `gitRepoId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `gitRepositoryName`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `projectName`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload300Next](../models/usereventpayload300next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload300Previous](../models/usereventpayload300previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

@@ -5,23 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFourteen } from "@vercel/sdk/models/usereventpayload252previousdeploymenttype.js";
+import { ThreeHundredAndFourteen } from "@vercel/sdk/models/usereventpayload256next.js";
 
 let value: ThreeHundredAndFourteen = {
-  domain: "raw-remark.net",
-  newProjectId: "<id>",
-  newProjectName: "<value>",
-  oldProjectId: "<id>",
-  oldProjectName: "<value>",
+  consolidatedGitCommitStatus: {
+    enabled: false,
+    propagateFailures: false,
+  },
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `newProjectId`     | *string*           | :heavy_check_mark: | N/A                |
-| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
-| `oldProjectId`     | *string*           | :heavy_check_mark: | N/A                |
-| `oldProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `consolidatedGitCommitStatus`                                                  | [models.ConsolidatedGitCommitStatus](../models/consolidatedgitcommitstatus.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

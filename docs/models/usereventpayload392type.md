@@ -1,0 +1,15 @@
+# UserEventPayload392Type
+
+## Example Usage
+
+```typescript
+import { UserEventPayload392Type } from "@vercel/sdk/models/usereventpayload385type.js";
+
+let value: UserEventPayload392Type = "integration";
+```
+
+## Values
+
+```typescript
+"blob" | "edge-config" | "integration" | "postgres" | "redis"
+```

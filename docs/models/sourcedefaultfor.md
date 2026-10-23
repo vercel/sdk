@@ -5,7 +5,7 @@ Informational marker for a system-owned default drain.
 ## Example Usage
 
 ```typescript
-import { SourceDefaultFor } from "@vercel/sdk/models/createlogdrainop.js";
+import { SourceDefaultFor } from "@vercel/sdk/models/getintegrationlogdrainsop.js";
 
 let value: SourceDefaultFor = "eve-tracing";
 ```

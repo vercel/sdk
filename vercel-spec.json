@@ -14548,7 +14548,7 @@
     },
     "/v1/networking/privatelink/endpoints": {
       "post": {
-        "description": "Creates a PrivateLink endpoint for a project.",
+        "description": "Creates a PrivateLink endpoint for a project. Changes to endpoints of the same project are serialized. If another change holds them for too long, the request fails with `503 service_unavailable` and can be retried. If the change may have completed but the outcome is unknown, it fails with `409 uncertain_outcome`; read the endpoint before retrying.",
         "operationId": "createPrivateLinkEndpoint",
         "security": [
           {
@@ -14589,6 +14589,9 @@
             "description": ""
           },
           "500": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },
@@ -14816,7 +14819,7 @@
         ]
       },
       "delete": {
-        "description": "Deletes a PrivateLink endpoint.",
+        "description": "Deletes a PrivateLink endpoint. The endpoint is removed asynchronously. Repeating the request for an endpoint that is already being deleted retries its cleanup and also returns `204`. Changes to endpoints of the same project are serialized. If another change holds them for too long, the request fails with `503 service_unavailable` and can be retried. If the change may have completed but the outcome is unknown, it fails with `409 uncertain_outcome`; read the endpoint before retrying.",
         "operationId": "deletePrivateLinkEndpoint",
         "security": [
           {
@@ -14829,7 +14832,7 @@
         ],
         "responses": {
           "204": {
-            "description": "The PrivateLink endpoint was deleted.",
+            "description": "The PrivateLink endpoint is being deleted.",
             "content": {
               "application/json": {
                 "schema": {
@@ -14857,6 +14860,9 @@
             "description": ""
           },
           "500": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },
@@ -14904,7 +14910,7 @@
         ]
       },
       "patch": {
-        "description": "Updates a PrivateLink endpoint (name, privateDns).",
+        "description": "Updates a PrivateLink endpoint (name, privateDns). Changes to endpoints of the same project are serialized. If another change holds them for too long, the request fails with `503 service_unavailable` and can be retried. If the change may have completed but the outcome is unknown, it fails with `409 uncertain_outcome`; read the endpoint before retrying.",
         "operationId": "updatePrivateLinkEndpoint",
         "security": [
           {
@@ -14942,6 +14948,12 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },
@@ -17713,7 +17725,7 @@
     },
     "/v1/projects/{idOrName}/daemons/{daemonName}/instances": {
       "put": {
-        "description": "Override the instance counts of a daemon by region, without changing its configuration. An empty map removes the overrides.",
+        "description": "Override the instance counts of a daemon in the given regions, without changing its configuration or the overrides of other regions.",
         "operationId": "putProjectDaemonInstances",
         "security": [
           {
@@ -17824,13 +17836,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "description": "Instance count overrides by region, for example { \\\"iad1\\\": 1 }. Regions not in the map keep their configured count. An empty map removes the overrides.",
-                "type": "object",
                 "additionalProperties": {
                   "type": "integer",
                   "minimum": 0,
-                  "maximum": 100
-                }
+                  "maximum": 100,
+                  "nullable": true
+                },
+                "description": "Instance count overrides for the given regions, for example { \\\"iad1\\\": 1 }. Overrides of regions not in the map are kept. A `null` count removes the region's override. An empty map removes all overrides.",
+                "type": "object"
               }
             }
           }
@@ -28457,6 +28470,9 @@
           },
           "400": {
             "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": ""
           },
           "403": {
             "description": "You do not have permission to access this resource."
@@ -52072,6 +52088,40 @@
                                   "updatedAt": {
                                     "type": "number"
                                   },
+                                  "deliveryStats": {
+                                    "properties": {
+                                      "attempts": {
+                                        "type": "number",
+                                        "description": "All delivery attempts in the window."
+                                      },
+                                      "failures": {
+                                        "type": "number",
+                                        "description": "Delivery attempts that did not succeed in the window."
+                                      },
+                                      "state": {
+                                        "type": "string",
+                                        "enum": [
+                                          "failing",
+                                          "healthy",
+                                          "unknown"
+                                        ]
+                                      },
+                                      "window": {
+                                        "type": "string",
+                                        "enum": [
+                                          "24h"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "attempts",
+                                      "failures",
+                                      "state",
+                                      "window"
+                                    ],
+                                    "type": "object",
+                                    "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                                  },
                                   "filterV2": {
                                     "properties": {
                                       "filter": {
@@ -52594,6 +52644,40 @@
                                   "updatedAt": {
                                     "type": "number"
                                   },
+                                  "deliveryStats": {
+                                    "properties": {
+                                      "attempts": {
+                                        "type": "number",
+                                        "description": "All delivery attempts in the window."
+                                      },
+                                      "failures": {
+                                        "type": "number",
+                                        "description": "Delivery attempts that did not succeed in the window."
+                                      },
+                                      "state": {
+                                        "type": "string",
+                                        "enum": [
+                                          "failing",
+                                          "healthy",
+                                          "unknown"
+                                        ]
+                                      },
+                                      "window": {
+                                        "type": "string",
+                                        "enum": [
+                                          "24h"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "attempts",
+                                      "failures",
+                                      "state",
+                                      "window"
+                                    ],
+                                    "type": "object",
+                                    "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                                  },
                                   "filterV2": {
                                     "properties": {
                                       "filter": {
@@ -52828,6 +52912,16 @@
             "schema": {
               "type": "boolean",
               "default": false
+            }
+          },
+          {
+            "name": "includeDeliveryStats",
+            "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours.",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours."
             }
           },
           {
@@ -53424,6 +53518,40 @@
                         "updatedAt": {
                           "type": "number"
                         },
+                        "deliveryStats": {
+                          "properties": {
+                            "attempts": {
+                              "type": "number",
+                              "description": "All delivery attempts in the window."
+                            },
+                            "failures": {
+                              "type": "number",
+                              "description": "Delivery attempts that did not succeed in the window."
+                            },
+                            "state": {
+                              "type": "string",
+                              "enum": [
+                                "failing",
+                                "healthy",
+                                "unknown"
+                              ]
+                            },
+                            "window": {
+                              "type": "string",
+                              "enum": [
+                                "24h"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "attempts",
+                            "failures",
+                            "state",
+                            "window"
+                          ],
+                          "type": "object",
+                          "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                        },
                         "filterV2": {
                           "properties": {
                             "filter": {
@@ -53942,6 +54070,40 @@
                         },
                         "updatedAt": {
                           "type": "number"
+                        },
+                        "deliveryStats": {
+                          "properties": {
+                            "attempts": {
+                              "type": "number",
+                              "description": "All delivery attempts in the window."
+                            },
+                            "failures": {
+                              "type": "number",
+                              "description": "Delivery attempts that did not succeed in the window."
+                            },
+                            "state": {
+                              "type": "string",
+                              "enum": [
+                                "failing",
+                                "healthy",
+                                "unknown"
+                              ]
+                            },
+                            "window": {
+                              "type": "string",
+                              "enum": [
+                                "24h"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "attempts",
+                            "failures",
+                            "state",
+                            "window"
+                          ],
+                          "type": "object",
+                          "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
                         },
                         "filterV2": {
                           "properties": {
@@ -55002,6 +55164,40 @@
                               "updatedAt": {
                                 "type": "number"
                               },
+                              "deliveryStats": {
+                                "properties": {
+                                  "attempts": {
+                                    "type": "number",
+                                    "description": "All delivery attempts in the window."
+                                  },
+                                  "failures": {
+                                    "type": "number",
+                                    "description": "Delivery attempts that did not succeed in the window."
+                                  },
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "failing",
+                                      "healthy",
+                                      "unknown"
+                                    ]
+                                  },
+                                  "window": {
+                                    "type": "string",
+                                    "enum": [
+                                      "24h"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "attempts",
+                                  "failures",
+                                  "state",
+                                  "window"
+                                ],
+                                "type": "object",
+                                "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                              },
                               "filterV2": {
                                 "properties": {
                                   "filter": {
@@ -55524,6 +55720,40 @@
                               "updatedAt": {
                                 "type": "number"
                               },
+                              "deliveryStats": {
+                                "properties": {
+                                  "attempts": {
+                                    "type": "number",
+                                    "description": "All delivery attempts in the window."
+                                  },
+                                  "failures": {
+                                    "type": "number",
+                                    "description": "Delivery attempts that did not succeed in the window."
+                                  },
+                                  "state": {
+                                    "type": "string",
+                                    "enum": [
+                                      "failing",
+                                      "healthy",
+                                      "unknown"
+                                    ]
+                                  },
+                                  "window": {
+                                    "type": "string",
+                                    "enum": [
+                                      "24h"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "attempts",
+                                  "failures",
+                                  "state",
+                                  "window"
+                                ],
+                                "type": "object",
+                                "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                              },
                               "filterV2": {
                                 "properties": {
                                   "filter": {
@@ -55732,6 +55962,9 @@
           },
           "410": {
             "description": ""
+          },
+          "503": {
+            "description": "The delivery stats could not be loaded. Retry, or omit `includeDeliveryStats`."
           }
         },
         "parameters": [
@@ -55748,6 +55981,16 @@
             "schema": {
               "type": "boolean",
               "default": false
+            }
+          },
+          {
+            "name": "includeDeliveryStats",
+            "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours.",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours."
             }
           },
           {
@@ -55851,1110 +56094,557 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "oneOf": [
-                    {
-                      "properties": {
-                        "createdAt": {
-                          "type": "number"
-                        },
-                        "delivery": {
-                          "oneOf": [
-                            {
-                              "properties": {
-                                "compression": {
-                                  "type": "string",
-                                  "enum": [
-                                    "gzip",
-                                    "none"
-                                  ]
-                                },
-                                "encoding": {
-                                  "type": "string",
-                                  "enum": [
-                                    "json",
-                                    "ndjson"
-                                  ]
-                                },
-                                "endpoint": {
-                                  "type": "string"
-                                },
-                                "headers": {
-                                  "additionalProperties": {
-                                    "type": "string"
-                                  },
-                                  "type": "object"
-                                },
-                                "secret": {
-                                  "oneOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "properties": {
-                                        "kind": {
-                                          "type": "string",
-                                          "enum": [
-                                            "INTEGRATION_SECRET"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "kind"
-                                      ],
-                                      "type": "object"
-                                    }
-                                  ]
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "http"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "encoding",
-                                "endpoint",
-                                "headers",
-                                "type"
-                              ],
-                              "type": "object"
+                  "properties": {
+                    "createdAt": {
+                      "type": "number"
+                    },
+                    "delivery": {
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "compression": {
+                              "type": "string",
+                              "enum": [
+                                "gzip",
+                                "none"
+                              ]
                             },
-                            {
-                              "properties": {
-                                "encoding": {
-                                  "type": "string",
-                                  "enum": [
-                                    "json",
-                                    "proto"
-                                  ]
-                                },
-                                "endpoint": {
-                                  "properties": {
-                                    "traces": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "required": [
-                                    "traces"
-                                  ],
-                                  "type": "object"
-                                },
-                                "headers": {
-                                  "additionalProperties": {
-                                    "type": "string"
-                                  },
-                                  "type": "object"
-                                },
-                                "secret": {
-                                  "oneOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "properties": {
-                                        "kind": {
-                                          "type": "string",
-                                          "enum": [
-                                            "INTEGRATION_SECRET"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "kind"
-                                      ],
-                                      "type": "object"
-                                    }
-                                  ]
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "otlphttp"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "encoding",
-                                "endpoint",
-                                "headers",
-                                "type"
-                              ],
-                              "type": "object"
+                            "encoding": {
+                              "type": "string",
+                              "enum": [
+                                "json",
+                                "ndjson"
+                              ]
                             },
-                            {
-                              "properties": {
-                                "endpoint": {
-                                  "type": "string"
-                                },
-                                "table": {
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "clickhouse"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "endpoint",
-                                "table",
-                                "type"
-                              ],
-                              "type": "object"
+                            "endpoint": {
+                              "type": "string"
                             },
-                            {
-                              "properties": {
-                                "compression": {
-                                  "type": "string",
-                                  "enum": [
-                                    "none"
-                                  ]
-                                },
-                                "encoding": {
-                                  "type": "string",
-                                  "enum": [
-                                    "json",
-                                    "ndjson"
-                                  ]
-                                },
-                                "endpoint": {
-                                  "type": "string"
-                                },
-                                "fileStructure": {
-                                  "type": "string",
-                                  "enum": [
-                                    "hive"
-                                  ]
-                                },
-                                "objectAcl": {
-                                  "type": "string",
-                                  "enum": [
-                                    "authenticated-read",
-                                    "aws-exec-read",
-                                    "bucket-owner-full-control",
-                                    "bucket-owner-read",
-                                    "private",
-                                    "public-read",
-                                    "public-read-write"
-                                  ]
-                                },
-                                "region": {
-                                  "type": "string"
-                                },
-                                "roleArn": {
-                                  "type": "string"
-                                },
-                                "serverSideEncryption": {
-                                  "type": "string",
-                                  "enum": [
-                                    "AES256",
-                                    "aws:kms",
-                                    "aws:kms:dsse"
-                                  ]
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "s3"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "compression",
-                                "encoding",
-                                "endpoint",
-                                "fileStructure",
-                                "region",
-                                "roleArn",
-                                "type"
-                              ],
-                              "type": "object"
-                            },
-                            {
-                              "properties": {
-                                "target": {
-                                  "type": "string",
-                                  "enum": [
-                                    "vercel-otel-traces-db"
-                                  ]
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "internal"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "target",
-                                "type"
-                              ],
-                              "type": "object"
-                            }
-                          ]
-                        },
-                        "disabledAt": {
-                          "type": "number"
-                        },
-                        "disabledBy": {
-                          "type": "string"
-                        },
-                        "disabledReason": {
-                          "type": "string",
-                          "enum": [
-                            "account-plan-downgrade",
-                            "disabled-by-admin",
-                            "disabled-by-owner",
-                            "feature-not-available",
-                            "limits-exceeded"
-                          ]
-                        },
-                        "firstErrorTimestamp": {
-                          "type": "number"
-                        },
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "ownerId": {
-                          "type": "string"
-                        },
-                        "projectIds": {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array"
-                        },
-                        "sampling": {
-                          "items": {
-                            "properties": {
-                              "env": {
-                                "type": "string",
-                                "enum": [
-                                  "preview",
-                                  "production"
-                                ]
-                              },
-                              "rate": {
-                                "type": "number"
-                              },
-                              "requestPath": {
+                            "headers": {
+                              "additionalProperties": {
                                 "type": "string"
                               },
-                              "type": {
-                                "type": "string",
-                                "enum": [
-                                  "head_sampling"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "rate",
-                              "type"
-                            ],
-                            "type": "object"
-                          },
-                          "type": "array"
-                        },
-                        "schemas": {
-                          "properties": {
-                            "ai_gateway": {
                               "type": "object"
                             },
-                            "analytics": {
-                              "type": "object"
-                            },
-                            "audit_log": {
-                              "type": "object"
-                            },
-                            "connect": {
-                              "type": "object"
-                            },
-                            "log": {
-                              "type": "object"
-                            },
-                            "speed_insights": {
-                              "type": "object"
-                            },
-                            "trace": {
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "source": {
-                          "oneOf": [
-                            {
-                              "properties": {
-                                "defaultFor": {
-                                  "type": "string",
-                                  "enum": [
-                                    "eve-tracing"
-                                  ],
-                                  "description": "Informational marker for a system-owned default drain."
-                                },
-                                "kind": {
-                                  "type": "string",
-                                  "enum": [
-                                    "self-served"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "kind"
-                              ],
-                              "type": "object"
-                            },
-                            {
-                              "properties": {
-                                "externalResourceId": {
-                                  "type": "string"
-                                },
-                                "integrationConfigurationId": {
-                                  "type": "string"
-                                },
-                                "integrationId": {
-                                  "type": "string"
-                                },
-                                "kind": {
-                                  "type": "string",
-                                  "enum": [
-                                    "integration"
-                                  ]
-                                },
-                                "resourceId": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "integrationConfigurationId",
-                                "integrationId",
-                                "kind"
-                              ],
-                              "type": "object"
-                            }
-                          ]
-                        },
-                        "status": {
-                          "type": "string",
-                          "enum": [
-                            "disabled",
-                            "enabled",
-                            "errored"
-                          ]
-                        },
-                        "teamId": {
-                          "nullable": true,
-                          "type": "string"
-                        },
-                        "updatedAt": {
-                          "type": "number"
-                        },
-                        "filterV2": {
-                          "properties": {
-                            "filter": {
+                            "secret": {
                               "oneOf": [
                                 {
-                                  "properties": {
-                                    "deployment": {
-                                      "properties": {
-                                        "environments": {
-                                          "items": {
-                                            "type": "string",
-                                            "enum": [
-                                              "preview",
-                                              "production"
-                                            ]
-                                          },
-                                          "type": "array"
-                                        }
-                                      },
-                                      "type": "object"
-                                    },
-                                    "log": {
-                                      "properties": {
-                                        "legacy_excludeCachedStaticAssetLogs": {
-                                          "type": "boolean",
-                                          "enum": [
-                                            false,
-                                            true
-                                          ]
-                                        },
-                                        "sources": {
-                                          "items": {
-                                            "type": "string",
-                                            "enum": [
-                                              "build",
-                                              "edge",
-                                              "external",
-                                              "firewall",
-                                              "lambda",
-                                              "redirect",
-                                              "static"
-                                            ]
-                                          },
-                                          "type": "array"
-                                        }
-                                      },
-                                      "type": "object"
-                                    },
-                                    "project": {
-                                      "properties": {
-                                        "ids": {
-                                          "items": {
-                                            "type": "string"
-                                          },
-                                          "type": "array"
-                                        }
-                                      },
-                                      "type": "object"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "basic"
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "type": "object"
+                                  "type": "string"
                                 },
                                 {
                                   "properties": {
-                                    "text": {
-                                      "type": "string"
-                                    },
-                                    "type": {
+                                    "kind": {
                                       "type": "string",
                                       "enum": [
-                                        "odata"
+                                        "INTEGRATION_SECRET"
                                       ]
                                     }
                                   },
                                   "required": [
-                                    "text",
-                                    "type"
+                                    "kind"
                                   ],
                                   "type": "object"
                                 }
                               ]
                             },
-                            "version": {
+                            "type": {
                               "type": "string",
                               "enum": [
-                                "v2"
+                                "http"
                               ]
                             }
                           },
                           "required": [
-                            "filter",
-                            "version"
+                            "encoding",
+                            "endpoint",
+                            "headers",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "encoding": {
+                              "type": "string",
+                              "enum": [
+                                "json",
+                                "proto"
+                              ]
+                            },
+                            "endpoint": {
+                              "properties": {
+                                "traces": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "traces"
+                              ],
+                              "type": "object"
+                            },
+                            "headers": {
+                              "additionalProperties": {
+                                "type": "string"
+                              },
+                              "type": "object"
+                            },
+                            "secret": {
+                              "oneOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "properties": {
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "INTEGRATION_SECRET"
+                                      ]
+                                    }
+                                  },
+                                  "required": [
+                                    "kind"
+                                  ],
+                                  "type": "object"
+                                }
+                              ]
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "otlphttp"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "encoding",
+                            "endpoint",
+                            "headers",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "endpoint": {
+                              "type": "string"
+                            },
+                            "table": {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "clickhouse"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "endpoint",
+                            "table",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "compression": {
+                              "type": "string",
+                              "enum": [
+                                "none"
+                              ]
+                            },
+                            "encoding": {
+                              "type": "string",
+                              "enum": [
+                                "json",
+                                "ndjson"
+                              ]
+                            },
+                            "endpoint": {
+                              "type": "string"
+                            },
+                            "fileStructure": {
+                              "type": "string",
+                              "enum": [
+                                "hive"
+                              ]
+                            },
+                            "objectAcl": {
+                              "type": "string",
+                              "enum": [
+                                "authenticated-read",
+                                "aws-exec-read",
+                                "bucket-owner-full-control",
+                                "bucket-owner-read",
+                                "private",
+                                "public-read",
+                                "public-read-write"
+                              ]
+                            },
+                            "region": {
+                              "type": "string"
+                            },
+                            "roleArn": {
+                              "type": "string"
+                            },
+                            "serverSideEncryption": {
+                              "type": "string",
+                              "enum": [
+                                "AES256",
+                                "aws:kms",
+                                "aws:kms:dsse"
+                              ]
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "s3"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "compression",
+                            "encoding",
+                            "endpoint",
+                            "fileStructure",
+                            "region",
+                            "roleArn",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
+                            "target": {
+                              "type": "string",
+                              "enum": [
+                                "vercel-otel-traces-db"
+                              ]
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "internal"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "target",
+                            "type"
                           ],
                           "type": "object"
                         }
+                      ]
+                    },
+                    "disabledAt": {
+                      "type": "number"
+                    },
+                    "disabledBy": {
+                      "type": "string"
+                    },
+                    "disabledReason": {
+                      "type": "string",
+                      "enum": [
+                        "account-plan-downgrade",
+                        "disabled-by-admin",
+                        "disabled-by-owner",
+                        "feature-not-available",
+                        "limits-exceeded"
+                      ]
+                    },
+                    "firstErrorTimestamp": {
+                      "type": "number"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "ownerId": {
+                      "type": "string"
+                    },
+                    "projectIds": {
+                      "items": {
+                        "type": "string"
                       },
-                      "required": [
-                        "createdAt",
-                        "delivery",
-                        "id",
-                        "name",
-                        "ownerId",
-                        "schemas",
-                        "source",
-                        "updatedAt"
-                      ],
+                      "type": "array"
+                    },
+                    "sampling": {
+                      "items": {
+                        "properties": {
+                          "env": {
+                            "type": "string",
+                            "enum": [
+                              "preview",
+                              "production"
+                            ]
+                          },
+                          "rate": {
+                            "type": "number"
+                          },
+                          "requestPath": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": [
+                              "head_sampling"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "rate",
+                          "type"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "schemas": {
+                      "properties": {
+                        "ai_gateway": {
+                          "type": "object"
+                        },
+                        "analytics": {
+                          "type": "object"
+                        },
+                        "audit_log": {
+                          "type": "object"
+                        },
+                        "connect": {
+                          "type": "object"
+                        },
+                        "log": {
+                          "type": "object"
+                        },
+                        "speed_insights": {
+                          "type": "object"
+                        },
+                        "trace": {
+                          "type": "object"
+                        }
+                      },
                       "type": "object"
                     },
-                    {
-                      "properties": {
-                        "createdAt": {
-                          "type": "number"
-                        },
-                        "delivery": {
-                          "oneOf": [
-                            {
-                              "properties": {
-                                "compression": {
-                                  "type": "string",
-                                  "enum": [
-                                    "gzip",
-                                    "none"
-                                  ]
-                                },
-                                "encoding": {
-                                  "type": "string",
-                                  "enum": [
-                                    "json",
-                                    "ndjson"
-                                  ]
-                                },
-                                "endpoint": {
-                                  "type": "string"
-                                },
-                                "headers": {
-                                  "additionalProperties": {
-                                    "type": "string"
-                                  },
-                                  "type": "object"
-                                },
-                                "secret": {
-                                  "oneOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "properties": {
-                                        "kind": {
-                                          "type": "string",
-                                          "enum": [
-                                            "INTEGRATION_SECRET"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "kind"
-                                      ],
-                                      "type": "object"
-                                    }
-                                  ]
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "http"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "encoding",
-                                "endpoint",
-                                "headers",
-                                "type"
-                              ],
-                              "type": "object"
-                            },
-                            {
-                              "properties": {
-                                "encoding": {
-                                  "type": "string",
-                                  "enum": [
-                                    "json",
-                                    "proto"
-                                  ]
-                                },
-                                "endpoint": {
-                                  "properties": {
-                                    "traces": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "required": [
-                                    "traces"
-                                  ],
-                                  "type": "object"
-                                },
-                                "headers": {
-                                  "additionalProperties": {
-                                    "type": "string"
-                                  },
-                                  "type": "object"
-                                },
-                                "secret": {
-                                  "oneOf": [
-                                    {
-                                      "type": "string"
-                                    },
-                                    {
-                                      "properties": {
-                                        "kind": {
-                                          "type": "string",
-                                          "enum": [
-                                            "INTEGRATION_SECRET"
-                                          ]
-                                        }
-                                      },
-                                      "required": [
-                                        "kind"
-                                      ],
-                                      "type": "object"
-                                    }
-                                  ]
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "otlphttp"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "encoding",
-                                "endpoint",
-                                "headers",
-                                "type"
-                              ],
-                              "type": "object"
-                            },
-                            {
-                              "properties": {
-                                "endpoint": {
-                                  "type": "string"
-                                },
-                                "table": {
-                                  "type": "string"
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "clickhouse"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "endpoint",
-                                "table",
-                                "type"
-                              ],
-                              "type": "object"
-                            },
-                            {
-                              "properties": {
-                                "compression": {
-                                  "type": "string",
-                                  "enum": [
-                                    "none"
-                                  ]
-                                },
-                                "encoding": {
-                                  "type": "string",
-                                  "enum": [
-                                    "json",
-                                    "ndjson"
-                                  ]
-                                },
-                                "endpoint": {
-                                  "type": "string"
-                                },
-                                "fileStructure": {
-                                  "type": "string",
-                                  "enum": [
-                                    "hive"
-                                  ]
-                                },
-                                "objectAcl": {
-                                  "type": "string",
-                                  "enum": [
-                                    "authenticated-read",
-                                    "aws-exec-read",
-                                    "bucket-owner-full-control",
-                                    "bucket-owner-read",
-                                    "private",
-                                    "public-read",
-                                    "public-read-write"
-                                  ]
-                                },
-                                "region": {
-                                  "type": "string"
-                                },
-                                "roleArn": {
-                                  "type": "string"
-                                },
-                                "serverSideEncryption": {
-                                  "type": "string",
-                                  "enum": [
-                                    "AES256",
-                                    "aws:kms",
-                                    "aws:kms:dsse"
-                                  ]
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "s3"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "compression",
-                                "encoding",
-                                "endpoint",
-                                "fileStructure",
-                                "region",
-                                "roleArn",
-                                "type"
-                              ],
-                              "type": "object"
-                            },
-                            {
-                              "properties": {
-                                "target": {
-                                  "type": "string",
-                                  "enum": [
-                                    "vercel-otel-traces-db"
-                                  ]
-                                },
-                                "type": {
-                                  "type": "string",
-                                  "enum": [
-                                    "internal"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "target",
-                                "type"
-                              ],
-                              "type": "object"
-                            }
-                          ]
-                        },
-                        "disabledAt": {
-                          "type": "number"
-                        },
-                        "disabledBy": {
-                          "type": "string"
-                        },
-                        "disabledReason": {
-                          "type": "string",
-                          "enum": [
-                            "account-plan-downgrade",
-                            "disabled-by-admin",
-                            "disabled-by-owner",
-                            "feature-not-available",
-                            "limits-exceeded"
-                          ]
-                        },
-                        "firstErrorTimestamp": {
-                          "type": "number"
-                        },
-                        "id": {
-                          "type": "string"
-                        },
-                        "name": {
-                          "type": "string"
-                        },
-                        "ownerId": {
-                          "type": "string"
-                        },
-                        "projectIds": {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array"
-                        },
-                        "sampling": {
-                          "items": {
-                            "properties": {
-                              "env": {
-                                "type": "string",
-                                "enum": [
-                                  "preview",
-                                  "production"
-                                ]
-                              },
-                              "rate": {
-                                "type": "number"
-                              },
-                              "requestPath": {
-                                "type": "string"
-                              },
-                              "type": {
-                                "type": "string",
-                                "enum": [
-                                  "head_sampling"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "rate",
-                              "type"
-                            ],
-                            "type": "object"
-                          },
-                          "type": "array"
-                        },
-                        "schemas": {
+                    "source": {
+                      "oneOf": [
+                        {
                           "properties": {
-                            "ai_gateway": {
-                              "type": "object"
-                            },
-                            "analytics": {
-                              "type": "object"
-                            },
-                            "audit_log": {
-                              "type": "object"
-                            },
-                            "connect": {
-                              "type": "object"
-                            },
-                            "log": {
-                              "type": "object"
-                            },
-                            "speed_insights": {
-                              "type": "object"
-                            },
-                            "trace": {
-                              "type": "object"
-                            }
-                          },
-                          "type": "object"
-                        },
-                        "source": {
-                          "oneOf": [
-                            {
-                              "properties": {
-                                "defaultFor": {
-                                  "type": "string",
-                                  "enum": [
-                                    "eve-tracing"
-                                  ],
-                                  "description": "Informational marker for a system-owned default drain."
-                                },
-                                "kind": {
-                                  "type": "string",
-                                  "enum": [
-                                    "self-served"
-                                  ]
-                                }
-                              },
-                              "required": [
-                                "kind"
-                              ],
-                              "type": "object"
-                            },
-                            {
-                              "properties": {
-                                "externalResourceId": {
-                                  "type": "string"
-                                },
-                                "integrationConfigurationId": {
-                                  "type": "string"
-                                },
-                                "integrationId": {
-                                  "type": "string"
-                                },
-                                "kind": {
-                                  "type": "string",
-                                  "enum": [
-                                    "integration"
-                                  ]
-                                },
-                                "resourceId": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "integrationConfigurationId",
-                                "integrationId",
-                                "kind"
-                              ],
-                              "type": "object"
-                            }
-                          ]
-                        },
-                        "status": {
-                          "type": "string",
-                          "enum": [
-                            "disabled",
-                            "enabled",
-                            "errored"
-                          ]
-                        },
-                        "teamId": {
-                          "nullable": true,
-                          "type": "string"
-                        },
-                        "updatedAt": {
-                          "type": "number"
-                        },
-                        "filterV2": {
-                          "properties": {
-                            "filter": {
-                              "oneOf": [
-                                {
-                                  "properties": {
-                                    "deployment": {
-                                      "properties": {
-                                        "environments": {
-                                          "items": {
-                                            "type": "string",
-                                            "enum": [
-                                              "preview",
-                                              "production"
-                                            ]
-                                          },
-                                          "type": "array"
-                                        }
-                                      },
-                                      "type": "object"
-                                    },
-                                    "log": {
-                                      "properties": {
-                                        "legacy_excludeCachedStaticAssetLogs": {
-                                          "type": "boolean",
-                                          "enum": [
-                                            false,
-                                            true
-                                          ]
-                                        },
-                                        "sources": {
-                                          "items": {
-                                            "type": "string",
-                                            "enum": [
-                                              "build",
-                                              "edge",
-                                              "external",
-                                              "firewall",
-                                              "lambda",
-                                              "redirect",
-                                              "static"
-                                            ]
-                                          },
-                                          "type": "array"
-                                        }
-                                      },
-                                      "type": "object"
-                                    },
-                                    "project": {
-                                      "properties": {
-                                        "ids": {
-                                          "items": {
-                                            "type": "string"
-                                          },
-                                          "type": "array"
-                                        }
-                                      },
-                                      "type": "object"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "basic"
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                {
-                                  "properties": {
-                                    "text": {
-                                      "type": "string"
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "odata"
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "text",
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                }
-                              ]
-                            },
-                            "version": {
+                            "defaultFor": {
                               "type": "string",
                               "enum": [
-                                "v2"
+                                "eve-tracing"
+                              ],
+                              "description": "Informational marker for a system-owned default drain."
+                            },
+                            "kind": {
+                              "type": "string",
+                              "enum": [
+                                "self-served"
                               ]
                             }
                           },
                           "required": [
-                            "filter",
-                            "version"
+                            "kind"
                           ],
                           "type": "object"
                         },
-                        "integrationConfigurationUri": {
-                          "type": "string"
+                        {
+                          "properties": {
+                            "externalResourceId": {
+                              "type": "string"
+                            },
+                            "integrationConfigurationId": {
+                              "type": "string"
+                            },
+                            "integrationId": {
+                              "type": "string"
+                            },
+                            "kind": {
+                              "type": "string",
+                              "enum": [
+                                "integration"
+                              ]
+                            },
+                            "resourceId": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "integrationConfigurationId",
+                            "integrationId",
+                            "kind"
+                          ],
+                          "type": "object"
+                        }
+                      ]
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "disabled",
+                        "enabled",
+                        "errored"
+                      ]
+                    },
+                    "teamId": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "number"
+                    },
+                    "deliveryStats": {
+                      "properties": {
+                        "attempts": {
+                          "type": "number",
+                          "description": "All delivery attempts in the window."
                         },
-                        "integrationIcon": {
-                          "type": "string"
+                        "failures": {
+                          "type": "number",
+                          "description": "Delivery attempts that did not succeed in the window."
                         },
-                        "integrationWebsite": {
-                          "type": "string"
+                        "state": {
+                          "type": "string",
+                          "enum": [
+                            "failing",
+                            "healthy",
+                            "unknown"
+                          ]
                         },
-                        "projectAccess": {
+                        "window": {
+                          "type": "string",
+                          "enum": [
+                            "24h"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "attempts",
+                        "failures",
+                        "state",
+                        "window"
+                      ],
+                      "type": "object",
+                      "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                    },
+                    "filterV2": {
+                      "properties": {
+                        "filter": {
                           "oneOf": [
                             {
                               "properties": {
-                                "access": {
-                                  "type": "string",
-                                  "enum": [
-                                    "all"
-                                  ]
+                                "deployment": {
+                                  "properties": {
+                                    "environments": {
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "preview",
+                                          "production"
+                                        ]
+                                      },
+                                      "type": "array"
+                                    }
+                                  },
+                                  "type": "object"
                                 },
-                                "managedBy": {
+                                "log": {
+                                  "properties": {
+                                    "legacy_excludeCachedStaticAssetLogs": {
+                                      "type": "boolean",
+                                      "enum": [
+                                        false,
+                                        true
+                                      ]
+                                    },
+                                    "sources": {
+                                      "items": {
+                                        "type": "string",
+                                        "enum": [
+                                          "build",
+                                          "edge",
+                                          "external",
+                                          "firewall",
+                                          "lambda",
+                                          "redirect",
+                                          "static"
+                                        ]
+                                      },
+                                      "type": "array"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "project": {
+                                  "properties": {
+                                    "ids": {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "type": {
                                   "type": "string",
                                   "enum": [
-                                    "drain",
-                                    "integration"
+                                    "basic"
                                   ]
                                 }
                               },
                               "required": [
-                                "access",
-                                "managedBy"
+                                "type"
                               ],
                               "type": "object"
                             },
                             {
                               "properties": {
-                                "access": {
+                                "text": {
+                                  "type": "string"
+                                },
+                                "type": {
                                   "type": "string",
                                   "enum": [
-                                    "some"
-                                  ]
-                                },
-                                "projectIds": {
-                                  "items": {
-                                    "type": "string"
-                                  },
-                                  "type": "array"
-                                },
-                                "managedBy": {
-                                  "type": "string",
-                                  "enum": [
-                                    "drain",
-                                    "integration"
+                                    "odata"
                                   ]
                                 }
                               },
                               "required": [
-                                "access",
-                                "managedBy",
-                                "projectIds"
+                                "text",
+                                "type"
                               ],
                               "type": "object"
                             }
                           ]
+                        },
+                        "version": {
+                          "type": "string",
+                          "enum": [
+                            "v2"
+                          ]
                         }
                       },
                       "required": [
-                        "createdAt",
-                        "delivery",
-                        "id",
-                        "name",
-                        "ownerId",
-                        "schemas",
-                        "source",
-                        "updatedAt"
+                        "filter",
+                        "version"
                       ],
                       "type": "object"
                     }
-                  ]
+                  },
+                  "required": [
+                    "createdAt",
+                    "delivery",
+                    "id",
+                    "name",
+                    "ownerId",
+                    "schemas",
+                    "source",
+                    "updatedAt"
+                  ],
+                  "type": "object"
                 }
               }
             }
@@ -56973,6 +56663,9 @@
           },
           "410": {
             "description": ""
+          },
+          "503": {
+            "description": "The delivery stats could not be loaded. Retry, or omit `includeDeliveryStats`."
           }
         },
         "parameters": [
@@ -56982,6 +56675,17 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "includeDeliveryStats",
+            "description": "Include `deliveryStats` with the delivery health of the drain over the last 24 hours.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "description": "Include `deliveryStats` with the delivery health of the drain over the last 24 hours."
             }
           },
           {
@@ -57425,6 +57129,40 @@
                         "updatedAt": {
                           "type": "number"
                         },
+                        "deliveryStats": {
+                          "properties": {
+                            "attempts": {
+                              "type": "number",
+                              "description": "All delivery attempts in the window."
+                            },
+                            "failures": {
+                              "type": "number",
+                              "description": "Delivery attempts that did not succeed in the window."
+                            },
+                            "state": {
+                              "type": "string",
+                              "enum": [
+                                "failing",
+                                "healthy",
+                                "unknown"
+                              ]
+                            },
+                            "window": {
+                              "type": "string",
+                              "enum": [
+                                "24h"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "attempts",
+                            "failures",
+                            "state",
+                            "window"
+                          ],
+                          "type": "object",
+                          "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                        },
                         "filterV2": {
                           "properties": {
                             "filter": {
@@ -57943,6 +57681,40 @@
                         },
                         "updatedAt": {
                           "type": "number"
+                        },
+                        "deliveryStats": {
+                          "properties": {
+                            "attempts": {
+                              "type": "number",
+                              "description": "All delivery attempts in the window."
+                            },
+                            "failures": {
+                              "type": "number",
+                              "description": "Delivery attempts that did not succeed in the window."
+                            },
+                            "state": {
+                              "type": "string",
+                              "enum": [
+                                "failing",
+                                "healthy",
+                                "unknown"
+                              ]
+                            },
+                            "window": {
+                              "type": "string",
+                              "enum": [
+                                "24h"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "attempts",
+                            "failures",
+                            "state",
+                            "window"
+                          ],
+                          "type": "object",
+                          "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
                         },
                         "filterV2": {
                           "properties": {
@@ -68421,6 +68193,9 @@
                 }
               }
             }
+          },
+          "304": {
+            "description": ""
           },
           "400": {
             "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
@@ -81578,6 +81353,244 @@
         }
       }
     },
+    "/api-keys/{apiKeyID}/quota": {
+      "patch": {
+        "description": "Set, change, or remove the AI Gateway budget on an API key. Creates the budget if the key does not have one.",
+        "operationId": "updateApiKeyQuota",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update an AI Gateway API key budget",
+        "tags": [
+          "ai-gateway"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully updated the API key quota.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "apiKey": {
+                      "$ref": "#/components/schemas/APIKey"
+                    },
+                    "quota": {
+                      "$ref": "#/components/schemas/APIKeyQuota"
+                    }
+                  },
+                  "required": [
+                    "apiKey",
+                    "quota"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "You do not have permission to access this resource.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        },
+                        "limit": {
+                          "type": "number"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "name",
+                        "message",
+                        "limit"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "message"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "apiKeyID",
+            "description": "The ID of the API key whose quota should be updated.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The ID of the API key whose quota should be updated."
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "limitAmount": {
+                    "type": "number",
+                    "minimum": 1,
+                    "description": "The quota limit amount. Required if the quota does not yet exist."
+                  },
+                  "includeByokInQuota": {
+                    "type": "boolean",
+                    "description": "Whether BYOK (Bring Your Own Key) usage counts against the quota."
+                  },
+                  "refreshPeriod": {
+                    "type": "string",
+                    "enum": [
+                      "daily",
+                      "weekly",
+                      "monthly",
+                      "none"
+                    ],
+                    "description": "How often the quota refreshes."
+                  },
+                  "active": {
+                    "type": "boolean",
+                    "description": "Whether the quota is currently active."
+                  },
+                  "archived": {
+                    "type": "boolean",
+                    "description": "Set to true to archive (soft-delete) the quota. The api key itself is unaffected."
+                  },
+                  "alertThresholds": {
+                    "type": "array",
+                    "items": {
+                      "type": "number",
+                      "enum": [
+                        50,
+                        75,
+                        100
+                      ]
+                    },
+                    "description": "Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert. Pass an empty array to disable alerts."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/kms/issuers/{issuerId}/sign/message": {
       "post": {
         "description": "Sign a raw message with a KMS issuer's active signing key. Authenticate the request with a Vercel OIDC token in the `Authorization: Bearer` header; the issuer's policies decide which workloads are allowed to sign. The response `signature` is standard-base64 of the raw signature over the decoded message bytes. `keyId`, `algorithm`, and `fingerprint` identify the signing key in the issuer's JWKS.",
@@ -90009,6 +90022,27 @@
                                 "type": "array",
                                 "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                               },
+                              "messageboardMessage": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
+                              "messageboardModeration": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
+                              "messageboardReaction": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
                               "messageboardTask": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -94253,6 +94287,9 @@
             }
           },
           "400": {
+            "description": ""
+          },
+          "401": {
             "description": ""
           },
           "403": {
@@ -114242,6 +114279,27 @@
                                     "type": "array",
                                     "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                                   },
+                                  "messageboardMessage": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
+                                  "messageboardModeration": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
+                                  "messageboardReaction": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
                                   "messageboardTask": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -122442,6 +122500,27 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "messageboardChannel": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardMessage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardModeration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardReaction": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -130940,6 +131019,27 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "messageboardMessage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardModeration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardReaction": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "messageboardTask": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -138694,6 +138794,27 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "messageboardChannel": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardMessage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardModeration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardReaction": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -147783,6 +147904,27 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "messageboardMessage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardModeration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardReaction": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "messageboardTask": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -155550,6 +155692,27 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "messageboardChannel": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardMessage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardModeration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardReaction": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -176464,6 +176627,27 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "messageboardChannel": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardMessage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardModeration": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "messageboardReaction": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -203553,6 +203737,7 @@
                                     }
                                   },
                                   "required": [
+                                    "neg",
                                     "op",
                                     "type"
                                   ],
@@ -210001,6 +210186,9 @@
           "400": {
             "description": "One of the provided values in the request query is invalid.\nUser is already a confirmed member of the team and did not request access. Only visible when the authenticated user does have access to the team."
           },
+          "401": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
@@ -210089,6 +210277,9 @@
           },
           "400": {
             "description": "One of the provided values in the request body is invalid."
+          },
+          "401": {
+            "description": ""
           },
           "402": {
             "description": ""
@@ -210520,6 +210711,12 @@
             "description": ""
           },
           "428": {
+            "description": ""
+          },
+          "502": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },
@@ -211321,6 +211518,9 @@
           "400": {
             "description": "One of the provided values in the request query is invalid."
           },
+          "401": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
@@ -211413,6 +211613,9 @@
           },
           "400": {
             "description": "One of the provided values in the request body is invalid.\nThe slug is already in use"
+          },
+          "401": {
+            "description": ""
           },
           "403": {
             "description": "You do not have permission to access this resource."
@@ -212419,6 +212622,9 @@
           "400": {
             "description": "One of the provided values in the request query is invalid."
           },
+          "401": {
+            "description": ""
+          },
           "403": {
             "description": "You do not have permission to access this resource."
           },
@@ -212481,6 +212687,9 @@
           },
           "400": {
             "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": ""
           },
           "403": {
             "description": "You do not have permission to access this resource."
@@ -212660,6 +212869,9 @@
           },
           "400": {
             "description": "One of the provided values in the request body is invalid."
+          },
+          "401": {
+            "description": ""
           },
           "402": {
             "description": ""
@@ -230830,7 +231042,7 @@
               "type": "string"
             },
             "type": "array",
-            "description": "The IDs of the AWS Availability Zones in which the network exists, if specified during creation."
+            "description": "The IDs of the AWS Availability Zones in which the network exists."
           },
           "awsRegion": {
             "type": "string",
@@ -236707,6 +236919,53 @@
               },
               {
                 "properties": {
+                  "boardId": {
+                    "type": "string"
+                  },
+                  "environments": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "operationId": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "boardId",
+                  "environments",
+                  "operationId",
+                  "projectId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "boardId": {
+                    "type": "string"
+                  },
+                  "operationId": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "boardId",
+                  "operationId",
+                  "projectId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "operationId": {
                     "type": "string"
                   },
@@ -239036,6 +239295,9 @@
                   },
                   "installationId": {
                     "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -239050,6 +239312,9 @@
                     "type": "string"
                   },
                   "appName": {
+                    "type": "string"
+                  },
+                  "organizationId": {
                     "type": "string"
                   },
                   "permissions": {
@@ -239236,6 +239501,24 @@
                   "issuedBefore": {
                     "type": "number",
                     "description": "UNIX timestamp in seconds. Tokens issued before this timestamp will be revoked. Note that not all historical events have this field."
+                  }
+                },
+                "required": [
+                  "appName"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "appId": {
+                    "type": "string"
+                  },
+                  "appName": {
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
                   }
                 },
                 "required": [
@@ -248055,6 +248338,26 @@
               },
               {
                 "properties": {
+                  "connectionType": {
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "organizationSlug": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "connectionType",
+                  "organizationId",
+                  "organizationSlug"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "enforced": {
                     "type": "boolean",
                     "enum": [
@@ -256092,6 +256395,22 @@
               },
               {
                 "properties": {
+                  "acceptanceId": {
+                    "type": "string"
+                  },
+                  "termsVersion": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "acceptanceId",
+                  "termsVersion"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "consent": {
                     "type": "string",
                     "enum": [
@@ -259430,6 +259749,10 @@
               "messageboard-private-channel-created",
               "messageboard-private-channel-updated",
               "messageboard-private-created",
+              "messageboard-private-project-granted",
+              "messageboard-private-project-revoked",
+              "messageboard-project-granted",
+              "messageboard-project-revoked",
               "messageboard-schema-registered",
               "messageboard-visibility-updated",
               "microfrontend-group-added",
@@ -259470,6 +259793,7 @@
               "organization-emu-updated",
               "organization-name-update",
               "organization-slug-update",
+              "organization-sso-deleted",
               "organization-sso-enforced",
               "organization-team-add",
               "organization-team-create",
@@ -259675,6 +259999,7 @@
               "spend-deleted",
               "spend-updated",
               "sso-login",
+              "startup-terms-accepted",
               "storage-accept-tos",
               "storage-access-token-set",
               "storage-accessed-data-browser",
@@ -260379,6 +260704,10 @@
               "messageboard-private-channel-created",
               "messageboard-private-channel-updated",
               "messageboard-private-created",
+              "messageboard-private-project-granted",
+              "messageboard-private-project-revoked",
+              "messageboard-project-granted",
+              "messageboard-project-revoked",
               "messageboard-schema-registered",
               "messageboard-visibility-updated",
               "microfrontend-group-added",
@@ -260419,6 +260748,7 @@
               "organization-emu-updated",
               "organization-name-update",
               "organization-slug-update",
+              "organization-sso-deleted",
               "organization-sso-enforced",
               "organization-team-add",
               "organization-team-create",
@@ -260624,6 +260954,7 @@
               "spend-deleted",
               "spend-updated",
               "sso-login",
+              "startup-terms-accepted",
               "storage-accept-tos",
               "storage-access-token-set",
               "storage-accessed-data-browser",
@@ -261116,6 +261447,10 @@
                 "messageboard-private-channel-created",
                 "messageboard-private-channel-updated",
                 "messageboard-private-created",
+                "messageboard-private-project-granted",
+                "messageboard-private-project-revoked",
+                "messageboard-project-granted",
+                "messageboard-project-revoked",
                 "messageboard-schema-registered",
                 "messageboard-visibility-updated",
                 "microfrontend-group-added",
@@ -261156,6 +261491,7 @@
                 "organization-emu-updated",
                 "organization-name-update",
                 "organization-slug-update",
+                "organization-sso-deleted",
                 "organization-sso-enforced",
                 "organization-team-add",
                 "organization-team-create",
@@ -261361,6 +261697,7 @@
                 "spend-deleted",
                 "spend-updated",
                 "sso-login",
+                "startup-terms-accepted",
                 "storage-accept-tos",
                 "storage-access-token-set",
                 "storage-accessed-data-browser",
@@ -262896,7 +263233,7 @@
         "description": "Representation of a Flags SDK key returned by CREATE. Includes cleartext secrets (`keyValue`, `tokenValue`, `connectionString`) which are only ever disclosed once, on creation."
       },
       "APIKey": {
-        "description": "Information about the newly created API key.",
+        "description": "Represents an API key.",
         "type": "object",
         "properties": {
           "id": {

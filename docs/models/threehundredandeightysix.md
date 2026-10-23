@@ -5,18 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightySix } from "@vercel/sdk/models/usereventpayload381budget.js";
+import { ThreeHundredAndEightySix } from "@vercel/sdk/models/usereventpayload385type.js";
 
 let value: ThreeHundredAndEightySix = {
-  store: {
+  budget: {
+    createdAt: 784.77,
+    fixedBudget: 9264.11,
     id: "<id>",
-    type: "blob",
+    isActive: true,
+    notifiedAt: [],
+    previousSpend: [
+      9745.69,
+      4952.61,
+    ],
+    teamId: "<id>",
+    type: "fixed",
   },
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `store`                            | [models.Store](../models/store.md) | :heavy_check_mark:                 | N/A                                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `budget`                                                                   | [models.UserEventPayload386Budget](../models/usereventpayload386budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | Stored for project budgets. Same value as `budget.scopeId`.                |
+| `projectName`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `scopeName`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | Stored when activity clients can't resolve the name, as for products.      |

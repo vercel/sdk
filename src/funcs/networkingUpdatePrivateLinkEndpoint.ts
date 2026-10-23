@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  * Update a PrivateLink endpoint
  *
  * @remarks
- * Updates a PrivateLink endpoint (name, privateDns).
+ * Updates a PrivateLink endpoint (name, privateDns). Changes to endpoints of the same project are serialized. If another change holds them for too long, the request fails with `503 service_unavailable` and can be retried. If the change may have completed but the outcome is unknown, it fails with `409 uncertain_outcome`; read the endpoint before retrying.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -176,7 +176,7 @@ async function $do(
   >(
     M.json(200, PrivateLinkEndpoint$inboundSchema),
     M.fail([400, 401, 403, 404, 409, 410, "4XX"]),
-    M.fail("5XX"),
+    M.fail([500, 503, "5XX"]),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

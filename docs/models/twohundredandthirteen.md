@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirteen } from "@vercel/sdk/models/rulegroups.js";
+import { TwoHundredAndThirteen } from "@vercel/sdk/models/onehundredandeightyfive.js";
 
 let value: TwoHundredAndThirteen = {
-  projectId: "<id>",
-  projectName: "<value>",
-  toDeploymentId: "<id>",
+  login: "Danielle.Littel47",
+  provider: "bitbucket",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `provider`                                                                     | [models.UserEventPayload213Provider](../models/usereventpayload213provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |

@@ -3,19 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload299Previous } from "@vercel/sdk/models/usereventpayload252previousdeploymenttype.js";
+import { UserEventPayload299Previous } from "@vercel/sdk/models/usereventpayload256next.js";
 
 let value: UserEventPayload299Previous = {
-  gitProvider: "github-custom-host",
-  gitRepoId: "<id>",
-  gitRepositoryName: "<value>",
+  functionDefaultRegions: [],
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `gitProvider`                                                | [models.PayloadGitProvider](../models/payloadgitprovider.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `gitRepoId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `gitRepositoryName`                                          | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |

@@ -5,28 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwenty } from "@vercel/sdk/models/rulegroups.js";
+import { TwoHundredAndTwenty } from "@vercel/sdk/models/onehundredandeightyfive.js";
 
 let value: TwoHundredAndTwenty = {
-  group: {
-    id: "<id>",
-    name: "<value>",
-    slug: "<value>",
-  },
-  prev: {
-    project: {},
-  },
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
+  id: "<id>",
+  name: "<value>",
+  slug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `group`                                                                      | [models.PayloadGroup](../models/payloadgroup.md)                             | :heavy_check_mark:                                                           | N/A                                                                          |
-| `prev`                                                                       | [models.PayloadPrev](../models/payloadprev.md)                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload220Project](../models/usereventpayload220project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

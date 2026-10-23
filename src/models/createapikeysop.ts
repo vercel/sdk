@@ -215,7 +215,7 @@ export type CreateApiKeysResponseBody = {
    */
   apiKeyString: string;
   /**
-   * Information about the newly created API key.
+   * Represents an API key.
    */
   apiKey: APIKey;
 };

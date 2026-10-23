@@ -12,7 +12,7 @@ let value: GetDrainSource1 = {
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `defaultFor`                                                             | [models.GetDrainSourceDefaultFor](../models/getdrainsourcedefaultfor.md) | :heavy_minus_sign:                                                       | Informational marker for a system-owned default drain.                   |
-| `kind`                                                                   | *"self-served"*                                                          | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `defaultFor`                                           | [models.DefaultFor](../models/defaultfor.md)           | :heavy_minus_sign:                                     | Informational marker for a system-owned default drain. |
+| `kind`                                                 | *"self-served"*                                        | :heavy_check_mark:                                     | N/A                                                    |

@@ -9,10 +9,10 @@
 const value: string = "<value>";
 ```
 
-### `models.CreateDrainSecret2`
+### `models.GetDrainSecret2`
 
 ```typescript
-const value: models.CreateDrainSecret2 = {
+const value: models.GetDrainSecret2 = {
   kind: "INTEGRATION_SECRET",
 };
 ```

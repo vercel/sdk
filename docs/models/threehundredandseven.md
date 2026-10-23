@@ -5,10 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeven } from "@vercel/sdk/models/usereventpayload252previousdeploymenttype.js";
+import { ThreeHundredAndSeven } from "@vercel/sdk/models/usereventpayload256next.js";
 
 let value: ThreeHundredAndSeven = {
   disableRepositoryDispatchEvents: true,
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -17,3 +19,5 @@ let value: ThreeHundredAndSeven = {
 | Field                             | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
 | `disableRepositoryDispatchEvents` | *boolean*                         | :heavy_check_mark:                | N/A                               |
+| `projectId`                       | *string*                          | :heavy_check_mark:                | N/A                               |
+| `projectName`                     | *string*                          | :heavy_check_mark:                | N/A                               |

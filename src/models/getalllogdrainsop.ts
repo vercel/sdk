@@ -16,6 +16,10 @@ export type GetAllLogDrainsRequest = {
   projectIdOrName?: string | undefined;
   includeMetadata?: boolean | undefined;
   /**
+   * Include `deliveryStats` with the delivery health of each drain over the last 24 hours.
+   */
+  includeDeliveryStats?: boolean | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -284,6 +288,38 @@ export type GetAllLogDrainsDrainsStatus = ClosedEnum<
   typeof GetAllLogDrainsDrainsStatus
 >;
 
+export const GetAllLogDrainsDrainsState = {
+  Failing: "failing",
+  Healthy: "healthy",
+  Unknown: "unknown",
+} as const;
+export type GetAllLogDrainsDrainsState = ClosedEnum<
+  typeof GetAllLogDrainsDrainsState
+>;
+
+export const GetAllLogDrainsDrainsLogDrainsWindow = {
+  TwentyFourh: "24h",
+} as const;
+export type GetAllLogDrainsDrainsLogDrainsWindow = ClosedEnum<
+  typeof GetAllLogDrainsDrainsLogDrainsWindow
+>;
+
+/**
+ * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+ */
+export type GetAllLogDrainsDrainsLogDrainsDeliveryStats = {
+  /**
+   * All delivery attempts in the window.
+   */
+  attempts: number;
+  /**
+   * Delivery attempts that did not succeed in the window.
+   */
+  failures: number;
+  state: GetAllLogDrainsDrainsState;
+  window: GetAllLogDrainsDrainsLogDrainsWindow;
+};
+
 export type GetAllLogDrainsFilter2 = {
   text: string;
   type: "odata";
@@ -399,6 +435,10 @@ export type GetAllLogDrainsDrains2 = {
   status?: GetAllLogDrainsDrainsStatus | undefined;
   teamId?: string | null | undefined;
   updatedAt: number;
+  /**
+   * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+   */
+  deliveryStats?: GetAllLogDrainsDrainsLogDrainsDeliveryStats | undefined;
   filterV2?: GetAllLogDrainsDrainsLogDrainsFilterV2 | undefined;
   integrationConfigurationUri?: string | undefined;
   integrationIcon?: string | undefined;
@@ -669,6 +709,38 @@ export type GetAllLogDrainsDrainsLogDrainsStatus = ClosedEnum<
   typeof GetAllLogDrainsDrainsLogDrainsStatus
 >;
 
+export const GetAllLogDrainsDrainsLogDrainsState = {
+  Failing: "failing",
+  Healthy: "healthy",
+  Unknown: "unknown",
+} as const;
+export type GetAllLogDrainsDrainsLogDrainsState = ClosedEnum<
+  typeof GetAllLogDrainsDrainsLogDrainsState
+>;
+
+export const GetAllLogDrainsDrainsWindow = {
+  TwentyFourh: "24h",
+} as const;
+export type GetAllLogDrainsDrainsWindow = ClosedEnum<
+  typeof GetAllLogDrainsDrainsWindow
+>;
+
+/**
+ * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+ */
+export type GetAllLogDrainsDrainsDeliveryStats = {
+  /**
+   * All delivery attempts in the window.
+   */
+  attempts: number;
+  /**
+   * Delivery attempts that did not succeed in the window.
+   */
+  failures: number;
+  state: GetAllLogDrainsDrainsLogDrainsState;
+  window: GetAllLogDrainsDrainsWindow;
+};
+
 export type GetAllLogDrainsFilterLogDrains2 = {
   text: string;
   type: "odata";
@@ -753,6 +825,10 @@ export type GetAllLogDrainsDrains1 = {
   status?: GetAllLogDrainsDrainsLogDrainsStatus | undefined;
   teamId?: string | null | undefined;
   updatedAt: number;
+  /**
+   * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+   */
+  deliveryStats?: GetAllLogDrainsDrainsDeliveryStats | undefined;
   filterV2?: GetAllLogDrainsDrainsFilterV2 | undefined;
 };
 
@@ -870,6 +946,7 @@ export type GetAllLogDrainsRequest$Outbound = {
   projectId?: string | undefined;
   projectIdOrName?: string | undefined;
   includeMetadata: boolean;
+  includeDeliveryStats: boolean;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -883,6 +960,7 @@ export const GetAllLogDrainsRequest$outboundSchema: z.ZodType<
   projectId: z.string().optional(),
   projectIdOrName: z.string().optional(),
   includeMetadata: z.boolean().default(false),
+  includeDeliveryStats: z.boolean().default(false),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -1514,6 +1592,46 @@ export const GetAllLogDrainsDrainsStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetAllLogDrainsDrainsStatus);
 
 /** @internal */
+export const GetAllLogDrainsDrainsState$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDrainsState
+> = z.nativeEnum(GetAllLogDrainsDrainsState);
+
+/** @internal */
+export const GetAllLogDrainsDrainsLogDrainsWindow$inboundSchema:
+  z.ZodNativeEnum<typeof GetAllLogDrainsDrainsLogDrainsWindow> = z.nativeEnum(
+    GetAllLogDrainsDrainsLogDrainsWindow,
+  );
+
+/** @internal */
+export const GetAllLogDrainsDrainsLogDrainsDeliveryStats$inboundSchema:
+  z.ZodType<
+    GetAllLogDrainsDrainsLogDrainsDeliveryStats,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    attempts: types.number(),
+    failures: types.number(),
+    state: GetAllLogDrainsDrainsState$inboundSchema,
+    window: GetAllLogDrainsDrainsLogDrainsWindow$inboundSchema,
+  });
+
+export function getAllLogDrainsDrainsLogDrainsDeliveryStatsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetAllLogDrainsDrainsLogDrainsDeliveryStats,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllLogDrainsDrainsLogDrainsDeliveryStats$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetAllLogDrainsDrainsLogDrainsDeliveryStats' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetAllLogDrainsFilter2$inboundSchema: z.ZodType<
   GetAllLogDrainsFilter2,
   z.ZodTypeDef,
@@ -1800,6 +1918,9 @@ export const GetAllLogDrainsDrains2$inboundSchema: z.ZodType<
   status: types.optional(GetAllLogDrainsDrainsStatus$inboundSchema),
   teamId: z.nullable(types.string()).optional(),
   updatedAt: types.number(),
+  deliveryStats: types.optional(
+    z.lazy(() => GetAllLogDrainsDrainsLogDrainsDeliveryStats$inboundSchema),
+  ),
   filterV2: types.optional(
     z.lazy(() => GetAllLogDrainsDrainsLogDrainsFilterV2$inboundSchema),
   ),
@@ -2434,6 +2555,39 @@ export const GetAllLogDrainsDrainsLogDrainsStatus$inboundSchema:
   );
 
 /** @internal */
+export const GetAllLogDrainsDrainsLogDrainsState$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDrainsLogDrainsState
+> = z.nativeEnum(GetAllLogDrainsDrainsLogDrainsState);
+
+/** @internal */
+export const GetAllLogDrainsDrainsWindow$inboundSchema: z.ZodNativeEnum<
+  typeof GetAllLogDrainsDrainsWindow
+> = z.nativeEnum(GetAllLogDrainsDrainsWindow);
+
+/** @internal */
+export const GetAllLogDrainsDrainsDeliveryStats$inboundSchema: z.ZodType<
+  GetAllLogDrainsDrainsDeliveryStats,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attempts: types.number(),
+  failures: types.number(),
+  state: GetAllLogDrainsDrainsLogDrainsState$inboundSchema,
+  window: GetAllLogDrainsDrainsWindow$inboundSchema,
+});
+
+export function getAllLogDrainsDrainsDeliveryStatsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAllLogDrainsDrainsDeliveryStats, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetAllLogDrainsDrainsDeliveryStats$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAllLogDrainsDrainsDeliveryStats' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetAllLogDrainsFilterLogDrains2$inboundSchema: z.ZodType<
   GetAllLogDrainsFilterLogDrains2,
   z.ZodTypeDef,
@@ -2640,6 +2794,9 @@ export const GetAllLogDrainsDrains1$inboundSchema: z.ZodType<
   status: types.optional(GetAllLogDrainsDrainsLogDrainsStatus$inboundSchema),
   teamId: z.nullable(types.string()).optional(),
   updatedAt: types.number(),
+  deliveryStats: types.optional(
+    z.lazy(() => GetAllLogDrainsDrainsDeliveryStats$inboundSchema),
+  ),
   filterV2: types.optional(
     z.lazy(() => GetAllLogDrainsDrainsFilterV2$inboundSchema),
   ),

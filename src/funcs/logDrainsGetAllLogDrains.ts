@@ -96,6 +96,7 @@ async function $do(
   const path = pathToFunc("/v1/log-drains")();
 
   const query = encodeFormQuery({
+    "includeDeliveryStats": payload.includeDeliveryStats,
     "includeMetadata": payload.includeMetadata,
     "projectId": payload.projectId,
     "projectIdOrName": payload.projectIdOrName,

@@ -1,0 +1,20 @@
+# UpdateApiKeyQuotaRequestBody
+
+## Example Usage
+
+```typescript
+import { UpdateApiKeyQuotaRequestBody } from "@vercel/sdk/models/updateapikeyquotaop.js";
+
+let value: UpdateApiKeyQuotaRequestBody = {};
+```
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `limitAmount`                                                                                                        | *number*                                                                                                             | :heavy_minus_sign:                                                                                                   | The quota limit amount. Required if the quota does not yet exist.                                                    |
+| `includeByokInQuota`                                                                                                 | *boolean*                                                                                                            | :heavy_minus_sign:                                                                                                   | Whether BYOK (Bring Your Own Key) usage counts against the quota.                                                    |
+| `refreshPeriod`                                                                                                      | [models.UpdateApiKeyQuotaRefreshPeriod](../models/updateapikeyquotarefreshperiod.md)                                 | :heavy_minus_sign:                                                                                                   | How often the quota refreshes.                                                                                       |
+| `active`                                                                                                             | *boolean*                                                                                                            | :heavy_minus_sign:                                                                                                   | Whether the quota is currently active.                                                                               |
+| `archived`                                                                                                           | *boolean*                                                                                                            | :heavy_minus_sign:                                                                                                   | Set to true to archive (soft-delete) the quota. The api key itself is unaffected.                                    |
+| `alertThresholds`                                                                                                    | *number*[]                                                                                                           | :heavy_minus_sign:                                                                                                   | Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert. Pass an empty array to disable alerts. |

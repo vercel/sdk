@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AllowedMethods } from "@vercel/sdk/models/fourhundredandfortyfour.js";
+import { AllowedMethods } from "@vercel/sdk/models/fourhundredandfortynine.js";
 
 let value: AllowedMethods = "webauthn";
 ```

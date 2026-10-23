@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FilterV2 } from "@vercel/sdk/models/createdrainop.js";
+import { FilterV2 } from "@vercel/sdk/models/getdrainop.js";
 
 let value: FilterV2 = {
   filter: {
@@ -15,7 +15,7 @@ let value: FilterV2 = {
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `filter`                                                                             | *models.ResponseBodyFilter*                                                          | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `version`                                                                            | [models.CreateDrainResponseBodyVersion](../models/createdrainresponsebodyversion.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `filter`                                               | *models.GetDrainFilter*                                | :heavy_check_mark:                                     | N/A                                                    |
+| `version`                                              | [models.GetDrainVersion](../models/getdrainversion.md) | :heavy_check_mark:                                     | N/A                                                    |

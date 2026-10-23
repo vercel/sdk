@@ -5,16 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyNine } from "@vercel/sdk/models/usereventpayload381budget.js";
+import { ThreeHundredAndNinetyNine } from "@vercel/sdk/models/usereventpayload385type.js";
 
-let value: ThreeHundredAndNinetyNine = {};
+let value: ThreeHundredAndNinetyNine = {
+  amount: "149.91",
+  currency: "Tanzanian Shilling",
+  expiresAt: "1750932993928",
+  trialCreditsIssuedAt: 6421.09,
+};
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `isSystemInitiated`                                                            | *boolean*                                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload399Next](../models/usereventpayload399next.md)         | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload399Previous](../models/usereventpayload399previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `reason`                                                                       | [models.PayloadReason](../models/payloadreason.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
+| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |

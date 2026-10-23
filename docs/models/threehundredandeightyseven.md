@@ -5,22 +5,35 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightySeven } from "@vercel/sdk/models/usereventpayload381budget.js";
+import { ThreeHundredAndEightySeven } from "@vercel/sdk/models/usereventpayload385type.js";
 
 let value: ThreeHundredAndEightySeven = {
-  store: {
+  budget: {
+    createdAt: 1452.37,
+    fixedBudget: 9224.93,
     id: "<id>",
-    type: "blob",
+    isActive: true,
+    notifiedAt: [
+      3651.23,
+    ],
+    previousSpend: [
+      2131.13,
+      6109.05,
+    ],
+    teamId: "<id>",
+    type: "fixed",
   },
-  destinationTeamId: "<id>",
-  destinationTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `store`                                          | [models.PayloadStore](../models/payloadstore.md) | :heavy_check_mark:                               | N/A                                              |
-| `destinationTeamId`                              | *string*                                         | :heavy_check_mark:                               | N/A                                              |
-| `destinationTeamName`                            | *string*                                         | :heavy_check_mark:                               | N/A                                              |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `budget`                                                                   | [models.UserEventPayload387Budget](../models/usereventpayload387budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `prevBudget`                                                               | [models.PrevBudget](../models/prevbudget.md)                               | :heavy_minus_sign:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
+| `prevWebhookUrl`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | Stored for project budgets. Same value as `budget.scopeId`.                |
+| `projectName`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | Injected at read time from `payload.projectId`.                            |
+| `scopeName`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | Stored when activity clients can't resolve the name, as for products.      |
+| `webhookUrl`                                                               | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

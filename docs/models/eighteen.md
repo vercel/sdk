@@ -5,12 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Eighteen } from "@vercel/sdk/models/usereventpayload16provider.js";
+import { Eighteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Eighteen = {
-  teamId: "<id>",
-  actorId: "<id>",
-  actorType: "admin",
+  blockCode: "<value>",
+  reason: "<value>",
 };
 ```
 
@@ -22,7 +21,5 @@ let value: Eighteen = {
 | `providerAccount`                                                            | *string*                                                                     | :heavy_minus_sign:                                                           | Present on new events only. Equivalent to `stripeAccount` when absent.       |
 | `stripeAccount`                                                              | *string*                                                                     | :heavy_minus_sign:                                                           | Present when `provider` is "stripe". Equivalent to `providerAccount`.        |
 | `stripeOrganisation`                                                         | *string*                                                                     | :heavy_minus_sign:                                                           | Present when `provider` is "stripe".                                         |
-| `teamId`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `actorId`                                                                    | *string*                                                                     | :heavy_check_mark:                                                           | Okta user id.                                                                |
-| `actorName`                                                                  | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `actorType`                                                                  | [models.ActorType](../models/actortype.md)                                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| `blockCode`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `reason`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

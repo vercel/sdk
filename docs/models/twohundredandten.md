@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTen } from "@vercel/sdk/models/rulegroups.js";
+import { TwoHundredAndTen } from "@vercel/sdk/models/onehundredandeightyfive.js";
 
 let value: TwoHundredAndTen = {
-  login: "Renee73",
-  provider: "chatgpt",
+  issuerId: "<id>",
+  issuerName: "<value>",
+  kind: "<value>",
+  policyKey: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `provider`                                                                     | [models.UserEventPayload210Provider](../models/usereventpayload210provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `policyKey`        | *string*           | :heavy_check_mark: | N/A                |

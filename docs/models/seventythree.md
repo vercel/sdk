@@ -5,21 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyThree } from "@vercel/sdk/models/usereventpayload16provider.js";
+import { SeventyThree } from "@vercel/sdk/models/twenty.js";
 
 let value: SeventyThree = {
-  amount: 5049.43,
-  invoiceId: "<id>",
-  lineItemCount: 3699.42,
-  refundReason: "<value>",
+  attackModeEnabled: false,
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `amount`           | *number*           | :heavy_check_mark: | N/A                |
-| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
-| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
-| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `attackModeActiveUntil`     | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
+| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
+| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |

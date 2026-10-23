@@ -5,22 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyTwo } from "@vercel/sdk/models/usereventpayload318project.js";
+import { ThreeHundredAndTwentyTwo } from "@vercel/sdk/models/usereventpayload256next.js";
 
 let value: ThreeHundredAndTwentyTwo = {
-  newProjectName: "<value>",
-  originAccountName: "<value>",
-  previousProjectName: "<value>",
+  project: {
+    name: "<value>",
+  },
+  projectMembership: {
+    createdAt: 499.04,
+    role: "PROJECT_VIEWER",
+    uid: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `newProjectId`        | *string*              | :heavy_minus_sign:    | N/A                   |
-| `newProjectName`      | *string*              | :heavy_check_mark:    | N/A                   |
-| `originAccountName`   | *string*              | :heavy_check_mark:    | N/A                   |
-| `previousProjectId`   | *string*              | :heavy_minus_sign:    | N/A                   |
-| `previousProjectName` | *string*              | :heavy_check_mark:    | N/A                   |
-| `transferId`          | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload322Project](../models/usereventpayload322project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

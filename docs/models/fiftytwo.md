@@ -5,18 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyTwo } from "@vercel/sdk/models/usereventpayload16provider.js";
+import { FiftyTwo } from "@vercel/sdk/models/twenty.js";
 
-let value: FiftyTwo = {
-  aliasCount: 3179.56,
-  projectId: "<id>",
-};
+let value: FiftyTwo = {};
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `aliasCount`                                               | *number*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |
-| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
+| `price`            | *number*           | :heavy_minus_sign: | N/A                |

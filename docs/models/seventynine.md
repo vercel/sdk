@@ -5,10 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyNine } from "@vercel/sdk/models/seventyeight.js";
+import { SeventyNine } from "@vercel/sdk/models/twenty.js";
 
 let value: SeventyNine = {
-  planSlug: "<value>",
+  paymentMethodId: "<id>",
+  subscriptionId: "<id>",
 };
 ```
 
@@ -16,5 +17,5 @@ let value: SeventyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
-| `planSlug`         | *string*           | :heavy_check_mark: | N/A                |
+| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
+| `subscriptionId`   | *string*           | :heavy_check_mark: | N/A                |

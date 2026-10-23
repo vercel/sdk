@@ -5,19 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyThree } from "@vercel/sdk/models/rulegroups.js";
+import { TwoHundredAndThirtyThree } from "@vercel/sdk/models/onehundredandeightyfive.js";
 
 let value: TwoHundredAndThirtyThree = {
-  billingPlan: "enterprise",
+  enabled: true,
   organizationId: "<id>",
   teamId: "<id>",
+  teamSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `billingPlan`                                                | [models.PayloadBillingPlan](../models/payloadbillingplan.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `organizationId`                                             | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `teamId`                                                     | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `teamSlug`         | *string*           | :heavy_check_mark: | N/A                |

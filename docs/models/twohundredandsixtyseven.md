@@ -5,28 +5,31 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/usereventpayload252previousdeploymenttype.js";
+import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/usereventpayload256next.js";
 
 let value: TwoHundredAndSixtySeven = {
-  prevProjectAnalytics: {
-    disabledAt: 2145.4,
-    enabledAt: 3950.93,
+  current: {
+    awsServiceName: "<value>",
     id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
   },
-  projectAnalytics: {
-    disabledAt: 4036.39,
-    enabledAt: 3040.53,
+  prev: {
+    awsServiceName: "<value>",
     id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
   },
-  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `current`                                                                | [models.PayloadCurrent](../models/payloadcurrent.md)                     | :heavy_check_mark:                                                       | N/A                                                                      |
+| `prev`                                                                   | [models.UserEventPayload267Prev](../models/usereventpayload267prev.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `projectName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload267Scope](../models/usereventpayload267scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

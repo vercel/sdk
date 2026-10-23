@@ -39,10 +39,10 @@ const value: models.CreateDrainDelivery3 = {
 };
 ```
 
-### `models.Delivery4`
+### `models.CreateDrainDeliveryDrains4`
 
 ```typescript
-const value: models.Delivery4 = {
+const value: models.CreateDrainDeliveryDrains4 = {
   compression: "none",
   encoding: "ndjson",
   endpoint: "<value>",
@@ -53,10 +53,10 @@ const value: models.Delivery4 = {
 };
 ```
 
-### `models.Delivery5`
+### `models.CreateDrainDeliveryDrains5`
 
 ```typescript
-const value: models.Delivery5 = {
+const value: models.CreateDrainDeliveryDrains5 = {
   target: "vercel-otel-traces-db",
   type: "internal",
 };

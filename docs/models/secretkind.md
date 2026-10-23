@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SecretKind } from "@vercel/sdk/models/createdrainop.js";
+import { SecretKind } from "@vercel/sdk/models/getdrainop.js";
 
 let value: SecretKind = "INTEGRATION_SECRET";
 ```

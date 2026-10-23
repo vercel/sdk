@@ -5,13 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyNine } from "@vercel/sdk/models/usereventpayload16provider.js";
+import { FortyNine } from "@vercel/sdk/models/twenty.js";
 
 let value: FortyNine = {
   accessGroup: {
     id: "<id>",
+    name: "<value>",
   },
-  user: {
+  project: {
     id: "<id>",
   },
 };
@@ -19,8 +20,9 @@ let value: FortyNine = {
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `accessGroup`                                                                      | [models.UserEventPayload49AccessGroup](../models/usereventpayload49accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `directoryType`                                                                    | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `user`                                                                             | [models.UserEventPayload49User](../models/usereventpayload49user.md)               | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `accessGroup`                                                                  | [models.UserEventPayloadAccessGroup](../models/usereventpayloadaccessgroup.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `nextRole`                                                                     | [models.NextRole](../models/nextrole.md)                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previousRole`                                                                 | [models.PreviousRole](../models/previousrole.md)                               | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `project`                                                                      | [models.PayloadProject](../models/payloadproject.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |

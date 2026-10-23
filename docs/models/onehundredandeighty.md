@@ -5,26 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEighty } from "@vercel/sdk/models/job8.js";
+import { OneHundredAndEighty } from "@vercel/sdk/models/usereventjobpayload124nsnbsideeffect.js";
 
 let value: OneHundredAndEighty = {
-  configChangeCount: 8381.14,
-  configChanges: [
-    {},
-  ],
-  configVersion: 2107.64,
+  configVersion: 5432.27,
   projectId: "<id>",
-  restore: false,
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `configChangeCount`                                                | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `configChanges`                                                    | [models.PayloadConfigChanges](../models/payloadconfigchanges.md)[] | :heavy_check_mark:                                                 | N/A                                                                |
-| `configVersion`                                                    | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `projectId`                                                        | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `projectName`                                                      | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
-| `restore`                                                          | *boolean*                                                          | :heavy_check_mark:                                                 | N/A                                                                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `configVersion`        | *models.ConfigVersion* | :heavy_check_mark:     | N/A                    |
+| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |

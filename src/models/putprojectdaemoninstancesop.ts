@@ -43,7 +43,7 @@ export type PutProjectDaemonInstancesRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
-  requestBody?: { [k: string]: number } | undefined;
+  requestBody?: { [k: string]: number | null } | undefined;
 };
 
 /**
@@ -65,7 +65,7 @@ export type PutProjectDaemonInstancesRequest$Outbound = {
   target: string;
   teamId?: string | undefined;
   slug?: string | undefined;
-  RequestBody?: { [k: string]: number } | undefined;
+  RequestBody?: { [k: string]: number | null } | undefined;
 };
 
 /** @internal */
@@ -79,7 +79,7 @@ export const PutProjectDaemonInstancesRequest$outboundSchema: z.ZodType<
   target: QueryParamTarget$outboundSchema.default("production"),
   teamId: z.string().optional(),
   slug: z.string().optional(),
-  requestBody: z.record(z.number().int()).optional(),
+  requestBody: z.record(z.nullable(z.number().int())).optional(),
 }).transform((v) => {
   return remap$(v, {
     requestBody: "RequestBody",

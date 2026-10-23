@@ -15,6 +15,10 @@ export type GetDrainsRequest = {
   projectId?: string | undefined;
   includeMetadata?: boolean | undefined;
   /**
+   * Include `deliveryStats` with the delivery health of each drain over the last 24 hours.
+   */
+  includeDeliveryStats?: boolean | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -277,6 +281,34 @@ export const GetDrainsDrainsStatus = {
 } as const;
 export type GetDrainsDrainsStatus = ClosedEnum<typeof GetDrainsDrainsStatus>;
 
+export const GetDrainsDrainsState = {
+  Failing: "failing",
+  Healthy: "healthy",
+  Unknown: "unknown",
+} as const;
+export type GetDrainsDrainsState = ClosedEnum<typeof GetDrainsDrainsState>;
+
+export const GetDrainsDrainsWindow = {
+  TwentyFourh: "24h",
+} as const;
+export type GetDrainsDrainsWindow = ClosedEnum<typeof GetDrainsDrainsWindow>;
+
+/**
+ * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+ */
+export type GetDrainsDrainsDeliveryStats = {
+  /**
+   * All delivery attempts in the window.
+   */
+  attempts: number;
+  /**
+   * Delivery attempts that did not succeed in the window.
+   */
+  failures: number;
+  state: GetDrainsDrainsState;
+  window: GetDrainsDrainsWindow;
+};
+
 export type GetDrainsFilterDrains2 = {
   text: string;
   type: "odata";
@@ -390,6 +422,10 @@ export type Drains2 = {
   status?: GetDrainsDrainsStatus | undefined;
   teamId?: string | null | undefined;
   updatedAt: number;
+  /**
+   * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+   */
+  deliveryStats?: GetDrainsDrainsDeliveryStats | undefined;
   filterV2?: GetDrainsDrainsFilterV2 | undefined;
   integrationConfigurationUri?: string | undefined;
   integrationIcon?: string | undefined;
@@ -636,6 +672,34 @@ export const DrainsStatus = {
 } as const;
 export type DrainsStatus = ClosedEnum<typeof DrainsStatus>;
 
+export const DrainsState = {
+  Failing: "failing",
+  Healthy: "healthy",
+  Unknown: "unknown",
+} as const;
+export type DrainsState = ClosedEnum<typeof DrainsState>;
+
+export const DrainsWindow = {
+  TwentyFourh: "24h",
+} as const;
+export type DrainsWindow = ClosedEnum<typeof DrainsWindow>;
+
+/**
+ * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+ */
+export type DrainsDeliveryStats = {
+  /**
+   * All delivery attempts in the window.
+   */
+  attempts: number;
+  /**
+   * Delivery attempts that did not succeed in the window.
+   */
+  failures: number;
+  state: DrainsState;
+  window: DrainsWindow;
+};
+
 export type GetDrainsFilter2 = {
   text: string;
   type: "odata";
@@ -714,6 +778,10 @@ export type Drains1 = {
   status?: DrainsStatus | undefined;
   teamId?: string | null | undefined;
   updatedAt: number;
+  /**
+   * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+   */
+  deliveryStats?: DrainsDeliveryStats | undefined;
   filterV2?: DrainsFilterV2 | undefined;
 };
 
@@ -727,6 +795,7 @@ export type GetDrainsResponseBody = {
 export type GetDrainsRequest$Outbound = {
   projectId?: string | undefined;
   includeMetadata: boolean;
+  includeDeliveryStats: boolean;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -739,6 +808,7 @@ export const GetDrainsRequest$outboundSchema: z.ZodType<
 > = z.object({
   projectId: z.string().optional(),
   includeMetadata: z.boolean().default(false),
+  includeDeliveryStats: z.boolean().default(false),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -1339,6 +1409,38 @@ export const GetDrainsDrainsStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetDrainsDrainsStatus);
 
 /** @internal */
+export const GetDrainsDrainsState$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainsDrainsState
+> = z.nativeEnum(GetDrainsDrainsState);
+
+/** @internal */
+export const GetDrainsDrainsWindow$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainsDrainsWindow
+> = z.nativeEnum(GetDrainsDrainsWindow);
+
+/** @internal */
+export const GetDrainsDrainsDeliveryStats$inboundSchema: z.ZodType<
+  GetDrainsDrainsDeliveryStats,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attempts: types.number(),
+  failures: types.number(),
+  state: GetDrainsDrainsState$inboundSchema,
+  window: GetDrainsDrainsWindow$inboundSchema,
+});
+
+export function getDrainsDrainsDeliveryStatsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDrainsDrainsDeliveryStats, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDrainsDrainsDeliveryStats$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainsDrainsDeliveryStats' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDrainsFilterDrains2$inboundSchema: z.ZodType<
   GetDrainsFilterDrains2,
   z.ZodTypeDef,
@@ -1608,6 +1710,9 @@ export const Drains2$inboundSchema: z.ZodType<Drains2, z.ZodTypeDef, unknown> =
     status: types.optional(GetDrainsDrainsStatus$inboundSchema),
     teamId: z.nullable(types.string()).optional(),
     updatedAt: types.number(),
+    deliveryStats: types.optional(
+      z.lazy(() => GetDrainsDrainsDeliveryStats$inboundSchema),
+    ),
     filterV2: types.optional(
       z.lazy(() => GetDrainsDrainsFilterV2$inboundSchema),
     ),
@@ -2189,6 +2294,36 @@ export const DrainsStatus$inboundSchema: z.ZodNativeEnum<typeof DrainsStatus> =
   z.nativeEnum(DrainsStatus);
 
 /** @internal */
+export const DrainsState$inboundSchema: z.ZodNativeEnum<typeof DrainsState> = z
+  .nativeEnum(DrainsState);
+
+/** @internal */
+export const DrainsWindow$inboundSchema: z.ZodNativeEnum<typeof DrainsWindow> =
+  z.nativeEnum(DrainsWindow);
+
+/** @internal */
+export const DrainsDeliveryStats$inboundSchema: z.ZodType<
+  DrainsDeliveryStats,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attempts: types.number(),
+  failures: types.number(),
+  state: DrainsState$inboundSchema,
+  window: DrainsWindow$inboundSchema,
+});
+
+export function drainsDeliveryStatsFromJSON(
+  jsonString: string,
+): SafeParseResult<DrainsDeliveryStats, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DrainsDeliveryStats$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DrainsDeliveryStats' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDrainsFilter2$inboundSchema: z.ZodType<
   GetDrainsFilter2,
   z.ZodTypeDef,
@@ -2384,6 +2519,9 @@ export const Drains1$inboundSchema: z.ZodType<Drains1, z.ZodTypeDef, unknown> =
     status: types.optional(DrainsStatus$inboundSchema),
     teamId: z.nullable(types.string()).optional(),
     updatedAt: types.number(),
+    deliveryStats: types.optional(
+      z.lazy(() => DrainsDeliveryStats$inboundSchema),
+    ),
     filterV2: types.optional(z.lazy(() => DrainsFilterV2$inboundSchema)),
   });
 

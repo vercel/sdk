@@ -33,7 +33,7 @@ import { Result } from "../types/fp.js";
  * Delete a PrivateLink endpoint
  *
  * @remarks
- * Deletes a PrivateLink endpoint.
+ * Deletes a PrivateLink endpoint. The endpoint is removed asynchronously. Repeating the request for an endpoint that is already being deleted retries its cleanup and also returns `204`. Changes to endpoints of the same project are serialized. If another change holds them for too long, the request fails with `503 service_unavailable` and can be retried. If the change may have completed but the outcome is unknown, it fails with `409 uncertain_outcome`; read the endpoint before retrying.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -172,7 +172,7 @@ async function $do(
   >(
     M.json(204, z.any()),
     M.fail([400, 401, 403, 404, 409, 410, "4XX"]),
-    M.fail([500, "5XX"]),
+    M.fail([500, 503, "5XX"]),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

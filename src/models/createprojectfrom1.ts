@@ -1181,6 +1181,18 @@ export type CreateProjectPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  messageboardMessage?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  messageboardModeration?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  messageboardReaction?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   messageboardTask?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -4173,6 +4185,9 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   marketplaceSettings: types.optional(z.array(ACLAction$inboundSchema)),
   messageboard: types.optional(z.array(ACLAction$inboundSchema)),
   messageboardChannel: types.optional(z.array(ACLAction$inboundSchema)),
+  messageboardMessage: types.optional(z.array(ACLAction$inboundSchema)),
+  messageboardModeration: types.optional(z.array(ACLAction$inboundSchema)),
+  messageboardReaction: types.optional(z.array(ACLAction$inboundSchema)),
   messageboardTask: types.optional(z.array(ACLAction$inboundSchema)),
   Monitoring: types.optional(z.array(ACLAction$inboundSchema)),
   monitoringAlert: types.optional(z.array(ACLAction$inboundSchema)),

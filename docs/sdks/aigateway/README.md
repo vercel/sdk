@@ -23,6 +23,7 @@
 * [listAiGatewayBudgetDefaults](#listaigatewaybudgetdefaults) - List AI Gateway budget defaults
 * [upsertAiGatewayBudgetDefault](#upsertaigatewaybudgetdefault) - Upsert AI Gateway budget default
 * [archiveAiGatewayBudgetDefault](#archiveaigatewaybudgetdefault) - Archive AI Gateway budget default
+* [updateApiKeyQuota](#updateapikeyquota) - Update an AI Gateway API key budget
 
 ## createAiGatewayVirtualModelConfig
 
@@ -1464,3 +1465,80 @@ run();
 | Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updateApiKeyQuota
+
+Set, change, or remove the AI Gateway budget on an API key. Creates the budget if the key does not have one.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="updateApiKeyQuota" method="patch" path="/api-keys/{apiKeyID}/quota" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const result = await vercel.aiGateway.updateApiKeyQuota({
+    apiKeyID: "<id>",
+  });
+
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { aiGatewayUpdateApiKeyQuota } from "@vercel/sdk/funcs/aiGatewayUpdateApiKeyQuota.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await aiGatewayUpdateApiKeyQuota(vercel, {
+    apiKeyID: "<id>",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    console.log(result);
+  } else {
+    console.log("aiGatewayUpdateApiKeyQuota failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.UpdateApiKeyQuotaRequest](../../models/updateapikeyquotarequest.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[models.UpdateApiKeyQuotaResponseBody](../../models/updateapikeyquotaresponsebody.md)\>**
+
+### Errors
+
+| Error Type                                               | Status Code                                              | Content Type                                             |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| models.UpdateApiKeyQuotaAiGatewayResponseBody            | 401                                                      | application/json                                         |
+| models.UpdateApiKeyQuotaAiGatewayResponseResponseBody    | 403                                                      | application/json                                         |
+| models.UpdateApiKeyQuotaAiGatewayResponse429ResponseBody | 429                                                      | application/json                                         |
+| models.UpdateApiKeyQuotaAiGatewayResponse500ResponseBody | 500                                                      | application/json                                         |
+| models.SDKError                                          | 4XX, 5XX                                                 | \*/\*                                                    |

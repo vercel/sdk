@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DisabledReason } from "@vercel/sdk/models/createdrainop.js";
+import { DisabledReason } from "@vercel/sdk/models/getdrainop.js";
 
 let value: DisabledReason = "disabled-by-owner";
 ```

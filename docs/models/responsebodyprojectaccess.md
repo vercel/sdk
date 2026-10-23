@@ -3,26 +3,24 @@
 
 ## Supported Types
 
-### `models.GetDrainProjectAccess1`
+### `models.UpdateDrainProjectAccess1`
 
 ```typescript
-const value: models.GetDrainProjectAccess1 = {
+const value: models.UpdateDrainProjectAccess1 = {
   access: "all",
-  managedBy: "integration",
+  managedBy: "drain",
 };
 ```
 
-### `models.GetDrainProjectAccess2`
+### `models.UpdateDrainProjectAccess2`
 
 ```typescript
-const value: models.GetDrainProjectAccess2 = {
+const value: models.UpdateDrainProjectAccess2 = {
   access: "some",
   projectIds: [
     "<value 1>",
-    "<value 2>",
-    "<value 3>",
   ],
-  managedBy: "drain",
+  managedBy: "integration",
 };
 ```
 

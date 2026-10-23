@@ -5,32 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyOne } from "@vercel/sdk/models/seventyeight.js";
+import { OneHundredAndTwentyOne } from "@vercel/sdk/models/eightytwo.js";
 
 let value: OneHundredAndTwentyOne = {
-  job: {
-    headInfo: {
-      org: "<value>",
-      ref: "<value>",
-      repo: "<value>",
-      repoId: 1102.65,
-      sha: "<value>",
-    },
-    installationId: 9392.53,
-    isPrivate: false,
-    org: "<value>",
-    prId: 4282,
-    projectId: "<id>",
-    provider: "github",
-    repo: "<value>",
-    repoId: 8297.06,
-    type: "now-comment",
-  },
+  checkId: "<id>",
+  checkName: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `checkId`          | *string*           | :heavy_check_mark: | N/A                |
+| `checkName`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

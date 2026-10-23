@@ -57,7 +57,7 @@ export type Network = {
    */
   awsAccountId: string;
   /**
-   * The IDs of the AWS Availability Zones in which the network exists, if specified during creation.
+   * The IDs of the AWS Availability Zones in which the network exists.
    */
   awsAvailabilityZoneIds?: Array<string> | undefined;
   /**

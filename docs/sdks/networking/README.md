@@ -415,7 +415,7 @@ run();
 
 ## createPrivateLinkEndpoint
 
-Creates a PrivateLink endpoint for a project.
+Creates a PrivateLink endpoint for a project. Changes to endpoints of the same project are serialized. If another change holds them for too long, the request fails with `503 service_unavailable` and can be retried. If the change may have completed but the outcome is unknown, it fails with `409 uncertain_outcome`; read the endpoint before retrying.
 
 ### Example Usage
 
@@ -660,7 +660,7 @@ run();
 
 ## deletePrivateLinkEndpoint
 
-Deletes a PrivateLink endpoint.
+Deletes a PrivateLink endpoint. The endpoint is removed asynchronously. Repeating the request for an endpoint that is already being deleted retries its cleanup and also returns `204`. Changes to endpoints of the same project are serialized. If another change holds them for too long, the request fails with `503 service_unavailable` and can be retried. If the change may have completed but the outcome is unknown, it fails with `409 uncertain_outcome`; read the endpoint before retrying.
 
 ### Example Usage
 
@@ -739,7 +739,7 @@ run();
 
 ## updatePrivateLinkEndpoint
 
-Updates a PrivateLink endpoint (name, privateDns).
+Updates a PrivateLink endpoint (name, privateDns). Changes to endpoints of the same project are serialized. If another change holds them for too long, the request fails with `503 service_unavailable` and can be retried. If the change may have completed but the outcome is unknown, it fails with `409 uncertain_outcome`; read the endpoint before retrying.
 
 ### Example Usage
 

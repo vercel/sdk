@@ -5,24 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyOne } from "@vercel/sdk/models/usereventpayload16provider.js";
+import { FiftyOne } from "@vercel/sdk/models/twenty.js";
 
-let value: FiftyOne = {};
+let value: FiftyOne = {
+  accessGroup: {
+    id: "<id>",
+  },
+  user: {
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `alias`                                      | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `aliasId`                                    | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `aliasUpdatedAt`                             | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deployment`                                 | [models.Deployment](../models/deployment.md) | :heavy_minus_sign:                           | N/A                                          |
-| `deploymentId`                               | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deploymentUrl`                              | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `oldDeploymentId`                            | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `redirect`                                   | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `redirectStatusCode`                         | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `ruleCount`                                  | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `system`                                     | *boolean*                                    | :heavy_minus_sign:                           | N/A                                          |
-| `target`                                     | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `accessGroup`                                                                      | [models.UserEventPayload51AccessGroup](../models/usereventpayload51accessgroup.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `directoryType`                                                                    | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `user`                                                                             | [models.UserEventPayload51User](../models/usereventpayload51user.md)               | :heavy_check_mark:                                                                 | N/A                                                                                |

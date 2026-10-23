@@ -15,7 +15,8 @@ let value: UserEvent = {
   entities: [],
   id: "uev_bfmMjiMnXfnPbT97dGdpJbCN",
   payload: {
-    consent: "granted",
+    acceptanceId: "<id>",
+    termsVersion: "<value>",
   },
   principalId: "<id>",
   text: "You logged in via GitHub",

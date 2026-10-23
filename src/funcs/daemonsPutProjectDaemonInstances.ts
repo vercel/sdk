@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Override a project daemon's instance counts
  *
  * @remarks
- * Override the instance counts of a daemon by region, without changing its configuration. An empty map removes the overrides.
+ * Override the instance counts of a daemon in the given regions, without changing its configuration or the overrides of other regions.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

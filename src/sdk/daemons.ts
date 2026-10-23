@@ -42,7 +42,7 @@ export class Daemons extends ClientSDK {
    * Override a project daemon's instance counts
    *
    * @remarks
-   * Override the instance counts of a daemon by region, without changing its configuration. An empty map removes the overrides.
+   * Override the instance counts of a daemon in the given regions, without changing its configuration or the overrides of other regions.
    */
   async putProjectDaemonInstances(
     request: PutProjectDaemonInstancesRequest,

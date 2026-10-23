@@ -19,6 +19,7 @@ import { aiGatewayListAiGatewayVirtualModelConfigs } from "../funcs/aiGatewayLis
 import { aiGatewayUpdateAiGatewayRule } from "../funcs/aiGatewayUpdateAiGatewayRule.js";
 import { aiGatewayUpdateAiGatewayVirtualModelConfig } from "../funcs/aiGatewayUpdateAiGatewayVirtualModelConfig.js";
 import { aiGatewayUpdateAiGatewayVirtualModelConfigBySlug } from "../funcs/aiGatewayUpdateAiGatewayVirtualModelConfigBySlug.js";
+import { aiGatewayUpdateApiKeyQuota } from "../funcs/aiGatewayUpdateApiKeyQuota.js";
 import { aiGatewayUpsertAiGatewayBudget } from "../funcs/aiGatewayUpsertAiGatewayBudget.js";
 import { aiGatewayUpsertAiGatewayBudgetDefault } from "../funcs/aiGatewayUpsertAiGatewayBudgetDefault.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
@@ -51,6 +52,10 @@ import { ListAiGatewayVirtualModelConfigsRequest } from "../models/listaigateway
 import { UpdateAiGatewayRuleRequest } from "../models/updateaigatewayruleop.js";
 import { UpdateAiGatewayVirtualModelConfigBySlugRequest } from "../models/updateaigatewayvirtualmodelconfigbyslugop.js";
 import { UpdateAiGatewayVirtualModelConfigRequest } from "../models/updateaigatewayvirtualmodelconfigop.js";
+import {
+  UpdateApiKeyQuotaRequest,
+  UpdateApiKeyQuotaResponseBody,
+} from "../models/updateapikeyquotaop.js";
 import { UpsertAiGatewayBudgetDefaultRequest } from "../models/upsertaigatewaybudgetdefaultop.js";
 import { UpsertAiGatewayBudgetRequest } from "../models/upsertaigatewaybudgetop.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -373,6 +378,23 @@ export class AiGateway extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(aiGatewayArchiveAiGatewayBudgetDefault(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update an AI Gateway API key budget
+   *
+   * @remarks
+   * Set, change, or remove the AI Gateway budget on an API key. Creates the budget if the key does not have one.
+   */
+  async updateApiKeyQuota(
+    request: UpdateApiKeyQuotaRequest,
+    options?: RequestOptions,
+  ): Promise<UpdateApiKeyQuotaResponseBody> {
+    return unwrapAsync(aiGatewayUpdateApiKeyQuota(
       this,
       request,
       options,

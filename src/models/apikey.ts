@@ -19,7 +19,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 export type APIKeyMetadata = {};
 
 /**
- * Information about the newly created API key.
+ * Represents an API key.
  */
 export type APIKey = {
   /**

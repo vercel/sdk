@@ -5,11 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyOne } from "@vercel/sdk/models/usereventpayload252previousdeploymenttype.js";
+import { TwoHundredAndNinetyOne } from "@vercel/sdk/models/usereventpayload256next.js";
 
 let value: TwoHundredAndNinetyOne = {
-  customEnvironmentId: "<id>",
-  customEnvironmentSlug: "<value>",
+  previewDeploymentsEnabled: false,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,9 +16,8 @@ let value: TwoHundredAndNinetyOne = {
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `customEnvironmentId`   | *string*                | :heavy_check_mark:      | N/A                     |
-| `customEnvironmentSlug` | *string*                | :heavy_check_mark:      | N/A                     |
-| `projectId`             | *string*                | :heavy_check_mark:      | N/A                     |
-| `projectName`           | *string*                | :heavy_check_mark:      | N/A                     |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `previewDeploymentsEnabled` | *boolean*                   | :heavy_check_mark:          | N/A                         |
+| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
+| `projectName`               | *string*                    | :heavy_check_mark:          | N/A                         |

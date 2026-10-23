@@ -49,7 +49,7 @@ export type GenerateFirewallRuleValue = string | number | Array<string>;
 
 export type GenerateFirewallRuleConditions = {
   key?: string | undefined;
-  neg?: boolean | undefined;
+  neg: boolean;
   op: string;
   type: string;
   value?: string | number | Array<string> | undefined;
@@ -213,7 +213,7 @@ export const GenerateFirewallRuleConditions$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   key: types.optional(types.string()),
-  neg: types.optional(types.boolean()),
+  neg: types.boolean(),
   op: types.string(),
   type: types.string(),
   value: types.optional(

@@ -5,11 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventySix } from "@vercel/sdk/models/usereventpayload16provider.js";
+import { SeventySix } from "@vercel/sdk/models/twenty.js";
 
 let value: SeventySix = {
-  paymentMethodId: "<id>",
-  subscriptionId: "<id>",
+  amount: 8965.35,
+  invoiceId: "<id>",
+  lineItemCount: 1048.65,
+  refundReason: "<value>",
 };
 ```
 
@@ -17,5 +19,7 @@ let value: SeventySix = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
-| `subscriptionId`   | *string*           | :heavy_check_mark: | N/A                |
+| `amount`           | *number*           | :heavy_check_mark: | N/A                |
+| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
+| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
+| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |

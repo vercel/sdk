@@ -72,19 +72,19 @@ export type GetIntegrationLogDrainsSource2 = {
 /**
  * Informational marker for a system-owned default drain.
  */
-export const DefaultFor = {
+export const SourceDefaultFor = {
   EveTracing: "eve-tracing",
 } as const;
 /**
  * Informational marker for a system-owned default drain.
  */
-export type DefaultFor = ClosedEnum<typeof DefaultFor>;
+export type SourceDefaultFor = ClosedEnum<typeof SourceDefaultFor>;
 
 export type GetIntegrationLogDrainsSource1 = {
   /**
    * Informational marker for a system-owned default drain.
    */
-  defaultFor?: DefaultFor | undefined;
+  defaultFor?: SourceDefaultFor | undefined;
   kind: "self-served";
 };
 
@@ -241,8 +241,9 @@ export function getIntegrationLogDrainsSource2FromJSON(
 }
 
 /** @internal */
-export const DefaultFor$inboundSchema: z.ZodNativeEnum<typeof DefaultFor> = z
-  .nativeEnum(DefaultFor);
+export const SourceDefaultFor$inboundSchema: z.ZodNativeEnum<
+  typeof SourceDefaultFor
+> = z.nativeEnum(SourceDefaultFor);
 
 /** @internal */
 export const GetIntegrationLogDrainsSource1$inboundSchema: z.ZodType<
@@ -250,7 +251,7 @@ export const GetIntegrationLogDrainsSource1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  defaultFor: types.optional(DefaultFor$inboundSchema),
+  defaultFor: types.optional(SourceDefaultFor$inboundSchema),
   kind: types.literal("self-served"),
 });
 

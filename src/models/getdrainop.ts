@@ -14,6 +14,10 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 export type GetDrainRequest = {
   id: string;
   /**
+   * Include `deliveryStats` with the delivery health of the drain over the last 24 hours.
+   */
+  includeDeliveryStats?: boolean | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -23,392 +27,13 @@ export type GetDrainRequest = {
   slug?: string | undefined;
 };
 
-export const GetDrainDeliveryDrainsTarget = {
+export const DeliveryTarget = {
   VercelOtelTracesDb: "vercel-otel-traces-db",
 } as const;
-export type GetDrainDeliveryDrainsTarget = ClosedEnum<
-  typeof GetDrainDeliveryDrainsTarget
->;
+export type DeliveryTarget = ClosedEnum<typeof DeliveryTarget>;
 
-export type GetDrainDeliveryDrains5 = {
-  target: GetDrainDeliveryDrainsTarget;
-  type: "internal";
-};
-
-export const GetDrainDeliveryDrainsResponse200Compression = {
-  None: "none",
-} as const;
-export type GetDrainDeliveryDrainsResponse200Compression = ClosedEnum<
-  typeof GetDrainDeliveryDrainsResponse200Compression
->;
-
-export const GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding =
-  {
-    Json: "json",
-    Ndjson: "ndjson",
-  } as const;
-export type GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding =
-  ClosedEnum<
-    typeof GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding
-  >;
-
-export const GetDrainDeliveryDrainsFileStructure = {
-  Hive: "hive",
-} as const;
-export type GetDrainDeliveryDrainsFileStructure = ClosedEnum<
-  typeof GetDrainDeliveryDrainsFileStructure
->;
-
-export const GetDrainDeliveryDrainsObjectAcl = {
-  AuthenticatedRead: "authenticated-read",
-  AwsExecRead: "aws-exec-read",
-  BucketOwnerFullControl: "bucket-owner-full-control",
-  BucketOwnerRead: "bucket-owner-read",
-  Private: "private",
-  PublicRead: "public-read",
-  PublicReadWrite: "public-read-write",
-} as const;
-export type GetDrainDeliveryDrainsObjectAcl = ClosedEnum<
-  typeof GetDrainDeliveryDrainsObjectAcl
->;
-
-export const GetDrainDeliveryDrainsServerSideEncryption = {
-  Aes256: "AES256",
-  AwsKms: "aws:kms",
-  AwsKmsDsse: "aws:kms:dsse",
-} as const;
-export type GetDrainDeliveryDrainsServerSideEncryption = ClosedEnum<
-  typeof GetDrainDeliveryDrainsServerSideEncryption
->;
-
-export type GetDrainDeliveryDrains4 = {
-  compression: GetDrainDeliveryDrainsResponse200Compression;
-  encoding:
-    GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding;
-  endpoint: string;
-  fileStructure: GetDrainDeliveryDrainsFileStructure;
-  objectAcl?: GetDrainDeliveryDrainsObjectAcl | undefined;
-  region: string;
-  roleArn: string;
-  serverSideEncryption?: GetDrainDeliveryDrainsServerSideEncryption | undefined;
-  type: "s3";
-};
-
-export type GetDrainDeliveryDrains3 = {
-  endpoint: string;
-  table: string;
-  type: "clickhouse";
-};
-
-export const GetDrainDeliveryDrainsResponse200ApplicationJSONEncoding = {
-  Json: "json",
-  Proto: "proto",
-} as const;
-export type GetDrainDeliveryDrainsResponse200ApplicationJSONEncoding =
-  ClosedEnum<typeof GetDrainDeliveryDrainsResponse200ApplicationJSONEncoding>;
-
-export type GetDrainDeliveryDrainsEndpoint = {
-  traces: string;
-};
-
-export const GetDrainSecretDrainsResponse200Kind = {
-  IntegrationSecret: "INTEGRATION_SECRET",
-} as const;
-export type GetDrainSecretDrainsResponse200Kind = ClosedEnum<
-  typeof GetDrainSecretDrainsResponse200Kind
->;
-
-export type GetDrainSecretDrainsResponse2002 = {
-  kind: GetDrainSecretDrainsResponse200Kind;
-};
-
-export type GetDrainDeliveryDrainsResponse200Secret =
-  | GetDrainSecretDrainsResponse2002
-  | string;
-
-export type GetDrainDeliveryDrains2 = {
-  encoding: GetDrainDeliveryDrainsResponse200ApplicationJSONEncoding;
-  endpoint: GetDrainDeliveryDrainsEndpoint;
-  headers: { [k: string]: string };
-  secret?: GetDrainSecretDrainsResponse2002 | string | undefined;
-  type: "otlphttp";
-};
-
-export const GetDrainDeliveryDrainsResponseCompression = {
-  Gzip: "gzip",
-  None: "none",
-} as const;
-export type GetDrainDeliveryDrainsResponseCompression = ClosedEnum<
-  typeof GetDrainDeliveryDrainsResponseCompression
->;
-
-export const GetDrainDeliveryDrainsResponse200Encoding = {
-  Json: "json",
-  Ndjson: "ndjson",
-} as const;
-export type GetDrainDeliveryDrainsResponse200Encoding = ClosedEnum<
-  typeof GetDrainDeliveryDrainsResponse200Encoding
->;
-
-export const GetDrainSecretDrainsResponseKind = {
-  IntegrationSecret: "INTEGRATION_SECRET",
-} as const;
-export type GetDrainSecretDrainsResponseKind = ClosedEnum<
-  typeof GetDrainSecretDrainsResponseKind
->;
-
-export type GetDrainSecretDrainsResponse2 = {
-  kind: GetDrainSecretDrainsResponseKind;
-};
-
-export type GetDrainDeliveryDrainsResponseSecret =
-  | GetDrainSecretDrainsResponse2
-  | string;
-
-export type GetDrainDeliveryDrains1 = {
-  compression?: GetDrainDeliveryDrainsResponseCompression | undefined;
-  encoding: GetDrainDeliveryDrainsResponse200Encoding;
-  endpoint: string;
-  headers: { [k: string]: string };
-  secret?: GetDrainSecretDrainsResponse2 | string | undefined;
-  type: "http";
-};
-
-export type GetDrainResponseBodyDrainsDelivery =
-  | GetDrainDeliveryDrains1
-  | GetDrainDeliveryDrains2
-  | GetDrainDeliveryDrains3
-  | GetDrainDeliveryDrains4
-  | GetDrainDeliveryDrains5;
-
-export const GetDrainResponseBodyDrainsDisabledReason = {
-  AccountPlanDowngrade: "account-plan-downgrade",
-  DisabledByAdmin: "disabled-by-admin",
-  DisabledByOwner: "disabled-by-owner",
-  FeatureNotAvailable: "feature-not-available",
-  LimitsExceeded: "limits-exceeded",
-} as const;
-export type GetDrainResponseBodyDrainsDisabledReason = ClosedEnum<
-  typeof GetDrainResponseBodyDrainsDisabledReason
->;
-
-export const GetDrainResponseBodyDrainsEnv = {
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type GetDrainResponseBodyDrainsEnv = ClosedEnum<
-  typeof GetDrainResponseBodyDrainsEnv
->;
-
-export const GetDrainResponseBodyDrainsType = {
-  HeadSampling: "head_sampling",
-} as const;
-export type GetDrainResponseBodyDrainsType = ClosedEnum<
-  typeof GetDrainResponseBodyDrainsType
->;
-
-export type GetDrainResponseBodyDrainsSampling = {
-  env?: GetDrainResponseBodyDrainsEnv | undefined;
-  rate: number;
-  requestPath?: string | undefined;
-  type: GetDrainResponseBodyDrainsType;
-};
-
-export type GetDrainResponseBodyDrainsAiGateway = {};
-
-export type GetDrainResponseBodyDrainsAnalytics = {};
-
-export type GetDrainResponseBodyDrainsAuditLog = {};
-
-export type GetDrainResponseBodyDrainsConnect = {};
-
-export type GetDrainResponseBodyDrainsLog = {};
-
-export type GetDrainResponseBodyDrainsSpeedInsights = {};
-
-export type GetDrainResponseBodyDrainsTrace = {};
-
-export type GetDrainResponseBodyDrainsSchemas = {
-  aiGateway?: GetDrainResponseBodyDrainsAiGateway | undefined;
-  analytics?: GetDrainResponseBodyDrainsAnalytics | undefined;
-  auditLog?: GetDrainResponseBodyDrainsAuditLog | undefined;
-  connect?: GetDrainResponseBodyDrainsConnect | undefined;
-  log?: GetDrainResponseBodyDrainsLog | undefined;
-  speedInsights?: GetDrainResponseBodyDrainsSpeedInsights | undefined;
-  trace?: GetDrainResponseBodyDrainsTrace | undefined;
-};
-
-export type GetDrainSourceDrains2 = {
-  externalResourceId?: string | undefined;
-  integrationConfigurationId: string;
-  integrationId: string;
-  kind: "integration";
-  resourceId?: string | undefined;
-};
-
-/**
- * Informational marker for a system-owned default drain.
- */
-export const GetDrainSourceDrainsDefaultFor = {
-  EveTracing: "eve-tracing",
-} as const;
-/**
- * Informational marker for a system-owned default drain.
- */
-export type GetDrainSourceDrainsDefaultFor = ClosedEnum<
-  typeof GetDrainSourceDrainsDefaultFor
->;
-
-export type GetDrainSourceDrains1 = {
-  /**
-   * Informational marker for a system-owned default drain.
-   */
-  defaultFor?: GetDrainSourceDrainsDefaultFor | undefined;
-  kind: "self-served";
-};
-
-export type GetDrainResponseBodyDrainsSource =
-  | GetDrainSourceDrains1
-  | GetDrainSourceDrains2;
-
-export const GetDrainResponseBodyDrainsStatus = {
-  Disabled: "disabled",
-  Enabled: "enabled",
-  Errored: "errored",
-} as const;
-export type GetDrainResponseBodyDrainsStatus = ClosedEnum<
-  typeof GetDrainResponseBodyDrainsStatus
->;
-
-export type GetDrainFilterDrains2 = {
-  text: string;
-  type: "odata";
-};
-
-export const GetDrainFilterDrainsEnvironments = {
-  Preview: "preview",
-  Production: "production",
-} as const;
-export type GetDrainFilterDrainsEnvironments = ClosedEnum<
-  typeof GetDrainFilterDrainsEnvironments
->;
-
-export type GetDrainFilterDrainsDeployment = {
-  environments?: Array<GetDrainFilterDrainsEnvironments> | undefined;
-};
-
-export const GetDrainFilterDrainsSources = {
-  Build: "build",
-  Edge: "edge",
-  External: "external",
-  Firewall: "firewall",
-  Lambda: "lambda",
-  Redirect: "redirect",
-  Static: "static",
-} as const;
-export type GetDrainFilterDrainsSources = ClosedEnum<
-  typeof GetDrainFilterDrainsSources
->;
-
-export type GetDrainFilterDrainsLog = {
-  legacyExcludeCachedStaticAssetLogs?: boolean | undefined;
-  sources?: Array<GetDrainFilterDrainsSources> | undefined;
-};
-
-export type GetDrainFilterDrainsProject = {
-  ids?: Array<string> | undefined;
-};
-
-export type GetDrainFilterDrains1 = {
-  deployment?: GetDrainFilterDrainsDeployment | undefined;
-  log?: GetDrainFilterDrainsLog | undefined;
-  project?: GetDrainFilterDrainsProject | undefined;
-  type: "basic";
-};
-
-export type GetDrainResponseBodyDrainsFilter =
-  | GetDrainFilterDrains1
-  | GetDrainFilterDrains2;
-
-export const GetDrainResponseBodyDrainsVersion = {
-  V2: "v2",
-} as const;
-export type GetDrainResponseBodyDrainsVersion = ClosedEnum<
-  typeof GetDrainResponseBodyDrainsVersion
->;
-
-export type GetDrainResponseBodyDrainsFilterV2 = {
-  filter: GetDrainFilterDrains1 | GetDrainFilterDrains2;
-  version: GetDrainResponseBodyDrainsVersion;
-};
-
-export const GetDrainProjectAccessDrainsManagedBy = {
-  Drain: "drain",
-  Integration: "integration",
-} as const;
-export type GetDrainProjectAccessDrainsManagedBy = ClosedEnum<
-  typeof GetDrainProjectAccessDrainsManagedBy
->;
-
-export type GetDrainProjectAccess2 = {
-  access: "some";
-  projectIds: Array<string>;
-  managedBy: GetDrainProjectAccessDrainsManagedBy;
-};
-
-export const GetDrainProjectAccessManagedBy = {
-  Drain: "drain",
-  Integration: "integration",
-} as const;
-export type GetDrainProjectAccessManagedBy = ClosedEnum<
-  typeof GetDrainProjectAccessManagedBy
->;
-
-export type GetDrainProjectAccess1 = {
-  access: "all";
-  managedBy: GetDrainProjectAccessManagedBy;
-};
-
-export type ResponseBodyProjectAccess =
-  | GetDrainProjectAccess1
-  | GetDrainProjectAccess2;
-
-export type GetDrainResponseBody2 = {
-  createdAt: number;
-  delivery:
-    | GetDrainDeliveryDrains1
-    | GetDrainDeliveryDrains2
-    | GetDrainDeliveryDrains3
-    | GetDrainDeliveryDrains4
-    | GetDrainDeliveryDrains5;
-  disabledAt?: number | undefined;
-  disabledBy?: string | undefined;
-  disabledReason?: GetDrainResponseBodyDrainsDisabledReason | undefined;
-  firstErrorTimestamp?: number | undefined;
-  id: string;
-  name: string;
-  ownerId: string;
-  projectIds?: Array<string> | undefined;
-  sampling?: Array<GetDrainResponseBodyDrainsSampling> | undefined;
-  schemas: GetDrainResponseBodyDrainsSchemas;
-  source: GetDrainSourceDrains1 | GetDrainSourceDrains2;
-  status?: GetDrainResponseBodyDrainsStatus | undefined;
-  teamId?: string | null | undefined;
-  updatedAt: number;
-  filterV2?: GetDrainResponseBodyDrainsFilterV2 | undefined;
-  integrationConfigurationUri?: string | undefined;
-  integrationIcon?: string | undefined;
-  integrationWebsite?: string | undefined;
-  projectAccess?: GetDrainProjectAccess1 | GetDrainProjectAccess2 | undefined;
-};
-
-export const GetDrainDeliveryTarget = {
-  VercelOtelTracesDb: "vercel-otel-traces-db",
-} as const;
-export type GetDrainDeliveryTarget = ClosedEnum<typeof GetDrainDeliveryTarget>;
-
-export type GetDrainDelivery5 = {
-  target: GetDrainDeliveryTarget;
+export type Delivery5 = {
+  target: DeliveryTarget;
   type: "internal";
 };
 
@@ -456,7 +81,7 @@ export type GetDrainDeliveryServerSideEncryption = ClosedEnum<
   typeof GetDrainDeliveryServerSideEncryption
 >;
 
-export type GetDrainDelivery4 = {
+export type Delivery4 = {
   compression: GetDrainDeliveryDrainsCompression;
   encoding: GetDrainDeliveryDrainsResponseEncoding;
   endpoint: string;
@@ -486,24 +111,22 @@ export type GetDrainDeliveryEndpoint = {
   traces: string;
 };
 
-export const GetDrainSecretDrainsKind = {
+export const GetDrainSecretKind = {
   IntegrationSecret: "INTEGRATION_SECRET",
 } as const;
-export type GetDrainSecretDrainsKind = ClosedEnum<
-  typeof GetDrainSecretDrainsKind
->;
+export type GetDrainSecretKind = ClosedEnum<typeof GetDrainSecretKind>;
 
-export type GetDrainSecretDrains2 = {
-  kind: GetDrainSecretDrainsKind;
+export type GetDrainSecret2 = {
+  kind: GetDrainSecretKind;
 };
 
-export type GetDrainDeliveryDrainsSecret = GetDrainSecretDrains2 | string;
+export type DeliverySecret = GetDrainSecret2 | string;
 
 export type GetDrainDelivery2 = {
   encoding: GetDrainDeliveryDrainsEncoding;
   endpoint: GetDrainDeliveryEndpoint;
   headers: { [k: string]: string };
-  secret?: GetDrainSecretDrains2 | string | undefined;
+  secret?: GetDrainSecret2 | string | undefined;
   type: "otlphttp";
 };
 
@@ -523,88 +146,82 @@ export type GetDrainDeliveryEncoding = ClosedEnum<
   typeof GetDrainDeliveryEncoding
 >;
 
-export const GetDrainSecretKind = {
+export const SecretKind = {
   IntegrationSecret: "INTEGRATION_SECRET",
 } as const;
-export type GetDrainSecretKind = ClosedEnum<typeof GetDrainSecretKind>;
+export type SecretKind = ClosedEnum<typeof SecretKind>;
 
-export type GetDrainSecret2 = {
-  kind: GetDrainSecretKind;
+export type Secret2 = {
+  kind: SecretKind;
 };
 
-export type GetDrainDeliverySecret = GetDrainSecret2 | string;
+export type Secret = Secret2 | string;
 
 export type GetDrainDelivery1 = {
   compression?: GetDrainDeliveryCompression | undefined;
   encoding: GetDrainDeliveryEncoding;
   endpoint: string;
   headers: { [k: string]: string };
-  secret?: GetDrainSecret2 | string | undefined;
+  secret?: Secret2 | string | undefined;
   type: "http";
 };
 
-export type GetDrainResponseBodyDelivery =
+export type GetDrainDelivery =
   | GetDrainDelivery1
   | GetDrainDelivery2
   | GetDrainDelivery3
-  | GetDrainDelivery4
-  | GetDrainDelivery5;
+  | Delivery4
+  | Delivery5;
 
-export const GetDrainResponseBodyDisabledReason = {
+export const DisabledReason = {
   AccountPlanDowngrade: "account-plan-downgrade",
   DisabledByAdmin: "disabled-by-admin",
   DisabledByOwner: "disabled-by-owner",
   FeatureNotAvailable: "feature-not-available",
   LimitsExceeded: "limits-exceeded",
 } as const;
-export type GetDrainResponseBodyDisabledReason = ClosedEnum<
-  typeof GetDrainResponseBodyDisabledReason
->;
+export type DisabledReason = ClosedEnum<typeof DisabledReason>;
 
-export const GetDrainResponseBodyEnv = {
+export const GetDrainEnv = {
   Preview: "preview",
   Production: "production",
 } as const;
-export type GetDrainResponseBodyEnv = ClosedEnum<
-  typeof GetDrainResponseBodyEnv
->;
+export type GetDrainEnv = ClosedEnum<typeof GetDrainEnv>;
 
-export const GetDrainResponseBodyType = {
+export const GetDrainType = {
   HeadSampling: "head_sampling",
 } as const;
-export type GetDrainResponseBodyType = ClosedEnum<
-  typeof GetDrainResponseBodyType
->;
+export type GetDrainType = ClosedEnum<typeof GetDrainType>;
 
-export type GetDrainResponseBodySampling = {
-  env?: GetDrainResponseBodyEnv | undefined;
+export type GetDrainSampling = {
+  env?: GetDrainEnv | undefined;
   rate: number;
   requestPath?: string | undefined;
-  type: GetDrainResponseBodyType;
+  type: GetDrainType;
 };
 
-export type GetDrainResponseBodyAiGateway = {};
+export type AiGateway = {};
 
-export type GetDrainResponseBodyAnalytics = {};
+export type GetDrainAnalytics = {};
 
-export type GetDrainResponseBodyAuditLog = {};
+export type AuditLog = {};
 
-export type GetDrainResponseBodyConnect = {};
+export type GetDrainConnect = {};
 
-export type GetDrainResponseBodyLog = {};
+export type GetDrainLog = {};
 
-export type GetDrainResponseBodySpeedInsights = {};
+export type GetDrainSpeedInsights = {};
 
-export type GetDrainResponseBodyTrace = {};
+export type GetDrainTrace = {};
 
-export type GetDrainResponseBodySchemas = {
-  aiGateway?: GetDrainResponseBodyAiGateway | undefined;
-  analytics?: GetDrainResponseBodyAnalytics | undefined;
-  auditLog?: GetDrainResponseBodyAuditLog | undefined;
-  connect?: GetDrainResponseBodyConnect | undefined;
-  log?: GetDrainResponseBodyLog | undefined;
-  speedInsights?: GetDrainResponseBodySpeedInsights | undefined;
-  trace?: GetDrainResponseBodyTrace | undefined;
+export type GetDrainSchemas = {
+  aiGateway?: AiGateway | undefined;
+  analytics?: GetDrainAnalytics | undefined;
+  auditLog?: AuditLog | undefined;
+  connect?: GetDrainConnect | undefined;
+  log?: GetDrainLog | undefined;
+  speedInsights?: GetDrainSpeedInsights | undefined;
+  trace?: GetDrainTrace | undefined;
 };
 
 export type GetDrainSource2 = {
@@ -618,34 +235,58 @@ export type GetDrainSource2 = {
 /**
  * Informational marker for a system-owned default drain.
  */
-export const GetDrainSourceDefaultFor = {
+export const DefaultFor = {
   EveTracing: "eve-tracing",
 } as const;
 /**
  * Informational marker for a system-owned default drain.
  */
-export type GetDrainSourceDefaultFor = ClosedEnum<
-  typeof GetDrainSourceDefaultFor
->;
+export type DefaultFor = ClosedEnum<typeof DefaultFor>;
 
 export type GetDrainSource1 = {
   /**
    * Informational marker for a system-owned default drain.
    */
-  defaultFor?: GetDrainSourceDefaultFor | undefined;
+  defaultFor?: DefaultFor | undefined;
   kind: "self-served";
 };
 
-export type GetDrainResponseBodySource = GetDrainSource1 | GetDrainSource2;
+export type GetDrainSource = GetDrainSource1 | GetDrainSource2;
 
-export const GetDrainResponseBodyStatus = {
+export const GetDrainStatus = {
   Disabled: "disabled",
   Enabled: "enabled",
   Errored: "errored",
 } as const;
-export type GetDrainResponseBodyStatus = ClosedEnum<
-  typeof GetDrainResponseBodyStatus
->;
+export type GetDrainStatus = ClosedEnum<typeof GetDrainStatus>;
+
+export const GetDrainState = {
+  Failing: "failing",
+  Healthy: "healthy",
+  Unknown: "unknown",
+} as const;
+export type GetDrainState = ClosedEnum<typeof GetDrainState>;
+
+export const Window = {
+  TwentyFourh: "24h",
+} as const;
+export type Window = ClosedEnum<typeof Window>;
+
+/**
+ * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+ */
+export type DeliveryStats = {
+  /**
+   * All delivery attempts in the window.
+   */
+  attempts: number;
+  /**
+   * Delivery attempts that did not succeed in the window.
+   */
+  failures: number;
+  state: GetDrainState;
+  window: Window;
+};
 
 export type GetDrainFilter2 = {
   text: string;
@@ -691,52 +332,51 @@ export type GetDrainFilter1 = {
   type: "basic";
 };
 
-export type GetDrainResponseBodyFilter = GetDrainFilter1 | GetDrainFilter2;
+export type GetDrainFilter = GetDrainFilter1 | GetDrainFilter2;
 
-export const GetDrainResponseBodyVersion = {
+export const GetDrainVersion = {
   V2: "v2",
 } as const;
-export type GetDrainResponseBodyVersion = ClosedEnum<
-  typeof GetDrainResponseBodyVersion
->;
+export type GetDrainVersion = ClosedEnum<typeof GetDrainVersion>;
 
-export type GetDrainResponseBodyFilterV2 = {
+export type FilterV2 = {
   filter: GetDrainFilter1 | GetDrainFilter2;
-  version: GetDrainResponseBodyVersion;
+  version: GetDrainVersion;
 };
 
-export type GetDrainResponseBody1 = {
+export type GetDrainResponseBody = {
   createdAt: number;
   delivery:
     | GetDrainDelivery1
     | GetDrainDelivery2
     | GetDrainDelivery3
-    | GetDrainDelivery4
-    | GetDrainDelivery5;
+    | Delivery4
+    | Delivery5;
   disabledAt?: number | undefined;
   disabledBy?: string | undefined;
-  disabledReason?: GetDrainResponseBodyDisabledReason | undefined;
+  disabledReason?: DisabledReason | undefined;
   firstErrorTimestamp?: number | undefined;
   id: string;
   name: string;
   ownerId: string;
   projectIds?: Array<string> | undefined;
-  sampling?: Array<GetDrainResponseBodySampling> | undefined;
-  schemas: GetDrainResponseBodySchemas;
+  sampling?: Array<GetDrainSampling> | undefined;
+  schemas: GetDrainSchemas;
   source: GetDrainSource1 | GetDrainSource2;
-  status?: GetDrainResponseBodyStatus | undefined;
+  status?: GetDrainStatus | undefined;
   teamId?: string | null | undefined;
   updatedAt: number;
-  filterV2?: GetDrainResponseBodyFilterV2 | undefined;
+  /**
+   * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+   */
+  deliveryStats?: DeliveryStats | undefined;
+  filterV2?: FilterV2 | undefined;
 };
-
-export type GetDrainResponseBody =
-  | GetDrainResponseBody1
-  | GetDrainResponseBody2;
 
 /** @internal */
 export type GetDrainRequest$Outbound = {
   id: string;
+  includeDeliveryStats: boolean;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -748,6 +388,7 @@ export const GetDrainRequest$outboundSchema: z.ZodType<
   GetDrainRequest
 > = z.object({
   id: z.string(),
+  includeDeliveryStats: z.boolean().default(false),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });
@@ -759,929 +400,27 @@ export function getDrainRequestToJSON(
 }
 
 /** @internal */
-export const GetDrainDeliveryDrainsTarget$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainDeliveryDrainsTarget
-> = z.nativeEnum(GetDrainDeliveryDrainsTarget);
+export const DeliveryTarget$inboundSchema: z.ZodNativeEnum<
+  typeof DeliveryTarget
+> = z.nativeEnum(DeliveryTarget);
 
 /** @internal */
-export const GetDrainDeliveryDrains5$inboundSchema: z.ZodType<
-  GetDrainDeliveryDrains5,
+export const Delivery5$inboundSchema: z.ZodType<
+  Delivery5,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  target: GetDrainDeliveryDrainsTarget$inboundSchema,
+  target: DeliveryTarget$inboundSchema,
   type: types.literal("internal"),
 });
 
-export function getDrainDeliveryDrains5FromJSON(
+export function delivery5FromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainDeliveryDrains5, SDKValidationError> {
+): SafeParseResult<Delivery5, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainDeliveryDrains5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDeliveryDrains5' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainDeliveryDrainsResponse200Compression$inboundSchema:
-  z.ZodNativeEnum<typeof GetDrainDeliveryDrainsResponse200Compression> = z
-    .nativeEnum(GetDrainDeliveryDrainsResponse200Compression);
-
-/** @internal */
-export const GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding
-  > = z.nativeEnum(
-    GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding,
-  );
-
-/** @internal */
-export const GetDrainDeliveryDrainsFileStructure$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainDeliveryDrainsFileStructure
-> = z.nativeEnum(GetDrainDeliveryDrainsFileStructure);
-
-/** @internal */
-export const GetDrainDeliveryDrainsObjectAcl$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainDeliveryDrainsObjectAcl
-> = z.nativeEnum(GetDrainDeliveryDrainsObjectAcl);
-
-/** @internal */
-export const GetDrainDeliveryDrainsServerSideEncryption$inboundSchema:
-  z.ZodNativeEnum<typeof GetDrainDeliveryDrainsServerSideEncryption> = z
-    .nativeEnum(GetDrainDeliveryDrainsServerSideEncryption);
-
-/** @internal */
-export const GetDrainDeliveryDrains4$inboundSchema: z.ZodType<
-  GetDrainDeliveryDrains4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  compression: GetDrainDeliveryDrainsResponse200Compression$inboundSchema,
-  encoding:
-    GetDrainDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding$inboundSchema,
-  endpoint: types.string(),
-  fileStructure: GetDrainDeliveryDrainsFileStructure$inboundSchema,
-  objectAcl: types.optional(GetDrainDeliveryDrainsObjectAcl$inboundSchema),
-  region: types.string(),
-  roleArn: types.string(),
-  serverSideEncryption: types.optional(
-    GetDrainDeliveryDrainsServerSideEncryption$inboundSchema,
-  ),
-  type: types.literal("s3"),
-});
-
-export function getDrainDeliveryDrains4FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainDeliveryDrains4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainDeliveryDrains4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDeliveryDrains4' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainDeliveryDrains3$inboundSchema: z.ZodType<
-  GetDrainDeliveryDrains3,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  endpoint: types.string(),
-  table: types.string(),
-  type: types.literal("clickhouse"),
-});
-
-export function getDrainDeliveryDrains3FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainDeliveryDrains3, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainDeliveryDrains3$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDeliveryDrains3' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetDrainDeliveryDrainsResponse200ApplicationJSONEncoding
-  > = z.nativeEnum(GetDrainDeliveryDrainsResponse200ApplicationJSONEncoding);
-
-/** @internal */
-export const GetDrainDeliveryDrainsEndpoint$inboundSchema: z.ZodType<
-  GetDrainDeliveryDrainsEndpoint,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  traces: types.string(),
-});
-
-export function getDrainDeliveryDrainsEndpointFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainDeliveryDrainsEndpoint, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainDeliveryDrainsEndpoint$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDeliveryDrainsEndpoint' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainSecretDrainsResponse200Kind$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainSecretDrainsResponse200Kind
-> = z.nativeEnum(GetDrainSecretDrainsResponse200Kind);
-
-/** @internal */
-export const GetDrainSecretDrainsResponse2002$inboundSchema: z.ZodType<
-  GetDrainSecretDrainsResponse2002,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  kind: GetDrainSecretDrainsResponse200Kind$inboundSchema,
-});
-
-export function getDrainSecretDrainsResponse2002FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainSecretDrainsResponse2002, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainSecretDrainsResponse2002$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainSecretDrainsResponse2002' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainDeliveryDrainsResponse200Secret$inboundSchema: z.ZodType<
-  GetDrainDeliveryDrainsResponse200Secret,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => GetDrainSecretDrainsResponse2002$inboundSchema),
-  types.string(),
-]);
-
-export function getDrainDeliveryDrainsResponse200SecretFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetDrainDeliveryDrainsResponse200Secret,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDrainDeliveryDrainsResponse200Secret$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDrainDeliveryDrainsResponse200Secret' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainDeliveryDrains2$inboundSchema: z.ZodType<
-  GetDrainDeliveryDrains2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  encoding:
-    GetDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema,
-  endpoint: z.lazy(() => GetDrainDeliveryDrainsEndpoint$inboundSchema),
-  headers: z.record(types.string()),
-  secret: types.optional(
-    smartUnion([
-      z.lazy(() => GetDrainSecretDrainsResponse2002$inboundSchema),
-      types.string(),
-    ]),
-  ),
-  type: types.literal("otlphttp"),
-});
-
-export function getDrainDeliveryDrains2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainDeliveryDrains2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainDeliveryDrains2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDeliveryDrains2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainDeliveryDrainsResponseCompression$inboundSchema:
-  z.ZodNativeEnum<typeof GetDrainDeliveryDrainsResponseCompression> = z
-    .nativeEnum(GetDrainDeliveryDrainsResponseCompression);
-
-/** @internal */
-export const GetDrainDeliveryDrainsResponse200Encoding$inboundSchema:
-  z.ZodNativeEnum<typeof GetDrainDeliveryDrainsResponse200Encoding> = z
-    .nativeEnum(GetDrainDeliveryDrainsResponse200Encoding);
-
-/** @internal */
-export const GetDrainSecretDrainsResponseKind$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainSecretDrainsResponseKind
-> = z.nativeEnum(GetDrainSecretDrainsResponseKind);
-
-/** @internal */
-export const GetDrainSecretDrainsResponse2$inboundSchema: z.ZodType<
-  GetDrainSecretDrainsResponse2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  kind: GetDrainSecretDrainsResponseKind$inboundSchema,
-});
-
-export function getDrainSecretDrainsResponse2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainSecretDrainsResponse2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainSecretDrainsResponse2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainSecretDrainsResponse2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainDeliveryDrainsResponseSecret$inboundSchema: z.ZodType<
-  GetDrainDeliveryDrainsResponseSecret,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => GetDrainSecretDrainsResponse2$inboundSchema),
-  types.string(),
-]);
-
-export function getDrainDeliveryDrainsResponseSecretFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainDeliveryDrainsResponseSecret, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDrainDeliveryDrainsResponseSecret$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDeliveryDrainsResponseSecret' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainDeliveryDrains1$inboundSchema: z.ZodType<
-  GetDrainDeliveryDrains1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  compression: types.optional(
-    GetDrainDeliveryDrainsResponseCompression$inboundSchema,
-  ),
-  encoding: GetDrainDeliveryDrainsResponse200Encoding$inboundSchema,
-  endpoint: types.string(),
-  headers: z.record(types.string()),
-  secret: types.optional(
-    smartUnion([
-      z.lazy(() => GetDrainSecretDrainsResponse2$inboundSchema),
-      types.string(),
-    ]),
-  ),
-  type: types.literal("http"),
-});
-
-export function getDrainDeliveryDrains1FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainDeliveryDrains1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainDeliveryDrains1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDeliveryDrains1' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsDelivery$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsDelivery,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => GetDrainDeliveryDrains1$inboundSchema),
-  z.lazy(() => GetDrainDeliveryDrains2$inboundSchema),
-  z.lazy(() => GetDrainDeliveryDrains3$inboundSchema),
-  z.lazy(() => GetDrainDeliveryDrains4$inboundSchema),
-  z.lazy(() => GetDrainDeliveryDrains5$inboundSchema),
-]);
-
-export function getDrainResponseBodyDrainsDeliveryFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsDelivery, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDrainResponseBodyDrainsDelivery$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsDelivery' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsDisabledReason$inboundSchema:
-  z.ZodNativeEnum<typeof GetDrainResponseBodyDrainsDisabledReason> = z
-    .nativeEnum(GetDrainResponseBodyDrainsDisabledReason);
-
-/** @internal */
-export const GetDrainResponseBodyDrainsEnv$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainResponseBodyDrainsEnv
-> = z.nativeEnum(GetDrainResponseBodyDrainsEnv);
-
-/** @internal */
-export const GetDrainResponseBodyDrainsType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainResponseBodyDrainsType
-> = z.nativeEnum(GetDrainResponseBodyDrainsType);
-
-/** @internal */
-export const GetDrainResponseBodyDrainsSampling$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsSampling,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  env: types.optional(GetDrainResponseBodyDrainsEnv$inboundSchema),
-  rate: types.number(),
-  requestPath: types.optional(types.string()),
-  type: GetDrainResponseBodyDrainsType$inboundSchema,
-});
-
-export function getDrainResponseBodyDrainsSamplingFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsSampling, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDrainResponseBodyDrainsSampling$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsSampling' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsAiGateway$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsAiGateway,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-export function getDrainResponseBodyDrainsAiGatewayFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsAiGateway, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDrainResponseBodyDrainsAiGateway$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsAiGateway' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsAnalytics$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsAnalytics,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-export function getDrainResponseBodyDrainsAnalyticsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsAnalytics, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDrainResponseBodyDrainsAnalytics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsAnalytics' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsAuditLog$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsAuditLog,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-export function getDrainResponseBodyDrainsAuditLogFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsAuditLog, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDrainResponseBodyDrainsAuditLog$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsAuditLog' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsConnect$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsConnect,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-export function getDrainResponseBodyDrainsConnectFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsConnect, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainResponseBodyDrainsConnect$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsConnect' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsLog$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsLog,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-export function getDrainResponseBodyDrainsLogFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsLog, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainResponseBodyDrainsLog$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsLog' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsSpeedInsights$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsSpeedInsights,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-export function getDrainResponseBodyDrainsSpeedInsightsFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetDrainResponseBodyDrainsSpeedInsights,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDrainResponseBodyDrainsSpeedInsights$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDrainResponseBodyDrainsSpeedInsights' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsTrace$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsTrace,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-export function getDrainResponseBodyDrainsTraceFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsTrace, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainResponseBodyDrainsTrace$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsTrace' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsSchemas$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsSchemas,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ai_gateway: types.optional(
-    z.lazy(() => GetDrainResponseBodyDrainsAiGateway$inboundSchema),
-  ),
-  analytics: types.optional(
-    z.lazy(() => GetDrainResponseBodyDrainsAnalytics$inboundSchema),
-  ),
-  audit_log: types.optional(
-    z.lazy(() => GetDrainResponseBodyDrainsAuditLog$inboundSchema),
-  ),
-  connect: types.optional(
-    z.lazy(() => GetDrainResponseBodyDrainsConnect$inboundSchema),
-  ),
-  log: types.optional(
-    z.lazy(() => GetDrainResponseBodyDrainsLog$inboundSchema),
-  ),
-  speed_insights: types.optional(
-    z.lazy(() => GetDrainResponseBodyDrainsSpeedInsights$inboundSchema),
-  ),
-  trace: types.optional(
-    z.lazy(() => GetDrainResponseBodyDrainsTrace$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "ai_gateway": "aiGateway",
-    "audit_log": "auditLog",
-    "speed_insights": "speedInsights",
-  });
-});
-
-export function getDrainResponseBodyDrainsSchemasFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsSchemas, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainResponseBodyDrainsSchemas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsSchemas' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainSourceDrains2$inboundSchema: z.ZodType<
-  GetDrainSourceDrains2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  externalResourceId: types.optional(types.string()),
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  kind: types.literal("integration"),
-  resourceId: types.optional(types.string()),
-});
-
-export function getDrainSourceDrains2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainSourceDrains2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainSourceDrains2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainSourceDrains2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainSourceDrainsDefaultFor$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainSourceDrainsDefaultFor
-> = z.nativeEnum(GetDrainSourceDrainsDefaultFor);
-
-/** @internal */
-export const GetDrainSourceDrains1$inboundSchema: z.ZodType<
-  GetDrainSourceDrains1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  defaultFor: types.optional(GetDrainSourceDrainsDefaultFor$inboundSchema),
-  kind: types.literal("self-served"),
-});
-
-export function getDrainSourceDrains1FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainSourceDrains1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainSourceDrains1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainSourceDrains1' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsSource$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsSource,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => GetDrainSourceDrains1$inboundSchema),
-  z.lazy(() => GetDrainSourceDrains2$inboundSchema),
-]);
-
-export function getDrainResponseBodyDrainsSourceFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsSource, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainResponseBodyDrainsSource$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsSource' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsStatus$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainResponseBodyDrainsStatus
-> = z.nativeEnum(GetDrainResponseBodyDrainsStatus);
-
-/** @internal */
-export const GetDrainFilterDrains2$inboundSchema: z.ZodType<
-  GetDrainFilterDrains2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  text: types.string(),
-  type: types.literal("odata"),
-});
-
-export function getDrainFilterDrains2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainFilterDrains2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainFilterDrains2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainFilterDrains2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainFilterDrainsEnvironments$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainFilterDrainsEnvironments
-> = z.nativeEnum(GetDrainFilterDrainsEnvironments);
-
-/** @internal */
-export const GetDrainFilterDrainsDeployment$inboundSchema: z.ZodType<
-  GetDrainFilterDrainsDeployment,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  environments: types.optional(
-    z.array(GetDrainFilterDrainsEnvironments$inboundSchema),
-  ),
-});
-
-export function getDrainFilterDrainsDeploymentFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainFilterDrainsDeployment, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainFilterDrainsDeployment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainFilterDrainsDeployment' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainFilterDrainsSources$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainFilterDrainsSources
-> = z.nativeEnum(GetDrainFilterDrainsSources);
-
-/** @internal */
-export const GetDrainFilterDrainsLog$inboundSchema: z.ZodType<
-  GetDrainFilterDrainsLog,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  legacy_excludeCachedStaticAssetLogs: types.optional(types.boolean()),
-  sources: types.optional(z.array(GetDrainFilterDrainsSources$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "legacy_excludeCachedStaticAssetLogs": "legacyExcludeCachedStaticAssetLogs",
-  });
-});
-
-export function getDrainFilterDrainsLogFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainFilterDrainsLog, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainFilterDrainsLog$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainFilterDrainsLog' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainFilterDrainsProject$inboundSchema: z.ZodType<
-  GetDrainFilterDrainsProject,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  ids: types.optional(z.array(types.string())),
-});
-
-export function getDrainFilterDrainsProjectFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainFilterDrainsProject, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainFilterDrainsProject$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainFilterDrainsProject' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainFilterDrains1$inboundSchema: z.ZodType<
-  GetDrainFilterDrains1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  deployment: types.optional(
-    z.lazy(() => GetDrainFilterDrainsDeployment$inboundSchema),
-  ),
-  log: types.optional(z.lazy(() => GetDrainFilterDrainsLog$inboundSchema)),
-  project: types.optional(
-    z.lazy(() => GetDrainFilterDrainsProject$inboundSchema),
-  ),
-  type: types.literal("basic"),
-});
-
-export function getDrainFilterDrains1FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainFilterDrains1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainFilterDrains1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainFilterDrains1' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsFilter$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsFilter,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => GetDrainFilterDrains1$inboundSchema),
-  z.lazy(() => GetDrainFilterDrains2$inboundSchema),
-]);
-
-export function getDrainResponseBodyDrainsFilterFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsFilter, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainResponseBodyDrainsFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsFilter' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBodyDrainsVersion$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainResponseBodyDrainsVersion
-> = z.nativeEnum(GetDrainResponseBodyDrainsVersion);
-
-/** @internal */
-export const GetDrainResponseBodyDrainsFilterV2$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDrainsFilterV2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  filter: z.union([
-    z.lazy(() => GetDrainFilterDrains1$inboundSchema),
-    z.lazy(() => GetDrainFilterDrains2$inboundSchema),
-  ]),
-  version: GetDrainResponseBodyDrainsVersion$inboundSchema,
-});
-
-export function getDrainResponseBodyDrainsFilterV2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDrainsFilterV2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDrainResponseBodyDrainsFilterV2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDrainsFilterV2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainProjectAccessDrainsManagedBy$inboundSchema:
-  z.ZodNativeEnum<typeof GetDrainProjectAccessDrainsManagedBy> = z.nativeEnum(
-    GetDrainProjectAccessDrainsManagedBy,
-  );
-
-/** @internal */
-export const GetDrainProjectAccess2$inboundSchema: z.ZodType<
-  GetDrainProjectAccess2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  access: types.literal("some"),
-  projectIds: z.array(types.string()),
-  managedBy: GetDrainProjectAccessDrainsManagedBy$inboundSchema,
-});
-
-export function getDrainProjectAccess2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainProjectAccess2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainProjectAccess2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainProjectAccess2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainProjectAccessManagedBy$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainProjectAccessManagedBy
-> = z.nativeEnum(GetDrainProjectAccessManagedBy);
-
-/** @internal */
-export const GetDrainProjectAccess1$inboundSchema: z.ZodType<
-  GetDrainProjectAccess1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  access: types.literal("all"),
-  managedBy: GetDrainProjectAccessManagedBy$inboundSchema,
-});
-
-export function getDrainProjectAccess1FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainProjectAccess1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainProjectAccess1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainProjectAccess1' from JSON`,
-  );
-}
-
-/** @internal */
-export const ResponseBodyProjectAccess$inboundSchema: z.ZodType<
-  ResponseBodyProjectAccess,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => GetDrainProjectAccess1$inboundSchema),
-  z.lazy(() => GetDrainProjectAccess2$inboundSchema),
-]);
-
-export function responseBodyProjectAccessFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyProjectAccess, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyProjectAccess$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyProjectAccess' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBody2$inboundSchema: z.ZodType<
-  GetDrainResponseBody2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  createdAt: types.number(),
-  delivery: z.union([
-    z.lazy(() => GetDrainDeliveryDrains1$inboundSchema),
-    z.lazy(() => GetDrainDeliveryDrains2$inboundSchema),
-    z.lazy(() => GetDrainDeliveryDrains3$inboundSchema),
-    z.lazy(() => GetDrainDeliveryDrains4$inboundSchema),
-    z.lazy(() => GetDrainDeliveryDrains5$inboundSchema),
-  ]),
-  disabledAt: types.optional(types.number()),
-  disabledBy: types.optional(types.string()),
-  disabledReason: types.optional(
-    GetDrainResponseBodyDrainsDisabledReason$inboundSchema,
-  ),
-  firstErrorTimestamp: types.optional(types.number()),
-  id: types.string(),
-  name: types.string(),
-  ownerId: types.string(),
-  projectIds: types.optional(z.array(types.string())),
-  sampling: types.optional(
-    z.array(z.lazy(() => GetDrainResponseBodyDrainsSampling$inboundSchema)),
-  ),
-  schemas: z.lazy(() => GetDrainResponseBodyDrainsSchemas$inboundSchema),
-  source: z.union([
-    z.lazy(() => GetDrainSourceDrains1$inboundSchema),
-    z.lazy(() => GetDrainSourceDrains2$inboundSchema),
-  ]),
-  status: types.optional(GetDrainResponseBodyDrainsStatus$inboundSchema),
-  teamId: z.nullable(types.string()).optional(),
-  updatedAt: types.number(),
-  filterV2: types.optional(
-    z.lazy(() => GetDrainResponseBodyDrainsFilterV2$inboundSchema),
-  ),
-  integrationConfigurationUri: types.optional(types.string()),
-  integrationIcon: types.optional(types.string()),
-  integrationWebsite: types.optional(types.string()),
-  projectAccess: types.optional(
-    z.union([
-      z.lazy(() => GetDrainProjectAccess1$inboundSchema),
-      z.lazy(() => GetDrainProjectAccess2$inboundSchema),
-    ]),
-  ),
-});
-
-export function getDrainResponseBody2FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBody2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainResponseBody2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBody2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainDeliveryTarget$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainDeliveryTarget
-> = z.nativeEnum(GetDrainDeliveryTarget);
-
-/** @internal */
-export const GetDrainDelivery5$inboundSchema: z.ZodType<
-  GetDrainDelivery5,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  target: GetDrainDeliveryTarget$inboundSchema,
-  type: types.literal("internal"),
-});
-
-export function getDrainDelivery5FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainDelivery5, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainDelivery5$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDelivery5' from JSON`,
+    (x) => Delivery5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Delivery5' from JSON`,
   );
 }
 
@@ -1713,8 +452,8 @@ export const GetDrainDeliveryServerSideEncryption$inboundSchema:
   );
 
 /** @internal */
-export const GetDrainDelivery4$inboundSchema: z.ZodType<
-  GetDrainDelivery4,
+export const Delivery4$inboundSchema: z.ZodType<
+  Delivery4,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1731,13 +470,13 @@ export const GetDrainDelivery4$inboundSchema: z.ZodType<
   type: types.literal("s3"),
 });
 
-export function getDrainDelivery4FromJSON(
+export function delivery4FromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainDelivery4, SDKValidationError> {
+): SafeParseResult<Delivery4, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainDelivery4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDelivery4' from JSON`,
+    (x) => Delivery4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Delivery4' from JSON`,
   );
 }
 
@@ -1787,46 +526,43 @@ export function getDrainDeliveryEndpointFromJSON(
 }
 
 /** @internal */
-export const GetDrainSecretDrainsKind$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainSecretDrainsKind
-> = z.nativeEnum(GetDrainSecretDrainsKind);
+export const GetDrainSecretKind$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainSecretKind
+> = z.nativeEnum(GetDrainSecretKind);
 
 /** @internal */
-export const GetDrainSecretDrains2$inboundSchema: z.ZodType<
-  GetDrainSecretDrains2,
+export const GetDrainSecret2$inboundSchema: z.ZodType<
+  GetDrainSecret2,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  kind: GetDrainSecretDrainsKind$inboundSchema,
+  kind: GetDrainSecretKind$inboundSchema,
 });
 
-export function getDrainSecretDrains2FromJSON(
+export function getDrainSecret2FromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainSecretDrains2, SDKValidationError> {
+): SafeParseResult<GetDrainSecret2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainSecretDrains2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainSecretDrains2' from JSON`,
+    (x) => GetDrainSecret2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainSecret2' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainDeliveryDrainsSecret$inboundSchema: z.ZodType<
-  GetDrainDeliveryDrainsSecret,
+export const DeliverySecret$inboundSchema: z.ZodType<
+  DeliverySecret,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetDrainSecretDrains2$inboundSchema),
-  types.string(),
-]);
+> = smartUnion([z.lazy(() => GetDrainSecret2$inboundSchema), types.string()]);
 
-export function getDrainDeliveryDrainsSecretFromJSON(
+export function deliverySecretFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainDeliveryDrainsSecret, SDKValidationError> {
+): SafeParseResult<DeliverySecret, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainDeliveryDrainsSecret$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDeliveryDrainsSecret' from JSON`,
+    (x) => DeliverySecret$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeliverySecret' from JSON`,
   );
 }
 
@@ -1840,10 +576,7 @@ export const GetDrainDelivery2$inboundSchema: z.ZodType<
   endpoint: z.lazy(() => GetDrainDeliveryEndpoint$inboundSchema),
   headers: z.record(types.string()),
   secret: types.optional(
-    smartUnion([
-      z.lazy(() => GetDrainSecretDrains2$inboundSchema),
-      types.string(),
-    ]),
+    smartUnion([z.lazy(() => GetDrainSecret2$inboundSchema), types.string()]),
   ),
   type: types.literal("otlphttp"),
 });
@@ -1869,43 +602,36 @@ export const GetDrainDeliveryEncoding$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetDrainDeliveryEncoding);
 
 /** @internal */
-export const GetDrainSecretKind$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainSecretKind
-> = z.nativeEnum(GetDrainSecretKind);
+export const SecretKind$inboundSchema: z.ZodNativeEnum<typeof SecretKind> = z
+  .nativeEnum(SecretKind);
 
 /** @internal */
-export const GetDrainSecret2$inboundSchema: z.ZodType<
-  GetDrainSecret2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  kind: GetDrainSecretKind$inboundSchema,
-});
+export const Secret2$inboundSchema: z.ZodType<Secret2, z.ZodTypeDef, unknown> =
+  z.object({
+    kind: SecretKind$inboundSchema,
+  });
 
-export function getDrainSecret2FromJSON(
+export function secret2FromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainSecret2, SDKValidationError> {
+): SafeParseResult<Secret2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainSecret2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainSecret2' from JSON`,
+    (x) => Secret2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Secret2' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainDeliverySecret$inboundSchema: z.ZodType<
-  GetDrainDeliverySecret,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([z.lazy(() => GetDrainSecret2$inboundSchema), types.string()]);
+export const Secret$inboundSchema: z.ZodType<Secret, z.ZodTypeDef, unknown> =
+  smartUnion([z.lazy(() => Secret2$inboundSchema), types.string()]);
 
-export function getDrainDeliverySecretFromJSON(
+export function secretFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainDeliverySecret, SDKValidationError> {
+): SafeParseResult<Secret, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainDeliverySecret$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainDeliverySecret' from JSON`,
+    (x) => Secret$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Secret' from JSON`,
   );
 }
 
@@ -1920,7 +646,7 @@ export const GetDrainDelivery1$inboundSchema: z.ZodType<
   endpoint: types.string(),
   headers: z.record(types.string()),
   secret: types.optional(
-    smartUnion([z.lazy(() => GetDrainSecret2$inboundSchema), types.string()]),
+    smartUnion([z.lazy(() => Secret2$inboundSchema), types.string()]),
   ),
   type: types.literal("http"),
 });
@@ -1936,207 +662,197 @@ export function getDrainDelivery1FromJSON(
 }
 
 /** @internal */
-export const GetDrainResponseBodyDelivery$inboundSchema: z.ZodType<
-  GetDrainResponseBodyDelivery,
+export const GetDrainDelivery$inboundSchema: z.ZodType<
+  GetDrainDelivery,
   z.ZodTypeDef,
   unknown
 > = z.union([
   z.lazy(() => GetDrainDelivery1$inboundSchema),
   z.lazy(() => GetDrainDelivery2$inboundSchema),
   z.lazy(() => GetDrainDelivery3$inboundSchema),
-  z.lazy(() => GetDrainDelivery4$inboundSchema),
-  z.lazy(() => GetDrainDelivery5$inboundSchema),
+  z.lazy(() => Delivery4$inboundSchema),
+  z.lazy(() => Delivery5$inboundSchema),
 ]);
 
-export function getDrainResponseBodyDeliveryFromJSON(
+export function getDrainDeliveryFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodyDelivery, SDKValidationError> {
+): SafeParseResult<GetDrainDelivery, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodyDelivery$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyDelivery' from JSON`,
+    (x) => GetDrainDelivery$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainDelivery' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodyDisabledReason$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainResponseBodyDisabledReason
-> = z.nativeEnum(GetDrainResponseBodyDisabledReason);
+export const DisabledReason$inboundSchema: z.ZodNativeEnum<
+  typeof DisabledReason
+> = z.nativeEnum(DisabledReason);
 
 /** @internal */
-export const GetDrainResponseBodyEnv$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainResponseBodyEnv
-> = z.nativeEnum(GetDrainResponseBodyEnv);
+export const GetDrainEnv$inboundSchema: z.ZodNativeEnum<typeof GetDrainEnv> = z
+  .nativeEnum(GetDrainEnv);
 
 /** @internal */
-export const GetDrainResponseBodyType$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainResponseBodyType
-> = z.nativeEnum(GetDrainResponseBodyType);
+export const GetDrainType$inboundSchema: z.ZodNativeEnum<typeof GetDrainType> =
+  z.nativeEnum(GetDrainType);
 
 /** @internal */
-export const GetDrainResponseBodySampling$inboundSchema: z.ZodType<
-  GetDrainResponseBodySampling,
+export const GetDrainSampling$inboundSchema: z.ZodType<
+  GetDrainSampling,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  env: types.optional(GetDrainResponseBodyEnv$inboundSchema),
+  env: types.optional(GetDrainEnv$inboundSchema),
   rate: types.number(),
   requestPath: types.optional(types.string()),
-  type: GetDrainResponseBodyType$inboundSchema,
+  type: GetDrainType$inboundSchema,
 });
 
-export function getDrainResponseBodySamplingFromJSON(
+export function getDrainSamplingFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodySampling, SDKValidationError> {
+): SafeParseResult<GetDrainSampling, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodySampling$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodySampling' from JSON`,
+    (x) => GetDrainSampling$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainSampling' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodyAiGateway$inboundSchema: z.ZodType<
-  GetDrainResponseBodyAiGateway,
+export const AiGateway$inboundSchema: z.ZodType<
+  AiGateway,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function getDrainResponseBodyAiGatewayFromJSON(
+export function aiGatewayFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodyAiGateway, SDKValidationError> {
+): SafeParseResult<AiGateway, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodyAiGateway$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyAiGateway' from JSON`,
+    (x) => AiGateway$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AiGateway' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodyAnalytics$inboundSchema: z.ZodType<
-  GetDrainResponseBodyAnalytics,
+export const GetDrainAnalytics$inboundSchema: z.ZodType<
+  GetDrainAnalytics,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function getDrainResponseBodyAnalyticsFromJSON(
+export function getDrainAnalyticsFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodyAnalytics, SDKValidationError> {
+): SafeParseResult<GetDrainAnalytics, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodyAnalytics$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyAnalytics' from JSON`,
+    (x) => GetDrainAnalytics$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainAnalytics' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodyAuditLog$inboundSchema: z.ZodType<
-  GetDrainResponseBodyAuditLog,
+export const AuditLog$inboundSchema: z.ZodType<
+  AuditLog,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function getDrainResponseBodyAuditLogFromJSON(
+export function auditLogFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodyAuditLog, SDKValidationError> {
+): SafeParseResult<AuditLog, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodyAuditLog$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyAuditLog' from JSON`,
+    (x) => AuditLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuditLog' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodyConnect$inboundSchema: z.ZodType<
-  GetDrainResponseBodyConnect,
+export const GetDrainConnect$inboundSchema: z.ZodType<
+  GetDrainConnect,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function getDrainResponseBodyConnectFromJSON(
+export function getDrainConnectFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodyConnect, SDKValidationError> {
+): SafeParseResult<GetDrainConnect, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodyConnect$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyConnect' from JSON`,
+    (x) => GetDrainConnect$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainConnect' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodyLog$inboundSchema: z.ZodType<
-  GetDrainResponseBodyLog,
+export const GetDrainLog$inboundSchema: z.ZodType<
+  GetDrainLog,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function getDrainResponseBodyLogFromJSON(
+export function getDrainLogFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodyLog, SDKValidationError> {
+): SafeParseResult<GetDrainLog, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodyLog$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyLog' from JSON`,
+    (x) => GetDrainLog$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainLog' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodySpeedInsights$inboundSchema: z.ZodType<
-  GetDrainResponseBodySpeedInsights,
+export const GetDrainSpeedInsights$inboundSchema: z.ZodType<
+  GetDrainSpeedInsights,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function getDrainResponseBodySpeedInsightsFromJSON(
+export function getDrainSpeedInsightsFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodySpeedInsights, SDKValidationError> {
+): SafeParseResult<GetDrainSpeedInsights, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodySpeedInsights$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodySpeedInsights' from JSON`,
+    (x) => GetDrainSpeedInsights$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainSpeedInsights' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodyTrace$inboundSchema: z.ZodType<
-  GetDrainResponseBodyTrace,
+export const GetDrainTrace$inboundSchema: z.ZodType<
+  GetDrainTrace,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function getDrainResponseBodyTraceFromJSON(
+export function getDrainTraceFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodyTrace, SDKValidationError> {
+): SafeParseResult<GetDrainTrace, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodyTrace$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyTrace' from JSON`,
+    (x) => GetDrainTrace$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainTrace' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodySchemas$inboundSchema: z.ZodType<
-  GetDrainResponseBodySchemas,
+export const GetDrainSchemas$inboundSchema: z.ZodType<
+  GetDrainSchemas,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ai_gateway: types.optional(
-    z.lazy(() => GetDrainResponseBodyAiGateway$inboundSchema),
-  ),
-  analytics: types.optional(
-    z.lazy(() => GetDrainResponseBodyAnalytics$inboundSchema),
-  ),
-  audit_log: types.optional(
-    z.lazy(() => GetDrainResponseBodyAuditLog$inboundSchema),
-  ),
-  connect: types.optional(
-    z.lazy(() => GetDrainResponseBodyConnect$inboundSchema),
-  ),
-  log: types.optional(z.lazy(() => GetDrainResponseBodyLog$inboundSchema)),
+  ai_gateway: types.optional(z.lazy(() => AiGateway$inboundSchema)),
+  analytics: types.optional(z.lazy(() => GetDrainAnalytics$inboundSchema)),
+  audit_log: types.optional(z.lazy(() => AuditLog$inboundSchema)),
+  connect: types.optional(z.lazy(() => GetDrainConnect$inboundSchema)),
+  log: types.optional(z.lazy(() => GetDrainLog$inboundSchema)),
   speed_insights: types.optional(
-    z.lazy(() => GetDrainResponseBodySpeedInsights$inboundSchema),
+    z.lazy(() => GetDrainSpeedInsights$inboundSchema),
   ),
-  trace: types.optional(z.lazy(() => GetDrainResponseBodyTrace$inboundSchema)),
+  trace: types.optional(z.lazy(() => GetDrainTrace$inboundSchema)),
 }).transform((v) => {
   return remap$(v, {
     "ai_gateway": "aiGateway",
@@ -2145,13 +861,13 @@ export const GetDrainResponseBodySchemas$inboundSchema: z.ZodType<
   });
 });
 
-export function getDrainResponseBodySchemasFromJSON(
+export function getDrainSchemasFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodySchemas, SDKValidationError> {
+): SafeParseResult<GetDrainSchemas, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodySchemas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodySchemas' from JSON`,
+    (x) => GetDrainSchemas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainSchemas' from JSON`,
   );
 }
 
@@ -2179,9 +895,8 @@ export function getDrainSource2FromJSON(
 }
 
 /** @internal */
-export const GetDrainSourceDefaultFor$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainSourceDefaultFor
-> = z.nativeEnum(GetDrainSourceDefaultFor);
+export const DefaultFor$inboundSchema: z.ZodNativeEnum<typeof DefaultFor> = z
+  .nativeEnum(DefaultFor);
 
 /** @internal */
 export const GetDrainSource1$inboundSchema: z.ZodType<
@@ -2189,7 +904,7 @@ export const GetDrainSource1$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  defaultFor: types.optional(GetDrainSourceDefaultFor$inboundSchema),
+  defaultFor: types.optional(DefaultFor$inboundSchema),
   kind: types.literal("self-served"),
 });
 
@@ -2204,8 +919,8 @@ export function getDrainSource1FromJSON(
 }
 
 /** @internal */
-export const GetDrainResponseBodySource$inboundSchema: z.ZodType<
-  GetDrainResponseBodySource,
+export const GetDrainSource$inboundSchema: z.ZodType<
+  GetDrainSource,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -2213,20 +928,51 @@ export const GetDrainResponseBodySource$inboundSchema: z.ZodType<
   z.lazy(() => GetDrainSource2$inboundSchema),
 ]);
 
-export function getDrainResponseBodySourceFromJSON(
+export function getDrainSourceFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodySource, SDKValidationError> {
+): SafeParseResult<GetDrainSource, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodySource$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodySource' from JSON`,
+    (x) => GetDrainSource$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainSource' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainResponseBodyStatus
-> = z.nativeEnum(GetDrainResponseBodyStatus);
+export const GetDrainStatus$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainStatus
+> = z.nativeEnum(GetDrainStatus);
+
+/** @internal */
+export const GetDrainState$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainState
+> = z.nativeEnum(GetDrainState);
+
+/** @internal */
+export const Window$inboundSchema: z.ZodNativeEnum<typeof Window> = z
+  .nativeEnum(Window);
+
+/** @internal */
+export const DeliveryStats$inboundSchema: z.ZodType<
+  DeliveryStats,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  attempts: types.number(),
+  failures: types.number(),
+  state: GetDrainState$inboundSchema,
+  window: Window$inboundSchema,
+});
+
+export function deliveryStatsFromJSON(
+  jsonString: string,
+): SafeParseResult<DeliveryStats, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeliveryStats$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeliveryStats' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetDrainFilter2$inboundSchema: z.ZodType<
@@ -2347,8 +1093,8 @@ export function getDrainFilter1FromJSON(
 }
 
 /** @internal */
-export const GetDrainResponseBodyFilter$inboundSchema: z.ZodType<
-  GetDrainResponseBodyFilter,
+export const GetDrainFilter$inboundSchema: z.ZodType<
+  GetDrainFilter,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -2356,24 +1102,24 @@ export const GetDrainResponseBodyFilter$inboundSchema: z.ZodType<
   z.lazy(() => GetDrainFilter2$inboundSchema),
 ]);
 
-export function getDrainResponseBodyFilterFromJSON(
+export function getDrainFilterFromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodyFilter, SDKValidationError> {
+): SafeParseResult<GetDrainFilter, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodyFilter$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyFilter' from JSON`,
+    (x) => GetDrainFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDrainFilter' from JSON`,
   );
 }
 
 /** @internal */
-export const GetDrainResponseBodyVersion$inboundSchema: z.ZodNativeEnum<
-  typeof GetDrainResponseBodyVersion
-> = z.nativeEnum(GetDrainResponseBodyVersion);
+export const GetDrainVersion$inboundSchema: z.ZodNativeEnum<
+  typeof GetDrainVersion
+> = z.nativeEnum(GetDrainVersion);
 
 /** @internal */
-export const GetDrainResponseBodyFilterV2$inboundSchema: z.ZodType<
-  GetDrainResponseBodyFilterV2,
+export const FilterV2$inboundSchema: z.ZodType<
+  FilterV2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2381,66 +1127,16 @@ export const GetDrainResponseBodyFilterV2$inboundSchema: z.ZodType<
     z.lazy(() => GetDrainFilter1$inboundSchema),
     z.lazy(() => GetDrainFilter2$inboundSchema),
   ]),
-  version: GetDrainResponseBodyVersion$inboundSchema,
+  version: GetDrainVersion$inboundSchema,
 });
 
-export function getDrainResponseBodyFilterV2FromJSON(
+export function filterV2FromJSON(
   jsonString: string,
-): SafeParseResult<GetDrainResponseBodyFilterV2, SDKValidationError> {
+): SafeParseResult<FilterV2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetDrainResponseBodyFilterV2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBodyFilterV2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDrainResponseBody1$inboundSchema: z.ZodType<
-  GetDrainResponseBody1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  createdAt: types.number(),
-  delivery: z.union([
-    z.lazy(() => GetDrainDelivery1$inboundSchema),
-    z.lazy(() => GetDrainDelivery2$inboundSchema),
-    z.lazy(() => GetDrainDelivery3$inboundSchema),
-    z.lazy(() => GetDrainDelivery4$inboundSchema),
-    z.lazy(() => GetDrainDelivery5$inboundSchema),
-  ]),
-  disabledAt: types.optional(types.number()),
-  disabledBy: types.optional(types.string()),
-  disabledReason: types.optional(
-    GetDrainResponseBodyDisabledReason$inboundSchema,
-  ),
-  firstErrorTimestamp: types.optional(types.number()),
-  id: types.string(),
-  name: types.string(),
-  ownerId: types.string(),
-  projectIds: types.optional(z.array(types.string())),
-  sampling: types.optional(
-    z.array(z.lazy(() => GetDrainResponseBodySampling$inboundSchema)),
-  ),
-  schemas: z.lazy(() => GetDrainResponseBodySchemas$inboundSchema),
-  source: z.union([
-    z.lazy(() => GetDrainSource1$inboundSchema),
-    z.lazy(() => GetDrainSource2$inboundSchema),
-  ]),
-  status: types.optional(GetDrainResponseBodyStatus$inboundSchema),
-  teamId: z.nullable(types.string()).optional(),
-  updatedAt: types.number(),
-  filterV2: types.optional(
-    z.lazy(() => GetDrainResponseBodyFilterV2$inboundSchema),
-  ),
-});
-
-export function getDrainResponseBody1FromJSON(
-  jsonString: string,
-): SafeParseResult<GetDrainResponseBody1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDrainResponseBody1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDrainResponseBody1' from JSON`,
+    (x) => FilterV2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FilterV2' from JSON`,
   );
 }
 
@@ -2449,10 +1145,37 @@ export const GetDrainResponseBody$inboundSchema: z.ZodType<
   GetDrainResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetDrainResponseBody1$inboundSchema),
-  z.lazy(() => GetDrainResponseBody2$inboundSchema),
-]);
+> = z.object({
+  createdAt: types.number(),
+  delivery: z.union([
+    z.lazy(() => GetDrainDelivery1$inboundSchema),
+    z.lazy(() => GetDrainDelivery2$inboundSchema),
+    z.lazy(() => GetDrainDelivery3$inboundSchema),
+    z.lazy(() => Delivery4$inboundSchema),
+    z.lazy(() => Delivery5$inboundSchema),
+  ]),
+  disabledAt: types.optional(types.number()),
+  disabledBy: types.optional(types.string()),
+  disabledReason: types.optional(DisabledReason$inboundSchema),
+  firstErrorTimestamp: types.optional(types.number()),
+  id: types.string(),
+  name: types.string(),
+  ownerId: types.string(),
+  projectIds: types.optional(z.array(types.string())),
+  sampling: types.optional(
+    z.array(z.lazy(() => GetDrainSampling$inboundSchema)),
+  ),
+  schemas: z.lazy(() => GetDrainSchemas$inboundSchema),
+  source: z.union([
+    z.lazy(() => GetDrainSource1$inboundSchema),
+    z.lazy(() => GetDrainSource2$inboundSchema),
+  ]),
+  status: types.optional(GetDrainStatus$inboundSchema),
+  teamId: z.nullable(types.string()).optional(),
+  updatedAt: types.number(),
+  deliveryStats: types.optional(z.lazy(() => DeliveryStats$inboundSchema)),
+  filterV2: types.optional(z.lazy(() => FilterV2$inboundSchema)),
+});
 
 export function getDrainResponseBodyFromJSON(
   jsonString: string,

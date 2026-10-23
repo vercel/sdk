@@ -253,7 +253,7 @@ export class FeatureFlags extends ClientSDK {
   async updateFlagSettings(
     request: UpdateFlagSettingsRequest,
     options?: RequestOptions,
-  ): Promise<UpdateFlagSettingsResponse> {
+  ): Promise<UpdateFlagSettingsResponse | undefined> {
     return unwrapAsync(featureFlagsUpdateFlagSettings(
       this,
       request,

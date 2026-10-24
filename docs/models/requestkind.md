@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RequestKind } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { RequestKind } from "@vercel/sdk/models/onehundredandeightysix.js";
 
 let value: RequestKind = "raw_commands";
 ```

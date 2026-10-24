@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyGitProviderOptions } from "@vercel/sdk/models/getprojectsresponsebodychecksstate.js";
+import { ResponseBodyGitProviderOptions } from "@vercel/sdk/models/responsebodyaliasassigned.js";
 
 let value: ResponseBodyGitProviderOptions = {
   createDeployments: "disabled",

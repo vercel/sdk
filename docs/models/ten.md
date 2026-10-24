@@ -10,10 +10,10 @@ import { Ten } from "@vercel/sdk/models/userevent.js";
 let value: Ten = {
   boardId: "<id>",
   channelId: "<id>",
-  fields: [
-    "<value 1>",
-  ],
+  environment: "<value>",
+  name: "<value>",
   operationId: "<id>",
+  projectId: "<id>",
 };
 ```
 
@@ -23,5 +23,8 @@ let value: Ten = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `boardId`          | *string*           | :heavy_check_mark: | N/A                |
 | `channelId`        | *string*           | :heavy_check_mark: | N/A                |
-| `fields`           | *string*[]         | :heavy_check_mark: | N/A                |
+| `environment`      | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `operationId`      | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `userId`           | *string*           | :heavy_minus_sign: | N/A                |

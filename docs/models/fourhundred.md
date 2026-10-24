@@ -5,23 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundred } from "@vercel/sdk/models/usereventpayload385type.js";
+import { FourHundred } from "@vercel/sdk/models/usereventpayload386type.js";
 
 let value: FourHundred = {
-  eventId: "<id>",
-  occurredAt: 8097.69,
-  sessionId: "<id>",
-  sessionKind: "<value>",
-  surface: "<value>",
+  amount: "809.77",
+  currency: "Naira",
+  expiresAt: "1762554279320",
+  trialCreditsIssuedAt: 478.12,
 };
 ```
 
 ## Fields
 
-| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `eventId`                                                                   | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
-| `occurredAt`                                                                | *number*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
-| `sessionId`                                                                 | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
-| `sessionKind`                                                               | *string*                                                                    | :heavy_check_mark:                                                          | Currently emitted session kinds: chat, investigation.                       |
-| `surface`                                                                   | *string*                                                                    | :heavy_check_mark:                                                          | Currently emitted surfaces: dashboard, internal, slack, automation, github. |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
+| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |

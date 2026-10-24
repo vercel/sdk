@@ -25,10 +25,10 @@ const value: models.DeleteProjectAvatarCreator1 = {
 
 ```typescript
 const value: models.DeleteProjectAvatarCreator2 = {
-  app: {
+  project: {
     id: "<id>",
   },
-  type: "app",
+  type: "project",
 };
 ```
 
@@ -36,6 +36,17 @@ const value: models.DeleteProjectAvatarCreator2 = {
 
 ```typescript
 const value: models.DeleteProjectAvatarCreator3 = {
+  app: {
+    id: "<id>",
+  },
+  type: "app",
+};
+```
+
+### `models.DeleteProjectAvatarCreator4`
+
+```typescript
+const value: models.DeleteProjectAvatarCreator4 = {
   integration: {
     configurationId: "<id>",
     integrationId: "<id>",
@@ -44,10 +55,10 @@ const value: models.DeleteProjectAvatarCreator3 = {
 };
 ```
 
-### `models.DeleteProjectAvatarCreator4`
+### `models.DeleteProjectAvatarCreator5`
 
 ```typescript
-const value: models.DeleteProjectAvatarCreator4 = {
+const value: models.DeleteProjectAvatarCreator5 = {
   type: "system",
 };
 ```

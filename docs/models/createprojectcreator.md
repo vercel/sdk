@@ -24,10 +24,10 @@ const value: models.Creator1 = {
 
 ```typescript
 const value: models.Creator2 = {
-  app: {
+  project: {
     id: "<id>",
   },
-  type: "app",
+  type: "project",
 };
 ```
 
@@ -35,6 +35,17 @@ const value: models.Creator2 = {
 
 ```typescript
 const value: models.Creator3 = {
+  app: {
+    id: "<id>",
+  },
+  type: "app",
+};
+```
+
+### `models.Creator4`
+
+```typescript
+const value: models.Creator4 = {
   integration: {
     configurationId: "<id>",
     integrationId: "<id>",
@@ -43,10 +54,10 @@ const value: models.Creator3 = {
 };
 ```
 
-### `models.Creator4`
+### `models.Creator5`
 
 ```typescript
-const value: models.Creator4 = {
+const value: models.Creator5 = {
   type: "system",
 };
 ```

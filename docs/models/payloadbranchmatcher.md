@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadBranchMatcher } from "@vercel/sdk/models/usereventpayload256next.js";
+import { PayloadBranchMatcher } from "@vercel/sdk/models/usereventpayload257next.js";
 
 let value: PayloadBranchMatcher = {
   pattern: "<value>",
@@ -16,4 +16,4 @@ let value: PayloadBranchMatcher = {
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `pattern`                                                                              | *string*                                                                               | :heavy_check_mark:                                                                     | The pattern to match against branch names                                              |
-| `type`                                                                                 | [models.UserEventPayload292PreviousType](../models/usereventpayload292previoustype.md) | :heavy_check_mark:                                                                     | The type of matching to perform                                                        |
+| `type`                                                                                 | [models.UserEventPayload293PreviousType](../models/usereventpayload293previoustype.md) | :heavy_check_mark:                                                                     | The type of matching to perform                                                        |

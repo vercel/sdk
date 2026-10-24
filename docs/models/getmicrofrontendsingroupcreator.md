@@ -25,10 +25,10 @@ const value: models.GetMicrofrontendsInGroupCreator1 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupCreator2 = {
-  app: {
+  project: {
     id: "<id>",
   },
-  type: "app",
+  type: "project",
 };
 ```
 
@@ -36,6 +36,17 @@ const value: models.GetMicrofrontendsInGroupCreator2 = {
 
 ```typescript
 const value: models.GetMicrofrontendsInGroupCreator3 = {
+  app: {
+    id: "<id>",
+  },
+  type: "app",
+};
+```
+
+### `models.GetMicrofrontendsInGroupCreator4`
+
+```typescript
+const value: models.GetMicrofrontendsInGroupCreator4 = {
   integration: {
     configurationId: "<id>",
     integrationId: "<id>",
@@ -44,10 +55,10 @@ const value: models.GetMicrofrontendsInGroupCreator3 = {
 };
 ```
 
-### `models.GetMicrofrontendsInGroupCreator4`
+### `models.GetMicrofrontendsInGroupCreator5`
 
 ```typescript
-const value: models.GetMicrofrontendsInGroupCreator4 = {
+const value: models.GetMicrofrontendsInGroupCreator5 = {
   type: "system",
 };
 ```

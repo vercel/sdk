@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectConnectConfigurations } from "@vercel/sdk/models/internalroutesmitigate.js";
+import { CreateProjectConnectConfigurations } from "@vercel/sdk/models/internalrouteshas.js";
 
 let value: CreateProjectConnectConfigurations = {
   buildsEnabled: true,

@@ -71,6 +71,7 @@ export type ResponseBodyChecksState = ClosedEnum<
 export const GetDeploymentResponseBodyDeploymentsResponseType = {
   App: "app",
   Integration: "integration",
+  Project: "project",
   System: "system",
   User: "user",
 } as const;
@@ -1391,6 +1392,7 @@ export type ResponseBodyConfig = {
 export const GetDeploymentResponseBodyDeploymentsResponse200Type = {
   App: "app",
   Integration: "integration",
+  Project: "project",
   System: "system",
   User: "user",
 } as const;

@@ -24,10 +24,10 @@ const value: models.UpdateMicrofrontendsCreator1 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsCreator2 = {
-  app: {
+  project: {
     id: "<id>",
   },
-  type: "app",
+  type: "project",
 };
 ```
 
@@ -35,6 +35,17 @@ const value: models.UpdateMicrofrontendsCreator2 = {
 
 ```typescript
 const value: models.UpdateMicrofrontendsCreator3 = {
+  app: {
+    id: "<id>",
+  },
+  type: "app",
+};
+```
+
+### `models.UpdateMicrofrontendsCreator4`
+
+```typescript
+const value: models.UpdateMicrofrontendsCreator4 = {
   integration: {
     configurationId: "<id>",
     integrationId: "<id>",
@@ -43,10 +54,10 @@ const value: models.UpdateMicrofrontendsCreator3 = {
 };
 ```
 
-### `models.UpdateMicrofrontendsCreator4`
+### `models.UpdateMicrofrontendsCreator5`
 
 ```typescript
-const value: models.UpdateMicrofrontendsCreator4 = {
+const value: models.UpdateMicrofrontendsCreator5 = {
   type: "system",
 };
 ```

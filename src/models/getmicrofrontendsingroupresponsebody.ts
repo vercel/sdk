@@ -75,12 +75,30 @@ import {
   GetMicrofrontendsInGroupOidcTokenClaims$inboundSchema,
   GetMicrofrontendsInGroupPlan,
   GetMicrofrontendsInGroupPlan$inboundSchema,
-  GetMicrofrontendsInGroupReadyState,
-  GetMicrofrontendsInGroupReadyState$inboundSchema,
-  GetMicrofrontendsInGroupReadySubstate,
-  GetMicrofrontendsInGroupReadySubstate$inboundSchema,
-} from "./getmicrofrontendsingroupreadysubstate.js";
+} from "./getmicrofrontendsingroupplan.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetMicrofrontendsInGroupReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type GetMicrofrontendsInGroupReadyState = ClosedEnum<
+  typeof GetMicrofrontendsInGroupReadyState
+>;
+
+export const GetMicrofrontendsInGroupReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type GetMicrofrontendsInGroupReadySubstate = ClosedEnum<
+  typeof GetMicrofrontendsInGroupReadySubstate
+>;
 
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200Type = {
   Lambdas: "LAMBDAS",
@@ -3087,6 +3105,17 @@ export type GetMicrofrontendsInGroupProjects = {
 export type GetMicrofrontendsInGroupResponseBody = {
   projects: Array<GetMicrofrontendsInGroupProjects>;
 };
+
+/** @internal */
+export const GetMicrofrontendsInGroupReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupReadyState
+> = z.nativeEnum(GetMicrofrontendsInGroupReadyState);
+
+/** @internal */
+export const GetMicrofrontendsInGroupReadySubstate$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupReadySubstate> = z.nativeEnum(
+    GetMicrofrontendsInGroupReadySubstate,
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200Type$inboundSchema:

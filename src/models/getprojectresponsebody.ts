@@ -69,16 +69,35 @@ import {
   GetProjectLastAliasRequest$inboundSchema,
   GetProjectLastRollbackTarget,
   GetProjectLastRollbackTarget$inboundSchema,
-  GetProjectOidcTokenClaims,
-  GetProjectOidcTokenClaims$inboundSchema,
-  GetProjectPlan,
-  GetProjectPlan$inboundSchema,
   GetProjectProjectsBranchMatcher,
   GetProjectProjectsBranchMatcher$inboundSchema,
   GetProjectProjectsCreator,
   GetProjectProjectsCreator$inboundSchema,
-} from "./getprojectplan.js";
+} from "./getprojectprojectscreator.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectOidcTokenClaims = {
+  aud: string;
+  customEnvironmentId?: string | undefined;
+  deploymentId?: string | undefined;
+  environment: string;
+  iss: string;
+  mfeGroupIds?: Array<string> | undefined;
+  owner: string;
+  ownerId: string;
+  plan?: string | undefined;
+  project: string;
+  projectId: string;
+  scope: string;
+  sub: string;
+};
+
+export const GetProjectPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type GetProjectPlan = ClosedEnum<typeof GetProjectPlan>;
 
 export const GetProjectReadyState = {
   Blocked: "BLOCKED",
@@ -2988,6 +3007,50 @@ export type GetProjectResponseBody = {
 };
 
 /** @internal */
+export const GetProjectOidcTokenClaims$inboundSchema: z.ZodType<
+  GetProjectOidcTokenClaims,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  aud: types.string(),
+  custom_environment_id: types.optional(types.string()),
+  deployment_id: types.optional(types.string()),
+  environment: types.string(),
+  iss: types.string(),
+  mfe_group_ids: types.optional(z.array(types.string())),
+  owner: types.string(),
+  owner_id: types.string(),
+  plan: types.optional(types.string()),
+  project: types.string(),
+  project_id: types.string(),
+  scope: types.string(),
+  sub: types.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "custom_environment_id": "customEnvironmentId",
+    "deployment_id": "deploymentId",
+    "mfe_group_ids": "mfeGroupIds",
+    "owner_id": "ownerId",
+    "project_id": "projectId",
+  });
+});
+
+export function getProjectOidcTokenClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectOidcTokenClaims, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectOidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectOidcTokenClaims' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectPlan$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectPlan
+> = z.nativeEnum(GetProjectPlan);
+
+/** @internal */
 export const GetProjectReadyState$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectReadyState
 > = z.nativeEnum(GetProjectReadyState);
@@ -3030,7 +3093,9 @@ export const GetProjectLatestDeployments$inboundSchema: z.ZodType<
   meta: types.optional(z.record(types.string())),
   monorepoManager: z.nullable(types.string()).optional(),
   name: types.string(),
-  oidcTokenClaims: types.optional(GetProjectOidcTokenClaims$inboundSchema),
+  oidcTokenClaims: types.optional(
+    z.lazy(() => GetProjectOidcTokenClaims$inboundSchema),
+  ),
   plan: GetProjectPlan$inboundSchema,
   previewCommentsEnabled: types.optional(types.boolean()),
   private: types.boolean(),

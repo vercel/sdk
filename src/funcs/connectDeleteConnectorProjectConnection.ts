@@ -187,6 +187,7 @@ async function $do(
   >(
     M.nil(204, z.void()),
     M.jsonErr([400, 401, 403, 404, 409, 410], ConnectError$inboundSchema),
+    M.jsonErr(500, ConnectError$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

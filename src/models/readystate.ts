@@ -308,6 +308,7 @@ export type Config = {
 export const CancelDeploymentDeploymentsType = {
   App: "app",
   Integration: "integration",
+  Project: "project",
   System: "system",
   User: "user",
 } as const;

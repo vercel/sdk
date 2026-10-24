@@ -90,6 +90,7 @@ run();
 | Error Type                        | Status Code                       | Content Type                      |
 | --------------------------------- | --------------------------------- | --------------------------------- |
 | models.ConnectError               | 400, 401, 403, 404, 409, 410, 422 | application/json                  |
+| models.ConnectError               | 500                               | application/json                  |
 | models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## getConnector
@@ -168,6 +169,7 @@ run();
 | Error Type                        | Status Code                       | Content Type                      |
 | --------------------------------- | --------------------------------- | --------------------------------- |
 | models.ConnectError               | 400, 401, 403, 404, 409, 410, 422 | application/json                  |
+| models.ConnectError               | 500                               | application/json                  |
 | models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## deleteConnector
@@ -246,7 +248,7 @@ run();
 | Error Type                        | Status Code                       | Content Type                      |
 | --------------------------------- | --------------------------------- | --------------------------------- |
 | models.ConnectError               | 400, 401, 403, 404, 409, 410, 422 | application/json                  |
-| models.ConnectError               | 502                               | application/json                  |
+| models.ConnectError               | 500, 502                          | application/json                  |
 | models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## updateConnector
@@ -412,6 +414,7 @@ run();
 | Error Type                        | Status Code                       | Content Type                      |
 | --------------------------------- | --------------------------------- | --------------------------------- |
 | models.ConnectError               | 400, 401, 403, 404, 409, 410, 422 | application/json                  |
+| models.ConnectError               | 500                               | application/json                  |
 | models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
 
 ## ejectManagedConnector
@@ -565,6 +568,7 @@ run();
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.ConnectError          | 400, 401, 403, 404, 409, 410 | application/json             |
+| models.ConnectError          | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## getConnectorProjectConnection
@@ -645,6 +649,7 @@ run();
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.ConnectError          | 400, 401, 403, 404, 409, 410 | application/json             |
+| models.ConnectError          | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## upsertConnectorProjectConnection
@@ -735,6 +740,7 @@ run();
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.ConnectError          | 400, 401, 403, 404, 409, 410 | application/json             |
+| models.ConnectError          | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## deleteConnectorProjectConnection
@@ -815,6 +821,7 @@ run();
 | Error Type                   | Status Code                  | Content Type                 |
 | ---------------------------- | ---------------------------- | ---------------------------- |
 | models.ConnectError          | 400, 401, 403, 404, 409, 410 | application/json             |
+| models.ConnectError          | 500                          | application/json             |
 | models.SDKError              | 4XX, 5XX                     | \*/\*                        |
 
 ## listProjectConnectorConnections
@@ -893,4 +900,5 @@ run();
 | Error Type              | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | models.ConnectError     | 400, 401, 403, 404, 410 | application/json        |
+| models.ConnectError     | 500                     | application/json        |
 | models.SDKError         | 4XX, 5XX                | \*/\*                   |

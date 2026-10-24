@@ -5,23 +5,29 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyEight } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { TwoHundredAndFortyEight } from "@vercel/sdk/models/onehundredandeightysix.js";
 
 let value: TwoHundredAndFortyEight = {
-  justification: "<value>",
-  previousStatus: "<value>",
+  connectSrcCount: 8052.5,
+  connectSrcOriginCount: 9624.89,
+  deletedCount: 704.11,
+  headerCount: 1248.12,
   projectId: "<id>",
-  url: "https://white-begonia.com",
+  projectName: "<value>",
+  scriptCount: 5878.46,
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `approvalScope`                                                  | [models.ApprovalScope](../models/approvalscope.md)               | :heavy_minus_sign:                                               | N/A                                                              |
-| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |
-| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `connectSrcCount`                      | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `connectSrcNormalizationRulesCleared`  | *boolean*                              | :heavy_minus_sign:                     | N/A                                    |
+| `connectSrcOriginCount`                | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `connectSrcUserNormalizationRuleCount` | *number*                               | :heavy_minus_sign:                     | N/A                                    |
+| `deletedCount`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `headerCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `projectId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `projectName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `scriptCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |

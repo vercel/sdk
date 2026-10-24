@@ -3,15 +3,20 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsCreatorProjects4 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsop.js";
+import { GetProjectsCreatorProjects4 } from "@vercel/sdk/models/responsebodyresponsehas.js";
 
 let value: GetProjectsCreatorProjects4 = {
-  type: "system",
+  integration: {
+    configurationId: "<id>",
+    integrationId: "<id>",
+  },
+  type: "integration",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"system"*         | :heavy_check_mark: | N/A                |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `integration`                                                                                      | [models.GetProjectsCreatorProjectsIntegration](../models/getprojectscreatorprojectsintegration.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `type`                                                                                             | *"integration"*                                                                                    | :heavy_check_mark:                                                                                 | N/A                                                                                                |

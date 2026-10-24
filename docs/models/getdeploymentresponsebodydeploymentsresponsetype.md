@@ -13,5 +13,5 @@ let value: GetDeploymentResponseBodyDeploymentsResponseType = "system";
 ## Values
 
 ```typescript
-"app" | "integration" | "system" | "user"
+"app" | "integration" | "project" | "system" | "user"
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadVisibility } from "@vercel/sdk/models/usereventjobpayload124nsnbsideeffect.js";
+import { PayloadVisibility } from "@vercel/sdk/models/usereventjobpayload125nsnbsideeffect.js";
 
 let value: PayloadVisibility = "config";
 ```

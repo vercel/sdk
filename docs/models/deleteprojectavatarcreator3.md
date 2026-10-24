@@ -3,20 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarCreator3 } from "@vercel/sdk/models/deleteprojectavatarreadysubstate.js";
+import { DeleteProjectAvatarCreator3 } from "@vercel/sdk/models/deleteprojectavatarplan.js";
 
 let value: DeleteProjectAvatarCreator3 = {
-  integration: {
-    configurationId: "<id>",
-    integrationId: "<id>",
+  app: {
+    id: "<id>",
   },
-  type: "integration",
+  type: "app",
 };
 ```
 
 ## Fields
 
-| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `integration`                                                                                      | [models.DeleteProjectAvatarCreatorIntegration](../models/deleteprojectavatarcreatorintegration.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `type`                                                                                             | *"integration"*                                                                                    | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `app`                                                                              | [models.DeleteProjectAvatarCreatorApp](../models/deleteprojectavatarcreatorapp.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `type`                                                                             | *"app"*                                                                            | :heavy_check_mark:                                                                 | N/A                                                                                |

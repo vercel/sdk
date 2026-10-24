@@ -3,19 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectCreator2 } from "@vercel/sdk/models/updateprojectsourcesprojectsresponse200provider.js";
+import { UpdateProjectCreator2 } from "@vercel/sdk/models/updateprojectprojectsenvironments.js";
 
 let value: UpdateProjectCreator2 = {
-  app: {
+  project: {
     id: "<id>",
   },
-  type: "app",
+  type: "project",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `app`                                                                  | [models.UpdateProjectCreatorApp](../models/updateprojectcreatorapp.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `type`                                                                 | *"app"*                                                                | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `project`                                                                      | [models.UpdateProjectCreatorProject](../models/updateprojectcreatorproject.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `type`                                                                         | *"project"*                                                                    | :heavy_check_mark:                                                             | N/A                                                                            |

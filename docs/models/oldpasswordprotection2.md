@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OldPasswordProtection2 } from "@vercel/sdk/models/threehundredandtwentythree.js";
+import { OldPasswordProtection2 } from "@vercel/sdk/models/threehundredandtwentyfour.js";
 
 let value: OldPasswordProtection2 = "preview";
 ```

@@ -3,15 +3,20 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectCreator4 } from "@vercel/sdk/models/getprojectplan.js";
+import { GetProjectCreator4 } from "@vercel/sdk/models/getprojectprojectscreator.js";
 
 let value: GetProjectCreator4 = {
-  type: "system",
+  integration: {
+    configurationId: "<id>",
+    integrationId: "<id>",
+  },
+  type: "integration",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"system"*         | :heavy_check_mark: | N/A                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `integration`                                                                    | [models.GetProjectCreatorIntegration](../models/getprojectcreatorintegration.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `type`                                                                           | *"integration"*                                                                  | :heavy_check_mark:                                                               | N/A                                                                              |

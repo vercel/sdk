@@ -10,16 +10,12 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+} from "./getprojectsresponsebodyconfiguredby.js";
+import {
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
-  GetProjectsResponseBodyAliasError,
-  GetProjectsResponseBodyAliasError$inboundSchema,
-  GetProjectsResponseBodyBuilds,
-  GetProjectsResponseBodyBuilds$inboundSchema,
-  GetProjectsResponseBodyChecksConclusion,
-  GetProjectsResponseBodyChecksConclusion$inboundSchema,
-  GetProjectsResponseBodyChecksState,
-  GetProjectsResponseBodyChecksState$inboundSchema,
   GetProjectsResponseBodyCreator,
   GetProjectsResponseBodyCreator$inboundSchema,
   ResponseBodyAlias,
@@ -28,8 +24,6 @@ import {
   ResponseBodyAliasAssigned$inboundSchema,
   ResponseBodyAnalytics,
   ResponseBodyAnalytics$inboundSchema,
-  ResponseBodyBranchMatcher,
-  ResponseBodyBranchMatcher$inboundSchema,
   ResponseBodyDeploymentExpiration,
   ResponseBodyDeploymentExpiration$inboundSchema,
   ResponseBodyEnv,
@@ -44,12 +38,64 @@ import {
   ResponseBodyInternalRoutes$inboundSchema,
   ResponseBodyIpBuckets,
   ResponseBodyIpBuckets$inboundSchema,
-} from "./getprojectsresponsebodychecksstate.js";
-import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjson2aliaserror.js";
+} from "./responsebodyaliasassigned.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectsResponseBodyAliasError = {
+  code: string;
+  message: string;
+};
+
+/**
+ * The type of matching to perform
+ */
+export const GetProjectsResponseBodyProjectsResponse200Type = {
+  EndsWith: "endsWith",
+  Equals: "equals",
+  StartsWith: "startsWith",
+} as const;
+/**
+ * The type of matching to perform
+ */
+export type GetProjectsResponseBodyProjectsResponse200Type = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsResponse200Type
+>;
+
+export type ResponseBodyBranchMatcher = {
+  /**
+   * The pattern to match against branch names
+   */
+  pattern: string;
+  /**
+   * The type of matching to perform
+   */
+  type: GetProjectsResponseBodyProjectsResponse200Type;
+};
+
+export type GetProjectsResponseBodyBuilds = {
+  dest?: string | undefined;
+  src?: string | undefined;
+  use: string;
+};
+
+export const GetProjectsResponseBodyChecksConclusion = {
+  Canceled: "canceled",
+  Failed: "failed",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type GetProjectsResponseBodyChecksConclusion = ClosedEnum<
+  typeof GetProjectsResponseBodyChecksConclusion
+>;
+
+export const GetProjectsResponseBodyChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type GetProjectsResponseBodyChecksState = ClosedEnum<
+  typeof GetProjectsResponseBodyChecksState
+>;
 
 export type GetProjectsResponseBodyProjectsCreator = {
   email: string;
@@ -1565,6 +1611,82 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const GetProjectsResponseBodyAliasError$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyAliasError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: types.string(),
+  message: types.string(),
+});
+
+export function getProjectsResponseBodyAliasErrorFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsResponseBodyAliasError, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsResponseBodyAliasError$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyAliasError' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponse200Type> = z
+    .nativeEnum(GetProjectsResponseBodyProjectsResponse200Type);
+
+/** @internal */
+export const ResponseBodyBranchMatcher$inboundSchema: z.ZodType<
+  ResponseBodyBranchMatcher,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  pattern: types.string(),
+  type: GetProjectsResponseBodyProjectsResponse200Type$inboundSchema,
+});
+
+export function responseBodyBranchMatcherFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyBranchMatcher, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyBranchMatcher$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyBranchMatcher' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyBuilds$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyBuilds,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  dest: types.optional(types.string()),
+  src: types.optional(types.string()),
+  use: types.string(),
+});
+
+export function getProjectsResponseBodyBuildsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsResponseBodyBuilds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsResponseBodyBuilds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyBuilds' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyChecksConclusion$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyChecksConclusion> = z
+    .nativeEnum(GetProjectsResponseBodyChecksConclusion);
+
+/** @internal */
+export const GetProjectsResponseBodyChecksState$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyChecksState
+> = z.nativeEnum(GetProjectsResponseBodyChecksState);
+
+/** @internal */
 export const GetProjectsResponseBodyProjectsCreator$inboundSchema: z.ZodType<
   GetProjectsResponseBodyProjectsCreator,
   z.ZodTypeDef,
@@ -1657,13 +1779,18 @@ export const ResponseBodyLatestDeployments$inboundSchema: z.ZodType<
 > = z.object({
   alias: types.optional(z.array(types.string())),
   aliasAssigned: z.nullable(ResponseBodyAliasAssigned$inboundSchema).optional(),
-  aliasError: z.nullable(GetProjectsResponseBodyAliasError$inboundSchema)
-    .optional(),
+  aliasError: z.nullable(
+    z.lazy(() => GetProjectsResponseBodyAliasError$inboundSchema),
+  ).optional(),
   aliasFinal: z.nullable(types.string()).optional(),
   automaticAliases: types.optional(z.array(types.string())),
-  branchMatcher: types.optional(ResponseBodyBranchMatcher$inboundSchema),
+  branchMatcher: types.optional(
+    z.lazy(() => ResponseBodyBranchMatcher$inboundSchema),
+  ),
   buildingAt: types.optional(types.number()),
-  builds: types.optional(z.array(GetProjectsResponseBodyBuilds$inboundSchema)),
+  builds: types.optional(
+    z.array(z.lazy(() => GetProjectsResponseBodyBuilds$inboundSchema)),
+  ),
   checksConclusion: types.optional(
     GetProjectsResponseBodyChecksConclusion$inboundSchema,
   ),

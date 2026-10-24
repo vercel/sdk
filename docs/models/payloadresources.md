@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadResources } from "@vercel/sdk/models/twenty.js";
+import { PayloadResources } from "@vercel/sdk/models/twentyone.js";
 
 let value: PayloadResources = {
   projectIds: {
@@ -20,4 +20,4 @@ let value: PayloadResources = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `projectIds`                                                                     | [models.UserEventPayload68ProjectIds](../models/usereventpayload68projectids.md) | :heavy_check_mark:                                                               | Specific project IDs or all projects on the team (`['*']`).                      |
+| `projectIds`                                                                     | [models.UserEventPayload69ProjectIds](../models/usereventpayload69projectids.md) | :heavy_check_mark:                                                               | Specific project IDs or all projects on the team (`['*']`).                      |

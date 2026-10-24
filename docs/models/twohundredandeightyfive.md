@@ -5,24 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyFive } from "@vercel/sdk/models/usereventpayload256next.js";
+import { TwoHundredAndEightyFive } from "@vercel/sdk/models/usereventpayload257next.js";
 
-let value: TwoHundredAndEightyFive = {
-  project: {
-    id: "<id>",
-    newConnectConfigurations: [],
-    oldConnectConfigurations: [],
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
-};
+let value: TwoHundredAndEightyFive = {};
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload285Project](../models/usereventpayload285project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `team`                                                                       | [models.UserEventPayload285Team](../models/usereventpayload285team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `target`           | *string*[]         | :heavy_minus_sign: | N/A                |
+| `updated`          | *boolean*          | :heavy_minus_sign: | N/A                |

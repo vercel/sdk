@@ -142,6 +142,7 @@ export type GetStorageStoresByIdProjectsMetadata = {
   makeEnvVarsSensitive?: boolean | undefined;
   name: string;
   projectId: string;
+  secretsOutdated?: true | undefined;
 };
 
 export const GetStorageStoresByIdStatus = {
@@ -331,6 +332,7 @@ export const GetStorageStoresByIdProjectsMetadata$inboundSchema: z.ZodType<
   makeEnvVarsSensitive: types.optional(types.boolean()),
   name: types.string(),
   projectId: types.string(),
+  secretsOutdated: types.optional(types.literal(true)),
 });
 
 export function getStorageStoresByIdProjectsMetadataFromJSON(

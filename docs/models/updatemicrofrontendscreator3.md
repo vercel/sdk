@@ -3,20 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsCreator3 } from "@vercel/sdk/models/updatemicrofrontendsreadystate.js";
+import { UpdateMicrofrontendsCreator3 } from "@vercel/sdk/models/updatemicrofrontendsoidctokenclaims.js";
 
 let value: UpdateMicrofrontendsCreator3 = {
-  integration: {
-    configurationId: "<id>",
-    integrationId: "<id>",
+  app: {
+    id: "<id>",
   },
-  type: "integration",
+  type: "app",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `integration`                                                                                        | [models.UpdateMicrofrontendsCreatorIntegration](../models/updatemicrofrontendscreatorintegration.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `type`                                                                                               | *"integration"*                                                                                      | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `app`                                                                                | [models.UpdateMicrofrontendsCreatorApp](../models/updatemicrofrontendscreatorapp.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `type`                                                                               | *"app"*                                                                              | :heavy_check_mark:                                                                   | N/A                                                                                  |

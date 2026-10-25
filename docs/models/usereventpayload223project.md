@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload223Project } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { UserEventPayload223Project } from "@vercel/sdk/models/onehundredandeightysix.js";
 
 let value: UserEventPayload223Project = {
   id: "<id>",
@@ -13,8 +13,7 @@ let value: UserEventPayload223Project = {
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `id`                    | *string*                | :heavy_check_mark:      | N/A                     |
-| `microfrontends`        | *models.Microfrontends* | :heavy_minus_sign:      | N/A                     |
-| `name`                  | *string*                | :heavy_check_mark:      | N/A                     |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

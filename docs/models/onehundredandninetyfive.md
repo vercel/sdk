@@ -5,24 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyFive } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { OneHundredAndNinetyFive } from "@vercel/sdk/models/onehundredandeightysix.js";
 
 let value: OneHundredAndNinetyFive = {
-  integration: {
-    configurationId: "<id>",
-    id: "<id>",
-    name: "<value>",
-    slug: "<value>",
-  },
-  destinationTeamId: "<id>",
-  destinationTeamName: "<value>",
+  configurationId: "<id>",
+  confirmedScopes: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  integrationId: "<id>",
+  integrationName: "<value>",
+  integrationSlug: "<value>",
+  ownerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `integration`                                  | [models.Integration](../models/integration.md) | :heavy_check_mark:                             | N/A                                            |
-| `destinationTeamId`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `destinationTeamName`                          | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `confirmedScopes`  | *string*[]         | :heavy_check_mark: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |

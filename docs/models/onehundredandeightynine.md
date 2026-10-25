@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyNine } from "@vercel/sdk/models/onehundredandeightyfive.js";
+import { OneHundredAndEightyNine } from "@vercel/sdk/models/onehundredandeightysix.js";
 
 let value: OneHundredAndEightyNine = {
-  source: "enable",
+  action: "disable",
 };
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `source`                                           | [models.PayloadSource](../models/payloadsource.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload189Action](../models/usereventpayload189action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

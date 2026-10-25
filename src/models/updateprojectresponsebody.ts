@@ -11,6 +11,32 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
+  UpdateProjectAlias,
+  UpdateProjectAlias$inboundSchema,
+  UpdateProjectAnalytics,
+  UpdateProjectAnalytics$inboundSchema,
+  UpdateProjectBlobs,
+  UpdateProjectBlobs$inboundSchema,
+  UpdateProjectConnectConfigurations,
+  UpdateProjectConnectConfigurations$inboundSchema,
+  UpdateProjectCreator,
+  UpdateProjectCreator$inboundSchema,
+  UpdateProjectCrons,
+  UpdateProjectCrons$inboundSchema,
+  UpdateProjectCustomEnvironments,
+  UpdateProjectCustomEnvironments$inboundSchema,
+  UpdateProjectDataCache,
+  UpdateProjectDataCache$inboundSchema,
+  UpdateProjectDefaultResourceConfig,
+  UpdateProjectDefaultResourceConfig$inboundSchema,
+  UpdateProjectDeploymentExpiration,
+  UpdateProjectDeploymentExpiration$inboundSchema,
+} from "./updateprojectprojectsenvironments.js";
+import {
+  UpdateProjectAiBots,
+  UpdateProjectAiBots$inboundSchema,
+  UpdateProjectBotFilter,
+  UpdateProjectBotFilter$inboundSchema,
   UpdateProjectExpiration,
   UpdateProjectExpiration$inboundSchema,
   UpdateProjectFeatures,
@@ -35,10 +61,10 @@ import {
   UpdateProjectLink$inboundSchema,
   UpdateProjectLogHeaders,
   UpdateProjectLogHeaders$inboundSchema,
-  UpdateProjectManagedRules,
-  UpdateProjectManagedRules$inboundSchema,
   UpdateProjectMicrofrontends,
   UpdateProjectMicrofrontends$inboundSchema,
+  UpdateProjectOwasp,
+  UpdateProjectOwasp$inboundSchema,
   UpdateProjectPermissions,
   UpdateProjectPermissions$inboundSchema,
   UpdateProjectProjectsDeploymentPolicy,
@@ -61,8 +87,6 @@ import {
   UpdateProjectProjectsPasswordProtection$inboundSchema,
   UpdateProjectProjectsResourceConfig,
   UpdateProjectProjectsResourceConfig$inboundSchema,
-  UpdateProjectProjectsResponse200Action,
-  UpdateProjectProjectsResponse200Action$inboundSchema,
   UpdateProjectProjectsSandbox,
   UpdateProjectProjectsSandbox$inboundSchema,
   UpdateProjectProtectionBypass,
@@ -73,29 +97,32 @@ import {
   UpdateProjectRollbackDescription$inboundSchema,
   UpdateProjectRollingRelease,
   UpdateProjectRollingRelease$inboundSchema,
-} from "./updateprojectprojectsresponse200action.js";
-import {
-  UpdateProjectAlias,
-  UpdateProjectAlias$inboundSchema,
-  UpdateProjectAnalytics,
-  UpdateProjectAnalytics$inboundSchema,
-  UpdateProjectBlobs,
-  UpdateProjectBlobs$inboundSchema,
-  UpdateProjectConnectConfigurations,
-  UpdateProjectConnectConfigurations$inboundSchema,
-  UpdateProjectCreator,
-  UpdateProjectCreator$inboundSchema,
-  UpdateProjectCrons,
-  UpdateProjectCrons$inboundSchema,
-  UpdateProjectCustomEnvironments,
-  UpdateProjectCustomEnvironments$inboundSchema,
-  UpdateProjectDataCache,
-  UpdateProjectDataCache$inboundSchema,
-  UpdateProjectDefaultResourceConfig,
-  UpdateProjectDefaultResourceConfig$inboundSchema,
-  UpdateProjectDeploymentExpiration,
-  UpdateProjectDeploymentExpiration$inboundSchema,
-} from "./updateprojectsourcesprojectsresponse200provider.js";
+  UpdateProjectTrafficSources,
+  UpdateProjectTrafficSources$inboundSchema,
+  UpdateProjectVercelRuleset,
+  UpdateProjectVercelRuleset$inboundSchema,
+} from "./updateprojectvercelruleset.js";
+
+export type UpdateProjectManagedRules = {
+  aiBots: UpdateProjectAiBots;
+  botFilter: UpdateProjectBotFilter;
+  owasp: UpdateProjectOwasp;
+  trafficSources: UpdateProjectTrafficSources;
+  vercelRuleset: UpdateProjectVercelRuleset;
+};
+
+export const UpdateProjectProjectsResponse200Action = {
+  Allow: "allow",
+  Bypass: "bypass",
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+  RateLimit: "rate_limit",
+  Redirect: "redirect",
+} as const;
+export type UpdateProjectProjectsResponse200Action = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200Action
+>;
 
 export const UpdateProjectLogHeadersProjects2 = {
   Wildcard: "*",
@@ -923,6 +950,42 @@ export type UpdateProjectResponseBody = {
 };
 
 /** @internal */
+export const UpdateProjectManagedRules$inboundSchema: z.ZodType<
+  UpdateProjectManagedRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  ai_bots: UpdateProjectAiBots$inboundSchema,
+  bot_filter: UpdateProjectBotFilter$inboundSchema,
+  owasp: UpdateProjectOwasp$inboundSchema,
+  traffic_sources: UpdateProjectTrafficSources$inboundSchema,
+  vercel_ruleset: UpdateProjectVercelRuleset$inboundSchema,
+}).transform((v) => {
+  return remap$(v, {
+    "ai_bots": "aiBots",
+    "bot_filter": "botFilter",
+    "traffic_sources": "trafficSources",
+    "vercel_ruleset": "vercelRuleset",
+  });
+});
+
+export function updateProjectManagedRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectManagedRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectManagedRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectManagedRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
+    UpdateProjectProjectsResponse200Action,
+  );
+
+/** @internal */
 export const UpdateProjectLogHeadersProjects2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectLogHeadersProjects2
 > = z.nativeEnum(UpdateProjectLogHeadersProjects2);
@@ -1043,7 +1106,9 @@ export const UpdateProjectSecurity$inboundSchema: z.ZodType<
   ja3Enabled: types.optional(types.boolean()),
   ja4Enabled: types.optional(types.boolean()),
   log_headers: types.optional(UpdateProjectLogHeaders$inboundSchema),
-  managedRules: z.nullable(UpdateProjectManagedRules$inboundSchema).optional(),
+  managedRules: z.nullable(
+    z.lazy(() => UpdateProjectManagedRules$inboundSchema),
+  ).optional(),
   pageIntegrityEnabled: types.optional(types.boolean()),
   rulesets: types.optional(
     z.record(z.lazy(() => UpdateProjectRulesets$inboundSchema)),

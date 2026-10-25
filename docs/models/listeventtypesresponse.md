@@ -15,7 +15,7 @@ let value: ListEventTypesResponse = {
         "deployment",
       ],
       description: "hopelessly busy for",
-      name: "project-program-enrollment-changed",
+      name: "project-preview-environment-branch-tracking-updated",
     },
   ],
 };

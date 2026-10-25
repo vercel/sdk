@@ -61,7 +61,7 @@ import {
   CreateTraceSessionRequest,
   CreateTraceSessionResponseBody,
 } from "../models/createtracesessionop.js";
-import { DeleteProjectAvatarRequest } from "../models/deleteprojectavatarreadysubstate.js";
+import { DeleteProjectAvatarRequest } from "../models/deleteprojectavatarplan.js";
 import { DeleteProjectAvatarResponseBody } from "../models/deleteprojectavatarresponsebody.js";
 import { DeleteProjectRequest } from "../models/deleteprojectop.js";
 import {
@@ -84,10 +84,10 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import { GetProjectRequest } from "../models/getprojectplan.js";
+import { GetProjectRequest } from "../models/getprojectprojectscreator.js";
 import { GetProjectResponseBody } from "../models/getprojectresponsebody.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3checksconclusion.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3branchmatcher.js";
 import {
   GetProjectTokenRequest,
   GetProjectTokenResponseBody,
@@ -96,7 +96,7 @@ import {
   GetProjectTraceRequest,
   GetProjectTraceResponseBody,
 } from "../models/getprojecttraceop.js";
-import { CreateProjectRequest } from "../models/internalroutesmitigate.js";
+import { CreateProjectRequest } from "../models/internalrouteshas.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -117,20 +117,20 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsreadystate.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsoidctokenclaims.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
+import { UpdateProjectRequest } from "../models/updateprojectprojectsenvironments.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { UpdateProjectRequest } from "../models/updateprojectsourcesprojectsresponse200provider.js";
-import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarreadysubstate.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarplan.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
 import {
   VerifyProjectDomainRequest,

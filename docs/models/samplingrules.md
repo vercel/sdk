@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { SamplingRules } from "@vercel/sdk/models/updateprojectsourcesprojectsresponse200provider.js";
+import { SamplingRules } from "@vercel/sdk/models/updateprojectprojectsenvironments.js";
 
 let value: SamplingRules = {
   rate: 6993.73,

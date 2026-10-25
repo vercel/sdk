@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectDismissedToasts } from "@vercel/sdk/models/internalroutesmitigate.js";
+import { CreateProjectDismissedToasts } from "@vercel/sdk/models/internalrouteshas.js";
 
 let value: CreateProjectDismissedToasts = {
   action: "delete",

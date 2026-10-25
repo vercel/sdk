@@ -127,6 +127,7 @@ export type AggregatePageviewsData2 = {
   deviceType: string;
   environment: string;
   flags: string;
+  groupId: string;
   osName: string;
   projectId: string;
   projectName: string;
@@ -134,6 +135,7 @@ export type AggregatePageviewsData2 = {
   requestHostname: string;
   requestPath: string;
   route: string;
+  userId: string;
   utmCampaign: string;
   utmContent: string;
   utmMedium: string;
@@ -149,6 +151,7 @@ export type AggregatePageviewsData1 = {
   deviceType?: string | undefined;
   environment?: string | undefined;
   flags?: string | undefined;
+  groupId?: string | undefined;
   osName?: string | undefined;
   projectId?: string | undefined;
   projectName?: string | undefined;
@@ -156,6 +159,7 @@ export type AggregatePageviewsData1 = {
   requestHostname?: string | undefined;
   requestPath?: string | undefined;
   route?: string | undefined;
+  userId?: string | undefined;
   utmCampaign?: string | undefined;
   utmContent?: string | undefined;
   utmMedium?: string | undefined;
@@ -294,6 +298,7 @@ export const AggregatePageviewsData2$inboundSchema: z.ZodType<
     deviceType: types.string(),
     environment: types.string(),
     flags: types.string(),
+    groupId: types.string(),
     osName: types.string(),
     projectId: types.string(),
     projectName: types.string(),
@@ -301,6 +306,7 @@ export const AggregatePageviewsData2$inboundSchema: z.ZodType<
     requestHostname: types.string(),
     requestPath: types.string(),
     route: types.string(),
+    userId: types.string(),
     utmCampaign: types.string(),
     utmContent: types.string(),
     utmMedium: types.string(),
@@ -333,6 +339,7 @@ export const AggregatePageviewsData1$inboundSchema: z.ZodType<
   deviceType: types.optional(types.string()),
   environment: types.optional(types.string()),
   flags: types.optional(types.string()),
+  groupId: types.optional(types.string()),
   osName: types.optional(types.string()),
   projectId: types.optional(types.string()),
   projectName: types.optional(types.string()),
@@ -340,6 +347,7 @@ export const AggregatePageviewsData1$inboundSchema: z.ZodType<
   requestHostname: types.optional(types.string()),
   requestPath: types.optional(types.string()),
   route: types.optional(types.string()),
+  userId: types.optional(types.string()),
   utmCampaign: types.optional(types.string()),
   utmContent: types.optional(types.string()),
   utmMedium: types.optional(types.string()),

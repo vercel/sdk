@@ -13,6 +13,7 @@ let value: CountEventsData1 = {
   eventData: "<value>",
   eventName: "<value>",
   flags: "<value>",
+  groupId: "<id>",
   osName: "<value>",
   projectId: "<id>",
   projectName: "<value>",
@@ -20,6 +21,7 @@ let value: CountEventsData1 = {
   requestHostname: "<value>",
   requestPath: "<value>",
   route: "<value>",
+  userId: "<id>",
   utmCampaign: "<value>",
   utmContent: "<value>",
   utmMedium: "<value>",
@@ -40,6 +42,7 @@ let value: CountEventsData1 = {
 | `eventData`              | *string*                 | :heavy_check_mark:       | N/A                      |
 | `eventName`              | *string*                 | :heavy_check_mark:       | N/A                      |
 | `flags`                  | *string*                 | :heavy_check_mark:       | N/A                      |
+| `groupId`                | *string*                 | :heavy_check_mark:       | N/A                      |
 | `osName`                 | *string*                 | :heavy_check_mark:       | N/A                      |
 | `projectId`              | *string*                 | :heavy_check_mark:       | N/A                      |
 | `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
@@ -47,6 +50,7 @@ let value: CountEventsData1 = {
 | `requestHostname`        | *string*                 | :heavy_check_mark:       | N/A                      |
 | `requestPath`            | *string*                 | :heavy_check_mark:       | N/A                      |
 | `route`                  | *string*                 | :heavy_check_mark:       | N/A                      |
+| `userId`                 | *string*                 | :heavy_check_mark:       | N/A                      |
 | `utmCampaign`            | *string*                 | :heavy_check_mark:       | N/A                      |
 | `utmContent`             | *string*                 | :heavy_check_mark:       | N/A                      |
 | `utmMedium`              | *string*                 | :heavy_check_mark:       | N/A                      |

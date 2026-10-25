@@ -7,11 +7,11 @@ Principal type of the deployment creator.
 ```typescript
 import { CreateDeploymentResponseBodyDeploymentsType } from "@vercel/sdk/models/createdeploymentgitsource1.js";
 
-let value: CreateDeploymentResponseBodyDeploymentsType = "system";
+let value: CreateDeploymentResponseBodyDeploymentsType = "project";
 ```
 
 ## Values
 
 ```typescript
-"app" | "integration" | "system" | "user"
+"app" | "integration" | "project" | "system" | "user"
 ```

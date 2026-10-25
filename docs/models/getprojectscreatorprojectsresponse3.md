@@ -3,20 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsCreatorProjectsResponse3 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3checksconclusion.js";
+import { GetProjectsCreatorProjectsResponse3 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3branchmatcher.js";
 
 let value: GetProjectsCreatorProjectsResponse3 = {
-  integration: {
-    configurationId: "<id>",
-    integrationId: "<id>",
+  app: {
+    id: "<id>",
   },
-  type: "integration",
+  type: "app",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `integration`                                                                                                      | [models.GetProjectsCreatorProjectsResponseIntegration](../models/getprojectscreatorprojectsresponseintegration.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `type`                                                                                                             | *"integration"*                                                                                                    | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `app`                                                                                              | [models.GetProjectsCreatorProjectsResponseApp](../models/getprojectscreatorprojectsresponseapp.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `type`                                                                                             | *"app"*                                                                                            | :heavy_check_mark:                                                                                 | N/A                                                                                                |

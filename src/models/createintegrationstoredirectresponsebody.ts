@@ -205,6 +205,7 @@ export type CreateIntegrationStoreDirectStore = {
    */
   secretRotationRequestedReason?: string | undefined;
   secrets: Array<CreateIntegrationStoreDirectSecrets>;
+  secretsAppliedAt?: number | undefined;
   /**
    * The deployment targets that this resource is available for.
    */
@@ -457,6 +458,7 @@ export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
   secrets: z.array(
     z.lazy(() => CreateIntegrationStoreDirectSecrets$inboundSchema),
   ),
+  secretsAppliedAt: types.optional(types.number()),
   targets: types.optional(
     z.array(CreateIntegrationStoreDirectTargets$inboundSchema),
   ),

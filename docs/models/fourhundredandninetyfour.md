@@ -5,27 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNinetyFour } from "@vercel/sdk/models/fourhundredandfortynine.js";
+import { FourHundredAndNinetyFour } from "@vercel/sdk/models/fourhundredandfifty.js";
 
 let value: FourHundredAndNinetyFour = {
-  next: {
-    enabled: false,
-    issuerUrls: [
-      "<value 1>",
-    ],
-  },
-  previous: {
-    enabled: false,
-    issuerUrls: [],
-  },
-  scope: "organization",
+  deploymentId: "<id>",
+  projectId: "<id>",
+  runId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload494Next](../models/usereventpayload494next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload494Previous](../models/usereventpayload494previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `scope`                                                                        | [models.UserEventPayload494Scope](../models/usereventpayload494scope.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `runId`            | *string*           | :heavy_check_mark: | N/A                |

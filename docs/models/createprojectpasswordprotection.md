@@ -5,7 +5,7 @@ Password protection settings returned without the secret password hash.
 ## Example Usage
 
 ```typescript
-import { CreateProjectPasswordProtection } from "@vercel/sdk/models/createprojectfrom1.js";
+import { CreateProjectPasswordProtection } from "@vercel/sdk/models/createprojectfrom2.js";
 
 let value: CreateProjectPasswordProtection = {
   deploymentType: "preview",

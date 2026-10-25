@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Author } from "@vercel/sdk/models/usereventjobpayload124nsnbsideeffect.js";
+import { Author } from "@vercel/sdk/models/usereventjobpayload125nsnbsideeffect.js";
 
 let value: Author = {
   date: "2024-08-24",

@@ -5,18 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyOne } from "@vercel/sdk/models/twenty.js";
+import { FortyOne } from "@vercel/sdk/models/twentyone.js";
 
 let value: FortyOne = {
-  retention: {
-    ceilingMode: "until-requested",
-    defaultMode: "until-requested",
-  },
+  regions: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `retention`                                | [models.Retention](../models/retention.md) | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `regions`          | *string*[]         | :heavy_check_mark: | N/A                |

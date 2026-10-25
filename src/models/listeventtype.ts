@@ -408,7 +408,10 @@ export const Name = {
   MessageboardPrivateCreated: "messageboard-private-created",
   MessageboardPrivateProjectGranted: "messageboard-private-project-granted",
   MessageboardPrivateProjectRevoked: "messageboard-private-project-revoked",
+  MessageboardProjectChannelCreated: "messageboard-project-channel-created",
   MessageboardProjectGranted: "messageboard-project-granted",
+  MessageboardProjectPrivateChannelCreated:
+    "messageboard-project-private-channel-created",
   MessageboardProjectRevoked: "messageboard-project-revoked",
   MessageboardSchemaRegistered: "messageboard-schema-registered",
   MessageboardVisibilityUpdated: "messageboard-visibility-updated",
@@ -551,9 +554,16 @@ export const Name = {
   ProjectGitCommitCommentsToggled: "project-git-commit-comments-toggled",
   ProjectGitCommitStatusToggled: "project-git-commit-status-toggled",
   ProjectGitCreateDeploymentsToggled: "project-git-create-deployments-toggled",
+  ProjectGitCredentialAttestationCreated:
+    "project-git-credential-attestation-created",
+  ProjectGitCredentialAttestationDeleted:
+    "project-git-credential-attestation-deleted",
   ProjectGitCredentialBoundCreated: "project-git-credential-bound-created",
   ProjectGitCredentialBoundDeleted: "project-git-credential-bound-deleted",
   ProjectGitCredentialBoundUpdated: "project-git-credential-bound-updated",
+  ProjectGitCredentialGrantAttestationRevoked:
+    "project-git-credential-grant-attestation-revoked",
+  ProjectGitCredentialGrantAttested: "project-git-credential-grant-attested",
   ProjectGitCredentialGrantCreated: "project-git-credential-grant-created",
   ProjectGitCredentialGrantDeleted: "project-git-credential-grant-deleted",
   ProjectGitCredentialGrantUpdated: "project-git-credential-grant-updated",
@@ -1211,7 +1221,10 @@ export const ReplacedBy = {
   MessageboardPrivateCreated: "messageboard-private-created",
   MessageboardPrivateProjectGranted: "messageboard-private-project-granted",
   MessageboardPrivateProjectRevoked: "messageboard-private-project-revoked",
+  MessageboardProjectChannelCreated: "messageboard-project-channel-created",
   MessageboardProjectGranted: "messageboard-project-granted",
+  MessageboardProjectPrivateChannelCreated:
+    "messageboard-project-private-channel-created",
   MessageboardProjectRevoked: "messageboard-project-revoked",
   MessageboardSchemaRegistered: "messageboard-schema-registered",
   MessageboardVisibilityUpdated: "messageboard-visibility-updated",
@@ -1354,9 +1367,16 @@ export const ReplacedBy = {
   ProjectGitCommitCommentsToggled: "project-git-commit-comments-toggled",
   ProjectGitCommitStatusToggled: "project-git-commit-status-toggled",
   ProjectGitCreateDeploymentsToggled: "project-git-create-deployments-toggled",
+  ProjectGitCredentialAttestationCreated:
+    "project-git-credential-attestation-created",
+  ProjectGitCredentialAttestationDeleted:
+    "project-git-credential-attestation-deleted",
   ProjectGitCredentialBoundCreated: "project-git-credential-bound-created",
   ProjectGitCredentialBoundDeleted: "project-git-credential-bound-deleted",
   ProjectGitCredentialBoundUpdated: "project-git-credential-bound-updated",
+  ProjectGitCredentialGrantAttestationRevoked:
+    "project-git-credential-grant-attestation-revoked",
+  ProjectGitCredentialGrantAttested: "project-git-credential-grant-attested",
   ProjectGitCredentialGrantCreated: "project-git-credential-grant-created",
   ProjectGitCredentialGrantDeleted: "project-git-credential-grant-deleted",
   ProjectGitCredentialGrantUpdated: "project-git-credential-grant-updated",

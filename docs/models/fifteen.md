@@ -8,18 +8,14 @@ The payload of the event, if requested.
 import { Fifteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Fifteen = {
-  accountRequestId: "<id>",
-  teamId: "<id>",
+  operationId: "<id>",
+  schemaId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `provider`                                                             | [models.Provider](../models/provider.md)                               | :heavy_minus_sign:                                                     | Present on new events only. Equivalent to "stripe" when absent.        |
-| `providerAccount`                                                      | *string*                                                               | :heavy_minus_sign:                                                     | Present on new events only. Equivalent to `stripeAccount` when absent. |
-| `stripeAccount`                                                        | *string*                                                               | :heavy_minus_sign:                                                     | Present when `provider` is "stripe". Equivalent to `providerAccount`.  |
-| `stripeOrganisation`                                                   | *string*                                                               | :heavy_minus_sign:                                                     | Present when `provider` is "stripe".                                   |
-| `accountRequestId`                                                     | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `teamId`                                                               | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `operationId`      | *string*           | :heavy_check_mark: | N/A                |
+| `schemaId`         | *string*           | :heavy_check_mark: | N/A                |

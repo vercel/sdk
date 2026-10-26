@@ -3,19 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { Creator2 } from "@vercel/sdk/models/internalroutesmitigate.js";
+import { Creator2 } from "@vercel/sdk/models/internalrouteshas.js";
 
 let value: Creator2 = {
-  app: {
+  project: {
     id: "<id>",
   },
-  type: "app",
+  type: "project",
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `app`                                        | [models.CreatorApp](../models/creatorapp.md) | :heavy_check_mark:                           | N/A                                          |
-| `type`                                       | *"app"*                                      | :heavy_check_mark:                           | N/A                                          |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `project`                                            | [models.CreatorProject](../models/creatorproject.md) | :heavy_check_mark:                                   | N/A                                                  |
+| `type`                                               | *"project"*                                          | :heavy_check_mark:                                   | N/A                                                  |

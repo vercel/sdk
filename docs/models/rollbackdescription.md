@@ -5,7 +5,7 @@ Description of why a project was rolled back, and by whom. Note that lastAliasRe
 ## Example Usage
 
 ```typescript
-import { RollbackDescription } from "@vercel/sdk/models/threehundredandtwentythree.js";
+import { RollbackDescription } from "@vercel/sdk/models/threehundredandtwentyfour.js";
 
 let value: RollbackDescription = {
   createdAt: 6896.2,

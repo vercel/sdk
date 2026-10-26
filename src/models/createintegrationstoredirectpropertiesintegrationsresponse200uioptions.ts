@@ -230,6 +230,7 @@ export type CreateIntegrationStoreDirectProjectsMetadata = {
   makeEnvVarsSensitive?: boolean | undefined;
   name: string;
   projectId: string;
+  secretsOutdated?: true | undefined;
 };
 
 export const CreateIntegrationStoreDirectStatus = {
@@ -1647,6 +1648,7 @@ export const CreateIntegrationStoreDirectProjectsMetadata$inboundSchema:
     makeEnvVarsSensitive: types.optional(types.boolean()),
     name: types.string(),
     projectId: types.string(),
+    secretsOutdated: types.optional(types.literal(true)),
   });
 
 export function createIntegrationStoreDirectProjectsMetadataFromJSON(

@@ -865,6 +865,7 @@ export type CreateDeploymentResponseBodyConfig = {
 export const CreateDeploymentResponseBodyDeploymentsType = {
   App: "app",
   Integration: "integration",
+  Project: "project",
   System: "system",
   User: "user",
 } as const;

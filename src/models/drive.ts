@@ -4,9 +4,22 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * The workload type of this drive.
+ */
+export const DriveWorkloadType = {
+  Sandbox: "sandbox",
+  V0: "v0",
+} as const;
+/**
+ * The workload type of this drive.
+ */
+export type DriveWorkloadType = ClosedEnum<typeof DriveWorkloadType>;
 
 /**
  * This object contains information related to a Vercel Sandbox Drive.
@@ -57,10 +70,15 @@ export type Drive = {
    */
   updatedAt: number;
   /**
-   * Whether this drive is managed by v0 on the customer's behalf.
+   * The workload type of this drive.
    */
-  v0?: boolean | undefined;
+  workloadType?: DriveWorkloadType | undefined;
 };
+
+/** @internal */
+export const DriveWorkloadType$inboundSchema: z.ZodNativeEnum<
+  typeof DriveWorkloadType
+> = z.nativeEnum(DriveWorkloadType);
 
 /** @internal */
 export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
@@ -76,7 +94,7 @@ export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
     region: types.string(),
     rootDriveId: types.optional(types.string()),
     updatedAt: types.number(),
-    v0: types.optional(types.boolean()),
+    workloadType: types.optional(DriveWorkloadType$inboundSchema),
   });
 
 export function driveFromJSON(

@@ -5,7 +5,7 @@ Configuration for consolidated git commit status reporting. When enabled, Vercel
 ## Example Usage
 
 ```typescript
-import { ResponseBodyConsolidatedGitCommitStatus } from "@vercel/sdk/models/getprojectsresponsebodychecksstate.js";
+import { ResponseBodyConsolidatedGitCommitStatus } from "@vercel/sdk/models/responsebodyaliasassigned.js";
 
 let value: ResponseBodyConsolidatedGitCommitStatus = {
   enabled: false,

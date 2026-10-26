@@ -131,6 +131,7 @@ export type AggregateEventsData2 = {
   eventData: string;
   eventName: string;
   flags: string;
+  groupId: string;
   osName: string;
   projectId: string;
   projectName: string;
@@ -138,6 +139,7 @@ export type AggregateEventsData2 = {
   requestHostname: string;
   requestPath: string;
   route: string;
+  userId: string;
   utmCampaign: string;
   utmContent: string;
   utmMedium: string;
@@ -155,6 +157,7 @@ export type AggregateEventsData1 = {
   eventData?: string | undefined;
   eventName?: string | undefined;
   flags?: string | undefined;
+  groupId?: string | undefined;
   osName?: string | undefined;
   projectId?: string | undefined;
   projectName?: string | undefined;
@@ -162,6 +165,7 @@ export type AggregateEventsData1 = {
   requestHostname?: string | undefined;
   requestPath?: string | undefined;
   route?: string | undefined;
+  userId?: string | undefined;
   utmCampaign?: string | undefined;
   utmContent?: string | undefined;
   utmMedium?: string | undefined;
@@ -314,6 +318,7 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
     eventData: types.string(),
     eventName: types.string(),
     flags: types.string(),
+    groupId: types.string(),
     osName: types.string(),
     projectId: types.string(),
     projectName: types.string(),
@@ -321,6 +326,7 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
     requestHostname: types.string(),
     requestPath: types.string(),
     route: types.string(),
+    userId: types.string(),
     utmCampaign: types.string(),
     utmContent: types.string(),
     utmMedium: types.string(),
@@ -355,6 +361,7 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   eventData: types.optional(types.string()),
   eventName: types.optional(types.string()),
   flags: types.optional(types.string()),
+  groupId: types.optional(types.string()),
   osName: types.optional(types.string()),
   projectId: types.optional(types.string()),
   projectName: types.optional(types.string()),
@@ -362,6 +369,7 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   requestHostname: types.optional(types.string()),
   requestPath: types.optional(types.string()),
   route: types.optional(types.string()),
+  userId: types.optional(types.string()),
   utmCampaign: types.optional(types.string()),
   utmContent: types.optional(types.string()),
   utmMedium: types.optional(types.string()),

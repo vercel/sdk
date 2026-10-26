@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Member } from "@vercel/sdk/models/twenty.js";
+import { Member } from "@vercel/sdk/models/twentyone.js";
 
 let value: Member = {
   id: "<id>",
@@ -16,5 +16,5 @@ let value: Member = {
 | Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | `id`                                                                 | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `kind`                                                               | [models.UserEventPayload24Kind](../models/usereventpayload24kind.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| `kind`                                                               | [models.UserEventPayload25Kind](../models/usereventpayload25kind.md) | :heavy_check_mark:                                                   | N/A                                                                  |
 | `name`                                                               | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |

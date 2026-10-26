@@ -51,6 +51,18 @@ export const SessionStatus = {
 export type SessionStatus = ClosedEnum<typeof SessionStatus>;
 
 /**
+ * The workload type of this sandbox.
+ */
+export const SessionWorkloadType = {
+  Sandbox: "sandbox",
+  V0: "v0",
+} as const;
+/**
+ * The workload type of this sandbox.
+ */
+export type SessionWorkloadType = ClosedEnum<typeof SessionWorkloadType>;
+
+/**
  * This object contains information related to a Vercel Sandbox Session. v2 endpoints return "session" instead of "sandbox" as the response wrapper key.
  */
 export type Session = {
@@ -147,13 +159,13 @@ export type Session = {
    */
   updatedAt: number;
   /**
-   * Whether this sandbox is managed by v0 on the customer's behalf.
-   */
-  v0?: boolean | undefined;
-  /**
    * Number of vCPUs allocated to this sandbox.
    */
   vcpus: number;
+  /**
+   * The workload type of this sandbox.
+   */
+  workloadType?: SessionWorkloadType | undefined;
 };
 
 /** @internal */
@@ -187,6 +199,11 @@ export const SessionStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(SessionStatus);
 
 /** @internal */
+export const SessionWorkloadType$inboundSchema: z.ZodNativeEnum<
+  typeof SessionWorkloadType
+> = z.nativeEnum(SessionWorkloadType);
+
+/** @internal */
 export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
   z.object({
     abortedAt: types.optional(types.number()),
@@ -214,8 +231,8 @@ export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
     stoppedAt: types.optional(types.number()),
     timeout: types.number(),
     updatedAt: types.number(),
-    v0: types.optional(types.boolean()),
     vcpus: types.number(),
+    workloadType: types.optional(SessionWorkloadType$inboundSchema),
   });
 
 export function sessionFromJSON(

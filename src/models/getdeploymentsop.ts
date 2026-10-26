@@ -229,6 +229,7 @@ export type GetDeploymentsChecksState = ClosedEnum<
 export const GetDeploymentsDeploymentsType = {
   App: "app",
   Integration: "integration",
+  Project: "project",
   System: "system",
   User: "user",
 } as const;

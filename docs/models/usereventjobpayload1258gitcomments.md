@@ -1,0 +1,21 @@
+# UserEventJobPayload1258GitComments
+
+Since June 2023 Determines if comments should be posted to the git host. Replaces `github.silent` in the vercel.json.
+
+## Example Usage
+
+```typescript
+import { UserEventJobPayload1258GitComments } from "@vercel/sdk/models/usereventjobpayload125nsnbsideeffect.js";
+
+let value: UserEventJobPayload1258GitComments = {
+  onCommit: true,
+  onPullRequest: true,
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `onPullRequest`    | *boolean*          | :heavy_check_mark: | N/A                |

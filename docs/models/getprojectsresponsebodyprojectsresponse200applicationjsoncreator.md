@@ -19,10 +19,10 @@ const value: models.GetProjectsCreatorProjectsResponse1 = {
 
 ```typescript
 const value: models.GetProjectsCreatorProjectsResponse2 = {
-  app: {
+  project: {
     id: "<id>",
   },
-  type: "app",
+  type: "project",
 };
 ```
 
@@ -30,6 +30,17 @@ const value: models.GetProjectsCreatorProjectsResponse2 = {
 
 ```typescript
 const value: models.GetProjectsCreatorProjectsResponse3 = {
+  app: {
+    id: "<id>",
+  },
+  type: "app",
+};
+```
+
+### `models.GetProjectsCreatorProjectsResponse4`
+
+```typescript
+const value: models.GetProjectsCreatorProjectsResponse4 = {
   integration: {
     configurationId: "<id>",
     integrationId: "<id>",
@@ -38,10 +49,10 @@ const value: models.GetProjectsCreatorProjectsResponse3 = {
 };
 ```
 
-### `models.GetProjectsCreatorProjectsResponse4`
+### `models.GetProjectsCreatorProjectsResponse5`
 
 ```typescript
-const value: models.GetProjectsCreatorProjectsResponse4 = {
+const value: models.GetProjectsCreatorProjectsResponse5 = {
   type: "system",
 };
 ```

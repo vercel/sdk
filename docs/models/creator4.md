@@ -3,15 +3,20 @@
 ## Example Usage
 
 ```typescript
-import { Creator4 } from "@vercel/sdk/models/internalroutesmitigate.js";
+import { Creator4 } from "@vercel/sdk/models/internalrouteshas.js";
 
 let value: Creator4 = {
-  type: "system",
+  integration: {
+    configurationId: "<id>",
+    integrationId: "<id>",
+  },
+  type: "integration",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"system"*         | :heavy_check_mark: | N/A                |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `integration`                                                | [models.CreatorIntegration](../models/creatorintegration.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `type`                                                       | *"integration"*                                              | :heavy_check_mark:                                           | N/A                                                          |

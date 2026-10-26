@@ -3,19 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupCreator2 } from "@vercel/sdk/models/getmicrofrontendsingroupreadysubstate.js";
+import { GetMicrofrontendsInGroupCreator2 } from "@vercel/sdk/models/getmicrofrontendsingroupplan.js";
 
 let value: GetMicrofrontendsInGroupCreator2 = {
-  app: {
+  project: {
     id: "<id>",
   },
-  type: "app",
+  type: "project",
 };
 ```
 
 ## Fields
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `app`                                                                                        | [models.GetMicrofrontendsInGroupCreatorApp](../models/getmicrofrontendsingroupcreatorapp.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `type`                                                                                       | *"app"*                                                                                      | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| Field                                                                                                | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `project`                                                                                            | [models.GetMicrofrontendsInGroupCreatorProject](../models/getmicrofrontendsingroupcreatorproject.md) | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
+| `type`                                                                                               | *"project"*                                                                                          | :heavy_check_mark:                                                                                   | N/A                                                                                                  |

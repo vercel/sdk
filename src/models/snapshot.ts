@@ -47,6 +47,18 @@ export const SnapshotStatus = {
 export type SnapshotStatus = ClosedEnum<typeof SnapshotStatus>;
 
 /**
+ * The workload type of this snapshot.
+ */
+export const SnapshotWorkloadType = {
+  Sandbox: "sandbox",
+  V0: "v0",
+} as const;
+/**
+ * The workload type of this snapshot.
+ */
+export type SnapshotWorkloadType = ClosedEnum<typeof SnapshotWorkloadType>;
+
+/**
  * This object contains information related to a Snapshot of a Vercel Sandbox session (v2 API).
  */
 export type Snapshot = {
@@ -103,9 +115,9 @@ export type Snapshot = {
    */
   updatedAt: number;
   /**
-   * Whether this snapshot is managed by v0 on the customer's behalf.
+   * The workload type of this snapshot.
    */
-  v0?: boolean | undefined;
+  workloadType?: SnapshotWorkloadType | undefined;
 };
 
 /** @internal */
@@ -122,6 +134,11 @@ export const CreationMethod$inboundSchema: z.ZodNativeEnum<
 export const SnapshotStatus$inboundSchema: z.ZodNativeEnum<
   typeof SnapshotStatus
 > = z.nativeEnum(SnapshotStatus);
+
+/** @internal */
+export const SnapshotWorkloadType$inboundSchema: z.ZodNativeEnum<
+  typeof SnapshotWorkloadType
+> = z.nativeEnum(SnapshotWorkloadType);
 
 /** @internal */
 export const Snapshot$inboundSchema: z.ZodType<
@@ -142,7 +159,7 @@ export const Snapshot$inboundSchema: z.ZodType<
   sourceSessionId: types.string(),
   status: SnapshotStatus$inboundSchema,
   updatedAt: types.number(),
-  v0: types.optional(types.boolean()),
+  workloadType: types.optional(SnapshotWorkloadType$inboundSchema),
 });
 
 export function snapshotFromJSON(

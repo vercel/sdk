@@ -5,7 +5,7 @@ The acive pricing plan the team is billed with
 ## Example Usage
 
 ```typescript
-import { PayloadPricingPlan } from "@vercel/sdk/models/usereventpayload385type.js";
+import { PayloadPricingPlan } from "@vercel/sdk/models/usereventpayload386type.js";
 
 let value: PayloadPricingPlan = "flex";
 ```

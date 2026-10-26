@@ -76,11 +76,29 @@ import {
   UploadProjectAvatarProjectsBranchMatcher$inboundSchema,
   UploadProjectAvatarProjectsCreator,
   UploadProjectAvatarProjectsCreator$inboundSchema,
-  UploadProjectAvatarReadyState,
-  UploadProjectAvatarReadyState$inboundSchema,
-  UploadProjectAvatarReadySubstate,
-  UploadProjectAvatarReadySubstate$inboundSchema,
-} from "./uploadprojectavatarreadysubstate.js";
+} from "./uploadprojectavatarplan.js";
+
+export const UploadProjectAvatarReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type UploadProjectAvatarReadyState = ClosedEnum<
+  typeof UploadProjectAvatarReadyState
+>;
+
+export const UploadProjectAvatarReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type UploadProjectAvatarReadySubstate = ClosedEnum<
+  typeof UploadProjectAvatarReadySubstate
+>;
 
 export const UploadProjectAvatarProjectsResponse200Type = {
   Lambdas: "LAMBDAS",
@@ -3019,6 +3037,16 @@ export type UploadProjectAvatarResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UploadProjectAvatarWebAnalytics | undefined;
 };
+
+/** @internal */
+export const UploadProjectAvatarReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarReadyState
+> = z.nativeEnum(UploadProjectAvatarReadyState);
+
+/** @internal */
+export const UploadProjectAvatarReadySubstate$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarReadySubstate
+> = z.nativeEnum(UploadProjectAvatarReadySubstate);
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponse200Type$inboundSchema:

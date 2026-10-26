@@ -118,6 +118,18 @@ export const NamedSandboxStatus = {
 export type NamedSandboxStatus = ClosedEnum<typeof NamedSandboxStatus>;
 
 /**
+ * The workload type of this sandbox.
+ */
+export const WorkloadType = {
+  Sandbox: "sandbox",
+  V0: "v0",
+} as const;
+/**
+ * The workload type of this sandbox.
+ */
+export type WorkloadType = ClosedEnum<typeof WorkloadType>;
+
+/**
  * This object contains information related to a Vercel NamedSandbox.
  */
 export type NamedSandbox = {
@@ -230,13 +242,13 @@ export type NamedSandbox = {
    */
   updatedAt: number;
   /**
-   * Whether this sandbox is managed by v0 on the customer's behalf.
-   */
-  v0?: boolean | undefined;
-  /**
    * Number of virtual CPUs allocated.
    */
   vcpus?: number | undefined;
+  /**
+   * The workload type of this sandbox.
+   */
+  workloadType?: WorkloadType | undefined;
 };
 
 /** @internal */
@@ -326,6 +338,10 @@ export const NamedSandboxStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(NamedSandboxStatus);
 
 /** @internal */
+export const WorkloadType$inboundSchema: z.ZodNativeEnum<typeof WorkloadType> =
+  z.nativeEnum(WorkloadType);
+
+/** @internal */
 export const NamedSandbox$inboundSchema: z.ZodType<
   NamedSandbox,
   z.ZodTypeDef,
@@ -360,8 +376,8 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   totalEgressBytes: types.optional(types.number()),
   totalIngressBytes: types.optional(types.number()),
   updatedAt: types.number(),
-  v0: types.optional(types.boolean()),
   vcpus: types.optional(types.number()),
+  workloadType: types.optional(WorkloadType$inboundSchema),
 });
 
 export function namedSandboxFromJSON(

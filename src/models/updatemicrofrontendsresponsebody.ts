@@ -70,15 +70,33 @@ import {
   UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
   UpdateMicrofrontendsOidcTokenClaims,
   UpdateMicrofrontendsOidcTokenClaims$inboundSchema,
-  UpdateMicrofrontendsPlan,
-  UpdateMicrofrontendsPlan$inboundSchema,
   UpdateMicrofrontendsProjectsBranchMatcher,
   UpdateMicrofrontendsProjectsBranchMatcher$inboundSchema,
   UpdateMicrofrontendsProjectsCreator,
   UpdateMicrofrontendsProjectsCreator$inboundSchema,
-  UpdateMicrofrontendsReadyState,
-  UpdateMicrofrontendsReadyState$inboundSchema,
-} from "./updatemicrofrontendsreadystate.js";
+} from "./updatemicrofrontendsoidctokenclaims.js";
+
+export const UpdateMicrofrontendsPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type UpdateMicrofrontendsPlan = ClosedEnum<
+  typeof UpdateMicrofrontendsPlan
+>;
+
+export const UpdateMicrofrontendsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type UpdateMicrofrontendsReadyState = ClosedEnum<
+  typeof UpdateMicrofrontendsReadyState
+>;
 
 export const UpdateMicrofrontendsReadySubstate = {
   Promoted: "PROMOTED",
@@ -3034,6 +3052,16 @@ export type UpdateMicrofrontendsResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: UpdateMicrofrontendsWebAnalytics | undefined;
 };
+
+/** @internal */
+export const UpdateMicrofrontendsPlan$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsPlan
+> = z.nativeEnum(UpdateMicrofrontendsPlan);
+
+/** @internal */
+export const UpdateMicrofrontendsReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsReadyState
+> = z.nativeEnum(UpdateMicrofrontendsReadyState);
 
 /** @internal */
 export const UpdateMicrofrontendsReadySubstate$inboundSchema: z.ZodNativeEnum<

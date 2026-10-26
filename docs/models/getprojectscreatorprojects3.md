@@ -3,20 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsCreatorProjects3 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsop.js";
+import { GetProjectsCreatorProjects3 } from "@vercel/sdk/models/responsebodyresponsehas.js";
 
 let value: GetProjectsCreatorProjects3 = {
-  integration: {
-    configurationId: "<id>",
-    integrationId: "<id>",
+  app: {
+    id: "<id>",
   },
-  type: "integration",
+  type: "app",
 };
 ```
 
 ## Fields
 
-| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `integration`                                                                                      | [models.GetProjectsCreatorProjectsIntegration](../models/getprojectscreatorprojectsintegration.md) | :heavy_check_mark:                                                                                 | N/A                                                                                                |
-| `type`                                                                                             | *"integration"*                                                                                    | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `app`                                                                              | [models.GetProjectsCreatorProjectsApp](../models/getprojectscreatorprojectsapp.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `type`                                                                             | *"app"*                                                                            | :heavy_check_mark:                                                                 | N/A                                                                                |

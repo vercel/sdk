@@ -75,12 +75,30 @@ import {
   DeleteProjectAvatarProjectsBranchMatcher$inboundSchema,
   DeleteProjectAvatarProjectsCreator,
   DeleteProjectAvatarProjectsCreator$inboundSchema,
-  DeleteProjectAvatarReadyState,
-  DeleteProjectAvatarReadyState$inboundSchema,
-  DeleteProjectAvatarReadySubstate,
-  DeleteProjectAvatarReadySubstate$inboundSchema,
-} from "./deleteprojectavatarreadysubstate.js";
+} from "./deleteprojectavatarplan.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const DeleteProjectAvatarReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type DeleteProjectAvatarReadyState = ClosedEnum<
+  typeof DeleteProjectAvatarReadyState
+>;
+
+export const DeleteProjectAvatarReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type DeleteProjectAvatarReadySubstate = ClosedEnum<
+  typeof DeleteProjectAvatarReadySubstate
+>;
 
 export const DeleteProjectAvatarProjectsResponse200Type = {
   Lambdas: "LAMBDAS",
@@ -3019,6 +3037,16 @@ export type DeleteProjectAvatarResponseBody = {
   v0Created?: boolean | undefined;
   webAnalytics?: DeleteProjectAvatarWebAnalytics | undefined;
 };
+
+/** @internal */
+export const DeleteProjectAvatarReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof DeleteProjectAvatarReadyState
+> = z.nativeEnum(DeleteProjectAvatarReadyState);
+
+/** @internal */
+export const DeleteProjectAvatarReadySubstate$inboundSchema: z.ZodNativeEnum<
+  typeof DeleteProjectAvatarReadySubstate
+> = z.nativeEnum(DeleteProjectAvatarReadySubstate);
 
 /** @internal */
 export const DeleteProjectAvatarProjectsResponse200Type$inboundSchema:

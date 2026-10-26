@@ -3,19 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsCreator2 } from "@vercel/sdk/models/updatemicrofrontendsreadystate.js";
+import { UpdateMicrofrontendsCreator2 } from "@vercel/sdk/models/updatemicrofrontendsoidctokenclaims.js";
 
 let value: UpdateMicrofrontendsCreator2 = {
-  app: {
+  project: {
     id: "<id>",
   },
-  type: "app",
+  type: "project",
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `app`                                                                                | [models.UpdateMicrofrontendsCreatorApp](../models/updatemicrofrontendscreatorapp.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `type`                                                                               | *"app"*                                                                              | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `project`                                                                                    | [models.UpdateMicrofrontendsCreatorProject](../models/updatemicrofrontendscreatorproject.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| `type`                                                                                       | *"project"*                                                                                  | :heavy_check_mark:                                                                           | N/A                                                                                          |

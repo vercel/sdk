@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Retention } from "@vercel/sdk/models/twenty.js";
+import { Retention } from "@vercel/sdk/models/twentyone.js";
 
 let value: Retention = {
   ceilingMode: "days",

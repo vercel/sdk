@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyFlagDefinitionsPresent } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3checksconclusion.js";
+import { ResponseBodyFlagDefinitionsPresent } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3branchmatcher.js";
 
 let value: ResponseBodyFlagDefinitionsPresent = {
   targets: [

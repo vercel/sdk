@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Seventy } from "@vercel/sdk/models/twenty.js";
+import { Seventy } from "@vercel/sdk/models/twentyone.js";
 
 let value: Seventy = {
   appName: "<value>",
@@ -14,8 +14,10 @@ let value: Seventy = {
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `appId`               | *string*              | :heavy_minus_sign:    | N/A                   |
-| `appName`             | *string*              | :heavy_check_mark:    | N/A                   |
-| `secretLastFourChars` | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `appId`                                                        | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `appName`                                                      | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `organizationId`                                               | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `permissions`                                                  | [models.PayloadPermissions](../models/payloadpermissions.md)[] | :heavy_minus_sign:                                             | N/A                                                            |
+| `resources`                                                    | [models.Resources](../models/resources.md)                     | :heavy_minus_sign:                                             | N/A                                                            |

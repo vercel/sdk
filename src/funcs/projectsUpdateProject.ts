@@ -21,13 +21,13 @@ import {
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
+  UpdateProjectRequest,
+  UpdateProjectRequest$outboundSchema,
+} from "../models/updateprojectprojectsenvironments.js";
+import {
   UpdateProjectResponseBody,
   UpdateProjectResponseBody$inboundSchema,
 } from "../models/updateprojectresponsebody.js";
-import {
-  UpdateProjectRequest,
-  UpdateProjectRequest$outboundSchema,
-} from "../models/updateprojectsourcesprojectsresponse200provider.js";
 import { VercelError } from "../models/vercelerror.js";
 import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
@@ -173,7 +173,7 @@ async function $do(
   >(
     M.json(200, UpdateProjectResponseBody$inboundSchema),
     M.fail([400, 401, 402, 403, 404, 409, 410, 428, "4XX"]),
-    M.fail("5XX"),
+    M.fail([500, "5XX"]),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

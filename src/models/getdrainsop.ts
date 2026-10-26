@@ -15,7 +15,7 @@ export type GetDrainsRequest = {
   projectId?: string | undefined;
   includeMetadata?: boolean | undefined;
   /**
-   * Include `deliveryStats` with the delivery health of each drain over the last 24 hours.
+   * Include `deliveryStats` with the delivery health of each drain over the last 24 hours. Ignored for teams without drain delivery metrics.
    */
   includeDeliveryStats?: boolean | undefined;
   /**

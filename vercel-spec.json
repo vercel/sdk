@@ -15118,6 +15118,16 @@
               }
             }
           },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectError"
+                }
+              }
+            }
+          },
           "501": {
             "description": ""
           },
@@ -15312,6 +15322,16 @@
               }
             }
           },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectError"
+                }
+              }
+            }
+          },
           "501": {
             "description": ""
           },
@@ -15428,6 +15448,16 @@
           },
           "422": {
             "description": "The request cannot be completed in the current state.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -15897,6 +15927,16 @@
               }
             }
           },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectError"
+                }
+              }
+            }
+          },
           "501": {
             "description": ""
           },
@@ -15989,6 +16029,9 @@
             "description": ""
           },
           "422": {
+            "description": ""
+          },
+          "500": {
             "description": ""
           },
           "501": {
@@ -16097,6 +16140,16 @@
           },
           "410": {
             "description": "The requested resource is no longer available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16243,6 +16296,16 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectError"
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -16361,6 +16424,16 @@
           },
           "410": {
             "description": "The requested resource is no longer available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16496,6 +16569,16 @@
                 }
               }
             }
+          },
+          "500": {
+            "description": "An internal error occurred.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectError"
+                }
+              }
+            }
           }
         },
         "parameters": [
@@ -16606,6 +16689,16 @@
           },
           "410": {
             "description": "The requested resource is no longer available.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConnectError"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "An internal error occurred.",
             "content": {
               "application/json": {
                 "schema": {
@@ -16784,6 +16877,9 @@
             "description": ""
           },
           "429": {
+            "description": ""
+          },
+          "500": {
             "description": ""
           }
         },
@@ -17073,6 +17169,9 @@
             "description": ""
           },
           "422": {
+            "description": ""
+          },
+          "500": {
             "description": ""
           }
         },
@@ -20245,6 +20344,7 @@
                               "enum": [
                                 "app",
                                 "integration",
+                                "project",
                                 "system",
                                 "user"
                               ],
@@ -27032,6 +27132,7 @@
                               "enum": [
                                 "app",
                                 "integration",
+                                "project",
                                 "system",
                                 "user"
                               ],
@@ -29187,6 +29288,7 @@
                               "enum": [
                                 "app",
                                 "integration",
+                                "project",
                                 "system",
                                 "user"
                               ],
@@ -37111,6 +37213,7 @@
                           "enum": [
                             "app",
                             "integration",
+                            "project",
                             "system",
                             "user"
                           ],
@@ -52916,12 +53019,12 @@
           },
           {
             "name": "includeDeliveryStats",
-            "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours.",
+            "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours. Ignored for teams without drain delivery metrics.",
             "in": "query",
             "schema": {
               "type": "boolean",
               "default": false,
-              "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours."
+              "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours. Ignored for teams without drain delivery metrics."
             }
           },
           {
@@ -55985,12 +56088,12 @@
           },
           {
             "name": "includeDeliveryStats",
-            "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours.",
+            "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours. Ignored for teams without drain delivery metrics.",
             "in": "query",
             "schema": {
               "type": "boolean",
               "default": false,
-              "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours."
+              "description": "Include `deliveryStats` with the delivery health of each drain over the last 24 hours. Ignored for teams without drain delivery metrics."
             }
           },
           {
@@ -73589,9 +73692,6 @@
           },
           "410": {
             "description": ""
-          },
-          "422": {
-            "description": ""
           }
         },
         "parameters": [
@@ -73938,9 +74038,6 @@
             "description": ""
           },
           "410": {
-            "description": ""
-          },
-          "422": {
             "description": ""
           }
         },
@@ -75413,9 +75510,6 @@
           },
           "410": {
             "description": ""
-          },
-          "422": {
-            "description": ""
           }
         },
         "parameters": [
@@ -75539,9 +75633,6 @@
             "description": ""
           },
           "410": {
-            "description": ""
-          },
-          "422": {
             "description": ""
           }
         },
@@ -84561,18 +84652,22 @@
         "parameters": [
           {
             "name": "projectId",
+            "description": "The ID or name of the project containing the deployment.",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "The ID or name of the project containing the deployment."
             }
           },
           {
             "name": "deploymentId",
+            "description": "The ID or hostname of the deployment.",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "description": "The ID or hostname of the deployment."
             }
           },
           {
@@ -85944,6 +86039,32 @@
                               },
                               {
                                 "properties": {
+                                  "project": {
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "id"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "project"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "project",
+                                  "type"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
                                   "app": {
                                     "properties": {
                                       "clientId": {
@@ -87308,7 +87429,7 @@
                                   },
                                   "lockedBy": {
                                     "type": "string",
-                                    "description": "userId of the actor that triggered the lock (system or admin)."
+                                    "description": "ID of the user, app, or integration that locked the project, or `system`."
                                   }
                                 },
                                 "required": [
@@ -101271,6 +101392,32 @@
                               },
                               {
                                 "properties": {
+                                  "project": {
+                                    "properties": {
+                                      "id": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "id"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "project"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "project",
+                                  "type"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
                                   "app": {
                                     "properties": {
                                       "clientId": {
@@ -105673,6 +105820,32 @@
                                       "type",
                                       "user",
                                       "via"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  {
+                                    "properties": {
+                                      "project": {
+                                        "properties": {
+                                          "id": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "id"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "project"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "project",
+                                      "type"
                                     ],
                                     "type": "object"
                                   },
@@ -110201,6 +110374,32 @@
                                   },
                                   {
                                     "properties": {
+                                      "project": {
+                                        "properties": {
+                                          "id": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "id"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "project"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "project",
+                                      "type"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  {
+                                    "properties": {
                                       "app": {
                                         "properties": {
                                           "clientId": {
@@ -111565,7 +111764,7 @@
                                       },
                                       "lockedBy": {
                                         "type": "string",
-                                        "description": "userId of the actor that triggered the lock (system or admin)."
+                                        "description": "ID of the user, app, or integration that locked the project, or `system`."
                                       }
                                     },
                                     "required": [
@@ -118428,6 +118627,32 @@
                         },
                         {
                           "properties": {
+                            "project": {
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "project"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "project",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
                             "app": {
                               "properties": {
                                 "clientId": {
@@ -119792,7 +120017,7 @@
                             },
                             "lockedBy": {
                               "type": "string",
-                              "description": "userId of the actor that triggered the lock (system or admin)."
+                              "description": "ID of the user, app, or integration that locked the project, or `system`."
                             }
                           },
                           "required": [
@@ -126910,6 +127135,32 @@
                         },
                         {
                           "properties": {
+                            "project": {
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "project"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "project",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
                             "app": {
                               "properties": {
                                 "clientId": {
@@ -128272,7 +128523,7 @@
                             },
                             "lockedBy": {
                               "type": "string",
-                              "description": "userId of the actor that triggered the lock (system or admin)."
+                              "description": "ID of the user, app, or integration that locked the project, or `system`."
                             }
                           },
                           "required": [
@@ -134731,6 +134982,32 @@
                         },
                         {
                           "properties": {
+                            "project": {
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "project"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "project",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
                             "app": {
                               "properties": {
                                 "clientId": {
@@ -136086,7 +136363,7 @@
                             },
                             "lockedBy": {
                               "type": "string",
-                              "description": "userId of the actor that triggered the lock (system or admin)."
+                              "description": "ID of the user, app, or integration that locked the project, or `system`."
                             }
                           },
                           "required": [
@@ -141772,6 +142049,9 @@
           },
           "428": {
             "description": ""
+          },
+          "500": {
+            "description": ""
           }
         },
         "x-vercel-cli": {
@@ -143826,6 +144106,32 @@
                         },
                         {
                           "properties": {
+                            "project": {
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "project"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "project",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
                             "app": {
                               "properties": {
                                 "clientId": {
@@ -145190,7 +145496,7 @@
                             },
                             "lockedBy": {
                               "type": "string",
-                              "description": "userId of the actor that triggered the lock (system or admin)."
+                              "description": "ID of the user, app, or integration that locked the project, or `system`."
                             }
                           },
                           "required": [
@@ -151620,6 +151926,32 @@
                         },
                         {
                           "properties": {
+                            "project": {
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "project"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "project",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
                             "app": {
                               "properties": {
                                 "clientId": {
@@ -152984,7 +153316,7 @@
                             },
                             "lockedBy": {
                               "type": "string",
-                              "description": "userId of the actor that triggered the lock (system or admin)."
+                              "description": "ID of the user, app, or integration that locked the project, or `system`."
                             }
                           },
                           "required": [
@@ -172555,6 +172887,32 @@
                         },
                         {
                           "properties": {
+                            "project": {
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "id"
+                              ],
+                              "type": "object"
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
+                                "project"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "project",
+                            "type"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "properties": {
                             "app": {
                               "properties": {
                                 "clientId": {
@@ -173919,7 +174277,7 @@
                             },
                             "lockedBy": {
                               "type": "string",
-                              "description": "userId of the actor that triggered the lock (system or admin)."
+                              "description": "ID of the user, app, or integration that locked the project, or `system`."
                             }
                           },
                           "required": [
@@ -180111,6 +180469,9 @@
           "410": {
             "description": ""
           },
+          "422": {
+            "description": ""
+          },
           "429": {
             "description": ""
           }
@@ -181180,6 +181541,9 @@
           "410": {
             "description": ""
           },
+          "422": {
+            "description": ""
+          },
           "429": {
             "description": ""
           }
@@ -181329,6 +181693,9 @@
           "410": {
             "description": ""
           },
+          "422": {
+            "description": ""
+          },
           "429": {
             "description": ""
           }
@@ -181448,6 +181815,9 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "422": {
             "description": ""
           },
           "429": {
@@ -181585,6 +181955,9 @@
           "410": {
             "description": ""
           },
+          "422": {
+            "description": ""
+          },
           "429": {
             "description": ""
           }
@@ -181686,6 +182059,9 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "422": {
             "description": ""
           },
           "429": {
@@ -181837,6 +182213,9 @@
           "410": {
             "description": ""
           },
+          "422": {
+            "description": ""
+          },
           "429": {
             "description": ""
           }
@@ -181973,6 +182352,9 @@
           "410": {
             "description": ""
           },
+          "422": {
+            "description": ""
+          },
           "429": {
             "description": ""
           }
@@ -182055,6 +182437,9 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "422": {
             "description": ""
           },
           "429": {
@@ -182168,6 +182553,9 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "422": {
             "description": ""
           },
           "429": {
@@ -182314,6 +182702,9 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "422": {
             "description": ""
           },
           "429": {
@@ -183351,6 +183742,9 @@
           "410": {
             "description": ""
           },
+          "422": {
+            "description": ""
+          },
           "429": {
             "description": ""
           }
@@ -183460,6 +183854,9 @@
             "description": ""
           },
           "410": {
+            "description": ""
+          },
+          "422": {
             "description": ""
           },
           "429": {
@@ -183606,9 +184003,6 @@
             "description": ""
           },
           "429": {
-            "description": ""
-          },
-          "500": {
             "description": ""
           }
         },
@@ -183774,9 +184168,6 @@
           },
           "429": {
             "description": ""
-          },
-          "500": {
-            "description": ""
           }
         },
         "parameters": [
@@ -183889,9 +184280,6 @@
             "description": ""
           },
           "429": {
-            "description": ""
-          },
-          "500": {
             "description": ""
           }
         },
@@ -184016,9 +184404,6 @@
             "description": ""
           },
           "429": {
-            "description": ""
-          },
-          "500": {
             "description": ""
           },
           "502": {
@@ -184193,9 +184578,6 @@
             "description": ""
           },
           "429": {
-            "description": ""
-          },
-          "500": {
             "description": ""
           }
         },
@@ -185009,9 +185391,6 @@
           },
           "429": {
             "description": ""
-          },
-          "500": {
-            "description": ""
           }
         },
         "parameters": [
@@ -185115,9 +185494,6 @@
             "description": ""
           },
           "429": {
-            "description": ""
-          },
-          "500": {
             "description": ""
           }
         },
@@ -185227,9 +185603,6 @@
             "description": ""
           },
           "429": {
-            "description": ""
-          },
-          "500": {
             "description": ""
           }
         },
@@ -204122,6 +204495,12 @@
                               },
                               "projectId": {
                                 "type": "string"
+                              },
+                              "secretsOutdated": {
+                                "type": "boolean",
+                                "enum": [
+                                  true
+                                ]
                               }
                             },
                             "required": [
@@ -204442,6 +204821,12 @@
                               },
                               "projectId": {
                                 "type": "string"
+                              },
+                              "secretsOutdated": {
+                                "type": "boolean",
+                                "enum": [
+                                  true
+                                ]
                               }
                             },
                             "required": [
@@ -204925,6 +205310,12 @@
                               },
                               "projectId": {
                                 "type": "string"
+                              },
+                              "secretsOutdated": {
+                                "type": "boolean",
+                                "enum": [
+                                  true
+                                ]
                               }
                             },
                             "required": [
@@ -208885,6 +209276,9 @@
                           },
                           "type": "array"
                         },
+                        "secretsAppliedAt": {
+                          "type": "number"
+                        },
                         "targets": {
                           "items": {
                             "type": "string",
@@ -211830,7 +212224,7 @@
     },
     "/v1/teams/{teamId}": {
       "delete": {
-        "description": "Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional array of reasons for deletion may also be sent. Enterprise teams can only be deleted in test billing mode and when not linked to an organization.",
+        "description": "Delete a team under your account. You need to send a `DELETE` request with the desired team `id`. An optional array of reasons for deletion may also be sent. Enterprise teams can only be deleted in test billing mode and when not linked to an organization. Enterprise children of an organization cannot be deleted.",
         "operationId": "deleteTeam",
         "security": [
           {
@@ -223820,6 +224214,9 @@
                               "flags": {
                                 "type": "string"
                               },
+                              "groupId": {
+                                "type": "string"
+                              },
                               "osName": {
                                 "type": "string"
                               },
@@ -223839,6 +224236,9 @@
                                 "type": "string"
                               },
                               "route": {
+                                "type": "string"
+                              },
+                              "userId": {
                                 "type": "string"
                               },
                               "utmCampaign": {
@@ -223889,6 +224289,9 @@
                               "flags": {
                                 "type": "string"
                               },
+                              "groupId": {
+                                "type": "string"
+                              },
                               "osName": {
                                 "type": "string"
                               },
@@ -223908,6 +224311,9 @@
                                 "type": "string"
                               },
                               "route": {
+                                "type": "string"
+                              },
+                              "userId": {
                                 "type": "string"
                               },
                               "utmCampaign": {
@@ -223935,6 +224341,7 @@
                               "deviceType",
                               "environment",
                               "flags",
+                              "groupId",
                               "osName",
                               "projectId",
                               "projectName",
@@ -223942,6 +224349,7 @@
                               "requestHostname",
                               "requestPath",
                               "route",
+                              "userId",
                               "utmCampaign",
                               "utmContent",
                               "utmMedium",
@@ -224236,6 +224644,9 @@
                               "flags": {
                                 "type": "string"
                               },
+                              "groupId": {
+                                "type": "string"
+                              },
                               "osName": {
                                 "type": "string"
                               },
@@ -224255,6 +224666,9 @@
                                 "type": "string"
                               },
                               "route": {
+                                "type": "string"
+                              },
+                              "userId": {
                                 "type": "string"
                               },
                               "utmCampaign": {
@@ -224311,6 +224725,9 @@
                               "flags": {
                                 "type": "string"
                               },
+                              "groupId": {
+                                "type": "string"
+                              },
                               "osName": {
                                 "type": "string"
                               },
@@ -224330,6 +224747,9 @@
                                 "type": "string"
                               },
                               "route": {
+                                "type": "string"
+                              },
+                              "userId": {
                                 "type": "string"
                               },
                               "utmCampaign": {
@@ -224359,6 +224779,7 @@
                               "eventData",
                               "eventName",
                               "flags",
+                              "groupId",
                               "osName",
                               "projectId",
                               "projectName",
@@ -224366,6 +224787,7 @@
                               "requestHostname",
                               "requestPath",
                               "route",
+                              "userId",
                               "utmCampaign",
                               "utmContent",
                               "utmMedium",
@@ -224657,6 +225079,9 @@
                             "flags": {
                               "type": "string"
                             },
+                            "groupId": {
+                              "type": "string"
+                            },
                             "osName": {
                               "type": "string"
                             },
@@ -224676,6 +225101,9 @@
                               "type": "string"
                             },
                             "route": {
+                              "type": "string"
+                            },
+                            "userId": {
                               "type": "string"
                             },
                             "utmCampaign": {
@@ -224703,6 +225131,7 @@
                             "deviceType",
                             "environment",
                             "flags",
+                            "groupId",
                             "osName",
                             "projectId",
                             "projectName",
@@ -224710,6 +225139,7 @@
                             "requestHostname",
                             "requestPath",
                             "route",
+                            "userId",
                             "utmCampaign",
                             "utmContent",
                             "utmMedium",
@@ -224920,6 +225350,9 @@
                             "flags": {
                               "type": "string"
                             },
+                            "groupId": {
+                              "type": "string"
+                            },
                             "osName": {
                               "type": "string"
                             },
@@ -224939,6 +225372,9 @@
                               "type": "string"
                             },
                             "route": {
+                              "type": "string"
+                            },
+                            "userId": {
                               "type": "string"
                             },
                             "utmCampaign": {
@@ -224968,6 +225404,7 @@
                             "eventData",
                             "eventName",
                             "flags",
+                            "groupId",
                             "osName",
                             "projectId",
                             "projectName",
@@ -224975,6 +225412,7 @@
                             "requestHostname",
                             "requestPath",
                             "route",
+                            "userId",
                             "utmCampaign",
                             "utmContent",
                             "utmMedium",
@@ -229323,6 +229761,7 @@
                                 "enum": [
                                   "app",
                                   "integration",
+                                  "project",
                                   "system",
                                   "user"
                                 ],
@@ -236874,6 +237313,41 @@
                   "channelId": {
                     "type": "string"
                   },
+                  "environment": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "operationId": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "boardId",
+                  "channelId",
+                  "environment",
+                  "name",
+                  "operationId",
+                  "projectId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "boardId": {
+                    "type": "string"
+                  },
+                  "channelId": {
+                    "type": "string"
+                  },
                   "fields": {
                     "items": {
                       "type": "string"
@@ -244371,6 +244845,9 @@
                   },
                   "drainUrl": {
                     "nullable": true,
+                    "type": "string"
+                  },
+                  "id": {
                     "type": "string"
                   },
                   "integrationName": {
@@ -259751,7 +260228,9 @@
               "messageboard-private-created",
               "messageboard-private-project-granted",
               "messageboard-private-project-revoked",
+              "messageboard-project-channel-created",
               "messageboard-project-granted",
+              "messageboard-project-private-channel-created",
               "messageboard-project-revoked",
               "messageboard-schema-registered",
               "messageboard-visibility-updated",
@@ -259882,9 +260361,13 @@
               "project-git-commit-comments-toggled",
               "project-git-commit-status-toggled",
               "project-git-create-deployments-toggled",
+              "project-git-credential-attestation-created",
+              "project-git-credential-attestation-deleted",
               "project-git-credential-bound-created",
               "project-git-credential-bound-deleted",
               "project-git-credential-bound-updated",
+              "project-git-credential-grant-attestation-revoked",
+              "project-git-credential-grant-attested",
               "project-git-credential-grant-created",
               "project-git-credential-grant-deleted",
               "project-git-credential-grant-updated",
@@ -260706,7 +261189,9 @@
               "messageboard-private-created",
               "messageboard-private-project-granted",
               "messageboard-private-project-revoked",
+              "messageboard-project-channel-created",
               "messageboard-project-granted",
+              "messageboard-project-private-channel-created",
               "messageboard-project-revoked",
               "messageboard-schema-registered",
               "messageboard-visibility-updated",
@@ -260837,9 +261322,13 @@
               "project-git-commit-comments-toggled",
               "project-git-commit-status-toggled",
               "project-git-create-deployments-toggled",
+              "project-git-credential-attestation-created",
+              "project-git-credential-attestation-deleted",
               "project-git-credential-bound-created",
               "project-git-credential-bound-deleted",
               "project-git-credential-bound-updated",
+              "project-git-credential-grant-attestation-revoked",
+              "project-git-credential-grant-attested",
               "project-git-credential-grant-created",
               "project-git-credential-grant-deleted",
               "project-git-credential-grant-updated",
@@ -261449,7 +261938,9 @@
                 "messageboard-private-created",
                 "messageboard-private-project-granted",
                 "messageboard-private-project-revoked",
+                "messageboard-project-channel-created",
                 "messageboard-project-granted",
+                "messageboard-project-private-channel-created",
                 "messageboard-project-revoked",
                 "messageboard-schema-registered",
                 "messageboard-visibility-updated",
@@ -261580,9 +262071,13 @@
                 "project-git-commit-comments-toggled",
                 "project-git-commit-status-toggled",
                 "project-git-create-deployments-toggled",
+                "project-git-credential-attestation-created",
+                "project-git-credential-attestation-deleted",
                 "project-git-credential-bound-created",
                 "project-git-credential-bound-deleted",
                 "project-git-credential-bound-updated",
+                "project-git-credential-grant-attestation-revoked",
+                "project-git-credential-grant-attested",
                 "project-git-credential-grant-created",
                 "project-git-credential-grant-deleted",
                 "project-git-credential-grant-updated",
@@ -263833,18 +264328,18 @@
             "description": "The time when the named sandbox was last updated, in milliseconds since the epoch.",
             "example": 1750344501629
           },
-          "v0": {
-            "type": "boolean",
-            "enum": [
-              false,
-              true
-            ],
-            "description": "Whether this sandbox is managed by v0 on the customer's behalf."
-          },
           "vcpus": {
             "type": "number",
             "description": "Number of virtual CPUs allocated.",
             "example": 2
+          },
+          "workloadType": {
+            "type": "string",
+            "enum": [
+              "sandbox",
+              "v0"
+            ],
+            "description": "The workload type of this sandbox."
           }
         },
         "required": [
@@ -264113,18 +264608,18 @@
             "description": "The last time the sandbox was updated, in milliseconds since the epoch.",
             "example": 1750344501629
           },
-          "v0": {
-            "type": "boolean",
-            "enum": [
-              false,
-              true
-            ],
-            "description": "Whether this sandbox is managed by v0 on the customer's behalf."
-          },
           "vcpus": {
             "type": "number",
             "description": "Number of vCPUs allocated to this sandbox.",
             "example": 2
+          },
+          "workloadType": {
+            "type": "string",
+            "enum": [
+              "sandbox",
+              "v0"
+            ],
+            "description": "The workload type of this sandbox."
           }
         },
         "required": [
@@ -264200,13 +264695,13 @@
             "description": "The last time the drive was updated, in milliseconds since the epoch.",
             "example": 1750344501629
           },
-          "v0": {
-            "type": "boolean",
+          "workloadType": {
+            "type": "string",
             "enum": [
-              false,
-              true
+              "sandbox",
+              "v0"
             ],
-            "description": "Whether this drive is managed by v0 on the customer's behalf."
+            "description": "The workload type of this drive."
           }
         },
         "required": [
@@ -264306,13 +264801,13 @@
             "description": "The last time the snapshot was updated, in milliseconds since the epoch.",
             "example": 1750344501629
           },
-          "v0": {
-            "type": "boolean",
+          "workloadType": {
+            "type": "string",
             "enum": [
-              false,
-              true
+              "sandbox",
+              "v0"
             ],
-            "description": "Whether this snapshot is managed by v0 on the customer's behalf."
+            "description": "The workload type of this snapshot."
           }
         },
         "required": [

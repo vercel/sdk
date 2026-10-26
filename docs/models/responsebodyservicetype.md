@@ -5,7 +5,7 @@ Service kind (Service.type). Omitted for schemas that do not define one.
 ## Example Usage
 
 ```typescript
-import { ResponseBodyServiceType } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson2aliaserror.js";
+import { ResponseBodyServiceType } from "@vercel/sdk/models/getprojectsresponsebodyconfiguredby.js";
 
 let value: ResponseBodyServiceType = "worker";
 ```

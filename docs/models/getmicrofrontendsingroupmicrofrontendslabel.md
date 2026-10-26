@@ -5,7 +5,7 @@ Machine types elastic can assign. Widens when the elastic algorithm adds the 14 
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsLabel } from "@vercel/sdk/models/getmicrofrontendsingroupreadysubstate.js";
+import { GetMicrofrontendsInGroupMicrofrontendsLabel } from "@vercel/sdk/models/getmicrofrontendsingroupplan.js";
 
 let value: GetMicrofrontendsInGroupMicrofrontendsLabel = "turbo";
 ```

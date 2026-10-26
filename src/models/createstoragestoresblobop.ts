@@ -184,6 +184,7 @@ export type CreateStorageStoresBlobProjectsMetadata = {
   makeEnvVarsSensitive?: boolean | undefined;
   name: string;
   projectId: string;
+  secretsOutdated?: true | undefined;
 };
 
 export const CreateStorageStoresBlobStatus = {
@@ -452,6 +453,7 @@ export const CreateStorageStoresBlobProjectsMetadata$inboundSchema: z.ZodType<
   makeEnvVarsSensitive: types.optional(types.boolean()),
   name: types.string(),
   projectId: types.string(),
+  secretsOutdated: types.optional(types.literal(true)),
 });
 
 export function createStorageStoresBlobProjectsMetadataFromJSON(

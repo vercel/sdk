@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadPassport } from "@vercel/sdk/models/usereventpayload256next.js";
+import { UserEventPayloadPassport } from "@vercel/sdk/models/usereventpayload257next.js";
 
 let value: UserEventPayloadPassport = {
   connectorId: "<id>",
@@ -16,4 +16,4 @@ let value: UserEventPayloadPassport = {
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `connectorId`                                                                              | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `deploymentType`                                                                           | [models.UserEventPayload257DeploymentType](../models/usereventpayload257deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `deploymentType`                                                                           | [models.UserEventPayload258DeploymentType](../models/usereventpayload258deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

@@ -10,7 +10,13 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type GetRuntimeLogsRequest = {
+  /**
+   * The ID or name of the project containing the deployment.
+   */
   projectId: string;
+  /**
+   * The ID or hostname of the deployment.
+   */
   deploymentId: string;
   /**
    * The Team identifier to perform the request on behalf of.

@@ -5,7 +5,7 @@ Machine types elastic can assign. Widens when the elastic algorithm adds the 14 
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarLabel } from "@vercel/sdk/models/deleteprojectavatarreadysubstate.js";
+import { DeleteProjectAvatarLabel } from "@vercel/sdk/models/deleteprojectavatarplan.js";
 
 let value: DeleteProjectAvatarLabel = "standard";
 ```

@@ -5,11 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyOne } from "@vercel/sdk/models/usereventjobpayload124nsnbsideeffect.js";
+import { OneHundredAndFortyOne } from "@vercel/sdk/models/usereventjobpayload125nsnbsideeffect.js";
 
 let value: OneHundredAndFortyOne = {
-  domainId: "<id>",
   name: "<value>",
+  ownerName: "<value>",
+  teamId: "<id>",
+  userId: "<id>",
 };
 ```
 
@@ -17,5 +19,7 @@ let value: OneHundredAndFortyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `domainId`         | *string*           | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `ownerName`        | *string*           | :heavy_check_mark: | N/A                |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `userId`           | *string*           | :heavy_check_mark: | N/A                |

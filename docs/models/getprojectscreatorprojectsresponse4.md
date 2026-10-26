@@ -3,15 +3,20 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsCreatorProjectsResponse4 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3checksconclusion.js";
+import { GetProjectsCreatorProjectsResponse4 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjson3branchmatcher.js";
 
 let value: GetProjectsCreatorProjectsResponse4 = {
-  type: "system",
+  integration: {
+    configurationId: "<id>",
+    integrationId: "<id>",
+  },
+  type: "integration",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"system"*         | :heavy_check_mark: | N/A                |
+| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `integration`                                                                                                      | [models.GetProjectsCreatorProjectsResponseIntegration](../models/getprojectscreatorprojectsresponseintegration.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `type`                                                                                                             | *"integration"*                                                                                                    | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

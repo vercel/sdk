@@ -90,6 +90,7 @@ export type CountPageviewsData1 = {
   deviceType: string;
   environment: string;
   flags: string;
+  groupId: string;
   osName: string;
   projectId: string;
   projectName: string;
@@ -97,6 +98,7 @@ export type CountPageviewsData1 = {
   requestHostname: string;
   requestPath: string;
   route: string;
+  userId: string;
   utmCampaign: string;
   utmContent: string;
   utmMedium: string;
@@ -224,6 +226,7 @@ export const CountPageviewsData1$inboundSchema: z.ZodType<
     deviceType: types.string(),
     environment: types.string(),
     flags: types.string(),
+    groupId: types.string(),
     osName: types.string(),
     projectId: types.string(),
     projectName: types.string(),
@@ -231,6 +234,7 @@ export const CountPageviewsData1$inboundSchema: z.ZodType<
     requestHostname: types.string(),
     requestPath: types.string(),
     route: types.string(),
+    userId: types.string(),
     utmCampaign: types.string(),
     utmContent: types.string(),
     utmMedium: types.string(),

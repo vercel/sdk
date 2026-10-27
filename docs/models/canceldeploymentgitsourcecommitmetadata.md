@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentGitSourceCommitMetadata } from "@vercel/sdk/models/readystate.js";
+import { CancelDeploymentGitSourceCommitMetadata } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: CancelDeploymentGitSourceCommitMetadata = {
   author: {

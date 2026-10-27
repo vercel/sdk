@@ -912,6 +912,10 @@ export type UpdateMicrofrontendsPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  emaSetup?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   endpointVerification?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -2895,6 +2899,13 @@ export type UpdateMicrofrontendsUsageStatus = {
   throttled?: boolean | undefined;
 };
 
+export type UpdateMicrofrontendsVercelFlags = {
+  /**
+   * When Flags were enabled for the project, taken from the Flags settings row's `createdAt`. Recorded by `@api/api-feature-flags` on flags sync.
+   */
+  enabledAt?: number | undefined;
+};
+
 export type UpdateMicrofrontendsWebAnalytics = {
   canceledAt?: number | undefined;
   disabledAt?: number | undefined;
@@ -3050,6 +3061,7 @@ export type UpdateMicrofrontendsResponseBody = {
   usageStatus?: UpdateMicrofrontendsUsageStatus | undefined;
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
+  vercelFlags?: UpdateMicrofrontendsVercelFlags | undefined;
   webAnalytics?: UpdateMicrofrontendsWebAnalytics | undefined;
 };
 
@@ -3984,6 +3996,7 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigSchema: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigToken: types.optional(z.array(ACLAction$inboundSchema)),
+  emaSetup: types.optional(z.array(ACLAction$inboundSchema)),
   endpointVerification: types.optional(z.array(ACLAction$inboundSchema)),
   environments: types.optional(z.array(ACLAction$inboundSchema)),
   event: types.optional(z.array(ACLAction$inboundSchema)),
@@ -5963,6 +5976,25 @@ export function updateMicrofrontendsUsageStatusFromJSON(
 }
 
 /** @internal */
+export const UpdateMicrofrontendsVercelFlags$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function updateMicrofrontendsVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsWebAnalytics$inboundSchema: z.ZodType<
   UpdateMicrofrontendsWebAnalytics,
   z.ZodTypeDef,
@@ -6176,6 +6208,9 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   ),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
+  vercelFlags: types.optional(
+    z.lazy(() => UpdateMicrofrontendsVercelFlags$inboundSchema),
+  ),
   webAnalytics: types.optional(
     z.lazy(() => UpdateMicrofrontendsWebAnalytics$inboundSchema),
   ),

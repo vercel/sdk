@@ -905,6 +905,10 @@ export type UploadProjectAvatarPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  emaSetup?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   endpointVerification?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -2888,6 +2892,13 @@ export type UploadProjectAvatarUsageStatus = {
   throttled?: boolean | undefined;
 };
 
+export type UploadProjectAvatarVercelFlags = {
+  /**
+   * When Flags were enabled for the project, taken from the Flags settings row's `createdAt`. Recorded by `@api/api-feature-flags` on flags sync.
+   */
+  enabledAt?: number | undefined;
+};
+
 export type UploadProjectAvatarWebAnalytics = {
   canceledAt?: number | undefined;
   disabledAt?: number | undefined;
@@ -3035,6 +3046,7 @@ export type UploadProjectAvatarResponseBody = {
   usageStatus?: UploadProjectAvatarUsageStatus | undefined;
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
+  vercelFlags?: UploadProjectAvatarVercelFlags | undefined;
   webAnalytics?: UploadProjectAvatarWebAnalytics | undefined;
 };
 
@@ -3959,6 +3971,7 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigSchema: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigToken: types.optional(z.array(ACLAction$inboundSchema)),
+  emaSetup: types.optional(z.array(ACLAction$inboundSchema)),
   endpointVerification: types.optional(z.array(ACLAction$inboundSchema)),
   environments: types.optional(z.array(ACLAction$inboundSchema)),
   event: types.optional(z.array(ACLAction$inboundSchema)),
@@ -5911,6 +5924,25 @@ export function uploadProjectAvatarUsageStatusFromJSON(
 }
 
 /** @internal */
+export const UploadProjectAvatarVercelFlags$inboundSchema: z.ZodType<
+  UploadProjectAvatarVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function uploadProjectAvatarVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const UploadProjectAvatarWebAnalytics$inboundSchema: z.ZodType<
   UploadProjectAvatarWebAnalytics,
   z.ZodTypeDef,
@@ -6121,6 +6153,9 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
   ),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
+  vercelFlags: types.optional(
+    z.lazy(() => UploadProjectAvatarVercelFlags$inboundSchema),
+  ),
   webAnalytics: types.optional(
     z.lazy(() => UploadProjectAvatarWebAnalytics$inboundSchema),
   ),

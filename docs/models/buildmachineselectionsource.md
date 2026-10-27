@@ -5,7 +5,7 @@ The setting which selected the build machine when the deployment was created. Fr
 ## Example Usage
 
 ```typescript
-import { BuildMachineSelectionSource } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse2.js";
+import { BuildMachineSelectionSource } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicesvalue.js";
 
 let value: BuildMachineSelectionSource = "elastic-algorithm";
 ```

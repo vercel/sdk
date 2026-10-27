@@ -919,6 +919,10 @@ export type GetProjectPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  emaSetup?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   endpointVerification?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -2858,6 +2862,13 @@ export type GetProjectUsageStatus = {
   throttled?: boolean | undefined;
 };
 
+export type GetProjectVercelFlags = {
+  /**
+   * When Flags were enabled for the project, taken from the Flags settings row's `createdAt`. Recorded by `@api/api-feature-flags` on flags sync.
+   */
+  enabledAt?: number | undefined;
+};
+
 export type GetProjectWebAnalytics = {
   canceledAt?: number | undefined;
   disabledAt?: number | undefined;
@@ -3003,6 +3014,7 @@ export type GetProjectResponseBody = {
   usageStatus?: GetProjectUsageStatus | undefined;
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
+  vercelFlags?: GetProjectVercelFlags | undefined;
   webAnalytics?: GetProjectWebAnalytics | undefined;
 };
 
@@ -3946,6 +3958,7 @@ export const GetProjectPermissions$inboundSchema: z.ZodType<
   edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigSchema: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigToken: types.optional(z.array(ACLAction$inboundSchema)),
+  emaSetup: types.optional(z.array(ACLAction$inboundSchema)),
   endpointVerification: types.optional(z.array(ACLAction$inboundSchema)),
   environments: types.optional(z.array(ACLAction$inboundSchema)),
   event: types.optional(z.array(ACLAction$inboundSchema)),
@@ -5830,6 +5843,25 @@ export function getProjectUsageStatusFromJSON(
 }
 
 /** @internal */
+export const GetProjectVercelFlags$inboundSchema: z.ZodType<
+  GetProjectVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function getProjectVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectWebAnalytics$inboundSchema: z.ZodType<
   GetProjectWebAnalytics,
   z.ZodTypeDef,
@@ -6025,6 +6057,9 @@ export const GetProjectResponseBody$inboundSchema: z.ZodType<
   ),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
+  vercelFlags: types.optional(
+    z.lazy(() => GetProjectVercelFlags$inboundSchema),
+  ),
   webAnalytics: types.optional(
     z.lazy(() => GetProjectWebAnalytics$inboundSchema),
   ),

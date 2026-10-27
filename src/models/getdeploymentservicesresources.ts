@@ -899,6 +899,13 @@ export type GetDeploymentResponseBodySpeedInsights = {
   paidAt?: number | undefined;
 };
 
+/**
+ * Vercel Flags activation metadata copied from the project at deployment creation.
+ */
+export type GetDeploymentResponseBodyVercelFlags = {
+  enabledAt?: number | undefined;
+};
+
 export type GetDeploymentResponseBodyWebAnalytics = {
   canceledAt?: number | undefined;
   disabledAt?: number | undefined;
@@ -916,6 +923,10 @@ export type ResponseBodyProjectSettings = {
   nodeVersion?: GetDeploymentResponseBodyDeploymentsNodeVersion | undefined;
   outputDirectory?: string | null | undefined;
   speedInsights?: GetDeploymentResponseBodySpeedInsights | undefined;
+  /**
+   * Vercel Flags activation metadata copied from the project at deployment creation.
+   */
+  vercelFlags?: GetDeploymentResponseBodyVercelFlags | undefined;
   webAnalytics?: GetDeploymentResponseBodyWebAnalytics | undefined;
 };
 
@@ -1655,32 +1666,6 @@ export type GetDeploymentServicesRequests = {
 
 export type GetDeploymentServicesResources = {
   requests: GetDeploymentServicesRequests;
-};
-
-/**
- * Set when this build produces the named daemon.
- */
-export type GetDeploymentServicesDeploymentsDaemon = {
-  /**
-   * Bindings to services in the same deployment.
-   */
-  bindings?:
-    | Array<GetDeploymentServicesDeploymentsResponseBindings>
-    | undefined;
-  command?: Array<string> | undefined;
-  entrypoint: string;
-  /**
-   * Instance counts by region.
-   */
-  instances?: { [k: string]: number } | undefined;
-  /**
-   * Instance counts by region.
-   */
-  replicas?: { [k: string]: number } | undefined;
-  resources?: GetDeploymentServicesResources | undefined;
-  root: string;
-  terminationGracePeriodSeconds?: number | undefined;
-  name: string;
 };
 
 /** @internal */
@@ -3116,6 +3101,26 @@ export function getDeploymentResponseBodySpeedInsightsFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentResponseBodyVercelFlags$inboundSchema: z.ZodType<
+  GetDeploymentResponseBodyVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function getDeploymentResponseBodyVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentResponseBodyVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentResponseBodyVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentResponseBodyVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentResponseBodyWebAnalytics$inboundSchema: z.ZodType<
   GetDeploymentResponseBodyWebAnalytics,
   z.ZodTypeDef,
@@ -3157,6 +3162,9 @@ export const ResponseBodyProjectSettings$inboundSchema: z.ZodType<
   outputDirectory: z.nullable(types.string()).optional(),
   speedInsights: types.optional(
     z.lazy(() => GetDeploymentResponseBodySpeedInsights$inboundSchema),
+  ),
+  vercelFlags: types.optional(
+    z.lazy(() => GetDeploymentResponseBodyVercelFlags$inboundSchema),
   ),
   webAnalytics: types.optional(
     z.lazy(() => GetDeploymentResponseBodyWebAnalytics$inboundSchema),
@@ -4396,39 +4404,5 @@ export function getDeploymentServicesResourcesFromJSON(
     jsonString,
     (x) => GetDeploymentServicesResources$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetDeploymentServicesResources' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentServicesDeploymentsDaemon$inboundSchema: z.ZodType<
-  GetDeploymentServicesDeploymentsDaemon,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  bindings: types.optional(
-    z.array(z.lazy(() =>
-      GetDeploymentServicesDeploymentsResponseBindings$inboundSchema
-    )),
-  ),
-  command: types.optional(z.array(types.string())),
-  entrypoint: types.string(),
-  instances: types.optional(z.record(types.number())),
-  replicas: types.optional(z.record(types.number())),
-  resources: types.optional(
-    z.lazy(() => GetDeploymentServicesResources$inboundSchema),
-  ),
-  root: types.string(),
-  terminationGracePeriodSeconds: types.optional(types.number()),
-  name: types.string(),
-});
-
-export function getDeploymentServicesDeploymentsDaemonFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentServicesDeploymentsDaemon, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDeploymentServicesDeploymentsDaemon$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentServicesDeploymentsDaemon' from JSON`,
   );
 }

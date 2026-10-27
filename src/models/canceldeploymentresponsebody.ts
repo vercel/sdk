@@ -11,12 +11,16 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   Bindings,
   Bindings$inboundSchema,
-  CancelDeploymentHasDeploymentsResponse2,
-  CancelDeploymentHasDeploymentsResponse2$inboundSchema,
+  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType,
+  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType$inboundSchema,
+  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue,
+  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue$inboundSchema,
   CancelDeploymentResourceConfig,
   CancelDeploymentResourceConfig$inboundSchema,
   CancelDeploymentRoutes,
   CancelDeploymentRoutes$inboundSchema,
+  ReadyState,
+  ReadyState$inboundSchema,
   ReadySubstate,
   ReadySubstate$inboundSchema,
   SeatBlock,
@@ -31,7 +35,7 @@ import {
   ServicesHeaders$inboundSchema,
   ServicesRedirects,
   ServicesRedirects$inboundSchema,
-} from "./canceldeploymenthasdeploymentsresponse2.js";
+} from "./canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicesvalue.js";
 import {
   AliasAssignedAt,
   AliasAssignedAt$inboundSchema,
@@ -95,10 +99,17 @@ import {
   OomReport$inboundSchema,
   Platform,
   Platform$inboundSchema,
-  ReadyState,
-  ReadyState$inboundSchema,
-} from "./readystate.js";
+} from "./canceldeploymentprojectsettings.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CancelDeploymentHasDeploymentsResponse2 = {
+  key: string;
+  type:
+    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType;
+  value?:
+    | CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue
+    | undefined;
+};
 
 export type CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesEq =
   | string
@@ -905,7 +916,7 @@ export const MiddlewareRuntime = {
  */
 export type MiddlewareRuntime = ClosedEnum<typeof MiddlewareRuntime>;
 
-export type VercelFlags = {
+export type ServicesVercelFlags = {
   enabledAt?: number | undefined;
 };
 
@@ -924,7 +935,7 @@ export type ServicesProjectSettings = {
   outputDirectory?: string | null | undefined;
   rootDirectory?: string | null | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
-  vercelFlags?: VercelFlags | undefined;
+  vercelFlags?: ServicesVercelFlags | undefined;
 };
 
 export type Entrypoints = {
@@ -1341,6 +1352,36 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
+export const CancelDeploymentHasDeploymentsResponse2$inboundSchema: z.ZodType<
+  CancelDeploymentHasDeploymentsResponse2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.string(),
+  type:
+    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType$inboundSchema,
+  value: types.optional(
+    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue$inboundSchema,
+  ),
+});
+
+export function cancelDeploymentHasDeploymentsResponse2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentHasDeploymentsResponse2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentHasDeploymentsResponse2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CancelDeploymentHasDeploymentsResponse2' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesEq$inboundSchema:
   z.ZodType<
     CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesEq,
@@ -1464,13 +1505,13 @@ export const CancelDeploymentServicesDeploymentsHas$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   z.lazy(() => CancelDeploymentHasDeploymentsResponse1$inboundSchema),
-  CancelDeploymentHasDeploymentsResponse2$inboundSchema.and(
+  z.lazy(() => CancelDeploymentHasDeploymentsResponse2$inboundSchema).and(
     z.object({ type: z.literal("cookie") }),
   ),
-  CancelDeploymentHasDeploymentsResponse2$inboundSchema.and(
+  z.lazy(() => CancelDeploymentHasDeploymentsResponse2$inboundSchema).and(
     z.object({ type: z.literal("header") }),
   ),
-  CancelDeploymentHasDeploymentsResponse2$inboundSchema.and(
+  z.lazy(() => CancelDeploymentHasDeploymentsResponse2$inboundSchema).and(
     z.object({ type: z.literal("query") }),
   ),
 ]);
@@ -1805,13 +1846,13 @@ export const Rewrites$inboundSchema: z.ZodType<
   has: types.optional(
     z.array(z.union([
       z.lazy(() => CancelDeploymentHasDeploymentsResponse1$inboundSchema),
-      CancelDeploymentHasDeploymentsResponse2$inboundSchema.and(
-        z.object({ type: z.literal("cookie") }),
-      ),
-      CancelDeploymentHasDeploymentsResponse2$inboundSchema.and(
+      z.lazy(() =>
+        CancelDeploymentHasDeploymentsResponse2$inboundSchema
+      ).and(z.object({ type: z.literal("cookie") })),
+      z.lazy(() => CancelDeploymentHasDeploymentsResponse2$inboundSchema).and(
         z.object({ type: z.literal("header") }),
       ),
-      CancelDeploymentHasDeploymentsResponse2$inboundSchema.and(
+      z.lazy(() => CancelDeploymentHasDeploymentsResponse2$inboundSchema).and(
         z.object({ type: z.literal("query") }),
       ),
     ])),
@@ -3254,21 +3295,21 @@ export const MiddlewareRuntime$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(MiddlewareRuntime);
 
 /** @internal */
-export const VercelFlags$inboundSchema: z.ZodType<
-  VercelFlags,
+export const ServicesVercelFlags$inboundSchema: z.ZodType<
+  ServicesVercelFlags,
   z.ZodTypeDef,
   unknown
 > = z.object({
   enabledAt: types.optional(types.number()),
 });
 
-export function vercelFlagsFromJSON(
+export function servicesVercelFlagsFromJSON(
   jsonString: string,
-): SafeParseResult<VercelFlags, SDKValidationError> {
+): SafeParseResult<ServicesVercelFlags, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => VercelFlags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'VercelFlags' from JSON`,
+    (x) => ServicesVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesVercelFlags' from JSON`,
   );
 }
 
@@ -3292,7 +3333,7 @@ export const ServicesProjectSettings$inboundSchema: z.ZodType<
   outputDirectory: z.nullable(types.string()).optional(),
   rootDirectory: z.nullable(types.string()).optional(),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
-  vercelFlags: types.optional(z.lazy(() => VercelFlags$inboundSchema)),
+  vercelFlags: types.optional(z.lazy(() => ServicesVercelFlags$inboundSchema)),
 });
 
 export function servicesProjectSettingsFromJSON(

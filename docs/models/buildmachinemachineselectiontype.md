@@ -5,7 +5,7 @@ The build ran on a fixed machine. Drives billing.
 ## Example Usage
 
 ```typescript
-import { BuildMachineMachineSelectionType } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse2.js";
+import { BuildMachineMachineSelectionType } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicesvalue.js";
 
 let value: BuildMachineMachineSelectionType = "fixed";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GitRepo1 } from "@vercel/sdk/models/readystate.js";
+import { GitRepo1 } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: GitRepo1 = {
   defaultBranch: "<value>",

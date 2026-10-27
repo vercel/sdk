@@ -41,6 +41,7 @@ export type CurrentRoute = {
   name?: string | undefined;
   description?: string | undefined;
   pathCondition: PathCondition;
+  caseSensitive?: boolean | undefined;
   conditions?: Array<GenerateRouteConditions> | undefined;
   actions: Array<Actions>;
 };
@@ -137,6 +138,7 @@ export type GenerateRoutePathCondition = {
 
 export type GenerateRouteRoute = {
   actions: Array<GenerateRouteActions>;
+  caseSensitive?: boolean | undefined;
   conditions?: Array<GenerateRouteProjectRoutesConditions> | undefined;
   description: string;
   name: string;
@@ -256,6 +258,7 @@ export type CurrentRoute$Outbound = {
   name?: string | undefined;
   description?: string | undefined;
   pathCondition: PathCondition$Outbound;
+  caseSensitive?: boolean | undefined;
   conditions?: Array<GenerateRouteConditions$Outbound> | undefined;
   actions: Array<Actions$Outbound>;
 };
@@ -269,6 +272,7 @@ export const CurrentRoute$outboundSchema: z.ZodType<
   name: z.string().optional(),
   description: z.string().optional(),
   pathCondition: z.lazy(() => PathCondition$outboundSchema),
+  caseSensitive: z.boolean().optional(),
   conditions: z.array(z.lazy(() => GenerateRouteConditions$outboundSchema))
     .optional(),
   actions: z.array(z.lazy(() => Actions$outboundSchema)),
@@ -458,6 +462,7 @@ export const GenerateRouteRoute$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   actions: z.array(z.lazy(() => GenerateRouteActions$inboundSchema)),
+  caseSensitive: types.optional(types.boolean()),
   conditions: types.optional(
     z.array(z.lazy(() => GenerateRouteProjectRoutesConditions$inboundSchema)),
   ),

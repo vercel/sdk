@@ -1003,6 +1003,10 @@ export type ResponseBodyPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  emaSetup?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   endpointVerification?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -3073,6 +3077,13 @@ export type ResponseBodyUsageStatus = {
   throttled?: boolean | undefined;
 };
 
+export type GetProjectsResponseBodyVercelFlags = {
+  /**
+   * When Flags were enabled for the project, taken from the Flags settings row's `createdAt`. Recorded by `@api/api-feature-flags` on flags sync.
+   */
+  enabledAt?: number | undefined;
+};
+
 export type GetProjectsResponseBodyProjectsWebAnalytics = {
   canceledAt?: number | undefined;
   disabledAt?: number | undefined;
@@ -3240,6 +3251,7 @@ export type GetProjectsResponseBodyProjects = {
   usageStatus?: ResponseBodyUsageStatus | undefined;
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
+  vercelFlags?: GetProjectsResponseBodyVercelFlags | undefined;
   webAnalytics?: GetProjectsResponseBodyProjectsWebAnalytics | undefined;
 };
 
@@ -3263,16 +3275,6 @@ export type Pagination1 = {
 };
 
 export type GetProjectsResponseBodyPagination = Pagination | Pagination1;
-
-export const GetProjectsResponseBodyConfiguredBy = {
-  A: "A",
-  Cname: "CNAME",
-  Dns01: "dns-01",
-  Http: "http",
-} as const;
-export type GetProjectsResponseBodyConfiguredBy = ClosedEnum<
-  typeof GetProjectsResponseBodyConfiguredBy
->;
 
 /** @internal */
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson3Builds$inboundSchema:
@@ -4387,6 +4389,7 @@ export const ResponseBodyPermissions$inboundSchema: z.ZodType<
   edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigSchema: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigToken: types.optional(z.array(ACLAction$inboundSchema)),
+  emaSetup: types.optional(z.array(ACLAction$inboundSchema)),
   endpointVerification: types.optional(z.array(ACLAction$inboundSchema)),
   environments: types.optional(z.array(ACLAction$inboundSchema)),
   event: types.optional(z.array(ACLAction$inboundSchema)),
@@ -6611,6 +6614,26 @@ export function responseBodyUsageStatusFromJSON(
 }
 
 /** @internal */
+export const GetProjectsResponseBodyVercelFlags$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function getProjectsResponseBodyVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsResponseBodyVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsResponseBodyVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsResponseBodyProjectsWebAnalytics$inboundSchema:
   z.ZodType<
     GetProjectsResponseBodyProjectsWebAnalytics,
@@ -6836,6 +6859,9 @@ export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
   ),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
+  vercelFlags: types.optional(
+    z.lazy(() => GetProjectsResponseBodyVercelFlags$inboundSchema),
+  ),
   webAnalytics: types.optional(
     z.lazy(() => GetProjectsResponseBodyProjectsWebAnalytics$inboundSchema),
   ),
@@ -6912,8 +6938,3 @@ export function getProjectsResponseBodyPaginationFromJSON(
     `Failed to parse 'GetProjectsResponseBodyPagination' from JSON`,
   );
 }
-
-/** @internal */
-export const GetProjectsResponseBodyConfiguredBy$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsResponseBodyConfiguredBy
-> = z.nativeEnum(GetProjectsResponseBodyConfiguredBy);

@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * List issuers
  *
  * @remarks
- * Retrieve the list of KMS issuers that belong to the authenticated team. The results are paginated.
+ * Retrieve the paginated KMS issuers that belong to the authenticated team or organization (`orgId`).
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

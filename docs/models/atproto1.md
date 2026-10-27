@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Atproto1 } from "@vercel/sdk/models/readystate.js";
+import { Atproto1 } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: Atproto1 = {
   enabled: false,

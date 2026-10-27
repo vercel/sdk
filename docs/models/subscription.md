@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Subscription } from "@vercel/sdk/models/readystate.js";
+import { Subscription } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: Subscription = {
   collections: [],

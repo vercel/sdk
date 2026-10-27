@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentProjectSettings } from "@vercel/sdk/models/readystate.js";
+import { CancelDeploymentProjectSettings } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: CancelDeploymentProjectSettings = {};
 ```
@@ -20,4 +20,5 @@ let value: CancelDeploymentProjectSettings = {};
 | `nodeVersion`                                                                                        | [models.CancelDeploymentDeploymentsNodeVersion](../models/canceldeploymentdeploymentsnodeversion.md) | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `outputDirectory`                                                                                    | *string*                                                                                             | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
 | `speedInsights`                                                                                      | [models.CancelDeploymentSpeedInsights](../models/canceldeploymentspeedinsights.md)                   | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |
+| `vercelFlags`                                                                                        | [models.CancelDeploymentVercelFlags](../models/canceldeploymentvercelflags.md)                       | :heavy_minus_sign:                                                                                   | Vercel Flags activation metadata copied from the project at deployment creation.                     |
 | `webAnalytics`                                                                                       | [models.CancelDeploymentWebAnalytics](../models/canceldeploymentwebanalytics.md)                     | :heavy_minus_sign:                                                                                   | N/A                                                                                                  |

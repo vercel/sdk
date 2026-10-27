@@ -103,7 +103,7 @@ export class Kms extends ClientSDK {
    * List issuers
    *
    * @remarks
-   * Retrieve the list of KMS issuers that belong to the authenticated team. The results are paginated.
+   * Retrieve the paginated KMS issuers that belong to the authenticated team or organization (`orgId`).
    */
   async listKmsIssuers(
     request: ListKmsIssuersRequest,
@@ -120,7 +120,7 @@ export class Kms extends ClientSDK {
    * Create an issuer
    *
    * @remarks
-   * Create a new KMS issuer for the authenticated team. An issuer owns the asymmetric signing keys that are used to sign tokens and messages.
+   * Create a new KMS issuer for the authenticated team, or for the team or organization identified by a Connect policy token. An issuer owns the asymmetric signing keys used to sign tokens and messages.
    */
   async createKmsIssuer(
     request: CreateKmsIssuerRequest,
@@ -188,7 +188,7 @@ export class Kms extends ClientSDK {
    * Get an issuer
    *
    * @remarks
-   * Retrieve a single KMS issuer by its ID. Accepts either a team bearer token (existing path) or an OIDC token authorized by one of the issuer's policies (e.g. a connex-grant token). The OIDC path returns the issuer without policies, since a policy token only proves signing access, not management access.
+   * Retrieve a single KMS issuer by its ID. Accepts a team or organization bearer token, or an OIDC token authorized by one of the issuer's policies (e.g. a connex-grant token). The OIDC path returns the issuer without policies, since a policy token only proves signing access, not management access.
    */
   async getKmsIssuer(
     request: GetKmsIssuerRequest,

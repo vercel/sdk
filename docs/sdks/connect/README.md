@@ -900,5 +900,4 @@ run();
 | Error Type              | Status Code             | Content Type            |
 | ----------------------- | ----------------------- | ----------------------- |
 | models.ConnectError     | 400, 401, 403, 404, 410 | application/json        |
-| models.ConnectError     | 500                     | application/json        |
 | models.SDKError         | 4XX, 5XX                | \*/\*                   |

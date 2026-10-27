@@ -5,7 +5,7 @@ Generated value shape, must be `"url"`.
 ## Example Usage
 
 ```typescript
-import { Format } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse2.js";
+import { Format } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicesvalue.js";
 
 let value: Format = "url";
 ```

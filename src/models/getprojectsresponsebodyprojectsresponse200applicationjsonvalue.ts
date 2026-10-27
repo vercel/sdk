@@ -9,11 +9,17 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
-import {
-  GetProjectsResponseBodyConfiguredBy,
-  GetProjectsResponseBodyConfiguredBy$inboundSchema,
-} from "./getprojectsresponsebodyconfiguredby.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsResponseBodyConfiguredBy = {
+  A: "A",
+  Cname: "CNAME",
+  Dns01: "dns-01",
+  Http: "http",
+} as const;
+export type GetProjectsResponseBodyConfiguredBy = ClosedEnum<
+  typeof GetProjectsResponseBodyConfiguredBy
+>;
 
 export type GetProjectsResponseBodyProjectsResponse200ApplicationJson2AliasAssigned =
   | number
@@ -1748,15 +1754,10 @@ export type GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue =
   | string
   | GetProjectsValueProjectsResponse200ApplicationJSONResponseBody2;
 
-export type ResponseBodyResponseHas = {
-  key?: string | undefined;
-  type:
-    GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesResponseHasType;
-  value?:
-    | string
-    | GetProjectsValueProjectsResponse200ApplicationJSONResponseBody2
-    | undefined;
-};
+/** @internal */
+export const GetProjectsResponseBodyConfiguredBy$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyConfiguredBy
+> = z.nativeEnum(GetProjectsResponseBodyConfiguredBy);
 
 /** @internal */
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2AliasAssigned$inboundSchema:
@@ -4927,34 +4928,5 @@ export function getProjectsResponseBodyProjectsResponse200ApplicationJSONValueFr
       GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue$inboundSchema
         .parse(JSON.parse(x)),
     `Failed to parse 'GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const ResponseBodyResponseHas$inboundSchema: z.ZodType<
-  ResponseBodyResponseHas,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.optional(types.string()),
-  type:
-    GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesResponseHasType$inboundSchema,
-  value: types.optional(
-    smartUnion([
-      types.string(),
-      z.lazy(() =>
-        GetProjectsValueProjectsResponse200ApplicationJSONResponseBody2$inboundSchema
-      ),
-    ]),
-  ),
-});
-
-export function responseBodyResponseHasFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyResponseHas, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyResponseHas$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyResponseHas' from JSON`,
   );
 }

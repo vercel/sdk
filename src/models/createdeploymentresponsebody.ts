@@ -77,8 +77,6 @@ import {
   CreateDeploymentServicesFunctions$inboundSchema,
   CreateDeploymentServicesHas,
   CreateDeploymentServicesHas$inboundSchema,
-  CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq,
-  CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq$inboundSchema,
   ResponseBodyImages,
   ResponseBodyImages$inboundSchema,
   ResponseBodyIntegrations,
@@ -97,14 +95,16 @@ import {
   ResponseBodySeatBlock$inboundSchema,
   ServicesBindings,
   ServicesBindings$inboundSchema,
-} from "./createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2eq.js";
+} from "./createdeploymentmissingdeployments2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq =
+  | string
+  | number;
 
 export type CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody22 =
   {
-    eq?:
-      | CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq
-      | undefined;
+    eq?: string | number | undefined;
     gt?: number | undefined;
     gte?: number | undefined;
     inc?: Array<string> | undefined;
@@ -1831,15 +1831,36 @@ export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody1;
 
 /** @internal */
+export const CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq$inboundSchema:
+  z.ZodType<
+    CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([types.string(), types.number()]);
+
+export function createDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2EqFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody22$inboundSchema:
   z.ZodType<
     CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody22,
     z.ZodTypeDef,
     unknown
   > = z.object({
-    eq: types.optional(
-      CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq$inboundSchema,
-    ),
+    eq: types.optional(smartUnion([types.string(), types.number()])),
     gt: types.optional(types.number()),
     gte: types.optional(types.number()),
     inc: types.optional(z.array(types.string())),

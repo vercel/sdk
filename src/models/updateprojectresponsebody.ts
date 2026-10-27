@@ -810,6 +810,13 @@ export type UpdateProjectUsageStatus = {
   throttled?: boolean | undefined;
 };
 
+export type UpdateProjectVercelFlags = {
+  /**
+   * When Flags were enabled for the project, taken from the Flags settings row's `createdAt`. Recorded by `@api/api-feature-flags` on flags sync.
+   */
+  enabledAt?: number | undefined;
+};
+
 export type UpdateProjectWebAnalytics = {
   canceledAt?: number | undefined;
   disabledAt?: number | undefined;
@@ -946,6 +953,7 @@ export type UpdateProjectResponseBody = {
   usageStatus?: UpdateProjectUsageStatus | undefined;
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
+  vercelFlags?: UpdateProjectVercelFlags | undefined;
   webAnalytics?: UpdateProjectWebAnalytics | undefined;
 };
 
@@ -2015,6 +2023,25 @@ export function updateProjectUsageStatusFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectVercelFlags$inboundSchema: z.ZodType<
+  UpdateProjectVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function updateProjectVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectWebAnalytics$inboundSchema: z.ZodType<
   UpdateProjectWebAnalytics,
   z.ZodTypeDef,
@@ -2186,6 +2213,9 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   ),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
+  vercelFlags: types.optional(
+    z.lazy(() => UpdateProjectVercelFlags$inboundSchema),
+  ),
   webAnalytics: types.optional(
     z.lazy(() => UpdateProjectWebAnalytics$inboundSchema),
   ),

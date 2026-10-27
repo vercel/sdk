@@ -5,7 +5,7 @@ Vercel user linked to the git provider account (only set if resolved)
 ## Example Usage
 
 ```typescript
-import { VercelUser } from "@vercel/sdk/models/readystate.js";
+import { VercelUser } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: VercelUser = {
   id: "<id>",

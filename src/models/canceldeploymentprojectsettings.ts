@@ -1624,6 +1624,13 @@ export type CancelDeploymentSpeedInsights = {
   paidAt?: number | undefined;
 };
 
+/**
+ * Vercel Flags activation metadata copied from the project at deployment creation.
+ */
+export type CancelDeploymentVercelFlags = {
+  enabledAt?: number | undefined;
+};
+
 export type CancelDeploymentWebAnalytics = {
   canceledAt?: number | undefined;
   disabledAt?: number | undefined;
@@ -1641,25 +1648,12 @@ export type CancelDeploymentProjectSettings = {
   nodeVersion?: CancelDeploymentDeploymentsNodeVersion | undefined;
   outputDirectory?: string | null | undefined;
   speedInsights?: CancelDeploymentSpeedInsights | undefined;
+  /**
+   * Vercel Flags activation metadata copied from the project at deployment creation.
+   */
+  vercelFlags?: CancelDeploymentVercelFlags | undefined;
   webAnalytics?: CancelDeploymentWebAnalytics | undefined;
 };
-
-/**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export const ReadyState = {
-  Blocked: "BLOCKED",
-  Building: "BUILDING",
-  Canceled: "CANCELED",
-  Error: "ERROR",
-  Initializing: "INITIALIZING",
-  Queued: "QUEUED",
-  Ready: "READY",
-} as const;
-/**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export type ReadyState = ClosedEnum<typeof ReadyState>;
 
 /** @internal */
 export type CancelDeploymentRequest$Outbound = {
@@ -4137,6 +4131,25 @@ export function cancelDeploymentSpeedInsightsFromJSON(
 }
 
 /** @internal */
+export const CancelDeploymentVercelFlags$inboundSchema: z.ZodType<
+  CancelDeploymentVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function cancelDeploymentVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<CancelDeploymentVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CancelDeploymentVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentWebAnalytics$inboundSchema: z.ZodType<
   CancelDeploymentWebAnalytics,
   z.ZodTypeDef,
@@ -4177,6 +4190,9 @@ export const CancelDeploymentProjectSettings$inboundSchema: z.ZodType<
   speedInsights: types.optional(
     z.lazy(() => CancelDeploymentSpeedInsights$inboundSchema),
   ),
+  vercelFlags: types.optional(
+    z.lazy(() => CancelDeploymentVercelFlags$inboundSchema),
+  ),
   webAnalytics: types.optional(
     z.lazy(() => CancelDeploymentWebAnalytics$inboundSchema),
   ),
@@ -4191,7 +4207,3 @@ export function cancelDeploymentProjectSettingsFromJSON(
     `Failed to parse 'CancelDeploymentProjectSettings' from JSON`,
   );
 }
-
-/** @internal */
-export const ReadyState$inboundSchema: z.ZodNativeEnum<typeof ReadyState> = z
-  .nativeEnum(ReadyState);

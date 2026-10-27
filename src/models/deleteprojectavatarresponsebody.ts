@@ -905,6 +905,10 @@ export type DeleteProjectAvatarPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  emaSetup?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   endpointVerification?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -2888,6 +2892,13 @@ export type DeleteProjectAvatarUsageStatus = {
   throttled?: boolean | undefined;
 };
 
+export type DeleteProjectAvatarVercelFlags = {
+  /**
+   * When Flags were enabled for the project, taken from the Flags settings row's `createdAt`. Recorded by `@api/api-feature-flags` on flags sync.
+   */
+  enabledAt?: number | undefined;
+};
+
 export type DeleteProjectAvatarWebAnalytics = {
   canceledAt?: number | undefined;
   disabledAt?: number | undefined;
@@ -3035,6 +3046,7 @@ export type DeleteProjectAvatarResponseBody = {
   usageStatus?: DeleteProjectAvatarUsageStatus | undefined;
   v0?: boolean | undefined;
   v0Created?: boolean | undefined;
+  vercelFlags?: DeleteProjectAvatarVercelFlags | undefined;
   webAnalytics?: DeleteProjectAvatarWebAnalytics | undefined;
 };
 
@@ -3959,6 +3971,7 @@ export const DeleteProjectAvatarPermissions$inboundSchema: z.ZodType<
   edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigSchema: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigToken: types.optional(z.array(ACLAction$inboundSchema)),
+  emaSetup: types.optional(z.array(ACLAction$inboundSchema)),
   endpointVerification: types.optional(z.array(ACLAction$inboundSchema)),
   environments: types.optional(z.array(ACLAction$inboundSchema)),
   event: types.optional(z.array(ACLAction$inboundSchema)),
@@ -5911,6 +5924,25 @@ export function deleteProjectAvatarUsageStatusFromJSON(
 }
 
 /** @internal */
+export const DeleteProjectAvatarVercelFlags$inboundSchema: z.ZodType<
+  DeleteProjectAvatarVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function deleteProjectAvatarVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteProjectAvatarVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteProjectAvatarVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteProjectAvatarVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const DeleteProjectAvatarWebAnalytics$inboundSchema: z.ZodType<
   DeleteProjectAvatarWebAnalytics,
   z.ZodTypeDef,
@@ -6121,6 +6153,9 @@ export const DeleteProjectAvatarResponseBody$inboundSchema: z.ZodType<
   ),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
+  vercelFlags: types.optional(
+    z.lazy(() => DeleteProjectAvatarVercelFlags$inboundSchema),
+  ),
   webAnalytics: types.optional(
     z.lazy(() => DeleteProjectAvatarWebAnalytics$inboundSchema),
   ),

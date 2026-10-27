@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GitSourceCommitter } from "@vercel/sdk/models/readystate.js";
+import { GitSourceCommitter } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: GitSourceCommitter = {
   date: "2024-08-04",

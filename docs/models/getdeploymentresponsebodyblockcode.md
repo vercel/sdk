@@ -5,7 +5,7 @@ The NSNB decision code for the seat block. TODO: We should consolidate block typ
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyBlockCode } from "@vercel/sdk/models/getdeploymentservicesdeploymentsdaemon.js";
+import { GetDeploymentResponseBodyBlockCode } from "@vercel/sdk/models/getdeploymentservicesresources.js";
 
 let value: GetDeploymentResponseBodyBlockCode = "COMMIT_AUTHOR_REQUIRED";
 ```

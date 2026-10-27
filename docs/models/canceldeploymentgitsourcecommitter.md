@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentGitSourceCommitter } from "@vercel/sdk/models/readystate.js";
+import { CancelDeploymentGitSourceCommitter } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: CancelDeploymentGitSourceCommitter = {
   date: "2024-04-22",

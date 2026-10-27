@@ -5,7 +5,7 @@ The setting which selected the build machine when the deployment was created. Fr
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentBuildMachineDeploymentsSelectionSource } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2eq.js";
+import { CreateDeploymentBuildMachineDeploymentsSelectionSource } from "@vercel/sdk/models/createdeploymentmissingdeployments2.js";
 
 let value: CreateDeploymentBuildMachineDeploymentsSelectionSource =
   "plan-default";

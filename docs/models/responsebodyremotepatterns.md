@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyRemotePatterns } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2eq.js";
+import { ResponseBodyRemotePatterns } from "@vercel/sdk/models/createdeploymentmissingdeployments2.js";
 
 let value: ResponseBodyRemotePatterns = {
   hostname: "puny-hyphenation.name",

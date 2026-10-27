@@ -5,7 +5,7 @@ The build ran on an elastic machine. Drives billing.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentBuildMachineMachineSelectionType } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2eq.js";
+import { CreateDeploymentBuildMachineMachineSelectionType } from "@vercel/sdk/models/createdeploymentmissingdeployments2.js";
 
 let value: CreateDeploymentBuildMachineMachineSelectionType = "elastic";
 ```

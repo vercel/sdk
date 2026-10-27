@@ -5,7 +5,7 @@ The public project information associated with the deployment.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentProject } from "@vercel/sdk/models/readystate.js";
+import { CancelDeploymentProject } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: CancelDeploymentProject = {
   id: "<id>",

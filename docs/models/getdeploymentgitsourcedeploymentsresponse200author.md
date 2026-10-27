@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetDeploymentGitSourceDeploymentsResponse200Author } from "@vercel/sdk/models/getdeploymentservicesdeploymentsdaemon.js";
+import { GetDeploymentGitSourceDeploymentsResponse200Author } from "@vercel/sdk/models/getdeploymentservicesresources.js";
 
 let value: GetDeploymentGitSourceDeploymentsResponse200Author = {
   date: "2024-11-17",

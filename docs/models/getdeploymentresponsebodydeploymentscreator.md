@@ -5,7 +5,7 @@ The user on the external platform who triggered the deployment.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyDeploymentsCreator } from "@vercel/sdk/models/getdeploymentservicesdeploymentsdaemon.js";
+import { GetDeploymentResponseBodyDeploymentsCreator } from "@vercel/sdk/models/getdeploymentservicesresources.js";
 
 let value: GetDeploymentResponseBodyDeploymentsCreator = {
   name: "<value>",

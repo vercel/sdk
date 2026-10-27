@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyProjectSettings } from "@vercel/sdk/models/getdeploymentservicesdeploymentsdaemon.js";
+import { ResponseBodyProjectSettings } from "@vercel/sdk/models/getdeploymentservicesresources.js";
 
 let value: ResponseBodyProjectSettings = {};
 ```
@@ -20,4 +20,5 @@ let value: ResponseBodyProjectSettings = {};
 | `nodeVersion`                                                                                                          | [models.GetDeploymentResponseBodyDeploymentsNodeVersion](../models/getdeploymentresponsebodydeploymentsnodeversion.md) | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
 | `outputDirectory`                                                                                                      | *string*                                                                                                               | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
 | `speedInsights`                                                                                                        | [models.GetDeploymentResponseBodySpeedInsights](../models/getdeploymentresponsebodyspeedinsights.md)                   | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |
+| `vercelFlags`                                                                                                          | [models.GetDeploymentResponseBodyVercelFlags](../models/getdeploymentresponsebodyvercelflags.md)                       | :heavy_minus_sign:                                                                                                     | Vercel Flags activation metadata copied from the project at deployment creation.                                       |
 | `webAnalytics`                                                                                                         | [models.GetDeploymentResponseBodyWebAnalytics](../models/getdeploymentresponsebodywebanalytics.md)                     | :heavy_minus_sign:                                                                                                     | N/A                                                                                                                    |

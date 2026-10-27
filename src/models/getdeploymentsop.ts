@@ -514,6 +514,13 @@ export type GetDeploymentsSpeedInsights = {
   paidAt?: number | undefined;
 };
 
+/**
+ * Vercel Flags activation metadata copied from the project at deployment creation.
+ */
+export type GetDeploymentsVercelFlags = {
+  enabledAt?: number | undefined;
+};
+
 export type GetDeploymentsWebAnalytics = {
   canceledAt?: number | undefined;
   disabledAt?: number | undefined;
@@ -545,6 +552,10 @@ export type GetDeploymentsProjectSettings = {
   skipGitConnectDuringLink?: boolean | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
   speedInsights?: GetDeploymentsSpeedInsights | undefined;
+  /**
+   * Vercel Flags activation metadata copied from the project at deployment creation.
+   */
+  vercelFlags?: GetDeploymentsVercelFlags | undefined;
   webAnalytics?: GetDeploymentsWebAnalytics | undefined;
 };
 
@@ -1333,6 +1344,25 @@ export function getDeploymentsSpeedInsightsFromJSON(
 }
 
 /** @internal */
+export const GetDeploymentsVercelFlags$inboundSchema: z.ZodType<
+  GetDeploymentsVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function getDeploymentsVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentsVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentsVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentsVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentsWebAnalytics$inboundSchema: z.ZodType<
   GetDeploymentsWebAnalytics,
   z.ZodTypeDef,
@@ -1380,6 +1410,9 @@ export const GetDeploymentsProjectSettings$inboundSchema: z.ZodType<
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
   speedInsights: types.optional(
     z.lazy(() => GetDeploymentsSpeedInsights$inboundSchema),
+  ),
+  vercelFlags: types.optional(
+    z.lazy(() => GetDeploymentsVercelFlags$inboundSchema),
   ),
   webAnalytics: types.optional(
     z.lazy(() => GetDeploymentsWebAnalytics$inboundSchema),

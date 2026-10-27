@@ -5,7 +5,7 @@ Set when this build produces a function for schedule entrypoints.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesDeploymentsScheduleFunction } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2eq.js";
+import { CreateDeploymentServicesDeploymentsScheduleFunction } from "@vercel/sdk/models/createdeploymentmissingdeployments2.js";
 
 let value: CreateDeploymentServicesDeploymentsScheduleFunction = {
   entrypoints: [],

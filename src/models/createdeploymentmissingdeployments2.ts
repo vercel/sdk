@@ -521,6 +521,13 @@ export type CreateDeploymentResponseBodySpeedInsights = {
   paidAt?: number | undefined;
 };
 
+/**
+ * Vercel Flags activation metadata copied from the project at deployment creation.
+ */
+export type ResponseBodyVercelFlags = {
+  enabledAt?: number | undefined;
+};
+
 export type CreateDeploymentResponseBodyWebAnalytics = {
   canceledAt?: number | undefined;
   disabledAt?: number | undefined;
@@ -538,6 +545,10 @@ export type CreateDeploymentResponseBodyProjectSettings = {
   nodeVersion?: CreateDeploymentResponseBodyDeploymentsNodeVersion | undefined;
   outputDirectory?: string | null | undefined;
   speedInsights?: CreateDeploymentResponseBodySpeedInsights | undefined;
+  /**
+   * Vercel Flags activation metadata copied from the project at deployment creation.
+   */
+  vercelFlags?: ResponseBodyVercelFlags | undefined;
   webAnalytics?: CreateDeploymentResponseBodyWebAnalytics | undefined;
 };
 
@@ -1829,10 +1840,6 @@ export type CreateDeploymentMissingDeployments2 = {
     | undefined;
 };
 
-export type CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq =
-  | string
-  | number;
-
 /** @internal */
 export const CreateDeploymentResponseBodyGitSource$inboundSchema: z.ZodType<
   CreateDeploymentResponseBodyGitSource,
@@ -2383,6 +2390,25 @@ export function createDeploymentResponseBodySpeedInsightsFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyVercelFlags$inboundSchema: z.ZodType<
+  ResponseBodyVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
+
+export function responseBodyVercelFlagsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyVercelFlags, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyVercelFlags' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateDeploymentResponseBodyWebAnalytics$inboundSchema: z.ZodType<
   CreateDeploymentResponseBodyWebAnalytics,
   z.ZodTypeDef,
@@ -2430,6 +2456,9 @@ export const CreateDeploymentResponseBodyProjectSettings$inboundSchema:
     outputDirectory: z.nullable(types.string()).optional(),
     speedInsights: types.optional(
       z.lazy(() => CreateDeploymentResponseBodySpeedInsights$inboundSchema),
+    ),
+    vercelFlags: types.optional(
+      z.lazy(() => ResponseBodyVercelFlags$inboundSchema),
     ),
     webAnalytics: types.optional(
       z.lazy(() => CreateDeploymentResponseBodyWebAnalytics$inboundSchema),
@@ -4926,28 +4955,5 @@ export function createDeploymentMissingDeployments2FromJSON(
     (x) =>
       CreateDeploymentMissingDeployments2$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'CreateDeploymentMissingDeployments2' from JSON`,
-  );
-}
-
-/** @internal */
-export const CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq$inboundSchema:
-  z.ZodType<
-    CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([types.string(), types.number()]);
-
-export function createDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2EqFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'CreateDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Eq' from JSON`,
   );
 }

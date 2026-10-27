@@ -5,7 +5,7 @@ Machine types elastic can assign. Widens when the elastic algorithm adds the 14 
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyLabel } from "@vercel/sdk/models/responsebodyresponsehas.js";
+import { GetProjectsResponseBodyLabel } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsonvalue.js";
 
 let value: GetProjectsResponseBodyLabel = "turbo";
 ```

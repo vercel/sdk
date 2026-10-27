@@ -12,7 +12,7 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyconfiguredby.js";
+} from "./getprojectsresponsebodypagination.js";
 import {
   GetProjectsResponseBody2,
   GetProjectsResponseBody2$inboundSchema,
@@ -20,8 +20,6 @@ import {
   GetProjectsResponseBodyCreator$inboundSchema,
   ResponseBodyAlias,
   ResponseBodyAlias$inboundSchema,
-  ResponseBodyAliasAssigned,
-  ResponseBodyAliasAssigned$inboundSchema,
   ResponseBodyAnalytics,
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyDeploymentExpiration,
@@ -38,8 +36,10 @@ import {
   ResponseBodyInternalRoutes$inboundSchema,
   ResponseBodyIpBuckets,
   ResponseBodyIpBuckets$inboundSchema,
-} from "./responsebodyaliasassigned.js";
+} from "./responsebodyipbuckets.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type ResponseBodyAliasAssigned = number | boolean;
 
 export type GetProjectsResponseBodyAliasError = {
   code: string;
@@ -161,7 +161,7 @@ export type GetProjectsResponseBodyProjectsType = ClosedEnum<
 
 export type ResponseBodyLatestDeployments = {
   alias?: Array<string> | undefined;
-  aliasAssigned?: ResponseBodyAliasAssigned | null | undefined;
+  aliasAssigned?: number | boolean | null | undefined;
   aliasError?: GetProjectsResponseBodyAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   automaticAliases?: Array<string> | undefined;
@@ -1611,6 +1611,23 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const ResponseBodyAliasAssigned$inboundSchema: z.ZodType<
+  ResponseBodyAliasAssigned,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.number(), types.boolean()]);
+
+export function responseBodyAliasAssignedFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyAliasAssigned, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyAliasAssigned$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyAliasAssigned' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsResponseBodyAliasError$inboundSchema: z.ZodType<
   GetProjectsResponseBodyAliasError,
   z.ZodTypeDef,
@@ -1778,7 +1795,8 @@ export const ResponseBodyLatestDeployments$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   alias: types.optional(z.array(types.string())),
-  aliasAssigned: z.nullable(ResponseBodyAliasAssigned$inboundSchema).optional(),
+  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
+    .optional(),
   aliasError: z.nullable(
     z.lazy(() => GetProjectsResponseBodyAliasError$inboundSchema),
   ).optional(),

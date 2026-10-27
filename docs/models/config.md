@@ -5,7 +5,7 @@ Since February 2025 the configuration must include snapshot data at the time of 
 ## Example Usage
 
 ```typescript
-import { Config } from "@vercel/sdk/models/readystate.js";
+import { Config } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: Config = {
   functionMemoryType: "standard_legacy",

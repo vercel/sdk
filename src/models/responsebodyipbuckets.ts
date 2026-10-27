@@ -12,7 +12,7 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   GetProjectsResponseBodyPagination,
   GetProjectsResponseBodyPagination$inboundSchema,
-} from "./getprojectsresponsebodyconfiguredby.js";
+} from "./getprojectsresponsebodypagination.js";
 import {
   GetProjectsResponseBodyAlias,
   GetProjectsResponseBodyAlias$inboundSchema,
@@ -54,14 +54,25 @@ import {
   GetProjectsResponseBodyProjectsNodeVersion$inboundSchema,
   GetProjectsResponseBodyProjectsResourceConfig,
   GetProjectsResponseBodyProjectsResourceConfig$inboundSchema,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesResponseHasType,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesResponseHasType$inboundSchema,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue$inboundSchema,
   GetProjectsResponseBodyProjectsResponse200Creator,
   GetProjectsResponseBodyProjectsResponse200Creator$inboundSchema,
   GetProjectsResponseBodyRollingRelease,
   GetProjectsResponseBodyRollingRelease$inboundSchema,
-  ResponseBodyResponseHas,
-  ResponseBodyResponseHas$inboundSchema,
-} from "./responsebodyresponsehas.js";
+} from "./getprojectsresponsebodyprojectsresponse200applicationjsonvalue.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type ResponseBodyResponseHas = {
+  key?: string | undefined;
+  type:
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesResponseHasType;
+  value?:
+    | GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue
+    | undefined;
+};
 
 export type GetProjectsSrc2 = {
   eq?: string | undefined;
@@ -1611,7 +1622,29 @@ export type ResponseBodyIpBuckets = {
   supportUntil?: number | undefined;
 };
 
-export type ResponseBodyAliasAssigned = number | boolean;
+/** @internal */
+export const ResponseBodyResponseHas$inboundSchema: z.ZodType<
+  ResponseBodyResponseHas,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.optional(types.string()),
+  type:
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesResponseHasType$inboundSchema,
+  value: types.optional(
+    GetProjectsResponseBodyProjectsResponse200ApplicationJSONValue$inboundSchema,
+  ),
+});
+
+export function responseBodyResponseHasFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyResponseHas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyResponseHas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyResponseHas' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetProjectsSrc2$inboundSchema: z.ZodType<
@@ -1751,7 +1784,9 @@ export const ResponseBodyFirewallRoutes$inboundSchema: z.ZodType<
   mitigate: types.optional(
     GetProjectsResponseBodyProjectsMitigate$inboundSchema,
   ),
-  response_has: types.optional(z.array(ResponseBodyResponseHas$inboundSchema)),
+  response_has: types.optional(
+    z.array(z.lazy(() => ResponseBodyResponseHas$inboundSchema)),
+  ),
   src: types.optional(
     smartUnion([types.string(), z.lazy(() => GetProjectsSrc2$inboundSchema)]),
   ),
@@ -4595,22 +4630,5 @@ export function responseBodyIpBucketsFromJSON(
     jsonString,
     (x) => ResponseBodyIpBuckets$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ResponseBodyIpBuckets' from JSON`,
-  );
-}
-
-/** @internal */
-export const ResponseBodyAliasAssigned$inboundSchema: z.ZodType<
-  ResponseBodyAliasAssigned,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.number(), types.boolean()]);
-
-export function responseBodyAliasAssignedFromJSON(
-  jsonString: string,
-): SafeParseResult<ResponseBodyAliasAssigned, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ResponseBodyAliasAssigned$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyAliasAssigned' from JSON`,
   );
 }

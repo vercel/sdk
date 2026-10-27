@@ -5,7 +5,7 @@ Bindings to services in the same deployment.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentServicesDeploymentsBindings } from "@vercel/sdk/models/getdeploymentservicesexcludefiles.js";
+import { GetDeploymentServicesDeploymentsBindings } from "@vercel/sdk/models/getdeploymentservicesdaemon.js";
 
 let value: GetDeploymentServicesDeploymentsBindings = {
   env: "<value>",

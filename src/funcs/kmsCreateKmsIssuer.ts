@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Create an issuer
  *
  * @remarks
- * Create a new KMS issuer for the authenticated team. An issuer owns the asymmetric signing keys that are used to sign tokens and messages.
+ * Create a new KMS issuer for the authenticated team, or for the team or organization identified by a Connect policy token. An issuer owns the asymmetric signing keys used to sign tokens and messages.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

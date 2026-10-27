@@ -1012,6 +1012,10 @@ export type CreateProjectPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  emaSetup?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   endpointVerification?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -4138,6 +4142,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigSchema: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigToken: types.optional(z.array(ACLAction$inboundSchema)),
+  emaSetup: types.optional(z.array(ACLAction$inboundSchema)),
   endpointVerification: types.optional(z.array(ACLAction$inboundSchema)),
   environments: types.optional(z.array(ACLAction$inboundSchema)),
   event: types.optional(z.array(ACLAction$inboundSchema)),

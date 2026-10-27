@@ -11,10 +11,38 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   GetDeploymentServicesBindings,
   GetDeploymentServicesBindings$inboundSchema,
-  GetDeploymentServicesDeploymentsDaemon,
-  GetDeploymentServicesDeploymentsDaemon$inboundSchema,
-} from "./getdeploymentservicesdeploymentsdaemon.js";
+  GetDeploymentServicesDeploymentsResponseBindings,
+  GetDeploymentServicesDeploymentsResponseBindings$inboundSchema,
+  GetDeploymentServicesResources,
+  GetDeploymentServicesResources$inboundSchema,
+} from "./getdeploymentservicesresources.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * Set when this build produces the named daemon.
+ */
+export type GetDeploymentServicesDeploymentsDaemon = {
+  /**
+   * Bindings to services in the same deployment.
+   */
+  bindings?:
+    | Array<GetDeploymentServicesDeploymentsResponseBindings>
+    | undefined;
+  command?: Array<string> | undefined;
+  entrypoint: string;
+  /**
+   * Instance counts by region.
+   */
+  instances?: { [k: string]: number } | undefined;
+  /**
+   * Instance counts by region.
+   */
+  replicas?: { [k: string]: number } | undefined;
+  resources?: GetDeploymentServicesResources | undefined;
+  root: string;
+  terminationGracePeriodSeconds?: number | undefined;
+  name: string;
+};
 
 export type GetDeploymentServicesDeploymentsExcludeFiles =
   | string
@@ -177,7 +205,7 @@ export type GetDeploymentServicesDeploymentsMiddlewareRuntime = ClosedEnum<
   typeof GetDeploymentServicesDeploymentsMiddlewareRuntime
 >;
 
-export type GetDeploymentServicesDeploymentsVercelFlags = {
+export type GetDeploymentServicesVercelFlags = {
   enabledAt?: number | undefined;
 };
 
@@ -196,7 +224,7 @@ export type GetDeploymentServicesProjectSettings = {
   outputDirectory?: string | null | undefined;
   rootDirectory?: string | null | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
-  vercelFlags?: GetDeploymentServicesDeploymentsVercelFlags | undefined;
+  vercelFlags?: GetDeploymentServicesVercelFlags | undefined;
 };
 
 export type GetDeploymentServicesDeploymentsEntrypoints = {
@@ -1535,7 +1563,35 @@ export type GetDeploymentServicesDaemon = {
   name: string;
 };
 
-export type GetDeploymentServicesExcludeFiles = string | Array<string>;
+/** @internal */
+export const GetDeploymentServicesDeploymentsDaemon$inboundSchema: z.ZodType<
+  GetDeploymentServicesDeploymentsDaemon,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  bindings: types.optional(
+    z.array(GetDeploymentServicesDeploymentsResponseBindings$inboundSchema),
+  ),
+  command: types.optional(z.array(types.string())),
+  entrypoint: types.string(),
+  instances: types.optional(z.record(types.number())),
+  replicas: types.optional(z.record(types.number())),
+  resources: types.optional(GetDeploymentServicesResources$inboundSchema),
+  root: types.string(),
+  terminationGracePeriodSeconds: types.optional(types.number()),
+  name: types.string(),
+});
+
+export function getDeploymentServicesDeploymentsDaemonFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesDeploymentsDaemon, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsDaemon$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesDeploymentsDaemon' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetDeploymentServicesDeploymentsExcludeFiles$inboundSchema:
@@ -1863,28 +1919,21 @@ export const GetDeploymentServicesDeploymentsMiddlewareRuntime$inboundSchema:
     .nativeEnum(GetDeploymentServicesDeploymentsMiddlewareRuntime);
 
 /** @internal */
-export const GetDeploymentServicesDeploymentsVercelFlags$inboundSchema:
-  z.ZodType<
-    GetDeploymentServicesDeploymentsVercelFlags,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    enabledAt: types.optional(types.number()),
-  });
+export const GetDeploymentServicesVercelFlags$inboundSchema: z.ZodType<
+  GetDeploymentServicesVercelFlags,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  enabledAt: types.optional(types.number()),
+});
 
-export function getDeploymentServicesDeploymentsVercelFlagsFromJSON(
+export function getDeploymentServicesVercelFlagsFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetDeploymentServicesDeploymentsVercelFlags,
-  SDKValidationError
-> {
+): SafeParseResult<GetDeploymentServicesVercelFlags, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetDeploymentServicesDeploymentsVercelFlags$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDeploymentServicesDeploymentsVercelFlags' from JSON`,
+    (x) => GetDeploymentServicesVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesVercelFlags' from JSON`,
   );
 }
 
@@ -1909,7 +1958,7 @@ export const GetDeploymentServicesProjectSettings$inboundSchema: z.ZodType<
   rootDirectory: z.nullable(types.string()).optional(),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
   vercelFlags: types.optional(
-    z.lazy(() => GetDeploymentServicesDeploymentsVercelFlags$inboundSchema),
+    z.lazy(() => GetDeploymentServicesVercelFlags$inboundSchema),
   ),
 });
 
@@ -1991,7 +2040,9 @@ export const GetDeploymentServicesConfig$inboundSchema: z.ZodType<
   buildpack: types.optional(types.string()),
   bundle: types.optional(types.boolean()),
   bunVersion: types.optional(types.string()),
-  daemon: types.optional(GetDeploymentServicesDeploymentsDaemon$inboundSchema),
+  daemon: types.optional(
+    z.lazy(() => GetDeploymentServicesDeploymentsDaemon$inboundSchema),
+  ),
   debug: types.optional(types.boolean()),
   devCommand: types.optional(types.string()),
   excludeFiles: types.optional(
@@ -5372,22 +5423,5 @@ export function getDeploymentServicesDaemonFromJSON(
     jsonString,
     (x) => GetDeploymentServicesDaemon$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetDeploymentServicesDaemon' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentServicesExcludeFiles$inboundSchema: z.ZodType<
-  GetDeploymentServicesExcludeFiles,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.string(), z.array(types.string())]);
-
-export function getDeploymentServicesExcludeFilesFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentServicesExcludeFiles, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentServicesExcludeFiles$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentServicesExcludeFiles' from JSON`,
   );
 }

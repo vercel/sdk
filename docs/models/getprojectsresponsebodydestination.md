@@ -5,7 +5,7 @@ Which tracing destination this rule applies to. `internal` is the hidden Vercel 
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyDestination } from "@vercel/sdk/models/getprojectsresponsebodyconfiguredby.js";
+import { GetProjectsResponseBodyDestination } from "@vercel/sdk/models/getprojectsresponsebodypagination.js";
 
 let value: GetProjectsResponseBodyDestination = "internal";
 ```

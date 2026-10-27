@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { MaxDuration2 } from "@vercel/sdk/models/readystate.js";
+import { MaxDuration2 } from "@vercel/sdk/models/canceldeploymentprojectsettings.js";
 
 let value: MaxDuration2 = "max";
 ```

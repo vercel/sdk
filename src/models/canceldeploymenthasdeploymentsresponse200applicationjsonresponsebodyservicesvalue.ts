@@ -11,6 +11,23 @@ import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export const ReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+/**
+ * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
+ */
+export type ReadyState = ClosedEnum<typeof ReadyState>;
+
+/**
  * Substate of deployment when readyState is 'READY' Tracks whether or not deployment has seen production traffic: - STAGED: never seen production traffic - ROLLING: in the process of having production traffic gradually transitioned. - PROMOTED: has seen production traffic
  */
 export const ReadySubstate = {
@@ -861,7 +878,7 @@ export type ServicesMiddlewareRuntime = ClosedEnum<
   typeof ServicesMiddlewareRuntime
 >;
 
-export type ServicesVercelFlags = {
+export type CancelDeploymentServicesVercelFlags = {
   enabledAt?: number | undefined;
 };
 
@@ -880,7 +897,7 @@ export type CancelDeploymentServicesProjectSettings = {
   outputDirectory?: string | null | undefined;
   rootDirectory?: string | null | undefined;
   sourceFilesOutsideRootDirectory?: boolean | undefined;
-  vercelFlags?: ServicesVercelFlags | undefined;
+  vercelFlags?: CancelDeploymentServicesVercelFlags | undefined;
 };
 
 export type ServicesEntrypoints = {
@@ -1509,15 +1526,9 @@ export type CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBody
   | string
   | CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2;
 
-export type CancelDeploymentHasDeploymentsResponse2 = {
-  key: string;
-  type:
-    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType;
-  value?:
-    | string
-    | CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2
-    | undefined;
-};
+/** @internal */
+export const ReadyState$inboundSchema: z.ZodNativeEnum<typeof ReadyState> = z
+  .nativeEnum(ReadyState);
 
 /** @internal */
 export const ReadySubstate$inboundSchema: z.ZodNativeEnum<
@@ -2989,21 +3000,22 @@ export const ServicesMiddlewareRuntime$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(ServicesMiddlewareRuntime);
 
 /** @internal */
-export const ServicesVercelFlags$inboundSchema: z.ZodType<
-  ServicesVercelFlags,
+export const CancelDeploymentServicesVercelFlags$inboundSchema: z.ZodType<
+  CancelDeploymentServicesVercelFlags,
   z.ZodTypeDef,
   unknown
 > = z.object({
   enabledAt: types.optional(types.number()),
 });
 
-export function servicesVercelFlagsFromJSON(
+export function cancelDeploymentServicesVercelFlagsFromJSON(
   jsonString: string,
-): SafeParseResult<ServicesVercelFlags, SDKValidationError> {
+): SafeParseResult<CancelDeploymentServicesVercelFlags, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ServicesVercelFlags$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ServicesVercelFlags' from JSON`,
+    (x) =>
+      CancelDeploymentServicesVercelFlags$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentServicesVercelFlags' from JSON`,
   );
 }
 
@@ -3027,7 +3039,9 @@ export const CancelDeploymentServicesProjectSettings$inboundSchema: z.ZodType<
   outputDirectory: z.nullable(types.string()).optional(),
   rootDirectory: z.nullable(types.string()).optional(),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
-  vercelFlags: types.optional(z.lazy(() => ServicesVercelFlags$inboundSchema)),
+  vercelFlags: types.optional(
+    z.lazy(() => CancelDeploymentServicesVercelFlags$inboundSchema),
+  ),
 });
 
 export function cancelDeploymentServicesProjectSettingsFromJSON(
@@ -4647,40 +4661,5 @@ export function cancelDeploymentHasDeploymentsResponse200ApplicationJSONResponse
       CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue$inboundSchema
         .parse(JSON.parse(x)),
     `Failed to parse 'CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const CancelDeploymentHasDeploymentsResponse2$inboundSchema: z.ZodType<
-  CancelDeploymentHasDeploymentsResponse2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.string(),
-  type:
-    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType$inboundSchema,
-  value: types.optional(
-    smartUnion([
-      types.string(),
-      z.lazy(() =>
-        CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2$inboundSchema
-      ),
-    ]),
-  ),
-});
-
-export function cancelDeploymentHasDeploymentsResponse2FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  CancelDeploymentHasDeploymentsResponse2,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      CancelDeploymentHasDeploymentsResponse2$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'CancelDeploymentHasDeploymentsResponse2' from JSON`,
   );
 }

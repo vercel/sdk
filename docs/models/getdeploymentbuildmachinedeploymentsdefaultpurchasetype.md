@@ -5,7 +5,7 @@ The build machine tier included with the customer's plan. For most customers thi
 ## Example Usage
 
 ```typescript
-import { GetDeploymentBuildMachineDeploymentsDefaultPurchaseType } from "@vercel/sdk/models/getdeploymentservicesdeploymentsdaemon.js";
+import { GetDeploymentBuildMachineDeploymentsDefaultPurchaseType } from "@vercel/sdk/models/getdeploymentservicesresources.js";
 
 let value: GetDeploymentBuildMachineDeploymentsDefaultPurchaseType = "standard";
 ```

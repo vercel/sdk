@@ -26,8 +26,6 @@ import {
   UpdateMicrofrontendsBuilds$inboundSchema,
   UpdateMicrofrontendsChecksConclusion,
   UpdateMicrofrontendsChecksConclusion$inboundSchema,
-  UpdateMicrofrontendsChecksState,
-  UpdateMicrofrontendsChecksState$inboundSchema,
   UpdateMicrofrontendsConnectConfigurations,
   UpdateMicrofrontendsConnectConfigurations$inboundSchema,
   UpdateMicrofrontendsCreator,
@@ -68,13 +66,42 @@ import {
   UpdateMicrofrontendsLastAliasRequest$inboundSchema,
   UpdateMicrofrontendsLastRollbackTarget,
   UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
-  UpdateMicrofrontendsOidcTokenClaims,
-  UpdateMicrofrontendsOidcTokenClaims$inboundSchema,
   UpdateMicrofrontendsProjectsBranchMatcher,
   UpdateMicrofrontendsProjectsBranchMatcher$inboundSchema,
-  UpdateMicrofrontendsProjectsCreator,
-  UpdateMicrofrontendsProjectsCreator$inboundSchema,
-} from "./updatemicrofrontendsoidctokenclaims.js";
+} from "./updatemicrofrontendschecksconclusion.js";
+
+export const UpdateMicrofrontendsChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type UpdateMicrofrontendsChecksState = ClosedEnum<
+  typeof UpdateMicrofrontendsChecksState
+>;
+
+export type UpdateMicrofrontendsProjectsCreator = {
+  email: string;
+  githubLogin?: string | undefined;
+  gitlabLogin?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+export type UpdateMicrofrontendsOidcTokenClaims = {
+  aud: string;
+  customEnvironmentId?: string | undefined;
+  deploymentId?: string | undefined;
+  environment: string;
+  iss: string;
+  mfeGroupIds?: Array<string> | undefined;
+  owner: string;
+  ownerId: string;
+  plan?: string | undefined;
+  project: string;
+  projectId: string;
+  scope: string;
+  sub: string;
+};
 
 export const UpdateMicrofrontendsPlan = {
   Enterprise: "enterprise",
@@ -565,6 +592,10 @@ export type UpdateMicrofrontendsPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   aiGatewayBudget?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayByokCredentials?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -1788,6 +1819,7 @@ export type UpdateMicrofrontendsProjectsBuildMachineSelection = ClosedEnum<
 >;
 
 export const UpdateMicrofrontendsProjectsBuildMachineType = {
+  Fourteencpu28gb: "14cpu-28gb",
   Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
@@ -1820,31 +1852,46 @@ export type UpdateMicrofrontendsProjectsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 /**
- * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
-export const UpdateMicrofrontendsProjectsLabel = {
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-/**
- * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
- */
-export type UpdateMicrofrontendsProjectsLabel = ClosedEnum<
-  typeof UpdateMicrofrontendsProjectsLabel
->;
+export type UpdateMicrofrontendsElasticBuildMachineProjects4 = {
+  cores: number;
+  label: "turbo";
+  memory: number;
+};
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
-export type UpdateMicrofrontendsProjectsElasticBuildMachine = {
+export type UpdateMicrofrontendsElasticBuildMachineProjects3 = {
   cores: number;
-  /**
-   * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
-   */
-  label: UpdateMicrofrontendsProjectsLabel;
+  label: "14cpu-28gb";
   memory: number;
 };
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type UpdateMicrofrontendsElasticBuildMachineProjects2 = {
+  cores: number;
+  label: "enhanced";
+  memory: number;
+};
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type UpdateMicrofrontendsElasticBuildMachineProjects1 = {
+  cores: number;
+  label: "standard";
+  memory: number;
+};
+
+export type UpdateMicrofrontendsProjectsElasticBuildMachine =
+  | UpdateMicrofrontendsElasticBuildMachineProjects1
+  | UpdateMicrofrontendsElasticBuildMachineProjects2
+  | UpdateMicrofrontendsElasticBuildMachineProjects3
+  | UpdateMicrofrontendsElasticBuildMachineProjects4;
 
 export type UpdateMicrofrontendsResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
@@ -1869,11 +1916,11 @@ export type UpdateMicrofrontendsResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  /**
-   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
-   */
   elasticBuildMachine?:
-    | UpdateMicrofrontendsProjectsElasticBuildMachine
+    | UpdateMicrofrontendsElasticBuildMachineProjects1
+    | UpdateMicrofrontendsElasticBuildMachineProjects2
+    | UpdateMicrofrontendsElasticBuildMachineProjects3
+    | UpdateMicrofrontendsElasticBuildMachineProjects4
     | undefined;
 };
 
@@ -3066,6 +3113,75 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
+export const UpdateMicrofrontendsChecksState$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateMicrofrontendsChecksState
+> = z.nativeEnum(UpdateMicrofrontendsChecksState);
+
+/** @internal */
+export const UpdateMicrofrontendsProjectsCreator$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsProjectsCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.string(),
+  githubLogin: types.optional(types.string()),
+  gitlabLogin: types.optional(types.string()),
+  uid: types.string(),
+  username: types.string(),
+});
+
+export function updateMicrofrontendsProjectsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsProjectsCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsProjectsCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsProjectsCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsOidcTokenClaims$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsOidcTokenClaims,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  aud: types.string(),
+  custom_environment_id: types.optional(types.string()),
+  deployment_id: types.optional(types.string()),
+  environment: types.string(),
+  iss: types.string(),
+  mfe_group_ids: types.optional(z.array(types.string())),
+  owner: types.string(),
+  owner_id: types.string(),
+  plan: types.optional(types.string()),
+  project: types.string(),
+  project_id: types.string(),
+  scope: types.string(),
+  sub: types.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "custom_environment_id": "customEnvironmentId",
+    "deployment_id": "deploymentId",
+    "mfe_group_ids": "mfeGroupIds",
+    "owner_id": "ownerId",
+    "project_id": "projectId",
+  });
+});
+
+export function updateMicrofrontendsOidcTokenClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsOidcTokenClaims, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsOidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsOidcTokenClaims' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsPlan$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsPlan
 > = z.nativeEnum(UpdateMicrofrontendsPlan);
@@ -3111,7 +3227,9 @@ export const UpdateMicrofrontendsLatestDeployments$inboundSchema: z.ZodType<
   connectConfigurationId: types.optional(types.string()),
   createdAt: types.number(),
   createdIn: types.string(),
-  creator: types.nullable(UpdateMicrofrontendsProjectsCreator$inboundSchema),
+  creator: types.nullable(
+    z.lazy(() => UpdateMicrofrontendsProjectsCreator$inboundSchema),
+  ),
   deletedAt: types.optional(types.number()),
   deploymentHostname: types.string(),
   forced: types.optional(types.boolean()),
@@ -3120,7 +3238,7 @@ export const UpdateMicrofrontendsLatestDeployments$inboundSchema: z.ZodType<
   monorepoManager: z.nullable(types.string()).optional(),
   name: types.string(),
   oidcTokenClaims: types.optional(
-    UpdateMicrofrontendsOidcTokenClaims$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsOidcTokenClaims$inboundSchema),
   ),
   plan: UpdateMicrofrontendsPlan$inboundSchema,
   previewCommentsEnabled: types.optional(types.boolean()),
@@ -3900,6 +4018,7 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   ),
   aiGatewayApiKeyZdrExemption: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayBudget: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayByokCredentials: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayCredits: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayGuardrails: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayPrivateModels: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4449,9 +4568,116 @@ export const UpdateMicrofrontendsProjectsFunctionDefaultMemoryType$inboundSchema
   > = z.nativeEnum(UpdateMicrofrontendsProjectsFunctionDefaultMemoryType);
 
 /** @internal */
-export const UpdateMicrofrontendsProjectsLabel$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateMicrofrontendsProjectsLabel
-> = z.nativeEnum(UpdateMicrofrontendsProjectsLabel);
+export const UpdateMicrofrontendsElasticBuildMachineProjects4$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsElasticBuildMachineProjects4,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("turbo"),
+    memory: types.number(),
+  });
+
+export function updateMicrofrontendsElasticBuildMachineProjects4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsElasticBuildMachineProjects4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsElasticBuildMachineProjects4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsElasticBuildMachineProjects4' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsElasticBuildMachineProjects3$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsElasticBuildMachineProjects3,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("14cpu-28gb"),
+    memory: types.number(),
+  });
+
+export function updateMicrofrontendsElasticBuildMachineProjects3FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsElasticBuildMachineProjects3,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsElasticBuildMachineProjects3$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsElasticBuildMachineProjects3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsElasticBuildMachineProjects2$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsElasticBuildMachineProjects2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("enhanced"),
+    memory: types.number(),
+  });
+
+export function updateMicrofrontendsElasticBuildMachineProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsElasticBuildMachineProjects2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsElasticBuildMachineProjects2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsElasticBuildMachineProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateMicrofrontendsElasticBuildMachineProjects1$inboundSchema:
+  z.ZodType<
+    UpdateMicrofrontendsElasticBuildMachineProjects1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("standard"),
+    memory: types.number(),
+  });
+
+export function updateMicrofrontendsElasticBuildMachineProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UpdateMicrofrontendsElasticBuildMachineProjects1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateMicrofrontendsElasticBuildMachineProjects1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UpdateMicrofrontendsElasticBuildMachineProjects1' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateMicrofrontendsProjectsElasticBuildMachine$inboundSchema:
@@ -4459,11 +4685,20 @@ export const UpdateMicrofrontendsProjectsElasticBuildMachine$inboundSchema:
     UpdateMicrofrontendsProjectsElasticBuildMachine,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: UpdateMicrofrontendsProjectsLabel$inboundSchema,
-    memory: types.number(),
-  });
+  > = z.union([
+    z.lazy(() =>
+      UpdateMicrofrontendsElasticBuildMachineProjects1$inboundSchema
+    ),
+    z.lazy(() =>
+      UpdateMicrofrontendsElasticBuildMachineProjects2$inboundSchema
+    ),
+    z.lazy(() =>
+      UpdateMicrofrontendsElasticBuildMachineProjects3$inboundSchema
+    ),
+    z.lazy(() =>
+      UpdateMicrofrontendsElasticBuildMachineProjects4$inboundSchema
+    ),
+  ]);
 
 export function updateMicrofrontendsProjectsElasticBuildMachineFromJSON(
   jsonString: string,
@@ -4516,7 +4751,20 @@ export const UpdateMicrofrontendsResourceConfig$inboundSchema: z.ZodType<
   functionZeroConfigFailover: types.optional(types.boolean()),
   isNSNBDisabled: types.optional(types.boolean()),
   elasticBuildMachine: types.optional(
-    z.lazy(() => UpdateMicrofrontendsProjectsElasticBuildMachine$inboundSchema),
+    z.union([
+      z.lazy(() =>
+        UpdateMicrofrontendsElasticBuildMachineProjects1$inboundSchema
+      ),
+      z.lazy(() =>
+        UpdateMicrofrontendsElasticBuildMachineProjects2$inboundSchema
+      ),
+      z.lazy(() =>
+        UpdateMicrofrontendsElasticBuildMachineProjects3$inboundSchema
+      ),
+      z.lazy(() =>
+        UpdateMicrofrontendsElasticBuildMachineProjects4$inboundSchema
+      ),
+    ]),
   ),
 });
 

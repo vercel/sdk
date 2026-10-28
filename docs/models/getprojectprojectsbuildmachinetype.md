@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectProjectsBuildMachineType } from "@vercel/sdk/models/getprojectresponsebody.js";
 
-let value: GetProjectProjectsBuildMachineType = "basic";
+let value: GetProjectProjectsBuildMachineType = "14cpu-28gb";
 ```
 
 ## Values
 
 ```typescript
-"basic" | "enhanced" | "standard" | "turbo"
+"14cpu-28gb" | "basic" | "enhanced" | "standard" | "turbo"
 ```

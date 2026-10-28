@@ -14,7 +14,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   DeleteProjectAvatarRequest,
   DeleteProjectAvatarRequest$outboundSchema,
-} from "../models/deleteprojectavatarplan.js";
+} from "../models/deleteprojectavatarchecksstate.js";
 import {
   DeleteProjectAvatarResponseBody,
   DeleteProjectAvatarResponseBody$inboundSchema,

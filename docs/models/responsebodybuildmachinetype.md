@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyBuildMachineType } from "@vercel/sdk/models/getprojectsresponsebody.js";
+import { ResponseBodyBuildMachineType } from "@vercel/sdk/models/getprojectsresponsebodyto.js";
 
 let value: ResponseBodyBuildMachineType = "turbo";
 ```
@@ -11,5 +11,5 @@ let value: ResponseBodyBuildMachineType = "turbo";
 ## Values
 
 ```typescript
-"basic" | "enhanced" | "standard" | "turbo"
+"14cpu-28gb" | "basic" | "enhanced" | "standard" | "turbo"
 ```

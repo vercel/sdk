@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarBuildMachineType } from "@vercel/sdk/models/deleteprojectavatarplan.js";
+import { DeleteProjectAvatarBuildMachineType } from "@vercel/sdk/models/deleteprojectavatarchecksstate.js";
 
-let value: DeleteProjectAvatarBuildMachineType = "basic";
+let value: DeleteProjectAvatarBuildMachineType = "14cpu-28gb";
 ```
 
 ## Values
 
 ```typescript
-"basic" | "enhanced" | "standard" | "turbo"
+"14cpu-28gb" | "basic" | "enhanced" | "standard" | "turbo"
 ```

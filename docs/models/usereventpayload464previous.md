@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload464Previous } from "@vercel/sdk/models/fourhundredandfifty.js";
+import { UserEventPayload464Previous } from "@vercel/sdk/models/usereventpayload451actortype.js";
 
 let value: UserEventPayload464Previous = {
   enabled: true,

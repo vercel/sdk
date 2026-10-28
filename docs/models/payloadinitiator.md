@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadInitiator } from "@vercel/sdk/models/usereventjobpayload125nsnbsideeffect.js";
+import { PayloadInitiator } from "@vercel/sdk/models/usereventjobpayload1258headinfo.js";
 
 let value: PayloadInitiator = "system";
 ```

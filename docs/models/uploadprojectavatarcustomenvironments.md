@@ -5,7 +5,7 @@ Internal representation of a custom environment with all required properties
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarCustomEnvironments } from "@vercel/sdk/models/uploadprojectavatarplan.js";
+import { UploadProjectAvatarCustomEnvironments } from "@vercel/sdk/models/uploadprojectavatarchecksstate.js";
 
 let value: UploadProjectAvatarCustomEnvironments = {
   createdAt: 5625.09,

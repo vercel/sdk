@@ -26,7 +26,7 @@ export const UpdateInstallationType = {
 } as const;
 export type UpdateInstallationType = ClosedEnum<typeof UpdateInstallationType>;
 
-export type Details = {
+export type UpdateInstallationDetails = {
   label: string;
   value?: string | undefined;
 };
@@ -43,7 +43,7 @@ export type UpdateInstallationBillingPlan = {
   description?: string | undefined;
   paymentMethodRequired?: boolean | undefined;
   cost?: string | undefined;
-  details?: Array<Details> | undefined;
+  details?: Array<UpdateInstallationDetails> | undefined;
   highlightedDetails?: Array<HighlightedDetails> | undefined;
   effectiveDate?: string | undefined;
   additionalProperties?: { [k: string]: any } | undefined;
@@ -94,23 +94,27 @@ export const UpdateInstallationType$outboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdateInstallationType);
 
 /** @internal */
-export type Details$Outbound = {
+export type UpdateInstallationDetails$Outbound = {
   label: string;
   value?: string | undefined;
 };
 
 /** @internal */
-export const Details$outboundSchema: z.ZodType<
-  Details$Outbound,
+export const UpdateInstallationDetails$outboundSchema: z.ZodType<
+  UpdateInstallationDetails$Outbound,
   z.ZodTypeDef,
-  Details
+  UpdateInstallationDetails
 > = z.object({
   label: z.string(),
   value: z.string().optional(),
 });
 
-export function detailsToJSON(details: Details): string {
-  return JSON.stringify(Details$outboundSchema.parse(details));
+export function updateInstallationDetailsToJSON(
+  updateInstallationDetails: UpdateInstallationDetails,
+): string {
+  return JSON.stringify(
+    UpdateInstallationDetails$outboundSchema.parse(updateInstallationDetails),
+  );
 }
 
 /** @internal */
@@ -145,7 +149,7 @@ export type UpdateInstallationBillingPlan$Outbound = {
   description?: string | undefined;
   paymentMethodRequired?: boolean | undefined;
   cost?: string | undefined;
-  details?: Array<Details$Outbound> | undefined;
+  details?: Array<UpdateInstallationDetails$Outbound> | undefined;
   highlightedDetails?: Array<HighlightedDetails$Outbound> | undefined;
   effectiveDate?: string | undefined;
   [additionalProperties: string]: unknown;
@@ -163,7 +167,8 @@ export const UpdateInstallationBillingPlan$outboundSchema: z.ZodType<
   description: z.string().optional(),
   paymentMethodRequired: z.boolean().optional(),
   cost: z.string().optional(),
-  details: z.array(z.lazy(() => Details$outboundSchema)).optional(),
+  details: z.array(z.lazy(() => UpdateInstallationDetails$outboundSchema))
+    .optional(),
   highlightedDetails: z.array(z.lazy(() => HighlightedDetails$outboundSchema))
     .optional(),
   effectiveDate: z.string().optional(),

@@ -5,7 +5,7 @@ Build machine configuration recorded for this deployment's build. See {@link Dep
 ## Example Usage
 
 ```typescript
-import { GetDeploymentBuildMachine2 } from "@vercel/sdk/models/getdeploymentservicesresources.js";
+import { GetDeploymentBuildMachine2 } from "@vercel/sdk/models/getdeploymentserviceshttpget.js";
 
 let value: GetDeploymentBuildMachine2 = {};
 ```

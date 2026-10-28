@@ -5,7 +5,7 @@ Machine type purchased for this build.
 ## Example Usage
 
 ```typescript
-import { GetDeploymentBuildMachinePurchaseType } from "@vercel/sdk/models/getdeploymentservicesresources.js";
+import { GetDeploymentBuildMachinePurchaseType } from "@vercel/sdk/models/getdeploymentserviceshttpget.js";
 
 let value: GetDeploymentBuildMachinePurchaseType = "enhanced";
 ```

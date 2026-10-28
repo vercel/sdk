@@ -1,23 +1,45 @@
 # UpdateMicrofrontendsProjectsElasticBuildMachine
 
-Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
 
-## Example Usage
+## Supported Types
+
+### `models.UpdateMicrofrontendsElasticBuildMachineProjects1`
 
 ```typescript
-import { UpdateMicrofrontendsProjectsElasticBuildMachine } from "@vercel/sdk/models/updatemicrofrontendsresponsebody.js";
-
-let value: UpdateMicrofrontendsProjectsElasticBuildMachine = {
-  cores: 1082.8,
+const value: models.UpdateMicrofrontendsElasticBuildMachineProjects1 = {
+  cores: 4263.11,
   label: "standard",
-  memory: 2523.92,
+  memory: 1250.29,
 };
 ```
 
-## Fields
+### `models.UpdateMicrofrontendsElasticBuildMachineProjects2`
 
-| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `cores`                                                                                    | *number*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `label`                                                                                    | [models.UpdateMicrofrontendsProjectsLabel](../models/updatemicrofrontendsprojectslabel.md) | :heavy_check_mark:                                                                         | Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.  |
-| `memory`                                                                                   | *number*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+```typescript
+const value: models.UpdateMicrofrontendsElasticBuildMachineProjects2 = {
+  cores: 6273.77,
+  label: "enhanced",
+  memory: 9103.03,
+};
+```
+
+### `models.UpdateMicrofrontendsElasticBuildMachineProjects3`
+
+```typescript
+const value: models.UpdateMicrofrontendsElasticBuildMachineProjects3 = {
+  cores: 5970.05,
+  label: "14cpu-28gb",
+  memory: 7488.89,
+};
+```
+
+### `models.UpdateMicrofrontendsElasticBuildMachineProjects4`
+
+```typescript
+const value: models.UpdateMicrofrontendsElasticBuildMachineProjects4 = {
+  cores: 1639.72,
+  label: "turbo",
+  memory: 8626.26,
+};
+```
+

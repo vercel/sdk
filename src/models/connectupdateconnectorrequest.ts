@@ -3,11 +3,27 @@
  */
 
 import * as z from "zod/v3";
+import { ClosedEnum } from "../types/enums.js";
 import {
   ConnectConnectorUpdateData,
   ConnectConnectorUpdateData$Outbound,
   ConnectConnectorUpdateData$outboundSchema,
 } from "./connectconnectorupdatedata.js";
+
+/**
+ * MCP Events dashboard visibility. Auto (the default) shows the UI after the first successful delivery. Show and hide persist regardless of future deliveries. This does not enable or disable event delivery.
+ */
+export const ConnectUpdateConnectorRequestMcpEventsUiVisibility = {
+  Auto: "auto",
+  Show: "show",
+  Hide: "hide",
+} as const;
+/**
+ * MCP Events dashboard visibility. Auto (the default) shows the UI after the first successful delivery. Show and hide persist regardless of future deliveries. This does not enable or disable event delivery.
+ */
+export type ConnectUpdateConnectorRequestMcpEventsUiVisibility = ClosedEnum<
+  typeof ConnectUpdateConnectorRequestMcpEventsUiVisibility
+>;
 
 /**
  * Connector fields to update.
@@ -29,6 +45,12 @@ export type ConnectUpdateConnectorRequest = {
    * Default trigger events for this connector.
    */
   events?: Array<string> | undefined;
+  /**
+   * MCP Events dashboard visibility. Auto (the default) shows the UI after the first successful delivery. Show and hide persist regardless of future deliveries. This does not enable or disable event delivery.
+   */
+  mcpEventsUiVisibility?:
+    | ConnectUpdateConnectorRequestMcpEventsUiVisibility
+    | undefined;
   /**
    * Provider configuration fields for the connector type.
    */
@@ -84,11 +106,17 @@ export type ConnectUpdateConnectorRequest = {
 };
 
 /** @internal */
+export const ConnectUpdateConnectorRequestMcpEventsUiVisibility$outboundSchema:
+  z.ZodNativeEnum<typeof ConnectUpdateConnectorRequestMcpEventsUiVisibility> = z
+    .nativeEnum(ConnectUpdateConnectorRequestMcpEventsUiVisibility);
+
+/** @internal */
 export type ConnectUpdateConnectorRequest$Outbound = {
   triggers?: boolean | undefined;
   triggerVerificationInput?: { [k: string]: any } | undefined;
   triggerRegistrationInput?: { [k: string]: any } | undefined;
   events?: Array<string> | undefined;
+  mcpEventsUiVisibility?: string | undefined;
   data?: ConnectConnectorUpdateData$Outbound | undefined;
   icon?: string | undefined;
   backgroundColor?: string | undefined;
@@ -107,6 +135,9 @@ export const ConnectUpdateConnectorRequest$outboundSchema: z.ZodType<
   triggerVerificationInput: z.record(z.any()).optional(),
   triggerRegistrationInput: z.record(z.any()).optional(),
   events: z.array(z.string()).optional(),
+  mcpEventsUiVisibility:
+    ConnectUpdateConnectorRequestMcpEventsUiVisibility$outboundSchema
+      .optional(),
   data: ConnectConnectorUpdateData$outboundSchema.optional(),
   icon: z.string().optional(),
   backgroundColor: z.string().optional(),

@@ -52,6 +52,7 @@ import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
+import { CreateProjectRequest } from "../models/createprojecthaskey.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
 import {
   CreateProjectTransferRequestRequest,
@@ -61,7 +62,7 @@ import {
   CreateTraceSessionRequest,
   CreateTraceSessionResponseBody,
 } from "../models/createtracesessionop.js";
-import { DeleteProjectAvatarRequest } from "../models/deleteprojectavatarplan.js";
+import { DeleteProjectAvatarRequest } from "../models/deleteprojectavatarchecksstate.js";
 import { DeleteProjectAvatarResponseBody } from "../models/deleteprojectavatarresponsebody.js";
 import { DeleteProjectRequest } from "../models/deleteprojectop.js";
 import {
@@ -72,6 +73,7 @@ import {
   FilterProjectEnvsRequest,
   FilterProjectEnvsResponseBody,
 } from "../models/filterprojectenvsop.js";
+import { GetProjectRequest } from "../models/getprojectbuilds.js";
 import {
   GetProjectDomainRequest,
   GetProjectDomainResponseBody,
@@ -84,10 +86,9 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
-import { GetProjectRequest } from "../models/getprojectprojectscreator.js";
 import { GetProjectResponseBody } from "../models/getprojectresponsebody.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3branchmatcher.js";
+import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjsonaliasassigned.js";
 import {
   GetProjectTokenRequest,
   GetProjectTokenResponseBody,
@@ -96,7 +97,6 @@ import {
   GetProjectTraceRequest,
   GetProjectTraceResponseBody,
 } from "../models/getprojecttraceop.js";
-import { CreateProjectRequest } from "../models/internalrouteshas.js";
 import {
   ListPromoteAliasesRequest,
   ListPromoteAliasesResponseBody,
@@ -117,20 +117,20 @@ import {
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsoidctokenclaims.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendschecksconclusion.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
 import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectprojectsenvironments.js";
+import { UpdateProjectRequest } from "../models/updateprojectenvironmentsprojectsresponse2.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarplan.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarchecksstate.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
 import {
   VerifyProjectDomainRequest,

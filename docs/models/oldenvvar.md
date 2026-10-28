@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OldEnvVar } from "@vercel/sdk/models/usereventjobpayload125nsnbsideeffect.js";
+import { OldEnvVar } from "@vercel/sdk/models/usereventjobpayload1258headinfo.js";
 
 let value: OldEnvVar = {
   created: new Date("2021-02-10T13:11:49.180Z"),

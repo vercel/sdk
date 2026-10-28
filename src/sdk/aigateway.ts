@@ -4,18 +4,23 @@
 
 import { aiGatewayArchiveAiGatewayBudget } from "../funcs/aiGatewayArchiveAiGatewayBudget.js";
 import { aiGatewayArchiveAiGatewayBudgetDefault } from "../funcs/aiGatewayArchiveAiGatewayBudgetDefault.js";
+import { aiGatewayCreateAiGatewayByokCredential } from "../funcs/aiGatewayCreateAiGatewayByokCredential.js";
 import { aiGatewayCreateAiGatewayRule } from "../funcs/aiGatewayCreateAiGatewayRule.js";
 import { aiGatewayCreateAiGatewayVirtualModelConfig } from "../funcs/aiGatewayCreateAiGatewayVirtualModelConfig.js";
+import { aiGatewayDeleteAiGatewayByokCredential } from "../funcs/aiGatewayDeleteAiGatewayByokCredential.js";
 import { aiGatewayDeleteAiGatewayRule } from "../funcs/aiGatewayDeleteAiGatewayRule.js";
 import { aiGatewayDeleteAiGatewayVirtualModelConfig } from "../funcs/aiGatewayDeleteAiGatewayVirtualModelConfig.js";
 import { aiGatewayDeleteAiGatewayVirtualModelConfigBySlug } from "../funcs/aiGatewayDeleteAiGatewayVirtualModelConfigBySlug.js";
+import { aiGatewayGetAiGatewayByokCredential } from "../funcs/aiGatewayGetAiGatewayByokCredential.js";
 import { aiGatewayGetAiGatewayVirtualModelConfig } from "../funcs/aiGatewayGetAiGatewayVirtualModelConfig.js";
 import { aiGatewayGetAiGatewayVirtualModelConfigBySlug } from "../funcs/aiGatewayGetAiGatewayVirtualModelConfigBySlug.js";
 import { aiGatewayListAiGatewayBudgetDefaults } from "../funcs/aiGatewayListAiGatewayBudgetDefaults.js";
 import { aiGatewayListAiGatewayBudgets } from "../funcs/aiGatewayListAiGatewayBudgets.js";
+import { aiGatewayListAiGatewayByokCredentials } from "../funcs/aiGatewayListAiGatewayByokCredentials.js";
 import { aiGatewayListAiGatewayRouters } from "../funcs/aiGatewayListAiGatewayRouters.js";
 import { aiGatewayListAiGatewayRules } from "../funcs/aiGatewayListAiGatewayRules.js";
 import { aiGatewayListAiGatewayVirtualModelConfigs } from "../funcs/aiGatewayListAiGatewayVirtualModelConfigs.js";
+import { aiGatewayUpdateAiGatewayByokCredential } from "../funcs/aiGatewayUpdateAiGatewayByokCredential.js";
 import { aiGatewayUpdateAiGatewayRule } from "../funcs/aiGatewayUpdateAiGatewayRule.js";
 import { aiGatewayUpdateAiGatewayVirtualModelConfig } from "../funcs/aiGatewayUpdateAiGatewayVirtualModelConfig.js";
 import { aiGatewayUpdateAiGatewayVirtualModelConfigBySlug } from "../funcs/aiGatewayUpdateAiGatewayVirtualModelConfigBySlug.js";
@@ -34,11 +39,20 @@ import { AiGatewayVirtualModelConfig } from "../models/aigatewayvirtualmodelconf
 import { AiGatewayVirtualModelConfigList } from "../models/aigatewayvirtualmodelconfiglist.js";
 import { ArchiveAiGatewayBudgetDefaultRequest } from "../models/archiveaigatewaybudgetdefaultop.js";
 import { ArchiveAiGatewayBudgetRequest } from "../models/archiveaigatewaybudgetop.js";
+import {
+  CreateAiGatewayByokCredentialRequest,
+  CreateAiGatewayByokCredentialResponseBody,
+} from "../models/createaigatewaybyokcredentialop.js";
 import { CreateAiGatewayRuleRequest } from "../models/createaigatewayruleop.js";
 import { CreateAiGatewayVirtualModelConfigRequest } from "../models/createaigatewayvirtualmodelconfigop.js";
+import { DeleteAiGatewayByokCredentialRequest } from "../models/deleteaigatewaybyokcredentialop.js";
 import { DeleteAiGatewayRuleRequest } from "../models/deleteaigatewayruleop.js";
 import { DeleteAiGatewayVirtualModelConfigBySlugRequest } from "../models/deleteaigatewayvirtualmodelconfigbyslugop.js";
 import { DeleteAiGatewayVirtualModelConfigRequest } from "../models/deleteaigatewayvirtualmodelconfigop.js";
+import {
+  GetAiGatewayByokCredentialRequest,
+  GetAiGatewayByokCredentialResponseBody,
+} from "../models/getaigatewaybyokcredentialop.js";
 import { GetAiGatewayVirtualModelConfigBySlugRequest } from "../models/getaigatewayvirtualmodelconfigbyslugop.js";
 import {
   GetAiGatewayVirtualModelConfigRequest,
@@ -46,9 +60,17 @@ import {
 } from "../models/getaigatewayvirtualmodelconfigop.js";
 import { ListAiGatewayBudgetDefaultsRequest } from "../models/listaigatewaybudgetdefaultsop.js";
 import { ListAiGatewayBudgetsRequest } from "../models/listaigatewaybudgetsop.js";
+import {
+  ListAiGatewayByokCredentialsRequest,
+  ListAiGatewayByokCredentialsResponseBody,
+} from "../models/listaigatewaybyokcredentialsop.js";
 import { ListAiGatewayRoutersRequest } from "../models/listaigatewayroutersop.js";
 import { ListAiGatewayRulesRequest } from "../models/listaigatewayrulesop.js";
 import { ListAiGatewayVirtualModelConfigsRequest } from "../models/listaigatewayvirtualmodelconfigsop.js";
+import {
+  UpdateAiGatewayByokCredentialRequest,
+  UpdateAiGatewayByokCredentialResponseBody,
+} from "../models/updateaigatewaybyokcredentialop.js";
 import { UpdateAiGatewayRuleRequest } from "../models/updateaigatewayruleop.js";
 import { UpdateAiGatewayVirtualModelConfigBySlugRequest } from "../models/updateaigatewayvirtualmodelconfigbyslugop.js";
 import { UpdateAiGatewayVirtualModelConfigRequest } from "../models/updateaigatewayvirtualmodelconfigop.js";
@@ -61,6 +83,91 @@ import { UpsertAiGatewayBudgetRequest } from "../models/upsertaigatewaybudgetop.
 import { unwrapAsync } from "../types/fp.js";
 
 export class AiGateway extends ClientSDK {
+  /**
+   * Create a BYOK credential
+   *
+   * @remarks
+   * Create a new BYOK credential
+   */
+  async createAiGatewayByokCredential(
+    request: CreateAiGatewayByokCredentialRequest,
+    options?: RequestOptions,
+  ): Promise<CreateAiGatewayByokCredentialResponseBody> {
+    return unwrapAsync(aiGatewayCreateAiGatewayByokCredential(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List BYOK credentials
+   *
+   * @remarks
+   * List BYOK credentials for an owner, optionally filtered by provider
+   */
+  async listAiGatewayByokCredentials(
+    request: ListAiGatewayByokCredentialsRequest,
+    options?: RequestOptions,
+  ): Promise<ListAiGatewayByokCredentialsResponseBody> {
+    return unwrapAsync(aiGatewayListAiGatewayByokCredentials(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get a BYOK credential
+   *
+   * @remarks
+   * Get a BYOK credential by ID. The credential value is never returned.
+   */
+  async getAiGatewayByokCredential(
+    request: GetAiGatewayByokCredentialRequest,
+    options?: RequestOptions,
+  ): Promise<GetAiGatewayByokCredentialResponseBody> {
+    return unwrapAsync(aiGatewayGetAiGatewayByokCredential(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update a BYOK credential
+   *
+   * @remarks
+   * Update a BYOK credential. Send `credential` to replace the key value in place, which keeps the credential ID, settings and model mappings.
+   */
+  async updateAiGatewayByokCredential(
+    request: UpdateAiGatewayByokCredentialRequest,
+    options?: RequestOptions,
+  ): Promise<UpdateAiGatewayByokCredentialResponseBody> {
+    return unwrapAsync(aiGatewayUpdateAiGatewayByokCredential(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete a BYOK credential
+   *
+   * @remarks
+   * Delete a BYOK credential (soft delete) and its model mappings
+   */
+  async deleteAiGatewayByokCredential(
+    request: DeleteAiGatewayByokCredentialRequest,
+    options?: RequestOptions,
+  ): Promise<any> {
+    return unwrapAsync(aiGatewayDeleteAiGatewayByokCredential(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * Create virtual model config
    *

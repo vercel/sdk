@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectFromPreset } from "@vercel/sdk/models/createprojectfrom2.js";
+import { CreateProjectFromPreset } from "@vercel/sdk/models/createprojectresponsebody.js";
 
 let value: CreateProjectFromPreset = "all-custom";
 ```

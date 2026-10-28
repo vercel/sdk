@@ -5,7 +5,7 @@ The Vercel region sandboxes in this project are created in by default.
 ## Example Usage
 
 ```typescript
-import { Region } from "@vercel/sdk/models/internalrouteshas.js";
+import { Region } from "@vercel/sdk/models/createprojecthaskey.js";
 
 let value: Region = "iad1";
 ```

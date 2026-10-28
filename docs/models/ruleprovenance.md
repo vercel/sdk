@@ -5,7 +5,7 @@ Team-level or project-level rule.
 ## Example Usage
 
 ```typescript
-import { RuleProvenance } from "@vercel/sdk/models/usereventjobpayload125nsnbsideeffect.js";
+import { RuleProvenance } from "@vercel/sdk/models/usereventjobpayload1258headinfo.js";
 
 let value: RuleProvenance = "default";
 ```

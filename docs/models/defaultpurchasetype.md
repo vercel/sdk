@@ -5,7 +5,7 @@ The build machine tier included with the customer's plan. For most customers thi
 ## Example Usage
 
 ```typescript
-import { DefaultPurchaseType } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicesvalue.js";
+import { DefaultPurchaseType } from "@vercel/sdk/models/servicesdestination.js";
 
 let value: DefaultPurchaseType = "basic";
 ```

@@ -1,23 +1,45 @@
 # UploadProjectAvatarElasticBuildMachine
 
-Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
 
-## Example Usage
+## Supported Types
+
+### `models.UploadProjectAvatarElasticBuildMachine1`
 
 ```typescript
-import { UploadProjectAvatarElasticBuildMachine } from "@vercel/sdk/models/uploadprojectavatarplan.js";
-
-let value: UploadProjectAvatarElasticBuildMachine = {
-  cores: 1402.25,
-  label: "enhanced",
-  memory: 3505.97,
+const value: models.UploadProjectAvatarElasticBuildMachine1 = {
+  cores: 623.04,
+  label: "standard",
+  memory: 4160.54,
 };
 ```
 
-## Fields
+### `models.UploadProjectAvatarElasticBuildMachine2`
 
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `cores`                                                                                   | *number*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `label`                                                                                   | [models.UploadProjectAvatarLabel](../models/uploadprojectavatarlabel.md)                  | :heavy_check_mark:                                                                        | Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier. |
-| `memory`                                                                                  | *number*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+```typescript
+const value: models.UploadProjectAvatarElasticBuildMachine2 = {
+  cores: 6437.81,
+  label: "enhanced",
+  memory: 2464.7,
+};
+```
+
+### `models.UploadProjectAvatarElasticBuildMachine3`
+
+```typescript
+const value: models.UploadProjectAvatarElasticBuildMachine3 = {
+  cores: 5232.31,
+  label: "14cpu-28gb",
+  memory: 5895.58,
+};
+```
+
+### `models.UploadProjectAvatarElasticBuildMachine4`
+
+```typescript
+const value: models.UploadProjectAvatarElasticBuildMachine4 = {
+  cores: 1522.5,
+  label: "turbo",
+  memory: 1552.36,
+};
+```
+

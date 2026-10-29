@@ -1,7 +1,5 @@
 # ResponseBodyDeploymentAlias
 
-Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
-
 ## Example Usage
 
 ```typescript

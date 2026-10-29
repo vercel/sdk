@@ -5,7 +5,7 @@ Password protection settings returned without the secret password hash.
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsPasswordProtection } from "@vercel/sdk/models/getprojectsresponsebodypagination.js";
+import { GetProjectsResponseBodyProjectsPasswordProtection } from "@vercel/sdk/models/responsebodyusagestatus.js";
 
 let value: GetProjectsResponseBodyProjectsPasswordProtection = {
   deploymentType: "preview",

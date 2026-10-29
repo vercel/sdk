@@ -5,7 +5,7 @@ Customer-configurable deployment sources. Every deploy classifies to exactly one
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarSources } from "@vercel/sdk/models/deleteprojectavatarplan.js";
+import { DeleteProjectAvatarSources } from "@vercel/sdk/models/deleteprojectavatarchecksstate.js";
 
 let value: DeleteProjectAvatarSources = "v0";
 ```

@@ -21,6 +21,18 @@ export const BillingPlan = {
  */
 export type BillingPlan = ClosedEnum<typeof BillingPlan>;
 
+/**
+ * Whether the organization's Directory Sync manages the team's memberships.
+ */
+export const DsyncMode = {
+  Organization: "organization",
+  Team: "team",
+} as const;
+/**
+ * Whether the organization's Directory Sync manages the team's memberships.
+ */
+export type DsyncMode = ClosedEnum<typeof DsyncMode>;
+
 export const SsoMode = {
   Organization: "organization",
   Team: "team",
@@ -43,6 +55,10 @@ export type OrganizationTeamListItem = {
    * ISO timestamp of when the team was linked to the organization.
    */
   createdAt: string;
+  /**
+   * Whether the organization's Directory Sync manages the team's memberships.
+   */
+  dsyncMode: DsyncMode;
   /**
    * Present only when the request sets `includeMemberCount=true`. Number of members on the Team, including pending memberships. Excludes email invitations that do not have a membership record.
    */
@@ -75,6 +91,10 @@ export const BillingPlan$inboundSchema: z.ZodNativeEnum<typeof BillingPlan> = z
   .nativeEnum(BillingPlan);
 
 /** @internal */
+export const DsyncMode$inboundSchema: z.ZodNativeEnum<typeof DsyncMode> = z
+  .nativeEnum(DsyncMode);
+
+/** @internal */
 export const SsoMode$inboundSchema: z.ZodNativeEnum<typeof SsoMode> = z
   .nativeEnum(SsoMode);
 
@@ -87,6 +107,7 @@ export const OrganizationTeamListItem$inboundSchema: z.ZodType<
   avatar: types.nullable(types.string()),
   billingPlan: types.optional(BillingPlan$inboundSchema),
   createdAt: types.string(),
+  dsyncMode: DsyncMode$inboundSchema,
   memberCount: types.optional(types.number()),
   name: types.nullable(types.string()),
   organizationId: types.string(),

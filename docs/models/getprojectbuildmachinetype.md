@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectBuildMachineType } from "@vercel/sdk/models/getprojectprojectscreator.js";
+import { GetProjectBuildMachineType } from "@vercel/sdk/models/getprojectbuilds.js";
 
-let value: GetProjectBuildMachineType = "standard";
+let value: GetProjectBuildMachineType = "enhanced";
 ```
 
 ## Values
 
 ```typescript
-"basic" | "enhanced" | "standard" | "turbo"
+"14cpu-28gb" | "basic" | "enhanced" | "standard" | "turbo"
 ```

@@ -125,6 +125,19 @@ export type Managed = {
 };
 
 /**
+ * MCP Events dashboard visibility. Defaults to auto: show after the first successful delivery.
+ */
+export const McpEventsUiVisibility = {
+  Auto: "auto",
+  Hide: "hide",
+  Show: "show",
+} as const;
+/**
+ * MCP Events dashboard visibility. Defaults to auto: show after the first successful delivery.
+ */
+export type McpEventsUiVisibility = ClosedEnum<typeof McpEventsUiVisibility>;
+
+/**
  * Whether the connector icon can propagate to the provider.
  */
 export const SupportsIcon = {
@@ -303,6 +316,10 @@ export type ConnectConnector = {
    */
   events?: Array<string> | undefined;
   /**
+   * Whether Connect has successfully delivered an MCP event for this connector.
+   */
+  hasMcpEventDeliveries?: boolean | undefined;
+  /**
    * Connector branding icon. SHA-1 hash that resolves to the uploaded icon through the Vercel avatar service. Consumers render this with `https://vercel.com/api/www/avatar/{icon}`.
    */
   icon?: string | undefined;
@@ -318,6 +335,10 @@ export type ConnectConnector = {
    * Managed connector metadata exposed without leaking the manager connector or installation identifiers.
    */
   managed?: Managed | undefined;
+  /**
+   * MCP Events dashboard visibility. Defaults to auto: show after the first successful delivery.
+   */
+  mcpEventsUiVisibility?: McpEventsUiVisibility | undefined;
   /**
    * Connector name within the owning team.
    */
@@ -534,6 +555,11 @@ export function managedFromJSON(
 }
 
 /** @internal */
+export const McpEventsUiVisibility$inboundSchema: z.ZodNativeEnum<
+  typeof McpEventsUiVisibility
+> = z.nativeEnum(McpEventsUiVisibility);
+
+/** @internal */
 export const SupportsIcon$inboundSchema: z.ZodNativeEnum<typeof SupportsIcon> =
   z.nativeEnum(SupportsIcon);
 
@@ -677,10 +703,12 @@ export const ConnectConnector$inboundSchema: z.ZodType<
   displayName: types.string(),
   docsite: types.optional(types.string()),
   events: types.optional(z.array(types.string())),
+  hasMcpEventDeliveries: types.optional(types.boolean()),
   icon: types.optional(types.string()),
   id: types.string(),
   knownStale: types.optional(types.boolean()),
   managed: types.optional(z.lazy(() => Managed$inboundSchema)),
+  mcpEventsUiVisibility: types.optional(McpEventsUiVisibility$inboundSchema),
   name: types.string(),
   redirectUri: types.optional(types.string()),
   reinstallAt: types.optional(types.number()),

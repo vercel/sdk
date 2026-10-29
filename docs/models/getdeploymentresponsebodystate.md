@@ -5,7 +5,7 @@ Current provisioning state
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyState } from "@vercel/sdk/models/getdeploymentservicesresources.js";
+import { GetDeploymentResponseBodyState } from "@vercel/sdk/models/getdeploymentserviceshttpget.js";
 
 let value: GetDeploymentResponseBodyState = "COMPLETE";
 ```

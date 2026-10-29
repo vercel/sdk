@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsVerification } from "@vercel/sdk/models/updatemicrofrontendsoidctokenclaims.js";
+import { UpdateMicrofrontendsVerification } from "@vercel/sdk/models/updatemicrofrontendschecksconclusion.js";
 
 let value: UpdateMicrofrontendsVerification = {
   domain: "front-guard.biz",

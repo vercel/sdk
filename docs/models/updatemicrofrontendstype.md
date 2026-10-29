@@ -5,7 +5,7 @@ The type of environment (production, preview, or development)
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsType } from "@vercel/sdk/models/updatemicrofrontendsoidctokenclaims.js";
+import { UpdateMicrofrontendsType } from "@vercel/sdk/models/updatemicrofrontendschecksconclusion.js";
 
 let value: UpdateMicrofrontendsType = "production";
 ```

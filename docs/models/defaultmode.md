@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DefaultMode } from "@vercel/sdk/models/twentyone.js";
+import { DefaultMode } from "@vercel/sdk/models/usereventpayload22provider.js";
 
 let value: DefaultMode = "until-requested";
 ```

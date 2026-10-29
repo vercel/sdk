@@ -1,23 +1,45 @@
 # DeleteProjectAvatarElasticBuildMachine
 
-Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
 
-## Example Usage
+## Supported Types
+
+### `models.DeleteProjectAvatarElasticBuildMachine1`
 
 ```typescript
-import { DeleteProjectAvatarElasticBuildMachine } from "@vercel/sdk/models/deleteprojectavatarplan.js";
-
-let value: DeleteProjectAvatarElasticBuildMachine = {
-  cores: 9836.53,
-  label: "turbo",
-  memory: 7827.38,
+const value: models.DeleteProjectAvatarElasticBuildMachine1 = {
+  cores: 6131.35,
+  label: "standard",
+  memory: 552.52,
 };
 ```
 
-## Fields
+### `models.DeleteProjectAvatarElasticBuildMachine2`
 
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `cores`                                                                                   | *number*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `label`                                                                                   | [models.DeleteProjectAvatarLabel](../models/deleteprojectavatarlabel.md)                  | :heavy_check_mark:                                                                        | Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier. |
-| `memory`                                                                                  | *number*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+```typescript
+const value: models.DeleteProjectAvatarElasticBuildMachine2 = {
+  cores: 3719.28,
+  label: "enhanced",
+  memory: 1819.19,
+};
+```
+
+### `models.DeleteProjectAvatarElasticBuildMachine3`
+
+```typescript
+const value: models.DeleteProjectAvatarElasticBuildMachine3 = {
+  cores: 2922.55,
+  label: "14cpu-28gb",
+  memory: 9301.45,
+};
+```
+
+### `models.DeleteProjectAvatarElasticBuildMachine4`
+
+```typescript
+const value: models.DeleteProjectAvatarElasticBuildMachine4 = {
+  cores: 6077.73,
+  label: "turbo",
+  memory: 7829.07,
+};
+```
+

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBodyStatus } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { CreateDeploymentResponseBodyStatus } from "@vercel/sdk/models/createdeploymentresponsebodyduration.js";
 
 let value: CreateDeploymentResponseBodyStatus = "BLOCKED";
 ```

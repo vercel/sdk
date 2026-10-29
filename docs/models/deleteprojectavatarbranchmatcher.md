@@ -5,7 +5,7 @@ Configuration for matching git branches to this environment
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarBranchMatcher } from "@vercel/sdk/models/deleteprojectavatarplan.js";
+import { DeleteProjectAvatarBranchMatcher } from "@vercel/sdk/models/deleteprojectavatarchecksstate.js";
 
 let value: DeleteProjectAvatarBranchMatcher = {
   pattern: "<value>",

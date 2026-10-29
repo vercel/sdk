@@ -6,7 +6,7 @@ import * as z from "zod/v3";
 
 export type GetConnectorRequest = {
   /**
-   * Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`.
+   * Stable connector ID or URL-encoded owner-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`.
    */
   connector: string;
   /**

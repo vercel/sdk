@@ -5,7 +5,7 @@ User-facing config/secret model. When set, authoritative for new code paths. Leg
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarVisibility } from "@vercel/sdk/models/deleteprojectavatarplan.js";
+import { DeleteProjectAvatarVisibility } from "@vercel/sdk/models/deleteprojectavatarchecksstate.js";
 
 let value: DeleteProjectAvatarVisibility = "secret";
 ```

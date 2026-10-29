@@ -67,16 +67,43 @@ import {
   DeleteProjectAvatarLastAliasRequest$inboundSchema,
   DeleteProjectAvatarLastRollbackTarget,
   DeleteProjectAvatarLastRollbackTarget$inboundSchema,
-  DeleteProjectAvatarOidcTokenClaims,
-  DeleteProjectAvatarOidcTokenClaims$inboundSchema,
-  DeleteProjectAvatarPlan,
-  DeleteProjectAvatarPlan$inboundSchema,
   DeleteProjectAvatarProjectsBranchMatcher,
   DeleteProjectAvatarProjectsBranchMatcher$inboundSchema,
-  DeleteProjectAvatarProjectsCreator,
-  DeleteProjectAvatarProjectsCreator$inboundSchema,
-} from "./deleteprojectavatarplan.js";
+} from "./deleteprojectavatarchecksstate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type DeleteProjectAvatarProjectsCreator = {
+  email: string;
+  githubLogin?: string | undefined;
+  gitlabLogin?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+export type DeleteProjectAvatarOidcTokenClaims = {
+  aud: string;
+  customEnvironmentId?: string | undefined;
+  deploymentId?: string | undefined;
+  environment: string;
+  iss: string;
+  mfeGroupIds?: Array<string> | undefined;
+  owner: string;
+  ownerId: string;
+  plan?: string | undefined;
+  project: string;
+  projectId: string;
+  scope: string;
+  sub: string;
+};
+
+export const DeleteProjectAvatarPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type DeleteProjectAvatarPlan = ClosedEnum<
+  typeof DeleteProjectAvatarPlan
+>;
 
 export const DeleteProjectAvatarReadyState = {
   Blocked: "BLOCKED",
@@ -558,6 +585,10 @@ export type DeleteProjectAvatarPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   aiGatewayBudget?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayByokCredentials?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -1781,6 +1812,7 @@ export type DeleteProjectAvatarProjectsBuildMachineSelection = ClosedEnum<
 >;
 
 export const DeleteProjectAvatarProjectsBuildMachineType = {
+  Fourteencpu28gb: "14cpu-28gb",
   Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
@@ -1813,31 +1845,46 @@ export type DeleteProjectAvatarProjectsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 /**
- * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
-export const DeleteProjectAvatarProjectsLabel = {
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-/**
- * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
- */
-export type DeleteProjectAvatarProjectsLabel = ClosedEnum<
-  typeof DeleteProjectAvatarProjectsLabel
->;
+export type DeleteProjectAvatarElasticBuildMachineProjects4 = {
+  cores: number;
+  label: "turbo";
+  memory: number;
+};
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
-export type DeleteProjectAvatarProjectsElasticBuildMachine = {
+export type DeleteProjectAvatarElasticBuildMachineProjects3 = {
   cores: number;
-  /**
-   * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
-   */
-  label: DeleteProjectAvatarProjectsLabel;
+  label: "14cpu-28gb";
   memory: number;
 };
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type DeleteProjectAvatarElasticBuildMachineProjects2 = {
+  cores: number;
+  label: "enhanced";
+  memory: number;
+};
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type DeleteProjectAvatarElasticBuildMachineProjects1 = {
+  cores: number;
+  label: "standard";
+  memory: number;
+};
+
+export type DeleteProjectAvatarProjectsElasticBuildMachine =
+  | DeleteProjectAvatarElasticBuildMachineProjects1
+  | DeleteProjectAvatarElasticBuildMachineProjects2
+  | DeleteProjectAvatarElasticBuildMachineProjects3
+  | DeleteProjectAvatarElasticBuildMachineProjects4;
 
 export type DeleteProjectAvatarResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
@@ -1862,11 +1909,11 @@ export type DeleteProjectAvatarResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  /**
-   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
-   */
   elasticBuildMachine?:
-    | DeleteProjectAvatarProjectsElasticBuildMachine
+    | DeleteProjectAvatarElasticBuildMachineProjects1
+    | DeleteProjectAvatarElasticBuildMachineProjects2
+    | DeleteProjectAvatarElasticBuildMachineProjects3
+    | DeleteProjectAvatarElasticBuildMachineProjects4
     | undefined;
 };
 
@@ -3051,6 +3098,75 @@ export type DeleteProjectAvatarResponseBody = {
 };
 
 /** @internal */
+export const DeleteProjectAvatarProjectsCreator$inboundSchema: z.ZodType<
+  DeleteProjectAvatarProjectsCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.string(),
+  githubLogin: types.optional(types.string()),
+  gitlabLogin: types.optional(types.string()),
+  uid: types.string(),
+  username: types.string(),
+});
+
+export function deleteProjectAvatarProjectsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteProjectAvatarProjectsCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteProjectAvatarProjectsCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteProjectAvatarProjectsCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeleteProjectAvatarOidcTokenClaims$inboundSchema: z.ZodType<
+  DeleteProjectAvatarOidcTokenClaims,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  aud: types.string(),
+  custom_environment_id: types.optional(types.string()),
+  deployment_id: types.optional(types.string()),
+  environment: types.string(),
+  iss: types.string(),
+  mfe_group_ids: types.optional(z.array(types.string())),
+  owner: types.string(),
+  owner_id: types.string(),
+  plan: types.optional(types.string()),
+  project: types.string(),
+  project_id: types.string(),
+  scope: types.string(),
+  sub: types.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "custom_environment_id": "customEnvironmentId",
+    "deployment_id": "deploymentId",
+    "mfe_group_ids": "mfeGroupIds",
+    "owner_id": "ownerId",
+    "project_id": "projectId",
+  });
+});
+
+export function deleteProjectAvatarOidcTokenClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteProjectAvatarOidcTokenClaims, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteProjectAvatarOidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteProjectAvatarOidcTokenClaims' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeleteProjectAvatarPlan$inboundSchema: z.ZodNativeEnum<
+  typeof DeleteProjectAvatarPlan
+> = z.nativeEnum(DeleteProjectAvatarPlan);
+
+/** @internal */
 export const DeleteProjectAvatarReadyState$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarReadyState
 > = z.nativeEnum(DeleteProjectAvatarReadyState);
@@ -3091,7 +3207,9 @@ export const DeleteProjectAvatarLatestDeployments$inboundSchema: z.ZodType<
   connectConfigurationId: types.optional(types.string()),
   createdAt: types.number(),
   createdIn: types.string(),
-  creator: types.nullable(DeleteProjectAvatarProjectsCreator$inboundSchema),
+  creator: types.nullable(
+    z.lazy(() => DeleteProjectAvatarProjectsCreator$inboundSchema),
+  ),
   deletedAt: types.optional(types.number()),
   deploymentHostname: types.string(),
   forced: types.optional(types.boolean()),
@@ -3100,7 +3218,7 @@ export const DeleteProjectAvatarLatestDeployments$inboundSchema: z.ZodType<
   monorepoManager: z.nullable(types.string()).optional(),
   name: types.string(),
   oidcTokenClaims: types.optional(
-    DeleteProjectAvatarOidcTokenClaims$inboundSchema,
+    z.lazy(() => DeleteProjectAvatarOidcTokenClaims$inboundSchema),
   ),
   plan: DeleteProjectAvatarPlan$inboundSchema,
   previewCommentsEnabled: types.optional(types.boolean()),
@@ -3875,6 +3993,7 @@ export const DeleteProjectAvatarPermissions$inboundSchema: z.ZodType<
   ),
   aiGatewayApiKeyZdrExemption: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayBudget: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayByokCredentials: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayCredits: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayGuardrails: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayPrivateModels: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4422,9 +4541,116 @@ export const DeleteProjectAvatarProjectsFunctionDefaultMemoryType$inboundSchema:
     z.nativeEnum(DeleteProjectAvatarProjectsFunctionDefaultMemoryType);
 
 /** @internal */
-export const DeleteProjectAvatarProjectsLabel$inboundSchema: z.ZodNativeEnum<
-  typeof DeleteProjectAvatarProjectsLabel
-> = z.nativeEnum(DeleteProjectAvatarProjectsLabel);
+export const DeleteProjectAvatarElasticBuildMachineProjects4$inboundSchema:
+  z.ZodType<
+    DeleteProjectAvatarElasticBuildMachineProjects4,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("turbo"),
+    memory: types.number(),
+  });
+
+export function deleteProjectAvatarElasticBuildMachineProjects4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteProjectAvatarElasticBuildMachineProjects4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteProjectAvatarElasticBuildMachineProjects4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeleteProjectAvatarElasticBuildMachineProjects4' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeleteProjectAvatarElasticBuildMachineProjects3$inboundSchema:
+  z.ZodType<
+    DeleteProjectAvatarElasticBuildMachineProjects3,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("14cpu-28gb"),
+    memory: types.number(),
+  });
+
+export function deleteProjectAvatarElasticBuildMachineProjects3FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteProjectAvatarElasticBuildMachineProjects3,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteProjectAvatarElasticBuildMachineProjects3$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeleteProjectAvatarElasticBuildMachineProjects3' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeleteProjectAvatarElasticBuildMachineProjects2$inboundSchema:
+  z.ZodType<
+    DeleteProjectAvatarElasticBuildMachineProjects2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("enhanced"),
+    memory: types.number(),
+  });
+
+export function deleteProjectAvatarElasticBuildMachineProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteProjectAvatarElasticBuildMachineProjects2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteProjectAvatarElasticBuildMachineProjects2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeleteProjectAvatarElasticBuildMachineProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const DeleteProjectAvatarElasticBuildMachineProjects1$inboundSchema:
+  z.ZodType<
+    DeleteProjectAvatarElasticBuildMachineProjects1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("standard"),
+    memory: types.number(),
+  });
+
+export function deleteProjectAvatarElasticBuildMachineProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  DeleteProjectAvatarElasticBuildMachineProjects1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      DeleteProjectAvatarElasticBuildMachineProjects1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'DeleteProjectAvatarElasticBuildMachineProjects1' from JSON`,
+  );
+}
 
 /** @internal */
 export const DeleteProjectAvatarProjectsElasticBuildMachine$inboundSchema:
@@ -4432,11 +4658,12 @@ export const DeleteProjectAvatarProjectsElasticBuildMachine$inboundSchema:
     DeleteProjectAvatarProjectsElasticBuildMachine,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: DeleteProjectAvatarProjectsLabel$inboundSchema,
-    memory: types.number(),
-  });
+  > = z.union([
+    z.lazy(() => DeleteProjectAvatarElasticBuildMachineProjects1$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarElasticBuildMachineProjects2$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarElasticBuildMachineProjects3$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarElasticBuildMachineProjects4$inboundSchema),
+  ]);
 
 export function deleteProjectAvatarProjectsElasticBuildMachineFromJSON(
   jsonString: string,
@@ -4489,7 +4716,20 @@ export const DeleteProjectAvatarResourceConfig$inboundSchema: z.ZodType<
   functionZeroConfigFailover: types.optional(types.boolean()),
   isNSNBDisabled: types.optional(types.boolean()),
   elasticBuildMachine: types.optional(
-    z.lazy(() => DeleteProjectAvatarProjectsElasticBuildMachine$inboundSchema),
+    z.union([
+      z.lazy(() =>
+        DeleteProjectAvatarElasticBuildMachineProjects1$inboundSchema
+      ),
+      z.lazy(() =>
+        DeleteProjectAvatarElasticBuildMachineProjects2$inboundSchema
+      ),
+      z.lazy(() =>
+        DeleteProjectAvatarElasticBuildMachineProjects3$inboundSchema
+      ),
+      z.lazy(() =>
+        DeleteProjectAvatarElasticBuildMachineProjects4$inboundSchema
+      ),
+    ]),
   ),
 });
 

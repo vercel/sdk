@@ -5,7 +5,7 @@ Similar to `contentHints`, but should not be exposed to the user.
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarInternalContentHint } from "@vercel/sdk/models/uploadprojectavatarplan.js";
+import { UploadProjectAvatarInternalContentHint } from "@vercel/sdk/models/uploadprojectavatarchecksstate.js";
 
 let value: UploadProjectAvatarInternalContentHint = {
   encryptedValue: "<value>",

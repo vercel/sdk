@@ -172,7 +172,7 @@ export type UpdateResourceClaimRules = {
  */
 export type UpdateResourceCustomClaims = {
   /**
-   * Roles a deployment may request when minting a token. The selected role becomes the `sub` claim.
+   * Roles a deployment may request when minting a token. The selected role is emitted as the `role` claim.
    */
   roles?: Array<string> | undefined;
   /**

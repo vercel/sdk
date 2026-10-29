@@ -5,7 +5,7 @@ List of domains associated with this environment
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarDomains } from "@vercel/sdk/models/deleteprojectavatarplan.js";
+import { DeleteProjectAvatarDomains } from "@vercel/sdk/models/deleteprojectavatarchecksstate.js";
 
 let value: DeleteProjectAvatarDomains = {
   apexName: "<value>",

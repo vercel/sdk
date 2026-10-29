@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarBuildMachineElasticReason } from "@vercel/sdk/models/deleteprojectavatarplan.js";
+import { DeleteProjectAvatarBuildMachineElasticReason } from "@vercel/sdk/models/deleteprojectavatarchecksstate.js";
 
 let value: DeleteProjectAvatarBuildMachineElasticReason = "high-peak-memory";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarContentHint4 } from "@vercel/sdk/models/deleteprojectavatarplan.js";
+import { DeleteProjectAvatarContentHint4 } from "@vercel/sdk/models/deleteprojectavatarchecksstate.js";
 
 let value: DeleteProjectAvatarContentHint4 = {
   storeId: "<id>",

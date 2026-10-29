@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesAffinity } from "@vercel/sdk/models/createdeploymentmissingdeployments2.js";
+import { CreateDeploymentServicesAffinity } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200type.js";
 
 let value: CreateDeploymentServicesAffinity = {
   mode: "strict",

@@ -5,7 +5,7 @@ Configuration for consolidated git commit status reporting. When enabled, Vercel
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarConsolidatedGitCommitStatus } from "@vercel/sdk/models/deleteprojectavatarplan.js";
+import { DeleteProjectAvatarConsolidatedGitCommitStatus } from "@vercel/sdk/models/deleteprojectavatarchecksstate.js";
 
 let value: DeleteProjectAvatarConsolidatedGitCommitStatus = {
   enabled: false,

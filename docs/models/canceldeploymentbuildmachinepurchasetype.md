@@ -5,7 +5,7 @@ Machine type purchased for this build.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentBuildMachinePurchaseType } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicesvalue.js";
+import { CancelDeploymentBuildMachinePurchaseType } from "@vercel/sdk/models/servicesdestination.js";
 
 let value: CancelDeploymentBuildMachinePurchaseType = "basic";
 ```

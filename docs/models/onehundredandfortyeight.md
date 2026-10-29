@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyEight } from "@vercel/sdk/models/usereventjobpayload125nsnbsideeffect.js";
+import { OneHundredAndFortyEight } from "@vercel/sdk/models/usereventjobpayload125githashtagvercel.js";
 
 let value: OneHundredAndFortyEight = {
   domain: "enchanted-colon.name",

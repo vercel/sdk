@@ -1,7 +1,5 @@
 # GetDeploymentsDeploymentAlias
 
-Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
-
 ## Example Usage
 
 ```typescript

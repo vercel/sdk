@@ -1,23 +1,49 @@
 # GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine
 
-Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
 
-## Example Usage
+## Supported Types
+
+### `models.GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends1`
 
 ```typescript
-import { GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine } from "@vercel/sdk/models/getmicrofrontendsingroupplan.js";
-
-let value: GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine = {
-  cores: 9069.1,
-  label: "standard",
-  memory: 2782.78,
-};
+const value: models.GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends1 =
+  {
+    cores: 2445.54,
+    label: "standard",
+    memory: 5529.65,
+  };
 ```
 
-## Fields
+### `models.GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2`
 
-| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `cores`                                                                                                        | *number*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-| `label`                                                                                                        | [models.GetMicrofrontendsInGroupMicrofrontendsLabel](../models/getmicrofrontendsingroupmicrofrontendslabel.md) | :heavy_check_mark:                                                                                             | Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.                      |
-| `memory`                                                                                                       | *number*                                                                                                       | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+```typescript
+const value: models.GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2 =
+  {
+    cores: 223.61,
+    label: "enhanced",
+    memory: 5687.78,
+  };
+```
+
+### `models.GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends3`
+
+```typescript
+const value: models.GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends3 =
+  {
+    cores: 3125.23,
+    label: "14cpu-28gb",
+    memory: 1599.86,
+  };
+```
+
+### `models.GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4`
+
+```typescript
+const value: models.GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4 =
+  {
+    cores: 617.22,
+    label: "turbo",
+    memory: 2901.29,
+  };
+```
+

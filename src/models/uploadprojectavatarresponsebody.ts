@@ -68,15 +68,42 @@ import {
   UploadProjectAvatarLastAliasRequest$inboundSchema,
   UploadProjectAvatarLastRollbackTarget,
   UploadProjectAvatarLastRollbackTarget$inboundSchema,
-  UploadProjectAvatarOidcTokenClaims,
-  UploadProjectAvatarOidcTokenClaims$inboundSchema,
-  UploadProjectAvatarPlan,
-  UploadProjectAvatarPlan$inboundSchema,
   UploadProjectAvatarProjectsBranchMatcher,
   UploadProjectAvatarProjectsBranchMatcher$inboundSchema,
-  UploadProjectAvatarProjectsCreator,
-  UploadProjectAvatarProjectsCreator$inboundSchema,
-} from "./uploadprojectavatarplan.js";
+} from "./uploadprojectavatarchecksstate.js";
+
+export type UploadProjectAvatarProjectsCreator = {
+  email: string;
+  githubLogin?: string | undefined;
+  gitlabLogin?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+export type UploadProjectAvatarOidcTokenClaims = {
+  aud: string;
+  customEnvironmentId?: string | undefined;
+  deploymentId?: string | undefined;
+  environment: string;
+  iss: string;
+  mfeGroupIds?: Array<string> | undefined;
+  owner: string;
+  ownerId: string;
+  plan?: string | undefined;
+  project: string;
+  projectId: string;
+  scope: string;
+  sub: string;
+};
+
+export const UploadProjectAvatarPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type UploadProjectAvatarPlan = ClosedEnum<
+  typeof UploadProjectAvatarPlan
+>;
 
 export const UploadProjectAvatarReadyState = {
   Blocked: "BLOCKED",
@@ -558,6 +585,10 @@ export type UploadProjectAvatarPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   aiGatewayBudget?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayByokCredentials?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -1781,6 +1812,7 @@ export type UploadProjectAvatarProjectsBuildMachineSelection = ClosedEnum<
 >;
 
 export const UploadProjectAvatarProjectsBuildMachineType = {
+  Fourteencpu28gb: "14cpu-28gb",
   Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
@@ -1813,31 +1845,46 @@ export type UploadProjectAvatarProjectsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 /**
- * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
-export const UploadProjectAvatarProjectsLabel = {
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-/**
- * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
- */
-export type UploadProjectAvatarProjectsLabel = ClosedEnum<
-  typeof UploadProjectAvatarProjectsLabel
->;
+export type UploadProjectAvatarElasticBuildMachineProjects4 = {
+  cores: number;
+  label: "turbo";
+  memory: number;
+};
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
-export type UploadProjectAvatarProjectsElasticBuildMachine = {
+export type UploadProjectAvatarElasticBuildMachineProjects3 = {
   cores: number;
-  /**
-   * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
-   */
-  label: UploadProjectAvatarProjectsLabel;
+  label: "14cpu-28gb";
   memory: number;
 };
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type UploadProjectAvatarElasticBuildMachineProjects2 = {
+  cores: number;
+  label: "enhanced";
+  memory: number;
+};
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type UploadProjectAvatarElasticBuildMachineProjects1 = {
+  cores: number;
+  label: "standard";
+  memory: number;
+};
+
+export type UploadProjectAvatarProjectsElasticBuildMachine =
+  | UploadProjectAvatarElasticBuildMachineProjects1
+  | UploadProjectAvatarElasticBuildMachineProjects2
+  | UploadProjectAvatarElasticBuildMachineProjects3
+  | UploadProjectAvatarElasticBuildMachineProjects4;
 
 export type UploadProjectAvatarResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
@@ -1862,11 +1909,11 @@ export type UploadProjectAvatarResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  /**
-   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
-   */
   elasticBuildMachine?:
-    | UploadProjectAvatarProjectsElasticBuildMachine
+    | UploadProjectAvatarElasticBuildMachineProjects1
+    | UploadProjectAvatarElasticBuildMachineProjects2
+    | UploadProjectAvatarElasticBuildMachineProjects3
+    | UploadProjectAvatarElasticBuildMachineProjects4
     | undefined;
 };
 
@@ -3051,6 +3098,75 @@ export type UploadProjectAvatarResponseBody = {
 };
 
 /** @internal */
+export const UploadProjectAvatarProjectsCreator$inboundSchema: z.ZodType<
+  UploadProjectAvatarProjectsCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.string(),
+  githubLogin: types.optional(types.string()),
+  gitlabLogin: types.optional(types.string()),
+  uid: types.string(),
+  username: types.string(),
+});
+
+export function uploadProjectAvatarProjectsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarProjectsCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarProjectsCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarProjectsCreator' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarOidcTokenClaims$inboundSchema: z.ZodType<
+  UploadProjectAvatarOidcTokenClaims,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  aud: types.string(),
+  custom_environment_id: types.optional(types.string()),
+  deployment_id: types.optional(types.string()),
+  environment: types.string(),
+  iss: types.string(),
+  mfe_group_ids: types.optional(z.array(types.string())),
+  owner: types.string(),
+  owner_id: types.string(),
+  plan: types.optional(types.string()),
+  project: types.string(),
+  project_id: types.string(),
+  scope: types.string(),
+  sub: types.string(),
+}).transform((v) => {
+  return remap$(v, {
+    "custom_environment_id": "customEnvironmentId",
+    "deployment_id": "deploymentId",
+    "mfe_group_ids": "mfeGroupIds",
+    "owner_id": "ownerId",
+    "project_id": "projectId",
+  });
+});
+
+export function uploadProjectAvatarOidcTokenClaimsFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarOidcTokenClaims, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarOidcTokenClaims$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarOidcTokenClaims' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarPlan$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarPlan
+> = z.nativeEnum(UploadProjectAvatarPlan);
+
+/** @internal */
 export const UploadProjectAvatarReadyState$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarReadyState
 > = z.nativeEnum(UploadProjectAvatarReadyState);
@@ -3091,7 +3207,9 @@ export const UploadProjectAvatarLatestDeployments$inboundSchema: z.ZodType<
   connectConfigurationId: types.optional(types.string()),
   createdAt: types.number(),
   createdIn: types.string(),
-  creator: types.nullable(UploadProjectAvatarProjectsCreator$inboundSchema),
+  creator: types.nullable(
+    z.lazy(() => UploadProjectAvatarProjectsCreator$inboundSchema),
+  ),
   deletedAt: types.optional(types.number()),
   deploymentHostname: types.string(),
   forced: types.optional(types.boolean()),
@@ -3100,7 +3218,7 @@ export const UploadProjectAvatarLatestDeployments$inboundSchema: z.ZodType<
   monorepoManager: z.nullable(types.string()).optional(),
   name: types.string(),
   oidcTokenClaims: types.optional(
-    UploadProjectAvatarOidcTokenClaims$inboundSchema,
+    z.lazy(() => UploadProjectAvatarOidcTokenClaims$inboundSchema),
   ),
   plan: UploadProjectAvatarPlan$inboundSchema,
   previewCommentsEnabled: types.optional(types.boolean()),
@@ -3875,6 +3993,7 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   ),
   aiGatewayApiKeyZdrExemption: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayBudget: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayByokCredentials: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayCredits: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayGuardrails: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayPrivateModels: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4422,9 +4541,116 @@ export const UploadProjectAvatarProjectsFunctionDefaultMemoryType$inboundSchema:
     z.nativeEnum(UploadProjectAvatarProjectsFunctionDefaultMemoryType);
 
 /** @internal */
-export const UploadProjectAvatarProjectsLabel$inboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarProjectsLabel
-> = z.nativeEnum(UploadProjectAvatarProjectsLabel);
+export const UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema:
+  z.ZodType<
+    UploadProjectAvatarElasticBuildMachineProjects4,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("turbo"),
+    memory: types.number(),
+  });
+
+export function uploadProjectAvatarElasticBuildMachineProjects4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UploadProjectAvatarElasticBuildMachineProjects4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UploadProjectAvatarElasticBuildMachineProjects4' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarElasticBuildMachineProjects3$inboundSchema:
+  z.ZodType<
+    UploadProjectAvatarElasticBuildMachineProjects3,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("14cpu-28gb"),
+    memory: types.number(),
+  });
+
+export function uploadProjectAvatarElasticBuildMachineProjects3FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UploadProjectAvatarElasticBuildMachineProjects3,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarElasticBuildMachineProjects3$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UploadProjectAvatarElasticBuildMachineProjects3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarElasticBuildMachineProjects2$inboundSchema:
+  z.ZodType<
+    UploadProjectAvatarElasticBuildMachineProjects2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("enhanced"),
+    memory: types.number(),
+  });
+
+export function uploadProjectAvatarElasticBuildMachineProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UploadProjectAvatarElasticBuildMachineProjects2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarElasticBuildMachineProjects2$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UploadProjectAvatarElasticBuildMachineProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const UploadProjectAvatarElasticBuildMachineProjects1$inboundSchema:
+  z.ZodType<
+    UploadProjectAvatarElasticBuildMachineProjects1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    cores: types.number(),
+    label: types.literal("standard"),
+    memory: types.number(),
+  });
+
+export function uploadProjectAvatarElasticBuildMachineProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UploadProjectAvatarElasticBuildMachineProjects1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UploadProjectAvatarElasticBuildMachineProjects1$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UploadProjectAvatarElasticBuildMachineProjects1' from JSON`,
+  );
+}
 
 /** @internal */
 export const UploadProjectAvatarProjectsElasticBuildMachine$inboundSchema:
@@ -4432,11 +4658,12 @@ export const UploadProjectAvatarProjectsElasticBuildMachine$inboundSchema:
     UploadProjectAvatarProjectsElasticBuildMachine,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: UploadProjectAvatarProjectsLabel$inboundSchema,
-    memory: types.number(),
-  });
+  > = z.union([
+    z.lazy(() => UploadProjectAvatarElasticBuildMachineProjects1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarElasticBuildMachineProjects2$inboundSchema),
+    z.lazy(() => UploadProjectAvatarElasticBuildMachineProjects3$inboundSchema),
+    z.lazy(() => UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema),
+  ]);
 
 export function uploadProjectAvatarProjectsElasticBuildMachineFromJSON(
   jsonString: string,
@@ -4489,7 +4716,20 @@ export const UploadProjectAvatarResourceConfig$inboundSchema: z.ZodType<
   functionZeroConfigFailover: types.optional(types.boolean()),
   isNSNBDisabled: types.optional(types.boolean()),
   elasticBuildMachine: types.optional(
-    z.lazy(() => UploadProjectAvatarProjectsElasticBuildMachine$inboundSchema),
+    z.union([
+      z.lazy(() =>
+        UploadProjectAvatarElasticBuildMachineProjects1$inboundSchema
+      ),
+      z.lazy(() =>
+        UploadProjectAvatarElasticBuildMachineProjects2$inboundSchema
+      ),
+      z.lazy(() =>
+        UploadProjectAvatarElasticBuildMachineProjects3$inboundSchema
+      ),
+      z.lazy(() =>
+        UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema
+      ),
+    ]),
   ),
 });
 

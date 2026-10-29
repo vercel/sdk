@@ -5,7 +5,7 @@ Queue trigger input event for v1beta (from vercel.json config). Requires explici
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentExperimentalTriggersDeploymentsResponse2001 } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { CreateDeploymentExperimentalTriggersDeploymentsResponse2001 } from "@vercel/sdk/models/createdeploymentresponsebodyduration.js";
 
 let value: CreateDeploymentExperimentalTriggersDeploymentsResponse2001 = {
   consumer: "<value>",

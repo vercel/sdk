@@ -5,14 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtyNine } from "@vercel/sdk/models/usereventpayload386type.js";
+import { FourHundredAndThirtyNine } from "@vercel/sdk/models/usereventpayload387scope.js";
 
-let value: FourHundredAndThirtyNine = {};
+let value: FourHundredAndThirtyNine = {
+  enabled: "on",
+};
 ```
 
 ## Fields
 
 | Field                                                | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `next`                                               | Record<string, *models.UserEventPayload439Next*>     | :heavy_minus_sign:                                   | N/A                                                  |
-| `previous`                                           | Record<string, *models.UserEventPayload439Previous*> | :heavy_minus_sign:                                   | N/A                                                  |
+| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |

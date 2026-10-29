@@ -1236,9 +1236,6 @@ export type GetDeploymentResponseBodyDeploymentsState = ClosedEnum<
   typeof GetDeploymentResponseBodyDeploymentsState
 >;
 
-/**
- * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
- */
 export type GetDeploymentResponseBodyDeploymentAlias = {
   completedAt?: number | undefined;
   startedAt: number;
@@ -1246,9 +1243,6 @@ export type GetDeploymentResponseBodyDeploymentAlias = {
 };
 
 export type ResponseBodyChecks = {
-  /**
-   * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
-   */
   deploymentAlias: GetDeploymentResponseBodyDeploymentAlias;
 };
 

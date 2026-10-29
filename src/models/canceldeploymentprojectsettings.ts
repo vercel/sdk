@@ -164,9 +164,6 @@ export type CancelDeploymentDeploymentsState = ClosedEnum<
   typeof CancelDeploymentDeploymentsState
 >;
 
-/**
- * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
- */
 export type DeploymentAlias = {
   completedAt?: number | undefined;
   startedAt: number;
@@ -174,9 +171,6 @@ export type DeploymentAlias = {
 };
 
 export type CancelDeploymentChecks = {
-  /**
-   * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
-   */
   deploymentAlias: DeploymentAlias;
 };
 

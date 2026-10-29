@@ -9,34 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  Bindings,
-  Bindings$inboundSchema,
-  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType,
-  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType$inboundSchema,
-  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue,
-  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue$inboundSchema,
-  CancelDeploymentResourceConfig,
-  CancelDeploymentResourceConfig$inboundSchema,
-  CancelDeploymentRoutes,
-  CancelDeploymentRoutes$inboundSchema,
-  ReadyState,
-  ReadyState$inboundSchema,
-  ReadySubstate,
-  ReadySubstate$inboundSchema,
-  SeatBlock,
-  SeatBlock$inboundSchema,
-  ServicesBuilder,
-  ServicesBuilder$inboundSchema,
-  ServicesDestination,
-  ServicesDestination$inboundSchema,
-  ServicesFunctions,
-  ServicesFunctions$inboundSchema,
-  ServicesHeaders,
-  ServicesHeaders$inboundSchema,
-  ServicesRedirects,
-  ServicesRedirects$inboundSchema,
-} from "./canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicesvalue.js";
-import {
   AliasAssignedAt,
   AliasAssignedAt$inboundSchema,
   AliasError,
@@ -101,13 +73,72 @@ import {
   Platform$inboundSchema,
 } from "./canceldeploymentprojectsettings.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+import {
+  Bindings,
+  Bindings$inboundSchema,
+  CancelDeploymentResourceConfig,
+  CancelDeploymentResourceConfig$inboundSchema,
+  CancelDeploymentRoutes,
+  CancelDeploymentRoutes$inboundSchema,
+  ReadyState,
+  ReadyState$inboundSchema,
+  ReadySubstate,
+  ReadySubstate$inboundSchema,
+  SeatBlock,
+  SeatBlock$inboundSchema,
+  ServicesBuilder,
+  ServicesBuilder$inboundSchema,
+  ServicesDestination,
+  ServicesDestination$inboundSchema,
+  ServicesFunctions,
+  ServicesFunctions$inboundSchema,
+  ServicesHeaders,
+  ServicesHeaders$inboundSchema,
+  ServicesRedirects,
+  ServicesRedirects$inboundSchema,
+} from "./servicesdestination.js";
+
+export const CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType =
+  {
+    Cookie: "cookie",
+    Header: "header",
+    Query: "query",
+  } as const;
+export type CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType =
+  ClosedEnum<
+    typeof CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType
+  >;
+
+export type CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHasEq =
+  | string
+  | number;
+
+export type CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2 =
+  {
+    eq?: string | number | undefined;
+    gt?: number | undefined;
+    gte?: number | undefined;
+    inc?: Array<string> | undefined;
+    lt?: number | undefined;
+    lte?: number | undefined;
+    neq?: string | undefined;
+    ninc?: Array<string> | undefined;
+    pre?: string | undefined;
+    re?: string | undefined;
+    suf?: string | undefined;
+  };
+
+export type CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue =
+  | string
+  | CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2;
 
 export type CancelDeploymentHasDeploymentsResponse2 = {
   key: string;
   type:
     CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType;
   value?:
-    | CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue
+    | string
+    | CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2
     | undefined;
 };
 
@@ -725,6 +756,37 @@ export type CancelDeploymentServicesBindings = {
     | undefined;
 };
 
+export type ServicesHttpHeaders = {
+  name: string;
+  value: string;
+};
+
+export const ServicesScheme = {
+  Http: "HTTP",
+  Https: "HTTPS",
+} as const;
+export type ServicesScheme = ClosedEnum<typeof ServicesScheme>;
+
+export type ServicesHttpGet = {
+  host?: string | undefined;
+  httpHeaders?: Array<ServicesHttpHeaders> | undefined;
+  path?: string | undefined;
+  port: number;
+  scheme?: ServicesScheme | undefined;
+};
+
+/**
+ * A Kubernetes-style HTTP liveness probe.
+ */
+export type ServicesLivenessProbe = {
+  failureThreshold?: number | undefined;
+  httpGet: ServicesHttpGet;
+  initialDelaySeconds?: number | undefined;
+  periodSeconds?: number | undefined;
+  successThreshold?: number | undefined;
+  timeoutSeconds?: number | undefined;
+};
+
 export const Memory = {
   OneGi: "1Gi",
   TwoGi: "2Gi",
@@ -755,6 +817,10 @@ export type Daemon = {
    * Instance counts by region.
    */
   instances?: { [k: string]: number } | undefined;
+  /**
+   * A Kubernetes-style HTTP liveness probe.
+   */
+  livenessProbe?: ServicesLivenessProbe | undefined;
   /**
    * Instance counts by region.
    */
@@ -1352,6 +1418,100 @@ export type CancelDeploymentResponseBody = {
 };
 
 /** @internal */
+export const CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType
+  > = z.nativeEnum(
+    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType,
+  );
+
+/** @internal */
+export const CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHasEq$inboundSchema:
+  z.ZodType<
+    CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHasEq,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([types.string(), types.number()]);
+
+export function cancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHasEqFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHasEq,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHasEq$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHasEq' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2$inboundSchema:
+  z.ZodType<
+    CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    eq: types.optional(smartUnion([types.string(), types.number()])),
+    gt: types.optional(types.number()),
+    gte: types.optional(types.number()),
+    inc: types.optional(z.array(types.string())),
+    lt: types.optional(types.number()),
+    lte: types.optional(types.number()),
+    neq: types.optional(types.string()),
+    ninc: types.optional(z.array(types.string())),
+    pre: types.optional(types.string()),
+    re: types.optional(types.string()),
+    suf: types.optional(types.string()),
+  });
+
+export function cancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue$inboundSchema:
+  z.ZodType<
+    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    types.string(),
+    z.lazy(() =>
+      CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2$inboundSchema
+    ),
+  ]);
+
+export function cancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue' from JSON`,
+  );
+}
+
+/** @internal */
 export const CancelDeploymentHasDeploymentsResponse2$inboundSchema: z.ZodType<
   CancelDeploymentHasDeploymentsResponse2,
   z.ZodTypeDef,
@@ -1361,7 +1521,12 @@ export const CancelDeploymentHasDeploymentsResponse2$inboundSchema: z.ZodType<
   type:
     CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesType$inboundSchema,
   value: types.optional(
-    CancelDeploymentHasDeploymentsResponse200ApplicationJSONResponseBodyServicesValue$inboundSchema,
+    smartUnion([
+      types.string(),
+      z.lazy(() =>
+        CancelDeploymentValueDeploymentsResponse200ApplicationJSONResponseBodyServices2RewritesHas2$inboundSchema
+      ),
+    ]),
   ),
 });
 
@@ -2943,6 +3108,80 @@ export function cancelDeploymentServicesBindingsFromJSON(
 }
 
 /** @internal */
+export const ServicesHttpHeaders$inboundSchema: z.ZodType<
+  ServicesHttpHeaders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: types.string(),
+  value: types.string(),
+});
+
+export function servicesHttpHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<ServicesHttpHeaders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ServicesHttpHeaders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesHttpHeaders' from JSON`,
+  );
+}
+
+/** @internal */
+export const ServicesScheme$inboundSchema: z.ZodNativeEnum<
+  typeof ServicesScheme
+> = z.nativeEnum(ServicesScheme);
+
+/** @internal */
+export const ServicesHttpGet$inboundSchema: z.ZodType<
+  ServicesHttpGet,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  host: types.optional(types.string()),
+  httpHeaders: types.optional(
+    z.array(z.lazy(() => ServicesHttpHeaders$inboundSchema)),
+  ),
+  path: types.optional(types.string()),
+  port: types.number(),
+  scheme: types.optional(ServicesScheme$inboundSchema),
+});
+
+export function servicesHttpGetFromJSON(
+  jsonString: string,
+): SafeParseResult<ServicesHttpGet, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ServicesHttpGet$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesHttpGet' from JSON`,
+  );
+}
+
+/** @internal */
+export const ServicesLivenessProbe$inboundSchema: z.ZodType<
+  ServicesLivenessProbe,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  failureThreshold: types.optional(types.number()),
+  httpGet: z.lazy(() => ServicesHttpGet$inboundSchema),
+  initialDelaySeconds: types.optional(types.number()),
+  periodSeconds: types.optional(types.number()),
+  successThreshold: types.optional(types.number()),
+  timeoutSeconds: types.optional(types.number()),
+});
+
+export function servicesLivenessProbeFromJSON(
+  jsonString: string,
+): SafeParseResult<ServicesLivenessProbe, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ServicesLivenessProbe$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ServicesLivenessProbe' from JSON`,
+  );
+}
+
+/** @internal */
 export const Memory$inboundSchema: z.ZodNativeEnum<typeof Memory> = z
   .nativeEnum(Memory);
 
@@ -2993,6 +3232,9 @@ export const Daemon$inboundSchema: z.ZodType<Daemon, z.ZodTypeDef, unknown> = z
     command: types.optional(z.array(types.string())),
     entrypoint: types.string(),
     instances: types.optional(z.record(types.number())),
+    livenessProbe: types.optional(
+      z.lazy(() => ServicesLivenessProbe$inboundSchema),
+    ),
     replicas: types.optional(z.record(types.number())),
     resources: types.optional(z.lazy(() => ServicesResources$inboundSchema)),
     root: types.string(),

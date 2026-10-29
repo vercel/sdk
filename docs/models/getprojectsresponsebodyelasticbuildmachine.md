@@ -1,23 +1,45 @@
 # GetProjectsResponseBodyElasticBuildMachine
 
-Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
 
-## Example Usage
+## Supported Types
+
+### `models.GetProjectsElasticBuildMachineProjects1`
 
 ```typescript
-import { GetProjectsResponseBodyElasticBuildMachine } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsonvalue.js";
-
-let value: GetProjectsResponseBodyElasticBuildMachine = {
-  cores: 3666.62,
+const value: models.GetProjectsElasticBuildMachineProjects1 = {
+  cores: 3262.91,
   label: "standard",
-  memory: 7800.73,
+  memory: 2746.61,
 };
 ```
 
-## Fields
+### `models.GetProjectsElasticBuildMachineProjects2`
 
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `cores`                                                                                   | *number*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `label`                                                                                   | [models.GetProjectsResponseBodyLabel](../models/getprojectsresponsebodylabel.md)          | :heavy_check_mark:                                                                        | Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier. |
-| `memory`                                                                                  | *number*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+```typescript
+const value: models.GetProjectsElasticBuildMachineProjects2 = {
+  cores: 2185.43,
+  label: "enhanced",
+  memory: 1878.95,
+};
+```
+
+### `models.GetProjectsElasticBuildMachineProjects3`
+
+```typescript
+const value: models.GetProjectsElasticBuildMachineProjects3 = {
+  cores: 8172.98,
+  label: "14cpu-28gb",
+  memory: 6523.04,
+};
+```
+
+### `models.GetProjectsElasticBuildMachineProjects4`
+
+```typescript
+const value: models.GetProjectsElasticBuildMachineProjects4 = {
+  cores: 4826.06,
+  label: "turbo",
+  memory: 9924.08,
+};
+```
+

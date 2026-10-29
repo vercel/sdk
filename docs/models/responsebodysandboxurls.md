@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodySandboxUrls } from "@vercel/sdk/models/getprojectsresponsebodypagination.js";
+import { ResponseBodySandboxUrls } from "@vercel/sdk/models/responsebodyusagestatus.js";
 
 let value: ResponseBodySandboxUrls = {};
 ```

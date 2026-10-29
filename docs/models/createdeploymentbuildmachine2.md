@@ -1,11 +1,9 @@
 # CreateDeploymentBuildMachine2
 
-Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`.
-
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentBuildMachine2 } from "@vercel/sdk/models/createdeploymentmissingdeployments2.js";
+import { CreateDeploymentBuildMachine2 } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200type.js";
 
 let value: CreateDeploymentBuildMachine2 = {};
 ```

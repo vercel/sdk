@@ -173,9 +173,6 @@ export type GetDeploymentsDeploymentsResponseState = ClosedEnum<
   typeof GetDeploymentsDeploymentsResponseState
 >;
 
-/**
- * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
- */
 export type GetDeploymentsDeploymentAlias = {
   completedAt?: number | undefined;
   startedAt: number;
@@ -186,9 +183,6 @@ export type GetDeploymentsDeploymentAlias = {
  * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
  */
 export type GetDeploymentsChecks = {
-  /**
-   * Detailed information about v2 deployment checks. Includes information about blocked workflows in the deployment lifecycle.
-   */
   deploymentAlias: GetDeploymentsDeploymentAlias;
 };
 

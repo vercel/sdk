@@ -14,7 +14,7 @@ let value: GetTeamAccessRequestResponseBody = {
   github: {},
   gitlab: {},
   joinedFrom: {
-    origin: "import",
+    origin: "link",
   },
   teamName: "My Team",
   teamSlug: "my-team",

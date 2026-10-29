@@ -16,7 +16,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  *
  * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export const Decrypt = {
+export const QueryParamDecrypt = {
   True: "true",
   False: "false",
 } as const;
@@ -25,7 +25,7 @@ export const Decrypt = {
  *
  * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
-export type Decrypt = ClosedEnum<typeof Decrypt>;
+export type QueryParamDecrypt = ClosedEnum<typeof QueryParamDecrypt>;
 
 export type FilterProjectEnvsRequest = {
   /**
@@ -39,7 +39,7 @@ export type FilterProjectEnvsRequest = {
   /**
    * If true, the environment variable value will be decrypted
    */
-  decrypt?: Decrypt | undefined;
+  decrypt?: QueryParamDecrypt | undefined;
   /**
    * The source that is calling the endpoint.
    */
@@ -727,8 +727,9 @@ export type FilterProjectEnvsResponseBody =
   | FilterProjectEnvsResponseBody3;
 
 /** @internal */
-export const Decrypt$outboundSchema: z.ZodNativeEnum<typeof Decrypt> = z
-  .nativeEnum(Decrypt);
+export const QueryParamDecrypt$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamDecrypt
+> = z.nativeEnum(QueryParamDecrypt);
 
 /** @internal */
 export type FilterProjectEnvsRequest$Outbound = {
@@ -750,7 +751,7 @@ export const FilterProjectEnvsRequest$outboundSchema: z.ZodType<
 > = z.object({
   idOrName: z.string(),
   gitBranch: z.string().optional(),
-  decrypt: Decrypt$outboundSchema.optional(),
+  decrypt: QueryParamDecrypt$outboundSchema.optional(),
   source: z.string().optional(),
   customEnvironmentId: z.string().optional(),
   customEnvironmentSlug: z.string().optional(),

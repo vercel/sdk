@@ -1,23 +1,45 @@
 # ElasticBuildMachine
 
-Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
 
-## Example Usage
+## Supported Types
+
+### `models.ElasticBuildMachine1`
 
 ```typescript
-import { ElasticBuildMachine } from "@vercel/sdk/models/internalrouteshas.js";
-
-let value: ElasticBuildMachine = {
-  cores: 1383.29,
-  label: "turbo",
-  memory: 7544.86,
+const value: models.ElasticBuildMachine1 = {
+  cores: 1358.18,
+  label: "standard",
+  memory: 1.22,
 };
 ```
 
-## Fields
+### `models.ElasticBuildMachine2`
 
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `cores`                                                                                   | *number*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
-| `label`                                                                                   | [models.Label](../models/label.md)                                                        | :heavy_check_mark:                                                                        | Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier. |
-| `memory`                                                                                  | *number*                                                                                  | :heavy_check_mark:                                                                        | N/A                                                                                       |
+```typescript
+const value: models.ElasticBuildMachine2 = {
+  cores: 7740.46,
+  label: "enhanced",
+  memory: 552.49,
+};
+```
+
+### `models.ElasticBuildMachine3`
+
+```typescript
+const value: models.ElasticBuildMachine3 = {
+  cores: 8010.04,
+  label: "14cpu-28gb",
+  memory: 6489.35,
+};
+```
+
+### `models.ElasticBuildMachine4`
+
+```typescript
+const value: models.ElasticBuildMachine4 = {
+  cores: 6220.29,
+  label: "turbo",
+  memory: 276.55,
+};
+```
+

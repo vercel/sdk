@@ -18,7 +18,7 @@ import {
 import {
   GetProjectsRequest,
   GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsresponse200applicationjson3branchmatcher.js";
+} from "../models/getprojectsresponsebodyprojectsresponse200applicationjsonaliasassigned.js";
 import {
   ConnectionError,
   InvalidRequestError,

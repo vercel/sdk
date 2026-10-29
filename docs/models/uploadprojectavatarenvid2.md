@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarEnvId2 } from "@vercel/sdk/models/uploadprojectavatarplan.js";
+import { UploadProjectAvatarEnvId2 } from "@vercel/sdk/models/uploadprojectavatarchecksstate.js";
 
 let value: UploadProjectAvatarEnvId2 = "preview";
 ```

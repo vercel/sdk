@@ -1,13 +1,11 @@
-# ~~Decrypt~~
+# Decrypt
 
-If true, the environment variable value will be decrypted
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+Not supported. Credential values are never returned.
 
 ## Example Usage
 
 ```typescript
-import { Decrypt } from "@vercel/sdk/models/filterprojectenvsop.js";
+import { Decrypt } from "@vercel/sdk/models/listaigatewaybyokcredentialsop.js";
 
 let value: Decrypt = "true";
 ```

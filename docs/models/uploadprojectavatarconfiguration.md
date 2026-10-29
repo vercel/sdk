@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarConfiguration } from "@vercel/sdk/models/uploadprojectavatarplan.js";
+import { UploadProjectAvatarConfiguration } from "@vercel/sdk/models/uploadprojectavatarchecksstate.js";
 
 let value: UploadProjectAvatarConfiguration = "SKIP_NAMESPACE_QUEUE";
 ```

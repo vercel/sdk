@@ -40,6 +40,7 @@ export const TeamLimitedOrigin = {
   NsnbRedeployAttributionCard: "nsnb-redeploy-attribution-card",
   NsnbRequestAccess: "nsnb-request-access",
   NsnbViewerUpgrade: "nsnb-viewer-upgrade",
+  OrgAdminSync: "org-admin-sync",
   OrganizationTeams: "organization-teams",
   Saml: "saml",
   Teams: "teams",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarCrons } from "@vercel/sdk/models/deleteprojectavatarplan.js";
+import { DeleteProjectAvatarCrons } from "@vercel/sdk/models/deleteprojectavatarchecksstate.js";
 
 let value: DeleteProjectAvatarCrons = {
   definitions: [

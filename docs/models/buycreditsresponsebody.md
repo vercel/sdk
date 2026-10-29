@@ -49,17 +49,19 @@ const value: models.BuyCreditsResponseBody3 = {
     configuration: {
       options: {
         productAlias: "<value>",
+        quantity: 3152.93,
         resourceIds: [
           "<value 1>",
+          "<value 2>",
         ],
       },
       output: {
         effectiveBehavior: "immediate",
         orbPriceId: "<id>",
-        pricingSource: "orb",
+        pricingSource: "copper",
         productId: "<id>",
       },
-      type: "increase_plan_item_quantity",
+      type: "set_plan_item_quantity",
     },
     createdAt: "1729837603767",
     id: "<id>",

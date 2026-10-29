@@ -709,9 +709,6 @@ export type CreateDeploymentResponseBodyDeploymentsState = ClosedEnum<
   typeof CreateDeploymentResponseBodyDeploymentsState
 >;
 
-/**
- * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
- */
 export type ResponseBodyDeploymentAlias = {
   completedAt?: number | undefined;
   startedAt: number;
@@ -719,9 +716,6 @@ export type ResponseBodyDeploymentAlias = {
 };
 
 export type CreateDeploymentResponseBodyChecks = {
-  /**
-   * Condensed check data. Retrieve individual check and check run data using api-checks v2 routes.
-   */
   deploymentAlias: ResponseBodyDeploymentAlias;
 };
 

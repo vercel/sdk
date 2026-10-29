@@ -15,6 +15,6 @@ let value: CancelDeploymentChecks = {
 
 ## Fields
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `deploymentAlias`                                                                              | [models.DeploymentAlias](../models/deploymentalias.md)                                         | :heavy_check_mark:                                                                             | Condensed check data. Retrieve individual check and check run data using api-checks v2 routes. |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `deploymentAlias`                                      | [models.DeploymentAlias](../models/deploymentalias.md) | :heavy_check_mark:                                     | N/A                                                    |

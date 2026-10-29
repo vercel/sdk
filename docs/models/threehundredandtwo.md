@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwo } from "@vercel/sdk/models/usereventpayload257next.js";
+import { ThreeHundredAndTwo } from "@vercel/sdk/models/usereventpayload258previousdeploymenttype.js";
 
 let value: ThreeHundredAndTwo = {
   previewDeploymentSuffix: "<value>",

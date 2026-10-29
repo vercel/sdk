@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyRegion } from "@vercel/sdk/models/getprojectsresponsebodypagination.js";
+import { ResponseBodyRegion } from "@vercel/sdk/models/responsebodyusagestatus.js";
 
 let value: ResponseBodyRegion = "hnd1";
 ```

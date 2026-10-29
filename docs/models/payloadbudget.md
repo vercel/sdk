@@ -5,7 +5,7 @@ Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined
 ## Example Usage
 
 ```typescript
-import { PayloadBudget } from "@vercel/sdk/models/twentyone.js";
+import { PayloadBudget } from "@vercel/sdk/models/usereventpayload22provider.js";
 
 let value: PayloadBudget = {
   limitAmount: 3089.34,

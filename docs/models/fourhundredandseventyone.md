@@ -5,17 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeventyOne } from "@vercel/sdk/models/fourhundredandfifty.js";
+import { FourHundredAndSeventyOne } from "@vercel/sdk/models/usereventpayload453actortype.js";
 
 let value: FourHundredAndSeventyOne = {
-  email: "Leopoldo.Gorczany98@hotmail.com",
-  prevEmail: "<value>",
+  next: {
+    enabled: false,
+    totpVerified: false,
+  },
+  previous: {
+    enabled: true,
+    totpVerified: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `prevEmail`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload471Next](../models/usereventpayload471next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload471Previous](../models/usereventpayload471previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

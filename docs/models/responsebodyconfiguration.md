@@ -27,17 +27,19 @@ const value: models.BuyCreditsConfiguration1 = {
 const value: models.BuyCreditsConfiguration2 = {
   options: {
     productAlias: "<value>",
+    quantity: 3152.93,
     resourceIds: [
       "<value 1>",
+      "<value 2>",
     ],
   },
   output: {
     effectiveBehavior: "immediate",
     orbPriceId: "<id>",
-    pricingSource: "orb",
+    pricingSource: "copper",
     productId: "<id>",
   },
-  type: "increase_plan_item_quantity",
+  type: "set_plan_item_quantity",
 };
 ```
 
@@ -57,7 +59,7 @@ const value: models.BuyCreditsConfiguration3 = {
     pricingSource: "orb",
     productId: "<id>",
   },
-  type: "decrease_plan_item_quantity",
+  type: "increase_plan_item_quantity",
 };
 ```
 
@@ -66,9 +68,34 @@ const value: models.BuyCreditsConfiguration3 = {
 ```typescript
 const value: models.BuyCreditsConfiguration4 = {
   options: {
-    addedResourceIds: [],
     productAlias: "<value>",
-    removedResourceIds: [],
+    resourceIds: [],
+  },
+  output: {
+    effectiveBehavior: "end_of_term",
+    orbPriceId: "<id>",
+    pricingSource: "orb",
+    productId: "<id>",
+  },
+  type: "decrease_plan_item_quantity",
+};
+```
+
+### `models.BuyCreditsConfiguration5`
+
+```typescript
+const value: models.BuyCreditsConfiguration5 = {
+  options: {
+    addedResourceIds: [
+      "<value 1>",
+      "<value 2>",
+    ],
+    productAlias: "<value>",
+    removedResourceIds: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
   },
   output: {
     effectiveBehavior: "immediate",

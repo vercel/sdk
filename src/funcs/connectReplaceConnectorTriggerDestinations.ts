@@ -193,7 +193,7 @@ async function $do(
     M.jsonErr([400, 401, 403, 404, 409, 410, 422], ConnectError$inboundSchema),
     M.jsonErr(500, ConnectError$inboundSchema),
     M.fail("4XX"),
-    M.fail([501, 504, "5XX"]),
+    M.fail([501, 503, 504, "5XX"]),
   )(response, req, { extraFields: responseFields });
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesBuilder } from "@vercel/sdk/models/createdeploymentresponsebody.js";
+import { CreateDeploymentServicesBuilder } from "@vercel/sdk/models/createdeploymentresponsebodyduration.js";
 
 let value: CreateDeploymentServicesBuilder = {
   use: "<value>",

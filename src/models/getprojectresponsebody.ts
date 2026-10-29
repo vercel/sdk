@@ -23,10 +23,6 @@ import {
   GetProjectBlobs$inboundSchema,
   GetProjectBuilds,
   GetProjectBuilds$inboundSchema,
-  GetProjectChecksConclusion,
-  GetProjectChecksConclusion$inboundSchema,
-  GetProjectChecksState,
-  GetProjectChecksState$inboundSchema,
   GetProjectConnectConfigurations,
   GetProjectConnectConfigurations$inboundSchema,
   GetProjectCreator,
@@ -71,10 +67,33 @@ import {
   GetProjectLastRollbackTarget$inboundSchema,
   GetProjectProjectsBranchMatcher,
   GetProjectProjectsBranchMatcher$inboundSchema,
-  GetProjectProjectsCreator,
-  GetProjectProjectsCreator$inboundSchema,
-} from "./getprojectprojectscreator.js";
+} from "./getprojectbuilds.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectChecksConclusion = {
+  Canceled: "canceled",
+  Failed: "failed",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type GetProjectChecksConclusion = ClosedEnum<
+  typeof GetProjectChecksConclusion
+>;
+
+export const GetProjectChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type GetProjectChecksState = ClosedEnum<typeof GetProjectChecksState>;
+
+export type GetProjectProjectsCreator = {
+  email: string;
+  githubLogin?: string | undefined;
+  gitlabLogin?: string | undefined;
+  uid: string;
+  username: string;
+};
 
 export type GetProjectOidcTokenClaims = {
   aud: string;
@@ -572,6 +591,10 @@ export type GetProjectPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   aiGatewayBudget?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  aiGatewayByokCredentials?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -1795,6 +1818,7 @@ export type GetProjectProjectsBuildMachineSelection = ClosedEnum<
 >;
 
 export const GetProjectProjectsBuildMachineType = {
+  Fourteencpu28gb: "14cpu-28gb",
   Basic: "basic",
   Enhanced: "enhanced",
   Standard: "standard",
@@ -1827,31 +1851,46 @@ export type GetProjectProjectsFunctionDefaultMemoryType = ClosedEnum<
 >;
 
 /**
- * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
-export const GetProjectProjectsLabel = {
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-/**
- * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
- */
-export type GetProjectProjectsLabel = ClosedEnum<
-  typeof GetProjectProjectsLabel
->;
+export type GetProjectElasticBuildMachineProjects4 = {
+  cores: number;
+  label: "turbo";
+  memory: number;
+};
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
  */
-export type GetProjectProjectsElasticBuildMachine = {
+export type GetProjectElasticBuildMachineProjects3 = {
   cores: number;
-  /**
-   * Machine types elastic can assign. Widens when the elastic algorithm adds the 14 CPU tier.
-   */
-  label: GetProjectProjectsLabel;
+  label: "14cpu-28gb";
   memory: number;
 };
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type GetProjectElasticBuildMachineProjects2 = {
+  cores: number;
+  label: "enhanced";
+  memory: number;
+};
+
+/**
+ * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
+ */
+export type GetProjectElasticBuildMachineProjects1 = {
+  cores: number;
+  label: "standard";
+  memory: number;
+};
+
+export type GetProjectProjectsElasticBuildMachine =
+  | GetProjectElasticBuildMachineProjects1
+  | GetProjectElasticBuildMachineProjects2
+  | GetProjectElasticBuildMachineProjects3
+  | GetProjectElasticBuildMachineProjects4;
 
 export type GetProjectResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
@@ -1874,10 +1913,12 @@ export type GetProjectResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  /**
-   * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
-   */
-  elasticBuildMachine?: GetProjectProjectsElasticBuildMachine | undefined;
+  elasticBuildMachine?:
+    | GetProjectElasticBuildMachineProjects1
+    | GetProjectElasticBuildMachineProjects2
+    | GetProjectElasticBuildMachineProjects3
+    | GetProjectElasticBuildMachineProjects4
+    | undefined;
 };
 
 /**
@@ -3019,6 +3060,39 @@ export type GetProjectResponseBody = {
 };
 
 /** @internal */
+export const GetProjectChecksConclusion$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectChecksConclusion
+> = z.nativeEnum(GetProjectChecksConclusion);
+
+/** @internal */
+export const GetProjectChecksState$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectChecksState
+> = z.nativeEnum(GetProjectChecksState);
+
+/** @internal */
+export const GetProjectProjectsCreator$inboundSchema: z.ZodType<
+  GetProjectProjectsCreator,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  email: types.string(),
+  githubLogin: types.optional(types.string()),
+  gitlabLogin: types.optional(types.string()),
+  uid: types.string(),
+  username: types.string(),
+});
+
+export function getProjectProjectsCreatorFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectProjectsCreator, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectProjectsCreator$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectProjectsCreator' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectOidcTokenClaims$inboundSchema: z.ZodType<
   GetProjectOidcTokenClaims,
   z.ZodTypeDef,
@@ -3097,7 +3171,9 @@ export const GetProjectLatestDeployments$inboundSchema: z.ZodType<
   connectConfigurationId: types.optional(types.string()),
   createdAt: types.number(),
   createdIn: types.string(),
-  creator: types.nullable(GetProjectProjectsCreator$inboundSchema),
+  creator: types.nullable(
+    z.lazy(() => GetProjectProjectsCreator$inboundSchema),
+  ),
   deletedAt: types.optional(types.number()),
   deploymentHostname: types.string(),
   forced: types.optional(types.boolean()),
@@ -3862,6 +3938,7 @@ export const GetProjectPermissions$inboundSchema: z.ZodType<
   ),
   aiGatewayApiKeyZdrExemption: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayBudget: types.optional(z.array(ACLAction$inboundSchema)),
+  aiGatewayByokCredentials: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayCredits: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayGuardrails: types.optional(z.array(ACLAction$inboundSchema)),
   aiGatewayPrivateModels: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4402,20 +4479,104 @@ export const GetProjectProjectsFunctionDefaultMemoryType$inboundSchema:
     .nativeEnum(GetProjectProjectsFunctionDefaultMemoryType);
 
 /** @internal */
-export const GetProjectProjectsLabel$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectProjectsLabel
-> = z.nativeEnum(GetProjectProjectsLabel);
+export const GetProjectElasticBuildMachineProjects4$inboundSchema: z.ZodType<
+  GetProjectElasticBuildMachineProjects4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cores: types.number(),
+  label: types.literal("turbo"),
+  memory: types.number(),
+});
+
+export function getProjectElasticBuildMachineProjects4FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectElasticBuildMachineProjects4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectElasticBuildMachineProjects4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectElasticBuildMachineProjects4' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectElasticBuildMachineProjects3$inboundSchema: z.ZodType<
+  GetProjectElasticBuildMachineProjects3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cores: types.number(),
+  label: types.literal("14cpu-28gb"),
+  memory: types.number(),
+});
+
+export function getProjectElasticBuildMachineProjects3FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectElasticBuildMachineProjects3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectElasticBuildMachineProjects3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectElasticBuildMachineProjects3' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectElasticBuildMachineProjects2$inboundSchema: z.ZodType<
+  GetProjectElasticBuildMachineProjects2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cores: types.number(),
+  label: types.literal("enhanced"),
+  memory: types.number(),
+});
+
+export function getProjectElasticBuildMachineProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectElasticBuildMachineProjects2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectElasticBuildMachineProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectElasticBuildMachineProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectElasticBuildMachineProjects1$inboundSchema: z.ZodType<
+  GetProjectElasticBuildMachineProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  cores: types.number(),
+  label: types.literal("standard"),
+  memory: types.number(),
+});
+
+export function getProjectElasticBuildMachineProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectElasticBuildMachineProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectElasticBuildMachineProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectElasticBuildMachineProjects1' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetProjectProjectsElasticBuildMachine$inboundSchema: z.ZodType<
   GetProjectProjectsElasticBuildMachine,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cores: types.number(),
-  label: GetProjectProjectsLabel$inboundSchema,
-  memory: types.number(),
-});
+> = z.union([
+  z.lazy(() => GetProjectElasticBuildMachineProjects1$inboundSchema),
+  z.lazy(() => GetProjectElasticBuildMachineProjects2$inboundSchema),
+  z.lazy(() => GetProjectElasticBuildMachineProjects3$inboundSchema),
+  z.lazy(() => GetProjectElasticBuildMachineProjects4$inboundSchema),
+]);
 
 export function getProjectProjectsElasticBuildMachineFromJSON(
   jsonString: string,
@@ -4461,7 +4622,12 @@ export const GetProjectResourceConfig$inboundSchema: z.ZodType<
   functionZeroConfigFailover: types.optional(types.boolean()),
   isNSNBDisabled: types.optional(types.boolean()),
   elasticBuildMachine: types.optional(
-    z.lazy(() => GetProjectProjectsElasticBuildMachine$inboundSchema),
+    z.union([
+      z.lazy(() => GetProjectElasticBuildMachineProjects1$inboundSchema),
+      z.lazy(() => GetProjectElasticBuildMachineProjects2$inboundSchema),
+      z.lazy(() => GetProjectElasticBuildMachineProjects3$inboundSchema),
+      z.lazy(() => GetProjectElasticBuildMachineProjects4$inboundSchema),
+    ]),
   ),
 });
 

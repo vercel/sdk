@@ -51,9 +51,9 @@ import {
 import {
   GetDeploymentServices2,
   GetDeploymentServices2$inboundSchema,
-  GetDeploymentServicesDaemon,
-  GetDeploymentServicesDaemon$inboundSchema,
-} from "./getdeploymentservicesdaemon.js";
+  GetDeploymentServicesDeploymentsBindings,
+  GetDeploymentServicesDeploymentsBindings$inboundSchema,
+} from "./getdeploymentservicesdeploymentsbindings.js";
 import {
   GetDeploymentResponseBodyGitSource,
   GetDeploymentResponseBodyGitSource$inboundSchema,
@@ -91,8 +91,87 @@ import {
   ResponseBodyProjectSettings$inboundSchema,
   ResponseBodyReadyState,
   ResponseBodyReadyState$inboundSchema,
-} from "./getdeploymentservicesresources.js";
+} from "./getdeploymentserviceshttpget.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetDeploymentServicesDeploymentsHttpHeaders = {
+  name: string;
+  value: string;
+};
+
+export const GetDeploymentServicesDeploymentsScheme = {
+  Http: "HTTP",
+  Https: "HTTPS",
+} as const;
+export type GetDeploymentServicesDeploymentsScheme = ClosedEnum<
+  typeof GetDeploymentServicesDeploymentsScheme
+>;
+
+export type GetDeploymentServicesDeploymentsHttpGet = {
+  host?: string | undefined;
+  httpHeaders?: Array<GetDeploymentServicesDeploymentsHttpHeaders> | undefined;
+  path?: string | undefined;
+  port: number;
+  scheme?: GetDeploymentServicesDeploymentsScheme | undefined;
+};
+
+/**
+ * A Kubernetes-style HTTP liveness probe.
+ */
+export type GetDeploymentServicesDeploymentsLivenessProbe = {
+  failureThreshold?: number | undefined;
+  httpGet: GetDeploymentServicesDeploymentsHttpGet;
+  initialDelaySeconds?: number | undefined;
+  periodSeconds?: number | undefined;
+  successThreshold?: number | undefined;
+  timeoutSeconds?: number | undefined;
+};
+
+export const GetDeploymentServicesMemory = {
+  OneGi: "1Gi",
+  TwoGi: "2Gi",
+  FourGi: "4Gi",
+  EightGi: "8Gi",
+} as const;
+export type GetDeploymentServicesMemory = ClosedEnum<
+  typeof GetDeploymentServicesMemory
+>;
+
+export type GetDeploymentServicesDeploymentsRequests = {
+  memory: GetDeploymentServicesMemory;
+};
+
+export type GetDeploymentServicesDeploymentsResources = {
+  requests: GetDeploymentServicesDeploymentsRequests;
+};
+
+/**
+ * Set when this build produces the named daemon.
+ */
+export type GetDeploymentServicesDaemon = {
+  /**
+   * Bindings to services in the same deployment.
+   */
+  bindings?: Array<GetDeploymentServicesDeploymentsBindings> | undefined;
+  command?: Array<string> | undefined;
+  entrypoint: string;
+  /**
+   * Instance counts by region.
+   */
+  instances?: { [k: string]: number } | undefined;
+  /**
+   * A Kubernetes-style HTTP liveness probe.
+   */
+  livenessProbe?: GetDeploymentServicesDeploymentsLivenessProbe | undefined;
+  /**
+   * Instance counts by region.
+   */
+  replicas?: { [k: string]: number } | undefined;
+  resources?: GetDeploymentServicesDeploymentsResources | undefined;
+  root: string;
+  terminationGracePeriodSeconds?: number | undefined;
+  name: string;
+};
 
 export type GetDeploymentServicesExcludeFiles = string | Array<string>;
 
@@ -825,6 +904,196 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1;
 
 /** @internal */
+export const GetDeploymentServicesDeploymentsHttpHeaders$inboundSchema:
+  z.ZodType<
+    GetDeploymentServicesDeploymentsHttpHeaders,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    name: types.string(),
+    value: types.string(),
+  });
+
+export function getDeploymentServicesDeploymentsHttpHeadersFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsHttpHeaders,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsHttpHeaders$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsHttpHeaders' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsScheme$inboundSchema:
+  z.ZodNativeEnum<typeof GetDeploymentServicesDeploymentsScheme> = z.nativeEnum(
+    GetDeploymentServicesDeploymentsScheme,
+  );
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsHttpGet$inboundSchema: z.ZodType<
+  GetDeploymentServicesDeploymentsHttpGet,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  host: types.optional(types.string()),
+  httpHeaders: types.optional(
+    z.array(z.lazy(() =>
+      GetDeploymentServicesDeploymentsHttpHeaders$inboundSchema
+    )),
+  ),
+  path: types.optional(types.string()),
+  port: types.number(),
+  scheme: types.optional(GetDeploymentServicesDeploymentsScheme$inboundSchema),
+});
+
+export function getDeploymentServicesDeploymentsHttpGetFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsHttpGet,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsHttpGet$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsHttpGet' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsLivenessProbe$inboundSchema:
+  z.ZodType<
+    GetDeploymentServicesDeploymentsLivenessProbe,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    failureThreshold: types.optional(types.number()),
+    httpGet: z.lazy(() =>
+      GetDeploymentServicesDeploymentsHttpGet$inboundSchema
+    ),
+    initialDelaySeconds: types.optional(types.number()),
+    periodSeconds: types.optional(types.number()),
+    successThreshold: types.optional(types.number()),
+    timeoutSeconds: types.optional(types.number()),
+  });
+
+export function getDeploymentServicesDeploymentsLivenessProbeFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsLivenessProbe,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsLivenessProbe$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsLivenessProbe' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesMemory$inboundSchema: z.ZodNativeEnum<
+  typeof GetDeploymentServicesMemory
+> = z.nativeEnum(GetDeploymentServicesMemory);
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsRequests$inboundSchema: z.ZodType<
+  GetDeploymentServicesDeploymentsRequests,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  memory: GetDeploymentServicesMemory$inboundSchema,
+});
+
+export function getDeploymentServicesDeploymentsRequestsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsRequests,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsRequests$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsRequests' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDeploymentsResources$inboundSchema: z.ZodType<
+  GetDeploymentServicesDeploymentsResources,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  requests: z.lazy(() =>
+    GetDeploymentServicesDeploymentsRequests$inboundSchema
+  ),
+});
+
+export function getDeploymentServicesDeploymentsResourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  GetDeploymentServicesDeploymentsResources,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetDeploymentServicesDeploymentsResources$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetDeploymentServicesDeploymentsResources' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetDeploymentServicesDaemon$inboundSchema: z.ZodType<
+  GetDeploymentServicesDaemon,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  bindings: types.optional(
+    z.array(GetDeploymentServicesDeploymentsBindings$inboundSchema),
+  ),
+  command: types.optional(z.array(types.string())),
+  entrypoint: types.string(),
+  instances: types.optional(z.record(types.number())),
+  livenessProbe: types.optional(
+    z.lazy(() => GetDeploymentServicesDeploymentsLivenessProbe$inboundSchema),
+  ),
+  replicas: types.optional(z.record(types.number())),
+  resources: types.optional(
+    z.lazy(() => GetDeploymentServicesDeploymentsResources$inboundSchema),
+  ),
+  root: types.string(),
+  terminationGracePeriodSeconds: types.optional(types.number()),
+  name: types.string(),
+});
+
+export function getDeploymentServicesDaemonFromJSON(
+  jsonString: string,
+): SafeParseResult<GetDeploymentServicesDaemon, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetDeploymentServicesDaemon$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesDaemon' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetDeploymentServicesExcludeFiles$inboundSchema: z.ZodType<
   GetDeploymentServicesExcludeFiles,
   z.ZodTypeDef,
@@ -1253,7 +1522,9 @@ export const GetDeploymentServicesDeploymentsConfig$inboundSchema: z.ZodType<
   buildpack: types.optional(types.string()),
   bundle: types.optional(types.boolean()),
   bunVersion: types.optional(types.string()),
-  daemon: types.optional(GetDeploymentServicesDaemon$inboundSchema),
+  daemon: types.optional(
+    z.lazy(() => GetDeploymentServicesDaemon$inboundSchema),
+  ),
   debug: types.optional(types.boolean()),
   devCommand: types.optional(types.string()),
   excludeFiles: types.optional(

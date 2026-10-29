@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CeilingMode } from "@vercel/sdk/models/twentyone.js";
+import { CeilingMode } from "@vercel/sdk/models/usereventpayload22provider.js";
 
 let value: CeilingMode = "until-requested";
 ```

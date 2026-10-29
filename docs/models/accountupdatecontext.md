@@ -1,6 +1,6 @@
 # AccountUpdateContext
 
-Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team).
+Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team). When the teams the user must complete Update Account for include an organization's backing team, that team is listed as the organization, followed by the organization's Enterprise Managed root and child teams the user is a member of, including through Directory Sync group mappings.
 
 ## Example Usage
 

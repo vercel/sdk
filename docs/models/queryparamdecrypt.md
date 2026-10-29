@@ -1,0 +1,19 @@
+# ~~QueryParamDecrypt~~
+
+If true, the environment variable value will be decrypted
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+## Example Usage
+
+```typescript
+import { QueryParamDecrypt } from "@vercel/sdk/models/filterprojectenvsop.js";
+
+let value: QueryParamDecrypt = "true";
+```
+
+## Values
+
+```typescript
+"true" | "false"
+```

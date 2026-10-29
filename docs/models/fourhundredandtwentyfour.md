@@ -5,13 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentyFour } from "@vercel/sdk/models/usereventpayload386type.js";
+import { FourHundredAndTwentyFour } from "@vercel/sdk/models/usereventpayload387scope.js";
 
 let value: FourHundredAndTwentyFour = {
-  expiresAt: "1736803121870",
-  maxUses: 1722.63,
-  publicId: "<id>",
-  role: "<value>",
+  authorized: true,
 };
 ```
 
@@ -19,8 +16,6 @@ let value: FourHundredAndTwentyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
-| `maxUses`          | *number*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
-| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
-| `role`             | *string*           | :heavy_check_mark: | N/A                |
+| `authorized`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `email`            | *string*           | :heavy_minus_sign: | N/A                |
+| `reason`           | *string*           | :heavy_minus_sign: | N/A                |

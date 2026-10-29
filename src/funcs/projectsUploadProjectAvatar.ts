@@ -23,7 +23,7 @@ import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import {
   UploadProjectAvatarRequest,
   UploadProjectAvatarRequest$outboundSchema,
-} from "../models/uploadprojectavatarplan.js";
+} from "../models/uploadprojectavatarchecksstate.js";
 import {
   UploadProjectAvatarResponseBody,
   UploadProjectAvatarResponseBody$inboundSchema,

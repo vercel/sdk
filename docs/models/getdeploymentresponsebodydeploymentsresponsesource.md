@@ -5,7 +5,7 @@ The external platform that created the deployment (e.g. its display name).
 ## Example Usage
 
 ```typescript
-import { GetDeploymentResponseBodyDeploymentsResponseSource } from "@vercel/sdk/models/getdeploymentservicesresources.js";
+import { GetDeploymentResponseBodyDeploymentsResponseSource } from "@vercel/sdk/models/getdeploymentserviceshttpget.js";
 
 let value: GetDeploymentResponseBodyDeploymentsResponseSource = {
   name: "<value>",

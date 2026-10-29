@@ -9,70 +9,6 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  CreateProjectFrom2,
-  CreateProjectFrom2$inboundSchema,
-  CreateProjectIpBuckets,
-  CreateProjectIpBuckets$inboundSchema,
-  CreateProjectMicrofrontends,
-  CreateProjectMicrofrontends$inboundSchema,
-  CreateProjectNodeVersion,
-  CreateProjectNodeVersion$inboundSchema,
-  CreateProjectOidcProviders,
-  CreateProjectOidcProviders$inboundSchema,
-  CreateProjectOidcTokenConfig,
-  CreateProjectOidcTokenConfig$inboundSchema,
-  CreateProjectOptionsAllowlist,
-  CreateProjectOptionsAllowlist$inboundSchema,
-  CreateProjectPassport,
-  CreateProjectPassport$inboundSchema,
-  CreateProjectPasswordProtection,
-  CreateProjectPasswordProtection$inboundSchema,
-  CreateProjectPermissions,
-  CreateProjectPermissions$inboundSchema,
-  CreateProjectProjectsResourceConfig,
-  CreateProjectProjectsResourceConfig$inboundSchema,
-  CreateProjectProjectsSsoProtection,
-  CreateProjectProjectsSsoProtection$inboundSchema,
-  CreateProjectRollbackDescription,
-  CreateProjectRollbackDescription$inboundSchema,
-  CreateProjectSandbox,
-  CreateProjectSandbox$inboundSchema,
-  CreateProjectSecurity,
-  CreateProjectSecurity$inboundSchema,
-  CreateProjectServices,
-  CreateProjectServices$inboundSchema,
-  CreateProjectStaticIps,
-  CreateProjectStaticIps$inboundSchema,
-  CreateProjectTargets,
-  CreateProjectTargets$inboundSchema,
-  CreateProjectTier,
-  CreateProjectTier$inboundSchema,
-  CreateProjectTracing,
-  CreateProjectTracing$inboundSchema,
-  CreateProjectTrustedIps,
-  CreateProjectTrustedIps$inboundSchema,
-  InternalRoutes,
-  InternalRoutes$inboundSchema,
-  Jobs,
-  Jobs$inboundSchema,
-  LastAliasRequest,
-  LastAliasRequest$inboundSchema,
-  LastRollbackTarget,
-  LastRollbackTarget$inboundSchema,
-  LatestDeployments,
-  LatestDeployments$inboundSchema,
-  Link,
-  Link$inboundSchema,
-  ProtectionBypass,
-  ProtectionBypass$inboundSchema,
-  ProtectionConfig,
-  ProtectionConfig$inboundSchema,
-  RollingRelease,
-  RollingRelease$inboundSchema,
-  SpeedInsights,
-  SpeedInsights$inboundSchema,
-} from "./createprojectfrom2.js";
-import {
   Alias,
   Alias$inboundSchema,
   Analytics,
@@ -109,8 +45,112 @@ import {
   Features$inboundSchema,
   GitProviderOptions,
   GitProviderOptions$inboundSchema,
-} from "./internalrouteshas.js";
+} from "./createprojecthaskey.js";
+import {
+  CreateProjectIpBuckets,
+  CreateProjectIpBuckets$inboundSchema,
+  CreateProjectMicrofrontends,
+  CreateProjectMicrofrontends$inboundSchema,
+  CreateProjectNodeVersion,
+  CreateProjectNodeVersion$inboundSchema,
+  CreateProjectOidcTokenConfig,
+  CreateProjectOidcTokenConfig$inboundSchema,
+  CreateProjectOptionsAllowlist,
+  CreateProjectOptionsAllowlist$inboundSchema,
+  CreateProjectPassport,
+  CreateProjectPassport$inboundSchema,
+  CreateProjectPasswordProtection,
+  CreateProjectPasswordProtection$inboundSchema,
+  CreateProjectPermissions,
+  CreateProjectPermissions$inboundSchema,
+  CreateProjectProjectsResourceConfig,
+  CreateProjectProjectsResourceConfig$inboundSchema,
+  CreateProjectProjectsSsoProtection,
+  CreateProjectProjectsSsoProtection$inboundSchema,
+  CreateProjectRollbackDescription,
+  CreateProjectRollbackDescription$inboundSchema,
+  CreateProjectSandbox,
+  CreateProjectSandbox$inboundSchema,
+  CreateProjectSecurity,
+  CreateProjectSecurity$inboundSchema,
+  CreateProjectServices,
+  CreateProjectServices$inboundSchema,
+  CreateProjectStaticIps,
+  CreateProjectStaticIps$inboundSchema,
+  CreateProjectTargets,
+  CreateProjectTargets$inboundSchema,
+  CreateProjectTier,
+  CreateProjectTier$inboundSchema,
+  CreateProjectTo2,
+  CreateProjectTo2$inboundSchema,
+  CreateProjectTracing,
+  CreateProjectTracing$inboundSchema,
+  CreateProjectTrustedIps,
+  CreateProjectTrustedIps$inboundSchema,
+  InternalRoutes,
+  InternalRoutes$inboundSchema,
+  Jobs,
+  Jobs$inboundSchema,
+  LastAliasRequest,
+  LastAliasRequest$inboundSchema,
+  LastRollbackTarget,
+  LastRollbackTarget$inboundSchema,
+  LatestDeployments,
+  LatestDeployments$inboundSchema,
+  Link,
+  Link$inboundSchema,
+  ProtectionBypass,
+  ProtectionBypass$inboundSchema,
+  ProtectionConfig,
+  ProtectionConfig$inboundSchema,
+  RollingRelease,
+  RollingRelease$inboundSchema,
+  SpeedInsights,
+  SpeedInsights$inboundSchema,
+} from "./createprojectto2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateProjectToPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type CreateProjectToPreset = ClosedEnum<typeof CreateProjectToPreset>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type CreateProjectTo1 = {
+  preset?: CreateProjectToPreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
+
+export type CreateProjectTo = CreateProjectTo1 | CreateProjectTo2;
+
+export type CreateProjectOidcProviders = {
+  to: CreateProjectTo1 | CreateProjectTo2;
+  claims: { [k: string]: Array<string> };
+  label?: string | undefined;
+};
+
+export const CreateProjectFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type CreateProjectFromPreset = ClosedEnum<
+  typeof CreateProjectFromPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type CreateProjectFrom2 = {
+  preset: CreateProjectFromPreset;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+};
 
 export const CreateProjectFromProjectsPreset = {
   AllCustom: "all-custom",
@@ -374,6 +414,100 @@ export type CreateProjectResponseBody = {
 };
 
 /** @internal */
+export const CreateProjectToPreset$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectToPreset
+> = z.nativeEnum(CreateProjectToPreset);
+
+/** @internal */
+export const CreateProjectTo1$inboundSchema: z.ZodType<
+  CreateProjectTo1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(CreateProjectToPreset$inboundSchema),
+  slugs: z.array(types.string()),
+});
+
+export function createProjectTo1FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTo1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTo1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTo$inboundSchema: z.ZodType<
+  CreateProjectTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => CreateProjectTo1$inboundSchema),
+  CreateProjectTo2$inboundSchema,
+]);
+
+export function createProjectToFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTo' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectOidcProviders$inboundSchema: z.ZodType<
+  CreateProjectOidcProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  to: smartUnion([
+    z.lazy(() => CreateProjectTo1$inboundSchema),
+    CreateProjectTo2$inboundSchema,
+  ]),
+  claims: z.record(z.array(types.string())),
+  label: types.optional(types.string()),
+});
+
+export function createProjectOidcProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectOidcProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectOidcProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectOidcProviders' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectFromPreset
+> = z.nativeEnum(CreateProjectFromPreset);
+
+/** @internal */
+export const CreateProjectFrom2$inboundSchema: z.ZodType<
+  CreateProjectFrom2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: CreateProjectFromPreset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
+});
+
+export function createProjectFrom2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectFrom2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectFrom2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectFrom2' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectFromProjectsPreset$inboundSchema: z.ZodNativeEnum<
   typeof CreateProjectFromProjectsPreset
 > = z.nativeEnum(CreateProjectFromProjectsPreset);
@@ -405,7 +539,7 @@ export const CreateProjectFrom$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => CreateProjectFrom1$inboundSchema),
-  CreateProjectFrom2$inboundSchema,
+  z.lazy(() => CreateProjectFrom2$inboundSchema),
 ]);
 
 export function createProjectFromFromJSON(
@@ -497,7 +631,7 @@ export const CreateProjectCustomAllow$inboundSchema: z.ZodType<
 > = z.object({
   from: smartUnion([
     z.lazy(() => CreateProjectFrom1$inboundSchema),
-    CreateProjectFrom2$inboundSchema,
+    z.lazy(() => CreateProjectFrom2$inboundSchema),
   ]),
   to: smartUnion([
     z.lazy(() => CreateProjectToProjects1$inboundSchema),
@@ -545,7 +679,7 @@ export const CreateProjectTrustedSources$inboundSchema: z.ZodType<
 > = z.object({
   enableVercelCiSameRepository: types.optional(types.boolean()),
   oidcProviders: types.optional(
-    z.record(z.array(CreateProjectOidcProviders$inboundSchema)),
+    z.record(z.array(z.lazy(() => CreateProjectOidcProviders$inboundSchema))),
   ),
   projects: types.optional(
     z.record(z.lazy(() => CreateProjectProjects$inboundSchema)),

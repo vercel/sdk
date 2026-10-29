@@ -1,11 +1,9 @@
 # BuildMachine1
 
-Build machine configuration recorded for this deployment's build. See {@link DeploymentBuildMachine}. Distinct from the team/user `resourceConfig.buildMachine`, which only carries `default`.
-
 ## Example Usage
 
 ```typescript
-import { BuildMachine1 } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicesvalue.js";
+import { BuildMachine1 } from "@vercel/sdk/models/servicesdestination.js";
 
 let value: BuildMachine1 = {
   machineSelectionType: "elastic",

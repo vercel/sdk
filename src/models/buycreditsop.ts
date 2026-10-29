@@ -73,7 +73,7 @@ export type BuyCreditsRequest = {
 /**
  * Configuration input options for adjusting plan item quantity.
  */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options =
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options =
   {
     /**
      * The resource IDs to incrementally add. The quantity of the plan item will be increased by the number of resource IDs.
@@ -87,6 +87,170 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
      * The resource IDs to incrementally remove. The quantity of the plan item will be decreased by the number of resource IDs.
      */
     removedResourceIds: Array<string>;
+  };
+
+/**
+ * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+ */
+export type BuyCreditsConfigurationBillingResponseChangedResources = {
+  /**
+   * Resource IDs that were added.
+   */
+  addedResourceIds?: Array<string> | undefined;
+  /**
+   * When this resource change should take effect for downstream consumers.
+   */
+  effectiveAt?: string | undefined;
+  /**
+   * The alias of the product that was changed.
+   */
+  productAlias: string;
+  /**
+   * The ID of the product that was changed.
+   */
+  productId: string;
+  /**
+   * The resulting quantity after this change.
+   */
+  quantity: number;
+  /**
+   * Resource IDs that were removed.
+   */
+  removedResourceIds?: Array<string> | undefined;
+  /**
+   * The full set of resource IDs after the change.
+   */
+  resourceIds?: Array<string> | undefined;
+};
+
+/**
+ * When the subscription change should take effect.
+ */
+export const BuyCreditsConfigurationBillingResponseEffectiveBehavior = {
+  EndOfTerm: "end_of_term",
+  Immediate: "immediate",
+} as const;
+/**
+ * When the subscription change should take effect.
+ */
+export type BuyCreditsConfigurationBillingResponseEffectiveBehavior =
+  ClosedEnum<typeof BuyCreditsConfigurationBillingResponseEffectiveBehavior>;
+
+/**
+ * The source used as the authoritative price for this intent.
+ */
+export const BuyCreditsConfigurationBillingResponsePricingSource = {
+  Copper: "copper",
+  Orb: "orb",
+} as const;
+/**
+ * The source used as the authoritative price for this intent.
+ */
+export type BuyCreditsConfigurationBillingResponsePricingSource = ClosedEnum<
+  typeof BuyCreditsConfigurationBillingResponsePricingSource
+>;
+
+/**
+ * The canonical reference-product billing period at intent creation. Omitted for historical intents.
+ */
+export type BuyCreditsConfigurationBillingResponseReferenceBillingPeriod = {
+  /**
+   * The exclusive end of the reference billing period.
+   */
+  endDate: string;
+  /**
+   * The inclusive start of the reference billing period.
+   */
+  startDate: string;
+};
+
+/**
+ * Output returned after configuring an OrbSubscriptionIntent.
+ */
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput =
+  {
+    /**
+     * Resources that were changed as part of this intent. Tracks all logical changes including the primary change and any side effects.
+     */
+    changedResources?:
+      | Array<BuyCreditsConfigurationBillingResponseChangedResources>
+      | undefined;
+    /**
+     * The Orb customer's timezone when the intent was created. Omitted for legacy intents.
+     */
+    customerTimezone?: string | undefined;
+    /**
+     * When the subscription change should take effect.
+     */
+    effectiveBehavior: BuyCreditsConfigurationBillingResponseEffectiveBehavior;
+    /**
+     * Optional metadata associated with the intent to update the Orb subscription with.
+     */
+    metadata?: { [k: string]: string } | undefined;
+    /**
+     * The Orb price ID for the subscription item being modified.
+     */
+    orbPriceId: string;
+    /**
+     * The ID of the pending subscription change if there is one.
+     */
+    pendingSubscriptionChangeId?: string | undefined;
+    /**
+     * The source used as the authoritative price for this intent.
+     */
+    pricingSource: BuyCreditsConfigurationBillingResponsePricingSource;
+    /**
+     * The product ID associated with this intent.
+     */
+    productId: string;
+    /**
+     * The canonical reference-product billing period at intent creation. Omitted for historical intents.
+     */
+    referenceBillingPeriod?:
+      | BuyCreditsConfigurationBillingResponseReferenceBillingPeriod
+      | undefined;
+  };
+
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type =
+  {
+    AdjustPlanItemQuantity: "adjust_plan_item_quantity",
+  } as const;
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type =
+  ClosedEnum<
+    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type
+  >;
+
+/**
+ * Configuration for the Orb subscription intent.
+ */
+export type BuyCreditsConfiguration5 = {
+  /**
+   * Configuration input options for adjusting plan item quantity.
+   */
+  options:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options;
+  /**
+   * Output returned after configuring an OrbSubscriptionIntent.
+   */
+  output:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput;
+  type:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type;
+};
+
+/**
+ * Configuration input options for decreasing plan item quantity.
+ */
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options =
+  {
+    /**
+     * The alias of the product to decrease quantity for.
+     */
+    productAlias: string;
+    /**
+     * The resource IDs to decrementally remove. The quantity of the plan item will be decreased by the number of resource IDs.
+     */
+    resourceIds: Array<string>;
   };
 
 /**
@@ -212,12 +376,21 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
       | undefined;
   };
 
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type =
+  {
+    DecreasePlanItemQuantity: "decrease_plan_item_quantity",
+  } as const;
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type =
+  ClosedEnum<
+    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type
+  >;
+
 /**
  * Configuration for the Orb subscription intent.
  */
 export type BuyCreditsConfiguration4 = {
   /**
-   * Configuration input options for adjusting plan item quantity.
+   * Configuration input options for decreasing plan item quantity.
    */
   options:
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options;
@@ -226,20 +399,21 @@ export type BuyCreditsConfiguration4 = {
    */
   output:
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output;
-  type: "adjust_plan_item_quantity";
+  type:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type;
 };
 
 /**
- * Configuration input options for decreasing plan item quantity.
+ * Configuration input options for increasing plan item quantity.
  */
 export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions =
   {
     /**
-     * The alias of the product to decrease quantity for.
+     * The alias of the product to increase quantity for.
      */
     productAlias: string;
     /**
-     * The resource IDs to decrementally remove. The quantity of the plan item will be decreased by the number of resource IDs.
+     * The resource IDs to incrementally add. The quantity of the plan item will be increased by the number of resource IDs.
      */
     resourceIds: Array<string>;
   };
@@ -367,12 +541,21 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
       | undefined;
   };
 
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type =
+  {
+    IncreasePlanItemQuantity: "increase_plan_item_quantity",
+  } as const;
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type =
+  ClosedEnum<
+    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type
+  >;
+
 /**
  * Configuration for the Orb subscription intent.
  */
 export type BuyCreditsConfiguration3 = {
   /**
-   * Configuration input options for decreasing plan item quantity.
+   * Configuration input options for increasing plan item quantity.
    */
   options:
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions;
@@ -381,21 +564,23 @@ export type BuyCreditsConfiguration3 = {
    */
   output:
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput;
-  type: "decrease_plan_item_quantity";
+  type:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type;
 };
 
 /**
- * Configuration input options for increasing plan item quantity.
+ * Configuration input options for setting plan item quantity.
  */
 export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options =
   {
     /**
-     * The alias of the product to increase quantity for.
+     * The alias of the product to set quantity for.
      */
     productAlias: string;
     /**
-     * The resource IDs to incrementally add. The quantity of the plan item will be increased by the number of resource IDs.
+     * The quantity to set for the plan item.
      */
+    quantity: number;
     resourceIds: Array<string>;
   };
 
@@ -517,12 +702,21 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput = {
   referenceBillingPeriod?: ConfigurationReferenceBillingPeriod | undefined;
 };
 
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType =
+  {
+    SetPlanItemQuantity: "set_plan_item_quantity",
+  } as const;
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType =
+  ClosedEnum<
+    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType
+  >;
+
 /**
  * Configuration for the Orb subscription intent.
  */
 export type BuyCreditsConfiguration2 = {
   /**
-   * Configuration input options for increasing plan item quantity.
+   * Configuration input options for setting plan item quantity.
    */
   options:
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options;
@@ -530,12 +724,10 @@ export type BuyCreditsConfiguration2 = {
    * Output returned after configuring an OrbSubscriptionIntent.
    */
   output: BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput;
-  type: "increase_plan_item_quantity";
+  type:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType;
 };
 
-/**
- * Configuration input options for setting plan item quantity.
- */
 export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions =
   {
     /**
@@ -546,10 +738,6 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody
      * The quantity to set for the plan item.
      */
     quantity: number;
-    /**
-     * The resource IDs for the plan item. Only set if SKU requires resource entitlements.
-     */
-    resourceIds?: Array<string> | undefined;
   };
 
 /**
@@ -666,27 +854,35 @@ export type BuyCreditsConfigurationBillingResponse200Output = {
   referenceBillingPeriod?: ReferenceBillingPeriod | undefined;
 };
 
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type =
+  {
+    SetPlanItemQuantity: "set_plan_item_quantity",
+  } as const;
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type =
+  ClosedEnum<
+    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type
+  >;
+
 /**
  * Configuration for the Orb subscription intent.
  */
 export type BuyCreditsConfiguration1 = {
-  /**
-   * Configuration input options for setting plan item quantity.
-   */
   options:
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions;
   /**
    * Output returned after configuring an OrbSubscriptionIntent.
    */
   output: BuyCreditsConfigurationBillingResponse200Output;
-  type: "set_plan_item_quantity";
+  type:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type;
 };
 
 export type ResponseBodyConfiguration =
   | BuyCreditsConfiguration1
   | BuyCreditsConfiguration2
   | BuyCreditsConfiguration3
-  | BuyCreditsConfiguration4;
+  | BuyCreditsConfiguration4
+  | BuyCreditsConfiguration5;
 
 export const BuyCreditsOrbUpdateMode = {
   Async: "async",
@@ -771,7 +967,8 @@ export type OrbSubscriptionIntent = {
     | BuyCreditsConfiguration1
     | BuyCreditsConfiguration2
     | BuyCreditsConfiguration3
-    | BuyCreditsConfiguration4;
+    | BuyCreditsConfiguration4
+    | BuyCreditsConfiguration5;
   /**
    * The ISO 8601 date-time that the intent was created.
    */
@@ -1712,15 +1909,186 @@ export function buyCreditsRequestToJSON(
 }
 
 /** @internal */
-export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options$inboundSchema:
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options$inboundSchema:
   z.ZodType<
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options,
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options,
     z.ZodTypeDef,
     unknown
   > = z.object({
     addedResourceIds: z.array(types.string()),
     productAlias: types.string(),
     removedResourceIds: z.array(types.string()),
+  });
+
+export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5OptionsFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsConfigurationBillingResponseChangedResources$inboundSchema:
+  z.ZodType<
+    BuyCreditsConfigurationBillingResponseChangedResources,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    addedResourceIds: types.optional(z.array(types.string())),
+    effectiveAt: types.optional(types.string()),
+    productAlias: types.string(),
+    productId: types.string(),
+    quantity: types.number(),
+    removedResourceIds: types.optional(z.array(types.string())),
+    resourceIds: types.optional(z.array(types.string())),
+  });
+
+export function buyCreditsConfigurationBillingResponseChangedResourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsConfigurationBillingResponseChangedResources,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsConfigurationBillingResponseChangedResources$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfigurationBillingResponseChangedResources' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsConfigurationBillingResponseEffectiveBehavior$inboundSchema:
+  z.ZodNativeEnum<
+    typeof BuyCreditsConfigurationBillingResponseEffectiveBehavior
+  > = z.nativeEnum(BuyCreditsConfigurationBillingResponseEffectiveBehavior);
+
+/** @internal */
+export const BuyCreditsConfigurationBillingResponsePricingSource$inboundSchema:
+  z.ZodNativeEnum<typeof BuyCreditsConfigurationBillingResponsePricingSource> =
+    z.nativeEnum(BuyCreditsConfigurationBillingResponsePricingSource);
+
+/** @internal */
+export const BuyCreditsConfigurationBillingResponseReferenceBillingPeriod$inboundSchema:
+  z.ZodType<
+    BuyCreditsConfigurationBillingResponseReferenceBillingPeriod,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    endDate: types.string(),
+    startDate: types.string(),
+  });
+
+export function buyCreditsConfigurationBillingResponseReferenceBillingPeriodFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsConfigurationBillingResponseReferenceBillingPeriod,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsConfigurationBillingResponseReferenceBillingPeriod$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfigurationBillingResponseReferenceBillingPeriod' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput$inboundSchema:
+  z.ZodType<
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    changedResources: types.optional(
+      z.array(z.lazy(() =>
+        BuyCreditsConfigurationBillingResponseChangedResources$inboundSchema
+      )),
+    ),
+    customerTimezone: types.optional(types.string()),
+    effectiveBehavior:
+      BuyCreditsConfigurationBillingResponseEffectiveBehavior$inboundSchema,
+    metadata: types.optional(z.record(types.string())),
+    orbPriceId: types.string(),
+    pendingSubscriptionChangeId: types.optional(types.string()),
+    pricingSource:
+      BuyCreditsConfigurationBillingResponsePricingSource$inboundSchema,
+    productId: types.string(),
+    referenceBillingPeriod: types.optional(
+      z.lazy(() =>
+        BuyCreditsConfigurationBillingResponseReferenceBillingPeriod$inboundSchema
+      ),
+    ),
+  });
+
+export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutputFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type
+  > = z.nativeEnum(
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type,
+  );
+
+/** @internal */
+export const BuyCreditsConfiguration5$inboundSchema: z.ZodType<
+  BuyCreditsConfiguration5,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  options: z.lazy(() =>
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options$inboundSchema
+  ),
+  output: z.lazy(() =>
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput$inboundSchema
+  ),
+  type:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type$inboundSchema,
+});
+
+export function buyCreditsConfiguration5FromJSON(
+  jsonString: string,
+): SafeParseResult<BuyCreditsConfiguration5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BuyCreditsConfiguration5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsConfiguration5' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options$inboundSchema:
+  z.ZodType<
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    productAlias: types.string(),
+    resourceIds: z.array(types.string()),
   });
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4OptionsFromJSON(
@@ -1850,6 +2218,14 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type
+  > = z.nativeEnum(
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type,
+  );
+
+/** @internal */
 export const BuyCreditsConfiguration4$inboundSchema: z.ZodType<
   BuyCreditsConfiguration4,
   z.ZodTypeDef,
@@ -1861,7 +2237,8 @@ export const BuyCreditsConfiguration4$inboundSchema: z.ZodType<
   output: z.lazy(() =>
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output$inboundSchema
   ),
-  type: types.literal("adjust_plan_item_quantity"),
+  type:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type$inboundSchema,
 });
 
 export function buyCreditsConfiguration4FromJSON(
@@ -2009,6 +2386,14 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 }
 
 /** @internal */
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type
+  > = z.nativeEnum(
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type,
+  );
+
+/** @internal */
 export const BuyCreditsConfiguration3$inboundSchema: z.ZodType<
   BuyCreditsConfiguration3,
   z.ZodTypeDef,
@@ -2020,7 +2405,8 @@ export const BuyCreditsConfiguration3$inboundSchema: z.ZodType<
   output: z.lazy(() =>
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema
   ),
-  type: types.literal("decrease_plan_item_quantity"),
+  type:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type$inboundSchema,
 });
 
 export function buyCreditsConfiguration3FromJSON(
@@ -2041,6 +2427,7 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     unknown
   > = z.object({
     productAlias: types.string(),
+    quantity: types.number(),
     resourceIds: z.array(types.string()),
   });
 
@@ -2153,6 +2540,14 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONOutputFr
 }
 
 /** @internal */
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType
+  > = z.nativeEnum(
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType,
+  );
+
+/** @internal */
 export const BuyCreditsConfiguration2$inboundSchema: z.ZodType<
   BuyCreditsConfiguration2,
   z.ZodTypeDef,
@@ -2164,7 +2559,8 @@ export const BuyCreditsConfiguration2$inboundSchema: z.ZodType<
   output: z.lazy(() =>
     BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema
   ),
-  type: types.literal("increase_plan_item_quantity"),
+  type:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType$inboundSchema,
 });
 
 export function buyCreditsConfiguration2FromJSON(
@@ -2186,7 +2582,6 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
   > = z.object({
     productAlias: types.string(),
     quantity: types.number(),
-    resourceIds: types.optional(z.array(types.string())),
   });
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptionsFromJSON(
@@ -2298,6 +2693,14 @@ export function buyCreditsConfigurationBillingResponse200OutputFromJSON(
 }
 
 /** @internal */
+export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type$inboundSchema:
+  z.ZodNativeEnum<
+    typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type
+  > = z.nativeEnum(
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type,
+  );
+
+/** @internal */
 export const BuyCreditsConfiguration1$inboundSchema: z.ZodType<
   BuyCreditsConfiguration1,
   z.ZodTypeDef,
@@ -2309,7 +2712,8 @@ export const BuyCreditsConfiguration1$inboundSchema: z.ZodType<
   output: z.lazy(() =>
     BuyCreditsConfigurationBillingResponse200Output$inboundSchema
   ),
-  type: types.literal("set_plan_item_quantity"),
+  type:
+    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type$inboundSchema,
 });
 
 export function buyCreditsConfiguration1FromJSON(
@@ -2327,11 +2731,12 @@ export const ResponseBodyConfiguration$inboundSchema: z.ZodType<
   ResponseBodyConfiguration,
   z.ZodTypeDef,
   unknown
-> = z.union([
+> = smartUnion([
   z.lazy(() => BuyCreditsConfiguration1$inboundSchema),
   z.lazy(() => BuyCreditsConfiguration2$inboundSchema),
   z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
   z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
+  z.lazy(() => BuyCreditsConfiguration5$inboundSchema),
 ]);
 
 export function responseBodyConfigurationFromJSON(
@@ -2461,11 +2866,12 @@ export const OrbSubscriptionIntent$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  configuration: z.union([
+  configuration: smartUnion([
     z.lazy(() => BuyCreditsConfiguration1$inboundSchema),
     z.lazy(() => BuyCreditsConfiguration2$inboundSchema),
     z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
     z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
+    z.lazy(() => BuyCreditsConfiguration5$inboundSchema),
   ]),
   createdAt: types.string(),
   id: types.string(),

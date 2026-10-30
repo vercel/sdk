@@ -5,24 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/usereventpayload325project.js";
+import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/threehundredandthirtyone.js";
 
 let value: ThreeHundredAndThirtyThree = {
-  oldPasswordProtection: {
-    deploymentType: "prod_deployment_urls_and_all_previews",
-  },
-  passwordProtection: {
-    deploymentType: "all_except_custom_domains",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  source: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                 | Type                                  | Required                              | Description                           |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `oldPasswordProtection`               | *models.PayloadOldPasswordProtection* | :heavy_check_mark:                    | N/A                                   |
-| `passwordChanged`                     | *boolean*                             | :heavy_minus_sign:                    | N/A                                   |
-| `passwordProtection`                  | *models.PayloadPasswordProtection*    | :heavy_check_mark:                    | N/A                                   |
-| `projectId`                           | *string*                              | :heavy_minus_sign:                    | N/A                                   |
-| `projectName`                         | *string*                              | :heavy_minus_sign:                    | N/A                                   |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |

@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyThree } from "@vercel/sdk/models/usereventjobpayload125githashtagvercel.js";
+import { OneHundredAndEightyThree } from "@vercel/sdk/models/usereventjobpayload1269githashtagvercel.js";
 
 let value: OneHundredAndEightyThree = {
   configVersion: "<value>",
@@ -14,8 +14,6 @@ let value: OneHundredAndEightyThree = {
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `configChangeCount`                                  | *number*                                             | :heavy_minus_sign:                                   | N/A                                                  |
-| `configChanges`                                      | [models.ConfigChanges](../models/configchanges.md)[] | :heavy_minus_sign:                                   | N/A                                                  |
-| `configVersion`                                      | *models.UserEventPayloadConfigVersion*               | :heavy_check_mark:                                   | N/A                                                  |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `configVersion`               | *models.PayloadConfigVersion* | :heavy_check_mark:            | N/A                           |

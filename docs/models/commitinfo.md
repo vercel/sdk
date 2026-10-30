@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CommitInfo } from "@vercel/sdk/models/data2.js";
+import { CommitInfo } from "@vercel/sdk/models/eightynine.js";
 
 let value: CommitInfo = {
   total: 8159.66,

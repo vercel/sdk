@@ -5,17 +5,33 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentySix } from "@vercel/sdk/models/usereventjobpayload125githashtagvercel.js";
+import { OneHundredAndTwentySix } from "@vercel/sdk/models/eightynine.js";
 
 let value: OneHundredAndTwentySix = {
-  url: "https://fixed-lender.org/",
+  job: {
+    headInfo: {
+      owner: "<value>",
+      ref: "<value>",
+      repoUuid: "<id>",
+      sha: "<value>",
+      slug: "<value>",
+    },
+    name: "<value>",
+    owner: "<value>",
+    prId: 2741.35,
+    provider: "bitbucket",
+    ref: "<value>",
+    repoUuid: "<id>",
+    sha: "<value>",
+    slug: "<value>",
+    type: "bitbucket-now-comment",
+    workspaceUuid: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `newTeam`                                                              | [models.UserEventPayloadNewTeam](../models/usereventpayloadnewteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `oldTeam`                                                              | [models.UserEventPayloadOldTeam](../models/usereventpayloadoldteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `url`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |

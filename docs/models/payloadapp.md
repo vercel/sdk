@@ -5,7 +5,7 @@ optional since entries prior to 2025-10-13 do not contain app information
 ## Example Usage
 
 ```typescript
-import { PayloadApp } from "@vercel/sdk/models/usereventpayload453actortype.js";
+import { PayloadApp } from "@vercel/sdk/models/usereventpayload458actortype.js";
 
 let value: PayloadApp = {
   clientAuthenticationUsed: {

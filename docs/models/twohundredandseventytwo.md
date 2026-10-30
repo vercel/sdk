@@ -5,28 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyTwo } from "@vercel/sdk/models/usereventpayload258previousdeploymenttype.js";
+import { TwoHundredAndSeventyTwo } from "@vercel/sdk/models/usereventpayload261origin.js";
 
 let value: TwoHundredAndSeventyTwo = {
-  prevProjectAnalytics: {
-    disabledAt: 4674.8,
-    enabledAt: 5926.66,
-    id: "<id>",
-  },
-  projectAnalytics: {
-    disabledAt: 7495.96,
-    enabledAt: 5552.2,
-    id: "<id>",
-  },
-  projectId: "<id>",
+  branch: "<value>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `branch`           | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

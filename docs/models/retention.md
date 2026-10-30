@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Retention } from "@vercel/sdk/models/usereventpayload22provider.js";
+import { Retention } from "@vercel/sdk/models/usereventpayload26apikey.js";
 
 let value: Retention = {
   ceilingMode: "days",

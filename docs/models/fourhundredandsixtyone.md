@@ -5,19 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixtyOne } from "@vercel/sdk/models/usereventpayload453actortype.js";
+import { FourHundredAndSixtyOne } from "@vercel/sdk/models/usereventpayload458actortype.js";
 
 let value: FourHundredAndSixtyOne = {
-  actorId: "<id>",
-  actorType: "admin",
-  enabled: true,
+  username: "Fidel.Wuckert",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload461ActorType](../models/usereventpayload461actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `enabled`                                                                        | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |

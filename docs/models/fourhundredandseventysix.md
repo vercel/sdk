@@ -5,19 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeventySix } from "@vercel/sdk/models/usereventpayload453actortype.js";
+import { FourHundredAndSeventySix } from "@vercel/sdk/models/usereventpayload458actortype.js";
 
 let value: FourHundredAndSeventySix = {
-  projectId: "<id>",
-  projectName: "<value>",
-  repositoryName: "<value>",
+  next: {
+    enabled: false,
+    totpVerified: true,
+  },
+  previous: {
+    enabled: true,
+    totpVerified: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload476Next](../models/usereventpayload476next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload476Previous](../models/usereventpayload476previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

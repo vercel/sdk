@@ -5,22 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndEightySeven } from "@vercel/sdk/models/usereventpayload453actortype.js";
+import { FourHundredAndEightySeven } from "@vercel/sdk/models/usereventpayload458actortype.js";
 
 let value: FourHundredAndEightySeven = {
-  protectedProjectCount: 7175.58,
-  protectionEnabled: true,
-  vulnerabilities: [
+  projectId: "<id>",
+  projectName: "<value>",
+  removedTeamIds: [
     "<value 1>",
     "<value 2>",
   ],
+  repositoryName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `protectedProjectCount` | *number*                | :heavy_check_mark:      | N/A                     |
-| `protectionEnabled`     | *boolean*               | :heavy_check_mark:      | N/A                     |
-| `vulnerabilities`       | *string*[]              | :heavy_check_mark:      | N/A                     |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `removedTeamIds`   | *string*[]         | :heavy_check_mark: | N/A                |
+| `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |

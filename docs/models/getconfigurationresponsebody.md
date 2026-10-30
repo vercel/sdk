@@ -32,16 +32,6 @@ const value: models.GetConfigurationResponseBody1 = {
   slug: "slack",
   source: "marketplace",
   teamId: "team_nLlpyC6RE1qxydlFKbrxDlud",
-  transferRequest: {
-    createdAt: 5796.66,
-    expiresAt: 3098.33,
-    kind: "transfer-to-marketplace",
-    requester: {
-      name: "<value>",
-    },
-    requestId: "<id>",
-    transferId: "<id>",
-  },
   type: "integration-configuration",
   updatedAt: 1558531915505,
   userId: "kr1PsOIzqEL5Xg6M4VZcZosf",

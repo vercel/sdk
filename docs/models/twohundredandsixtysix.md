@@ -5,22 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySix } from "@vercel/sdk/models/usereventpayload258previousdeploymenttype.js";
+import { TwoHundredAndSixtySix } from "@vercel/sdk/models/usereventpayload261origin.js";
 
 let value: TwoHundredAndSixtySix = {
-  privateLinkEndpoint: {
+  endpoint: {
+    awsServiceName: "<value>",
+    configurationId: "<id>",
     id: "<id>",
     name: "<value>",
+    vercelRegion: "<value>",
   },
-  projectId: "<id>",
+  scope: "network",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `privateLinkEndpoint`                                                        | [models.PayloadPrivateLinkEndpoint](../models/payloadprivatelinkendpoint.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectName`                                                                | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `scope`                                                                      | [models.UserEventPayload266Scope](../models/usereventpayload266scope.md)     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `endpoint`                                                               | [models.Endpoint](../models/endpoint.md)                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `networkName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload266Scope](../models/usereventpayload266scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

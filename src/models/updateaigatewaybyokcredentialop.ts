@@ -53,6 +53,7 @@ export type UpdateAiGatewayByokCredentialResponseBody = {
   name: string;
   ownerId: string;
   providerSlug: string;
+  rotatedAt: number | null;
   updatedAt: number;
   zeroDataRetention: boolean;
 };
@@ -139,6 +140,7 @@ export const UpdateAiGatewayByokCredentialResponseBody$inboundSchema: z.ZodType<
   name: types.string(),
   ownerId: types.string(),
   providerSlug: types.string(),
+  rotatedAt: types.nullable(types.number()),
   updatedAt: types.number(),
   zeroDataRetention: types.boolean(),
 });

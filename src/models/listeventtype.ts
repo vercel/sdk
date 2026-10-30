@@ -133,6 +133,7 @@ export const Name = {
   AiGatewayVirtualModelConfigUpdated: "ai-gateway-virtual-model-config-updated",
   AiGatewayZeroDataRetentionToggled: "ai-gateway-zero-data-retention-toggled",
   AiOmniagent: "ai-omniagent",
+  AiSecurityReview: "ai-security-review",
   AlertInvestigationProjectAllowlistUpdated:
     "alert-investigation-project-allowlist-updated",
   AlertRuleCreated: "alert-rule-created",
@@ -315,6 +316,7 @@ export const Name = {
   FirewallBypassDeleted: "firewall-bypass-deleted",
   FirewallConditionalBypassCreated: "firewall-conditional-bypass-created",
   FirewallConditionalBypassDeleted: "firewall-conditional-bypass-deleted",
+  FirewallConditionalBypassUpdated: "firewall-conditional-bypass-updated",
   FirewallConfigModified: "firewall-config-modified",
   FirewallConfigPromoted: "firewall-config-promoted",
   FirewallConfigRemoved: "firewall-config-removed",
@@ -370,11 +372,13 @@ export const Name = {
   IntegrationInstallationPermissionUpdated:
     "integration-installation-permission-updated",
   IntegrationInstallationRemoved: "integration-installation-removed",
+  IntegrationPreviousSecretRevoked: "integration-previous-secret-revoked",
   IntegrationResourceRedisCommandExecuted:
     "integration-resource-redis-command-executed",
   IntegrationResourceSqlQueryExecuted:
     "integration-resource-sql-query-executed",
   IntegrationScopeChanged: "integration-scope-changed",
+  IntegrationSecretRotated: "integration-secret-rotated",
   InvoiceModified: "invoice-modified",
   InvoiceRefunded: "invoice-refunded",
   KmsIssuerCreated: "kms-issuer-created",
@@ -770,6 +774,7 @@ export const Name = {
   TeamProgramEnrollmentChanged: "team-program-enrollment-changed",
   TeamRemoteCachingPurge: "team-remote-caching-purge",
   TeamRemoteCachingUpdate: "team-remote-caching-update",
+  TeamRuntimeCacheUpdated: "team-runtime-cache-updated",
   TeamSamlEnforced: "team-saml-enforced",
   TeamSamlRoles: "team-saml-roles",
   TeamSlugUpdate: "team-slug-update",
@@ -831,6 +836,7 @@ export const Name = {
     "vercel-agent-elevated-permissions-approved",
   VercelAgentElevatedPermissionsRequested:
     "vercel-agent-elevated-permissions-requested",
+  VercelAgentSecurityFindingCreated: "vercel-agent-security-finding-created",
   VercelAgentSessionCreated: "vercel-agent-session-created",
   VercelAgentTeamTrialCreditsApplied: "vercel-agent-team-trial-credits-applied",
   VercelAppInstallationRequestDismissed:
@@ -948,6 +954,7 @@ export const ReplacedBy = {
   AiGatewayVirtualModelConfigUpdated: "ai-gateway-virtual-model-config-updated",
   AiGatewayZeroDataRetentionToggled: "ai-gateway-zero-data-retention-toggled",
   AiOmniagent: "ai-omniagent",
+  AiSecurityReview: "ai-security-review",
   AlertInvestigationProjectAllowlistUpdated:
     "alert-investigation-project-allowlist-updated",
   AlertRuleCreated: "alert-rule-created",
@@ -1130,6 +1137,7 @@ export const ReplacedBy = {
   FirewallBypassDeleted: "firewall-bypass-deleted",
   FirewallConditionalBypassCreated: "firewall-conditional-bypass-created",
   FirewallConditionalBypassDeleted: "firewall-conditional-bypass-deleted",
+  FirewallConditionalBypassUpdated: "firewall-conditional-bypass-updated",
   FirewallConfigModified: "firewall-config-modified",
   FirewallConfigPromoted: "firewall-config-promoted",
   FirewallConfigRemoved: "firewall-config-removed",
@@ -1185,11 +1193,13 @@ export const ReplacedBy = {
   IntegrationInstallationPermissionUpdated:
     "integration-installation-permission-updated",
   IntegrationInstallationRemoved: "integration-installation-removed",
+  IntegrationPreviousSecretRevoked: "integration-previous-secret-revoked",
   IntegrationResourceRedisCommandExecuted:
     "integration-resource-redis-command-executed",
   IntegrationResourceSqlQueryExecuted:
     "integration-resource-sql-query-executed",
   IntegrationScopeChanged: "integration-scope-changed",
+  IntegrationSecretRotated: "integration-secret-rotated",
   InvoiceModified: "invoice-modified",
   InvoiceRefunded: "invoice-refunded",
   KmsIssuerCreated: "kms-issuer-created",
@@ -1585,6 +1595,7 @@ export const ReplacedBy = {
   TeamProgramEnrollmentChanged: "team-program-enrollment-changed",
   TeamRemoteCachingPurge: "team-remote-caching-purge",
   TeamRemoteCachingUpdate: "team-remote-caching-update",
+  TeamRuntimeCacheUpdated: "team-runtime-cache-updated",
   TeamSamlEnforced: "team-saml-enforced",
   TeamSamlRoles: "team-saml-roles",
   TeamSlugUpdate: "team-slug-update",
@@ -1646,6 +1657,7 @@ export const ReplacedBy = {
     "vercel-agent-elevated-permissions-approved",
   VercelAgentElevatedPermissionsRequested:
     "vercel-agent-elevated-permissions-requested",
+  VercelAgentSecurityFindingCreated: "vercel-agent-security-finding-created",
   VercelAgentSessionCreated: "vercel-agent-session-created",
   VercelAgentTeamTrialCreditsApplied: "vercel-agent-team-trial-credits-applied",
   VercelAppInstallationRequestDismissed:

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Settings } from "@vercel/sdk/models/usereventpayload22provider.js";
+import { Settings } from "@vercel/sdk/models/usereventpayload26apikey.js";
 
 let value: Settings = {
   maximumMonthlySpend: "<value>",

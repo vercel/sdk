@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PrevProjectAnalytics } from "@vercel/sdk/models/usereventpayload258previousdeploymenttype.js";
+import { PrevProjectAnalytics } from "@vercel/sdk/models/usereventpayload261origin.js";
 
 let value: PrevProjectAnalytics = {
   disabledAt: 1591.57,

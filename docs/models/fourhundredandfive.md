@@ -5,16 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFive } from "@vercel/sdk/models/usereventpayload387scope.js";
+import { FourHundredAndFive } from "@vercel/sdk/models/usereventpayload391type.js";
 
-let value: FourHundredAndFive = {};
+let value: FourHundredAndFive = {
+  eventId: "<id>",
+  occurredAt: 9730.9,
+  sessionId: "<id>",
+  sessionKind: "<value>",
+  surface: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `isSystemInitiated`                                                            | *boolean*                                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload405Next](../models/usereventpayload405next.md)         | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload405Previous](../models/usereventpayload405previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `reason`                                                                       | [models.PayloadReason](../models/payloadreason.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `eventId`                                                                   | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `occurredAt`                                                                | *number*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `sessionId`                                                                 | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `sessionKind`                                                               | *string*                                                                    | :heavy_check_mark:                                                          | Currently emitted session kinds: chat, investigation.                       |
+| `surface`                                                                   | *string*                                                                    | :heavy_check_mark:                                                          | Currently emitted surfaces: dashboard, internal, slack, automation, github. |

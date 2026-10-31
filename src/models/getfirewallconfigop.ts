@@ -27,7 +27,7 @@ export type GetFirewallConfigRequest = {
   configVersion: string;
 };
 
-export type Changes = {};
+export type GetFirewallConfigChanges = {};
 
 export const GetFirewallConfigOp = {
   Eq: "eq",
@@ -1031,7 +1031,7 @@ export type GetFirewallConfigRulesets = Array<GetFirewallConfigRulesets1> | {
  */
 export type GetFirewallConfigResponseBody = {
   botIdEnabled?: boolean | undefined;
-  changes: Array<Changes>;
+  changes: Array<GetFirewallConfigChanges>;
   conditions?: Array<GetFirewallConfigConditions> | undefined;
   /**
    * Custom Ruleset
@@ -1081,16 +1081,19 @@ export function getFirewallConfigRequestToJSON(
 }
 
 /** @internal */
-export const Changes$inboundSchema: z.ZodType<Changes, z.ZodTypeDef, unknown> =
-  z.object({});
+export const GetFirewallConfigChanges$inboundSchema: z.ZodType<
+  GetFirewallConfigChanges,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
-export function changesFromJSON(
+export function getFirewallConfigChangesFromJSON(
   jsonString: string,
-): SafeParseResult<Changes, SDKValidationError> {
+): SafeParseResult<GetFirewallConfigChanges, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Changes$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Changes' from JSON`,
+    (x) => GetFirewallConfigChanges$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetFirewallConfigChanges' from JSON`,
   );
 }
 
@@ -2645,7 +2648,7 @@ export const GetFirewallConfigResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   botIdEnabled: types.optional(types.boolean()),
-  changes: z.array(z.lazy(() => Changes$inboundSchema)),
+  changes: z.array(z.lazy(() => GetFirewallConfigChanges$inboundSchema)),
   conditions: types.optional(
     z.array(z.lazy(() => GetFirewallConfigConditions$inboundSchema)),
   ),

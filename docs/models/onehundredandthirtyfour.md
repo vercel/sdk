@@ -5,14 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyFour } from "@vercel/sdk/models/usereventjobpayload125githashtagvercel.js";
+import { OneHundredAndThirtyFour } from "@vercel/sdk/models/usereventjobpayload12610provider.js";
 
 let value: OneHundredAndThirtyFour = {
-  domain: "bleak-sonata.net",
-  id: "<id>",
-  name: "<value>",
-  type: "<value>",
-  value: "<value>",
+  configurationId: "<id>",
+  integrationId: "<id>",
+  integrationName: "<value>",
+  integrationSlug: "<value>",
+  ownerId: "<id>",
 };
 ```
 
@@ -20,9 +20,9 @@ let value: OneHundredAndThirtyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |

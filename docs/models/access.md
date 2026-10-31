@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Access } from "@vercel/sdk/models/usereventpayload387scope.js";
+import { Access } from "@vercel/sdk/models/usereventpayload391type.js";
 
 let value: Access = "private";
 ```

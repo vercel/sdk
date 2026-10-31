@@ -5,18 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtySeven } from "@vercel/sdk/models/usereventpayload22provider.js";
+import { ThirtySeven } from "@vercel/sdk/models/payloadbudget.js";
 
 let value: ThirtySeven = {
-  privateModel: {
-    providerSlug: "<value>",
-    slug: "<value>",
-  },
+  added: [
+    "<value 1>",
+  ],
+  removed: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `privateModel`                                   | [models.PrivateModel](../models/privatemodel.md) | :heavy_check_mark:                               | N/A                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `added`            | *string*[]         | :heavy_check_mark: | N/A                |
+| `removed`          | *string*[]         | :heavy_check_mark: | N/A                |

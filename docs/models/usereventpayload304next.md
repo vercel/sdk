@@ -3,19 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload304Next } from "@vercel/sdk/models/usereventpayload258previousdeploymenttype.js";
+import { UserEventPayload304Next } from "@vercel/sdk/models/usereventpayload262origin.js";
 
 let value: UserEventPayload304Next = {
-  gitProvider: "vercel",
-  gitRepoId: "<id>",
-  gitRepositoryName: "<value>",
+  functionZeroConfigFailover: false,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `gitProvider`                                                                  | [models.UserEventPayloadGitProvider](../models/usereventpayloadgitprovider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `gitRepoId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `gitRepositoryName`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `functionZeroConfigFailover` | *boolean*                    | :heavy_check_mark:           | N/A                          |

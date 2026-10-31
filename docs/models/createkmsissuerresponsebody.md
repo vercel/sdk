@@ -8,23 +8,21 @@ import { CreateKmsIssuerResponseBody } from "@vercel/sdk/models/createkmsissuero
 let value: CreateKmsIssuerResponseBody = {
   algorithm: "PS384",
   createdAt: "1717650680065",
+  discoveryLayout: "kms",
   id: "<id>",
   name: "<value>",
-  origin: "vercel",
+  origin: "external",
   ownerId: "<id>",
-  policies: [],
-  signingKeys: [
+  policies: [
     {
-      algorithm: "<value>",
-      createdAt: "1729152676948",
-      issuerId: "<id>",
-      keyId: "<id>",
-      publicKeyFingerprint: "<value>",
-      status: "active",
-      updatedAt: "1735674540461",
+      clientId: "<id>",
+      createdAt: "1721135837809",
+      kind: "connex-grant",
+      updatedAt: "1735621236978",
     },
   ],
-  updatedAt: "1735680157687",
+  signingKeys: [],
+  updatedAt: "1735636397969",
 };
 ```
 
@@ -35,6 +33,7 @@ let value: CreateKmsIssuerResponseBody = {
 | `algorithm`                                                              | [models.CreateKmsIssuerAlgorithm](../models/createkmsissueralgorithm.md) | :heavy_check_mark:                                                       | N/A                                                                      |
 | `claimsSchema`                                                           | Record<string, *any*>                                                    | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `createdAt`                                                              | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `discoveryLayout`                                                        | [models.DiscoveryLayout](../models/discoverylayout.md)                   | :heavy_check_mark:                                                       | N/A                                                                      |
 | `id`                                                                     | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
 | `managedBy`                                                              | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `name`                                                                   | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |

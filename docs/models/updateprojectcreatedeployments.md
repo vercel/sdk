@@ -1,17 +1,17 @@
 # UpdateProjectCreateDeployments
 
-Whether the Vercel bot should automatically create GitHub deployments https://docs.github.com/en/rest/deployments/deployments#about-deployments NOTE: repository-dispatch events should be used instead
+Whether or not Vercel should automatically create GitHub deployments
 
 ## Example Usage
 
 ```typescript
-import { UpdateProjectCreateDeployments } from "@vercel/sdk/models/updateprojectbotfilter.js";
+import { UpdateProjectCreateDeployments } from "@vercel/sdk/models/updateprojectenvironments.js";
 
-let value: UpdateProjectCreateDeployments = "disabled";
+let value: UpdateProjectCreateDeployments = "enabled";
 ```
 
 ## Values
 
 ```typescript
-"disabled" | "enabled"
+"enabled" | "disabled"
 ```

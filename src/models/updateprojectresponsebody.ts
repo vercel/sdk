@@ -11,16 +11,32 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
-  UpdateProjectAiBots,
-  UpdateProjectAiBots$inboundSchema,
-  UpdateProjectBotFilter,
-  UpdateProjectBotFilter$inboundSchema,
+  UpdateProjectAlias,
+  UpdateProjectAlias$inboundSchema,
+  UpdateProjectAnalytics,
+  UpdateProjectAnalytics$inboundSchema,
+  UpdateProjectBlobs,
+  UpdateProjectBlobs$inboundSchema,
+  UpdateProjectConnectConfigurations,
+  UpdateProjectConnectConfigurations$inboundSchema,
+  UpdateProjectCreator,
+  UpdateProjectCreator$inboundSchema,
+  UpdateProjectCrons,
+  UpdateProjectCrons$inboundSchema,
+  UpdateProjectCustomEnvironments,
+  UpdateProjectCustomEnvironments$inboundSchema,
+  UpdateProjectDataCache,
+  UpdateProjectDataCache$inboundSchema,
+  UpdateProjectDefaultResourceConfig,
+  UpdateProjectDefaultResourceConfig$inboundSchema,
+  UpdateProjectDeploymentExpiration,
+  UpdateProjectDeploymentExpiration$inboundSchema,
+} from "./updateprojectenvironments.js";
+import {
   UpdateProjectExpiration,
   UpdateProjectExpiration$inboundSchema,
   UpdateProjectFeatures,
   UpdateProjectFeatures$inboundSchema,
-  UpdateProjectGitComments,
-  UpdateProjectGitComments$inboundSchema,
   UpdateProjectGitProviderOptions,
   UpdateProjectGitProviderOptions$inboundSchema,
   UpdateProjectInternalRoutes,
@@ -51,6 +67,8 @@ import {
   UpdateProjectProjectsEnv$inboundSchema,
   UpdateProjectProjectsFramework,
   UpdateProjectProjectsFramework$inboundSchema,
+  UpdateProjectProjectsGitComments,
+  UpdateProjectProjectsGitComments$inboundSchema,
   UpdateProjectProjectsNodeVersion,
   UpdateProjectProjectsNodeVersion$inboundSchema,
   UpdateProjectProjectsOidcTokenConfig,
@@ -63,6 +81,8 @@ import {
   UpdateProjectProjectsPasswordProtection$inboundSchema,
   UpdateProjectProjectsResourceConfig,
   UpdateProjectProjectsResourceConfig$inboundSchema,
+  UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction,
+  UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction$inboundSchema,
   UpdateProjectProjectsSandbox,
   UpdateProjectProjectsSandbox$inboundSchema,
   UpdateProjectProtectionBypass,
@@ -73,29 +93,28 @@ import {
   UpdateProjectRollbackDescription$inboundSchema,
   UpdateProjectRollingRelease,
   UpdateProjectRollingRelease$inboundSchema,
-} from "./updateprojectbotfilter.js";
-import {
-  UpdateProjectAlias,
-  UpdateProjectAlias$inboundSchema,
-  UpdateProjectAnalytics,
-  UpdateProjectAnalytics$inboundSchema,
-  UpdateProjectBlobs,
-  UpdateProjectBlobs$inboundSchema,
-  UpdateProjectConnectConfigurations,
-  UpdateProjectConnectConfigurations$inboundSchema,
-  UpdateProjectCreator,
-  UpdateProjectCreator$inboundSchema,
-  UpdateProjectCrons,
-  UpdateProjectCrons$inboundSchema,
-  UpdateProjectCustomEnvironments,
-  UpdateProjectCustomEnvironments$inboundSchema,
-  UpdateProjectDataCache,
-  UpdateProjectDataCache$inboundSchema,
-  UpdateProjectDefaultResourceConfig,
-  UpdateProjectDefaultResourceConfig$inboundSchema,
-  UpdateProjectDeploymentExpiration,
-  UpdateProjectDeploymentExpiration$inboundSchema,
-} from "./updateprojectenvironmentsprojectsresponse2.js";
+} from "./updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaibotsaction.js";
+
+export type UpdateProjectAiBots = {
+  action?:
+    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction
+    | undefined;
+  active: boolean;
+};
+
+export const UpdateProjectProjectsResponse200ApplicationJSONAction = {
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+} as const;
+export type UpdateProjectProjectsResponse200ApplicationJSONAction = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+>;
+
+export type UpdateProjectBotFilter = {
+  action?: UpdateProjectProjectsResponse200ApplicationJSONAction | undefined;
+  active: boolean;
+};
 
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
   {
@@ -922,7 +941,7 @@ export type UpdateProjectResponseBody = {
   expiration?: UpdateProjectExpiration | undefined;
   features?: UpdateProjectFeatures | undefined;
   framework?: UpdateProjectProjectsFramework | null | undefined;
-  gitComments?: UpdateProjectGitComments | undefined;
+  gitComments?: UpdateProjectProjectsGitComments | undefined;
   gitForkProtection?: boolean | undefined;
   gitLFS?: boolean | undefined;
   gitProviderOptions?: UpdateProjectGitProviderOptions | undefined;
@@ -1004,6 +1023,56 @@ export type UpdateProjectResponseBody = {
   vercelFlags?: UpdateProjectVercelFlags | undefined;
   webAnalytics?: UpdateProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const UpdateProjectAiBots$inboundSchema: z.ZodType<
+  UpdateProjectAiBots,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.optional(
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction$inboundSchema,
+  ),
+  active: types.boolean(),
+});
+
+export function updateProjectAiBotsFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectAiBots, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectAiBots$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectAiBots' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(UpdateProjectProjectsResponse200ApplicationJSONAction);
+
+/** @internal */
+export const UpdateProjectBotFilter$inboundSchema: z.ZodType<
+  UpdateProjectBotFilter,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  action: types.optional(
+    UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema,
+  ),
+  active: types.boolean(),
+});
+
+export function updateProjectBotFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectBotFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectBotFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectBotFilter' from JSON`,
+  );
+}
 
 /** @internal */
 export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
@@ -1101,8 +1170,8 @@ export const UpdateProjectManagedRules$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ai_bots: UpdateProjectAiBots$inboundSchema,
-  bot_filter: UpdateProjectBotFilter$inboundSchema,
+  ai_bots: z.lazy(() => UpdateProjectAiBots$inboundSchema),
+  bot_filter: z.lazy(() => UpdateProjectBotFilter$inboundSchema),
   owasp: z.lazy(() => UpdateProjectOwasp$inboundSchema),
   traffic_sources: z.lazy(() => UpdateProjectTrafficSources$inboundSchema),
   vercel_ruleset: z.lazy(() => UpdateProjectVercelRuleset$inboundSchema),
@@ -2253,7 +2322,7 @@ export const UpdateProjectResponseBody$inboundSchema: z.ZodType<
   features: types.optional(UpdateProjectFeatures$inboundSchema),
   framework: z.nullable(UpdateProjectProjectsFramework$inboundSchema)
     .optional(),
-  gitComments: types.optional(UpdateProjectGitComments$inboundSchema),
+  gitComments: types.optional(UpdateProjectProjectsGitComments$inboundSchema),
   gitForkProtection: types.optional(types.boolean()),
   gitLFS: types.optional(types.boolean()),
   gitProviderOptions: types.optional(

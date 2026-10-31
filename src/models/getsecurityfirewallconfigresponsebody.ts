@@ -16,12 +16,12 @@ import {
   GetSecurityFirewallConfigRulesetsSecurityConditionGroup$inboundSchema,
   GetSecurityFirewallConfigRulesetsSecurityResponse200Action,
   GetSecurityFirewallConfigRulesetsSecurityResponse200Action$inboundSchema,
-  GetSecurityFirewallConfigSecurityChanges,
-  GetSecurityFirewallConfigSecurityChanges$inboundSchema,
   GetSecurityFirewallConfigSecurityCrs,
   GetSecurityFirewallConfigSecurityCrs$inboundSchema,
   GetSecurityFirewallConfigSecurityIps,
   GetSecurityFirewallConfigSecurityIps$inboundSchema,
+  GetSecurityFirewallConfigSecurityResponseChanges,
+  GetSecurityFirewallConfigSecurityResponseChanges$inboundSchema,
   GetSecurityFirewallConfigSecurityResponseConditions,
   GetSecurityFirewallConfigSecurityResponseConditions$inboundSchema,
   GetSecurityFirewallConfigSecurityResponseLogHeaders,
@@ -56,7 +56,7 @@ export type GetSecurityFirewallConfigSecurityResponseRulesets =
 
 export type GetSecurityFirewallConfigVersions = {
   botIdEnabled?: boolean | undefined;
-  changes: Array<GetSecurityFirewallConfigSecurityChanges>;
+  changes: Array<GetSecurityFirewallConfigSecurityResponseChanges>;
   conditions?:
     | Array<GetSecurityFirewallConfigSecurityResponseConditions>
     | undefined;
@@ -152,7 +152,9 @@ export const GetSecurityFirewallConfigVersions$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   botIdEnabled: types.optional(types.boolean()),
-  changes: z.array(GetSecurityFirewallConfigSecurityChanges$inboundSchema),
+  changes: z.array(
+    GetSecurityFirewallConfigSecurityResponseChanges$inboundSchema,
+  ),
   conditions: types.optional(
     z.array(GetSecurityFirewallConfigSecurityResponseConditions$inboundSchema),
   ),

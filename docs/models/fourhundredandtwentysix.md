@@ -5,22 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentySix } from "@vercel/sdk/models/usereventpayload387scope.js";
+import { FourHundredAndTwentySix } from "@vercel/sdk/models/usereventpayload391type.js";
 
 let value: FourHundredAndTwentySix = {
-  expiresAt: "1751288618227",
-  maxUses: 7984.58,
-  publicId: "<id>",
-  role: "<value>",
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Jermey_Schimmel47",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
-| `maxUses`          | *number*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
-| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
-| `role`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `entitlement`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `previousCanceledAt`                                             | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `user`                                                           | [models.UserEventPayloadUser](../models/usereventpayloaduser.md) | :heavy_check_mark:                                               | N/A                                                              |

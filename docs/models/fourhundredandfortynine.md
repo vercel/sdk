@@ -5,15 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFortyNine } from "@vercel/sdk/models/usereventpayload387scope.js";
+import { FourHundredAndFortyNine } from "@vercel/sdk/models/usereventpayload391type.js";
 
 let value: FourHundredAndFortyNine = {
-  reason: "limits-exceeded",
+  tokenTypes: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `reason`                                                             | [models.UserEventPayloadReason](../models/usereventpayloadreason.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `tokenTypes`       | *string*[]         | :heavy_check_mark: | N/A                |

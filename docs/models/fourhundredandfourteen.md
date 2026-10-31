@@ -5,20 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFourteen } from "@vercel/sdk/models/usereventpayload387scope.js";
+import { FourHundredAndFourteen } from "@vercel/sdk/models/usereventpayload391type.js";
 
 let value: FourHundredAndFourteen = {
-  deletedCount: 5173.5,
-  inviteIds: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  next: {},
+  previous: {},
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |
-| `inviteIds`        | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload414Next](../models/usereventpayload414next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload414Previous](../models/usereventpayload414previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

@@ -52,6 +52,14 @@ export type UpdateKmsIssuerAlgorithm = ClosedEnum<
   typeof UpdateKmsIssuerAlgorithm
 >;
 
+export const UpdateKmsIssuerDiscoveryLayout = {
+  Connect: "connect",
+  Kms: "kms",
+} as const;
+export type UpdateKmsIssuerDiscoveryLayout = ClosedEnum<
+  typeof UpdateKmsIssuerDiscoveryLayout
+>;
+
 export const UpdateKmsIssuerOrigin = {
   External: "external",
   Vercel: "vercel",
@@ -142,6 +150,7 @@ export type UpdateKmsIssuerResponseBody = {
   algorithm: UpdateKmsIssuerAlgorithm;
   claimsSchema?: { [k: string]: any } | undefined;
   createdAt: string;
+  discoveryLayout: UpdateKmsIssuerDiscoveryLayout;
   id: string;
   managedBy?: string | undefined;
   name: string;
@@ -213,6 +222,11 @@ export function updateKmsIssuerRequestToJSON(
 export const UpdateKmsIssuerAlgorithm$inboundSchema: z.ZodNativeEnum<
   typeof UpdateKmsIssuerAlgorithm
 > = z.nativeEnum(UpdateKmsIssuerAlgorithm);
+
+/** @internal */
+export const UpdateKmsIssuerDiscoveryLayout$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateKmsIssuerDiscoveryLayout
+> = z.nativeEnum(UpdateKmsIssuerDiscoveryLayout);
 
 /** @internal */
 export const UpdateKmsIssuerOrigin$inboundSchema: z.ZodNativeEnum<
@@ -365,6 +379,7 @@ export const UpdateKmsIssuerResponseBody$inboundSchema: z.ZodType<
   algorithm: UpdateKmsIssuerAlgorithm$inboundSchema,
   claimsSchema: types.optional(z.record(z.any())),
   createdAt: types.string(),
+  discoveryLayout: UpdateKmsIssuerDiscoveryLayout$inboundSchema,
   id: types.string(),
   managedBy: types.optional(types.string()),
   name: types.string(),

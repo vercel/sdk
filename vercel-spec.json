@@ -1816,6 +1816,10 @@
                     "providerSlug": {
                       "type": "string"
                     },
+                    "rotatedAt": {
+                      "nullable": true,
+                      "type": "number"
+                    },
                     "updatedAt": {
                       "type": "number"
                     },
@@ -1835,6 +1839,7 @@
                     "name",
                     "ownerId",
                     "providerSlug",
+                    "rotatedAt",
                     "updatedAt",
                     "zeroDataRetention"
                   ],
@@ -2029,6 +2034,10 @@
                           "providerSlug": {
                             "type": "string"
                           },
+                          "rotatedAt": {
+                            "nullable": true,
+                            "type": "number"
+                          },
                           "updatedAt": {
                             "type": "number"
                           },
@@ -2051,6 +2060,7 @@
                           "name",
                           "ownerId",
                           "providerSlug",
+                          "rotatedAt",
                           "updatedAt",
                           "zeroDataRetention"
                         ],
@@ -2213,6 +2223,10 @@
                     "providerSlug": {
                       "type": "string"
                     },
+                    "rotatedAt": {
+                      "nullable": true,
+                      "type": "number"
+                    },
                     "updatedAt": {
                       "type": "number"
                     },
@@ -2232,6 +2246,7 @@
                     "name",
                     "ownerId",
                     "providerSlug",
+                    "rotatedAt",
                     "updatedAt",
                     "zeroDataRetention"
                   ],
@@ -2342,6 +2357,10 @@
                     "providerSlug": {
                       "type": "string"
                     },
+                    "rotatedAt": {
+                      "nullable": true,
+                      "type": "number"
+                    },
                     "updatedAt": {
                       "type": "number"
                     },
@@ -2361,6 +2380,7 @@
                     "name",
                     "ownerId",
                     "providerSlug",
+                    "rotatedAt",
                     "updatedAt",
                     "zeroDataRetention"
                   ],
@@ -17591,6 +17611,110 @@
             "schema": {
               "type": "string",
               "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/connect/connectors/{connector}/projects/{projectId}/environments/{environment}": {
+      "delete": {
+        "description": "Remove a connector's access and event destinations for one project environment. Other environments, the connector, and its provider installations are preserved. Preview disconnect removes destinations for every preview branch in the project. Disconnecting the last environment also releases the project-local UID. Safe to retry.",
+        "operationId": "disconnectConnectorProjectEnvironment",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Disconnect a connector from a project environment",
+        "tags": [
+          "connect"
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "422": {
+            "description": ""
+          },
+          "500": {
+            "description": ""
+          },
+          "501": {
+            "description": ""
+          },
+          "504": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "connector",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "environment",
+            "description": "A built-in environment name or the stable env_* ID of a custom environment.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string",
+                  "pattern": "^env_"
+                }
+              ],
+              "description": "A built-in environment name or the stable env_* ID of a custom environment."
+            }
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
             }
           }
         ]
@@ -73669,6 +73793,7 @@
                 "oauth",
                 "backoffice",
                 "import-recommended-integrations",
+                "project-overview-recommended-integrations",
                 "organization"
               ]
             }
@@ -75829,11 +75954,11 @@
                   "eod": {
                     "type": "string",
                     "format": "date-time",
-                    "description": "End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your \"end of day\" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 24h earlier from our server's current time."
+                    "description": "End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your \"end of day\" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 30 days earlier from our server's current time."
                   },
                   "period": {
                     "type": "object",
-                    "description": "Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.",
+                    "description": "Period for the billing cycle. The period end date cannot be older than 30 days earlier than our current server's time.",
                     "properties": {
                       "start": {
                         "type": "string",
@@ -77226,6 +77351,7 @@
                               "marketplace",
                               "oauth",
                               "organization",
+                              "project-overview-recommended-integrations",
                               "resource-claims",
                               "v0"
                             ],
@@ -77456,6 +77582,7 @@
                               "marketplace",
                               "oauth",
                               "organization",
+                              "project-overview-recommended-integrations",
                               "resource-claims",
                               "v0"
                             ],
@@ -77768,6 +77895,7 @@
                             "marketplace",
                             "oauth",
                             "organization",
+                            "project-overview-recommended-integrations",
                             "resource-claims",
                             "v0"
                           ],
@@ -77792,178 +77920,6 @@
                           "type": "string",
                           "description": "When the configuration was created for a team, this will show the ID of the team.",
                           "example": "team_nLlpyC6RE1qxydlFKbrxDlud"
-                        },
-                        "transferRequest": {
-                          "oneOf": [
-                            {
-                              "properties": {
-                                "approvedAt": {
-                                  "type": "number"
-                                },
-                                "approvedBy": {
-                                  "type": "string"
-                                },
-                                "authorizationId": {
-                                  "type": "string"
-                                },
-                                "billingPlan": {
-                                  "properties": {
-                                    "description": {
-                                      "type": "string"
-                                    },
-                                    "id": {
-                                      "type": "string"
-                                    },
-                                    "name": {
-                                      "type": "string"
-                                    },
-                                    "paymentMethodRequired": {
-                                      "type": "boolean",
-                                      "enum": [
-                                        false,
-                                        true
-                                      ]
-                                    },
-                                    "preauthorizationAmount": {
-                                      "type": "number"
-                                    },
-                                    "scope": {
-                                      "type": "string",
-                                      "enum": [
-                                        "installation",
-                                        "resource"
-                                      ]
-                                    },
-                                    "type": {
-                                      "type": "string",
-                                      "enum": [
-                                        "prepayment",
-                                        "subscription"
-                                      ]
-                                    }
-                                  },
-                                  "required": [
-                                    "description",
-                                    "id",
-                                    "name",
-                                    "type"
-                                  ],
-                                  "type": "object"
-                                },
-                                "createdAt": {
-                                  "type": "number"
-                                },
-                                "discardedAt": {
-                                  "type": "number"
-                                },
-                                "discardedBy": {
-                                  "type": "string"
-                                },
-                                "expiresAt": {
-                                  "type": "number"
-                                },
-                                "kind": {
-                                  "type": "string",
-                                  "enum": [
-                                    "transfer-to-marketplace"
-                                  ]
-                                },
-                                "metadata": {
-                                  "additionalProperties": true,
-                                  "type": "object"
-                                },
-                                "requester": {
-                                  "properties": {
-                                    "email": {
-                                      "type": "string"
-                                    },
-                                    "name": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "required": [
-                                    "name"
-                                  ],
-                                  "type": "object"
-                                },
-                                "requestId": {
-                                  "type": "string"
-                                },
-                                "transferId": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "createdAt",
-                                "expiresAt",
-                                "kind",
-                                "requestId",
-                                "requester",
-                                "transferId"
-                              ],
-                              "type": "object"
-                            },
-                            {
-                              "properties": {
-                                "approvedAt": {
-                                  "type": "number"
-                                },
-                                "approvedBy": {
-                                  "type": "string"
-                                },
-                                "authorizationId": {
-                                  "type": "string"
-                                },
-                                "createdAt": {
-                                  "type": "number"
-                                },
-                                "discardedAt": {
-                                  "type": "number"
-                                },
-                                "discardedBy": {
-                                  "type": "string"
-                                },
-                                "expiresAt": {
-                                  "type": "number"
-                                },
-                                "kind": {
-                                  "type": "string",
-                                  "enum": [
-                                    "transfer-from-marketplace"
-                                  ]
-                                },
-                                "requester": {
-                                  "properties": {
-                                    "email": {
-                                      "type": "string"
-                                    },
-                                    "name": {
-                                      "type": "string"
-                                    }
-                                  },
-                                  "required": [
-                                    "name"
-                                  ],
-                                  "type": "object"
-                                },
-                                "requestId": {
-                                  "type": "string"
-                                },
-                                "transferId": {
-                                  "type": "string"
-                                }
-                              },
-                              "required": [
-                                "createdAt",
-                                "expiresAt",
-                                "kind",
-                                "requestId",
-                                "requester",
-                                "transferId"
-                              ],
-                              "type": "object"
-                            }
-                          ]
                         },
                         "type": {
                           "type": "string",
@@ -77991,7 +77947,6 @@
                         "projectSelection",
                         "scopes",
                         "slug",
-                        "transferRequest",
                         "type",
                         "updatedAt",
                         "userId"
@@ -78111,6 +78066,7 @@
                             "marketplace",
                             "oauth",
                             "organization",
+                            "project-overview-recommended-integrations",
                             "resource-claims",
                             "v0"
                           ],
@@ -78280,6 +78236,7 @@
                             "marketplace",
                             "oauth",
                             "organization",
+                            "project-overview-recommended-integrations",
                             "resource-claims",
                             "v0"
                           ],
@@ -83306,6 +83263,13 @@
                           "createdAt": {
                             "type": "string"
                           },
+                          "discoveryLayout": {
+                            "type": "string",
+                            "enum": [
+                              "connect",
+                              "kms"
+                            ]
+                          },
                           "id": {
                             "type": "string"
                           },
@@ -83511,6 +83475,7 @@
                         "required": [
                           "algorithm",
                           "createdAt",
+                          "discoveryLayout",
                           "id",
                           "name",
                           "origin",
@@ -83647,6 +83612,13 @@
                     },
                     "createdAt": {
                       "type": "string"
+                    },
+                    "discoveryLayout": {
+                      "type": "string",
+                      "enum": [
+                        "connect",
+                        "kms"
+                      ]
                     },
                     "id": {
                       "type": "string"
@@ -83853,6 +83825,7 @@
                   "required": [
                     "algorithm",
                     "createdAt",
+                    "discoveryLayout",
                     "id",
                     "name",
                     "origin",
@@ -83876,6 +83849,9 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": ""
+          },
+          "409": {
             "description": ""
           },
           "410": {
@@ -84476,6 +84452,13 @@
                     "createdAt": {
                       "type": "string"
                     },
+                    "discoveryLayout": {
+                      "type": "string",
+                      "enum": [
+                        "connect",
+                        "kms"
+                      ]
+                    },
                     "id": {
                       "type": "string"
                     },
@@ -84681,6 +84664,7 @@
                   "required": [
                     "algorithm",
                     "createdAt",
+                    "discoveryLayout",
                     "id",
                     "name",
                     "origin",
@@ -84796,6 +84780,13 @@
                     "createdAt": {
                       "type": "string"
                     },
+                    "discoveryLayout": {
+                      "type": "string",
+                      "enum": [
+                        "connect",
+                        "kms"
+                      ]
+                    },
                     "id": {
                       "type": "string"
                     },
@@ -85001,6 +84992,7 @@
                   "required": [
                     "algorithm",
                     "createdAt",
+                    "discoveryLayout",
                     "id",
                     "name",
                     "origin",
@@ -85101,6 +85093,13 @@
                     "createdAt": {
                       "type": "string"
                     },
+                    "discoveryLayout": {
+                      "type": "string",
+                      "enum": [
+                        "connect",
+                        "kms"
+                      ]
+                    },
                     "id": {
                       "type": "string"
                     },
@@ -85306,6 +85305,7 @@
                   "required": [
                     "algorithm",
                     "createdAt",
+                    "discoveryLayout",
                     "id",
                     "name",
                     "origin",
@@ -145179,6 +145179,55 @@
                         }
                       }
                     },
+                    "nullable": true
+                  },
+                  "gitComments": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "onPullRequest": {
+                        "description": "Whether or not Vercel should comment on pull requests",
+                        "type": "boolean"
+                      },
+                      "onCommit": {
+                        "description": "Whether or not Vercel should comment on commits",
+                        "type": "boolean"
+                      }
+                    },
+                    "required": [
+                      "onPullRequest",
+                      "onCommit"
+                    ],
+                    "description": "Opt-in to Git pull request and commit comments on the project level. Replaces `github.silent`.",
+                    "nullable": true
+                  },
+                  "gitProviderOptions": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "createDeployments": {
+                        "description": "Whether or not Vercel should automatically create GitHub deployments",
+                        "type": "string",
+                        "enum": [
+                          "enabled",
+                          "disabled"
+                        ]
+                      },
+                      "disableRepositoryDispatchEvents": {
+                        "description": "Whether Vercel should not automatically create GitHub repository-dispatch events on deployment events.",
+                        "type": "boolean"
+                      },
+                      "requireVerifiedCommits": {
+                        "description": "Whether the project requires commits to be signed & verified before deployments will be created. `true` enables, `false` disables (explicit override of the team setting), `null` clears the override to inherit from the team setting.",
+                        "type": "boolean",
+                        "nullable": true
+                      },
+                      "gitCommitStatus": {
+                        "description": "Whether Vercel should post git commit statuses for this project.",
+                        "type": "boolean"
+                      }
+                    },
+                    "description": "Miscellaneous options related to how this projects interacts with the linked git source.",
                     "nullable": true
                   },
                   "oidcTokenConfig": {
@@ -206660,6 +206709,389 @@
           }
         }
       },
+      "put": {
+        "description": "Update a conditional firewall bypass rule for a project domain. Replaces conditions and the note for the domain's existing rule. Omitting `note` clears it. The rule ID, domain, creator, and creation time are preserved. Missing or deleted rules are not created.",
+        "operationId": "updateConditionalBypass",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Update conditional firewall bypass",
+        "tags": [
+          "security"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "condition": {
+                      "type": "string"
+                    },
+                    "conditionGroup": {
+                      "items": {
+                        "properties": {
+                          "conditions": {
+                            "items": {
+                              "properties": {
+                                "key": {
+                                  "type": "string"
+                                },
+                                "neg": {
+                                  "type": "boolean",
+                                  "enum": [
+                                    false,
+                                    true
+                                  ]
+                                },
+                                "op": {
+                                  "type": "string",
+                                  "enum": [
+                                    "eq",
+                                    "ex",
+                                    "gt",
+                                    "gte",
+                                    "inc",
+                                    "list",
+                                    "lt",
+                                    "lte",
+                                    "neq",
+                                    "nex",
+                                    "ninc",
+                                    "pre",
+                                    "re",
+                                    "sub",
+                                    "suf"
+                                  ]
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "bot_category",
+                                    "bot_name",
+                                    "bot_protection",
+                                    "bot_status",
+                                    "cookie",
+                                    "domain_environment",
+                                    "environment",
+                                    "geo_as_number",
+                                    "geo_city",
+                                    "geo_continent",
+                                    "geo_country",
+                                    "geo_country_region",
+                                    "header",
+                                    "host",
+                                    "ip_address",
+                                    "ja3_digest",
+                                    "ja4_digest",
+                                    "method",
+                                    "path",
+                                    "protocol",
+                                    "query",
+                                    "rate_limit_api_id",
+                                    "raw_path",
+                                    "region",
+                                    "response_code",
+                                    "route",
+                                    "ruleset",
+                                    "scheme",
+                                    "server_action",
+                                    "shared_condition",
+                                    "target_path",
+                                    "traffic_source",
+                                    "trusted_source",
+                                    "user_agent"
+                                  ]
+                                },
+                                "value": {
+                                  "oneOf": [
+                                    {
+                                      "type": "string"
+                                    },
+                                    {
+                                      "type": "number"
+                                    },
+                                    {
+                                      "items": {
+                                        "type": "string"
+                                      },
+                                      "type": "array"
+                                    }
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "op",
+                                "type"
+                              ],
+                              "type": "object"
+                            },
+                            "type": "array"
+                          }
+                        },
+                        "required": [
+                          "conditions"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "createdAt": {
+                      "type": "string"
+                    },
+                    "domain": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "note": {
+                      "type": "string"
+                    },
+                    "projectId": {
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "condition",
+                    "conditionGroup",
+                    "createdAt",
+                    "domain",
+                    "id",
+                    "projectId",
+                    "updatedAt"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "domain",
+                  "conditionGroup"
+                ],
+                "properties": {
+                  "domain": {
+                    "type": "string"
+                  },
+                  "conditionGroup": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 25,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "conditions"
+                      ],
+                      "properties": {
+                        "conditions": {
+                          "type": "array",
+                          "minItems": 1,
+                          "maxItems": 65,
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "type",
+                                  "op",
+                                  "value"
+                                ],
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "user_agent"
+                                    ]
+                                  },
+                                  "op": {
+                                    "type": "string",
+                                    "enum": [
+                                      "eq",
+                                      "pre",
+                                      "suf",
+                                      "sub"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "maxLength": 500
+                                  },
+                                  "key": {
+                                    "type": "string",
+                                    "enum": [
+                                      "user-agent"
+                                    ]
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "type",
+                                  "op",
+                                  "value"
+                                ],
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "path"
+                                    ]
+                                  },
+                                  "op": {
+                                    "type": "string",
+                                    "enum": [
+                                      "eq",
+                                      "pre",
+                                      "suf",
+                                      "sub"
+                                    ]
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "maxLength": 500
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "type",
+                                  "op",
+                                  "key",
+                                  "value"
+                                ],
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "header"
+                                    ]
+                                  },
+                                  "op": {
+                                    "type": "string",
+                                    "enum": [
+                                      "eq",
+                                      "pre",
+                                      "suf",
+                                      "sub"
+                                    ]
+                                  },
+                                  "key": {
+                                    "type": "string",
+                                    "maxLength": 128,
+                                    "pattern": "^[!#$%&'*+.^_`|~0-9A-Za-z-]+$"
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "maxLength": 500
+                                  }
+                                }
+                              },
+                              {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "required": [
+                                  "type",
+                                  "op",
+                                  "key"
+                                ],
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "header"
+                                    ]
+                                  },
+                                  "op": {
+                                    "type": "string",
+                                    "enum": [
+                                      "ex"
+                                    ]
+                                  },
+                                  "key": {
+                                    "type": "string",
+                                    "maxLength": 128,
+                                    "pattern": "^[!#$%&'*+.^_`|~0-9A-Za-z-]+$"
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "note": {
+                    "type": "string",
+                    "maxLength": 500
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "description": "Delete a conditional firewall bypass rule from a project domain.",
         "operationId": "deleteConditionalBypass",
@@ -212742,6 +213174,7 @@
                       "oauth",
                       "backoffice",
                       "import-recommended-integrations",
+                      "project-overview-recommended-integrations",
                       "organization"
                     ],
                     "description": "Source of the store creation request",
@@ -237090,6 +237523,17 @@
                 "additionalProperties": false,
                 "description": "Work Object preview settings for the managed Slack app. Updates preserve omitted settings."
               },
+              "codeChannels": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Enable Slack code channels. Adds the code_channels:manage bot scope and, with triggers, the agent_session_stopped and message.session events. Defaults to false for new apps."
+                  }
+                },
+                "additionalProperties": false,
+                "description": "Code channel settings for the managed Slack app. Updates preserve omitted settings."
+              },
               "extras": {
                 "type": "object",
                 "additionalProperties": {},
@@ -238481,6 +238925,17 @@
                 },
                 "additionalProperties": false,
                 "description": "Work Object preview settings for the managed Slack app. Updates preserve omitted settings."
+              },
+              "codeChannels": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "description": "Enable Slack code channels. Adds the code_channels:manage bot scope and, with triggers, the agent_session_stopped and message.session events. Defaults to false for new apps."
+                  }
+                },
+                "additionalProperties": false,
+                "description": "Code channel settings for the managed Slack app. Updates preserve omitted settings."
               },
               "extras": {
                 "type": "object",
@@ -241552,6 +242007,63 @@
               },
               {
                 "properties": {
+                  "credential": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "providerSlug": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "providerSlug"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "credential"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "changes": {
+                    "properties": {
+                      "active": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      },
+                      "keyReplaced": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      },
+                      "previousName": {
+                        "type": "string"
+                      },
+                      "zeroDataRetention": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      }
+                    },
+                    "type": "object"
+                  },
                   "credential": {
                     "properties": {
                       "id": {
@@ -250435,6 +250947,26 @@
               },
               {
                 "properties": {
+                  "integrationId": {
+                    "type": "string"
+                  },
+                  "integrationName": {
+                    "type": "string"
+                  },
+                  "integrationSlug": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "integrationId",
+                  "integrationName",
+                  "integrationSlug"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "configurationId": {
                     "type": "string"
                   },
@@ -250757,12 +251289,17 @@
                   },
                   "integrationSlug": {
                     "type": "string"
+                  },
+                  "previousSecretExpiresAt": {
+                    "nullable": true,
+                    "type": "number"
                   }
                 },
                 "required": [
                   "integrationId",
                   "integrationName",
-                  "integrationSlug"
+                  "integrationSlug",
+                  "previousSecretExpiresAt"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -252183,6 +252720,58 @@
                   "billingPlan",
                   "organizationId",
                   "teamId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "next": {
+                    "properties": {
+                      "dsyncMode": {
+                        "type": "string",
+                        "enum": [
+                          "organization",
+                          "team"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "dsyncMode"
+                    ],
+                    "type": "object"
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "previous": {
+                    "properties": {
+                      "dsyncMode": {
+                        "type": "string",
+                        "enum": [
+                          "organization",
+                          "team"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "dsyncMode"
+                    ],
+                    "type": "object"
+                  },
+                  "teamId": {
+                    "type": "string"
+                  },
+                  "teamName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "next",
+                  "organizationId",
+                  "previous",
+                  "teamId",
+                  "teamName"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -259041,6 +259630,76 @@
               },
               {
                 "properties": {
+                  "next": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      },
+                      "projectIds": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "projectScope": {
+                        "type": "string",
+                        "enum": [
+                          "all",
+                          "selected"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "enabled",
+                      "projectScope"
+                    ],
+                    "type": "object",
+                    "description": "Mirrors the `security-review` setting value in `@api/api-settings`."
+                  },
+                  "previous": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      },
+                      "projectIds": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "projectScope": {
+                        "type": "string",
+                        "enum": [
+                          "all",
+                          "selected"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "enabled",
+                      "projectScope"
+                    ],
+                    "type": "object",
+                    "description": "Mirrors the `security-review` setting value in `@api/api-settings`."
+                  }
+                },
+                "required": [
+                  "next",
+                  "previous"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "amount": {
                     "type": "string"
                   },
@@ -259177,6 +259836,73 @@
               },
               {
                 "properties": {
+                  "eventId": {
+                    "type": "string"
+                  },
+                  "occurredAt": {
+                    "type": "number"
+                  },
+                  "sessionId": {
+                    "type": "string"
+                  },
+                  "sessionKind": {
+                    "type": "string",
+                    "description": "Currently emitted session kinds: chat, investigation."
+                  },
+                  "surface": {
+                    "type": "string",
+                    "description": "Currently emitted surfaces: dashboard, internal, slack, automation, github."
+                  },
+                  "branchRef": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "deploymentId": {
+                    "type": "string"
+                  },
+                  "environment": {
+                    "type": "string"
+                  },
+                  "findingId": {
+                    "type": "string"
+                  },
+                  "findingNumber": {
+                    "type": "number"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "severity": {
+                    "type": "string"
+                  },
+                  "vulnerabilityClass": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "branchRef",
+                  "deploymentId",
+                  "environment",
+                  "eventId",
+                  "findingId",
+                  "findingNumber",
+                  "occurredAt",
+                  "projectId",
+                  "projectName",
+                  "sessionId",
+                  "sessionKind",
+                  "severity",
+                  "surface",
+                  "vulnerabilityClass"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "next": {
                     "nullable": true,
                     "type": "string",
@@ -259274,6 +260000,28 @@
                       "project-transfer",
                       "short-build-duration",
                       "sustained-high-cpu"
+                    ]
+                  }
+                },
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "enrolled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "actorName": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
                     ]
                   }
                 },
@@ -263393,6 +264141,7 @@
               "ai-gateway-virtual-model-config-updated",
               "ai-gateway-zero-data-retention-toggled",
               "ai-omniagent",
+              "ai-security-review",
               "alert-investigation-project-allowlist-updated",
               "alert-rule-created",
               "alert-rule-deleted",
@@ -263570,6 +264319,7 @@
               "firewall-bypass-deleted",
               "firewall-conditional-bypass-created",
               "firewall-conditional-bypass-deleted",
+              "firewall-conditional-bypass-updated",
               "firewall-config-modified",
               "firewall-config-promoted",
               "firewall-config-removed",
@@ -263617,9 +264367,11 @@
               "integration-installation-completed",
               "integration-installation-permission-updated",
               "integration-installation-removed",
+              "integration-previous-secret-revoked",
               "integration-resource-redis-command-executed",
               "integration-resource-sql-query-executed",
               "integration-scope-changed",
+              "integration-secret-rotated",
               "invoice-modified",
               "invoice-refunded",
               "kms-issuer-created",
@@ -263701,6 +264453,7 @@
               "organization-team-add",
               "organization-team-create",
               "organization-team-delete",
+              "organization-team-dsync-update",
               "organization-team-sso-update",
               "organization-update-account-flow-dismissed",
               "organization-update-account-flow-triggered",
@@ -263981,6 +264734,7 @@
               "team-program-enrollment-changed",
               "team-remote-caching-purge",
               "team-remote-caching-update",
+              "team-runtime-cache-updated",
               "team-saml-enforced",
               "team-saml-roles",
               "team-slug-update",
@@ -264040,6 +264794,7 @@
               "vcr-repository-visibility-changed",
               "vercel-agent-elevated-permissions-approved",
               "vercel-agent-elevated-permissions-requested",
+              "vercel-agent-security-finding-created",
               "vercel-agent-session-created",
               "vercel-agent-team-trial-credits-applied",
               "vercel-app-installation-request-dismissed",
@@ -264356,6 +265111,7 @@
               "ai-gateway-virtual-model-config-updated",
               "ai-gateway-zero-data-retention-toggled",
               "ai-omniagent",
+              "ai-security-review",
               "alert-investigation-project-allowlist-updated",
               "alert-rule-created",
               "alert-rule-deleted",
@@ -264533,6 +265289,7 @@
               "firewall-bypass-deleted",
               "firewall-conditional-bypass-created",
               "firewall-conditional-bypass-deleted",
+              "firewall-conditional-bypass-updated",
               "firewall-config-modified",
               "firewall-config-promoted",
               "firewall-config-removed",
@@ -264580,9 +265337,11 @@
               "integration-installation-completed",
               "integration-installation-permission-updated",
               "integration-installation-removed",
+              "integration-previous-secret-revoked",
               "integration-resource-redis-command-executed",
               "integration-resource-sql-query-executed",
               "integration-scope-changed",
+              "integration-secret-rotated",
               "invoice-modified",
               "invoice-refunded",
               "kms-issuer-created",
@@ -264664,6 +265423,7 @@
               "organization-team-add",
               "organization-team-create",
               "organization-team-delete",
+              "organization-team-dsync-update",
               "organization-team-sso-update",
               "organization-update-account-flow-dismissed",
               "organization-update-account-flow-triggered",
@@ -264944,6 +265704,7 @@
               "team-program-enrollment-changed",
               "team-remote-caching-purge",
               "team-remote-caching-update",
+              "team-runtime-cache-updated",
               "team-saml-enforced",
               "team-saml-roles",
               "team-slug-update",
@@ -265003,6 +265764,7 @@
               "vcr-repository-visibility-changed",
               "vercel-agent-elevated-permissions-approved",
               "vercel-agent-elevated-permissions-requested",
+              "vercel-agent-security-finding-created",
               "vercel-agent-session-created",
               "vercel-agent-team-trial-credits-applied",
               "vercel-app-installation-request-dismissed",
@@ -265107,6 +265869,7 @@
                 "ai-gateway-virtual-model-config-updated",
                 "ai-gateway-zero-data-retention-toggled",
                 "ai-omniagent",
+                "ai-security-review",
                 "alert-investigation-project-allowlist-updated",
                 "alert-rule-created",
                 "alert-rule-deleted",
@@ -265284,6 +266047,7 @@
                 "firewall-bypass-deleted",
                 "firewall-conditional-bypass-created",
                 "firewall-conditional-bypass-deleted",
+                "firewall-conditional-bypass-updated",
                 "firewall-config-modified",
                 "firewall-config-promoted",
                 "firewall-config-removed",
@@ -265331,9 +266095,11 @@
                 "integration-installation-completed",
                 "integration-installation-permission-updated",
                 "integration-installation-removed",
+                "integration-previous-secret-revoked",
                 "integration-resource-redis-command-executed",
                 "integration-resource-sql-query-executed",
                 "integration-scope-changed",
+                "integration-secret-rotated",
                 "invoice-modified",
                 "invoice-refunded",
                 "kms-issuer-created",
@@ -265415,6 +266181,7 @@
                 "organization-team-add",
                 "organization-team-create",
                 "organization-team-delete",
+                "organization-team-dsync-update",
                 "organization-team-sso-update",
                 "organization-update-account-flow-dismissed",
                 "organization-update-account-flow-triggered",
@@ -265695,6 +266462,7 @@
                 "team-program-enrollment-changed",
                 "team-remote-caching-purge",
                 "team-remote-caching-update",
+                "team-runtime-cache-updated",
                 "team-saml-enforced",
                 "team-saml-roles",
                 "team-slug-update",
@@ -265754,6 +266522,7 @@
                 "vcr-repository-visibility-changed",
                 "vercel-agent-elevated-permissions-approved",
                 "vercel-agent-elevated-permissions-requested",
+                "vercel-agent-security-finding-created",
                 "vercel-agent-session-created",
                 "vercel-agent-team-trial-credits-applied",
                 "vercel-app-installation-request-dismissed",

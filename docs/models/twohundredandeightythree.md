@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyThree } from "@vercel/sdk/models/usereventpayload258previousdeploymenttype.js";
+import { TwoHundredAndEightyThree } from "@vercel/sdk/models/usereventpayload262origin.js";
 
 let value: TwoHundredAndEightyThree = {
+  productionDeploymentsFastLane: true,
   projectId: "<id>",
   projectName: "<value>",
-  widget: "speed-insights-res",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `projectId`                          | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `projectName`                        | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `widget`                             | [models.Widget](../models/widget.md) | :heavy_check_mark:                   | N/A                                  |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `productionDeploymentsFastLane` | *boolean*                       | :heavy_check_mark:              | N/A                             |
+| `projectId`                     | *string*                        | :heavy_check_mark:              | N/A                             |
+| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |

@@ -5,11 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyFive } from "@vercel/sdk/models/usereventpayload258previousdeploymenttype.js";
+import { TwoHundredAndNinetyFive } from "@vercel/sdk/models/usereventpayload262origin.js";
 
 let value: TwoHundredAndNinetyFive = {
-  customEnvironmentId: "<id>",
-  customEnvironmentSlug: "<value>",
+  previewDeploymentsEnabled: false,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,10 +16,8 @@ let value: TwoHundredAndNinetyFive = {
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `customEnvironmentId`      | *string*                   | :heavy_check_mark:         | N/A                        |
-| `customEnvironmentSlug`    | *string*                   | :heavy_check_mark:         | N/A                        |
-| `enableSchedulesByDefault` | *boolean*                  | :heavy_minus_sign:         | N/A                        |
-| `projectId`                | *string*                   | :heavy_check_mark:         | N/A                        |
-| `projectName`              | *string*                   | :heavy_check_mark:         | N/A                        |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `previewDeploymentsEnabled` | *boolean*                   | :heavy_check_mark:          | N/A                         |
+| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
+| `projectName`               | *string*                    | :heavy_check_mark:          | N/A                         |

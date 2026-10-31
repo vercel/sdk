@@ -44,6 +44,14 @@ export type RevokeKmsSigningKeyAlgorithm = ClosedEnum<
   typeof RevokeKmsSigningKeyAlgorithm
 >;
 
+export const RevokeKmsSigningKeyDiscoveryLayout = {
+  Connect: "connect",
+  Kms: "kms",
+} as const;
+export type RevokeKmsSigningKeyDiscoveryLayout = ClosedEnum<
+  typeof RevokeKmsSigningKeyDiscoveryLayout
+>;
+
 export const RevokeKmsSigningKeyOrigin = {
   External: "external",
   Vercel: "vercel",
@@ -138,6 +146,7 @@ export type RevokeKmsSigningKeyResponseBody = {
   algorithm: RevokeKmsSigningKeyAlgorithm;
   claimsSchema?: { [k: string]: any } | undefined;
   createdAt: string;
+  discoveryLayout: RevokeKmsSigningKeyDiscoveryLayout;
   id: string;
   managedBy?: string | undefined;
   name: string;
@@ -180,6 +189,11 @@ export function revokeKmsSigningKeyRequestToJSON(
 export const RevokeKmsSigningKeyAlgorithm$inboundSchema: z.ZodNativeEnum<
   typeof RevokeKmsSigningKeyAlgorithm
 > = z.nativeEnum(RevokeKmsSigningKeyAlgorithm);
+
+/** @internal */
+export const RevokeKmsSigningKeyDiscoveryLayout$inboundSchema: z.ZodNativeEnum<
+  typeof RevokeKmsSigningKeyDiscoveryLayout
+> = z.nativeEnum(RevokeKmsSigningKeyDiscoveryLayout);
 
 /** @internal */
 export const RevokeKmsSigningKeyOrigin$inboundSchema: z.ZodNativeEnum<
@@ -332,6 +346,7 @@ export const RevokeKmsSigningKeyResponseBody$inboundSchema: z.ZodType<
   algorithm: RevokeKmsSigningKeyAlgorithm$inboundSchema,
   claimsSchema: types.optional(z.record(z.any())),
   createdAt: types.string(),
+  discoveryLayout: RevokeKmsSigningKeyDiscoveryLayout$inboundSchema,
   id: types.string(),
   managedBy: types.optional(types.string()),
   name: types.string(),

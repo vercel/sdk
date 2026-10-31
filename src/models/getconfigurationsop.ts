@@ -118,6 +118,8 @@ export const GetConfigurationsResponseBodyIntegrationsSource = {
   Marketplace: "marketplace",
   Oauth: "oauth",
   Organization: "organization",
+  ProjectOverviewRecommendedIntegrations:
+    "project-overview-recommended-integrations",
   ResourceClaims: "resource-claims",
   V0: "v0",
 } as const;
@@ -280,6 +282,8 @@ export const GetConfigurationsResponseBodySource = {
   Marketplace: "marketplace",
   Oauth: "oauth",
   Organization: "organization",
+  ProjectOverviewRecommendedIntegrations:
+    "project-overview-recommended-integrations",
   ResourceClaims: "resource-claims",
   V0: "v0",
 } as const;

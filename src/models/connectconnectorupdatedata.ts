@@ -165,6 +165,16 @@ export type RichPreviews = {
   entityTypes?: Array<string> | undefined;
 };
 
+/**
+ * Code channel settings for the managed Slack app. Updates preserve omitted settings.
+ */
+export type CodeChannels = {
+  /**
+   * Enable Slack code channels. Adds the code_channels:manage bot scope and, with triggers, the agent_session_stopped and message.session events. Defaults to false for new apps.
+   */
+  enabled?: boolean | undefined;
+};
+
 export type TypeSlack = {
   /**
    * Slack app ID.
@@ -218,6 +228,10 @@ export type TypeSlack = {
    * Work Object preview settings for the managed Slack app. Updates preserve omitted settings.
    */
   richPreviews?: RichPreviews | undefined;
+  /**
+   * Code channel settings for the managed Slack app. Updates preserve omitted settings.
+   */
+  codeChannels?: CodeChannels | undefined;
   /**
    * Additional provider metadata stored with the connector.
    */
@@ -1127,6 +1141,24 @@ export function richPreviewsToJSON(richPreviews: RichPreviews): string {
 }
 
 /** @internal */
+export type CodeChannels$Outbound = {
+  enabled?: boolean | undefined;
+};
+
+/** @internal */
+export const CodeChannels$outboundSchema: z.ZodType<
+  CodeChannels$Outbound,
+  z.ZodTypeDef,
+  CodeChannels
+> = z.object({
+  enabled: z.boolean().optional(),
+});
+
+export function codeChannelsToJSON(codeChannels: CodeChannels): string {
+  return JSON.stringify(CodeChannels$outboundSchema.parse(codeChannels));
+}
+
+/** @internal */
 export type TypeSlack$Outbound = {
   appId?: string | undefined;
   appName?: string | undefined;
@@ -1141,6 +1173,7 @@ export type TypeSlack$Outbound = {
   shortcuts?: Array<Shortcuts$Outbound> | undefined;
   appHome?: AppHome$Outbound | undefined;
   richPreviews?: RichPreviews$Outbound | undefined;
+  codeChannels?: CodeChannels$Outbound | undefined;
   extras?: { [k: string]: any } | undefined;
 };
 
@@ -1163,6 +1196,7 @@ export const TypeSlack$outboundSchema: z.ZodType<
   shortcuts: z.array(z.lazy(() => Shortcuts$outboundSchema)).optional(),
   appHome: z.lazy(() => AppHome$outboundSchema).optional(),
   richPreviews: z.lazy(() => RichPreviews$outboundSchema).optional(),
+  codeChannels: z.lazy(() => CodeChannels$outboundSchema).optional(),
   extras: z.record(z.any()).optional(),
 });
 

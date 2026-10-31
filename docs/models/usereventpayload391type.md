@@ -1,15 +1,17 @@
 # UserEventPayload391Type
 
+The budget type
+
 ## Example Usage
 
 ```typescript
-import { UserEventPayload391Type } from "@vercel/sdk/models/usereventpayload387scope.js";
+import { UserEventPayload391Type } from "@vercel/sdk/models/usereventpayload391type.js";
 
-let value: UserEventPayload391Type = "edge-config";
+let value: UserEventPayload391Type = "fixed";
 ```
 
 ## Values
 
 ```typescript
-"blob" | "edge-config" | "integration" | "postgres" | "redis"
+"fixed"
 ```

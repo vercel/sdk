@@ -35,6 +35,8 @@ import {
   CreateProjectExpiration$inboundSchema,
   CreateProjectGitComments,
   CreateProjectGitComments$inboundSchema,
+  CreateProjectGitProviderOptions,
+  CreateProjectGitProviderOptions$inboundSchema,
   CreateProjectProjectsFramework,
   CreateProjectProjectsFramework$inboundSchema,
   DefaultResourceConfig,
@@ -43,8 +45,6 @@ import {
   DeploymentExpiration$inboundSchema,
   Features,
   Features$inboundSchema,
-  GitProviderOptions,
-  GitProviderOptions$inboundSchema,
 } from "./createprojecthaskey.js";
 import {
   CreateProjectIpBuckets,
@@ -340,7 +340,7 @@ export type CreateProjectResponseBody = {
   gitComments?: CreateProjectGitComments | undefined;
   gitForkProtection?: boolean | undefined;
   gitLFS?: boolean | undefined;
-  gitProviderOptions?: GitProviderOptions | undefined;
+  gitProviderOptions?: CreateProjectGitProviderOptions | undefined;
   hasActiveBranches?: boolean | undefined;
   hasDeployments?: boolean | undefined;
   id: string;
@@ -819,7 +819,9 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
   gitComments: types.optional(CreateProjectGitComments$inboundSchema),
   gitForkProtection: types.optional(types.boolean()),
   gitLFS: types.optional(types.boolean()),
-  gitProviderOptions: types.optional(GitProviderOptions$inboundSchema),
+  gitProviderOptions: types.optional(
+    CreateProjectGitProviderOptions$inboundSchema,
+  ),
   hasActiveBranches: types.optional(types.boolean()),
   hasDeployments: types.optional(types.boolean()),
   id: types.string(),

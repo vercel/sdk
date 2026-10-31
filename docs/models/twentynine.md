@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwentyNine } from "@vercel/sdk/models/usereventpayload22provider.js";
+import { TwentyNine } from "@vercel/sdk/models/payloadbudget.js";
 
 let value: TwentyNine = {
   change: "enable-commitment",

@@ -5,20 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeventyTwo } from "@vercel/sdk/models/usereventpayload453actortype.js";
+import { FourHundredAndSeventyTwo } from "@vercel/sdk/models/usereventpayload459actortype.js";
 
 let value: FourHundredAndSeventyTwo = {
-  decision: {
-    authoritative: false,
-    basis: "gmail",
-    emailDomain: "<value>",
-    emailVerified: false,
-    hostedDomainMatch: false,
-    mxOutcome: "not-checked",
+  next: {
+    enabled: false,
+    totpVerified: true,
   },
-  outcome: "account-matched",
-  provider: "google",
-  providerSubjectId: "<id>",
+  previous: {
+    enabled: false,
+    totpVerified: false,
+  },
 };
 ```
 
@@ -26,7 +23,6 @@ let value: FourHundredAndSeventyTwo = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `decision`                                                                     | [models.PayloadDecision](../models/payloaddecision.md)                         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `outcome`                                                                      | [models.PayloadOutcome](../models/payloadoutcome.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |
-| `provider`                                                                     | [models.UserEventPayload472Provider](../models/usereventpayload472provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `providerSubjectId`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `method`                                                                       | [models.PayloadMethod](../models/payloadmethod.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload472Next](../models/usereventpayload472next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload472Previous](../models/usereventpayload472previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

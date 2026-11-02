@@ -11,7 +11,7 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
-export type GetSecurityFirewallConfigSecurityResponseChanges = {};
+export type GetSecurityFirewallConfigChanges = {};
 
 export const GetSecurityFirewallConfigOp = {
   Eq: "eq",
@@ -1074,7 +1074,7 @@ export type GetSecurityFirewallConfigRulesets =
 
 export type Active = {
   botIdEnabled?: boolean | undefined;
-  changes: Array<GetSecurityFirewallConfigSecurityResponseChanges>;
+  changes: Array<GetSecurityFirewallConfigChanges>;
   conditions?: Array<GetSecurityFirewallConfigConditions> | undefined;
   crs?: GetSecurityFirewallConfigSecurityResponseCrs | undefined;
   firewallEnabled: boolean;
@@ -1095,7 +1095,7 @@ export type Active = {
   version: number;
 };
 
-export type GetSecurityFirewallConfigChanges = {};
+export type GetSecurityFirewallConfigSecurityChanges = {};
 
 export const GetSecurityFirewallConfigSecurityOp = {
   Eq: "eq",
@@ -1559,26 +1559,19 @@ export type GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONResp
   >;
 
 /** @internal */
-export const GetSecurityFirewallConfigSecurityResponseChanges$inboundSchema:
-  z.ZodType<
-    GetSecurityFirewallConfigSecurityResponseChanges,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({});
+export const GetSecurityFirewallConfigChanges$inboundSchema: z.ZodType<
+  GetSecurityFirewallConfigChanges,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
 
-export function getSecurityFirewallConfigSecurityResponseChangesFromJSON(
+export function getSecurityFirewallConfigChangesFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetSecurityFirewallConfigSecurityResponseChanges,
-  SDKValidationError
-> {
+): SafeParseResult<GetSecurityFirewallConfigChanges, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetSecurityFirewallConfigSecurityResponseChanges$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetSecurityFirewallConfigSecurityResponseChanges' from JSON`,
+    (x) => GetSecurityFirewallConfigChanges$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetSecurityFirewallConfigChanges' from JSON`,
   );
 }
 
@@ -3564,9 +3557,7 @@ export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
   .object({
     botIdEnabled: types.optional(types.boolean()),
     changes: z.array(
-      z.lazy(() =>
-        GetSecurityFirewallConfigSecurityResponseChanges$inboundSchema
-      ),
+      z.lazy(() => GetSecurityFirewallConfigChanges$inboundSchema),
     ),
     conditions: types.optional(
       z.array(z.lazy(() => GetSecurityFirewallConfigConditions$inboundSchema)),
@@ -3629,19 +3620,25 @@ export function activeFromJSON(
 }
 
 /** @internal */
-export const GetSecurityFirewallConfigChanges$inboundSchema: z.ZodType<
-  GetSecurityFirewallConfigChanges,
+export const GetSecurityFirewallConfigSecurityChanges$inboundSchema: z.ZodType<
+  GetSecurityFirewallConfigSecurityChanges,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
-export function getSecurityFirewallConfigChangesFromJSON(
+export function getSecurityFirewallConfigSecurityChangesFromJSON(
   jsonString: string,
-): SafeParseResult<GetSecurityFirewallConfigChanges, SDKValidationError> {
+): SafeParseResult<
+  GetSecurityFirewallConfigSecurityChanges,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => GetSecurityFirewallConfigChanges$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetSecurityFirewallConfigChanges' from JSON`,
+    (x) =>
+      GetSecurityFirewallConfigSecurityChanges$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetSecurityFirewallConfigSecurityChanges' from JSON`,
   );
 }
 

@@ -14,6 +14,7 @@
 * [getConnectorProjectConnection](#getconnectorprojectconnection) - Get a connector project connection
 * [upsertConnectorProjectConnection](#upsertconnectorprojectconnection) - Create or update a connector project connection
 * [deleteConnectorProjectConnection](#deleteconnectorprojectconnection) - Disconnect a connector from a project
+* [disconnectConnectorProjectEnvironment](#disconnectconnectorprojectenvironment) - Disconnect a connector from a project environment
 * [listProjectConnectorConnections](#listprojectconnectorconnections) - List connectors for a project
 
 ## listConnectors
@@ -823,6 +824,87 @@ run();
 | models.ConnectError               | 400, 401, 403, 404, 409, 410, 422 | application/json                  |
 | models.ConnectError               | 500                               | application/json                  |
 | models.SDKError                   | 4XX, 5XX                          | \*/\*                             |
+
+## disconnectConnectorProjectEnvironment
+
+Remove a connector's access and event destinations for one project environment. Other environments, the connector, and its provider installations are preserved. Preview disconnect removes destinations for every preview branch in the project. Disconnecting the last environment also releases the project-local UID. Safe to retry.
+
+### Example Usage
+
+<!-- UsageSnippet language="typescript" operationID="disconnectConnectorProjectEnvironment" method="delete" path="/v1/connect/connectors/{connector}/projects/{projectId}/environments/{environment}" -->
+```typescript
+import { Vercel } from "@vercel/sdk";
+
+const vercel = new Vercel({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  await vercel.connect.disconnectConnectorProjectEnvironment({
+    connector: "<value>",
+    projectId: "<id>",
+    environment: "<value>",
+    slug: "my-team-url-slug",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+
+
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { VercelCore } from "@vercel/sdk/core.js";
+import { connectDisconnectConnectorProjectEnvironment } from "@vercel/sdk/funcs/connectDisconnectConnectorProjectEnvironment.js";
+
+// Use `VercelCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const vercel = new VercelCore({
+  bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
+});
+
+async function run() {
+  const res = await connectDisconnectConnectorProjectEnvironment(vercel, {
+    connector: "<value>",
+    projectId: "<id>",
+    environment: "<value>",
+    slug: "my-team-url-slug",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+  });
+  if (res.ok) {
+    const { value: result } = res;
+    
+  } else {
+    console.log("connectDisconnectConnectorProjectEnvironment failed:", res.error);
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [models.DisconnectConnectorProjectEnvironmentRequest](../../models/disconnectconnectorprojectenvironmentrequest.md)                                                            | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<void\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| models.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## listProjectConnectorConnections
 

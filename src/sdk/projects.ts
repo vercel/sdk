@@ -123,7 +123,7 @@ import {
   UpdateProjectDomainRequest,
   UpdateProjectDomainResponseBody,
 } from "../models/updateprojectdomainop.js";
-import { UpdateProjectRequest } from "../models/updateprojectenvironmentsprojectsresponse2.js";
+import { UpdateProjectRequest } from "../models/updateprojectenvironments.js";
 import {
   UpdateProjectProtectionBypassRequest,
   UpdateProjectProtectionBypassResponseBody,

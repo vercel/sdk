@@ -8,7 +8,7 @@ import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
 /**
- * Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
+ * Period for the billing cycle. The period end date cannot be older than 30 days earlier than our current server's time.
  */
 export type Period = {
   start: Date;
@@ -204,11 +204,11 @@ export type SubmitBillingDataRequestBody = {
    */
   timestamp: Date;
   /**
-   * End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your "end of day" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 24h earlier from our server's current time.
+   * End of Day, the UTC datetime for when the end of the billing/usage day is in UTC time. This tells us which day the usage data is for, and also allows for your "end of day" to be different from UTC 00:00:00. eod must be within the period dates, and cannot be older than 30 days earlier from our server's current time.
    */
   eod: Date;
   /**
-   * Period for the billing cycle. The period end date cannot be older than 24 hours earlier than our current server's time.
+   * Period for the billing cycle. The period end date cannot be older than 30 days earlier than our current server's time.
    */
   period: Period;
   /**

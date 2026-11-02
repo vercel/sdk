@@ -66,6 +66,8 @@ export const GetConfigurationResponseBodyIntegrationsResponseSource = {
   Marketplace: "marketplace",
   Oauth: "oauth",
   Organization: "organization",
+  ProjectOverviewRecommendedIntegrations:
+    "project-overview-recommended-integrations",
   ResourceClaims: "resource-claims",
   V0: "v0",
 } as const;
@@ -231,6 +233,8 @@ export const GetConfigurationResponseBodyIntegrationsSource = {
   Marketplace: "marketplace",
   Oauth: "oauth",
   Organization: "organization",
+  ProjectOverviewRecommendedIntegrations:
+    "project-overview-recommended-integrations",
   ResourceClaims: "resource-claims",
   V0: "v0",
 } as const;
@@ -425,6 +429,8 @@ export const GetConfigurationResponseBodySource = {
   Marketplace: "marketplace",
   Oauth: "oauth",
   Organization: "organization",
+  ProjectOverviewRecommendedIntegrations:
+    "project-overview-recommended-integrations",
   ResourceClaims: "resource-claims",
   V0: "v0",
 } as const;
@@ -453,70 +459,6 @@ export const GetConfigurationResponseBodyStatus = {
 export type GetConfigurationResponseBodyStatus = ClosedEnum<
   typeof GetConfigurationResponseBodyStatus
 >;
-
-export type TransferRequestRequester = {
-  email?: string | undefined;
-  name: string;
-};
-
-export type TransferRequest2 = {
-  approvedAt?: number | undefined;
-  approvedBy?: string | undefined;
-  authorizationId?: string | undefined;
-  createdAt: number;
-  discardedAt?: number | undefined;
-  discardedBy?: string | undefined;
-  expiresAt: number;
-  kind: "transfer-from-marketplace";
-  requester: TransferRequestRequester;
-  requestId: string;
-  transferId: string;
-};
-
-export const TransferRequestScope = {
-  Installation: "installation",
-  Resource: "resource",
-} as const;
-export type TransferRequestScope = ClosedEnum<typeof TransferRequestScope>;
-
-export const TransferRequestType = {
-  Prepayment: "prepayment",
-  Subscription: "subscription",
-} as const;
-export type TransferRequestType = ClosedEnum<typeof TransferRequestType>;
-
-export type TransferRequestBillingPlan = {
-  description: string;
-  id: string;
-  name: string;
-  paymentMethodRequired?: boolean | undefined;
-  preauthorizationAmount?: number | undefined;
-  scope?: TransferRequestScope | undefined;
-  type: TransferRequestType;
-};
-
-export type Requester = {
-  email?: string | undefined;
-  name: string;
-};
-
-export type TransferRequest1 = {
-  approvedAt?: number | undefined;
-  approvedBy?: string | undefined;
-  authorizationId?: string | undefined;
-  billingPlan?: TransferRequestBillingPlan | undefined;
-  createdAt: number;
-  discardedAt?: number | undefined;
-  discardedBy?: string | undefined;
-  expiresAt: number;
-  kind: "transfer-to-marketplace";
-  metadata?: { [k: string]: any } | undefined;
-  requester: Requester;
-  requestId: string;
-  transferId: string;
-};
-
-export type TransferRequest = TransferRequest1 | TransferRequest2;
 
 export const GetConfigurationResponseBodyType = {
   IntegrationConfiguration: "integration-configuration",
@@ -605,7 +547,6 @@ export type GetConfigurationResponseBody1 = {
    * When the configuration was created for a team, this will show the ID of the team.
    */
   teamId?: string | null | undefined;
-  transferRequest: TransferRequest1 | TransferRequest2;
   type: GetConfigurationResponseBodyType;
   /**
    * A timestamp that tells you when the configuration was updated.
@@ -862,163 +803,6 @@ export const GetConfigurationResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(GetConfigurationResponseBodyStatus);
 
 /** @internal */
-export const TransferRequestRequester$inboundSchema: z.ZodType<
-  TransferRequestRequester,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: types.optional(types.string()),
-  name: types.string(),
-});
-
-export function transferRequestRequesterFromJSON(
-  jsonString: string,
-): SafeParseResult<TransferRequestRequester, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TransferRequestRequester$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransferRequestRequester' from JSON`,
-  );
-}
-
-/** @internal */
-export const TransferRequest2$inboundSchema: z.ZodType<
-  TransferRequest2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  approvedAt: types.optional(types.number()),
-  approvedBy: types.optional(types.string()),
-  authorizationId: types.optional(types.string()),
-  createdAt: types.number(),
-  discardedAt: types.optional(types.number()),
-  discardedBy: types.optional(types.string()),
-  expiresAt: types.number(),
-  kind: types.literal("transfer-from-marketplace"),
-  requester: z.lazy(() => TransferRequestRequester$inboundSchema),
-  requestId: types.string(),
-  transferId: types.string(),
-});
-
-export function transferRequest2FromJSON(
-  jsonString: string,
-): SafeParseResult<TransferRequest2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TransferRequest2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransferRequest2' from JSON`,
-  );
-}
-
-/** @internal */
-export const TransferRequestScope$inboundSchema: z.ZodNativeEnum<
-  typeof TransferRequestScope
-> = z.nativeEnum(TransferRequestScope);
-
-/** @internal */
-export const TransferRequestType$inboundSchema: z.ZodNativeEnum<
-  typeof TransferRequestType
-> = z.nativeEnum(TransferRequestType);
-
-/** @internal */
-export const TransferRequestBillingPlan$inboundSchema: z.ZodType<
-  TransferRequestBillingPlan,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  description: types.string(),
-  id: types.string(),
-  name: types.string(),
-  paymentMethodRequired: types.optional(types.boolean()),
-  preauthorizationAmount: types.optional(types.number()),
-  scope: types.optional(TransferRequestScope$inboundSchema),
-  type: TransferRequestType$inboundSchema,
-});
-
-export function transferRequestBillingPlanFromJSON(
-  jsonString: string,
-): SafeParseResult<TransferRequestBillingPlan, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TransferRequestBillingPlan$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransferRequestBillingPlan' from JSON`,
-  );
-}
-
-/** @internal */
-export const Requester$inboundSchema: z.ZodType<
-  Requester,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  email: types.optional(types.string()),
-  name: types.string(),
-});
-
-export function requesterFromJSON(
-  jsonString: string,
-): SafeParseResult<Requester, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Requester$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Requester' from JSON`,
-  );
-}
-
-/** @internal */
-export const TransferRequest1$inboundSchema: z.ZodType<
-  TransferRequest1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  approvedAt: types.optional(types.number()),
-  approvedBy: types.optional(types.string()),
-  authorizationId: types.optional(types.string()),
-  billingPlan: types.optional(
-    z.lazy(() => TransferRequestBillingPlan$inboundSchema),
-  ),
-  createdAt: types.number(),
-  discardedAt: types.optional(types.number()),
-  discardedBy: types.optional(types.string()),
-  expiresAt: types.number(),
-  kind: types.literal("transfer-to-marketplace"),
-  metadata: types.optional(z.record(z.any())),
-  requester: z.lazy(() => Requester$inboundSchema),
-  requestId: types.string(),
-  transferId: types.string(),
-});
-
-export function transferRequest1FromJSON(
-  jsonString: string,
-): SafeParseResult<TransferRequest1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TransferRequest1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransferRequest1' from JSON`,
-  );
-}
-
-/** @internal */
-export const TransferRequest$inboundSchema: z.ZodType<
-  TransferRequest,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => TransferRequest1$inboundSchema),
-  z.lazy(() => TransferRequest2$inboundSchema),
-]);
-
-export function transferRequestFromJSON(
-  jsonString: string,
-): SafeParseResult<TransferRequest, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => TransferRequest$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'TransferRequest' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetConfigurationResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationResponseBodyType
 > = z.nativeEnum(GetConfigurationResponseBodyType);
@@ -1055,10 +839,6 @@ export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
   source: types.optional(GetConfigurationResponseBodySource$inboundSchema),
   status: types.optional(GetConfigurationResponseBodyStatus$inboundSchema),
   teamId: z.nullable(types.string()).optional(),
-  transferRequest: z.union([
-    z.lazy(() => TransferRequest1$inboundSchema),
-    z.lazy(() => TransferRequest2$inboundSchema),
-  ]),
   type: GetConfigurationResponseBodyType$inboundSchema,
   updatedAt: types.number(),
   userId: types.string(),

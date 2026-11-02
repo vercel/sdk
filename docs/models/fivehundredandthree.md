@@ -5,36 +5,29 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndThree } from "@vercel/sdk/models/usereventpayload453actortype.js";
+import { FiveHundredAndThree } from "@vercel/sdk/models/usereventpayload459actortype.js";
 
 let value: FiveHundredAndThree = {
-  actorTokenId: "<id>",
-  tokenId: "<id>",
-  tokenName: "<value>",
-  tokenType: "<value>",
+  next: {
+    enabled: true,
+    issuerUrls: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  previous: {
+    enabled: false,
+    issuerUrls: [],
+  },
+  scope: "team",
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `actorTokenId`                                                                       | *string*                                                                             | :heavy_check_mark:                                                                   | The token's public ID.                                                               |
-| `createdByParentTeamId`                                                              | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `expired`                                                                            | *boolean*                                                                            | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `geolocation`                                                                        | [models.UserEventPayload503Geolocation](../models/usereventpayload503geolocation.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `ip`                                                                                 | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `leaked`                                                                             | *boolean*                                                                            | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `logoutSource`                                                                       | [models.LogoutSource](../models/logoutsource.md)                                     | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `origin`                                                                             | [models.PayloadOrigin](../models/payloadorigin.md)                                   | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reason`                                                                             | [models.UserEventPayload503Reason](../models/usereventpayload503reason.md)           | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqId`                                                                              | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqUrl`                                                                             | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `revoked`                                                                            | *boolean*                                                                            | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `scope`                                                                              | [models.UserEventPayload503Scope](../models/usereventpayload503scope.md)             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `source`                                                                             | [models.UserEventPayload503Source](../models/usereventpayload503source.md)           | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `teamId`                                                                             | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `tokenId`                                                                            | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `tokenName`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `tokenType`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `userAgent`                                                                          | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload503Next](../models/usereventpayload503next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload503Previous](../models/usereventpayload503previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `scope`                                                                        | [models.UserEventPayload503Scope](../models/usereventpayload503scope.md)       | :heavy_check_mark:                                                             | N/A                                                                            |

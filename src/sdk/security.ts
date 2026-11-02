@@ -18,6 +18,7 @@ import { securityGetSecurityFirewallEventsSummary } from "../funcs/securityGetSe
 import { securityPutFirewallConfig } from "../funcs/securityPutFirewallConfig.js";
 import { securityRemoveBypassIp } from "../funcs/securityRemoveBypassIp.js";
 import { securityUpdateAttackChallengeMode } from "../funcs/securityUpdateAttackChallengeMode.js";
+import { securityUpdateConditionalBypass } from "../funcs/securityUpdateConditionalBypass.js";
 import { securityUpdateFirewallConfig } from "../funcs/securityUpdateFirewallConfig.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import {
@@ -81,6 +82,10 @@ import {
   UpdateAttackChallengeModeRequest,
   UpdateAttackChallengeModeResponseBody,
 } from "../models/updateattackchallengemodeop.js";
+import {
+  UpdateConditionalBypassRequest,
+  UpdateConditionalBypassResponseBody,
+} from "../models/updateconditionalbypassop.js";
 import {
   UpdateFirewallConfigRequest,
   UpdateFirewallConfigResponseBody,
@@ -303,6 +308,23 @@ export class Security extends ClientSDK {
     options?: RequestOptions,
   ): Promise<CreateConditionalBypassResponseBody> {
     return unwrapAsync(securityCreateConditionalBypass(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update conditional firewall bypass
+   *
+   * @remarks
+   * Update a conditional firewall bypass rule for a project domain. Replaces conditions and the note for the domain's existing rule. Omitting `note` clears it. The rule ID, domain, creator, and creation time are preserved. Missing or deleted rules are not created.
+   */
+  async updateConditionalBypass(
+    request: UpdateConditionalBypassRequest,
+    options?: RequestOptions,
+  ): Promise<UpdateConditionalBypassResponseBody> {
+    return unwrapAsync(securityUpdateConditionalBypass(
       this,
       request,
       options,

@@ -16,8 +16,9 @@ let value: Credentials = {
   name: "<value>",
   ownerId: "<id>",
   providerSlug: "<value>",
-  updatedAt: 920.89,
-  zeroDataRetention: false,
+  rotatedAt: null,
+  updatedAt: 8391.05,
+  zeroDataRetention: true,
 };
 ```
 
@@ -35,5 +36,6 @@ let value: Credentials = {
 | `name`                                               | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
 | `ownerId`                                            | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
 | `providerSlug`                                       | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `rotatedAt`                                          | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
 | `updatedAt`                                          | *number*                                             | :heavy_check_mark:                                   | N/A                                                  |
 | `zeroDataRetention`                                  | *boolean*                                            | :heavy_check_mark:                                   | N/A                                                  |

@@ -1,19 +1,21 @@
 # UpdateProjectGitComments
 
+Opt-in to Git pull request and commit comments on the project level. Replaces `github.silent`.
+
 ## Example Usage
 
 ```typescript
-import { UpdateProjectGitComments } from "@vercel/sdk/models/updateprojectbotfilter.js";
+import { UpdateProjectGitComments } from "@vercel/sdk/models/updateprojectenvironments.js";
 
 let value: UpdateProjectGitComments = {
-  onCommit: true,
-  onPullRequest: false,
+  onPullRequest: true,
+  onCommit: false,
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `onCommit`                                       | *boolean*                                        | :heavy_check_mark:                               | Whether the Vercel bot should comment on commits |
-| `onPullRequest`                                  | *boolean*                                        | :heavy_check_mark:                               | Whether the Vercel bot should comment on PRs     |
+| Field                                                 | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `onPullRequest`                                       | *boolean*                                             | :heavy_check_mark:                                    | Whether or not Vercel should comment on pull requests |
+| `onCommit`                                            | *boolean*                                             | :heavy_check_mark:                                    | Whether or not Vercel should comment on commits       |

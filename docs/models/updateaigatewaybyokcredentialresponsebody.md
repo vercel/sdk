@@ -13,8 +13,9 @@ let value: UpdateAiGatewayByokCredentialResponseBody = {
   name: "<value>",
   ownerId: "<id>",
   providerSlug: "<value>",
-  updatedAt: 2960.72,
-  zeroDataRetention: false,
+  rotatedAt: 7890.55,
+  updatedAt: 8562.48,
+  zeroDataRetention: true,
 };
 ```
 
@@ -29,5 +30,6 @@ let value: UpdateAiGatewayByokCredentialResponseBody = {
 | `name`              | *string*            | :heavy_check_mark:  | N/A                 |
 | `ownerId`           | *string*            | :heavy_check_mark:  | N/A                 |
 | `providerSlug`      | *string*            | :heavy_check_mark:  | N/A                 |
+| `rotatedAt`         | *number*            | :heavy_check_mark:  | N/A                 |
 | `updatedAt`         | *number*            | :heavy_check_mark:  | N/A                 |
 | `zeroDataRetention` | *boolean*           | :heavy_check_mark:  | N/A                 |

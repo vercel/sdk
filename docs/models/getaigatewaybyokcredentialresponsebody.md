@@ -13,7 +13,8 @@ let value: GetAiGatewayByokCredentialResponseBody = {
   name: "<value>",
   ownerId: "<id>",
   providerSlug: "<value>",
-  updatedAt: 5358.97,
+  rotatedAt: 1484.09,
+  updatedAt: 4729.72,
   zeroDataRetention: true,
 };
 ```
@@ -29,5 +30,6 @@ let value: GetAiGatewayByokCredentialResponseBody = {
 | `name`              | *string*            | :heavy_check_mark:  | N/A                 |
 | `ownerId`           | *string*            | :heavy_check_mark:  | N/A                 |
 | `providerSlug`      | *string*            | :heavy_check_mark:  | N/A                 |
+| `rotatedAt`         | *number*            | :heavy_check_mark:  | N/A                 |
 | `updatedAt`         | *number*            | :heavy_check_mark:  | N/A                 |
 | `zeroDataRetention` | *boolean*           | :heavy_check_mark:  | N/A                 |

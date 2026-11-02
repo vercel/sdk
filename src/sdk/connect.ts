@@ -4,6 +4,7 @@
 
 import { connectDeleteConnector } from "../funcs/connectDeleteConnector.js";
 import { connectDeleteConnectorProjectConnection } from "../funcs/connectDeleteConnectorProjectConnection.js";
+import { connectDisconnectConnectorProjectEnvironment } from "../funcs/connectDisconnectConnectorProjectEnvironment.js";
 import { connectEjectManagedConnector } from "../funcs/connectEjectManagedConnector.js";
 import { connectGetConnector } from "../funcs/connectGetConnector.js";
 import { connectGetConnectorProjectConnection } from "../funcs/connectGetConnectorProjectConnection.js";
@@ -22,6 +23,7 @@ import { ConnectProjectConnection } from "../models/connectprojectconnection.js"
 import { ConnectProjectConnectorConnectionList } from "../models/connectprojectconnectorconnectionlist.js";
 import { DeleteConnectorRequest } from "../models/deleteconnectorop.js";
 import { DeleteConnectorProjectConnectionRequest } from "../models/deleteconnectorprojectconnectionop.js";
+import { DisconnectConnectorProjectEnvironmentRequest } from "../models/disconnectconnectorprojectenvironmentop.js";
 import { EjectManagedConnectorRequest } from "../models/ejectmanagedconnectorop.js";
 import { GetConnectorRequest } from "../models/getconnectorop.js";
 import { GetConnectorProjectConnectionRequest } from "../models/getconnectorprojectconnectionop.js";
@@ -198,6 +200,23 @@ export class Connect extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(connectDeleteConnectorProjectConnection(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Disconnect a connector from a project environment
+   *
+   * @remarks
+   * Remove a connector's access and event destinations for one project environment. Other environments, the connector, and its provider installations are preserved. Preview disconnect removes destinations for every preview branch in the project. Disconnecting the last environment also releases the project-local UID. Safe to retry.
+   */
+  async disconnectConnectorProjectEnvironment(
+    request: DisconnectConnectorProjectEnvironmentRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(connectDisconnectConnectorProjectEnvironment(
       this,
       request,
       options,

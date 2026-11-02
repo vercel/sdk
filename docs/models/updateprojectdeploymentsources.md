@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectDeploymentSources } from "@vercel/sdk/models/updateprojectenvironmentsprojectsresponse2.js";
+import { UpdateProjectDeploymentSources } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaibotsaction.js";
 
 let value: UpdateProjectDeploymentSources = {
   enabled: true,

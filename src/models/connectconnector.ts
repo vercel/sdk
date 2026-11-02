@@ -155,7 +155,7 @@ export type SupportsIcon = ClosedEnum<typeof SupportsIcon>;
  */
 export const ConnectConnectorType = {
   ApiKey: "api-key",
-  AwsAlpha: "aws-alpha",
+  AwsOidc: "aws-oidc",
   Custom: "custom",
   Discord: "discord",
   Github: "github",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadRefreshPeriod } from "@vercel/sdk/models/usereventpayload22provider.js";
+import { PayloadRefreshPeriod } from "@vercel/sdk/models/userevent.js";
 
 let value: PayloadRefreshPeriod = "none";
 ```

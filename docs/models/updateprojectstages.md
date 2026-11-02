@@ -5,7 +5,7 @@ An array of all the stages required during a deployment release. Each stage defi
 ## Example Usage
 
 ```typescript
-import { UpdateProjectStages } from "@vercel/sdk/models/updateprojectbotfilter.js";
+import { UpdateProjectStages } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaibotsaction.js";
 
 let value: UpdateProjectStages = {
   duration: 600,

@@ -5,16 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNinetyThree } from "@vercel/sdk/models/usereventpayload453actortype.js";
+import { FourHundredAndNinetyThree } from "@vercel/sdk/models/usereventpayload459actortype.js";
 
 let value: FourHundredAndNinetyThree = {
-  chatId: "<id>",
+  protectedProjectCount: 8288.01,
+  protectionEnabled: false,
+  vulnerabilities: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `chatId`           | *string*           | :heavy_check_mark: | N/A                |
-| `chatTitle`        | *string*           | :heavy_minus_sign: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `protectedProjectCount` | *number*                | :heavy_check_mark:      | N/A                     |
+| `protectionEnabled`     | *boolean*               | :heavy_check_mark:      | N/A                     |
+| `vulnerabilities`       | *string*[]              | :heavy_check_mark:      | N/A                     |

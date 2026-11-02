@@ -13,5 +13,5 @@ let value: ConnectConnectorType = "salesforce";
 ## Values
 
 ```typescript
-"api-key" | "aws-alpha" | "custom" | "discord" | "github" | "linear" | "linq" | "microsoft-entra" | "microsoft-teams" | "oauth" | "photon" | "salesforce" | "sendblue" | "slack" | "snowflake" | "snowflake-wif" | "stripe-api-key"
+"api-key" | "aws-oidc" | "custom" | "discord" | "github" | "linear" | "linq" | "microsoft-entra" | "microsoft-teams" | "oauth" | "photon" | "salesforce" | "sendblue" | "slack" | "snowflake" | "snowflake-wif" | "stripe-api-key"
 ```

@@ -1706,7 +1706,7 @@ export type CreateProjectCreateDeployments = ClosedEnum<
   typeof CreateProjectCreateDeployments
 >;
 
-export type GitProviderOptions = {
+export type CreateProjectGitProviderOptions = {
   /**
    * Configuration for consolidated git commit status reporting. When enabled, Vercel will post a single consolidated commit status instead of individual statuses for each deployment.
    */
@@ -4406,8 +4406,8 @@ export const CreateProjectCreateDeployments$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateProjectCreateDeployments);
 
 /** @internal */
-export const GitProviderOptions$inboundSchema: z.ZodType<
-  GitProviderOptions,
+export const CreateProjectGitProviderOptions$inboundSchema: z.ZodType<
+  CreateProjectGitProviderOptions,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4420,13 +4420,13 @@ export const GitProviderOptions$inboundSchema: z.ZodType<
   requireVerifiedCommits: types.optional(types.boolean()),
 });
 
-export function gitProviderOptionsFromJSON(
+export function createProjectGitProviderOptionsFromJSON(
   jsonString: string,
-): SafeParseResult<GitProviderOptions, SDKValidationError> {
+): SafeParseResult<CreateProjectGitProviderOptions, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GitProviderOptions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GitProviderOptions' from JSON`,
+    (x) => CreateProjectGitProviderOptions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectGitProviderOptions' from JSON`,
   );
 }
 

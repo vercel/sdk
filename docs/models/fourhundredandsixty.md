@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixty } from "@vercel/sdk/models/usereventpayload453actortype.js";
+import { FourHundredAndSixty } from "@vercel/sdk/models/usereventpayload459actortype.js";
 
 let value: FourHundredAndSixty = {
-  actorId: "<id>",
-  actorType: "admin",
+  username: "Lonie_Daniel",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload460ActorType](../models/usereventpayload460actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deletedAt`        | *number*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_check_mark: | N/A                |

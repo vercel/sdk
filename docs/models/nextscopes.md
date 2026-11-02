@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { NextScopes } from "@vercel/sdk/models/usereventpayload22provider.js";
+import { NextScopes } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
 
 let value: NextScopes = "openid";
 ```

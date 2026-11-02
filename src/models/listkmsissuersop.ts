@@ -44,6 +44,14 @@ export type ListKmsIssuersAlgorithm = ClosedEnum<
   typeof ListKmsIssuersAlgorithm
 >;
 
+export const ListKmsIssuersDiscoveryLayout = {
+  Connect: "connect",
+  Kms: "kms",
+} as const;
+export type ListKmsIssuersDiscoveryLayout = ClosedEnum<
+  typeof ListKmsIssuersDiscoveryLayout
+>;
+
 export const ListKmsIssuersOrigin = {
   External: "external",
   Vercel: "vercel",
@@ -134,6 +142,7 @@ export type Issuers = {
   algorithm: ListKmsIssuersAlgorithm;
   claimsSchema?: { [k: string]: any } | undefined;
   createdAt: string;
+  discoveryLayout: ListKmsIssuersDiscoveryLayout;
   id: string;
   managedBy?: string | undefined;
   name: string;
@@ -186,6 +195,11 @@ export function listKmsIssuersRequestToJSON(
 export const ListKmsIssuersAlgorithm$inboundSchema: z.ZodNativeEnum<
   typeof ListKmsIssuersAlgorithm
 > = z.nativeEnum(ListKmsIssuersAlgorithm);
+
+/** @internal */
+export const ListKmsIssuersDiscoveryLayout$inboundSchema: z.ZodNativeEnum<
+  typeof ListKmsIssuersDiscoveryLayout
+> = z.nativeEnum(ListKmsIssuersDiscoveryLayout);
 
 /** @internal */
 export const ListKmsIssuersOrigin$inboundSchema: z.ZodNativeEnum<
@@ -335,6 +349,7 @@ export const Issuers$inboundSchema: z.ZodType<Issuers, z.ZodTypeDef, unknown> =
     algorithm: ListKmsIssuersAlgorithm$inboundSchema,
     claimsSchema: types.optional(z.record(z.any())),
     createdAt: types.string(),
+    discoveryLayout: ListKmsIssuersDiscoveryLayout$inboundSchema,
     id: types.string(),
     managedBy: types.optional(types.string()),
     name: types.string(),

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyConnectConfigurations } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsonaliasassigned.js";
+import { ResponseBodyConnectConfigurations } from "@vercel/sdk/models/responsebodylastrollbacktarget.js";
 
 let value: ResponseBodyConnectConfigurations = {
   buildsEnabled: false,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectVercelRuleset } from "@vercel/sdk/models/createprojectto2.js";
+import { CreateProjectVercelRuleset } from "@vercel/sdk/models/createprojecttoprojectspreset.js";
 
 let value: CreateProjectVercelRuleset = {
   active: true,

@@ -5,7 +5,7 @@ The type of matching to perform
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson1AliasDeploymentType } from "@vercel/sdk/models/getprojectshaskey.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson1AliasDeploymentType } from "@vercel/sdk/models/getprojectshas2.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson1AliasDeploymentType =

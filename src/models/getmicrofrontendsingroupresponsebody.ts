@@ -23,8 +23,6 @@ import {
   GetMicrofrontendsInGroupBuilds$inboundSchema,
   GetMicrofrontendsInGroupChecksConclusion,
   GetMicrofrontendsInGroupChecksConclusion$inboundSchema,
-  GetMicrofrontendsInGroupChecksState,
-  GetMicrofrontendsInGroupChecksState$inboundSchema,
   GetMicrofrontendsInGroupConnectConfigurations,
   GetMicrofrontendsInGroupConnectConfigurations$inboundSchema,
   GetMicrofrontendsInGroupCreator,
@@ -69,8 +67,17 @@ import {
   GetMicrofrontendsInGroupMicrofrontendsAliasAssigned$inboundSchema,
   GetMicrofrontendsInGroupMicrofrontendsBranchMatcher,
   GetMicrofrontendsInGroupMicrofrontendsBranchMatcher$inboundSchema,
-} from "./getmicrofrontendsingroupchecksstate.js";
+} from "./getmicrofrontendsingroupchecksconclusion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetMicrofrontendsInGroupChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type GetMicrofrontendsInGroupChecksState = ClosedEnum<
+  typeof GetMicrofrontendsInGroupChecksState
+>;
 
 export type GetMicrofrontendsInGroupMicrofrontendsCreator = {
   email: string;
@@ -1518,6 +1525,10 @@ export type GetMicrofrontendsInGroupPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   schedule?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  schedulePreview?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -3168,6 +3179,11 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
+export const GetMicrofrontendsInGroupChecksState$inboundSchema: z.ZodNativeEnum<
+  typeof GetMicrofrontendsInGroupChecksState
+> = z.nativeEnum(GetMicrofrontendsInGroupChecksState);
+
+/** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsCreator$inboundSchema:
   z.ZodType<
     GetMicrofrontendsInGroupMicrofrontendsCreator,
@@ -4400,6 +4416,7 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   repository: types.optional(z.array(ACLAction$inboundSchema)),
   samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
   schedule: types.optional(z.array(ACLAction$inboundSchema)),
+  schedulePreview: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
   secret: types.optional(z.array(ACLAction$inboundSchema)),
   securityConfig: types.optional(z.array(ACLAction$inboundSchema)),

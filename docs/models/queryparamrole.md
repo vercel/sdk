@@ -1,17 +1,17 @@
 # QueryParamRole
 
-Only return members with the specified team role.
+List connections where this project is the source (default) or the consumer
 
 ## Example Usage
 
 ```typescript
-import { QueryParamRole } from "@vercel/sdk/models/getteammembersop.js";
+import { QueryParamRole } from "@vercel/sdk/models/getflagsprojectconnectionsop.js";
 
-let value: QueryParamRole = "OWNER";
+let value: QueryParamRole = "consumer";
 ```
 
 ## Values
 
 ```typescript
-"OWNER" | "MEMBER" | "DEVELOPER" | "SECURITY" | "BILLING" | "VIEWER" | "VIEWER_FOR_PLUS" | "CONTRIBUTOR"
+"source" | "consumer"
 ```

@@ -94,7 +94,7 @@ export type OneHundredAndNinetyThree = {
 };
 
 /**
- * Mirrors `PushFailureStage` in `@api/git-push-repo`.
+ * Mirrors `PushFailureStage` in `api-git-providers`.
  */
 export const FailureStage = {
   Authorization: "authorization",
@@ -104,7 +104,7 @@ export const FailureStage = {
   Validation: "validation",
 } as const;
 /**
- * Mirrors `PushFailureStage` in `@api/git-push-repo`.
+ * Mirrors `PushFailureStage` in `api-git-providers`.
  */
 export type FailureStage = ClosedEnum<typeof FailureStage>;
 
@@ -149,7 +149,7 @@ export type OneHundredAndNinetyTwo = {
    */
   failureCode?: string | undefined;
   /**
-   * Mirrors `PushFailureStage` in `@api/git-push-repo`.
+   * Mirrors `PushFailureStage` in `api-git-providers`.
    */
   failureStage?: FailureStage | undefined;
   /**

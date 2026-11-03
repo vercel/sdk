@@ -24,8 +24,6 @@ import {
   UpdateMicrofrontendsBlobs$inboundSchema,
   UpdateMicrofrontendsBuilds,
   UpdateMicrofrontendsBuilds$inboundSchema,
-  UpdateMicrofrontendsChecksConclusion,
-  UpdateMicrofrontendsChecksConclusion$inboundSchema,
   UpdateMicrofrontendsConnectConfigurations,
   UpdateMicrofrontendsConnectConfigurations$inboundSchema,
   UpdateMicrofrontendsCreator,
@@ -68,7 +66,17 @@ import {
   UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
   UpdateMicrofrontendsProjectsBranchMatcher,
   UpdateMicrofrontendsProjectsBranchMatcher$inboundSchema,
-} from "./updatemicrofrontendschecksconclusion.js";
+} from "./updatemicrofrontendsbuilds.js";
+
+export const UpdateMicrofrontendsChecksConclusion = {
+  Canceled: "canceled",
+  Failed: "failed",
+  Skipped: "skipped",
+  Succeeded: "succeeded",
+} as const;
+export type UpdateMicrofrontendsChecksConclusion = ClosedEnum<
+  typeof UpdateMicrofrontendsChecksConclusion
+>;
 
 export const UpdateMicrofrontendsChecksState = {
   Completed: "completed",
@@ -1516,6 +1524,10 @@ export type UpdateMicrofrontendsPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   schedule?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  schedulePreview?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -3113,6 +3125,12 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
+export const UpdateMicrofrontendsChecksConclusion$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsChecksConclusion> = z.nativeEnum(
+    UpdateMicrofrontendsChecksConclusion,
+  );
+
+/** @internal */
 export const UpdateMicrofrontendsChecksState$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsChecksState
 > = z.nativeEnum(UpdateMicrofrontendsChecksState);
@@ -4293,6 +4311,7 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   repository: types.optional(z.array(ACLAction$inboundSchema)),
   samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
   schedule: types.optional(z.array(ACLAction$inboundSchema)),
+  schedulePreview: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
   secret: types.optional(z.array(ACLAction$inboundSchema)),
   securityConfig: types.optional(z.array(ACLAction$inboundSchema)),

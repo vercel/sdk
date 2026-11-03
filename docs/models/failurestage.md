@@ -1,6 +1,6 @@
 # FailureStage
 
-Mirrors `PushFailureStage` in `@api/git-push-repo`.
+Mirrors `PushFailureStage` in `api-git-providers`.
 
 ## Example Usage
 

@@ -1372,6 +1372,10 @@ export type UploadProjectAvatarFlagDefinitionsPresent = {
   targets: Array<string>;
 };
 
+export type UploadProjectAvatarHealthCheck = {
+  targets: Array<string>;
+};
+
 export type UploadProjectAvatarLint = {
   targets: Array<string>;
 };
@@ -1388,6 +1392,7 @@ export type UploadProjectAvatarJobs = {
   flagDefinitionsPresent?:
     | UploadProjectAvatarFlagDefinitionsPresent
     | undefined;
+  healthCheck?: UploadProjectAvatarHealthCheck | undefined;
   lint?: UploadProjectAvatarLint | undefined;
   mfeConfigPresent?: UploadProjectAvatarMfeConfigPresent | undefined;
   typecheck?: UploadProjectAvatarTypecheck | undefined;
@@ -1476,15 +1481,6 @@ export const UploadProjectAvatarChecksConclusion = {
 } as const;
 export type UploadProjectAvatarChecksConclusion = ClosedEnum<
   typeof UploadProjectAvatarChecksConclusion
->;
-
-export const UploadProjectAvatarChecksState = {
-  Completed: "completed",
-  Registered: "registered",
-  Running: "running",
-} as const;
-export type UploadProjectAvatarChecksState = ClosedEnum<
-  typeof UploadProjectAvatarChecksState
 >;
 
 /** @internal */
@@ -4153,6 +4149,25 @@ export function uploadProjectAvatarFlagDefinitionsPresentFromJSON(
 }
 
 /** @internal */
+export const UploadProjectAvatarHealthCheck$inboundSchema: z.ZodType<
+  UploadProjectAvatarHealthCheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+
+export function uploadProjectAvatarHealthCheckFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarHealthCheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarHealthCheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarHealthCheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const UploadProjectAvatarLint$inboundSchema: z.ZodType<
   UploadProjectAvatarLint,
   z.ZodTypeDef,
@@ -4219,6 +4234,9 @@ export const UploadProjectAvatarJobs$inboundSchema: z.ZodType<
   "flag-definitions-present": types.optional(
     z.lazy(() => UploadProjectAvatarFlagDefinitionsPresent$inboundSchema),
   ),
+  "health-check": types.optional(
+    z.lazy(() => UploadProjectAvatarHealthCheck$inboundSchema),
+  ),
   lint: types.optional(z.lazy(() => UploadProjectAvatarLint$inboundSchema)),
   "mfe-config-present": types.optional(
     z.lazy(() => UploadProjectAvatarMfeConfigPresent$inboundSchema),
@@ -4229,6 +4247,7 @@ export const UploadProjectAvatarJobs$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "flag-definitions-present": "flagDefinitionsPresent",
+    "health-check": "healthCheck",
     "mfe-config-present": "mfeConfigPresent",
   });
 });
@@ -4393,8 +4412,3 @@ export function uploadProjectAvatarBuildsFromJSON(
 export const UploadProjectAvatarChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarChecksConclusion
 > = z.nativeEnum(UploadProjectAvatarChecksConclusion);
-
-/** @internal */
-export const UploadProjectAvatarChecksState$inboundSchema: z.ZodNativeEnum<
-  typeof UploadProjectAvatarChecksState
-> = z.nativeEnum(UploadProjectAvatarChecksState);

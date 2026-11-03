@@ -448,7 +448,7 @@ export class VercelCi extends ClientSDK {
    * Get log lines for the tasks of an invocation attempt
    *
    * @remarks
-   * Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks. With `search`, every matching task is searched at once and only tasks with matching lines are returned.
+   * Returns log lines for the tasks of an invocation attempt in a single request, grouped by task. Tasks can be narrowed by name and by conclusion, for example `conclusion=failed` to fetch only the logs of failed tasks. With `search`, every matching task is searched at once and only tasks with matching lines are returned. Without `search`, a task restored from the remote cache returns the log of the run that produced the cache entry.
    */
   async getVercelCiTaskLogs(
     request: GetVercelCiTaskLogsRequest,
@@ -499,7 +499,7 @@ export class VercelCi extends ClientSDK {
    * Get log lines for a specific task run attempt
    *
    * @remarks
-   * Get Task Run Logs With `follow=1` the response is a newline-delimited JSON stream of log lines that ends once the task run has finished and its logs are flushed, or when the stream reaches its maximum duration.
+   * Get Task Run Logs With `follow=1` the response is a newline-delimited JSON stream of log lines that ends once the task run has finished and its logs are flushed, or when the stream reaches its maximum duration. A task run restored from the remote cache returns the log of the run that produced the cache entry, timestamped when the cached run completed.
    */
   async getVercelCiTaskRunLogs(
     request: GetVercelCiTaskRunLogsRequest,

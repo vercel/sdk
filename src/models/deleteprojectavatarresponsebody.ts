@@ -25,8 +25,6 @@ import {
   DeleteProjectAvatarBuilds$inboundSchema,
   DeleteProjectAvatarChecksConclusion,
   DeleteProjectAvatarChecksConclusion$inboundSchema,
-  DeleteProjectAvatarChecksState,
-  DeleteProjectAvatarChecksState$inboundSchema,
   DeleteProjectAvatarConnectConfigurations,
   DeleteProjectAvatarConnectConfigurations$inboundSchema,
   DeleteProjectAvatarCreator,
@@ -69,8 +67,17 @@ import {
   DeleteProjectAvatarLastRollbackTarget$inboundSchema,
   DeleteProjectAvatarProjectsBranchMatcher,
   DeleteProjectAvatarProjectsBranchMatcher$inboundSchema,
-} from "./deleteprojectavatarchecksstate.js";
+} from "./deleteprojectavatarchecksconclusion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const DeleteProjectAvatarChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type DeleteProjectAvatarChecksState = ClosedEnum<
+  typeof DeleteProjectAvatarChecksState
+>;
 
 export type DeleteProjectAvatarProjectsCreator = {
   email: string;
@@ -1509,6 +1516,10 @@ export type DeleteProjectAvatarPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   schedule?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  schedulePreview?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -3098,6 +3109,11 @@ export type DeleteProjectAvatarResponseBody = {
 };
 
 /** @internal */
+export const DeleteProjectAvatarChecksState$inboundSchema: z.ZodNativeEnum<
+  typeof DeleteProjectAvatarChecksState
+> = z.nativeEnum(DeleteProjectAvatarChecksState);
+
+/** @internal */
 export const DeleteProjectAvatarProjectsCreator$inboundSchema: z.ZodType<
   DeleteProjectAvatarProjectsCreator,
   z.ZodTypeDef,
@@ -4268,6 +4284,7 @@ export const DeleteProjectAvatarPermissions$inboundSchema: z.ZodType<
   repository: types.optional(z.array(ACLAction$inboundSchema)),
   samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
   schedule: types.optional(z.array(ACLAction$inboundSchema)),
+  schedulePreview: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
   secret: types.optional(z.array(ACLAction$inboundSchema)),
   securityConfig: types.optional(z.array(ACLAction$inboundSchema)),

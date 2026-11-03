@@ -1399,6 +1399,10 @@ export type UpdateMicrofrontendsFlagDefinitionsPresent = {
   targets: Array<string>;
 };
 
+export type UpdateMicrofrontendsHealthCheck = {
+  targets: Array<string>;
+};
+
 export type UpdateMicrofrontendsLint = {
   targets: Array<string>;
 };
@@ -1415,6 +1419,7 @@ export type UpdateMicrofrontendsJobs = {
   flagDefinitionsPresent?:
     | UpdateMicrofrontendsFlagDefinitionsPresent
     | undefined;
+  healthCheck?: UpdateMicrofrontendsHealthCheck | undefined;
   lint?: UpdateMicrofrontendsLint | undefined;
   mfeConfigPresent?: UpdateMicrofrontendsMfeConfigPresent | undefined;
   typecheck?: UpdateMicrofrontendsTypecheck | undefined;
@@ -1494,16 +1499,6 @@ export type UpdateMicrofrontendsBuilds = {
   src?: string | undefined;
   use: string;
 };
-
-export const UpdateMicrofrontendsChecksConclusion = {
-  Canceled: "canceled",
-  Failed: "failed",
-  Skipped: "skipped",
-  Succeeded: "succeeded",
-} as const;
-export type UpdateMicrofrontendsChecksConclusion = ClosedEnum<
-  typeof UpdateMicrofrontendsChecksConclusion
->;
 
 /** @internal */
 export type UpdateMicrofrontendsRequestBody$Outbound = {
@@ -4209,6 +4204,25 @@ export function updateMicrofrontendsFlagDefinitionsPresentFromJSON(
 }
 
 /** @internal */
+export const UpdateMicrofrontendsHealthCheck$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsHealthCheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+
+export function updateMicrofrontendsHealthCheckFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsHealthCheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsHealthCheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsHealthCheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsLint$inboundSchema: z.ZodType<
   UpdateMicrofrontendsLint,
   z.ZodTypeDef,
@@ -4275,6 +4289,9 @@ export const UpdateMicrofrontendsJobs$inboundSchema: z.ZodType<
   "flag-definitions-present": types.optional(
     z.lazy(() => UpdateMicrofrontendsFlagDefinitionsPresent$inboundSchema),
   ),
+  "health-check": types.optional(
+    z.lazy(() => UpdateMicrofrontendsHealthCheck$inboundSchema),
+  ),
   lint: types.optional(z.lazy(() => UpdateMicrofrontendsLint$inboundSchema)),
   "mfe-config-present": types.optional(
     z.lazy(() => UpdateMicrofrontendsMfeConfigPresent$inboundSchema),
@@ -4285,6 +4302,7 @@ export const UpdateMicrofrontendsJobs$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "flag-definitions-present": "flagDefinitionsPresent",
+    "health-check": "healthCheck",
     "mfe-config-present": "mfeConfigPresent",
   });
 });
@@ -4444,9 +4462,3 @@ export function updateMicrofrontendsBuildsFromJSON(
     `Failed to parse 'UpdateMicrofrontendsBuilds' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateMicrofrontendsChecksConclusion$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsChecksConclusion> = z.nativeEnum(
-    UpdateMicrofrontendsChecksConclusion,
-  );

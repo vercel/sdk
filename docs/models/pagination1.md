@@ -5,7 +5,7 @@ This object contains information related to the pagination of the current reques
 ## Example Usage
 
 ```typescript
-import { Pagination1 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsmissing.js";
+import { Pagination1 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200value.js";
 
 let value: Pagination1 = {
   count: 20,

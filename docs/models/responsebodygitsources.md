@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyGitSources } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsonaliasassigned.js";
+import { ResponseBodyGitSources } from "@vercel/sdk/models/responsebodylastrollbacktarget.js";
 
 let value: ResponseBodyGitSources = {
   enabled: true,

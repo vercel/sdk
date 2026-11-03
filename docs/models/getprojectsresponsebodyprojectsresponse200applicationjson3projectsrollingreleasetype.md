@@ -7,7 +7,7 @@ The metric this check evaluates.
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsRollingReleaseType,
-} from "@vercel/sdk/models/responsebodyusagestatus.js";
+} from "@vercel/sdk/models/getprojectsresponsebodykind.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsRollingReleaseType =

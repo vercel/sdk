@@ -21,8 +21,6 @@ import {
   GetProjectAnalytics$inboundSchema,
   GetProjectBlobs,
   GetProjectBlobs$inboundSchema,
-  GetProjectBuilds,
-  GetProjectBuilds$inboundSchema,
   GetProjectConnectConfigurations,
   GetProjectConnectConfigurations$inboundSchema,
   GetProjectCreator,
@@ -67,8 +65,14 @@ import {
   GetProjectLastRollbackTarget$inboundSchema,
   GetProjectProjectsBranchMatcher,
   GetProjectProjectsBranchMatcher$inboundSchema,
-} from "./getprojectbuilds.js";
+} from "./getprojectprojectsbranchmatcher.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectBuilds = {
+  dest?: string | undefined;
+  src?: string | undefined;
+  use: string;
+};
 
 export const GetProjectChecksConclusion = {
   Canceled: "canceled",
@@ -1515,6 +1519,10 @@ export type GetProjectPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   schedule?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  schedulePreview?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -3060,6 +3068,27 @@ export type GetProjectResponseBody = {
 };
 
 /** @internal */
+export const GetProjectBuilds$inboundSchema: z.ZodType<
+  GetProjectBuilds,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  dest: types.optional(types.string()),
+  src: types.optional(types.string()),
+  use: types.string(),
+});
+
+export function getProjectBuildsFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectBuilds, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectBuilds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectBuilds' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectChecksConclusion
 > = z.nativeEnum(GetProjectChecksConclusion);
@@ -3164,7 +3193,7 @@ export const GetProjectLatestDeployments$inboundSchema: z.ZodType<
   automaticAliases: types.optional(z.array(types.string())),
   branchMatcher: types.optional(GetProjectProjectsBranchMatcher$inboundSchema),
   buildingAt: types.optional(types.number()),
-  builds: types.optional(z.array(GetProjectBuilds$inboundSchema)),
+  builds: types.optional(z.array(z.lazy(() => GetProjectBuilds$inboundSchema))),
   checksConclusion: types.optional(GetProjectChecksConclusion$inboundSchema),
   checksState: types.optional(GetProjectChecksState$inboundSchema),
   connectBuildsEnabled: types.optional(types.boolean()),
@@ -4213,6 +4242,7 @@ export const GetProjectPermissions$inboundSchema: z.ZodType<
   repository: types.optional(z.array(ACLAction$inboundSchema)),
   samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
   schedule: types.optional(z.array(ACLAction$inboundSchema)),
+  schedulePreview: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
   secret: types.optional(z.array(ACLAction$inboundSchema)),
   securityConfig: types.optional(z.array(ACLAction$inboundSchema)),

@@ -5,7 +5,7 @@ Server-owned Elastic assignment; responses may fall back to the legacy label. No
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2 } from "@vercel/sdk/models/getmicrofrontendsingroupchecksstate.js";
+import { GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2 } from "@vercel/sdk/models/getmicrofrontendsingroupchecksconclusion.js";
 
 let value: GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2 = {
   cores: 223.61,

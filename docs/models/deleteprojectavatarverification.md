@@ -5,7 +5,7 @@ A list of verification challenges, one of which must be completed to verify the 
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarVerification } from "@vercel/sdk/models/deleteprojectavatarchecksstate.js";
+import { DeleteProjectAvatarVerification } from "@vercel/sdk/models/deleteprojectavatarchecksconclusion.js";
 
 let value: DeleteProjectAvatarVerification = {
   domain: "timely-tackle.biz",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectBuildMachineType } from "@vercel/sdk/models/getprojectbuilds.js";
+import { GetProjectBuildMachineType } from "@vercel/sdk/models/getprojectprojectsbranchmatcher.js";
 
 let value: GetProjectBuildMachineType = "enhanced";
 ```

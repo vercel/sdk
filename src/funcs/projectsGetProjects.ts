@@ -16,16 +16,16 @@ import {
   GetProjectsResponseBody$inboundSchema,
 } from "../models/getprojectsresponsebody.js";
 import {
-  GetProjectsRequest,
-  GetProjectsRequest$outboundSchema,
-} from "../models/getprojectsresponsebodyprojectsresponse200applicationjsonaliasassigned.js";
-import {
   ConnectionError,
   InvalidRequestError,
   RequestAbortedError,
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/httpclienterrors.js";
+import {
+  GetProjectsRequest,
+  GetProjectsRequest$outboundSchema,
+} from "../models/responsebodylastrollbacktarget.js";
 import { ResponseValidationError } from "../models/responsevalidationerror.js";
 import { SDKValidationError } from "../models/sdkvalidationerror.js";
 import { VercelError } from "../models/vercelerror.js";

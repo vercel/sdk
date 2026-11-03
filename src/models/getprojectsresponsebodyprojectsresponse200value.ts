@@ -10,57 +10,8 @@ import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
-  GetProjectsResponseBodyCrons,
-  GetProjectsResponseBodyCrons$inboundSchema,
-  GetProjectsResponseBodyProjectsAlias,
-  GetProjectsResponseBodyProjectsAlias$inboundSchema,
-  GetProjectsResponseBodyProjectsAnalytics,
-  GetProjectsResponseBodyProjectsAnalytics$inboundSchema,
-  GetProjectsResponseBodyProjectsDeploymentExpiration,
-  GetProjectsResponseBodyProjectsDeploymentExpiration$inboundSchema,
-  GetProjectsResponseBodyProjectsEnv,
-  GetProjectsResponseBodyProjectsEnv$inboundSchema,
-  GetProjectsResponseBodyProjectsFramework,
-  GetProjectsResponseBodyProjectsFramework$inboundSchema,
-  GetProjectsResponseBodyProjectsGitComments,
-  GetProjectsResponseBodyProjectsGitComments$inboundSchema,
-  GetProjectsResponseBodyProjectsGitProviderOptions,
-  GetProjectsResponseBodyProjectsGitProviderOptions$inboundSchema,
-  GetProjectsResponseBodyProjectsInternalRoutes,
-  GetProjectsResponseBodyProjectsInternalRoutes$inboundSchema,
-  GetProjectsResponseBodyProjectsIpBuckets,
-  GetProjectsResponseBodyProjectsIpBuckets$inboundSchema,
-  GetProjectsResponseBodyProjectsPagination,
-  GetProjectsResponseBodyProjectsPagination$inboundSchema,
-  GetProjectsResponseBodyProjectsResponse200ApplicationJSONCreator,
-  GetProjectsResponseBodyProjectsResponse200ApplicationJSONCreator$inboundSchema,
-  ResponseBodyBlobs,
-  ResponseBodyBlobs$inboundSchema,
-  ResponseBodyConnectConfigurations,
-  ResponseBodyConnectConfigurations$inboundSchema,
-  ResponseBodyCustomEnvironments,
-  ResponseBodyCustomEnvironments$inboundSchema,
-  ResponseBodyDataCache,
-  ResponseBodyDataCache$inboundSchema,
-  ResponseBodyDefaultResourceConfig,
-  ResponseBodyDefaultResourceConfig$inboundSchema,
-  ResponseBodyDeploymentPolicy,
-  ResponseBodyDeploymentPolicy$inboundSchema,
-  ResponseBodyDismissedToasts,
-  ResponseBodyDismissedToasts$inboundSchema,
-  ResponseBodyExpiration,
-  ResponseBodyExpiration$inboundSchema,
-  ResponseBodyFeatures,
-  ResponseBodyFeatures$inboundSchema,
-  ResponseBodyJobs,
-  ResponseBodyJobs$inboundSchema,
-  ResponseBodyLastAliasRequest,
-  ResponseBodyLastAliasRequest$inboundSchema,
-  ResponseBodyLastRollbackTarget,
-  ResponseBodyLastRollbackTarget$inboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200applicationjsonaliasassigned.js";
-import { Pagination, Pagination$inboundSchema } from "./pagination.js";
-import {
+  GetProjectsResponseBodyKind,
+  GetProjectsResponseBodyKind$inboundSchema,
   GetProjectsResponseBodyMicrofrontends,
   GetProjectsResponseBodyMicrofrontends$inboundSchema,
   GetProjectsResponseBodyProjectsLatestDeployments,
@@ -111,10 +62,82 @@ import {
   ResponseBodyTracing$inboundSchema,
   ResponseBodyTrustedIps,
   ResponseBodyTrustedIps$inboundSchema,
-  ResponseBodyUsageStatus,
-  ResponseBodyUsageStatus$inboundSchema,
-} from "./responsebodyusagestatus.js";
+} from "./getprojectsresponsebodykind.js";
+import { Pagination, Pagination$inboundSchema } from "./pagination.js";
+import {
+  GetProjectsResponseBodyCrons,
+  GetProjectsResponseBodyCrons$inboundSchema,
+  GetProjectsResponseBodyProjectsAlias,
+  GetProjectsResponseBodyProjectsAlias$inboundSchema,
+  GetProjectsResponseBodyProjectsAnalytics,
+  GetProjectsResponseBodyProjectsAnalytics$inboundSchema,
+  GetProjectsResponseBodyProjectsDeploymentExpiration,
+  GetProjectsResponseBodyProjectsDeploymentExpiration$inboundSchema,
+  GetProjectsResponseBodyProjectsEnv,
+  GetProjectsResponseBodyProjectsEnv$inboundSchema,
+  GetProjectsResponseBodyProjectsFramework,
+  GetProjectsResponseBodyProjectsFramework$inboundSchema,
+  GetProjectsResponseBodyProjectsGitComments,
+  GetProjectsResponseBodyProjectsGitComments$inboundSchema,
+  GetProjectsResponseBodyProjectsGitProviderOptions,
+  GetProjectsResponseBodyProjectsGitProviderOptions$inboundSchema,
+  GetProjectsResponseBodyProjectsInternalRoutes,
+  GetProjectsResponseBodyProjectsInternalRoutes$inboundSchema,
+  GetProjectsResponseBodyProjectsIpBuckets,
+  GetProjectsResponseBodyProjectsIpBuckets$inboundSchema,
+  GetProjectsResponseBodyProjectsPagination,
+  GetProjectsResponseBodyProjectsPagination$inboundSchema,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJSONCreator,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJSONCreator$inboundSchema,
+  ResponseBodyBlobs,
+  ResponseBodyBlobs$inboundSchema,
+  ResponseBodyConnectConfigurations,
+  ResponseBodyConnectConfigurations$inboundSchema,
+  ResponseBodyCustomEnvironments,
+  ResponseBodyCustomEnvironments$inboundSchema,
+  ResponseBodyDataCache,
+  ResponseBodyDataCache$inboundSchema,
+  ResponseBodyDefaultResourceConfig,
+  ResponseBodyDefaultResourceConfig$inboundSchema,
+  ResponseBodyDeploymentPolicy,
+  ResponseBodyDeploymentPolicy$inboundSchema,
+  ResponseBodyDismissedToasts,
+  ResponseBodyDismissedToasts$inboundSchema,
+  ResponseBodyExpiration,
+  ResponseBodyExpiration$inboundSchema,
+  ResponseBodyFeatures,
+  ResponseBodyFeatures$inboundSchema,
+  ResponseBodyJobs,
+  ResponseBodyJobs$inboundSchema,
+  ResponseBodyLastAliasRequest,
+  ResponseBodyLastAliasRequest$inboundSchema,
+  ResponseBodyLastRollbackTarget,
+  ResponseBodyLastRollbackTarget$inboundSchema,
+} from "./responsebodylastrollbacktarget.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type ResponseBodyUsageStatus = {
+  /**
+   * Timestamp until which throttling is bypassed (project pays list rates for overage).
+   */
+  bypassThrottleUntil?: number | undefined;
+  /**
+   * Timestamp until which the project has exceeded its CDN allowance.
+   */
+  exceededAllowanceUntil?: number | undefined;
+  /**
+   * Billing mode. Always 'flat' for flat-rate projects.
+   */
+  kind: GetProjectsResponseBodyKind;
+  /**
+   * Synced from `team.billing.usageStatus.throttled`. When `true`, the team has throttled all of its projects regardless of `throttled`. The effective throttle the CDN enforces is `throttled || teamThrottled`.
+   */
+  teamThrottled?: boolean | undefined;
+  /**
+   * Per-project throttle, set explicitly for this project (e.g. via the per-project Flat Rate CDN endpoint).
+   */
+  throttled?: boolean | undefined;
+};
 
 export type GetProjectsResponseBodyVercelFlags = {
   /**
@@ -1965,15 +1988,28 @@ export type GetProjectsResponseBodyProjectsResponse200Value =
   | string
   | GetProjectsValueProjectsResponse200ApplicationJson2;
 
-export type GetProjectsResponseBodyProjectsMissing = {
-  key?: string | undefined;
-  type:
-    GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesType;
-  value?:
-    | string
-    | GetProjectsValueProjectsResponse200ApplicationJson2
-    | undefined;
-};
+/** @internal */
+export const ResponseBodyUsageStatus$inboundSchema: z.ZodType<
+  ResponseBodyUsageStatus,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  bypassThrottleUntil: types.optional(types.number()),
+  exceededAllowanceUntil: types.optional(types.number()),
+  kind: GetProjectsResponseBodyKind$inboundSchema,
+  teamThrottled: types.optional(types.boolean()),
+  throttled: types.optional(types.boolean()),
+});
+
+export function responseBodyUsageStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyUsageStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyUsageStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyUsageStatus' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetProjectsResponseBodyVercelFlags$inboundSchema: z.ZodType<
@@ -2180,7 +2216,9 @@ export const GetProjectsResponseBodyProjects$inboundSchema: z.ZodType<
     GetProjectsResponseBodyProjectsTrustedSources$inboundSchema,
   ).optional(),
   updatedAt: types.optional(types.number()),
-  usageStatus: types.optional(ResponseBodyUsageStatus$inboundSchema),
+  usageStatus: types.optional(
+    z.lazy(() => ResponseBodyUsageStatus$inboundSchema),
+  ),
   v0: types.optional(types.boolean()),
   v0Created: types.optional(types.boolean()),
   vercelFlags: types.optional(
@@ -5335,35 +5373,5 @@ export function getProjectsResponseBodyProjectsResponse200ValueFromJSON(
         JSON.parse(x),
       ),
     `Failed to parse 'GetProjectsResponseBodyProjectsResponse200Value' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProjectsResponseBodyProjectsMissing$inboundSchema: z.ZodType<
-  GetProjectsResponseBodyProjectsMissing,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  key: types.optional(types.string()),
-  type:
-    GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesType$inboundSchema,
-  value: types.optional(
-    smartUnion([
-      types.string(),
-      z.lazy(() =>
-        GetProjectsValueProjectsResponse200ApplicationJson2$inboundSchema
-      ),
-    ]),
-  ),
-});
-
-export function getProjectsResponseBodyProjectsMissingFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectsResponseBodyProjectsMissing, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProjectsResponseBodyProjectsMissing$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsResponseBodyProjectsMissing' from JSON`,
   );
 }

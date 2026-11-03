@@ -1529,6 +1529,10 @@ export type ResponseBodyFlagDefinitionsPresent = {
   targets: Array<string>;
 };
 
+export type ResponseBodyHealthCheck = {
+  targets: Array<string>;
+};
+
 export type ResponseBodyLint = {
   targets: Array<string>;
 };
@@ -1543,6 +1547,7 @@ export type ResponseBodyTypecheck = {
 
 export type ResponseBodyJobs = {
   flagDefinitionsPresent?: ResponseBodyFlagDefinitionsPresent | undefined;
+  healthCheck?: ResponseBodyHealthCheck | undefined;
   lint?: ResponseBodyLint | undefined;
   mfeConfigPresent?: ResponseBodyMfeConfigPresent | undefined;
   typecheck?: ResponseBodyTypecheck | undefined;
@@ -1581,10 +1586,6 @@ export type ResponseBodyLastAliasRequest = {
 };
 
 export type ResponseBodyLastRollbackTarget = {};
-
-export type GetProjectsResponseBodyProjectsResponse200ApplicationJSONAliasAssigned =
-  | number
-  | boolean;
 
 /** @internal */
 export const GitForkProtection$outboundSchema: z.ZodNativeEnum<
@@ -4585,6 +4586,25 @@ export function responseBodyFlagDefinitionsPresentFromJSON(
 }
 
 /** @internal */
+export const ResponseBodyHealthCheck$inboundSchema: z.ZodType<
+  ResponseBodyHealthCheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+
+export function responseBodyHealthCheckFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyHealthCheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyHealthCheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyHealthCheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyLint$inboundSchema: z.ZodType<
   ResponseBodyLint,
   z.ZodTypeDef,
@@ -4650,6 +4670,9 @@ export const ResponseBodyJobs$inboundSchema: z.ZodType<
   "flag-definitions-present": types.optional(
     z.lazy(() => ResponseBodyFlagDefinitionsPresent$inboundSchema),
   ),
+  "health-check": types.optional(
+    z.lazy(() => ResponseBodyHealthCheck$inboundSchema),
+  ),
   lint: types.optional(z.lazy(() => ResponseBodyLint$inboundSchema)),
   "mfe-config-present": types.optional(
     z.lazy(() => ResponseBodyMfeConfigPresent$inboundSchema),
@@ -4658,6 +4681,7 @@ export const ResponseBodyJobs$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "flag-definitions-present": "flagDefinitionsPresent",
+    "health-check": "healthCheck",
     "mfe-config-present": "mfeConfigPresent",
   });
 });
@@ -4724,28 +4748,5 @@ export function responseBodyLastRollbackTargetFromJSON(
     jsonString,
     (x) => ResponseBodyLastRollbackTarget$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'ResponseBodyLastRollbackTarget' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProjectsResponseBodyProjectsResponse200ApplicationJSONAliasAssigned$inboundSchema:
-  z.ZodType<
-    GetProjectsResponseBodyProjectsResponse200ApplicationJSONAliasAssigned,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([types.number(), types.boolean()]);
-
-export function getProjectsResponseBodyProjectsResponse200ApplicationJSONAliasAssignedFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetProjectsResponseBodyProjectsResponse200ApplicationJSONAliasAssigned,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetProjectsResponseBodyProjectsResponse200ApplicationJSONAliasAssigned$inboundSchema
-        .parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsResponseBodyProjectsResponse200ApplicationJSONAliasAssigned' from JSON`,
   );
 }

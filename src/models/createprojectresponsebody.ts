@@ -81,8 +81,8 @@ import {
   CreateProjectTargets$inboundSchema,
   CreateProjectTier,
   CreateProjectTier$inboundSchema,
-  CreateProjectTo2,
-  CreateProjectTo2$inboundSchema,
+  CreateProjectToProjectsPreset,
+  CreateProjectToProjectsPreset$inboundSchema,
   CreateProjectTracing,
   CreateProjectTracing$inboundSchema,
   CreateProjectTrustedIps,
@@ -107,8 +107,19 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojectto2.js";
+} from "./createprojecttoprojectspreset.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type CreateProjectTo2 = {
+  preset: CreateProjectToProjectsPreset;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+};
 
 export const CreateProjectToPreset = {
   AllCustom: "all-custom",
@@ -414,6 +425,26 @@ export type CreateProjectResponseBody = {
 };
 
 /** @internal */
+export const CreateProjectTo2$inboundSchema: z.ZodType<
+  CreateProjectTo2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: CreateProjectToProjectsPreset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
+});
+
+export function createProjectTo2FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTo2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTo2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTo2' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateProjectToPreset$inboundSchema: z.ZodNativeEnum<
   typeof CreateProjectToPreset
 > = z.nativeEnum(CreateProjectToPreset);
@@ -445,7 +476,7 @@ export const CreateProjectTo$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => CreateProjectTo1$inboundSchema),
-  CreateProjectTo2$inboundSchema,
+  z.lazy(() => CreateProjectTo2$inboundSchema),
 ]);
 
 export function createProjectToFromJSON(
@@ -466,7 +497,7 @@ export const CreateProjectOidcProviders$inboundSchema: z.ZodType<
 > = z.object({
   to: smartUnion([
     z.lazy(() => CreateProjectTo1$inboundSchema),
-    CreateProjectTo2$inboundSchema,
+    z.lazy(() => CreateProjectTo2$inboundSchema),
   ]),
   claims: z.record(z.array(types.string())),
   label: types.optional(types.string()),

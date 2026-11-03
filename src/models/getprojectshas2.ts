@@ -44,18 +44,27 @@ import {
   GetProjectsResponseBodyPasswordProtection$inboundSchema,
   GetProjectsResponseBodyProjectsHas,
   GetProjectsResponseBodyProjectsHas$inboundSchema,
-  GetProjectsResponseBodyProjectsMissing,
-  GetProjectsResponseBodyProjectsMissing$inboundSchema,
   GetProjectsResponseBodyProjectsNodeVersion,
   GetProjectsResponseBodyProjectsNodeVersion$inboundSchema,
   GetProjectsResponseBodyProjectsResourceConfig,
   GetProjectsResponseBodyProjectsResourceConfig$inboundSchema,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesType,
+  GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesType$inboundSchema,
   GetProjectsResponseBodyProjectsResponse200Creator,
   GetProjectsResponseBodyProjectsResponse200Creator$inboundSchema,
+  GetProjectsResponseBodyProjectsResponse200Value,
+  GetProjectsResponseBodyProjectsResponse200Value$inboundSchema,
   GetProjectsResponseBodyRollingRelease,
   GetProjectsResponseBodyRollingRelease$inboundSchema,
-} from "./getprojectsresponsebodyprojectsmissing.js";
+} from "./getprojectsresponsebodyprojectsresponse200value.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectsResponseBodyProjectsMissing = {
+  key?: string | undefined;
+  type:
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesType;
+  value?: GetProjectsResponseBodyProjectsResponse200Value | undefined;
+};
 
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesAction =
   {
@@ -1647,10 +1656,30 @@ export type GetProjectsHas2 = {
   value: GetProjectsHasProjectsValue;
 };
 
-export const GetProjectsHasKey = {
-  XVercelIpCountry: "x-vercel-ip-country",
-} as const;
-export type GetProjectsHasKey = ClosedEnum<typeof GetProjectsHasKey>;
+/** @internal */
+export const GetProjectsResponseBodyProjectsMissing$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyProjectsMissing,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  key: types.optional(types.string()),
+  type:
+    GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesType$inboundSchema,
+  value: types.optional(
+    GetProjectsResponseBodyProjectsResponse200Value$inboundSchema,
+  ),
+});
+
+export function getProjectsResponseBodyProjectsMissingFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsResponseBodyProjectsMissing, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsResponseBodyProjectsMissing$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyProjectsMissing' from JSON`,
+  );
+}
 
 /** @internal */
 export const GetProjectsResponseBodyProjectsResponse200ApplicationJson2ProjectsSecurityFirewallRoutesAction$inboundSchema:
@@ -1995,7 +2024,7 @@ export const ResponseBodyFirewallRoutes$inboundSchema: z.ZodType<
     z.array(GetProjectsResponseBodyProjectsHas$inboundSchema),
   ),
   missing: types.optional(
-    z.array(GetProjectsResponseBodyProjectsMissing$inboundSchema),
+    z.array(z.lazy(() => GetProjectsResponseBodyProjectsMissing$inboundSchema)),
   ),
   mitigate: types.optional(
     z.lazy(() => GetProjectsResponseBodyProjectsMitigate$inboundSchema),
@@ -4671,8 +4700,3 @@ export function getProjectsHas2FromJSON(
     `Failed to parse 'GetProjectsHas2' from JSON`,
   );
 }
-
-/** @internal */
-export const GetProjectsHasKey$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectsHasKey
-> = z.nativeEnum(GetProjectsHasKey);

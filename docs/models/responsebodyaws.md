@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyAws } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsonaliasassigned.js";
+import { ResponseBodyAws } from "@vercel/sdk/models/responsebodylastrollbacktarget.js";
 
 let value: ResponseBodyAws = {
   subnetIds: [],

@@ -1366,6 +1366,10 @@ export type DeleteProjectAvatarFlagDefinitionsPresent = {
   targets: Array<string>;
 };
 
+export type DeleteProjectAvatarHealthCheck = {
+  targets: Array<string>;
+};
+
 export type DeleteProjectAvatarLint = {
   targets: Array<string>;
 };
@@ -1382,6 +1386,7 @@ export type DeleteProjectAvatarJobs = {
   flagDefinitionsPresent?:
     | DeleteProjectAvatarFlagDefinitionsPresent
     | undefined;
+  healthCheck?: DeleteProjectAvatarHealthCheck | undefined;
   lint?: DeleteProjectAvatarLint | undefined;
   mfeConfigPresent?: DeleteProjectAvatarMfeConfigPresent | undefined;
   typecheck?: DeleteProjectAvatarTypecheck | undefined;
@@ -1470,15 +1475,6 @@ export const DeleteProjectAvatarChecksConclusion = {
 } as const;
 export type DeleteProjectAvatarChecksConclusion = ClosedEnum<
   typeof DeleteProjectAvatarChecksConclusion
->;
-
-export const DeleteProjectAvatarChecksState = {
-  Completed: "completed",
-  Registered: "registered",
-  Running: "running",
-} as const;
-export type DeleteProjectAvatarChecksState = ClosedEnum<
-  typeof DeleteProjectAvatarChecksState
 >;
 
 /** @internal */
@@ -4131,6 +4127,25 @@ export function deleteProjectAvatarFlagDefinitionsPresentFromJSON(
 }
 
 /** @internal */
+export const DeleteProjectAvatarHealthCheck$inboundSchema: z.ZodType<
+  DeleteProjectAvatarHealthCheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+
+export function deleteProjectAvatarHealthCheckFromJSON(
+  jsonString: string,
+): SafeParseResult<DeleteProjectAvatarHealthCheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeleteProjectAvatarHealthCheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeleteProjectAvatarHealthCheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const DeleteProjectAvatarLint$inboundSchema: z.ZodType<
   DeleteProjectAvatarLint,
   z.ZodTypeDef,
@@ -4197,6 +4212,9 @@ export const DeleteProjectAvatarJobs$inboundSchema: z.ZodType<
   "flag-definitions-present": types.optional(
     z.lazy(() => DeleteProjectAvatarFlagDefinitionsPresent$inboundSchema),
   ),
+  "health-check": types.optional(
+    z.lazy(() => DeleteProjectAvatarHealthCheck$inboundSchema),
+  ),
   lint: types.optional(z.lazy(() => DeleteProjectAvatarLint$inboundSchema)),
   "mfe-config-present": types.optional(
     z.lazy(() => DeleteProjectAvatarMfeConfigPresent$inboundSchema),
@@ -4207,6 +4225,7 @@ export const DeleteProjectAvatarJobs$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "flag-definitions-present": "flagDefinitionsPresent",
+    "health-check": "healthCheck",
     "mfe-config-present": "mfeConfigPresent",
   });
 });
@@ -4371,8 +4390,3 @@ export function deleteProjectAvatarBuildsFromJSON(
 export const DeleteProjectAvatarChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarChecksConclusion
 > = z.nativeEnum(DeleteProjectAvatarChecksConclusion);
-
-/** @internal */
-export const DeleteProjectAvatarChecksState$inboundSchema: z.ZodNativeEnum<
-  typeof DeleteProjectAvatarChecksState
-> = z.nativeEnum(DeleteProjectAvatarChecksState);

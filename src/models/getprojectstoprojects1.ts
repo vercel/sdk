@@ -12,10 +12,13 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   GetProjectsHas2,
   GetProjectsHas2$inboundSchema,
-  GetProjectsHasKey,
-  GetProjectsHasKey$inboundSchema,
-} from "./getprojectshaskey.js";
+} from "./getprojectshas2.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsHasKey = {
+  XVercelIpCountry: "x-vercel-ip-country",
+} as const;
+export type GetProjectsHasKey = ClosedEnum<typeof GetProjectsHasKey>;
 
 export type GetProjectsHasValue = {
   eq: string;
@@ -1537,9 +1540,10 @@ export type GetProjectsToProjects1 = {
   slugs: Array<string>;
 };
 
-export type GetProjectsResponseBodyTo =
-  | GetProjectsToProjects1
-  | GetProjectsToProjects2;
+/** @internal */
+export const GetProjectsHasKey$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsHasKey
+> = z.nativeEnum(GetProjectsHasKey);
 
 /** @internal */
 export const GetProjectsHasValue$inboundSchema: z.ZodType<
@@ -4306,25 +4310,5 @@ export function getProjectsToProjects1FromJSON(
     jsonString,
     (x) => GetProjectsToProjects1$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetProjectsToProjects1' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProjectsResponseBodyTo$inboundSchema: z.ZodType<
-  GetProjectsResponseBodyTo,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => GetProjectsToProjects1$inboundSchema),
-  z.lazy(() => GetProjectsToProjects2$inboundSchema),
-]);
-
-export function getProjectsResponseBodyToFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectsResponseBodyTo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectsResponseBodyTo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsResponseBodyTo' from JSON`,
   );
 }

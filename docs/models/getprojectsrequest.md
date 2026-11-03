@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsRequest } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsonaliasassigned.js";
+import { GetProjectsRequest } from "@vercel/sdk/models/responsebodylastrollbacktarget.js";
 
 let value: GetProjectsRequest = {
   since: 1540095775941,

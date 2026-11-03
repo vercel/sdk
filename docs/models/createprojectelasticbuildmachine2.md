@@ -5,7 +5,7 @@ Server-owned Elastic assignment; responses may fall back to the legacy label. No
 ## Example Usage
 
 ```typescript
-import { CreateProjectElasticBuildMachine2 } from "@vercel/sdk/models/createprojectto2.js";
+import { CreateProjectElasticBuildMachine2 } from "@vercel/sdk/models/createprojecttoprojectspreset.js";
 
 let value: CreateProjectElasticBuildMachine2 = {
   cores: 7916.24,

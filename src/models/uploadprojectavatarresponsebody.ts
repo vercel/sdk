@@ -26,8 +26,6 @@ import {
   UploadProjectAvatarBuilds$inboundSchema,
   UploadProjectAvatarChecksConclusion,
   UploadProjectAvatarChecksConclusion$inboundSchema,
-  UploadProjectAvatarChecksState,
-  UploadProjectAvatarChecksState$inboundSchema,
   UploadProjectAvatarConnectConfigurations,
   UploadProjectAvatarConnectConfigurations$inboundSchema,
   UploadProjectAvatarCreator,
@@ -70,7 +68,16 @@ import {
   UploadProjectAvatarLastRollbackTarget$inboundSchema,
   UploadProjectAvatarProjectsBranchMatcher,
   UploadProjectAvatarProjectsBranchMatcher$inboundSchema,
-} from "./uploadprojectavatarchecksstate.js";
+} from "./uploadprojectavatarchecksconclusion.js";
+
+export const UploadProjectAvatarChecksState = {
+  Completed: "completed",
+  Registered: "registered",
+  Running: "running",
+} as const;
+export type UploadProjectAvatarChecksState = ClosedEnum<
+  typeof UploadProjectAvatarChecksState
+>;
 
 export type UploadProjectAvatarProjectsCreator = {
   email: string;
@@ -1509,6 +1516,10 @@ export type UploadProjectAvatarPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   schedule?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  schedulePreview?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -3098,6 +3109,11 @@ export type UploadProjectAvatarResponseBody = {
 };
 
 /** @internal */
+export const UploadProjectAvatarChecksState$inboundSchema: z.ZodNativeEnum<
+  typeof UploadProjectAvatarChecksState
+> = z.nativeEnum(UploadProjectAvatarChecksState);
+
+/** @internal */
 export const UploadProjectAvatarProjectsCreator$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsCreator,
   z.ZodTypeDef,
@@ -4268,6 +4284,7 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   repository: types.optional(z.array(ACLAction$inboundSchema)),
   samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
   schedule: types.optional(z.array(ACLAction$inboundSchema)),
+  schedulePreview: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
   secret: types.optional(z.array(ACLAction$inboundSchema)),
   securityConfig: types.optional(z.array(ACLAction$inboundSchema)),

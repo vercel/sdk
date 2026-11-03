@@ -601,6 +601,10 @@ export type UpdateProjectFlagDefinitionsPresent = {
   targets: Array<string>;
 };
 
+export type UpdateProjectHealthCheck = {
+  targets: Array<string>;
+};
+
 export type UpdateProjectLint = {
   targets: Array<string>;
 };
@@ -615,6 +619,7 @@ export type UpdateProjectTypecheck = {
 
 export type UpdateProjectJobs = {
   flagDefinitionsPresent?: UpdateProjectFlagDefinitionsPresent | undefined;
+  healthCheck?: UpdateProjectHealthCheck | undefined;
   lint?: UpdateProjectLint | undefined;
   mfeConfigPresent?: UpdateProjectMfeConfigPresent | undefined;
   typecheck?: UpdateProjectTypecheck | undefined;
@@ -2149,6 +2154,10 @@ export type UpdateProjectPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  schedulePreview?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   seawallConfig?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -2769,17 +2778,6 @@ export type UpdateProjectLogHeaders2 = ClosedEnum<
 >;
 
 export type UpdateProjectLogHeaders = Array<string> | UpdateProjectLogHeaders2;
-
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction =
-  {
-    Challenge: "challenge",
-    Deny: "deny",
-    Log: "log",
-  } as const;
-export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction =
-  ClosedEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction
-  >;
 
 /** @internal */
 export const UpdateProjectSources$inboundSchema: z.ZodNativeEnum<
@@ -4028,6 +4026,25 @@ export function updateProjectFlagDefinitionsPresentFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectHealthCheck$inboundSchema: z.ZodType<
+  UpdateProjectHealthCheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+
+export function updateProjectHealthCheckFromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateProjectHealthCheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateProjectHealthCheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateProjectHealthCheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateProjectLint$inboundSchema: z.ZodType<
   UpdateProjectLint,
   z.ZodTypeDef,
@@ -4093,6 +4110,9 @@ export const UpdateProjectJobs$inboundSchema: z.ZodType<
   "flag-definitions-present": types.optional(
     z.lazy(() => UpdateProjectFlagDefinitionsPresent$inboundSchema),
   ),
+  "health-check": types.optional(
+    z.lazy(() => UpdateProjectHealthCheck$inboundSchema),
+  ),
   lint: types.optional(z.lazy(() => UpdateProjectLint$inboundSchema)),
   "mfe-config-present": types.optional(
     z.lazy(() => UpdateProjectMfeConfigPresent$inboundSchema),
@@ -4101,6 +4121,7 @@ export const UpdateProjectJobs$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "flag-definitions-present": "flagDefinitionsPresent",
+    "health-check": "healthCheck",
     "mfe-config-present": "mfeConfigPresent",
   });
 });
@@ -5427,6 +5448,7 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
   repository: types.optional(z.array(ACLAction$inboundSchema)),
   samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
   schedule: types.optional(z.array(ACLAction$inboundSchema)),
+  schedulePreview: types.optional(z.array(ACLAction$inboundSchema)),
   seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
   secret: types.optional(z.array(ACLAction$inboundSchema)),
   securityConfig: types.optional(z.array(ACLAction$inboundSchema)),
@@ -6078,11 +6100,3 @@ export function updateProjectLogHeadersFromJSON(
     `Failed to parse 'UpdateProjectLogHeaders' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction
-  > = z.nativeEnum(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction,
-  );

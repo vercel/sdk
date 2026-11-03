@@ -1391,6 +1391,10 @@ export type GetMicrofrontendsInGroupFlagDefinitionsPresent = {
   targets: Array<string>;
 };
 
+export type GetMicrofrontendsInGroupHealthCheck = {
+  targets: Array<string>;
+};
+
 export type GetMicrofrontendsInGroupLint = {
   targets: Array<string>;
 };
@@ -1407,6 +1411,7 @@ export type GetMicrofrontendsInGroupJobs = {
   flagDefinitionsPresent?:
     | GetMicrofrontendsInGroupFlagDefinitionsPresent
     | undefined;
+  healthCheck?: GetMicrofrontendsInGroupHealthCheck | undefined;
   lint?: GetMicrofrontendsInGroupLint | undefined;
   mfeConfigPresent?: GetMicrofrontendsInGroupMfeConfigPresent | undefined;
   typecheck?: GetMicrofrontendsInGroupTypecheck | undefined;
@@ -1497,15 +1502,6 @@ export const GetMicrofrontendsInGroupChecksConclusion = {
 } as const;
 export type GetMicrofrontendsInGroupChecksConclusion = ClosedEnum<
   typeof GetMicrofrontendsInGroupChecksConclusion
->;
-
-export const GetMicrofrontendsInGroupChecksState = {
-  Completed: "completed",
-  Registered: "registered",
-  Running: "running",
-} as const;
-export type GetMicrofrontendsInGroupChecksState = ClosedEnum<
-  typeof GetMicrofrontendsInGroupChecksState
 >;
 
 /** @internal */
@@ -4339,6 +4335,26 @@ export function getMicrofrontendsInGroupFlagDefinitionsPresentFromJSON(
 }
 
 /** @internal */
+export const GetMicrofrontendsInGroupHealthCheck$inboundSchema: z.ZodType<
+  GetMicrofrontendsInGroupHealthCheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+
+export function getMicrofrontendsInGroupHealthCheckFromJSON(
+  jsonString: string,
+): SafeParseResult<GetMicrofrontendsInGroupHealthCheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetMicrofrontendsInGroupHealthCheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetMicrofrontendsInGroupHealthCheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetMicrofrontendsInGroupLint$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupLint,
   z.ZodTypeDef,
@@ -4410,6 +4426,9 @@ export const GetMicrofrontendsInGroupJobs$inboundSchema: z.ZodType<
   "flag-definitions-present": types.optional(
     z.lazy(() => GetMicrofrontendsInGroupFlagDefinitionsPresent$inboundSchema),
   ),
+  "health-check": types.optional(
+    z.lazy(() => GetMicrofrontendsInGroupHealthCheck$inboundSchema),
+  ),
   lint: types.optional(
     z.lazy(() => GetMicrofrontendsInGroupLint$inboundSchema),
   ),
@@ -4422,6 +4441,7 @@ export const GetMicrofrontendsInGroupJobs$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "flag-definitions-present": "flagDefinitionsPresent",
+    "health-check": "healthCheck",
     "mfe-config-present": "mfeConfigPresent",
   });
 });
@@ -4603,8 +4623,3 @@ export function getMicrofrontendsInGroupBuildsFromJSON(
 export const GetMicrofrontendsInGroupChecksConclusion$inboundSchema:
   z.ZodNativeEnum<typeof GetMicrofrontendsInGroupChecksConclusion> = z
     .nativeEnum(GetMicrofrontendsInGroupChecksConclusion);
-
-/** @internal */
-export const GetMicrofrontendsInGroupChecksState$inboundSchema: z.ZodNativeEnum<
-  typeof GetMicrofrontendsInGroupChecksState
-> = z.nativeEnum(GetMicrofrontendsInGroupChecksState);

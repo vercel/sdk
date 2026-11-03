@@ -1323,6 +1323,10 @@ export type GetProjectFlagDefinitionsPresent = {
   targets: Array<string>;
 };
 
+export type GetProjectHealthCheck = {
+  targets: Array<string>;
+};
+
 export type GetProjectLint = {
   targets: Array<string>;
 };
@@ -1337,6 +1341,7 @@ export type GetProjectTypecheck = {
 
 export type GetProjectJobs = {
   flagDefinitionsPresent?: GetProjectFlagDefinitionsPresent | undefined;
+  healthCheck?: GetProjectHealthCheck | undefined;
   lint?: GetProjectLint | undefined;
   mfeConfigPresent?: GetProjectMfeConfigPresent | undefined;
   typecheck?: GetProjectTypecheck | undefined;
@@ -1407,12 +1412,6 @@ export type GetProjectProjectsBranchMatcher = {
    */
   type:
     GetProjectProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType;
-};
-
-export type GetProjectBuilds = {
-  dest?: string | undefined;
-  src?: string | undefined;
-  use: string;
 };
 
 /** @internal */
@@ -3968,6 +3967,25 @@ export function getProjectFlagDefinitionsPresentFromJSON(
 }
 
 /** @internal */
+export const GetProjectHealthCheck$inboundSchema: z.ZodType<
+  GetProjectHealthCheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+
+export function getProjectHealthCheckFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectHealthCheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectHealthCheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectHealthCheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectLint$inboundSchema: z.ZodType<
   GetProjectLint,
   z.ZodTypeDef,
@@ -4033,6 +4051,9 @@ export const GetProjectJobs$inboundSchema: z.ZodType<
   "flag-definitions-present": types.optional(
     z.lazy(() => GetProjectFlagDefinitionsPresent$inboundSchema),
   ),
+  "health-check": types.optional(
+    z.lazy(() => GetProjectHealthCheck$inboundSchema),
+  ),
   lint: types.optional(z.lazy(() => GetProjectLint$inboundSchema)),
   "mfe-config-present": types.optional(
     z.lazy(() => GetProjectMfeConfigPresent$inboundSchema),
@@ -4041,6 +4062,7 @@ export const GetProjectJobs$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "flag-definitions-present": "flagDefinitionsPresent",
+    "health-check": "healthCheck",
     "mfe-config-present": "mfeConfigPresent",
   });
 });
@@ -4169,26 +4191,5 @@ export function getProjectProjectsBranchMatcherFromJSON(
     jsonString,
     (x) => GetProjectProjectsBranchMatcher$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetProjectProjectsBranchMatcher' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetProjectBuilds$inboundSchema: z.ZodType<
-  GetProjectBuilds,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  dest: types.optional(types.string()),
-  src: types.optional(types.string()),
-  use: types.string(),
-});
-
-export function getProjectBuildsFromJSON(
-  jsonString: string,
-): SafeParseResult<GetProjectBuilds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetProjectBuilds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectBuilds' from JSON`,
   );
 }

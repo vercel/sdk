@@ -129,6 +129,16 @@ export type FlagDefinitionsPresent = {
 /**
  * Default job configuration applied to new projects created in this team.
  */
+export type HealthCheck = {
+  /**
+   * Default job configuration applied to new projects created in this team.
+   */
+  targets: Array<string>;
+};
+
+/**
+ * Default job configuration applied to new projects created in this team.
+ */
 export type Lint = {
   /**
    * Default job configuration applied to new projects created in this team.
@@ -164,6 +174,10 @@ export type DefaultProjectJobs = {
    * Default job configuration applied to new projects created in this team.
    */
   flagDefinitionsPresent?: FlagDefinitionsPresent | undefined;
+  /**
+   * Default job configuration applied to new projects created in this team.
+   */
+  healthCheck?: HealthCheck | undefined;
   /**
    * Default job configuration applied to new projects created in this team.
    */
@@ -1260,6 +1274,25 @@ export function flagDefinitionsPresentFromJSON(
 }
 
 /** @internal */
+export const HealthCheck$inboundSchema: z.ZodType<
+  HealthCheck,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  targets: z.array(types.string()),
+});
+
+export function healthCheckFromJSON(
+  jsonString: string,
+): SafeParseResult<HealthCheck, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HealthCheck$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HealthCheck' from JSON`,
+  );
+}
+
+/** @internal */
 export const Lint$inboundSchema: z.ZodType<Lint, z.ZodTypeDef, unknown> = z
   .object({
     targets: z.array(types.string()),
@@ -1322,6 +1355,7 @@ export const DefaultProjectJobs$inboundSchema: z.ZodType<
   "flag-definitions-present": types.optional(
     z.lazy(() => FlagDefinitionsPresent$inboundSchema),
   ),
+  "health-check": types.optional(z.lazy(() => HealthCheck$inboundSchema)),
   lint: types.optional(z.lazy(() => Lint$inboundSchema)),
   "mfe-config-present": types.optional(
     z.lazy(() => MfeConfigPresent$inboundSchema),
@@ -1330,6 +1364,7 @@ export const DefaultProjectJobs$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "flag-definitions-present": "flagDefinitionsPresent",
+    "health-check": "healthCheck",
     "mfe-config-present": "mfeConfigPresent",
   });
 });

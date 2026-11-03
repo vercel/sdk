@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyLint } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponse200applicationjsonaliasassigned.js";
+import { ResponseBodyLint } from "@vercel/sdk/models/responsebodylastrollbacktarget.js";
 
 let value: ResponseBodyLint = {
   targets: [

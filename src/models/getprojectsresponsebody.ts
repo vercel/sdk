@@ -26,18 +26,20 @@ import {
   ResponseBodyGitComments$inboundSchema,
   ResponseBodyGitProviderOptions,
   ResponseBodyGitProviderOptions$inboundSchema,
-} from "./getprojectshaskey.js";
+} from "./getprojectshas2.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyprojectsmissing.js";
+} from "./getprojectsresponsebodyprojectsresponse200value.js";
 import {
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
   GetProjectsResponseBodyResourceConfig,
   GetProjectsResponseBodyResourceConfig$inboundSchema,
-  GetProjectsResponseBodyTo,
-  GetProjectsResponseBodyTo$inboundSchema,
+  GetProjectsToProjects1,
+  GetProjectsToProjects1$inboundSchema,
+  GetProjectsToProjects2,
+  GetProjectsToProjects2$inboundSchema,
   ResponseBodyFrom,
   ResponseBodyFrom$inboundSchema,
   ResponseBodyInternalRoutes,
@@ -68,15 +70,19 @@ import {
   ResponseBodyTargets$inboundSchema,
   ResponseBodyTier,
   ResponseBodyTier$inboundSchema,
-} from "./getprojectsresponsebodyto.js";
+} from "./getprojectstoprojects1.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type GetProjectsResponseBodyTo =
+  | GetProjectsToProjects1
+  | GetProjectsToProjects2;
 
 /**
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type ResponseBodyCustomAllow = {
   from: ResponseBodyFrom;
-  to: GetProjectsResponseBodyTo;
+  to: GetProjectsToProjects1 | GetProjectsToProjects2;
 };
 
 export type GetProjectsResponseBodyProjectsProjects = {
@@ -175,13 +181,36 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const GetProjectsResponseBodyTo$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  GetProjectsToProjects1$inboundSchema,
+  GetProjectsToProjects2$inboundSchema,
+]);
+
+export function getProjectsResponseBodyToFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsResponseBodyTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsResponseBodyTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyTo' from JSON`,
+  );
+}
+
+/** @internal */
 export const ResponseBodyCustomAllow$inboundSchema: z.ZodType<
   ResponseBodyCustomAllow,
   z.ZodTypeDef,
   unknown
 > = z.object({
   from: ResponseBodyFrom$inboundSchema,
-  to: GetProjectsResponseBodyTo$inboundSchema,
+  to: smartUnion([
+    GetProjectsToProjects1$inboundSchema,
+    GetProjectsToProjects2$inboundSchema,
+  ]),
 });
 
 export function responseBodyCustomAllowFromJSON(

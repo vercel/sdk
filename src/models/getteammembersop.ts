@@ -13,7 +13,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * Only return members with the specified team role.
  */
-export const QueryParamRole = {
+export const GetTeamMembersQueryParamRole = {
   Owner: "OWNER",
   Member: "MEMBER",
   Developer: "DEVELOPER",
@@ -26,7 +26,9 @@ export const QueryParamRole = {
 /**
  * Only return members with the specified team role.
  */
-export type QueryParamRole = ClosedEnum<typeof QueryParamRole>;
+export type GetTeamMembersQueryParamRole = ClosedEnum<
+  typeof GetTeamMembersQueryParamRole
+>;
 
 export type GetTeamMembersRequest = {
   /**
@@ -48,7 +50,7 @@ export type GetTeamMembersRequest = {
   /**
    * Only return members with the specified team role.
    */
-  role?: QueryParamRole | undefined;
+  role?: GetTeamMembersQueryParamRole | undefined;
   /**
    * Exclude members who belong to the specified project.
    */
@@ -329,9 +331,9 @@ export type GetTeamMembersResponseBody = {
 };
 
 /** @internal */
-export const QueryParamRole$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamRole
-> = z.nativeEnum(QueryParamRole);
+export const GetTeamMembersQueryParamRole$outboundSchema: z.ZodNativeEnum<
+  typeof GetTeamMembersQueryParamRole
+> = z.nativeEnum(GetTeamMembersQueryParamRole);
 
 /** @internal */
 export type GetTeamMembersRequest$Outbound = {
@@ -356,7 +358,7 @@ export const GetTeamMembersRequest$outboundSchema: z.ZodType<
   since: z.number().optional(),
   until: z.number().optional(),
   search: z.string().optional(),
-  role: QueryParamRole$outboundSchema.optional(),
+  role: GetTeamMembersQueryParamRole$outboundSchema.optional(),
   excludeProject: z.string().optional(),
   eligibleMembersForProjectId: z.string().optional(),
   teamId: z.string(),

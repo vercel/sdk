@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateProjectJobs } from "@vercel/sdk/models/updateprojectprojectsresponse200applicationjsonresponsebodysecuritymanagedrulesaibotsaction.js";
+import { UpdateProjectJobs } from "@vercel/sdk/models/updateprojectlogheaders.js";
 
 let value: UpdateProjectJobs = {};
 ```
@@ -13,6 +13,7 @@ let value: UpdateProjectJobs = {};
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | `flagDefinitionsPresent`                                                                       | [models.UpdateProjectFlagDefinitionsPresent](../models/updateprojectflagdefinitionspresent.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `healthCheck`                                                                                  | [models.UpdateProjectHealthCheck](../models/updateprojecthealthcheck.md)                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `lint`                                                                                         | [models.UpdateProjectLint](../models/updateprojectlint.md)                                     | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `mfeConfigPresent`                                                                             | [models.UpdateProjectMfeConfigPresent](../models/updateprojectmfeconfigpresent.md)             | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 | `typecheck`                                                                                    | [models.UpdateProjectTypecheck](../models/updateprojecttypecheck.md)                           | :heavy_minus_sign:                                                                             | N/A                                                                                            |

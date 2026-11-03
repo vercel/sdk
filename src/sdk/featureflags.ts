@@ -4,14 +4,17 @@
 
 import { featureFlagsCreateFlag } from "../funcs/featureFlagsCreateFlag.js";
 import { featureFlagsCreateFlagSegment } from "../funcs/featureFlagsCreateFlagSegment.js";
+import { featureFlagsCreateFlagsProjectConnection } from "../funcs/featureFlagsCreateFlagsProjectConnection.js";
 import { featureFlagsCreateSDKKey } from "../funcs/featureFlagsCreateSDKKey.js";
 import { featureFlagsDeleteFlag } from "../funcs/featureFlagsDeleteFlag.js";
 import { featureFlagsDeleteFlagSegment } from "../funcs/featureFlagsDeleteFlagSegment.js";
+import { featureFlagsDeleteFlagsProjectConnection } from "../funcs/featureFlagsDeleteFlagsProjectConnection.js";
 import { featureFlagsDeleteSDKKey } from "../funcs/featureFlagsDeleteSDKKey.js";
 import { featureFlagsGetDeploymentFeatureFlags } from "../funcs/featureFlagsGetDeploymentFeatureFlags.js";
 import { featureFlagsGetFlag } from "../funcs/featureFlagsGetFlag.js";
 import { featureFlagsGetFlagSegment } from "../funcs/featureFlagsGetFlagSegment.js";
 import { featureFlagsGetFlagSettings } from "../funcs/featureFlagsGetFlagSettings.js";
+import { featureFlagsGetFlagsProjectConnections } from "../funcs/featureFlagsGetFlagsProjectConnections.js";
 import { featureFlagsGetSDKKeys } from "../funcs/featureFlagsGetSDKKeys.js";
 import { featureFlagsListFlagLabelCounts } from "../funcs/featureFlagsListFlagLabelCounts.js";
 import { featureFlagsListFlagLabels } from "../funcs/featureFlagsListFlagLabels.js";
@@ -35,9 +38,14 @@ import {
   CreateFlagSegmentRequest,
   CreateFlagSegmentResponseBody,
 } from "../models/createflagsegmentop.js";
+import {
+  CreateFlagsProjectConnectionRequest,
+  CreateFlagsProjectConnectionResponseBody,
+} from "../models/createflagsprojectconnectionop.js";
 import { CreateSDKKeyRequest } from "../models/createsdkkeyop.js";
 import { DeleteFlagRequest } from "../models/deleteflagop.js";
 import { DeleteFlagSegmentRequest } from "../models/deleteflagsegmentop.js";
+import { DeleteFlagsProjectConnectionRequest } from "../models/deleteflagsprojectconnectionop.js";
 import { DeleteSDKKeyRequest } from "../models/deletesdkkeyop.js";
 import { Flag } from "../models/flag.js";
 import { FlagsSDKKeyWithSecrets } from "../models/flagssdkkeywithsecrets.js";
@@ -51,6 +59,10 @@ import {
   GetFlagSettingsRequest,
   GetFlagSettingsResponseBody,
 } from "../models/getflagsettingsop.js";
+import {
+  GetFlagsProjectConnectionsRequest,
+  GetFlagsProjectConnectionsResponseBody,
+} from "../models/getflagsprojectconnectionsop.js";
 import {
   GetSDKKeysRequest,
   GetSDKKeysResponseBody,
@@ -510,6 +522,57 @@ export class FeatureFlags extends ClientSDK {
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(featureFlagsDeleteSDKKey(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List flags project connections
+   *
+   * @remarks
+   * Lists the flags project connections of a project. By default these are the projects that may read this project's flags; with `role=consumer` these are the projects whose flags this project may read. Connections are within one team and apply across environments. Requires permission to list connections on the selected project.
+   */
+  async getFlagsProjectConnections(
+    request: GetFlagsProjectConnectionsRequest,
+    options?: RequestOptions,
+  ): Promise<GetFlagsProjectConnectionsResponseBody> {
+    return unwrapAsync(featureFlagsGetFlagsProjectConnections(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Connect a project to the flags of this project
+   *
+   * @remarks
+   * Connects a project in the same team to the flags of this project. The consumer project reads this project's flags with its own deployment identity by naming this project in the Flags SDK. Connections grant read and evaluate access across environments, with the consumer deployment's environment selecting the source environment. Requires connection management permission on the source project and read access to the consumer project.
+   */
+  async createFlagsProjectConnection(
+    request: CreateFlagsProjectConnectionRequest,
+    options?: RequestOptions,
+  ): Promise<CreateFlagsProjectConnectionResponseBody> {
+    return unwrapAsync(featureFlagsCreateFlagsProjectConnection(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Disconnect a project from the flags of this project
+   *
+   * @remarks
+   * Disconnects a project from the flags of this project. The consumer loses access without a redeploy. Requires connection management permission on the source project; access to the consumer project is not required.
+   */
+  async deleteFlagsProjectConnection(
+    request: DeleteFlagsProjectConnectionRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(featureFlagsDeleteFlagsProjectConnection(
       this,
       request,
       options,

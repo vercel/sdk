@@ -62,7 +62,7 @@ import {
   CreateTraceSessionRequest,
   CreateTraceSessionResponseBody,
 } from "../models/createtracesessionop.js";
-import { DeleteProjectAvatarRequest } from "../models/deleteprojectavatarchecksstate.js";
+import { DeleteProjectAvatarRequest } from "../models/deleteprojectavatarchecksconclusion.js";
 import { DeleteProjectAvatarResponseBody } from "../models/deleteprojectavatarresponsebody.js";
 import { DeleteProjectRequest } from "../models/deleteprojectop.js";
 import {
@@ -73,7 +73,6 @@ import {
   FilterProjectEnvsRequest,
   FilterProjectEnvsResponseBody,
 } from "../models/filterprojectenvsop.js";
-import { GetProjectRequest } from "../models/getprojectbuilds.js";
 import {
   GetProjectDomainRequest,
   GetProjectDomainResponseBody,
@@ -86,9 +85,9 @@ import {
   GetProjectEnvRequest,
   GetProjectEnvResponseBody,
 } from "../models/getprojectenvop.js";
+import { GetProjectRequest } from "../models/getprojectprojectsbranchmatcher.js";
 import { GetProjectResponseBody } from "../models/getprojectresponsebody.js";
 import { GetProjectsResponseBody } from "../models/getprojectsresponsebody.js";
-import { GetProjectsRequest } from "../models/getprojectsresponsebodyprojectsresponse200applicationjsonaliasassigned.js";
 import {
   GetProjectTokenRequest,
   GetProjectTokenResponseBody,
@@ -116,8 +115,9 @@ import {
 } from "../models/removeprojectenvop.js";
 import { RequestPromoteRequest } from "../models/requestpromoteop.js";
 import { RequestRollbackRequest } from "../models/requestrollbackop.js";
+import { GetProjectsRequest } from "../models/responsebodylastrollbacktarget.js";
 import { UnpauseProjectRequest } from "../models/unpauseprojectop.js";
-import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendschecksconclusion.js";
+import { UpdateMicrofrontendsRequest } from "../models/updatemicrofrontendsbuilds.js";
 import { UpdateMicrofrontendsResponseBody } from "../models/updatemicrofrontendsresponsebody.js";
 import {
   UpdateProjectDomainRequest,
@@ -130,7 +130,7 @@ import {
 } from "../models/updateprojectprotectionbypassop.js";
 import { UpdateProjectResponseBody } from "../models/updateprojectresponsebody.js";
 import { UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest } from "../models/updateprojectsbyprojectidrollbackbydeploymentidupdatedescriptionop.js";
-import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarchecksstate.js";
+import { UploadProjectAvatarRequest } from "../models/uploadprojectavatarchecksconclusion.js";
 import { UploadProjectAvatarResponseBody } from "../models/uploadprojectavatarresponsebody.js";
 import {
   VerifyProjectDomainRequest,

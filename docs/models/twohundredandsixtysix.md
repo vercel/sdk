@@ -5,24 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySix } from "@vercel/sdk/models/usereventpayloadgituserid.js";
+import { TwoHundredAndSixtySix } from "@vercel/sdk/models/twohundredandsix.js";
 
 let value: TwoHundredAndSixtySix = {
-  previousTeamSuffix: "<value>",
-  projectCount: 7515.27,
-  reason: "<value>",
-  actorId: "<id>",
-  actorType: "admin",
+  endpoint: {
+    awsServiceName: "<value>",
+    configurationId: "<id>",
+    id: "<id>",
+    name: "<value>",
+    vercelRegion: "<value>",
+  },
+  scope: "network",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `previousTeamSuffix`                                                       | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectCount`                                                             | *number*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `reason`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `actorId`                                                                  | *string*                                                                   | :heavy_check_mark:                                                         | Okta user id.                                                              |
-| `actorName`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `actorType`                                                                | [models.UserEventPayloadActorType](../models/usereventpayloadactortype.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `endpoint`                                                               | [models.Endpoint](../models/endpoint.md)                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `networkName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload266Scope](../models/usereventpayload266scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

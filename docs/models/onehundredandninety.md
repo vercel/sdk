@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinety } from "@vercel/sdk/models/usereventjobpayload12610headinfo.js";
+import { OneHundredAndNinety } from "@vercel/sdk/models/payloadmode.js";
 
 let value: OneHundredAndNinety = {
-  action: "enable",
+  source: "upgrade",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload190Action](../models/usereventpayload190action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `source`                                           | [models.PayloadSource](../models/payloadsource.md) | :heavy_check_mark:                                 | N/A                                                |

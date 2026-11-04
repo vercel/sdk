@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupVercelRuleset } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
+import { GetMicrofrontendsInGroupVercelRuleset } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value: GetMicrofrontendsInGroupVercelRuleset = {
   active: false,

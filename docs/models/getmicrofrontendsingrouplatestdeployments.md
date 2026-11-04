@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupLatestDeployments } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
+import { GetMicrofrontendsInGroupLatestDeployments } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value: GetMicrofrontendsInGroupLatestDeployments = {
   createdAt: 1360.22,

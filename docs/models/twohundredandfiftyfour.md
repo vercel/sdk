@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyFour } from "@vercel/sdk/models/onehundredandninetynine.js";
+import { TwoHundredAndFiftyFour } from "@vercel/sdk/models/twohundredandsix.js";
 
 let value: TwoHundredAndFiftyFour = {
-  headerName: "<value>",
   projectId: "<id>",
-  type: "header",
+  resourceUrl: "https://colorless-councilman.name",
+  type: "connectSrc",
 };
 ```
 
@@ -18,6 +18,6 @@ let value: TwoHundredAndFiftyFour = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `headerName`                                                           | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `resourceUrl`                                                          | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `type`                                                                 | [models.UserEventPayload254Type](../models/usereventpayload254type.md) | :heavy_check_mark:                                                     | N/A                                                                    |

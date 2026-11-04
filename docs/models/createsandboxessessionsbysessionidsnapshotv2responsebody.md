@@ -25,6 +25,16 @@ let value: CreateSandboxesSessionsBySessionIdSnapshotV2ResponseBody = {
       deniedCIDRs: [
         "10.0.0.0/8",
       ],
+      forwardRules: [
+        {
+          domain: "limited-plastic.com",
+          forwardURL: "https://lasting-godfather.name",
+          matchDimensions: [
+            "path",
+            "method",
+          ],
+        },
+      ],
       injectionRules: [
         {
           domain: "api.vercel.com",
@@ -32,9 +42,23 @@ let value: CreateSandboxesSessionsBySessionIdSnapshotV2ResponseBody = {
             "Authorization",
             "X-API-Key",
           ],
+          matchDimensions: [
+            "path",
+            "method",
+          ],
         },
       ],
       mode: "custom",
+      responseRules: [
+        {
+          domain: "showy-gradient.biz",
+          matchDimensions: [
+            "path",
+            "method",
+          ],
+          statusCode: 6676.65,
+        },
+      ],
     },
     networkTransfer: {
       egress: 7683.25,

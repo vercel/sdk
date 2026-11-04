@@ -6,17 +6,17 @@
 import { GetOrder1DomainsRegistrarDetails } from "@vercel/sdk/models/getorderop.js";
 
 let value: GetOrder1DomainsRegistrarDetails = {
-  tlds: [
-    {
-      tldName: "<value>",
-      endsAt: "<value>",
-    },
+  message: "<value>",
+  domainNames: [
+    "<value 1>",
+    "<value 2>",
   ],
 };
 ```
 
 ## Fields
 
-| Field                              | Type                               | Required                           | Description                        |
-| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
-| `tlds`                             | [models.Tlds](../models/tlds.md)[] | :heavy_check_mark:                 | N/A                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `message`          | *string*           | :heavy_check_mark: | N/A                |
+| `domainNames`      | *string*[]         | :heavy_check_mark: | N/A                |

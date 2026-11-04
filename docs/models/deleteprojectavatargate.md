@@ -5,7 +5,7 @@ Automated gating configuration. Omitted (the default) means no gating is configu
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarGate } from "@vercel/sdk/models/deleteprojectavatarresponsebody.js";
+import { DeleteProjectAvatarGate } from "@vercel/sdk/models/deleteprojectavatarfrom.js";
 
 let value: DeleteProjectAvatarGate = {
   action: "pause",

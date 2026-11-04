@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { JobGitComments } from "@vercel/sdk/models/ninetythree.js";
+import { JobGitComments } from "@vercel/sdk/models/payloadconfiguration.js";
 
 let value: JobGitComments = {
   onCommit: true,

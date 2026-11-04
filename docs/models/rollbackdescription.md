@@ -5,13 +5,11 @@ Description of why a project was rolled back, and by whom. Note that lastAliasRe
 ## Example Usage
 
 ```typescript
-import { RollbackDescription } from "@vercel/sdk/models/threehundredandthirtythree.js";
+import { RollbackDescription } from "@vercel/sdk/models/threehundredandthirtyeight.js";
 
 let value: RollbackDescription = {
   createdAt: 6896.2,
   description: "mousse creator upbeat what",
-  userId: "<id>",
-  username: "Declan_Yost41",
 };
 ```
 
@@ -21,5 +19,6 @@ let value: RollbackDescription = {
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `createdAt`                                                                               | *number*                                                                                  | :heavy_check_mark:                                                                        | Timestamp of when the rollback was requested.                                             |
 | `description`                                                                             | *string*                                                                                  | :heavy_check_mark:                                                                        | User-supplied explanation of why they rolled back the project. Limited to 250 characters. |
-| `userId`                                                                                  | *string*                                                                                  | :heavy_check_mark:                                                                        | The user who rolled back the project.                                                     |
-| `username`                                                                                | *string*                                                                                  | :heavy_check_mark:                                                                        | The username of the user who rolled back the project.                                     |
+| `principal`                                                                               | *models.PayloadPrincipal*                                                                 | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `userId`                                                                                  | *string*                                                                                  | :heavy_minus_sign:                                                                        | The ID of the user who rolled back the project, when the principal was a user.            |
+| `username`                                                                                | *string*                                                                                  | :heavy_minus_sign:                                                                        | The username of the user who rolled back the project, when the principal was a user.      |

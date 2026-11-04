@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectOptionsAllowlist } from "@vercel/sdk/models/createprojecttoprojectspreset.js";
+import { CreateProjectOptionsAllowlist } from "@vercel/sdk/models/createprojectprojectsplan.js";
 
 let value: CreateProjectOptionsAllowlist = {
   paths: [

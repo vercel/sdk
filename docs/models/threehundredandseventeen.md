@@ -5,10 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventeen } from "@vercel/sdk/models/usereventpayloadgituserid.js";
+import { ThreeHundredAndSeventeen } from "@vercel/sdk/models/twohundredandsixtyeight.js";
 
 let value: ThreeHundredAndSeventeen = {
-  gitLFS: true,
+  consolidatedGitCommitStatus: {
+    enabled: true,
+    propagateFailures: false,
+  },
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -16,8 +19,8 @@ let value: ThreeHundredAndSeventeen = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `gitLFS`           | *boolean*          | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `consolidatedGitCommitStatus`                                                  | [models.ConsolidatedGitCommitStatus](../models/consolidatedgitcommitstatus.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

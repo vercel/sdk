@@ -31,3 +31,14 @@ const value: models.Policies2 = {
 };
 ```
 
+### `models.Policies3`
+
+```typescript
+const value: models.Policies3 = {
+  createdAt: "1722337796419",
+  integrationId: "<id>",
+  kind: "integration-tokens-grant",
+  updatedAt: "1735685448574",
+};
+```
+

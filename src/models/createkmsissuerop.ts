@@ -29,6 +29,18 @@ export const Algorithm = {
  */
 export type Algorithm = ClosedEnum<typeof Algorithm>;
 
+export type Policy3 = {
+  kind: "integration-tokens-grant";
+  /**
+   * The marketplace integration ID for the integration tokens grant policy.
+   */
+  integrationId: string;
+  /**
+   * The claims that KMS should include in signed JWTs for this policy.
+   */
+  tokenClaims?: { [k: string]: any } | undefined;
+};
+
 export type Policy2 = {
   kind: "connex-grant";
   /**
@@ -61,7 +73,7 @@ export type Policy1 = {
   tokenClaims?: { [k: string]: any } | undefined;
 };
 
-export type CreateKmsIssuerPolicy = Policy1 | Policy2;
+export type CreateKmsIssuerPolicy = Policy1 | Policy2 | Policy3;
 
 export type CreateKmsIssuerRequestBody = {
   /**
@@ -76,7 +88,7 @@ export type CreateKmsIssuerRequestBody = {
    * A JSON Schema used to validate the resolved token claims when signing tokens for this issuer.
    */
   claimsSchema?: { [k: string]: any } | undefined;
-  policy?: Policy1 | Policy2 | undefined;
+  policy?: Policy1 | Policy2 | Policy3 | undefined;
   /**
    * The PEM-encoded private key to use for the issuer.
    */
@@ -126,6 +138,17 @@ export const CreateKmsIssuerOrigin = {
 } as const;
 export type CreateKmsIssuerOrigin = ClosedEnum<typeof CreateKmsIssuerOrigin>;
 
+/**
+ * Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`).
+ */
+export type Policies3 = {
+  createdAt: string;
+  integrationId: string;
+  kind: "integration-tokens-grant";
+  tokenClaims?: { [k: string]: any } | undefined;
+  updatedAt: string;
+};
+
 export type Policies2 = {
   clientId: string;
   createdAt: string;
@@ -147,7 +170,7 @@ export type Policies1 = {
   updatedAt: string;
 };
 
-export type Policies = Policies1 | Policies2;
+export type Policies = Policies1 | Policies2 | Policies3;
 
 export type CreateKmsIssuerPublicKey = {
   alg?: string | undefined;
@@ -214,7 +237,7 @@ export type CreateKmsIssuerResponseBody = {
   name: string;
   origin: CreateKmsIssuerOrigin;
   ownerId: string;
-  policies: Array<Policies1 | Policies2>;
+  policies: Array<Policies1 | Policies2 | Policies3>;
   signingKeys: Array<SigningKeys>;
   updatedAt: string;
 };
@@ -222,6 +245,28 @@ export type CreateKmsIssuerResponseBody = {
 /** @internal */
 export const Algorithm$outboundSchema: z.ZodNativeEnum<typeof Algorithm> = z
   .nativeEnum(Algorithm);
+
+/** @internal */
+export type Policy3$Outbound = {
+  kind: "integration-tokens-grant";
+  integrationId: string;
+  tokenClaims?: { [k: string]: any } | undefined;
+};
+
+/** @internal */
+export const Policy3$outboundSchema: z.ZodType<
+  Policy3$Outbound,
+  z.ZodTypeDef,
+  Policy3
+> = z.object({
+  kind: z.literal("integration-tokens-grant"),
+  integrationId: z.string(),
+  tokenClaims: z.record(z.any()).optional(),
+});
+
+export function policy3ToJSON(policy3: Policy3): string {
+  return JSON.stringify(Policy3$outboundSchema.parse(policy3));
+}
 
 /** @internal */
 export type Policy2$Outbound = {
@@ -274,7 +319,8 @@ export function policy1ToJSON(policy1: Policy1): string {
 /** @internal */
 export type CreateKmsIssuerPolicy$Outbound =
   | Policy1$Outbound
-  | Policy2$Outbound;
+  | Policy2$Outbound
+  | Policy3$Outbound;
 
 /** @internal */
 export const CreateKmsIssuerPolicy$outboundSchema: z.ZodType<
@@ -284,6 +330,7 @@ export const CreateKmsIssuerPolicy$outboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Policy1$outboundSchema),
   z.lazy(() => Policy2$outboundSchema),
+  z.lazy(() => Policy3$outboundSchema),
 ]);
 
 export function createKmsIssuerPolicyToJSON(
@@ -299,7 +346,7 @@ export type CreateKmsIssuerRequestBody$Outbound = {
   name: string;
   algorithm: string;
   claimsSchema?: { [k: string]: any } | undefined;
-  policy?: Policy1$Outbound | Policy2$Outbound | undefined;
+  policy?: Policy1$Outbound | Policy2$Outbound | Policy3$Outbound | undefined;
   importKey?: string | undefined;
   importKeyId?: string | undefined;
 };
@@ -316,6 +363,7 @@ export const CreateKmsIssuerRequestBody$outboundSchema: z.ZodType<
   policy: z.union([
     z.lazy(() => Policy1$outboundSchema),
     z.lazy(() => Policy2$outboundSchema),
+    z.lazy(() => Policy3$outboundSchema),
   ]).optional(),
   importKey: z.string().optional(),
   importKeyId: z.string().optional(),
@@ -376,6 +424,29 @@ export const CreateKmsIssuerOrigin$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(CreateKmsIssuerOrigin);
 
 /** @internal */
+export const Policies3$inboundSchema: z.ZodType<
+  Policies3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.string(),
+  integrationId: types.string(),
+  kind: types.literal("integration-tokens-grant"),
+  tokenClaims: types.optional(z.record(z.any())),
+  updatedAt: types.string(),
+});
+
+export function policies3FromJSON(
+  jsonString: string,
+): SafeParseResult<Policies3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Policies3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Policies3' from JSON`,
+  );
+}
+
+/** @internal */
 export const Policies2$inboundSchema: z.ZodType<
   Policies2,
   z.ZodTypeDef,
@@ -431,6 +502,7 @@ export const Policies$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => Policies1$inboundSchema),
   z.lazy(() => Policies2$inboundSchema),
+  z.lazy(() => Policies3$inboundSchema),
 ]);
 
 export function policiesFromJSON(
@@ -531,6 +603,7 @@ export const CreateKmsIssuerResponseBody$inboundSchema: z.ZodType<
     z.union([
       z.lazy(() => Policies1$inboundSchema),
       z.lazy(() => Policies2$inboundSchema),
+      z.lazy(() => Policies3$inboundSchema),
     ]),
   ),
   signingKeys: z.array(z.lazy(() => SigningKeys$inboundSchema)),

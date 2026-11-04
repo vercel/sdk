@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateIntegrationStoreDirectQuote } from "@vercel/sdk/models/createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
+import { CreateIntegrationStoreDirectQuote } from "@vercel/sdk/models/createintegrationstoredirecthiddenintegrationsresponse2003.js";
 
 let value: CreateIntegrationStoreDirectQuote = {
   amount: "718.56",

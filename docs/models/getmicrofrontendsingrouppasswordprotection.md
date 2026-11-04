@@ -5,7 +5,7 @@ Password protection settings returned without the secret password hash.
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupPasswordProtection } from "@vercel/sdk/models/getmicrofrontendsingroupresponsebody.js";
+import { GetMicrofrontendsInGroupPasswordProtection } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
 
 let value: GetMicrofrontendsInGroupPasswordProtection = {
   deploymentType: "all_except_custom_domains",

@@ -13,5 +13,5 @@ let value: DefaultFor = "eve-tracing";
 ## Values
 
 ```typescript
-"eve-tracing"
+"eve-tracing" | "nextjs-tracing"
 ```

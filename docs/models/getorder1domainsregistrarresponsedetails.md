@@ -6,12 +6,12 @@
 import { GetOrder1DomainsRegistrarResponseDetails } from "@vercel/sdk/models/getorderop.js";
 
 let value: GetOrder1DomainsRegistrarResponseDetails = {
-  detectedLanguageCode: "<value>",
+  reason: "authentication-required",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `detectedLanguageCode` | *string*               | :heavy_check_mark:     | N/A                    |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `reason`                                   | [models.OneReason](../models/onereason.md) | :heavy_check_mark:                         | N/A                                        |

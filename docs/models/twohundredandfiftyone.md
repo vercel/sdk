@@ -5,29 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyOne } from "@vercel/sdk/models/onehundredandninetynine.js";
+import { TwoHundredAndFiftyOne } from "@vercel/sdk/models/twohundredandsix.js";
 
 let value: TwoHundredAndFiftyOne = {
-  connectSrcCount: 8504.33,
-  connectSrcOriginCount: 4006.63,
-  deletedCount: 4824.74,
-  headerCount: 6900.26,
+  justification: "<value>",
+  previousStatus: "<value>",
   projectId: "<id>",
-  projectName: "<value>",
-  scriptCount: 204.49,
+  url: "https://impolite-jacket.net",
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `connectSrcCount`                      | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcNormalizationRulesCleared`  | *boolean*                              | :heavy_minus_sign:                     | N/A                                    |
-| `connectSrcOriginCount`                | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcUserNormalizationRuleCount` | *number*                               | :heavy_minus_sign:                     | N/A                                    |
-| `deletedCount`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `headerCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `projectId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `projectName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `scriptCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `approvalScope`                                                  | [models.ApprovalScope](../models/approvalscope.md)               | :heavy_minus_sign:                                               | N/A                                                              |
+| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |

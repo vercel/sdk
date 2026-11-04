@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Forty } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
+import { Forty } from "@vercel/sdk/models/thirtytwo.js";
 
 let value: Forty = {
   privateProvider: {

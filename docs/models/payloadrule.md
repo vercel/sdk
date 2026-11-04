@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadRule } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
+import { PayloadRule } from "@vercel/sdk/models/thirtytwo.js";
 
 let value: PayloadRule = {
   id: "<id>",
@@ -17,4 +17,5 @@ let value: PayloadRule = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `id`               | *string*           | :heavy_check_mark: | N/A                |
 | `model`            | *string*           | :heavy_minus_sign: | N/A                |
+| `rewriteModel`     | *string*           | :heavy_minus_sign: | N/A                |
 | `type`             | *string*           | :heavy_check_mark: | N/A                |

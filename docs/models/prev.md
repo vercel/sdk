@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Prev } from "@vercel/sdk/models/onehundredandninetynine.js";
+import { Prev } from "@vercel/sdk/models/twohundredandsix.js";
 
 let value: Prev = {
   fallbackEnvironment: "<value>",

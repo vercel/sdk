@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectStaticIps } from "@vercel/sdk/models/createprojecttoprojectspreset.js";
+import { CreateProjectStaticIps } from "@vercel/sdk/models/createprojectprojectsplan.js";
 
 let value: CreateProjectStaticIps = {
   builds: false,

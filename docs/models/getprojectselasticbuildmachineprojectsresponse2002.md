@@ -5,7 +5,7 @@ Server-owned Elastic assignment; responses may fall back to the legacy label. No
 ## Example Usage
 
 ```typescript
-import { GetProjectsElasticBuildMachineProjectsResponse2002 } from "@vercel/sdk/models/getprojectsresponsebodykind.js";
+import { GetProjectsElasticBuildMachineProjectsResponse2002 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
 
 let value: GetProjectsElasticBuildMachineProjectsResponse2002 = {
   cores: 3836.99,

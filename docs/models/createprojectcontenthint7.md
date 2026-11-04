@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectContentHint7 } from "@vercel/sdk/models/createprojecthaskey.js";
+import { CreateProjectContentHint7 } from "@vercel/sdk/models/createprojecthasprojectsvalue.js";
 
 let value: CreateProjectContentHint7 = {
   storeId: "<id>",

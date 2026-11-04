@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Sampling } from "@vercel/sdk/models/usereventpayload391scope.js";
+import { Sampling } from "@vercel/sdk/models/threehundredandninetytwo.js";
 
 let value: Sampling = {
   rate: 1983.19,

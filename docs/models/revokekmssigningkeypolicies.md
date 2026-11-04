@@ -31,3 +31,14 @@ const value: models.RevokeKmsSigningKeyPolicies2 = {
 };
 ```
 
+### `models.RevokeKmsSigningKeyPolicies3`
+
+```typescript
+const value: models.RevokeKmsSigningKeyPolicies3 = {
+  createdAt: "1704414091549",
+  integrationId: "<id>",
+  kind: "integration-tokens-grant",
+  updatedAt: "1735651200389",
+};
+```
+

@@ -1,24 +1,22 @@
 # UserEventPayload402Previous
 
-Automatic code review settings
+Mirrors the `security-review` setting value in `@api/api-settings`.
 
 ## Example Usage
 
 ```typescript
-import { UserEventPayload402Previous } from "@vercel/sdk/models/usereventpayload391scope.js";
+import { UserEventPayload402Previous } from "@vercel/sdk/models/threehundredandninetytwo.js";
 
 let value: UserEventPayload402Previous = {
   enabled: false,
-  includeDrafts: true,
-  scope: "all",
+  projectScope: "all",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `enabled`                                                                                                            | *boolean*                                                                                                            | :heavy_check_mark:                                                                                                   | Whether automatic code reviews are enabled                                                                           |
-| `includeDrafts`                                                                                                      | *boolean*                                                                                                            | :heavy_check_mark:                                                                                                   | Whether to include draft pull requests in automatic reviews                                                          |
-| `scope`                                                                                                              | [models.UserEventPayload402PreviousScope](../models/usereventpayload402previousscope.md)                             | :heavy_check_mark:                                                                                                   | Which repository visibilities get automatic reviews                                                                  |
-| `selectedRepos`                                                                                                      | *string*[]                                                                                                           | :heavy_minus_sign:                                                                                                   | GitHub repos to scope automatic reviews to. Format: "owner/repo" (lowercase). Only used when scope='selected_repos'. |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `enabled`                                                      | *boolean*                                                      | :heavy_check_mark:                                             | N/A                                                            |
+| `projectIds`                                                   | *string*[]                                                     | :heavy_minus_sign:                                             | N/A                                                            |
+| `projectScope`                                                 | [models.PayloadProjectScope](../models/payloadprojectscope.md) | :heavy_check_mark:                                             | N/A                                                            |

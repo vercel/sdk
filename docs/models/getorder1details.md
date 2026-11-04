@@ -6,8 +6,7 @@
 import { GetOrder1Details } from "@vercel/sdk/models/getorderop.js";
 
 let value: GetOrder1Details = {
-  message: "<value>",
-  domainNames: [],
+  expectedPrice: 450.92,
 };
 ```
 
@@ -15,5 +14,5 @@ let value: GetOrder1Details = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `message`          | *string*           | :heavy_check_mark: | N/A                |
-| `domainNames`      | *string*[]         | :heavy_check_mark: | N/A                |
+| `expectedPrice`    | *number*           | :heavy_check_mark: | N/A                |
+| `actualPrice`      | *number*           | :heavy_minus_sign: | N/A                |

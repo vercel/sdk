@@ -13,5 +13,5 @@ let value: CreateLogDrainSourceDefaultFor = "eve-tracing";
 ## Values
 
 ```typescript
-"eve-tracing"
+"eve-tracing" | "nextjs-tracing"
 ```

@@ -185,6 +185,12 @@ export type UpdateResourceCustomClaims = {
   claimRules?: Array<UpdateResourceClaimRules> | undefined;
 };
 
+export const CredentialTypes = {
+  Static: "static",
+  Oidc: "oidc",
+} as const;
+export type CredentialTypes = ClosedEnum<typeof CredentialTypes>;
+
 export type UpdateResourceRequestBody = {
   ownership?: UpdateResourceOwnership | undefined;
   name?: string | undefined;
@@ -198,6 +204,10 @@ export type UpdateResourceRequestBody = {
    * Custom claims embedded in the resource tokens Vercel mints for this resource.
    */
   customClaims?: UpdateResourceCustomClaims | undefined;
+  /**
+   * The credential types the resource accepts: `static` for long-lived secrets, `oidc` for Vercel resource OIDC tokens. Can be set freely while the resource has none. After that, only to confirm a change Vercel requested with a secrets rotation, once it is complete. Without `static`, all long-lived secrets must be expired and removed, and no new ones minted or injected.
+   */
+  credentialTypes?: Array<CredentialTypes> | undefined;
 };
 
 export type UpdateResourceRequest = {
@@ -665,6 +675,11 @@ export function updateResourceCustomClaimsToJSON(
 }
 
 /** @internal */
+export const CredentialTypes$outboundSchema: z.ZodNativeEnum<
+  typeof CredentialTypes
+> = z.nativeEnum(CredentialTypes);
+
+/** @internal */
 export type UpdateResourceRequestBody$Outbound = {
   ownership?: string | undefined;
   name?: string | undefined;
@@ -675,6 +690,7 @@ export type UpdateResourceRequestBody$Outbound = {
   extras?: { [k: string]: any } | undefined;
   secrets?: Secrets2$Outbound | Array<Secrets1$Outbound> | undefined;
   customClaims?: UpdateResourceCustomClaims$Outbound | undefined;
+  credentialTypes?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -700,6 +716,7 @@ export const UpdateResourceRequestBody$outboundSchema: z.ZodType<
   ]).optional(),
   customClaims: z.lazy(() => UpdateResourceCustomClaims$outboundSchema)
     .optional(),
+  credentialTypes: z.array(CredentialTypes$outboundSchema).optional(),
 });
 
 export function updateResourceRequestBodyToJSON(

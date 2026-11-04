@@ -28,11 +28,11 @@ export type UpsertAiGatewayBudgetRefreshPeriod = ClosedEnum<
 export type UpsertAiGatewayBudgetRequestBody = {
   scopeType: UpsertAiGatewayBudgetScopeType;
   /**
-   * Required when scopeType is "project".
+   * Required when scopeType is \"project\".
    */
   projectId?: string | undefined;
   /**
-   * Required when scopeType is "user".
+   * Required when scopeType is \"user\".
    */
   userId?: string | undefined;
   /**
@@ -45,6 +45,10 @@ export type UpsertAiGatewayBudgetRequestBody = {
    */
   includeByokInQuota?: boolean | undefined;
   alertThresholds?: Array<number> | undefined;
+  /**
+   * Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains.
+   */
+  justification?: string | undefined;
 };
 
 export type UpsertAiGatewayBudgetRequest = {
@@ -78,6 +82,7 @@ export type UpsertAiGatewayBudgetRequestBody$Outbound = {
   refreshPeriod: string;
   includeByokInQuota?: boolean | undefined;
   alertThresholds?: Array<number> | undefined;
+  justification?: string | undefined;
 };
 
 /** @internal */
@@ -95,6 +100,7 @@ export const UpsertAiGatewayBudgetRequestBody$outboundSchema: z.ZodType<
   ),
   includeByokInQuota: z.boolean().optional(),
   alertThresholds: z.array(z.number()).optional(),
+  justification: z.string().optional(),
 });
 
 export function upsertAiGatewayBudgetRequestBodyToJSON(

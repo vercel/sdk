@@ -13,6 +13,10 @@ let value: SandboxInjectionRule = {
     "Authorization",
     "X-API-Key",
   ],
+  matchDimensions: [
+    "path",
+    "method",
+  ],
 };
 ```
 
@@ -22,3 +26,4 @@ let value: SandboxInjectionRule = {
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `domain`                                                                                           | *string*                                                                                           | :heavy_check_mark:                                                                                 | The domain (or pattern) that this injection rule applies to. Supports wildcards like *.vercel.com. | api.vercel.com                                                                                     |
 | `headerNames`                                                                                      | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | The names of HTTP headers that have value that will be injected for requests to this domain.       | [<br/>"Authorization",<br/>"X-API-Key"<br/>]                                                       |
+| `matchDimensions`                                                                                  | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | Request dimensions used to match this rule. Matcher values are omitted.                            | [<br/>"path",<br/>"method"<br/>]                                                                   |

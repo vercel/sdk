@@ -5,23 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyTwo } from "@vercel/sdk/models/usereventpayloadgituserid.js";
+import { ThreeHundredAndTwentyTwo } from "@vercel/sdk/models/twohundredandsixtyeight.js";
 
 let value: ThreeHundredAndTwentyTwo = {
   domain: "purple-asset.org",
-  newProjectId: "<id>",
-  newProjectName: "<value>",
-  oldProjectId: "<id>",
-  oldProjectName: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `newProjectId`     | *string*           | :heavy_check_mark: | N/A                |
-| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
-| `oldProjectId`     | *string*           | :heavy_check_mark: | N/A                |
-| `oldProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
+| `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
+| `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |

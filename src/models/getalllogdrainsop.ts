@@ -259,6 +259,7 @@ export type GetAllLogDrainsSourceLogDrains2 = {
  */
 export const GetAllLogDrainsSourceLogDrainsDefaultFor = {
   EveTracing: "eve-tracing",
+  NextjsTracing: "nextjs-tracing",
 } as const;
 /**
  * Informational marker for a system-owned default drain.
@@ -680,6 +681,7 @@ export type GetAllLogDrainsSource2 = {
  */
 export const GetAllLogDrainsSourceDefaultFor = {
   EveTracing: "eve-tracing",
+  NextjsTracing: "nextjs-tracing",
 } as const;
 /**
  * Informational marker for a system-owned default drain.

@@ -5,13 +5,11 @@ Description of why a project was rolled back, and by whom. Note that lastAliasRe
 ## Example Usage
 
 ```typescript
-import { GetProjectRollbackDescription } from "@vercel/sdk/models/getprojectresponsebody.js";
+import { GetProjectRollbackDescription } from "@vercel/sdk/models/getprojectfrompreset.js";
 
 let value: GetProjectRollbackDescription = {
   createdAt: 4672.55,
   description: "uh-huh jungle than split",
-  userId: "<id>",
-  username: "Lorenz.Kuhlman",
 };
 ```
 
@@ -21,5 +19,6 @@ let value: GetProjectRollbackDescription = {
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `createdAt`                                                                               | *number*                                                                                  | :heavy_check_mark:                                                                        | Timestamp of when the rollback was requested.                                             |
 | `description`                                                                             | *string*                                                                                  | :heavy_check_mark:                                                                        | User-supplied explanation of why they rolled back the project. Limited to 250 characters. |
-| `userId`                                                                                  | *string*                                                                                  | :heavy_check_mark:                                                                        | The user who rolled back the project.                                                     |
-| `username`                                                                                | *string*                                                                                  | :heavy_check_mark:                                                                        | The username of the user who rolled back the project.                                     |
+| `principal`                                                                               | *models.GetProjectPrincipal*                                                              | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `userId`                                                                                  | *string*                                                                                  | :heavy_minus_sign:                                                                        | The ID of the user who rolled back the project, when the principal was a user.            |
+| `username`                                                                                | *string*                                                                                  | :heavy_minus_sign:                                                                        | The username of the user who rolled back the project, when the principal was a user.      |

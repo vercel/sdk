@@ -45,8 +45,10 @@ import {
   DeploymentExpiration$inboundSchema,
   Features,
   Features$inboundSchema,
-} from "./createprojecthaskey.js";
+} from "./createprojecthasprojectsvalue.js";
 import {
+  CreateProjectAliasAssigned,
+  CreateProjectAliasAssigned$inboundSchema,
   CreateProjectIpBuckets,
   CreateProjectIpBuckets$inboundSchema,
   CreateProjectMicrofrontends,
@@ -63,8 +65,24 @@ import {
   CreateProjectPasswordProtection$inboundSchema,
   CreateProjectPermissions,
   CreateProjectPermissions$inboundSchema,
+  CreateProjectProjectsAliasError,
+  CreateProjectProjectsAliasError$inboundSchema,
+  CreateProjectProjectsBuilds,
+  CreateProjectProjectsBuilds$inboundSchema,
+  CreateProjectProjectsChecksConclusion,
+  CreateProjectProjectsChecksConclusion$inboundSchema,
+  CreateProjectProjectsChecksState,
+  CreateProjectProjectsChecksState$inboundSchema,
+  CreateProjectProjectsOidcTokenClaims,
+  CreateProjectProjectsOidcTokenClaims$inboundSchema,
+  CreateProjectProjectsPlan,
+  CreateProjectProjectsPlan$inboundSchema,
   CreateProjectProjectsResourceConfig,
   CreateProjectProjectsResourceConfig$inboundSchema,
+  CreateProjectProjectsResponseBranchMatcher,
+  CreateProjectProjectsResponseBranchMatcher$inboundSchema,
+  CreateProjectProjectsResponseCreator,
+  CreateProjectProjectsResponseCreator$inboundSchema,
   CreateProjectProjectsSsoProtection,
   CreateProjectProjectsSsoProtection$inboundSchema,
   CreateProjectRollbackDescription,
@@ -77,16 +95,6 @@ import {
   CreateProjectServices$inboundSchema,
   CreateProjectStaticIps,
   CreateProjectStaticIps$inboundSchema,
-  CreateProjectTargets,
-  CreateProjectTargets$inboundSchema,
-  CreateProjectTier,
-  CreateProjectTier$inboundSchema,
-  CreateProjectToProjectsPreset,
-  CreateProjectToProjectsPreset$inboundSchema,
-  CreateProjectTracing,
-  CreateProjectTracing$inboundSchema,
-  CreateProjectTrustedIps,
-  CreateProjectTrustedIps$inboundSchema,
   InternalRoutes,
   InternalRoutes$inboundSchema,
   Jobs,
@@ -107,8 +115,179 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojecttoprojectspreset.js";
+} from "./createprojectprojectsplan.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateProjectProjectsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type CreateProjectProjectsReadyState = ClosedEnum<
+  typeof CreateProjectProjectsReadyState
+>;
+
+export const CreateProjectProjectsReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type CreateProjectProjectsReadySubstate = ClosedEnum<
+  typeof CreateProjectProjectsReadySubstate
+>;
+
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType =
+  {
+    Lambdas: "LAMBDAS",
+  } as const;
+export type CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType =
+  ClosedEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType
+  >;
+
+export type CreateProjectTargets = {
+  alias?: Array<string> | undefined;
+  aliasAssigned?: CreateProjectAliasAssigned | null | undefined;
+  aliasError?: CreateProjectProjectsAliasError | null | undefined;
+  aliasFinal?: string | null | undefined;
+  automaticAliases?: Array<string> | undefined;
+  branchMatcher?: CreateProjectProjectsResponseBranchMatcher | undefined;
+  buildingAt?: number | undefined;
+  builds?: Array<CreateProjectProjectsBuilds> | undefined;
+  checksConclusion?: CreateProjectProjectsChecksConclusion | undefined;
+  checksState?: CreateProjectProjectsChecksState | undefined;
+  connectBuildsEnabled?: boolean | undefined;
+  connectConfigurationId?: string | undefined;
+  createdAt: number;
+  createdIn: string;
+  creator: CreateProjectProjectsResponseCreator | null;
+  deletedAt?: number | undefined;
+  deploymentHostname: string;
+  forced?: boolean | undefined;
+  id: string;
+  meta?: { [k: string]: string } | undefined;
+  monorepoManager?: string | null | undefined;
+  name: string;
+  oidcTokenClaims?: CreateProjectProjectsOidcTokenClaims | undefined;
+  plan: CreateProjectProjectsPlan;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
+  previewCommentsEnabled?: boolean | undefined;
+  private: boolean;
+  readyAt?: number | undefined;
+  readyState: CreateProjectProjectsReadyState;
+  readySubstate?: CreateProjectProjectsReadySubstate | undefined;
+  requestedAt?: number | undefined;
+  target?: string | null | undefined;
+  teamId?: string | null | undefined;
+  type: CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType;
+  url: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
+  withCache?: boolean | undefined;
+};
+
+export const CreateProjectTier = {
+  Priority: "priority",
+} as const;
+export type CreateProjectTier = ClosedEnum<typeof CreateProjectTier>;
+
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export const CreateProjectDestination = {
+  External: "external",
+  Internal: "internal",
+} as const;
+/**
+ * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+ */
+export type CreateProjectDestination = ClosedEnum<
+  typeof CreateProjectDestination
+>;
+
+export const CreateProjectProjectsEnv = {
+  Preview: "preview",
+  Production: "production",
+} as const;
+export type CreateProjectProjectsEnv = ClosedEnum<
+  typeof CreateProjectProjectsEnv
+>;
+
+export type CreateProjectSamplingRules = {
+  /**
+   * Which tracing destination this rule applies to. `internal` is the hidden Vercel production-tracing drain (internal delivery); `external` is any customer-configured drain. Derived from the owning drain's delivery type when project tracing is computed; absent on configs persisted before this field existed.
+   */
+  destination?: CreateProjectDestination | undefined;
+  env?: CreateProjectProjectsEnv | undefined;
+  rate: number;
+  requestPath?: string | undefined;
+};
+
+export type CreateProjectTracing = {
+  domains?: string | undefined;
+  ignorePaths?: Array<string> | undefined;
+  samplingRules?: Array<CreateProjectSamplingRules> | undefined;
+};
+
+export const CreateProjectTrustedIpsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type CreateProjectTrustedIpsDeploymentType = ClosedEnum<
+  typeof CreateProjectTrustedIpsDeploymentType
+>;
+
+export type TrustedIps2 = {
+  deploymentType: CreateProjectTrustedIpsDeploymentType;
+};
+
+export type CreateProjectTrustedIpsAddresses = {
+  note?: string | undefined;
+  value: string;
+};
+
+export const TrustedIpsDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+  Production: "production",
+} as const;
+export type TrustedIpsDeploymentType = ClosedEnum<
+  typeof TrustedIpsDeploymentType
+>;
+
+export const ProtectionMode = {
+  Additional: "additional",
+  Exclusive: "exclusive",
+} as const;
+export type ProtectionMode = ClosedEnum<typeof ProtectionMode>;
+
+export type TrustedIps1 = {
+  addresses: Array<CreateProjectTrustedIpsAddresses>;
+  deploymentType: TrustedIpsDeploymentType;
+  protectionMode: ProtectionMode;
+};
+
+export type CreateProjectTrustedIps = TrustedIps1 | TrustedIps2;
+
+export const CreateProjectToProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type CreateProjectToProjectsPreset = ClosedEnum<
+  typeof CreateProjectToProjectsPreset
+>;
 
 /**
  * The target envs on the current project that may be accessed.
@@ -414,7 +593,7 @@ export type CreateProjectResponseBody = {
   transferredFromAccountId?: string | undefined;
   transferStartedAt?: number | undefined;
   transferToAccountId?: string | undefined;
-  trustedIps?: CreateProjectTrustedIps | null | undefined;
+  trustedIps?: TrustedIps1 | TrustedIps2 | null | undefined;
   trustedSources?: CreateProjectTrustedSources | null | undefined;
   updatedAt?: number | undefined;
   usageStatus?: UsageStatus | undefined;
@@ -423,6 +602,252 @@ export type CreateProjectResponseBody = {
   vercelFlags?: VercelFlags | undefined;
   webAnalytics?: CreateProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const CreateProjectProjectsReadyState$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsReadyState
+> = z.nativeEnum(CreateProjectProjectsReadyState);
+
+/** @internal */
+export const CreateProjectProjectsReadySubstate$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsReadySubstate
+> = z.nativeEnum(CreateProjectProjectsReadySubstate);
+
+/** @internal */
+export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType
+  > = z.nativeEnum(
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType,
+  );
+
+/** @internal */
+export const CreateProjectTargets$inboundSchema: z.ZodType<
+  CreateProjectTargets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: z.nullable(CreateProjectAliasAssigned$inboundSchema)
+    .optional(),
+  aliasError: z.nullable(CreateProjectProjectsAliasError$inboundSchema)
+    .optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  automaticAliases: types.optional(z.array(types.string())),
+  branchMatcher: types.optional(
+    CreateProjectProjectsResponseBranchMatcher$inboundSchema,
+  ),
+  buildingAt: types.optional(types.number()),
+  builds: types.optional(z.array(CreateProjectProjectsBuilds$inboundSchema)),
+  checksConclusion: types.optional(
+    CreateProjectProjectsChecksConclusion$inboundSchema,
+  ),
+  checksState: types.optional(CreateProjectProjectsChecksState$inboundSchema),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  createdAt: types.number(),
+  createdIn: types.string(),
+  creator: types.nullable(CreateProjectProjectsResponseCreator$inboundSchema),
+  deletedAt: types.optional(types.number()),
+  deploymentHostname: types.string(),
+  forced: types.optional(types.boolean()),
+  id: types.string(),
+  meta: types.optional(z.record(types.string())),
+  monorepoManager: z.nullable(types.string()).optional(),
+  name: types.string(),
+  oidcTokenClaims: types.optional(
+    CreateProjectProjectsOidcTokenClaims$inboundSchema,
+  ),
+  plan: CreateProjectProjectsPlan$inboundSchema,
+  previewCommentsEnabled: types.optional(types.boolean()),
+  private: types.boolean(),
+  readyAt: types.optional(types.number()),
+  readyState: CreateProjectProjectsReadyState$inboundSchema,
+  readySubstate: types.optional(
+    CreateProjectProjectsReadySubstate$inboundSchema,
+  ),
+  requestedAt: types.optional(types.number()),
+  target: z.nullable(types.string()).optional(),
+  teamId: z.nullable(types.string()).optional(),
+  type:
+    CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema,
+  url: types.string(),
+  userId: types.optional(types.string()),
+  withCache: types.optional(types.boolean()),
+});
+
+export function createProjectTargetsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTargets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTargets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTargets' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTier$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectTier
+> = z.nativeEnum(CreateProjectTier);
+
+/** @internal */
+export const CreateProjectDestination$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectDestination
+> = z.nativeEnum(CreateProjectDestination);
+
+/** @internal */
+export const CreateProjectProjectsEnv$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsEnv
+> = z.nativeEnum(CreateProjectProjectsEnv);
+
+/** @internal */
+export const CreateProjectSamplingRules$inboundSchema: z.ZodType<
+  CreateProjectSamplingRules,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  destination: types.optional(CreateProjectDestination$inboundSchema),
+  env: types.optional(CreateProjectProjectsEnv$inboundSchema),
+  rate: types.number(),
+  requestPath: types.optional(types.string()),
+});
+
+export function createProjectSamplingRulesFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectSamplingRules, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectSamplingRules$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectSamplingRules' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTracing$inboundSchema: z.ZodType<
+  CreateProjectTracing,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  domains: types.optional(types.string()),
+  ignorePaths: types.optional(z.array(types.string())),
+  samplingRules: types.optional(
+    z.array(z.lazy(() => CreateProjectSamplingRules$inboundSchema)),
+  ),
+});
+
+export function createProjectTracingFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTracing, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTracing$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTracing' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTrustedIpsDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectTrustedIpsDeploymentType> = z.nativeEnum(
+    CreateProjectTrustedIpsDeploymentType,
+  );
+
+/** @internal */
+export const TrustedIps2$inboundSchema: z.ZodType<
+  TrustedIps2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  deploymentType: CreateProjectTrustedIpsDeploymentType$inboundSchema,
+});
+
+export function trustedIps2FromJSON(
+  jsonString: string,
+): SafeParseResult<TrustedIps2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustedIps2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustedIps2' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTrustedIpsAddresses$inboundSchema: z.ZodType<
+  CreateProjectTrustedIpsAddresses,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  note: types.optional(types.string()),
+  value: types.string(),
+});
+
+export function createProjectTrustedIpsAddressesFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTrustedIpsAddresses, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTrustedIpsAddresses$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTrustedIpsAddresses' from JSON`,
+  );
+}
+
+/** @internal */
+export const TrustedIpsDeploymentType$inboundSchema: z.ZodNativeEnum<
+  typeof TrustedIpsDeploymentType
+> = z.nativeEnum(TrustedIpsDeploymentType);
+
+/** @internal */
+export const ProtectionMode$inboundSchema: z.ZodNativeEnum<
+  typeof ProtectionMode
+> = z.nativeEnum(ProtectionMode);
+
+/** @internal */
+export const TrustedIps1$inboundSchema: z.ZodType<
+  TrustedIps1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  addresses: z.array(
+    z.lazy(() => CreateProjectTrustedIpsAddresses$inboundSchema),
+  ),
+  deploymentType: TrustedIpsDeploymentType$inboundSchema,
+  protectionMode: ProtectionMode$inboundSchema,
+});
+
+export function trustedIps1FromJSON(
+  jsonString: string,
+): SafeParseResult<TrustedIps1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TrustedIps1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TrustedIps1' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectTrustedIps$inboundSchema: z.ZodType<
+  CreateProjectTrustedIps,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => TrustedIps1$inboundSchema),
+  z.lazy(() => TrustedIps2$inboundSchema),
+]);
+
+export function createProjectTrustedIpsFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateProjectTrustedIps, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateProjectTrustedIps$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateProjectTrustedIps' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateProjectToProjectsPreset$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectToProjectsPreset
+> = z.nativeEnum(CreateProjectToProjectsPreset);
 
 /** @internal */
 export const CreateProjectTo2$inboundSchema: z.ZodType<
@@ -902,15 +1327,20 @@ export const CreateProjectResponseBody$inboundSchema: z.ZodType<
     .optional(),
   staticIps: types.optional(CreateProjectStaticIps$inboundSchema),
   targets: types.optional(
-    z.record(types.nullable(CreateProjectTargets$inboundSchema)),
+    z.record(types.nullable(z.lazy(() => CreateProjectTargets$inboundSchema))),
   ),
   tier: types.optional(CreateProjectTier$inboundSchema),
-  tracing: types.optional(CreateProjectTracing$inboundSchema),
+  tracing: types.optional(z.lazy(() => CreateProjectTracing$inboundSchema)),
   transferCompletedAt: types.optional(types.number()),
   transferredFromAccountId: types.optional(types.string()),
   transferStartedAt: types.optional(types.number()),
   transferToAccountId: types.optional(types.string()),
-  trustedIps: z.nullable(CreateProjectTrustedIps$inboundSchema).optional(),
+  trustedIps: z.nullable(
+    smartUnion([
+      z.lazy(() => TrustedIps1$inboundSchema),
+      z.lazy(() => TrustedIps2$inboundSchema),
+    ]),
+  ).optional(),
   trustedSources: z.nullable(
     z.lazy(() => CreateProjectTrustedSources$inboundSchema),
   ).optional(),

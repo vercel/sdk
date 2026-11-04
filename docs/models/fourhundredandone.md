@@ -5,15 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndOne } from "@vercel/sdk/models/usereventpayload391scope.js";
+import { FourHundredAndOne } from "@vercel/sdk/models/threehundredandninetytwo.js";
 
 let value: FourHundredAndOne = {
-  slug: "<value>",
+  next: {
+    enabled: false,
+    includeDrafts: false,
+    scope: "all",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload401Next](../models/usereventpayload401next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |
+| `previous`                                                                     | [models.UserEventPayload401Previous](../models/usereventpayload401previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |

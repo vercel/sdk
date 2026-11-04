@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesType,
-} from "@vercel/sdk/models/getprojectstoprojects1.js";
+} from "@vercel/sdk/models/responsebodytier.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesType =

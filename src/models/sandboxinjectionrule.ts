@@ -20,6 +20,10 @@ export type SandboxInjectionRule = {
    * The names of HTTP headers that have value that will be injected for requests to this domain.
    */
   headerNames?: Array<string> | undefined;
+  /**
+   * Request dimensions used to match this rule. Matcher values are omitted.
+   */
+  matchDimensions?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -30,6 +34,7 @@ export const SandboxInjectionRule$inboundSchema: z.ZodType<
 > = z.object({
   domain: types.string(),
   headerNames: types.optional(z.array(types.string())),
+  matchDimensions: types.optional(z.array(types.string())),
 });
 
 export function sandboxInjectionRuleFromJSON(

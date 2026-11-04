@@ -5,18 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEleven } from "@vercel/sdk/models/ninetythree.js";
+import { OneHundredAndEleven } from "@vercel/sdk/models/payloadconfiguration.js";
 
 let value: OneHundredAndEleven = {
-  bitbucketEmail: "<value>",
+  bitbucketAccountId: "<id>",
   bitbucketLogin: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketName`    | *string*           | :heavy_minus_sign: | N/A                |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `bitbucketAccountId` | *string*             | :heavy_check_mark:   | N/A                  |
+| `bitbucketLogin`     | *string*             | :heavy_check_mark:   | N/A                  |

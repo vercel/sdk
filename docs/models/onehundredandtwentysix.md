@@ -5,33 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentySix } from "@vercel/sdk/models/ninetythree.js";
+import { OneHundredAndTwentySix } from "@vercel/sdk/models/payloadconfiguration.js";
 
 let value: OneHundredAndTwentySix = {
-  job: {
-    headInfo: {
-      owner: "<value>",
-      ref: "<value>",
-      repoUuid: "<id>",
-      sha: "<value>",
-      slug: "<value>",
-    },
-    name: "<value>",
-    owner: "<value>",
-    prId: 2741.35,
-    provider: "bitbucket",
-    ref: "<value>",
-    repoUuid: "<id>",
-    sha: "<value>",
-    slug: "<value>",
-    type: "bitbucket-now-comment",
-    workspaceUuid: "<id>",
-  },
+  url: "https://fixed-lender.org/",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `newTeam`                                                              | [models.UserEventPayloadNewTeam](../models/usereventpayloadnewteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `oldTeam`                                                              | [models.UserEventPayloadOldTeam](../models/usereventpayloadoldteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `url`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

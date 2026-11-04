@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyOne } from "@vercel/sdk/models/usereventjobpayload12610headinfo.js";
+import { OneHundredAndFortyOne } from "@vercel/sdk/models/payloadmode.js";
 
 let value: OneHundredAndFortyOne = {
   name: "<value>",
+  ownerName: "<value>",
+  teamId: "<id>",
+  userId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `newTeam`                                                                    | [models.UserEventPayload141NewTeam](../models/usereventpayload141newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `oldTeam`                                                                    | [models.UserEventPayload141OldTeam](../models/usereventpayload141oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `ownerName`        | *string*           | :heavy_check_mark: | N/A                |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `userId`           | *string*           | :heavy_check_mark: | N/A                |

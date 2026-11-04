@@ -27,6 +27,10 @@ export type ArchiveAiGatewayBudgetDefaultRequest = {
    */
   scopeType: ArchiveAiGatewayBudgetDefaultQueryParamScopeType;
   /**
+   * Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains. Only recorded when scopeType is set.
+   */
+  justification?: string | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -44,6 +48,7 @@ export const ArchiveAiGatewayBudgetDefaultQueryParamScopeType$outboundSchema:
 /** @internal */
 export type ArchiveAiGatewayBudgetDefaultRequest$Outbound = {
   scopeType: string;
+  justification?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -55,6 +60,7 @@ export const ArchiveAiGatewayBudgetDefaultRequest$outboundSchema: z.ZodType<
   ArchiveAiGatewayBudgetDefaultRequest
 > = z.object({
   scopeType: ArchiveAiGatewayBudgetDefaultQueryParamScopeType$outboundSchema,
+  justification: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

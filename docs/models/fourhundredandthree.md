@@ -5,23 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThree } from "@vercel/sdk/models/usereventpayload391scope.js";
+import { FourHundredAndThree } from "@vercel/sdk/models/threehundredandninetytwo.js";
 
 let value: FourHundredAndThree = {
-  next: {
-    enabled: true,
-    projectScope: "selected",
-  },
-  previous: {
-    enabled: false,
-    projectScope: "selected",
-  },
+  amount: "198.85",
+  currency: "CFA Franc BEAC",
+  expiresAt: "1752860188822",
+  trialCreditsIssuedAt: 9332.86,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload403Next](../models/usereventpayload403next.md)         | :heavy_check_mark:                                                             | Mirrors the `security-review` setting value in `@api/api-settings`.            |
-| `previous`                                                                     | [models.UserEventPayload403Previous](../models/usereventpayload403previous.md) | :heavy_check_mark:                                                             | Mirrors the `security-review` setting value in `@api/api-settings`.            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
+| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
+| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |

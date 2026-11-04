@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadPasswordProtection } from "@vercel/sdk/models/ninetythree.js";
+import { UserEventPayloadPasswordProtection } from "@vercel/sdk/models/payloadconfiguration.js";
 
 let value: UserEventPayloadPasswordProtection = {
   deploymentType: "all_except_custom_domains",

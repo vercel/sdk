@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2,
-} from "@vercel/sdk/models/logdrainstatus.js";
+} from "@vercel/sdk/models/createintegrationstoredirectsecretrotationintegrations1.js";
 
 let value:
   CreateIntegrationStoreDirectUiDescriptionIntegrationsResponse200ApplicationJSONResponseBody2 =

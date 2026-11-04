@@ -26,13 +26,17 @@ export type ArchiveAiGatewayBudgetRequest = {
    */
   scopeType: ArchiveAiGatewayBudgetQueryParamScopeType;
   /**
-   * Required when scopeType is "project".
+   * Required when scopeType is \"project\".
    */
   projectId?: string | undefined;
   /**
-   * Required when scopeType is "user".
+   * Required when scopeType is \"user\".
    */
   userId?: string | undefined;
+  /**
+   * Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains.
+   */
+  justification?: string | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -53,6 +57,7 @@ export type ArchiveAiGatewayBudgetRequest$Outbound = {
   scopeType: string;
   projectId?: string | undefined;
   userId?: string | undefined;
+  justification?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -66,6 +71,7 @@ export const ArchiveAiGatewayBudgetRequest$outboundSchema: z.ZodType<
   scopeType: ArchiveAiGatewayBudgetQueryParamScopeType$outboundSchema,
   projectId: z.string().optional(),
   userId: z.string().optional(),
+  justification: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

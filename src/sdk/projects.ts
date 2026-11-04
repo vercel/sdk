@@ -52,7 +52,7 @@ import {
   CreateProjectEnvRequest,
   CreateProjectEnvResponseBody,
 } from "../models/createprojectenvop.js";
-import { CreateProjectRequest } from "../models/createprojecthaskey.js";
+import { CreateProjectRequest } from "../models/createprojecthasprojectsvalue.js";
 import { CreateProjectResponseBody } from "../models/createprojectresponsebody.js";
 import {
   CreateProjectTransferRequestRequest,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyReadySubstate } from "@vercel/sdk/models/getprojectstoprojects1.js";
+import { GetProjectsResponseBodyReadySubstate } from "@vercel/sdk/models/responsebodytier.js";
 
 let value: GetProjectsResponseBodyReadySubstate = "PROMOTED";
 ```

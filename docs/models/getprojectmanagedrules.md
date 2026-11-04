@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectManagedRules } from "@vercel/sdk/models/getprojectresponsebody.js";
+import { GetProjectManagedRules } from "@vercel/sdk/models/getprojectfrompreset.js";
 
 let value: GetProjectManagedRules = {
   aiBots: {

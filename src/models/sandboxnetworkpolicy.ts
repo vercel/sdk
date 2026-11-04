@@ -8,9 +8,17 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
+  SandboxForwardRule,
+  SandboxForwardRule$inboundSchema,
+} from "./sandboxforwardrule.js";
+import {
   SandboxInjectionRule,
   SandboxInjectionRule$inboundSchema,
 } from "./sandboxinjectionrule.js";
+import {
+  SandboxResponseRule,
+  SandboxResponseRule$inboundSchema,
+} from "./sandboxresponserule.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
@@ -43,6 +51,10 @@ export type SandboxNetworkPolicy = {
    */
   deniedCIDRs?: Array<string> | undefined;
   /**
+   * Rules that forward outgoing requests matching specific domains.
+   */
+  forwardRules?: Array<SandboxForwardRule> | undefined;
+  /**
    * HTTP header injection rules for outgoing requests matching specific domains.
    */
   injectionRules?: Array<SandboxInjectionRule> | undefined;
@@ -50,6 +62,10 @@ export type SandboxNetworkPolicy = {
    * The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules.
    */
   mode: Mode;
+  /**
+   * Rules that return custom responses for requests matching specific domains.
+   */
+  responseRules?: Array<SandboxResponseRule> | undefined;
 };
 
 /** @internal */
@@ -66,8 +82,10 @@ export const SandboxNetworkPolicy$inboundSchema: z.ZodType<
   allowedCIDRs: types.optional(z.array(types.string())),
   allowedDomains: types.optional(z.array(types.string())),
   deniedCIDRs: types.optional(z.array(types.string())),
+  forwardRules: types.optional(z.array(SandboxForwardRule$inboundSchema)),
   injectionRules: types.optional(z.array(SandboxInjectionRule$inboundSchema)),
   mode: Mode$inboundSchema,
+  responseRules: types.optional(z.array(SandboxResponseRule$inboundSchema)),
 });
 
 export function sandboxNetworkPolicyFromJSON(

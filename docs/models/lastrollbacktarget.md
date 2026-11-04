@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LastRollbackTarget } from "@vercel/sdk/models/createprojecttoprojectspreset.js";
+import { LastRollbackTarget } from "@vercel/sdk/models/createprojectprojectsplan.js";
 
 let value: LastRollbackTarget = {};
 ```

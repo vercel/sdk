@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyNine } from "@vercel/sdk/models/usereventjobpayload12610headinfo.js";
+import { OneHundredAndSixtyNine } from "@vercel/sdk/models/payloadmode.js";
 
 let value: OneHundredAndSixtyNine = {
-  email: "Lemuel98@yahoo.com",
-  name: "<value>",
+  previousRule: {
+    email: "Lemuel98@yahoo.com",
+  },
+  team: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload169Team](../models/usereventpayload169team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

@@ -12,6 +12,7 @@ let value: GetOrder11 = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `code`             | *"payment-failed"* | :heavy_check_mark: | N/A                |
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `code`                                                                                                   | *"payment-failed"*                                                                                       | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `details`                                                                                                | [models.GetOrder1DomainsRegistrarResponseDetails](../models/getorder1domainsregistrarresponsedetails.md) | :heavy_minus_sign:                                                                                       | N/A                                                                                                      |

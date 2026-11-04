@@ -14,7 +14,7 @@ import { pathToFunc } from "../lib/url.js";
 import {
   CreateProjectRequest,
   CreateProjectRequest$outboundSchema,
-} from "../models/createprojecthaskey.js";
+} from "../models/createprojecthasprojectsvalue.js";
 import {
   CreateProjectResponseBody,
   CreateProjectResponseBody$inboundSchema,

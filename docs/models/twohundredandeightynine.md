@@ -5,33 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyNine } from "@vercel/sdk/models/usereventpayloadgituserid.js";
+import { TwoHundredAndEightyNine } from "@vercel/sdk/models/twohundredandsixtyeight.js";
 
 let value: TwoHundredAndEightyNine = {
-  project: {
-    id: "<id>",
-    newConnectConfigurations: [],
-    oldConnectConfigurations: [
-      {
-        buildsEnabled: true,
-        connectConfigurationId: "<id>",
-        createdAt: 7630.36,
-        envId: "<id>",
-        passive: false,
-        updatedAt: 8968.35,
-      },
-    ],
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload289Project](../models/usereventpayload289project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `team`                                                                       | [models.UserEventPayload289Team](../models/usereventpayload289team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |

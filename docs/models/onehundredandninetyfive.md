@@ -5,27 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyFive } from "@vercel/sdk/models/usereventjobpayload12610headinfo.js";
+import { OneHundredAndNinetyFive } from "@vercel/sdk/models/payloadmode.js";
 
 let value: OneHundredAndNinetyFive = {
   configurationId: "<id>",
+  confirmedScopes: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
   integrationId: "<id>",
+  integrationName: "<value>",
   integrationSlug: "<value>",
-  newOwner: {
-    id: "<id>",
-    username: "Martina_Haley",
-  },
-  userId: "<id>",
+  ownerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `configurationId`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationId`                          | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `integrationName`                        | *string*                                 | :heavy_minus_sign:                       | N/A                                      |
-| `integrationSlug`                        | *string*                                 | :heavy_check_mark:                       | N/A                                      |
-| `newOwner`                               | [models.NewOwner](../models/newowner.md) | :heavy_check_mark:                       | N/A                                      |
-| `userId`                                 | *string*                                 | :heavy_check_mark:                       | N/A                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
+| `confirmedScopes`  | *string*[]         | :heavy_check_mark: | N/A                |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectIds`       | *string*[]         | :heavy_minus_sign: | N/A                |

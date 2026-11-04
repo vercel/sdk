@@ -5,21 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtySeven } from "@vercel/sdk/models/usereventjobpayload12610headinfo.js";
+import { OneHundredAndSixtySeven } from "@vercel/sdk/models/payloadmode.js";
 
 let value: OneHundredAndSixtySeven = {
   edgeConfigId: "<id>",
   edgeConfigSlug: "<value>",
-  edgeConfigTokenId: "<id>",
-  label: "<value>",
+  edgeConfigTokenIds: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `edgeConfigId`      | *string*            | :heavy_check_mark:  | N/A                 |
-| `edgeConfigSlug`    | *string*            | :heavy_check_mark:  | N/A                 |
-| `edgeConfigTokenId` | *string*            | :heavy_check_mark:  | N/A                 |
-| `label`             | *string*            | :heavy_check_mark:  | N/A                 |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `edgeConfigId`        | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigSlug`      | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigTokenIds`  | *string*[]            | :heavy_check_mark:    | ids of deleted tokens |

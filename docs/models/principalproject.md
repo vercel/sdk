@@ -1,0 +1,17 @@
+# PrincipalProject
+
+## Example Usage
+
+```typescript
+import { PrincipalProject } from "@vercel/sdk/models/threehundredandthirtyeight.js";
+
+let value: PrincipalProject = {
+  id: "<id>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |

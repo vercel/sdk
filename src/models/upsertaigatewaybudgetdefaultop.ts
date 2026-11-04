@@ -34,6 +34,10 @@ export type UpsertAiGatewayBudgetDefaultRequestBody = {
   limitAmount: number;
   refreshPeriod?: UpsertAiGatewayBudgetDefaultRefreshPeriod | undefined;
   alertThresholds?: Array<number> | undefined;
+  /**
+   * Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains.
+   */
+  justification?: string | undefined;
 };
 
 export type UpsertAiGatewayBudgetDefaultRequest = {
@@ -65,6 +69,7 @@ export type UpsertAiGatewayBudgetDefaultRequestBody$Outbound = {
   limitAmount: number;
   refreshPeriod?: string | undefined;
   alertThresholds?: Array<number> | undefined;
+  justification?: string | undefined;
 };
 
 /** @internal */
@@ -78,6 +83,7 @@ export const UpsertAiGatewayBudgetDefaultRequestBody$outboundSchema: z.ZodType<
   refreshPeriod: UpsertAiGatewayBudgetDefaultRefreshPeriod$outboundSchema
     .optional(),
   alertThresholds: z.array(z.number()).optional(),
+  justification: z.string().optional(),
 });
 
 export function upsertAiGatewayBudgetDefaultRequestBodyToJSON(

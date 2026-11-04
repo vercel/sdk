@@ -5,28 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeven } from "@vercel/sdk/models/onehundredandninetynine.js";
+import { TwoHundredAndSeven } from "@vercel/sdk/models/twohundredandsix.js";
 
 let value: TwoHundredAndSeven = {
-  configurationId: "<id>",
   integrationId: "<id>",
-  integrationProductSlug: "<value>",
+  integrationName: "<value>",
   integrationSlug: "<value>",
-  resourceId: "<id>",
-  key: "<key>",
-  requestKind: "get_key_data",
+  previousSecretExpiresAt: 961.94,
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `configurationId`                                                                    | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `errorCode`                                                                          | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `integrationId`                                                                      | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `integrationProductSlug`                                                             | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `integrationSlug`                                                                    | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `resourceId`                                                                         | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `key`                                                                                | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `requestKind`                                                                        | [models.UserEventPayload207RequestKind](../models/usereventpayload207requestkind.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `integrationId`           | *string*                  | :heavy_check_mark:        | N/A                       |
+| `integrationName`         | *string*                  | :heavy_check_mark:        | N/A                       |
+| `integrationSlug`         | *string*                  | :heavy_check_mark:        | N/A                       |
+| `previousSecretExpiresAt` | *number*                  | :heavy_check_mark:        | N/A                       |

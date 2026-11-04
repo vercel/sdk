@@ -15,9 +15,9 @@ let value: CreateKmsIssuerResponseBody = {
   ownerId: "<id>",
   policies: [
     {
-      clientId: "<id>",
       createdAt: "1721135837809",
-      kind: "connex-grant",
+      integrationId: "<id>",
+      kind: "integration-tokens-grant",
       updatedAt: "1735621236978",
     },
   ],

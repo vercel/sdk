@@ -5,14 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeven } from "@vercel/sdk/models/usereventpayloadgituserid.js";
+import { ThreeHundredAndSeven } from "@vercel/sdk/models/twohundredandsixtyeight.js";
 
 let value: ThreeHundredAndSeven = {
-  next: {
-    gitProvider: "github-custom-host",
-    gitRepoId: "<id>",
-    gitRepositoryName: "<value>",
-  },
+  gitProvider: "github-custom-host",
+  gitRepoId: "<id>",
+  gitRepositoryName: "<value>",
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -20,9 +18,10 @@ let value: ThreeHundredAndSeven = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload307Next](../models/usereventpayload307next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload307Previous](../models/usereventpayload307previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `gitProvider`                                  | [models.GitProvider](../models/gitprovider.md) | :heavy_check_mark:                             | N/A                                            |
+| `gitRepoId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `gitRepositoryName`                            | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `projectName`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |

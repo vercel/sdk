@@ -11,6 +11,7 @@ import { ClosedEnum } from "../types/enums.js";
 export const DeleteKmsIssuerPolicyPathParamKind = {
   ProjectGrant: "project-grant",
   ConnexGrant: "connex-grant",
+  IntegrationTokensGrant: "integration-tokens-grant",
 } as const;
 /**
  * The issuer policy kind.

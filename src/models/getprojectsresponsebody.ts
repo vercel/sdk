@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -18,6 +19,16 @@ import {
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyDeploymentExpiration,
   ResponseBodyDeploymentExpiration$inboundSchema,
+} from "./getprojectsresponsebodycontenthint.js";
+import {
+  GetProjectsResponseBody3,
+  GetProjectsResponseBody3$inboundSchema,
+} from "./getprojectsresponsebodyelasticbuildmachine.js";
+import {
+  GetProjectsResponseBodyNodeVersion,
+  GetProjectsResponseBodyNodeVersion$inboundSchema,
+  GetProjectsResponseBodyResourceConfig,
+  GetProjectsResponseBodyResourceConfig$inboundSchema,
   ResponseBodyEnv,
   ResponseBodyEnv$inboundSchema,
   ResponseBodyFramework,
@@ -26,22 +37,6 @@ import {
   ResponseBodyGitComments$inboundSchema,
   ResponseBodyGitProviderOptions,
   ResponseBodyGitProviderOptions$inboundSchema,
-} from "./getprojectshas2.js";
-import {
-  GetProjectsResponseBody3,
-  GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyprojectsresponse200value.js";
-import {
-  GetProjectsResponseBodyNodeVersion,
-  GetProjectsResponseBodyNodeVersion$inboundSchema,
-  GetProjectsResponseBodyResourceConfig,
-  GetProjectsResponseBodyResourceConfig$inboundSchema,
-  GetProjectsToProjects1,
-  GetProjectsToProjects1$inboundSchema,
-  GetProjectsToProjects2,
-  GetProjectsToProjects2$inboundSchema,
-  ResponseBodyFrom,
-  ResponseBodyFrom$inboundSchema,
   ResponseBodyInternalRoutes,
   ResponseBodyInternalRoutes$inboundSchema,
   ResponseBodyIpBuckets,
@@ -50,8 +45,6 @@ import {
   ResponseBodyLatestDeployments$inboundSchema,
   ResponseBodyLink,
   ResponseBodyLink$inboundSchema,
-  ResponseBodyOidcProviders,
-  ResponseBodyOidcProviders$inboundSchema,
   ResponseBodyOidcTokenConfig,
   ResponseBodyOidcTokenConfig$inboundSchema,
   ResponseBodyPassport,
@@ -70,8 +63,122 @@ import {
   ResponseBodyTargets$inboundSchema,
   ResponseBodyTier,
   ResponseBodyTier$inboundSchema,
-} from "./getprojectstoprojects1.js";
+} from "./responsebodytier.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsToProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetProjectsToProjectsPreset = ClosedEnum<
+  typeof GetProjectsToProjectsPreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type GetProjectsTo2 = {
+  preset: GetProjectsToProjectsPreset;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+};
+
+export const GetProjectsToPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetProjectsToPreset = ClosedEnum<typeof GetProjectsToPreset>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type GetProjectsTo1 = {
+  preset?: GetProjectsToPreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
+
+export type ResponseBodyTo = GetProjectsTo1 | GetProjectsTo2;
+
+export type ResponseBodyOidcProviders = {
+  to: GetProjectsTo1 | GetProjectsTo2;
+  claims: { [k: string]: Array<string> };
+  label?: string | undefined;
+};
+
+export const GetProjectsFromProjectsPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetProjectsFromProjectsPreset = ClosedEnum<
+  typeof GetProjectsFromProjectsPreset
+>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type GetProjectsFrom2 = {
+  preset: GetProjectsFromProjectsPreset;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+};
+
+export const GetProjectsFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetProjectsFromPreset = ClosedEnum<typeof GetProjectsFromPreset>;
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type GetProjectsFrom1 = {
+  preset?: GetProjectsFromPreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
+
+export type ResponseBodyFrom = GetProjectsFrom1 | GetProjectsFrom2;
+
+export const GetProjectsToProjectsResponse200Preset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetProjectsToProjectsResponse200Preset = ClosedEnum<
+  typeof GetProjectsToProjectsResponse200Preset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type GetProjectsToProjects2 = {
+  preset: GetProjectsToProjectsResponse200Preset;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs?: Array<string> | undefined;
+};
+
+export const GetProjectsToProjectsResponsePreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetProjectsToProjectsResponsePreset = ClosedEnum<
+  typeof GetProjectsToProjectsResponsePreset
+>;
+
+/**
+ * The target envs on the current project that may be accessed.
+ */
+export type GetProjectsToProjects1 = {
+  preset?: GetProjectsToProjectsResponsePreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
 
 export type GetProjectsResponseBodyTo =
   | GetProjectsToProjects1
@@ -81,7 +188,7 @@ export type GetProjectsResponseBodyTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type ResponseBodyCustomAllow = {
-  from: ResponseBodyFrom;
+  from: GetProjectsFrom1 | GetProjectsFrom2;
   to: GetProjectsToProjects1 | GetProjectsToProjects2;
 };
 
@@ -181,13 +288,228 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const GetProjectsToProjectsPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsToProjectsPreset
+> = z.nativeEnum(GetProjectsToProjectsPreset);
+
+/** @internal */
+export const GetProjectsTo2$inboundSchema: z.ZodType<
+  GetProjectsTo2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: GetProjectsToProjectsPreset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
+});
+
+export function getProjectsTo2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsTo2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsTo2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsTo2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsToPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsToPreset
+> = z.nativeEnum(GetProjectsToPreset);
+
+/** @internal */
+export const GetProjectsTo1$inboundSchema: z.ZodType<
+  GetProjectsTo1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(GetProjectsToPreset$inboundSchema),
+  slugs: z.array(types.string()),
+});
+
+export function getProjectsTo1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsTo1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsTo1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsTo1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyTo$inboundSchema: z.ZodType<
+  ResponseBodyTo,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetProjectsTo1$inboundSchema),
+  z.lazy(() => GetProjectsTo2$inboundSchema),
+]);
+
+export function responseBodyToFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyTo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyTo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyTo' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyOidcProviders$inboundSchema: z.ZodType<
+  ResponseBodyOidcProviders,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  to: smartUnion([
+    z.lazy(() => GetProjectsTo1$inboundSchema),
+    z.lazy(() => GetProjectsTo2$inboundSchema),
+  ]),
+  claims: z.record(z.array(types.string())),
+  label: types.optional(types.string()),
+});
+
+export function responseBodyOidcProvidersFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyOidcProviders, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyOidcProviders$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyOidcProviders' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsFromProjectsPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsFromProjectsPreset
+> = z.nativeEnum(GetProjectsFromProjectsPreset);
+
+/** @internal */
+export const GetProjectsFrom2$inboundSchema: z.ZodType<
+  GetProjectsFrom2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: GetProjectsFromProjectsPreset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
+});
+
+export function getProjectsFrom2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsFrom2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsFrom2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsFrom2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsFromPreset
+> = z.nativeEnum(GetProjectsFromPreset);
+
+/** @internal */
+export const GetProjectsFrom1$inboundSchema: z.ZodType<
+  GetProjectsFrom1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(GetProjectsFromPreset$inboundSchema),
+  slugs: z.array(types.string()),
+});
+
+export function getProjectsFrom1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsFrom1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsFrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsFrom1' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyFrom$inboundSchema: z.ZodType<
+  ResponseBodyFrom,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => GetProjectsFrom1$inboundSchema),
+  z.lazy(() => GetProjectsFrom2$inboundSchema),
+]);
+
+export function responseBodyFromFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyFrom, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyFrom' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsToProjectsResponse200Preset$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsToProjectsResponse200Preset> = z.nativeEnum(
+    GetProjectsToProjectsResponse200Preset,
+  );
+
+/** @internal */
+export const GetProjectsToProjects2$inboundSchema: z.ZodType<
+  GetProjectsToProjects2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: GetProjectsToProjectsResponse200Preset$inboundSchema,
+  slugs: types.optional(z.array(types.string())),
+});
+
+export function getProjectsToProjects2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsToProjects2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsToProjects2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsToProjects2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsToProjectsResponsePreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsToProjectsResponsePreset
+> = z.nativeEnum(GetProjectsToProjectsResponsePreset);
+
+/** @internal */
+export const GetProjectsToProjects1$inboundSchema: z.ZodType<
+  GetProjectsToProjects1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(GetProjectsToProjectsResponsePreset$inboundSchema),
+  slugs: z.array(types.string()),
+});
+
+export function getProjectsToProjects1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsToProjects1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetProjectsToProjects1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsToProjects1' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsResponseBodyTo$inboundSchema: z.ZodType<
   GetProjectsResponseBodyTo,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  GetProjectsToProjects1$inboundSchema,
-  GetProjectsToProjects2$inboundSchema,
+  z.lazy(() => GetProjectsToProjects1$inboundSchema),
+  z.lazy(() => GetProjectsToProjects2$inboundSchema),
 ]);
 
 export function getProjectsResponseBodyToFromJSON(
@@ -206,10 +528,13 @@ export const ResponseBodyCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: ResponseBodyFrom$inboundSchema,
+  from: smartUnion([
+    z.lazy(() => GetProjectsFrom1$inboundSchema),
+    z.lazy(() => GetProjectsFrom2$inboundSchema),
+  ]),
   to: smartUnion([
-    GetProjectsToProjects1$inboundSchema,
-    GetProjectsToProjects2$inboundSchema,
+    z.lazy(() => GetProjectsToProjects1$inboundSchema),
+    z.lazy(() => GetProjectsToProjects2$inboundSchema),
   ]),
 });
 
@@ -259,7 +584,7 @@ export const ResponseBodyTrustedSources$inboundSchema: z.ZodType<
 > = z.object({
   enableVercelCiSameRepository: types.optional(types.boolean()),
   oidcProviders: types.optional(
-    z.record(z.array(ResponseBodyOidcProviders$inboundSchema)),
+    z.record(z.array(z.lazy(() => ResponseBodyOidcProviders$inboundSchema))),
   ),
   projects: types.optional(
     z.record(

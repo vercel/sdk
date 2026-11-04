@@ -29,3 +29,14 @@ const value: models.UpdateKmsIssuerPolicyResponseBody2 = {
 };
 ```
 
+### `models.UpdateKmsIssuerPolicyResponseBody3`
+
+```typescript
+const value: models.UpdateKmsIssuerPolicyResponseBody3 = {
+  createdAt: "1729100399791",
+  integrationId: "<id>",
+  kind: "integration-tokens-grant",
+  updatedAt: "1735629118053",
+};
+```
+

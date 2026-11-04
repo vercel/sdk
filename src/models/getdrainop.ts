@@ -237,6 +237,7 @@ export type GetDrainSource2 = {
  */
 export const DefaultFor = {
   EveTracing: "eve-tracing",
+  NextjsTracing: "nextjs-tracing",
 } as const;
 /**
  * Informational marker for a system-owned default drain.

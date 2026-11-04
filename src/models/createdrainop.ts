@@ -469,6 +469,7 @@ export type CreateDrainSourceDrainsResponse2 = {
  */
 export const CreateDrainSourceDrainsDefaultFor = {
   EveTracing: "eve-tracing",
+  NextjsTracing: "nextjs-tracing",
 } as const;
 /**
  * Informational marker for a system-owned default drain.
@@ -875,6 +876,7 @@ export type CreateDrainSourceDrains2 = {
  */
 export const CreateDrainSourceDefaultFor = {
   EveTracing: "eve-tracing",
+  NextjsTracing: "nextjs-tracing",
 } as const;
 /**
  * Informational marker for a system-owned default drain.

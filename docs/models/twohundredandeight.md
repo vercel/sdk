@@ -5,21 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEight } from "@vercel/sdk/models/onehundredandninetynine.js";
+import { TwoHundredAndEight } from "@vercel/sdk/models/twohundredandsix.js";
 
 let value: TwoHundredAndEight = {
-  integrationId: "<id>",
-  integrationName: "<value>",
-  integrationSlug: "<value>",
-  previousSecretExpiresAt: 8322.01,
+  algorithm: "<value>",
+  issuerId: "<id>",
+  issuerName: "<value>",
+  origin: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `integrationId`           | *string*                  | :heavy_check_mark:        | N/A                       |
-| `integrationName`         | *string*                  | :heavy_check_mark:        | N/A                       |
-| `integrationSlug`         | *string*                  | :heavy_check_mark:        | N/A                       |
-| `previousSecretExpiresAt` | *number*                  | :heavy_check_mark:        | N/A                       |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `algorithm`        | *string*           | :heavy_check_mark: | N/A                |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `managedBy`        | *string*           | :heavy_minus_sign: | N/A                |
+| `origin`           | *string*           | :heavy_check_mark: | N/A                |

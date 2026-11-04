@@ -7,6 +7,7 @@ import { safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import {
   Capabilities,
   Capabilities$inboundSchema,
@@ -14,6 +15,8 @@ import {
   CreateIntegrationStoreDirectBillingPlan$inboundSchema,
   CreateIntegrationStoreDirectCapabilities,
   CreateIntegrationStoreDirectCapabilities$inboundSchema,
+  CreateIntegrationStoreDirectCredentialTypes,
+  CreateIntegrationStoreDirectCredentialTypes$inboundSchema,
   CreateIntegrationStoreDirectIntegrationsMetadata,
   CreateIntegrationStoreDirectIntegrationsMetadata$inboundSchema,
   CreateIntegrationStoreDirectNotification,
@@ -26,28 +29,75 @@ import {
   CreateIntegrationStoreDirectProjectsMetadata$inboundSchema,
   CreateIntegrationStoreDirectStatus,
   CreateIntegrationStoreDirectStatus$inboundSchema,
+  CredentialTypesTransition,
+  CredentialTypesTransition$inboundSchema,
   ExternalResourceStatus,
   ExternalResourceStatus$inboundSchema,
-} from "./createintegrationstoredirectpropertiesintegrationsresponse200uioptions.js";
+} from "./createintegrationstoredirecthiddenintegrationsresponse2003.js";
 import {
-  CreateIntegrationStoreDirectIntegration,
-  CreateIntegrationStoreDirectIntegration$inboundSchema,
   CreateIntegrationStoreDirectMetadataSchema,
   CreateIntegrationStoreDirectMetadataSchema$inboundSchema,
+  CreateIntegrationStoreDirectSecretRotationIntegrations1,
+  CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema,
   CreateIntegrationStoreDirectTags,
   CreateIntegrationStoreDirectTags$inboundSchema,
   Guides,
   Guides$inboundSchema,
-  LogDrainStatus,
-  LogDrainStatus$inboundSchema,
   ProjectConnectionScopes,
   ProjectConnectionScopes$inboundSchema,
   Repl,
   Repl$inboundSchema,
   ResourceLinks,
   ResourceLinks$inboundSchema,
-} from "./logdrainstatus.js";
+} from "./createintegrationstoredirectsecretrotationintegrations1.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateIntegrationStoreDirectIntegrationsSecretRotation =
+  | CreateIntegrationStoreDirectSecretRotationIntegrations1
+  | boolean;
+
+export type CreateIntegrationStoreDirectIntegrationsCapabilities = {
+  billable?: boolean | undefined;
+  checks?: boolean | undefined;
+  connectedImportResource?: boolean | undefined;
+  connectedProvisioning?: boolean | undefined;
+  flexCommitEligible?: boolean | undefined;
+  importResource?: boolean | undefined;
+  maxAllowedTeams?: number | undefined;
+  mcp?: boolean | undefined;
+  mcpConfiguration?: boolean | undefined;
+  mcpReadonly?: boolean | undefined;
+  nativeImportResource?: boolean | undefined;
+  provisioning?: boolean | undefined;
+  requiresBrowserInstall?: boolean | undefined;
+  secretRotation?:
+    | CreateIntegrationStoreDirectSecretRotationIntegrations1
+    | boolean
+    | undefined;
+  sso?: boolean | undefined;
+  templateCloneOnly?: boolean | undefined;
+  transferable?: boolean | undefined;
+  updateConfiguration?: boolean | undefined;
+  v0Flavors?: boolean | undefined;
+};
+
+export type CreateIntegrationStoreDirectIntegration = {
+  capabilities?:
+    | CreateIntegrationStoreDirectIntegrationsCapabilities
+    | undefined;
+  flags?: Array<string> | undefined;
+  icon: string;
+  id: string;
+  name: string;
+  slug: string;
+  supportsInstallationBillingPlans?: boolean | undefined;
+};
+
+export const LogDrainStatus = {
+  Disabled: "disabled",
+  Enabled: "enabled",
+} as const;
+export type LogDrainStatus = ClosedEnum<typeof LogDrainStatus>;
 
 export const CreateIntegrationStoreDirectPrimaryProtocol = {
   Ai: "ai",
@@ -174,6 +224,16 @@ export type CreateIntegrationStoreDirectStore = {
   usageQuotaExceeded: boolean;
   billingPlan?: CreateIntegrationStoreDirectBillingPlan | undefined;
   capabilities?: Capabilities | undefined;
+  /**
+   * The credential types the resource accepts: `static` for long-lived secrets, `oidc` for resource OIDC tokens.
+   */
+  credentialTypes?:
+    | Array<CreateIntegrationStoreDirectCredentialTypes>
+    | undefined;
+  /**
+   * The latest requested change of `credentialTypes`, and when the provider completed it.
+   */
+  credentialTypesTransition?: CredentialTypesTransition | undefined;
   directPartnerConsoleUrl?: string | undefined;
   externalResourceId: string;
   externalResourceStatus?: ExternalResourceStatus | null | undefined;
@@ -217,6 +277,121 @@ export type CreateIntegrationStoreDirectResponseBody = {
 };
 
 /** @internal */
+export const CreateIntegrationStoreDirectIntegrationsSecretRotation$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectIntegrationsSecretRotation,
+    z.ZodTypeDef,
+    unknown
+  > = smartUnion([
+    CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema,
+    types.boolean(),
+  ]);
+
+export function createIntegrationStoreDirectIntegrationsSecretRotationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectIntegrationsSecretRotation,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectIntegrationsSecretRotation$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectIntegrationsSecretRotation' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectIntegrationsCapabilities$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectIntegrationsCapabilities,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    billable: types.optional(types.boolean()),
+    checks: types.optional(types.boolean()),
+    connectedImportResource: types.optional(types.boolean()),
+    connectedProvisioning: types.optional(types.boolean()),
+    flexCommitEligible: types.optional(types.boolean()),
+    importResource: types.optional(types.boolean()),
+    maxAllowedTeams: types.optional(types.number()),
+    mcp: types.optional(types.boolean()),
+    mcpConfiguration: types.optional(types.boolean()),
+    mcpReadonly: types.optional(types.boolean()),
+    nativeImportResource: types.optional(types.boolean()),
+    provisioning: types.optional(types.boolean()),
+    requiresBrowserInstall: types.optional(types.boolean()),
+    secretRotation: types.optional(
+      smartUnion([
+        CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema,
+        types.boolean(),
+      ]),
+    ),
+    sso: types.optional(types.boolean()),
+    templateCloneOnly: types.optional(types.boolean()),
+    transferable: types.optional(types.boolean()),
+    updateConfiguration: types.optional(types.boolean()),
+    v0Flavors: types.optional(types.boolean()),
+  });
+
+export function createIntegrationStoreDirectIntegrationsCapabilitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectIntegrationsCapabilities,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectIntegrationsCapabilities$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectIntegrationsCapabilities' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreateIntegrationStoreDirectIntegration$inboundSchema: z.ZodType<
+  CreateIntegrationStoreDirectIntegration,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  capabilities: types.optional(
+    z.lazy(() =>
+      CreateIntegrationStoreDirectIntegrationsCapabilities$inboundSchema
+    ),
+  ),
+  flags: types.optional(z.array(types.string())),
+  icon: types.string(),
+  id: types.string(),
+  name: types.string(),
+  slug: types.string(),
+  supportsInstallationBillingPlans: types.optional(types.boolean()),
+});
+
+export function createIntegrationStoreDirectIntegrationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectIntegration,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectIntegration$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateIntegrationStoreDirectIntegration' from JSON`,
+  );
+}
+
+/** @internal */
+export const LogDrainStatus$inboundSchema: z.ZodNativeEnum<
+  typeof LogDrainStatus
+> = z.nativeEnum(LogDrainStatus);
+
+/** @internal */
 export const CreateIntegrationStoreDirectPrimaryProtocol$inboundSchema:
   z.ZodNativeEnum<typeof CreateIntegrationStoreDirectPrimaryProtocol> = z
     .nativeEnum(CreateIntegrationStoreDirectPrimaryProtocol);
@@ -253,7 +428,9 @@ export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
     ),
     repl: types.optional(Repl$inboundSchema),
     guides: types.optional(z.array(Guides$inboundSchema)),
-    integration: CreateIntegrationStoreDirectIntegration$inboundSchema,
+    integration: z.lazy(() =>
+      CreateIntegrationStoreDirectIntegration$inboundSchema
+    ),
     integrationConfigurationId: types.string(),
     logDrainStatus: types.optional(LogDrainStatus$inboundSchema),
     primaryProtocol: types.optional(
@@ -433,6 +610,12 @@ export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
     CreateIntegrationStoreDirectBillingPlan$inboundSchema,
   ),
   capabilities: types.optional(Capabilities$inboundSchema),
+  credentialTypes: types.optional(
+    z.array(CreateIntegrationStoreDirectCredentialTypes$inboundSchema),
+  ),
+  credentialTypesTransition: types.optional(
+    CredentialTypesTransition$inboundSchema,
+  ),
   directPartnerConsoleUrl: types.optional(types.string()),
   externalResourceId: types.string(),
   externalResourceStatus: z.nullable(ExternalResourceStatus$inboundSchema)

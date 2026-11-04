@@ -98,6 +98,7 @@ async function $do(
   const path = pathToFunc("/ai-gateway/budgets")();
 
   const query = encodeFormQuery({
+    "justification": payload.justification,
     "projectId": payload.projectId,
     "scopeType": payload.scopeType,
     "slug": payload.slug,

@@ -54,6 +54,10 @@ export type UpdateApiKeyQuotaRequestBody = {
    * Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert. Pass an empty array to disable alerts.
    */
   alertThresholds?: Array<number> | undefined;
+  /**
+   * Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains.
+   */
+  justification?: string | undefined;
 };
 
 export type UpdateApiKeyQuotaRequest = {
@@ -227,6 +231,7 @@ export type UpdateApiKeyQuotaRequestBody$Outbound = {
   active?: boolean | undefined;
   archived?: boolean | undefined;
   alertThresholds?: Array<number> | undefined;
+  justification?: string | undefined;
 };
 
 /** @internal */
@@ -241,6 +246,7 @@ export const UpdateApiKeyQuotaRequestBody$outboundSchema: z.ZodType<
   active: z.boolean().optional(),
   archived: z.boolean().optional(),
   alertThresholds: z.array(z.number()).optional(),
+  justification: z.string().optional(),
 });
 
 export function updateApiKeyQuotaRequestBodyToJSON(

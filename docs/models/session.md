@@ -26,6 +26,16 @@ let value: Session = {
     deniedCIDRs: [
       "10.0.0.0/8",
     ],
+    forwardRules: [
+      {
+        domain: "limited-plastic.com",
+        forwardURL: "https://lasting-godfather.name",
+        matchDimensions: [
+          "path",
+          "method",
+        ],
+      },
+    ],
     injectionRules: [
       {
         domain: "api.vercel.com",
@@ -33,13 +43,27 @@ let value: Session = {
           "Authorization",
           "X-API-Key",
         ],
+        matchDimensions: [
+          "path",
+          "method",
+        ],
       },
     ],
     mode: "custom",
+    responseRules: [
+      {
+        domain: "showy-gradient.biz",
+        matchDimensions: [
+          "path",
+          "method",
+        ],
+        statusCode: 6676.65,
+      },
+    ],
   },
   networkTransfer: {
-    egress: 4698.63,
-    ingress: 6786.95,
+    egress: 3996.02,
+    ingress: 8249.53,
   },
   projectId: "prj_123a6c5209bc3778245d011443644c8d27dc2c50",
   region: "iad1",

@@ -5,7 +5,7 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { CreateProjectVia2 } from "@vercel/sdk/models/createprojecthaskey.js";
+import { CreateProjectVia2 } from "@vercel/sdk/models/createprojecthasprojectsvalue.js";
 
 let value: CreateProjectVia2 = {
   integration: {
@@ -18,7 +18,7 @@ let value: CreateProjectVia2 = {
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `integration`                                        | [models.ViaIntegration](../models/viaintegration.md) | :heavy_check_mark:                                   | N/A                                                  |
-| `type`                                               | *"integration"*                                      | :heavy_check_mark:                                   | N/A                                                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `integration`                                                                  | [models.CreateProjectViaIntegration](../models/createprojectviaintegration.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `type`                                                                         | *"integration"*                                                                | :heavy_check_mark:                                                             | N/A                                                                            |

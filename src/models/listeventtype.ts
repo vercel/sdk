@@ -545,6 +545,7 @@ export const Name = {
   ProjectElasticConcurrencyUpdated: "project-elastic-concurrency-updated",
   ProjectExpirationLocked: "project-expiration-locked",
   ProjectExpirationReached: "project-expiration-reached",
+  ProjectExpirationRemoved: "project-expiration-removed",
   ProjectExpirationScheduled: "project-expiration-scheduled",
   ProjectExpirationUnlocked: "project-expiration-unlocked",
   ProjectExternalRewriteCachingUpdated:
@@ -838,6 +839,10 @@ export const Name = {
   VercelAgentElevatedPermissionsRequested:
     "vercel-agent-elevated-permissions-requested",
   VercelAgentSecurityFindingCreated: "vercel-agent-security-finding-created",
+  VercelAgentSecurityFindingDismissed:
+    "vercel-agent-security-finding-dismissed",
+  VercelAgentSecurityFindingReopened: "vercel-agent-security-finding-reopened",
+  VercelAgentSecurityFindingResolved: "vercel-agent-security-finding-resolved",
   VercelAgentSessionCreated: "vercel-agent-session-created",
   VercelAgentTeamTrialCreditsApplied: "vercel-agent-team-trial-credits-applied",
   VercelAppInstallationRequestDismissed:
@@ -1367,6 +1372,7 @@ export const ReplacedBy = {
   ProjectElasticConcurrencyUpdated: "project-elastic-concurrency-updated",
   ProjectExpirationLocked: "project-expiration-locked",
   ProjectExpirationReached: "project-expiration-reached",
+  ProjectExpirationRemoved: "project-expiration-removed",
   ProjectExpirationScheduled: "project-expiration-scheduled",
   ProjectExpirationUnlocked: "project-expiration-unlocked",
   ProjectExternalRewriteCachingUpdated:
@@ -1660,6 +1666,10 @@ export const ReplacedBy = {
   VercelAgentElevatedPermissionsRequested:
     "vercel-agent-elevated-permissions-requested",
   VercelAgentSecurityFindingCreated: "vercel-agent-security-finding-created",
+  VercelAgentSecurityFindingDismissed:
+    "vercel-agent-security-finding-dismissed",
+  VercelAgentSecurityFindingReopened: "vercel-agent-security-finding-reopened",
+  VercelAgentSecurityFindingResolved: "vercel-agent-security-finding-resolved",
   VercelAgentSessionCreated: "vercel-agent-session-created",
   VercelAgentTeamTrialCreditsApplied: "vercel-agent-team-trial-credits-applied",
   VercelAppInstallationRequestDismissed:

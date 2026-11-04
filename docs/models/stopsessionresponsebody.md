@@ -28,6 +28,16 @@ const value: models.StopSessionResponseBody1 = {
       deniedCIDRs: [
         "10.0.0.0/8",
       ],
+      forwardRules: [
+        {
+          domain: "limited-plastic.com",
+          forwardURL: "https://lasting-godfather.name",
+          matchDimensions: [
+            "path",
+            "method",
+          ],
+        },
+      ],
       injectionRules: [
         {
           domain: "api.vercel.com",
@@ -35,9 +45,23 @@ const value: models.StopSessionResponseBody1 = {
             "Authorization",
             "X-API-Key",
           ],
+          matchDimensions: [
+            "path",
+            "method",
+          ],
         },
       ],
       mode: "custom",
+      responseRules: [
+        {
+          domain: "showy-gradient.biz",
+          matchDimensions: [
+            "path",
+            "method",
+          ],
+          statusCode: 6676.65,
+        },
+      ],
     },
     networkTransfer: {
       egress: 7683.25,
@@ -120,6 +144,16 @@ const value: models.StopSessionResponseBody2 = {
       deniedCIDRs: [
         "10.0.0.0/8",
       ],
+      forwardRules: [
+        {
+          domain: "limited-plastic.com",
+          forwardURL: "https://lasting-godfather.name",
+          matchDimensions: [
+            "path",
+            "method",
+          ],
+        },
+      ],
       injectionRules: [
         {
           domain: "api.vercel.com",
@@ -127,9 +161,23 @@ const value: models.StopSessionResponseBody2 = {
             "Authorization",
             "X-API-Key",
           ],
+          matchDimensions: [
+            "path",
+            "method",
+          ],
         },
       ],
       mode: "custom",
+      responseRules: [
+        {
+          domain: "showy-gradient.biz",
+          matchDimensions: [
+            "path",
+            "method",
+          ],
+          statusCode: 6676.65,
+        },
+      ],
     },
     networkTransfer: {
       egress: 7683.25,

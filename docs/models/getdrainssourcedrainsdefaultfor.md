@@ -13,5 +13,5 @@ let value: GetDrainsSourceDrainsDefaultFor = "eve-tracing";
 ## Values
 
 ```typescript
-"eve-tracing"
+"eve-tracing" | "nextjs-tracing"
 ```

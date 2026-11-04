@@ -66,6 +66,17 @@ export const UpdateKmsIssuerOrigin = {
 } as const;
 export type UpdateKmsIssuerOrigin = ClosedEnum<typeof UpdateKmsIssuerOrigin>;
 
+/**
+ * Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`).
+ */
+export type UpdateKmsIssuerPolicies3 = {
+  createdAt: string;
+  integrationId: string;
+  kind: "integration-tokens-grant";
+  tokenClaims?: { [k: string]: any } | undefined;
+  updatedAt: string;
+};
+
 export type UpdateKmsIssuerPolicies2 = {
   clientId: string;
   createdAt: string;
@@ -89,7 +100,8 @@ export type UpdateKmsIssuerPolicies1 = {
 
 export type UpdateKmsIssuerPolicies =
   | UpdateKmsIssuerPolicies1
-  | UpdateKmsIssuerPolicies2;
+  | UpdateKmsIssuerPolicies2
+  | UpdateKmsIssuerPolicies3;
 
 export type UpdateKmsIssuerPublicKey = {
   alg?: string | undefined;
@@ -156,7 +168,11 @@ export type UpdateKmsIssuerResponseBody = {
   name: string;
   origin: UpdateKmsIssuerOrigin;
   ownerId: string;
-  policies: Array<UpdateKmsIssuerPolicies1 | UpdateKmsIssuerPolicies2>;
+  policies: Array<
+    | UpdateKmsIssuerPolicies1
+    | UpdateKmsIssuerPolicies2
+    | UpdateKmsIssuerPolicies3
+  >;
   signingKeys: Array<UpdateKmsIssuerSigningKeys>;
   updatedAt: string;
 };
@@ -234,6 +250,29 @@ export const UpdateKmsIssuerOrigin$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(UpdateKmsIssuerOrigin);
 
 /** @internal */
+export const UpdateKmsIssuerPolicies3$inboundSchema: z.ZodType<
+  UpdateKmsIssuerPolicies3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.string(),
+  integrationId: types.string(),
+  kind: types.literal("integration-tokens-grant"),
+  tokenClaims: types.optional(z.record(z.any())),
+  updatedAt: types.string(),
+});
+
+export function updateKmsIssuerPolicies3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateKmsIssuerPolicies3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateKmsIssuerPolicies3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateKmsIssuerPolicies3' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateKmsIssuerPolicies2$inboundSchema: z.ZodType<
   UpdateKmsIssuerPolicies2,
   z.ZodTypeDef,
@@ -289,6 +328,7 @@ export const UpdateKmsIssuerPolicies$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => UpdateKmsIssuerPolicies1$inboundSchema),
   z.lazy(() => UpdateKmsIssuerPolicies2$inboundSchema),
+  z.lazy(() => UpdateKmsIssuerPolicies3$inboundSchema),
 ]);
 
 export function updateKmsIssuerPoliciesFromJSON(
@@ -389,6 +429,7 @@ export const UpdateKmsIssuerResponseBody$inboundSchema: z.ZodType<
     z.union([
       z.lazy(() => UpdateKmsIssuerPolicies1$inboundSchema),
       z.lazy(() => UpdateKmsIssuerPolicies2$inboundSchema),
+      z.lazy(() => UpdateKmsIssuerPolicies3$inboundSchema),
     ]),
   ),
   signingKeys: z.array(z.lazy(() => UpdateKmsIssuerSigningKeys$inboundSchema)),

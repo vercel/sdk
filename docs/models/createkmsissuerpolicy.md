@@ -23,3 +23,12 @@ const value: models.Policy2 = {
 };
 ```
 
+### `models.Policy3`
+
+```typescript
+const value: models.Policy3 = {
+  kind: "integration-tokens-grant",
+  integrationId: "<id>",
+};
+```
+

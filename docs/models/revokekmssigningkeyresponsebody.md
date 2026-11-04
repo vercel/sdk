@@ -15,9 +15,9 @@ let value: RevokeKmsSigningKeyResponseBody = {
   ownerId: "<id>",
   policies: [
     {
-      clientId: "<id>",
       createdAt: "1733554118983",
-      kind: "connex-grant",
+      integrationId: "<id>",
+      kind: "integration-tokens-grant",
       updatedAt: "1735614463923",
     },
   ],

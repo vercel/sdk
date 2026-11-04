@@ -60,6 +60,17 @@ export type RevokeKmsSigningKeyOrigin = ClosedEnum<
   typeof RevokeKmsSigningKeyOrigin
 >;
 
+/**
+ * Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`).
+ */
+export type RevokeKmsSigningKeyPolicies3 = {
+  createdAt: string;
+  integrationId: string;
+  kind: "integration-tokens-grant";
+  tokenClaims?: { [k: string]: any } | undefined;
+  updatedAt: string;
+};
+
 export type RevokeKmsSigningKeyPolicies2 = {
   clientId: string;
   createdAt: string;
@@ -83,7 +94,8 @@ export type RevokeKmsSigningKeyPolicies1 = {
 
 export type RevokeKmsSigningKeyPolicies =
   | RevokeKmsSigningKeyPolicies1
-  | RevokeKmsSigningKeyPolicies2;
+  | RevokeKmsSigningKeyPolicies2
+  | RevokeKmsSigningKeyPolicies3;
 
 export type RevokeKmsSigningKeyPublicKey = {
   alg?: string | undefined;
@@ -152,7 +164,11 @@ export type RevokeKmsSigningKeyResponseBody = {
   name: string;
   origin: RevokeKmsSigningKeyOrigin;
   ownerId: string;
-  policies: Array<RevokeKmsSigningKeyPolicies1 | RevokeKmsSigningKeyPolicies2>;
+  policies: Array<
+    | RevokeKmsSigningKeyPolicies1
+    | RevokeKmsSigningKeyPolicies2
+    | RevokeKmsSigningKeyPolicies3
+  >;
   signingKeys: Array<RevokeKmsSigningKeySigningKeys>;
   updatedAt: string;
 };
@@ -199,6 +215,29 @@ export const RevokeKmsSigningKeyDiscoveryLayout$inboundSchema: z.ZodNativeEnum<
 export const RevokeKmsSigningKeyOrigin$inboundSchema: z.ZodNativeEnum<
   typeof RevokeKmsSigningKeyOrigin
 > = z.nativeEnum(RevokeKmsSigningKeyOrigin);
+
+/** @internal */
+export const RevokeKmsSigningKeyPolicies3$inboundSchema: z.ZodType<
+  RevokeKmsSigningKeyPolicies3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.string(),
+  integrationId: types.string(),
+  kind: types.literal("integration-tokens-grant"),
+  tokenClaims: types.optional(z.record(z.any())),
+  updatedAt: types.string(),
+});
+
+export function revokeKmsSigningKeyPolicies3FromJSON(
+  jsonString: string,
+): SafeParseResult<RevokeKmsSigningKeyPolicies3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RevokeKmsSigningKeyPolicies3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RevokeKmsSigningKeyPolicies3' from JSON`,
+  );
+}
 
 /** @internal */
 export const RevokeKmsSigningKeyPolicies2$inboundSchema: z.ZodType<
@@ -256,6 +295,7 @@ export const RevokeKmsSigningKeyPolicies$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => RevokeKmsSigningKeyPolicies1$inboundSchema),
   z.lazy(() => RevokeKmsSigningKeyPolicies2$inboundSchema),
+  z.lazy(() => RevokeKmsSigningKeyPolicies3$inboundSchema),
 ]);
 
 export function revokeKmsSigningKeyPoliciesFromJSON(
@@ -356,6 +396,7 @@ export const RevokeKmsSigningKeyResponseBody$inboundSchema: z.ZodType<
     z.union([
       z.lazy(() => RevokeKmsSigningKeyPolicies1$inboundSchema),
       z.lazy(() => RevokeKmsSigningKeyPolicies2$inboundSchema),
+      z.lazy(() => RevokeKmsSigningKeyPolicies3$inboundSchema),
     ]),
   ),
   signingKeys: z.array(

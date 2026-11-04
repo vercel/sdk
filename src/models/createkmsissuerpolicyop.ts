@@ -49,6 +49,17 @@ export type CreateKmsIssuerPolicyRequest = {
   requestBody?: CreateKmsIssuerPolicyRequestBody | undefined;
 };
 
+/**
+ * Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`).
+ */
+export type CreateKmsIssuerPolicyResponseBody3 = {
+  createdAt: string;
+  integrationId: string;
+  kind: "integration-tokens-grant";
+  tokenClaims?: { [k: string]: any } | undefined;
+  updatedAt: string;
+};
+
 export type CreateKmsIssuerPolicyResponseBody2 = {
   clientId: string;
   createdAt: string;
@@ -72,7 +83,8 @@ export type CreateKmsIssuerPolicyResponseBody1 = {
 
 export type CreateKmsIssuerPolicyResponseBody =
   | CreateKmsIssuerPolicyResponseBody1
-  | CreateKmsIssuerPolicyResponseBody2;
+  | CreateKmsIssuerPolicyResponseBody2
+  | CreateKmsIssuerPolicyResponseBody3;
 
 /** @internal */
 export const CreateKmsIssuerPolicyKind$outboundSchema: z.ZodNativeEnum<
@@ -145,6 +157,30 @@ export function createKmsIssuerPolicyRequestToJSON(
 }
 
 /** @internal */
+export const CreateKmsIssuerPolicyResponseBody3$inboundSchema: z.ZodType<
+  CreateKmsIssuerPolicyResponseBody3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.string(),
+  integrationId: types.string(),
+  kind: types.literal("integration-tokens-grant"),
+  tokenClaims: types.optional(z.record(z.any())),
+  updatedAt: types.string(),
+});
+
+export function createKmsIssuerPolicyResponseBody3FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateKmsIssuerPolicyResponseBody3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateKmsIssuerPolicyResponseBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateKmsIssuerPolicyResponseBody3' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateKmsIssuerPolicyResponseBody2$inboundSchema: z.ZodType<
   CreateKmsIssuerPolicyResponseBody2,
   z.ZodTypeDef,
@@ -202,6 +238,7 @@ export const CreateKmsIssuerPolicyResponseBody$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => CreateKmsIssuerPolicyResponseBody1$inboundSchema),
   z.lazy(() => CreateKmsIssuerPolicyResponseBody2$inboundSchema),
+  z.lazy(() => CreateKmsIssuerPolicyResponseBody3$inboundSchema),
 ]);
 
 export function createKmsIssuerPolicyResponseBodyFromJSON(

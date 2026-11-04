@@ -30,3 +30,14 @@ const value: models.ListKmsIssuersPolicies2 = {
 };
 ```
 
+### `models.ListKmsIssuersPolicies3`
+
+```typescript
+const value: models.ListKmsIssuersPolicies3 = {
+  createdAt: "1707331009645",
+  integrationId: "<id>",
+  kind: "integration-tokens-grant",
+  updatedAt: "1735614868926",
+};
+```
+

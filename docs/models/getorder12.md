@@ -20,7 +20,7 @@ let value: GetOrder12 = {
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `code`                                                                                   | *"tld-outage"*                                                                           | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `details`                                                                                | [models.GetOrder1DomainsRegistrarDetails](../models/getorder1domainsregistrardetails.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `code`                                       | *"tld-outage"*                               | :heavy_check_mark:                           | N/A                                          |
+| `details`                                    | [models.OneDetails](../models/onedetails.md) | :heavy_check_mark:                           | N/A                                          |

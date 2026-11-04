@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/usereventpayloadgituserid.js";
+import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/twohundredandsix.js";
 
 let value: TwoHundredAndSixtySeven = {
   endpoint: {
     awsServiceName: "<value>",
-    configurationId: "<id>",
     id: "<id>",
     name: "<value>",
+    projectId: "<id>",
     vercelRegion: "<value>",
   },
-  scope: "network",
 };
 ```
 
@@ -23,6 +22,6 @@ let value: TwoHundredAndSixtySeven = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `endpoint`                                                               | [models.Endpoint](../models/endpoint.md)                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `networkName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload267Scope](../models/usereventpayload267scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `endpoint`                                                               | [models.PayloadEndpoint](../models/payloadendpoint.md)                   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `projectName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload267Scope](../models/usereventpayload267scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

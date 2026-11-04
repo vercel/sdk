@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadChangedFields } from "@vercel/sdk/models/usereventpayloadrefreshperiod.js";
+import { PayloadChangedFields } from "@vercel/sdk/models/thirtytwo.js";
 
-let value: PayloadChangedFields = "address";
+let value: PayloadChangedFields = "baseUrl";
 ```
 
 ## Values
 
 ```typescript
-"address" | "email" | "language" | "name" | "purchaseOrder" | "tax"
+"allowFallbackFromFast" | "baseUrl" | "byokCredentialIds" | "caching" | "description" | "disallowPromptTraining" | "displayName" | "has" | "hipaaCompliant" | "inferenceRegion" | "modelSlug" | "models" | "observabilityTags" | "providerOnly" | "providerOptions" | "providerOrder" | "providerTimeouts" | "selector" | "selectorOptions" | "serviceTier" | "sort" | "speed" | "status" | "visibility" | "zeroDataRetention"
 ```

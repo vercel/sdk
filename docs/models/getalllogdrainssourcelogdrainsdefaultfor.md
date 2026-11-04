@@ -7,11 +7,11 @@ Informational marker for a system-owned default drain.
 ```typescript
 import { GetAllLogDrainsSourceLogDrainsDefaultFor } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-let value: GetAllLogDrainsSourceLogDrainsDefaultFor = "eve-tracing";
+let value: GetAllLogDrainsSourceLogDrainsDefaultFor = "nextjs-tracing";
 ```
 
 ## Values
 
 ```typescript
-"eve-tracing"
+"eve-tracing" | "nextjs-tracing"
 ```

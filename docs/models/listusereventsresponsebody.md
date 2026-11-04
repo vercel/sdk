@@ -22,7 +22,12 @@ let value: ListUserEventsResponseBody = {
         },
       ],
       id: "uev_bfmMjiMnXfnPbT97dGdpJbCN",
-      payload: {},
+      payload: {
+        amount: 1688.33,
+        invoiceId: "<id>",
+        lineItemCount: 666.15,
+        refundReason: "<value>",
+      },
       principalId: "<id>",
       text: "You logged in via GitHub",
       type: "login",

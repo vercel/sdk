@@ -13,5 +13,5 @@ let value: DeleteKmsIssuerPolicyPathParamKind = "project-grant";
 ## Values
 
 ```typescript
-"project-grant" | "connex-grant"
+"project-grant" | "connex-grant" | "integration-tokens-grant"
 ```

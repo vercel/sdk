@@ -56,6 +56,17 @@ export type UpdateKmsIssuerPolicyRequest = {
   requestBody?: UpdateKmsIssuerPolicyRequestBody | undefined;
 };
 
+/**
+ * Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`).
+ */
+export type UpdateKmsIssuerPolicyResponseBody3 = {
+  createdAt: string;
+  integrationId: string;
+  kind: "integration-tokens-grant";
+  tokenClaims?: { [k: string]: any } | undefined;
+  updatedAt: string;
+};
+
 export type UpdateKmsIssuerPolicyResponseBody2 = {
   clientId: string;
   createdAt: string;
@@ -79,7 +90,8 @@ export type UpdateKmsIssuerPolicyResponseBody1 = {
 
 export type UpdateKmsIssuerPolicyResponseBody =
   | UpdateKmsIssuerPolicyResponseBody1
-  | UpdateKmsIssuerPolicyResponseBody2;
+  | UpdateKmsIssuerPolicyResponseBody2
+  | UpdateKmsIssuerPolicyResponseBody3;
 
 /** @internal */
 export const PathParamKind$outboundSchema: z.ZodNativeEnum<
@@ -152,6 +164,30 @@ export function updateKmsIssuerPolicyRequestToJSON(
 }
 
 /** @internal */
+export const UpdateKmsIssuerPolicyResponseBody3$inboundSchema: z.ZodType<
+  UpdateKmsIssuerPolicyResponseBody3,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  createdAt: types.string(),
+  integrationId: types.string(),
+  kind: types.literal("integration-tokens-grant"),
+  tokenClaims: types.optional(z.record(z.any())),
+  updatedAt: types.string(),
+});
+
+export function updateKmsIssuerPolicyResponseBody3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateKmsIssuerPolicyResponseBody3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UpdateKmsIssuerPolicyResponseBody3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateKmsIssuerPolicyResponseBody3' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateKmsIssuerPolicyResponseBody2$inboundSchema: z.ZodType<
   UpdateKmsIssuerPolicyResponseBody2,
   z.ZodTypeDef,
@@ -209,6 +245,7 @@ export const UpdateKmsIssuerPolicyResponseBody$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => UpdateKmsIssuerPolicyResponseBody1$inboundSchema),
   z.lazy(() => UpdateKmsIssuerPolicyResponseBody2$inboundSchema),
+  z.lazy(() => UpdateKmsIssuerPolicyResponseBody3$inboundSchema),
 ]);
 
 export function updateKmsIssuerPolicyResponseBodyFromJSON(

@@ -5,7 +5,7 @@ Type of the ENV variable
 ## Example Usage
 
 ```typescript
-import { CreateProjectType } from "@vercel/sdk/models/createprojecthaskey.js";
+import { CreateProjectType } from "@vercel/sdk/models/createprojecthasprojectsvalue.js";
 
 let value: CreateProjectType = "sensitive";
 ```

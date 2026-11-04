@@ -3828,11 +3828,11 @@
                   },
                   "projectId": {
                     "type": "string",
-                    "description": "Required when scopeType is \"project\"."
+                    "description": "Required when scopeType is \\\"project\\\"."
                   },
                   "userId": {
                     "type": "string",
-                    "description": "Required when scopeType is \"user\"."
+                    "description": "Required when scopeType is \\\"user\\\"."
                   },
                   "limitAmount": {
                     "type": "number",
@@ -3863,6 +3863,10 @@
                         100
                       ]
                     }
+                  },
+                  "justification": {
+                    "type": "string",
+                    "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains."
                   }
                 }
               }
@@ -3930,22 +3934,32 @@
           },
           {
             "name": "projectId",
-            "description": "Required when scopeType is \"project\".",
+            "description": "Required when scopeType is \\\"project\\\".",
             "in": "query",
             "required": false,
             "schema": {
               "type": "string",
-              "description": "Required when scopeType is \"project\"."
+              "description": "Required when scopeType is \\\"project\\\"."
             }
           },
           {
             "name": "userId",
-            "description": "Required when scopeType is \"user\".",
+            "description": "Required when scopeType is \\\"user\\\".",
             "in": "query",
             "required": false,
             "schema": {
               "type": "string",
-              "description": "Required when scopeType is \"user\"."
+              "description": "Required when scopeType is \\\"user\\\"."
+            }
+          },
+          {
+            "name": "justification",
+            "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains."
             }
           },
           {
@@ -4141,6 +4155,10 @@
                         100
                       ]
                     }
+                  },
+                  "justification": {
+                    "type": "string",
+                    "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains."
                   }
                 }
               }
@@ -4198,6 +4216,16 @@
                 "user"
               ],
               "description": "The budget default scope to delete."
+            }
+          },
+          {
+            "name": "justification",
+            "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains. Only recorded when scopeType is set.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains. Only recorded when scopeType is set.",
+              "type": "string"
             }
           },
           {
@@ -50747,6 +50775,21 @@
                                   "enum": [
                                     "payment-failed"
                                   ]
+                                },
+                                "details": {
+                                  "type": "object",
+                                  "required": [
+                                    "reason"
+                                  ],
+                                  "properties": {
+                                    "reason": {
+                                      "type": "string",
+                                      "enum": [
+                                        "authentication-required"
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": false
                                 }
                               },
                               "additionalProperties": false
@@ -53631,7 +53674,8 @@
                                           "defaultFor": {
                                             "type": "string",
                                             "enum": [
-                                              "eve-tracing"
+                                              "eve-tracing",
+                                              "nextjs-tracing"
                                             ],
                                             "description": "Informational marker for a system-owned default drain."
                                           },
@@ -54187,7 +54231,8 @@
                                           "defaultFor": {
                                             "type": "string",
                                             "enum": [
-                                              "eve-tracing"
+                                              "eve-tracing",
+                                              "nextjs-tracing"
                                             ],
                                             "description": "Informational marker for a system-owned default drain."
                                           },
@@ -55061,7 +55106,8 @@
                                 "defaultFor": {
                                   "type": "string",
                                   "enum": [
-                                    "eve-tracing"
+                                    "eve-tracing",
+                                    "nextjs-tracing"
                                   ],
                                   "description": "Informational marker for a system-owned default drain."
                                 },
@@ -55614,7 +55660,8 @@
                                 "defaultFor": {
                                   "type": "string",
                                   "enum": [
-                                    "eve-tracing"
+                                    "eve-tracing",
+                                    "nextjs-tracing"
                                   ],
                                   "description": "Informational marker for a system-owned default drain."
                                 },
@@ -56707,7 +56754,8 @@
                                       "defaultFor": {
                                         "type": "string",
                                         "enum": [
-                                          "eve-tracing"
+                                          "eve-tracing",
+                                          "nextjs-tracing"
                                         ],
                                         "description": "Informational marker for a system-owned default drain."
                                       },
@@ -57263,7 +57311,8 @@
                                       "defaultFor": {
                                         "type": "string",
                                         "enum": [
-                                          "eve-tracing"
+                                          "eve-tracing",
+                                          "nextjs-tracing"
                                         ],
                                         "description": "Informational marker for a system-owned default drain."
                                       },
@@ -58038,7 +58087,8 @@
                             "defaultFor": {
                               "type": "string",
                               "enum": [
-                                "eve-tracing"
+                                "eve-tracing",
+                                "nextjs-tracing"
                               ],
                               "description": "Informational marker for a system-owned default drain."
                             },
@@ -58672,7 +58722,8 @@
                                 "defaultFor": {
                                   "type": "string",
                                   "enum": [
-                                    "eve-tracing"
+                                    "eve-tracing",
+                                    "nextjs-tracing"
                                   ],
                                   "description": "Informational marker for a system-owned default drain."
                                 },
@@ -59225,7 +59276,8 @@
                                 "defaultFor": {
                                   "type": "string",
                                   "enum": [
-                                    "eve-tracing"
+                                    "eve-tracing",
+                                    "nextjs-tracing"
                                   ],
                                   "description": "Informational marker for a system-owned default drain."
                                 },
@@ -76158,9 +76210,9 @@
                         "description": "Roles a deployment may request when minting a token. The selected role is emitted as the `role` claim."
                       },
                       "defaultRole": {
+                        "description": "Role used when the deployment does not request one. Required when `roles` is set.",
                         "type": "string",
-                        "maxLength": 32,
-                        "description": "Role used when the deployment does not request one. Required when `roles` is set."
+                        "maxLength": 32
                       },
                       "claimRules": {
                         "type": "array",
@@ -76231,6 +76283,20 @@
                     },
                     "additionalProperties": false,
                     "description": "Custom claims embedded in the resource tokens Vercel mints for this resource."
+                  },
+                  "credentialTypes": {
+                    "description": "The credential types the resource accepts: `static` for long-lived secrets, `oidc` for Vercel resource OIDC tokens. Can be set freely while the resource has none. After that, only to confirm a change Vercel requested with a secrets rotation, once it is complete. Without `static`, all long-lived secrets must be expired and removed, and no new ones minted or injected.",
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "static",
+                        "oidc"
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 2,
+                    "uniqueItems": true
                   }
                 },
                 "additionalProperties": false
@@ -82332,7 +82398,8 @@
                               "defaultFor": {
                                 "type": "string",
                                 "enum": [
-                                  "eve-tracing"
+                                  "eve-tracing",
+                                  "nextjs-tracing"
                                 ],
                                 "description": "Informational marker for a system-owned default drain."
                               },
@@ -82585,7 +82652,8 @@
                             "defaultFor": {
                               "type": "string",
                               "enum": [
-                                "eve-tracing"
+                                "eve-tracing",
+                                "nextjs-tracing"
                               ],
                               "description": "Informational marker for a system-owned default drain."
                             },
@@ -83351,6 +83419,10 @@
                       ]
                     },
                     "description": "Spend percentages (a subset of [50, 75, 100]) at which to send a spend alert. Pass an empty array to disable alerts."
+                  },
+                  "justification": {
+                    "type": "string",
+                    "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains."
                   }
                 }
               }
@@ -83706,6 +83778,37 @@
                                     "updatedAt"
                                   ],
                                   "type": "object"
+                                },
+                                {
+                                  "properties": {
+                                    "createdAt": {
+                                      "type": "string"
+                                    },
+                                    "integrationId": {
+                                      "type": "string"
+                                    },
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "integration-tokens-grant"
+                                      ]
+                                    },
+                                    "tokenClaims": {
+                                      "additionalProperties": true,
+                                      "type": "object"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "createdAt",
+                                    "integrationId",
+                                    "kind",
+                                    "updatedAt"
+                                  ],
+                                  "type": "object",
+                                  "description": "Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`)."
                                 }
                               ]
                             },
@@ -84056,6 +84159,37 @@
                               "updatedAt"
                             ],
                             "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "integrationId": {
+                                "type": "string"
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "integration-tokens-grant"
+                                ]
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "integrationId",
+                              "kind",
+                              "updatedAt"
+                            ],
+                            "type": "object",
+                            "description": "Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`)."
                           }
                         ]
                       },
@@ -84316,6 +84450,31 @@
                           "clientId": {
                             "type": "string",
                             "description": "The Connex client ID for the Connex grant policy."
+                          },
+                          "tokenClaims": {
+                            "type": "object",
+                            "description": "The claims that KMS should include in signed JWTs for this policy.",
+                            "additionalProperties": true
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind",
+                          "integrationId"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "integration-tokens-grant"
+                            ]
+                          },
+                          "integrationId": {
+                            "type": "string",
+                            "description": "The marketplace integration ID for the integration tokens grant policy."
                           },
                           "tokenClaims": {
                             "type": "object",
@@ -84895,6 +85054,37 @@
                               "updatedAt"
                             ],
                             "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "integrationId": {
+                                "type": "string"
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "integration-tokens-grant"
+                                ]
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "integrationId",
+                              "kind",
+                              "updatedAt"
+                            ],
+                            "type": "object",
+                            "description": "Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`)."
                           }
                         ]
                       },
@@ -85223,6 +85413,37 @@
                               "updatedAt"
                             ],
                             "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "integrationId": {
+                                "type": "string"
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "integration-tokens-grant"
+                                ]
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "integrationId",
+                              "kind",
+                              "updatedAt"
+                            ],
+                            "type": "object",
+                            "description": "Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`)."
                           }
                         ]
                       },
@@ -85536,6 +85757,37 @@
                               "updatedAt"
                             ],
                             "type": "object"
+                          },
+                          {
+                            "properties": {
+                              "createdAt": {
+                                "type": "string"
+                              },
+                              "integrationId": {
+                                "type": "string"
+                              },
+                              "kind": {
+                                "type": "string",
+                                "enum": [
+                                  "integration-tokens-grant"
+                                ]
+                              },
+                              "tokenClaims": {
+                                "additionalProperties": true,
+                                "type": "object"
+                              },
+                              "updatedAt": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "createdAt",
+                              "integrationId",
+                              "kind",
+                              "updatedAt"
+                            ],
+                            "type": "object",
+                            "description": "Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`)."
                           }
                         ]
                       },
@@ -85887,6 +86139,37 @@
                         "updatedAt"
                       ],
                       "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "integrationId": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "integration-tokens-grant"
+                          ]
+                        },
+                        "tokenClaims": {
+                          "additionalProperties": true,
+                          "type": "object"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "createdAt",
+                        "integrationId",
+                        "kind",
+                        "updatedAt"
+                      ],
+                      "type": "object",
+                      "description": "Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`)."
                     }
                   ]
                 }
@@ -86074,6 +86357,37 @@
                         "updatedAt"
                       ],
                       "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "integrationId": {
+                          "type": "string"
+                        },
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "integration-tokens-grant"
+                          ]
+                        },
+                        "tokenClaims": {
+                          "additionalProperties": true,
+                          "type": "object"
+                        },
+                        "updatedAt": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "createdAt",
+                        "integrationId",
+                        "kind",
+                        "updatedAt"
+                      ],
+                      "type": "object",
+                      "description": "Lets the integration-tokens service sign marketplace resource tokens for one integration (`oac_…`)."
                     }
                   ]
                 }
@@ -86230,7 +86544,8 @@
               "type": "string",
               "enum": [
                 "project-grant",
-                "connex-grant"
+                "connex-grant",
+                "integration-tokens-grant"
               ],
               "description": "The issuer policy kind."
             }
@@ -92322,6 +92637,13 @@
                                 "type": "array",
                                 "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                               },
+                              "privateNpmUsage": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
                               "productionAliasProtectionBypass": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -93452,20 +93774,223 @@
                                 "type": "string",
                                 "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
                               },
+                              "principal": {
+                                "oneOf": [
+                                  {
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "user"
+                                        ]
+                                      },
+                                      "via": {
+                                        "nullable": true,
+                                        "oneOf": [
+                                          {
+                                            "properties": {
+                                              "app": {
+                                                "properties": {
+                                                  "clientId": {
+                                                    "type": "string",
+                                                    "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                                  },
+                                                  "id": {
+                                                    "type": "string",
+                                                    "description": "The internal ID of the Vercel App backing this principal."
+                                                  }
+                                                },
+                                                "required": [
+                                                  "id"
+                                                ],
+                                                "type": "object"
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "app"
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "app",
+                                              "type"
+                                            ],
+                                            "type": "object",
+                                            "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                          },
+                                          {
+                                            "properties": {
+                                              "integration": {
+                                                "properties": {
+                                                  "configurationId": {
+                                                    "type": "string"
+                                                  },
+                                                  "integrationId": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "required": [
+                                                  "configurationId",
+                                                  "integrationId"
+                                                ],
+                                                "type": "object"
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "integration"
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "integration",
+                                              "type"
+                                            ],
+                                            "type": "object",
+                                            "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                          }
+                                        ]
+                                      },
+                                      "user": {
+                                        "properties": {
+                                          "id": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "id"
+                                        ],
+                                        "type": "object"
+                                      }
+                                    },
+                                    "required": [
+                                      "type",
+                                      "user",
+                                      "via"
+                                    ],
+                                    "type": "object",
+                                    "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                                  },
+                                  {
+                                    "properties": {
+                                      "project": {
+                                        "properties": {
+                                          "id": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "id"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "project"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "project",
+                                      "type"
+                                    ],
+                                    "type": "object",
+                                    "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                                  },
+                                  {
+                                    "properties": {
+                                      "app": {
+                                        "properties": {
+                                          "clientId": {
+                                            "type": "string",
+                                            "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                          },
+                                          "id": {
+                                            "type": "string",
+                                            "description": "The internal ID of the Vercel App backing this principal."
+                                          }
+                                        },
+                                        "required": [
+                                          "id"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "app"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "app",
+                                      "type"
+                                    ],
+                                    "type": "object",
+                                    "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                                  },
+                                  {
+                                    "properties": {
+                                      "integration": {
+                                        "properties": {
+                                          "configurationId": {
+                                            "type": "string"
+                                          },
+                                          "integrationId": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "configurationId",
+                                          "integrationId"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "integration"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "integration",
+                                      "type"
+                                    ],
+                                    "type": "object",
+                                    "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                                  },
+                                  {
+                                    "properties": {
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "system"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "type"
+                                    ],
+                                    "type": "object",
+                                    "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                                  }
+                                ]
+                              },
                               "userId": {
                                 "type": "string",
-                                "description": "The user who rolled back the project."
+                                "description": "The ID of the user who rolled back the project, when the principal was a user."
                               },
                               "username": {
                                 "type": "string",
-                                "description": "The username of the user who rolled back the project."
+                                "description": "The username of the user who rolled back the project, when the principal was a user."
                               }
                             },
                             "required": [
                               "createdAt",
-                              "description",
-                              "userId",
-                              "username"
+                              "description"
                             ],
                             "type": "object",
                             "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
@@ -117091,6 +117616,13 @@
                                     "type": "array",
                                     "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                                   },
+                                  "privateNpmUsage": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
                                   "productionAliasProtectionBypass": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -118221,20 +118753,223 @@
                                     "type": "string",
                                     "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
                                   },
+                                  "principal": {
+                                    "oneOf": [
+                                      {
+                                        "properties": {
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "user"
+                                            ]
+                                          },
+                                          "via": {
+                                            "nullable": true,
+                                            "oneOf": [
+                                              {
+                                                "properties": {
+                                                  "app": {
+                                                    "properties": {
+                                                      "clientId": {
+                                                        "type": "string",
+                                                        "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                                      },
+                                                      "id": {
+                                                        "type": "string",
+                                                        "description": "The internal ID of the Vercel App backing this principal."
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "id"
+                                                    ],
+                                                    "type": "object"
+                                                  },
+                                                  "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "app"
+                                                    ]
+                                                  }
+                                                },
+                                                "required": [
+                                                  "app",
+                                                  "type"
+                                                ],
+                                                "type": "object",
+                                                "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                              },
+                                              {
+                                                "properties": {
+                                                  "integration": {
+                                                    "properties": {
+                                                      "configurationId": {
+                                                        "type": "string"
+                                                      },
+                                                      "integrationId": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "configurationId",
+                                                      "integrationId"
+                                                    ],
+                                                    "type": "object"
+                                                  },
+                                                  "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "integration"
+                                                    ]
+                                                  }
+                                                },
+                                                "required": [
+                                                  "integration",
+                                                  "type"
+                                                ],
+                                                "type": "object",
+                                                "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                              }
+                                            ]
+                                          },
+                                          "user": {
+                                            "properties": {
+                                              "id": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "id"
+                                            ],
+                                            "type": "object"
+                                          }
+                                        },
+                                        "required": [
+                                          "type",
+                                          "user",
+                                          "via"
+                                        ],
+                                        "type": "object",
+                                        "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                                      },
+                                      {
+                                        "properties": {
+                                          "project": {
+                                            "properties": {
+                                              "id": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "id"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "project"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "project",
+                                          "type"
+                                        ],
+                                        "type": "object",
+                                        "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                                      },
+                                      {
+                                        "properties": {
+                                          "app": {
+                                            "properties": {
+                                              "clientId": {
+                                                "type": "string",
+                                                "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                              },
+                                              "id": {
+                                                "type": "string",
+                                                "description": "The internal ID of the Vercel App backing this principal."
+                                              }
+                                            },
+                                            "required": [
+                                              "id"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "app"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "app",
+                                          "type"
+                                        ],
+                                        "type": "object",
+                                        "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                                      },
+                                      {
+                                        "properties": {
+                                          "integration": {
+                                            "properties": {
+                                              "configurationId": {
+                                                "type": "string"
+                                              },
+                                              "integrationId": {
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "configurationId",
+                                              "integrationId"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "integration"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "integration",
+                                          "type"
+                                        ],
+                                        "type": "object",
+                                        "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                                      },
+                                      {
+                                        "properties": {
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "system"
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "type"
+                                        ],
+                                        "type": "object",
+                                        "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                                      }
+                                    ]
+                                  },
                                   "userId": {
                                     "type": "string",
-                                    "description": "The user who rolled back the project."
+                                    "description": "The ID of the user who rolled back the project, when the principal was a user."
                                   },
                                   "username": {
                                     "type": "string",
-                                    "description": "The username of the user who rolled back the project."
+                                    "description": "The username of the user who rolled back the project, when the principal was a user."
                                   }
                                 },
                                 "required": [
                                   "createdAt",
-                                  "description",
-                                  "userId",
-                                  "username"
+                                  "description"
                                 ],
                                 "type": "object",
                                 "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
@@ -125578,6 +126313,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "privateNpmUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "productionAliasProtectionBypass": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -126708,20 +127450,223 @@
                           "type": "string",
                           "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
                         },
+                        "principal": {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "user"
+                                  ]
+                                },
+                                "via": {
+                                  "nullable": true,
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "app": {
+                                          "properties": {
+                                            "clientId": {
+                                              "type": "string",
+                                              "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                            },
+                                            "id": {
+                                              "type": "string",
+                                              "description": "The internal ID of the Vercel App backing this principal."
+                                            }
+                                          },
+                                          "required": [
+                                            "id"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "app"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "app",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    },
+                                    {
+                                      "properties": {
+                                        "integration": {
+                                          "properties": {
+                                            "configurationId": {
+                                              "type": "string"
+                                            },
+                                            "integrationId": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "configurationId",
+                                            "integrationId"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "integration"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "integration",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    }
+                                  ]
+                                },
+                                "user": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "user",
+                                "via"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "project": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "project"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "project",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "app": {
+                                  "properties": {
+                                    "clientId": {
+                                      "type": "string",
+                                      "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "The internal ID of the Vercel App backing this principal."
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "app"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "app",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "integration": {
+                                  "properties": {
+                                    "configurationId": {
+                                      "type": "string"
+                                    },
+                                    "integrationId": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "configurationId",
+                                    "integrationId"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "integration"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "integration",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "system"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            }
+                          ]
+                        },
                         "userId": {
                           "type": "string",
-                          "description": "The user who rolled back the project."
+                          "description": "The ID of the user who rolled back the project, when the principal was a user."
                         },
                         "username": {
                           "type": "string",
-                          "description": "The username of the user who rolled back the project."
+                          "description": "The username of the user who rolled back the project, when the principal was a user."
                         }
                       },
                       "required": [
                         "createdAt",
-                        "description",
-                        "userId",
-                        "username"
+                        "description"
                       ],
                       "type": "object",
                       "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
@@ -128375,6 +129320,27 @@
                     "description": "Opt-in to production toolbar on the project level",
                     "type": "boolean",
                     "nullable": true
+                  },
+                  "expiration": {
+                    "description": "Schedules the project for automatic deletion after the given timeframe.",
+                    "type": "object",
+                    "required": [
+                      "timeframe"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "timeframe": {
+                        "type": "string",
+                        "enum": [
+                          "1-hour",
+                          "1-day",
+                          "1-week",
+                          "2-week",
+                          "1-month"
+                        ],
+                        "description": "How far in the future the project will be automatically deleted"
+                      }
+                    }
                   },
                   "previewDeploymentsDisabled": {
                     "description": "Specifies whether preview deployments are disabled for this project.",
@@ -134351,6 +135317,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "privateNpmUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "productionAliasProtectionBypass": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -135481,20 +136454,223 @@
                           "type": "string",
                           "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
                         },
+                        "principal": {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "user"
+                                  ]
+                                },
+                                "via": {
+                                  "nullable": true,
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "app": {
+                                          "properties": {
+                                            "clientId": {
+                                              "type": "string",
+                                              "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                            },
+                                            "id": {
+                                              "type": "string",
+                                              "description": "The internal ID of the Vercel App backing this principal."
+                                            }
+                                          },
+                                          "required": [
+                                            "id"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "app"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "app",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    },
+                                    {
+                                      "properties": {
+                                        "integration": {
+                                          "properties": {
+                                            "configurationId": {
+                                              "type": "string"
+                                            },
+                                            "integrationId": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "configurationId",
+                                            "integrationId"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "integration"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "integration",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    }
+                                  ]
+                                },
+                                "user": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "user",
+                                "via"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "project": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "project"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "project",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "app": {
+                                  "properties": {
+                                    "clientId": {
+                                      "type": "string",
+                                      "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "The internal ID of the Vercel App backing this principal."
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "app"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "app",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "integration": {
+                                  "properties": {
+                                    "configurationId": {
+                                      "type": "string"
+                                    },
+                                    "integrationId": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "configurationId",
+                                    "integrationId"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "integration"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "integration",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "system"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            }
+                          ]
+                        },
                         "userId": {
                           "type": "string",
-                          "description": "The user who rolled back the project."
+                          "description": "The ID of the user who rolled back the project, when the principal was a user."
                         },
                         "username": {
                           "type": "string",
-                          "description": "The username of the user who rolled back the project."
+                          "description": "The username of the user who rolled back the project, when the principal was a user."
                         }
                       },
                       "required": [
                         "createdAt",
-                        "description",
-                        "userId",
-                        "username"
+                        "description"
                       ],
                       "type": "object",
                       "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
@@ -142392,6 +143568,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "privateNpmUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "productionAliasProtectionBypass": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -143522,20 +144705,223 @@
                           "type": "string",
                           "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
                         },
+                        "principal": {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "user"
+                                  ]
+                                },
+                                "via": {
+                                  "nullable": true,
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "app": {
+                                          "properties": {
+                                            "clientId": {
+                                              "type": "string",
+                                              "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                            },
+                                            "id": {
+                                              "type": "string",
+                                              "description": "The internal ID of the Vercel App backing this principal."
+                                            }
+                                          },
+                                          "required": [
+                                            "id"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "app"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "app",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    },
+                                    {
+                                      "properties": {
+                                        "integration": {
+                                          "properties": {
+                                            "configurationId": {
+                                              "type": "string"
+                                            },
+                                            "integrationId": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "configurationId",
+                                            "integrationId"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "integration"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "integration",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    }
+                                  ]
+                                },
+                                "user": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "user",
+                                "via"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "project": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "project"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "project",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "app": {
+                                  "properties": {
+                                    "clientId": {
+                                      "type": "string",
+                                      "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "The internal ID of the Vercel App backing this principal."
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "app"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "app",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "integration": {
+                                  "properties": {
+                                    "configurationId": {
+                                      "type": "string"
+                                    },
+                                    "integrationId": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "configurationId",
+                                    "integrationId"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "integration"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "integration",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "system"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            }
+                          ]
+                        },
                         "userId": {
                           "type": "string",
-                          "description": "The user who rolled back the project."
+                          "description": "The ID of the user who rolled back the project, when the principal was a user."
                         },
                         "username": {
                           "type": "string",
-                          "description": "The username of the user who rolled back the project."
+                          "description": "The username of the user who rolled back the project, when the principal was a user."
                         }
                       },
                       "required": [
                         "createdAt",
-                        "description",
-                        "userId",
-                        "username"
+                        "description"
                       ],
                       "type": "object",
                       "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
@@ -151808,6 +153194,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "privateNpmUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "productionAliasProtectionBypass": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -152938,20 +154331,223 @@
                           "type": "string",
                           "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
                         },
+                        "principal": {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "user"
+                                  ]
+                                },
+                                "via": {
+                                  "nullable": true,
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "app": {
+                                          "properties": {
+                                            "clientId": {
+                                              "type": "string",
+                                              "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                            },
+                                            "id": {
+                                              "type": "string",
+                                              "description": "The internal ID of the Vercel App backing this principal."
+                                            }
+                                          },
+                                          "required": [
+                                            "id"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "app"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "app",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    },
+                                    {
+                                      "properties": {
+                                        "integration": {
+                                          "properties": {
+                                            "configurationId": {
+                                              "type": "string"
+                                            },
+                                            "integrationId": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "configurationId",
+                                            "integrationId"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "integration"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "integration",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    }
+                                  ]
+                                },
+                                "user": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "user",
+                                "via"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "project": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "project"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "project",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "app": {
+                                  "properties": {
+                                    "clientId": {
+                                      "type": "string",
+                                      "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "The internal ID of the Vercel App backing this principal."
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "app"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "app",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "integration": {
+                                  "properties": {
+                                    "configurationId": {
+                                      "type": "string"
+                                    },
+                                    "integrationId": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "configurationId",
+                                    "integrationId"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "integration"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "integration",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "system"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            }
+                          ]
+                        },
                         "userId": {
                           "type": "string",
-                          "description": "The user who rolled back the project."
+                          "description": "The ID of the user who rolled back the project, when the principal was a user."
                         },
                         "username": {
                           "type": "string",
-                          "description": "The username of the user who rolled back the project."
+                          "description": "The username of the user who rolled back the project, when the principal was a user."
                         }
                       },
                       "required": [
                         "createdAt",
-                        "description",
-                        "userId",
-                        "username"
+                        "description"
                       ],
                       "type": "object",
                       "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
@@ -159862,6 +161458,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "privateNpmUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "productionAliasProtectionBypass": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -160992,20 +162595,223 @@
                           "type": "string",
                           "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
                         },
+                        "principal": {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "user"
+                                  ]
+                                },
+                                "via": {
+                                  "nullable": true,
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "app": {
+                                          "properties": {
+                                            "clientId": {
+                                              "type": "string",
+                                              "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                            },
+                                            "id": {
+                                              "type": "string",
+                                              "description": "The internal ID of the Vercel App backing this principal."
+                                            }
+                                          },
+                                          "required": [
+                                            "id"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "app"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "app",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    },
+                                    {
+                                      "properties": {
+                                        "integration": {
+                                          "properties": {
+                                            "configurationId": {
+                                              "type": "string"
+                                            },
+                                            "integrationId": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "configurationId",
+                                            "integrationId"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "integration"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "integration",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    }
+                                  ]
+                                },
+                                "user": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "user",
+                                "via"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "project": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "project"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "project",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "app": {
+                                  "properties": {
+                                    "clientId": {
+                                      "type": "string",
+                                      "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "The internal ID of the Vercel App backing this principal."
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "app"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "app",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "integration": {
+                                  "properties": {
+                                    "configurationId": {
+                                      "type": "string"
+                                    },
+                                    "integrationId": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "configurationId",
+                                    "integrationId"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "integration"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "integration",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "system"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            }
+                          ]
+                        },
                         "userId": {
                           "type": "string",
-                          "description": "The user who rolled back the project."
+                          "description": "The ID of the user who rolled back the project, when the principal was a user."
                         },
                         "username": {
                           "type": "string",
-                          "description": "The username of the user who rolled back the project."
+                          "description": "The username of the user who rolled back the project, when the principal was a user."
                         }
                       },
                       "required": [
                         "createdAt",
-                        "description",
-                        "userId",
-                        "username"
+                        "description"
                       ],
                       "type": "object",
                       "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
@@ -181057,6 +182863,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "privateNpmUsage": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "productionAliasProtectionBypass": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -182187,20 +184000,223 @@
                           "type": "string",
                           "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
                         },
+                        "principal": {
+                          "oneOf": [
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "user"
+                                  ]
+                                },
+                                "via": {
+                                  "nullable": true,
+                                  "oneOf": [
+                                    {
+                                      "properties": {
+                                        "app": {
+                                          "properties": {
+                                            "clientId": {
+                                              "type": "string",
+                                              "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                            },
+                                            "id": {
+                                              "type": "string",
+                                              "description": "The internal ID of the Vercel App backing this principal."
+                                            }
+                                          },
+                                          "required": [
+                                            "id"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "app"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "app",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    },
+                                    {
+                                      "properties": {
+                                        "integration": {
+                                          "properties": {
+                                            "configurationId": {
+                                              "type": "string"
+                                            },
+                                            "integrationId": {
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "configurationId",
+                                            "integrationId"
+                                          ],
+                                          "type": "object"
+                                        },
+                                        "type": {
+                                          "type": "string",
+                                          "enum": [
+                                            "integration"
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "integration",
+                                        "type"
+                                      ],
+                                      "type": "object",
+                                      "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                    }
+                                  ]
+                                },
+                                "user": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                }
+                              },
+                              "required": [
+                                "type",
+                                "user",
+                                "via"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "project": {
+                                  "properties": {
+                                    "id": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "project"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "project",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "app": {
+                                  "properties": {
+                                    "clientId": {
+                                      "type": "string",
+                                      "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "description": "The internal ID of the Vercel App backing this principal."
+                                    }
+                                  },
+                                  "required": [
+                                    "id"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "app"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "app",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "integration": {
+                                  "properties": {
+                                    "configurationId": {
+                                      "type": "string"
+                                    },
+                                    "integrationId": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "configurationId",
+                                    "integrationId"
+                                  ],
+                                  "type": "object"
+                                },
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "integration"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "integration",
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            },
+                            {
+                              "properties": {
+                                "type": {
+                                  "type": "string",
+                                  "enum": [
+                                    "system"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "type"
+                              ],
+                              "type": "object",
+                              "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                            }
+                          ]
+                        },
                         "userId": {
                           "type": "string",
-                          "description": "The user who rolled back the project."
+                          "description": "The ID of the user who rolled back the project, when the principal was a user."
                         },
                         "username": {
                           "type": "string",
-                          "description": "The username of the user who rolled back the project."
+                          "description": "The username of the user who rolled back the project, when the principal was a user."
                         }
                       },
                       "required": [
                         "createdAt",
-                        "description",
-                        "userId",
-                        "username"
+                        "description"
                       ],
                       "type": "object",
                       "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
@@ -209728,6 +211744,19 @@
                                 true
                               ]
                             },
+                            "credentialTypesTransitions": {
+                              "items": {
+                                "items": {
+                                  "type": "string",
+                                  "enum": [
+                                    "oidc",
+                                    "static"
+                                  ]
+                                },
+                                "type": "array"
+                              },
+                              "type": "array"
+                            },
                             "mcp": {
                               "type": "boolean",
                               "enum": [
@@ -209803,6 +211832,44 @@
                             }
                           },
                           "type": "object"
+                        },
+                        "credentialTypes": {
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "oidc",
+                              "static"
+                            ],
+                            "description": "The credential types the resource accepts: `static` for long-lived secrets, `oidc` for resource OIDC tokens."
+                          },
+                          "type": "array",
+                          "description": "The credential types the resource accepts: `static` for long-lived secrets, `oidc` for resource OIDC tokens."
+                        },
+                        "credentialTypesTransition": {
+                          "properties": {
+                            "completedAt": {
+                              "type": "number"
+                            },
+                            "requestedAt": {
+                              "type": "number"
+                            },
+                            "to": {
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "oidc",
+                                  "static"
+                                ]
+                              },
+                              "type": "array"
+                            }
+                          },
+                          "required": [
+                            "requestedAt",
+                            "to"
+                          ],
+                          "type": "object",
+                          "description": "The latest requested change of `credentialTypes`, and when the provider completed it."
                         },
                         "directPartnerConsoleUrl": {
                           "type": "string"
@@ -242199,7 +244266,7 @@
                       "refreshPeriod"
                     ],
                     "type": "object",
-                    "description": "Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
+                    "description": "Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
                   },
                   "bypassAll": {
                     "type": "boolean",
@@ -242293,7 +244360,7 @@
                       "refreshPeriod"
                     ],
                     "type": "object",
-                    "description": "Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
+                    "description": "Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
                   },
                   "change": {
                     "type": "string",
@@ -242303,6 +244370,39 @@
                       "remove",
                       "set"
                     ]
+                  },
+                  "justification": {
+                    "type": "string"
+                  },
+                  "previousBudget": {
+                    "nullable": true,
+                    "properties": {
+                      "alertThresholds": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array"
+                      },
+                      "limitAmount": {
+                        "type": "number",
+                        "description": "Spend cap, in dollars."
+                      },
+                      "refreshPeriod": {
+                        "type": "string",
+                        "enum": [
+                          "daily",
+                          "monthly",
+                          "none",
+                          "weekly"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "limitAmount",
+                      "refreshPeriod"
+                    ],
+                    "type": "object",
+                    "description": "Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
                   }
                 },
                 "required": [
@@ -242417,7 +244517,7 @@
                       "refreshPeriod"
                     ],
                     "type": "object",
-                    "description": "Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
+                    "description": "Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
                   },
                   "change": {
                     "type": "string",
@@ -242427,6 +244527,39 @@
                       "remove",
                       "set"
                     ]
+                  },
+                  "justification": {
+                    "type": "string"
+                  },
+                  "previousBudget": {
+                    "nullable": true,
+                    "properties": {
+                      "alertThresholds": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array"
+                      },
+                      "limitAmount": {
+                        "type": "number",
+                        "description": "Spend cap, in dollars."
+                      },
+                      "refreshPeriod": {
+                        "type": "string",
+                        "enum": [
+                          "daily",
+                          "monthly",
+                          "none",
+                          "weekly"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "limitAmount",
+                      "refreshPeriod"
+                    ],
+                    "type": "object",
+                    "description": "Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
                   },
                   "scopeType": {
                     "type": "string",
@@ -242475,7 +244608,7 @@
                       "refreshPeriod"
                     ],
                     "type": "object",
-                    "description": "Spend budget on an AI Gateway API key, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
+                    "description": "Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
                   },
                   "change": {
                     "type": "string",
@@ -242485,6 +244618,39 @@
                       "remove",
                       "set"
                     ]
+                  },
+                  "justification": {
+                    "type": "string"
+                  },
+                  "previousBudget": {
+                    "nullable": true,
+                    "properties": {
+                      "alertThresholds": {
+                        "items": {
+                          "type": "number"
+                        },
+                        "type": "array"
+                      },
+                      "limitAmount": {
+                        "type": "number",
+                        "description": "Spend cap, in dollars."
+                      },
+                      "refreshPeriod": {
+                        "type": "string",
+                        "enum": [
+                          "daily",
+                          "monthly",
+                          "none",
+                          "weekly"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "limitAmount",
+                      "refreshPeriod"
+                    ],
+                    "type": "object",
+                    "description": "Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
                   },
                   "projectId": {
                     "type": "string",
@@ -242910,33 +245076,18 @@
               },
               {
                 "properties": {
-                  "rule": {
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "model": {
-                        "type": "string"
-                      },
-                      "type": {
-                        "type": "string"
-                      }
+                  "changedFields": {
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "description",
+                        "enabled",
+                        "reason",
+                        "rewriteModel"
+                      ]
                     },
-                    "required": [
-                      "id",
-                      "type"
-                    ],
-                    "type": "object"
-                  }
-                },
-                "required": [
-                  "rule"
-                ],
-                "type": "object",
-                "description": "The payload of the event, if requested."
-              },
-              {
-                "properties": {
+                    "type": "array"
+                  },
                   "enabled": {
                     "type": "boolean",
                     "enum": [
@@ -242944,12 +245095,18 @@
                       true
                     ]
                   },
+                  "previousRewriteModel": {
+                    "type": "string"
+                  },
                   "rule": {
                     "properties": {
                       "id": {
                         "type": "string"
                       },
                       "model": {
+                        "type": "string"
+                      },
+                      "rewriteModel": {
                         "type": "string"
                       },
                       "type": {
@@ -243728,7 +245885,8 @@
                         "read:web-analytics",
                         "read:webhooks",
                         "use:ai-gateway",
-                        "use:github"
+                        "use:github",
+                        "use:private-npm"
                       ]
                     },
                     "type": "array"
@@ -243859,7 +246017,8 @@
                         "read:web-analytics",
                         "read:webhooks",
                         "use:ai-gateway",
-                        "use:github"
+                        "use:github",
+                        "use:private-npm"
                       ]
                     },
                     "type": "array"
@@ -243968,7 +246127,8 @@
                             "read:vcr",
                             "read:web-analytics",
                             "read:webhooks",
-                            "use:ai-gateway"
+                            "use:ai-gateway",
+                            "use:private-npm"
                           ]
                         },
                         "type": "array"
@@ -244109,7 +246269,8 @@
                             "read:vcr",
                             "read:web-analytics",
                             "read:webhooks",
-                            "use:ai-gateway"
+                            "use:ai-gateway",
+                            "use:private-npm"
                           ]
                         },
                         "type": "array"
@@ -244266,7 +246427,8 @@
                         "read:vcr",
                         "read:web-analytics",
                         "read:webhooks",
-                        "use:ai-gateway"
+                        "use:ai-gateway",
+                        "use:private-npm"
                       ]
                     },
                     "type": "array"
@@ -257315,20 +259477,223 @@
                         "type": "string",
                         "description": "User-supplied explanation of why they rolled back the project. Limited to 250 characters."
                       },
+                      "principal": {
+                        "oneOf": [
+                          {
+                            "properties": {
+                              "project": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id"
+                                ],
+                                "type": "object"
+                              },
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "project"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "project",
+                              "type"
+                            ],
+                            "type": "object",
+                            "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                          },
+                          {
+                            "properties": {
+                              "app": {
+                                "properties": {
+                                  "clientId": {
+                                    "type": "string",
+                                    "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "description": "The internal ID of the Vercel App backing this principal."
+                                  }
+                                },
+                                "required": [
+                                  "id"
+                                ],
+                                "type": "object"
+                              },
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "app"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "app",
+                              "type"
+                            ],
+                            "type": "object",
+                            "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                          },
+                          {
+                            "properties": {
+                              "integration": {
+                                "properties": {
+                                  "configurationId": {
+                                    "type": "string"
+                                  },
+                                  "integrationId": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "configurationId",
+                                  "integrationId"
+                                ],
+                                "type": "object"
+                              },
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "integration"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "integration",
+                              "type"
+                            ],
+                            "type": "object",
+                            "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                          },
+                          {
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "system"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "type"
+                            ],
+                            "type": "object",
+                            "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                          },
+                          {
+                            "properties": {
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "user"
+                                ]
+                              },
+                              "via": {
+                                "nullable": true,
+                                "oneOf": [
+                                  {
+                                    "properties": {
+                                      "app": {
+                                        "properties": {
+                                          "clientId": {
+                                            "type": "string",
+                                            "description": "The protocol-facing OAuth client ID. This may differ from {@link id} when Client ID Metadata Documents (CIMD) are used."
+                                          },
+                                          "id": {
+                                            "type": "string",
+                                            "description": "The internal ID of the Vercel App backing this principal."
+                                          }
+                                        },
+                                        "required": [
+                                          "id"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "app"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "app",
+                                      "type"
+                                    ],
+                                    "type": "object",
+                                    "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                  },
+                                  {
+                                    "properties": {
+                                      "integration": {
+                                        "properties": {
+                                          "configurationId": {
+                                            "type": "string"
+                                          },
+                                          "integrationId": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "configurationId",
+                                          "integrationId"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": {
+                                        "type": "string",
+                                        "enum": [
+                                          "integration"
+                                        ]
+                                      }
+                                    },
+                                    "required": [
+                                      "integration",
+                                      "type"
+                                    ],
+                                    "type": "object",
+                                    "description": "Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures user-consented OAuth delegation that the ACL layer may inspect to evaluate scope restrictions. This is NOT for impersonation or token-exchange provenance — those live on `auth.token`, not on the principal."
+                                  }
+                                ]
+                              },
+                              "user": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id"
+                                ],
+                                "type": "object"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "user",
+                              "via"
+                            ],
+                            "type": "object",
+                            "description": "The principal who rolled back the project. Absent on historical rollbacks where the principal was a user (in this case, see `userId`)."
+                          }
+                        ]
+                      },
                       "userId": {
                         "type": "string",
-                        "description": "The user who rolled back the project."
+                        "description": "The ID of the user who rolled back the project, when the principal was a user."
                       },
                       "username": {
                         "type": "string",
-                        "description": "The username of the user who rolled back the project."
+                        "description": "The username of the user who rolled back the project, when the principal was a user."
                       }
                     },
                     "required": [
                       "createdAt",
-                      "description",
-                      "userId",
-                      "username"
+                      "description"
                     ],
                     "type": "object",
                     "description": "Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback."
@@ -260368,6 +262733,10 @@
                     "nullable": true,
                     "type": "string"
                   },
+                  "commitSha": {
+                    "nullable": true,
+                    "type": "string"
+                  },
                   "deploymentId": {
                     "nullable": true,
                     "type": "string",
@@ -260383,6 +262752,15 @@
                   },
                   "findingNumber": {
                     "type": "number"
+                  },
+                  "pullRequestNumber": {
+                    "nullable": true,
+                    "type": "number"
+                  },
+                  "repository": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "The GitHub repository, such as `acme/app`, commit, and pull request the event's review read: the one that found the finding, or for a resolution, the one that fixed it. Null for uploaded files; absent from events recorded before they were sent."
                   },
                   "severity": {
                     "type": "string"
@@ -260408,6 +262786,107 @@
                 "required": [
                   "branchRef",
                   "deploymentId",
+                  "environment",
+                  "eventId",
+                  "findingId",
+                  "findingNumber",
+                  "occurredAt",
+                  "sessionId",
+                  "sessionKind",
+                  "severity",
+                  "surface",
+                  "targetId",
+                  "targetKind",
+                  "targetName",
+                  "vulnerabilityClass"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "eventId": {
+                    "type": "string"
+                  },
+                  "occurredAt": {
+                    "type": "number"
+                  },
+                  "sessionId": {
+                    "type": "string"
+                  },
+                  "sessionKind": {
+                    "type": "string",
+                    "description": "Currently emitted session kinds: chat, investigation."
+                  },
+                  "surface": {
+                    "type": "string",
+                    "description": "Currently emitted surfaces: dashboard, internal, slack, automation, github."
+                  },
+                  "branchRef": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "commitSha": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "deploymentId": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "Null for a repository's findings and those of an undeployed commit."
+                  },
+                  "environment": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "Null for a repository's findings."
+                  },
+                  "findingId": {
+                    "type": "string"
+                  },
+                  "findingNumber": {
+                    "type": "number"
+                  },
+                  "pullRequestNumber": {
+                    "nullable": true,
+                    "type": "number"
+                  },
+                  "repository": {
+                    "nullable": true,
+                    "type": "string",
+                    "description": "The GitHub repository, such as `acme/app`, commit, and pull request the event's review read: the one that found the finding, or for a resolution, the one that fixed it. Null for uploaded files; absent from events recorded before they were sent."
+                  },
+                  "severity": {
+                    "type": "string"
+                  },
+                  "targetId": {
+                    "type": "string"
+                  },
+                  "targetKind": {
+                    "type": "string",
+                    "enum": [
+                      "project",
+                      "repository"
+                    ],
+                    "description": "A repository's findings are in code no project runs."
+                  },
+                  "targetName": {
+                    "type": "string"
+                  },
+                  "vulnerabilityClass": {
+                    "type": "string"
+                  },
+                  "dismissalReason": {
+                    "type": "string",
+                    "enum": [
+                      "accepted-risk",
+                      "false-positive"
+                    ]
+                  }
+                },
+                "required": [
+                  "branchRef",
+                  "deploymentId",
+                  "dismissalReason",
                   "environment",
                   "eventId",
                   "findingId",
@@ -265048,6 +267527,7 @@
               "project-elastic-concurrency-updated",
               "project-expiration-locked",
               "project-expiration-reached",
+              "project-expiration-removed",
               "project-expiration-scheduled",
               "project-expiration-unlocked",
               "project-external-rewrite-caching-updated",
@@ -265319,6 +267799,9 @@
               "vercel-agent-elevated-permissions-approved",
               "vercel-agent-elevated-permissions-requested",
               "vercel-agent-security-finding-created",
+              "vercel-agent-security-finding-dismissed",
+              "vercel-agent-security-finding-reopened",
+              "vercel-agent-security-finding-resolved",
               "vercel-agent-session-created",
               "vercel-agent-team-trial-credits-applied",
               "vercel-app-installation-request-dismissed",
@@ -266018,6 +268501,7 @@
               "project-elastic-concurrency-updated",
               "project-expiration-locked",
               "project-expiration-reached",
+              "project-expiration-removed",
               "project-expiration-scheduled",
               "project-expiration-unlocked",
               "project-external-rewrite-caching-updated",
@@ -266289,6 +268773,9 @@
               "vercel-agent-elevated-permissions-approved",
               "vercel-agent-elevated-permissions-requested",
               "vercel-agent-security-finding-created",
+              "vercel-agent-security-finding-dismissed",
+              "vercel-agent-security-finding-reopened",
+              "vercel-agent-security-finding-resolved",
               "vercel-agent-session-created",
               "vercel-agent-team-trial-credits-applied",
               "vercel-app-installation-request-dismissed",
@@ -266776,6 +269263,7 @@
                 "project-elastic-concurrency-updated",
                 "project-expiration-locked",
                 "project-expiration-reached",
+                "project-expiration-removed",
                 "project-expiration-scheduled",
                 "project-expiration-unlocked",
                 "project-external-rewrite-caching-updated",
@@ -267047,6 +269535,9 @@
                 "vercel-agent-elevated-permissions-approved",
                 "vercel-agent-elevated-permissions-requested",
                 "vercel-agent-security-finding-created",
+                "vercel-agent-security-finding-dismissed",
+                "vercel-agent-security-finding-reopened",
+                "vercel-agent-security-finding-resolved",
                 "vercel-agent-session-created",
                 "vercel-agent-team-trial-credits-applied",
                 "vercel-app-installation-request-dismissed",
@@ -269124,6 +271615,35 @@
         "type": "object",
         "description": "This object represents a public route in a Vercel Sandbox."
       },
+      "SandboxForwardRule": {
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "The domain (or wildcard pattern) that this forwarding rule applies to."
+          },
+          "forwardURL": {
+            "type": "string",
+            "description": "The URL to forward matching requests to."
+          },
+          "matchDimensions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "description": "Request dimensions used to match this rule. Matcher values are omitted.",
+            "example": [
+              "path",
+              "method"
+            ]
+          }
+        },
+        "required": [
+          "domain",
+          "forwardURL"
+        ],
+        "type": "object",
+        "description": "Rules that forward outgoing requests matching specific domains."
+      },
       "SandboxInjectionRule": {
         "properties": {
           "domain": {
@@ -269141,6 +271661,17 @@
               "Authorization",
               "X-API-Key"
             ]
+          },
+          "matchDimensions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "description": "Request dimensions used to match this rule. Matcher values are omitted.",
+            "example": [
+              "path",
+              "method"
+            ]
           }
         },
         "required": [
@@ -269148,6 +271679,35 @@
         ],
         "type": "object",
         "description": "HTTP header injection rules for outgoing requests matching specific domains."
+      },
+      "SandboxResponseRule": {
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "The domain (or wildcard pattern) that this response rule applies to."
+          },
+          "matchDimensions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "description": "Request dimensions used to match this rule. Matcher values are omitted.",
+            "example": [
+              "path",
+              "method"
+            ]
+          },
+          "statusCode": {
+            "type": "number",
+            "description": "The HTTP status code returned for matching requests."
+          }
+        },
+        "required": [
+          "domain",
+          "statusCode"
+        ],
+        "type": "object",
+        "description": "Rules that return custom responses for requests matching specific domains."
       },
       "SandboxNetworkPolicy": {
         "properties": {
@@ -269182,6 +271742,13 @@
               "10.0.0.0/8"
             ]
           },
+          "forwardRules": {
+            "items": {
+              "$ref": "#/components/schemas/SandboxForwardRule"
+            },
+            "type": "array",
+            "description": "Rules that forward outgoing requests matching specific domains."
+          },
           "injectionRules": {
             "items": {
               "$ref": "#/components/schemas/SandboxInjectionRule"
@@ -269198,6 +271765,13 @@
             ],
             "description": "The network policy mode. - 'allow-all': All traffic is allowed. - 'deny-all': All traffic is blocked. - 'custom': Traffic is controlled by explicit allow/deny rules.",
             "example": "custom"
+          },
+          "responseRules": {
+            "items": {
+              "$ref": "#/components/schemas/SandboxResponseRule"
+            },
+            "type": "array",
+            "description": "Rules that return custom responses for requests matching specific domains."
           }
         },
         "required": [

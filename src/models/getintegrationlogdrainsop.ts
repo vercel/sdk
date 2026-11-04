@@ -74,6 +74,7 @@ export type GetIntegrationLogDrainsSource2 = {
  */
 export const SourceDefaultFor = {
   EveTracing: "eve-tracing",
+  NextjsTracing: "nextjs-tracing",
 } as const;
 /**
  * Informational marker for a system-owned default drain.

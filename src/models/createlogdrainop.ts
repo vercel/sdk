@@ -136,6 +136,7 @@ export type CreateLogDrainSource2 = {
  */
 export const CreateLogDrainSourceDefaultFor = {
   EveTracing: "eve-tracing",
+  NextjsTracing: "nextjs-tracing",
 } as const;
 /**
  * Informational marker for a system-owned default drain.

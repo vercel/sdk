@@ -5,25 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinety } from "@vercel/sdk/models/threehundredandthirtyeight.js";
+import { ThreeHundredAndNinety } from "@vercel/sdk/models/consent.js";
 
 let value: ThreeHundredAndNinety = {
   budget: {
-    createdAt: 6458.55,
-    fixedBudget: 9971.48,
-    id: "<id>",
-    isActive: false,
-    notifiedAt: [
-      3777.78,
-      3919.31,
-      7775.33,
-    ],
-    previousSpend: [
-      4655.53,
-      1165.83,
-    ],
-    teamId: "<id>",
-    type: "fixed",
+    budgetItem: {
+      createdAt: 5810.8,
+      fixedBudget: 4712.9,
+      id: "<id>",
+      isActive: false,
+      notifiedAt: [
+        970.45,
+        8918.84,
+      ],
+      previousSpend: [],
+      teamId: "<id>",
+      type: "fixed",
+    },
   },
 };
 ```
@@ -32,10 +30,6 @@ let value: ThreeHundredAndNinety = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload390Budget](../models/usereventpayload390budget.md) | :heavy_check_mark:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
-| `prevBudget`                                                               | [models.PrevBudget](../models/prevbudget.md)                               | :heavy_minus_sign:                                                         | Represents a budget for tracking and notifying teams on their spending.    |
-| `prevWebhookUrl`                                                           | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `budget`                                                                   | [models.UserEventPayload390Budget](../models/usereventpayload390budget.md) | :heavy_check_mark:                                                         | N/A                                                                        |
 | `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | Stored for project budgets. Same value as `budget.scopeId`.                |
-| `projectName`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | Injected at read time from `payload.projectId`.                            |
-| `scopeName`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | Stored when activity clients can't resolve the name, as for products.      |
-| `webhookUrl`                                                               | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

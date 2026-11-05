@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadRemovedUsers } from "@vercel/sdk/models/threehundredandninetytwo.js";
+import { UserEventPayloadRemovedUsers } from "@vercel/sdk/models/store.js";
 
 let value: UserEventPayloadRemovedUsers = {
   confirmed: false,
@@ -17,4 +17,4 @@ let value: UserEventPayloadRemovedUsers = {
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `confirmed`                                                            | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
 | `confirmedAt`                                                          | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `role`                                                                 | [models.UserEventPayload412Role](../models/usereventpayload412role.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `role`                                                                 | [models.UserEventPayload415Role](../models/usereventpayload415role.md) | :heavy_check_mark:                                                     | N/A                                                                    |

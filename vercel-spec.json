@@ -5093,7 +5093,7 @@
                         "Tax",
                         "Usage"
                       ],
-                      "description": "Classification of the charge"
+                      "description": "Classification of the charge. `Usage` for measured consumption; `Purchase` for flat-fee or licensed charges without a consumption unit."
                     },
                     "ChargePeriodEnd": {
                       "type": "string",
@@ -5106,7 +5106,7 @@
                     "ConsumedQuantity": {
                       "nullable": true,
                       "type": "number",
-                      "description": "Volume of resource consumed. Null when a charge does not involve measurable consumption quantity."
+                      "description": "Volume of resource consumed. Null when ChargeCategory is not `Usage`; always paired with a non-null ConsumedUnit."
                     },
                     "ConsumedUnit": {
                       "nullable": true,
@@ -5184,6 +5184,10 @@
                       "type": "string",
                       "description": "Stable identifier for the charged product or item"
                     },
+                    "SkuPriceId": {
+                      "type": "string",
+                      "description": "Identifier for the price applied to the charge. Equal to `SkuId`, which FOCUS allows."
+                    },
                     "Tags": {
                       "additionalProperties": {
                         "type": "string"
@@ -5208,6 +5212,7 @@
                     "ServiceName",
                     "ServiceProviderName",
                     "SkuId",
+                    "SkuPriceId",
                     "Tags"
                   ],
                   "type": "object",
@@ -24518,6 +24523,14 @@
                                               },
                                               "type": "array"
                                             },
+                                            "fallback": {
+                                              "type": "boolean",
+                                              "enum": [
+                                                false,
+                                                true
+                                              ],
+                                              "description": "Keep an earlier request.path value. Builders use this for fallback routes."
+                                            },
                                             "op": {
                                               "type": "string",
                                               "enum": [
@@ -27380,6 +27393,14 @@
                                                 },
                                                 "type": "array"
                                               },
+                                              "fallback": {
+                                                "type": "boolean",
+                                                "enum": [
+                                                  false,
+                                                  true
+                                                ],
+                                                "description": "Keep an earlier request.path value. Builders use this for fallback routes."
+                                              },
                                               "op": {
                                                 "type": "string",
                                                 "enum": [
@@ -28006,6 +28027,14 @@
                                                           "type": "string"
                                                         },
                                                         "type": "array"
+                                                      },
+                                                      "fallback": {
+                                                        "type": "boolean",
+                                                        "enum": [
+                                                          false,
+                                                          true
+                                                        ],
+                                                        "description": "Keep an earlier request.path value. Builders use this for fallback routes."
                                                       },
                                                       "op": {
                                                         "type": "string",
@@ -33600,6 +33629,14 @@
                                               },
                                               "type": "array"
                                             },
+                                            "fallback": {
+                                              "type": "boolean",
+                                              "enum": [
+                                                false,
+                                                true
+                                              ],
+                                              "description": "Keep an earlier request.path value. Builders use this for fallback routes."
+                                            },
                                             "op": {
                                               "type": "string",
                                               "enum": [
@@ -36462,6 +36499,14 @@
                                                 },
                                                 "type": "array"
                                               },
+                                              "fallback": {
+                                                "type": "boolean",
+                                                "enum": [
+                                                  false,
+                                                  true
+                                                ],
+                                                "description": "Keep an earlier request.path value. Builders use this for fallback routes."
+                                              },
                                               "op": {
                                                 "type": "string",
                                                 "enum": [
@@ -37088,6 +37133,14 @@
                                                           "type": "string"
                                                         },
                                                         "type": "array"
+                                                      },
+                                                      "fallback": {
+                                                        "type": "boolean",
+                                                        "enum": [
+                                                          false,
+                                                          true
+                                                        ],
+                                                        "description": "Keep an earlier request.path value. Builders use this for fallback routes."
                                                       },
                                                       "op": {
                                                         "type": "string",
@@ -41663,6 +41716,14 @@
                                           },
                                           "type": "array"
                                         },
+                                        "fallback": {
+                                          "type": "boolean",
+                                          "enum": [
+                                            false,
+                                            true
+                                          ],
+                                          "description": "Keep an earlier request.path value. Builders use this for fallback routes."
+                                        },
                                         "op": {
                                           "type": "string",
                                           "enum": [
@@ -44525,6 +44586,14 @@
                                             },
                                             "type": "array"
                                           },
+                                          "fallback": {
+                                            "type": "boolean",
+                                            "enum": [
+                                              false,
+                                              true
+                                            ],
+                                            "description": "Keep an earlier request.path value. Builders use this for fallback routes."
+                                          },
                                           "op": {
                                             "type": "string",
                                             "enum": [
@@ -45151,6 +45220,14 @@
                                                       "type": "string"
                                                     },
                                                     "type": "array"
+                                                  },
+                                                  "fallback": {
+                                                    "type": "boolean",
+                                                    "enum": [
+                                                      false,
+                                                      true
+                                                    ],
+                                                    "description": "Keep an earlier request.path value. Builders use this for fallback routes."
                                                   },
                                                   "op": {
                                                     "type": "string",
@@ -98516,6 +98593,14 @@
                                               },
                                               "type": "array"
                                             },
+                                            "fallback": {
+                                              "type": "boolean",
+                                              "enum": [
+                                                false,
+                                                true
+                                              ],
+                                              "description": "Keep an earlier request.path value. Builders use this for fallback routes."
+                                            },
                                             "op": {
                                               "type": "string",
                                               "enum": [
@@ -99266,6 +99351,14 @@
                                                 "type": "string"
                                               },
                                               "type": "array"
+                                            },
+                                            "fallback": {
+                                              "type": "boolean",
+                                              "enum": [
+                                                false,
+                                                true
+                                              ],
+                                              "description": "Keep an earlier request.path value. Builders use this for fallback routes."
                                             },
                                             "op": {
                                               "type": "string",
@@ -100031,6 +100124,14 @@
                                                 "type": "string"
                                               },
                                               "type": "array"
+                                            },
+                                            "fallback": {
+                                              "type": "boolean",
+                                              "enum": [
+                                                false,
+                                                true
+                                              ],
+                                              "description": "Keep an earlier request.path value. Builders use this for fallback routes."
                                             },
                                             "op": {
                                               "type": "string",
@@ -101177,6 +101278,14 @@
                                         },
                                         "type": "array"
                                       },
+                                      "fallback": {
+                                        "type": "boolean",
+                                        "enum": [
+                                          false,
+                                          true
+                                        ],
+                                        "description": "Keep an earlier request.path value. Builders use this for fallback routes."
+                                      },
                                       "op": {
                                         "type": "string",
                                         "enum": [
@@ -102320,6 +102429,14 @@
                                           "type": "string"
                                         },
                                         "type": "array"
+                                      },
+                                      "fallback": {
+                                        "type": "boolean",
+                                        "enum": [
+                                          false,
+                                          true
+                                        ],
+                                        "description": "Keep an earlier request.path value. Builders use this for fallback routes."
                                       },
                                       "op": {
                                         "type": "string",
@@ -104492,6 +104609,39 @@
                               "type": "object"
                             },
                             "type": "array"
+                          },
+                          "expiration": {
+                            "oneOf": [
+                              {
+                                "properties": {
+                                  "expiresAt": {
+                                    "type": "number",
+                                    "description": "Unix ms timestamp when the project is scheduled to expire."
+                                  }
+                                },
+                                "required": [
+                                  "expiresAt"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "properties": {
+                                  "lockedAt": {
+                                    "type": "number",
+                                    "description": "Unix ms timestamp when the project was locked."
+                                  },
+                                  "lockedBy": {
+                                    "type": "string",
+                                    "description": "ID of the user, app, or integration that locked the project, or `system`."
+                                  }
+                                },
+                                "required": [
+                                  "lockedAt",
+                                  "lockedBy"
+                                ],
+                                "type": "object"
+                              }
+                            ]
                           },
                           "framework": {
                             "nullable": true,
@@ -109020,6 +109170,39 @@
                                   "type": "object"
                                 },
                                 "type": "array"
+                              },
+                              "expiration": {
+                                "oneOf": [
+                                  {
+                                    "properties": {
+                                      "expiresAt": {
+                                        "type": "number",
+                                        "description": "Unix ms timestamp when the project is scheduled to expire."
+                                      }
+                                    },
+                                    "required": [
+                                      "expiresAt"
+                                    ],
+                                    "type": "object"
+                                  },
+                                  {
+                                    "properties": {
+                                      "lockedAt": {
+                                        "type": "number",
+                                        "description": "Unix ms timestamp when the project was locked."
+                                      },
+                                      "lockedBy": {
+                                        "type": "string",
+                                        "description": "ID of the user, app, or integration that locked the project, or `system`."
+                                      }
+                                    },
+                                    "required": [
+                                      "lockedAt",
+                                      "lockedBy"
+                                    ],
+                                    "type": "object"
+                                  }
+                                ]
                               },
                               "framework": {
                                 "nullable": true,
@@ -146527,6 +146710,9 @@
             "description": ""
           },
           "500": {
+            "description": ""
+          },
+          "503": {
             "description": ""
           }
         },
@@ -191571,6 +191757,9 @@
           },
           "500": {
             "description": ""
+          },
+          "504": {
+            "description": ""
           }
         },
         "parameters": [
@@ -193321,6 +193510,9 @@
             "description": ""
           },
           "500": {
+            "description": ""
+          },
+          "504": {
             "description": ""
           }
         },
@@ -215250,6 +215442,19 @@
                                         false,
                                         true
                                       ]
+                                    },
+                                    "credentialTypesCreate": {
+                                      "items": {
+                                        "items": {
+                                          "type": "string",
+                                          "enum": [
+                                            "oidc",
+                                            "static"
+                                          ]
+                                        },
+                                        "type": "array"
+                                      },
+                                      "type": "array"
                                     },
                                     "flexCommitEligible": {
                                       "type": "boolean",
@@ -237551,6 +237756,84 @@
         "type": "object",
         "description": "Public response shape for AI Gateway routing rules. Used so OpenAPI generation can avoid ElectroDB's recursive EntityItem types."
       },
+      "AiGatewayRuleListItem": {
+        "properties": {
+          "action": {
+            "properties": {
+              "reason": {
+                "type": "string"
+              },
+              "rewriteModel": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "createdAt": {
+            "type": "number"
+          },
+          "createdBy": {
+            "type": "string"
+          },
+          "deleted": {
+            "type": "boolean",
+            "enum": [
+              false,
+              true
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean",
+            "enum": [
+              false,
+              true
+            ]
+          },
+          "match": {
+            "properties": {
+              "model": {
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "ownerId": {
+            "type": "string"
+          },
+          "ruleId": {
+            "type": "string"
+          },
+          "shadowedBy": {
+            "type": "string",
+            "description": "Rule that takes precedence over this enabled rule for the same model, so this one never applies"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "deny",
+              "rewrite"
+            ]
+          },
+          "updatedAt": {
+            "type": "number"
+          },
+          "updatedBy": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "createdAt",
+          "enabled",
+          "ownerId",
+          "ruleId",
+          "type",
+          "updatedAt"
+        ],
+        "type": "object"
+      },
       "AiGatewayRuleList": {
         "properties": {
           "nextCursor": {
@@ -237559,7 +237842,7 @@
           },
           "rules": {
             "items": {
-              "$ref": "#/components/schemas/AiGatewayRule"
+              "$ref": "#/components/schemas/AiGatewayRuleListItem"
             },
             "type": "array"
           }
@@ -255037,6 +255320,33 @@
               },
               {
                 "properties": {
+                  "reason": {
+                    "type": "string"
+                  },
+                  "actorId": {
+                    "type": "string",
+                    "description": "Okta user id."
+                  },
+                  "actorName": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  }
+                },
+                "required": [
+                  "actorId",
+                  "actorType",
+                  "reason"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "projectId": {
                     "type": "string"
                   },
@@ -255497,6 +255807,38 @@
                   "organizationId",
                   "organizationSlug",
                   "previousEnforced"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "organizationSlug": {
+                    "type": "string"
+                  },
+                  "previousEnabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  }
+                },
+                "required": [
+                  "enabled",
+                  "organizationId",
+                  "organizationSlug",
+                  "previousEnabled"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -256263,6 +256605,114 @@
                 "required": [
                   "next",
                   "previous"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "next": {
+                    "items": {
+                      "properties": {
+                        "enableBuilds": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Explicit opt-in; missing values are false."
+                        },
+                        "enableFunctions": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Explicit opt-in; missing values are false. Authorization does not enable a workload."
+                        },
+                        "envId": {
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "preview",
+                                "production"
+                              ]
+                            }
+                          ]
+                        },
+                        "perimeterId": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "envId",
+                        "perimeterId"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "previous": {
+                    "items": {
+                      "properties": {
+                        "enableBuilds": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Explicit opt-in; missing values are false."
+                        },
+                        "enableFunctions": {
+                          "type": "boolean",
+                          "enum": [
+                            false,
+                            true
+                          ],
+                          "description": "Explicit opt-in; missing values are false. Authorization does not enable a workload."
+                        },
+                        "envId": {
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "string",
+                              "enum": [
+                                "preview",
+                                "production"
+                              ]
+                            }
+                          ]
+                        },
+                        "perimeterId": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "envId",
+                        "perimeterId"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "next",
+                  "previous",
+                  "projectId",
+                  "projectName"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -260688,11 +261138,32 @@
                     "enum": [
                       "admin"
                     ]
+                  },
+                  "certificateFingerprints": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "created": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "previousCertificateFingerprints": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 },
                 "required": [
                   "actorType",
-                  "connectionId"
+                  "certificateFingerprints",
+                  "connectionId",
+                  "created"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -260711,19 +261182,13 @@
                       "admin"
                     ]
                   },
-                  "created": {
-                    "type": "boolean",
-                    "enum": [
-                      false,
-                      true
-                    ]
+                  "certificateFingerprints": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
                   }
                 },
-                "required": [
-                  "actorType",
-                  "connectionId",
-                  "created"
-                ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
               },
@@ -261527,7 +261992,7 @@
                           },
                           "scopeId": {
                             "type": "string",
-                            "description": "Project id when `scope` is `project`; product id when `scope` is `product`."
+                            "description": "What the budget caps: team id for `team`, organization id for `organization`, project id for `project`, product id for `product`."
                           },
                           "teamId": {
                             "type": "string",
@@ -261659,7 +262124,7 @@
                       },
                       "scopeId": {
                         "type": "string",
-                        "description": "Project id when `scope` is `project`; product id when `scope` is `product`."
+                        "description": "What the budget caps: team id for `team`, organization id for `organization`, project id for `project`, product id for `product`."
                       },
                       "teamId": {
                         "type": "string",
@@ -261792,7 +262257,7 @@
                       },
                       "scopeId": {
                         "type": "string",
-                        "description": "Project id when `scope` is `project`; product id when `scope` is `product`."
+                        "description": "What the budget caps: team id for `team`, organization id for `organization`, project id for `project`, product id for `product`."
                       },
                       "teamId": {
                         "type": "string",
@@ -261922,7 +262387,7 @@
                       },
                       "scopeId": {
                         "type": "string",
-                        "description": "Project id when `scope` is `project`; product id when `scope` is `product`."
+                        "description": "What the budget caps: team id for `team`, organization id for `organization`, project id for `project`, product id for `product`."
                       },
                       "teamId": {
                         "type": "string",
@@ -262032,7 +262497,7 @@
                       },
                       "scopeId": {
                         "type": "string",
-                        "description": "Project id when `scope` is `project`; product id when `scope` is `product`."
+                        "description": "What the budget caps: team id for `team`, organization id for `organization`, project id for `project`, product id for `product`."
                       },
                       "teamId": {
                         "type": "string",
@@ -265647,6 +266112,44 @@
               },
               {
                 "properties": {
+                  "cadence": {
+                    "type": "string",
+                    "enum": [
+                      "monthly",
+                      "weekly"
+                    ]
+                  },
+                  "projectIds": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "team": {
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id"
+                    ],
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "cadence",
+                  "projectIds",
+                  "team"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "tier": {
                     "type": "string",
                     "enum": [
@@ -267076,6 +267579,7 @@
               "access-group-user-added",
               "access-group-user-removed",
               "admin-agentic-provisioning-account-unlinked",
+              "admin-observability-disabled",
               "admin-plan-updated",
               "admin-preview-deployment-suffix-clear",
               "admin-saml-idp-material-deleted",
@@ -267453,6 +267957,7 @@
               "organization-slug-update",
               "organization-sso-deleted",
               "organization-sso-enforced",
+              "organization-sso-new-teams-update",
               "organization-team-add",
               "organization-team-create",
               "organization-team-delete",
@@ -267579,6 +268084,7 @@
               "project-passport-updated",
               "project-password-protection",
               "project-paused",
+              "project-perimeters-updated",
               "project-preview-deployment-suffix",
               "project-preview-environment-branch-tracking-updated",
               "project-prioritize-production-builds-updated",
@@ -267817,6 +268323,7 @@
               "vpc-peering-connection-rejected",
               "vpc-peering-connection-updated",
               "vulnerability-banner-dismissed",
+              "web-analytics-summary-subscription-updated",
               "web-analytics-tier-updated",
               "webhook-created",
               "webhook-deleted",
@@ -268050,6 +268557,7 @@
               "access-group-user-added",
               "access-group-user-removed",
               "admin-agentic-provisioning-account-unlinked",
+              "admin-observability-disabled",
               "admin-plan-updated",
               "admin-preview-deployment-suffix-clear",
               "admin-saml-idp-material-deleted",
@@ -268427,6 +268935,7 @@
               "organization-slug-update",
               "organization-sso-deleted",
               "organization-sso-enforced",
+              "organization-sso-new-teams-update",
               "organization-team-add",
               "organization-team-create",
               "organization-team-delete",
@@ -268553,6 +269062,7 @@
               "project-passport-updated",
               "project-password-protection",
               "project-paused",
+              "project-perimeters-updated",
               "project-preview-deployment-suffix",
               "project-preview-environment-branch-tracking-updated",
               "project-prioritize-production-builds-updated",
@@ -268791,6 +269301,7 @@
               "vpc-peering-connection-rejected",
               "vpc-peering-connection-updated",
               "vulnerability-banner-dismissed",
+              "web-analytics-summary-subscription-updated",
               "web-analytics-tier-updated",
               "webhook-created",
               "webhook-deleted",
@@ -268812,6 +269323,7 @@
                 "access-group-user-added",
                 "access-group-user-removed",
                 "admin-agentic-provisioning-account-unlinked",
+                "admin-observability-disabled",
                 "admin-plan-updated",
                 "admin-preview-deployment-suffix-clear",
                 "admin-saml-idp-material-deleted",
@@ -269189,6 +269701,7 @@
                 "organization-slug-update",
                 "organization-sso-deleted",
                 "organization-sso-enforced",
+                "organization-sso-new-teams-update",
                 "organization-team-add",
                 "organization-team-create",
                 "organization-team-delete",
@@ -269315,6 +269828,7 @@
                 "project-passport-updated",
                 "project-password-protection",
                 "project-paused",
+                "project-perimeters-updated",
                 "project-preview-deployment-suffix",
                 "project-preview-environment-branch-tracking-updated",
                 "project-prioritize-production-builds-updated",
@@ -269553,6 +270067,7 @@
                 "vpc-peering-connection-rejected",
                 "vpc-peering-connection-updated",
                 "vulnerability-banner-dismissed",
+                "web-analytics-summary-subscription-updated",
                 "web-analytics-tier-updated",
                 "webhook-created",
                 "webhook-deleted",

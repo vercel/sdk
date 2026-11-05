@@ -997,6 +997,10 @@ export type CreateDeploymentTransformsDeploymentsOp = ClosedEnum<
 export type CreateDeploymentTransforms2 = {
   args: string;
   env?: Array<string> | undefined;
+  /**
+   * Keep an earlier request.path value. Builders use this for fallback routes.
+   */
+  fallback?: boolean | undefined;
   op: CreateDeploymentTransformsDeploymentsOp;
   type: "request.path";
 };
@@ -3259,6 +3263,7 @@ export const CreateDeploymentTransforms2$inboundSchema: z.ZodType<
 > = z.object({
   args: types.string(),
   env: types.optional(z.array(types.string())),
+  fallback: types.optional(types.boolean()),
   op: CreateDeploymentTransformsDeploymentsOp$inboundSchema,
   type: types.literal("request.path"),
 });

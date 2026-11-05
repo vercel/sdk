@@ -570,6 +570,10 @@ export type CreateDeploymentServicesDeploymentsResponse200Type = ClosedEnum<
 export type CreateDeploymentServicesTransforms = {
   args: string;
   env?: Array<string> | undefined;
+  /**
+   * Keep an earlier request.path value. Builders use this for fallback routes.
+   */
+  fallback?: boolean | undefined;
   op: CreateDeploymentServicesOp;
   type: CreateDeploymentServicesDeploymentsResponse200Type;
 };
@@ -846,6 +850,10 @@ export type CreateDeploymentTransformsDeploymentsResponse200Op = ClosedEnum<
 export type CreateDeploymentTransformsDeployments2 = {
   args: string;
   env?: Array<string> | undefined;
+  /**
+   * Keep an earlier request.path value. Builders use this for fallback routes.
+   */
+  fallback?: boolean | undefined;
   op: CreateDeploymentTransformsDeploymentsResponse200Op;
   type: "request.path";
 };
@@ -3351,6 +3359,7 @@ export const CreateDeploymentServicesTransforms$inboundSchema: z.ZodType<
 > = z.object({
   args: types.string(),
   env: types.optional(z.array(types.string())),
+  fallback: types.optional(types.boolean()),
   op: CreateDeploymentServicesOp$inboundSchema,
   type: CreateDeploymentServicesDeploymentsResponse200Type$inboundSchema,
 });
@@ -4132,6 +4141,7 @@ export const CreateDeploymentTransformsDeployments2$inboundSchema: z.ZodType<
 > = z.object({
   args: types.string(),
   env: types.optional(z.array(types.string())),
+  fallback: types.optional(types.boolean()),
   op: CreateDeploymentTransformsDeploymentsResponse200Op$inboundSchema,
   type: types.literal("request.path"),
 });

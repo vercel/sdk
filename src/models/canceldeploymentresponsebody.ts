@@ -273,6 +273,10 @@ export type CancelDeploymentServicesDeploymentsResponseType = ClosedEnum<
 export type ServicesTransforms = {
   args: string;
   env?: Array<string> | undefined;
+  /**
+   * Keep an earlier request.path value. Builders use this for fallback routes.
+   */
+  fallback?: boolean | undefined;
   op: ServicesOp;
   type: CancelDeploymentServicesDeploymentsResponseType;
 };
@@ -537,6 +541,10 @@ export type CancelDeploymentTransformsDeploymentsOp = ClosedEnum<
 export type CancelDeploymentTransforms2 = {
   args: string;
   env?: Array<string> | undefined;
+  /**
+   * Keep an earlier request.path value. Builders use this for fallback routes.
+   */
+  fallback?: boolean | undefined;
   op: CancelDeploymentTransformsDeploymentsOp;
   type: "request.path";
 };
@@ -1986,6 +1994,7 @@ export const ServicesTransforms$inboundSchema: z.ZodType<
 > = z.object({
   args: types.string(),
   env: types.optional(z.array(types.string())),
+  fallback: types.optional(types.boolean()),
   op: ServicesOp$inboundSchema,
   type: CancelDeploymentServicesDeploymentsResponseType$inboundSchema,
 });
@@ -2733,6 +2742,7 @@ export const CancelDeploymentTransforms2$inboundSchema: z.ZodType<
 > = z.object({
   args: types.string(),
   env: types.optional(z.array(types.string())),
+  fallback: types.optional(types.boolean()),
   op: CancelDeploymentTransformsDeploymentsOp$inboundSchema,
   type: types.literal("request.path"),
 });

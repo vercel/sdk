@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNinety } from "@vercel/sdk/models/usereventpayload459actortype.js";
+import { FourHundredAndNinety } from "@vercel/sdk/models/usereventpayload464actortype.js";
 
 let value: FourHundredAndNinety = {
-  nextProjectCount: 2307.54,
-  previousProjectCount: 7885.08,
+  projectId: "<id>",
+  projectName: "<value>",
+  public: false,
+  repositoryName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `nextProjectCount`     | *number*               | :heavy_check_mark:     | N/A                    |
-| `previousProjectCount` | *number*               | :heavy_check_mark:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `public`           | *boolean*          | :heavy_check_mark: | N/A                |
+| `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |

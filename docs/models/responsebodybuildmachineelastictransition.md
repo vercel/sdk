@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyBuildMachineElasticTransition } from "@vercel/sdk/models/responsebodytier.js";
+import { ResponseBodyBuildMachineElasticTransition } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
 
 let value: ResponseBodyBuildMachineElasticTransition = {
   algorithmVersion: "<value>",

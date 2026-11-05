@@ -19,18 +19,36 @@ import {
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyDeploymentExpiration,
   ResponseBodyDeploymentExpiration$inboundSchema,
-} from "./getprojectsresponsebodycontenthint.js";
+} from "./getprojectscontenthint3.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyelasticbuildmachine.js";
+} from "./getprojectselasticbuildmachineprojects3.js";
 import {
+  GetProjectsResponseBodyAliasAssigned,
+  GetProjectsResponseBodyAliasAssigned$inboundSchema,
+  GetProjectsResponseBodyBranchMatcher,
+  GetProjectsResponseBodyBranchMatcher$inboundSchema,
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
+  GetProjectsResponseBodyProjectsAliasError,
+  GetProjectsResponseBodyProjectsAliasError$inboundSchema,
+  GetProjectsResponseBodyProjectsBuilds,
+  GetProjectsResponseBodyProjectsBuilds$inboundSchema,
+  GetProjectsResponseBodyProjectsChecksConclusion,
+  GetProjectsResponseBodyProjectsChecksConclusion$inboundSchema,
+  GetProjectsResponseBodyProjectsChecksState,
+  GetProjectsResponseBodyProjectsChecksState$inboundSchema,
+  GetProjectsResponseBodyProjectsOidcTokenClaims,
+  GetProjectsResponseBodyProjectsOidcTokenClaims$inboundSchema,
+  GetProjectsResponseBodyProjectsResponseCreator,
+  GetProjectsResponseBodyProjectsResponseCreator$inboundSchema,
   GetProjectsResponseBodyResourceConfig,
   GetProjectsResponseBodyResourceConfig$inboundSchema,
   ResponseBodyEnv,
   ResponseBodyEnv$inboundSchema,
+  ResponseBodyExpiration,
+  ResponseBodyExpiration$inboundSchema,
   ResponseBodyFramework,
   ResponseBodyFramework$inboundSchema,
   ResponseBodyGitComments,
@@ -59,12 +77,98 @@ import {
   ResponseBodySpeedInsights$inboundSchema,
   ResponseBodySsoProtection,
   ResponseBodySsoProtection$inboundSchema,
-  ResponseBodyTargets,
-  ResponseBodyTargets$inboundSchema,
-  ResponseBodyTier,
-  ResponseBodyTier$inboundSchema,
-} from "./responsebodytier.js";
+} from "./getprojectsresponsebodyprojectsoidctokenclaims.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsResponseBodyProjectsPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type GetProjectsResponseBodyProjectsPlan = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsPlan
+>;
+
+export const GetProjectsResponseBodyProjectsReadyState = {
+  Blocked: "BLOCKED",
+  Building: "BUILDING",
+  Canceled: "CANCELED",
+  Error: "ERROR",
+  Initializing: "INITIALIZING",
+  Queued: "QUEUED",
+  Ready: "READY",
+} as const;
+export type GetProjectsResponseBodyProjectsReadyState = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsReadyState
+>;
+
+export const GetProjectsResponseBodyProjectsReadySubstate = {
+  Promoted: "PROMOTED",
+  Rolling: "ROLLING",
+  Staged: "STAGED",
+} as const;
+export type GetProjectsResponseBodyProjectsReadySubstate = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsReadySubstate
+>;
+
+export const GetProjectsResponseBodyProjectsResponseType = {
+  Lambdas: "LAMBDAS",
+} as const;
+export type GetProjectsResponseBodyProjectsResponseType = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsResponseType
+>;
+
+export type ResponseBodyTargets = {
+  alias?: Array<string> | undefined;
+  aliasAssigned?: GetProjectsResponseBodyAliasAssigned | null | undefined;
+  aliasError?: GetProjectsResponseBodyProjectsAliasError | null | undefined;
+  aliasFinal?: string | null | undefined;
+  automaticAliases?: Array<string> | undefined;
+  branchMatcher?: GetProjectsResponseBodyBranchMatcher | undefined;
+  buildingAt?: number | undefined;
+  builds?: Array<GetProjectsResponseBodyProjectsBuilds> | undefined;
+  checksConclusion?:
+    | GetProjectsResponseBodyProjectsChecksConclusion
+    | undefined;
+  checksState?: GetProjectsResponseBodyProjectsChecksState | undefined;
+  connectBuildsEnabled?: boolean | undefined;
+  connectConfigurationId?: string | undefined;
+  createdAt: number;
+  createdIn: string;
+  creator: GetProjectsResponseBodyProjectsResponseCreator | null;
+  deletedAt?: number | undefined;
+  deploymentHostname: string;
+  forced?: boolean | undefined;
+  id: string;
+  meta?: { [k: string]: string } | undefined;
+  monorepoManager?: string | null | undefined;
+  name: string;
+  oidcTokenClaims?: GetProjectsResponseBodyProjectsOidcTokenClaims | undefined;
+  plan: GetProjectsResponseBodyProjectsPlan;
+  /**
+   * Whether or not preview comments are enabled for the deployment
+   */
+  previewCommentsEnabled?: boolean | undefined;
+  private: boolean;
+  readyAt?: number | undefined;
+  readyState: GetProjectsResponseBodyProjectsReadyState;
+  readySubstate?: GetProjectsResponseBodyProjectsReadySubstate | undefined;
+  requestedAt?: number | undefined;
+  target?: string | null | undefined;
+  teamId?: string | null | undefined;
+  type: GetProjectsResponseBodyProjectsResponseType;
+  url: string;
+  /**
+   * Present for user creators; omitted for app/integration/system creators.
+   */
+  userId?: string | undefined;
+  withCache?: boolean | undefined;
+};
+
+export const ResponseBodyTier = {
+  Priority: "priority",
+} as const;
+export type ResponseBodyTier = ClosedEnum<typeof ResponseBodyTier>;
 
 export const GetProjectsToProjectsPreset = {
   AllCustom: "all-custom",
@@ -239,6 +343,7 @@ export type GetProjectsResponseBody1 = {
   devCommand?: string | null | undefined;
   directoryListing: boolean;
   env?: Array<ResponseBodyEnv> | undefined;
+  expiration?: ResponseBodyExpiration | undefined;
   framework?: ResponseBodyFramework | null | undefined;
   gitComments?: ResponseBodyGitComments | undefined;
   gitForkProtection?: boolean | undefined;
@@ -286,6 +391,102 @@ export type GetProjectsResponseBody =
   | GetProjectsResponseBody2
   | GetProjectsResponseBody3
   | Array<GetProjectsResponseBody1>;
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsPlan$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyProjectsPlan
+> = z.nativeEnum(GetProjectsResponseBodyProjectsPlan);
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsReadyState$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsReadyState> = z
+    .nativeEnum(GetProjectsResponseBodyProjectsReadyState);
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsReadySubstate$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsReadySubstate> = z
+    .nativeEnum(GetProjectsResponseBodyProjectsReadySubstate);
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseType> = z
+    .nativeEnum(GetProjectsResponseBodyProjectsResponseType);
+
+/** @internal */
+export const ResponseBodyTargets$inboundSchema: z.ZodType<
+  ResponseBodyTargets,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  alias: types.optional(z.array(types.string())),
+  aliasAssigned: z.nullable(GetProjectsResponseBodyAliasAssigned$inboundSchema)
+    .optional(),
+  aliasError: z.nullable(
+    GetProjectsResponseBodyProjectsAliasError$inboundSchema,
+  ).optional(),
+  aliasFinal: z.nullable(types.string()).optional(),
+  automaticAliases: types.optional(z.array(types.string())),
+  branchMatcher: types.optional(
+    GetProjectsResponseBodyBranchMatcher$inboundSchema,
+  ),
+  buildingAt: types.optional(types.number()),
+  builds: types.optional(
+    z.array(GetProjectsResponseBodyProjectsBuilds$inboundSchema),
+  ),
+  checksConclusion: types.optional(
+    GetProjectsResponseBodyProjectsChecksConclusion$inboundSchema,
+  ),
+  checksState: types.optional(
+    GetProjectsResponseBodyProjectsChecksState$inboundSchema,
+  ),
+  connectBuildsEnabled: types.optional(types.boolean()),
+  connectConfigurationId: types.optional(types.string()),
+  createdAt: types.number(),
+  createdIn: types.string(),
+  creator: types.nullable(
+    GetProjectsResponseBodyProjectsResponseCreator$inboundSchema,
+  ),
+  deletedAt: types.optional(types.number()),
+  deploymentHostname: types.string(),
+  forced: types.optional(types.boolean()),
+  id: types.string(),
+  meta: types.optional(z.record(types.string())),
+  monorepoManager: z.nullable(types.string()).optional(),
+  name: types.string(),
+  oidcTokenClaims: types.optional(
+    GetProjectsResponseBodyProjectsOidcTokenClaims$inboundSchema,
+  ),
+  plan: GetProjectsResponseBodyProjectsPlan$inboundSchema,
+  previewCommentsEnabled: types.optional(types.boolean()),
+  private: types.boolean(),
+  readyAt: types.optional(types.number()),
+  readyState: GetProjectsResponseBodyProjectsReadyState$inboundSchema,
+  readySubstate: types.optional(
+    GetProjectsResponseBodyProjectsReadySubstate$inboundSchema,
+  ),
+  requestedAt: types.optional(types.number()),
+  target: z.nullable(types.string()).optional(),
+  teamId: z.nullable(types.string()).optional(),
+  type: GetProjectsResponseBodyProjectsResponseType$inboundSchema,
+  url: types.string(),
+  userId: types.optional(types.string()),
+  withCache: types.optional(types.boolean()),
+});
+
+export function responseBodyTargetsFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodyTargets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodyTargets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyTargets' from JSON`,
+  );
+}
+
+/** @internal */
+export const ResponseBodyTier$inboundSchema: z.ZodNativeEnum<
+  typeof ResponseBodyTier
+> = z.nativeEnum(ResponseBodyTier);
 
 /** @internal */
 export const GetProjectsToProjectsPreset$inboundSchema: z.ZodNativeEnum<
@@ -648,6 +849,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   devCommand: z.nullable(types.string()).optional(),
   directoryListing: types.boolean(),
   env: types.optional(z.array(ResponseBodyEnv$inboundSchema)),
+  expiration: types.optional(ResponseBodyExpiration$inboundSchema),
   framework: z.nullable(ResponseBodyFramework$inboundSchema).optional(),
   gitComments: types.optional(ResponseBodyGitComments$inboundSchema),
   gitForkProtection: types.optional(types.boolean()),
@@ -686,7 +888,7 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   speedInsights: types.optional(ResponseBodySpeedInsights$inboundSchema),
   ssoProtection: z.nullable(ResponseBodySsoProtection$inboundSchema).optional(),
   targets: types.optional(
-    z.record(types.nullable(ResponseBodyTargets$inboundSchema)),
+    z.record(types.nullable(z.lazy(() => ResponseBodyTargets$inboundSchema))),
   ),
   tier: types.optional(ResponseBodyTier$inboundSchema),
   transferCompletedAt: types.optional(types.number()),

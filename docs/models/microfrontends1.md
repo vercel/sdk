@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Microfrontends1 } from "@vercel/sdk/models/twohundredandsix.js";
+import { Microfrontends1 } from "@vercel/sdk/models/usereventpayload216provider.js";
 
 let value: Microfrontends1 = {
   enabled: true,

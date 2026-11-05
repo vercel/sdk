@@ -37,10 +37,10 @@ import {
 import {
   CreateIntegrationStoreDirectMetadataSchema,
   CreateIntegrationStoreDirectMetadataSchema$inboundSchema,
-  CreateIntegrationStoreDirectSecretRotationIntegrations1,
-  CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema,
   CreateIntegrationStoreDirectTags,
   CreateIntegrationStoreDirectTags$inboundSchema,
+  CredentialTypesCreate,
+  CredentialTypesCreate$inboundSchema,
   Guides,
   Guides$inboundSchema,
   ProjectConnectionScopes,
@@ -49,8 +49,13 @@ import {
   Repl$inboundSchema,
   ResourceLinks,
   ResourceLinks$inboundSchema,
-} from "./createintegrationstoredirectsecretrotationintegrations1.js";
+} from "./credentialtypescreate.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export type CreateIntegrationStoreDirectSecretRotationIntegrations1 = {
+  customRotationWarning?: string | undefined;
+  maxDelayHours: number;
+};
 
 export type CreateIntegrationStoreDirectIntegrationsSecretRotation =
   | CreateIntegrationStoreDirectSecretRotationIntegrations1
@@ -61,6 +66,7 @@ export type CreateIntegrationStoreDirectIntegrationsCapabilities = {
   checks?: boolean | undefined;
   connectedImportResource?: boolean | undefined;
   connectedProvisioning?: boolean | undefined;
+  credentialTypesCreate?: Array<Array<CredentialTypesCreate>> | undefined;
   flexCommitEligible?: boolean | undefined;
   importResource?: boolean | undefined;
   maxAllowedTeams?: number | undefined;
@@ -277,13 +283,41 @@ export type CreateIntegrationStoreDirectResponseBody = {
 };
 
 /** @internal */
+export const CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema:
+  z.ZodType<
+    CreateIntegrationStoreDirectSecretRotationIntegrations1,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    customRotationWarning: types.optional(types.string()),
+    maxDelayHours: types.number(),
+  });
+
+export function createIntegrationStoreDirectSecretRotationIntegrations1FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateIntegrationStoreDirectSecretRotationIntegrations1,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateIntegrationStoreDirectSecretRotationIntegrations1' from JSON`,
+  );
+}
+
+/** @internal */
 export const CreateIntegrationStoreDirectIntegrationsSecretRotation$inboundSchema:
   z.ZodType<
     CreateIntegrationStoreDirectIntegrationsSecretRotation,
     z.ZodTypeDef,
     unknown
   > = smartUnion([
-    CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema,
+    z.lazy(() =>
+      CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema
+    ),
     types.boolean(),
   ]);
 
@@ -313,6 +347,9 @@ export const CreateIntegrationStoreDirectIntegrationsCapabilities$inboundSchema:
     checks: types.optional(types.boolean()),
     connectedImportResource: types.optional(types.boolean()),
     connectedProvisioning: types.optional(types.boolean()),
+    credentialTypesCreate: types.optional(
+      z.array(z.array(CredentialTypesCreate$inboundSchema)),
+    ),
     flexCommitEligible: types.optional(types.boolean()),
     importResource: types.optional(types.boolean()),
     maxAllowedTeams: types.optional(types.number()),
@@ -324,7 +361,9 @@ export const CreateIntegrationStoreDirectIntegrationsCapabilities$inboundSchema:
     requiresBrowserInstall: types.optional(types.boolean()),
     secretRotation: types.optional(
       smartUnion([
-        CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema,
+        z.lazy(() =>
+          CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema
+        ),
         types.boolean(),
       ]),
     ),

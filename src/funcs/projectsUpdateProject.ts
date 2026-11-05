@@ -173,7 +173,7 @@ async function $do(
   >(
     M.json(200, UpdateProjectResponseBody$inboundSchema),
     M.fail([400, 401, 402, 403, 404, 409, 410, 428, "4XX"]),
-    M.fail([500, "5XX"]),
+    M.fail([500, 503, "5XX"]),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

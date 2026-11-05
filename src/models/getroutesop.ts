@@ -262,6 +262,10 @@ export type GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBo
 export type GetRoutesTransformsProjectRoutesResponse2 = {
   args: string;
   env?: Array<string> | undefined;
+  /**
+   * Keep an earlier request.path value. Builders use this for fallback routes.
+   */
+  fallback?: boolean | undefined;
   op: GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBodyOp;
   type: "request.path";
 };
@@ -724,6 +728,10 @@ export type GetRoutesTransformsProjectRoutesResponse200Op = ClosedEnum<
 export type GetRoutesTransformsProjectRoutes2 = {
   args: string;
   env?: Array<string> | undefined;
+  /**
+   * Keep an earlier request.path value. Builders use this for fallback routes.
+   */
+  fallback?: boolean | undefined;
   op: GetRoutesTransformsProjectRoutesResponse200Op;
   type: "request.path";
 };
@@ -1150,6 +1158,10 @@ export type GetRoutesTransformsProjectRoutesOp = ClosedEnum<
 export type GetRoutesTransforms2 = {
   args: string;
   env?: Array<string> | undefined;
+  /**
+   * Keep an earlier request.path value. Builders use this for fallback routes.
+   */
+  fallback?: boolean | undefined;
   op: GetRoutesTransformsProjectRoutesOp;
   type: "request.path";
 };
@@ -2143,6 +2155,7 @@ export const GetRoutesTransformsProjectRoutesResponse2$inboundSchema: z.ZodType<
 > = z.object({
   args: types.string(),
   env: types.optional(z.array(types.string())),
+  fallback: types.optional(types.boolean()),
   op:
     GetRoutesTransformsProjectRoutesResponse200ApplicationJSONResponseBodyOp$inboundSchema,
   type: types.literal("request.path"),
@@ -3184,6 +3197,7 @@ export const GetRoutesTransformsProjectRoutes2$inboundSchema: z.ZodType<
 > = z.object({
   args: types.string(),
   env: types.optional(z.array(types.string())),
+  fallback: types.optional(types.boolean()),
   op: GetRoutesTransformsProjectRoutesResponse200Op$inboundSchema,
   type: types.literal("request.path"),
 });
@@ -4098,6 +4112,7 @@ export const GetRoutesTransforms2$inboundSchema: z.ZodType<
 > = z.object({
   args: types.string(),
   env: types.optional(z.array(types.string())),
+  fallback: types.optional(types.boolean()),
   op: GetRoutesTransformsProjectRoutesOp$inboundSchema,
   type: types.literal("request.path"),
 });

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DismissalReason } from "@vercel/sdk/models/threehundredandninetytwo.js";
+import { DismissalReason } from "@vercel/sdk/models/store.js";
 
 let value: DismissalReason = "accepted-risk";
 ```

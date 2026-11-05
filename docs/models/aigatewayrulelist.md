@@ -13,7 +13,7 @@ let value: AiGatewayRuleList = {
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `nextCursor`                                         | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `rules`                                              | [models.AiGatewayRule](../models/aigatewayrule.md)[] | :heavy_check_mark:                                   | N/A                                                  |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `nextCursor`                                                         | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
+| `rules`                                                              | [models.AiGatewayRuleListItem](../models/aigatewayrulelistitem.md)[] | :heavy_check_mark:                                                   | N/A                                                                  |

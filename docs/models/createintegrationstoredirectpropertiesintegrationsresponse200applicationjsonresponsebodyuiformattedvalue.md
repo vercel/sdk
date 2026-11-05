@@ -5,7 +5,7 @@
 ```typescript
 import {
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue,
-} from "@vercel/sdk/models/createintegrationstoredirectsecretrotationintegrations1.js";
+} from "@vercel/sdk/models/credentialtypescreate.js";
 
 let value:
   CreateIntegrationStoreDirectPropertiesIntegrationsResponse200ApplicationJSONResponseBodyUiFormattedValue =

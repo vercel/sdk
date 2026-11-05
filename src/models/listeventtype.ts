@@ -56,6 +56,7 @@ export const Name = {
   AccessGroupUserRemoved: "access-group-user-removed",
   AdminAgenticProvisioningAccountUnlinked:
     "admin-agentic-provisioning-account-unlinked",
+  AdminObservabilityDisabled: "admin-observability-disabled",
   AdminPlanUpdated: "admin-plan-updated",
   AdminPreviewDeploymentSuffixClear: "admin-preview-deployment-suffix-clear",
   AdminSamlIdpMaterialDeleted: "admin-saml-idp-material-deleted",
@@ -461,6 +462,7 @@ export const Name = {
   OrganizationSlugUpdate: "organization-slug-update",
   OrganizationSsoDeleted: "organization-sso-deleted",
   OrganizationSsoEnforced: "organization-sso-enforced",
+  OrganizationSsoNewTeamsUpdate: "organization-sso-new-teams-update",
   OrganizationTeamAdd: "organization-team-add",
   OrganizationTeamCreate: "organization-team-create",
   OrganizationTeamDelete: "organization-team-delete",
@@ -603,6 +605,7 @@ export const Name = {
   ProjectPassportUpdated: "project-passport-updated",
   ProjectPasswordProtection: "project-password-protection",
   ProjectPaused: "project-paused",
+  ProjectPerimetersUpdated: "project-perimeters-updated",
   ProjectPreviewDeploymentSuffix: "project-preview-deployment-suffix",
   ProjectPreviewEnvironmentBranchTrackingUpdated:
     "project-preview-environment-branch-tracking-updated",
@@ -859,6 +862,8 @@ export const Name = {
   VpcPeeringConnectionRejected: "vpc-peering-connection-rejected",
   VpcPeeringConnectionUpdated: "vpc-peering-connection-updated",
   VulnerabilityBannerDismissed: "vulnerability-banner-dismissed",
+  WebAnalyticsSummarySubscriptionUpdated:
+    "web-analytics-summary-subscription-updated",
   WebAnalyticsTierUpdated: "web-analytics-tier-updated",
   WebhookCreated: "webhook-created",
   WebhookDeleted: "webhook-deleted",
@@ -883,6 +888,7 @@ export const ReplacedBy = {
   AccessGroupUserRemoved: "access-group-user-removed",
   AdminAgenticProvisioningAccountUnlinked:
     "admin-agentic-provisioning-account-unlinked",
+  AdminObservabilityDisabled: "admin-observability-disabled",
   AdminPlanUpdated: "admin-plan-updated",
   AdminPreviewDeploymentSuffixClear: "admin-preview-deployment-suffix-clear",
   AdminSamlIdpMaterialDeleted: "admin-saml-idp-material-deleted",
@@ -1288,6 +1294,7 @@ export const ReplacedBy = {
   OrganizationSlugUpdate: "organization-slug-update",
   OrganizationSsoDeleted: "organization-sso-deleted",
   OrganizationSsoEnforced: "organization-sso-enforced",
+  OrganizationSsoNewTeamsUpdate: "organization-sso-new-teams-update",
   OrganizationTeamAdd: "organization-team-add",
   OrganizationTeamCreate: "organization-team-create",
   OrganizationTeamDelete: "organization-team-delete",
@@ -1430,6 +1437,7 @@ export const ReplacedBy = {
   ProjectPassportUpdated: "project-passport-updated",
   ProjectPasswordProtection: "project-password-protection",
   ProjectPaused: "project-paused",
+  ProjectPerimetersUpdated: "project-perimeters-updated",
   ProjectPreviewDeploymentSuffix: "project-preview-deployment-suffix",
   ProjectPreviewEnvironmentBranchTrackingUpdated:
     "project-preview-environment-branch-tracking-updated",
@@ -1686,6 +1694,8 @@ export const ReplacedBy = {
   VpcPeeringConnectionRejected: "vpc-peering-connection-rejected",
   VpcPeeringConnectionUpdated: "vpc-peering-connection-updated",
   VulnerabilityBannerDismissed: "vulnerability-banner-dismissed",
+  WebAnalyticsSummarySubscriptionUpdated:
+    "web-analytics-summary-subscription-updated",
   WebAnalyticsTierUpdated: "web-analytics-tier-updated",
   WebhookCreated: "webhook-created",
   WebhookDeleted: "webhook-deleted",

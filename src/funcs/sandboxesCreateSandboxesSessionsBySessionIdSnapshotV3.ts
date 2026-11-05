@@ -179,7 +179,7 @@ async function $do(
       CreateSandboxesSessionsBySessionIdSnapshotV3ResponseBody$inboundSchema,
     ),
     M.fail([400, 401, 402, 403, 404, 410, 422, 429, "4XX"]),
-    M.fail([500, "5XX"]),
+    M.fail([500, 504, "5XX"]),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];

@@ -1291,7 +1291,7 @@ export type GetProjectsResponseBodyProjectsEnv = {
   vsmValue?: string | undefined;
 };
 
-export type GetProjectsExpiration2 = {
+export type GetProjectsExpirationProjectsResponse2 = {
   /**
    * Unix ms timestamp when the project was locked.
    */
@@ -1302,16 +1302,16 @@ export type GetProjectsExpiration2 = {
   lockedBy: string;
 };
 
-export type GetProjectsExpiration1 = {
+export type GetProjectsExpirationProjectsResponse1 = {
   /**
    * Unix ms timestamp when the project is scheduled to expire.
    */
   expiresAt: number;
 };
 
-export type ResponseBodyExpiration =
-  | GetProjectsExpiration2
-  | GetProjectsExpiration1;
+export type GetProjectsResponseBodyProjectsExpiration =
+  | GetProjectsExpirationProjectsResponse2
+  | GetProjectsExpirationProjectsResponse1;
 
 export type ResponseBodyFeatures = {
   webAnalytics?: boolean | undefined;
@@ -4123,8 +4123,8 @@ export function getProjectsResponseBodyProjectsEnvFromJSON(
 }
 
 /** @internal */
-export const GetProjectsExpiration2$inboundSchema: z.ZodType<
-  GetProjectsExpiration2,
+export const GetProjectsExpirationProjectsResponse2$inboundSchema: z.ZodType<
+  GetProjectsExpirationProjectsResponse2,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4132,52 +4132,60 @@ export const GetProjectsExpiration2$inboundSchema: z.ZodType<
   lockedBy: types.string(),
 });
 
-export function getProjectsExpiration2FromJSON(
+export function getProjectsExpirationProjectsResponse2FromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsExpiration2, SDKValidationError> {
+): SafeParseResult<GetProjectsExpirationProjectsResponse2, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsExpiration2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsExpiration2' from JSON`,
+    (x) =>
+      GetProjectsExpirationProjectsResponse2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsExpirationProjectsResponse2' from JSON`,
   );
 }
 
 /** @internal */
-export const GetProjectsExpiration1$inboundSchema: z.ZodType<
-  GetProjectsExpiration1,
+export const GetProjectsExpirationProjectsResponse1$inboundSchema: z.ZodType<
+  GetProjectsExpirationProjectsResponse1,
   z.ZodTypeDef,
   unknown
 > = z.object({
   expiresAt: types.number(),
 });
 
-export function getProjectsExpiration1FromJSON(
+export function getProjectsExpirationProjectsResponse1FromJSON(
   jsonString: string,
-): SafeParseResult<GetProjectsExpiration1, SDKValidationError> {
+): SafeParseResult<GetProjectsExpirationProjectsResponse1, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetProjectsExpiration1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetProjectsExpiration1' from JSON`,
+    (x) =>
+      GetProjectsExpirationProjectsResponse1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsExpirationProjectsResponse1' from JSON`,
   );
 }
 
 /** @internal */
-export const ResponseBodyExpiration$inboundSchema: z.ZodType<
-  ResponseBodyExpiration,
+export const GetProjectsResponseBodyProjectsExpiration$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyProjectsExpiration,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.lazy(() => GetProjectsExpiration2$inboundSchema),
-  z.lazy(() => GetProjectsExpiration1$inboundSchema),
+  z.lazy(() => GetProjectsExpirationProjectsResponse2$inboundSchema),
+  z.lazy(() => GetProjectsExpirationProjectsResponse1$inboundSchema),
 ]);
 
-export function responseBodyExpirationFromJSON(
+export function getProjectsResponseBodyProjectsExpirationFromJSON(
   jsonString: string,
-): SafeParseResult<ResponseBodyExpiration, SDKValidationError> {
+): SafeParseResult<
+  GetProjectsResponseBodyProjectsExpiration,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => ResponseBodyExpiration$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ResponseBodyExpiration' from JSON`,
+    (x) =>
+      GetProjectsResponseBodyProjectsExpiration$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetProjectsResponseBodyProjectsExpiration' from JSON`,
   );
 }
 

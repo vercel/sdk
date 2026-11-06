@@ -11,5 +11,5 @@ let value: GetProjectBoxesStatus = "stopped";
 ## Values
 
 ```typescript
-"ready" | "reconciling" | "stopped"
+"crash_looping" | "ready" | "reconciling" | "stopped"
 ```

@@ -7,14 +7,25 @@ The payload of the event, if requested.
 ```typescript
 import { ThreeHundredAndSixtyEight } from "@vercel/sdk/models/consent.js";
 
-let value: ThreeHundredAndSixtyEight = {};
+let value: ThreeHundredAndSixtyEight = {
+  connectionId: "<id>",
+  actorType: "admin",
+  certificateFingerprints: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  created: true,
+};
 ```
 
 ## Fields
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `connectionId`                                                                   | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `connectionId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload368ActorType](../models/usereventpayload368actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `certificateFingerprints`                                                        | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload368ActorType](../models/usereventpayload368actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `certificateFingerprints`                                                        | *string*[]                                                                       | :heavy_check_mark:                                                               | N/A                                                                              |
+| `created`                                                                        | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
+| `previousCertificateFingerprints`                                                | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |

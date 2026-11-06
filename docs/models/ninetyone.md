@@ -8,9 +8,7 @@ The payload of the event, if requested.
 import { NinetyOne } from "@vercel/sdk/models/payloadprivatemodel.js";
 
 let value: NinetyOne = {
-  cns: [],
-  custom: false,
-  id: "<id>",
+  custom: true,
 };
 ```
 
@@ -18,6 +16,7 @@ let value: NinetyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `cns`              | *string*[]         | :heavy_check_mark: | N/A                |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
 | `custom`           | *boolean*          | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_minus_sign: | N/A                |

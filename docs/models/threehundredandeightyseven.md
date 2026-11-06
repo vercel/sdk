@@ -8,8 +8,10 @@ The payload of the event, if requested.
 import { ThreeHundredAndEightySeven } from "@vercel/sdk/models/consent.js";
 
 let value: ThreeHundredAndEightySeven = {
+  bitbucketEmail: "<value>",
+  bitbucketLogin: "<value>",
+  bitbucketName: "<value>",
   email: "Theresa.Kassulke54@gmail.com",
-  githubLogin: "<value>",
   zeitAccount: "<value>",
   zeitAccountType: "<value>",
 };
@@ -19,7 +21,9 @@ let value: ThreeHundredAndEightySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
+| `bitbucketName`    | *string*           | :heavy_check_mark: | N/A                |
 | `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
 | `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
 | `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |

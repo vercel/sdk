@@ -27,6 +27,7 @@ export type GetWebhookRequest = {
 export const GetWebhookEvents = {
   AiGatewayAutoReloadLimitReached: "ai-gateway.auto-reload.limit-reached",
   AiGatewayBalanceDepleted: "ai-gateway.balance-depleted",
+  AiGatewayBudgetUpdated: "ai-gateway.budget.updated",
   AlertsTriggered: "alerts.triggered",
   BotidAnomaly: "botid.anomaly",
   BudgetReached: "budget.reached",

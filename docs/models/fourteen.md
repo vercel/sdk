@@ -9,6 +9,9 @@ import { Fourteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Fourteen = {
   boardId: "<id>",
+  environments: [
+    "<value 1>",
+  ],
   operationId: "<id>",
   projectId: "<id>",
 };
@@ -19,5 +22,6 @@ let value: Fourteen = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `boardId`          | *string*           | :heavy_check_mark: | N/A                |
+| `environments`     | *string*[]         | :heavy_check_mark: | N/A                |
 | `operationId`      | *string*           | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |

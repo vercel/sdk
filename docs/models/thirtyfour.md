@@ -8,26 +8,17 @@ The payload of the event, if requested.
 import { ThirtyFour } from "@vercel/sdk/models/userevent.js";
 
 let value: ThirtyFour = {
-  added: [],
-  changed: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
   credential: {
     id: "<id>",
     name: "<value>",
     providerSlug: "<value>",
   },
-  removed: [],
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `added`                                                                      | *string*[]                                                                   | :heavy_check_mark:                                                           | N/A                                                                          |
-| `changed`                                                                    | *string*[]                                                                   | :heavy_check_mark:                                                           | N/A                                                                          |
-| `credential`                                                                 | [models.UserEventPayloadCredential](../models/usereventpayloadcredential.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `removed`                                                                    | *string*[]                                                                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `changes`                                                  | [models.Changes](../models/changes.md)                     | :heavy_minus_sign:                                         | N/A                                                        |
+| `credential`                                               | [models.PayloadCredential](../models/payloadcredential.md) | :heavy_check_mark:                                         | N/A                                                        |

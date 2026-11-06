@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FirewallRoutes } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
+import { FirewallRoutes } from "@vercel/sdk/models/getprojectsresponsebodyaliasassigned.js";
 
 let value: FirewallRoutes = {};
 ```
@@ -18,6 +18,7 @@ let value: FirewallRoutes = {};
 | `missing`                                                                                    | [models.GetProjectsResponseBodyMissing](../models/getprojectsresponsebodymissing.md)[]       | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `mitigate`                                                                                   | [models.GetProjectsResponseBodyMitigate](../models/getprojectsresponsebodymitigate.md)       | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `responseHas`                                                                                | [models.ResponseHas](../models/responsehas.md)[]                                             | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `responseMissing`                                                                            | [models.ResponseMissing](../models/responsemissing.md)[]                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `src`                                                                                        | *models.Src*                                                                                 | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `status`                                                                                     | *number*                                                                                     | :heavy_minus_sign:                                                                           | N/A                                                                                          |
 | `tierRequirement`                                                                            | [models.TierRequirement](../models/tierrequirement.md)                                       | :heavy_minus_sign:                                                                           | N/A                                                                                          |

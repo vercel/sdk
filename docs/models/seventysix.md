@@ -7,11 +7,16 @@ The payload of the event, if requested.
 ```typescript
 import { SeventySix } from "@vercel/sdk/models/payloadprivatemodel.js";
 
-let value: SeventySix = {};
+let value: SeventySix = {
+  autoExposeSystemEnvs: false,
+  projectName: "<value>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `autoExposeSystemEnvs` | *boolean*              | :heavy_check_mark:     | N/A                    |
+| `projectId`            | *string*               | :heavy_minus_sign:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |

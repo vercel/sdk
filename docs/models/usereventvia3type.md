@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventVia3Type } from "@vercel/sdk/models/userevent.js";
 
-let value: UserEventVia3Type = "external";
+let value: UserEventVia3Type = "integration";
 ```
 
 ## Values
 
 ```typescript
-"external"
+"integration"
 ```

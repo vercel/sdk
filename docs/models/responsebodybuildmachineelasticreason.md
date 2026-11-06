@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyBuildMachineElasticReason } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
+import { ResponseBodyBuildMachineElasticReason } from "@vercel/sdk/models/getprojectsresponsebodyaliasassigned.js";
 
 let value: ResponseBodyBuildMachineElasticReason = "basic-floor";
 ```

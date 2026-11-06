@@ -8,13 +8,14 @@ The payload of the event, if requested.
 import { FourHundredAndNineteen } from "@vercel/sdk/models/store.js";
 
 let value: FourHundredAndNineteen = {
-  enabled: true,
+  action: "reset",
+  targetId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_minus_sign: | N/A                |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload419Action](../models/usereventpayload419action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `targetId`                                                                 | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

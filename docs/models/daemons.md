@@ -32,7 +32,7 @@ let value: Daemons = {
     type: "target",
     value: "preview",
   },
-  status: "reconciling",
+  status: "ready",
   updatedAt: "1735644933292",
 };
 ```

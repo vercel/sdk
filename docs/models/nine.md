@@ -9,7 +9,6 @@ import { Nine } from "@vercel/sdk/models/userevent.js";
 
 let value: Nine = {
   boardId: "<id>",
-  channelId: "<id>",
   operationId: "<id>",
 };
 ```
@@ -19,5 +18,4 @@ let value: Nine = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `boardId`          | *string*           | :heavy_check_mark: | N/A                |
-| `channelId`        | *string*           | :heavy_check_mark: | N/A                |
 | `operationId`      | *string*           | :heavy_check_mark: | N/A                |

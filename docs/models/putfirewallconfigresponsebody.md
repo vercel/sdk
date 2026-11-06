@@ -29,7 +29,7 @@ let value: PutFirewallConfigResponseBody = {
             conditions: [
               {
                 op: "list",
-                type: "scheme",
+                type: "ruleset",
               },
             ],
           },

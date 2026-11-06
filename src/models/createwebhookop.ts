@@ -100,6 +100,7 @@ export const CreateWebhookEvents = {
   MarketplaceInvoiceRefunded: "marketplace.invoice.refunded",
   AiGatewayBalanceDepleted: "ai-gateway.balance-depleted",
   AiGatewayAutoReloadLimitReached: "ai-gateway.auto-reload.limit-reached",
+  AiGatewayBudgetUpdated: "ai-gateway.budget.updated",
   ObservabilityAnomaly: "observability.anomaly",
   ObservabilityAnomalyError: "observability.anomaly-error",
   ObservabilityUsageAnomaly: "observability.usage-anomaly",
@@ -155,6 +156,7 @@ export type CreateWebhookRequest = {
 export const CreateWebhookWebhooksEvents = {
   AiGatewayAutoReloadLimitReached: "ai-gateway.auto-reload.limit-reached",
   AiGatewayBalanceDepleted: "ai-gateway.balance-depleted",
+  AiGatewayBudgetUpdated: "ai-gateway.budget.updated",
   AlertsTriggered: "alerts.triggered",
   BotidAnomaly: "botid.anomaly",
   BudgetReached: "budget.reached",

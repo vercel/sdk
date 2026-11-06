@@ -11,7 +11,7 @@ let value:
   GetSecurityFirewallConfigSecurityResponse200ApplicationJSONResponseBodyConditions =
     {
       op: "ex",
-      type: "environment",
+      type: "geo_as_number",
     };
 ```
 

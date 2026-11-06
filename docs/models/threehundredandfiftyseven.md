@@ -9,7 +9,7 @@ import { ThreeHundredAndFiftySeven } from "@vercel/sdk/models/consent.js";
 
 let value: ThreeHundredAndFiftySeven = {
   next: {
-    skewProtectionMaxAge: 5324.3,
+    skewProtectionBoundaryAt: 5324.3,
   },
   previous: {},
   projectId: "<id>",

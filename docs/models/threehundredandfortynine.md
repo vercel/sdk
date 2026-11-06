@@ -8,10 +8,6 @@ The payload of the event, if requested.
 import { ThreeHundredAndFortyNine } from "@vercel/sdk/models/consent.js";
 
 let value: ThreeHundredAndFortyNine = {
-  next: {
-    issuerMode: "team",
-  },
-  previous: {},
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -19,9 +15,9 @@ let value: ThreeHundredAndFortyNine = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload349Next](../models/usereventpayload349next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload349Previous](../models/usereventpayload349previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `failoverRegions`  | *string*[]         | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `region`           | *string*           | :heavy_minus_sign: | N/A                |

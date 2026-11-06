@@ -45,17 +45,16 @@ const value: models.UserEventPrincipal4 = {
 };
 ```
 
-### `models.Principal5`
+### `models.UserEventPrincipal5`
 
 ```typescript
-const value: models.Principal5 = {
+const value: models.UserEventPrincipal5 = {
   type: "user",
   via: {
-    integration: {
-      configurationId: "<id>",
-      integrationId: "<id>",
+    app: {
+      id: "<id>",
     },
-    type: "integration",
+    type: "app",
   },
   user: {
     id: "<id>",

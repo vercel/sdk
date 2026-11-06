@@ -6,12 +6,12 @@
 import { UserEventPayload357Next } from "@vercel/sdk/models/consent.js";
 
 let value: UserEventPayload357Next = {
-  skewProtectionMaxAge: 6528.26,
+  skewProtectionBoundaryAt: 6528.26,
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `skewProtectionMaxAge` | *number*               | :heavy_check_mark:     | N/A                    |
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `skewProtectionBoundaryAt` | *number*                   | :heavy_check_mark:         | N/A                        |

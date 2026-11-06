@@ -5,23 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndEighty } from "@vercel/sdk/models/usereventpayload464actortype.js";
+import { FourHundredAndEighty } from "@vercel/sdk/models/usereventpayload465actortype.js";
 
 let value: FourHundredAndEighty = {
-  next: {
-    enabled: true,
-    totpVerified: true,
-  },
-  previous: {
-    enabled: false,
-    totpVerified: false,
-  },
+  enabled: true,
+  totpVerified: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload480Next](../models/usereventpayload480next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload480Previous](../models/usereventpayload480previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |

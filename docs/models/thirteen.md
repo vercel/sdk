@@ -9,17 +9,15 @@ import { Thirteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Thirteen = {
   boardId: "<id>",
-  environments: [],
   operationId: "<id>",
-  projectId: "<id>",
+  visibility: "private",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `boardId`          | *string*           | :heavy_check_mark: | N/A                |
-| `environments`     | *string*[]         | :heavy_check_mark: | N/A                |
-| `operationId`      | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `boardId`                                    | *string*                                     | :heavy_check_mark:                           | N/A                                          |
+| `operationId`                                | *string*                                     | :heavy_check_mark:                           | N/A                                          |
+| `visibility`                                 | [models.Visibility](../models/visibility.md) | :heavy_check_mark:                           | N/A                                          |

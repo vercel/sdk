@@ -8,7 +8,7 @@ import { GetSecurityFirewallConfigSecurityResponse200ApplicationJSONConditions }
 let value:
   GetSecurityFirewallConfigSecurityResponse200ApplicationJSONConditions = {
     op: "gte",
-    type: "trusted_source",
+    type: "traffic_source",
   };
 ```
 

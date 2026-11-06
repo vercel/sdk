@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyBotFilter } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
+import { ResponseBodyBotFilter } from "@vercel/sdk/models/getprojectsresponsebodyaliasassigned.js";
 
 let value: ResponseBodyBotFilter = {
   active: true,

@@ -8,28 +8,22 @@ The payload of the event, if requested.
 import { ThreeHundredAndNinety } from "@vercel/sdk/models/consent.js";
 
 let value: ThreeHundredAndNinety = {
-  budget: {
-    budgetItem: {
-      createdAt: 5810.8,
-      fixedBudget: 4712.9,
-      id: "<id>",
-      isActive: false,
-      notifiedAt: [
-        970.45,
-        8918.84,
-      ],
-      previousSpend: [],
-      teamId: "<id>",
-      type: "fixed",
-    },
+  previous: {
+    sampleRatePercent: 9971.48,
+    spendLimitInDollars: 7806.57,
   },
+  sampleRatePercent: 3919.31,
+  spendLimitInDollars: 6451.62,
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `budget`                                                                   | [models.UserEventPayload390Budget](../models/usereventpayload390budget.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | Stored for project budgets. Same value as `budget.scopeId`.                |
-| `projectName`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `analyticsId`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload390Previous](../models/usereventpayload390previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `sampleRatePercent`                                                            | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `spendLimitInDollars`                                                          | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

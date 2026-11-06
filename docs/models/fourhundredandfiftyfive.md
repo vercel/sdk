@@ -7,11 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { FourHundredAndFiftyFive } from "@vercel/sdk/models/store.js";
 
-let value: FourHundredAndFiftyFive = {};
+let value: FourHundredAndFiftyFive = {
+  fileId: "<id>",
+};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `slug`             | *string*           | :heavy_minus_sign: | N/A                |
+| `fileId`           | *string*           | :heavy_check_mark: | N/A                |

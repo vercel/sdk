@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFifteen } from "@vercel/sdk/models/twohundredandseventytwo.js";
+import { ThreeHundredAndFifteen } from "@vercel/sdk/models/twohundredandseventythree.js";
 
 let value: ThreeHundredAndFifteen = {
+  createDeployments: "disabled",
   projectId: "<id>",
   projectName: "<value>",
-  requireVerifiedCommits: false,
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `projectId`              | *string*                 | :heavy_check_mark:       | N/A                      |
-| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
-| `requireVerifiedCommits` | *boolean*                | :heavy_check_mark:       | N/A                      |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `createDeployments`                                        | [models.CreateDeployments](../models/createdeployments.md) | :heavy_check_mark:                                         | N/A                                                        |
+| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `projectName`                                              | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |

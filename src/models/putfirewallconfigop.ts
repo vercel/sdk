@@ -271,6 +271,7 @@ export const PutFirewallConfigType = {
   TrafficSource: "traffic_source",
   Ruleset: "ruleset",
   ResponseCode: "response_code",
+  ResponseHeader: "response_header",
 } as const;
 /**
  * [Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic.
@@ -435,6 +436,7 @@ export const RulesetsType = {
   TrafficSource: "traffic_source",
   Ruleset: "ruleset",
   ResponseCode: "response_code",
+  ResponseHeader: "response_header",
 } as const;
 export type RulesetsType = ClosedEnum<typeof RulesetsType>;
 
@@ -599,6 +601,7 @@ export const PutFirewallConfigSecurityType = {
   RawPath: "raw_path",
   Region: "region",
   ResponseCode: "response_code",
+  ResponseHeader: "response_header",
   Route: "route",
   Ruleset: "ruleset",
   Scheme: "scheme",
@@ -1150,6 +1153,7 @@ export const PutFirewallConfigRulesSecurityType = {
   RawPath: "raw_path",
   Region: "region",
   ResponseCode: "response_code",
+  ResponseHeader: "response_header",
   Route: "route",
   Ruleset: "ruleset",
   Scheme: "scheme",
@@ -1316,6 +1320,7 @@ export const PutFirewallConfigRulesType = {
   RawPath: "raw_path",
   Region: "region",
   ResponseCode: "response_code",
+  ResponseHeader: "response_header",
   Route: "route",
   Ruleset: "ruleset",
   Scheme: "scheme",
@@ -1475,6 +1480,7 @@ export const PutFirewallConfigRulesetsType = {
   RawPath: "raw_path",
   Region: "region",
   ResponseCode: "response_code",
+  ResponseHeader: "response_header",
   Route: "route",
   Ruleset: "ruleset",
   Scheme: "scheme",

@@ -8,14 +8,12 @@ The payload of the event, if requested.
 import { FourHundredAndFortyNine } from "@vercel/sdk/models/store.js";
 
 let value: FourHundredAndFortyNine = {
-  enabled: false,
-  scope: "log-drains",
+  enabled: "on",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload449Scope](../models/usereventpayload449scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `enabled`                                            | [models.PayloadEnabled](../models/payloadenabled.md) | :heavy_check_mark:                                   | N/A                                                  |

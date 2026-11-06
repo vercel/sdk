@@ -497,7 +497,7 @@ export type PatchTeamRequestBody = {
    */
   avatar?: string | null | undefined;
   /**
-   * A short text that describes the team.
+   * A short text that describes the team. Set to an empty string to clear the description. Omit to keep the current description.
    */
   description?: string | undefined;
   emailDomain?: string | null | undefined;

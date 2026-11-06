@@ -11,8 +11,6 @@ let value: ThreeHundredAndSeventy = {
   connectionId: "<id>",
   actorType: "admin",
   keyId: "<id>",
-  signingEnabled: false,
-  signingKeyId: "<id>",
 };
 ```
 
@@ -24,5 +22,3 @@ let value: ThreeHundredAndSeventy = {
 | `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `actorType`                                                                      | [models.UserEventPayload370ActorType](../models/usereventpayload370actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
 | `keyId`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `signingEnabled`                                                                 | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
-| `signingKeyId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { NinetyFour } from "@vercel/sdk/models/payloadprivatemodel.js";
 
 let value: NinetyFour = {
-  dst: "<value>",
-  src: "<value>",
+  id: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `dst`              | *string*           | :heavy_check_mark: | N/A                |
-| `src`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `id`                                                 | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `newTeam`                                            | [models.PayloadNewTeam](../models/payloadnewteam.md) | :heavy_minus_sign:                                   | N/A                                                  |
+| `oldTeam`                                            | [models.PayloadOldTeam](../models/payloadoldteam.md) | :heavy_minus_sign:                                   | N/A                                                  |

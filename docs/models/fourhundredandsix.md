@@ -8,18 +8,20 @@ The payload of the event, if requested.
 import { FourHundredAndSix } from "@vercel/sdk/models/store.js";
 
 let value: FourHundredAndSix = {
-  amount: "398.69",
-  currency: "Turkish Lira",
-  expiresAt: "1737152407698",
-  trialCreditsIssuedAt: 4868.16,
+  next: {
+    enabled: true,
+    projectScope: "selected",
+  },
+  previous: {
+    enabled: true,
+    projectScope: "all",
+  },
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload406Next](../models/usereventpayload406next.md)         | :heavy_check_mark:                                                             | Mirrors the `security-review` setting value in `@api/api-settings`.            |
+| `previous`                                                                     | [models.UserEventPayload406Previous](../models/usereventpayload406previous.md) | :heavy_check_mark:                                                             | Mirrors the `security-review` setting value in `@api/api-settings`.            |

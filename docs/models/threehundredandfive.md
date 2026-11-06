@@ -5,20 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFive } from "@vercel/sdk/models/twohundredandseventytwo.js";
+import { ThreeHundredAndFive } from "@vercel/sdk/models/twohundredandseventythree.js";
 
 let value: ThreeHundredAndFive = {
   next: {
-    functionDefaultRegions: [
-      "<value 1>",
-    ],
+    functionDefaultMemoryType: "<value>",
   },
   previous: {
-    functionDefaultRegions: [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
+    functionDefaultMemoryType: "<value>",
   },
   projectId: "<id>",
   projectName: "<value>",

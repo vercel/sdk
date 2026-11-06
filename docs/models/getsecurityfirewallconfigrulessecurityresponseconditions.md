@@ -7,7 +7,7 @@ import { GetSecurityFirewallConfigRulesSecurityResponseConditions } from "@verce
 
 let value: GetSecurityFirewallConfigRulesSecurityResponseConditions = {
   op: "sub",
-  type: "method",
+  type: "path",
 };
 ```
 

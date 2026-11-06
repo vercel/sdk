@@ -8,15 +8,21 @@ The payload of the event, if requested.
 import { OneHundred } from "@vercel/sdk/models/payloadprivatemodel.js";
 
 let value: OneHundred = {
-  configuration: {
-    id: "<id>",
-    name: "<value>",
-  },
+  count: 7642.14,
+  documents: [
+    {
+      documentId: "<id>",
+      fingerprint: "<value>",
+      slug: "<value>",
+      title: "<value>",
+    },
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `configuration`                                    | [models.Configuration](../models/configuration.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `count`                                      | *number*                                     | :heavy_check_mark:                           | N/A                                          |
+| `documents`                                  | [models.Documents](../models/documents.md)[] | :heavy_check_mark:                           | N/A                                          |

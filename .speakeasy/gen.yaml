@@ -33,7 +33,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: true
 typescript:
-  version: 1.28.58
+  version: 1.28.59
   acceptHeaderEnum: true
   additionalDependencies:
     dependencies: {}

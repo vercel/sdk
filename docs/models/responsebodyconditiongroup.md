@@ -9,7 +9,7 @@ let value: ResponseBodyConditionGroup = {
   conditions: [
     {
       op: "lt",
-      type: "region",
+      type: "response_code",
     },
   ],
 };

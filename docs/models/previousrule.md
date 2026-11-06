@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PreviousRule } from "@vercel/sdk/models/usereventpayload140newteam.js";
+import { PreviousRule } from "@vercel/sdk/models/usereventpayload141newteam.js";
 
 let value: PreviousRule = {
   email: "Meggie.Schoen4@gmail.com",

@@ -6,7 +6,7 @@
 import { UpdateFirewallConfigRequestBodySecurityRequestConditions } from "@vercel/sdk/models/updatefirewallconfigop.js";
 
 let value: UpdateFirewallConfigRequestBodySecurityRequestConditions = {
-  type: "ja3_digest",
+  type: "rate_limit_api_id",
   op: "lte",
 };
 ```

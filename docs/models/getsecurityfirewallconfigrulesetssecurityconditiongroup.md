@@ -9,7 +9,7 @@ let value: GetSecurityFirewallConfigRulesetsSecurityConditionGroup = {
   conditions: [
     {
       op: "suf",
-      type: "rate_limit_api_id",
+      type: "raw_path",
     },
   ],
 };

@@ -7,7 +7,7 @@ import { GetFirewallConfigSecurityConditions } from "@vercel/sdk/models/getfirew
 
 let value: GetFirewallConfigSecurityConditions = {
   op: "re",
-  type: "response_code",
+  type: "response_header",
 };
 ```
 

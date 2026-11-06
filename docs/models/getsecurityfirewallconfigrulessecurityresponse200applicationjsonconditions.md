@@ -8,7 +8,7 @@ import { GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONConditi
 let value:
   GetSecurityFirewallConfigRulesSecurityResponse200ApplicationJSONConditions = {
     op: "inc",
-    type: "ja3_digest",
+    type: "ja4_digest",
   };
 ```
 

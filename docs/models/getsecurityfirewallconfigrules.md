@@ -32,7 +32,7 @@ const value: models.GetSecurityFirewallConfigRulesSecurityResponse2 = {
       conditions: [
         {
           op: "re",
-          type: "query",
+          type: "rate_limit_api_id",
         },
       ],
     },

@@ -34,7 +34,7 @@ export type ArchiveAiGatewayBudgetRequest = {
    */
   userId?: string | undefined;
   /**
-   * Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains.
+   * Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains, and sent in the ai-gateway.budget.updated webhook.
    */
   justification?: string | undefined;
   /**

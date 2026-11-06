@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { FourHundredAndEighteen } from "@vercel/sdk/models/store.js";
 
 let value: FourHundredAndEighteen = {
-  action: "updated",
-  targetId: "<id>",
+  next: {},
+  previous: null,
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload418Action](../models/usereventpayload418action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `targetId`                                                                 | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload418Next](../models/usereventpayload418next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload418Previous](../models/usereventpayload418previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

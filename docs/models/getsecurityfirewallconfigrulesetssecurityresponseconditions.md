@@ -7,7 +7,7 @@ import { GetSecurityFirewallConfigRulesetsSecurityResponseConditions } from "@ve
 
 let value: GetSecurityFirewallConfigRulesetsSecurityResponseConditions = {
   op: "sub",
-  type: "region",
+  type: "response_code",
 };
 ```
 

@@ -111,12 +111,25 @@ export type GetProjectBoxesConfig = {
   terminationGracePeriodSeconds?: number | undefined;
 };
 
+/**
+ * Quick restarts of the user container in a row. Absent when there are none.
+ */
+export type Process = {
+  lastExitCode?: number | undefined;
+  restarts: number;
+  crashLooping: boolean;
+};
+
 export type GetProjectBoxesItems = {
   alive?: boolean | undefined;
   id: string;
   image?: string | undefined;
   lastCheckedAt?: string | undefined;
   memoryMiB?: number | undefined;
+  /**
+   * Quick restarts of the user container in a row. Absent when there are none.
+   */
+  process?: Process | undefined;
   region: string;
   startedAt: string;
   stoppedAt?: string | undefined;
@@ -157,6 +170,7 @@ export type GetProjectBoxesScope =
   | Scope3;
 
 export const GetProjectBoxesStatus = {
+  CrashLooping: "crash_looping",
   Ready: "ready",
   Reconciling: "reconciling",
   Stopped: "stopped",
@@ -416,6 +430,24 @@ export function getProjectBoxesConfigFromJSON(
 }
 
 /** @internal */
+export const Process$inboundSchema: z.ZodType<Process, z.ZodTypeDef, unknown> =
+  z.object({
+    lastExitCode: types.optional(types.number()),
+    restarts: types.number(),
+    crashLooping: types.boolean(),
+  });
+
+export function processFromJSON(
+  jsonString: string,
+): SafeParseResult<Process, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Process$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Process' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectBoxesItems$inboundSchema: z.ZodType<
   GetProjectBoxesItems,
   z.ZodTypeDef,
@@ -426,6 +458,7 @@ export const GetProjectBoxesItems$inboundSchema: z.ZodType<
   image: types.optional(types.string()),
   lastCheckedAt: types.optional(types.string()),
   memoryMiB: types.optional(types.number()),
+  process: types.optional(z.lazy(() => Process$inboundSchema)),
   region: types.string(),
   startedAt: types.string(),
   stoppedAt: types.optional(types.string()),

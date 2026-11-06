@@ -5,19 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndOne } from "@vercel/sdk/models/usereventpayload140newteam.js";
+import { TwoHundredAndOne } from "@vercel/sdk/models/usereventpayload141newteam.js";
 
 let value: TwoHundredAndOne = {
+  configurationId: "<id>",
   integrationId: "<id>",
   integrationName: "<value>",
   integrationSlug: "<value>",
+  ownerId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `configurationId`   | *string*            | :heavy_check_mark:  | N/A                 |
+| `integrationId`     | *string*            | :heavy_check_mark:  | N/A                 |
+| `integrationName`   | *string*            | :heavy_check_mark:  | N/A                 |
+| `integrationSlug`   | *string*            | :heavy_check_mark:  | N/A                 |
+| `ownerId`           | *string*            | :heavy_check_mark:  | N/A                 |
+| `projectIds`        | *models.ProjectIds* | :heavy_minus_sign:  | N/A                 |

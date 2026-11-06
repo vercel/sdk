@@ -8,10 +8,7 @@ The payload of the event, if requested.
 import { FourHundredAndThirtyFive } from "@vercel/sdk/models/store.js";
 
 let value: FourHundredAndThirtyFive = {
-  expiresAt: "1741706642477",
-  maxUses: 8279.31,
-  publicId: "<id>",
-  role: "<value>",
+  enforced: true,
 };
 ```
 
@@ -19,8 +16,4 @@ let value: FourHundredAndThirtyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
-| `maxUses`          | *number*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_minus_sign: | N/A                |
-| `publicId`         | *string*           | :heavy_check_mark: | N/A                |
-| `role`             | *string*           | :heavy_check_mark: | N/A                |
+| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |

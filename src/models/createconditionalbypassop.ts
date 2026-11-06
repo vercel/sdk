@@ -176,6 +176,7 @@ export const CreateConditionalBypassType = {
   RawPath: "raw_path",
   Region: "region",
   ResponseCode: "response_code",
+  ResponseHeader: "response_header",
   Route: "route",
   Ruleset: "ruleset",
   Scheme: "scheme",

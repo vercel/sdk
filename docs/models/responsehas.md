@@ -3,10 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { ResponseHas } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
+import { ResponseHas } from "@vercel/sdk/models/getprojectsresponsebodyaliasassigned.js";
 
 let value: ResponseHas = {
-  type: "response_status",
+  type: "response_header",
 };
 ```
 

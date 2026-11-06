@@ -28,6 +28,7 @@ export type GetWebhooksRequest = {
 export const GetWebhooksResponseBodyEvents = {
   AiGatewayAutoReloadLimitReached: "ai-gateway.auto-reload.limit-reached",
   AiGatewayBalanceDepleted: "ai-gateway.balance-depleted",
+  AiGatewayBudgetUpdated: "ai-gateway.budget.updated",
   AlertsTriggered: "alerts.triggered",
   BotidAnomaly: "botid.anomaly",
   BudgetReached: "budget.reached",
@@ -189,6 +190,7 @@ export type GetWebhooksResponseBody2 = {
 export const ResponseBodyEvents = {
   AiGatewayAutoReloadLimitReached: "ai-gateway.auto-reload.limit-reached",
   AiGatewayBalanceDepleted: "ai-gateway.balance-depleted",
+  AiGatewayBudgetUpdated: "ai-gateway.budget.updated",
   AlertsTriggered: "alerts.triggered",
   BotidAnomaly: "botid.anomaly",
   BudgetReached: "budget.reached",

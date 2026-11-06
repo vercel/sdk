@@ -7,7 +7,7 @@ import { RulesConditions } from "@vercel/sdk/models/getfirewallconfigop.js";
 
 let value: RulesConditions = {
   op: "list",
-  type: "server_action",
+  type: "scheme",
 };
 ```
 

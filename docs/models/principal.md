@@ -30,7 +30,7 @@ const value: models.Principal2 = {
 const value: models.Principal3 = {
   id: "<id>",
   name: "<value>",
-  type: "external",
+  type: "integration",
 };
 ```
 
@@ -38,6 +38,16 @@ const value: models.Principal3 = {
 
 ```typescript
 const value: models.Principal4 = {
+  id: "<id>",
+  name: "<value>",
+  type: "external",
+};
+```
+
+### `models.Principal5`
+
+```typescript
+const value: models.Principal5 = {
   type: "system",
 };
 ```

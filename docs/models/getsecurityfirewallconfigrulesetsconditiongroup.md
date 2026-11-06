@@ -9,7 +9,7 @@ let value: GetSecurityFirewallConfigRulesetsConditionGroup = {
   conditions: [
     {
       op: "ex",
-      type: "ip_address",
+      type: "ja3_digest",
     },
   ],
 };

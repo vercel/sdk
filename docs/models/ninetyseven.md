@@ -7,25 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { NinetySeven } from "@vercel/sdk/models/payloadprivatemodel.js";
 
-let value: NinetySeven = {
-  gitOwnerName: "<value>",
-  gitRepositoryName: "<value>",
-  next: {
-    autoAddReviewers: true,
-    enabled: true,
-  },
-  previous: {
-    autoAddReviewers: false,
-    enabled: true,
-  },
-};
+let value: NinetySeven = {};
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `gitOwnerName`                                         | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `gitRepositoryName`                                    | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |
-| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |

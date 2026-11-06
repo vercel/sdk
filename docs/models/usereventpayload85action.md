@@ -5,11 +5,11 @@
 ```typescript
 import { UserEventPayload85Action } from "@vercel/sdk/models/payloadprivatemodel.js";
 
-let value: UserEventPayload85Action = "resume_plan";
+let value: UserEventPayload85Action = "cancel_plan";
 ```
 
 ## Values
 
 ```typescript
-"resume_plan"
+"cancel_plan"
 ```

@@ -7,7 +7,7 @@ import { GetConditionalBypassResponseBodyConditions } from "@vercel/sdk/models/g
 
 let value: GetConditionalBypassResponseBodyConditions = {
   op: "nex",
-  type: "ip_address",
+  type: "ja3_digest",
 };
 ```
 

@@ -5,22 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEight } from "@vercel/sdk/models/usereventpayload140newteam.js";
+import { TwoHundredAndEight } from "@vercel/sdk/models/usereventpayload141newteam.js";
 
 let value: TwoHundredAndEight = {
-  algorithm: "<value>",
-  issuerId: "<id>",
-  issuerName: "<value>",
-  origin: "<value>",
+  integrationId: "<id>",
+  integrationName: "<value>",
+  integrationSlug: "<value>",
+  previousSecretExpiresAt: 8322.01,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `algorithm`        | *string*           | :heavy_check_mark: | N/A                |
-| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
-| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `managedBy`        | *string*           | :heavy_minus_sign: | N/A                |
-| `origin`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `integrationId`           | *string*                  | :heavy_check_mark:        | N/A                       |
+| `integrationName`         | *string*                  | :heavy_check_mark:        | N/A                       |
+| `integrationSlug`         | *string*                  | :heavy_check_mark:        | N/A                       |
+| `previousSecretExpiresAt` | *number*                  | :heavy_check_mark:        | N/A                       |

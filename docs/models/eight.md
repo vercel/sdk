@@ -8,8 +8,13 @@ The payload of the event, if requested.
 import { Eight } from "@vercel/sdk/models/userevent.js";
 
 let value: Eight = {
-  boardId: "<id>",
-  operationId: "<id>",
+  expiresAt: "1744743030546",
+  grantId: "<id>",
+  namedSandboxId: "<id>",
+  permission: "<value>",
+  projectId: "<id>",
+  repositoryId: "<id>",
+  sandboxId: "<id>",
 };
 ```
 
@@ -17,5 +22,10 @@ let value: Eight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `boardId`          | *string*           | :heavy_check_mark: | N/A                |
-| `operationId`      | *string*           | :heavy_check_mark: | N/A                |
+| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
+| `grantId`          | *string*           | :heavy_check_mark: | N/A                |
+| `namedSandboxId`   | *string*           | :heavy_check_mark: | N/A                |
+| `permission`       | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `repositoryId`     | *string*           | :heavy_check_mark: | N/A                |
+| `sandboxId`        | *string*           | :heavy_check_mark: | N/A                |

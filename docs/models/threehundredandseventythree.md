@@ -12,8 +12,6 @@ let value: ThreeHundredAndSeventyThree = {
   projectId: "<id>",
   projectName: "<value>",
   region: "<value>",
-  snapshotId: "<id>",
-  snapshotName: "<value>",
 };
 ```
 
@@ -25,5 +23,3 @@ let value: ThreeHundredAndSeventyThree = {
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
 | `region`           | *string*           | :heavy_check_mark: | N/A                |
-| `snapshotId`       | *string*           | :heavy_check_mark: | N/A                |
-| `snapshotName`     | *string*           | :heavy_check_mark: | N/A                |

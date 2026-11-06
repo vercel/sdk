@@ -12,7 +12,7 @@ let value: UpdateFirewallConfigRequestBodyValue = {
     {
       conditions: [
         {
-          type: "user_agent",
+          type: "geo_continent",
           op: "suf",
         },
       ],

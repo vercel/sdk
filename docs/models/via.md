@@ -30,7 +30,7 @@ const value: models.Via2 = {
 const value: models.Via3 = {
   id: "<id>",
   name: "<value>",
-  type: "external",
+  type: "integration",
 };
 ```
 
@@ -38,6 +38,16 @@ const value: models.Via3 = {
 
 ```typescript
 const value: models.Via4 = {
+  id: "<id>",
+  name: "<value>",
+  type: "external",
+};
+```
+
+### `models.Via5`
+
+```typescript
+const value: models.Via5 = {
   type: "system",
 };
 ```

@@ -8,9 +8,11 @@ The payload of the event, if requested.
 import { FourHundredAndFiftyTwo } from "@vercel/sdk/models/store.js";
 
 let value: FourHundredAndFiftyTwo = {
-  tokenTypes: [
+  domain: "shiny-wasabi.name",
+  ips: [
     "<value 1>",
     "<value 2>",
+    "<value 3>",
   ],
 };
 ```
@@ -19,4 +21,5 @@ let value: FourHundredAndFiftyTwo = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `tokenTypes`       | *string*[]         | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |

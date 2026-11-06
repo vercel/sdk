@@ -8,7 +8,7 @@ import { UpdateFirewallConfigRequestBodySecurityRequestConditionGroup } from "@v
 let value: UpdateFirewallConfigRequestBodySecurityRequestConditionGroup = {
   conditions: [
     {
-      type: "scheme",
+      type: "environment",
       op: "ninc",
     },
   ],

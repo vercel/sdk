@@ -9,9 +9,7 @@ import { ThreeHundredAndFiftyEight } from "@vercel/sdk/models/consent.js";
 
 let value: ThreeHundredAndFiftyEight = {
   next: {
-    skewProtectionAllowedDomains: [
-      "<value 1>",
-    ],
+    skewProtectionMaxAge: 3445.45,
   },
   previous: {},
   projectId: "<id>",

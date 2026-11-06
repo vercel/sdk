@@ -3866,7 +3866,7 @@
                   },
                   "justification": {
                     "type": "string",
-                    "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains."
+                    "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains, and sent in the ai-gateway.budget.updated webhook."
                   }
                 }
               }
@@ -3954,12 +3954,12 @@
           },
           {
             "name": "justification",
-            "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains.",
+            "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains, and sent in the ai-gateway.budget.updated webhook.",
             "in": "query",
             "required": false,
             "schema": {
               "type": "string",
-              "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains."
+              "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains, and sent in the ai-gateway.budget.updated webhook."
             }
           },
           {
@@ -4158,7 +4158,7 @@
                   },
                   "justification": {
                     "type": "string",
-                    "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains."
+                    "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains, and sent in the ai-gateway.budget.updated webhook."
                   }
                 }
               }
@@ -4220,11 +4220,11 @@
           },
           {
             "name": "justification",
-            "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains. Only recorded when scopeType is set.",
+            "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains, and sent in the ai-gateway.budget.updated webhook. Only recorded when scopeType is set.",
             "in": "query",
             "required": false,
             "schema": {
-              "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains. Only recorded when scopeType is set.",
+              "description": "Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains, and sent in the ai-gateway.budget.updated webhook. Only recorded when scopeType is set.",
               "type": "string"
             }
           },
@@ -5055,7 +5055,7 @@
     },
     "/v1/billing/charges": {
       "get": {
-        "description": "Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year. The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the `Accept-Encoding: gzip` header is provided. `SkuId` is the stable product ID. For unmapped items, it is derived from the item identifier. This is only available for Owner, Member, Developer, Security, Billing, and Enterprise Viewer roles for the supplied team.",
+        "description": "Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year. The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the `Accept-Encoding: gzip` header is provided. `SkuId` is the stable product ID. For unmapped items, it is derived from the item identifier. `SubAccountId` and `SubAccountName` are the team. With `orgId` instead of a team, returns a row per team and product in an organization with Enterprise teams, plus Organization (unallocated) rows for spend no single team used; this requires the OrgAdmin or OrgViewer role. A team in such an organization, including the one that holds its subscription, gets only its own rows. Those rows are not split by region or project, and `x_CostAttribution` marks how cost was split between teams. This is only available for Owner, Member, Developer, Security, Billing, and Enterprise Viewer roles for the supplied team.",
         "operationId": "listBillingCharges",
         "security": [
           {
@@ -5188,12 +5188,41 @@
                       "type": "string",
                       "description": "Identifier for the price applied to the charge. Equal to `SkuId`, which FOCUS allows."
                     },
+                    "SubAccountId": {
+                      "nullable": true,
+                      "type": "string",
+                      "description": "Vercel team the charge belongs to. Null on an org root's Organization (unallocated) rows, which no single team used."
+                    },
+                    "SubAccountName": {
+                      "nullable": true,
+                      "type": "string",
+                      "description": "Team name, or `Organization (unallocated)`"
+                    },
+                    "SubAccountType": {
+                      "nullable": true,
+                      "type": "string",
+                      "enum": [
+                        "Team",
+                        null
+                      ],
+                      "description": "`Team`, or null on Organization (unallocated) rows"
+                    },
                     "Tags": {
                       "additionalProperties": {
                         "type": "string"
                       },
                       "type": "object",
                       "description": "Charge metadata including the Vercel ProjectId and ProjectName information"
+                    },
+                    "x_CostAttribution": {
+                      "nullable": true,
+                      "type": "string",
+                      "enum": [
+                        "calibrated_estimate",
+                        "uncalibrated_estimate",
+                        null
+                      ],
+                      "description": "How the row's cost was split between teams. `uncalibrated_estimate` divides billed usage by each team's usage share; `calibrated_estimate` also scales each team to its rated cycle subtotal. Null on rows not split between teams. Product and day totals are billed amounts either way."
                     }
                   },
                   "required": [
@@ -5213,7 +5242,11 @@
                     "ServiceProviderName",
                     "SkuId",
                     "SkuPriceId",
-                    "Tags"
+                    "SubAccountId",
+                    "SubAccountName",
+                    "SubAccountType",
+                    "Tags",
+                    "x_CostAttribution"
                   ],
                   "type": "object",
                   "description": "Extension of the base schema for Focus charges. Includes pricing information for all customers."
@@ -5264,6 +5297,17 @@
               "type": "string",
               "description": "Exclusive end of the date range as an ISO 8601 date-time string in UTC.",
               "example": "2025-01-31T00:00:00.000Z"
+            }
+          },
+          {
+            "name": "orgId",
+            "description": "The Organization identifier. Returns charges for every team in the organization, split by team, instead of a single team. Cannot be combined with `teamId` or `slug`. Requires the OrgAdmin or OrgViewer role.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The Organization identifier. Returns charges for every team in the organization, split by team, instead of a single team. Cannot be combined with `teamId` or `slug`. Requires the OrgAdmin or OrgViewer role.",
+              "example": "org_123"
             }
           },
           {
@@ -18699,6 +18743,29 @@
                                     "memoryMiB": {
                                       "type": "number"
                                     },
+                                    "process": {
+                                      "properties": {
+                                        "lastExitCode": {
+                                          "type": "number"
+                                        },
+                                        "restarts": {
+                                          "type": "number"
+                                        },
+                                        "crashLooping": {
+                                          "type": "boolean",
+                                          "enum": [
+                                            false,
+                                            true
+                                          ]
+                                        }
+                                      },
+                                      "required": [
+                                        "crashLooping",
+                                        "restarts"
+                                      ],
+                                      "type": "object",
+                                      "description": "Quick restarts of the user container in a row. Absent when there are none."
+                                    },
                                     "region": {
                                       "type": "string"
                                     },
@@ -18802,6 +18869,7 @@
                           "status": {
                             "type": "string",
                             "enum": [
+                              "crash_looping",
                               "ready",
                               "reconciling",
                               "stopped"
@@ -97431,6 +97499,9 @@
           },
           "410": {
             "description": ""
+          },
+          "500": {
+            "description": ""
           }
         },
         "parameters": [
@@ -106780,6 +106851,82 @@
                                           "type": {
                                             "type": "string",
                                             "enum": [
+                                              "response_header",
+                                              "response_status"
+                                            ]
+                                          },
+                                          "value": {
+                                            "oneOf": [
+                                              {
+                                                "type": "string"
+                                              },
+                                              {
+                                                "properties": {
+                                                  "eq": {
+                                                    "type": "string"
+                                                  },
+                                                  "gt": {
+                                                    "type": "number"
+                                                  },
+                                                  "gte": {
+                                                    "type": "number"
+                                                  },
+                                                  "inc": {
+                                                    "items": {
+                                                      "type": "string"
+                                                    },
+                                                    "type": "array"
+                                                  },
+                                                  "list": {
+                                                    "type": "string"
+                                                  },
+                                                  "lt": {
+                                                    "type": "number"
+                                                  },
+                                                  "lte": {
+                                                    "type": "number"
+                                                  },
+                                                  "neq": {
+                                                    "type": "string"
+                                                  },
+                                                  "ninc": {
+                                                    "items": {
+                                                      "type": "string"
+                                                    },
+                                                    "type": "array"
+                                                  },
+                                                  "pre": {
+                                                    "type": "string"
+                                                  },
+                                                  "re": {
+                                                    "type": "string"
+                                                  },
+                                                  "suf": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "type": "object"
+                                              }
+                                            ]
+                                          }
+                                        },
+                                        "required": [
+                                          "type"
+                                        ],
+                                        "type": "object"
+                                      },
+                                      "type": "array"
+                                    },
+                                    "response_missing": {
+                                      "items": {
+                                        "properties": {
+                                          "key": {
+                                            "type": "string"
+                                          },
+                                          "type": {
+                                            "type": "string",
+                                            "enum": [
+                                              "response_header",
                                               "response_status"
                                             ]
                                           },
@@ -111341,6 +111488,82 @@
                                               "type": {
                                                 "type": "string",
                                                 "enum": [
+                                                  "response_header",
+                                                  "response_status"
+                                                ]
+                                              },
+                                              "value": {
+                                                "oneOf": [
+                                                  {
+                                                    "type": "string"
+                                                  },
+                                                  {
+                                                    "properties": {
+                                                      "eq": {
+                                                        "type": "string"
+                                                      },
+                                                      "gt": {
+                                                        "type": "number"
+                                                      },
+                                                      "gte": {
+                                                        "type": "number"
+                                                      },
+                                                      "inc": {
+                                                        "items": {
+                                                          "type": "string"
+                                                        },
+                                                        "type": "array"
+                                                      },
+                                                      "list": {
+                                                        "type": "string"
+                                                      },
+                                                      "lt": {
+                                                        "type": "number"
+                                                      },
+                                                      "lte": {
+                                                        "type": "number"
+                                                      },
+                                                      "neq": {
+                                                        "type": "string"
+                                                      },
+                                                      "ninc": {
+                                                        "items": {
+                                                          "type": "string"
+                                                        },
+                                                        "type": "array"
+                                                      },
+                                                      "pre": {
+                                                        "type": "string"
+                                                      },
+                                                      "re": {
+                                                        "type": "string"
+                                                      },
+                                                      "suf": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "type": "object"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "required": [
+                                              "type"
+                                            ],
+                                            "type": "object"
+                                          },
+                                          "type": "array"
+                                        },
+                                        "response_missing": {
+                                          "items": {
+                                            "properties": {
+                                              "key": {
+                                                "type": "string"
+                                              },
+                                              "type": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "response_header",
                                                   "response_status"
                                                 ]
                                               },
@@ -195446,6 +195669,7 @@
                                               "raw_path",
                                               "region",
                                               "response_code",
+                                              "response_header",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -196205,6 +196429,7 @@
                                                   "raw_path",
                                                   "region",
                                                   "response_code",
+                                                  "response_header",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -196468,6 +196693,7 @@
                                                   "raw_path",
                                                   "region",
                                                   "response_code",
+                                                  "response_header",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -196625,6 +196851,7 @@
                                                   "raw_path",
                                                   "region",
                                                   "response_code",
+                                                  "response_header",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -197031,6 +197258,7 @@
                                               "raw_path",
                                               "region",
                                               "response_code",
+                                              "response_header",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -197790,6 +198018,7 @@
                                                   "raw_path",
                                                   "region",
                                                   "response_code",
+                                                  "response_header",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -198053,6 +198282,7 @@
                                                   "raw_path",
                                                   "region",
                                                   "response_code",
+                                                  "response_header",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -198210,6 +198440,7 @@
                                                   "raw_path",
                                                   "region",
                                                   "response_code",
+                                                  "response_header",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -198616,6 +198847,7 @@
                                                 "raw_path",
                                                 "region",
                                                 "response_code",
+                                                "response_header",
                                                 "route",
                                                 "ruleset",
                                                 "scheme",
@@ -199375,6 +199607,7 @@
                                                     "raw_path",
                                                     "region",
                                                     "response_code",
+                                                    "response_header",
                                                     "route",
                                                     "ruleset",
                                                     "scheme",
@@ -199638,6 +199871,7 @@
                                                     "raw_path",
                                                     "region",
                                                     "response_code",
+                                                    "response_header",
                                                     "route",
                                                     "ruleset",
                                                     "scheme",
@@ -199795,6 +200029,7 @@
                                                     "raw_path",
                                                     "region",
                                                     "response_code",
+                                                    "response_header",
                                                     "route",
                                                     "ruleset",
                                                     "scheme",
@@ -200250,6 +200485,7 @@
                                               "raw_path",
                                               "region",
                                               "response_code",
+                                              "response_header",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -201021,6 +201257,7 @@
                                                   "raw_path",
                                                   "region",
                                                   "response_code",
+                                                  "response_header",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -201284,6 +201521,7 @@
                                                   "raw_path",
                                                   "region",
                                                   "response_code",
+                                                  "response_header",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -201441,6 +201679,7 @@
                                                   "raw_path",
                                                   "region",
                                                   "response_code",
+                                                  "response_header",
                                                   "route",
                                                   "ruleset",
                                                   "scheme",
@@ -202130,7 +202369,8 @@
                                         "shared_condition",
                                         "traffic_source",
                                         "ruleset",
-                                        "response_code"
+                                        "response_code",
+                                        "response_header"
                                       ],
                                       "description": "[Parameter](https://vercel.com/docs/security/vercel-waf/rule-configuration#parameters) from the incoming traffic."
                                     },
@@ -202407,7 +202647,8 @@
                                             "shared_condition",
                                             "traffic_source",
                                             "ruleset",
-                                            "response_code"
+                                            "response_code",
+                                            "response_header"
                                           ]
                                         },
                                         "op": {
@@ -202754,7 +202995,8 @@
                                           "shared_condition",
                                           "traffic_source",
                                           "ruleset",
-                                          "response_code"
+                                          "response_code",
+                                          "response_header"
                                         ]
                                       },
                                       "op": {
@@ -202943,7 +203185,8 @@
                                           "shared_condition",
                                           "traffic_source",
                                           "ruleset",
-                                          "response_code"
+                                          "response_code",
+                                          "response_header"
                                         ]
                                       },
                                       "op": {
@@ -203180,7 +203423,8 @@
                                           "shared_condition",
                                           "traffic_source",
                                           "ruleset",
-                                          "response_code"
+                                          "response_code",
+                                          "response_header"
                                         ]
                                       },
                                       "op": {
@@ -203346,7 +203590,8 @@
                                           "shared_condition",
                                           "traffic_source",
                                           "ruleset",
-                                          "response_code"
+                                          "response_code",
+                                          "response_header"
                                         ]
                                       },
                                       "op": {
@@ -203623,7 +203868,8 @@
                                           "shared_condition",
                                           "traffic_source",
                                           "ruleset",
-                                          "response_code"
+                                          "response_code",
+                                          "response_header"
                                         ]
                                       },
                                       "op": {
@@ -203911,7 +204157,8 @@
                                           "shared_condition",
                                           "traffic_source",
                                           "ruleset",
-                                          "response_code"
+                                          "response_code",
+                                          "response_header"
                                         ]
                                       },
                                       "op": {
@@ -204618,6 +204865,7 @@
                                           "raw_path",
                                           "region",
                                           "response_code",
+                                          "response_header",
                                           "route",
                                           "ruleset",
                                           "scheme",
@@ -205389,6 +205637,7 @@
                                               "raw_path",
                                               "region",
                                               "response_code",
+                                              "response_header",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -205652,6 +205901,7 @@
                                               "raw_path",
                                               "region",
                                               "response_code",
+                                              "response_header",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -205809,6 +206059,7 @@
                                               "raw_path",
                                               "region",
                                               "response_code",
+                                              "response_header",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -206339,6 +206590,7 @@
                                           "raw_path",
                                           "region",
                                           "response_code",
+                                          "response_header",
                                           "route",
                                           "ruleset",
                                           "scheme",
@@ -207098,6 +207350,7 @@
                                               "raw_path",
                                               "region",
                                               "response_code",
+                                              "response_header",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -207361,6 +207614,7 @@
                                               "raw_path",
                                               "region",
                                               "response_code",
+                                              "response_header",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -207518,6 +207772,7 @@
                                               "raw_path",
                                               "region",
                                               "response_code",
+                                              "response_header",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -208756,6 +209011,7 @@
                                         "raw_path",
                                         "region",
                                         "response_code",
+                                        "response_header",
                                         "route",
                                         "ruleset",
                                         "scheme",
@@ -208902,6 +209158,7 @@
                                               "raw_path",
                                               "region",
                                               "response_code",
+                                              "response_header",
                                               "route",
                                               "ruleset",
                                               "scheme",
@@ -209128,6 +209385,7 @@
                                     "raw_path",
                                     "region",
                                     "response_code",
+                                    "response_header",
                                     "route",
                                     "ruleset",
                                     "scheme",
@@ -209514,6 +209772,7 @@
                                     "raw_path",
                                     "region",
                                     "response_code",
+                                    "response_header",
                                     "route",
                                     "ruleset",
                                     "scheme",
@@ -217666,7 +217925,7 @@
                     "type": "string",
                     "maxLength": 140,
                     "example": "Our mission is to make cloud computing accessible to everyone",
-                    "description": "A short text that describes the team."
+                    "description": "A short text that describes the team. Set to an empty string to clear the description. Omit to keep the current description."
                   },
                   "emailDomain": {
                     "type": "string",
@@ -232118,6 +232377,7 @@
                         "enum": [
                           "ai-gateway.auto-reload.limit-reached",
                           "ai-gateway.balance-depleted",
+                          "ai-gateway.budget.updated",
                           "alerts.triggered",
                           "botid.anomaly",
                           "budget.reached",
@@ -232499,6 +232759,7 @@
                         "marketplace.invoice.refunded",
                         "ai-gateway.balance-depleted",
                         "ai-gateway.auto-reload.limit-reached",
+                        "ai-gateway.budget.updated",
                         "observability.anomaly",
                         "observability.anomaly-error",
                         "observability.usage-anomaly",
@@ -232657,6 +232918,7 @@
                               "enum": [
                                 "ai-gateway.auto-reload.limit-reached",
                                 "ai-gateway.balance-depleted",
+                                "ai-gateway.budget.updated",
                                 "alerts.triggered",
                                 "botid.anomaly",
                                 "budget.reached",
@@ -233014,6 +233276,7 @@
                               "enum": [
                                 "ai-gateway.auto-reload.limit-reached",
                                 "ai-gateway.balance-depleted",
+                                "ai-gateway.budget.updated",
                                 "alerts.triggered",
                                 "botid.anomaly",
                                 "budget.reached",
@@ -233335,6 +233598,7 @@
                         "enum": [
                           "ai-gateway.auto-reload.limit-reached",
                           "ai-gateway.balance-depleted",
+                          "ai-gateway.budget.updated",
                           "alerts.triggered",
                           "botid.anomaly",
                           "budget.reached",
@@ -243945,6 +244209,45 @@
                   "policyId",
                   "projectId",
                   "projectName"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "expiresAt": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "grantId": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "namedSandboxId": {
+                    "type": "string"
+                  },
+                  "permission": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "repositoryId": {
+                    "type": "string"
+                  },
+                  "sandboxId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "expiresAt",
+                  "grantId",
+                  "namedSandboxId",
+                  "permission",
+                  "projectId",
+                  "repositoryId",
+                  "sandboxId"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -267504,6 +267807,36 @@
               },
               {
                 "properties": {
+                  "avatar": {
+                    "type": "string"
+                  },
+                  "id": {
+                    "type": "string",
+                    "description": "The OAuth2 integration ID."
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "integration"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "name",
+                  "type"
+                ],
+                "type": "object",
+                "description": "Metadata for {@link principalId}."
+              },
+              {
+                "properties": {
                   "email": {
                     "type": "string"
                   },
@@ -268057,6 +268390,7 @@
               "project-git-credential-grant-created",
               "project-git-credential-grant-deleted",
               "project-git-credential-grant-updated",
+              "project-git-credential-token-minted",
               "project-git-fork-protection-updated",
               "project-git-lfs-toggled",
               "project-git-pr-comments-toggled",
@@ -268424,6 +268758,36 @@
                   },
                   "required": [
                     "clientId",
+                    "name",
+                    "type"
+                  ],
+                  "type": "object",
+                  "description": "Metadata for {@link viaIds}."
+                },
+                {
+                  "properties": {
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string",
+                      "description": "The OAuth2 integration ID."
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "slug": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "integration"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
                     "name",
                     "type"
                   ],
@@ -269035,6 +269399,7 @@
               "project-git-credential-grant-created",
               "project-git-credential-grant-deleted",
               "project-git-credential-grant-updated",
+              "project-git-credential-token-minted",
               "project-git-fork-protection-updated",
               "project-git-lfs-toggled",
               "project-git-pr-comments-toggled",
@@ -269801,6 +270166,7 @@
                 "project-git-credential-grant-created",
                 "project-git-credential-grant-deleted",
                 "project-git-credential-grant-updated",
+                "project-git-credential-token-minted",
                 "project-git-fork-protection-updated",
                 "project-git-lfs-toggled",
                 "project-git-pr-comments-toggled",

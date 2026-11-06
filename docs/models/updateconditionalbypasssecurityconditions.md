@@ -7,7 +7,7 @@ import { UpdateConditionalBypassSecurityConditions } from "@vercel/sdk/models/up
 
 let value: UpdateConditionalBypassSecurityConditions = {
   op: "ex",
-  type: "raw_path",
+  type: "region",
 };
 ```
 

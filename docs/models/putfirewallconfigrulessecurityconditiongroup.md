@@ -9,7 +9,7 @@ let value: PutFirewallConfigRulesSecurityConditionGroup = {
   conditions: [
     {
       op: "suf",
-      type: "geo_country",
+      type: "geo_country_region",
     },
   ],
 };

@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesResponseHasType,
-} from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
+} from "@vercel/sdk/models/getprojectsresponsebodyaliasassigned.js";
 
 let value:
   GetProjectsResponseBodyProjectsResponse200ApplicationJson1SecurityFirewallRoutesResponseHasType =
@@ -15,5 +15,5 @@ let value:
 ## Values
 
 ```typescript
-"response_status"
+"response_header" | "response_status"
 ```

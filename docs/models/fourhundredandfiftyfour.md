@@ -8,7 +8,10 @@ The payload of the event, if requested.
 import { FourHundredAndFiftyFour } from "@vercel/sdk/models/store.js";
 
 let value: FourHundredAndFiftyFour = {
-  fileId: "<id>",
+  exportId: "<id>",
+  format: "<value>",
+  from: 561.75,
+  to: 4195.54,
 };
 ```
 
@@ -16,4 +19,7 @@ let value: FourHundredAndFiftyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `fileId`           | *string*           | :heavy_check_mark: | N/A                |
+| `exportId`         | *string*           | :heavy_check_mark: | N/A                |
+| `format`           | *string*           | :heavy_check_mark: | N/A                |
+| `from`             | *number*           | :heavy_check_mark: | N/A                |
+| `to`               | *number*           | :heavy_check_mark: | N/A                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TierRequirement } from "@vercel/sdk/models/getprojectsresponsebodyprojectsoidctokenclaims.js";
+import { TierRequirement } from "@vercel/sdk/models/getprojectsresponsebodyaliasassigned.js";
 
 let value: TierRequirement = "priority";
 ```

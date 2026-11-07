@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyNine } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { OneHundredAndSixtyNine } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: OneHundredAndSixtyNine = {
-  email: "Lemuel98@yahoo.com",
-  name: "<value>",
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
+  edgeConfigTokenId: "<id>",
+  label: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `edgeConfigId`      | *string*            | :heavy_check_mark:  | N/A                 |
+| `edgeConfigSlug`    | *string*            | :heavy_check_mark:  | N/A                 |
+| `edgeConfigTokenId` | *string*            | :heavy_check_mark:  | N/A                 |
+| `label`             | *string*            | :heavy_check_mark:  | N/A                 |

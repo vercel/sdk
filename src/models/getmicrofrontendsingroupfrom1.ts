@@ -886,6 +886,10 @@ export type GetMicrofrontendsInGroupPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  drive?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   edgeCacheNamespace?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -4017,6 +4021,7 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   domainRecord: types.optional(z.array(ACLAction$inboundSchema)),
   domainTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
   drain: types.optional(z.array(ACLAction$inboundSchema)),
+  drive: types.optional(z.array(ACLAction$inboundSchema)),
   edgeCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfig: types.optional(z.array(ACLAction$inboundSchema)),
   edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),

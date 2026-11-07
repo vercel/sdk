@@ -5,17 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNineteen } from "@vercel/sdk/models/store.js";
+import { FourHundredAndNineteen } from "@vercel/sdk/models/usereventpayload403type.js";
 
-let value: FourHundredAndNineteen = {
-  action: "reset",
-  targetId: "<id>",
-};
+let value: FourHundredAndNineteen = {};
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload419Action](../models/usereventpayload419action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `targetId`                                                                 | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `enrolled`                                                                       | *boolean*                                                                        | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload419ActorType](../models/usereventpayload419actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |

@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyFour } from "@vercel/sdk/models/consent.js";
+import { ThreeHundredAndFiftyFour } from "@vercel/sdk/models/principalintegration.js";
 
 let value: ThreeHundredAndFiftyFour = {
-  inheritDeploymentProtection: true,
+  customerSupportCodeVisibility: true,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -16,8 +16,8 @@ let value: ThreeHundredAndFiftyFour = {
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `inheritDeploymentProtection` | *boolean*                     | :heavy_check_mark:            | N/A                           |
-| `projectId`                   | *string*                      | :heavy_check_mark:            | N/A                           |
-| `projectName`                 | *string*                      | :heavy_check_mark:            | N/A                           |
+| Field                           | Type                            | Required                        | Description                     |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `customerSupportCodeVisibility` | *boolean*                       | :heavy_check_mark:              | N/A                             |
+| `projectId`                     | *string*                        | :heavy_check_mark:              | N/A                             |
+| `projectName`                   | *string*                        | :heavy_check_mark:              | N/A                             |

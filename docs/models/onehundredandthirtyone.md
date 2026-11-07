@@ -5,19 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyOne } from "@vercel/sdk/models/onehundredandseven.js";
+import { OneHundredAndThirtyOne } from "@vercel/sdk/models/onehundredandeighteen.js";
 
 let value: OneHundredAndThirtyOne = {
-  mode: "none",
-  previousMode: "none",
-  scope: "organization",
+  deployment: {
+    id: "<id>",
+    meta: {
+      "key": "<value>",
+      "key1": "<value>",
+    },
+    name: "<value>",
+    url: "https://early-flu.net",
+  },
+  deploymentId: "<id>",
+  url: "https://pleasing-coil.org",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `mode`                                                                   | [models.UserEventPayload131Mode](../models/usereventpayload131mode.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
-| `previousMode`                                                           | [models.PreviousMode](../models/previousmode.md)                         | :heavy_check_mark:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload131Scope](../models/usereventpayload131scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `deployment`                                                                       | [models.UserEventPayload131Deployment](../models/usereventpayload131deployment.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `deploymentId`                                                                     | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `projectId`                                                                        | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `url`                                                                              | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |

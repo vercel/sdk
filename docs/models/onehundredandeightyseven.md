@@ -5,20 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightySeven } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { OneHundredAndEightySeven } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: OneHundredAndEightySeven = {
-  active: true,
+  configChangeCount: 365.02,
+  configChanges: [],
+  configVersion: 7398.01,
   projectId: "<id>",
-  rulesetName: "<value>",
+  restore: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload187Action](../models/usereventpayload187action.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `active`                                                                   | *boolean*                                                                  | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `rulesetName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `configChangeCount`                                                | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `configChanges`                                                    | [models.PayloadConfigChanges](../models/payloadconfigchanges.md)[] | :heavy_check_mark:                                                 | N/A                                                                |
+| `configVersion`                                                    | *number*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `projectId`                                                        | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `projectName`                                                      | *string*                                                           | :heavy_minus_sign:                                                 | N/A                                                                |
+| `restore`                                                          | *boolean*                                                          | :heavy_check_mark:                                                 | N/A                                                                |

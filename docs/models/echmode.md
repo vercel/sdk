@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { EchMode } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { EchMode } from "@vercel/sdk/models/onehundredandeighteen.js";
 
 let value: EchMode = "enabled";
 ```

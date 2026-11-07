@@ -8,15 +8,14 @@ The payload of the event, if requested.
 import { ThirtyNine } from "@vercel/sdk/models/userevent.js";
 
 let value: ThirtyNine = {
-  privateModel: {
-    providerSlug: "<value>",
-    slug: "<value>",
-  },
+  amount: "386.29",
+  purchaseIntentId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `privateModel`                                   | [models.PrivateModel](../models/privatemodel.md) | :heavy_check_mark:                               | N/A                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `amount`           | *string*           | :heavy_check_mark: | N/A                |
+| `purchaseIntentId` | *string*           | :heavy_check_mark: | N/A                |

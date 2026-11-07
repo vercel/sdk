@@ -58,10 +58,10 @@ import {
   UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
 } from "./updatemicrofrontendsbuilds.js";
 import {
-  UpdateMicrofrontendsFrom1,
-  UpdateMicrofrontendsFrom1$inboundSchema,
   UpdateMicrofrontendsFrom2,
   UpdateMicrofrontendsFrom2$inboundSchema,
+  UpdateMicrofrontendsFromPreset,
+  UpdateMicrofrontendsFromPreset$inboundSchema,
   UpdateMicrofrontendsLatestDeployments,
   UpdateMicrofrontendsLatestDeployments$inboundSchema,
   UpdateMicrofrontendsLink,
@@ -112,7 +112,18 @@ import {
   UpdateMicrofrontendsTracing$inboundSchema,
   UpdateMicrofrontendsTrustedIps,
   UpdateMicrofrontendsTrustedIps$inboundSchema,
-} from "./updatemicrofrontendsfrom1.js";
+} from "./updatemicrofrontendsfrompreset.js";
+
+/**
+ * The source envs on the trusted project that are allowed to access `to`.
+ */
+export type UpdateMicrofrontendsFrom1 = {
+  preset?: UpdateMicrofrontendsFromPreset | undefined;
+  /**
+   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
+   */
+  slugs: Array<string>;
+};
 
 export type UpdateMicrofrontendsFrom =
   | UpdateMicrofrontendsFrom1
@@ -369,12 +380,32 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
+export const UpdateMicrofrontendsFrom1$inboundSchema: z.ZodType<
+  UpdateMicrofrontendsFrom1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  preset: types.optional(UpdateMicrofrontendsFromPreset$inboundSchema),
+  slugs: z.array(types.string()),
+});
+
+export function updateMicrofrontendsFrom1FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdateMicrofrontendsFrom1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdateMicrofrontendsFrom1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdateMicrofrontendsFrom1' from JSON`,
+  );
+}
+
+/** @internal */
 export const UpdateMicrofrontendsFrom$inboundSchema: z.ZodType<
   UpdateMicrofrontendsFrom,
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  UpdateMicrofrontendsFrom1$inboundSchema,
+  z.lazy(() => UpdateMicrofrontendsFrom1$inboundSchema),
   UpdateMicrofrontendsFrom2$inboundSchema,
 ]);
 
@@ -467,7 +498,7 @@ export const UpdateMicrofrontendsCustomAllow$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   from: smartUnion([
-    UpdateMicrofrontendsFrom1$inboundSchema,
+    z.lazy(() => UpdateMicrofrontendsFrom1$inboundSchema),
     UpdateMicrofrontendsFrom2$inboundSchema,
   ]),
   to: smartUnion([

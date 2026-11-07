@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyUsageStatus } from "@vercel/sdk/models/getprojectselasticbuildmachineprojects3.js";
+import { ResponseBodyUsageStatus } from "@vercel/sdk/models/getprojectselasticbuildmachineprojects4.js";
 
 let value: ResponseBodyUsageStatus = {
   kind: "flat",

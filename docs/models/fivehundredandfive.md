@@ -5,40 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndFive } from "@vercel/sdk/models/usereventpayload465actortype.js";
+import { FiveHundredAndFive } from "@vercel/sdk/models/usereventpayload469actortype.js";
 
 let value: FiveHundredAndFive = {
-  chatId: "<id>",
-  events: [
-    {
-      cacheCreationInputTokens: 8264.37,
-      cacheReadInputTokens: 921.19,
-      eventId: "<id>",
-      inputTokens: 4741.19,
-      modelId: "<id>",
-      outputTokens: 6106.82,
-      timestamp: "<value>",
-      totalTokens: 9845.35,
-    },
+  cadence: "weekly",
+  projectIds: [
+    "<value 1>",
+    "<value 2>",
   ],
-  inputTokens: 7486.07,
-  messageId: "<id>",
-  model: "Model 3",
-  outputTokens: 1278.3,
-  timestamp: 5842.5,
-  useCase: "<value>",
+  team: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `chatId`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `events`                               | [models.Events](../models/events.md)[] | :heavy_check_mark:                     | N/A                                    |
-| `inputTokens`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `model`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `outputTokens`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `timestamp`                            | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `useCase`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload505Team](../models/usereventpayload505team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

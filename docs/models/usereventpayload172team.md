@@ -1,0 +1,18 @@
+# UserEventPayload172Team
+
+## Example Usage
+
+```typescript
+import { UserEventPayload172Team } from "@vercel/sdk/models/payloadinitiator.js";
+
+let value: UserEventPayload172Team = {
+  id: "<id>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

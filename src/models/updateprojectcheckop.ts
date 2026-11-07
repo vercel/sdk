@@ -32,8 +32,14 @@ export type UpdateProjectCheckBlocks = ClosedEnum<
 
 export type UpdateProjectCheckRequestBody = {
   name?: string | undefined;
+  /**
+   * Whether check runs can be manually re-requested. Git provider checks cannot be re-requested.
+   */
   isRerequestable?: boolean | undefined;
   requires?: UpdateProjectCheckRequires | undefined;
+  /**
+   * Deployment targets where this check applies. Valid values are "production", "preview", "all", or a Custom Environment ID such as "env_...". "all" cannot be combined with other targets.
+   */
   targets?: Array<string> | undefined;
   blocks?: UpdateProjectCheckBlocks | undefined;
   timeout?: number | undefined;

@@ -5,25 +5,32 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyEight } from "@vercel/sdk/models/onehundredandseven.js";
+import { OneHundredAndTwentyEight } from "@vercel/sdk/models/onehundredandeighteen.js";
 
 let value: OneHundredAndTwentyEight = {
-  gitCommitterName: "<value>",
-  gitUserPlatform: "<value>",
-  projectName: "<value>",
-  sha: "<value>",
-  source: "<value>",
+  job: {
+    headInfo: {
+      org: "<value>",
+      ref: "<value>",
+      repo: "<value>",
+      repoId: 4252.15,
+      sha: "<value>",
+    },
+    installationId: 786.26,
+    isPrivate: true,
+    org: "<value>",
+    prId: 324.48,
+    provider: "github-custom-host",
+    repo: "<value>",
+    repoId: 3011.37,
+    repoPushedAt: 6930.83,
+    type: "push",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `gitCommitterName`                                                         | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `gitUserPlatform`                                                          | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `reason`                                                                   | [models.UserEventPayload128Reason](../models/usereventpayload128reason.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `sha`                                                                      | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `source`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |

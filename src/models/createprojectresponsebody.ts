@@ -75,8 +75,6 @@ import {
   CreateProjectProjectsChecksState$inboundSchema,
   CreateProjectProjectsOidcTokenClaims,
   CreateProjectProjectsOidcTokenClaims$inboundSchema,
-  CreateProjectProjectsPlan,
-  CreateProjectProjectsPlan$inboundSchema,
   CreateProjectProjectsResourceConfig,
   CreateProjectProjectsResourceConfig$inboundSchema,
   CreateProjectProjectsResponseBranchMatcher,
@@ -115,8 +113,17 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojectprojectsplan.js";
+} from "./createprojectprojectsoidctokenclaims.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const CreateProjectProjectsPlan = {
+  Enterprise: "enterprise",
+  Hobby: "hobby",
+  Pro: "pro",
+} as const;
+export type CreateProjectProjectsPlan = ClosedEnum<
+  typeof CreateProjectProjectsPlan
+>;
 
 export const CreateProjectProjectsReadyState = {
   Blocked: "BLOCKED",
@@ -602,6 +609,11 @@ export type CreateProjectResponseBody = {
   vercelFlags?: VercelFlags | undefined;
   webAnalytics?: CreateProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const CreateProjectProjectsPlan$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsPlan
+> = z.nativeEnum(CreateProjectProjectsPlan);
 
 /** @internal */
 export const CreateProjectProjectsReadyState$inboundSchema: z.ZodNativeEnum<

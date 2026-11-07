@@ -20,18 +20,20 @@ import {
   ResponseBodyAnalytics$inboundSchema,
   ResponseBodyDeploymentExpiration,
   ResponseBodyDeploymentExpiration$inboundSchema,
-} from "./getprojectscontenthint7.js";
+} from "./getprojectscontenthint9.js";
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectselasticbuildmachineprojects3.js";
+} from "./getprojectselasticbuildmachineprojects4.js";
 import {
-  GetProjectsResponseBodyAliasAssigned,
-  GetProjectsResponseBodyAliasAssigned$inboundSchema,
   GetProjectsResponseBodyNodeVersion,
   GetProjectsResponseBodyNodeVersion$inboundSchema,
   GetProjectsResponseBodyResourceConfig,
   GetProjectsResponseBodyResourceConfig$inboundSchema,
+  ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom,
+  ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema,
+  ResponseBodyCve55182MigrationAppliedFrom,
+  ResponseBodyCve55182MigrationAppliedFrom$inboundSchema,
   ResponseBodyEnv,
   ResponseBodyEnv$inboundSchema,
   ResponseBodyExpiration,
@@ -62,10 +64,32 @@ import {
   ResponseBodySecurity$inboundSchema,
   ResponseBodySpeedInsights,
   ResponseBodySpeedInsights$inboundSchema,
-  ResponseBodySsoProtection,
-  ResponseBodySsoProtection$inboundSchema,
-} from "./getprojectsresponsebodyaliasassigned.js";
+} from "./responsebodycve55182migrationappliedfrom.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectsResponseBodyDeploymentType = {
+  All: "all",
+  AllExceptCustomDomains: "all_except_custom_domains",
+  Preview: "preview",
+  ProdDeploymentUrlsAndAllPreviews: "prod_deployment_urls_and_all_previews",
+} as const;
+export type GetProjectsResponseBodyDeploymentType = ClosedEnum<
+  typeof GetProjectsResponseBodyDeploymentType
+>;
+
+export type ResponseBodySsoProtection = {
+  april2026SecurityIncidentMigrationAppliedFrom?:
+    | ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom
+    | null
+    | undefined;
+  cve55182MigrationAppliedFrom?:
+    | ResponseBodyCve55182MigrationAppliedFrom
+    | null
+    | undefined;
+  deploymentType: GetProjectsResponseBodyDeploymentType;
+};
+
+export type GetProjectsResponseBodyAliasAssigned = number | boolean;
 
 export type GetProjectsResponseBodyProjectsAliasError = {
   code: string;
@@ -188,7 +212,7 @@ export type GetProjectsResponseBodyProjectsResponseType = ClosedEnum<
 
 export type ResponseBodyTargets = {
   alias?: Array<string> | undefined;
-  aliasAssigned?: GetProjectsResponseBodyAliasAssigned | null | undefined;
+  aliasAssigned?: number | boolean | null | undefined;
   aliasError?: GetProjectsResponseBodyProjectsAliasError | null | undefined;
   aliasFinal?: string | null | undefined;
   automaticAliases?: Array<string> | undefined;
@@ -461,6 +485,55 @@ export type GetProjectsResponseBody =
   | Array<GetProjectsResponseBody1>;
 
 /** @internal */
+export const GetProjectsResponseBodyDeploymentType$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyDeploymentType> = z.nativeEnum(
+    GetProjectsResponseBodyDeploymentType,
+  );
+
+/** @internal */
+export const ResponseBodySsoProtection$inboundSchema: z.ZodType<
+  ResponseBodySsoProtection,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  april2026SecurityIncidentMigrationAppliedFrom: z.nullable(
+    ResponseBodyApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema,
+  ).optional(),
+  cve55182MigrationAppliedFrom: z.nullable(
+    ResponseBodyCve55182MigrationAppliedFrom$inboundSchema,
+  ).optional(),
+  deploymentType: GetProjectsResponseBodyDeploymentType$inboundSchema,
+});
+
+export function responseBodySsoProtectionFromJSON(
+  jsonString: string,
+): SafeParseResult<ResponseBodySsoProtection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ResponseBodySsoProtection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodySsoProtection' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetProjectsResponseBodyAliasAssigned$inboundSchema: z.ZodType<
+  GetProjectsResponseBodyAliasAssigned,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([types.number(), types.boolean()]);
+
+export function getProjectsResponseBodyAliasAssignedFromJSON(
+  jsonString: string,
+): SafeParseResult<GetProjectsResponseBodyAliasAssigned, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      GetProjectsResponseBodyAliasAssigned$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetProjectsResponseBodyAliasAssigned' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetProjectsResponseBodyProjectsAliasError$inboundSchema: z.ZodType<
   GetProjectsResponseBodyProjectsAliasError,
   z.ZodTypeDef,
@@ -651,7 +724,7 @@ export const ResponseBodyTargets$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   alias: types.optional(z.array(types.string())),
-  aliasAssigned: z.nullable(GetProjectsResponseBodyAliasAssigned$inboundSchema)
+  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
     .optional(),
   aliasError: z.nullable(
     z.lazy(() => GetProjectsResponseBodyProjectsAliasError$inboundSchema),
@@ -1118,7 +1191,9 @@ export const GetProjectsResponseBody1$inboundSchema: z.ZodType<
   skipGitConnectDuringLink: types.optional(types.boolean()),
   sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
   speedInsights: types.optional(ResponseBodySpeedInsights$inboundSchema),
-  ssoProtection: z.nullable(ResponseBodySsoProtection$inboundSchema).optional(),
+  ssoProtection: z.nullable(
+    z.lazy(() => ResponseBodySsoProtection$inboundSchema),
+  ).optional(),
   targets: types.optional(
     z.record(types.nullable(z.lazy(() => ResponseBodyTargets$inboundSchema))),
   ),

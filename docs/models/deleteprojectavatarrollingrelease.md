@@ -5,7 +5,7 @@ Project-level rolling release configuration that defines how deployments should 
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarRollingRelease } from "@vercel/sdk/models/deleteprojectavatarfrom.js";
+import { DeleteProjectAvatarRollingRelease } from "@vercel/sdk/models/deleteprojectavatarfrom1.js";
 
 let value: DeleteProjectAvatarRollingRelease = {
   canaryResponseHeader: false,

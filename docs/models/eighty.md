@@ -5,10 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Eighty } from "@vercel/sdk/models/payloadprivatemodel.js";
+import { Eighty } from "@vercel/sdk/models/rule.js";
 
 let value: Eighty = {
-  subscriptionId: "<id>",
+  amount: 8537.76,
+  invoiceId: "<id>",
+  lineItemCount: 7344.14,
+  refundReason: "<value>",
 };
 ```
 
@@ -16,4 +19,7 @@ let value: Eighty = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `subscriptionId`   | *string*           | :heavy_check_mark: | N/A                |
+| `amount`           | *number*           | :heavy_check_mark: | N/A                |
+| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
+| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
+| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |

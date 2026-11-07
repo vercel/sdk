@@ -58,8 +58,10 @@ import {
   UploadProjectAvatarLastRollbackTarget$inboundSchema,
 } from "./uploadprojectavatarchecksconclusion.js";
 import {
-  UploadProjectAvatarFrom,
-  UploadProjectAvatarFrom$inboundSchema,
+  UploadProjectAvatarFrom1,
+  UploadProjectAvatarFrom1$inboundSchema,
+  UploadProjectAvatarFrom2,
+  UploadProjectAvatarFrom2$inboundSchema,
   UploadProjectAvatarLatestDeployments,
   UploadProjectAvatarLatestDeployments$inboundSchema,
   UploadProjectAvatarLink,
@@ -110,7 +112,11 @@ import {
   UploadProjectAvatarTracing$inboundSchema,
   UploadProjectAvatarTrustedIps,
   UploadProjectAvatarTrustedIps$inboundSchema,
-} from "./uploadprojectavatarfrom.js";
+} from "./uploadprojectavatarfrom1.js";
+
+export type UploadProjectAvatarFrom =
+  | UploadProjectAvatarFrom1
+  | UploadProjectAvatarFrom2;
 
 export const UploadProjectAvatarToProjectsResponse200Preset = {
   AllCustom: "all-custom",
@@ -156,7 +162,7 @@ export type UploadProjectAvatarProjectsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type UploadProjectAvatarCustomAllow = {
-  from: UploadProjectAvatarFrom;
+  from: UploadProjectAvatarFrom1 | UploadProjectAvatarFrom2;
   to: UploadProjectAvatarToProjects1 | UploadProjectAvatarToProjects2;
 };
 
@@ -355,6 +361,26 @@ export type UploadProjectAvatarResponseBody = {
 };
 
 /** @internal */
+export const UploadProjectAvatarFrom$inboundSchema: z.ZodType<
+  UploadProjectAvatarFrom,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  UploadProjectAvatarFrom1$inboundSchema,
+  UploadProjectAvatarFrom2$inboundSchema,
+]);
+
+export function uploadProjectAvatarFromFromJSON(
+  jsonString: string,
+): SafeParseResult<UploadProjectAvatarFrom, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UploadProjectAvatarFrom$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UploadProjectAvatarFrom' from JSON`,
+  );
+}
+
+/** @internal */
 export const UploadProjectAvatarToProjectsResponse200Preset$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarToProjectsResponse200Preset> = z
     .nativeEnum(UploadProjectAvatarToProjectsResponse200Preset);
@@ -432,7 +458,10 @@ export const UploadProjectAvatarCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: UploadProjectAvatarFrom$inboundSchema,
+  from: smartUnion([
+    UploadProjectAvatarFrom1$inboundSchema,
+    UploadProjectAvatarFrom2$inboundSchema,
+  ]),
   to: smartUnion([
     z.lazy(() => UploadProjectAvatarToProjects1$inboundSchema),
     z.lazy(() => UploadProjectAvatarToProjects2$inboundSchema),

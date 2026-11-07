@@ -5,17 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyFour } from "@vercel/sdk/models/twohundredandseventythree.js";
+import { TwoHundredAndSeventyFour } from "@vercel/sdk/models/factors1.js";
 
 let value: TwoHundredAndSeventyFour = {
-  current: {
-    awsServiceName: "<value>",
-    id: "<id>",
-    name: "<value>",
-    projectId: "<id>",
-    vercelRegion: "<value>",
-  },
-  prev: {
+  endpoint: {
     awsServiceName: "<value>",
     id: "<id>",
     name: "<value>",
@@ -29,7 +22,6 @@ let value: TwoHundredAndSeventyFour = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `current`                                                                | [models.PayloadCurrent](../models/payloadcurrent.md)                     | :heavy_check_mark:                                                       | N/A                                                                      |
-| `prev`                                                                   | [models.UserEventPayload274Prev](../models/usereventpayload274prev.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `endpoint`                                                               | [models.PayloadEndpoint](../models/payloadendpoint.md)                   | :heavy_check_mark:                                                       | N/A                                                                      |
 | `projectName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `scope`                                                                  | [models.UserEventPayload274Scope](../models/usereventpayload274scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

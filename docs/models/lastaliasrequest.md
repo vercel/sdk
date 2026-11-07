@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LastAliasRequest } from "@vercel/sdk/models/createprojectprojectsplan.js";
+import { LastAliasRequest } from "@vercel/sdk/models/createprojectprojectsoidctokenclaims.js";
 
 let value: LastAliasRequest = {
   fromDeploymentId: "<id>",

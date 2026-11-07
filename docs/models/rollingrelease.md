@@ -5,7 +5,7 @@ Project-level rolling release configuration that defines how deployments should 
 ## Example Usage
 
 ```typescript
-import { RollingRelease } from "@vercel/sdk/models/createprojectprojectsplan.js";
+import { RollingRelease } from "@vercel/sdk/models/createprojectprojectsoidctokenclaims.js";
 
 let value: RollingRelease = {
   canaryResponseHeader: false,

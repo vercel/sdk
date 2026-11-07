@@ -5,22 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyNine } from "@vercel/sdk/models/twohundredandseventythree.js";
+import { ThreeHundredAndThirtyNine } from "@vercel/sdk/models/usereventpayload278scope.js";
 
 let value: ThreeHundredAndThirtyNine = {
-  oldPasswordProtection: "prod_deployment_urls_and_all_previews",
-  passwordProtection: {
-    deploymentType: "prod_deployment_urls_and_all_previews",
-  },
+  destinationAccountName: "<value>",
+  newProjectName: "<value>",
+  previousProjectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                 | Type                                  | Required                              | Description                           |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `oldPasswordProtection`               | *models.PayloadOldPasswordProtection* | :heavy_check_mark:                    | N/A                                   |
-| `passwordChanged`                     | *boolean*                             | :heavy_minus_sign:                    | N/A                                   |
-| `passwordProtection`                  | *models.PayloadPasswordProtection*    | :heavy_check_mark:                    | N/A                                   |
-| `projectId`                           | *string*                              | :heavy_minus_sign:                    | N/A                                   |
-| `projectName`                         | *string*                              | :heavy_minus_sign:                    | N/A                                   |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
+| `newProjectId`           | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `newProjectName`         | *string*                 | :heavy_check_mark:       | N/A                      |
+| `previousProjectId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `previousProjectName`    | *string*                 | :heavy_check_mark:       | N/A                      |
+| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |

@@ -456,6 +456,18 @@ export type UpdateProjectProjectsLogHeaders =
   | Array<string>
   | UpdateProjectLogHeadersProjects2;
 
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction =
+  {
+    Challenge: "challenge",
+    Deny: "deny",
+    Log: "log",
+    RateLimit: "rate_limit",
+  } as const;
+export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction =
+  ClosedEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction
+  >;
+
 export const UpdateProjectAlgo = {
   FixedWindow: "fixed_window",
   TokenBucket: "token_bucket",
@@ -463,6 +475,10 @@ export const UpdateProjectAlgo = {
 export type UpdateProjectAlgo = ClosedEnum<typeof UpdateProjectAlgo>;
 
 export type UpdateProjectRateLimit = {
+  action?:
+    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction
+    | null
+    | undefined;
   algo: UpdateProjectAlgo;
   keys: Array<string>;
   limit: number;
@@ -1746,6 +1762,14 @@ export function updateProjectProjectsLogHeadersFromJSON(
 }
 
 /** @internal */
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction$inboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction
+  > = z.nativeEnum(
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction,
+  );
+
+/** @internal */
 export const UpdateProjectAlgo$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectAlgo
 > = z.nativeEnum(UpdateProjectAlgo);
@@ -1756,6 +1780,9 @@ export const UpdateProjectRateLimit$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  action: z.nullable(
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction$inboundSchema,
+  ).optional(),
   algo: UpdateProjectAlgo$inboundSchema,
   keys: z.array(types.string()),
   limit: types.number(),

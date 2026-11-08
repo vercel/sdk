@@ -5,7 +5,7 @@ A repository's findings are in code no project runs.
 ## Example Usage
 
 ```typescript
-import { TargetKind } from "@vercel/sdk/models/store.js";
+import { TargetKind } from "@vercel/sdk/models/usereventpayload404type.js";
 
 let value: TargetKind = "repository";
 ```

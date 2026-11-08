@@ -73,7 +73,7 @@ export type UpdateTeamMemberRequestBody = {
    */
   role?: string | undefined;
   /**
-   * The team permissions to set for the member. Permissions must be compatible with the team roles assigned to the member.
+   * The team permissions to set for the member. Permissions must be available to the team and compatible with the team roles assigned to the member.
    */
   teamPermissions?: Array<UpdateTeamMemberTeamPermissions> | undefined;
   projects?: Array<UpdateTeamMemberProjects> | undefined;

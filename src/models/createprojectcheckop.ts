@@ -33,7 +33,13 @@ export const SourceProvider = {
 export type SourceProvider = ClosedEnum<typeof SourceProvider>;
 
 export type Source3 = {
+  /**
+   * Imports Git provider check results, such as GitHub check runs or commit statuses, as Deployment Checks.
+   */
   kind: string;
+  /**
+   * The Git provider check name or context to match, for example a GitHub Actions job name.
+   */
   externalCheckName: string;
   provider: SourceProvider;
 };
@@ -55,8 +61,14 @@ export type CreateProjectCheckSource = Source3 | Source2 | Source1;
 
 export type CreateProjectCheckRequestBody = {
   name: string;
+  /**
+   * Whether check runs can be manually re-requested. Git provider checks cannot be re-requested.
+   */
   isRerequestable?: boolean | undefined;
   requires?: Requires | undefined;
+  /**
+   * Deployment targets where this check applies. Valid values are "production", "preview", "all", or a Custom Environment ID such as "env_...". If omitted, defaults to ["production"]. "all" cannot be combined with other targets.
+   */
   targets?: Array<string> | undefined;
   blocks?: Blocks | undefined;
   source?: Source3 | Source2 | Source1 | undefined;

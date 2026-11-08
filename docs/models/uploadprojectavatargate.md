@@ -5,7 +5,7 @@ Automated gating configuration. Omitted (the default) means no gating is configu
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarGate } from "@vercel/sdk/models/uploadprojectavatarfrom.js";
+import { UploadProjectAvatarGate } from "@vercel/sdk/models/uploadprojectavatarfrom1.js";
 
 let value: UploadProjectAvatarGate = {
   action: "pause",

@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyOne } from "@vercel/sdk/models/payloadprivatemodel.js";
+import { SeventyOne } from "@vercel/sdk/models/rule.js";
 
 let value: SeventyOne = {
   appName: "<value>",
@@ -14,10 +14,7 @@ let value: SeventyOne = {
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `appId`                                                        | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
-| `appName`                                                      | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `organizationId`                                               | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
-| `permissions`                                                  | [models.PayloadPermissions](../models/payloadpermissions.md)[] | :heavy_minus_sign:                                             | N/A                                                            |
-| `resources`                                                    | [models.Resources](../models/resources.md)                     | :heavy_minus_sign:                                             | N/A                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `appId`            | *string*           | :heavy_minus_sign: | N/A                |
+| `appName`          | *string*           | :heavy_check_mark: | N/A                |

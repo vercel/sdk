@@ -5,19 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixtyOne } from "@vercel/sdk/models/store.js";
+import { FourHundredAndSixtyOne } from "@vercel/sdk/models/usereventpayload404type.js";
 
-let value: FourHundredAndSixtyOne = {
-  organizationId: "<id>",
-  teamIds: [
-    "<value 1>",
-  ],
-};
+let value: FourHundredAndSixtyOne = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `teamIds`          | *string*[]         | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_minus_sign: | N/A                |

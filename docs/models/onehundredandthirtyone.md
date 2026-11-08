@@ -5,19 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyOne } from "@vercel/sdk/models/onehundredandseven.js";
+import { OneHundredAndThirtyOne } from "@vercel/sdk/models/onehundredandnineteen.js";
 
 let value: OneHundredAndThirtyOne = {
-  mode: "none",
-  previousMode: "none",
-  scope: "organization",
+  gitCommitterName: "<value>",
+  gitUserPlatform: "<value>",
+  projectName: "<value>",
+  sha: "<value>",
+  source: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `mode`                                                                   | [models.UserEventPayload131Mode](../models/usereventpayload131mode.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
-| `previousMode`                                                           | [models.PreviousMode](../models/previousmode.md)                         | :heavy_check_mark:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload131Scope](../models/usereventpayload131scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `gitCommitterName`                                                         | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `gitUserPlatform`                                                          | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `reason`                                                                   | [models.UserEventPayload131Reason](../models/usereventpayload131reason.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `sha`                                                                      | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `source`                                                                   | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

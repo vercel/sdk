@@ -5,19 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortySeven } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { OneHundredAndFortySeven } from "@vercel/sdk/models/onehundredandnineteen.js";
 
 let value: OneHundredAndFortySeven = {
-  domain: "valuable-vista.info",
-  echMode: "auto",
-  previousEchMode: "auto",
+  id: "<id>",
+  name: "<value>",
+  nameservers: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  previousServiceType: "<value>",
+  serviceType: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `domain`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `echMode`                                              | [models.EchMode](../models/echmode.md)                 | :heavy_check_mark:                                     | N/A                                                    |
-| `previousEchMode`                                      | [models.PreviousEchMode](../models/previousechmode.md) | :heavy_check_mark:                                     | N/A                                                    |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `id`                  | *string*              | :heavy_check_mark:    | N/A                   |
+| `name`                | *string*              | :heavy_check_mark:    | N/A                   |
+| `nameservers`         | *string*[]            | :heavy_check_mark:    | N/A                   |
+| `previousServiceType` | *string*              | :heavy_check_mark:    | N/A                   |
+| `serviceType`         | *string*              | :heavy_check_mark:    | N/A                   |

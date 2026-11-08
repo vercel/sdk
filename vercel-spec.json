@@ -9632,7 +9632,8 @@
                     "type": "string"
                   },
                   "isRerequestable": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether check runs can be manually re-requested. Git provider checks cannot be re-requested."
                   },
                   "requires": {
                     "type": "string",
@@ -9648,7 +9649,8 @@
                     "items": {
                       "type": "string"
                     },
-                    "uniqueItems": true
+                    "uniqueItems": true,
+                    "description": "Deployment targets where this check applies. Valid values are \"production\", \"preview\", \"all\", or a Custom Environment ID such as \"env_...\". If omitted, defaults to [\"production\"]. \"all\" cannot be combined with other targets."
                   },
                   "blocks": {
                     "type": "string",
@@ -9701,10 +9703,12 @@
                       {
                         "properties": {
                           "kind": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "Imports Git provider check results, such as GitHub check runs or commit statuses, as Deployment Checks."
                           },
                           "externalCheckName": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "The Git provider check name or context to match, for example a GitHub Actions job name."
                           },
                           "provider": {
                             "type": "string",
@@ -10234,7 +10238,8 @@
                     "type": "string"
                   },
                   "isRerequestable": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether check runs can be manually re-requested. Git provider checks cannot be re-requested."
                   },
                   "requires": {
                     "type": "string",
@@ -10249,7 +10254,8 @@
                     "type": "array",
                     "items": {
                       "type": "string"
-                    }
+                    },
+                    "description": "Deployment targets where this check applies. Valid values are \"production\", \"preview\", \"all\", or a Custom Environment ID such as \"env_...\". \"all\" cannot be combined with other targets."
                   },
                   "blocks": {
                     "type": "string",
@@ -92096,6 +92102,13 @@
                                 "type": "array",
                                 "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                               },
+                              "drive": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
                               "edgeCacheNamespace": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -107329,6 +107342,17 @@
                                     "rateLimit": {
                                       "nullable": true,
                                       "properties": {
+                                        "action": {
+                                          "nullable": true,
+                                          "type": "string",
+                                          "enum": [
+                                            "challenge",
+                                            "deny",
+                                            "log",
+                                            "rate_limit",
+                                            null
+                                          ]
+                                        },
                                         "algo": {
                                           "type": "string",
                                           "enum": [
@@ -111966,6 +111990,17 @@
                                         "rateLimit": {
                                           "nullable": true,
                                           "properties": {
+                                            "action": {
+                                              "nullable": true,
+                                              "type": "string",
+                                              "enum": [
+                                                "challenge",
+                                                "deny",
+                                                "log",
+                                                "rate_limit",
+                                                null
+                                              ]
+                                            },
                                             "algo": {
                                               "type": "string",
                                               "enum": [
@@ -117336,6 +117371,13 @@
                                     "type": "array",
                                     "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                                   },
+                                  "drive": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
                                   "edgeCacheNamespace": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -119864,6 +119906,17 @@
                                         "rateLimit": {
                                           "nullable": true,
                                           "properties": {
+                                            "action": {
+                                              "nullable": true,
+                                              "type": "string",
+                                              "enum": [
+                                                "challenge",
+                                                "deny",
+                                                "log",
+                                                "rate_limit",
+                                                null
+                                              ]
+                                            },
                                             "algo": {
                                               "type": "string",
                                               "enum": [
@@ -126033,6 +126086,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "drive": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "edgeCacheNamespace": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -128561,6 +128621,17 @@
                               "rateLimit": {
                                 "nullable": true,
                                 "properties": {
+                                  "action": {
+                                    "nullable": true,
+                                    "type": "string",
+                                    "enum": [
+                                      "challenge",
+                                      "deny",
+                                      "log",
+                                      "rate_limit",
+                                      null
+                                    ]
+                                  },
                                   "algo": {
                                     "type": "string",
                                     "enum": [
@@ -135037,6 +135108,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "drive": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "edgeCacheNamespace": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -137565,6 +137643,17 @@
                               "rateLimit": {
                                 "nullable": true,
                                 "properties": {
+                                  "action": {
+                                    "nullable": true,
+                                    "type": "string",
+                                    "enum": [
+                                      "challenge",
+                                      "deny",
+                                      "log",
+                                      "rate_limit",
+                                      null
+                                    ]
+                                  },
                                   "algo": {
                                     "type": "string",
                                     "enum": [
@@ -143288,6 +143377,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "drive": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "edgeCacheNamespace": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -145816,6 +145912,17 @@
                               "rateLimit": {
                                 "nullable": true,
                                 "properties": {
+                                  "action": {
+                                    "nullable": true,
+                                    "type": "string",
+                                    "enum": [
+                                      "challenge",
+                                      "deny",
+                                      "log",
+                                      "rate_limit",
+                                      null
+                                    ]
+                                  },
                                   "algo": {
                                     "type": "string",
                                     "enum": [
@@ -152917,6 +153024,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "drive": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "edgeCacheNamespace": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -155445,6 +155559,17 @@
                               "rateLimit": {
                                 "nullable": true,
                                 "properties": {
+                                  "action": {
+                                    "nullable": true,
+                                    "type": "string",
+                                    "enum": [
+                                      "challenge",
+                                      "deny",
+                                      "log",
+                                      "rate_limit",
+                                      null
+                                    ]
+                                  },
                                   "algo": {
                                     "type": "string",
                                     "enum": [
@@ -161181,6 +161306,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "drive": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "edgeCacheNamespace": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -163709,6 +163841,17 @@
                               "rateLimit": {
                                 "nullable": true,
                                 "properties": {
+                                  "action": {
+                                    "nullable": true,
+                                    "type": "string",
+                                    "enum": [
+                                      "challenge",
+                                      "deny",
+                                      "log",
+                                      "rate_limit",
+                                      null
+                                    ]
+                                  },
                                   "algo": {
                                     "type": "string",
                                     "enum": [
@@ -167090,6 +167233,9 @@
           },
           "410": {
             "description": ""
+          },
+          "429": {
+            "description": ""
           }
         },
         "parameters": [
@@ -167398,6 +167544,9 @@
           },
           "410": {
             "description": ""
+          },
+          "429": {
+            "description": ""
           }
         },
         "parameters": [
@@ -167604,6 +167753,9 @@
             "description": "The project is currently being transferred"
           },
           "410": {
+            "description": ""
+          },
+          "429": {
             "description": ""
           }
         },
@@ -182586,6 +182738,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "drive": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "edgeCacheNamespace": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -185114,6 +185273,17 @@
                               "rateLimit": {
                                 "nullable": true,
                                 "properties": {
+                                  "action": {
+                                    "nullable": true,
+                                    "type": "string",
+                                    "enum": [
+                                      "challenge",
+                                      "deny",
+                                      "log",
+                                      "rate_limit",
+                                      null
+                                    ]
+                                  },
                                   "algo": {
                                     "type": "string",
                                     "enum": [
@@ -216024,6 +216194,10 @@
                                   false,
                                   true
                                 ]
+                              },
+                              "tokenSetKey": {
+                                "type": "string",
+                                "description": "The token set key `name` is built from; absent for env vars that are not in the token set."
                               }
                             },
                             "required": [
@@ -217587,7 +217761,7 @@
                   },
                   "teamPermissions": {
                     "type": "array",
-                    "description": "The team permissions to set for the member. Permissions must be compatible with the team roles assigned to the member.",
+                    "description": "The team permissions to set for the member. Permissions must be available to the team and compatible with the team roles assigned to the member.",
                     "example": [
                       "CreateProject",
                       "FullProductionDeployment"
@@ -244254,6 +244428,76 @@
               },
               {
                 "properties": {
+                  "namespace": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "scheduleId": {
+                    "type": "string"
+                  },
+                  "scheduleName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "namespace",
+                  "projectId",
+                  "projectName",
+                  "scheduleId",
+                  "scheduleName"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "namespace": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "scheduleId": {
+                    "type": "string"
+                  },
+                  "scheduleName": {
+                    "type": "string"
+                  },
+                  "updatedFields": {
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "expression",
+                        "jitter",
+                        "payload",
+                        "target",
+                        "timezone"
+                      ]
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "namespace",
+                  "projectId",
+                  "projectName",
+                  "scheduleId",
+                  "scheduleName",
+                  "updatedFields"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "boardId": {
                     "type": "string"
                   },
@@ -245594,6 +245838,21 @@
               },
               {
                 "properties": {
+                  "countries": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "countries"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "retention": {
                     "properties": {
                       "ceilingDays": {
@@ -246412,6 +246671,7 @@
                         "read-write:domain",
                         "read-write:domain-registrar",
                         "read-write:drains",
+                        "read-write:drive",
                         "read-write:edge-cache",
                         "read-write:edge-config",
                         "read-write:firewall",
@@ -246448,6 +246708,7 @@
                         "read:connect",
                         "read:deployment",
                         "read:domain",
+                        "read:drive",
                         "read:event",
                         "read:firewall",
                         "read:integration-configuration",
@@ -246544,6 +246805,7 @@
                         "read-write:domain",
                         "read-write:domain-registrar",
                         "read-write:drains",
+                        "read-write:drive",
                         "read-write:edge-cache",
                         "read-write:edge-config",
                         "read-write:firewall",
@@ -246580,6 +246842,7 @@
                         "read:connect",
                         "read:deployment",
                         "read:domain",
+                        "read:drive",
                         "read:event",
                         "read:firewall",
                         "read:integration-configuration",
@@ -246656,6 +246919,7 @@
                             "read-write:domain",
                             "read-write:domain-registrar",
                             "read-write:drains",
+                            "read-write:drive",
                             "read-write:edge-cache",
                             "read-write:edge-config",
                             "read-write:firewall",
@@ -246692,6 +246956,7 @@
                             "read:connect",
                             "read:deployment",
                             "read:domain",
+                            "read:drive",
                             "read:event",
                             "read:firewall",
                             "read:integration-configuration",
@@ -246798,6 +247063,7 @@
                             "read-write:domain",
                             "read-write:domain-registrar",
                             "read-write:drains",
+                            "read-write:drive",
                             "read-write:edge-cache",
                             "read-write:edge-config",
                             "read-write:firewall",
@@ -246834,6 +247100,7 @@
                             "read:connect",
                             "read:deployment",
                             "read:domain",
+                            "read:drive",
                             "read:event",
                             "read:firewall",
                             "read:integration-configuration",
@@ -246956,6 +247223,7 @@
                         "read-write:domain",
                         "read-write:domain-registrar",
                         "read-write:drains",
+                        "read-write:drive",
                         "read-write:edge-cache",
                         "read-write:edge-config",
                         "read-write:firewall",
@@ -246992,6 +247260,7 @@
                         "read:connect",
                         "read:deployment",
                         "read:domain",
+                        "read:drive",
                         "read:event",
                         "read:firewall",
                         "read:integration-configuration",
@@ -254565,6 +254834,37 @@
               },
               {
                 "properties": {
+                  "accessTokenRotation": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "integrationId": {
+                    "type": "string"
+                  },
+                  "integrationName": {
+                    "type": "string"
+                  },
+                  "integrationSlug": {
+                    "type": "string"
+                  },
+                  "permanentTokensExpireAt": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "accessTokenRotation",
+                  "integrationId",
+                  "integrationName",
+                  "integrationSlug"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "algorithm": {
                     "type": "string"
                   },
@@ -256903,6 +257203,12 @@
                       }
                     },
                     "type": "object"
+                  },
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "organization"
+                    ]
                   }
                 },
                 "required": [
@@ -263175,6 +263481,167 @@
               },
               {
                 "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "enable",
+                      "update"
+                    ]
+                  },
+                  "codeReviewEnabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "codeReviewSelection": {
+                    "properties": {
+                      "initial": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      },
+                      "submitted": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      }
+                    },
+                    "required": [
+                      "initial",
+                      "submitted"
+                    ],
+                    "type": "object"
+                  },
+                  "cumulativeBalance": {
+                    "type": "string"
+                  },
+                  "endpoint": {
+                    "type": "string",
+                    "enum": [
+                      "/v1/vade/usage-billing"
+                    ]
+                  },
+                  "ledgerId": {
+                    "type": "string"
+                  },
+                  "next": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      },
+                      "maximumOverdraft": {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "enabled",
+                      "maximumOverdraft"
+                    ],
+                    "type": "object"
+                  },
+                  "previous": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      },
+                      "maximumOverdraft": {
+                        "nullable": true,
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "enabled",
+                      "maximumOverdraft"
+                    ],
+                    "type": "object"
+                  },
+                  "removedTopupIds": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "source": {
+                    "type": "string"
+                  },
+                  "topupCleanupCompleted": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  }
+                },
+                "required": [
+                  "action",
+                  "codeReviewEnabled",
+                  "cumulativeBalance",
+                  "endpoint",
+                  "ledgerId",
+                  "next",
+                  "previous",
+                  "removedTopupIds",
+                  "source",
+                  "topupCleanupCompleted"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "action": {
+                    "type": "string",
+                    "enum": [
+                      "disable",
+                      "enable",
+                      "update"
+                    ]
+                  },
+                  "codeReviewSelection": {
+                    "properties": {
+                      "initial": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      },
+                      "submitted": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      }
+                    },
+                    "required": [
+                      "initial",
+                      "submitted"
+                    ],
+                    "type": "object"
+                  },
+                  "endpoint": {
+                    "type": "string",
+                    "enum": [
+                      "/v1/vade/code-review/configure",
+                      "/v1/vade/configure"
+                    ]
+                  },
                   "next": {
                     "properties": {
                       "enabled": {
@@ -263264,6 +263731,10 @@
                     ],
                     "type": "object",
                     "description": "Automatic code review settings"
+                  },
+                  "source": {
+                    "type": "string",
+                    "description": "Caller-reported surface, not proof of a browser interaction or consent."
                   }
                 },
                 "required": [
@@ -267933,6 +268404,7 @@
               "agentic-provisioning-credentials-rotated",
               "agentic-provisioning-plan-changed",
               "agentic-provisioning-team-created",
+              "ai-agent-usage-billing",
               "ai-alert-investigation",
               "ai-code-review",
               "ai-gateway-access-policy-created",
@@ -267951,6 +268423,7 @@
               "ai-gateway-byok-model-mappings-updated",
               "ai-gateway-credits-purchased",
               "ai-gateway-guardrails-updated",
+              "ai-gateway-headquarters-updated",
               "ai-gateway-hipaa-compliance-toggled",
               "ai-gateway-inference-regions-updated",
               "ai-gateway-model-allowlist-models-updated",
@@ -268196,6 +268669,7 @@
               "global-config-transfer-out",
               "global-config-updated",
               "instant-rollback-created",
+              "integration-access-token-settings-updated",
               "integration-configuration-credential-revoked",
               "integration-configuration-credential-rotated",
               "integration-configuration-owner-changed",
@@ -268473,6 +268947,12 @@
               "sandbox-snapshot-regions-updated",
               "scale",
               "scale-auto",
+              "schedule-created",
+              "schedule-deleted",
+              "schedule-disabled",
+              "schedule-enabled",
+              "schedule-invoked",
+              "schedule-updated",
               "secondary-email-added",
               "secondary-email-removed",
               "secondary-email-verified",
@@ -268942,6 +269422,7 @@
               "agentic-provisioning-credentials-rotated",
               "agentic-provisioning-plan-changed",
               "agentic-provisioning-team-created",
+              "ai-agent-usage-billing",
               "ai-alert-investigation",
               "ai-code-review",
               "ai-gateway-access-policy-created",
@@ -268960,6 +269441,7 @@
               "ai-gateway-byok-model-mappings-updated",
               "ai-gateway-credits-purchased",
               "ai-gateway-guardrails-updated",
+              "ai-gateway-headquarters-updated",
               "ai-gateway-hipaa-compliance-toggled",
               "ai-gateway-inference-regions-updated",
               "ai-gateway-model-allowlist-models-updated",
@@ -269205,6 +269687,7 @@
               "global-config-transfer-out",
               "global-config-updated",
               "instant-rollback-created",
+              "integration-access-token-settings-updated",
               "integration-configuration-credential-revoked",
               "integration-configuration-credential-rotated",
               "integration-configuration-owner-changed",
@@ -269482,6 +269965,12 @@
               "sandbox-snapshot-regions-updated",
               "scale",
               "scale-auto",
+              "schedule-created",
+              "schedule-deleted",
+              "schedule-disabled",
+              "schedule-enabled",
+              "schedule-invoked",
+              "schedule-updated",
               "secondary-email-added",
               "secondary-email-removed",
               "secondary-email-verified",
@@ -269709,6 +270198,7 @@
                 "agentic-provisioning-credentials-rotated",
                 "agentic-provisioning-plan-changed",
                 "agentic-provisioning-team-created",
+                "ai-agent-usage-billing",
                 "ai-alert-investigation",
                 "ai-code-review",
                 "ai-gateway-access-policy-created",
@@ -269727,6 +270217,7 @@
                 "ai-gateway-byok-model-mappings-updated",
                 "ai-gateway-credits-purchased",
                 "ai-gateway-guardrails-updated",
+                "ai-gateway-headquarters-updated",
                 "ai-gateway-hipaa-compliance-toggled",
                 "ai-gateway-inference-regions-updated",
                 "ai-gateway-model-allowlist-models-updated",
@@ -269972,6 +270463,7 @@
                 "global-config-transfer-out",
                 "global-config-updated",
                 "instant-rollback-created",
+                "integration-access-token-settings-updated",
                 "integration-configuration-credential-revoked",
                 "integration-configuration-credential-rotated",
                 "integration-configuration-owner-changed",
@@ -270249,6 +270741,12 @@
                 "sandbox-snapshot-regions-updated",
                 "scale",
                 "scale-auto",
+                "schedule-created",
+                "schedule-deleted",
+                "schedule-disabled",
+                "schedule-enabled",
+                "schedule-invoked",
+                "schedule-updated",
                 "secondary-email-added",
                 "secondary-email-removed",
                 "secondary-email-verified",

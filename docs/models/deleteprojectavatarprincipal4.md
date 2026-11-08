@@ -5,7 +5,7 @@ The principal who rolled back the project. Absent on historical rollbacks where 
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarPrincipal4 } from "@vercel/sdk/models/deleteprojectavatarfrom.js";
+import { DeleteProjectAvatarPrincipal4 } from "@vercel/sdk/models/deleteprojectavatarfrom1.js";
 
 let value: DeleteProjectAvatarPrincipal4 = {
   integration: {

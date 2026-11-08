@@ -5,7 +5,7 @@ The principal that last edited this env var, when the editor id resolves to a kn
 ## Example Usage
 
 ```typescript
-import { UserEventLastEditedByPrincipal1 } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { UserEventLastEditedByPrincipal1 } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: UserEventLastEditedByPrincipal1 = {
   id: "<id>",

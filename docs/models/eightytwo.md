@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyTwo } from "@vercel/sdk/models/payloadprivatemodel.js";
+import { EightyTwo } from "@vercel/sdk/models/rule.js";
 
 let value: EightyTwo = {
-  paymentMethodId: "<id>",
+  amount: 4339.46,
+  invoiceId: "<id>",
+  newInvoiceId: "<id>",
+  settlementMethod: "credited-paid",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `brand`            | *string*           | :heavy_minus_sign: | N/A                |
-| `last4`            | *string*           | :heavy_minus_sign: | N/A                |
-| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `amount`                                                 | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `invoiceId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `newInvoiceId`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `settlementMethod`                                       | [models.SettlementMethod](../models/settlementmethod.md) | :heavy_check_mark:                                       | N/A                                                      |

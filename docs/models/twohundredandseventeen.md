@@ -5,15 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventeen } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { TwoHundredAndSeventeen } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: TwoHundredAndSeventeen = {
-  provider: "apple",
+  issuerId: "<id>",
+  issuerName: "<value>",
+  kind: "<value>",
+  policyKey: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `provider`                                                                     | [models.UserEventPayload217Provider](../models/usereventpayload217provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `policyKey`        | *string*           | :heavy_check_mark: | N/A                |

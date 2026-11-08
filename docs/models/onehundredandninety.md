@@ -5,10 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinety } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { OneHundredAndNinety } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: OneHundredAndNinety = {
-  action: "enable",
+  active: false,
+  projectId: "<id>",
+  rulesetName: "<value>",
 };
 ```
 
@@ -16,4 +18,7 @@ let value: OneHundredAndNinety = {
 
 | Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload190Action](../models/usereventpayload190action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `action`                                                                   | [models.UserEventPayload190Action](../models/usereventpayload190action.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `active`                                                                   | *boolean*                                                                  | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `rulesetName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

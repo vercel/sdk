@@ -5,22 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwelve } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { TwoHundredAndTwelve } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: TwoHundredAndTwelve = {
-  issuerId: "<id>",
-  issuerName: "<value>",
-  kind: "<value>",
+  accessTokenRotation: false,
+  integrationId: "<id>",
+  integrationName: "<value>",
+  integrationSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `clientId`         | *string*           | :heavy_minus_sign: | N/A                |
-| `environments`     | *string*[]         | :heavy_minus_sign: | N/A                |
-| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
-| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `kind`             | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `accessTokenRotation`     | *boolean*                 | :heavy_check_mark:        | N/A                       |
+| `integrationId`           | *string*                  | :heavy_check_mark:        | N/A                       |
+| `integrationName`         | *string*                  | :heavy_check_mark:        | N/A                       |
+| `integrationSlug`         | *string*                  | :heavy_check_mark:        | N/A                       |
+| `permanentTokensExpireAt` | *number*                  | :heavy_minus_sign:        | N/A                       |

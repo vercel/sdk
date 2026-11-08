@@ -5,22 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyNine } from "@vercel/sdk/models/store.js";
+import { ThreeHundredAndNinetyNine } from "@vercel/sdk/models/principalintegration.js";
 
-let value: ThreeHundredAndNinetyNine = {
-  store: {
-    id: "<id>",
-    type: "blob",
-  },
-  originTeamId: "<id>",
-  originTeamName: "<value>",
-};
+let value: ThreeHundredAndNinetyNine = {};
 ```
 
 ## Fields
 
-| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `store`                                                            | [models.UserEventPayloadStore](../models/usereventpayloadstore.md) | :heavy_check_mark:                                                 | N/A                                                                |
-| `originTeamId`                                                     | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
-| `originTeamName`                                                   | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |

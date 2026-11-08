@@ -5,20 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyEight } from "@vercel/sdk/models/usereventpayload217provider.js";
+import { TwoHundredAndTwentyEight } from "@vercel/sdk/models/factors1.js";
 
 let value: TwoHundredAndTwentyEight = {
-  reason: "<value>",
-  actorId: "<id>",
-  actorType: "admin",
+  id: "<id>",
+  prev: {
+    fallbackEnvironment: "<value>",
+    name: "<value>",
+    slug: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `reason`                                                 | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `actorId`                                                | *string*                                                 | :heavy_check_mark:                                       | Okta user id.                                            |
-| `actorName`                                              | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `actorType`                                              | [models.PayloadActorType](../models/payloadactortype.md) | :heavy_check_mark:                                       | N/A                                                      |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `enablePolyrepoBranchRouting`    | *boolean*                        | :heavy_minus_sign:               | N/A                              |
+| `fallbackEnvironment`            | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `id`                             | *string*                         | :heavy_check_mark:               | N/A                              |
+| `name`                           | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `prev`                           | [models.Prev](../models/prev.md) | :heavy_check_mark:               | N/A                              |
+| `slug`                           | *string*                         | :heavy_minus_sign:               | N/A                              |

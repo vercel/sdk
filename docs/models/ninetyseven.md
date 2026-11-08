@@ -5,14 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetySeven } from "@vercel/sdk/models/payloadprivatemodel.js";
+import { NinetySeven } from "@vercel/sdk/models/rule.js";
 
-let value: NinetySeven = {};
+let value: NinetySeven = {
+  id: "<id>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
-| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `id`                                                 | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `newTeam`                                            | [models.PayloadNewTeam](../models/payloadnewteam.md) | :heavy_minus_sign:                                   | N/A                                                  |
+| `oldTeam`                                            | [models.PayloadOldTeam](../models/payloadoldteam.md) | :heavy_minus_sign:                                   | N/A                                                  |

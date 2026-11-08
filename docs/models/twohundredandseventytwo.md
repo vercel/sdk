@@ -5,22 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyTwo } from "@vercel/sdk/models/usereventpayload217provider.js";
+import { TwoHundredAndSeventyTwo } from "@vercel/sdk/models/factors1.js";
 
-let value: TwoHundredAndSeventyTwo = {
-  privateLinkEndpoint: {
-    id: "<id>",
-    name: "<value>",
-  },
-  projectId: "<id>",
-};
+let value: TwoHundredAndSeventyTwo = {};
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `privateLinkEndpoint`                                                        | [models.PayloadPrivateLinkEndpoint](../models/payloadprivatelinkendpoint.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectName`                                                                | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `scope`                                                                      | [models.UserEventPayload272Scope](../models/usereventpayload272scope.md)     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
+| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |

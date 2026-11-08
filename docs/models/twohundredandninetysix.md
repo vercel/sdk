@@ -5,13 +5,36 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetySix } from "@vercel/sdk/models/twohundredandseventythree.js";
+import { TwoHundredAndNinetySix } from "@vercel/sdk/models/usereventpayload279scope.js";
 
 let value: TwoHundredAndNinetySix = {
-  elasticConcurrencyEnabled: true,
-  oldElasticConcurrencyEnabled: false,
-  projectId: "<id>",
-  projectName: "<value>",
+  project: {
+    id: "<id>",
+    newConnectConfigurations: [
+      {
+        buildsEnabled: true,
+        connectConfigurationId: "<id>",
+        createdAt: 4721.36,
+        envId: "production",
+        passive: true,
+        updatedAt: 452.34,
+      },
+    ],
+    oldConnectConfigurations: [
+      {
+        buildsEnabled: true,
+        connectConfigurationId: "<id>",
+        createdAt: 7630.36,
+        envId: "<id>",
+        passive: false,
+        updatedAt: 8968.35,
+      },
+    ],
+  },
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
@@ -19,9 +42,5 @@ let value: TwoHundredAndNinetySix = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `buildQueueConfiguration`                                                    | [models.BuildQueueConfiguration](../models/buildqueueconfiguration.md)       | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `elasticConcurrencyEnabled`                                                  | *boolean*                                                                    | :heavy_check_mark:                                                           | N/A                                                                          |
-| `oldBuildQueueConfiguration`                                                 | [models.OldBuildQueueConfiguration](../models/oldbuildqueueconfiguration.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `oldElasticConcurrencyEnabled`                                               | *boolean*                                                                    | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectName`                                                                | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload296Project](../models/usereventpayload296project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `team`                                                                       | [models.UserEventPayload296Team](../models/usereventpayload296team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |

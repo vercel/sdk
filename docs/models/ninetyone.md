@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyOne } from "@vercel/sdk/models/payloadprivatemodel.js";
+import { NinetyOne } from "@vercel/sdk/models/rule.js";
 
 let value: NinetyOne = {
-  custom: true,
+  productAliases: [],
 };
 ```
 
@@ -16,7 +16,5 @@ let value: NinetyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
-| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
-| `custom`           | *boolean*          | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_minus_sign: | N/A                |
+| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
+| `productAliases`   | *string*[]         | :heavy_check_mark: | N/A                |

@@ -5,19 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyOne } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { OneHundredAndEightyOne } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: OneHundredAndEightyOne = {
-  projectId: "<id>",
-  scope: "<value>",
-  source: "<value>",
+  envId: "<id>",
+  envKey: "<value>",
+  organizationId: "<id>",
+  provider: "<value>",
+  repository: "<value>",
+  target: [
+    "development",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `scope`            | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `envId`                                                                      | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `envKey`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `organizationId`                                                             | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `provider`                                                                   | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `repository`                                                                 | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `target`                                                                     | [models.UserEventPayload181Target](../models/usereventpayload181target.md)[] | :heavy_check_mark:                                                           | N/A                                                                          |

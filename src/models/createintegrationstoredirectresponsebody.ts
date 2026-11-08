@@ -205,6 +205,10 @@ export type CreateIntegrationStoreDirectSecrets = {
   length: number;
   name: string;
   nonSensitive?: boolean | undefined;
+  /**
+   * The token set key `name` is built from; absent for env vars that are not in the token set.
+   */
+  tokenSetKey?: string | undefined;
 };
 
 /**
@@ -612,6 +616,7 @@ export const CreateIntegrationStoreDirectSecrets$inboundSchema: z.ZodType<
   length: types.number(),
   name: types.string(),
   nonSensitive: types.optional(types.boolean()),
+  tokenSetKey: types.optional(types.string()),
 });
 
 export function createIntegrationStoreDirectSecretsFromJSON(

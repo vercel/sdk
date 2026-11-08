@@ -5,24 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventyFour } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { OneHundredAndSeventyFour } from "@vercel/sdk/models/payloadinitiator.js";
 
-let value: OneHundredAndSeventyFour = {};
+let value: OneHundredAndSeventyFour = {
+  team: {
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `customEnvironmentSlugs`                     | *string*[]                                   | :heavy_minus_sign:                           | N/A                                          |
-| `edgeConfigId`                               | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `edgeConfigTokenId`                          | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `gitBranch`                                  | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `id`                                         | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `ipAddress`                                  | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `key`                                        | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `projectId`                                  | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `projectName`                                | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `source`                                     | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `target`                                     | *models.PayloadTarget*                       | :heavy_minus_sign:                           | N/A                                          |
-| `updateDiff`                                 | [models.UpdateDiff](../models/updatediff.md) | :heavy_minus_sign:                           | N/A                                          |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload174Team](../models/usereventpayload174team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

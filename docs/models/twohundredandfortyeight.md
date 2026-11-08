@@ -5,12 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyEight } from "@vercel/sdk/models/usereventpayload217provider.js";
+import { TwoHundredAndFortyEight } from "@vercel/sdk/models/factors1.js";
 
 let value: TwoHundredAndFortyEight = {
-  cause: "<value>",
-  ownerId: "<id>",
-  source: "<value>",
+  enabled: false,
+  organizationId: "<id>",
+  organizationSlug: "<value>",
+  previousEnabled: false,
 };
 ```
 
@@ -18,7 +19,7 @@ let value: TwoHundredAndFortyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `blockReason`      | *string*           | :heavy_minus_sign: | N/A                |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
+| `previousEnabled`  | *boolean*          | :heavy_check_mark: | N/A                |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsProtectionBypass1 } from "@vercel/sdk/models/getprojectsresponsebodyprojectsresponseto.js";
+import { GetProjectsProtectionBypass1 } from "@vercel/sdk/models/getprojectstoprojectsresponse2001.js";
 
 let value: GetProjectsProtectionBypass1 = {
   configurationId: "<id>",

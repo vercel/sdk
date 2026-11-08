@@ -5,23 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndOne } from "@vercel/sdk/models/usereventpayload465actortype.js";
+import { FiveHundredAndOne } from "@vercel/sdk/models/usereventpayload470actortype.js";
 
 let value: FiveHundredAndOne = {
-  cadence: "monthly",
-  projectIds: [
-    "<value 1>",
-  ],
-  team: {
-    id: "<id>",
-  },
+  ciEnabled: true,
+  organizationId: "<id>",
+  repository: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload501Team](../models/usereventpayload501team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `ciEnabled`        | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `repository`       | *string*           | :heavy_check_mark: | N/A                |

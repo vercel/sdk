@@ -5,17 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyEight } from "@vercel/sdk/models/usereventpayload141newteam.js";
+import { OneHundredAndFortyEight } from "@vercel/sdk/models/onehundredandnineteen.js";
 
 let value: OneHundredAndFortyEight = {
-  domain: "enchanted-colon.name",
-  zone: true,
+  customNameservers: [],
+  domain: "meaty-hammock.biz",
+  prevCustomNameservers: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `zone`             | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
+| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
+| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |

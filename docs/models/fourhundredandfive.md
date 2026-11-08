@@ -5,20 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFive } from "@vercel/sdk/models/store.js";
+import { FourHundredAndFive } from "@vercel/sdk/models/usereventpayload404type.js";
 
 let value: FourHundredAndFive = {
-  next: {
-    enabled: false,
-    includeDrafts: false,
-    scope: "selected_repos",
+  store: {
+    id: "<id>",
+    name: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload405Next](../models/usereventpayload405next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |
-| `previous`                                                                     | [models.UserEventPayload405Previous](../models/usereventpayload405previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `store`                                                                  | [models.UserEventPayload405Store](../models/usereventpayload405store.md) | :heavy_check_mark:                                                       | N/A                                                                      |

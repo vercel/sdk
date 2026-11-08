@@ -5,7 +5,7 @@ The principal who rolled back the project. Absent on historical rollbacks where 
 ## Example Usage
 
 ```typescript
-import { CreateProjectPrincipal2 } from "@vercel/sdk/models/createprojectprojectsplan.js";
+import { CreateProjectPrincipal2 } from "@vercel/sdk/models/createprojectprojectsoidctokenclaims.js";
 
 let value: CreateProjectPrincipal2 = {
   project: {

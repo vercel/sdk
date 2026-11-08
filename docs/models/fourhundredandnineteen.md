@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNineteen } from "@vercel/sdk/models/store.js";
+import { FourHundredAndNineteen } from "@vercel/sdk/models/usereventpayload404type.js";
 
-let value: FourHundredAndNineteen = {
-  action: "reset",
-  targetId: "<id>",
-};
+let value: FourHundredAndNineteen = {};
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload419Action](../models/usereventpayload419action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `targetId`                                                                 | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `isSystemInitiated`                                                            | *boolean*                                                                      | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload419Next](../models/usereventpayload419next.md)         | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload419Previous](../models/usereventpayload419previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `reason`                                                                       | [models.PayloadReason](../models/payloadreason.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |

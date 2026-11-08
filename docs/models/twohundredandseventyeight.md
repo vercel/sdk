@@ -5,28 +5,31 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyEight } from "@vercel/sdk/models/twohundredandseventythree.js";
+import { TwoHundredAndSeventyEight } from "@vercel/sdk/models/factors1.js";
 
 let value: TwoHundredAndSeventyEight = {
-  prevProjectAnalytics: {
-    disabledAt: 4165.61,
-    enabledAt: 9726.09,
+  current: {
+    awsServiceName: "<value>",
     id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
   },
-  projectAnalytics: {
-    disabledAt: 7991.59,
-    enabledAt: 4265.09,
+  prev: {
+    awsServiceName: "<value>",
     id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
   },
-  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `current`                                                                | [models.PayloadCurrent](../models/payloadcurrent.md)                     | :heavy_check_mark:                                                       | N/A                                                                      |
+| `prev`                                                                   | [models.UserEventPayload278Prev](../models/usereventpayload278prev.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `projectName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload278Scope](../models/usereventpayload278scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

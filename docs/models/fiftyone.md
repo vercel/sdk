@@ -5,14 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyOne } from "@vercel/sdk/models/payloadprivatemodel.js";
+import { FiftyOne } from "@vercel/sdk/models/rule.js";
 
 let value: FiftyOne = {
-  accessGroup: {
-    id: "<id>",
-    name: "<value>",
-  },
-  project: {
+  virtualModelConfig: {
     id: "<id>",
   },
 };
@@ -20,9 +16,7 @@ let value: FiftyOne = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `accessGroup`                                                                  | [models.UserEventPayloadAccessGroup](../models/usereventpayloadaccessgroup.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `nextRole`                                                                     | [models.NextRole](../models/nextrole.md)                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `previousRole`                                                                 | [models.PreviousRole](../models/previousrole.md)                               | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `project`                                                                      | [models.PayloadProject](../models/payloadproject.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `changedFields`                                                            | [models.PayloadChangedFields](../models/payloadchangedfields.md)[]         | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `virtualModelConfig`                                                       | [models.PayloadVirtualModelConfig](../models/payloadvirtualmodelconfig.md) | :heavy_check_mark:                                                         | N/A                                                                        |

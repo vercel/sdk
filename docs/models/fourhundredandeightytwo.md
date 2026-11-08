@@ -5,28 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndEightyTwo } from "@vercel/sdk/models/usereventpayload465actortype.js";
+import { FourHundredAndEightyTwo } from "@vercel/sdk/models/usereventpayload470actortype.js";
 
 let value: FourHundredAndEightyTwo = {
-  decision: {
-    authoritative: false,
-    basis: "gmail",
-    emailDomain: "<value>",
-    emailVerified: true,
-    hostedDomainMatch: false,
-    mxOutcome: "lookup-error",
-  },
-  outcome: "linking-required",
-  provider: "google",
-  providerSubjectId: "<id>",
+  remaining: 9462.23,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `decision`                                                                     | [models.PayloadDecision](../models/payloaddecision.md)                         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `outcome`                                                                      | [models.PayloadOutcome](../models/payloadoutcome.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |
-| `provider`                                                                     | [models.UserEventPayload482Provider](../models/usereventpayload482provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `providerSubjectId`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `context`                                                    | [models.Context](../models/context.md)                       | :heavy_minus_sign:                                           | Absent on events predating the field; those were all logins. |
+| `remaining`                                                  | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |

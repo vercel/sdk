@@ -78,6 +78,7 @@ export const Name = {
     "agentic-provisioning-credentials-rotated",
   AgenticProvisioningPlanChanged: "agentic-provisioning-plan-changed",
   AgenticProvisioningTeamCreated: "agentic-provisioning-team-created",
+  AiAgentUsageBilling: "ai-agent-usage-billing",
   AiAlertInvestigation: "ai-alert-investigation",
   AiCodeReview: "ai-code-review",
   AiGatewayAccessPolicyCreated: "ai-gateway-access-policy-created",
@@ -96,6 +97,7 @@ export const Name = {
   AiGatewayByokModelMappingsUpdated: "ai-gateway-byok-model-mappings-updated",
   AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
+  AiGatewayHeadquartersUpdated: "ai-gateway-headquarters-updated",
   AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayModelAllowlistModelsUpdated:
@@ -354,6 +356,8 @@ export const Name = {
   GlobalConfigTransferOut: "global-config-transfer-out",
   GlobalConfigUpdated: "global-config-updated",
   InstantRollbackCreated: "instant-rollback-created",
+  IntegrationAccessTokenSettingsUpdated:
+    "integration-access-token-settings-updated",
   IntegrationConfigurationCredentialRevoked:
     "integration-configuration-credential-revoked",
   IntegrationConfigurationCredentialRotated:
@@ -669,6 +673,12 @@ export const Name = {
   SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",
   Scale: "scale",
   ScaleAuto: "scale-auto",
+  ScheduleCreated: "schedule-created",
+  ScheduleDeleted: "schedule-deleted",
+  ScheduleDisabled: "schedule-disabled",
+  ScheduleEnabled: "schedule-enabled",
+  ScheduleInvoked: "schedule-invoked",
+  ScheduleUpdated: "schedule-updated",
   SecondaryEmailAdded: "secondary-email-added",
   SecondaryEmailRemoved: "secondary-email-removed",
   SecondaryEmailVerified: "secondary-email-verified",
@@ -911,6 +921,7 @@ export const ReplacedBy = {
     "agentic-provisioning-credentials-rotated",
   AgenticProvisioningPlanChanged: "agentic-provisioning-plan-changed",
   AgenticProvisioningTeamCreated: "agentic-provisioning-team-created",
+  AiAgentUsageBilling: "ai-agent-usage-billing",
   AiAlertInvestigation: "ai-alert-investigation",
   AiCodeReview: "ai-code-review",
   AiGatewayAccessPolicyCreated: "ai-gateway-access-policy-created",
@@ -929,6 +940,7 @@ export const ReplacedBy = {
   AiGatewayByokModelMappingsUpdated: "ai-gateway-byok-model-mappings-updated",
   AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
+  AiGatewayHeadquartersUpdated: "ai-gateway-headquarters-updated",
   AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayModelAllowlistModelsUpdated:
@@ -1187,6 +1199,8 @@ export const ReplacedBy = {
   GlobalConfigTransferOut: "global-config-transfer-out",
   GlobalConfigUpdated: "global-config-updated",
   InstantRollbackCreated: "instant-rollback-created",
+  IntegrationAccessTokenSettingsUpdated:
+    "integration-access-token-settings-updated",
   IntegrationConfigurationCredentialRevoked:
     "integration-configuration-credential-revoked",
   IntegrationConfigurationCredentialRotated:
@@ -1502,6 +1516,12 @@ export const ReplacedBy = {
   SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",
   Scale: "scale",
   ScaleAuto: "scale-auto",
+  ScheduleCreated: "schedule-created",
+  ScheduleDeleted: "schedule-deleted",
+  ScheduleDisabled: "schedule-disabled",
+  ScheduleEnabled: "schedule-enabled",
+  ScheduleInvoked: "schedule-invoked",
+  ScheduleUpdated: "schedule-updated",
   SecondaryEmailAdded: "secondary-email-added",
   SecondaryEmailRemoved: "secondary-email-removed",
   SecondaryEmailVerified: "secondary-email-verified",

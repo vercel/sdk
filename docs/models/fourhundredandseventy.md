@@ -5,9 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeventy } from "@vercel/sdk/models/usereventpayload465actortype.js";
+import { FourHundredAndSeventy } from "@vercel/sdk/models/usereventpayload404type.js";
 
 let value: FourHundredAndSeventy = {
+  username: "Thora3",
   actorId: "<id>",
   actorType: "admin",
 };
@@ -17,5 +18,8 @@ let value: FourHundredAndSeventy = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `deletedAt`                                                                      | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `username`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
+| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `actorType`                                                                      | [models.UserEventPayload470ActorType](../models/usereventpayload470actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |

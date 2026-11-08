@@ -11,8 +11,6 @@ import { smartUnion } from "../types/smartUnion.js";
 import {
   GetProjectFrom2,
   GetProjectFrom2$inboundSchema,
-  GetProjectFromPreset,
-  GetProjectFromPreset$inboundSchema,
   GetProjectLatestDeployments,
   GetProjectLatestDeployments$inboundSchema,
   GetProjectLink,
@@ -63,7 +61,7 @@ import {
   GetProjectTracing$inboundSchema,
   GetProjectTrustedIps,
   GetProjectTrustedIps$inboundSchema,
-} from "./getprojectfrompreset.js";
+} from "./getprojectfrom2.js";
 import {
   GetProjectAlias,
   GetProjectAlias$inboundSchema,
@@ -115,6 +113,11 @@ import {
   GetProjectLastRollbackTarget$inboundSchema,
 } from "./getprojectprojectsbranchmatcher.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+export const GetProjectFromPreset = {
+  AllCustom: "all-custom",
+} as const;
+export type GetProjectFromPreset = ClosedEnum<typeof GetProjectFromPreset>;
 
 /**
  * The source envs on the trusted project that are allowed to access `to`.
@@ -368,6 +371,11 @@ export type GetProjectResponseBody = {
   vercelFlags?: GetProjectVercelFlags | undefined;
   webAnalytics?: GetProjectWebAnalytics | undefined;
 };
+
+/** @internal */
+export const GetProjectFromPreset$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectFromPreset
+> = z.nativeEnum(GetProjectFromPreset);
 
 /** @internal */
 export const GetProjectFrom1$inboundSchema: z.ZodType<

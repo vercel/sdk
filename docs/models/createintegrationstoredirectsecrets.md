@@ -13,9 +13,10 @@ let value: CreateIntegrationStoreDirectSecrets = {
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `frameworkPublishable` | *boolean*              | :heavy_minus_sign:     | N/A                    |
-| `length`               | *number*               | :heavy_check_mark:     | N/A                    |
-| `name`                 | *string*               | :heavy_check_mark:     | N/A                    |
-| `nonSensitive`         | *boolean*              | :heavy_minus_sign:     | N/A                    |
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `frameworkPublishable`                                                                     | *boolean*                                                                                  | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `length`                                                                                   | *number*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `name`                                                                                     | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `nonSensitive`                                                                             | *boolean*                                                                                  | :heavy_minus_sign:                                                                         | N/A                                                                                        |
+| `tokenSetKey`                                                                              | *string*                                                                                   | :heavy_minus_sign:                                                                         | The token set key `name` is built from; absent for env vars that are not in the token set. |

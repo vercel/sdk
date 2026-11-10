@@ -5,13 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyThree } from "@vercel/sdk/models/principalintegration.js";
+import { ThreeHundredAndSixtyThree } from "@vercel/sdk/models/principalapp.js";
 
 let value: ThreeHundredAndSixtyThree = {
   next: {
-    skewProtectionAllowedDomains: [
-      "<value 1>",
-    ],
+    skewProtectionBoundaryAt: 3892.1,
   },
   previous: {},
   projectId: "<id>",

@@ -13,14 +13,14 @@ import {
 } from "./sessioncommand.js";
 
 /**
- * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+ * If set to "true", the request will block until the command finishes execution and the response will include its exit code. Otherwise, `exitCode` is `null` unless a previous request waited for the command to finish.
  */
 export const Wait = {
   True: "true",
   False: "false",
 } as const;
 /**
- * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+ * If set to "true", the request will block until the command finishes execution and the response will include its exit code. Otherwise, `exitCode` is `null` unless a previous request waited for the command to finish.
  */
 export type Wait = ClosedEnum<typeof Wait>;
 
@@ -34,7 +34,7 @@ export type GetSessionCommandRequest = {
    */
   cmdId: string;
   /**
-   * If set to "true", the request will block until the command finishes execution. Useful for synchronously waiting for command completion.
+   * If set to "true", the request will block until the command finishes execution and the response will include its exit code. Otherwise, `exitCode` is `null` unless a previous request waited for the command to finish.
    */
   wait?: Wait | undefined;
   /**
@@ -48,7 +48,7 @@ export type GetSessionCommandRequest = {
 };
 
 /**
- * The command data along with the exit code if the command did finish.
+ * The command data. `exitCode` is set if this or a previous request waited for the command to finish, and `null` otherwise.
  */
 export type GetSessionCommandResponseBody = {
   /**

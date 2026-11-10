@@ -8,16 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndSeventyFour } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: OneHundredAndSeventyFour = {
-  team: {
-    id: "<id>",
-  },
+  email: "Erich.Weber@gmail.com",
+  name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload174Team](../models/usereventpayload174team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

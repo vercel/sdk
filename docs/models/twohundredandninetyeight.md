@@ -5,19 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyEight } from "@vercel/sdk/models/usereventpayload279scope.js";
+import { TwoHundredAndNinetyEight } from "@vercel/sdk/models/payloadcurrent.js";
 
 let value: TwoHundredAndNinetyEight = {
-  action: "disabled",
-  projectId: "<id>",
-  projectName: "<value>",
+  project: {
+    id: "<id>",
+    newConnectConfigurations: null,
+    oldConnectConfigurations: [],
+  },
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload298Action](../models/usereventpayload298action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload298Project](../models/usereventpayload298project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `team`                                                                       | [models.UserEventPayload298Team](../models/usereventpayload298team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |

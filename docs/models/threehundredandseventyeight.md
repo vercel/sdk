@@ -5,15 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyEight } from "@vercel/sdk/models/principalintegration.js";
+import { ThreeHundredAndSeventyEight } from "@vercel/sdk/models/principalapp.js";
 
 let value: ThreeHundredAndSeventyEight = {
-  driveName: "<value>",
-  projectId: "<id>",
-  projectName: "<value>",
-  region: "<value>",
-  snapshotId: "<id>",
-  snapshotName: "<value>",
+  alias: "<value>",
+  sandboxName: "<value>",
 };
 ```
 
@@ -21,9 +17,7 @@ let value: ThreeHundredAndSeventyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `driveName`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `region`           | *string*           | :heavy_check_mark: | N/A                |
-| `snapshotId`       | *string*           | :heavy_check_mark: | N/A                |
-| `snapshotName`     | *string*           | :heavy_check_mark: | N/A                |
+| `alias`            | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `sandboxId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `sandboxName`      | *string*           | :heavy_check_mark: | N/A                |

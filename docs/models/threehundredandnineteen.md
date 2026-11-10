@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNineteen } from "@vercel/sdk/models/usereventpayload279scope.js";
+import { ThreeHundredAndNineteen } from "@vercel/sdk/models/payloadcurrent.js";
 
 let value: ThreeHundredAndNineteen = {
-  createDeployments: "enabled",
+  onCommit: false,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -16,8 +16,8 @@ let value: ThreeHundredAndNineteen = {
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `createDeployments`                                        | [models.CreateDeployments](../models/createdeployments.md) | :heavy_check_mark:                                         | N/A                                                        |
-| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `projectName`                                              | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `onCommit`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

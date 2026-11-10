@@ -5,23 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/usereventpayload279scope.js";
+import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/payloadcurrent.js";
 
 let value: ThreeHundredAndThirtyThree = {
-  project: {
-    name: "<value>",
-  },
-  projectMembership: {
-    createdAt: 2325.68,
-    role: "PROJECT_VIEWER",
-    uid: "<id>",
-  },
+  projects: [],
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload333Project](../models/usereventpayload333project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `directoryType`                                          | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `projects`                                               | [models.PayloadProjects](../models/payloadprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
+| `teamMembership`                                         | [models.TeamMembership](../models/teammembership.md)     | :heavy_minus_sign:                                       | N/A                                                      |

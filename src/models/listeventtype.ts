@@ -270,6 +270,10 @@ export const Name = {
   DrainDisabled: "drain-disabled",
   DrainEnabled: "drain-enabled",
   DrainUpdated: "drain-updated",
+  DriveCreated: "drive-created",
+  DriveDeleted: "drive-deleted",
+  DriveSnapshotCreated: "drive-snapshot-created",
+  DriveSnapshotDeleted: "drive-snapshot-deleted",
   EdgeCacheDangerouslyDeleteBySrcImages:
     "edge-cache-dangerously-delete-by-src-images",
   EdgeCacheDangerouslyDeleteByTags: "edge-cache-dangerously-delete-by-tags",
@@ -1113,6 +1117,10 @@ export const ReplacedBy = {
   DrainDisabled: "drain-disabled",
   DrainEnabled: "drain-enabled",
   DrainUpdated: "drain-updated",
+  DriveCreated: "drive-created",
+  DriveDeleted: "drive-deleted",
+  DriveSnapshotCreated: "drive-snapshot-created",
+  DriveSnapshotDeleted: "drive-snapshot-deleted",
   EdgeCacheDangerouslyDeleteBySrcImages:
     "edge-cache-dangerously-delete-by-src-images",
   EdgeCacheDangerouslyDeleteByTags: "edge-cache-dangerously-delete-by-tags",

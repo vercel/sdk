@@ -5,12 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirty } from "@vercel/sdk/models/usereventpayload279scope.js";
+import { ThreeHundredAndThirty } from "@vercel/sdk/models/payloadcurrent.js";
 
 let value: ThreeHundredAndThirty = {
   domain: "ecstatic-experience.net",
   projectId: "<id>",
   projectName: "<value>",
+  target: "<value>",
 };
 ```
 
@@ -23,3 +24,4 @@ let value: ThreeHundredAndThirty = {
 | `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
 | `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
 | `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |
+| `target`             | *string*             | :heavy_check_mark:   | N/A                  |

@@ -47,7 +47,7 @@ const value: models.GetAllLogDrainsDeliveryLogDrains3 = {
 
 ```typescript
 const value: models.GetAllLogDrainsDeliveryLogDrains4 = {
-  compression: "none",
+  compression: "gzip",
   encoding: "json",
   endpoint: "<value>",
   fileStructure: "hive",

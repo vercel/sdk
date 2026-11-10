@@ -5,12 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyFour } from "@vercel/sdk/models/principalintegration.js";
+import { ThreeHundredAndSeventyFour } from "@vercel/sdk/models/principalapp.js";
 
 let value: ThreeHundredAndSeventyFour = {
   connectionId: "<id>",
   actorType: "admin",
-  keyId: "<id>",
+  certificateFingerprints: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  created: true,
 };
 ```
 
@@ -21,4 +26,6 @@ let value: ThreeHundredAndSeventyFour = {
 | `connectionId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
 | `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `actorType`                                                                      | [models.UserEventPayload374ActorType](../models/usereventpayload374actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `keyId`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `certificateFingerprints`                                                        | *string*[]                                                                       | :heavy_check_mark:                                                               | N/A                                                                              |
+| `created`                                                                        | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
+| `previousCertificateFingerprints`                                                | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |

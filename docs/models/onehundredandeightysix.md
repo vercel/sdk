@@ -8,12 +8,16 @@ The payload of the event, if requested.
 import { OneHundredAndEightySix } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: OneHundredAndEightySix = {
-  configVersion: 8783.46,
+  projectId: "<id>",
+  scope: "<value>",
+  source: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `configVersion`               | *models.PayloadConfigVersion* | :heavy_check_mark:            | N/A                           |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `scope`            | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |

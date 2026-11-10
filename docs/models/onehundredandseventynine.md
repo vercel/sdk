@@ -7,22 +7,22 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSeventyNine } from "@vercel/sdk/models/payloadinitiator.js";
 
-let value: OneHundredAndSeventyNine = {
-  key: "<key>",
-  organizationId: "<id>",
-  provider: "<value>",
-  repository: "<value>",
-  visibility: "secret",
-};
+let value: OneHundredAndSeventyNine = {};
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `changedFields`                                            | *string*[]                                                 | :heavy_minus_sign:                                         | N/A                                                        |
-| `key`                                                      | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `organizationId`                                           | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `provider`                                                 | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `repository`                                               | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
-| `visibility`                                               | [models.PayloadVisibility](../models/payloadvisibility.md) | :heavy_check_mark:                                         | N/A                                                        |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `customEnvironmentSlugs`                     | *string*[]                                   | :heavy_minus_sign:                           | N/A                                          |
+| `edgeConfigId`                               | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `edgeConfigTokenId`                          | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `gitBranch`                                  | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `id`                                         | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `ipAddress`                                  | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `key`                                        | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `projectId`                                  | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `projectName`                                | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `source`                                     | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| `target`                                     | *models.PayloadTarget*                       | :heavy_minus_sign:                           | N/A                                          |
+| `updateDiff`                                 | [models.UpdateDiff](../models/updatediff.md) | :heavy_minus_sign:                           | N/A                                          |

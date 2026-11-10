@@ -8,19 +8,25 @@ The payload of the event, if requested.
 import { TwoHundredAndTwelve } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: TwoHundredAndTwelve = {
-  accessTokenRotation: false,
+  configurationId: "<id>",
   integrationId: "<id>",
-  integrationName: "<value>",
+  integrationProductSlug: "<value>",
   integrationSlug: "<value>",
+  resourceId: "<id>",
+  key: "<key>",
+  requestKind: "get_key_data",
 };
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `accessTokenRotation`     | *boolean*                 | :heavy_check_mark:        | N/A                       |
-| `integrationId`           | *string*                  | :heavy_check_mark:        | N/A                       |
-| `integrationName`         | *string*                  | :heavy_check_mark:        | N/A                       |
-| `integrationSlug`         | *string*                  | :heavy_check_mark:        | N/A                       |
-| `permanentTokensExpireAt` | *number*                  | :heavy_minus_sign:        | N/A                       |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `configurationId`                                                                    | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `errorCode`                                                                          | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| `integrationId`                                                                      | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `integrationProductSlug`                                                             | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `integrationSlug`                                                                    | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `resourceId`                                                                         | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `key`                                                                                | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `requestKind`                                                                        | [models.UserEventPayload212RequestKind](../models/usereventpayload212requestkind.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |

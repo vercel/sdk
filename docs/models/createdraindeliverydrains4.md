@@ -7,7 +7,7 @@ import { CreateDrainDeliveryDrains4 } from "@vercel/sdk/models/createdrainop.js"
 
 let value: CreateDrainDeliveryDrains4 = {
   compression: "none",
-  encoding: "ndjson",
+  encoding: "json",
   endpoint: "<value>",
   fileStructure: "hive",
   region: "<value>",

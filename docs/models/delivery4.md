@@ -7,7 +7,7 @@ import { Delivery4 } from "@vercel/sdk/models/getdrainop.js";
 
 let value: Delivery4 = {
   compression: "none",
-  encoding: "ndjson",
+  encoding: "json",
   endpoint: "<value>",
   fileStructure: "hive",
   region: "<value>",

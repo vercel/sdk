@@ -22,7 +22,7 @@ let value: GetVercelCiInvocationTreeResponseBody = {
     repositoryKey: "<value>",
     ref: "<value>",
     commitSha: "<value>",
-    status: "snapshotted",
+    status: "bootstrapping_failed",
   },
   repositories: {},
   jobs: [],

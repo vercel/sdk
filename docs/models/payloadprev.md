@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadPrev } from "@vercel/sdk/models/factors1.js";
+import { PayloadPrev } from "@vercel/sdk/models/names.js";
 
 let value: PayloadPrev = {
   project: {},
@@ -14,4 +14,4 @@ let value: PayloadPrev = {
 
 | Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `project`                                                                            | [models.UserEventPayload230PrevProject](../models/usereventpayload230prevproject.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `project`                                                                            | [models.UserEventPayload232PrevProject](../models/usereventpayload232prevproject.md) | :heavy_check_mark:                                                                   | N/A                                                                                  |

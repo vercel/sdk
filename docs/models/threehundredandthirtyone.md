@@ -5,17 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyOne } from "@vercel/sdk/models/usereventpayload279scope.js";
+import { ThreeHundredAndThirtyOne } from "@vercel/sdk/models/payloadcurrent.js";
 
 let value: ThreeHundredAndThirtyOne = {
-  projects: [],
+  domain: "elegant-analogy.name",
+  newProjectId: "<id>",
+  newProjectName: "<value>",
+  oldProjectId: "<id>",
+  oldProjectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `directoryType`                                          | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `projects`                                               | [models.PayloadProjects](../models/payloadprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
-| `teamMembership`                                         | [models.TeamMembership](../models/teammembership.md)     | :heavy_minus_sign:                                       | N/A                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| `oldProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `oldProjectName`   | *string*           | :heavy_check_mark: | N/A                |

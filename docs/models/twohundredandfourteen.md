@@ -8,15 +8,19 @@ The payload of the event, if requested.
 import { TwoHundredAndFourteen } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: TwoHundredAndFourteen = {
-  issuerId: "<id>",
-  issuerName: "<value>",
+  accessTokenRotation: true,
+  integrationId: "<id>",
+  integrationName: "<value>",
+  integrationSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
-| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `managedBy`        | *string*           | :heavy_minus_sign: | N/A                |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `accessTokenRotation`     | *boolean*                 | :heavy_check_mark:        | N/A                       |
+| `integrationId`           | *string*                  | :heavy_check_mark:        | N/A                       |
+| `integrationName`         | *string*                  | :heavy_check_mark:        | N/A                       |
+| `integrationSlug`         | *string*                  | :heavy_check_mark:        | N/A                       |
+| `permanentTokensExpireAt` | *number*                  | :heavy_minus_sign:        | N/A                       |

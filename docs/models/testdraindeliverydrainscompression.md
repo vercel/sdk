@@ -11,5 +11,5 @@ let value: TestDrainDeliveryDrainsCompression = "none";
 ## Values
 
 ```typescript
-"none"
+"gzip" | "none"
 ```

@@ -5,21 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFifty } from "@vercel/sdk/models/factors1.js";
+import { TwoHundredAndFifty } from "@vercel/sdk/models/names.js";
 
 let value: TwoHundredAndFifty = {
-  cause: "<value>",
-  ownerId: "<id>",
-  source: "<value>",
+  enabled: false,
+  organizationId: "<id>",
+  organizationSlug: "<value>",
+  previousEnabled: false,
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `blockReason`                              | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `cause`                                    | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `ownerId`                                  | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `siftRoute`                                | [models.SiftRoute](../models/siftroute.md) | :heavy_minus_sign:                         | N/A                                        |
-| `source`                                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
+| `previousEnabled`  | *boolean*          | :heavy_check_mark: | N/A                |

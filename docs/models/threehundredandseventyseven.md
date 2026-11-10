@@ -5,21 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventySeven } from "@vercel/sdk/models/principalintegration.js";
+import { ThreeHundredAndSeventySeven } from "@vercel/sdk/models/principalapp.js";
 
 let value: ThreeHundredAndSeventySeven = {
-  driveName: "<value>",
-  projectId: "<id>",
-  projectName: "<value>",
-  region: "<value>",
+  connectionId: "<id>",
+  actorType: "admin",
+  keyId: "<id>",
+  signingEnabled: true,
+  signingKeyId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `driveName`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `region`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `connectionId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload377ActorType](../models/usereventpayload377actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `keyId`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `signingEnabled`                                                                 | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
+| `signingKeyId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

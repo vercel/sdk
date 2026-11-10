@@ -5,19 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventySix } from "@vercel/sdk/models/principalintegration.js";
+import { ThreeHundredAndSeventySix } from "@vercel/sdk/models/principalapp.js";
 
 let value: ThreeHundredAndSeventySix = {
-  alias: "<value>",
-  sandboxName: "<value>",
+  connectionId: "<id>",
+  actorType: "admin",
+  keyId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `sandboxId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `sandboxName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `connectionId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload376ActorType](../models/usereventpayload376actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `keyId`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

@@ -100,8 +100,8 @@ export const GetSecurityFirewallEventsSummaryRequest$outboundSchema: z.ZodType<
   GetSecurityFirewallEventsSummaryRequest
 > = z.object({
   projectId: z.string(),
-  startTimestamp: z.number().optional(),
-  endTimestamp: z.number().optional(),
+  startTimestamp: z.number().int().optional(),
+  endTimestamp: z.number().int().optional(),
   hosts: z.string().optional(),
   ip: z.array(z.string()).optional(),
   isActive: z.boolean().optional(),

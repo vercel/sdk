@@ -44,7 +44,7 @@ const value: models.CreateDrainDelivery3 = {
 ```typescript
 const value: models.CreateDrainDeliveryDrains4 = {
   compression: "none",
-  encoding: "ndjson",
+  encoding: "json",
   endpoint: "<value>",
   fileStructure: "hive",
   region: "<value>",

@@ -6,7 +6,7 @@
 import { UpdateDrainDeliveryDrains4 } from "@vercel/sdk/models/updatedrainop.js";
 
 let value: UpdateDrainDeliveryDrains4 = {
-  compression: "none",
+  compression: "gzip",
   encoding: "json",
   endpoint: "<value>",
   fileStructure: "hive",

@@ -8,14 +8,13 @@ The payload of the event, if requested.
 import { TwoHundredAndTwenty } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: TwoHundredAndTwenty = {
-  login: "Patrick.Wilderman-Osinski",
-  provider: "github-custom-host",
+  logDrainUrl: "https://well-groomed-pillbox.info",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `provider`                                                                     | [models.UserEventPayload220Provider](../models/usereventpayload220provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |

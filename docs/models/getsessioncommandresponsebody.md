@@ -1,6 +1,6 @@
 # GetSessionCommandResponseBody
 
-The command data along with the exit code if the command did finish.
+The command data. `exitCode` is set if this or a previous request waited for the command to finish, and `null` otherwise.
 
 ## Example Usage
 

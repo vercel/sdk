@@ -13,5 +13,5 @@ let value:
 ## Values
 
 ```typescript
-"none"
+"gzip" | "none"
 ```

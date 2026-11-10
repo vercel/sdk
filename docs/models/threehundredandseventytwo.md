@@ -5,27 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyTwo } from "@vercel/sdk/models/principalintegration.js";
+import { ThreeHundredAndSeventyTwo } from "@vercel/sdk/models/principalapp.js";
 
 let value: ThreeHundredAndSeventyTwo = {
-  connectionId: "<id>",
-  actorType: "admin",
-  certificateFingerprints: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  created: true,
+  gitProvider: "<value>",
+  gitProviderGroupDescriptor: "<value>",
+  gitScope: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `connectionId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload372ActorType](../models/usereventpayload372actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `certificateFingerprints`                                                        | *string*[]                                                                       | :heavy_check_mark:                                                               | N/A                                                                              |
-| `created`                                                                        | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
-| `previousCertificateFingerprints`                                                | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |

@@ -5,11 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentySix } from "@vercel/sdk/models/usereventpayload279scope.js";
+import { ThreeHundredAndTwentySix } from "@vercel/sdk/models/payloadcurrent.js";
 
 let value: ThreeHundredAndTwentySix = {
-  next: {},
-  previous: {},
+  gitLFS: true,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,9 +16,8 @@ let value: ThreeHundredAndTwentySix = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload326Next](../models/usereventpayload326next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload326Previous](../models/usereventpayload326previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `gitLFS`           | *boolean*          | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

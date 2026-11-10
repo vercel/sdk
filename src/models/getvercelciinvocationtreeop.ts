@@ -268,6 +268,7 @@ export type GetVercelCiInvocationTreeRunConclusion = {
 
 export const GetVercelCiInvocationTreeStatus = {
   New: "new",
+  AwaitingApproval: "awaiting_approval",
   Skipped: "skipped",
   Bootstrapping: "bootstrapping",
   BootstrappingFailed: "bootstrapping_failed",

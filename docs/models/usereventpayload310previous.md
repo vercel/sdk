@@ -3,14 +3,10 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload310Previous } from "@vercel/sdk/models/usereventpayload279scope.js";
+import { UserEventPayload310Previous } from "@vercel/sdk/models/payloadcurrent.js";
 
 let value: UserEventPayload310Previous = {
-  functionDefaultRegions: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  functionDefaultTimeout: 7720.36,
 };
 ```
 
@@ -18,4 +14,4 @@ let value: UserEventPayload310Previous = {
 
 | Field                    | Type                     | Required                 | Description              |
 | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |
+| `functionDefaultTimeout` | *number*                 | :heavy_check_mark:       | N/A                      |

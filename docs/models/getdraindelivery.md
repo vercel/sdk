@@ -48,7 +48,7 @@ const value: models.GetDrainDelivery3 = {
 ```typescript
 const value: models.Delivery4 = {
   compression: "none",
-  encoding: "ndjson",
+  encoding: "json",
   endpoint: "<value>",
   fileStructure: "hive",
   region: "<value>",

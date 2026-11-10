@@ -5,11 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSix } from "@vercel/sdk/models/usereventpayload279scope.js";
+import { ThreeHundredAndSix } from "@vercel/sdk/models/payloadcurrent.js";
 
 let value: ThreeHundredAndSix = {
   customEnvironmentId: "<id>",
   customEnvironmentSlug: "<value>",
+  enableSchedulesByDefault: true,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,9 +18,10 @@ let value: ThreeHundredAndSix = {
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `customEnvironmentId`   | *string*                | :heavy_check_mark:      | N/A                     |
-| `customEnvironmentSlug` | *string*                | :heavy_check_mark:      | N/A                     |
-| `projectId`             | *string*                | :heavy_check_mark:      | N/A                     |
-| `projectName`           | *string*                | :heavy_check_mark:      | N/A                     |
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `customEnvironmentId`      | *string*                   | :heavy_check_mark:         | N/A                        |
+| `customEnvironmentSlug`    | *string*                   | :heavy_check_mark:         | N/A                        |
+| `enableSchedulesByDefault` | *boolean*                  | :heavy_check_mark:         | N/A                        |
+| `projectId`                | *string*                   | :heavy_check_mark:         | N/A                        |
+| `projectName`              | *string*                   | :heavy_check_mark:         | N/A                        |

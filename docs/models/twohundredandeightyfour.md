@@ -5,21 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyFour } from "@vercel/sdk/models/usereventpayload279scope.js";
+import { TwoHundredAndEightyFour } from "@vercel/sdk/models/payloadcurrent.js";
 
 let value: TwoHundredAndEightyFour = {
-  action: "updated",
+  prevProjectAnalytics: {
+    disabledAt: 7244.07,
+    enabledAt: 9897.55,
+    id: "<id>",
+  },
+  projectAnalytics: {
+    disabledAt: 3701.11,
+    enabledAt: 4663.48,
+    id: "<id>",
+  },
   projectId: "<id>",
-  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload284Action](../models/usereventpayload284action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `isEnvVar`                                                                 | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `note`                                                                     | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
+| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |

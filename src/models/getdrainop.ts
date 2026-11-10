@@ -38,6 +38,7 @@ export type Delivery5 = {
 };
 
 export const GetDrainDeliveryDrainsCompression = {
+  Gzip: "gzip",
   None: "none",
 } as const;
 export type GetDrainDeliveryDrainsCompression = ClosedEnum<

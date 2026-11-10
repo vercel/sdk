@@ -5,11 +5,11 @@
 ```typescript
 import { DeliveryCompression } from "@vercel/sdk/models/createdrainop.js";
 
-let value: DeliveryCompression = "none";
+let value: DeliveryCompression = "gzip";
 ```
 
 ## Values
 
 ```typescript
-"none"
+"gzip" | "none"
 ```

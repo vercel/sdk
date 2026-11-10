@@ -15,7 +15,7 @@ let value: ListEventTypesResponse = {
         "deployment",
       ],
       description: "hopelessly busy for",
-      name: "project-rollback-description-updated",
+      name: "project-protected-sourcemaps-updated",
     },
   ],
 };

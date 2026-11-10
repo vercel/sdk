@@ -11,7 +11,7 @@ let value: TestDrainRequestBody = {
     type: "<value>",
     endpoint: "<value>",
     encoding: "json",
-    compression: "none",
+    compression: "gzip",
     fileStructure: "hive",
     roleArn: "<value>",
     region: "<value>",

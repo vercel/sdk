@@ -264,6 +264,7 @@ export type ListVercelCiInvocationAttemptsRunConclusion = {
 
 export const ListVercelCiInvocationAttemptsStatus = {
   New: "new",
+  AwaitingApproval: "awaiting_approval",
   Skipped: "skipped",
   Bootstrapping: "bootstrapping",
   BootstrappingFailed: "bootstrapping_failed",

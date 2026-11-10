@@ -3,19 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload365Previous } from "@vercel/sdk/models/principalintegration.js";
+import { UserEventPayload365Previous } from "@vercel/sdk/models/principalapp.js";
 
-let value: UserEventPayload365Previous = {
-  project: {
-    staticIps: {
-      enabled: true,
-    },
-  },
-};
+let value: UserEventPayload365Previous = {};
 ```
 
 ## Fields
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `project`                                                                                    | [models.UserEventPayload365PreviousProject](../models/usereventpayload365previousproject.md) | :heavy_check_mark:                                                                           | N/A                                                                                          |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `skewProtectionAllowedDomains` | *string*[]                     | :heavy_minus_sign:             | N/A                            |

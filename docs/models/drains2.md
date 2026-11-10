@@ -8,7 +8,7 @@ import { Drains2 } from "@vercel/sdk/models/getdrainsop.js";
 let value: Drains2 = {
   createdAt: 7356.26,
   delivery: {
-    compression: "none",
+    compression: "gzip",
     encoding: "json",
     endpoint: "<value>",
     fileStructure: "hive",
@@ -21,9 +21,11 @@ let value: Drains2 = {
   ownerId: "<id>",
   schemas: {},
   source: {
-    kind: "self-served",
+    integrationConfigurationId: "<id>",
+    integrationId: "<id>",
+    kind: "integration",
   },
-  updatedAt: 9263.98,
+  updatedAt: 6749.5,
 };
 ```
 

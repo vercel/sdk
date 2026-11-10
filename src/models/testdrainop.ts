@@ -24,6 +24,7 @@ export type TestDrainDeliveryDrainsRequestEncoding = ClosedEnum<
 >;
 
 export const TestDrainDeliveryDrainsCompression = {
+  Gzip: "gzip",
   None: "none",
 } as const;
 export type TestDrainDeliveryDrainsCompression = ClosedEnum<

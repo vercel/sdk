@@ -42,6 +42,7 @@ export type GetAllLogDrainsDelivery5 = {
 };
 
 export const GetAllLogDrainsDeliveryLogDrainsCompression = {
+  Gzip: "gzip",
   None: "none",
 } as const;
 export type GetAllLogDrainsDeliveryLogDrainsCompression = ClosedEnum<
@@ -463,6 +464,7 @@ export type GetAllLogDrainsDeliveryLogDrains5 = {
 };
 
 export const GetAllLogDrainsDeliveryLogDrainsResponse200Compression = {
+  Gzip: "gzip",
   None: "none",
 } as const;
 export type GetAllLogDrainsDeliveryLogDrainsResponse200Compression = ClosedEnum<

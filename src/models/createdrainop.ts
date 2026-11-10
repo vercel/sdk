@@ -78,6 +78,7 @@ export type CreateDrainDeliveryDrainsEncoding = ClosedEnum<
 >;
 
 export const DeliveryCompression = {
+  Gzip: "gzip",
   None: "none",
 } as const;
 export type DeliveryCompression = ClosedEnum<typeof DeliveryCompression>;
@@ -249,6 +250,7 @@ export type CreateDrainDelivery5 = {
 };
 
 export const CreateDrainDeliveryDrainsResponse200Compression = {
+  Gzip: "gzip",
   None: "none",
 } as const;
 export type CreateDrainDeliveryDrainsResponse200Compression = ClosedEnum<
@@ -662,6 +664,7 @@ export type CreateDrainDeliveryDrains5 = {
 };
 
 export const CreateDrainDeliveryDrainsCompression = {
+  Gzip: "gzip",
   None: "none",
 } as const;
 export type CreateDrainDeliveryDrainsCompression = ClosedEnum<

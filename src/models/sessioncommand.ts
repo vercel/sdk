@@ -25,7 +25,7 @@ export type SessionCommand = {
    */
   durationMs?: number | undefined;
   /**
-   * If the command did finish, the exit code.
+   * The exit code of the command, or `null` if no exit code has been recorded. The exit code is recorded only when a request waits for the command to finish (`wait=true` when running or getting the command). Polling without `wait=true` returns `null` until such a request records it, even if the command has already finished.
    */
   exitCode: number | null;
   /**

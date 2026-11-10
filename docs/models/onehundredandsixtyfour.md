@@ -10,6 +10,9 @@ import { OneHundredAndSixtyFour } from "@vercel/sdk/models/payloadinitiator.js";
 let value: OneHundredAndSixtyFour = {
   projectId: "<id>",
   projectName: "<value>",
+  tags: [
+    "<value 1>",
+  ],
 };
 ```
 
@@ -19,3 +22,5 @@ let value: OneHundredAndSixtyFour = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `tags`             | *string*[]         | :heavy_check_mark: | N/A                |
+| `target`           | *string*           | :heavy_minus_sign: | N/A                |

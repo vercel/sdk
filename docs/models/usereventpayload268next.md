@@ -3,19 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload268Next } from "@vercel/sdk/models/factors1.js";
+import { UserEventPayload268Next } from "@vercel/sdk/models/names.js";
 
-let value: UserEventPayload268Next = {
-  envId: "production",
-  perimeterId: "<id>",
-};
+let value: UserEventPayload268Next = {};
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `enableBuilds`                                                                       | *boolean*                                                                            | :heavy_minus_sign:                                                                   | Explicit opt-in; missing values are false.                                           |
-| `enableFunctions`                                                                    | *boolean*                                                                            | :heavy_minus_sign:                                                                   | Explicit opt-in; missing values are false. Authorization does not enable a workload. |
-| `envId`                                                                              | *models.EnvId*                                                                       | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `perimeterId`                                                                        | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `passport`                               | [models.Passport](../models/passport.md) | :heavy_minus_sign:                       | N/A                                      |

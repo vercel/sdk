@@ -6,8 +6,8 @@
 import { GetDrainsDelivery4 } from "@vercel/sdk/models/getdrainsop.js";
 
 let value: GetDrainsDelivery4 = {
-  compression: "none",
-  encoding: "json",
+  compression: "gzip",
+  encoding: "ndjson",
   endpoint: "<value>",
   fileStructure: "hive",
   region: "<value>",

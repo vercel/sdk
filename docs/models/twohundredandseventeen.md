@@ -10,8 +10,6 @@ import { TwoHundredAndSeventeen } from "@vercel/sdk/models/payloadinitiator.js";
 let value: TwoHundredAndSeventeen = {
   issuerId: "<id>",
   issuerName: "<value>",
-  kind: "<value>",
-  policyKey: "<value>",
 };
 ```
 
@@ -21,5 +19,4 @@ let value: TwoHundredAndSeventeen = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
 | `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
-| `kind`             | *string*           | :heavy_check_mark: | N/A                |
-| `policyKey`        | *string*           | :heavy_check_mark: | N/A                |
+| `keyId`            | *string*           | :heavy_minus_sign: | N/A                |

@@ -8,9 +8,9 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyThree } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: OneHundredAndSixtyThree = {
-  path: "/etc/ppp",
   projectId: "<id>",
   projectName: "<value>",
+  srcImages: [],
 };
 ```
 
@@ -18,6 +18,6 @@ let value: OneHundredAndSixtyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `path`             | *string*           | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |

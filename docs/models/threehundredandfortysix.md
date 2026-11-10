@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortySix } from "@vercel/sdk/models/usereventpayload279scope.js";
+import { ThreeHundredAndFortySix } from "@vercel/sdk/models/payloadcurrent.js";
 
 let value: ThreeHundredAndFortySix = {
   projectId: "<id>",
@@ -14,8 +14,6 @@ let value: ThreeHundredAndFortySix = {
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `projectId`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `projectName`                                                                        | *string*                                                                             | :heavy_minus_sign:                                                                   | Display name for Activity links. Optional for events stored before it was published. |
-| `reasonCode`                                                                         | [models.ReasonCode](../models/reasoncode.md)                                         | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |

@@ -8,9 +8,12 @@ The payload of the event, if requested.
 import { TwoHundredAndFive } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: TwoHundredAndFive = {
+  billingPlanId: "<id>",
+  configurationId: "<id>",
   integrationId: "<id>",
   integrationName: "<value>",
   integrationSlug: "<value>",
+  ownerId: "<id>",
 };
 ```
 
@@ -18,6 +21,10 @@ let value: TwoHundredAndFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `billingPlanId`    | *string*           | :heavy_check_mark: | N/A                |
+| `billingPlanName`  | *string*           | :heavy_minus_sign: | N/A                |
+| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
 | `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
 | `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
 | `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |

@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixty } from "@vercel/sdk/models/principalintegration.js";
+import { ThreeHundredAndSixty } from "@vercel/sdk/models/principalapp.js";
 
 let value: ThreeHundredAndSixty = {
-  next: {},
-  previous: {},
+  inheritDeploymentProtection: false,
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload360Next](../models/usereventpayload360next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload360Previous](../models/usereventpayload360previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| Field                         | Type                          | Required                      | Description                   |
+| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
+| `inheritDeploymentProtection` | *boolean*                     | :heavy_check_mark:            | N/A                           |
+| `projectId`                   | *string*                      | :heavy_check_mark:            | N/A                           |
+| `projectName`                 | *string*                      | :heavy_check_mark:            | N/A                           |

@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Update a Team Member
  *
  * @remarks
- * Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an `OWNER` of the Team.
+ * Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an `OWNER` of the Team. An update that would leave the Team's organization without an organization admin is refused.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

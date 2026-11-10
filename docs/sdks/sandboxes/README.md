@@ -1134,7 +1134,7 @@ run();
 
 ## getSessionCommand
 
-Retrieves the current status and details of a command executed in a session. Use the `wait` parameter to block until the command finishes execution.
+Retrieves the current status and details of a command executed in a session. Without `wait`, the stored command is returned as-is: its `exitCode` is `null` unless a previous request waited for the command to finish. Set `wait` to `true` to block until the command finishes and get its exit code.
 
 ### Example Usage
 

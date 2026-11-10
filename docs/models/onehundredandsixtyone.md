@@ -8,13 +8,10 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyOne } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: OneHundredAndSixtyOne = {
+  driveName: "<value>",
   projectId: "<id>",
   projectName: "<value>",
-  srcImages: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  region: "<value>",
 };
 ```
 
@@ -22,6 +19,7 @@ let value: OneHundredAndSixtyOne = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `driveName`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `srcImages`        | *string*[]         | :heavy_check_mark: | N/A                |
+| `region`           | *string*           | :heavy_check_mark: | N/A                |

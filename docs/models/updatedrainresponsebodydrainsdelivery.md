@@ -45,7 +45,7 @@ const value: models.UpdateDrainDeliveryDrainsResponse3 = {
 
 ```typescript
 const value: models.UpdateDrainDeliveryDrains4 = {
-  compression: "none",
+  compression: "gzip",
   encoding: "json",
   endpoint: "<value>",
   fileStructure: "hive",

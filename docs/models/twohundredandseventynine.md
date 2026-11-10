@@ -5,26 +5,32 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyNine } from "@vercel/sdk/models/factors1.js";
+import { TwoHundredAndSeventyNine } from "@vercel/sdk/models/names.js";
 
 let value: TwoHundredAndSeventyNine = {
-  previousEndpoint: {
-    name: "<value>",
-  },
-  privateLinkEndpoint: {
+  current: {
+    awsServiceName: "<value>",
+    configurationId: "<id>",
     id: "<id>",
     name: "<value>",
+    vercelRegion: "<value>",
   },
-  projectId: "<id>",
+  prev: {
+    awsServiceName: "<value>",
+    configurationId: "<id>",
+    id: "<id>",
+    name: "<value>",
+    vercelRegion: "<value>",
+  },
+  scope: "network",
 };
 ```
 
 ## Fields
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `previousEndpoint`                                                                             | [models.PreviousEndpoint](../models/previousendpoint.md)                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `privateLinkEndpoint`                                                                          | [models.UserEventPayloadPrivateLinkEndpoint](../models/usereventpayloadprivatelinkendpoint.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `projectId`                                                                                    | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
-| `projectName`                                                                                  | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
-| `scope`                                                                                        | [models.UserEventPayload279Scope](../models/usereventpayload279scope.md)                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `current`                                                                | [models.Current](../models/current.md)                                   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `networkName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `prev`                                                                   | [models.UserEventPayloadPrev](../models/usereventpayloadprev.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload279Scope](../models/usereventpayload279scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

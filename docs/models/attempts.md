@@ -16,7 +16,7 @@ let value: Attempts = {
   repositoryKey: "<value>",
   ref: "<value>",
   commitSha: "<value>",
-  status: "jobs_on_hive_dispatched",
+  status: "jobs_on_hive_clone_dispatched",
 };
 ```
 

@@ -8,7 +8,9 @@ The payload of the event, if requested.
 import { TwoHundredAndEighteen } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: TwoHundredAndEighteen = {
-  logDrainUrl: "https://awesome-chainstay.org",
+  issuerId: "<id>",
+  issuerName: "<value>",
+  kind: "<value>",
 };
 ```
 
@@ -16,5 +18,9 @@ let value: TwoHundredAndEighteen = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |
-| `logDrainUrl`      | *string*           | :heavy_check_mark: | N/A                |
+| `clientId`         | *string*           | :heavy_minus_sign: | N/A                |
+| `environments`     | *string*[]         | :heavy_minus_sign: | N/A                |
+| `issuerId`         | *string*           | :heavy_check_mark: | N/A                |
+| `issuerName`       | *string*           | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |

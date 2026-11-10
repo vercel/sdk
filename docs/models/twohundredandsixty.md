@@ -5,19 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixty } from "@vercel/sdk/models/factors1.js";
+import { TwoHundredAndSixty } from "@vercel/sdk/models/names.js";
 
 let value: TwoHundredAndSixty = {
-  headerName: "<value>",
+  justification: "<value>",
+  previousStatus: "<value>",
   projectId: "<id>",
-  type: "header",
+  url: "https://icy-leading.info",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `headerName`                                                           | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `type`                                                                 | [models.UserEventPayload260Type](../models/usereventpayload260type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `approvalScope`                                                  | [models.ApprovalScope](../models/approvalscope.md)               | :heavy_minus_sign:                                               | N/A                                                              |
+| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |
+| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |

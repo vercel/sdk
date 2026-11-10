@@ -5,16 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyThree } from "@vercel/sdk/models/principalintegration.js";
+import { ThreeHundredAndSeventyThree } from "@vercel/sdk/models/principalapp.js";
 
-let value: ThreeHundredAndSeventyThree = {};
+let value: ThreeHundredAndSeventyThree = {
+  connectionId: "<id>",
+  connectionType: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `connectionId`                                                                   | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload373ActorType](../models/usereventpayload373actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `certificateFingerprints`                                                        | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `connectionId`     | *string*           | :heavy_check_mark: | N/A                |
+| `connectionType`   | *string*           | :heavy_check_mark: | N/A                |

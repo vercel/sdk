@@ -28,6 +28,7 @@ export type ListVercelCiInvocationsQueryParamProvider = ClosedEnum<
 
 export const ListVercelCiInvocationsQueryParamStatus = {
   New: "new",
+  AwaitingApproval: "awaiting_approval",
   Skipped: "skipped",
   Bootstrapping: "bootstrapping",
   BootstrappingFailed: "bootstrapping_failed",
@@ -342,6 +343,7 @@ export type RunConclusion = {
 
 export const ListVercelCiInvocationsStatus = {
   New: "new",
+  AwaitingApproval: "awaiting_approval",
   Skipped: "skipped",
   Bootstrapping: "bootstrapping",
   BootstrappingFailed: "bootstrapping_failed",

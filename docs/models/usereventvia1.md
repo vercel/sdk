@@ -5,7 +5,7 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { UserEventVia1 } from "@vercel/sdk/models/principalintegration.js";
+import { UserEventVia1 } from "@vercel/sdk/models/principalapp.js";
 
 let value: UserEventVia1 = {
   app: {

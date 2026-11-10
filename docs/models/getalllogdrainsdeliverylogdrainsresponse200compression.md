@@ -5,11 +5,11 @@
 ```typescript
 import { GetAllLogDrainsDeliveryLogDrainsResponse200Compression } from "@vercel/sdk/models/getalllogdrainsop.js";
 
-let value: GetAllLogDrainsDeliveryLogDrainsResponse200Compression = "none";
+let value: GetAllLogDrainsDeliveryLogDrainsResponse200Compression = "gzip";
 ```
 
 ## Values
 
 ```typescript
-"none"
+"gzip" | "none"
 ```

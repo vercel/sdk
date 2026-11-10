@@ -6,7 +6,7 @@
 import { GetAllLogDrainsDeliveryLogDrains4 } from "@vercel/sdk/models/getalllogdrainsop.js";
 
 let value: GetAllLogDrainsDeliveryLogDrains4 = {
-  compression: "none",
+  compression: "gzip",
   encoding: "json",
   endpoint: "<value>",
   fileStructure: "hive",

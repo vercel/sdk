@@ -3,13 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload354Previous } from "@vercel/sdk/models/principalintegration.js";
+import { UserEventPayload354Previous } from "@vercel/sdk/models/principalapp.js";
 
 let value: UserEventPayload354Previous = {};
 ```
 
 ## Fields
 
-| Field                                                      | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `issuerMode`                                               | [models.PayloadIssuerMode](../models/payloadissuermode.md) | :heavy_minus_sign:                                         | N/A                                                        |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `deploymentSources` | *any*[]             | :heavy_minus_sign:  | N/A                 |
+| `gitSources`        | *any*[]             | :heavy_minus_sign:  | N/A                 |

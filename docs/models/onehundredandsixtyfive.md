@@ -8,9 +8,9 @@ The payload of the event, if requested.
 import { OneHundredAndSixtyFive } from "@vercel/sdk/models/payloadinitiator.js";
 
 let value: OneHundredAndSixtyFive = {
-  edgeConfigDigest: "<value>",
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
+  path: "/etc",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -18,6 +18,6 @@ let value: OneHundredAndSixtyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigDigest` | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
+| `path`             | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

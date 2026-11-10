@@ -133,11 +133,11 @@ export const GetSecurityFirewallEventsRequest$outboundSchema: z.ZodType<
   GetSecurityFirewallEventsRequest
 > = z.object({
   sort: GetSecurityFirewallEventsQueryParamSort$outboundSchema.optional(),
-  limit: z.number().optional(),
+  limit: z.number().int().optional(),
   cursor: z.string().optional(),
   projectId: z.string(),
-  startTimestamp: z.number().optional(),
-  endTimestamp: z.number().optional(),
+  startTimestamp: z.number().int().optional(),
+  endTimestamp: z.number().int().optional(),
   hosts: z.string().optional(),
   ip: z.array(z.string()).optional(),
   isActive: z.boolean().optional(),

@@ -14,7 +14,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * Field to sort by.
  */
-export const QueryParamSortBy = {
+export const ListNamedSandboxesQueryParamSortBy = {
   CreatedAt: "createdAt",
   Name: "name",
   StatusUpdatedAt: "statusUpdatedAt",
@@ -23,19 +23,23 @@ export const QueryParamSortBy = {
 /**
  * Field to sort by.
  */
-export type QueryParamSortBy = ClosedEnum<typeof QueryParamSortBy>;
+export type ListNamedSandboxesQueryParamSortBy = ClosedEnum<
+  typeof ListNamedSandboxesQueryParamSortBy
+>;
 
 /**
  * Sort direction. Defaults to desc.
  */
-export const QueryParamSortOrder = {
+export const ListNamedSandboxesQueryParamSortOrder = {
   Asc: "asc",
   Desc: "desc",
 } as const;
 /**
  * Sort direction. Defaults to desc.
  */
-export type QueryParamSortOrder = ClosedEnum<typeof QueryParamSortOrder>;
+export type ListNamedSandboxesQueryParamSortOrder = ClosedEnum<
+  typeof ListNamedSandboxesQueryParamSortOrder
+>;
 
 /**
  * Filter named sandboxes by status. Only valid when sortBy is createdAt.
@@ -67,7 +71,7 @@ export type ListNamedSandboxesRequest = {
   /**
    * Field to sort by.
    */
-  sortBy?: QueryParamSortBy | undefined;
+  sortBy?: ListNamedSandboxesQueryParamSortBy | undefined;
   /**
    * Filter named sandboxes whose name starts with this prefix. Only valid when sortBy=name.
    */
@@ -79,7 +83,7 @@ export type ListNamedSandboxesRequest = {
   /**
    * Sort direction. Defaults to desc.
    */
-  sortOrder?: QueryParamSortOrder | undefined;
+  sortOrder?: ListNamedSandboxesQueryParamSortOrder | undefined;
   /**
    * Filter named sandboxes by status. Only valid when sortBy is createdAt.
    */
@@ -109,14 +113,15 @@ export type ListNamedSandboxesResponseBody = {
 };
 
 /** @internal */
-export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortBy
-> = z.nativeEnum(QueryParamSortBy);
+export const ListNamedSandboxesQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
+  typeof ListNamedSandboxesQueryParamSortBy
+> = z.nativeEnum(ListNamedSandboxesQueryParamSortBy);
 
 /** @internal */
-export const QueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
-  typeof QueryParamSortOrder
-> = z.nativeEnum(QueryParamSortOrder);
+export const ListNamedSandboxesQueryParamSortOrder$outboundSchema:
+  z.ZodNativeEnum<typeof ListNamedSandboxesQueryParamSortOrder> = z.nativeEnum(
+    ListNamedSandboxesQueryParamSortOrder,
+  );
 
 /** @internal */
 export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
@@ -159,10 +164,14 @@ export const ListNamedSandboxesRequest$outboundSchema: z.ZodType<
 > = z.object({
   project: z.string().optional(),
   limit: z.number().default(20),
-  sortBy: QueryParamSortBy$outboundSchema.default("createdAt"),
+  sortBy: ListNamedSandboxesQueryParamSortBy$outboundSchema.default(
+    "createdAt",
+  ),
   namePrefix: z.string().optional(),
   cursor: z.string().optional(),
-  sortOrder: QueryParamSortOrder$outboundSchema.default("desc"),
+  sortOrder: ListNamedSandboxesQueryParamSortOrder$outboundSchema.default(
+    "desc",
+  ),
   status: QueryParamStatus$outboundSchema.optional(),
   tags: smartUnion([z.string(), z.array(z.string())]).optional(),
   teamId: z.string().optional(),

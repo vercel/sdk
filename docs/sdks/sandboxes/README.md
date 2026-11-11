@@ -5,11 +5,14 @@
 ### Available Operations
 
 * [listNamedSandboxes](#listnamedsandboxes) - List sandboxes
-* [listDrives](#listdrives) - List drives
-* [getDrive](#getdrive) - Get a drive
-* [getOrCreateDrive](#getorcreatedrive) - Get or create a drive
-* [deleteDrive](#deletedrive) - Delete a drive
-* [forkDrive](#forkdrive) - Fork a drive
+* [~~listDrives~~](#listdrives) - Deprecated: Use GET /v1/drives. Requires the read:drive app scope instead of read:sandbox, and drive:list instead of vercelRun:read. List drives :warning: **Deprecated**
+* [~~getDrive~~](#getdrive) - Deprecated: Use GET /v1/drives/:nameOrId. Requires the read:drive app scope instead of read:sandbox, and drive:read instead of vercelRun:read. Get a drive :warning: **Deprecated**
+* [~~getOrCreateDrive~~](#getorcreatedrive) - Deprecated: Use POST /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:create instead of vercelRun:create.
+Emits drive-created activity events instead of sandbox-drive-created. Get or create a drive :warning: **Deprecated**
+* [~~deleteDrive~~](#deletedrive) - Deprecated: Use DELETE /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
+Emits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive :warning: **Deprecated**
+* [~~forkDrive~~](#forkdrive) - Deprecated: Use POST /v1/drives/:name/fork. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:read and drive:create instead of vercelRun:read and vercelRun:create.
+Emits drive-created activity events instead of sandbox-drive-created. Fork a drive :warning: **Deprecated**
 * [listSessionSnapshots](#listsessionsnapshots) - List snapshots
 * [getSessionSnapshot](#getsessionsnapshot) - Get a snapshot
 * [deleteSessionSnapshot](#deletesessionsnapshot) - Delete a snapshot
@@ -107,9 +110,11 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## listDrives
+## ~~listDrives~~
 
 Retrieves a paginated list of drives belonging to a specific project.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -184,9 +189,11 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getDrive
+## ~~getDrive~~
 
 Gets an existing drive by project and name or drive ID. Returns 404 if doesn't exist.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -263,9 +270,11 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getOrCreateDrive
+## ~~getOrCreateDrive~~
 
 Gets an existing drive by project and name, or creates it when it does not exist.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -346,9 +355,11 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## deleteDrive
+## ~~deleteDrive~~
 
 Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -425,9 +436,11 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## forkDrive
+## ~~forkDrive~~
 
 Fork the provided drive into a new one with the provided name, inheriting the region and max size.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

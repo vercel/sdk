@@ -5,15 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndSeven } from "@vercel/sdk/models/usereventpayload470actortype.js";
+import { FiveHundredAndSeven } from "@vercel/sdk/models/usereventpayload471actortype.js";
 
 let value: FiveHundredAndSeven = {
-  tier: "plus",
+  cadence: "monthly",
+  projectIds: [
+    "<value 1>",
+  ],
+  team: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `tier`                           | [models.Tier](../models/tier.md) | :heavy_check_mark:               | N/A                              |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload507Team](../models/usereventpayload507team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

@@ -120,6 +120,8 @@ export const Name = {
   AiGatewayRuleDeleted: "ai-gateway-rule-deleted",
   AiGatewayRuleUpdated: "ai-gateway-rule-updated",
   AiGatewayScopeBudgetUpdated: "ai-gateway-scope-budget-updated",
+  AiGatewaySystemCredentialFallbackOptOutToggled:
+    "ai-gateway-system-credential-fallback-opt-out-toggled",
   AiGatewayTranscriptsDefaultDisabled:
     "ai-gateway-transcripts-default-disabled",
   AiGatewayTranscriptsDefaultEnabled: "ai-gateway-transcripts-default-enabled",
@@ -672,6 +674,7 @@ export const Name = {
   SandboxDriveDeleted: "sandbox-drive-deleted",
   SandboxDriveSnapshotCreated: "sandbox-drive-snapshot-created",
   SandboxDriveSnapshotDeleted: "sandbox-drive-snapshot-deleted",
+  SandboxNpmCredentialsConfigured: "sandbox-npm-credentials-configured",
   SandboxSignedCommitIdentityConfigured:
     "sandbox-signed-commit-identity-configured",
   SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",
@@ -967,6 +970,8 @@ export const ReplacedBy = {
   AiGatewayRuleDeleted: "ai-gateway-rule-deleted",
   AiGatewayRuleUpdated: "ai-gateway-rule-updated",
   AiGatewayScopeBudgetUpdated: "ai-gateway-scope-budget-updated",
+  AiGatewaySystemCredentialFallbackOptOutToggled:
+    "ai-gateway-system-credential-fallback-opt-out-toggled",
   AiGatewayTranscriptsDefaultDisabled:
     "ai-gateway-transcripts-default-disabled",
   AiGatewayTranscriptsDefaultEnabled: "ai-gateway-transcripts-default-enabled",
@@ -1519,6 +1524,7 @@ export const ReplacedBy = {
   SandboxDriveDeleted: "sandbox-drive-deleted",
   SandboxDriveSnapshotCreated: "sandbox-drive-snapshot-created",
   SandboxDriveSnapshotDeleted: "sandbox-drive-snapshot-deleted",
+  SandboxNpmCredentialsConfigured: "sandbox-npm-credentials-configured",
   SandboxSignedCommitIdentityConfigured:
     "sandbox-signed-commit-identity-configured",
   SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",

@@ -31,12 +31,15 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Delete a drive
+ * Deprecated: Use DELETE /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
+ * Emits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive
  *
  * @remarks
  * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function sandboxesDeleteDrive(
   client: VercelCore,

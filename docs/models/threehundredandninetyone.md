@@ -5,25 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyOne } from "@vercel/sdk/models/principalapp.js";
+import { ThreeHundredAndNinetyOne } from "@vercel/sdk/models/usereventprincipal4.js";
 
-let value: ThreeHundredAndNinetyOne = {
-  bitbucketEmail: "<value>",
-  bitbucketLogin: "<value>",
-  bitbucketName: "<value>",
-  email: "Kirk0@yahoo.com",
-  zeitAccount: "<value>",
-  zeitAccountType: "<value>",
-};
+let value: ThreeHundredAndNinetyOne = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketName`    | *string*           | :heavy_check_mark: | N/A                |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `zeitAccount`      | *string*           | :heavy_check_mark: | N/A                |
-| `zeitAccountType`  | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `env`                                                        | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `factors`                                                    | [models.PayloadFactors](../models/payloadfactors.md)[]       | :heavy_minus_sign:                                           | N/A                                                          |
+| `geolocation`                                                | [models.PayloadGeolocation](../models/payloadgeolocation.md) | :heavy_minus_sign:                                           | N/A                                                          |
+| `os`                                                         | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `ssoType`                                                    | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `userAgent`                                                  | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `username`                                                   | *string*                                                     | :heavy_minus_sign:                                           | N/A                                                          |
+| `viaApple`                                                   | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| `viaBitbucket`                                               | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| `viaGithub`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| `viaGitlab`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| `viaGoogle`                                                  | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| `viaOTP`                                                     | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| `viaPasskey`                                                 | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |
+| `viaSamlSso`                                                 | *boolean*                                                    | :heavy_minus_sign:                                           | N/A                                                          |

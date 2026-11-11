@@ -31,12 +31,15 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Fork a drive
+ * Deprecated: Use POST /v1/drives/:name/fork. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:read and drive:create instead of vercelRun:read and vercelRun:create.
+ * Emits drive-created activity events instead of sandbox-drive-created. Fork a drive
  *
  * @remarks
  * Fork the provided drive into a new one with the provided name, inheriting the region and max size.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function sandboxesForkDrive(
   client: VercelCore,

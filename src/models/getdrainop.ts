@@ -87,6 +87,7 @@ export type Delivery4 = {
   encoding: GetDrainDeliveryDrainsResponseEncoding;
   endpoint: string;
   fileStructure: GetDrainDeliveryFileStructure;
+  kmsKeyId?: string | undefined;
   objectAcl?: GetDrainDeliveryObjectAcl | undefined;
   region: string;
   roleArn: string;
@@ -463,6 +464,7 @@ export const Delivery4$inboundSchema: z.ZodType<
   encoding: GetDrainDeliveryDrainsResponseEncoding$inboundSchema,
   endpoint: types.string(),
   fileStructure: GetDrainDeliveryFileStructure$inboundSchema,
+  kmsKeyId: types.optional(types.string()),
   objectAcl: types.optional(GetDrainDeliveryObjectAcl$inboundSchema),
   region: types.string(),
   roleArn: types.string(),

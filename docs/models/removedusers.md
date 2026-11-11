@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { RemovedUsers } from "@vercel/sdk/models/names.js";
+import { RemovedUsers } from "@vercel/sdk/models/factorsorigin.js";
 
 let value: RemovedUsers = {
   confirmed: true,

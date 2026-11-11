@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwenty } from "@vercel/sdk/models/payloadcurrent.js";
+import { ThreeHundredAndTwenty } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: ThreeHundredAndTwenty = {
   disableRepositoryDispatchEvents: true,

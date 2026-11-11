@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyOne } from "@vercel/sdk/models/payloadcurrent.js";
+import { ThreeHundredAndThirtyOne } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: ThreeHundredAndThirtyOne = {
   domain: "elegant-analogy.name",

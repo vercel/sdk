@@ -31,12 +31,15 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get or create a drive
+ * Deprecated: Use POST /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:create instead of vercelRun:create.
+ * Emits drive-created activity events instead of sandbox-drive-created. Get or create a drive
  *
  * @remarks
  * Gets an existing drive by project and name, or creates it when it does not exist.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function sandboxesGetOrCreateDrive(
   client: VercelCore,

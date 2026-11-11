@@ -5,7 +5,7 @@ A repository's findings are in code no project runs.
 ## Example Usage
 
 ```typescript
-import { PayloadTargetKind } from "@vercel/sdk/models/usereventpayload404type.js";
+import { PayloadTargetKind } from "@vercel/sdk/models/fourhundredandsix.js";
 
 let value: PayloadTargetKind = "project";
 ```

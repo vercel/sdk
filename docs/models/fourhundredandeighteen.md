@@ -5,15 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndEighteen } from "@vercel/sdk/models/usereventpayload404type.js";
+import { FourHundredAndEighteen } from "@vercel/sdk/models/fourhundredandsix.js";
 
-let value: FourHundredAndEighteen = {};
+let value: FourHundredAndEighteen = {
+  next: "auto-approval",
+  previous: "block",
+};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `disabled`                                                                       | *boolean*                                                                        | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload418ActorType](../models/usereventpayload418actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload418Next](../models/usereventpayload418next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload418Previous](../models/usereventpayload418previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `teamSlug`                                                                     | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |

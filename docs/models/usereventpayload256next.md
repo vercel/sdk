@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload256Next } from "@vercel/sdk/models/names.js";
+import { UserEventPayload256Next } from "@vercel/sdk/models/factorsorigin.js";
 
 let value: UserEventPayload256Next = {
   allowUnsafeScriptSrcKeywords: true,

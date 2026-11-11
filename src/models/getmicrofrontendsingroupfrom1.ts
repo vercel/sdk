@@ -846,6 +846,10 @@ export type GetMicrofrontendsInGroupPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  desktopDevice?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   domain?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -4011,6 +4015,7 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   ),
   deploymentRollback: types.optional(z.array(ACLAction$inboundSchema)),
   deploymentV0: types.optional(z.array(ACLAction$inboundSchema)),
+  desktopDevice: types.optional(z.array(ACLAction$inboundSchema)),
   domain: types.optional(z.array(ACLAction$inboundSchema)),
   domainAcceptDelegation: types.optional(z.array(ACLAction$inboundSchema)),
   domainAuthCodes: types.optional(z.array(ACLAction$inboundSchema)),

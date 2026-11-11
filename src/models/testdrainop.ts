@@ -65,6 +65,7 @@ export type TestDrainDelivery3 = {
   roleArn: string;
   region: string;
   serverSideEncryption?: TestDrainDeliveryServerSideEncryption | undefined;
+  kmsKeyId?: string | undefined;
   objectAcl?: TestDrainDeliveryObjectAcl | undefined;
 };
 
@@ -208,6 +209,7 @@ export type TestDrainDelivery3$Outbound = {
   roleArn: string;
   region: string;
   serverSideEncryption: string;
+  kmsKeyId?: string | undefined;
   objectAcl?: string | undefined;
 };
 
@@ -226,6 +228,7 @@ export const TestDrainDelivery3$outboundSchema: z.ZodType<
   region: z.string(),
   serverSideEncryption: TestDrainDeliveryServerSideEncryption$outboundSchema
     .default("AES256"),
+  kmsKeyId: z.string().optional(),
   objectAcl: TestDrainDeliveryObjectAcl$outboundSchema.optional(),
 });
 

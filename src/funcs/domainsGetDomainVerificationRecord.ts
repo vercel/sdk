@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Get Domain Verification Record
  *
  * @remarks
- * Get the TXT verification record needed to claim ownership of a domain for the authenticated team. The caller must add this TXT record to `_vercel.{domain}` in their DNS configuration, then call POST /domains/:domain/claim to complete the ownership transfer.
+ * Get the TXT verification record needed to claim ownership of a domain for the authenticated team. The caller must add this TXT record to `_vercel.{domain}` in their DNS configuration, then call POST /domains/:domain/claim to complete the ownership transfer. Records expire at the returned expiresAt (at most 24 hours) or when ownership changes.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -169,7 +169,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, GetDomainVerificationRecordResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 404, 410, "4XX"]),
+    M.fail([400, 401, 403, 404, 409, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

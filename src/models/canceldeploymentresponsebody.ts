@@ -836,6 +836,10 @@ export type Daemon = {
   resources?: ServicesResources | undefined;
   root: string;
   terminationGracePeriodSeconds?: number | undefined;
+  /**
+   * Dockerfile stage from an `entrypoint` like `Dockerfile#worker`.
+   */
+  buildTarget?: string | undefined;
   name: string;
 };
 
@@ -3249,6 +3253,7 @@ export const Daemon$inboundSchema: z.ZodType<Daemon, z.ZodTypeDef, unknown> = z
     resources: types.optional(z.lazy(() => ServicesResources$inboundSchema)),
     root: types.string(),
     terminationGracePeriodSeconds: types.optional(types.number()),
+    buildTarget: types.optional(types.string()),
     name: types.string(),
   });
 

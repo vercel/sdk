@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyFive } from "@vercel/sdk/models/payloadcurrent.js";
+import { ThreeHundredAndFortyFive } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: ThreeHundredAndFortyFive = {
   oldPasswordProtection: "preview",

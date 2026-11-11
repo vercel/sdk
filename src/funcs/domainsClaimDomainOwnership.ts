@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Claim Domain Ownership
  *
  * @remarks
- * Claim ownership of a domain for the authenticated team by verifying a TXT record. The caller must first add a TXT record to `_vercel.{domain}` (obtained from GET /domains/:domain/verification), then call this endpoint to complete the ownership transfer. If the TXT record is verified, the domain ownership will be transferred to the caller's team, even if the domain is currently owned by another user or team.
+ * Claim ownership of a domain for the authenticated team by verifying a TXT record. The caller must first add a TXT record to `_vercel.{domain}` (obtained from GET /domains/:domain/verification), then call this endpoint to complete the ownership transfer. Proof must be unexpired and issued for the domain's current ownership. If the TXT record is verified, the domain ownership will be transferred to the caller's team, even if the domain is currently owned by another user or team.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -169,7 +169,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, ClaimDomainOwnershipResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 404, 410, "4XX"]),
+    M.fail([400, 401, 403, 404, 409, 410, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

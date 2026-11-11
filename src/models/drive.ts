@@ -12,14 +12,14 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * The workload type of this drive.
  */
-export const DriveWorkloadType = {
+export const WorkloadType = {
   Sandbox: "sandbox",
   V0: "v0",
 } as const;
 /**
  * The workload type of this drive.
  */
-export type DriveWorkloadType = ClosedEnum<typeof DriveWorkloadType>;
+export type WorkloadType = ClosedEnum<typeof WorkloadType>;
 
 /**
  * This object contains information related to a Vercel Sandbox Drive.
@@ -72,13 +72,12 @@ export type Drive = {
   /**
    * The workload type of this drive.
    */
-  workloadType?: DriveWorkloadType | undefined;
+  workloadType?: WorkloadType | undefined;
 };
 
 /** @internal */
-export const DriveWorkloadType$inboundSchema: z.ZodNativeEnum<
-  typeof DriveWorkloadType
-> = z.nativeEnum(DriveWorkloadType);
+export const WorkloadType$inboundSchema: z.ZodNativeEnum<typeof WorkloadType> =
+  z.nativeEnum(WorkloadType);
 
 /** @internal */
 export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
@@ -94,7 +93,7 @@ export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
     region: types.string(),
     rootDriveId: types.optional(types.string()),
     updatedAt: types.number(),
-    workloadType: types.optional(DriveWorkloadType$inboundSchema),
+    workloadType: types.optional(WorkloadType$inboundSchema),
   });
 
 export function driveFromJSON(

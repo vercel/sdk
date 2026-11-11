@@ -27,6 +27,7 @@ export type GetDomainVerificationRecordRequest = {
  * Returns the TXT record needed to verify domain ownership.
  */
 export type GetDomainVerificationRecordResponseBody = {
+  expiresAt: number;
   txtRecord: string;
   verificationDomain: string;
 };
@@ -65,6 +66,7 @@ export const GetDomainVerificationRecordResponseBody$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  expiresAt: types.number(),
   txtRecord: types.string(),
   verificationDomain: types.string(),
 });

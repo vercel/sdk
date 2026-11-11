@@ -1352,6 +1352,10 @@ export type CreateDeploymentServicesDeploymentsDaemon = {
   resources?: CreateDeploymentServicesDeploymentsResources | undefined;
   root: string;
   terminationGracePeriodSeconds?: number | undefined;
+  /**
+   * Dockerfile stage from an `entrypoint` like `Dockerfile#worker`.
+   */
+  buildTarget?: string | undefined;
   name: string;
 };
 
@@ -3861,6 +3865,7 @@ export const CreateDeploymentServicesDeploymentsDaemon$inboundSchema: z.ZodType<
   ),
   root: types.string(),
   terminationGracePeriodSeconds: types.optional(types.number()),
+  buildTarget: types.optional(types.string()),
   name: types.string(),
 });
 

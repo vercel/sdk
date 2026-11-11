@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyNine } from "@vercel/sdk/models/payloadcurrent.js";
+import { TwoHundredAndEightyNine } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: TwoHundredAndEightyNine = {
   enableAffectedProjectsDeployments: true,

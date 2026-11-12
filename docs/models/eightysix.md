@@ -5,17 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightySix } from "@vercel/sdk/models/rule.js";
+import { EightySix } from "@vercel/sdk/models/fiftytwo.js";
 
 let value: EightySix = {
-  changedFields: [
-    "name",
-  ],
+  paymentMethodId: "<id>",
+  subscriptionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `changedFields`                                                                      | [models.UserEventPayloadChangedFields](../models/usereventpayloadchangedfields.md)[] | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
+| `subscriptionId`   | *string*           | :heavy_check_mark: | N/A                |

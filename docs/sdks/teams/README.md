@@ -213,7 +213,7 @@ run();
 
 ## requestAccessToTeam
 
-Request access to a team as a member. An owner has to approve the request. Only 100 users can request access to a team at the same time.
+Request access to a team as a member. An owner has to approve the request. Only 100 users can request access to a team at the same time. Organization-directory access must be granted through the directory administrator.
 
 ### Example Usage
 
@@ -306,7 +306,7 @@ run();
 
 ## getTeamAccessRequest
 
-Check the status of a join request. It'll respond with a 404 if the request has been declined. If no `userId` path segment was provided, this endpoint will instead return the status of the authenticated user.
+Check the status of a join request. It'll respond with a 404 if the request has been declined or enabled directory reads suppress access. If no `userId` path segment was provided, this endpoint will instead return the status of the authenticated user.
 
 ### Example Usage
 

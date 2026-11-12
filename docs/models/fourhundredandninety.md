@@ -5,20 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNinety } from "@vercel/sdk/models/usereventpayload470actortype.js";
+import { FourHundredAndNinety } from "@vercel/sdk/models/usereventpayload474actortype.js";
 
 let value: FourHundredAndNinety = {
-  username: "Roma60",
-  actorId: "<id>",
-  actorType: "admin",
+  next: {
+    enabled: false,
+    totpVerified: true,
+  },
+  previous: {
+    enabled: false,
+    totpVerified: false,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `username`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload490ActorType](../models/usereventpayload490actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload490Next](../models/usereventpayload490next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload490Previous](../models/usereventpayload490previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

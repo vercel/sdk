@@ -5,23 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirty } from "@vercel/sdk/models/payloadcurrent.js";
+import { ThreeHundredAndThirty } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: ThreeHundredAndThirty = {
-  domain: "ecstatic-experience.net",
+  consolidatedGitCommitStatus: {
+    enabled: true,
+    propagateFailures: false,
+  },
   projectId: "<id>",
   projectName: "<value>",
-  target: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
-| `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |
-| `target`             | *string*             | :heavy_check_mark:   | N/A                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `consolidatedGitCommitStatus`                                                  | [models.ConsolidatedGitCommitStatus](../models/consolidatedgitcommitstatus.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

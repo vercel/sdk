@@ -5,25 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyTwo } from "@vercel/sdk/models/onehundredandnineteen.js";
+import { OneHundredAndThirtyTwo } from "@vercel/sdk/models/payloadscope.js";
 
 let value: OneHundredAndThirtyTwo = {
-  deployment: {
-    id: "<id>",
-    meta: {},
-    name: "<value>",
-    url: "https://muffled-decongestant.biz",
-  },
-  deploymentId: "<id>",
-  url: "https://tiny-humor.biz/",
+  url: "https://sweet-lobster.biz/",
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `deployment`                                                                       | [models.UserEventPayload132Deployment](../models/usereventpayload132deployment.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `deploymentId`                                                                     | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `projectId`                                                                        | *string*                                                                           | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `url`                                                                              | *string*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `newTeam`                                                              | [models.UserEventPayloadNewTeam](../models/usereventpayloadnewteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `oldTeam`                                                              | [models.UserEventPayloadOldTeam](../models/usereventpayloadoldteam.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `url`                                                                  | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

@@ -5,9 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyEight } from "@vercel/sdk/models/principalapp.js";
+import { ThreeHundredAndSixtyEight } from "@vercel/sdk/models/usereventprincipal4.js";
 
 let value: ThreeHundredAndSixtyEight = {
+  next: {
+    skewProtectionAllowedDomains: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  previous: {},
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -15,11 +23,9 @@ let value: ThreeHundredAndSixtyEight = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `addedAddresses`                                   | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
-| `oldTrustedIps`                                    | [models.OldTrustedIps](../models/oldtrustedips.md) | :heavy_minus_sign:                                 | N/A                                                |
-| `projectId`                                        | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `projectName`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `removedAddresses`                                 | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
-| `trustedIps`                                       | [models.TrustedIps](../models/trustedips.md)       | :heavy_minus_sign:                                 | N/A                                                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload368Next](../models/usereventpayload368next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload368Previous](../models/usereventpayload368previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

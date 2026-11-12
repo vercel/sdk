@@ -5,20 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyFour } from "@vercel/sdk/models/names.js";
+import { TwoHundredAndThirtyFour } from "@vercel/sdk/models/factorsorigin.js";
 
 let value: TwoHundredAndThirtyFour = {
-  reason: "<value>",
-  actorId: "<id>",
-  actorType: "admin",
+  group: {
+    id: "<id>",
+    name: "<value>",
+    slug: "<value>",
+  },
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `reason`                                                 | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `actorId`                                                | *string*                                                 | :heavy_check_mark:                                       | Okta user id.                                            |
-| `actorName`                                              | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `actorType`                                              | [models.PayloadActorType](../models/payloadactortype.md) | :heavy_check_mark:                                       | N/A                                                      |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `group`                                                                      | [models.Group](../models/group.md)                                           | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload234Project](../models/usereventpayload234project.md) | :heavy_check_mark:                                                           | N/A                                                                          |

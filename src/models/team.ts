@@ -386,8 +386,6 @@ export type DeploymentStorageRollout = {
   retentionOptOutAt?: number | undefined;
 };
 
-export type DisableHardAutoBlocks = number | boolean;
-
 /**
  * Require production secrets to use a different value than preview or development.
  */
@@ -964,7 +962,6 @@ export type Team = {
    * A short description of the Team.
    */
   description: string | null;
-  disableHardAutoBlocks?: number | boolean | undefined;
   /**
    * Default for projects in the team. When `true`, projects in this team will not emit GitHub repository-dispatch events on deployment events unless the project explicitly overrides this setting via `project.gitProviderOptions.disableRepositoryDispatchEvents`.
    */
@@ -1731,23 +1728,6 @@ export function deploymentStorageRolloutFromJSON(
 }
 
 /** @internal */
-export const DisableHardAutoBlocks$inboundSchema: z.ZodType<
-  DisableHardAutoBlocks,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([types.number(), types.boolean()]);
-
-export function disableHardAutoBlocksFromJSON(
-  jsonString: string,
-): SafeParseResult<DisableHardAutoBlocks, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DisableHardAutoBlocks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DisableHardAutoBlocks' from JSON`,
-  );
-}
-
-/** @internal */
 export const DisjunctiveProductionSecretPolicy$inboundSchema: z.ZodNativeEnum<
   typeof DisjunctiveProductionSecretPolicy
 > = z.nativeEnum(DisjunctiveProductionSecretPolicy);
@@ -2298,9 +2278,6 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
         z.lazy(() => DeploymentStorageRollout$inboundSchema),
       ),
       description: types.nullable(types.string()),
-      disableHardAutoBlocks: types.optional(
-        smartUnion([types.number(), types.boolean()]),
-      ),
       disableRepositoryDispatchEvents: types.optional(types.boolean()),
       disjunctiveProductionSecretPolicy: z.nullable(
         DisjunctiveProductionSecretPolicy$inboundSchema,

@@ -28,6 +28,8 @@ const vercel = new Vercel();
 async function run() {
   const result = await vercel.replaceDomainsByDomainRecords({
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   console.log(result);
@@ -51,6 +53,8 @@ const vercel = new VercelCore();
 async function run() {
   const res = await replaceDomainsByDomainRecords(vercel, {
     domain: "example.com",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -95,6 +99,8 @@ const vercel = new Vercel();
 async function run() {
   const result = await vercel.getDomainsRecordsByRecordId({
     recordId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
 
   console.log(result);
@@ -118,6 +124,8 @@ const vercel = new VercelCore();
 async function run() {
   const res = await getDomainsRecordsByRecordId(vercel, {
     recordId: "<id>",
+    teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
+    slug: "my-team-url-slug",
   });
   if (res.ok) {
     const { value: result } = res;

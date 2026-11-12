@@ -5,16 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyFive } from "@vercel/sdk/models/principalapp.js";
+import { ThreeHundredAndSeventyFive } from "@vercel/sdk/models/usereventprincipal4.js";
 
-let value: ThreeHundredAndSeventyFive = {};
+let value: ThreeHundredAndSeventyFive = {
+  gitProvider: "<value>",
+  gitProviderGroupDescriptor: "<value>",
+  gitScope: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `connectionId`                                                                   | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload375ActorType](../models/usereventpayload375actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `certificateFingerprints`                                                        | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |

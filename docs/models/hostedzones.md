@@ -1,6 +1,6 @@
 # HostedZones
 
-Metadata about any AWS Route53 Hosted Zones associated with the Network.
+Metadata about customer-managed AWS Route53 Hosted Zones associated with the Network.
 
 ## Example Usage
 
@@ -14,6 +14,6 @@ let value: HostedZones = {
 
 ## Fields
 
-| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `count`                                                             | *number*                                                            | :heavy_check_mark:                                                  | The number of AWS Route53 Hosted Zones associated with the Network. |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `count`                                                                              | *number*                                                                             | :heavy_check_mark:                                                                   | The number of customer-managed AWS Route53 Hosted Zones associated with the Network. |

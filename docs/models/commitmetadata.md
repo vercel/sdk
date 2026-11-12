@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CommitMetadata } from "@vercel/sdk/models/onehundredandnineteen.js";
+import { CommitMetadata } from "@vercel/sdk/models/payloadscope.js";
 
 let value: CommitMetadata = {
   author: {

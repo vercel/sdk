@@ -58,6 +58,7 @@ import { Dns } from "./dns.js";
 import { Domains } from "./domains.js";
 import { DomainsRegistrar } from "./domainsregistrar.js";
 import { Drains } from "./drains.js";
+import { Drives } from "./drives.js";
 import { EdgeCache } from "./edgecache.js";
 import { Environment } from "./environment.js";
 import { FeatureFlags } from "./featureflags.js";
@@ -170,6 +171,11 @@ export class Vercel extends ClientSDK {
   private _drains?: Drains;
   get drains(): Drains {
     return (this._drains ??= new Drains(this._options));
+  }
+
+  private _drives?: Drives;
+  get drives(): Drives {
+    return (this._drives ??= new Drives(this._options));
   }
 
   private _edgeCache?: EdgeCache;

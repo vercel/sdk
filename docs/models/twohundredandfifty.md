@@ -5,21 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFifty } from "@vercel/sdk/models/names.js";
+import { TwoHundredAndFifty } from "@vercel/sdk/models/factorsorigin.js";
 
 let value: TwoHundredAndFifty = {
-  enabled: false,
+  next: {
+    dsyncMode: "team",
+  },
   organizationId: "<id>",
-  organizationSlug: "<value>",
-  previousEnabled: false,
+  previous: {
+    dsyncMode: "team",
+  },
+  teamId: "<id>",
+  teamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
-| `previousEnabled`  | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload250Next](../models/usereventpayload250next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `organizationId`                                                               | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload250Previous](../models/usereventpayload250previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `teamId`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `teamName`                                                                     | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

@@ -5,10 +5,9 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinety } from "@vercel/sdk/models/payloadcurrent.js";
+import { TwoHundredAndNinety } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: TwoHundredAndNinety = {
-  enableExternalRewriteCaching: true,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -16,8 +15,8 @@ let value: TwoHundredAndNinety = {
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `enableExternalRewriteCaching` | *boolean*                      | :heavy_check_mark:             | N/A                            |
-| `projectId`                    | *string*                       | :heavy_check_mark:             | N/A                            |
-| `projectName`                  | *string*                       | :heavy_check_mark:             | N/A                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

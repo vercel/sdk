@@ -846,6 +846,10 @@ export type GetMicrofrontendsInGroupPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  desktopDevice?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   domain?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -1230,7 +1234,15 @@ export type GetMicrofrontendsInGroupPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  organizationAdmin?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   organizationDomain?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  organizationMember?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -4011,6 +4023,7 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   ),
   deploymentRollback: types.optional(z.array(ACLAction$inboundSchema)),
   deploymentV0: types.optional(z.array(ACLAction$inboundSchema)),
+  desktopDevice: types.optional(z.array(ACLAction$inboundSchema)),
   domain: types.optional(z.array(ACLAction$inboundSchema)),
   domainAcceptDelegation: types.optional(z.array(ACLAction$inboundSchema)),
   domainAuthCodes: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4131,7 +4144,9 @@ export const GetMicrofrontendsInGroupPermissions$inboundSchema: z.ZodType<
   openTelemetryEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
   optionsAllowlist: types.optional(z.array(ACLAction$inboundSchema)),
   organization: types.optional(z.array(ACLAction$inboundSchema)),
+  organizationAdmin: types.optional(z.array(ACLAction$inboundSchema)),
   organizationDomain: types.optional(z.array(ACLAction$inboundSchema)),
+  organizationMember: types.optional(z.array(ACLAction$inboundSchema)),
   organizationTeam: types.optional(z.array(ACLAction$inboundSchema)),
   ownEvent: types.optional(z.array(ACLAction$inboundSchema)),
   pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),

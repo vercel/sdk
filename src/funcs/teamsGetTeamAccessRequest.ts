@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Get access request status
  *
  * @remarks
- * Check the status of a join request. It'll respond with a 404 if the request has been declined. If no `userId` path segment was provided, this endpoint will instead return the status of the authenticated user.
+ * Check the status of a join request. It'll respond with a 404 if the request has been declined or enabled directory reads suppress access. If no `userId` path segment was provided, this endpoint will instead return the status of the authenticated user.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

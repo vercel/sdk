@@ -93,6 +93,7 @@ export type GetAllLogDrainsDelivery4 = {
   encoding: GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONEncoding;
   endpoint: string;
   fileStructure: GetAllLogDrainsDeliveryLogDrainsFileStructure;
+  kmsKeyId?: string | undefined;
   objectAcl?: GetAllLogDrainsDeliveryLogDrainsObjectAcl | undefined;
   region: string;
   roleArn: string;
@@ -513,6 +514,7 @@ export type GetAllLogDrainsDeliveryLogDrains4 = {
   encoding: GetAllLogDrainsDeliveryLogDrainsEncoding;
   endpoint: string;
   fileStructure: GetAllLogDrainsDeliveryFileStructure;
+  kmsKeyId?: string | undefined;
   objectAcl?: GetAllLogDrainsDeliveryObjectAcl | undefined;
   region: string;
   roleArn: string;
@@ -1041,6 +1043,7 @@ export const GetAllLogDrainsDelivery4$inboundSchema: z.ZodType<
     GetAllLogDrainsDeliveryLogDrainsResponse200ApplicationJSONEncoding$inboundSchema,
   endpoint: types.string(),
   fileStructure: GetAllLogDrainsDeliveryLogDrainsFileStructure$inboundSchema,
+  kmsKeyId: types.optional(types.string()),
   objectAcl: types.optional(
     GetAllLogDrainsDeliveryLogDrainsObjectAcl$inboundSchema,
   ),
@@ -2013,6 +2016,7 @@ export const GetAllLogDrainsDeliveryLogDrains4$inboundSchema: z.ZodType<
   encoding: GetAllLogDrainsDeliveryLogDrainsEncoding$inboundSchema,
   endpoint: types.string(),
   fileStructure: GetAllLogDrainsDeliveryFileStructure$inboundSchema,
+  kmsKeyId: types.optional(types.string()),
   objectAcl: types.optional(GetAllLogDrainsDeliveryObjectAcl$inboundSchema),
   region: types.string(),
   roleArn: types.string(),

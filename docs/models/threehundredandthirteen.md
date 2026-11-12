@@ -5,14 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirteen } from "@vercel/sdk/models/payloadcurrent.js";
+import { ThreeHundredAndThirteen } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: ThreeHundredAndThirteen = {
   next: {
-    functionZeroConfigFailover: true,
+    functionDefaultTimeout: 3390.54,
   },
   previous: {
-    functionZeroConfigFailover: false,
+    functionDefaultTimeout: 5785.43,
   },
   projectId: "<id>",
   projectName: "<value>",

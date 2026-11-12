@@ -14,6 +14,14 @@ export type GetDomainsRecordsByRecordIdRequest = {
    * The unique ID of the DNS record
    */
   recordId: string;
+  /**
+   * The Team identifier to perform the request on behalf of.
+   */
+  teamId?: string | undefined;
+  /**
+   * The Team slug to perform the request on behalf of.
+   */
+  slug?: string | undefined;
 };
 
 export const RecordType = {
@@ -62,6 +70,8 @@ export type GetDomainsRecordsByRecordIdResponseBody = {
 /** @internal */
 export type GetDomainsRecordsByRecordIdRequest$Outbound = {
   recordId: string;
+  teamId?: string | undefined;
+  slug?: string | undefined;
 };
 
 /** @internal */
@@ -71,6 +81,8 @@ export const GetDomainsRecordsByRecordIdRequest$outboundSchema: z.ZodType<
   GetDomainsRecordsByRecordIdRequest
 > = z.object({
   recordId: z.string(),
+  teamId: z.string().optional(),
+  slug: z.string().optional(),
 });
 
 export function getDomainsRecordsByRecordIdRequestToJSON(

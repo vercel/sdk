@@ -5,31 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndThirteen } from "@vercel/sdk/models/usereventpayload470actortype.js";
+import { FiveHundredAndThirteen } from "@vercel/sdk/models/usereventpayload474actortype.js";
 
 let value: FiveHundredAndThirteen = {
-  next: {
-    enabled: false,
-    issuerUrls: [
-      "<value 1>",
-      "<value 2>",
-    ],
-  },
-  previous: {
-    enabled: true,
-    issuerUrls: [
-      "<value 1>",
-      "<value 2>",
-    ],
-  },
-  scope: "team",
+  chatId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload513Next](../models/usereventpayload513next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload513Previous](../models/usereventpayload513previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `scope`                                                                        | [models.UserEventPayload513Scope](../models/usereventpayload513scope.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `chatId`           | *string*           | :heavy_check_mark: | N/A                |
+| `chatTitle`        | *string*           | :heavy_minus_sign: | N/A                |

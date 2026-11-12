@@ -5,22 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyFive } from "@vercel/sdk/models/names.js";
+import { TwoHundredAndSixtyFive } from "@vercel/sdk/models/factorsorigin.js";
 
 let value: TwoHundredAndSixtyFive = {
-  justification: "<value>",
-  pattern: "<value>",
+  headerName: "<value>",
   projectId: "<id>",
-  projectName: "<value>",
+  type: "header",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `justification`        | *string*               | :heavy_check_mark:     | N/A                    |
-| `pattern`              | *string*               | :heavy_check_mark:     | N/A                    |
-| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
-| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `headerName`                                                           | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectId`                                                            | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload265Type](../models/usereventpayload265type.md) | :heavy_check_mark:                                                     | N/A                                                                    |

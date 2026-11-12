@@ -5,13 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyFour } from "@vercel/sdk/models/payloadcurrent.js";
+import { ThreeHundredAndThirtyFour } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: ThreeHundredAndThirtyFour = {
   domain: "caring-euphonium.com",
-  projectId: "<id>",
-  projectName: "<value>",
-  target: "<value>",
+  newProjectId: "<id>",
+  newProjectName: "<value>",
+  oldProjectId: "<id>",
+  oldProjectName: "<value>",
 };
 ```
 
@@ -19,9 +20,8 @@ let value: ThreeHundredAndThirtyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `configuredBy`     | *string*           | :heavy_minus_sign: | N/A                |
 | `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `prevConfiguredBy` | *string*           | :heavy_minus_sign: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `target`           | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| `oldProjectId`     | *string*           | :heavy_check_mark: | N/A                |
+| `oldProjectName`   | *string*           | :heavy_check_mark: | N/A                |

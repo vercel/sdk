@@ -5,24 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTen } from "@vercel/sdk/models/usereventpayload404type.js";
+import { FourHundredAndTen } from "@vercel/sdk/models/fourhundredandnine.js";
 
 let value: FourHundredAndTen = {
-  next: {
-    enabled: false,
-    includeDrafts: true,
-    scope: "all",
-  },
+  id: "<id>",
+  type: "postgres",
+  locked: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `action`                                                                       | [models.UserEventPayload410Action](../models/usereventpayload410action.md)     | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `codeReviewSelection`                                                          | [models.PayloadCodeReviewSelection](../models/payloadcodereviewselection.md)   | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `endpoint`                                                                     | [models.UserEventPayload410Endpoint](../models/usereventpayload410endpoint.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `next`                                                                         | [models.UserEventPayload410Next](../models/usereventpayload410next.md)         | :heavy_check_mark:                                                             | Automatic code review settings                                                 |
-| `previous`                                                                     | [models.UserEventPayload410Previous](../models/usereventpayload410previous.md) | :heavy_minus_sign:                                                             | Automatic code review settings                                                 |
-| `source`                                                                       | *string*                                                                       | :heavy_minus_sign:                                                             | Caller-reported surface, not proof of a browser interaction or consent.        |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `access`                                                               | [models.PayloadAccess](../models/payloadaccess.md)                     | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `computeUnitsMax`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `computeUnitsMin`                                                      | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `name`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `suspendTimeoutSeconds`                                                | *number*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload410Type](../models/usereventpayload410type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `locked`                                                               | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |

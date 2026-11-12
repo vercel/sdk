@@ -1,11 +1,11 @@
 # QueryParamSortBy
 
-Field to sort by.
+Field to sort drives by.
 
 ## Example Usage
 
 ```typescript
-import { QueryParamSortBy } from "@vercel/sdk/models/listnamedsandboxesop.js";
+import { QueryParamSortBy } from "@vercel/sdk/models/listdrivesv1op.js";
 
 let value: QueryParamSortBy = "createdAt";
 ```
@@ -13,5 +13,5 @@ let value: QueryParamSortBy = "createdAt";
 ## Values
 
 ```typescript
-"createdAt" | "name" | "statusUpdatedAt" | "currentSnapshotId"
+"createdAt" | "updatedAt" | "name"
 ```

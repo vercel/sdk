@@ -5,10 +5,9 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortyThree } from "@vercel/sdk/models/onehundredandnineteen.js";
+import { OneHundredAndFortyThree } from "@vercel/sdk/models/payloadscope.js";
 
 let value: OneHundredAndFortyThree = {
-  cdnEnabled: true,
   name: "<value>",
 };
 ```
@@ -17,5 +16,5 @@ let value: OneHundredAndFortyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
 | `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `zone`             | *boolean*          | :heavy_minus_sign: | N/A                |

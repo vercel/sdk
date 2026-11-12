@@ -5,38 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyNine } from "@vercel/sdk/models/principalapp.js";
+import { ThreeHundredAndSixtyNine } from "@vercel/sdk/models/usereventprincipal4.js";
 
 let value: ThreeHundredAndSixtyNine = {
-  addedProjects: [
-    {
-      id: "<id>",
-      name: "<value>",
-    },
-  ],
-  addedProviders: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  projectId: "<id>",
-  projectName: "<value>",
-  removedProjects: [],
-  removedProviders: [
-    "<value 1>",
-    "<value 2>",
-  ],
+  oldSsoProtection: "all_except_custom_domains",
+  ssoProtection: "all",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `addedProjects`                                          | [models.AddedProjects](../models/addedprojects.md)[]     | :heavy_check_mark:                                       | N/A                                                      |
-| `addedProviders`                                         | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
-| `enableVercelCiSameRepository`                           | *boolean*                                                | :heavy_minus_sign:                                       | N/A                                                      |
-| `projectId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `projectName`                                            | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `removedProjects`                                        | [models.RemovedProjects](../models/removedprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
-| `removedProviders`                                       | *string*[]                                               | :heavy_check_mark:                                       | N/A                                                      |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `oldSsoProtection`               | *models.PayloadOldSsoProtection* | :heavy_check_mark:               | N/A                              |
+| `projectId`                      | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `projectName`                    | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `ssoProtection`                  | *models.PayloadSsoProtection*    | :heavy_check_mark:               | N/A                              |

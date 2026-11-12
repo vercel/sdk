@@ -5,27 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyFive } from "@vercel/sdk/models/onehundredandnineteen.js";
+import { OneHundredAndTwentyFive } from "@vercel/sdk/models/payloadscope.js";
 
 let value: OneHundredAndTwentyFive = {
-  job: {
-    deployHook: {
-      createdAt: 3393.49,
-      id: "<id>",
-      name: "<value>",
-      ref: "<value>",
-    },
-    state: "Louisiana",
+  oldSsoProtection: {
+    deploymentType: "all",
   },
-  project: {
-    name: "<value>",
+  scope: "organization",
+  ssoProtection: {
+    deploymentType: "prod_deployment_urls_and_all_previews",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `job`                                                                        | [models.Job](../models/job.md)                                               | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload125Project](../models/usereventpayload125project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `oldSsoProtection`                                                                 | [models.OldSsoProtection](../models/oldssoprotection.md)                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `scope`                                                                            | [models.UserEventPayloadScope](../models/usereventpayloadscope.md)                 | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `ssoProtection`                                                                    | [models.UserEventPayloadSsoProtection](../models/usereventpayloadssoprotection.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

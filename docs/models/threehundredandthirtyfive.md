@@ -5,23 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyFive } from "@vercel/sdk/models/payloadcurrent.js";
+import { ThreeHundredAndThirtyFive } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: ThreeHundredAndThirtyFive = {
-  project: {
-    name: "<value>",
-  },
-  projectMembership: {
-    createdAt: 9645.46,
-    role: "ADMIN",
-    uid: "<id>",
-  },
+  domain: "deafening-viability.com",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `project`                                                                    | [models.UserEventPayload335Project](../models/usereventpayload335project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectMembership`                                                          | [models.ProjectMembership](../models/projectmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
+| `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
+| `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |

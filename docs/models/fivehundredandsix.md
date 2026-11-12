@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndSix } from "@vercel/sdk/models/usereventpayload470actortype.js";
+import { FiveHundredAndSix } from "@vercel/sdk/models/usereventpayload474actortype.js";
 
 let value: FiveHundredAndSix = {
-  cadence: "monthly",
-  projectIds: [],
-  team: {
-    id: "<id>",
-  },
+  protectedProjectCount: 3525.6,
+  protectionEnabled: true,
+  vulnerabilities: [],
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload506Team](../models/usereventpayload506team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `protectedProjectCount` | *number*                | :heavy_check_mark:      | N/A                     |
+| `protectionEnabled`     | *boolean*               | :heavy_check_mark:      | N/A                     |
+| `vulnerabilities`       | *string*[]              | :heavy_check_mark:      | N/A                     |

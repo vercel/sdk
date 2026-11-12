@@ -5,17 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeven } from "@vercel/sdk/models/usereventpayload404type.js";
+import { FourHundredAndSeven } from "@vercel/sdk/models/usereventprincipal4.js";
 
-let value: FourHundredAndSeven = {};
+let value: FourHundredAndSeven = {
+  store: {
+    id: "<id>",
+    type: "edge-config",
+  },
+  originTeamId: "<id>",
+  originTeamName: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `actorId`                                                                        | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload407ActorType](../models/usereventpayload407actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `caseNumber`                                                                     | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `client`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `store`                                                            | [models.UserEventPayloadStore](../models/usereventpayloadstore.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `originTeamId`                                                     | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |
+| `originTeamName`                                                   | *string*                                                           | :heavy_check_mark:                                                 | N/A                                                                |

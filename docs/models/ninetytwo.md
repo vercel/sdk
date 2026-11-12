@@ -5,22 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetyTwo } from "@vercel/sdk/models/rule.js";
+import { NinetyTwo } from "@vercel/sdk/models/fiftytwo.js";
 
 let value: NinetyTwo = {
-  bulkRedirectsLimit: 9175.11,
-  prevBulkRedirectsLimit: 7050.83,
-  project: {
-    id: "<id>",
-    name: "<value>",
+  action: "mutate",
+  data: {
+    "key": "<value>",
+    "key1": "<value>",
+    "key2": "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `bulkRedirectsLimit`                                                   | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `prevBulkRedirectsLimit`                                               | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `project`                                                              | [models.UserEventPayloadProject](../models/usereventpayloadproject.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload92Action](../models/usereventpayload92action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `data`                                                                   | Record<string, *any*>                                                    | :heavy_check_mark:                                                       | N/A                                                                      |

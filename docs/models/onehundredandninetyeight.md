@@ -5,22 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndNinetyEight } from "@vercel/sdk/models/payloadinitiator.js";
+import { OneHundredAndNinetyEight } from "@vercel/sdk/models/onehundredandfiftyeight.js";
 
 let value: OneHundredAndNinetyEight = {
-  fromDeploymentId: "<id>",
+  environment: "<value>",
+  expiresIn: 1920.87,
+  flags: [],
   projectId: "<id>",
-  projectName: "<value>",
-  toDeploymentId: "<id>",
+  projectIds: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `fromDeploymentId` | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
-| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `environment`                                                         | *string*                                                              | :heavy_check_mark:                                                    | N/A                                                                   |
+| `expiresIn`                                                           | *number*                                                              | :heavy_check_mark:                                                    | Seconds until the overrides expire.                                   |
+| `flags`                                                               | *string*[]                                                            | :heavy_check_mark:                                                    | The keys of the overridden flags, never their values.                 |
+| `projectId`                                                           | *string*                                                              | :heavy_check_mark:                                                    | N/A                                                                   |
+| `projectIds`                                                          | *string*[]                                                            | :heavy_check_mark:                                                    | The projects that accept the overrides: a whole microfrontends group. |
+| `projectName`                                                         | *string*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |

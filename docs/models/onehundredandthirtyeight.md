@@ -5,14 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyEight } from "@vercel/sdk/models/onehundredandnineteen.js";
+import { OneHundredAndThirtyEight } from "@vercel/sdk/models/payloadscope.js";
 
 let value: OneHundredAndThirtyEight = {
-  domain: "infinite-sauerkraut.biz",
-  id: "<id>",
-  name: "<value>",
-  type: "<value>",
-  value: "<value>",
+  deploymentId: "<id>",
+  deploymentName: "<value>",
+  deploymentUrl: "https://flawless-marketplace.org/",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -20,9 +20,8 @@ let value: OneHundredAndThirtyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `mxPriority`       | *number*           | :heavy_minus_sign: | N/A                |
-| `name`             | *string*           | :heavy_check_mark: | N/A                |
-| `type`             | *string*           | :heavy_check_mark: | N/A                |
-| `value`            | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentName`   | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

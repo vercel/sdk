@@ -228,7 +228,7 @@ export type CreateProjectSsoProtection = {
 /**
  * The Vercel region sandboxes in this project are created in by default.
  */
-export const Region = {
+export const CreateProjectRegion = {
   Iad1: "iad1",
   Sfo1: "sfo1",
   Cle1: "cle1",
@@ -252,7 +252,7 @@ export const Region = {
 /**
  * The Vercel region sandboxes in this project are created in by default.
  */
-export type Region = ClosedEnum<typeof Region>;
+export type CreateProjectRegion = ClosedEnum<typeof CreateProjectRegion>;
 
 export const CreateProjectFailoverRegions = {
   Iad1: "iad1",
@@ -286,7 +286,7 @@ export type Sandbox = {
   /**
    * The Vercel region sandboxes in this project are created in by default.
    */
-  region?: Region | undefined;
+  region?: CreateProjectRegion | undefined;
   /**
    * The regions sandboxes in this project fall back to when they cannot be created in `region`.
    */
@@ -1905,8 +1905,9 @@ export function createProjectSsoProtectionToJSON(
 }
 
 /** @internal */
-export const Region$outboundSchema: z.ZodNativeEnum<typeof Region> = z
-  .nativeEnum(Region);
+export const CreateProjectRegion$outboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectRegion
+> = z.nativeEnum(CreateProjectRegion);
 
 /** @internal */
 export const CreateProjectFailoverRegions$outboundSchema: z.ZodNativeEnum<
@@ -1925,7 +1926,7 @@ export const Sandbox$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Sandbox
 > = z.object({
-  region: Region$outboundSchema.optional(),
+  region: CreateProjectRegion$outboundSchema.optional(),
   failoverRegions: z.array(CreateProjectFailoverRegions$outboundSchema)
     .optional(),
 });

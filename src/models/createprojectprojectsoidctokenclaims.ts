@@ -983,6 +983,10 @@ export type CreateProjectPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  desktopDevice?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   domain?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -1367,7 +1371,15 @@ export type CreateProjectPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  organizationAdmin?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   organizationDomain?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  organizationMember?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -2325,7 +2337,7 @@ export type CreateProjectProjectsFailoverRegions = ClosedEnum<
   typeof CreateProjectProjectsFailoverRegions
 >;
 
-export const CreateProjectRegion = {
+export const CreateProjectProjectsRegion = {
   Arn1: "arn1",
   Bom1: "bom1",
   Cdg1: "cdg1",
@@ -2346,11 +2358,13 @@ export const CreateProjectRegion = {
   Syd1: "syd1",
   Yul1: "yul1",
 } as const;
-export type CreateProjectRegion = ClosedEnum<typeof CreateProjectRegion>;
+export type CreateProjectProjectsRegion = ClosedEnum<
+  typeof CreateProjectProjectsRegion
+>;
 
 export type CreateProjectSandbox = {
   failoverRegions?: Array<CreateProjectProjectsFailoverRegions> | undefined;
-  region?: CreateProjectRegion | undefined;
+  region?: CreateProjectProjectsRegion | undefined;
 };
 
 export const CreateProjectLogHeaders2 = {
@@ -4201,6 +4215,7 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   ),
   deploymentRollback: types.optional(z.array(ACLAction$inboundSchema)),
   deploymentV0: types.optional(z.array(ACLAction$inboundSchema)),
+  desktopDevice: types.optional(z.array(ACLAction$inboundSchema)),
   domain: types.optional(z.array(ACLAction$inboundSchema)),
   domainAcceptDelegation: types.optional(z.array(ACLAction$inboundSchema)),
   domainAuthCodes: types.optional(z.array(ACLAction$inboundSchema)),
@@ -4321,7 +4336,9 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   openTelemetryEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
   optionsAllowlist: types.optional(z.array(ACLAction$inboundSchema)),
   organization: types.optional(z.array(ACLAction$inboundSchema)),
+  organizationAdmin: types.optional(z.array(ACLAction$inboundSchema)),
   organizationDomain: types.optional(z.array(ACLAction$inboundSchema)),
+  organizationMember: types.optional(z.array(ACLAction$inboundSchema)),
   organizationTeam: types.optional(z.array(ACLAction$inboundSchema)),
   ownEvent: types.optional(z.array(ACLAction$inboundSchema)),
   pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
@@ -5268,9 +5285,9 @@ export const CreateProjectProjectsFailoverRegions$inboundSchema:
   );
 
 /** @internal */
-export const CreateProjectRegion$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectRegion
-> = z.nativeEnum(CreateProjectRegion);
+export const CreateProjectProjectsRegion$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectProjectsRegion
+> = z.nativeEnum(CreateProjectProjectsRegion);
 
 /** @internal */
 export const CreateProjectSandbox$inboundSchema: z.ZodType<
@@ -5281,7 +5298,7 @@ export const CreateProjectSandbox$inboundSchema: z.ZodType<
   failoverRegions: types.optional(
     z.array(CreateProjectProjectsFailoverRegions$inboundSchema),
   ),
-  region: types.optional(CreateProjectRegion$inboundSchema),
+  region: types.optional(CreateProjectProjectsRegion$inboundSchema),
 });
 
 export function createProjectSandboxFromJSON(

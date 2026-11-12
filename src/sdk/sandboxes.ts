@@ -143,10 +143,12 @@ export class Sandboxes extends ClientSDK {
   }
 
   /**
-   * List drives
+   * Deprecated: Use GET /v1/drives. Requires the read:drive app scope instead of read:sandbox, and drive:list instead of vercelRun:read. List drives
    *
    * @remarks
    * Retrieves a paginated list of drives belonging to a specific project.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async listDrives(
     request: ListDrivesRequest,
@@ -160,10 +162,12 @@ export class Sandboxes extends ClientSDK {
   }
 
   /**
-   * Get a drive
+   * Deprecated: Use GET /v1/drives/:nameOrId. Requires the read:drive app scope instead of read:sandbox, and drive:read instead of vercelRun:read. Get a drive
    *
    * @remarks
    * Gets an existing drive by project and name or drive ID. Returns 404 if doesn't exist.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getDrive(
     request: GetDriveRequest,
@@ -177,10 +181,13 @@ export class Sandboxes extends ClientSDK {
   }
 
   /**
-   * Get or create a drive
+   * Deprecated: Use POST /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:create instead of vercelRun:create.
+   * Emits drive-created activity events instead of sandbox-drive-created. Get or create a drive
    *
    * @remarks
    * Gets an existing drive by project and name, or creates it when it does not exist.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getOrCreateDrive(
     request: GetOrCreateDriveRequest,
@@ -194,10 +201,13 @@ export class Sandboxes extends ClientSDK {
   }
 
   /**
-   * Delete a drive
+   * Deprecated: Use DELETE /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
+   * Emits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive
    *
    * @remarks
    * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async deleteDrive(
     request: DeleteDriveRequest,
@@ -211,10 +221,13 @@ export class Sandboxes extends ClientSDK {
   }
 
   /**
-   * Fork a drive
+   * Deprecated: Use POST /v1/drives/:name/fork. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:read and drive:create instead of vercelRun:read and vercelRun:create.
+   * Emits drive-created activity events instead of sandbox-drive-created. Fork a drive
    *
    * @remarks
    * Fork the provided drive into a new one with the provided name, inheriting the region and max size.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async forkDrive(
     request: ForkDriveRequest,

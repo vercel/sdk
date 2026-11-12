@@ -111,6 +111,7 @@ export type Delivery3 = {
   roleArn: string;
   region: string;
   serverSideEncryption?: ServerSideEncryption | undefined;
+  kmsKeyId?: string | undefined;
   objectAcl?: ObjectAcl | undefined;
 };
 
@@ -302,6 +303,7 @@ export type CreateDrainDelivery4 = {
     CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding;
   endpoint: string;
   fileStructure: CreateDrainDeliveryFileStructure;
+  kmsKeyId?: string | undefined;
   objectAcl?: CreateDrainDeliveryObjectAcl | undefined;
   region: string;
   roleArn: string;
@@ -714,6 +716,7 @@ export type CreateDrainDeliveryDrains4 = {
   encoding: CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding;
   endpoint: string;
   fileStructure: CreateDrainDeliveryDrainsFileStructure;
+  kmsKeyId?: string | undefined;
   objectAcl?: CreateDrainDeliveryDrainsObjectAcl | undefined;
   region: string;
   roleArn: string;
@@ -1247,6 +1250,7 @@ export type Delivery3$Outbound = {
   roleArn: string;
   region: string;
   serverSideEncryption: string;
+  kmsKeyId?: string | undefined;
   objectAcl?: string | undefined;
 };
 
@@ -1264,6 +1268,7 @@ export const Delivery3$outboundSchema: z.ZodType<
   roleArn: z.string(),
   region: z.string(),
   serverSideEncryption: ServerSideEncryption$outboundSchema.default("AES256"),
+  kmsKeyId: z.string().optional(),
   objectAcl: ObjectAcl$outboundSchema.optional(),
 });
 
@@ -1727,6 +1732,7 @@ export const CreateDrainDelivery4$inboundSchema: z.ZodType<
     CreateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding$inboundSchema,
   endpoint: types.string(),
   fileStructure: CreateDrainDeliveryFileStructure$inboundSchema,
+  kmsKeyId: types.optional(types.string()),
   objectAcl: types.optional(CreateDrainDeliveryObjectAcl$inboundSchema),
   region: types.string(),
   roleArn: types.string(),
@@ -2658,6 +2664,7 @@ export const CreateDrainDeliveryDrains4$inboundSchema: z.ZodType<
     CreateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema,
   endpoint: types.string(),
   fileStructure: CreateDrainDeliveryDrainsFileStructure$inboundSchema,
+  kmsKeyId: types.optional(types.string()),
   objectAcl: types.optional(CreateDrainDeliveryDrainsObjectAcl$inboundSchema),
   region: types.string(),
   roleArn: types.string(),

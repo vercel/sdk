@@ -24929,6 +24929,10 @@
                                               "terminationGracePeriodSeconds": {
                                                 "type": "number"
                                               },
+                                              "buildTarget": {
+                                                "type": "string",
+                                                "description": "Dockerfile stage from an `entrypoint` like `Dockerfile#worker`."
+                                              },
                                               "name": {
                                                 "type": "string"
                                               }
@@ -25728,6 +25732,10 @@
                                               },
                                               "terminationGracePeriodSeconds": {
                                                 "type": "number"
+                                              },
+                                              "buildTarget": {
+                                                "type": "string",
+                                                "description": "Dockerfile stage from an `entrypoint` like `Dockerfile#worker`."
                                               },
                                               "name": {
                                                 "type": "string"
@@ -34035,6 +34043,10 @@
                                               "terminationGracePeriodSeconds": {
                                                 "type": "number"
                                               },
+                                              "buildTarget": {
+                                                "type": "string",
+                                                "description": "Dockerfile stage from an `entrypoint` like `Dockerfile#worker`."
+                                              },
                                               "name": {
                                                 "type": "string"
                                               }
@@ -34834,6 +34846,10 @@
                                               },
                                               "terminationGracePeriodSeconds": {
                                                 "type": "number"
+                                              },
+                                              "buildTarget": {
+                                                "type": "string",
+                                                "description": "Dockerfile stage from an `entrypoint` like `Dockerfile#worker`."
                                               },
                                               "name": {
                                                 "type": "string"
@@ -42122,6 +42138,10 @@
                                           "terminationGracePeriodSeconds": {
                                             "type": "number"
                                           },
+                                          "buildTarget": {
+                                            "type": "string",
+                                            "description": "Dockerfile stage from an `entrypoint` like `Dockerfile#worker`."
+                                          },
                                           "name": {
                                             "type": "string"
                                           }
@@ -42921,6 +42941,10 @@
                                           },
                                           "terminationGracePeriodSeconds": {
                                             "type": "number"
+                                          },
+                                          "buildTarget": {
+                                            "type": "string",
+                                            "description": "Dockerfile stage from an `entrypoint` like `Dockerfile#worker`."
                                           },
                                           "name": {
                                             "type": "string"
@@ -46858,6 +46882,24 @@
               "description": "The domain name",
               "example": "example.com"
             }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
           }
         ]
       }
@@ -46970,6 +47012,24 @@
             "schema": {
               "type": "string",
               "description": "The unique ID of the DNS record"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ]
@@ -51361,7 +51421,7 @@
     },
     "/v9/domains/{domain}/verification": {
       "get": {
-        "description": "Get the TXT verification record needed to claim ownership of a domain for the authenticated team. The caller must add this TXT record to `_vercel.{domain}` in their DNS configuration, then call POST /domains/:domain/claim to complete the ownership transfer.",
+        "description": "Get the TXT verification record needed to claim ownership of a domain for the authenticated team. The caller must add this TXT record to `_vercel.{domain}` in their DNS configuration, then call POST /domains/:domain/claim to complete the ownership transfer. Records expire at the returned expiresAt (at most 24 hours) or when ownership changes.",
         "operationId": "getDomainVerificationRecord",
         "security": [
           {
@@ -51379,6 +51439,9 @@
               "application/json": {
                 "schema": {
                   "properties": {
+                    "expiresAt": {
+                      "type": "number"
+                    },
                     "txtRecord": {
                       "type": "string"
                     },
@@ -51387,6 +51450,7 @@
                     }
                   },
                   "required": [
+                    "expiresAt",
                     "txtRecord",
                     "verificationDomain"
                   ],
@@ -51405,6 +51469,9 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": ""
+          },
+          "409": {
             "description": ""
           },
           "410": {
@@ -51446,7 +51513,7 @@
     },
     "/v9/domains/{domain}/claim": {
       "post": {
-        "description": "Claim ownership of a domain for the authenticated team by verifying a TXT record. The caller must first add a TXT record to `_vercel.{domain}` (obtained from GET /domains/:domain/verification), then call this endpoint to complete the ownership transfer. If the TXT record is verified, the domain ownership will be transferred to the caller's team, even if the domain is currently owned by another user or team.",
+        "description": "Claim ownership of a domain for the authenticated team by verifying a TXT record. The caller must first add a TXT record to `_vercel.{domain}` (obtained from GET /domains/:domain/verification), then call this endpoint to complete the ownership transfer. Proof must be unexpired and issued for the domain's current ownership. If the TXT record is verified, the domain ownership will be transferred to the caller's team, even if the domain is currently owned by another user or team.",
         "operationId": "claimDomainOwnership",
         "security": [
           {
@@ -51654,6 +51721,9 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
+            "description": ""
+          },
+          "409": {
             "description": ""
           },
           "410": {
@@ -53661,6 +53731,9 @@
                                               "hive"
                                             ]
                                           },
+                                          "kmsKeyId": {
+                                            "type": "string"
+                                          },
                                           "objectAcl": {
                                             "type": "string",
                                             "enum": [
@@ -54218,6 +54291,9 @@
                                             "enum": [
                                               "hive"
                                             ]
+                                          },
+                                          "kmsKeyId": {
+                                            "type": "string"
                                           },
                                           "objectAcl": {
                                             "type": "string",
@@ -55095,6 +55171,9 @@
                                     "hive"
                                   ]
                                 },
+                                "kmsKeyId": {
+                                  "type": "string"
+                                },
                                 "objectAcl": {
                                   "type": "string",
                                   "enum": [
@@ -55649,6 +55728,9 @@
                                   "enum": [
                                     "hive"
                                   ]
+                                },
+                                "kmsKeyId": {
+                                  "type": "string"
                                 },
                                 "objectAcl": {
                                   "type": "string",
@@ -56417,6 +56499,9 @@
                             ],
                             "default": "AES256"
                           },
+                          "kmsKeyId": {
+                            "type": "string"
+                          },
                           "objectAcl": {
                             "type": "string",
                             "enum": [
@@ -56745,6 +56830,9 @@
                                         "enum": [
                                           "hive"
                                         ]
+                                      },
+                                      "kmsKeyId": {
+                                        "type": "string"
                                       },
                                       "objectAcl": {
                                         "type": "string",
@@ -57303,6 +57391,9 @@
                                         "enum": [
                                           "hive"
                                         ]
+                                      },
+                                      "kmsKeyId": {
+                                        "type": "string"
                                       },
                                       "objectAcl": {
                                         "type": "string",
@@ -58081,6 +58172,9 @@
                                 "hive"
                               ]
                             },
+                            "kmsKeyId": {
+                              "type": "string"
+                            },
                             "objectAcl": {
                               "type": "string",
                               "enum": [
@@ -58717,6 +58811,9 @@
                                     "hive"
                                   ]
                                 },
+                                "kmsKeyId": {
+                                  "type": "string"
+                                },
                                 "objectAcl": {
                                   "type": "string",
                                   "enum": [
@@ -59271,6 +59368,9 @@
                                   "enum": [
                                     "hive"
                                   ]
+                                },
+                                "kmsKeyId": {
+                                  "type": "string"
                                 },
                                 "objectAcl": {
                                   "type": "string",
@@ -60050,6 +60150,9 @@
                             ],
                             "default": "AES256"
                           },
+                          "kmsKeyId": {
+                            "type": "string"
+                          },
                           "objectAcl": {
                             "type": "string",
                             "enum": [
@@ -60446,6 +60549,9 @@
                             ],
                             "default": "AES256"
                           },
+                          "kmsKeyId": {
+                            "type": "string"
+                          },
                           "objectAcl": {
                             "type": "string",
                             "enum": [
@@ -60457,6 +60563,659 @@
                         }
                       }
                     ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/drives": {
+      "get": {
+        "description": "Retrieves a paginated list of drives belonging to a specific project.",
+        "operationId": "listDrivesV1",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "List drives",
+        "tags": [
+          "drives"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drives": {
+                      "items": {
+                        "$ref": "#/components/schemas/Drive"
+                      },
+                      "type": "array"
+                    },
+                    "pagination": {
+                      "properties": {
+                        "count": {
+                          "type": "number"
+                        },
+                        "next": {
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "count",
+                        "next"
+                      ],
+                      "type": "object"
+                    }
+                  },
+                  "required": [
+                    "drives",
+                    "pagination"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectId",
+            "description": "The project ID or name associated with the drives. Required unless using a Vercel OIDC token scoped to a project.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The project ID or name associated with the drives. Required unless using a Vercel OIDC token scoped to a project.",
+              "example": "prj_abc123"
+            }
+          },
+          {
+            "name": "limit",
+            "description": "Maximum number of drives to return in the response. Used for pagination.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Maximum number of drives to return in the response. Used for pagination.",
+              "type": "number",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20,
+              "example": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "description": "Opaque pagination cursor from a previous response.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Opaque pagination cursor from a previous response.",
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortBy",
+            "description": "Field to sort drives by.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Field to sort drives by.",
+              "type": "string",
+              "enum": [
+                "createdAt",
+                "updatedAt",
+                "name"
+              ],
+              "default": "createdAt"
+            }
+          },
+          {
+            "name": "namePrefix",
+            "description": "Filter drives whose name starts with this prefix. Only valid when sortBy=name.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Filter drives whose name starts with this prefix. Only valid when sortBy=name.",
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "description": "Sort direction for results.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Sort direction for results.",
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/drives/{nameOrId}": {
+      "get": {
+        "description": "Gets an existing drive by project and name or drive ID. Returns 404 if doesn't exist.",
+        "operationId": "getDriveV1",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get a drive",
+        "tags": [
+          "drives"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drive": {
+                      "$ref": "#/components/schemas/Drive"
+                    }
+                  },
+                  "required": [
+                    "drive"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "nameOrId",
+            "description": "The drive name or ID.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The drive name or ID.",
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "maxLength": 64,
+              "example": "workspace"
+            }
+          },
+          {
+            "name": "projectId",
+            "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
+              "example": "prj_abc123"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/drives/{name}": {
+      "post": {
+        "description": "Gets an existing drive by project and name, or creates it when it does not exist.",
+        "operationId": "getOrCreateDriveV1",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Get or create a drive",
+        "tags": [
+          "drives"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drive": {
+                      "$ref": "#/components/schemas/Drive"
+                    }
+                  },
+                  "required": [
+                    "drive"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drive": {
+                      "$ref": "#/components/schemas/Drive"
+                    }
+                  },
+                  "required": [
+                    "drive"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "402": {
+            "description": "The account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": ""
+          },
+          "503": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "description": "Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).",
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "maxLength": 64,
+              "example": "workspace"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "projectId": {
+                    "type": "string",
+                    "description": "The project ID or name to associate the drive with. Required unless using a Vercel OIDC token scoped to a project.",
+                    "example": "prj_abc123"
+                  },
+                  "maxSizeBytes": {
+                    "type": "integer",
+                    "description": "Maximum drive size in bytes. Must be a multiple of 4096 bytes. Defaults to 1 TiB when omitted (1 GiB for Hobby). The maximum quota is 16 TiB. Request a quota above 16 TiB at https://vercel.com/help."
+                  },
+                  "region": {
+                    "type": "string",
+                    "description": "Region where the drive is stored. Defaults to iad1.",
+                    "enum": [
+                      "iad1",
+                      "sfo1",
+                      "cle1",
+                      "cdg1",
+                      "fra1",
+                      "arn1",
+                      "sin1",
+                      "pdx1",
+                      "lhr1",
+                      "icn1",
+                      "bom1",
+                      "cpt1",
+                      "dub1",
+                      "gru1",
+                      "hkg1",
+                      "syd1",
+                      "yul1",
+                      "hnd1",
+                      "kix1"
+                    ],
+                    "default": "iad1",
+                    "example": "iad1"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.",
+        "operationId": "deleteDriveV1",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Delete a drive",
+        "tags": [
+          "drives"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drive": {
+                      "$ref": "#/components/schemas/Drive"
+                    }
+                  },
+                  "required": [
+                    "drive"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "description": "Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).",
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "maxLength": 64,
+              "example": "workspace"
+            }
+          },
+          {
+            "name": "projectId",
+            "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
+              "example": "prj_abc123"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
+      }
+    },
+    "/v1/drives/{name}/fork": {
+      "post": {
+        "description": "Fork the provided drive into a new one with the provided name, inheriting the region and max size.",
+        "operationId": "forkDriveV1",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Fork a drive",
+        "tags": [
+          "drives"
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drive": {
+                      "$ref": "#/components/schemas/Drive"
+                    }
+                  },
+                  "required": [
+                    "drive"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "402": {
+            "description": "The account is missing a payment so payment method must be updated"
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": ""
+          },
+          "503": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "description": "Name of the source drive to fork.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "maxLength": 64,
+              "description": "Name of the source drive to fork.",
+              "example": "workspace"
+            }
+          },
+          {
+            "name": "projectId",
+            "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
+              "example": "prj_abc123"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "name"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9_-]+$",
+                    "maxLength": 64,
+                    "description": "Name for the forked drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).",
+                    "example": "workspace-fork"
                   }
                 }
               }
@@ -92044,6 +92803,13 @@
                                 "type": "array",
                                 "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                               },
+                              "desktopDevice": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
                               "domain": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
@@ -92716,7 +93482,21 @@
                                 "type": "array",
                                 "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                               },
+                              "organizationAdmin": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
                               "organizationDomain": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
+                              "organizationMember": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -117313,6 +118093,13 @@
                                     "type": "array",
                                     "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                                   },
+                                  "desktopDevice": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
                                   "domain": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -117985,7 +118772,21 @@
                                     "type": "array",
                                     "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                                   },
+                                  "organizationAdmin": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
                                   "organizationDomain": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
+                                  "organizationMember": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -126028,6 +126829,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "desktopDevice": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "domain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -126700,7 +127508,21 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "organizationAdmin": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "organizationDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "organizationMember": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -135050,6 +135872,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "desktopDevice": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "domain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -135722,7 +136551,21 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "organizationAdmin": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "organizationDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "organizationMember": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -143319,6 +144162,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "desktopDevice": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "domain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -143991,7 +144841,21 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "organizationAdmin": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "organizationDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "organizationMember": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -152966,6 +153830,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "desktopDevice": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "domain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -153638,7 +154509,21 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "organizationAdmin": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "organizationDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "organizationMember": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -161248,6 +162133,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "desktopDevice": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "domain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -161920,7 +162812,21 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "organizationAdmin": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "organizationDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "organizationMember": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -177690,6 +178596,9 @@
           "404": {
             "description": ""
           },
+          "409": {
+            "description": ""
+          },
           "410": {
             "description": ""
           },
@@ -182680,6 +183589,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "desktopDevice": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "domain": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -183352,7 +184268,21 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "organizationAdmin": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "organizationDomain": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "organizationMember": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -187931,10 +188861,11 @@
             "bearerToken": []
           }
         ],
-        "summary": "List drives",
+        "summary": "Deprecated: Use GET /v1/drives. Requires the read:drive app scope instead of read:sandbox, and drive:list instead of vercelRun:read. List drives",
         "tags": [
           "sandboxes"
         ],
+        "deprecated": true,
         "responses": {
           "200": {
             "description": "",
@@ -188103,10 +189034,11 @@
             "bearerToken": []
           }
         ],
-        "summary": "Get a drive",
+        "summary": "Deprecated: Use GET /v1/drives/:nameOrId. Requires the read:drive app scope instead of read:sandbox, and drive:read instead of vercelRun:read. Get a drive",
         "tags": [
           "sandboxes"
         ],
+        "deprecated": true,
         "responses": {
           "200": {
             "description": "",
@@ -188203,10 +189135,11 @@
             "bearerToken": []
           }
         ],
-        "summary": "Get or create a drive",
+        "summary": "Deprecated: Use POST /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:create instead of vercelRun:create.\nEmits drive-created activity events instead of sandbox-drive-created. Get or create a drive",
         "tags": [
           "sandboxes"
         ],
+        "deprecated": true,
         "responses": {
           "200": {
             "description": "",
@@ -188365,10 +189298,11 @@
             "bearerToken": []
           }
         ],
-        "summary": "Delete a drive",
+        "summary": "Deprecated: Use DELETE /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.\nEmits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive",
         "tags": [
           "sandboxes"
         ],
+        "deprecated": true,
         "responses": {
           "200": {
             "description": "",
@@ -188468,10 +189402,11 @@
             "bearerToken": []
           }
         ],
-        "summary": "Fork a drive",
+        "summary": "Deprecated: Use POST /v1/drives/:name/fork. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:read and drive:create instead of vercelRun:read and vercelRun:create.\nEmits drive-created activity events instead of sandbox-drive-created. Fork a drive",
         "tags": [
           "sandboxes"
         ],
+        "deprecated": true,
         "responses": {
           "201": {
             "description": "",
@@ -217116,7 +218051,7 @@
     },
     "/v1/teams/{teamId}/request": {
       "post": {
-        "description": "Request access to a team as a member. An owner has to approve the request. Only 100 users can request access to a team at the same time.",
+        "description": "Request access to a team as a member. An owner has to approve the request. Only 100 users can request access to a team at the same time. Organization-directory access must be granted through the directory administrator.",
         "operationId": "requestAccessToTeam",
         "security": [
           {
@@ -217370,7 +218305,7 @@
     },
     "/v1/teams/{teamId}/request/{userId}": {
       "get": {
-        "description": "Check the status of a join request. It'll respond with a 404 if the request has been declined. If no `userId` path segment was provided, this endpoint will instead return the status of the authenticated user.",
+        "description": "Check the status of a join request. It'll respond with a 404 if the request has been declined or enabled directory reads suppress access. If no `userId` path segment was provided, this endpoint will instead return the status of the authenticated user.",
         "operationId": "getTeamAccessRequest",
         "security": [
           {
@@ -238554,6 +239489,22 @@
             "type": "string",
             "description": "The CIDR range of the Network."
           },
+          "connectionTesting": {
+            "properties": {
+              "available": {
+                "type": "boolean",
+                "enum": [
+                  false,
+                  true
+                ]
+              }
+            },
+            "required": [
+              "available"
+            ],
+            "type": "object",
+            "description": "Whether both dedicated connection test sources are provisioned and ready. Feature flag access and management permission are checked on submission."
+          },
           "createdAt": {
             "type": "number",
             "description": "The date at which the Network was created, represented as a UNIX timestamp since EPOCH."
@@ -238568,14 +239519,14 @@
             "properties": {
               "count": {
                 "type": "number",
-                "description": "The number of AWS Route53 Hosted Zones associated with the Network."
+                "description": "The number of customer-managed AWS Route53 Hosted Zones associated with the Network."
               }
             },
             "required": [
               "count"
             ],
             "type": "object",
-            "description": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
+            "description": "Metadata about customer-managed AWS Route53 Hosted Zones associated with the Network."
           },
           "id": {
             "type": "string",
@@ -238589,7 +239540,7 @@
             "properties": {
               "count": {
                 "type": "number",
-                "description": "The number of AWS Route53 Hosted Zones associated with the Network."
+                "description": "The number of AWS VPC Peering Connections associated with the Network."
               }
             },
             "required": [
@@ -243960,6 +244911,82 @@
         "additionalProperties": false,
         "description": "The domain was bought too recently to determine verification status."
       },
+      "Drive": {
+        "properties": {
+          "createdAt": {
+            "type": "number",
+            "description": "The time when the drive was created, in milliseconds since the epoch.",
+            "example": 1750344501629
+          },
+          "currentSandboxName": {
+            "type": "string",
+            "description": "Current sandbox name the drive is attached to, if any.",
+            "example": "my-sandbox"
+          },
+          "currentSessionId": {
+            "type": "string",
+            "description": "Current session ID the drive is attached to, if any.",
+            "example": "sbx_123"
+          },
+          "id": {
+            "type": "string",
+            "description": "The unique drive ID.",
+            "example": "drive_abc123"
+          },
+          "maxSizeBytes": {
+            "type": "number",
+            "description": "The maximum drive size in bytes.",
+            "example": 1099511627776
+          },
+          "name": {
+            "type": "string",
+            "description": "The unique drive name within the project.",
+            "example": "workspace"
+          },
+          "parentDriveId": {
+            "type": "string",
+            "description": "The ID of the source drive when this drive is a fork."
+          },
+          "projectId": {
+            "type": "string",
+            "description": "The project that owns the drive.",
+            "example": "prj_abc123"
+          },
+          "region": {
+            "type": "string",
+            "description": "The region where the drive is stored.",
+            "example": "iad1"
+          },
+          "rootDriveId": {
+            "type": "string",
+            "description": "The ID of the original drive at the root of this fork."
+          },
+          "updatedAt": {
+            "type": "number",
+            "description": "The last time the drive was updated, in milliseconds since the epoch.",
+            "example": 1750344501629
+          },
+          "workloadType": {
+            "type": "string",
+            "enum": [
+              "sandbox",
+              "v0"
+            ],
+            "description": "The workload type of this drive."
+          }
+        },
+        "required": [
+          "createdAt",
+          "id",
+          "maxSizeBytes",
+          "name",
+          "projectId",
+          "region",
+          "updatedAt"
+        ],
+        "type": "object",
+        "description": "This object contains information related to a Vercel Sandbox Drive."
+      },
       "GlobalConfigItemValue": {
         "nullable": true,
         "oneOf": [
@@ -244537,6 +245564,26 @@
                   "boardId": {
                     "type": "string"
                   },
+                  "grantId": {
+                    "type": "string"
+                  },
+                  "operationId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "boardId",
+                  "grantId",
+                  "operationId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "boardId": {
+                    "type": "string"
+                  },
                   "operationId": {
                     "type": "string"
                   }
@@ -244544,6 +245591,37 @@
                 "required": [
                   "boardId",
                   "operationId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "boardId": {
+                    "type": "string"
+                  },
+                  "environment": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "operationId": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "boardId",
+                  "environment",
+                  "name",
+                  "operationId",
+                  "projectId"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -246704,6 +247782,7 @@
                         "read-write:blob",
                         "read-write:connect",
                         "read-write:deployment",
+                        "read-write:desktop-device",
                         "read-write:domain",
                         "read-write:domain-registrar",
                         "read-write:drains",
@@ -246838,6 +247917,7 @@
                         "read-write:blob",
                         "read-write:connect",
                         "read-write:deployment",
+                        "read-write:desktop-device",
                         "read-write:domain",
                         "read-write:domain-registrar",
                         "read-write:drains",
@@ -254117,6 +255197,46 @@
                 },
                 "required": [
                   "action"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "environment": {
+                    "type": "string"
+                  },
+                  "expiresIn": {
+                    "type": "number",
+                    "description": "Seconds until the overrides expire."
+                  },
+                  "flags": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "description": "The keys of the overridden flags, never their values."
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectIds": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "description": "The projects that accept the overrides: a whole microfrontends group."
+                  },
+                  "projectName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "environment",
+                  "expiresIn",
+                  "flags",
+                  "projectId",
+                  "projectIds"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -261985,6 +263105,22 @@
                   "projectId": {
                     "type": "string"
                   },
+                  "sandboxId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "sandboxId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
                   "projectName": {
                     "type": "string"
                   },
@@ -263802,6 +264938,13 @@
                           "all",
                           "selected"
                         ]
+                      },
+                      "repositoryScope": {
+                        "type": "string",
+                        "enum": [
+                          "all",
+                          "selected"
+                        ]
                       }
                     },
                     "required": [
@@ -263827,6 +264970,13 @@
                         "type": "array"
                       },
                       "projectScope": {
+                        "type": "string",
+                        "enum": [
+                          "all",
+                          "selected"
+                        ]
+                      },
+                      "repositoryScope": {
                         "type": "string",
                         "enum": [
                           "all",
@@ -268478,6 +269628,7 @@
               "ai-gateway-rule-deleted",
               "ai-gateway-rule-updated",
               "ai-gateway-scope-budget-updated",
+              "ai-gateway-system-credential-fallback-opt-out-toggled",
               "ai-gateway-transcripts-default-disabled",
               "ai-gateway-transcripts-default-enabled",
               "ai-gateway-transcripts-disabled",
@@ -268687,6 +269838,7 @@
               "flags-connection-created",
               "flags-connection-deleted",
               "flags-explorer-subscription",
+              "flags-overrides-signed",
               "flags-sdk-key",
               "flags-sdk-key-added",
               "flags-sdk-key-deleted",
@@ -268753,12 +269905,19 @@
               "messageboard-channel-created",
               "messageboard-channel-updated",
               "messageboard-created",
+              "messageboard-grant-created",
+              "messageboard-grant-revoked",
+              "messageboard-grant-updated",
               "messageboard-private-channel-created",
               "messageboard-private-channel-updated",
               "messageboard-private-created",
+              "messageboard-private-grant-created",
+              "messageboard-private-grant-revoked",
+              "messageboard-private-grant-updated",
               "messageboard-private-project-granted",
               "messageboard-private-project-revoked",
               "messageboard-project-channel-created",
+              "messageboard-project-created",
               "messageboard-project-granted",
               "messageboard-project-private-channel-created",
               "messageboard-project-revoked",
@@ -268983,6 +270142,7 @@
               "sandbox-drive-deleted",
               "sandbox-drive-snapshot-created",
               "sandbox-drive-snapshot-deleted",
+              "sandbox-npm-credentials-configured",
               "sandbox-signed-commit-identity-configured",
               "sandbox-snapshot-regions-updated",
               "scale",
@@ -269500,6 +270660,7 @@
               "ai-gateway-rule-deleted",
               "ai-gateway-rule-updated",
               "ai-gateway-scope-budget-updated",
+              "ai-gateway-system-credential-fallback-opt-out-toggled",
               "ai-gateway-transcripts-default-disabled",
               "ai-gateway-transcripts-default-enabled",
               "ai-gateway-transcripts-disabled",
@@ -269709,6 +270870,7 @@
               "flags-connection-created",
               "flags-connection-deleted",
               "flags-explorer-subscription",
+              "flags-overrides-signed",
               "flags-sdk-key",
               "flags-sdk-key-added",
               "flags-sdk-key-deleted",
@@ -269775,12 +270937,19 @@
               "messageboard-channel-created",
               "messageboard-channel-updated",
               "messageboard-created",
+              "messageboard-grant-created",
+              "messageboard-grant-revoked",
+              "messageboard-grant-updated",
               "messageboard-private-channel-created",
               "messageboard-private-channel-updated",
               "messageboard-private-created",
+              "messageboard-private-grant-created",
+              "messageboard-private-grant-revoked",
+              "messageboard-private-grant-updated",
               "messageboard-private-project-granted",
               "messageboard-private-project-revoked",
               "messageboard-project-channel-created",
+              "messageboard-project-created",
               "messageboard-project-granted",
               "messageboard-project-private-channel-created",
               "messageboard-project-revoked",
@@ -270005,6 +271174,7 @@
               "sandbox-drive-deleted",
               "sandbox-drive-snapshot-created",
               "sandbox-drive-snapshot-deleted",
+              "sandbox-npm-credentials-configured",
               "sandbox-signed-commit-identity-configured",
               "sandbox-snapshot-regions-updated",
               "scale",
@@ -270280,6 +271450,7 @@
                 "ai-gateway-rule-deleted",
                 "ai-gateway-rule-updated",
                 "ai-gateway-scope-budget-updated",
+                "ai-gateway-system-credential-fallback-opt-out-toggled",
                 "ai-gateway-transcripts-default-disabled",
                 "ai-gateway-transcripts-default-enabled",
                 "ai-gateway-transcripts-disabled",
@@ -270489,6 +271660,7 @@
                 "flags-connection-created",
                 "flags-connection-deleted",
                 "flags-explorer-subscription",
+                "flags-overrides-signed",
                 "flags-sdk-key",
                 "flags-sdk-key-added",
                 "flags-sdk-key-deleted",
@@ -270555,12 +271727,19 @@
                 "messageboard-channel-created",
                 "messageboard-channel-updated",
                 "messageboard-created",
+                "messageboard-grant-created",
+                "messageboard-grant-revoked",
+                "messageboard-grant-updated",
                 "messageboard-private-channel-created",
                 "messageboard-private-channel-updated",
                 "messageboard-private-created",
+                "messageboard-private-grant-created",
+                "messageboard-private-grant-revoked",
+                "messageboard-private-grant-updated",
                 "messageboard-private-project-granted",
                 "messageboard-private-project-revoked",
                 "messageboard-project-channel-created",
+                "messageboard-project-created",
                 "messageboard-project-granted",
                 "messageboard-project-private-channel-created",
                 "messageboard-project-revoked",
@@ -270785,6 +271964,7 @@
                 "sandbox-drive-deleted",
                 "sandbox-drive-snapshot-created",
                 "sandbox-drive-snapshot-deleted",
+                "sandbox-npm-credentials-configured",
                 "sandbox-signed-commit-identity-configured",
                 "sandbox-snapshot-regions-updated",
                 "scale",
@@ -273381,82 +274561,6 @@
         "type": "object",
         "description": "This object contains information related to a Vercel Sandbox Session. v2 endpoints return \"session\" instead of \"sandbox\" as the response wrapper key."
       },
-      "Drive": {
-        "properties": {
-          "createdAt": {
-            "type": "number",
-            "description": "The time when the drive was created, in milliseconds since the epoch.",
-            "example": 1750344501629
-          },
-          "currentSandboxName": {
-            "type": "string",
-            "description": "Current sandbox name the drive is attached to, if any.",
-            "example": "my-sandbox"
-          },
-          "currentSessionId": {
-            "type": "string",
-            "description": "Current session ID the drive is attached to, if any.",
-            "example": "sbx_123"
-          },
-          "id": {
-            "type": "string",
-            "description": "The unique drive ID.",
-            "example": "drive_abc123"
-          },
-          "maxSizeBytes": {
-            "type": "number",
-            "description": "The maximum drive size in bytes.",
-            "example": 1099511627776
-          },
-          "name": {
-            "type": "string",
-            "description": "The unique drive name within the project.",
-            "example": "workspace"
-          },
-          "parentDriveId": {
-            "type": "string",
-            "description": "The ID of the source drive when this drive is a fork."
-          },
-          "projectId": {
-            "type": "string",
-            "description": "The project that owns the drive.",
-            "example": "prj_abc123"
-          },
-          "region": {
-            "type": "string",
-            "description": "The region where the drive is stored.",
-            "example": "iad1"
-          },
-          "rootDriveId": {
-            "type": "string",
-            "description": "The ID of the original drive at the root of this fork."
-          },
-          "updatedAt": {
-            "type": "number",
-            "description": "The last time the drive was updated, in milliseconds since the epoch.",
-            "example": 1750344501629
-          },
-          "workloadType": {
-            "type": "string",
-            "enum": [
-              "sandbox",
-              "v0"
-            ],
-            "description": "The workload type of this drive."
-          }
-        },
-        "required": [
-          "createdAt",
-          "id",
-          "maxSizeBytes",
-          "name",
-          "projectId",
-          "region",
-          "updatedAt"
-        ],
-        "type": "object",
-        "description": "This object contains information related to a Vercel Sandbox Drive."
-      },
       "Snapshot": {
         "properties": {
           "architecture": {
@@ -274261,20 +275365,6 @@
             "type": "string",
             "description": "A short description of the Team.",
             "example": "Our mission is to make cloud computing accessible to everyone."
-          },
-          "disableHardAutoBlocks": {
-            "oneOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "boolean",
-                "enum": [
-                  false,
-                  true
-                ]
-              }
-            ]
           },
           "disableRepositoryDispatchEvents": {
             "type": "boolean",
@@ -275680,6 +276770,31 @@
                   "slug"
                 ],
                 "type": "object"
+              },
+              "orphanSsoTeam": {
+                "properties": {
+                  "avatar": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "slug": {
+                    "type": "string"
+                  },
+                  "teamId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "avatar",
+                  "name",
+                  "slug",
+                  "teamId"
+                ],
+                "type": "object",
+                "description": "Orphans only: the team whose Directory Sync invite SSO sign-in redeems for a managed account once Update Account is complete."
               },
               "verifiedEmuDomains": {
                 "items": {

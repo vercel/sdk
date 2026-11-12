@@ -5,13 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixteen } from "@vercel/sdk/models/payloadcurrent.js";
+import { ThreeHundredAndSixteen } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: ThreeHundredAndSixteen = {
   next: {
-    gitProvider: "vercel",
-    gitRepoId: "<id>",
-    gitRepositoryName: "<value>",
+    functionZeroConfigFailover: false,
+  },
+  previous: {
+    functionZeroConfigFailover: true,
   },
   projectId: "<id>",
   projectName: "<value>",
@@ -23,6 +24,6 @@ let value: ThreeHundredAndSixteen = {
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `next`                                                                         | [models.UserEventPayload316Next](../models/usereventpayload316next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload316Previous](../models/usereventpayload316previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload316Previous](../models/usereventpayload316previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

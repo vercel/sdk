@@ -120,14 +120,16 @@ export type NamedSandboxStatus = ClosedEnum<typeof NamedSandboxStatus>;
 /**
  * The workload type of this sandbox.
  */
-export const WorkloadType = {
+export const NamedSandboxWorkloadType = {
   Sandbox: "sandbox",
   V0: "v0",
 } as const;
 /**
  * The workload type of this sandbox.
  */
-export type WorkloadType = ClosedEnum<typeof WorkloadType>;
+export type NamedSandboxWorkloadType = ClosedEnum<
+  typeof NamedSandboxWorkloadType
+>;
 
 /**
  * This object contains information related to a Vercel NamedSandbox.
@@ -248,7 +250,7 @@ export type NamedSandbox = {
   /**
    * The workload type of this sandbox.
    */
-  workloadType?: WorkloadType | undefined;
+  workloadType?: NamedSandboxWorkloadType | undefined;
 };
 
 /** @internal */
@@ -338,8 +340,9 @@ export const NamedSandboxStatus$inboundSchema: z.ZodNativeEnum<
 > = z.nativeEnum(NamedSandboxStatus);
 
 /** @internal */
-export const WorkloadType$inboundSchema: z.ZodNativeEnum<typeof WorkloadType> =
-  z.nativeEnum(WorkloadType);
+export const NamedSandboxWorkloadType$inboundSchema: z.ZodNativeEnum<
+  typeof NamedSandboxWorkloadType
+> = z.nativeEnum(NamedSandboxWorkloadType);
 
 /** @internal */
 export const NamedSandbox$inboundSchema: z.ZodType<
@@ -377,7 +380,7 @@ export const NamedSandbox$inboundSchema: z.ZodType<
   totalIngressBytes: types.optional(types.number()),
   updatedAt: types.number(),
   vcpus: types.optional(types.number()),
-  workloadType: types.optional(WorkloadType$inboundSchema),
+  workloadType: types.optional(NamedSandboxWorkloadType$inboundSchema),
 });
 
 export function namedSandboxFromJSON(

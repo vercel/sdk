@@ -121,6 +121,7 @@ export type UpdateDrainDelivery3 = {
   roleArn: string;
   region: string;
   serverSideEncryption?: DeliveryServerSideEncryption | undefined;
+  kmsKeyId?: string | undefined;
   objectAcl?: DeliveryObjectAcl | undefined;
 };
 
@@ -343,6 +344,7 @@ export type UpdateDrainDeliveryDrains4 = {
     UpdateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding;
   endpoint: string;
   fileStructure: UpdateDrainDeliveryDrainsFileStructure;
+  kmsKeyId?: string | undefined;
   objectAcl?: UpdateDrainDeliveryDrainsObjectAcl | undefined;
   region: string;
   roleArn: string;
@@ -775,6 +777,7 @@ export type UpdateDrainDelivery4 = {
   encoding: UpdateDrainDeliveryDrainsResponse200ApplicationJSONEncoding;
   endpoint: string;
   fileStructure: UpdateDrainDeliveryFileStructure;
+  kmsKeyId?: string | undefined;
   objectAcl?: UpdateDrainDeliveryObjectAcl | undefined;
   region: string;
   roleArn: string;
@@ -1343,6 +1346,7 @@ export type UpdateDrainDelivery3$Outbound = {
   roleArn: string;
   region: string;
   serverSideEncryption: string;
+  kmsKeyId?: string | undefined;
   objectAcl?: string | undefined;
 };
 
@@ -1362,6 +1366,7 @@ export const UpdateDrainDelivery3$outboundSchema: z.ZodType<
   serverSideEncryption: DeliveryServerSideEncryption$outboundSchema.default(
     "AES256",
   ),
+  kmsKeyId: z.string().optional(),
   objectAcl: DeliveryObjectAcl$outboundSchema.optional(),
 });
 
@@ -1877,6 +1882,7 @@ export const UpdateDrainDeliveryDrains4$inboundSchema: z.ZodType<
     UpdateDrainDeliveryDrainsResponse200ApplicationJSONResponseBody24Encoding$inboundSchema,
   endpoint: types.string(),
   fileStructure: UpdateDrainDeliveryDrainsFileStructure$inboundSchema,
+  kmsKeyId: types.optional(types.string()),
   objectAcl: types.optional(UpdateDrainDeliveryDrainsObjectAcl$inboundSchema),
   region: types.string(),
   roleArn: types.string(),
@@ -2841,6 +2847,7 @@ export const UpdateDrainDelivery4$inboundSchema: z.ZodType<
     UpdateDrainDeliveryDrainsResponse200ApplicationJSONEncoding$inboundSchema,
   endpoint: types.string(),
   fileStructure: UpdateDrainDeliveryFileStructure$inboundSchema,
+  kmsKeyId: types.optional(types.string()),
   objectAcl: types.optional(UpdateDrainDeliveryObjectAcl$inboundSchema),
   region: types.string(),
   roleArn: types.string(),

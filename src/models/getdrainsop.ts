@@ -93,6 +93,7 @@ export type GetDrainsDeliveryDrains4 = {
     GetDrainsDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding;
   endpoint: string;
   fileStructure: GetDrainsDeliveryDrainsFileStructure;
+  kmsKeyId?: string | undefined;
   objectAcl?: GetDrainsDeliveryDrainsObjectAcl | undefined;
   region: string;
   roleArn: string;
@@ -497,6 +498,7 @@ export type GetDrainsDelivery4 = {
   encoding: GetDrainsDeliveryDrainsResponseEncoding;
   endpoint: string;
   fileStructure: GetDrainsDeliveryFileStructure;
+  kmsKeyId?: string | undefined;
   objectAcl?: GetDrainsDeliveryObjectAcl | undefined;
   region: string;
   roleArn: string;
@@ -890,6 +892,7 @@ export const GetDrainsDeliveryDrains4$inboundSchema: z.ZodType<
     GetDrainsDeliveryDrainsResponse200ApplicationJSONResponseBodyEncoding$inboundSchema,
   endpoint: types.string(),
   fileStructure: GetDrainsDeliveryDrainsFileStructure$inboundSchema,
+  kmsKeyId: types.optional(types.string()),
   objectAcl: types.optional(GetDrainsDeliveryDrainsObjectAcl$inboundSchema),
   region: types.string(),
   roleArn: types.string(),
@@ -1802,6 +1805,7 @@ export const GetDrainsDelivery4$inboundSchema: z.ZodType<
   encoding: GetDrainsDeliveryDrainsResponseEncoding$inboundSchema,
   endpoint: types.string(),
   fileStructure: GetDrainsDeliveryFileStructure$inboundSchema,
+  kmsKeyId: types.optional(types.string()),
   objectAcl: types.optional(GetDrainsDeliveryObjectAcl$inboundSchema),
   region: types.string(),
   roleArn: types.string(),

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OldConnectConfigurations } from "@vercel/sdk/models/payloadcurrent.js";
+import { OldConnectConfigurations } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
 
 let value: OldConnectConfigurations = {
   buildsEnabled: true,
@@ -24,6 +24,6 @@ let value: OldConnectConfigurations = {
 | `connectConfigurationId`                     | *string*                                     | :heavy_check_mark:                           | N/A                                          |
 | `createdAt`                                  | *number*                                     | :heavy_check_mark:                           | N/A                                          |
 | `dc`                                         | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `envId`                                      | *models.UserEventPayload298EnvId*            | :heavy_check_mark:                           | N/A                                          |
+| `envId`                                      | *models.UserEventPayload301EnvId*            | :heavy_check_mark:                           | N/A                                          |
 | `passive`                                    | *boolean*                                    | :heavy_check_mark:                           | N/A                                          |
 | `updatedAt`                                  | *number*                                     | :heavy_check_mark:                           | N/A                                          |

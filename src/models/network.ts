@@ -10,11 +10,18 @@ import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
 /**
- * Metadata about any AWS Route53 Hosted Zones associated with the Network.
+ * Whether both dedicated connection test sources are provisioned and ready. Feature flag access and management permission are checked on submission.
+ */
+export type ConnectionTesting = {
+  available: boolean;
+};
+
+/**
+ * Metadata about customer-managed AWS Route53 Hosted Zones associated with the Network.
  */
 export type HostedZones = {
   /**
-   * The number of AWS Route53 Hosted Zones associated with the Network.
+   * The number of customer-managed AWS Route53 Hosted Zones associated with the Network.
    */
   count: number;
 };
@@ -24,7 +31,7 @@ export type HostedZones = {
  */
 export type PeeringConnections = {
   /**
-   * The number of AWS Route53 Hosted Zones associated with the Network.
+   * The number of AWS VPC Peering Connections associated with the Network.
    */
   count: number;
 };
@@ -69,12 +76,16 @@ export type Network = {
    */
   cidr: string;
   /**
+   * Whether both dedicated connection test sources are provisioned and ready. Feature flag access and management permission are checked on submission.
+   */
+  connectionTesting?: ConnectionTesting | undefined;
+  /**
    * The date at which the Network was created, represented as a UNIX timestamp since EPOCH.
    */
   createdAt: number;
   egressIpAddresses?: Array<string> | undefined;
   /**
-   * Metadata about any AWS Route53 Hosted Zones associated with the Network.
+   * Metadata about customer-managed AWS Route53 Hosted Zones associated with the Network.
    */
   hostedZones?: HostedZones | undefined;
   /**
@@ -110,6 +121,25 @@ export type Network = {
    */
   vpcId?: string | undefined;
 };
+
+/** @internal */
+export const ConnectionTesting$inboundSchema: z.ZodType<
+  ConnectionTesting,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  available: types.boolean(),
+});
+
+export function connectionTestingFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectionTesting, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConnectionTesting$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectionTesting' from JSON`,
+  );
+}
 
 /** @internal */
 export const HostedZones$inboundSchema: z.ZodType<
@@ -180,6 +210,9 @@ export const Network$inboundSchema: z.ZodType<Network, z.ZodTypeDef, unknown> =
     awsAvailabilityZoneIds: types.optional(z.array(types.string())),
     awsRegion: types.string(),
     cidr: types.string(),
+    connectionTesting: types.optional(
+      z.lazy(() => ConnectionTesting$inboundSchema),
+    ),
     createdAt: types.number(),
     egressIpAddresses: types.optional(z.array(types.string())),
     hostedZones: types.optional(z.lazy(() => HostedZones$inboundSchema)),

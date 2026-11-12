@@ -13,6 +13,14 @@ export type ReplaceDomainsByDomainRecordsRequest = {
    * The domain name
    */
   domain: string;
+  /**
+   * The Team identifier to perform the request on behalf of.
+   */
+  teamId?: string | undefined;
+  /**
+   * The Team slug to perform the request on behalf of.
+   */
+  slug?: string | undefined;
 };
 
 export type ReplaceDomainsByDomainRecordsResponseBody = {
@@ -22,6 +30,8 @@ export type ReplaceDomainsByDomainRecordsResponseBody = {
 /** @internal */
 export type ReplaceDomainsByDomainRecordsRequest$Outbound = {
   domain: string;
+  teamId?: string | undefined;
+  slug?: string | undefined;
 };
 
 /** @internal */
@@ -31,6 +41,8 @@ export const ReplaceDomainsByDomainRecordsRequest$outboundSchema: z.ZodType<
   ReplaceDomainsByDomainRecordsRequest
 > = z.object({
   domain: z.string(),
+  teamId: z.string().optional(),
+  slug: z.string().optional(),
 });
 
 export function replaceDomainsByDomainRecordsRequestToJSON(

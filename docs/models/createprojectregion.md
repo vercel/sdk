@@ -1,15 +1,17 @@
 # CreateProjectRegion
 
+The Vercel region sandboxes in this project are created in by default.
+
 ## Example Usage
 
 ```typescript
-import { CreateProjectRegion } from "@vercel/sdk/models/createprojectprojectsoidctokenclaims.js";
+import { CreateProjectRegion } from "@vercel/sdk/models/createprojecthasprojectsvalue.js";
 
-let value: CreateProjectRegion = "gru1";
+let value: CreateProjectRegion = "iad1";
 ```
 
 ## Values
 
 ```typescript
-"arn1" | "bom1" | "cdg1" | "cle1" | "cpt1" | "dub1" | "fra1" | "gru1" | "hkg1" | "hnd1" | "iad1" | "icn1" | "kix1" | "lhr1" | "pdx1" | "sfo1" | "sin1" | "syd1" | "yul1"
+"iad1" | "sfo1" | "cle1" | "cdg1" | "fra1" | "arn1" | "sin1" | "pdx1" | "lhr1" | "icn1" | "bom1" | "cpt1" | "dub1" | "gru1" | "hkg1" | "syd1" | "yul1" | "hnd1" | "kix1"
 ```

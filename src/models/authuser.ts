@@ -25,6 +25,16 @@ export type AuthUserOrganization = {
 };
 
 /**
+ * Orphans only: the team whose Directory Sync invite SSO sign-in redeems for a managed account once Update Account is complete.
+ */
+export type OrphanSsoTeam = {
+  avatar: string | null;
+  name: string;
+  slug: string;
+  teamId: string;
+};
+
+/**
  * Context for the Update Account screen. Present only when `isAccountUpdateRequired` is true. `managedTeams` is empty for orphan mode (user matches an EMU domain but is not on the team). When the teams the user must complete Update Account for include an organization's backing team, that team is listed as the organization, followed by the organization's Enterprise Managed root and child teams the user is a member of, including through Directory Sync group mappings.
  */
 export type AccountUpdateContext = {
@@ -34,6 +44,10 @@ export type AccountUpdateContext = {
   canOptOut: boolean;
   managedTeams: Array<ManagedTeams>;
   organization?: AuthUserOrganization | undefined;
+  /**
+   * Orphans only: the team whose Directory Sync invite SSO sign-in redeems for a managed account once Update Account is complete.
+   */
+  orphanSsoTeam?: OrphanSsoTeam | undefined;
   verifiedEmuDomains: Array<string>;
 };
 
@@ -564,6 +578,28 @@ export function authUserOrganizationFromJSON(
 }
 
 /** @internal */
+export const OrphanSsoTeam$inboundSchema: z.ZodType<
+  OrphanSsoTeam,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  avatar: types.nullable(types.string()),
+  name: types.string(),
+  slug: types.string(),
+  teamId: types.string(),
+});
+
+export function orphanSsoTeamFromJSON(
+  jsonString: string,
+): SafeParseResult<OrphanSsoTeam, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OrphanSsoTeam$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OrphanSsoTeam' from JSON`,
+  );
+}
+
+/** @internal */
 export const AccountUpdateContext$inboundSchema: z.ZodType<
   AccountUpdateContext,
   z.ZodTypeDef,
@@ -574,6 +610,7 @@ export const AccountUpdateContext$inboundSchema: z.ZodType<
   organization: types.optional(
     z.lazy(() => AuthUserOrganization$inboundSchema),
   ),
+  orphanSsoTeam: types.optional(z.lazy(() => OrphanSsoTeam$inboundSchema)),
   verifiedEmuDomains: z.array(types.string()),
 });
 

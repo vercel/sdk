@@ -1125,13 +1125,6 @@ export type FortyOne = {
   purchaseIntentId: string;
 };
 
-/**
- * The payload of the event, if requested.
- */
-export type Forty = {
-  enabled: boolean;
-};
-
 export type UserEventPayloadCredential = {
   id: string;
   name: string;
@@ -1141,7 +1134,7 @@ export type UserEventPayloadCredential = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyNine = {
+export type Forty = {
   added: Array<string>;
   changed: Array<string>;
   credential: UserEventPayloadCredential;
@@ -1164,7 +1157,7 @@ export type PayloadCredential = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyEight = {
+export type ThirtyNine = {
   changes?: Changes | undefined;
   credential: PayloadCredential;
 };
@@ -1178,8 +1171,15 @@ export type Credential = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtySeven = {
+export type ThirtyEight = {
   credential: Credential;
+};
+
+/**
+ * The payload of the event, if requested.
+ */
+export type ThirtySeven = {
+  enabled: boolean;
 };
 
 export const UserEventPayload36RefreshPeriod = {
@@ -2156,7 +2156,7 @@ export type Payload =
   | Sixteen
   | Eighteen
   | TwentySeven
-  | ThirtyNine
+  | Forty
   | EightyThree
   | EightyFour
   | OneHundredAndThree
@@ -2473,7 +2473,7 @@ export type Payload =
   | ThirtyFour
   | ThirtySeven
   | ThirtyEight
-  | Forty
+  | ThirtyNine
   | FortyThree
   | FortyFour
   | FortyFive
@@ -2774,6 +2774,7 @@ export const UserEventType = {
   AiGatewayHeadquartersUpdated: "ai-gateway-headquarters-updated",
   AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
+  AiGatewayMemberBudgetChanges: "ai-gateway-member-budget-changes",
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
   AiGatewayModelAllowlistToggled: "ai-gateway-model-allowlist-toggled",
@@ -3758,7 +3759,7 @@ export type UserEvent = {
     | Sixteen
     | Eighteen
     | TwentySeven
-    | ThirtyNine
+    | Forty
     | EightyThree
     | EightyFour
     | OneHundredAndThree
@@ -4075,7 +4076,7 @@ export type UserEvent = {
     | ThirtyFour
     | ThirtySeven
     | ThirtyEight
-    | Forty
+    | ThirtyNine
     | FortyThree
     | FortyFour
     | FortyFive
@@ -4643,22 +4644,6 @@ export function fortyOneFromJSON(
 }
 
 /** @internal */
-export const Forty$inboundSchema: z.ZodType<Forty, z.ZodTypeDef, unknown> = z
-  .object({
-    enabled: types.boolean(),
-  });
-
-export function fortyFromJSON(
-  jsonString: string,
-): SafeParseResult<Forty, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Forty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Forty' from JSON`,
-  );
-}
-
-/** @internal */
 export const UserEventPayloadCredential$inboundSchema: z.ZodType<
   UserEventPayloadCredential,
   z.ZodTypeDef,
@@ -4680,24 +4665,21 @@ export function userEventPayloadCredentialFromJSON(
 }
 
 /** @internal */
-export const ThirtyNine$inboundSchema: z.ZodType<
-  ThirtyNine,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  added: z.array(types.string()),
-  changed: z.array(types.string()),
-  credential: z.lazy(() => UserEventPayloadCredential$inboundSchema),
-  removed: z.array(types.string()),
-});
+export const Forty$inboundSchema: z.ZodType<Forty, z.ZodTypeDef, unknown> = z
+  .object({
+    added: z.array(types.string()),
+    changed: z.array(types.string()),
+    credential: z.lazy(() => UserEventPayloadCredential$inboundSchema),
+    removed: z.array(types.string()),
+  });
 
-export function thirtyNineFromJSON(
+export function fortyFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyNine, SDKValidationError> {
+): SafeParseResult<Forty, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyNine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyNine' from JSON`,
+    (x) => Forty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Forty' from JSON`,
   );
 }
 
@@ -4742,8 +4724,8 @@ export function payloadCredentialFromJSON(
 }
 
 /** @internal */
-export const ThirtyEight$inboundSchema: z.ZodType<
-  ThirtyEight,
+export const ThirtyNine$inboundSchema: z.ZodType<
+  ThirtyNine,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -4751,13 +4733,13 @@ export const ThirtyEight$inboundSchema: z.ZodType<
   credential: z.lazy(() => PayloadCredential$inboundSchema),
 });
 
-export function thirtyEightFromJSON(
+export function thirtyNineFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyEight, SDKValidationError> {
+): SafeParseResult<ThirtyNine, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyEight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyEight' from JSON`,
+    (x) => ThirtyNine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyNine' from JSON`,
   );
 }
 
@@ -4783,12 +4765,31 @@ export function credentialFromJSON(
 }
 
 /** @internal */
+export const ThirtyEight$inboundSchema: z.ZodType<
+  ThirtyEight,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  credential: z.lazy(() => Credential$inboundSchema),
+});
+
+export function thirtyEightFromJSON(
+  jsonString: string,
+): SafeParseResult<ThirtyEight, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ThirtyEight$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyEight' from JSON`,
+  );
+}
+
+/** @internal */
 export const ThirtySeven$inboundSchema: z.ZodType<
   ThirtySeven,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  credential: z.lazy(() => Credential$inboundSchema),
+  enabled: types.boolean(),
 });
 
 export function thirtySevenFromJSON(
@@ -6126,7 +6127,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => Sixteen$inboundSchema),
     z.lazy(() => Eighteen$inboundSchema),
     z.lazy(() => TwentySeven$inboundSchema),
-    z.lazy(() => ThirtyNine$inboundSchema),
+    z.lazy(() => Forty$inboundSchema),
     EightyThree$inboundSchema,
     EightyFour$inboundSchema,
     OneHundredAndThree$inboundSchema,
@@ -6443,7 +6444,7 @@ export const Payload$inboundSchema: z.ZodType<Payload, z.ZodTypeDef, unknown> =
     z.lazy(() => ThirtyFour$inboundSchema),
     z.lazy(() => ThirtySeven$inboundSchema),
     z.lazy(() => ThirtyEight$inboundSchema),
-    z.lazy(() => Forty$inboundSchema),
+    z.lazy(() => ThirtyNine$inboundSchema),
     z.lazy(() => FortyThree$inboundSchema),
     z.lazy(() => FortyFour$inboundSchema),
     z.lazy(() => FortyFive$inboundSchema),
@@ -6997,7 +6998,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => Sixteen$inboundSchema),
       z.lazy(() => Eighteen$inboundSchema),
       z.lazy(() => TwentySeven$inboundSchema),
-      z.lazy(() => ThirtyNine$inboundSchema),
+      z.lazy(() => Forty$inboundSchema),
       EightyThree$inboundSchema,
       EightyFour$inboundSchema,
       OneHundredAndThree$inboundSchema,
@@ -7314,7 +7315,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       z.lazy(() => ThirtyFour$inboundSchema),
       z.lazy(() => ThirtySeven$inboundSchema),
       z.lazy(() => ThirtyEight$inboundSchema),
-      z.lazy(() => Forty$inboundSchema),
+      z.lazy(() => ThirtyNine$inboundSchema),
       z.lazy(() => FortyThree$inboundSchema),
       z.lazy(() => FortyFour$inboundSchema),
       z.lazy(() => FortyFive$inboundSchema),

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -38,10 +39,34 @@ export type ListPromoteAliasesRequest = {
   slug?: string | undefined;
 };
 
+/**
+ * Whether the alias has been mapped to the deployment targeted by the last request. `pending` is also returned when the project has no request of the requested type, so it does not by itself indicate a running job.
+ */
+export const ListPromoteAliasesResponseBodyStatus = {
+  Completed: "completed",
+  Failed: "failed",
+  Pending: "pending",
+} as const;
+/**
+ * Whether the alias has been mapped to the deployment targeted by the last request. `pending` is also returned when the project has no request of the requested type, so it does not by itself indicate a running job.
+ */
+export type ListPromoteAliasesResponseBodyStatus = ClosedEnum<
+  typeof ListPromoteAliasesResponseBodyStatus
+>;
+
 export type ResponseBodyAliases = {
+  /**
+   * The alias hostname.
+   */
   alias: string;
+  /**
+   * The alias ID.
+   */
   id: string;
-  status: string;
+  /**
+   * Whether the alias has been mapped to the deployment targeted by the last request. `pending` is also returned when the project has no request of the requested type, so it does not by itself indicate a running job.
+   */
+  status: ListPromoteAliasesResponseBodyStatus;
 };
 
 export type ListPromoteAliasesResponseBody2 = {
@@ -54,6 +79,9 @@ export type ListPromoteAliasesResponseBody2 = {
 
 export type ListPromoteAliasesResponseBody1 = {};
 
+/**
+ * The aliases related to the last request of this type and whether each one has been mapped to the requested deployment.
+ */
 export type ListPromoteAliasesResponseBody =
   | ListPromoteAliasesResponseBody2
   | ListPromoteAliasesResponseBody1;
@@ -93,6 +121,12 @@ export function listPromoteAliasesRequestToJSON(
 }
 
 /** @internal */
+export const ListPromoteAliasesResponseBodyStatus$inboundSchema:
+  z.ZodNativeEnum<typeof ListPromoteAliasesResponseBodyStatus> = z.nativeEnum(
+    ListPromoteAliasesResponseBodyStatus,
+  );
+
+/** @internal */
 export const ResponseBodyAliases$inboundSchema: z.ZodType<
   ResponseBodyAliases,
   z.ZodTypeDef,
@@ -100,7 +134,7 @@ export const ResponseBodyAliases$inboundSchema: z.ZodType<
 > = z.object({
   alias: types.string(),
   id: types.string(),
-  status: types.string(),
+  status: ListPromoteAliasesResponseBodyStatus$inboundSchema,
 });
 
 export function responseBodyAliasesFromJSON(

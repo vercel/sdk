@@ -6046,47 +6046,133 @@
                                 {
                                   "properties": {
                                     "options": {
-                                      "properties": {
-                                        "fromPlan": {
+                                      "oneOf": [
+                                        {
                                           "properties": {
-                                            "additionalSubscriptions": {
-                                              "items": {
-                                                "properties": {
-                                                  "currentCycleEndDate": {
-                                                    "type": "string",
-                                                    "description": "The end of the additional source subscription billing cycle"
+                                            "fromPlan": {
+                                              "properties": {
+                                                "additionalSubscriptions": {
+                                                  "items": {
+                                                    "properties": {
+                                                      "currentCycleEndDate": {
+                                                        "type": "string",
+                                                        "description": "The end of the additional source subscription billing cycle"
+                                                      },
+                                                      "orbSubscriptionId": {
+                                                        "type": "string",
+                                                        "description": "The additional source Orb subscription ID"
+                                                      },
+                                                      "planId": {
+                                                        "type": "string",
+                                                        "description": "The ID of the plan assigned to the additional source subscription"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "currentCycleEndDate",
+                                                      "orbSubscriptionId",
+                                                      "planId"
+                                                    ],
+                                                    "type": "object",
+                                                    "description": "Additional source subscriptions replaced by this purchase"
                                                   },
-                                                  "orbSubscriptionId": {
-                                                    "type": "string",
-                                                    "description": "The additional source Orb subscription ID"
-                                                  },
-                                                  "planId": {
-                                                    "type": "string",
-                                                    "description": "The ID of the plan assigned to the additional source subscription"
-                                                  }
+                                                  "type": "array",
+                                                  "description": "Additional source subscriptions replaced by this purchase"
                                                 },
-                                                "required": [
-                                                  "currentCycleEndDate",
-                                                  "orbSubscriptionId",
-                                                  "planId"
-                                                ],
-                                                "type": "object",
-                                                "description": "Additional source subscriptions replaced by this purchase"
+                                                "currentCycleEndDate": {
+                                                  "type": "string",
+                                                  "description": "The end of the current plan billing cycle"
+                                                },
+                                                "orbSubscriptionId": {
+                                                  "type": "string",
+                                                  "description": "The Orb subscription ID currently active for the owner on the source plan"
+                                                },
+                                                "planId": {
+                                                  "type": "string",
+                                                  "description": "The ID of the plan currently assigned"
+                                                },
+                                                "planItemPrices": {
+                                                  "items": {
+                                                    "properties": {
+                                                      "planItemId": {
+                                                        "type": "string",
+                                                        "description": "The ID of the plan item to set the price for"
+                                                      },
+                                                      "price": {
+                                                        "properties": {
+                                                          "model": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                              "unit"
+                                                            ]
+                                                          },
+                                                          "unitAmount": {
+                                                            "type": "string",
+                                                            "description": "The non-negative per-unit USD amount, with at most two decimal places"
+                                                          }
+                                                        },
+                                                        "required": [
+                                                          "model",
+                                                          "unitAmount"
+                                                        ],
+                                                        "type": "object",
+                                                        "description": "The absolute price that replaces the plan item price, after any rate variant"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "planItemId",
+                                                      "price"
+                                                    ],
+                                                    "type": "object",
+                                                    "description": "The current plan item price overrides"
+                                                  },
+                                                  "type": "array",
+                                                  "description": "The current plan item price overrides"
+                                                },
+                                                "planItemQuantities": {
+                                                  "items": {
+                                                    "properties": {
+                                                      "planItemId": {
+                                                        "type": "string",
+                                                        "description": "The ID of the current plan item to set the quantity for"
+                                                      },
+                                                      "quantity": {
+                                                        "type": "number",
+                                                        "description": "The nonnegative integer quantity for the current plan item"
+                                                      },
+                                                      "resourceIds": {
+                                                        "items": {
+                                                          "type": "string"
+                                                        },
+                                                        "type": "array",
+                                                        "description": "The resource IDs associated with the current plan item quantity"
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "planItemId",
+                                                      "quantity"
+                                                    ],
+                                                    "type": "object",
+                                                    "description": "The current plan item quantities"
+                                                  },
+                                                  "type": "array",
+                                                  "description": "The current plan item quantities"
+                                                },
+                                                "rateVariantKey": {
+                                                  "type": "string",
+                                                  "description": "The rate variant currently assigned"
+                                                }
                                               },
-                                              "type": "array",
-                                              "description": "Additional source subscriptions replaced by this purchase"
-                                            },
-                                            "currentCycleEndDate": {
-                                              "type": "string",
-                                              "description": "The end of the current plan billing cycle"
-                                            },
-                                            "orbSubscriptionId": {
-                                              "type": "string",
-                                              "description": "The Orb subscription ID currently active for the owner on the source plan"
+                                              "required": [
+                                                "currentCycleEndDate",
+                                                "orbSubscriptionId",
+                                                "planId"
+                                              ],
+                                              "type": "object",
+                                              "description": "The current plan being replaced by this purchase"
                                             },
                                             "planId": {
                                               "type": "string",
-                                              "description": "The ID of the plan currently assigned"
+                                              "description": "The ID of the plan to subscribe to"
                                             },
                                             "planItemPrices": {
                                               "items": {
@@ -6121,28 +6207,28 @@
                                                   "price"
                                                 ],
                                                 "type": "object",
-                                                "description": "The current plan item price overrides"
+                                                "description": "The plan item prices to set for the subscription, independent of quantities"
                                               },
                                               "type": "array",
-                                              "description": "The current plan item price overrides"
+                                              "description": "The plan item prices to set for the subscription, independent of quantities"
                                             },
                                             "planItemQuantities": {
                                               "items": {
                                                 "properties": {
                                                   "planItemId": {
                                                     "type": "string",
-                                                    "description": "The ID of the current plan item to set the quantity for"
+                                                    "description": "The ID of the plan item to set the quantity for"
                                                   },
                                                   "quantity": {
                                                     "type": "number",
-                                                    "description": "The nonnegative integer quantity for the current plan item"
+                                                    "description": "The nonnegative integer quantity for the plan item"
                                                   },
                                                   "resourceIds": {
                                                     "items": {
                                                       "type": "string"
                                                     },
                                                     "type": "array",
-                                                    "description": "The resource IDs associated with the current plan item quantity"
+                                                    "description": "The resource IDs to associate with the plan item quantity"
                                                   }
                                                 },
                                                 "required": [
@@ -6150,105 +6236,99 @@
                                                   "quantity"
                                                 ],
                                                 "type": "object",
-                                                "description": "The current plan item quantities"
+                                                "description": "The plan item quantities to set for the subscription"
                                               },
                                               "type": "array",
-                                              "description": "The current plan item quantities"
+                                              "description": "The plan item quantities to set for the subscription"
                                             },
                                             "rateVariantKey": {
                                               "type": "string",
-                                              "description": "The rate variant currently assigned"
+                                              "description": "The rate variant key to apply to the subscription"
+                                            },
+                                            "transition": {
+                                              "properties": {
+                                                "type": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "restart_cycle"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "type"
+                                              ],
+                                              "type": "object",
+                                              "description": "Replacement billing-cycle policy. Defaults to restart_cycle."
                                             }
                                           },
                                           "required": [
-                                            "currentCycleEndDate",
-                                            "orbSubscriptionId",
                                             "planId"
                                           ],
                                           "type": "object",
-                                          "description": "The current plan being replaced by this purchase"
+                                          "description": "Restart-cycle purchase options"
                                         },
-                                        "planId": {
-                                          "type": "string",
-                                          "description": "The ID of the plan to subscribe to"
-                                        },
-                                        "planItemPrices": {
-                                          "items": {
-                                            "properties": {
-                                              "planItemId": {
-                                                "type": "string",
-                                                "description": "The ID of the plan item to set the price for"
+                                        {
+                                          "properties": {
+                                            "fromPlan": {
+                                              "properties": {
+                                                "orbSubscriptionId": {
+                                                  "type": "string",
+                                                  "description": "The owned active source subscription recorded by Copper"
+                                                }
                                               },
-                                              "price": {
+                                              "required": [
+                                                "orbSubscriptionId"
+                                              ],
+                                              "type": "object"
+                                            },
+                                            "planId": {
+                                              "type": "string",
+                                              "description": "The destination plan"
+                                            },
+                                            "planItemQuantities": {
+                                              "items": {
                                                 "properties": {
-                                                  "model": {
-                                                    "type": "string",
-                                                    "enum": [
-                                                      "unit"
-                                                    ]
+                                                  "planItemId": {
+                                                    "type": "string"
                                                   },
-                                                  "unitAmount": {
-                                                    "type": "string",
-                                                    "description": "The non-negative per-unit USD amount, with at most two decimal places"
+                                                  "quantity": {
+                                                    "type": "number"
                                                   }
                                                 },
                                                 "required": [
-                                                  "model",
-                                                  "unitAmount"
+                                                  "planItemId",
+                                                  "quantity"
                                                 ],
                                                 "type": "object",
-                                                "description": "The absolute price that replaces the plan item price, after any rate variant"
-                                              }
-                                            },
-                                            "required": [
-                                              "planItemId",
-                                              "price"
-                                            ],
-                                            "type": "object",
-                                            "description": "The plan item prices to set for the subscription, independent of quantities"
-                                          },
-                                          "type": "array",
-                                          "description": "The plan item prices to set for the subscription, independent of quantities"
-                                        },
-                                        "planItemQuantities": {
-                                          "items": {
-                                            "properties": {
-                                              "planItemId": {
-                                                "type": "string",
-                                                "description": "The ID of the plan item to set the quantity for"
+                                                "description": "Destination-only licensed quantities; shared quantities come from Copper"
                                               },
-                                              "quantity": {
-                                                "type": "number",
-                                                "description": "The nonnegative integer quantity for the plan item"
-                                              },
-                                              "resourceIds": {
-                                                "items": {
-                                                  "type": "string"
-                                                },
-                                                "type": "array",
-                                                "description": "The resource IDs to associate with the plan item quantity"
-                                              }
+                                              "type": "array",
+                                              "description": "Destination-only licensed quantities; shared quantities come from Copper"
                                             },
-                                            "required": [
-                                              "planItemId",
-                                              "quantity"
-                                            ],
-                                            "type": "object",
-                                            "description": "The plan item quantities to set for the subscription"
+                                            "transition": {
+                                              "properties": {
+                                                "type": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "preserve_source_cycle"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "type"
+                                              ],
+                                              "type": "object"
+                                            }
                                           },
-                                          "type": "array",
-                                          "description": "The plan item quantities to set for the subscription"
-                                        },
-                                        "rateVariantKey": {
-                                          "type": "string",
-                                          "description": "The rate variant key to apply to the subscription"
+                                          "required": [
+                                            "fromPlan",
+                                            "planId",
+                                            "transition"
+                                          ],
+                                          "type": "object",
+                                          "description": "Restart-cycle purchase options"
                                         }
-                                      },
-                                      "required": [
-                                        "planId"
-                                      ],
-                                      "type": "object",
-                                      "description": "Purchase configuration specific options"
+                                      ]
                                     },
                                     "output": {
                                       "properties": {
@@ -19053,7 +19133,7 @@
             }
           },
           "400": {
-            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.\nBoth `target` and `customEnvironmentId` were given."
           },
           "401": {
             "description": "The request is not authorized."
@@ -19062,7 +19142,7 @@
             "description": "You do not have permission to access this resource."
           },
           "404": {
-            "description": "The daemon does not exist for this target."
+            "description": "The project has no custom environment with this ID.\nThe daemon does not exist for this target or custom environment."
           },
           "410": {
             "description": ""
@@ -19107,6 +19187,17 @@
             }
           },
           {
+            "name": "customEnvironmentId",
+            "description": "The ID of the custom environment of the daemon, instead of `target`.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^env_",
+              "description": "The ID of the custom environment of the daemon, instead of `target`."
+            }
+          },
+          {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
@@ -19145,7 +19236,7 @@
     },
     "/v1/projects/{idOrName}/daemons/{daemonName}/instances/{instanceId}/restart": {
       "post": {
-        "description": "Force restart a running production daemon instance. The new container starts asynchronously after the restart is accepted.",
+        "description": "Force restart a running daemon instance in production, or in a custom environment when `customEnvironmentId` is given. The new container starts asynchronously after the restart is accepted.",
         "operationId": "restartProjectDaemonInstance",
         "security": [
           {
@@ -19180,16 +19271,16 @@
             }
           },
           "400": {
-            "description": "One of the provided values in the request query is invalid."
+            "description": "One of the provided values in the request query is invalid.\nBoth `target` and `customEnvironmentId` were given."
           },
           "401": {
             "description": "The request is not authorized."
           },
           "403": {
-            "description": "You do not have permission to access this resource.\nThe OIDC token is not a production token for this project."
+            "description": "You do not have permission to access this resource.\nThe OIDC token is not for this project or the daemon's environment."
           },
           "404": {
-            "description": "The daemon has no running production instance with this ID."
+            "description": "The project has no custom environment with this ID.\nThe daemon has no running instance with this ID in the environment."
           },
           "409": {
             "description": "The instance is still starting and cannot be restarted yet."
@@ -19233,6 +19324,17 @@
               "type": "string",
               "pattern": "^dmni_[0-9a-hjkmnp-tv-z]{26}$",
               "description": "The ID of the daemon instance to restart"
+            }
+          },
+          {
+            "name": "customEnvironmentId",
+            "description": "The ID of the custom environment of the instance. Production instances are restarted when omitted.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^env_",
+              "description": "The ID of the custom environment of the instance. Production instances are restarted when omitted."
             }
           },
           {
@@ -53965,11 +54067,11 @@
                                     "properties": {
                                       "attempts": {
                                         "type": "number",
-                                        "description": "All delivery attempts in the window."
+                                        "description": "Finished deliveries in the window: delivered plus finally failed."
                                       },
                                       "failures": {
                                         "type": "number",
-                                        "description": "Delivery attempts that did not succeed in the window."
+                                        "description": "Deliveries that finally failed in the window, after any automatic retries."
                                       },
                                       "state": {
                                         "type": "string",
@@ -53993,7 +54095,7 @@
                                       "window"
                                     ],
                                     "type": "object",
-                                    "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                                    "description": "Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window."
                                   },
                                   "filterV2": {
                                     "properties": {
@@ -54526,11 +54628,11 @@
                                     "properties": {
                                       "attempts": {
                                         "type": "number",
-                                        "description": "All delivery attempts in the window."
+                                        "description": "Finished deliveries in the window: delivered plus finally failed."
                                       },
                                       "failures": {
                                         "type": "number",
-                                        "description": "Delivery attempts that did not succeed in the window."
+                                        "description": "Deliveries that finally failed in the window, after any automatic retries."
                                       },
                                       "state": {
                                         "type": "string",
@@ -54554,7 +54656,7 @@
                                       "window"
                                     ],
                                     "type": "object",
-                                    "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                                    "description": "Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window."
                                   },
                                   "filterV2": {
                                     "properties": {
@@ -55405,11 +55507,11 @@
                           "properties": {
                             "attempts": {
                               "type": "number",
-                              "description": "All delivery attempts in the window."
+                              "description": "Finished deliveries in the window: delivered plus finally failed."
                             },
                             "failures": {
                               "type": "number",
-                              "description": "Delivery attempts that did not succeed in the window."
+                              "description": "Deliveries that finally failed in the window, after any automatic retries."
                             },
                             "state": {
                               "type": "string",
@@ -55433,7 +55535,7 @@
                             "window"
                           ],
                           "type": "object",
-                          "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                          "description": "Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window."
                         },
                         "filterV2": {
                           "properties": {
@@ -55963,11 +56065,11 @@
                           "properties": {
                             "attempts": {
                               "type": "number",
-                              "description": "All delivery attempts in the window."
+                              "description": "Finished deliveries in the window: delivered plus finally failed."
                             },
                             "failures": {
                               "type": "number",
-                              "description": "Delivery attempts that did not succeed in the window."
+                              "description": "Deliveries that finally failed in the window, after any automatic retries."
                             },
                             "state": {
                               "type": "string",
@@ -55991,7 +56093,7 @@
                             "window"
                           ],
                           "type": "object",
-                          "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                          "description": "Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window."
                         },
                         "filterV2": {
                           "properties": {
@@ -57065,11 +57167,11 @@
                                 "properties": {
                                   "attempts": {
                                     "type": "number",
-                                    "description": "All delivery attempts in the window."
+                                    "description": "Finished deliveries in the window: delivered plus finally failed."
                                   },
                                   "failures": {
                                     "type": "number",
-                                    "description": "Delivery attempts that did not succeed in the window."
+                                    "description": "Deliveries that finally failed in the window, after any automatic retries."
                                   },
                                   "state": {
                                     "type": "string",
@@ -57093,7 +57195,7 @@
                                   "window"
                                 ],
                                 "type": "object",
-                                "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                                "description": "Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window."
                               },
                               "filterV2": {
                                 "properties": {
@@ -57626,11 +57728,11 @@
                                 "properties": {
                                   "attempts": {
                                     "type": "number",
-                                    "description": "All delivery attempts in the window."
+                                    "description": "Finished deliveries in the window: delivered plus finally failed."
                                   },
                                   "failures": {
                                     "type": "number",
-                                    "description": "Delivery attempts that did not succeed in the window."
+                                    "description": "Deliveries that finally failed in the window, after any automatic retries."
                                   },
                                   "state": {
                                     "type": "string",
@@ -57654,7 +57756,7 @@
                                   "window"
                                 ],
                                 "type": "object",
-                                "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                                "description": "Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window."
                               },
                               "filterV2": {
                                 "properties": {
@@ -58406,11 +58508,11 @@
                       "properties": {
                         "attempts": {
                           "type": "number",
-                          "description": "All delivery attempts in the window."
+                          "description": "Finished deliveries in the window: delivered plus finally failed."
                         },
                         "failures": {
                           "type": "number",
-                          "description": "Delivery attempts that did not succeed in the window."
+                          "description": "Deliveries that finally failed in the window, after any automatic retries."
                         },
                         "state": {
                           "type": "string",
@@ -58434,7 +58536,7 @@
                         "window"
                       ],
                       "type": "object",
-                      "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                      "description": "Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window."
                     },
                     "filterV2": {
                       "properties": {
@@ -59045,11 +59147,11 @@
                           "properties": {
                             "attempts": {
                               "type": "number",
-                              "description": "All delivery attempts in the window."
+                              "description": "Finished deliveries in the window: delivered plus finally failed."
                             },
                             "failures": {
                               "type": "number",
-                              "description": "Delivery attempts that did not succeed in the window."
+                              "description": "Deliveries that finally failed in the window, after any automatic retries."
                             },
                             "state": {
                               "type": "string",
@@ -59073,7 +59175,7 @@
                             "window"
                           ],
                           "type": "object",
-                          "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                          "description": "Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window."
                         },
                         "filterV2": {
                           "properties": {
@@ -59603,11 +59705,11 @@
                           "properties": {
                             "attempts": {
                               "type": "number",
-                              "description": "All delivery attempts in the window."
+                              "description": "Finished deliveries in the window: delivered plus finally failed."
                             },
                             "failures": {
                               "type": "number",
-                              "description": "Delivery attempts that did not succeed in the window."
+                              "description": "Deliveries that finally failed in the window, after any automatic retries."
                             },
                             "state": {
                               "type": "string",
@@ -59631,7 +59733,7 @@
                             "window"
                           ],
                           "type": "object",
-                          "description": "Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded."
+                          "description": "Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window."
                         },
                         "filterV2": {
                           "properties": {
@@ -79453,165 +79555,6 @@
                       ],
                       "type": "object",
                       "description": "The configuration with the provided id"
-                    },
-                    {
-                      "properties": {
-                        "acceptedPoliciesInheritedFromInstallationId": {
-                          "type": "string",
-                          "description": "Historical parent installation from which acceptedPolicies were inherited. This is immutable provenance, not current authorization or relationship truth."
-                        },
-                        "completedAt": {
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was installed successfully",
-                          "example": 1558531915505
-                        },
-                        "createdAt": {
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was created",
-                          "example": 1558531915505
-                        },
-                        "customerDeleteRequestedAt": {
-                          "nullable": true,
-                          "type": "number",
-                          "description": "Record when the customer initited deletion, independent of whether `deleteRequestedAt` gets set."
-                        },
-                        "deletedAt": {
-                          "nullable": true,
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was deleted.",
-                          "example": 1558531915505
-                        },
-                        "deleteRequestedAt": {
-                          "nullable": true,
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration deletion has been started for cases when the deletion needs to be settled/approved by partners, such as when marketplace invoices have been paid.",
-                          "example": 1558531915505
-                        },
-                        "disabledAt": {
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was disabled. Note: Configurations can be disabled when the associated user loses access to a team. They do not function during this time until the configuration is 'transferred', meaning the associated user is changed to one with access to the team.",
-                          "example": 1558531915505
-                        },
-                        "disabledReason": {
-                          "type": "string",
-                          "enum": [
-                            "account-plan-downgrade",
-                            "disabled-by-admin",
-                            "disabled-by-owner",
-                            "feature-not-available",
-                            "original-owner-left-the-team",
-                            "original-owner-role-downgraded"
-                          ]
-                        },
-                        "externalId": {
-                          "type": "string",
-                          "description": "An external identifier defined by the integration vendor."
-                        },
-                        "id": {
-                          "type": "string",
-                          "description": "The unique identifier of the configuration",
-                          "example": "icfg_3bwCLgxL8qt5kjRLcv2Dit7F"
-                        },
-                        "installationType": {
-                          "type": "string",
-                          "enum": [
-                            "external",
-                            "marketplace"
-                          ],
-                          "description": "Defines the installation type. - 'external' integrations are installed via the existing integrations flow - 'marketplace' integrations are natively installed: - when accepting the TOS of a partner during the store creation process - if undefined, assume 'external'"
-                        },
-                        "integrationId": {
-                          "type": "string",
-                          "description": "The unique identifier of the app the configuration was created for",
-                          "example": "oac_xzpVzcUOgcB1nrVlirtKhbWV"
-                        },
-                        "ownerId": {
-                          "type": "string",
-                          "description": "The user or team ID that owns the configuration",
-                          "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
-                        },
-                        "projects": {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array",
-                          "description": "When a configuration is limited to access certain projects, this will contain each of the project ID it is allowed to access. If it is not defined, the configuration has full access.",
-                          "example": [
-                            "prj_xQxbutw1HpL6HLYPAzt5h75m8NjO"
-                          ]
-                        },
-                        "scopes": {
-                          "items": {
-                            "type": "string"
-                          },
-                          "type": "array",
-                          "description": "The resources that are allowed to be accessed by the configuration.",
-                          "example": [
-                            "read:project",
-                            "read-write:log-drain"
-                          ]
-                        },
-                        "slug": {
-                          "type": "string",
-                          "description": "The slug of the integration the configuration is created for.",
-                          "example": "slack"
-                        },
-                        "source": {
-                          "type": "string",
-                          "enum": [
-                            "backoffice",
-                            "cli",
-                            "deploy-button",
-                            "external",
-                            "import-recommended-integrations",
-                            "marketplace",
-                            "oauth",
-                            "organization",
-                            "project-overview-recommended-integrations",
-                            "resource-claims",
-                            "v0"
-                          ],
-                          "description": "Source defines where the configuration was installed from. It is used to analyze user engagement for integration installations in product metrics.",
-                          "example": "marketplace"
-                        },
-                        "status": {
-                          "type": "string",
-                          "enum": [
-                            "error",
-                            "onboarding",
-                            "pending",
-                            "ready",
-                            "resumed",
-                            "suspended",
-                            "uninstalled"
-                          ],
-                          "description": "The configuration status. Optional. If not defined, assume 'ready'."
-                        },
-                        "teamId": {
-                          "nullable": true,
-                          "type": "string",
-                          "description": "When the configuration was created for a team, this will show the ID of the team.",
-                          "example": "team_nLlpyC6RE1qxydlFKbrxDlud"
-                        },
-                        "type": {
-                          "type": "string",
-                          "enum": [
-                            "integration-configuration"
-                          ]
-                        },
-                        "updatedAt": {
-                          "type": "number",
-                          "description": "A timestamp that tells you when the configuration was updated.",
-                          "example": 1558531915505
-                        },
-                        "userId": {
-                          "type": "string",
-                          "description": "The ID of the user that created the configuration.",
-                          "example": "kr1PsOIzqEL5Xg6M4VZcZosf"
-                        }
-                      },
-                      "type": "object",
-                      "description": "A configuration represents information about a single installation of an integration within an individual or team account"
                     }
                   ]
                 }
@@ -92293,6 +92236,13 @@
                                 "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                               },
                               "aiGatewayBudget": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
+                              "aiGatewayBudgetOwnedBySelf": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -117589,6 +117539,13 @@
                                     "type": "array",
                                     "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                                   },
+                                  "aiGatewayBudgetOwnedBySelf": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
                                   "aiGatewayByokCredentials": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
@@ -126319,6 +126276,13 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "aiGatewayBudget": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "aiGatewayBudgetOwnedBySelf": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -135368,6 +135332,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "aiGatewayBudgetOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "aiGatewayByokCredentials": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -143652,6 +143623,13 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "aiGatewayBudget": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "aiGatewayBudgetOwnedBySelf": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -153326,6 +153304,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "aiGatewayBudgetOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "aiGatewayByokCredentials": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -161623,6 +161608,13 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "aiGatewayBudget": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "aiGatewayBudgetOwnedBySelf": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -183085,6 +183077,13 @@
                           "type": "array",
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
+                        "aiGatewayBudgetOwnedBySelf": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
                         "aiGatewayByokCredentials": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
@@ -187507,7 +187506,7 @@
         ],
         "responses": {
           "200": {
-            "description": "",
+            "description": "The aliases related to the last request of this type and whether each one has been mapped to the requested deployment.",
             "content": {
               "application/json": {
                 "schema": {
@@ -187521,13 +187520,21 @@
                           "items": {
                             "properties": {
                               "alias": {
-                                "type": "string"
+                                "type": "string",
+                                "description": "The alias hostname."
                               },
                               "id": {
-                                "type": "string"
+                                "type": "string",
+                                "description": "The alias ID."
                               },
                               "status": {
-                                "type": "string"
+                                "type": "string",
+                                "enum": [
+                                  "completed",
+                                  "failed",
+                                  "pending"
+                                ],
+                                "description": "Whether the alias has been mapped to the deployment targeted by the last request. `pending` is also returned when the project has no request of the requested type, so it does not by itself indicate a running job."
                               }
                             },
                             "required": [
@@ -217643,6 +217650,15 @@
                             "type": "object",
                             "description": "Map with information about the members origin if they joined by requesting access."
                           },
+                          "membershipSource": {
+                            "type": "string",
+                            "enum": [
+                              "direct",
+                              "organization-directory",
+                              "team-directory"
+                            ],
+                            "description": "The source controlling this member's team access and roles. Individual permissions may have a different source. This does not replace authorization checks."
+                          },
                           "name": {
                             "type": "string",
                             "description": "The name of this user.",
@@ -217707,6 +217723,7 @@
                           "confirmed",
                           "createdAt",
                           "email",
+                          "membershipSource",
                           "role",
                           "uid",
                           "username"
@@ -218611,7 +218628,7 @@
     },
     "/v1/teams/{teamId}/members/{uid}": {
       "patch": {
-        "description": "Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an `OWNER` of the Team. An update that would leave the Team's organization without an organization admin is refused.",
+        "description": "Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the member, or confirming a request to join the Team for an unconfirmed member. Organization-directory-managed team access and roles must be changed through the organization's identity provider. Unsupported changes return `organization_directory_managed`; supported local assignments remain editable. The authenticated user must be an `OWNER` of the Team. An update that would leave the Team's organization without an organization admin is refused.",
         "operationId": "updateTeamMember",
         "security": [
           {
@@ -218790,7 +218807,7 @@
         }
       },
       "delete": {
-        "description": "Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Directory Sync members can be removed when their directory email is absent or does not match the user's primary or verified secondary emails. Removing or leaving is refused when it would leave the Team's organization without an organization admin.",
+        "description": "Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Organization-directory-managed access must be removed through the organization's identity provider; local removal returns `organization_directory_managed`. Directory Sync members can be removed when their directory email is absent or does not match the user's primary or verified secondary emails. Removing or leaving is refused when it would leave the Team's organization without an organization admin.",
         "operationId": "removeTeamMember",
         "security": [
           {
@@ -224686,6 +224703,10 @@
                                 "type": "string"
                               },
                               {
+                                "const": "awaiting_admission",
+                                "type": "string"
+                              },
+                              {
                                 "const": "awaiting_approval",
                                 "type": "string"
                               },
@@ -224985,6 +225006,7 @@
                 "type": "string",
                 "enum": [
                   "new",
+                  "awaiting_admission",
                   "awaiting_approval",
                   "skipped",
                   "bootstrapping",
@@ -226569,6 +226591,10 @@
                                 "type": "string"
                               },
                               {
+                                "const": "awaiting_admission",
+                                "type": "string"
+                              },
+                              {
                                 "const": "awaiting_approval",
                                 "type": "string"
                               },
@@ -227097,6 +227123,10 @@
                           "anyOf": [
                             {
                               "const": "new",
+                              "type": "string"
+                            },
+                            {
+                              "const": "awaiting_admission",
                               "type": "string"
                             },
                             {
@@ -228053,6 +228083,10 @@
                           "anyOf": [
                             {
                               "const": "new",
+                              "type": "string"
+                            },
+                            {
+                              "const": "awaiting_admission",
                               "type": "string"
                             },
                             {
@@ -246628,6 +246662,22 @@
               },
               {
                 "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  }
+                },
+                "required": [
+                  "enabled"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "credential": {
                     "properties": {
                       "id": {
@@ -246756,22 +246806,6 @@
                   "changed",
                   "credential",
                   "removed"
-                ],
-                "type": "object",
-                "description": "The payload of the event, if requested."
-              },
-              {
-                "properties": {
-                  "enabled": {
-                    "type": "boolean",
-                    "enum": [
-                      false,
-                      true
-                    ]
-                  }
-                },
-                "required": [
-                  "enabled"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -264936,6 +264970,7 @@
                         "type": "string",
                         "enum": [
                           "all",
+                          "none",
                           "selected"
                         ]
                       },
@@ -264943,6 +264978,7 @@
                         "type": "string",
                         "enum": [
                           "all",
+                          "none",
                           "selected"
                         ]
                       }
@@ -264973,6 +265009,7 @@
                         "type": "string",
                         "enum": [
                           "all",
+                          "none",
                           "selected"
                         ]
                       },
@@ -264980,6 +265017,7 @@
                         "type": "string",
                         "enum": [
                           "all",
+                          "none",
                           "selected"
                         ]
                       }
@@ -269612,6 +269650,7 @@
               "ai-gateway-headquarters-updated",
               "ai-gateway-hipaa-compliance-toggled",
               "ai-gateway-inference-regions-updated",
+              "ai-gateway-member-budget-changes",
               "ai-gateway-model-allowlist-models-updated",
               "ai-gateway-model-allowlist-toggled",
               "ai-gateway-model-catalog-alert-settings-updated",
@@ -270644,6 +270683,7 @@
               "ai-gateway-headquarters-updated",
               "ai-gateway-hipaa-compliance-toggled",
               "ai-gateway-inference-regions-updated",
+              "ai-gateway-member-budget-changes",
               "ai-gateway-model-allowlist-models-updated",
               "ai-gateway-model-allowlist-toggled",
               "ai-gateway-model-catalog-alert-settings-updated",
@@ -271434,6 +271474,7 @@
                 "ai-gateway-headquarters-updated",
                 "ai-gateway-hipaa-compliance-toggled",
                 "ai-gateway-inference-regions-updated",
+                "ai-gateway-member-budget-changes",
                 "ai-gateway-model-allowlist-models-updated",
                 "ai-gateway-model-allowlist-toggled",
                 "ai-gateway-model-catalog-alert-settings-updated",
@@ -275366,6 +275407,19 @@
             "description": "A short description of the Team.",
             "example": "Our mission is to make cloud computing accessible to everyone."
           },
+          "directorySyncSource": {
+            "type": "string",
+            "enum": [
+              "none",
+              "organization",
+              "team"
+            ],
+            "description": "Directory Sync source, using existing local connection and organization authority rules."
+          },
+          "directorySyncType": {
+            "type": "string",
+            "description": "Provider type of the directory selected by directorySyncSource."
+          },
           "disableRepositoryDispatchEvents": {
             "type": "boolean",
             "enum": [
@@ -276139,6 +276193,7 @@
           "creatorId",
           "defaultDeploymentProtection",
           "description",
+          "directorySyncSource",
           "id",
           "limited",
           "name",
@@ -276162,6 +276217,19 @@
             "type": "number",
             "description": "UNIX timestamp (in milliseconds) when the Team was created.",
             "example": 1630748523395
+          },
+          "directorySyncSource": {
+            "type": "string",
+            "enum": [
+              "none",
+              "organization",
+              "team"
+            ],
+            "description": "Directory Sync source, using existing local connection and organization authority rules."
+          },
+          "directorySyncType": {
+            "type": "string",
+            "description": "Provider type of the directory selected by directorySyncSource."
           },
           "id": {
             "type": "string",
@@ -276503,6 +276571,7 @@
         "required": [
           "avatar",
           "createdAt",
+          "directorySyncSource",
           "id",
           "limited",
           "limitedBy",

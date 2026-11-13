@@ -297,15 +297,15 @@ export const GetDrainsDrainsWindow = {
 export type GetDrainsDrainsWindow = ClosedEnum<typeof GetDrainsDrainsWindow>;
 
 /**
- * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+ * Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window.
  */
 export type GetDrainsDrainsDeliveryStats = {
   /**
-   * All delivery attempts in the window.
+   * Finished deliveries in the window: delivered plus finally failed.
    */
   attempts: number;
   /**
-   * Delivery attempts that did not succeed in the window.
+   * Deliveries that finally failed in the window, after any automatic retries.
    */
   failures: number;
   state: GetDrainsDrainsState;
@@ -426,7 +426,7 @@ export type Drains2 = {
   teamId?: string | null | undefined;
   updatedAt: number;
   /**
-   * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+   * Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window.
    */
   deliveryStats?: GetDrainsDrainsDeliveryStats | undefined;
   filterV2?: GetDrainsDrainsFilterV2 | undefined;
@@ -691,15 +691,15 @@ export const DrainsWindow = {
 export type DrainsWindow = ClosedEnum<typeof DrainsWindow>;
 
 /**
- * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+ * Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window.
  */
 export type DrainsDeliveryStats = {
   /**
-   * All delivery attempts in the window.
+   * Finished deliveries in the window: delivered plus finally failed.
    */
   attempts: number;
   /**
-   * Delivery attempts that did not succeed in the window.
+   * Deliveries that finally failed in the window, after any automatic retries.
    */
   failures: number;
   state: DrainsState;
@@ -785,7 +785,7 @@ export type Drains1 = {
   teamId?: string | null | undefined;
   updatedAt: number;
   /**
-   * Delivery health of a drain over the last 24 hours: `failing` when more than 5 delivery attempts and at least 1% of all attempts did not succeed, `healthy` otherwise, and `unknown` when there were no attempts or the stats could not be loaded.
+   * Delivery health of a drain over the last 24 hours, counted on finished deliveries (a delivery saved by an automatic retry counts once, as delivered): `failing` when more than 5 deliveries failed and they are at least 1% of all finished deliveries, `healthy` otherwise, and `unknown` when no delivery finished in the window.
    */
   deliveryStats?: DrainsDeliveryStats | undefined;
   filterV2?: DrainsFilterV2 | undefined;

@@ -1004,6 +1004,46 @@ export type BuyCreditsResponseBody3 = {
   orbSubscriptionIntent: OrbSubscriptionIntent;
 };
 
+export type OptionsFromPlan = {
+  /**
+   * The owned active source subscription recorded by Copper
+   */
+  orbSubscriptionId: string;
+};
+
+/**
+ * Destination-only licensed quantities; shared quantities come from Copper
+ */
+export type OptionsPlanItemQuantities = {
+  planItemId: string;
+  quantity: number;
+};
+
+export const BuyCreditsOptionsType = {
+  PreserveSourceCycle: "preserve_source_cycle",
+} as const;
+export type BuyCreditsOptionsType = ClosedEnum<typeof BuyCreditsOptionsType>;
+
+export type OptionsTransition = {
+  type: BuyCreditsOptionsType;
+};
+
+/**
+ * Restart-cycle purchase options
+ */
+export type Options2 = {
+  fromPlan: OptionsFromPlan;
+  /**
+   * The destination plan
+   */
+  planId: string;
+  /**
+   * Destination-only licensed quantities; shared quantities come from Copper
+   */
+  planItemQuantities?: Array<OptionsPlanItemQuantities> | undefined;
+  transition: OptionsTransition;
+};
+
 /**
  * Additional source subscriptions replaced by this purchase
  */
@@ -1022,16 +1062,16 @@ export type AdditionalSubscriptions = {
   planId: string;
 };
 
-export const ConfigurationModel = {
+export const OptionsModel = {
   Unit: "unit",
 } as const;
-export type ConfigurationModel = ClosedEnum<typeof ConfigurationModel>;
+export type OptionsModel = ClosedEnum<typeof OptionsModel>;
 
 /**
  * The absolute price that replaces the plan item price, after any rate variant
  */
-export type ConfigurationPrice = {
-  model: ConfigurationModel;
+export type OptionsPrice = {
+  model: OptionsModel;
   /**
    * The non-negative per-unit USD amount, with at most two decimal places
    */
@@ -1041,7 +1081,7 @@ export type ConfigurationPrice = {
 /**
  * The current plan item price overrides
  */
-export type ConfigurationPlanItemPrices = {
+export type OptionsPlanItemPrices = {
   /**
    * The ID of the plan item to set the price for
    */
@@ -1049,13 +1089,13 @@ export type ConfigurationPlanItemPrices = {
   /**
    * The absolute price that replaces the plan item price, after any rate variant
    */
-  price: ConfigurationPrice;
+  price: OptionsPrice;
 };
 
 /**
  * The current plan item quantities
  */
-export type ConfigurationPlanItemQuantities = {
+export type BuyCreditsOptionsPlanItemQuantities = {
   /**
    * The ID of the current plan item to set the quantity for
    */
@@ -1073,7 +1113,7 @@ export type ConfigurationPlanItemQuantities = {
 /**
  * The current plan being replaced by this purchase
  */
-export type ConfigurationFromPlan = {
+export type BuyCreditsOptionsFromPlan = {
   /**
    * Additional source subscriptions replaced by this purchase
    */
@@ -1093,11 +1133,11 @@ export type ConfigurationFromPlan = {
   /**
    * The current plan item price overrides
    */
-  planItemPrices?: Array<ConfigurationPlanItemPrices> | undefined;
+  planItemPrices?: Array<OptionsPlanItemPrices> | undefined;
   /**
    * The current plan item quantities
    */
-  planItemQuantities?: Array<ConfigurationPlanItemQuantities> | undefined;
+  planItemQuantities?: Array<BuyCreditsOptionsPlanItemQuantities> | undefined;
   /**
    * The rate variant currently assigned
    */
@@ -1152,14 +1192,26 @@ export type PlanItemQuantities = {
   resourceIds?: Array<string> | undefined;
 };
 
+export const OptionsType = {
+  RestartCycle: "restart_cycle",
+} as const;
+export type OptionsType = ClosedEnum<typeof OptionsType>;
+
 /**
- * Purchase configuration specific options
+ * Replacement billing-cycle policy. Defaults to restart_cycle.
  */
-export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions = {
+export type Transition = {
+  type: OptionsType;
+};
+
+/**
+ * Restart-cycle purchase options
+ */
+export type Options1 = {
   /**
    * The current plan being replaced by this purchase
    */
-  fromPlan?: ConfigurationFromPlan | undefined;
+  fromPlan?: BuyCreditsOptionsFromPlan | undefined;
   /**
    * The ID of the plan to subscribe to
    */
@@ -1176,7 +1228,15 @@ export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions = {
    * The rate variant key to apply to the subscription
    */
   rateVariantKey?: string | undefined;
+  /**
+   * Replacement billing-cycle policy. Defaults to restart_cycle.
+   */
+  transition?: Transition | undefined;
 };
+
+export type BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions =
+  | Options2
+  | Options1;
 
 export type BuyCreditsConfigurationBillingResponseOutput = {
   /**
@@ -1189,10 +1249,7 @@ export type BuyCreditsConfigurationBillingResponseOutput = {
  * The configuration for a credit purchase
  */
 export type Configuration7 = {
-  /**
-   * Purchase configuration specific options
-   */
-  options: BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions;
+  options: Options2 | Options1;
   output: BuyCreditsConfigurationBillingResponseOutput;
   type: "subscription";
 };
@@ -2917,6 +2974,93 @@ export function buyCreditsResponseBody3FromJSON(
 }
 
 /** @internal */
+export const OptionsFromPlan$inboundSchema: z.ZodType<
+  OptionsFromPlan,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  orbSubscriptionId: types.string(),
+});
+
+export function optionsFromPlanFromJSON(
+  jsonString: string,
+): SafeParseResult<OptionsFromPlan, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OptionsFromPlan$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OptionsFromPlan' from JSON`,
+  );
+}
+
+/** @internal */
+export const OptionsPlanItemQuantities$inboundSchema: z.ZodType<
+  OptionsPlanItemQuantities,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  planItemId: types.string(),
+  quantity: types.number(),
+});
+
+export function optionsPlanItemQuantitiesFromJSON(
+  jsonString: string,
+): SafeParseResult<OptionsPlanItemQuantities, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OptionsPlanItemQuantities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OptionsPlanItemQuantities' from JSON`,
+  );
+}
+
+/** @internal */
+export const BuyCreditsOptionsType$inboundSchema: z.ZodNativeEnum<
+  typeof BuyCreditsOptionsType
+> = z.nativeEnum(BuyCreditsOptionsType);
+
+/** @internal */
+export const OptionsTransition$inboundSchema: z.ZodType<
+  OptionsTransition,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: BuyCreditsOptionsType$inboundSchema,
+});
+
+export function optionsTransitionFromJSON(
+  jsonString: string,
+): SafeParseResult<OptionsTransition, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OptionsTransition$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OptionsTransition' from JSON`,
+  );
+}
+
+/** @internal */
+export const Options2$inboundSchema: z.ZodType<
+  Options2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fromPlan: z.lazy(() => OptionsFromPlan$inboundSchema),
+  planId: types.string(),
+  planItemQuantities: types.optional(
+    z.array(z.lazy(() => OptionsPlanItemQuantities$inboundSchema)),
+  ),
+  transition: z.lazy(() => OptionsTransition$inboundSchema),
+});
+
+export function options2FromJSON(
+  jsonString: string,
+): SafeParseResult<Options2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Options2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Options2' from JSON`,
+  );
+}
+
+/** @internal */
 export const AdditionalSubscriptions$inboundSchema: z.ZodType<
   AdditionalSubscriptions,
   z.ZodTypeDef,
@@ -2938,53 +3082,52 @@ export function additionalSubscriptionsFromJSON(
 }
 
 /** @internal */
-export const ConfigurationModel$inboundSchema: z.ZodNativeEnum<
-  typeof ConfigurationModel
-> = z.nativeEnum(ConfigurationModel);
+export const OptionsModel$inboundSchema: z.ZodNativeEnum<typeof OptionsModel> =
+  z.nativeEnum(OptionsModel);
 
 /** @internal */
-export const ConfigurationPrice$inboundSchema: z.ZodType<
-  ConfigurationPrice,
+export const OptionsPrice$inboundSchema: z.ZodType<
+  OptionsPrice,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  model: ConfigurationModel$inboundSchema,
+  model: OptionsModel$inboundSchema,
   unitAmount: types.string(),
 });
 
-export function configurationPriceFromJSON(
+export function optionsPriceFromJSON(
   jsonString: string,
-): SafeParseResult<ConfigurationPrice, SDKValidationError> {
+): SafeParseResult<OptionsPrice, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ConfigurationPrice$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ConfigurationPrice' from JSON`,
+    (x) => OptionsPrice$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OptionsPrice' from JSON`,
   );
 }
 
 /** @internal */
-export const ConfigurationPlanItemPrices$inboundSchema: z.ZodType<
-  ConfigurationPlanItemPrices,
+export const OptionsPlanItemPrices$inboundSchema: z.ZodType<
+  OptionsPlanItemPrices,
   z.ZodTypeDef,
   unknown
 > = z.object({
   planItemId: types.string(),
-  price: z.lazy(() => ConfigurationPrice$inboundSchema),
+  price: z.lazy(() => OptionsPrice$inboundSchema),
 });
 
-export function configurationPlanItemPricesFromJSON(
+export function optionsPlanItemPricesFromJSON(
   jsonString: string,
-): SafeParseResult<ConfigurationPlanItemPrices, SDKValidationError> {
+): SafeParseResult<OptionsPlanItemPrices, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ConfigurationPlanItemPrices$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ConfigurationPlanItemPrices' from JSON`,
+    (x) => OptionsPlanItemPrices$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OptionsPlanItemPrices' from JSON`,
   );
 }
 
 /** @internal */
-export const ConfigurationPlanItemQuantities$inboundSchema: z.ZodType<
-  ConfigurationPlanItemQuantities,
+export const BuyCreditsOptionsPlanItemQuantities$inboundSchema: z.ZodType<
+  BuyCreditsOptionsPlanItemQuantities,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2993,19 +3136,20 @@ export const ConfigurationPlanItemQuantities$inboundSchema: z.ZodType<
   resourceIds: types.optional(z.array(types.string())),
 });
 
-export function configurationPlanItemQuantitiesFromJSON(
+export function buyCreditsOptionsPlanItemQuantitiesFromJSON(
   jsonString: string,
-): SafeParseResult<ConfigurationPlanItemQuantities, SDKValidationError> {
+): SafeParseResult<BuyCreditsOptionsPlanItemQuantities, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ConfigurationPlanItemQuantities$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ConfigurationPlanItemQuantities' from JSON`,
+    (x) =>
+      BuyCreditsOptionsPlanItemQuantities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsOptionsPlanItemQuantities' from JSON`,
   );
 }
 
 /** @internal */
-export const ConfigurationFromPlan$inboundSchema: z.ZodType<
-  ConfigurationFromPlan,
+export const BuyCreditsOptionsFromPlan$inboundSchema: z.ZodType<
+  BuyCreditsOptionsFromPlan,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3016,21 +3160,21 @@ export const ConfigurationFromPlan$inboundSchema: z.ZodType<
   orbSubscriptionId: types.string(),
   planId: types.string(),
   planItemPrices: types.optional(
-    z.array(z.lazy(() => ConfigurationPlanItemPrices$inboundSchema)),
+    z.array(z.lazy(() => OptionsPlanItemPrices$inboundSchema)),
   ),
   planItemQuantities: types.optional(
-    z.array(z.lazy(() => ConfigurationPlanItemQuantities$inboundSchema)),
+    z.array(z.lazy(() => BuyCreditsOptionsPlanItemQuantities$inboundSchema)),
   ),
   rateVariantKey: types.optional(types.string()),
 });
 
-export function configurationFromPlanFromJSON(
+export function buyCreditsOptionsFromPlanFromJSON(
   jsonString: string,
-): SafeParseResult<ConfigurationFromPlan, SDKValidationError> {
+): SafeParseResult<BuyCreditsOptionsFromPlan, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ConfigurationFromPlan$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ConfigurationFromPlan' from JSON`,
+    (x) => BuyCreditsOptionsFromPlan$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BuyCreditsOptionsFromPlan' from JSON`,
   );
 }
 
@@ -3098,22 +3242,68 @@ export function planItemQuantitiesFromJSON(
 }
 
 /** @internal */
+export const OptionsType$inboundSchema: z.ZodNativeEnum<typeof OptionsType> = z
+  .nativeEnum(OptionsType);
+
+/** @internal */
+export const Transition$inboundSchema: z.ZodType<
+  Transition,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: OptionsType$inboundSchema,
+});
+
+export function transitionFromJSON(
+  jsonString: string,
+): SafeParseResult<Transition, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Transition$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Transition' from JSON`,
+  );
+}
+
+/** @internal */
+export const Options1$inboundSchema: z.ZodType<
+  Options1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  fromPlan: types.optional(
+    z.lazy(() => BuyCreditsOptionsFromPlan$inboundSchema),
+  ),
+  planId: types.string(),
+  planItemPrices: types.optional(
+    z.array(z.lazy(() => PlanItemPrices$inboundSchema)),
+  ),
+  planItemQuantities: types.optional(
+    z.array(z.lazy(() => PlanItemQuantities$inboundSchema)),
+  ),
+  rateVariantKey: types.optional(types.string()),
+  transition: types.optional(z.lazy(() => Transition$inboundSchema)),
+});
+
+export function options1FromJSON(
+  jsonString: string,
+): SafeParseResult<Options1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Options1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Options1' from JSON`,
+  );
+}
+
+/** @internal */
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inboundSchema:
   z.ZodType<
     BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    fromPlan: types.optional(z.lazy(() => ConfigurationFromPlan$inboundSchema)),
-    planId: types.string(),
-    planItemPrices: types.optional(
-      z.array(z.lazy(() => PlanItemPrices$inboundSchema)),
-    ),
-    planItemQuantities: types.optional(
-      z.array(z.lazy(() => PlanItemQuantities$inboundSchema)),
-    ),
-    rateVariantKey: types.optional(types.string()),
-  });
+  > = smartUnion([
+    z.lazy(() => Options2$inboundSchema),
+    z.lazy(() => Options1$inboundSchema),
+  ]);
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONOptionsFromJSON(
   jsonString: string,
@@ -3162,9 +3352,10 @@ export const Configuration7$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inboundSchema
-  ),
+  options: smartUnion([
+    z.lazy(() => Options2$inboundSchema),
+    z.lazy(() => Options1$inboundSchema),
+  ]),
   output: z.lazy(() =>
     BuyCreditsConfigurationBillingResponseOutput$inboundSchema
   ),

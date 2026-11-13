@@ -59,7 +59,7 @@ export class Daemons extends ClientSDK {
    * Force restart a project daemon instance
    *
    * @remarks
-   * Force restart a running production daemon instance. The new container starts asynchronously after the restart is accepted.
+   * Force restart a running daemon instance in production, or in a custom environment when `customEnvironmentId` is given. The new container starts asynchronously after the restart is accepted.
    */
   async restartProjectDaemonInstance(
     request: RestartProjectDaemonInstanceRequest,

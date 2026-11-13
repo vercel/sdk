@@ -1,13 +1,13 @@
-# ConfigurationPlanItemPrices
+# OptionsPlanItemPrices
 
 The current plan item price overrides
 
 ## Example Usage
 
 ```typescript
-import { ConfigurationPlanItemPrices } from "@vercel/sdk/models/buycreditsop.js";
+import { OptionsPlanItemPrices } from "@vercel/sdk/models/buycreditsop.js";
 
-let value: ConfigurationPlanItemPrices = {
+let value: OptionsPlanItemPrices = {
   planItemId: "<id>",
   price: {
     model: "unit",
@@ -21,4 +21,4 @@ let value: ConfigurationPlanItemPrices = {
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
 | `planItemId`                                                                 | *string*                                                                     | :heavy_check_mark:                                                           | The ID of the plan item to set the price for                                 |
-| `price`                                                                      | [models.ConfigurationPrice](../models/configurationprice.md)                 | :heavy_check_mark:                                                           | The absolute price that replaces the plan item price, after any rate variant |
+| `price`                                                                      | [models.OptionsPrice](../models/optionsprice.md)                             | :heavy_check_mark:                                                           | The absolute price that replaces the plan item price, after any rate variant |

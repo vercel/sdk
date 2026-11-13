@@ -1,5 +1,7 @@
 # ListPromoteAliasesResponseBody
 
+The aliases related to the last request of this type and whether each one has been mapped to the requested deployment.
+
 
 ## Supported Types
 
@@ -17,7 +19,7 @@ const value: models.ListPromoteAliasesResponseBody2 = {
     {
       alias: "<value>",
       id: "<id>",
-      status: "<value>",
+      status: "completed",
     },
   ],
   pagination: {

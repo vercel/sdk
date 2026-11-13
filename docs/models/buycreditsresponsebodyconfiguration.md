@@ -93,7 +93,13 @@ const value: models.Configuration6 = {
 ```typescript
 const value: models.Configuration7 = {
   options: {
+    fromPlan: {
+      orbSubscriptionId: "<id>",
+    },
     planId: "<id>",
+    transition: {
+      type: "preserve_source_cycle",
+    },
   },
   output: {},
   type: "subscription",

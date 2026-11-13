@@ -206,6 +206,19 @@ export type GetTeamMembersJoinedFrom = {
   ssoUserId?: string | undefined;
 };
 
+/**
+ * The source controlling this member's team access and roles. Individual permissions may have a different source. This does not replace authorization checks.
+ */
+export const MembershipSource = {
+  Direct: "direct",
+  OrganizationDirectory: "organization-directory",
+  TeamDirectory: "team-directory",
+} as const;
+/**
+ * The source controlling this member's team access and roles. Individual permissions may have a different source. This does not replace authorization checks.
+ */
+export type MembershipSource = ClosedEnum<typeof MembershipSource>;
+
 export const GetTeamMembersTeamsResponseRole = {
   Admin: "ADMIN",
   ProjectDeveloper: "PROJECT_DEVELOPER",
@@ -286,6 +299,10 @@ export type GetTeamMembersMembers = {
    * Map with information about the members origin if they joined by requesting access.
    */
   joinedFrom?: GetTeamMembersJoinedFrom | undefined;
+  /**
+   * The source controlling this member's team access and roles. Individual permissions may have a different source. This does not replace authorization checks.
+   */
+  membershipSource: MembershipSource;
   /**
    * The name of this user.
    */
@@ -533,6 +550,11 @@ export function getTeamMembersJoinedFromFromJSON(
 }
 
 /** @internal */
+export const MembershipSource$inboundSchema: z.ZodNativeEnum<
+  typeof MembershipSource
+> = z.nativeEnum(MembershipSource);
+
+/** @internal */
 export const GetTeamMembersTeamsResponseRole$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsResponseRole
 > = z.nativeEnum(GetTeamMembersTeamsResponseRole);
@@ -583,6 +605,7 @@ export const GetTeamMembersMembers$inboundSchema: z.ZodType<
   joinedFrom: types.optional(
     z.lazy(() => GetTeamMembersJoinedFrom$inboundSchema),
   ),
+  membershipSource: MembershipSource$inboundSchema,
   name: types.optional(types.string()),
   projects: types.optional(
     z.array(z.lazy(() => GetTeamMembersTeamsProjects$inboundSchema)),

@@ -9,24 +9,30 @@ let value: BuyCreditsResponseBody2 = {
   purchaseIntent: {
     configuration: {
       options: {
+        fromPlan: {
+          orbSubscriptionId: "<id>",
+        },
         planId: "<id>",
+        transition: {
+          type: "preserve_source_cycle",
+        },
       },
       output: {},
       type: "subscription",
     },
-    createdAt: "1723484693361",
-    currency: "miu",
+    createdAt: "1712127191165",
+    currency: "usd",
     id: "<id>",
     ownerId: "<id>",
     provider: {
       resourceId: "<id>",
       type: "tackle_aws_marketplace",
     },
-    status: "succeeded",
+    status: "pending",
     subtotal: "<value>",
     tax: "<value>",
     total: "<value>",
-    updatedAt: "1735642486570",
+    updatedAt: "1735651883742",
   },
 };
 ```

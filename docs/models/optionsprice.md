@@ -1,13 +1,13 @@
-# ConfigurationPrice
+# OptionsPrice
 
 The absolute price that replaces the plan item price, after any rate variant
 
 ## Example Usage
 
 ```typescript
-import { ConfigurationPrice } from "@vercel/sdk/models/buycreditsop.js";
+import { OptionsPrice } from "@vercel/sdk/models/buycreditsop.js";
 
-let value: ConfigurationPrice = {
+let value: OptionsPrice = {
   model: "unit",
   unitAmount: "<value>",
 };
@@ -17,5 +17,5 @@ let value: ConfigurationPrice = {
 
 | Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `model`                                                               | [models.ConfigurationModel](../models/configurationmodel.md)          | :heavy_check_mark:                                                    | N/A                                                                   |
+| `model`                                                               | [models.OptionsModel](../models/optionsmodel.md)                      | :heavy_check_mark:                                                    | N/A                                                                   |
 | `unitAmount`                                                          | *string*                                                              | :heavy_check_mark:                                                    | The non-negative per-unit USD amount, with at most two decimal places |

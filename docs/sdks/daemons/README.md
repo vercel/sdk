@@ -166,7 +166,7 @@ run();
 
 ## restartProjectDaemonInstance
 
-Force restart a running production daemon instance. The new container starts asynchronously after the restart is accepted.
+Force restart a running daemon instance in production, or in a custom environment when `customEnvironmentId` is given. The new container starts asynchronously after the restart is accepted.
 
 ### Example Usage
 

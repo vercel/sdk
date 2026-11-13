@@ -391,11 +391,7 @@ const value: models.ThirtySix = {
 
 ```typescript
 const value: models.ThirtySeven = {
-  credential: {
-    id: "<id>",
-    name: "<value>",
-    providerSlug: "<value>",
-  },
+  enabled: true,
 };
 ```
 
@@ -415,9 +411,19 @@ const value: models.ThirtyEight = {
 
 ```typescript
 const value: models.ThirtyNine = {
-  added: [
-    "<value 1>",
-  ],
+  credential: {
+    id: "<id>",
+    name: "<value>",
+    providerSlug: "<value>",
+  },
+};
+```
+
+### `models.Forty`
+
+```typescript
+const value: models.Forty = {
+  added: [],
   changed: [
     "<value 1>",
   ],
@@ -426,18 +432,7 @@ const value: models.ThirtyNine = {
     name: "<value>",
     providerSlug: "<value>",
   },
-  removed: [
-    "<value 1>",
-    "<value 2>",
-  ],
-};
-```
-
-### `models.Forty`
-
-```typescript
-const value: models.Forty = {
-  enabled: true,
+  removed: [],
 };
 ```
 

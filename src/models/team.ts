@@ -387,6 +387,19 @@ export type DeploymentStorageRollout = {
 };
 
 /**
+ * Directory Sync source, using existing local connection and organization authority rules.
+ */
+export const DirectorySyncSource = {
+  None: "none",
+  Organization: "organization",
+  Team: "team",
+} as const;
+/**
+ * Directory Sync source, using existing local connection and organization authority rules.
+ */
+export type DirectorySyncSource = ClosedEnum<typeof DirectorySyncSource>;
+
+/**
  * Require production secrets to use a different value than preview or development.
  */
 export const DisjunctiveProductionSecretPolicy = {
@@ -962,6 +975,14 @@ export type Team = {
    * A short description of the Team.
    */
   description: string | null;
+  /**
+   * Directory Sync source, using existing local connection and organization authority rules.
+   */
+  directorySyncSource: DirectorySyncSource;
+  /**
+   * Provider type of the directory selected by directorySyncSource.
+   */
+  directorySyncType?: string | undefined;
   /**
    * Default for projects in the team. When `true`, projects in this team will not emit GitHub repository-dispatch events on deployment events unless the project explicitly overrides this setting via `project.gitProviderOptions.disableRepositoryDispatchEvents`.
    */
@@ -1728,6 +1749,11 @@ export function deploymentStorageRolloutFromJSON(
 }
 
 /** @internal */
+export const DirectorySyncSource$inboundSchema: z.ZodNativeEnum<
+  typeof DirectorySyncSource
+> = z.nativeEnum(DirectorySyncSource);
+
+/** @internal */
 export const DisjunctiveProductionSecretPolicy$inboundSchema: z.ZodNativeEnum<
   typeof DisjunctiveProductionSecretPolicy
 > = z.nativeEnum(DisjunctiveProductionSecretPolicy);
@@ -2278,6 +2304,8 @@ export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
         z.lazy(() => DeploymentStorageRollout$inboundSchema),
       ),
       description: types.nullable(types.string()),
+      directorySyncSource: DirectorySyncSource$inboundSchema,
+      directorySyncType: types.optional(types.string()),
       disableRepositoryDispatchEvents: types.optional(types.boolean()),
       disjunctiveProductionSecretPolicy: z.nullable(
         DisjunctiveProductionSecretPolicy$inboundSchema,

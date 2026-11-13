@@ -1,23 +1,27 @@
 # BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions
 
-Purchase configuration specific options
 
-## Example Usage
+## Supported Types
+
+### `models.Options1`
 
 ```typescript
-import { BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions } from "@vercel/sdk/models/buycreditsop.js";
-
-let value: BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions = {
+const value: models.Options1 = {
   planId: "<id>",
 };
 ```
 
-## Fields
+### `models.Options2`
 
-| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `fromPlan`                                                                  | [models.ConfigurationFromPlan](../models/configurationfromplan.md)          | :heavy_minus_sign:                                                          | The current plan being replaced by this purchase                            |
-| `planId`                                                                    | *string*                                                                    | :heavy_check_mark:                                                          | The ID of the plan to subscribe to                                          |
-| `planItemPrices`                                                            | [models.PlanItemPrices](../models/planitemprices.md)[]                      | :heavy_minus_sign:                                                          | The plan item prices to set for the subscription, independent of quantities |
-| `planItemQuantities`                                                        | [models.PlanItemQuantities](../models/planitemquantities.md)[]              | :heavy_minus_sign:                                                          | The plan item quantities to set for the subscription                        |
-| `rateVariantKey`                                                            | *string*                                                                    | :heavy_minus_sign:                                                          | The rate variant key to apply to the subscription                           |
+```typescript
+const value: models.Options2 = {
+  fromPlan: {
+    orbSubscriptionId: "<id>",
+  },
+  planId: "<id>",
+  transition: {
+    type: "preserve_source_cycle",
+  },
+};
+```
+

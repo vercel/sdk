@@ -11,5 +11,5 @@ let value: PayloadRepositoryScope = "all";
 ## Values
 
 ```typescript
-"all" | "selected"
+"all" | "none" | "selected"
 ```

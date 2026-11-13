@@ -108,6 +108,7 @@ async function $do(
   )(pathParams);
 
   const query = encodeFormQuery({
+    "customEnvironmentId": payload.customEnvironmentId,
     "slug": payload.slug,
     "target": payload.target,
     "teamId": payload.teamId,

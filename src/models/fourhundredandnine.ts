@@ -1240,6 +1240,7 @@ export type FourHundredAndSixteen = {
 
 export const UserEventPayloadProjectScope = {
   All: "all",
+  None: "none",
   Selected: "selected",
 } as const;
 export type UserEventPayloadProjectScope = ClosedEnum<
@@ -1248,6 +1249,7 @@ export type UserEventPayloadProjectScope = ClosedEnum<
 
 export const RepositoryScope = {
   All: "all",
+  None: "none",
   Selected: "selected",
 } as const;
 export type RepositoryScope = ClosedEnum<typeof RepositoryScope>;
@@ -1264,12 +1266,14 @@ export type UserEventPayload415Next = {
 
 export const PayloadProjectScope = {
   All: "all",
+  None: "none",
   Selected: "selected",
 } as const;
 export type PayloadProjectScope = ClosedEnum<typeof PayloadProjectScope>;
 
 export const PayloadRepositoryScope = {
   All: "all",
+  None: "none",
   Selected: "selected",
 } as const;
 export type PayloadRepositoryScope = ClosedEnum<typeof PayloadRepositoryScope>;

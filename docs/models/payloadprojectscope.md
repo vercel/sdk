@@ -5,11 +5,11 @@
 ```typescript
 import { PayloadProjectScope } from "@vercel/sdk/models/fourhundredandnine.js";
 
-let value: PayloadProjectScope = "selected";
+let value: PayloadProjectScope = "none";
 ```
 
 ## Values
 
 ```typescript
-"all" | "selected"
+"all" | "none" | "selected"
 ```

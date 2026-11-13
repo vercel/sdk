@@ -10,7 +10,7 @@ let value: ListPromoteAliasesResponseBody2 = {
     {
       alias: "<value>",
       id: "<id>",
-      status: "<value>",
+      status: "completed",
     },
   ],
   pagination: {

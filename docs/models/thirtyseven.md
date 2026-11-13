@@ -8,16 +8,12 @@ The payload of the event, if requested.
 import { ThirtySeven } from "@vercel/sdk/models/userevent.js";
 
 let value: ThirtySeven = {
-  credential: {
-    id: "<id>",
-    name: "<value>",
-    providerSlug: "<value>",
-  },
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `credential`                                 | [models.Credential](../models/credential.md) | :heavy_check_mark:                           | N/A                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

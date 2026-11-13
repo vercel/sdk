@@ -1,15 +1,15 @@
-# ConfigurationPlanItemQuantities
+# BuyCreditsOptionsPlanItemQuantities
 
 The current plan item quantities
 
 ## Example Usage
 
 ```typescript
-import { ConfigurationPlanItemQuantities } from "@vercel/sdk/models/buycreditsop.js";
+import { BuyCreditsOptionsPlanItemQuantities } from "@vercel/sdk/models/buycreditsop.js";
 
-let value: ConfigurationPlanItemQuantities = {
+let value: BuyCreditsOptionsPlanItemQuantities = {
   planItemId: "<id>",
-  quantity: 5829.2,
+  quantity: 6722.36,
 };
 ```
 

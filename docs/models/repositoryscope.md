@@ -5,11 +5,11 @@
 ```typescript
 import { RepositoryScope } from "@vercel/sdk/models/fourhundredandnine.js";
 
-let value: RepositoryScope = "selected";
+let value: RepositoryScope = "none";
 ```
 
 ## Values
 
 ```typescript
-"all" | "selected"
+"all" | "none" | "selected"
 ```

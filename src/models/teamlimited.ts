@@ -10,6 +10,21 @@ import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * Directory Sync source, using existing local connection and organization authority rules.
+ */
+export const TeamLimitedDirectorySyncSource = {
+  None: "none",
+  Organization: "organization",
+  Team: "team",
+} as const;
+/**
+ * Directory Sync source, using existing local connection and organization authority rules.
+ */
+export type TeamLimitedDirectorySyncSource = ClosedEnum<
+  typeof TeamLimitedDirectorySyncSource
+>;
+
 export const LimitedBy = {
   Invalidated: "invalidated",
   Mfa: "mfa",
@@ -247,6 +262,14 @@ export type TeamLimited = {
    */
   createdAt: number;
   /**
+   * Directory Sync source, using existing local connection and organization authority rules.
+   */
+  directorySyncSource: TeamLimitedDirectorySyncSource;
+  /**
+   * Provider type of the directory selected by directorySyncSource.
+   */
+  directorySyncType?: string | undefined;
+  /**
    * The Team's unique identifier.
    */
   id: string;
@@ -280,6 +303,11 @@ export type TeamLimited = {
    */
   slug: string;
 };
+
+/** @internal */
+export const TeamLimitedDirectorySyncSource$inboundSchema: z.ZodNativeEnum<
+  typeof TeamLimitedDirectorySyncSource
+> = z.nativeEnum(TeamLimitedDirectorySyncSource);
 
 /** @internal */
 export const LimitedBy$inboundSchema: z.ZodNativeEnum<typeof LimitedBy> = z
@@ -493,6 +521,8 @@ export const TeamLimited$inboundSchema: z.ZodType<
 > = z.object({
   avatar: types.nullable(types.string()),
   createdAt: types.number(),
+  directorySyncSource: TeamLimitedDirectorySyncSource$inboundSchema,
+  directorySyncType: types.optional(types.string()),
   id: types.string(),
   limited: types.literal(true),
   limitedBy: z.array(LimitedBy$inboundSchema),

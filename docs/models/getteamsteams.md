@@ -15,6 +15,7 @@ const value: models.Team = {
   creatorId: "R6efeCJQ2HKXywuasPDc0fOWB",
   defaultDeploymentProtection: {},
   description: "Our mission is to make cloud computing accessible to everyone.",
+  directorySyncSource: "none",
   emailDomain: "example.com",
   id: "team_nllPyCtREAqxxdyFKbbMDlxd",
   inviteCode: "hasihf9e89",
@@ -54,6 +55,7 @@ const value: models.Team = {
 const value: models.TeamLimited = {
   avatar: "6eb07268bcfadd309905ffb1579354084c24655c",
   createdAt: 1630748523395,
+  directorySyncSource: "none",
   id: "team_nllPyCtREAqxxdyFKbbMDlxd",
   limited: true,
   limitedBy: [],

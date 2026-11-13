@@ -100,6 +100,7 @@ export const Name = {
   AiGatewayHeadquartersUpdated: "ai-gateway-headquarters-updated",
   AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
+  AiGatewayMemberBudgetChanges: "ai-gateway-member-budget-changes",
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
   AiGatewayModelAllowlistToggled: "ai-gateway-model-allowlist-toggled",
@@ -958,6 +959,7 @@ export const ReplacedBy = {
   AiGatewayHeadquartersUpdated: "ai-gateway-headquarters-updated",
   AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
+  AiGatewayMemberBudgetChanges: "ai-gateway-member-budget-changes",
   AiGatewayModelAllowlistModelsUpdated:
     "ai-gateway-model-allowlist-models-updated",
   AiGatewayModelAllowlistToggled: "ai-gateway-model-allowlist-toggled",

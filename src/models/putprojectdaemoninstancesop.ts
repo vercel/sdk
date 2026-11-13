@@ -36,6 +36,10 @@ export type PutProjectDaemonInstancesRequest = {
    */
   target?: QueryParamTarget | undefined;
   /**
+   * The ID of the custom environment of the daemon, instead of `target`.
+   */
+  customEnvironmentId?: string | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -63,6 +67,7 @@ export type PutProjectDaemonInstancesRequest$Outbound = {
   idOrName: string;
   daemonName: string;
   target: string;
+  customEnvironmentId?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
   RequestBody?: { [k: string]: number | null } | undefined;
@@ -77,6 +82,7 @@ export const PutProjectDaemonInstancesRequest$outboundSchema: z.ZodType<
   idOrName: z.string(),
   daemonName: z.string(),
   target: QueryParamTarget$outboundSchema.default("production"),
+  customEnvironmentId: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
   requestBody: z.record(z.nullable(z.number().int())).optional(),

@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Force restart a project daemon instance
  *
  * @remarks
- * Force restart a running production daemon instance. The new container starts asynchronously after the restart is accepted.
+ * Force restart a running daemon instance in production, or in a custom environment when `customEnvironmentId` is given. The new container starts asynchronously after the restart is accepted.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -112,6 +112,7 @@ async function $do(
   )(pathParams);
 
   const query = encodeFormQuery({
+    "customEnvironmentId": payload.customEnvironmentId,
     "slug": payload.slug,
     "teamId": payload.teamId,
   });

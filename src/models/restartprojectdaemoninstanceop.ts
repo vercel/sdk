@@ -22,6 +22,10 @@ export type RestartProjectDaemonInstanceRequest = {
    */
   instanceId: string;
   /**
+   * The ID of the custom environment of the instance. Production instances are restarted when omitted.
+   */
+  customEnvironmentId?: string | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -43,6 +47,7 @@ export type RestartProjectDaemonInstanceRequest$Outbound = {
   idOrName: string;
   daemonName: string;
   instanceId: string;
+  customEnvironmentId?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -56,6 +61,7 @@ export const RestartProjectDaemonInstanceRequest$outboundSchema: z.ZodType<
   idOrName: z.string(),
   daemonName: z.string(),
   instanceId: z.string(),
+  customEnvironmentId: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Remove a Team Member
  *
  * @remarks
- * Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Directory Sync members can be removed when their directory email is absent or does not match the user's primary or verified secondary emails. Removing or leaving is refused when it would leave the Team's organization without an organization admin.
+ * Remove a Team Member from the Team, or dismiss a user that requested access, or leave a team. Organization-directory-managed access must be removed through the organization's identity provider; local removal returns `organization_directory_managed`. Directory Sync members can be removed when their directory email is absent or does not match the user's primary or verified secondary emails. Removing or leaving is refused when it would leave the Team's organization without an organization admin.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

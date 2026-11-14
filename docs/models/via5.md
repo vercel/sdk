@@ -5,7 +5,7 @@ Metadata for {@link viaIds}.
 ## Example Usage
 
 ```typescript
-import { Via5 } from "@vercel/sdk/models/userevent.js";
+import { Via5 } from "@vercel/sdk/models/usereventvia4type.js";
 
 let value: Via5 = {
   type: "system",

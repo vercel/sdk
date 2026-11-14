@@ -1,0 +1,16 @@
+# UserEventPayload273DeploymentType
+
+## Example Usage
+
+```typescript
+import { UserEventPayload273DeploymentType } from "@vercel/sdk/models/microfrontends2.js";
+
+let value: UserEventPayload273DeploymentType =
+  "prod_deployment_urls_and_all_previews";
+```
+
+## Values
+
+```typescript
+"all" | "all_except_custom_domains" | "preview" | "prod_deployment_urls_and_all_previews"
+```

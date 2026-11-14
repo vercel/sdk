@@ -1444,6 +1444,9 @@ export type UpdateMicrofrontendsProjectsResponseType = ClosedEnum<
   typeof UpdateMicrofrontendsProjectsResponseType
 >;
 
+/**
+ * The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists.
+ */
 export type UpdateMicrofrontendsLastAliasRequest = {
   fromDeploymentId: string | null;
   /**
@@ -1456,6 +1459,9 @@ export type UpdateMicrofrontendsLastAliasRequest = {
   type: UpdateMicrofrontendsProjectsResponseType;
 };
 
+/**
+ * Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response.
+ */
 export type UpdateMicrofrontendsLastRollbackTarget = {};
 
 export type UpdateMicrofrontendsAliasAssigned = number | boolean;

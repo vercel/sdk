@@ -1381,6 +1381,14 @@ export type UpdateMicrofrontendsPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  projectFlagsOverride?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectFlagsOverrideProduction?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   projectFlagsProduction?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -4111,6 +4119,10 @@ export const UpdateMicrofrontendsPermissions$inboundSchema: z.ZodType<
   ),
   projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
   projectFlags: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlagsOverride: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlagsOverrideProduction: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
   projectFlagsProduction: types.optional(z.array(ACLAction$inboundSchema)),
   projectFlagsSdkKey: types.optional(z.array(ACLAction$inboundSchema)),
   projectFromV0: types.optional(z.array(ACLAction$inboundSchema)),

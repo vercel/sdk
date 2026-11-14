@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndNineteen } from "@vercel/sdk/models/usereventpayload474actortype.js";
+import { FiveHundredAndNineteen } from "@vercel/sdk/models/fourhundredandeightyseven.js";
 
 let value: FiveHundredAndNineteen = {
-  domain: "outlandish-birdcage.name",
-  projectId: "<id>",
+  next: {
+    access: "unlimited",
+  },
+  previous: {
+    access: "default",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `next`                               | *models.UserEventPayload519Next*     | :heavy_check_mark:                   | N/A                                  |
+| `previous`                           | *models.UserEventPayload519Previous* | :heavy_check_mark:                   | N/A                                  |

@@ -1,7 +1,5 @@
 # Environment
 
-Deployment environment of the project principal.
-
 
 ## Supported Types
 

@@ -545,7 +545,13 @@ export type CreateProjectResponseBody = {
   internalRoutes?: Array<InternalRoutes> | undefined;
   ipBuckets?: Array<CreateProjectIpBuckets> | undefined;
   jobs?: Jobs | undefined;
+  /**
+   * The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists.
+   */
   lastAliasRequest?: LastAliasRequest | null | undefined;
+  /**
+   * Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response.
+   */
   lastRollbackTarget?: LastRollbackTarget | null | undefined;
   latestDeployments?: Array<LatestDeployments> | undefined;
   link?: Link | undefined;

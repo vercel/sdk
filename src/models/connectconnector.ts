@@ -60,18 +60,12 @@ export const Environment2 = {
 } as const;
 export type Environment2 = ClosedEnum<typeof Environment2>;
 
-/**
- * Deployment environment of the project principal.
- */
 export type Environment = string | Environment2;
 
 /**
  * Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
  */
-export type CreatedBy2 = {
-  /**
-   * Deployment environment of the project principal.
-   */
+export type CreatedBy3 = {
   environment: string | Environment2;
   /**
    * Vercel project ID.
@@ -86,7 +80,7 @@ export type CreatedBy2 = {
 /**
  * Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
  */
-export type One = {
+export type CreatedBy2 = {
   /**
    * Vercel user ID.
    */
@@ -98,9 +92,17 @@ export type One = {
 };
 
 /**
+ * Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all.
+ */
+export type One = {
+  id: string;
+  type: "app";
+};
+
+/**
  * Principal that created the connector.
  */
-export type CreatedBy = One | CreatedBy2;
+export type CreatedBy = One | CreatedBy2 | CreatedBy3;
 
 /**
  * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
@@ -186,18 +188,12 @@ export type ConnectConnectorEnvironment2 = ClosedEnum<
   typeof ConnectConnectorEnvironment2
 >;
 
-/**
- * Deployment environment of the project principal.
- */
 export type UpdatedByEnvironment = string | ConnectConnectorEnvironment2;
 
 /**
  * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
  */
-export type UpdatedBy2 = {
-  /**
-   * Deployment environment of the project principal.
-   */
+export type UpdatedBy3 = {
   environment: string | ConnectConnectorEnvironment2;
   /**
    * Vercel project ID.
@@ -212,7 +208,7 @@ export type UpdatedBy2 = {
 /**
  * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
  */
-export type UpdatedBy1 = {
+export type UpdatedBy2 = {
   /**
    * Vercel user ID.
    */
@@ -224,9 +220,17 @@ export type UpdatedBy1 = {
 };
 
 /**
+ * Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update.
+ */
+export type UpdatedBy1 = {
+  id: string;
+  type: "app";
+};
+
+/**
  * Principal that most recently updated the connector.
  */
-export type UpdatedBy = UpdatedBy1 | UpdatedBy2;
+export type UpdatedBy = UpdatedBy1 | UpdatedBy2 | UpdatedBy3;
 
 /**
  * User-token capabilities and known grants for the connector.
@@ -290,7 +294,7 @@ export type ConnectConnector = {
   /**
    * Principal that created the connector.
    */
-  createdBy?: One | CreatedBy2 | undefined;
+  createdBy?: One | CreatedBy2 | CreatedBy3 | undefined;
   /**
    * How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it.
    */
@@ -418,7 +422,7 @@ export type ConnectConnector = {
   /**
    * Principal that most recently updated the connector.
    */
-  updatedBy?: UpdatedBy1 | UpdatedBy2 | undefined;
+  updatedBy?: UpdatedBy1 | UpdatedBy2 | UpdatedBy3 | undefined;
   /**
    * User-token capabilities and known grants for the connector.
    */
@@ -477,14 +481,34 @@ export function environmentFromJSON(
 }
 
 /** @internal */
-export const CreatedBy2$inboundSchema: z.ZodType<
-  CreatedBy2,
+export const CreatedBy3$inboundSchema: z.ZodType<
+  CreatedBy3,
   z.ZodTypeDef,
   unknown
 > = z.object({
   environment: smartUnion([types.string(), Environment2$inboundSchema]),
   id: types.string(),
   type: types.literal("project"),
+});
+
+export function createdBy3FromJSON(
+  jsonString: string,
+): SafeParseResult<CreatedBy3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreatedBy3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreatedBy3' from JSON`,
+  );
+}
+
+/** @internal */
+export const CreatedBy2$inboundSchema: z.ZodType<
+  CreatedBy2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  type: types.literal("user"),
 });
 
 export function createdBy2FromJSON(
@@ -501,7 +525,7 @@ export function createdBy2FromJSON(
 export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
   .object({
     id: types.string(),
-    type: types.literal("user"),
+    type: types.literal("app"),
   });
 
 export function oneFromJSON(
@@ -522,6 +546,7 @@ export const CreatedBy$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => One$inboundSchema),
   z.lazy(() => CreatedBy2$inboundSchema),
+  z.lazy(() => CreatedBy3$inboundSchema),
 ]);
 
 export function createdByFromJSON(
@@ -591,8 +616,8 @@ export function updatedByEnvironmentFromJSON(
 }
 
 /** @internal */
-export const UpdatedBy2$inboundSchema: z.ZodType<
-  UpdatedBy2,
+export const UpdatedBy3$inboundSchema: z.ZodType<
+  UpdatedBy3,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -602,6 +627,26 @@ export const UpdatedBy2$inboundSchema: z.ZodType<
   ]),
   id: types.string(),
   type: types.literal("project"),
+});
+
+export function updatedBy3FromJSON(
+  jsonString: string,
+): SafeParseResult<UpdatedBy3, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UpdatedBy3$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UpdatedBy3' from JSON`,
+  );
+}
+
+/** @internal */
+export const UpdatedBy2$inboundSchema: z.ZodType<
+  UpdatedBy2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: types.string(),
+  type: types.literal("user"),
 });
 
 export function updatedBy2FromJSON(
@@ -621,7 +666,7 @@ export const UpdatedBy1$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: types.string(),
-  type: types.literal("user"),
+  type: types.literal("app"),
 });
 
 export function updatedBy1FromJSON(
@@ -642,6 +687,7 @@ export const UpdatedBy$inboundSchema: z.ZodType<
 > = z.union([
   z.lazy(() => UpdatedBy1$inboundSchema),
   z.lazy(() => UpdatedBy2$inboundSchema),
+  z.lazy(() => UpdatedBy3$inboundSchema),
 ]);
 
 export function updatedByFromJSON(
@@ -695,6 +741,7 @@ export const ConnectConnector$inboundSchema: z.ZodType<
     z.union([
       z.lazy(() => One$inboundSchema),
       z.lazy(() => CreatedBy2$inboundSchema),
+      z.lazy(() => CreatedBy3$inboundSchema),
     ]),
   ),
   creationMode: types.optional(CreationMode$inboundSchema),
@@ -734,6 +781,7 @@ export const ConnectConnector$inboundSchema: z.ZodType<
     z.union([
       z.lazy(() => UpdatedBy1$inboundSchema),
       z.lazy(() => UpdatedBy2$inboundSchema),
+      z.lazy(() => UpdatedBy3$inboundSchema),
     ]),
   ),
   userTokens: types.optional(z.lazy(() => UserTokens$inboundSchema)),

@@ -470,6 +470,12 @@ export const Name = {
   OrganizationAvatarUpdate: "organization-avatar-update",
   OrganizationCreate: "organization-create",
   OrganizationDelete: "organization-delete",
+  OrganizationDomainVerificationCreated:
+    "organization-domain-verification-created",
+  OrganizationDomainVerificationDeleted:
+    "organization-domain-verification-deleted",
+  OrganizationDomainVerificationVerified:
+    "organization-domain-verification-verified",
   OrganizationDsyncDelete: "organization-dsync-delete",
   OrganizationDsyncGroupDelete: "organization-dsync-group-delete",
   OrganizationDsyncGroupUpsert: "organization-dsync-group-upsert",
@@ -830,6 +836,7 @@ export const Name = {
   UserEmuRecoveryEmailSent: "user-emu-recovery-email-sent",
   UserEmuRecoveryInitiated: "user-emu-recovery-initiated",
   UserEmuToggled: "user-emu-toggled",
+  UserLandingPageUpdated: "user-landing-page-updated",
   UserMfaChallengeFailed: "user-mfa-challenge-failed",
   UserMfaChallengeInitiated: "user-mfa-challenge-initiated",
   UserMfaChallengeVerified: "user-mfa-challenge-verified",
@@ -856,6 +863,9 @@ export const Name = {
   V0ChatMessageSent: "v0-chat-message-sent",
   V0MigrationPaymentConfirmed: "v0-migration-payment-confirmed",
   V0MigrationSubscriptionCompleted: "v0-migration-subscription-completed",
+  V0SharedPoolCreditLimitDefaultUpdated:
+    "v0-shared-pool-credit-limit-default-updated",
+  V0SharedPoolCreditLimitUpdated: "v0-shared-pool-credit-limit-updated",
   VcrImageDeleted: "vcr-image-deleted",
   VcrImagePushed: "vcr-image-pushed",
   VcrRepositoryCreated: "vcr-repository-created",
@@ -1329,6 +1339,12 @@ export const ReplacedBy = {
   OrganizationAvatarUpdate: "organization-avatar-update",
   OrganizationCreate: "organization-create",
   OrganizationDelete: "organization-delete",
+  OrganizationDomainVerificationCreated:
+    "organization-domain-verification-created",
+  OrganizationDomainVerificationDeleted:
+    "organization-domain-verification-deleted",
+  OrganizationDomainVerificationVerified:
+    "organization-domain-verification-verified",
   OrganizationDsyncDelete: "organization-dsync-delete",
   OrganizationDsyncGroupDelete: "organization-dsync-group-delete",
   OrganizationDsyncGroupUpsert: "organization-dsync-group-upsert",
@@ -1689,6 +1705,7 @@ export const ReplacedBy = {
   UserEmuRecoveryEmailSent: "user-emu-recovery-email-sent",
   UserEmuRecoveryInitiated: "user-emu-recovery-initiated",
   UserEmuToggled: "user-emu-toggled",
+  UserLandingPageUpdated: "user-landing-page-updated",
   UserMfaChallengeFailed: "user-mfa-challenge-failed",
   UserMfaChallengeInitiated: "user-mfa-challenge-initiated",
   UserMfaChallengeVerified: "user-mfa-challenge-verified",
@@ -1715,6 +1732,9 @@ export const ReplacedBy = {
   V0ChatMessageSent: "v0-chat-message-sent",
   V0MigrationPaymentConfirmed: "v0-migration-payment-confirmed",
   V0MigrationSubscriptionCompleted: "v0-migration-subscription-completed",
+  V0SharedPoolCreditLimitDefaultUpdated:
+    "v0-shared-pool-credit-limit-default-updated",
+  V0SharedPoolCreditLimitUpdated: "v0-shared-pool-credit-limit-updated",
   VcrImageDeleted: "vcr-image-deleted",
   VcrImagePushed: "vcr-image-pushed",
   VcrRepositoryCreated: "vcr-repository-created",

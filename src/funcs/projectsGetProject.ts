@@ -104,6 +104,7 @@ async function $do(
   const path = pathToFunc("/v9/projects/{idOrName}")(pathParams);
 
   const query = encodeFormQuery({
+    "rollbackInfo": payload.rollbackInfo,
     "slug": payload.slug,
     "teamId": payload.teamId,
   });

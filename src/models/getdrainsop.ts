@@ -305,10 +305,22 @@ export type GetDrainsDrainsDeliveryStats = {
    */
   attempts: number;
   /**
-   * Deliveries that finally failed in the window, after any automatic retries.
+   * Deliveries that finally failed in the window.
    */
   failures: number;
   state: GetDrainsDrainsState;
+  /**
+   * Deliveries that finally failed in the window, after any automatic retries.
+   */
+  totalFailedDeliveries: number;
+  /**
+   * Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome.
+   */
+  totalRetriedDeliveries: number;
+  /**
+   * Deliveries delivered in the window, on the first try or after automatic retries.
+   */
+  totalSuccessfulDeliveries: number;
   window: GetDrainsDrainsWindow;
 };
 
@@ -699,10 +711,22 @@ export type DrainsDeliveryStats = {
    */
   attempts: number;
   /**
-   * Deliveries that finally failed in the window, after any automatic retries.
+   * Deliveries that finally failed in the window.
    */
   failures: number;
   state: DrainsState;
+  /**
+   * Deliveries that finally failed in the window, after any automatic retries.
+   */
+  totalFailedDeliveries: number;
+  /**
+   * Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome.
+   */
+  totalRetriedDeliveries: number;
+  /**
+   * Deliveries delivered in the window, on the first try or after automatic retries.
+   */
+  totalSuccessfulDeliveries: number;
   window: DrainsWindow;
 };
 
@@ -1434,6 +1458,9 @@ export const GetDrainsDrainsDeliveryStats$inboundSchema: z.ZodType<
   attempts: types.number(),
   failures: types.number(),
   state: GetDrainsDrainsState$inboundSchema,
+  totalFailedDeliveries: types.number(),
+  totalRetriedDeliveries: types.number(),
+  totalSuccessfulDeliveries: types.number(),
   window: GetDrainsDrainsWindow$inboundSchema,
 });
 
@@ -2318,6 +2345,9 @@ export const DrainsDeliveryStats$inboundSchema: z.ZodType<
   attempts: types.number(),
   failures: types.number(),
   state: DrainsState$inboundSchema,
+  totalFailedDeliveries: types.number(),
+  totalRetriedDeliveries: types.number(),
+  totalSuccessfulDeliveries: types.number(),
   window: DrainsWindow$inboundSchema,
 });
 

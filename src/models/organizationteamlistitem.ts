@@ -60,7 +60,7 @@ export type OrganizationTeamListItem = {
    */
   dsyncMode: DsyncMode;
   /**
-   * Present only when the request sets `includeMemberCount=true`. Number of members on the Team, including pending memberships. Excludes email invitations that do not have a membership record.
+   * Present only when the request sets `includeMemberCount=true`. Number of members on the Team, including pending memberships and organization Directory Sync grants. Excludes suppressed memberships and email invitations that do not have a membership record.
    */
   memberCount?: number | undefined;
   /**

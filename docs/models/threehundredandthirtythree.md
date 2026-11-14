@@ -5,12 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/usereventpayloadprivatelinkendpoint.js";
+import { ThreeHundredAndThirtyThree } from "@vercel/sdk/models/twohundredandninetynine.js";
 
 let value: ThreeHundredAndThirtyThree = {
   domain: "dental-department.net",
+  gitBranch: "<value>",
   projectId: "<id>",
   projectName: "<value>",
+  redirect: "<value>",
+  redirectStatusCode: 5988.71,
   target: "<value>",
 };
 ```
@@ -19,9 +22,11 @@ let value: ThreeHundredAndThirtyThree = {
 
 | Field                | Type                 | Required             | Description          |
 | -------------------- | -------------------- | -------------------- | -------------------- |
+| `configuredBy`       | *string*             | :heavy_minus_sign:   | N/A                  |
 | `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
+| `gitBranch`          | *string*             | :heavy_check_mark:   | N/A                  |
 | `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
 | `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirect`           | *string*             | :heavy_minus_sign:   | N/A                  |
-| `redirectStatusCode` | *number*             | :heavy_minus_sign:   | N/A                  |
+| `redirect`           | *string*             | :heavy_check_mark:   | N/A                  |
+| `redirectStatusCode` | *number*             | :heavy_check_mark:   | N/A                  |
 | `target`             | *string*             | :heavy_check_mark:   | N/A                  |

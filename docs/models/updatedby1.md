@@ -9,7 +9,7 @@ import { UpdatedBy1 } from "@vercel/sdk/models/connectconnector.js";
 
 let value: UpdatedBy1 = {
   id: "<id>",
-  type: "user",
+  type: "app",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: UpdatedBy1 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | Vercel user ID.    |
-| `type`             | *"user"*           | :heavy_check_mark: | Principal kind.    |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `type`             | *"app"*            | :heavy_check_mark: | N/A                |

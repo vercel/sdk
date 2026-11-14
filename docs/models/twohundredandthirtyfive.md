@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyFive } from "@vercel/sdk/models/factorsorigin.js";
+import { TwoHundredAndThirtyFive } from "@vercel/sdk/models/edgeconfig.js";
 
 let value: TwoHundredAndThirtyFive = {
   group: {

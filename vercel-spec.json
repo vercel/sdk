@@ -18141,6 +18141,24 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
           }
         ],
         "requestBody": {
@@ -18432,6 +18450,24 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
             }
           }
         ],
@@ -54071,7 +54107,7 @@
                                       },
                                       "failures": {
                                         "type": "number",
-                                        "description": "Deliveries that finally failed in the window, after any automatic retries."
+                                        "description": "Deliveries that finally failed in the window."
                                       },
                                       "state": {
                                         "type": "string",
@@ -54080,6 +54116,18 @@
                                           "healthy",
                                           "unknown"
                                         ]
+                                      },
+                                      "totalFailedDeliveries": {
+                                        "type": "number",
+                                        "description": "Deliveries that finally failed in the window, after any automatic retries."
+                                      },
+                                      "totalRetriedDeliveries": {
+                                        "type": "number",
+                                        "description": "Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome."
+                                      },
+                                      "totalSuccessfulDeliveries": {
+                                        "type": "number",
+                                        "description": "Deliveries delivered in the window, on the first try or after automatic retries."
                                       },
                                       "window": {
                                         "type": "string",
@@ -54092,6 +54140,9 @@
                                       "attempts",
                                       "failures",
                                       "state",
+                                      "totalFailedDeliveries",
+                                      "totalRetriedDeliveries",
+                                      "totalSuccessfulDeliveries",
                                       "window"
                                     ],
                                     "type": "object",
@@ -54632,7 +54683,7 @@
                                       },
                                       "failures": {
                                         "type": "number",
-                                        "description": "Deliveries that finally failed in the window, after any automatic retries."
+                                        "description": "Deliveries that finally failed in the window."
                                       },
                                       "state": {
                                         "type": "string",
@@ -54641,6 +54692,18 @@
                                           "healthy",
                                           "unknown"
                                         ]
+                                      },
+                                      "totalFailedDeliveries": {
+                                        "type": "number",
+                                        "description": "Deliveries that finally failed in the window, after any automatic retries."
+                                      },
+                                      "totalRetriedDeliveries": {
+                                        "type": "number",
+                                        "description": "Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome."
+                                      },
+                                      "totalSuccessfulDeliveries": {
+                                        "type": "number",
+                                        "description": "Deliveries delivered in the window, on the first try or after automatic retries."
                                       },
                                       "window": {
                                         "type": "string",
@@ -54653,6 +54716,9 @@
                                       "attempts",
                                       "failures",
                                       "state",
+                                      "totalFailedDeliveries",
+                                      "totalRetriedDeliveries",
+                                      "totalSuccessfulDeliveries",
                                       "window"
                                     ],
                                     "type": "object",
@@ -55511,7 +55577,7 @@
                             },
                             "failures": {
                               "type": "number",
-                              "description": "Deliveries that finally failed in the window, after any automatic retries."
+                              "description": "Deliveries that finally failed in the window."
                             },
                             "state": {
                               "type": "string",
@@ -55520,6 +55586,18 @@
                                 "healthy",
                                 "unknown"
                               ]
+                            },
+                            "totalFailedDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries that finally failed in the window, after any automatic retries."
+                            },
+                            "totalRetriedDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome."
+                            },
+                            "totalSuccessfulDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries delivered in the window, on the first try or after automatic retries."
                             },
                             "window": {
                               "type": "string",
@@ -55532,6 +55610,9 @@
                             "attempts",
                             "failures",
                             "state",
+                            "totalFailedDeliveries",
+                            "totalRetriedDeliveries",
+                            "totalSuccessfulDeliveries",
                             "window"
                           ],
                           "type": "object",
@@ -56069,7 +56150,7 @@
                             },
                             "failures": {
                               "type": "number",
-                              "description": "Deliveries that finally failed in the window, after any automatic retries."
+                              "description": "Deliveries that finally failed in the window."
                             },
                             "state": {
                               "type": "string",
@@ -56078,6 +56159,18 @@
                                 "healthy",
                                 "unknown"
                               ]
+                            },
+                            "totalFailedDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries that finally failed in the window, after any automatic retries."
+                            },
+                            "totalRetriedDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome."
+                            },
+                            "totalSuccessfulDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries delivered in the window, on the first try or after automatic retries."
                             },
                             "window": {
                               "type": "string",
@@ -56090,6 +56183,9 @@
                             "attempts",
                             "failures",
                             "state",
+                            "totalFailedDeliveries",
+                            "totalRetriedDeliveries",
+                            "totalSuccessfulDeliveries",
                             "window"
                           ],
                           "type": "object",
@@ -57171,7 +57267,7 @@
                                   },
                                   "failures": {
                                     "type": "number",
-                                    "description": "Deliveries that finally failed in the window, after any automatic retries."
+                                    "description": "Deliveries that finally failed in the window."
                                   },
                                   "state": {
                                     "type": "string",
@@ -57180,6 +57276,18 @@
                                       "healthy",
                                       "unknown"
                                     ]
+                                  },
+                                  "totalFailedDeliveries": {
+                                    "type": "number",
+                                    "description": "Deliveries that finally failed in the window, after any automatic retries."
+                                  },
+                                  "totalRetriedDeliveries": {
+                                    "type": "number",
+                                    "description": "Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome."
+                                  },
+                                  "totalSuccessfulDeliveries": {
+                                    "type": "number",
+                                    "description": "Deliveries delivered in the window, on the first try or after automatic retries."
                                   },
                                   "window": {
                                     "type": "string",
@@ -57192,6 +57300,9 @@
                                   "attempts",
                                   "failures",
                                   "state",
+                                  "totalFailedDeliveries",
+                                  "totalRetriedDeliveries",
+                                  "totalSuccessfulDeliveries",
                                   "window"
                                 ],
                                 "type": "object",
@@ -57732,7 +57843,7 @@
                                   },
                                   "failures": {
                                     "type": "number",
-                                    "description": "Deliveries that finally failed in the window, after any automatic retries."
+                                    "description": "Deliveries that finally failed in the window."
                                   },
                                   "state": {
                                     "type": "string",
@@ -57741,6 +57852,18 @@
                                       "healthy",
                                       "unknown"
                                     ]
+                                  },
+                                  "totalFailedDeliveries": {
+                                    "type": "number",
+                                    "description": "Deliveries that finally failed in the window, after any automatic retries."
+                                  },
+                                  "totalRetriedDeliveries": {
+                                    "type": "number",
+                                    "description": "Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome."
+                                  },
+                                  "totalSuccessfulDeliveries": {
+                                    "type": "number",
+                                    "description": "Deliveries delivered in the window, on the first try or after automatic retries."
                                   },
                                   "window": {
                                     "type": "string",
@@ -57753,6 +57876,9 @@
                                   "attempts",
                                   "failures",
                                   "state",
+                                  "totalFailedDeliveries",
+                                  "totalRetriedDeliveries",
+                                  "totalSuccessfulDeliveries",
                                   "window"
                                 ],
                                 "type": "object",
@@ -58512,7 +58638,7 @@
                         },
                         "failures": {
                           "type": "number",
-                          "description": "Deliveries that finally failed in the window, after any automatic retries."
+                          "description": "Deliveries that finally failed in the window."
                         },
                         "state": {
                           "type": "string",
@@ -58521,6 +58647,18 @@
                             "healthy",
                             "unknown"
                           ]
+                        },
+                        "totalFailedDeliveries": {
+                          "type": "number",
+                          "description": "Deliveries that finally failed in the window, after any automatic retries."
+                        },
+                        "totalRetriedDeliveries": {
+                          "type": "number",
+                          "description": "Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome."
+                        },
+                        "totalSuccessfulDeliveries": {
+                          "type": "number",
+                          "description": "Deliveries delivered in the window, on the first try or after automatic retries."
                         },
                         "window": {
                           "type": "string",
@@ -58533,6 +58671,9 @@
                         "attempts",
                         "failures",
                         "state",
+                        "totalFailedDeliveries",
+                        "totalRetriedDeliveries",
+                        "totalSuccessfulDeliveries",
                         "window"
                       ],
                       "type": "object",
@@ -58688,13 +58829,13 @@
           },
           {
             "name": "includeDeliveryStats",
-            "description": "Include `deliveryStats` with the delivery health of the drain over the last 24 hours.",
+            "description": "Include `deliveryStats` with the delivery health of the drain over the last 24 hours. Ignored for teams without drain delivery metrics.",
             "in": "query",
             "required": false,
             "schema": {
               "type": "boolean",
               "default": false,
-              "description": "Include `deliveryStats` with the delivery health of the drain over the last 24 hours."
+              "description": "Include `deliveryStats` with the delivery health of the drain over the last 24 hours. Ignored for teams without drain delivery metrics."
             }
           },
           {
@@ -59151,7 +59292,7 @@
                             },
                             "failures": {
                               "type": "number",
-                              "description": "Deliveries that finally failed in the window, after any automatic retries."
+                              "description": "Deliveries that finally failed in the window."
                             },
                             "state": {
                               "type": "string",
@@ -59160,6 +59301,18 @@
                                 "healthy",
                                 "unknown"
                               ]
+                            },
+                            "totalFailedDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries that finally failed in the window, after any automatic retries."
+                            },
+                            "totalRetriedDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome."
+                            },
+                            "totalSuccessfulDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries delivered in the window, on the first try or after automatic retries."
                             },
                             "window": {
                               "type": "string",
@@ -59172,6 +59325,9 @@
                             "attempts",
                             "failures",
                             "state",
+                            "totalFailedDeliveries",
+                            "totalRetriedDeliveries",
+                            "totalSuccessfulDeliveries",
                             "window"
                           ],
                           "type": "object",
@@ -59709,7 +59865,7 @@
                             },
                             "failures": {
                               "type": "number",
-                              "description": "Deliveries that finally failed in the window, after any automatic retries."
+                              "description": "Deliveries that finally failed in the window."
                             },
                             "state": {
                               "type": "string",
@@ -59718,6 +59874,18 @@
                                 "healthy",
                                 "unknown"
                               ]
+                            },
+                            "totalFailedDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries that finally failed in the window, after any automatic retries."
+                            },
+                            "totalRetriedDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome."
+                            },
+                            "totalSuccessfulDeliveries": {
+                              "type": "number",
+                              "description": "Deliveries delivered in the window, on the first try or after automatic retries."
                             },
                             "window": {
                               "type": "string",
@@ -59730,6 +59898,9 @@
                             "attempts",
                             "failures",
                             "state",
+                            "totalFailedDeliveries",
+                            "totalRetriedDeliveries",
+                            "totalSuccessfulDeliveries",
                             "window"
                           ],
                           "type": "object",
@@ -90912,11 +91083,13 @@
                               "toDeploymentId",
                               "type"
                             ],
-                            "type": "object"
+                            "type": "object",
+                            "description": "The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists."
                           },
                           "lastRollbackTarget": {
                             "nullable": true,
-                            "type": "object"
+                            "type": "object",
+                            "description": "Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response."
                           },
                           "latestDeployments": {
                             "items": {
@@ -93678,6 +93851,20 @@
                                 "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                               },
                               "projectFlags": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
+                              "projectFlagsOverride": {
+                                "items": {
+                                  "$ref": "#/components/schemas/ACLAction"
+                                },
+                                "type": "array",
+                                "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                              },
+                              "projectFlagsOverrideProduction": {
                                 "items": {
                                   "$ref": "#/components/schemas/ACLAction"
                                 },
@@ -97962,7 +98149,7 @@
     },
     "/v1/organizations/{organizationId}/teams": {
       "get": {
-        "description": "List up to 100 teams in an organization, each enriched with the team's slug, name, and avatar. Set `includeMemberCount` to include counts that include pending memberships but exclude email invitations without a membership record. Teams whose underlying record no longer exists are omitted, so a page may contain fewer teams than the page size (or be empty) while still returning a `cursor`; paginate until `cursor` is absent. This endpoint is in private beta. Contact your Vercel account team for access.",
+        "description": "List up to 100 teams in an organization, each enriched with the team's slug, name, and avatar. Set `includeMemberCount` to include counts that include pending memberships and organization Directory Sync grants, while excluding suppressed memberships and email invitations without a membership record. Teams whose underlying record no longer exists are omitted, so a page may contain fewer teams than the page size (or be empty) while still returning a `cursor`; paginate until `cursor` is absent. This endpoint is in private beta. Contact your Vercel account team for access.",
         "operationId": "listOrganizationTeams",
         "security": [
           {
@@ -98037,12 +98224,12 @@
           },
           {
             "name": "includeMemberCount",
-            "description": "When true, includes each team's member count in the response.",
+            "description": "When true, includes each team's member count, including organization Directory Sync members. Counting Directory Sync members can add latency.",
             "in": "query",
             "required": false,
             "schema": {
               "type": "boolean",
-              "description": "When true, includes each team's member count in the response."
+              "description": "When true, includes each team's member count, including organization Directory Sync members. Counting Directory Sync members can add latency."
             }
           }
         ]
@@ -116209,11 +116396,13 @@
                                   "toDeploymentId",
                                   "type"
                                 ],
-                                "type": "object"
+                                "type": "object",
+                                "description": "The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists."
                               },
                               "lastRollbackTarget": {
                                 "nullable": true,
-                                "type": "object"
+                                "type": "object",
+                                "description": "Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response."
                               },
                               "latestDeployments": {
                                 "items": {
@@ -118975,6 +119164,20 @@
                                     "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                                   },
                                   "projectFlags": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
+                                  "projectFlagsOverride": {
+                                    "items": {
+                                      "$ref": "#/components/schemas/ACLAction"
+                                    },
+                                    "type": "array",
+                                    "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                                  },
+                                  "projectFlagsOverrideProduction": {
                                     "items": {
                                       "$ref": "#/components/schemas/ACLAction"
                                     },
@@ -124952,11 +125155,13 @@
                         "toDeploymentId",
                         "type"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists."
                     },
                     "lastRollbackTarget": {
                       "nullable": true,
-                      "type": "object"
+                      "type": "object",
+                      "description": "Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response."
                     },
                     "latestDeployments": {
                       "items": {
@@ -127718,6 +127923,20 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverride": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverrideProduction": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -134002,11 +134221,13 @@
                         "toDeploymentId",
                         "type"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists."
                     },
                     "lastRollbackTarget": {
                       "nullable": true,
-                      "type": "object"
+                      "type": "object",
+                      "description": "Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response."
                     },
                     "latestDeployments": {
                       "items": {
@@ -136768,6 +136989,20 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverride": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverrideProduction": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -139612,6 +139847,16 @@
             }
           },
           {
+            "name": "rollbackInfo",
+            "description": "Include the status of the last promote or rollback request in `lastAliasRequest` (and its legacy mirror `lastRollbackTarget`). When omitted or `false`, both fields are always `null` regardless of project state.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "description": "Include the status of the last promote or rollback request in `lastAliasRequest` (and its legacy mirror `lastRollbackTarget`). When omitted or `false`, both fields are always `null` regardless of project state.",
+              "type": "boolean"
+            }
+          },
+          {
             "description": "The Team identifier to perform the request on behalf of.",
             "in": "query",
             "name": "teamId",
@@ -142299,11 +142544,13 @@
                         "toDeploymentId",
                         "type"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists."
                     },
                     "lastRollbackTarget": {
                       "nullable": true,
-                      "type": "object"
+                      "type": "object",
+                      "description": "Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response."
                     },
                     "latestDeployments": {
                       "items": {
@@ -145065,6 +145312,20 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverride": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverrideProduction": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -151974,11 +152235,13 @@
                         "toDeploymentId",
                         "type"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists."
                     },
                     "lastRollbackTarget": {
                       "nullable": true,
-                      "type": "object"
+                      "type": "object",
+                      "description": "Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response."
                     },
                     "latestDeployments": {
                       "items": {
@@ -154740,6 +155003,20 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverride": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverrideProduction": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -160284,11 +160561,13 @@
                         "toDeploymentId",
                         "type"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists."
                     },
                     "lastRollbackTarget": {
                       "nullable": true,
-                      "type": "object"
+                      "type": "object",
+                      "description": "Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response."
                     },
                     "latestDeployments": {
                       "items": {
@@ -163050,6 +163329,20 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverride": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverrideProduction": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -181747,11 +182040,13 @@
                         "toDeploymentId",
                         "type"
                       ],
-                      "type": "object"
+                      "type": "object",
+                      "description": "The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists."
                     },
                     "lastRollbackTarget": {
                       "nullable": true,
-                      "type": "object"
+                      "type": "object",
+                      "description": "Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response."
                     },
                     "latestDeployments": {
                       "items": {
@@ -184513,6 +184808,20 @@
                           "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
                         },
                         "projectFlags": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverride": {
+                          "items": {
+                            "$ref": "#/components/schemas/ACLAction"
+                          },
+                          "type": "array",
+                          "description": "Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary."
+                        },
+                        "projectFlagsOverrideProduction": {
                           "items": {
                             "$ref": "#/components/schemas/ACLAction"
                           },
@@ -239583,6 +239892,18 @@
             "type": "object",
             "description": "Metadata about any AWS Route53 Hosted Zones associated with the Network."
           },
+          "privateLinks": {
+            "properties": {
+              "count": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "count"
+            ],
+            "type": "object",
+            "description": "The number of PrivateLink endpoints on the Network, when listing networks."
+          },
           "projects": {
             "properties": {
               "count": {
@@ -239876,6 +240197,25 @@
               {
                 "properties": {
                   "id": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "app"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "type"
+                ],
+                "type": "object",
+                "description": "Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all."
+              },
+              {
+                "properties": {
+                  "id": {
                     "type": "string",
                     "description": "Vercel user ID."
                   },
@@ -239909,8 +240249,7 @@
                           "production"
                         ]
                       }
-                    ],
-                    "description": "Deployment environment of the project principal."
+                    ]
                   },
                   "id": {
                     "type": "string",
@@ -240139,6 +240478,25 @@
               {
                 "properties": {
                   "id": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "app"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "type"
+                ],
+                "type": "object",
+                "description": "Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update."
+              },
+              {
+                "properties": {
+                  "id": {
                     "type": "string",
                     "description": "Vercel user ID."
                   },
@@ -240172,8 +240530,7 @@
                           "production"
                         ]
                       }
-                    ],
-                    "description": "Deployment environment of the project principal."
+                    ]
                   },
                   "id": {
                     "type": "string",
@@ -240417,6 +240774,25 @@
               {
                 "properties": {
                   "id": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "app"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "type"
+                ],
+                "type": "object",
+                "description": "Principal that originally created the connector — either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all."
+              },
+              {
+                "properties": {
+                  "id": {
                     "type": "string",
                     "description": "Vercel user ID."
                   },
@@ -240448,12 +240824,9 @@
                           "development",
                           "preview",
                           "production"
-                        ],
-                        "x-speakeasy-name-override": "created_by_environment"
+                        ]
                       }
-                    ],
-                    "description": "Deployment environment of the project principal.",
-                    "title": "CreatedByEnvironmentTarget"
+                    ]
                   },
                   "id": {
                     "type": "string",
@@ -240682,6 +241055,25 @@
               {
                 "properties": {
                   "id": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "app"
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "type"
+                ],
+                "type": "object",
+                "description": "Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update."
+              },
+              {
+                "properties": {
+                  "id": {
                     "type": "string",
                     "description": "Vercel user ID."
                   },
@@ -240713,12 +241105,9 @@
                           "development",
                           "preview",
                           "production"
-                        ],
-                        "x-speakeasy-name-override": "updated_by_environment"
+                        ]
                       }
-                    ],
-                    "description": "Deployment environment of the project principal.",
-                    "title": "UpdatedByEnvironmentTarget"
+                    ]
                   },
                   "id": {
                     "type": "string",
@@ -241104,7 +241493,7 @@
               },
               "clientSecret": {
                 "type": "string",
-                "description": "OAuth client secret.",
+                "description": "OAuth client secret. An update that changes the authorization server removes the stored secret unless the same update sends a new one.",
                 "writeOnly": true
               },
               "tokenEndpointAuthMethod": {
@@ -242526,7 +242915,7 @@
               },
               "clientSecret": {
                 "type": "string",
-                "description": "OAuth client secret.",
+                "description": "OAuth client secret. An update that changes the authorization server removes the stored secret unless the same update sends a new one.",
                 "writeOnly": true
               },
               "tokenEndpointAuthMethod": {
@@ -247815,6 +248204,8 @@
                         "read-write:billing",
                         "read-write:blob",
                         "read-write:connect",
+                        "read-write:connect-any-user-token",
+                        "read-write:connect-app-token",
                         "read-write:deployment",
                         "read-write:desktop-device",
                         "read-write:domain",
@@ -247882,7 +248273,9 @@
                         "read:webhooks",
                         "use:ai-gateway",
                         "use:github",
-                        "use:private-npm"
+                        "use:private-npm",
+                        "use:project-flags-overrides-non-production",
+                        "use:project-flags-overrides-production"
                       ]
                     },
                     "type": "array"
@@ -247950,6 +248343,8 @@
                         "read-write:billing",
                         "read-write:blob",
                         "read-write:connect",
+                        "read-write:connect-any-user-token",
+                        "read-write:connect-app-token",
                         "read-write:deployment",
                         "read-write:desktop-device",
                         "read-write:domain",
@@ -248017,7 +248412,9 @@
                         "read:webhooks",
                         "use:ai-gateway",
                         "use:github",
-                        "use:private-npm"
+                        "use:private-npm",
+                        "use:project-flags-overrides-non-production",
+                        "use:project-flags-overrides-production"
                       ]
                     },
                     "type": "array"
@@ -248065,6 +248462,8 @@
                             "read-write:billing",
                             "read-write:blob",
                             "read-write:connect",
+                            "read-write:connect-any-user-token",
+                            "read-write:connect-app-token",
                             "read-write:deployment",
                             "read-write:domain",
                             "read-write:domain-registrar",
@@ -248129,7 +248528,9 @@
                             "read:web-analytics",
                             "read:webhooks",
                             "use:ai-gateway",
-                            "use:private-npm"
+                            "use:private-npm",
+                            "use:project-flags-overrides-non-production",
+                            "use:project-flags-overrides-production"
                           ]
                         },
                         "type": "array"
@@ -248209,6 +248610,8 @@
                             "read-write:billing",
                             "read-write:blob",
                             "read-write:connect",
+                            "read-write:connect-any-user-token",
+                            "read-write:connect-app-token",
                             "read-write:deployment",
                             "read-write:domain",
                             "read-write:domain-registrar",
@@ -248273,7 +248676,9 @@
                             "read:web-analytics",
                             "read:webhooks",
                             "use:ai-gateway",
-                            "use:private-npm"
+                            "use:private-npm",
+                            "use:project-flags-overrides-non-production",
+                            "use:project-flags-overrides-production"
                           ]
                         },
                         "type": "array"
@@ -248369,6 +248774,8 @@
                         "read-write:billing",
                         "read-write:blob",
                         "read-write:connect",
+                        "read-write:connect-any-user-token",
+                        "read-write:connect-app-token",
                         "read-write:deployment",
                         "read-write:domain",
                         "read-write:domain-registrar",
@@ -248433,7 +248840,9 @@
                         "read:web-analytics",
                         "read:webhooks",
                         "use:ai-gateway",
-                        "use:private-npm"
+                        "use:private-npm",
+                        "use:project-flags-overrides-non-production",
+                        "use:project-flags-overrides-production"
                       ]
                     },
                     "type": "array"
@@ -257246,6 +257655,22 @@
                   "organizationId",
                   "rootTeamId",
                   "slug"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "domain": {
+                    "type": "string"
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "domain",
+                  "organizationId"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -267211,6 +267636,26 @@
               },
               {
                 "properties": {
+                  "scope": {
+                    "type": "string",
+                    "enum": [
+                      "default",
+                      "organization",
+                      "team"
+                    ]
+                  },
+                  "scopeId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "scope"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "flowId": {
                     "type": "string"
                   },
@@ -268293,6 +268738,185 @@
               },
               {
                 "properties": {
+                  "next": {
+                    "oneOf": [
+                      {
+                        "properties": {
+                          "access": {
+                            "type": "string",
+                            "enum": [
+                              "default",
+                              "none",
+                              "unlimited"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "access"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "properties": {
+                          "access": {
+                            "type": "string",
+                            "enum": [
+                              "limited"
+                            ]
+                          },
+                          "limit": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "access",
+                          "limit"
+                        ],
+                        "type": "object"
+                      }
+                    ]
+                  },
+                  "previous": {
+                    "oneOf": [
+                      {
+                        "properties": {
+                          "access": {
+                            "type": "string",
+                            "enum": [
+                              "default",
+                              "none",
+                              "unlimited"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "access"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "properties": {
+                          "access": {
+                            "type": "string",
+                            "enum": [
+                              "limited"
+                            ]
+                          },
+                          "limit": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "access",
+                          "limit"
+                        ],
+                        "type": "object"
+                      }
+                    ]
+                  },
+                  "userId": {
+                    "type": "string"
+                  },
+                  "userName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "next",
+                  "previous",
+                  "userId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "next": {
+                    "oneOf": [
+                      {
+                        "properties": {
+                          "access": {
+                            "type": "string",
+                            "enum": [
+                              "default",
+                              "none",
+                              "unlimited"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "access"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "properties": {
+                          "access": {
+                            "type": "string",
+                            "enum": [
+                              "limited"
+                            ]
+                          },
+                          "limit": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "access",
+                          "limit"
+                        ],
+                        "type": "object"
+                      }
+                    ]
+                  },
+                  "previous": {
+                    "oneOf": [
+                      {
+                        "properties": {
+                          "access": {
+                            "type": "string",
+                            "enum": [
+                              "default",
+                              "none",
+                              "unlimited"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "access"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "properties": {
+                          "access": {
+                            "type": "string",
+                            "enum": [
+                              "limited"
+                            ]
+                          },
+                          "limit": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "access",
+                          "limit"
+                        ],
+                        "type": "object"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "next",
+                  "previous"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "deploymentId": {
                     "type": "string"
                   },
@@ -269052,6 +269676,14 @@
                   "ip": {
                     "nullable": true,
                     "type": "string"
+                  },
+                  "organizationScope": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ],
+                    "description": "Present when the token is also scoped to the Organization backing team, granting OrgAdmin access to child teams after the Organization enforces SSO."
                   },
                   "origin": {
                     "type": "string",
@@ -269991,6 +270623,9 @@
               "organization-avatar-update",
               "organization-create",
               "organization-delete",
+              "organization-domain-verification-created",
+              "organization-domain-verification-deleted",
+              "organization-domain-verification-verified",
               "organization-dsync-delete",
               "organization-dsync-group-delete",
               "organization-dsync-group-upsert",
@@ -270321,6 +270956,7 @@
               "user-emu-recovery-email-sent",
               "user-emu-recovery-initiated",
               "user-emu-toggled",
+              "user-landing-page-updated",
               "user-mfa-challenge-failed",
               "user-mfa-challenge-initiated",
               "user-mfa-challenge-verified",
@@ -270347,6 +270983,8 @@
               "v0-chat-message-sent",
               "v0-migration-payment-confirmed",
               "v0-migration-subscription-completed",
+              "v0-shared-pool-credit-limit-default-updated",
+              "v0-shared-pool-credit-limit-updated",
               "vcr-image-deleted",
               "vcr-image-pushed",
               "vcr-repository-created",
@@ -271024,6 +271662,9 @@
               "organization-avatar-update",
               "organization-create",
               "organization-delete",
+              "organization-domain-verification-created",
+              "organization-domain-verification-deleted",
+              "organization-domain-verification-verified",
               "organization-dsync-delete",
               "organization-dsync-group-delete",
               "organization-dsync-group-upsert",
@@ -271354,6 +271995,7 @@
               "user-emu-recovery-email-sent",
               "user-emu-recovery-initiated",
               "user-emu-toggled",
+              "user-landing-page-updated",
               "user-mfa-challenge-failed",
               "user-mfa-challenge-initiated",
               "user-mfa-challenge-verified",
@@ -271380,6 +272022,8 @@
               "v0-chat-message-sent",
               "v0-migration-payment-confirmed",
               "v0-migration-subscription-completed",
+              "v0-shared-pool-credit-limit-default-updated",
+              "v0-shared-pool-credit-limit-updated",
               "vcr-image-deleted",
               "vcr-image-pushed",
               "vcr-repository-created",
@@ -271815,6 +272459,9 @@
                 "organization-avatar-update",
                 "organization-create",
                 "organization-delete",
+                "organization-domain-verification-created",
+                "organization-domain-verification-deleted",
+                "organization-domain-verification-verified",
                 "organization-dsync-delete",
                 "organization-dsync-group-delete",
                 "organization-dsync-group-upsert",
@@ -272145,6 +272792,7 @@
                 "user-emu-recovery-email-sent",
                 "user-emu-recovery-initiated",
                 "user-emu-toggled",
+                "user-landing-page-updated",
                 "user-mfa-challenge-failed",
                 "user-mfa-challenge-initiated",
                 "user-mfa-challenge-verified",
@@ -272171,6 +272819,8 @@
                 "v0-chat-message-sent",
                 "v0-migration-payment-confirmed",
                 "v0-migration-subscription-completed",
+                "v0-shared-pool-credit-limit-default-updated",
+                "v0-shared-pool-credit-limit-updated",
                 "vcr-image-deleted",
                 "vcr-image-pushed",
                 "vcr-repository-created",
@@ -273849,7 +274499,7 @@
           },
           "memberCount": {
             "type": "number",
-            "description": "Present only when the request sets `includeMemberCount=true`. Number of members on the Team, including pending memberships. Excludes email invitations that do not have a membership record."
+            "description": "Present only when the request sets `includeMemberCount=true`. Number of members on the Team, including pending memberships and organization Directory Sync grants. Excludes suppressed memberships and email invitations that do not have a membership record."
           },
           "name": {
             "nullable": true,

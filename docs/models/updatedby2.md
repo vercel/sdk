@@ -8,16 +8,14 @@ Principal that most recently mutated the connector. Same shape as {@link created
 import { UpdatedBy2 } from "@vercel/sdk/models/connectconnector.js";
 
 let value: UpdatedBy2 = {
-  environment: "<value>",
   id: "<id>",
-  type: "project",
+  type: "user",
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `environment`                                    | *models.UpdatedByEnvironment*                    | :heavy_check_mark:                               | Deployment environment of the project principal. |
-| `id`                                             | *string*                                         | :heavy_check_mark:                               | Vercel project ID.                               |
-| `type`                                           | *"project"*                                      | :heavy_check_mark:                               | Principal kind.                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | Vercel user ID.    |
+| `type`             | *"user"*           | :heavy_check_mark: | Principal kind.    |

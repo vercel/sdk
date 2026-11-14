@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadUpdateDiff } from "@vercel/sdk/models/onehundredandfiftyeight.js";
+import { PayloadUpdateDiff } from "@vercel/sdk/models/edgeconfig.js";
 
 let value: PayloadUpdateDiff = {
   changedValue: true,

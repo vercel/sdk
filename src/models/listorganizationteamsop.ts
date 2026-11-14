@@ -22,7 +22,7 @@ export type ListOrganizationTeamsRequest = {
    */
   cursor?: string | undefined;
   /**
-   * When true, includes each team's member count in the response.
+   * When true, includes each team's member count, including organization Directory Sync members. Counting Directory Sync members can add latency.
    */
   includeMemberCount?: boolean | undefined;
 };

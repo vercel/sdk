@@ -306,7 +306,13 @@ export type UpdateMicrofrontendsResponseBody = {
   internalRoutes?: Array<UpdateMicrofrontendsInternalRoutes> | undefined;
   ipBuckets?: Array<UpdateMicrofrontendsIpBuckets> | undefined;
   jobs?: UpdateMicrofrontendsJobs | undefined;
+  /**
+   * The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists.
+   */
   lastAliasRequest?: UpdateMicrofrontendsLastAliasRequest | null | undefined;
+  /**
+   * Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response.
+   */
   lastRollbackTarget?:
     | UpdateMicrofrontendsLastRollbackTarget
     | null

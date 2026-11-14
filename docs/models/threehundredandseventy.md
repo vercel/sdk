@@ -5,33 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventy } from "@vercel/sdk/models/usereventprincipal4.js";
+import { ThreeHundredAndSeventy } from "@vercel/sdk/models/threehundredandsixtyone.js";
 
 let value: ThreeHundredAndSeventy = {
-  next: {
-    project: {
-      staticIps: {
-        enabled: true,
-      },
-    },
+  oldSsoProtection: {
+    deploymentType: "preview",
   },
-  previous: {
-    project: {
-      staticIps: {
-        enabled: false,
-      },
-    },
-  },
-  projectId: "<id>",
-  projectName: "<value>",
+  ssoProtection: "preview",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload370Next](../models/usereventpayload370next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload370Previous](../models/usereventpayload370previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `oldSsoProtection`               | *models.PayloadOldSsoProtection* | :heavy_check_mark:               | N/A                              |
+| `projectId`                      | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `projectName`                    | *string*                         | :heavy_minus_sign:               | N/A                              |
+| `ssoProtection`                  | *models.PayloadSsoProtection*    | :heavy_check_mark:               | N/A                              |

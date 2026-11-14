@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadApril2026SecurityIncidentMigrationAppliedFrom } from "@vercel/sdk/models/payloadscope.js";
+import { PayloadApril2026SecurityIncidentMigrationAppliedFrom } from "@vercel/sdk/models/deployment.js";
 
 let value: PayloadApril2026SecurityIncidentMigrationAppliedFrom =
   "all_except_custom_domains";

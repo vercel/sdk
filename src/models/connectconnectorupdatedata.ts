@@ -839,7 +839,7 @@ export type TypeOauth = {
    */
   clientName?: string | undefined;
   /**
-   * OAuth client secret.
+   * OAuth client secret. An update that changes the authorization server removes the stored secret unless the same update sends a new one.
    */
   clientSecret?: string | undefined;
   /**

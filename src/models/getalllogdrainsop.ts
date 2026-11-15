@@ -316,10 +316,22 @@ export type GetAllLogDrainsDrainsLogDrainsDeliveryStats = {
    */
   attempts: number;
   /**
-   * Deliveries that finally failed in the window, after any automatic retries.
+   * Deliveries that finally failed in the window.
    */
   failures: number;
   state: GetAllLogDrainsDrainsState;
+  /**
+   * Deliveries that finally failed in the window, after any automatic retries.
+   */
+  totalFailedDeliveries: number;
+  /**
+   * Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome.
+   */
+  totalRetriedDeliveries: number;
+  /**
+   * Deliveries delivered in the window, on the first try or after automatic retries.
+   */
+  totalSuccessfulDeliveries: number;
   window: GetAllLogDrainsDrainsLogDrainsWindow;
 };
 
@@ -740,10 +752,22 @@ export type GetAllLogDrainsDrainsDeliveryStats = {
    */
   attempts: number;
   /**
-   * Deliveries that finally failed in the window, after any automatic retries.
+   * Deliveries that finally failed in the window.
    */
   failures: number;
   state: GetAllLogDrainsDrainsLogDrainsState;
+  /**
+   * Deliveries that finally failed in the window, after any automatic retries.
+   */
+  totalFailedDeliveries: number;
+  /**
+   * Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome.
+   */
+  totalRetriedDeliveries: number;
+  /**
+   * Deliveries delivered in the window, on the first try or after automatic retries.
+   */
+  totalSuccessfulDeliveries: number;
   window: GetAllLogDrainsDrainsWindow;
 };
 
@@ -1619,6 +1643,9 @@ export const GetAllLogDrainsDrainsLogDrainsDeliveryStats$inboundSchema:
     attempts: types.number(),
     failures: types.number(),
     state: GetAllLogDrainsDrainsState$inboundSchema,
+    totalFailedDeliveries: types.number(),
+    totalRetriedDeliveries: types.number(),
+    totalSuccessfulDeliveries: types.number(),
     window: GetAllLogDrainsDrainsLogDrainsWindow$inboundSchema,
   });
 
@@ -2581,6 +2608,9 @@ export const GetAllLogDrainsDrainsDeliveryStats$inboundSchema: z.ZodType<
   attempts: types.number(),
   failures: types.number(),
   state: GetAllLogDrainsDrainsLogDrainsState$inboundSchema,
+  totalFailedDeliveries: types.number(),
+  totalRetriedDeliveries: types.number(),
+  totalSuccessfulDeliveries: types.number(),
   window: GetAllLogDrainsDrainsWindow$inboundSchema,
 });
 

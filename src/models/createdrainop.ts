@@ -526,10 +526,22 @@ export type ResponseBodyDeliveryStats = {
    */
   attempts: number;
   /**
-   * Deliveries that finally failed in the window, after any automatic retries.
+   * Deliveries that finally failed in the window.
    */
   failures: number;
   state: CreateDrainResponseBodyDrainsState;
+  /**
+   * Deliveries that finally failed in the window, after any automatic retries.
+   */
+  totalFailedDeliveries: number;
+  /**
+   * Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome.
+   */
+  totalRetriedDeliveries: number;
+  /**
+   * Deliveries delivered in the window, on the first try or after automatic retries.
+   */
+  totalSuccessfulDeliveries: number;
   window: ResponseBodyWindow;
 };
 
@@ -937,10 +949,22 @@ export type CreateDrainResponseBodyDeliveryStats = {
    */
   attempts: number;
   /**
-   * Deliveries that finally failed in the window, after any automatic retries.
+   * Deliveries that finally failed in the window.
    */
   failures: number;
   state: CreateDrainResponseBodyState;
+  /**
+   * Deliveries that finally failed in the window, after any automatic retries.
+   */
+  totalFailedDeliveries: number;
+  /**
+   * Deliveries whose first try failed and were scheduled for an automatic retry in the window, whatever their final outcome.
+   */
+  totalRetriedDeliveries: number;
+  /**
+   * Deliveries delivered in the window, on the first try or after automatic retries.
+   */
+  totalSuccessfulDeliveries: number;
   window: CreateDrainResponseBodyWindow;
 };
 
@@ -2282,6 +2306,9 @@ export const ResponseBodyDeliveryStats$inboundSchema: z.ZodType<
   attempts: types.number(),
   failures: types.number(),
   state: CreateDrainResponseBodyDrainsState$inboundSchema,
+  totalFailedDeliveries: types.number(),
+  totalRetriedDeliveries: types.number(),
+  totalSuccessfulDeliveries: types.number(),
   window: ResponseBodyWindow$inboundSchema,
 });
 
@@ -3212,6 +3239,9 @@ export const CreateDrainResponseBodyDeliveryStats$inboundSchema: z.ZodType<
   attempts: types.number(),
   failures: types.number(),
   state: CreateDrainResponseBodyState$inboundSchema,
+  totalFailedDeliveries: types.number(),
+  totalRetriedDeliveries: types.number(),
+  totalSuccessfulDeliveries: types.number(),
   window: CreateDrainResponseBodyWindow$inboundSchema,
 });
 

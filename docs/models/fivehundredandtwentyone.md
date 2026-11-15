@@ -5,62 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndTwentyOne } from "@vercel/sdk/models/usereventpayload474actortype.js";
+import { FiveHundredAndTwentyOne } from "@vercel/sdk/models/fourhundredandeightyseven.js";
 
 let value: FiveHundredAndTwentyOne = {
-  after: {
-    claims: [],
-    clientId: "<id>",
-    createdAt: 2174.71,
-    issuerUrl: "https://informal-requirement.info/",
-    name: "<value>",
-    permissions: [
+  next: {
+    enabled: true,
+    issuerUrls: [],
+  },
+  previous: {
+    enabled: true,
+    issuerUrls: [
       "<value 1>",
     ],
-    policyId: "<id>",
-    resources: {
-      projectIds: [
-        "<value 1>",
-        "<value 2>",
-      ],
-    },
-    teamId: "<id>",
-    updatedAt: 8911.96,
   },
-  before: {
-    claims: [
-      {
-        name: "<value>",
-        values: [
-          {
-            value: "<value>",
-            wildcards: false,
-          },
-        ],
-      },
-    ],
-    clientId: "<id>",
-    createdAt: 862.71,
-    issuerUrl: "https://understated-cutlet.info/",
-    name: "<value>",
-    permissions: [],
-    policyId: "<id>",
-    resources: {
-      projectIds: [
-        "<value 1>",
-        "<value 2>",
-      ],
-    },
-    teamId: "<id>",
-    updatedAt: 2776.23,
-  },
+  scope: "team",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                                                                | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `after`                                                                                                                                                                                                              | [models.PayloadAfter](../models/payloadafter.md)                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
-| `before`                                                                                                                                                                                                             | [models.PayloadBefore](../models/payloadbefore.md)                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
-| `appName`                                                                                                                                                                                                            | *string*                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload521Next](../models/usereventpayload521next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload521Previous](../models/usereventpayload521previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `scope`                                                                        | [models.UserEventPayload521Scope](../models/usereventpayload521scope.md)       | :heavy_check_mark:                                                             | N/A                                                                            |

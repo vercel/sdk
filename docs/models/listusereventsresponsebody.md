@@ -23,7 +23,8 @@ let value: ListUserEventsResponseBody = {
       ],
       id: "uev_bfmMjiMnXfnPbT97dGdpJbCN",
       payload: {
-        appName: "<value>",
+        attackModeEnabled: true,
+        projectId: "<id>",
       },
       principalId: "<id>",
       text: "You logged in via GitHub",

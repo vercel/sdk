@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyFour } from "@vercel/sdk/models/onehundredandfiftyeight.js";
+import { TwoHundredAndTwentyFour } from "@vercel/sdk/models/onehundredandseventyfour.js";
 
 let value: TwoHundredAndTwentyFour = {
   logDrainUrl: "https://fussy-apricot.net",

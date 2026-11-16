@@ -37,6 +37,13 @@ export type PeeringConnections = {
 };
 
 /**
+ * The number of PrivateLink endpoints on the Network, when listing networks.
+ */
+export type PrivateLinks = {
+  count: number;
+};
+
+/**
  * Metadata about any projects associated with the Network.
  */
 export type Projects = {
@@ -100,6 +107,10 @@ export type Network = {
    * Metadata about any AWS Route53 Hosted Zones associated with the Network.
    */
   peeringConnections?: PeeringConnections | undefined;
+  /**
+   * The number of PrivateLink endpoints on the Network, when listing networks.
+   */
+  privateLinks?: PrivateLinks | undefined;
   /**
    * Metadata about any projects associated with the Network.
    */
@@ -180,6 +191,25 @@ export function peeringConnectionsFromJSON(
 }
 
 /** @internal */
+export const PrivateLinks$inboundSchema: z.ZodType<
+  PrivateLinks,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  count: types.number(),
+});
+
+export function privateLinksFromJSON(
+  jsonString: string,
+): SafeParseResult<PrivateLinks, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PrivateLinks$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PrivateLinks' from JSON`,
+  );
+}
+
+/** @internal */
 export const Projects$inboundSchema: z.ZodType<
   Projects,
   z.ZodTypeDef,
@@ -221,6 +251,7 @@ export const Network$inboundSchema: z.ZodType<Network, z.ZodTypeDef, unknown> =
     peeringConnections: types.optional(
       z.lazy(() => PeeringConnections$inboundSchema),
     ),
+    privateLinks: types.optional(z.lazy(() => PrivateLinks$inboundSchema)),
     projects: types.optional(z.lazy(() => Projects$inboundSchema)),
     region: types.optional(types.string()),
     status: Status$inboundSchema,

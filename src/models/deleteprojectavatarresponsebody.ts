@@ -293,7 +293,13 @@ export type DeleteProjectAvatarResponseBody = {
   internalRoutes?: Array<DeleteProjectAvatarInternalRoutes> | undefined;
   ipBuckets?: Array<DeleteProjectAvatarIpBuckets> | undefined;
   jobs?: DeleteProjectAvatarJobs | undefined;
+  /**
+   * The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists.
+   */
   lastAliasRequest?: DeleteProjectAvatarLastAliasRequest | null | undefined;
+  /**
+   * Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response.
+   */
   lastRollbackTarget?: DeleteProjectAvatarLastRollbackTarget | null | undefined;
   latestDeployments?: Array<DeleteProjectAvatarLatestDeployments> | undefined;
   link?: DeleteProjectAvatarLink | undefined;

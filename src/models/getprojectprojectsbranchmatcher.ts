@@ -17,6 +17,10 @@ export type GetProjectRequest = {
    */
   idOrName: string;
   /**
+   * Include the status of the last promote or rollback request in `lastAliasRequest` (and its legacy mirror `lastRollbackTarget`). When omitted or `false`, both fields are always `null` regardless of project state.
+   */
+  rollbackInfo?: boolean | undefined;
+  /**
    * The Team identifier to perform the request on behalf of.
    */
   teamId?: string | undefined;
@@ -1364,6 +1368,9 @@ export type GetProjectProjectsResponseType = ClosedEnum<
   typeof GetProjectProjectsResponseType
 >;
 
+/**
+ * The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists.
+ */
 export type GetProjectLastAliasRequest = {
   fromDeploymentId: string | null;
   /**
@@ -1376,6 +1383,9 @@ export type GetProjectLastAliasRequest = {
   type: GetProjectProjectsResponseType;
 };
 
+/**
+ * Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response.
+ */
 export type GetProjectLastRollbackTarget = {};
 
 export type GetProjectAliasAssigned = number | boolean;
@@ -1417,6 +1427,7 @@ export type GetProjectProjectsBranchMatcher = {
 /** @internal */
 export type GetProjectRequest$Outbound = {
   idOrName: string;
+  rollbackInfo?: boolean | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -1428,6 +1439,7 @@ export const GetProjectRequest$outboundSchema: z.ZodType<
   GetProjectRequest
 > = z.object({
   idOrName: z.string(),
+  rollbackInfo: z.boolean().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),
 });

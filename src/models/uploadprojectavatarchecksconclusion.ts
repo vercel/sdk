@@ -1417,6 +1417,9 @@ export type UploadProjectAvatarProjectsResponseType = ClosedEnum<
   typeof UploadProjectAvatarProjectsResponseType
 >;
 
+/**
+ * The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists.
+ */
 export type UploadProjectAvatarLastAliasRequest = {
   fromDeploymentId: string | null;
   /**
@@ -1429,6 +1432,9 @@ export type UploadProjectAvatarLastAliasRequest = {
   type: UploadProjectAvatarProjectsResponseType;
 };
 
+/**
+ * Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response.
+ */
 export type UploadProjectAvatarLastRollbackTarget = {};
 
 export type UploadProjectAvatarAliasAssigned = number | boolean;

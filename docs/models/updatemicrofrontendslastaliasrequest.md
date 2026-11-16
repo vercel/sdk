@@ -1,5 +1,7 @@
 # UpdateMicrofrontendsLastAliasRequest
 
+The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists.
+
 ## Example Usage
 
 ```typescript

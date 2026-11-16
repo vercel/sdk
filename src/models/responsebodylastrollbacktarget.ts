@@ -1572,6 +1572,9 @@ export type GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsLa
     typeof GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsLastAliasRequestType
   >;
 
+/**
+ * The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists.
+ */
 export type ResponseBodyLastAliasRequest = {
   fromDeploymentId: string | null;
   /**
@@ -1585,6 +1588,9 @@ export type ResponseBodyLastAliasRequest = {
     GetProjectsResponseBodyProjectsResponse200ApplicationJson3ProjectsLastAliasRequestType;
 };
 
+/**
+ * Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response.
+ */
 export type ResponseBodyLastRollbackTarget = {};
 
 /** @internal */

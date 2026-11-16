@@ -10,7 +10,7 @@ Principal that most recently updated the connector.
 ```typescript
 const value: models.UpdatedBy1 = {
   id: "<id>",
-  type: "user",
+  type: "app",
 };
 ```
 
@@ -18,7 +18,16 @@ const value: models.UpdatedBy1 = {
 
 ```typescript
 const value: models.UpdatedBy2 = {
-  environment: "<value>",
+  id: "<id>",
+  type: "user",
+};
+```
+
+### `models.UpdatedBy3`
+
+```typescript
+const value: models.UpdatedBy3 = {
+  environment: "development",
   id: "<id>",
   type: "project",
 };

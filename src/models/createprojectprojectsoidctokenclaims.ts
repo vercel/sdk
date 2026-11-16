@@ -112,6 +112,9 @@ export type CreateProjectProjectsResponse200ApplicationJSONType = ClosedEnum<
   typeof CreateProjectProjectsResponse200ApplicationJSONType
 >;
 
+/**
+ * The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists.
+ */
 export type LastAliasRequest = {
   fromDeploymentId: string | null;
   /**
@@ -124,6 +127,9 @@ export type LastAliasRequest = {
   type: CreateProjectProjectsResponse200ApplicationJSONType;
 };
 
+/**
+ * Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response.
+ */
 export type LastRollbackTarget = {};
 
 export type AliasAssigned = number | boolean;
@@ -1516,6 +1522,14 @@ export type CreateProjectPermissions = {
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
   projectFlags?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectFlagsOverride?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  projectFlagsOverrideProduction?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
@@ -4385,6 +4399,10 @@ export const CreateProjectPermissions$inboundSchema: z.ZodType<
   ),
   projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
   projectFlags: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlagsOverride: types.optional(z.array(ACLAction$inboundSchema)),
+  projectFlagsOverrideProduction: types.optional(
+    z.array(ACLAction$inboundSchema),
+  ),
   projectFlagsProduction: types.optional(z.array(ACLAction$inboundSchema)),
   projectFlagsSdkKey: types.optional(z.array(ACLAction$inboundSchema)),
   projectFromV0: types.optional(z.array(ACLAction$inboundSchema)),

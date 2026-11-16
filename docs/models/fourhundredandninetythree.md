@@ -5,22 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNinetyThree } from "@vercel/sdk/models/usereventpayload474actortype.js";
+import { FourHundredAndNinetyThree } from "@vercel/sdk/models/fourhundredandeightyseven.js";
 
 let value: FourHundredAndNinetyThree = {
-  email: "Johnny34@hotmail.com",
-  prevEmail: "<value>",
-  actorId: "<id>",
-  actorType: "admin",
+  decision: {
+    authoritative: false,
+    basis: "none",
+    emailDomain: "<value>",
+    emailVerified: false,
+    hostedDomainMatch: false,
+    mxOutcome: "not-checked",
+  },
+  outcome: "account-matched",
+  provider: "google",
+  providerSubjectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `email`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `prevEmail`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload493ActorType](../models/usereventpayload493actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `decision`                                                                     | [models.PayloadDecision](../models/payloaddecision.md)                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `outcome`                                                                      | [models.PayloadOutcome](../models/payloadoutcome.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |
+| `provider`                                                                     | [models.UserEventPayload493Provider](../models/usereventpayload493provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `providerSubjectId`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

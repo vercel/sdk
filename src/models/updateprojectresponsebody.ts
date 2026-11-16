@@ -1222,7 +1222,13 @@ export type UpdateProjectResponseBody = {
   internalRoutes?: Array<UpdateProjectInternalRoutes> | undefined;
   ipBuckets?: Array<UpdateProjectIpBuckets> | undefined;
   jobs?: UpdateProjectJobs | undefined;
+  /**
+   * The last promote or rollback request for the project and its job status. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response, even if a request exists.
+   */
   lastAliasRequest?: UpdateProjectLastAliasRequest | null | undefined;
+  /**
+   * Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. Only populated by `GET /v9/projects/{idOrName}` when called with `rollbackInfo=true`; `null` in every other response.
+   */
   lastRollbackTarget?: UpdateProjectLastRollbackTarget | null | undefined;
   latestDeployments?: Array<UpdateProjectLatestDeployments> | undefined;
   link?: UpdateProjectLink | undefined;

@@ -5,18 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyThree } from "@vercel/sdk/models/via5.js";
+import { FortyThree } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: FortyThree = {
-  privateModel: {
-    providerSlug: "<value>",
-    slug: "<value>",
-  },
+  added: [],
+  removed: [],
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `privateModel`                                   | [models.PrivateModel](../models/privatemodel.md) | :heavy_check_mark:                               | N/A                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `added`            | *string*[]         | :heavy_check_mark: | N/A                |
+| `removed`          | *string*[]         | :heavy_check_mark: | N/A                |

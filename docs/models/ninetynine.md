@@ -8,14 +8,17 @@ The payload of the event, if requested.
 import { NinetyNine } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: NinetyNine = {
-  id: "<id>",
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
+  versionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `id`                                                 | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `newTeam`                                            | [models.PayloadNewTeam](../models/payloadnewteam.md) | :heavy_minus_sign:                                   | N/A                                                  |
-| `oldTeam`                                            | [models.PayloadOldTeam](../models/payloadoldteam.md) | :heavy_minus_sign:                                   | N/A                                                  |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `project`                                                                  | [models.UserEventPayload99Project](../models/usereventpayload99project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `versionId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

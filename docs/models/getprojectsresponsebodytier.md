@@ -5,11 +5,11 @@
 ```typescript
 import { GetProjectsResponseBodyTier } from "@vercel/sdk/models/getprojectscontenthint9.js";
 
-let value: GetProjectsResponseBodyTier = "priority";
+let value: GetProjectsResponseBodyTier = "critical";
 ```
 
 ## Values
 
 ```typescript
-"priority"
+"critical" | "priority"
 ```

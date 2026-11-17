@@ -5,17 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixty } from "@vercel/sdk/models/payloadcodereviewselection.js";
+import { FourHundredAndSixty } from "@vercel/sdk/models/fourhundredandnineteen.js";
 
 let value: FourHundredAndSixty = {
-  enabled: false,
-  scope: "dashboard",
+  consent: "refused",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload460Scope](../models/usereventpayload460scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `consent`                                            | [models.PayloadConsent](../models/payloadconsent.md) | :heavy_check_mark:                                   | N/A                                                  |

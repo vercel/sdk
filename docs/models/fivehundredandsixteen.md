@@ -5,29 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndSixteen } from "@vercel/sdk/models/fourhundredandeightyseven.js";
+import { FiveHundredAndSixteen } from "@vercel/sdk/models/usereventpayload491previous.js";
 
 let value: FiveHundredAndSixteen = {
-  chatId: "<id>",
-  events: [],
-  inputTokens: 9118.75,
-  messageId: "<id>",
-  model: "Durango",
-  outputTokens: 1351.81,
-  timestamp: 6820.29,
-  useCase: "<value>",
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `chatId`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `events`                               | [models.Events](../models/events.md)[] | :heavy_check_mark:                     | N/A                                    |
-| `inputTokens`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `model`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `outputTokens`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `timestamp`                            | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `useCase`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `configuration`                                                                          | [models.UserEventPayload516Configuration](../models/usereventpayload516configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `newName`                                                                                | *string*                                                                                 | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.UserEventPayloadPeering](../models/usereventpayloadpeering.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `team`                                                                                   | [models.UserEventPayload516Team](../models/usereventpayload516team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

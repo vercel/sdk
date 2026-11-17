@@ -11,5 +11,5 @@ let value: GetMicrofrontendsInGroupTier = "priority";
 ## Values
 
 ```typescript
-"priority"
+"critical" | "priority"
 ```

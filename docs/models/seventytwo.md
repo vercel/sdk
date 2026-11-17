@@ -8,16 +8,17 @@ The payload of the event, if requested.
 import { SeventyTwo } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: SeventyTwo = {
-  appName: "<value>",
-  scopes: [],
+  action: "created",
+  alias: "<value>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `appId`                                              | *string*                                             | :heavy_minus_sign:                                   | N/A                                                  |
-| `appName`                                            | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
-| `permissions`                                        | [models.Permissions](../models/permissions.md)[]     | :heavy_minus_sign:                                   | N/A                                                  |
-| `scopes`                                             | [models.PayloadScopes](../models/payloadscopes.md)[] | :heavy_check_mark:                                   | N/A                                                  |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `action`                                                                 | [models.UserEventPayload72Action](../models/usereventpayload72action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `alias`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| `projectId`                                                              | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |

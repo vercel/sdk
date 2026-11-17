@@ -8,8 +8,7 @@ The payload of the event, if requested.
 import { OneHundredAndSixteen } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndSixteen = {
-  bitbucketEmail: "<value>",
-  bitbucketLogin: "<value>",
+  githubLogin: "<value>",
 };
 ```
 
@@ -17,6 +16,4 @@ let value: OneHundredAndSixteen = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `bitbucketEmail`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketLogin`   | *string*           | :heavy_check_mark: | N/A                |
-| `bitbucketName`    | *string*           | :heavy_minus_sign: | N/A                |
+| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |

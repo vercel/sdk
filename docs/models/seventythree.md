@@ -8,7 +8,8 @@ The payload of the event, if requested.
 import { SeventyThree } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: SeventyThree = {
-  appName: "<value>",
+  alias: "<value>",
+  deploymentUrl: "https://hollow-partridge.biz",
 };
 ```
 
@@ -16,5 +17,5 @@ let value: SeventyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `appId`            | *string*           | :heavy_minus_sign: | N/A                |
-| `appName`          | *string*           | :heavy_check_mark: | N/A                |
+| `alias`            | *string*           | :heavy_check_mark: | N/A                |
+| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |

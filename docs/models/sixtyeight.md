@@ -7,18 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { SixtyEight } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
-let value: SixtyEight = {
-  action: "created",
-  alias: "<value>",
-  projectName: "<value>",
-};
+let value: SixtyEight = {};
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `action`                                                                 | [models.UserEventPayload68Action](../models/usereventpayload68action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `alias`                                                                  | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `projectId`                                                              | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `projectName`                                                            | *string*                                                                 | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `email`            | *string*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_minus_sign: | N/A                |

@@ -10,10 +10,6 @@ import { OneHundredAndTen } from "@vercel/sdk/models/allowlistedreadystatereason
 let value: OneHundredAndTen = {
   configuration: {
     id: "<id>",
-  },
-  newName: "<value>",
-  team: {
-    id: "<id>",
     name: "<value>",
   },
 };
@@ -21,8 +17,6 @@ let value: OneHundredAndTen = {
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `configuration`                                                                          | [models.UserEventPayload110Configuration](../models/usereventpayload110configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `newName`                                                                                | *string*                                                                                 | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `team`                                                                                   | [models.UserEventPayload110Team](../models/usereventpayload110team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `configuration`                                    | [models.Configuration](../models/configuration.md) | :heavy_check_mark:                                 | N/A                                                |

@@ -2795,6 +2795,7 @@ export type UpdateMicrofrontendsTargets = {
 };
 
 export const UpdateMicrofrontendsTier = {
+  Critical: "critical",
   Priority: "priority",
 } as const;
 export type UpdateMicrofrontendsTier = ClosedEnum<

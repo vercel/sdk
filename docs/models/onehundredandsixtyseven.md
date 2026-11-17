@@ -5,12 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtySeven } from "@vercel/sdk/models/gitcredentialsource.js";
+import { OneHundredAndSixtySeven } from "@vercel/sdk/models/usereventpayloadallowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndSixtySeven = {
-  path: "/usr/local/bin",
+  driveName: "<value>",
   projectId: "<id>",
   projectName: "<value>",
+  region: "<value>",
+  snapshotId: "<id>",
+  snapshotName: "<value>",
 };
 ```
 
@@ -18,6 +21,9 @@ let value: OneHundredAndSixtySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `path`             | *string*           | :heavy_check_mark: | N/A                |
+| `driveName`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `region`           | *string*           | :heavy_check_mark: | N/A                |
+| `snapshotId`       | *string*           | :heavy_check_mark: | N/A                |
+| `snapshotName`     | *string*           | :heavy_check_mark: | N/A                |

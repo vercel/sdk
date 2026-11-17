@@ -31,11 +31,11 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Deprecated: Use DELETE /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
+ * Deprecated: Use DELETE /v1/drives/:nameOrId. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
  * Emits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive
  *
  * @remarks
- * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
+ * Deletes a drive by project and name or drive ID. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  *
@@ -97,12 +97,12 @@ async function $do(
   const body = null;
 
   const pathParams = {
-    name: encodeSimple("name", payload.name, {
+    nameOrId: encodeSimple("nameOrId", payload.nameOrId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/v2/sandboxes/drives/{name}")(pathParams);
+  const path = pathToFunc("/v2/sandboxes/drives/{nameOrId}")(pathParams);
 
   const query = encodeFormQuery({
     "projectId": payload.projectId,

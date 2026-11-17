@@ -2945,6 +2945,7 @@ export type GetProjectsResponseBodyProjectsTargets = {
 };
 
 export const GetProjectsResponseBodyProjectsTier = {
+  Critical: "critical",
   Priority: "priority",
 } as const;
 export type GetProjectsResponseBodyProjectsTier = ClosedEnum<

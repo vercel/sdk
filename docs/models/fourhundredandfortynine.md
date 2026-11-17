@@ -5,16 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFortyNine } from "@vercel/sdk/models/payloadcodereviewselection.js";
+import { FourHundredAndFortyNine } from "@vercel/sdk/models/fourhundredandnineteen.js";
 
 let value: FourHundredAndFortyNine = {
-  plan: "pro",
+  enforced: false,
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `plan`                                                           | [models.UserEventPayloadPlan](../models/usereventpayloadplan.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `trial`                                                          | [models.Trial](../models/trial.md)                               | :heavy_minus_sign:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |

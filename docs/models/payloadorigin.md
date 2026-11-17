@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadOrigin } from "@vercel/sdk/models/fourhundredandeightyseven.js";
+import { PayloadOrigin } from "@vercel/sdk/models/usereventpayload491previous.js";
 
-let value: PayloadOrigin = "invite";
+let value: PayloadOrigin = "google";
 ```
 
 ## Values
 
 ```typescript
-"app" | "apple" | "bitbucket" | "chatgpt" | "email" | "emu" | "github" | "github-webhook" | "gitlab" | "google" | "invite" | "manual" | "otp" | "passkey" | "saml" | "sms" | "token-exchange-oidc"
+"app" | "apple" | "bitbucket" | "chatgpt" | "claude" | "email" | "emu" | "github" | "github-webhook" | "gitlab" | "google" | "invite" | "manual" | "otp" | "passkey" | "saml" | "sms" | "token-exchange-oidc"
 ```

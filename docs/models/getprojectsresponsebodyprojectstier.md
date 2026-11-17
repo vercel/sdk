@@ -11,5 +11,5 @@ let value: GetProjectsResponseBodyProjectsTier = "priority";
 ## Values
 
 ```typescript
-"priority"
+"critical" | "priority"
 ```

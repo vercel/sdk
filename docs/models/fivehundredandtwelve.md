@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndTwelve } from "@vercel/sdk/models/fourhundredandeightyseven.js";
+import { FiveHundredAndTwelve } from "@vercel/sdk/models/usereventpayload491previous.js";
 
 let value: FiveHundredAndTwelve = {
-  cadence: "monthly",
-  projectIds: [],
-  team: {
-    id: "<id>",
-  },
+  ciEnabled: true,
+  organizationId: "<id>",
+  repository: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload512Team](../models/usereventpayload512team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `ciEnabled`        | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `repository`       | *string*           | :heavy_check_mark: | N/A                |

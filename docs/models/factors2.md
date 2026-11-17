@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.Two1 = {
-  origin: "gitlab",
+  origin: "github",
 };
 ```
 

@@ -8,18 +8,20 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyEight } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndTwentyEight = {
-  checkId: "<id>",
-  checkName: "<value>",
-  projectId: "<id>",
-  projectName: "<value>",
+  oldSsoProtection: {
+    deploymentType: "all",
+  },
+  scope: "organization",
+  ssoProtection: {
+    deploymentType: "all",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `checkId`          | *string*           | :heavy_check_mark: | N/A                |
-| `checkName`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `oldSsoProtection`                                                                 | [models.OldSsoProtection](../models/oldssoprotection.md)                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `scope`                                                                            | [models.UserEventPayloadScope](../models/usereventpayloadscope.md)                 | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `ssoProtection`                                                                    | [models.UserEventPayloadSsoProtection](../models/usereventpayloadssoprotection.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

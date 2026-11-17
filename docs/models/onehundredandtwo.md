@@ -16,3 +16,4 @@ let value: OneHundredAndTwo = {};
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `cn`               | *string*           | :heavy_minus_sign: | N/A                |
 | `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| `id`               | *string*           | :heavy_minus_sign: | N/A                |

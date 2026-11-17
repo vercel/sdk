@@ -8,18 +8,17 @@ The payload of the event, if requested.
 import { EightyFour } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: EightyFour = {
-  amount: 3203.03,
-  invoiceId: "<id>",
-  newInvoiceId: "<id>",
-  settlementMethod: "credited-paid",
+  attackModeEnabled: true,
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `amount`                                                 | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `invoiceId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `newInvoiceId`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
-| `settlementMethod`                                       | [models.SettlementMethod](../models/settlementmethod.md) | :heavy_check_mark:                                       | N/A                                                      |
+| Field                       | Type                        | Required                    | Description                 |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `attackModeActiveUntil`     | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
+| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
+| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
+| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |

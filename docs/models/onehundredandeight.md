@@ -8,25 +8,18 @@ The payload of the event, if requested.
 import { OneHundredAndEight } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndEight = {
-  configuration: {
-    id: "<id>",
-  },
-  project: {
-    id: "<id>",
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
+  documentId: "<id>",
+  fingerprint: "<value>",
+  slug: "<value>",
+  title: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `buildsEnabled`                                                                    | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `configuration`                                                                    | [models.UserEventPayloadConfiguration](../models/usereventpayloadconfiguration.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `passive`                                                                          | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `project`                                                                          | [models.UserEventPayload108Project](../models/usereventpayload108project.md)       | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `team`                                                                             | [models.PayloadTeam](../models/payloadteam.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `documentId`       | *string*           | :heavy_check_mark: | N/A                |
+| `fingerprint`      | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |
+| `title`            | *string*           | :heavy_check_mark: | N/A                |

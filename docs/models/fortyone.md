@@ -5,17 +5,32 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyOne } from "@vercel/sdk/models/via5.js";
+import { FortyOne } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: FortyOne = {
-  amount: "703.81",
-  purchaseIntentId: "<id>",
+  added: [
+    "<value 1>",
+    "<value 2>",
+  ],
+  changed: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  credential: {
+    id: "<id>",
+    name: "<value>",
+    providerSlug: "<value>",
+  },
+  removed: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `amount`           | *string*           | :heavy_check_mark: | N/A                |
-| `purchaseIntentId` | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `added`                                                                      | *string*[]                                                                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| `changed`                                                                    | *string*[]                                                                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| `credential`                                                                 | [models.UserEventPayloadCredential](../models/usereventpayloadcredential.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `removed`                                                                    | *string*[]                                                                   | :heavy_check_mark:                                                           | N/A                                                                          |

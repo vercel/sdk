@@ -5,15 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwentyEight } from "@vercel/sdk/models/widget.js";
+import { ThreeHundredAndTwentyEight } from "@vercel/sdk/models/threehundredandfour.js";
 
 let value: ThreeHundredAndTwentyEight = {
-  disableRepositoryDispatchEvents: true,
+  createDeployments: "disabled",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `disableRepositoryDispatchEvents` | *boolean*                         | :heavy_check_mark:                | N/A                               |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `createDeployments`                                        | [models.CreateDeployments](../models/createdeployments.md) | :heavy_check_mark:                                         | N/A                                                        |
+| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `projectName`                                              | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |

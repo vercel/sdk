@@ -11,5 +11,5 @@ let value: CreateProjectTier = "priority";
 ## Values
 
 ```typescript
-"priority"
+"critical" | "priority"
 ```

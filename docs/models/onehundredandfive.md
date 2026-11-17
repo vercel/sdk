@@ -8,21 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndFive } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndFive = {
-  count: 1236.74,
-  documents: [
-    {
-      documentId: "<id>",
-      fingerprint: "<value>",
-      slug: "<value>",
-      title: "<value>",
-    },
-  ],
+  id: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `count`                                      | *number*                                     | :heavy_check_mark:                           | N/A                                          |
-| `documents`                                  | [models.Documents](../models/documents.md)[] | :heavy_check_mark:                           | N/A                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |

@@ -11,5 +11,5 @@ let value: DeleteProjectAvatarTier = "priority";
 ## Values
 
 ```typescript
-"priority"
+"critical" | "priority"
 ```

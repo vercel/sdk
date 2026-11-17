@@ -8,14 +8,23 @@ The payload of the event, if requested.
 import { OneHundredAndThirteen } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndThirteen = {
-  githubLogin: "<value>",
-  host: "blushing-grass.biz",
+  configuration: {
+    id: "<id>",
+  },
+  project: {
+    id: "<id>",
+  },
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `githubLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `host`             | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `configuration`                                                                          | [models.UserEventPayload113Configuration](../models/usereventpayload113configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `project`                                                                                | [models.UserEventPayload113Project](../models/usereventpayload113project.md)             | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `team`                                                                                   | [models.UserEventPayloadTeam](../models/usereventpayloadteam.md)                         | :heavy_check_mark:                                                                       | N/A                                                                                      |

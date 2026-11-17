@@ -5,24 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentySix } from "@vercel/sdk/models/payloadcodereviewselection.js";
+import { FourHundredAndTwentySix } from "@vercel/sdk/models/fourhundredandnineteen.js";
 
 let value: FourHundredAndTwentySix = {
-  by: "<value>",
-  slug: "<value>",
-  teamId: "<id>",
+  next: "manual-approval",
+  previous: "manual-approval",
 };
 ```
 
 ## Fields
 
-| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `by`                                                                                             | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `byUid`                                                                                          | *string*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `reasons`                                                                                        | [models.Reasons](../models/reasons.md)[]                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `removedMemberCount`                                                                             | *number*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `removedUsers`                                                                                   | Record<string, [models.UserEventPayloadRemovedUsers](../models/usereventpayloadremovedusers.md)> | :heavy_minus_sign:                                                                               | N/A                                                                                              |
-| `slug`                                                                                           | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `teamId`                                                                                         | *string*                                                                                         | :heavy_check_mark:                                                                               | N/A                                                                                              |
-| `timestamp`                                                                                      | *number*                                                                                         | :heavy_minus_sign:                                                                               | N/A                                                                                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload426Next](../models/usereventpayload426next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload426Previous](../models/usereventpayload426previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `teamSlug`                                                                     | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |

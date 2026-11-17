@@ -202,6 +202,7 @@ export type CreateProjectTargets = {
 };
 
 export const CreateProjectTier = {
+  Critical: "critical",
   Priority: "priority",
 } as const;
 export type CreateProjectTier = ClosedEnum<typeof CreateProjectTier>;

@@ -5,9 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyTwo } from "@vercel/sdk/models/threehundredandsixtyone.js";
+import { ThreeHundredAndSeventyTwo } from "@vercel/sdk/models/threehundredandsixtysix.js";
 
 let value: ThreeHundredAndSeventyTwo = {
+  next: {
+    skewProtectionAllowedDomains: [
+      "<value 1>",
+      "<value 2>",
+      "<value 3>",
+    ],
+  },
+  previous: {},
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -15,11 +23,9 @@ let value: ThreeHundredAndSeventyTwo = {
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `addedAddresses`                                   | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
-| `oldTrustedIps`                                    | [models.OldTrustedIps](../models/oldtrustedips.md) | :heavy_minus_sign:                                 | N/A                                                |
-| `projectId`                                        | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `projectName`                                      | *string*                                           | :heavy_check_mark:                                 | N/A                                                |
-| `removedAddresses`                                 | *string*[]                                         | :heavy_minus_sign:                                 | N/A                                                |
-| `trustedIps`                                       | [models.TrustedIps](../models/trustedips.md)       | :heavy_minus_sign:                                 | N/A                                                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload372Next](../models/usereventpayload372next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload372Previous](../models/usereventpayload372previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

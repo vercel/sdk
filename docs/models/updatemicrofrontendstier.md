@@ -11,5 +11,5 @@ let value: UpdateMicrofrontendsTier = "priority";
 ## Values
 
 ```typescript
-"priority"
+"critical" | "priority"
 ```

@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyTwo } from "@vercel/sdk/models/via5.js";
+import { FiftyTwo } from "@vercel/sdk/models/usereventprincipaltype.js";
 
-let value: FiftyTwo = {
-  virtualModelConfig: {
-    id: "<id>",
-  },
-};
+let value: FiftyTwo = {};
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `virtualModelConfig`                                         | [models.VirtualModelConfig](../models/virtualmodelconfig.md) | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `failureMode`                                  | [models.FailureMode](../models/failuremode.md) | :heavy_minus_sign:                             | N/A                                            |
+| `mode`                                         | [models.PayloadMode](../models/payloadmode.md) | :heavy_minus_sign:                             | N/A                                            |
+| `rolloutPercent`                               | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `timeoutMs`                                    | *number*                                       | :heavy_minus_sign:                             | N/A                                            |

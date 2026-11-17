@@ -1040,6 +1040,7 @@ export type GetProjectsResponseBodyTargets = {
 };
 
 export const GetProjectsResponseBodyTier = {
+  Critical: "critical",
   Priority: "priority",
 } as const;
 export type GetProjectsResponseBodyTier = ClosedEnum<

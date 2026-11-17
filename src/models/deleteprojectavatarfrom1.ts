@@ -2784,6 +2784,7 @@ export type DeleteProjectAvatarTargets = {
 };
 
 export const DeleteProjectAvatarTier = {
+  Critical: "critical",
   Priority: "priority",
 } as const;
 export type DeleteProjectAvatarTier = ClosedEnum<

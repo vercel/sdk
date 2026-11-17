@@ -5,19 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtyEight } from "@vercel/sdk/models/via5.js";
+import { ThirtyEight } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: ThirtyEight = {
-  credential: {
-    id: "<id>",
-    name: "<value>",
-    providerSlug: "<value>",
-  },
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `credential`                                 | [models.Credential](../models/credential.md) | :heavy_check_mark:                           | N/A                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

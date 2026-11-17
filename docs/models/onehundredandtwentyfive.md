@@ -8,20 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyFive } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndTwentyFive = {
-  oldSsoProtection: {
-    deploymentType: "all",
-  },
-  scope: "organization",
-  ssoProtection: {
-    deploymentType: "prod_deployment_urls_and_all_previews",
-  },
+  status: "<value>",
+  suffix: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `oldSsoProtection`                                                                 | [models.OldSsoProtection](../models/oldssoprotection.md)                           | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `scope`                                                                            | [models.UserEventPayloadScope](../models/usereventpayloadscope.md)                 | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `ssoProtection`                                                                    | [models.UserEventPayloadSsoProtection](../models/usereventpayloadssoprotection.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `status`           | *string*           | :heavy_check_mark: | N/A                |
+| `suffix`           | *string*           | :heavy_check_mark: | N/A                |

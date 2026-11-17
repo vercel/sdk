@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadMode } from "@vercel/sdk/models/microfrontends3.js";
+import { UserEventPayloadMode } from "@vercel/sdk/models/usereventpayloadallowlistedreadystatereasoninternal.js";
 
-let value: UserEventPayloadMode = "organization";
+let value: UserEventPayloadMode = "none";
 ```
 
 ## Values
 
 ```typescript
-"organization" | "team"
+"none"
 ```

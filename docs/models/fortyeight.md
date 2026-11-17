@@ -5,10 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyEight } from "@vercel/sdk/models/via5.js";
+import { FortyEight } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: FortyEight = {
-  countries: [
+  regions: [
     "<value 1>",
     "<value 2>",
   ],
@@ -19,4 +19,4 @@ let value: FortyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `countries`        | *string*[]         | :heavy_check_mark: | N/A                |
+| `regions`          | *string*[]         | :heavy_check_mark: | N/A                |

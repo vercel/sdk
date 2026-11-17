@@ -8,17 +8,14 @@ The payload of the event, if requested.
 import { NinetyOne } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: NinetyOne = {
-  action: "resume_plan",
-  data: {
-    planSlug: "v0_business",
-  },
+  paymentMethodId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `action`                                                                 | [models.UserEventPayload91Action](../models/usereventpayload91action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `data`                                                                   | [models.PayloadData](../models/payloaddata.md)                           | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `brand`            | *string*           | :heavy_minus_sign: | N/A                |
+| `last4`            | *string*           | :heavy_minus_sign: | N/A                |
+| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |

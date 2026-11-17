@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { TwoOrigin } from "@vercel/sdk/models/onehundredandseventyfour.js";
+import { TwoOrigin } from "@vercel/sdk/models/onehundredandseventynine.js";
 
-let value: TwoOrigin = "emu-recovery";
+let value: TwoOrigin = "email";
 ```
 
 ## Values
 
 ```typescript
-"apple" | "bitbucket" | "chatgpt" | "email" | "emu-recovery" | "github" | "gitlab" | "google" | "invite" | "magic-link" | "otp" | "otp-link" | "saml" | "webauthn"
+"apple" | "bitbucket" | "chatgpt" | "claude" | "email" | "emu-recovery" | "github" | "gitlab" | "google" | "invite" | "magic-link" | "otp" | "otp-link" | "saml" | "webauthn"
 ```

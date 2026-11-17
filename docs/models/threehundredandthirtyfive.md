@@ -5,23 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyFive } from "@vercel/sdk/models/widget.js";
+import { ThreeHundredAndThirtyFive } from "@vercel/sdk/models/threehundredandfour.js";
 
 let value: ThreeHundredAndThirtyFive = {
-  domain: "deafening-viability.com",
-  newProjectId: "<id>",
-  newProjectName: "<value>",
-  oldProjectId: "<id>",
-  oldProjectName: "<value>",
+  next: {},
+  previous: {},
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `newProjectId`     | *string*           | :heavy_check_mark: | N/A                |
-| `newProjectName`   | *string*           | :heavy_check_mark: | N/A                |
-| `oldProjectId`     | *string*           | :heavy_check_mark: | N/A                |
-| `oldProjectName`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload335Next](../models/usereventpayload335next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload335Previous](../models/usereventpayload335previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

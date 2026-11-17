@@ -870,6 +870,7 @@ export type UpdateProjectTargets = {
 };
 
 export const UpdateProjectTier = {
+  Critical: "critical",
   Priority: "priority",
 } as const;
 export type UpdateProjectTier = ClosedEnum<typeof UpdateProjectTier>;

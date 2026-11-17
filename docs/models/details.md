@@ -5,7 +5,7 @@ Labeled event details for progressive disclosure in the activity feed.
 ## Example Usage
 
 ```typescript
-import { Details } from "@vercel/sdk/models/fourhundredandeightyseven.js";
+import { Details } from "@vercel/sdk/models/usereventpayload491previous.js";
 
 let value: Details = {
   label: "<value>",

@@ -5,18 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FortyNine } from "@vercel/sdk/models/via5.js";
+import { FortyNine } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: FortyNine = {
-  retention: {
-    ceilingMode: "until-requested",
-    defaultMode: "days",
-  },
+  countries: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `retention`                                | [models.Retention](../models/retention.md) | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `countries`        | *string*[]         | :heavy_check_mark: | N/A                |

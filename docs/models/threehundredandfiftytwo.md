@@ -5,19 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/widget.js";
+import { ThreeHundredAndFiftyTwo } from "@vercel/sdk/models/threehundredandfour.js";
 
 let value: ThreeHundredAndFiftyTwo = {
-  projectId: "<id>",
+  oldPasswordProtection: {
+    deploymentType: "preview",
+  },
+  passwordProtection: "all",
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `budgetId`                                                                           | *string*                                                                             | :heavy_minus_sign:                                                                   | The budget that paused the project, for `BUDGET_REACHED`. Absent on older events.    |
-| `budgetScope`                                                                        | [models.BudgetScope](../models/budgetscope.md)                                       | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `projectId`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `projectName`                                                                        | *string*                                                                             | :heavy_minus_sign:                                                                   | Display name for Activity links. Optional for events stored before it was published. |
-| `reasonCode`                                                                         | [models.ReasonCode](../models/reasoncode.md)                                         | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Field                                 | Type                                  | Required                              | Description                           |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| `oldPasswordProtection`               | *models.PayloadOldPasswordProtection* | :heavy_check_mark:                    | N/A                                   |
+| `passwordChanged`                     | *boolean*                             | :heavy_minus_sign:                    | N/A                                   |
+| `passwordProtection`                  | *models.PayloadPasswordProtection*    | :heavy_check_mark:                    | N/A                                   |
+| `projectId`                           | *string*                              | :heavy_minus_sign:                    | N/A                                   |
+| `projectName`                         | *string*                              | :heavy_minus_sign:                    | N/A                                   |

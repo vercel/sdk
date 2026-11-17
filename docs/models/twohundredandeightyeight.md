@@ -5,18 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyEight } from "@vercel/sdk/models/microfrontends3.js";
+import { TwoHundredAndEightyEight } from "@vercel/sdk/models/usereventpayload238prevproject.js";
 
 let value: TwoHundredAndEightyEight = {
-  prevProjectAnalytics: {
-    disabledAt: 2305.86,
-    enabledAt: 6507.59,
-    id: "<id>",
+  previousEndpoint: {
+    name: "<value>",
   },
-  projectAnalytics: {
-    disabledAt: 1444.34,
-    enabledAt: 2475.8,
+  privateLinkEndpoint: {
     id: "<id>",
+    name: "<value>",
   },
   projectId: "<id>",
 };
@@ -24,9 +21,10 @@ let value: TwoHundredAndEightyEight = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `previousEndpoint`                                                                             | [models.PreviousEndpoint](../models/previousendpoint.md)                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `privateLinkEndpoint`                                                                          | [models.UserEventPayloadPrivateLinkEndpoint](../models/usereventpayloadprivatelinkendpoint.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `projectId`                                                                                    | *string*                                                                                       | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `projectName`                                                                                  | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `scope`                                                                                        | [models.UserEventPayload288Scope](../models/usereventpayload288scope.md)                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |

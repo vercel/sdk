@@ -8,17 +8,16 @@ The payload of the event, if requested.
 import { Eighty } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: Eighty = {
-  attackModeEnabled: false,
-  projectId: "<id>",
+  appName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `attackModeActiveUntil`     | *number*                    | :heavy_minus_sign:          | N/A                         |
-| `attackModeEnabled`         | *boolean*                   | :heavy_check_mark:          | N/A                         |
-| `prevAttackModeActiveUntil` | *number*                    | :heavy_minus_sign:          | N/A                         |
-| `prevAttackModeEnabled`     | *boolean*                   | :heavy_minus_sign:          | N/A                         |
-| `projectId`                 | *string*                    | :heavy_check_mark:          | N/A                         |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `appId`                                                        | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `appName`                                                      | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `organizationId`                                               | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `permissions`                                                  | [models.PayloadPermissions](../models/payloadpermissions.md)[] | :heavy_minus_sign:                                             | N/A                                                            |
+| `resources`                                                    | [models.Resources](../models/resources.md)                     | :heavy_minus_sign:                                             | N/A                                                            |

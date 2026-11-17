@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { EightyNine } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: EightyNine = {
-  planSlug: "<value>",
+  subscriptionId: "<id>",
 };
 ```
 
@@ -16,5 +16,4 @@ let value: EightyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
-| `planSlug`         | *string*           | :heavy_check_mark: | N/A                |
+| `subscriptionId`   | *string*           | :heavy_check_mark: | N/A                |

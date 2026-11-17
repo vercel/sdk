@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentyNine } from "@vercel/sdk/models/onehundredandseventyfour.js";
+import { TwoHundredAndTwentyNine } from "@vercel/sdk/models/onehundredandseventynine.js";
 
 let value: TwoHundredAndTwentyNine = {
-  invoiceCollection: false,
+  provider: "gitlab",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `invoiceCollection` | *boolean*           | :heavy_check_mark:  | N/A                 |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `provider`                                                                     | [models.UserEventPayload229Provider](../models/usereventpayload229provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |

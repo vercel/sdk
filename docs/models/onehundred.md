@@ -8,8 +8,7 @@ The payload of the event, if requested.
 import { OneHundred } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: OneHundred = {
-  dst: "<value>",
-  src: "<value>",
+  custom: false,
 };
 ```
 
@@ -17,5 +16,7 @@ let value: OneHundred = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `dst`              | *string*           | :heavy_check_mark: | N/A                |
-| `src`              | *string*           | :heavy_check_mark: | N/A                |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |
+| `custom`           | *boolean*          | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_minus_sign: | N/A                |

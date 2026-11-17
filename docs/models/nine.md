@@ -5,14 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Nine } from "@vercel/sdk/models/via5.js";
+import { Nine } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: Nine = {
-  namespace: "<value>",
+  expiresAt: "1745142607704",
+  grantId: "<id>",
+  namedSandboxId: "<id>",
+  permission: "<value>",
   projectId: "<id>",
-  projectName: "<value>",
-  scheduleId: "<id>",
-  scheduleName: "<value>",
+  repositoryId: "<id>",
+  sandboxId: "<id>",
 };
 ```
 
@@ -20,8 +22,10 @@ let value: Nine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `namespace`        | *string*           | :heavy_check_mark: | N/A                |
+| `expiresAt`        | *string*           | :heavy_check_mark: | N/A                |
+| `grantId`          | *string*           | :heavy_check_mark: | N/A                |
+| `namedSandboxId`   | *string*           | :heavy_check_mark: | N/A                |
+| `permission`       | *string*           | :heavy_check_mark: | N/A                |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `scheduleId`       | *string*           | :heavy_check_mark: | N/A                |
-| `scheduleName`     | *string*           | :heavy_check_mark: | N/A                |
+| `repositoryId`     | *string*           | :heavy_check_mark: | N/A                |
+| `sandboxId`        | *string*           | :heavy_check_mark: | N/A                |

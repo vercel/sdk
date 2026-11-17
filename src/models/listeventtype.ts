@@ -99,6 +99,12 @@ export const Name = {
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
   AiGatewayHeadquartersUpdated: "ai-gateway-headquarters-updated",
   AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
+  AiGatewayInferenceHooksEndpointUpdated:
+    "ai-gateway-inference-hooks-endpoint-updated",
+  AiGatewayInferenceHooksRemoved: "ai-gateway-inference-hooks-removed",
+  AiGatewayInferenceHooksSettingsUpdated:
+    "ai-gateway-inference-hooks-settings-updated",
+  AiGatewayInferenceHooksToggled: "ai-gateway-inference-hooks-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayMemberBudgetChanges: "ai-gateway-member-budget-changes",
   AiGatewayModelAllowlistModelsUpdated:
@@ -185,6 +191,7 @@ export const Name = {
   ComplianceDocumentPreviewed: "compliance-document-previewed",
   ComplianceDocumentsBulkDownloaded: "compliance-documents-bulk-downloaded",
   ConcurrentBuildsUpdate: "concurrent-builds-update",
+  ConnectApproveConnectorRequest: "connect-approve-connector-request",
   ConnectAttachProject: "connect-attach-project",
   ConnectBitbucket: "connect-bitbucket",
   ConnectBitbucketApp: "connect-bitbucket-app",
@@ -199,6 +206,7 @@ export const Name = {
   ConnectCreateConnector: "connect-create-connector",
   ConnectCreateMcpEventSubscription: "connect-create-mcp-event-subscription",
   ConnectDeleteConnector: "connect-delete-connector",
+  ConnectDeleteConnectorRequest: "connect-delete-connector-request",
   ConnectDeleteInstallation: "connect-delete-installation",
   ConnectDetachProject: "connect-detach-project",
   ConnectGithub: "connect-github",
@@ -207,10 +215,15 @@ export const Name = {
   ConnectGitlab: "connect-gitlab",
   ConnectGitlabApp: "connect-gitlab-app",
   ConnectImportTokens: "connect-import-tokens",
+  ConnectProvisionConnectorRequest: "connect-provision-connector-request",
+  ConnectRejectConnectorRequest: "connect-reject-connector-request",
   ConnectRevokeAllTokens: "connect-revoke-all-tokens",
+  ConnectSubmitConnectorRequest: "connect-submit-connector-request",
   ConnectUpdateConnector: "connect-update-connector",
+  ConnectUpdateConnectorRequest: "connect-update-connector-request",
   ConnectUpdateTriggerDestinations: "connect-update-trigger-destinations",
   ConnectUpsertInstallation: "connect-upsert-installation",
+  ConnectWithdrawConnectorRequest: "connect-withdraw-connector-request",
   CustomAlertCreated: "custom-alert-created",
   CustomAlertDeleted: "custom-alert-deleted",
   CustomAlertUpdated: "custom-alert-updated",
@@ -883,6 +896,10 @@ export const Name = {
     "vercel-agent-security-finding-dismissed",
   VercelAgentSecurityFindingReopened: "vercel-agent-security-finding-reopened",
   VercelAgentSecurityFindingResolved: "vercel-agent-security-finding-resolved",
+  VercelAgentSecurityReviewPolicyDeleted:
+    "vercel-agent-security-review-policy-deleted",
+  VercelAgentSecurityReviewPolicyUpdated:
+    "vercel-agent-security-review-policy-updated",
   VercelAgentSessionCreated: "vercel-agent-session-created",
   VercelAgentTeamTrialCreditsApplied: "vercel-agent-team-trial-credits-applied",
   VercelAppInstallationRequestDismissed:
@@ -892,6 +909,8 @@ export const Name = {
   VercelAppInstalled: "vercel-app-installed",
   VercelAppTokensRevoked: "vercel-app-tokens-revoked",
   VercelAppUninstalled: "vercel-app-uninstalled",
+  VercelCiRepositoryGithubRunnersUpdated:
+    "vercel-ci-repository-github-runners-updated",
   VercelCiRepositorySettingsUpdated: "vercel-ci-repository-settings-updated",
   VercelToolbar: "vercel-toolbar",
   VpcPeeringConnectionAccepted: "vpc-peering-connection-accepted",
@@ -968,6 +987,12 @@ export const ReplacedBy = {
   AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
   AiGatewayHeadquartersUpdated: "ai-gateway-headquarters-updated",
   AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
+  AiGatewayInferenceHooksEndpointUpdated:
+    "ai-gateway-inference-hooks-endpoint-updated",
+  AiGatewayInferenceHooksRemoved: "ai-gateway-inference-hooks-removed",
+  AiGatewayInferenceHooksSettingsUpdated:
+    "ai-gateway-inference-hooks-settings-updated",
+  AiGatewayInferenceHooksToggled: "ai-gateway-inference-hooks-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayMemberBudgetChanges: "ai-gateway-member-budget-changes",
   AiGatewayModelAllowlistModelsUpdated:
@@ -1054,6 +1079,7 @@ export const ReplacedBy = {
   ComplianceDocumentPreviewed: "compliance-document-previewed",
   ComplianceDocumentsBulkDownloaded: "compliance-documents-bulk-downloaded",
   ConcurrentBuildsUpdate: "concurrent-builds-update",
+  ConnectApproveConnectorRequest: "connect-approve-connector-request",
   ConnectAttachProject: "connect-attach-project",
   ConnectBitbucket: "connect-bitbucket",
   ConnectBitbucketApp: "connect-bitbucket-app",
@@ -1068,6 +1094,7 @@ export const ReplacedBy = {
   ConnectCreateConnector: "connect-create-connector",
   ConnectCreateMcpEventSubscription: "connect-create-mcp-event-subscription",
   ConnectDeleteConnector: "connect-delete-connector",
+  ConnectDeleteConnectorRequest: "connect-delete-connector-request",
   ConnectDeleteInstallation: "connect-delete-installation",
   ConnectDetachProject: "connect-detach-project",
   ConnectGithub: "connect-github",
@@ -1076,10 +1103,15 @@ export const ReplacedBy = {
   ConnectGitlab: "connect-gitlab",
   ConnectGitlabApp: "connect-gitlab-app",
   ConnectImportTokens: "connect-import-tokens",
+  ConnectProvisionConnectorRequest: "connect-provision-connector-request",
+  ConnectRejectConnectorRequest: "connect-reject-connector-request",
   ConnectRevokeAllTokens: "connect-revoke-all-tokens",
+  ConnectSubmitConnectorRequest: "connect-submit-connector-request",
   ConnectUpdateConnector: "connect-update-connector",
+  ConnectUpdateConnectorRequest: "connect-update-connector-request",
   ConnectUpdateTriggerDestinations: "connect-update-trigger-destinations",
   ConnectUpsertInstallation: "connect-upsert-installation",
+  ConnectWithdrawConnectorRequest: "connect-withdraw-connector-request",
   CustomAlertCreated: "custom-alert-created",
   CustomAlertDeleted: "custom-alert-deleted",
   CustomAlertUpdated: "custom-alert-updated",
@@ -1752,6 +1784,10 @@ export const ReplacedBy = {
     "vercel-agent-security-finding-dismissed",
   VercelAgentSecurityFindingReopened: "vercel-agent-security-finding-reopened",
   VercelAgentSecurityFindingResolved: "vercel-agent-security-finding-resolved",
+  VercelAgentSecurityReviewPolicyDeleted:
+    "vercel-agent-security-review-policy-deleted",
+  VercelAgentSecurityReviewPolicyUpdated:
+    "vercel-agent-security-review-policy-updated",
   VercelAgentSessionCreated: "vercel-agent-session-created",
   VercelAgentTeamTrialCreditsApplied: "vercel-agent-team-trial-credits-applied",
   VercelAppInstallationRequestDismissed:
@@ -1761,6 +1797,8 @@ export const ReplacedBy = {
   VercelAppInstalled: "vercel-app-installed",
   VercelAppTokensRevoked: "vercel-app-tokens-revoked",
   VercelAppUninstalled: "vercel-app-uninstalled",
+  VercelCiRepositoryGithubRunnersUpdated:
+    "vercel-ci-repository-github-runners-updated",
   VercelCiRepositorySettingsUpdated: "vercel-ci-repository-settings-updated",
   VercelToolbar: "vercel-toolbar",
   VpcPeeringConnectionAccepted: "vpc-peering-connection-accepted",

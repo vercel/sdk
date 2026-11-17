@@ -5,7 +5,7 @@ Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in 
 ## Example Usage
 
 ```typescript
-import { PreviousBudget } from "@vercel/sdk/models/via5.js";
+import { PreviousBudget } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: PreviousBudget = {
   limitAmount: 8723.59,
@@ -19,4 +19,4 @@ let value: PreviousBudget = {
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `alertThresholds`                                                                      | *number*[]                                                                             | :heavy_minus_sign:                                                                     | N/A                                                                                    |
 | `limitAmount`                                                                          | *number*                                                                               | :heavy_check_mark:                                                                     | Spend cap, in dollars.                                                                 |
-| `refreshPeriod`                                                                        | [models.UserEventPayload33RefreshPeriod](../models/usereventpayload33refreshperiod.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `refreshPeriod`                                                                        | [models.UserEventPayload34RefreshPeriod](../models/usereventpayload34refreshperiod.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |

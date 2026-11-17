@@ -8,24 +8,24 @@ The payload of the event, if requested.
 import { OneHundredAndSeven } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndSeven = {
-  configuration: {
-    id: "<id>",
+  gitOwnerName: "<value>",
+  gitRepositoryName: "<value>",
+  next: {
+    autoAddReviewers: true,
+    enabled: false,
   },
-  project: {
-    id: "<id>",
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
+  previous: {
+    autoAddReviewers: false,
+    enabled: true,
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `buildsEnabled`                                                              | *boolean*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `configuration`                                                              | [models.PayloadConfiguration](../models/payloadconfiguration.md)             | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload107Project](../models/usereventpayload107project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `team`                                                                       | [models.UserEventPayload107Team](../models/usereventpayload107team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `gitOwnerName`                                         | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `gitRepositoryName`                                    | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| `next`                                                 | [models.PayloadNext](../models/payloadnext.md)         | :heavy_check_mark:                                     | N/A                                                    |
+| `previous`                                             | [models.PayloadPrevious](../models/payloadprevious.md) | :heavy_check_mark:                                     | N/A                                                    |

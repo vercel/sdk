@@ -10,9 +10,9 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 
 export type DeleteDriveV1Request = {
   /**
-   * Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).
+   * The drive name or ID.
    */
-  name: string;
+  nameOrId: string;
   /**
    * The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.
    */
@@ -36,7 +36,7 @@ export type DeleteDriveV1ResponseBody = {
 
 /** @internal */
 export type DeleteDriveV1Request$Outbound = {
-  name: string;
+  nameOrId: string;
   projectId?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -48,7 +48,7 @@ export const DeleteDriveV1Request$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   DeleteDriveV1Request
 > = z.object({
-  name: z.string(),
+  nameOrId: z.string(),
   projectId: z.string().optional(),
   teamId: z.string().optional(),
   slug: z.string().optional(),

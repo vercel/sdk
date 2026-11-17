@@ -5,18 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Fifty } from "@vercel/sdk/models/via5.js";
+import { Fifty } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: Fifty = {
-  rule: {
-    id: "<id>",
-    type: "<value>",
-  },
+  enabled: true,
+  mode: "shadow",
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `rule`                           | [models.Rule](../models/rule.md) | :heavy_check_mark:               | N/A                              |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `enabled`                                                            | *boolean*                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
+| `mode`                                                               | [models.UserEventPayload50Mode](../models/usereventpayload50mode.md) | :heavy_check_mark:                                                   | N/A                                                                  |

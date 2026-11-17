@@ -7,15 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { EightySix } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
-let value: EightySix = {
-  paymentMethodId: "<id>",
-  subscriptionId: "<id>",
-};
+let value: EightySix = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
-| `subscriptionId`   | *string*           | :heavy_check_mark: | N/A                |
+| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |

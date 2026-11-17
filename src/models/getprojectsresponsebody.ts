@@ -258,6 +258,7 @@ export type ResponseBodyTargets = {
 };
 
 export const ResponseBodyTier = {
+  Critical: "critical",
   Priority: "priority",
 } as const;
 export type ResponseBodyTier = ClosedEnum<typeof ResponseBodyTier>;

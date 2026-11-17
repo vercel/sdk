@@ -2813,6 +2813,7 @@ export type GetMicrofrontendsInGroupTargets = {
 };
 
 export const GetMicrofrontendsInGroupTier = {
+  Critical: "critical",
   Priority: "priority",
 } as const;
 export type GetMicrofrontendsInGroupTier = ClosedEnum<

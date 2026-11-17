@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFortySix } from "@vercel/sdk/models/gitcredentialsource.js";
+import { OneHundredAndFortySix } from "@vercel/sdk/models/usereventpayloadallowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndFortySix = {
   name: "<value>",
@@ -14,8 +14,7 @@ let value: OneHundredAndFortySix = {
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `newTeam`                                                                    | [models.UserEventPayload146NewTeam](../models/usereventpayload146newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `oldTeam`                                                                    | [models.UserEventPayload146OldTeam](../models/usereventpayload146oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `zone`             | *boolean*          | :heavy_minus_sign: | N/A                |

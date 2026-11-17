@@ -2784,6 +2784,7 @@ export type UploadProjectAvatarTargets = {
 };
 
 export const UploadProjectAvatarTier = {
+  Critical: "critical",
   Priority: "priority",
 } as const;
 export type UploadProjectAvatarTier = ClosedEnum<

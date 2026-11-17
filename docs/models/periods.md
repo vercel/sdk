@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Periods } from "@vercel/sdk/models/onehundredandseventyfour.js";
+import { Periods } from "@vercel/sdk/models/onehundredandseventynine.js";
 
 let value: Periods = {
   endDate: "<value>",

@@ -5,21 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyFour } from "@vercel/sdk/models/microfrontends3.js";
+import { TwoHundredAndFiftyFour } from "@vercel/sdk/models/usereventpayload238prevproject.js";
 
 let value: TwoHundredAndFiftyFour = {
-  enabled: false,
+  next: {
+    dsyncMode: "team",
+  },
   organizationId: "<id>",
-  organizationSlug: "<value>",
-  previousEnabled: true,
+  previous: {
+    dsyncMode: "organization",
+  },
+  teamId: "<id>",
+  teamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
-| `previousEnabled`  | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload254Next](../models/usereventpayload254next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `organizationId`                                                               | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload254Previous](../models/usereventpayload254previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `teamId`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `teamName`                                                                     | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

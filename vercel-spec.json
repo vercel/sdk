@@ -20021,10 +20021,8 @@
                           }
                         ]
                       }
-                    ],
-                    "nullable": true
-                  },
-                  "nullable": true
+                    ]
+                  }
                 }
               },
               "application/stream+json": {
@@ -61108,6 +61106,104 @@
             }
           }
         ]
+      },
+      "delete": {
+        "description": "Deletes a drive by project and name or drive ID. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.",
+        "operationId": "deleteDriveV1",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Delete a drive",
+        "tags": [
+          "drives"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drive": {
+                      "$ref": "#/components/schemas/Drive"
+                    }
+                  },
+                  "required": [
+                    "drive"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "429": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "nameOrId",
+            "description": "The drive name or ID.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The drive name or ID.",
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "maxLength": 64,
+              "example": "workspace"
+            }
+          },
+          {
+            "name": "projectId",
+            "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
+              "example": "prj_abc123"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
       }
     },
     "/v1/drives/{name}": {
@@ -61269,104 +61365,6 @@
             }
           }
         }
-      },
-      "delete": {
-        "description": "Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.",
-        "operationId": "deleteDriveV1",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Delete a drive",
-        "tags": [
-          "drives"
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "drive": {
-                      "$ref": "#/components/schemas/Drive"
-                    }
-                  },
-                  "required": [
-                    "drive"
-                  ],
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid."
-          },
-          "401": {
-            "description": "The request is not authorized."
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": ""
-          },
-          "409": {
-            "description": ""
-          },
-          "410": {
-            "description": ""
-          },
-          "429": {
-            "description": ""
-          }
-        },
-        "parameters": [
-          {
-            "name": "name",
-            "description": "Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).",
-              "pattern": "^[a-zA-Z0-9_-]+$",
-              "maxLength": 64,
-              "example": "workspace"
-            }
-          },
-          {
-            "name": "projectId",
-            "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
-              "example": "prj_abc123"
-            }
-          },
-          {
-            "description": "The Team identifier to perform the request on behalf of.",
-            "in": "query",
-            "name": "teamId",
-            "schema": {
-              "type": "string",
-              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-            }
-          },
-          {
-            "description": "The Team slug to perform the request on behalf of.",
-            "in": "query",
-            "name": "slug",
-            "schema": {
-              "type": "string",
-              "example": "my-team-url-slug"
-            }
-          }
-        ]
       }
     },
     "/v1/drives/{name}/fork": {
@@ -96223,6 +96221,7 @@
                           "tier": {
                             "type": "string",
                             "enum": [
+                              "critical",
                               "priority"
                             ]
                           },
@@ -108780,6 +108779,7 @@
                           "tier": {
                             "type": "string",
                             "enum": [
+                              "critical",
                               "priority"
                             ]
                           },
@@ -113428,6 +113428,7 @@
                               "tier": {
                                 "type": "string",
                                 "enum": [
+                                  "critical",
                                   "priority"
                                 ]
                               },
@@ -121536,6 +121537,7 @@
                               "tier": {
                                 "type": "string",
                                 "enum": [
+                                  "critical",
                                   "priority"
                                 ]
                               },
@@ -130295,6 +130297,7 @@
                     "tier": {
                       "type": "string",
                       "enum": [
+                        "critical",
                         "priority"
                       ]
                     },
@@ -139361,6 +139364,7 @@
                     "tier": {
                       "type": "string",
                       "enum": [
+                        "critical",
                         "priority"
                       ]
                     },
@@ -147684,6 +147688,7 @@
                     "tier": {
                       "type": "string",
                       "enum": [
+                        "critical",
                         "priority"
                       ]
                     },
@@ -157375,6 +157380,7 @@
                     "tier": {
                       "type": "string",
                       "enum": [
+                        "critical",
                         "priority"
                       ]
                     },
@@ -165701,6 +165707,7 @@
                     "tier": {
                       "type": "string",
                       "enum": [
+                        "critical",
                         "priority"
                       ]
                     },
@@ -187180,6 +187187,7 @@
                     "tier": {
                       "type": "string",
                       "enum": [
+                        "critical",
                         "priority"
                       ]
                     },
@@ -189440,6 +189448,108 @@
             }
           }
         ]
+      },
+      "delete": {
+        "description": "Deletes a drive by project and name or drive ID. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.",
+        "operationId": "deleteDrive",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Deprecated: Use DELETE /v1/drives/:nameOrId. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.\nEmits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive",
+        "tags": [
+          "sandboxes"
+        ],
+        "deprecated": true,
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drive": {
+                      "$ref": "#/components/schemas/Drive"
+                    }
+                  },
+                  "required": [
+                    "drive"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "409": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "422": {
+            "description": ""
+          },
+          "429": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "nameOrId",
+            "description": "The drive name or ID.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The drive name or ID.",
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "maxLength": 64,
+              "example": "workspace"
+            }
+          },
+          {
+            "name": "projectId",
+            "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
+              "example": "prj_abc123"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ]
       }
     },
     "/v2/sandboxes/drives/{name}": {
@@ -189605,108 +189715,6 @@
             }
           }
         }
-      },
-      "delete": {
-        "description": "Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.",
-        "operationId": "deleteDrive",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "Deprecated: Use DELETE /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.\nEmits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive",
-        "tags": [
-          "sandboxes"
-        ],
-        "deprecated": true,
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "drive": {
-                      "$ref": "#/components/schemas/Drive"
-                    }
-                  },
-                  "required": [
-                    "drive"
-                  ],
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "One of the provided values in the request query is invalid."
-          },
-          "401": {
-            "description": "The request is not authorized."
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": ""
-          },
-          "409": {
-            "description": ""
-          },
-          "410": {
-            "description": ""
-          },
-          "422": {
-            "description": ""
-          },
-          "429": {
-            "description": ""
-          }
-        },
-        "parameters": [
-          {
-            "name": "name",
-            "description": "Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "description": "Name for the drive. Must be unique per project and URL-safe (alphanumeric, hyphens, underscores).",
-              "pattern": "^[a-zA-Z0-9_-]+$",
-              "maxLength": 64,
-              "example": "workspace"
-            }
-          },
-          {
-            "name": "projectId",
-            "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string",
-              "description": "The project ID or name associated with the drive. Required unless using a Vercel OIDC token scoped to a project.",
-              "example": "prj_abc123"
-            }
-          },
-          {
-            "description": "The Team identifier to perform the request on behalf of.",
-            "in": "query",
-            "name": "teamId",
-            "schema": {
-              "type": "string",
-              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-            }
-          },
-          {
-            "description": "The Team slug to perform the request on behalf of.",
-            "in": "query",
-            "name": "slug",
-            "schema": {
-              "type": "string",
-              "example": "my-team-url-slug"
-            }
-          }
-        ]
       }
     },
     "/v2/sandboxes/drives/{name}/fork": {
@@ -191598,7 +191606,7 @@
         ]
       },
       "post": {
-        "description": "Executes a shell command inside a running session. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion.",
+        "description": "Executes a shell command inside a running session. The command runs asynchronously and returns immediately with a command ID that can be used to track its progress and retrieve its output. Optionally, use the `wait` parameter to stream the command status until completion. When `wait` is true, send `Accept: application/vnd.vercel.sandbox.command-stream+cbor-seq` to receive the stream as a CBOR Sequence (RFC 8742) instead of ND-JSON. Each item is a two-element array `[TYPE, PAYLOAD]`. `TYPE` is `1` for stdout or `2` for stderr with the raw output as a byte string, `3` for a stream failure with a `{ code, message }` map, or `128` for the `SessionCommand` as a map, sent when the command starts and again when it finishes.",
         "operationId": "runSessionCommand",
         "security": [
           {
@@ -191626,9 +191634,41 @@
                   "type": "object"
                 }
               },
+              "application/vnd.vercel.sandbox.command-stream+cbor-seq": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
               "application/x-ndjson": {
                 "schema": {
                   "oneOf": [
+                    {
+                      "properties": {
+                        "data": {
+                          "type": "string"
+                        },
+                        "stream": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "data",
+                        "stream"
+                      ],
+                      "type": "object"
+                    },
+                    {
+                      "properties": {
+                        "command": {
+                          "$ref": "#/components/schemas/SessionCommand"
+                        }
+                      },
+                      "required": [
+                        "command"
+                      ],
+                      "type": "object"
+                    },
                     {
                       "properties": {
                         "data": {
@@ -191657,25 +191697,6 @@
                         }
                       },
                       "required": [
-                        "data",
-                        "stream"
-                      ],
-                      "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "command": {
-                          "$ref": "#/components/schemas/SessionCommand"
-                        },
-                        "data": {
-                          "type": "string"
-                        },
-                        "stream": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "command",
                         "data",
                         "stream"
                       ],
@@ -192190,7 +192211,7 @@
     },
     "/v2/sandboxes/sessions/{sessionId}/cmd/{cmdId}/logs": {
       "get": {
-        "description": "Streams the output of a command in real-time using newline-delimited JSON (ND-JSON). Each entry includes the output data and stream type. Stream types include `stdout`, `stderr`, and `error` (for stream failures).",
+        "description": "Streams the output of a command in real-time using newline-delimited JSON (ND-JSON). Each entry includes the output data and stream type. Stream types include `stdout`, `stderr`, and `error` (for stream failures). Send `Accept: application/vnd.vercel.sandbox.command-stream+cbor-seq` to receive the raw output bytes as a CBOR Sequence (RFC 8742) instead. Each item is a two-element array `[TYPE, PAYLOAD]`, where `TYPE` is `1` for stdout or `2` for stderr with the raw output as a byte string, or `3` for a stream failure with a `{ code, message }` map.",
         "operationId": "getSessionCommandLogs",
         "security": [
           {
@@ -192205,9 +192226,30 @@
           "200": {
             "description": "",
             "content": {
+              "application/vnd.vercel.sandbox.command-stream+cbor-seq": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
               "application/x-ndjson": {
                 "schema": {
                   "oneOf": [
+                    {
+                      "properties": {
+                        "data": {
+                          "type": "string"
+                        },
+                        "stream": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "data",
+                        "stream"
+                      ],
+                      "type": "object"
+                    },
                     {
                       "properties": {
                         "data": {
@@ -192230,21 +192272,6 @@
                             "message"
                           ],
                           "type": "object"
-                        },
-                        "stream": {
-                          "type": "string"
-                        }
-                      },
-                      "required": [
-                        "data",
-                        "stream"
-                      ],
-                      "type": "object"
-                    },
-                    {
-                      "properties": {
-                        "data": {
-                          "type": "string"
                         },
                         "stream": {
                           "type": "string"
@@ -245722,6 +245749,79 @@
               },
               {
                 "properties": {
+                  "acceptedTokenCount": {
+                    "type": "number"
+                  },
+                  "clientId": {
+                    "type": "string"
+                  },
+                  "clientName": {
+                    "type": "string"
+                  },
+                  "clientUid": {
+                    "type": "string"
+                  },
+                  "environments": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "eventName": {
+                    "type": "string"
+                  },
+                  "fields": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "importedTokenCount": {
+                    "type": "number"
+                  },
+                  "installationId": {
+                    "type": "string"
+                  },
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "requestId": {
+                    "type": "string"
+                  },
+                  "requestName": {
+                    "type": "string"
+                  },
+                  "result": {
+                    "type": "string"
+                  },
+                  "subjectType": {
+                    "type": "string",
+                    "enum": [
+                      "app",
+                      "user"
+                    ]
+                  },
+                  "subscriptionId": {
+                    "type": "string"
+                  },
+                  "tokenCount": {
+                    "type": "number"
+                  },
+                  "tokensDeleted": {
+                    "type": "number"
+                  },
+                  "triggerDestinationCount": {
+                    "type": "number"
+                  }
+                },
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "action": {
                     "type": "string",
                     "enum": [
@@ -247385,6 +247485,68 @@
                 "required": [
                   "countries"
                 ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "enforce",
+                      "shadow"
+                    ]
+                  }
+                },
+                "required": [
+                  "enabled",
+                  "mode"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "endpointOrigin": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "endpointOrigin"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "failureMode": {
+                    "type": "string",
+                    "enum": [
+                      "closed",
+                      "open"
+                    ]
+                  },
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "enforce",
+                      "shadow"
+                    ]
+                  },
+                  "rolloutPercent": {
+                    "type": "number"
+                  },
+                  "timeoutMs": {
+                    "type": "number"
+                  }
+                },
                 "type": "object",
                 "description": "The payload of the event, if requested."
               },
@@ -250025,70 +250187,6 @@
                   "bitbucketAccountId",
                   "bitbucketLogin"
                 ],
-                "type": "object",
-                "description": "The payload of the event, if requested."
-              },
-              {
-                "properties": {
-                  "acceptedTokenCount": {
-                    "type": "number"
-                  },
-                  "clientId": {
-                    "type": "string"
-                  },
-                  "clientName": {
-                    "type": "string"
-                  },
-                  "clientUid": {
-                    "type": "string"
-                  },
-                  "environments": {
-                    "items": {
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "eventName": {
-                    "type": "string"
-                  },
-                  "fields": {
-                    "items": {
-                      "type": "string"
-                    },
-                    "type": "array"
-                  },
-                  "importedTokenCount": {
-                    "type": "number"
-                  },
-                  "installationId": {
-                    "type": "string"
-                  },
-                  "projectId": {
-                    "type": "string"
-                  },
-                  "projectName": {
-                    "type": "string"
-                  },
-                  "subjectType": {
-                    "type": "string",
-                    "enum": [
-                      "app",
-                      "user"
-                    ]
-                  },
-                  "subscriptionId": {
-                    "type": "string"
-                  },
-                  "tokenCount": {
-                    "type": "number"
-                  },
-                  "tokensDeleted": {
-                    "type": "number"
-                  },
-                  "triggerDestinationCount": {
-                    "type": "number"
-                  }
-                },
                 "type": "object",
                 "description": "The payload of the event, if requested."
               },
@@ -256681,6 +256779,7 @@
                       "apple",
                       "bitbucket",
                       "chatgpt",
+                      "claude",
                       "github",
                       "github-custom-host",
                       "github-limited",
@@ -256705,6 +256804,7 @@
                       "apple",
                       "bitbucket",
                       "chatgpt",
+                      "claude",
                       "github",
                       "github-custom-host",
                       "github-limited",
@@ -256743,6 +256843,7 @@
                                 "apple",
                                 "bitbucket",
                                 "chatgpt",
+                                "claude",
                                 "email",
                                 "emu-recovery",
                                 "github",
@@ -256793,6 +256894,7 @@
                                     "apple",
                                     "bitbucket",
                                     "chatgpt",
+                                    "claude",
                                     "email",
                                     "emu-recovery",
                                     "github",
@@ -263873,6 +263975,7 @@
                             "apple",
                             "bitbucket",
                             "chatgpt",
+                            "claude",
                             "email",
                             "github",
                             "gitlab",
@@ -265801,6 +265904,30 @@
                   "targetKind",
                   "targetName",
                   "vulnerabilityClass"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "eventId": {
+                    "type": "string"
+                  },
+                  "occurredAt": {
+                    "type": "number"
+                  },
+                  "projectId": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "projectName": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "eventId",
+                  "occurredAt",
+                  "projectId"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -268343,6 +268470,32 @@
               },
               {
                 "properties": {
+                  "enabled": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ]
+                  },
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "repository": {
+                    "type": "string"
+                  },
+                  "repositoryId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "enabled",
+                  "repositoryId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "ciEnabled": {
                     "type": "boolean",
                     "enum": [
@@ -269070,6 +269223,7 @@
                       "apple",
                       "bitbucket",
                       "chatgpt",
+                      "claude",
                       "email",
                       "emu",
                       "github",
@@ -269705,6 +269859,7 @@
                       "apple",
                       "bitbucket",
                       "chatgpt",
+                      "claude",
                       "email",
                       "emu",
                       "github",
@@ -269908,6 +270063,7 @@
                       "apple",
                       "bitbucket",
                       "chatgpt",
+                      "claude",
                       "email",
                       "emu",
                       "github",
@@ -270294,6 +270450,10 @@
               "ai-gateway-guardrails-updated",
               "ai-gateway-headquarters-updated",
               "ai-gateway-hipaa-compliance-toggled",
+              "ai-gateway-inference-hooks-endpoint-updated",
+              "ai-gateway-inference-hooks-removed",
+              "ai-gateway-inference-hooks-settings-updated",
+              "ai-gateway-inference-hooks-toggled",
               "ai-gateway-inference-regions-updated",
               "ai-gateway-member-budget-changes",
               "ai-gateway-model-allowlist-models-updated",
@@ -270370,6 +270530,7 @@
               "compliance-document-previewed",
               "compliance-documents-bulk-downloaded",
               "concurrent-builds-update",
+              "connect-approve-connector-request",
               "connect-attach-project",
               "connect-bitbucket",
               "connect-bitbucket-app",
@@ -270384,6 +270545,7 @@
               "connect-create-connector",
               "connect-create-mcp-event-subscription",
               "connect-delete-connector",
+              "connect-delete-connector-request",
               "connect-delete-installation",
               "connect-detach-project",
               "connect-github",
@@ -270392,10 +270554,15 @@
               "connect-gitlab",
               "connect-gitlab-app",
               "connect-import-tokens",
+              "connect-provision-connector-request",
+              "connect-reject-connector-request",
               "connect-revoke-all-tokens",
+              "connect-submit-connector-request",
               "connect-update-connector",
+              "connect-update-connector-request",
               "connect-update-trigger-destinations",
               "connect-upsert-installation",
+              "connect-withdraw-connector-request",
               "custom-alert-created",
               "custom-alert-deleted",
               "custom-alert-updated",
@@ -271012,6 +271179,8 @@
               "vercel-agent-security-finding-dismissed",
               "vercel-agent-security-finding-reopened",
               "vercel-agent-security-finding-resolved",
+              "vercel-agent-security-review-policy-deleted",
+              "vercel-agent-security-review-policy-updated",
               "vercel-agent-session-created",
               "vercel-agent-team-trial-credits-applied",
               "vercel-app-installation-request-dismissed",
@@ -271020,6 +271189,7 @@
               "vercel-app-installed",
               "vercel-app-tokens-revoked",
               "vercel-app-uninstalled",
+              "vercel-ci-repository-github-runners-updated",
               "vercel-ci-repository-settings-updated",
               "vercel-toolbar",
               "vpc-peering-connection-accepted",
@@ -271333,6 +271503,10 @@
               "ai-gateway-guardrails-updated",
               "ai-gateway-headquarters-updated",
               "ai-gateway-hipaa-compliance-toggled",
+              "ai-gateway-inference-hooks-endpoint-updated",
+              "ai-gateway-inference-hooks-removed",
+              "ai-gateway-inference-hooks-settings-updated",
+              "ai-gateway-inference-hooks-toggled",
               "ai-gateway-inference-regions-updated",
               "ai-gateway-member-budget-changes",
               "ai-gateway-model-allowlist-models-updated",
@@ -271409,6 +271583,7 @@
               "compliance-document-previewed",
               "compliance-documents-bulk-downloaded",
               "concurrent-builds-update",
+              "connect-approve-connector-request",
               "connect-attach-project",
               "connect-bitbucket",
               "connect-bitbucket-app",
@@ -271423,6 +271598,7 @@
               "connect-create-connector",
               "connect-create-mcp-event-subscription",
               "connect-delete-connector",
+              "connect-delete-connector-request",
               "connect-delete-installation",
               "connect-detach-project",
               "connect-github",
@@ -271431,10 +271607,15 @@
               "connect-gitlab",
               "connect-gitlab-app",
               "connect-import-tokens",
+              "connect-provision-connector-request",
+              "connect-reject-connector-request",
               "connect-revoke-all-tokens",
+              "connect-submit-connector-request",
               "connect-update-connector",
+              "connect-update-connector-request",
               "connect-update-trigger-destinations",
               "connect-upsert-installation",
+              "connect-withdraw-connector-request",
               "custom-alert-created",
               "custom-alert-deleted",
               "custom-alert-updated",
@@ -272051,6 +272232,8 @@
               "vercel-agent-security-finding-dismissed",
               "vercel-agent-security-finding-reopened",
               "vercel-agent-security-finding-resolved",
+              "vercel-agent-security-review-policy-deleted",
+              "vercel-agent-security-review-policy-updated",
               "vercel-agent-session-created",
               "vercel-agent-team-trial-credits-applied",
               "vercel-app-installation-request-dismissed",
@@ -272059,6 +272242,7 @@
               "vercel-app-installed",
               "vercel-app-tokens-revoked",
               "vercel-app-uninstalled",
+              "vercel-ci-repository-github-runners-updated",
               "vercel-ci-repository-settings-updated",
               "vercel-toolbar",
               "vpc-peering-connection-accepted",
@@ -272130,6 +272314,10 @@
                 "ai-gateway-guardrails-updated",
                 "ai-gateway-headquarters-updated",
                 "ai-gateway-hipaa-compliance-toggled",
+                "ai-gateway-inference-hooks-endpoint-updated",
+                "ai-gateway-inference-hooks-removed",
+                "ai-gateway-inference-hooks-settings-updated",
+                "ai-gateway-inference-hooks-toggled",
                 "ai-gateway-inference-regions-updated",
                 "ai-gateway-member-budget-changes",
                 "ai-gateway-model-allowlist-models-updated",
@@ -272206,6 +272394,7 @@
                 "compliance-document-previewed",
                 "compliance-documents-bulk-downloaded",
                 "concurrent-builds-update",
+                "connect-approve-connector-request",
                 "connect-attach-project",
                 "connect-bitbucket",
                 "connect-bitbucket-app",
@@ -272220,6 +272409,7 @@
                 "connect-create-connector",
                 "connect-create-mcp-event-subscription",
                 "connect-delete-connector",
+                "connect-delete-connector-request",
                 "connect-delete-installation",
                 "connect-detach-project",
                 "connect-github",
@@ -272228,10 +272418,15 @@
                 "connect-gitlab",
                 "connect-gitlab-app",
                 "connect-import-tokens",
+                "connect-provision-connector-request",
+                "connect-reject-connector-request",
                 "connect-revoke-all-tokens",
+                "connect-submit-connector-request",
                 "connect-update-connector",
+                "connect-update-connector-request",
                 "connect-update-trigger-destinations",
                 "connect-upsert-installation",
+                "connect-withdraw-connector-request",
                 "custom-alert-created",
                 "custom-alert-deleted",
                 "custom-alert-updated",
@@ -272848,6 +273043,8 @@
                 "vercel-agent-security-finding-dismissed",
                 "vercel-agent-security-finding-reopened",
                 "vercel-agent-security-finding-resolved",
+                "vercel-agent-security-review-policy-deleted",
+                "vercel-agent-security-review-policy-updated",
                 "vercel-agent-session-created",
                 "vercel-agent-team-trial-credits-applied",
                 "vercel-app-installation-request-dismissed",
@@ -272856,6 +273053,7 @@
                 "vercel-app-installed",
                 "vercel-app-tokens-revoked",
                 "vercel-app-uninstalled",
+                "vercel-ci-repository-github-runners-updated",
                 "vercel-ci-repository-settings-updated",
                 "vercel-toolbar",
                 "vpc-peering-connection-accepted",
@@ -277312,6 +277510,7 @@
                         "apple",
                         "bitbucket",
                         "chatgpt",
+                        "claude",
                         "email",
                         "emu",
                         "github",
@@ -277382,6 +277581,7 @@
                         "apple",
                         "bitbucket",
                         "chatgpt",
+                        "claude",
                         "email",
                         "emu",
                         "github",

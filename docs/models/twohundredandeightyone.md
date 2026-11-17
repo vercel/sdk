@@ -5,23 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyOne } from "@vercel/sdk/models/microfrontends3.js";
+import { TwoHundredAndEightyOne } from "@vercel/sdk/models/usereventpayload238prevproject.js";
 
-let value: TwoHundredAndEightyOne = {
-  endpoint: {
-    awsServiceName: "<value>",
-    id: "<id>",
-    name: "<value>",
-    projectId: "<id>",
-    vercelRegion: "<value>",
-  },
-};
+let value: TwoHundredAndEightyOne = {};
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `endpoint`                                                               | [models.PayloadEndpoint](../models/payloadendpoint.md)                   | :heavy_check_mark:                                                       | N/A                                                                      |
-| `projectName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload281Scope](../models/usereventpayload281scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                             | Type                              | Required                          | Description                       |
+| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
+| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
+| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |

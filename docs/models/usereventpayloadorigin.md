@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadOrigin } from "@vercel/sdk/models/threehundredandsixtyone.js";
+import { UserEventPayloadOrigin } from "@vercel/sdk/models/threehundredandsixtysix.js";
 
 let value: UserEventPayloadOrigin = "saml";
 ```
@@ -11,5 +11,5 @@ let value: UserEventPayloadOrigin = "saml";
 ## Values
 
 ```typescript
-"apple" | "bitbucket" | "chatgpt" | "email" | "github" | "gitlab" | "google" | "otp" | "saml"
+"apple" | "bitbucket" | "chatgpt" | "claude" | "email" | "github" | "gitlab" | "google" | "otp" | "saml"
 ```

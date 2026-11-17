@@ -8,7 +8,10 @@ The payload of the event, if requested.
 import { EightySeven } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: EightySeven = {
-  paymentMethodId: "<id>",
+  amount: 434.73,
+  invoiceId: "<id>",
+  lineItemCount: 1132.05,
+  refundReason: "<value>",
 };
 ```
 
@@ -16,6 +19,7 @@ let value: EightySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `brand`            | *string*           | :heavy_minus_sign: | N/A                |
-| `last4`            | *string*           | :heavy_minus_sign: | N/A                |
-| `paymentMethodId`  | *string*           | :heavy_check_mark: | N/A                |
+| `amount`           | *number*           | :heavy_check_mark: | N/A                |
+| `invoiceId`        | *string*           | :heavy_check_mark: | N/A                |
+| `lineItemCount`    | *number*           | :heavy_check_mark: | N/A                |
+| `refundReason`     | *string*           | :heavy_check_mark: | N/A                |

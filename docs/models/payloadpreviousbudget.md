@@ -5,7 +5,7 @@ Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in 
 ## Example Usage
 
 ```typescript
-import { PayloadPreviousBudget } from "@vercel/sdk/models/via5.js";
+import { PayloadPreviousBudget } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: PayloadPreviousBudget = {
   limitAmount: 4633.42,
@@ -19,4 +19,4 @@ let value: PayloadPreviousBudget = {
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | `alertThresholds`                                                                                                  | *number*[]                                                                                                         | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `limitAmount`                                                                                                      | *number*                                                                                                           | :heavy_check_mark:                                                                                                 | Spend cap, in dollars.                                                                                             |
-| `refreshPeriod`                                                                                                    | [models.UserEventPayload35PreviousBudgetRefreshPeriod](../models/usereventpayload35previousbudgetrefreshperiod.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| `refreshPeriod`                                                                                                    | [models.UserEventPayload36PreviousBudgetRefreshPeriod](../models/usereventpayload36previousbudgetrefreshperiod.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |

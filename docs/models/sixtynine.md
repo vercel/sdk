@@ -7,15 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { SixtyNine } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
-let value: SixtyNine = {
-  alias: "<value>",
-  deploymentUrl: "https://alert-median.net/",
-};
+let value: SixtyNine = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `deploymentUrl`    | *string*           | :heavy_check_mark: | N/A                |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |

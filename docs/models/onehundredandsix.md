@@ -7,16 +7,12 @@ The payload of the event, if requested.
 ```typescript
 import { OneHundredAndSix } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
-let value: OneHundredAndSix = {
-  configuration: {
-    id: "<id>",
-    name: "<value>",
-  },
-};
+let value: OneHundredAndSix = {};
 ```
 
 ## Fields
 
-| Field                                              | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `configuration`                                    | [models.Configuration](../models/configuration.md) | :heavy_check_mark:                                 | N/A                                                |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `cn`               | *string*           | :heavy_minus_sign: | N/A                |
+| `cns`              | *string*[]         | :heavy_minus_sign: | N/A                |

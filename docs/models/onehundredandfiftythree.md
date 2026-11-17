@@ -5,17 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFiftyThree } from "@vercel/sdk/models/gitcredentialsource.js";
+import { OneHundredAndFiftyThree } from "@vercel/sdk/models/usereventpayloadallowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndFiftyThree = {
-  domain: "grounded-whale.biz",
-  zone: true,
+  customNameservers: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  domain: "functional-brook.name",
+  prevCustomNameservers: [
+    "<value 1>",
+    "<value 2>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `domain`           | *string*           | :heavy_check_mark: | N/A                |
-| `zone`             | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
+| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
+| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |

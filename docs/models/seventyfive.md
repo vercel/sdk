@@ -7,18 +7,14 @@ The payload of the event, if requested.
 ```typescript
 import { SeventyFive } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
-let value: SeventyFive = {
-  appName: "<value>",
-};
+let value: SeventyFive = {};
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `after`                              | [models.After](../models/after.md)   | :heavy_minus_sign:                   | N/A                                  |
-| `appId`                              | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `appName`                            | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `before`                             | [models.Before](../models/before.md) | :heavy_minus_sign:                   | N/A                                  |
-| `installationId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
-| `organizationId`                     | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| `aliasId`          | *string*           | :heavy_minus_sign: | N/A                |
+| `userId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `username`         | *string*           | :heavy_minus_sign: | N/A                |

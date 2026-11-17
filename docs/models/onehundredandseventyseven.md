@@ -5,21 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventySeven } from "@vercel/sdk/models/onehundredandseventyfour.js";
+import { OneHundredAndSeventySeven } from "@vercel/sdk/models/usereventpayloadallowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndSeventySeven = {
-  previousRule: {
-    email: "Verner_Auer70@hotmail.com",
-  },
-  team: {
-    id: "<id>",
-  },
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
+  edgeConfigTokenId: "<id>",
+  label: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload177Team](../models/usereventpayload177team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `edgeConfigId`      | *string*            | :heavy_check_mark:  | N/A                 |
+| `edgeConfigSlug`    | *string*            | :heavy_check_mark:  | N/A                 |
+| `edgeConfigTokenId` | *string*            | :heavy_check_mark:  | N/A                 |
+| `label`             | *string*            | :heavy_check_mark:  | N/A                 |

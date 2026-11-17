@@ -8,6 +8,7 @@ import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
+import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
   Categories,
   Categories$inboundSchema,
@@ -15,20 +16,970 @@ import {
   Details$inboundSchema,
   Entities,
   Entities$inboundSchema,
-} from "./fourhundredandeightyseven.js";
-import { SDKValidationError } from "./sdkvalidationerror.js";
+} from "./usereventpayload491previous.js";
 import {
   Payload,
   Payload$inboundSchema,
-  Principal,
-  Principal$inboundSchema,
-  User,
-  User$inboundSchema,
-  UserEventType,
-  UserEventType$inboundSchema,
-  Via5,
-  Via5$inboundSchema,
-} from "./via5.js";
+  Principal3,
+  Principal3$inboundSchema,
+  Principal4,
+  Principal4$inboundSchema,
+  Principal5,
+  Principal5$inboundSchema,
+  UserEventPrincipalType,
+  UserEventPrincipalType$inboundSchema,
+} from "./usereventprincipaltype.js";
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Principal2 = {
+  /**
+   * The OAuth 2.0 client ID, which may be a CIMD URL.
+   */
+  clientId: string;
+  /**
+   * The backing Vercel App ID. When absent, defaults to `clientId`.
+   */
+  id?: string | undefined;
+  name: string;
+  type: UserEventPrincipalType;
+};
+
+export const PrincipalType = {
+  User: "user",
+} as const;
+export type PrincipalType = ClosedEnum<typeof PrincipalType>;
+
+/**
+ * Metadata for {@link principalId}.
+ */
+export type Principal1 = {
+  avatar: string;
+  email: string;
+  slug?: string | undefined;
+  type?: PrincipalType | undefined;
+  uid: string;
+  username: string;
+};
+
+export type Principal =
+  | Principal1
+  | Principal2
+  | Principal3
+  | Principal4
+  | Principal5;
+
+/**
+ * The type of the event.
+ */
+export const UserEventType = {
+  AccessGroupCreated: "access-group-created",
+  AccessGroupDeleted: "access-group-deleted",
+  AccessGroupProjectUpdated: "access-group-project-updated",
+  AccessGroupUpdated: "access-group-updated",
+  AccessGroupUserAdded: "access-group-user-added",
+  AccessGroupUserRemoved: "access-group-user-removed",
+  AdminAgenticProvisioningAccountUnlinked:
+    "admin-agentic-provisioning-account-unlinked",
+  AdminObservabilityDisabled: "admin-observability-disabled",
+  AdminPlanUpdated: "admin-plan-updated",
+  AdminPreviewDeploymentSuffixClear: "admin-preview-deployment-suffix-clear",
+  AdminSamlIdpMaterialDeleted: "admin-saml-idp-material-deleted",
+  AdminSamlIdpMaterialSet: "admin-saml-idp-material-set",
+  AdminSamlSpSigningKeyCreated: "admin-saml-sp-signing-key-created",
+  AdminSamlSpSigningKeyUpdated: "admin-saml-sp-signing-key-updated",
+  AdminSecondaryEmailAdded: "admin-secondary-email-added",
+  AdminSecondaryEmailRemoved: "admin-secondary-email-removed",
+  AdminTeamNameUpdate: "admin-team-name-update",
+  AdminTeamSlugUpdate: "admin-team-slug-update",
+  AdminUserDelete: "admin-user-delete",
+  AdminUserPrimaryEmailUpdated: "admin-user-primary-email-updated",
+  AdminUsernameUpdated: "admin-username-updated",
+  AgenticProvisioningAccountBlocked: "agentic-provisioning-account-blocked",
+  AgenticProvisioningAccountLinked: "agentic-provisioning-account-linked",
+  AgenticProvisioningAccountRelinked: "agentic-provisioning-account-relinked",
+  AgenticProvisioningAccountUnlinked: "agentic-provisioning-account-unlinked",
+  AgenticProvisioningCredentialsRotated:
+    "agentic-provisioning-credentials-rotated",
+  AgenticProvisioningPlanChanged: "agentic-provisioning-plan-changed",
+  AgenticProvisioningTeamCreated: "agentic-provisioning-team-created",
+  AiAgentUsageBilling: "ai-agent-usage-billing",
+  AiAlertInvestigation: "ai-alert-investigation",
+  AiCodeReview: "ai-code-review",
+  AiGatewayAccessPolicyCreated: "ai-gateway-access-policy-created",
+  AiGatewayAccessPolicyDeleted: "ai-gateway-access-policy-deleted",
+  AiGatewayAccessPolicyMemberAdded: "ai-gateway-access-policy-member-added",
+  AiGatewayAccessPolicyMemberRemoved: "ai-gateway-access-policy-member-removed",
+  AiGatewayAccessPolicyUpdated: "ai-gateway-access-policy-updated",
+  AiGatewayApiKeyCreated: "ai-gateway-api-key-created",
+  AiGatewayApiKeyDeleted: "ai-gateway-api-key-deleted",
+  AiGatewayApiKeyQuotaUpdated: "ai-gateway-api-key-quota-updated",
+  AiGatewayAutoReloadUpdated: "ai-gateway-auto-reload-updated",
+  AiGatewayBudgetDefaultUpdated: "ai-gateway-budget-default-updated",
+  AiGatewayByokCredentialCreated: "ai-gateway-byok-credential-created",
+  AiGatewayByokCredentialDeleted: "ai-gateway-byok-credential-deleted",
+  AiGatewayByokCredentialUpdated: "ai-gateway-byok-credential-updated",
+  AiGatewayByokModelMappingsUpdated: "ai-gateway-byok-model-mappings-updated",
+  AiGatewayCreditsPurchased: "ai-gateway-credits-purchased",
+  AiGatewayGuardrailsUpdated: "ai-gateway-guardrails-updated",
+  AiGatewayHeadquartersUpdated: "ai-gateway-headquarters-updated",
+  AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
+  AiGatewayInferenceHooksEndpointUpdated:
+    "ai-gateway-inference-hooks-endpoint-updated",
+  AiGatewayInferenceHooksRemoved: "ai-gateway-inference-hooks-removed",
+  AiGatewayInferenceHooksSettingsUpdated:
+    "ai-gateway-inference-hooks-settings-updated",
+  AiGatewayInferenceHooksToggled: "ai-gateway-inference-hooks-toggled",
+  AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
+  AiGatewayMemberBudgetChanges: "ai-gateway-member-budget-changes",
+  AiGatewayModelAllowlistModelsUpdated:
+    "ai-gateway-model-allowlist-models-updated",
+  AiGatewayModelAllowlistToggled: "ai-gateway-model-allowlist-toggled",
+  AiGatewayModelCatalogAlertSettingsUpdated:
+    "ai-gateway-model-catalog-alert-settings-updated",
+  AiGatewayPrivateModelCreated: "ai-gateway-private-model-created",
+  AiGatewayPrivateModelDeleted: "ai-gateway-private-model-deleted",
+  AiGatewayPrivateModelUpdated: "ai-gateway-private-model-updated",
+  AiGatewayPrivateProviderCreated: "ai-gateway-private-provider-created",
+  AiGatewayPrivateProviderDeleted: "ai-gateway-private-provider-deleted",
+  AiGatewayPrivateProviderUpdated: "ai-gateway-private-provider-updated",
+  AiGatewayPromptTrainingOptOutToggled:
+    "ai-gateway-prompt-training-opt-out-toggled",
+  AiGatewayProviderAllowlistProvidersUpdated:
+    "ai-gateway-provider-allowlist-providers-updated",
+  AiGatewayProviderAllowlistToggled: "ai-gateway-provider-allowlist-toggled",
+  AiGatewayRuleCreated: "ai-gateway-rule-created",
+  AiGatewayRuleDeleted: "ai-gateway-rule-deleted",
+  AiGatewayRuleUpdated: "ai-gateway-rule-updated",
+  AiGatewayScopeBudgetUpdated: "ai-gateway-scope-budget-updated",
+  AiGatewaySystemCredentialFallbackOptOutToggled:
+    "ai-gateway-system-credential-fallback-opt-out-toggled",
+  AiGatewayTranscriptsDefaultDisabled:
+    "ai-gateway-transcripts-default-disabled",
+  AiGatewayTranscriptsDefaultEnabled: "ai-gateway-transcripts-default-enabled",
+  AiGatewayTranscriptsDisabled: "ai-gateway-transcripts-disabled",
+  AiGatewayTranscriptsEnabled: "ai-gateway-transcripts-enabled",
+  AiGatewayTranscriptsRetentionUpdated:
+    "ai-gateway-transcripts-retention-updated",
+  AiGatewayVirtualModelConfigArchived:
+    "ai-gateway-virtual-model-config-archived",
+  AiGatewayVirtualModelConfigCreated: "ai-gateway-virtual-model-config-created",
+  AiGatewayVirtualModelConfigDeleted: "ai-gateway-virtual-model-config-deleted",
+  AiGatewayVirtualModelConfigRestored:
+    "ai-gateway-virtual-model-config-restored",
+  AiGatewayVirtualModelConfigUpdated: "ai-gateway-virtual-model-config-updated",
+  AiGatewayZeroDataRetentionToggled: "ai-gateway-zero-data-retention-toggled",
+  AiOmniagent: "ai-omniagent",
+  AiSecurityReview: "ai-security-review",
+  AlertInvestigationProjectAllowlistUpdated:
+    "alert-investigation-project-allowlist-updated",
+  AlertRuleCreated: "alert-rule-created",
+  AlertRuleDeleted: "alert-rule-deleted",
+  AlertRuleUpdated: "alert-rule-updated",
+  Alias: "alias",
+  AliasChown: "alias-chown",
+  AliasDelete: "alias-delete",
+  AliasInviteCreated: "alias-invite-created",
+  AliasInviteJoined: "alias-invite-joined",
+  AliasInviteRevoked: "alias-invite-revoked",
+  AliasProtectionBypassCreated: "alias-protection-bypass-created",
+  AliasProtectionBypassException: "alias-protection-bypass-exception",
+  AliasProtectionBypassRegenerated: "alias-protection-bypass-regenerated",
+  AliasProtectionBypassRevoked: "alias-protection-bypass-revoked",
+  AliasSystem: "alias-system",
+  AliasUserScopedAccessDenied: "alias-user-scoped-access-denied",
+  AliasUserScopedAccessGranted: "alias-user-scoped-access-granted",
+  AliasUserScopedAccessRequested: "alias-user-scoped-access-requested",
+  AliasUserScopedAccessRevoked: "alias-user-scoped-access-revoked",
+  AliasesAssigned: "aliases-assigned",
+  AttackModeDisabled: "attack-mode-disabled",
+  AttackModeEnabled: "attack-mode-enabled",
+  AuditLogExportDownloaded: "audit-log-export-downloaded",
+  AuditLogExportRequested: "audit-log-export-requested",
+  AuthorizeGitDeployment: "authorize-git-deployment",
+  AutoExposeSystemEnvs: "auto-expose-system-envs",
+  Avatar: "avatar",
+  BillingSettingsUpdated: "billing-settings-updated",
+  BulkRedirectsSettingsUpdated: "bulk-redirects-settings-updated",
+  BulkRedirectsVersionPromoted: "bulk-redirects-version-promoted",
+  BulkRedirectsVersionRestored: "bulk-redirects-version-restored",
+  Cert: "cert",
+  CertAutorenew: "cert-autorenew",
+  CertChown: "cert-chown",
+  CertClone: "cert-clone",
+  CertDelete: "cert-delete",
+  CertRenew: "cert-renew",
+  CertReplace: "cert-replace",
+  CertSystemCreate: "cert-system-create",
+  CodeOwnersConfigUpdated: "code-owners-config-updated",
+  ComplianceDocumentDownloaded: "compliance-document-downloaded",
+  ComplianceDocumentPreviewed: "compliance-document-previewed",
+  ComplianceDocumentsBulkDownloaded: "compliance-documents-bulk-downloaded",
+  ConcurrentBuildsUpdate: "concurrent-builds-update",
+  ConnectApproveConnectorRequest: "connect-approve-connector-request",
+  ConnectAttachProject: "connect-attach-project",
+  ConnectBitbucket: "connect-bitbucket",
+  ConnectBitbucketApp: "connect-bitbucket-app",
+  ConnectBrandingUpdated: "connect-branding-updated",
+  ConnectCancelMcpEventSubscription: "connect-cancel-mcp-event-subscription",
+  ConnectConfigurationCreated: "connect-configuration-created",
+  ConnectConfigurationDeleted: "connect-configuration-deleted",
+  ConnectConfigurationLinkUpdated: "connect-configuration-link-updated",
+  ConnectConfigurationLinked: "connect-configuration-linked",
+  ConnectConfigurationUnlinked: "connect-configuration-unlinked",
+  ConnectConfigurationUpdated: "connect-configuration-updated",
+  ConnectCreateConnector: "connect-create-connector",
+  ConnectCreateMcpEventSubscription: "connect-create-mcp-event-subscription",
+  ConnectDeleteConnector: "connect-delete-connector",
+  ConnectDeleteConnectorRequest: "connect-delete-connector-request",
+  ConnectDeleteInstallation: "connect-delete-installation",
+  ConnectDetachProject: "connect-detach-project",
+  ConnectGithub: "connect-github",
+  ConnectGithubCustomHost: "connect-github-custom-host",
+  ConnectGithubLimited: "connect-github-limited",
+  ConnectGitlab: "connect-gitlab",
+  ConnectGitlabApp: "connect-gitlab-app",
+  ConnectImportTokens: "connect-import-tokens",
+  ConnectProvisionConnectorRequest: "connect-provision-connector-request",
+  ConnectRejectConnectorRequest: "connect-reject-connector-request",
+  ConnectRevokeAllTokens: "connect-revoke-all-tokens",
+  ConnectSubmitConnectorRequest: "connect-submit-connector-request",
+  ConnectUpdateConnector: "connect-update-connector",
+  ConnectUpdateConnectorRequest: "connect-update-connector-request",
+  ConnectUpdateTriggerDestinations: "connect-update-trigger-destinations",
+  ConnectUpsertInstallation: "connect-upsert-installation",
+  ConnectWithdrawConnectorRequest: "connect-withdraw-connector-request",
+  CustomAlertCreated: "custom-alert-created",
+  CustomAlertDeleted: "custom-alert-deleted",
+  CustomAlertUpdated: "custom-alert-updated",
+  CustomEnvironmentsSettingsUpdated: "custom-environments-settings-updated",
+  CustomMetricMetadataDeleted: "custom-metric-metadata-deleted",
+  CustomMetricMetadataUpdated: "custom-metric-metadata-updated",
+  CustomSuffixClear: "custom-suffix-clear",
+  CustomSuffixDisable: "custom-suffix-disable",
+  CustomSuffixEnable: "custom-suffix-enable",
+  CustomSuffixPending: "custom-suffix-pending",
+  CustomSuffixReady: "custom-suffix-ready",
+  DefaultPasswordProtection: "default-password-protection",
+  DefaultSsoProtection: "default-sso-protection",
+  DeployHookCreated: "deploy-hook-created",
+  DeployHookDeduped: "deploy-hook-deduped",
+  DeployHookDeleted: "deploy-hook-deleted",
+  DeployHookProcessed: "deploy-hook-processed",
+  Deployment: "deployment",
+  DeploymentCheckCreated: "deployment-check-created",
+  DeploymentCheckDeleted: "deployment-check-deleted",
+  DeploymentCheckUpdated: "deployment-check-updated",
+  DeploymentChown: "deployment-chown",
+  DeploymentCreationBlocked: "deployment-creation-blocked",
+  DeploymentDelete: "deployment-delete",
+  DeploymentPolicyBlocked: "deployment-policy-blocked",
+  DeploymentProtectionAccessRequests: "deployment-protection-access-requests",
+  DeploymentUndeleted: "deployment-undeleted",
+  DisabledIntegrationInstallationRemoved:
+    "disabled-integration-installation-removed",
+  DisconnectBitbucketApp: "disconnect-bitbucket-app",
+  DisconnectGithub: "disconnect-github",
+  DisconnectGithubCustomHost: "disconnect-github-custom-host",
+  DisconnectGithubLimited: "disconnect-github-limited",
+  DisconnectGitlabApp: "disconnect-gitlab-app",
+  DnsAdd: "dns-add",
+  DnsDelete: "dns-delete",
+  DnsRecordInternal: "dns-record-internal",
+  DnsUpdate: "dns-update",
+  DnsZonefileImport: "dns-zonefile-import",
+  Domain: "domain",
+  DomainBuy: "domain-buy",
+  DomainCdn: "domain-cdn",
+  DomainChown: "domain-chown",
+  DomainCustomNsChange: "domain-custom-ns-change",
+  DomainDelegated: "domain-delegated",
+  DomainDelete: "domain-delete",
+  DomainEchChange: "domain-ech-change",
+  DomainMoveIn: "domain-move-in",
+  DomainMoveOut: "domain-move-out",
+  DomainMoveOutRequestSent: "domain-move-out-request-sent",
+  DomainRenewChange: "domain-renew-change",
+  DomainServiceTypeUpdated: "domain-service-type-updated",
+  DomainTransferIn: "domain-transfer-in",
+  DomainTransferInCanceled: "domain-transfer-in-canceled",
+  DomainTransferInCompleted: "domain-transfer-in-completed",
+  DomainZoneChange: "domain-zone-change",
+  DomainZoneChangeInternal: "domain-zone-change-internal",
+  DrainCreated: "drain-created",
+  DrainDeleted: "drain-deleted",
+  DrainDisabled: "drain-disabled",
+  DrainEnabled: "drain-enabled",
+  DrainUpdated: "drain-updated",
+  DriveCreated: "drive-created",
+  DriveDeleted: "drive-deleted",
+  DriveSnapshotCreated: "drive-snapshot-created",
+  DriveSnapshotDeleted: "drive-snapshot-deleted",
+  EdgeCacheDangerouslyDeleteBySrcImages:
+    "edge-cache-dangerously-delete-by-src-images",
+  EdgeCacheDangerouslyDeleteByTags: "edge-cache-dangerously-delete-by-tags",
+  EdgeCacheDangerouslyDeleteImmutableStatic:
+    "edge-cache-dangerously-delete-immutable-static",
+  EdgeCacheInvalidateBySrcImages: "edge-cache-invalidate-by-src-images",
+  EdgeCacheInvalidateByTags: "edge-cache-invalidate-by-tags",
+  EdgeCachePurgeAll: "edge-cache-purge-all",
+  EdgeCacheRollbackPurge: "edge-cache-rollback-purge",
+  EdgeConfigBackupRestored: "edge-config-backup-restored",
+  EdgeConfigCreated: "edge-config-created",
+  EdgeConfigDeleted: "edge-config-deleted",
+  EdgeConfigItemsUpdated: "edge-config-items-updated",
+  EdgeConfigSchemaDeleted: "edge-config-schema-deleted",
+  EdgeConfigSchemaUpdated: "edge-config-schema-updated",
+  EdgeConfigTokenCreated: "edge-config-token-created",
+  EdgeConfigTokenDeleted: "edge-config-token-deleted",
+  EdgeConfigTransferIn: "edge-config-transfer-in",
+  EdgeConfigTransferOut: "edge-config-transfer-out",
+  EdgeConfigUpdated: "edge-config-updated",
+  Email: "email",
+  EmailNotificationRuleRemoved: "email-notification-rule-removed",
+  EmailNotificationRuleUpdated: "email-notification-rule-updated",
+  EmuMemberRemovedUnverifiedDomain: "emu-member-removed-unverified-domain",
+  EnforceDisjunctiveProductionSecrets: "enforce-disjunctive-production-secrets",
+  EnforceSensitiveEnvironmentVariables:
+    "enforce-sensitive-environment-variables",
+  EnvVariableAdd: "env-variable-add",
+  EnvVariableDelete: "env-variable-delete",
+  EnvVariableEdit: "env-variable-edit",
+  EnvVariableMasked: "env-variable-masked",
+  EnvVariableRead: "env-variable-read",
+  EnvVariableReadCliDev: "env-variable-read:cli:dev",
+  EnvVariableReadCliEnvAdd: "env-variable-read:cli:env:add",
+  EnvVariableReadCliEnvLs: "env-variable-read:cli:env:ls",
+  EnvVariableReadCliEnvPull: "env-variable-read:cli:env:pull",
+  EnvVariableReadCliEnvRm: "env-variable-read:cli:env:rm",
+  EnvVariableReadCliPull: "env-variable-read:cli:pull",
+  EnvVariableReadUnknownSource: "env-variable-read:unknown-source",
+  EnvVariableReadV0EnvPull: "env-variable-read:v0:env:pull",
+  EnvVariableRotated: "env-variable-rotated",
+  ExperimentCreated: "experiment-created",
+  ExperimentDeleted: "experiment-deleted",
+  ExperimentTransitioned: "experiment-transitioned",
+  ExperimentUpdated: "experiment-updated",
+  FirewallBypassCreated: "firewall-bypass-created",
+  FirewallBypassDeleted: "firewall-bypass-deleted",
+  FirewallConditionalBypassCreated: "firewall-conditional-bypass-created",
+  FirewallConditionalBypassDeleted: "firewall-conditional-bypass-deleted",
+  FirewallConditionalBypassUpdated: "firewall-conditional-bypass-updated",
+  FirewallConfigModified: "firewall-config-modified",
+  FirewallConfigPromoted: "firewall-config-promoted",
+  FirewallConfigRemoved: "firewall-config-removed",
+  FirewallManagedRulegroupUpdated: "firewall-managed-rulegroup-updated",
+  FirewallManagedRulesetUpdated: "firewall-managed-ruleset-updated",
+  Flag: "flag",
+  FlagArchived: "flag-archived",
+  FlagCreated: "flag-created",
+  FlagDeleted: "flag-deleted",
+  FlagUnarchived: "flag-unarchived",
+  FlagUpdated: "flag-updated",
+  FlagsConnectionCreated: "flags-connection-created",
+  FlagsConnectionDeleted: "flags-connection-deleted",
+  FlagsExplorerSubscription: "flags-explorer-subscription",
+  FlagsOverridesSigned: "flags-overrides-signed",
+  FlagsSDKKey: "flags-sdk-key",
+  FlagsSDKKeyAdded: "flags-sdk-key-added",
+  FlagsSDKKeyDeleted: "flags-sdk-key-deleted",
+  FlagsSDKKeyRead: "flags-sdk-key-read",
+  FlagsSegment: "flags-segment",
+  FlagsSettings: "flags-settings",
+  FlagsTransferred: "flags-transferred",
+  FlatRateCdnAutoUpgradeConsent: "flat-rate-cdn-auto-upgrade-consent",
+  GitIntegrationRepoPush: "git-integration-repo-push",
+  GitAccountIntegrationLinkAdded: "git_account_integration_link_added",
+  GlobalConfigBackupRestored: "global-config-backup-restored",
+  GlobalConfigCreated: "global-config-created",
+  GlobalConfigDeleted: "global-config-deleted",
+  GlobalConfigItemsUpdated: "global-config-items-updated",
+  GlobalConfigSchemaDeleted: "global-config-schema-deleted",
+  GlobalConfigSchemaUpdated: "global-config-schema-updated",
+  GlobalConfigTokenCreated: "global-config-token-created",
+  GlobalConfigTokenDeleted: "global-config-token-deleted",
+  GlobalConfigTransferIn: "global-config-transfer-in",
+  GlobalConfigTransferOut: "global-config-transfer-out",
+  GlobalConfigUpdated: "global-config-updated",
+  InstantRollbackCreated: "instant-rollback-created",
+  IntegrationAccessTokenSettingsUpdated:
+    "integration-access-token-settings-updated",
+  IntegrationConfigurationCredentialRevoked:
+    "integration-configuration-credential-revoked",
+  IntegrationConfigurationCredentialRotated:
+    "integration-configuration-credential-rotated",
+  IntegrationConfigurationOwnerChanged:
+    "integration-configuration-owner-changed",
+  IntegrationConfigurationScopeChangeConfirmed:
+    "integration-configuration-scope-change-confirmed",
+  IntegrationConfigurationTransferInSuccess:
+    "integration-configuration-transfer-in-success",
+  IntegrationConfigurationTransferOutSuccess:
+    "integration-configuration-transfer-out-success",
+  IntegrationConfigurationsDisabled: "integration-configurations-disabled",
+  IntegrationInstallationBillingPlanUpdated:
+    "integration-installation-billing-plan-updated",
+  IntegrationInstallationCompleted: "integration-installation-completed",
+  IntegrationInstallationPermissionUpdated:
+    "integration-installation-permission-updated",
+  IntegrationInstallationRemoved: "integration-installation-removed",
+  IntegrationPreviousSecretRevoked: "integration-previous-secret-revoked",
+  IntegrationResourceRedisCommandExecuted:
+    "integration-resource-redis-command-executed",
+  IntegrationResourceSqlQueryExecuted:
+    "integration-resource-sql-query-executed",
+  IntegrationScopeChanged: "integration-scope-changed",
+  IntegrationSecretRotated: "integration-secret-rotated",
+  InvoiceModified: "invoice-modified",
+  InvoiceRefunded: "invoice-refunded",
+  KmsIssuerCreated: "kms-issuer-created",
+  KmsIssuerDeleted: "kms-issuer-deleted",
+  KmsIssuerKeyActivated: "kms-issuer-key-activated",
+  KmsIssuerKeyCreated: "kms-issuer-key-created",
+  KmsIssuerKeyRevoked: "kms-issuer-key-revoked",
+  KmsIssuerKeyRotated: "kms-issuer-key-rotated",
+  KmsIssuerPolicyCreated: "kms-issuer-policy-created",
+  KmsIssuerPolicyDeleted: "kms-issuer-policy-deleted",
+  KmsIssuerPolicyUpdated: "kms-issuer-policy-updated",
+  KmsIssuerUpdated: "kms-issuer-updated",
+  LogDrainCreated: "log-drain-created",
+  LogDrainDeleted: "log-drain-deleted",
+  LogDrainDisabled: "log-drain-disabled",
+  LogDrainEnabled: "log-drain-enabled",
+  Login: "login",
+  LoginConnectionLinked: "login-connection-linked",
+  LoginConnectionUnlinked: "login-connection-unlinked",
+  ManualDeploymentPromotionCreated: "manual-deployment-promotion-created",
+  MarketplaceAutoCardCollectionUpdated:
+    "marketplace-auto-card-collection-updated",
+  MarketplaceBillingCollectionUpdated: "marketplace-billing-collection-updated",
+  MarketplaceFlexCommitOptIn: "marketplace-flex-commit-opt-in",
+  MarketplaceIntegrationAllowlistUpdated:
+    "marketplace-integration-allowlist-updated",
+  MessageboardChannelCreated: "messageboard-channel-created",
+  MessageboardChannelUpdated: "messageboard-channel-updated",
+  MessageboardCreated: "messageboard-created",
+  MessageboardGrantCreated: "messageboard-grant-created",
+  MessageboardGrantRevoked: "messageboard-grant-revoked",
+  MessageboardGrantUpdated: "messageboard-grant-updated",
+  MessageboardPrivateChannelCreated: "messageboard-private-channel-created",
+  MessageboardPrivateChannelUpdated: "messageboard-private-channel-updated",
+  MessageboardPrivateCreated: "messageboard-private-created",
+  MessageboardPrivateGrantCreated: "messageboard-private-grant-created",
+  MessageboardPrivateGrantRevoked: "messageboard-private-grant-revoked",
+  MessageboardPrivateGrantUpdated: "messageboard-private-grant-updated",
+  MessageboardPrivateProjectGranted: "messageboard-private-project-granted",
+  MessageboardPrivateProjectRevoked: "messageboard-private-project-revoked",
+  MessageboardProjectChannelCreated: "messageboard-project-channel-created",
+  MessageboardProjectCreated: "messageboard-project-created",
+  MessageboardProjectGranted: "messageboard-project-granted",
+  MessageboardProjectPrivateChannelCreated:
+    "messageboard-project-private-channel-created",
+  MessageboardProjectRevoked: "messageboard-project-revoked",
+  MessageboardSchemaRegistered: "messageboard-schema-registered",
+  MessageboardVisibilityUpdated: "messageboard-visibility-updated",
+  MicrofrontendGroupAdded: "microfrontend-group-added",
+  MicrofrontendGroupDeleted: "microfrontend-group-deleted",
+  MicrofrontendGroupUpdated: "microfrontend-group-updated",
+  MicrofrontendProjectAddedToGroup: "microfrontend-project-added-to-group",
+  MicrofrontendProjectRemovedFromGroup:
+    "microfrontend-project-removed-from-group",
+  MicrofrontendProjectUpdated: "microfrontend-project-updated",
+  MonitoringAlertUpdated: "monitoring-alert-updated",
+  MonitoringDisabled: "monitoring-disabled",
+  MonitoringEnabled: "monitoring-enabled",
+  OauthAppConnectionCreated: "oauth-app-connection-created",
+  OauthAppConnectionRemoved: "oauth-app-connection-removed",
+  OauthAppConnectionUpdated: "oauth-app-connection-updated",
+  OauthAppCreated: "oauth-app-created",
+  OauthAppDeleted: "oauth-app-deleted",
+  OauthAppSecretDeleted: "oauth-app-secret-deleted",
+  OauthAppSecretGenerated: "oauth-app-secret-generated",
+  OauthAppTokenCreated: "oauth-app-token-created",
+  OauthAppUpdated: "oauth-app-updated",
+  ObservabilityDisabled: "observability-disabled",
+  ObservabilityEnabled: "observability-enabled",
+  ObservabilityPlusProjectDisabled: "observability-plus-project-disabled",
+  ObservabilityPlusProjectEnabled: "observability-plus-project-enabled",
+  OidcPolicyCreated: "oidc-policy-created",
+  OidcPolicyDeleted: "oidc-policy-deleted",
+  OidcPolicyUpdated: "oidc-policy-updated",
+  OidcPolicyUsedToObtainAppToken: "oidc-policy-used-to-obtain-app-token",
+  OrganizationAvatarUpdate: "organization-avatar-update",
+  OrganizationCreate: "organization-create",
+  OrganizationDelete: "organization-delete",
+  OrganizationDomainVerificationCreated:
+    "organization-domain-verification-created",
+  OrganizationDomainVerificationDeleted:
+    "organization-domain-verification-deleted",
+  OrganizationDomainVerificationVerified:
+    "organization-domain-verification-verified",
+  OrganizationDsyncDelete: "organization-dsync-delete",
+  OrganizationDsyncGroupDelete: "organization-dsync-group-delete",
+  OrganizationDsyncGroupUpsert: "organization-dsync-group-upsert",
+  OrganizationDsyncSyncStart: "organization-dsync-sync-start",
+  OrganizationEmuDomainsMerged: "organization-emu-domains-merged",
+  OrganizationEmuTeamUpdated: "organization-emu-team-updated",
+  OrganizationEmuUpdated: "organization-emu-updated",
+  OrganizationNameUpdate: "organization-name-update",
+  OrganizationSlugUpdate: "organization-slug-update",
+  OrganizationSsoDeleted: "organization-sso-deleted",
+  OrganizationSsoEnforced: "organization-sso-enforced",
+  OrganizationSsoNewTeamsUpdate: "organization-sso-new-teams-update",
+  OrganizationTeamAdd: "organization-team-add",
+  OrganizationTeamCreate: "organization-team-create",
+  OrganizationTeamDelete: "organization-team-delete",
+  OrganizationTeamDsyncUpdate: "organization-team-dsync-update",
+  OrganizationTeamSsoUpdate: "organization-team-sso-update",
+  OrganizationUpdateAccountFlowDismissed:
+    "organization-update-account-flow-dismissed",
+  OrganizationUpdateAccountFlowTriggered:
+    "organization-update-account-flow-triggered",
+  OwnerBlocked: "owner-blocked",
+  OwnerSoftBlocked: "owner-soft-blocked",
+  OwnerSoftUnblocked: "owner-soft-unblocked",
+  OwnerUnblocked: "owner-unblocked",
+  PageIntegrityConfigUpdated: "page-integrity-config-updated",
+  PageIntegrityHeaderApproved: "page-integrity-header-approved",
+  PageIntegrityHeaderRejected: "page-integrity-header-rejected",
+  PageIntegrityInventoryCleared: "page-integrity-inventory-cleared",
+  PageIntegrityResourceApproved: "page-integrity-resource-approved",
+  PageIntegrityResourceDeleted: "page-integrity-resource-deleted",
+  PageIntegrityResourceRejected: "page-integrity-resource-rejected",
+  PageIntegrityScriptApprovalRuleCreated:
+    "page-integrity-script-approval-rule-created",
+  PageIntegrityScriptApprovalRuleDeleted:
+    "page-integrity-script-approval-rule-deleted",
+  PasskeyCreated: "passkey-created",
+  PasskeyDeleted: "passkey-deleted",
+  PasskeyUpdated: "passkey-updated",
+  PassportAccessGranted: "passport-access-granted",
+  PasswordProtectionDisabled: "password-protection-disabled",
+  PasswordProtectionEnabled: "password-protection-enabled",
+  PaymentMethodAdded: "payment-method-added",
+  PaymentMethodDefaultUpdated: "payment-method-default-updated",
+  PaymentMethodRemoved: "payment-method-removed",
+  Plan: "plan",
+  PreviewDeploymentSuffixDisabled: "preview-deployment-suffix-disabled",
+  PreviewDeploymentSuffixEnabled: "preview-deployment-suffix-enabled",
+  PreviewDeploymentSuffixUpdate: "preview-deployment-suffix-update",
+  PrivatelinkEndpointCreated: "privatelink-endpoint-created",
+  PrivatelinkEndpointDeleted: "privatelink-endpoint-deleted",
+  PrivatelinkEndpointUpdated: "privatelink-endpoint-updated",
+  ProductionBranchUpdated: "production-branch-updated",
+  ProjectAddAlias: "project-add-alias",
+  ProjectAddRedirect: "project-add-redirect",
+  ProjectAffectedProjectsDeploymentsUpdated:
+    "project-affected-projects-deployments-updated",
+  ProjectAliasConfiguredChange: "project-alias-configured-change",
+  ProjectAnalyticsDisabled: "project-analytics-disabled",
+  ProjectAnalyticsEnabled: "project-analytics-enabled",
+  ProjectAutoAssignCustomProductionDomainsUpdated:
+    "project-auto-assign-custom-production-domains-updated",
+  ProjectAutomationBypass: "project-automation-bypass",
+  ProjectAvatarDarkModeUpdate: "project-avatar-dark-mode-update",
+  ProjectAvatarUpdate: "project-avatar-update",
+  ProjectBuildCommandUpdated: "project-build-command-updated",
+  ProjectBuildLogsAndSourceProtectionUpdated:
+    "project-build-logs-and-source-protection-updated",
+  ProjectBuildMachineUpdated: "project-build-machine-updated",
+  ProjectCardWidgetPreferenceUpdated: "project-card-widget-preference-updated",
+  ProjectClientCertDelete: "project-client-cert-delete",
+  ProjectClientCertUpload: "project-client-cert-upload",
+  ProjectConnectConfigurations: "project-connect-configurations",
+  ProjectConsolidatedGitCommitStatusUpdated:
+    "project-consolidated-git-commit-status-updated",
+  ProjectCreated: "project-created",
+  ProjectCronJobsToggled: "project-cron-jobs-toggled",
+  ProjectCustomEnvironmentCreated: "project-custom-environment-created",
+  ProjectCustomEnvironmentDeleted: "project-custom-environment-deleted",
+  ProjectCustomEnvironmentSchedulesDefaultUpdated:
+    "project-custom-environment-schedules-default-updated",
+  ProjectCustomEnvironmentUpdated: "project-custom-environment-updated",
+  ProjectCustomerSuccessCodeVisibilityUpdated:
+    "project-customer-success-code-visibility-updated",
+  ProjectDelete: "project-delete",
+  ProjectDeploymentPolicyUpdated: "project-deployment-policy-updated",
+  ProjectDeploymentRetentionUpdated: "project-deployment-retention-updated",
+  ProjectDirectoryListing: "project-directory-listing",
+  ProjectDomainDeleted: "project-domain-deleted",
+  ProjectDomainMoved: "project-domain-moved",
+  ProjectDomainUnverified: "project-domain-unverified",
+  ProjectDomainUpdated: "project-domain-updated",
+  ProjectDomainVerified: "project-domain-verified",
+  ProjectElasticConcurrencyUpdated: "project-elastic-concurrency-updated",
+  ProjectExpirationLocked: "project-expiration-locked",
+  ProjectExpirationReached: "project-expiration-reached",
+  ProjectExpirationRemoved: "project-expiration-removed",
+  ProjectExpirationScheduled: "project-expiration-scheduled",
+  ProjectExpirationUnlocked: "project-expiration-unlocked",
+  ProjectExternalRewriteCachingUpdated:
+    "project-external-rewrite-caching-updated",
+  ProjectFrameworkUpdated: "project-framework-updated",
+  ProjectFunctionCpuMemory: "project-function-cpu-memory",
+  ProjectFunctionFailover: "project-function-failover",
+  ProjectFunctionMaxDuration: "project-function-max-duration",
+  ProjectFunctionRegions: "project-function-regions",
+  ProjectFunctionsBetaUpdated: "project-functions-beta-updated",
+  ProjectFunctionsFluidDisabled: "project-functions-fluid-disabled",
+  ProjectFunctionsFluidEnabled: "project-functions-fluid-enabled",
+  ProjectGitCommitCommentsToggled: "project-git-commit-comments-toggled",
+  ProjectGitCommitStatusToggled: "project-git-commit-status-toggled",
+  ProjectGitCreateDeploymentsToggled: "project-git-create-deployments-toggled",
+  ProjectGitCredentialAttestationCreated:
+    "project-git-credential-attestation-created",
+  ProjectGitCredentialAttestationDeleted:
+    "project-git-credential-attestation-deleted",
+  ProjectGitCredentialBoundCreated: "project-git-credential-bound-created",
+  ProjectGitCredentialBoundDeleted: "project-git-credential-bound-deleted",
+  ProjectGitCredentialBoundUpdated: "project-git-credential-bound-updated",
+  ProjectGitCredentialGrantAttestationRevoked:
+    "project-git-credential-grant-attestation-revoked",
+  ProjectGitCredentialGrantAttested: "project-git-credential-grant-attested",
+  ProjectGitCredentialGrantCreated: "project-git-credential-grant-created",
+  ProjectGitCredentialGrantDeleted: "project-git-credential-grant-deleted",
+  ProjectGitCredentialGrantUpdated: "project-git-credential-grant-updated",
+  ProjectGitCredentialTokenMinted: "project-git-credential-token-minted",
+  ProjectGitForkProtectionUpdated: "project-git-fork-protection-updated",
+  ProjectGitLfsToggled: "project-git-lfs-toggled",
+  ProjectGitPrCommentsToggled: "project-git-pr-comments-toggled",
+  ProjectGitRepositoryConnected: "project-git-repository-connected",
+  ProjectGitRepositoryDisconnected: "project-git-repository-disconnected",
+  ProjectGitRepositoryDispatchEventsToggled:
+    "project-git-repository-dispatch-events-toggled",
+  ProjectGitRequireVerifiedCommitsToggled:
+    "project-git-require-verified-commits-toggled",
+  ProjectIgnoredBuildStepUpdated: "project-ignored-build-step-updated",
+  ProjectInstallCommandUpdated: "project-install-command-updated",
+  ProjectMemberAdded: "project-member-added",
+  ProjectMemberInvited: "project-member-invited",
+  ProjectMemberRemoved: "project-member-removed",
+  ProjectMemberRemovedBatch: "project-member-removed-batch",
+  ProjectMemberUpdated: "project-member-updated",
+  ProjectMoveInSuccess: "project-move-in-success",
+  ProjectMoveOutFailed: "project-move-out-failed",
+  ProjectMoveOutStarted: "project-move-out-started",
+  ProjectMoveOutSuccess: "project-move-out-success",
+  ProjectName: "project-name",
+  ProjectNodeVersionUpdated: "project-node-version-updated",
+  ProjectOidcIssuerModeUpdated: "project-oidc-issuer-mode-updated",
+  ProjectOidcTokenCreated: "project-oidc-token-created",
+  ProjectOptionsAllowlist: "project-options-allowlist",
+  ProjectOutputDirectoryUpdated: "project-output-directory-updated",
+  ProjectPassportUpdated: "project-passport-updated",
+  ProjectPasswordProtection: "project-password-protection",
+  ProjectPaused: "project-paused",
+  ProjectPerimetersUpdated: "project-perimeters-updated",
+  ProjectPreviewDeploymentSuffix: "project-preview-deployment-suffix",
+  ProjectPreviewEnvironmentBranchTrackingUpdated:
+    "project-preview-environment-branch-tracking-updated",
+  ProjectPrioritizeProductionBuildsUpdated:
+    "project-prioritize-production-builds-updated",
+  ProjectProgramEnrollmentChanged: "project-program-enrollment-changed",
+  ProjectProtectedSourcemapsUpdated: "project-protected-sourcemaps-updated",
+  ProjectRollbackDescriptionUpdated: "project-rollback-description-updated",
+  ProjectRollingReleaseAborted: "project-rolling-release-aborted",
+  ProjectRollingReleaseApproved: "project-rolling-release-approved",
+  ProjectRollingReleaseCompleted: "project-rolling-release-completed",
+  ProjectRollingReleaseConfigured: "project-rolling-release-configured",
+  ProjectRollingReleaseContinued: "project-rolling-release-continued",
+  ProjectRollingReleaseDisabled: "project-rolling-release-disabled",
+  ProjectRollingReleaseEnabled: "project-rolling-release-enabled",
+  ProjectRollingReleasePaused: "project-rolling-release-paused",
+  ProjectRollingReleaseStarted: "project-rolling-release-started",
+  ProjectRollingReleaseSuggestedActionsGenerated:
+    "project-rolling-release-suggested-actions-generated",
+  ProjectRollingReleaseTimer: "project-rolling-release-timer",
+  ProjectRootDirectoryUpdated: "project-root-directory-updated",
+  ProjectRoutesVersionPromoted: "project-routes-version-promoted",
+  ProjectRoutesVersionRestored: "project-routes-version-restored",
+  ProjectSandboxConfigUpdated: "project-sandbox-config-updated",
+  ProjectSandboxUrlProtectionUpdated: "project-sandbox-url-protection-updated",
+  ProjectSkewProtectionAllowedDomainsUpdated:
+    "project-skew-protection-allowed-domains-updated",
+  ProjectSkewProtectionMaxAgeUpdated: "project-skew-protection-max-age-updated",
+  ProjectSkewProtectionThresholdUpdated:
+    "project-skew-protection-threshold-updated",
+  ProjectSourceFilesOutsideRootDirectoryUpdated:
+    "project-source-files-outside-root-directory-updated",
+  ProjectSpeedInsightsDisabled: "project-speed-insights-disabled",
+  ProjectSpeedInsightsEnabled: "project-speed-insights-enabled",
+  ProjectSpeedInsightsFreeDataStarted:
+    "project-speed-insights-free-data-started",
+  ProjectSsoProtection: "project-sso-protection",
+  ProjectStaticIpsUpdated: "project-static-ips-updated",
+  ProjectTrustedIps: "project-trusted-ips",
+  ProjectTrustedSources: "project-trusted-sources",
+  ProjectUnpaused: "project-unpaused",
+  ProjectWebAnalyticsDisabled: "project-web-analytics-disabled",
+  ProjectWebAnalyticsEnabled: "project-web-analytics-enabled",
+  ProtectedGitScopeAdded: "protected-git-scope-added",
+  ProtectedGitScopeRemoved: "protected-git-scope-removed",
+  RepositoryCiEnvVariableCreate: "repository-ci-env-variable-create",
+  RepositoryCiEnvVariableDelete: "repository-ci-env-variable-delete",
+  RepositoryCiEnvVariableUpdate: "repository-ci-env-variable-update",
+  RuntimeCachePurgeAll: "runtime-cache-purge-all",
+  SamlConnectionCreated: "saml-connection-created",
+  SamlConnectionDeleted: "saml-connection-deleted",
+  SandboxAliasAssigned: "sandbox-alias-assigned",
+  SandboxAliasDelete: "sandbox-alias-delete",
+  SandboxDriveCreated: "sandbox-drive-created",
+  SandboxDriveDeleted: "sandbox-drive-deleted",
+  SandboxDriveSnapshotCreated: "sandbox-drive-snapshot-created",
+  SandboxDriveSnapshotDeleted: "sandbox-drive-snapshot-deleted",
+  SandboxNpmCredentialsConfigured: "sandbox-npm-credentials-configured",
+  SandboxSignedCommitIdentityConfigured:
+    "sandbox-signed-commit-identity-configured",
+  SandboxSnapshotRegionsUpdated: "sandbox-snapshot-regions-updated",
+  Scale: "scale",
+  ScaleAuto: "scale-auto",
+  ScheduleCreated: "schedule-created",
+  ScheduleDeleted: "schedule-deleted",
+  ScheduleDisabled: "schedule-disabled",
+  ScheduleEnabled: "schedule-enabled",
+  ScheduleInvoked: "schedule-invoked",
+  ScheduleUpdated: "schedule-updated",
+  SecondaryEmailAdded: "secondary-email-added",
+  SecondaryEmailRemoved: "secondary-email-removed",
+  SecondaryEmailVerified: "secondary-email-verified",
+  SecretAdd: "secret-add",
+  SecretDelete: "secret-delete",
+  SecretRename: "secret-rename",
+  SecurityListCreated: "security-list-created",
+  SecurityListDeleted: "security-list-deleted",
+  SecurityListUpdated: "security-list-updated",
+  SecurityPlusUpdated: "security-plus-updated",
+  SetBio: "set-bio",
+  SetName: "set-name",
+  SetProfiles: "set-profiles",
+  SetScale: "set-scale",
+  SharedEnvVariableCreate: "shared-env-variable-create",
+  SharedEnvVariableDelete: "shared-env-variable-delete",
+  SharedEnvVariableRead: "shared-env-variable-read",
+  SharedEnvVariableRepoLink: "shared-env-variable-repo-link",
+  SharedEnvVariableRepoUnlink: "shared-env-variable-repo-unlink",
+  SharedEnvVariableUpdate: "shared-env-variable-update",
+  ShowIpAddresses: "show-ip-addresses",
+  Signup: "signup",
+  SignupViaBitbucket: "signup-via-bitbucket",
+  SignupViaGithub: "signup-via-github",
+  SignupViaGitlab: "signup-via-gitlab",
+  SpeedInsightsSettingsUpdated: "speed-insights-settings-updated",
+  SpendCreated: "spend-created",
+  SpendDeleted: "spend-deleted",
+  SpendUpdated: "spend-updated",
+  SsoLogin: "sso-login",
+  StartupTermsAccepted: "startup-terms-accepted",
+  StorageAcceptTos: "storage-accept-tos",
+  StorageAccessTokenSet: "storage-access-token-set",
+  StorageAccessedDataBrowser: "storage-accessed-data-browser",
+  StorageConnectProject: "storage-connect-project",
+  StorageCreate: "storage-create",
+  StorageDelete: "storage-delete",
+  StorageDisconnectProject: "storage-disconnect-project",
+  StorageDisconnectProjects: "storage-disconnect-projects",
+  StorageInactiveStoreDeleted: "storage-inactive-store-deleted",
+  StorageResetCredentials: "storage-reset-credentials",
+  StorageResourceReplCommand: "storage-resource-repl-command",
+  StorageSetLocked: "storage-set-locked",
+  StorageTransferInSuccess: "storage-transfer-in-success",
+  StorageTransferOutSuccess: "storage-transfer-out-success",
+  StorageTransferRequestCreated: "storage-transfer-request-created",
+  StorageUpdate: "storage-update",
+  StorageUpdateProjectConnection: "storage-update-project-connection",
+  StorageUpgradeProjectConnectionToOidc:
+    "storage-upgrade-project-connection-to-oidc",
+  StorageViewSecret: "storage-view-secret",
+  StrictConnectors: "strict-connectors",
+  StrictDeploymentProtectionSettings: "strict-deployment-protection-settings",
+  StrictPasswordProtectionSettings: "strict-password-protection-settings",
+  StrictShareableLinks: "strict-shareable-links",
+  SubscriptionCreated: "subscription-created",
+  SubscriptionProductAdded: "subscription-product-added",
+  SubscriptionProductRemoved: "subscription-product-removed",
+  SubscriptionUpdated: "subscription-updated",
+  SupportSessionCreated: "support-session-created",
+  Team: "team",
+  TeamAgentBillingMigrationDecisionChanged:
+    "team-agent-billing-migration-decision-changed",
+  TeamAvatarUpdate: "team-avatar-update",
+  TeamCollaborationSettingsUpdated: "team-collaboration-settings-updated",
+  TeamDataCacheUserDisabledUpdated: "team-data-cache-user-disabled-updated",
+  TeamDefaultBuildMachineUpdated: "team-default-build-machine-updated",
+  TeamDefaultPassportUpdated: "team-default-passport-updated",
+  TeamDelete: "team-delete",
+  TeamDeploymentPolicyUpdated: "team-deployment-policy-updated",
+  TeamDeploymentStorageHighRetentionOptIn:
+    "team-deployment-storage-high-retention-opt-in",
+  TeamDeploymentStorageRetentionOptOut:
+    "team-deployment-storage-retention-opt-out",
+  TeamDomainVerificationCreated: "team-domain-verification-created",
+  TeamDomainVerificationDeleted: "team-domain-verification-deleted",
+  TeamDomainVerificationVerified: "team-domain-verification-verified",
+  TeamEmailDomainUpdate: "team-email-domain-update",
+  TeamEmuUpdated: "team-emu-updated",
+  TeamEndedTrial: "team-ended-trial",
+  TeamFirewallConfigModified: "team-firewall-config-modified",
+  TeamFirewallConfigPromoted: "team-firewall-config-promoted",
+  TeamGitRepositoryDispatchEventsToggled:
+    "team-git-repository-dispatch-events-toggled",
+  TeamGitRequireVerifiedCommitsToggled:
+    "team-git-require-verified-commits-toggled",
+  TeamInviteBulkDelete: "team-invite-bulk-delete",
+  TeamInviteCodeReset: "team-invite-code-reset",
+  TeamInviteLinkCreated: "team-invite-link-created",
+  TeamInviteLinkDeleted: "team-invite-link-deleted",
+  TeamIpBlockingRulesCreated: "team-ip-blocking-rules-created",
+  TeamIpBlockingRulesRemoved: "team-ip-blocking-rules-removed",
+  TeamMemberAdd: "team-member-add",
+  TeamMemberConfirmRequest: "team-member-confirm-request",
+  TeamMemberDeclineRequest: "team-member-decline-request",
+  TeamMemberDelete: "team-member-delete",
+  TeamMemberEntitlementAdded: "team-member-entitlement-added",
+  TeamMemberEntitlementCanceled: "team-member-entitlement-canceled",
+  TeamMemberEntitlementReactivated: "team-member-entitlement-reactivated",
+  TeamMemberEntitlementRemoved: "team-member-entitlement-removed",
+  TeamMemberJoin: "team-member-join",
+  TeamMemberLeave: "team-member-leave",
+  TeamMemberRequestAccess: "team-member-request-access",
+  TeamMemberRoleUpdate: "team-member-role-update",
+  TeamMemberSsoAuthorizationAttempt: "team-member-sso-authorization-attempt",
+  TeamMfaEnforcementUpdated: "team-mfa-enforcement-updated",
+  TeamNameUpdate: "team-name-update",
+  TeamPaidInvoice: "team-paid-invoice",
+  TeamProgramEnrollmentChanged: "team-program-enrollment-changed",
+  TeamRemoteCachingPurge: "team-remote-caching-purge",
+  TeamRemoteCachingUpdate: "team-remote-caching-update",
+  TeamRuntimeCacheUpdated: "team-runtime-cache-updated",
+  TeamSamlEnforced: "team-saml-enforced",
+  TeamSamlRoles: "team-saml-roles",
+  TeamSlugUpdate: "team-slug-update",
+  TeamTokensInvalidated: "team-tokens-invalidated",
+  TracingConfigured: "tracing-configured",
+  TracingDisabled: "tracing-disabled",
+  TracingPaused: "tracing-paused",
+  TracingResumed: "tracing-resumed",
+  UnlinkLoginConnection: "unlink-login-connection",
+  UpdateAccountFlowDismissed: "update-account-flow-dismissed",
+  UpdateAccountFlowTriggered: "update-account-flow-triggered",
+  UserAutoBlockConfigured: "user-auto-block-configured",
+  UserBlocked: "user-blocked",
+  UserDelete: "user-delete",
+  UserDeleteRequested: "user-delete-requested",
+  UserEmuAccountArchived: "user-emu-account-archived",
+  UserEmuAccountDeleted: "user-emu-account-deleted",
+  UserEmuAccountRecovered: "user-emu-account-recovered",
+  UserEmuAccountUpdateOptedIn: "user-emu-account-update-opted-in",
+  UserEmuAccountUpdateOptedOut: "user-emu-account-update-opted-out",
+  UserEmuRecoveryEmailSent: "user-emu-recovery-email-sent",
+  UserEmuRecoveryInitiated: "user-emu-recovery-initiated",
+  UserEmuToggled: "user-emu-toggled",
+  UserLandingPageUpdated: "user-landing-page-updated",
+  UserMfaChallengeFailed: "user-mfa-challenge-failed",
+  UserMfaChallengeInitiated: "user-mfa-challenge-initiated",
+  UserMfaChallengeVerified: "user-mfa-challenge-verified",
+  UserMfaChangeFailed: "user-mfa-change-failed",
+  UserMfaConfigurationUpdated: "user-mfa-configuration-updated",
+  UserMfaRecoveryCodeUsed: "user-mfa-recovery-code-used",
+  UserMfaRecoveryCodesRegenerated: "user-mfa-recovery-codes-regenerated",
+  UserMfaRemoved: "user-mfa-removed",
+  UserMfaSetupSkipped: "user-mfa-setup-skipped",
+  UserMfaTotpVerificationStarted: "user-mfa-totp-verification-started",
+  UserMfaTotpVerified: "user-mfa-totp-verified",
+  UserPhoneRemoved: "user-phone-removed",
+  UserPhoneUpdated: "user-phone-updated",
+  UserPrimaryEmailUpdated: "user-primary-email-updated",
+  UserProviderEmailClaimEvaluated: "user-provider-email-claim-evaluated",
+  UserSudoModeRemoved: "user-sudo-mode-removed",
+  UserTokenCreated: "user-token-created",
+  UserTokenDeleted: "user-token-deleted",
+  UserTokensDeleted: "user-tokens-deleted",
+  UserUnblocked: "user-unblocked",
+  Username: "username",
+  V0ChatAiUsage: "v0-chat-ai-usage",
+  V0ChatCreated: "v0-chat-created",
+  V0ChatMessageSent: "v0-chat-message-sent",
+  V0MigrationPaymentConfirmed: "v0-migration-payment-confirmed",
+  V0MigrationSubscriptionCompleted: "v0-migration-subscription-completed",
+  V0SharedPoolCreditLimitDefaultUpdated:
+    "v0-shared-pool-credit-limit-default-updated",
+  V0SharedPoolCreditLimitUpdated: "v0-shared-pool-credit-limit-updated",
+  VcrImageDeleted: "vcr-image-deleted",
+  VcrImagePushed: "vcr-image-pushed",
+  VcrRepositoryCreated: "vcr-repository-created",
+  VcrRepositoryDeleted: "vcr-repository-deleted",
+  VcrRepositoryPermissionAdded: "vcr-repository-permission-added",
+  VcrRepositoryPermissionRemoved: "vcr-repository-permission-removed",
+  VcrRepositoryPermissionsCleared: "vcr-repository-permissions-cleared",
+  VcrRepositoryVisibilityChanged: "vcr-repository-visibility-changed",
+  VercelAgentElevatedPermissionsApproved:
+    "vercel-agent-elevated-permissions-approved",
+  VercelAgentElevatedPermissionsRequested:
+    "vercel-agent-elevated-permissions-requested",
+  VercelAgentSecurityFindingCreated: "vercel-agent-security-finding-created",
+  VercelAgentSecurityFindingDismissed:
+    "vercel-agent-security-finding-dismissed",
+  VercelAgentSecurityFindingReopened: "vercel-agent-security-finding-reopened",
+  VercelAgentSecurityFindingResolved: "vercel-agent-security-finding-resolved",
+  VercelAgentSecurityReviewPolicyDeleted:
+    "vercel-agent-security-review-policy-deleted",
+  VercelAgentSecurityReviewPolicyUpdated:
+    "vercel-agent-security-review-policy-updated",
+  VercelAgentSessionCreated: "vercel-agent-session-created",
+  VercelAgentTeamTrialCreditsApplied: "vercel-agent-team-trial-credits-applied",
+  VercelAppInstallationRequestDismissed:
+    "vercel-app-installation-request-dismissed",
+  VercelAppInstallationRequested: "vercel-app-installation-requested",
+  VercelAppInstallationUpdated: "vercel-app-installation-updated",
+  VercelAppInstalled: "vercel-app-installed",
+  VercelAppTokensRevoked: "vercel-app-tokens-revoked",
+  VercelAppUninstalled: "vercel-app-uninstalled",
+  VercelCiRepositoryGithubRunnersUpdated:
+    "vercel-ci-repository-github-runners-updated",
+  VercelCiRepositorySettingsUpdated: "vercel-ci-repository-settings-updated",
+  VercelToolbar: "vercel-toolbar",
+  VpcPeeringConnectionAccepted: "vpc-peering-connection-accepted",
+  VpcPeeringConnectionDeleted: "vpc-peering-connection-deleted",
+  VpcPeeringConnectionRejected: "vpc-peering-connection-rejected",
+  VpcPeeringConnectionUpdated: "vpc-peering-connection-updated",
+  VulnerabilityBannerDismissed: "vulnerability-banner-dismissed",
+  WebAnalyticsSummarySubscriptionUpdated:
+    "web-analytics-summary-subscription-updated",
+  WebAnalyticsTierUpdated: "web-analytics-tier-updated",
+  WebhookCreated: "webhook-created",
+  WebhookDeleted: "webhook-deleted",
+  WebhookUpdated: "webhook-updated",
+  WorkflowDeploymentKeyAccessed: "workflow-deployment-key-accessed",
+  XaaUpdated: "xaa-updated",
+} as const;
+/**
+ * The type of the event.
+ */
+export type UserEventType = ClosedEnum<typeof UserEventType>;
+
+/**
+ * Metadata for {@link userId}.
+ */
+export type User = {
+  avatar: string;
+  email: string;
+  slug?: string | undefined;
+  uid: string;
+  username: string;
+};
+
+export const UserEventVia5Type = {
+  System: "system",
+} as const;
+export type UserEventVia5Type = ClosedEnum<typeof UserEventVia5Type>;
+
+/**
+ * Metadata for {@link viaIds}.
+ */
+export type Via5 = {
+  type: UserEventVia5Type;
+};
 
 export const UserEventVia4Type = {
   External: "external",
@@ -129,7 +1080,13 @@ export type UserEvent = {
    */
   id: string;
   payload?: Payload | undefined;
-  principal?: Principal | undefined;
+  principal?:
+    | Principal1
+    | Principal2
+    | Principal3
+    | Principal4
+    | Principal5
+    | undefined;
   /**
    * The ID of the principal who generated the event. The principal is typically a user, but it could also be an app, an integration, etc. The principal may have delegated its authority to an acting party, and so {@link viaIds} should be checked as well.
    */
@@ -172,6 +1129,126 @@ export type UserEvent = {
    */
   viaIds?: Array<string> | undefined;
 };
+
+/** @internal */
+export const Principal2$inboundSchema: z.ZodType<
+  Principal2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  clientId: types.string(),
+  id: types.optional(types.string()),
+  name: types.string(),
+  type: UserEventPrincipalType$inboundSchema,
+});
+
+export function principal2FromJSON(
+  jsonString: string,
+): SafeParseResult<Principal2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal2' from JSON`,
+  );
+}
+
+/** @internal */
+export const PrincipalType$inboundSchema: z.ZodNativeEnum<
+  typeof PrincipalType
+> = z.nativeEnum(PrincipalType);
+
+/** @internal */
+export const Principal1$inboundSchema: z.ZodType<
+  Principal1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  avatar: types.string(),
+  email: types.string(),
+  slug: types.optional(types.string()),
+  type: types.optional(PrincipalType$inboundSchema),
+  uid: types.string(),
+  username: types.string(),
+});
+
+export function principal1FromJSON(
+  jsonString: string,
+): SafeParseResult<Principal1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal1' from JSON`,
+  );
+}
+
+/** @internal */
+export const Principal$inboundSchema: z.ZodType<
+  Principal,
+  z.ZodTypeDef,
+  unknown
+> = smartUnion([
+  z.lazy(() => Principal1$inboundSchema),
+  z.lazy(() => Principal2$inboundSchema),
+  Principal3$inboundSchema,
+  Principal4$inboundSchema,
+  Principal5$inboundSchema,
+]);
+
+export function principalFromJSON(
+  jsonString: string,
+): SafeParseResult<Principal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Principal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Principal' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventType
+> = z.nativeEnum(UserEventType);
+
+/** @internal */
+export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
+  .object({
+    avatar: types.string(),
+    email: types.string(),
+    slug: types.optional(types.string()),
+    uid: types.string(),
+    username: types.string(),
+  });
+
+export function userFromJSON(
+  jsonString: string,
+): SafeParseResult<User, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => User$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'User' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventVia5Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventVia5Type
+> = z.nativeEnum(UserEventVia5Type);
+
+/** @internal */
+export const Via5$inboundSchema: z.ZodType<Via5, z.ZodTypeDef, unknown> = z
+  .object({
+    type: UserEventVia5Type$inboundSchema,
+  });
+
+export function via5FromJSON(
+  jsonString: string,
+): SafeParseResult<Via5, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Via5$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Via5' from JSON`,
+  );
+}
 
 /** @internal */
 export const UserEventVia4Type$inboundSchema: z.ZodNativeEnum<
@@ -278,7 +1355,7 @@ export const Via$inboundSchema: z.ZodType<Via, z.ZodTypeDef, unknown> =
     z.lazy(() => Via2$inboundSchema),
     z.lazy(() => Via3$inboundSchema),
     z.lazy(() => Via4$inboundSchema),
-    Via5$inboundSchema,
+    z.lazy(() => Via5$inboundSchema),
   ]);
 
 export function viaFromJSON(
@@ -303,7 +1380,15 @@ export const UserEvent$inboundSchema: z.ZodType<
   entities: z.array(Entities$inboundSchema),
   id: types.string(),
   payload: types.optional(Payload$inboundSchema),
-  principal: types.optional(Principal$inboundSchema),
+  principal: types.optional(
+    smartUnion([
+      z.lazy(() => Principal1$inboundSchema),
+      z.lazy(() => Principal2$inboundSchema),
+      Principal3$inboundSchema,
+      Principal4$inboundSchema,
+      Principal5$inboundSchema,
+    ]),
+  ),
   principalId: types.string(),
   requestId: types.optional(types.string()),
   sessionId: types.optional(types.string()),
@@ -311,7 +1396,7 @@ export const UserEvent$inboundSchema: z.ZodType<
   text: types.string(),
   tokenId: types.optional(types.string()),
   type: types.optional(UserEventType$inboundSchema),
-  user: types.optional(User$inboundSchema),
+  user: types.optional(z.lazy(() => User$inboundSchema)),
   userId: types.optional(types.string()),
   via: types.optional(
     z.array(smartUnion([
@@ -321,7 +1406,7 @@ export const UserEvent$inboundSchema: z.ZodType<
       ),
       z.lazy(() => Via3$inboundSchema),
       z.lazy(() => Via4$inboundSchema),
-      Via5$inboundSchema,
+      z.lazy(() => Via5$inboundSchema),
     ])),
   ),
   viaIds: types.optional(z.array(types.string())),

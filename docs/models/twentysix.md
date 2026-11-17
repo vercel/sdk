@@ -5,12 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwentySix } from "@vercel/sdk/models/via5.js";
+import { TwentySix } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: TwentySix = {
-  teamId: "<id>",
-  actorId: "<id>",
-  actorType: "admin",
+  projectName: "<value>",
+  resourceId: "<id>",
 };
 ```
 
@@ -21,8 +20,5 @@ let value: TwentySix = {
 | `provider`                                                                   | [models.UserEventPayload26Provider](../models/usereventpayload26provider.md) | :heavy_minus_sign:                                                           | Present on new events only. Equivalent to "stripe" when absent.              |
 | `providerAccount`                                                            | *string*                                                                     | :heavy_minus_sign:                                                           | Present on new events only. Equivalent to `stripeAccount` when absent.       |
 | `stripeAccount`                                                              | *string*                                                                     | :heavy_minus_sign:                                                           | Present when `provider` is "stripe". Equivalent to `providerAccount`.        |
-| `stripeOrganisation`                                                         | *string*                                                                     | :heavy_minus_sign:                                                           | Present when `provider` is "stripe".                                         |
-| `teamId`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `actorId`                                                                    | *string*                                                                     | :heavy_check_mark:                                                           | Okta user id.                                                                |
-| `actorName`                                                                  | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `actorType`                                                                  | [models.ActorType](../models/actortype.md)                                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| `projectName`                                                                | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `resourceId`                                                                 | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

@@ -8,13 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndTwentyOne } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndTwentyOne = {
-  suffix: "<value>",
+  bitbucketAccountId: "<id>",
+  bitbucketLogin: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
-| `suffix`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `bitbucketAccountId` | *string*             | :heavy_check_mark:   | N/A                  |
+| `bitbucketLogin`     | *string*             | :heavy_check_mark:   | N/A                  |

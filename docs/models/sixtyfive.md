@@ -7,11 +7,16 @@ The payload of the event, if requested.
 ```typescript
 import { SixtyFive } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
-let value: SixtyFive = {};
+let value: SixtyFive = {
+  aliasCount: 5100.81,
+  projectId: "<id>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `aliasCount`                                               | *number*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `deployment`                                               | [models.PayloadDeployment](../models/payloaddeployment.md) | :heavy_minus_sign:                                         | N/A                                                        |
+| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |

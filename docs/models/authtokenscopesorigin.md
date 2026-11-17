@@ -11,5 +11,5 @@ let value: AuthTokenScopesOrigin = "manual";
 ## Values
 
 ```typescript
-"app" | "apple" | "bitbucket" | "chatgpt" | "email" | "emu" | "github" | "github-webhook" | "gitlab" | "google" | "invite" | "manual" | "otp" | "passkey" | "saml" | "sms" | "token-exchange-oidc"
+"app" | "apple" | "bitbucket" | "chatgpt" | "claude" | "email" | "emu" | "github" | "github-webhook" | "gitlab" | "google" | "invite" | "manual" | "otp" | "passkey" | "saml" | "sms" | "token-exchange-oidc"
 ```

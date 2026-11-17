@@ -5,7 +5,7 @@ Which budget this is. Matches Copper SDK `BudgetScope`. Omitted on events publis
 ## Example Usage
 
 ```typescript
-import { UserEventPayload403Scope } from "@vercel/sdk/models/threehundredandsixtyone.js";
+import { UserEventPayload403Scope } from "@vercel/sdk/models/threehundredandsixtysix.js";
 
 let value: UserEventPayload403Scope = "project";
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadPassport } from "@vercel/sdk/models/microfrontends3.js";
+import { PayloadPassport } from "@vercel/sdk/models/usereventpayload238prevproject.js";
 
 let value: PayloadPassport = {
   connectorId: "<id>",
@@ -16,4 +16,4 @@ let value: PayloadPassport = {
 | Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
 | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `connectorId`                                                                                              | *string*                                                                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
-| `deploymentType`                                                                                           | [models.UserEventPayload272PreviousDeploymentType](../models/usereventpayload272previousdeploymenttype.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
+| `deploymentType`                                                                                           | [models.UserEventPayload275PreviousDeploymentType](../models/usereventpayload275previousdeploymenttype.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |

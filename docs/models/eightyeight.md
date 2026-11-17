@@ -8,14 +8,18 @@ The payload of the event, if requested.
 import { EightyEight } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: EightyEight = {
-  changedFields: [
-    "purchaseOrder",
-  ],
+  amount: 9902.77,
+  invoiceId: "<id>",
+  newInvoiceId: "<id>",
+  settlementMethod: "refunded-paid",
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `changedFields`                                                                      | [models.UserEventPayloadChangedFields](../models/usereventpayloadchangedfields.md)[] | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `amount`                                                 | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `invoiceId`                                              | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `newInvoiceId`                                           | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `settlementMethod`                                       | [models.SettlementMethod](../models/settlementmethod.md) | :heavy_check_mark:                                       | N/A                                                      |

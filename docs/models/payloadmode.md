@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { PayloadMode } from "@vercel/sdk/models/gitcredentialsource.js";
+import { PayloadMode } from "@vercel/sdk/models/usereventprincipaltype.js";
 
-let value: PayloadMode = "all";
+let value: PayloadMode = "enforce";
 ```
 
 ## Values
 
 ```typescript
-"all" | "email-domain" | "none"
+"enforce" | "shadow"
 ```

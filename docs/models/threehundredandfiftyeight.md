@@ -5,11 +5,9 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyEight } from "@vercel/sdk/models/widget.js";
+import { ThreeHundredAndFiftyEight } from "@vercel/sdk/models/threehundredandfour.js";
 
 let value: ThreeHundredAndFiftyEight = {
-  next: {},
-  previous: {},
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,9 +15,8 @@ let value: ThreeHundredAndFiftyEight = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload358Next](../models/usereventpayload358next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload358Previous](../models/usereventpayload358previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
+| `targetDeploymentId` | *string*             | :heavy_minus_sign:   | N/A                  |

@@ -5,24 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Sixty } from "@vercel/sdk/models/via5.js";
+import { Sixty } from "@vercel/sdk/models/usereventprincipaltype.js";
 
-let value: Sixty = {};
+let value: Sixty = {
+  accessGroup: {
+    id: "<id>",
+    name: "<value>",
+  },
+  project: {
+    id: "<id>",
+  },
+};
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `alias`                                      | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `aliasId`                                    | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `aliasUpdatedAt`                             | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deployment`                                 | [models.Deployment](../models/deployment.md) | :heavy_minus_sign:                           | N/A                                          |
-| `deploymentId`                               | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `deploymentUrl`                              | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `oldDeploymentId`                            | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `redirect`                                   | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `redirectStatusCode`                         | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `ruleCount`                                  | *number*                                     | :heavy_minus_sign:                           | N/A                                          |
-| `system`                                     | *boolean*                                    | :heavy_minus_sign:                           | N/A                                          |
-| `target`                                     | *string*                                     | :heavy_minus_sign:                           | N/A                                          |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `accessGroup`                                                                  | [models.UserEventPayloadAccessGroup](../models/usereventpayloadaccessgroup.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `nextRole`                                                                     | [models.NextRole](../models/nextrole.md)                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previousRole`                                                                 | [models.PreviousRole](../models/previousrole.md)                               | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `project`                                                                      | [models.PayloadProject](../models/payloadproject.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |

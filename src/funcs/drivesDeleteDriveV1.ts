@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Delete a drive
  *
  * @remarks
- * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
+ * Deletes a drive by project and name or drive ID. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -94,12 +94,12 @@ async function $do(
   const body = null;
 
   const pathParams = {
-    name: encodeSimple("name", payload.name, {
+    nameOrId: encodeSimple("nameOrId", payload.nameOrId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/v1/drives/{name}")(pathParams);
+  const path = pathToFunc("/v1/drives/{nameOrId}")(pathParams);
 
   const query = encodeFormQuery({
     "projectId": payload.projectId,

@@ -5,13 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwenty } from "@vercel/sdk/models/widget.js";
+import { ThreeHundredAndTwenty } from "@vercel/sdk/models/threehundredandfour.js";
 
 let value: ThreeHundredAndTwenty = {
   next: {
-    gitProvider: "cursor-origin",
-    gitRepoId: "<id>",
-    gitRepositoryName: "<value>",
+    functionZeroConfigFailover: true,
+  },
+  previous: {
+    functionZeroConfigFailover: true,
   },
   projectId: "<id>",
   projectName: "<value>",
@@ -23,6 +24,6 @@ let value: ThreeHundredAndTwenty = {
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `next`                                                                         | [models.UserEventPayload320Next](../models/usereventpayload320next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload320Previous](../models/usereventpayload320previous.md) | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload320Previous](../models/usereventpayload320previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

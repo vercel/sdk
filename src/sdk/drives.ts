@@ -66,6 +66,23 @@ export class Drives extends ClientSDK {
   }
 
   /**
+   * Delete a drive
+   *
+   * @remarks
+   * Deletes a drive by project and name or drive ID. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
+   */
+  async deleteDriveV1(
+    request: DeleteDriveV1Request,
+    options?: RequestOptions,
+  ): Promise<DeleteDriveV1ResponseBody> {
+    return unwrapAsync(drivesDeleteDriveV1(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get or create a drive
    *
    * @remarks
@@ -76,23 +93,6 @@ export class Drives extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetOrCreateDriveV1Response> {
     return unwrapAsync(drivesGetOrCreateDriveV1(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete a drive
-   *
-   * @remarks
-   * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
-   */
-  async deleteDriveV1(
-    request: DeleteDriveV1Request,
-    options?: RequestOptions,
-  ): Promise<DeleteDriveV1ResponseBody> {
-    return unwrapAsync(drivesDeleteDriveV1(
       this,
       request,
       options,

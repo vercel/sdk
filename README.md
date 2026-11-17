@@ -382,8 +382,8 @@ run();
 
 * [listDrivesV1](docs/sdks/drives/README.md#listdrivesv1) - List drives
 * [getDriveV1](docs/sdks/drives/README.md#getdrivev1) - Get a drive
-* [getOrCreateDriveV1](docs/sdks/drives/README.md#getorcreatedrivev1) - Get or create a drive
 * [deleteDriveV1](docs/sdks/drives/README.md#deletedrivev1) - Delete a drive
+* [getOrCreateDriveV1](docs/sdks/drives/README.md#getorcreatedrivev1) - Get or create a drive
 * [forkDriveV1](docs/sdks/drives/README.md#forkdrivev1) - Fork a drive
 
 ### [EdgeCache](docs/sdks/edgecache/README.md)
@@ -635,10 +635,10 @@ run();
 * [listNamedSandboxes](docs/sdks/sandboxes/README.md#listnamedsandboxes) - List sandboxes
 * [~~listDrives~~](docs/sdks/sandboxes/README.md#listdrives) - Deprecated: Use GET /v1/drives. Requires the read:drive app scope instead of read:sandbox, and drive:list instead of vercelRun:read. List drives :warning: **Deprecated**
 * [~~getDrive~~](docs/sdks/sandboxes/README.md#getdrive) - Deprecated: Use GET /v1/drives/:nameOrId. Requires the read:drive app scope instead of read:sandbox, and drive:read instead of vercelRun:read. Get a drive :warning: **Deprecated**
+* [~~deleteDrive~~](docs/sdks/sandboxes/README.md#deletedrive) - Deprecated: Use DELETE /v1/drives/:nameOrId. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
+Emits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive :warning: **Deprecated**
 * [~~getOrCreateDrive~~](docs/sdks/sandboxes/README.md#getorcreatedrive) - Deprecated: Use POST /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:create instead of vercelRun:create.
 Emits drive-created activity events instead of sandbox-drive-created. Get or create a drive :warning: **Deprecated**
-* [~~deleteDrive~~](docs/sdks/sandboxes/README.md#deletedrive) - Deprecated: Use DELETE /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
-Emits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive :warning: **Deprecated**
 * [~~forkDrive~~](docs/sdks/sandboxes/README.md#forkdrive) - Deprecated: Use POST /v1/drives/:name/fork. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:read and drive:create instead of vercelRun:read and vercelRun:create.
 Emits drive-created activity events instead of sandbox-drive-created. Fork a drive :warning: **Deprecated**
 * [listSessionSnapshots](docs/sdks/sandboxes/README.md#listsessionsnapshots) - List snapshots
@@ -1277,7 +1277,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - ~~[`checksRerequestCheck`](docs/sdks/checks/README.md#rerequestcheck)~~ - Rerequest a check :warning: **Deprecated**
 - ~~[`checksUpdateCheck`](docs/sdks/checks/README.md#updatecheck)~~ - Update a check :warning: **Deprecated**
 - ~~[`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets)~~ - Deprecated: true. Update Resource Secrets (Deprecated) :warning: **Deprecated**
-- ~~[`sandboxesDeleteDrive`](docs/sdks/sandboxes/README.md#deletedrive)~~ - Deprecated: Use DELETE /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
+- ~~[`sandboxesDeleteDrive`](docs/sdks/sandboxes/README.md#deletedrive)~~ - Deprecated: Use DELETE /v1/drives/:nameOrId. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
 Emits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive :warning: **Deprecated**
 - ~~[`sandboxesForkDrive`](docs/sdks/sandboxes/README.md#forkdrive)~~ - Deprecated: Use POST /v1/drives/:name/fork. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:read and drive:create instead of vercelRun:read and vercelRun:create.
 Emits drive-created activity events instead of sandbox-drive-created. Fork a drive :warning: **Deprecated**

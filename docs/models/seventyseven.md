@@ -14,8 +14,7 @@ let value: SeventySeven = {
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `appId`               | *string*              | :heavy_minus_sign:    | N/A                   |
-| `appName`             | *string*              | :heavy_check_mark:    | N/A                   |
-| `secretLastFourChars` | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `appId`            | *string*           | :heavy_minus_sign: | N/A                |
+| `appName`          | *string*           | :heavy_check_mark: | N/A                |

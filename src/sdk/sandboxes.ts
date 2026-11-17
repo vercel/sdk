@@ -181,6 +181,26 @@ export class Sandboxes extends ClientSDK {
   }
 
   /**
+   * Deprecated: Use DELETE /v1/drives/:nameOrId. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
+   * Emits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive
+   *
+   * @remarks
+   * Deletes a drive by project and name or drive ID. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async deleteDrive(
+    request: DeleteDriveRequest,
+    options?: RequestOptions,
+  ): Promise<DeleteDriveResponseBody> {
+    return unwrapAsync(sandboxesDeleteDrive(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Deprecated: Use POST /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:create instead of vercelRun:create.
    * Emits drive-created activity events instead of sandbox-drive-created. Get or create a drive
    *
@@ -194,26 +214,6 @@ export class Sandboxes extends ClientSDK {
     options?: RequestOptions,
   ): Promise<GetOrCreateDriveResponse> {
     return unwrapAsync(sandboxesGetOrCreateDrive(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Deprecated: Use DELETE /v1/drives/:name. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
-   * Emits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive
-   *
-   * @remarks
-   * Deletes a drive by project and name. Attached drives cannot be deleted. Stop or replace the session currently using the drive before retrying deletion.
-   *
-   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  async deleteDrive(
-    request: DeleteDriveRequest,
-    options?: RequestOptions,
-  ): Promise<DeleteDriveResponseBody> {
-    return unwrapAsync(sandboxesDeleteDrive(
       this,
       request,
       options,

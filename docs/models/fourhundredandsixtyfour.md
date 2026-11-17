@@ -5,21 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixtyFour } from "@vercel/sdk/models/payloadcodereviewselection.js";
+import { FourHundredAndSixtyFour } from "@vercel/sdk/models/fourhundredandnineteen.js";
 
 let value: FourHundredAndSixtyFour = {
-  exportId: "<id>",
-  format: "<value>",
-  from: 9318.2,
-  to: 4638.61,
+  enabled: false,
+  scope: "dashboard",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `exportId`         | *string*           | :heavy_check_mark: | N/A                |
-| `format`           | *string*           | :heavy_check_mark: | N/A                |
-| `from`             | *number*           | :heavy_check_mark: | N/A                |
-| `to`               | *number*           | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload464Scope](../models/usereventpayload464scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

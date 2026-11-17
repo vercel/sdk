@@ -5,19 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Eleven } from "@vercel/sdk/models/via5.js";
+import { Eleven } from "@vercel/sdk/models/usereventprincipaltype.js";
 
 let value: Eleven = {
-  boardId: "<id>",
-  grantId: "<id>",
-  operationId: "<id>",
+  namespace: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  scheduleId: "<id>",
+  scheduleName: "<value>",
+  updatedFields: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `boardId`          | *string*           | :heavy_check_mark: | N/A                |
-| `grantId`          | *string*           | :heavy_check_mark: | N/A                |
-| `operationId`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `namespace`                                          | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `projectId`                                          | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `projectName`                                        | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `scheduleId`                                         | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `scheduleName`                                       | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `updatedFields`                                      | [models.UpdatedFields](../models/updatedfields.md)[] | :heavy_check_mark:                                   | N/A                                                  |

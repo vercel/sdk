@@ -8,19 +8,14 @@ The payload of the event, if requested.
 import { OneHundredAndNineteen } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndNineteen = {
-  prevPurchasedAmount: 2979.53,
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  purchasedAmount: 5121.56,
+  gitlabLogin: "<value>",
+  gitlabUserId: 2979.53,
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `prevPurchasedAmount`                                                        | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload119Project](../models/usereventpayload119project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `purchasedAmount`                                                            | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
+| `gitlabUserId`     | *number*           | :heavy_check_mark: | N/A                |

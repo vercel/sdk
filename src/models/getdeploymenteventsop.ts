@@ -700,7 +700,6 @@ export type GetDeploymentEventsResponse =
     | Three2
     | Three3
     | Three1
-    | null
   >
   | GetDeploymentEventsResponseBodyDeployments2
   | GetDeploymentEventsResponseBodyDeployments1
@@ -1808,7 +1807,7 @@ export const GetDeploymentEventsResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = smartUnion([
-  z.array(types.nullable(smartUnion([
+  z.array(smartUnion([
     z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
     z.lazy(() =>
       GetDeploymentEventsResponseBody1$inboundSchema
@@ -1818,12 +1817,10 @@ export const GetDeploymentEventsResponse$inboundSchema: z.ZodType<
       z.lazy(() => Three3$inboundSchema),
       z.lazy(() => Three1$inboundSchema),
     ]),
-  ]))),
+  ])),
   smartUnion([
     z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
-    z.lazy(() =>
-      GetDeploymentEventsResponseBodyDeployments1$inboundSchema
-    ),
+    z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
     smartUnion([
       z.lazy(() => GetDeploymentEvents32$inboundSchema),
       z.lazy(() => GetDeploymentEvents33$inboundSchema),

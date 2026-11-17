@@ -8,19 +8,14 @@ The payload of the event, if requested.
 import { NinetyTwo } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: NinetyTwo = {
-  action: "mutate",
-  data: {
-    "key": "<value>",
-    "key1": "<value>",
-    "key2": "<value>",
-  },
+  changedFields: [
+    "purchaseOrder",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `action`                                                                 | [models.UserEventPayload92Action](../models/usereventpayload92action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `data`                                                                   | Record<string, *any*>                                                    | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `changedFields`                                                                      | [models.UserEventPayloadChangedFields](../models/usereventpayloadchangedfields.md)[] | :heavy_check_mark:                                                                   | N/A                                                                                  |

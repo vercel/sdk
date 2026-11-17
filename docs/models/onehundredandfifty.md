@@ -5,23 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFifty } from "@vercel/sdk/models/gitcredentialsource.js";
+import { OneHundredAndFifty } from "@vercel/sdk/models/usereventpayloadallowlistedreadystatereasoninternal.js";
 
 let value: OneHundredAndFifty = {
-  customNameservers: [],
-  domain: "zesty-ferret.biz",
-  prevCustomNameservers: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
+  name: "<value>",
+  ownerName: "<value>",
+  teamId: "<id>",
+  userId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `customNameservers`     | *string*[]              | :heavy_check_mark:      | N/A                     |
-| `domain`                | *string*                | :heavy_check_mark:      | N/A                     |
-| `prevCustomNameservers` | *string*[]              | :heavy_check_mark:      | N/A                     |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `ownerName`        | *string*           | :heavy_check_mark: | N/A                |
+| `teamId`           | *string*           | :heavy_check_mark: | N/A                |
+| `userId`           | *string*           | :heavy_check_mark: | N/A                |

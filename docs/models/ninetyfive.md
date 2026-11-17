@@ -8,17 +8,17 @@ The payload of the event, if requested.
 import { NinetyFive } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
 
 let value: NinetyFive = {
-  project: {
-    id: "<id>",
-    name: "<value>",
+  action: "resume_plan",
+  data: {
+    planSlug: "v0_teams",
   },
-  versionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `project`                                                                  | [models.UserEventPayload95Project](../models/usereventpayload95project.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `versionId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `action`                                                                 | [models.UserEventPayload95Action](../models/usereventpayload95action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `data`                                                                   | [models.PayloadData](../models/payloaddata.md)                           | :heavy_check_mark:                                                       | N/A                                                                      |

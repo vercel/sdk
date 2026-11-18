@@ -5,9 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyOne } from "@vercel/sdk/models/onehundredandseventynine.js";
+import { OneHundredAndEightyOne } from "@vercel/sdk/models/job2.js";
 
 let value: OneHundredAndEightyOne = {
+  previousRule: {
+    email: "Brenda_Rice@yahoo.com",
+  },
   team: {
     id: "<id>",
   },
@@ -18,6 +21,5 @@ let value: OneHundredAndEightyOne = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
 | `team`                                                                 | [models.UserEventPayload181Team](../models/usereventpayload181team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

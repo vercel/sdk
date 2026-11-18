@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjects } from "@vercel/sdk/models/getprojectselasticbuildmachineprojects4.js";
+import { GetProjectsResponseBodyProjects } from "@vercel/sdk/models/getprojectsresponsebodyelasticbuildmachine.js";
 
 let value: GetProjectsResponseBodyProjects = {
   accountId: "<id>",
@@ -85,14 +85,6 @@ let value: GetProjectsResponseBodyProjects = {
   },
   rollingRelease: {
     canaryResponseHeader: false,
-    gate: {
-      action: "pause",
-      checks: [],
-      dryRun: true,
-      enabled: false,
-      failureThreshold: 3,
-      windowSize: 5,
-    },
     stages: [
       {
         duration: 600,

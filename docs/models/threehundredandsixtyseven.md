@@ -5,10 +5,9 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtySeven } from "@vercel/sdk/models/threehundredandsixtysix.js";
+import { ThreeHundredAndSixtySeven } from "@vercel/sdk/models/payloadaws.js";
 
 let value: ThreeHundredAndSixtySeven = {
-  inheritDeploymentProtection: false,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -16,8 +15,9 @@ let value: ThreeHundredAndSixtySeven = {
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `inheritDeploymentProtection` | *boolean*                     | :heavy_check_mark:            | N/A                           |
-| `projectId`                   | *string*                      | :heavy_check_mark:            | N/A                           |
-| `projectName`                 | *string*                      | :heavy_check_mark:            | N/A                           |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `failoverRegions`  | *string*[]         | :heavy_minus_sign: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `region`           | *string*           | :heavy_minus_sign: | N/A                |

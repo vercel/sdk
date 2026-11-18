@@ -104,6 +104,10 @@ export const Name = {
   AiGatewayInferenceHooksRemoved: "ai-gateway-inference-hooks-removed",
   AiGatewayInferenceHooksSettingsUpdated:
     "ai-gateway-inference-hooks-settings-updated",
+  AiGatewayInferenceHooksSigningSecretCreated:
+    "ai-gateway-inference-hooks-signing-secret-created",
+  AiGatewayInferenceHooksSigningSecretRotated:
+    "ai-gateway-inference-hooks-signing-secret-rotated",
   AiGatewayInferenceHooksToggled: "ai-gateway-inference-hooks-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayMemberBudgetChanges: "ai-gateway-member-budget-changes",
@@ -186,6 +190,7 @@ export const Name = {
   CertRenew: "cert-renew",
   CertReplace: "cert-replace",
   CertSystemCreate: "cert-system-create",
+  CodeOwnersAssumeOwners: "code-owners-assume-owners",
   CodeOwnersConfigUpdated: "code-owners-config-updated",
   ComplianceDocumentDownloaded: "compliance-document-downloaded",
   ComplianceDocumentPreviewed: "compliance-document-previewed",
@@ -363,6 +368,7 @@ export const Name = {
   FlagsSettings: "flags-settings",
   FlagsTransferred: "flags-transferred",
   FlatRateCdnAutoUpgradeConsent: "flat-rate-cdn-auto-upgrade-consent",
+  FlatRateCdnMigrationOptOut: "flat-rate-cdn-migration-opt-out",
   GitIntegrationRepoPush: "git-integration-repo-push",
   GitAccountIntegrationLinkAdded: "git_account_integration_link_added",
   GlobalConfigBackupRestored: "global-config-backup-restored",
@@ -534,6 +540,11 @@ export const Name = {
   PaymentMethodAdded: "payment-method-added",
   PaymentMethodDefaultUpdated: "payment-method-default-updated",
   PaymentMethodRemoved: "payment-method-removed",
+  PerimeterCreated: "perimeter-created",
+  PerimeterDeleted: "perimeter-deleted",
+  PerimeterRenamed: "perimeter-renamed",
+  PerimeterRolledBack: "perimeter-rolled-back",
+  PerimeterUpdated: "perimeter-updated",
   Plan: "plan",
   PreviewDeploymentSuffixDisabled: "preview-deployment-suffix-disabled",
   PreviewDeploymentSuffixEnabled: "preview-deployment-suffix-enabled",
@@ -652,6 +663,8 @@ export const Name = {
     "project-prioritize-production-builds-updated",
   ProjectProgramEnrollmentChanged: "project-program-enrollment-changed",
   ProjectProtectedSourcemapsUpdated: "project-protected-sourcemaps-updated",
+  ProjectRemoveVercelRequestHeadersUpdated:
+    "project-remove-vercel-request-headers-updated",
   ProjectRollbackDescriptionUpdated: "project-rollback-description-updated",
   ProjectRollingReleaseAborted: "project-rolling-release-aborted",
   ProjectRollingReleaseApproved: "project-rolling-release-approved",
@@ -696,6 +709,10 @@ export const Name = {
   RuntimeCachePurgeAll: "runtime-cache-purge-all",
   SamlConnectionCreated: "saml-connection-created",
   SamlConnectionDeleted: "saml-connection-deleted",
+  SamlIdpMaterialDeleted: "saml-idp-material-deleted",
+  SamlIdpMaterialSet: "saml-idp-material-set",
+  SamlIdpMaterialSystemDeleted: "saml-idp-material-system-deleted",
+  SamlIdpMaterialSystemSet: "saml-idp-material-system-set",
   SandboxAliasAssigned: "sandbox-alias-assigned",
   SandboxAliasDelete: "sandbox-alias-delete",
   SandboxDriveCreated: "sandbox-drive-created",
@@ -891,6 +908,7 @@ export const Name = {
     "vercel-agent-elevated-permissions-approved",
   VercelAgentElevatedPermissionsRequested:
     "vercel-agent-elevated-permissions-requested",
+  VercelAgentSecurityFindingClosed: "vercel-agent-security-finding-closed",
   VercelAgentSecurityFindingCreated: "vercel-agent-security-finding-created",
   VercelAgentSecurityFindingDismissed:
     "vercel-agent-security-finding-dismissed",
@@ -912,6 +930,7 @@ export const Name = {
   VercelCiRepositoryGithubRunnersUpdated:
     "vercel-ci-repository-github-runners-updated",
   VercelCiRepositorySettingsUpdated: "vercel-ci-repository-settings-updated",
+  VercelCiRunApproved: "vercel-ci-run-approved",
   VercelToolbar: "vercel-toolbar",
   VpcPeeringConnectionAccepted: "vpc-peering-connection-accepted",
   VpcPeeringConnectionDeleted: "vpc-peering-connection-deleted",
@@ -992,6 +1011,10 @@ export const ReplacedBy = {
   AiGatewayInferenceHooksRemoved: "ai-gateway-inference-hooks-removed",
   AiGatewayInferenceHooksSettingsUpdated:
     "ai-gateway-inference-hooks-settings-updated",
+  AiGatewayInferenceHooksSigningSecretCreated:
+    "ai-gateway-inference-hooks-signing-secret-created",
+  AiGatewayInferenceHooksSigningSecretRotated:
+    "ai-gateway-inference-hooks-signing-secret-rotated",
   AiGatewayInferenceHooksToggled: "ai-gateway-inference-hooks-toggled",
   AiGatewayInferenceRegionsUpdated: "ai-gateway-inference-regions-updated",
   AiGatewayMemberBudgetChanges: "ai-gateway-member-budget-changes",
@@ -1074,6 +1097,7 @@ export const ReplacedBy = {
   CertRenew: "cert-renew",
   CertReplace: "cert-replace",
   CertSystemCreate: "cert-system-create",
+  CodeOwnersAssumeOwners: "code-owners-assume-owners",
   CodeOwnersConfigUpdated: "code-owners-config-updated",
   ComplianceDocumentDownloaded: "compliance-document-downloaded",
   ComplianceDocumentPreviewed: "compliance-document-previewed",
@@ -1251,6 +1275,7 @@ export const ReplacedBy = {
   FlagsSettings: "flags-settings",
   FlagsTransferred: "flags-transferred",
   FlatRateCdnAutoUpgradeConsent: "flat-rate-cdn-auto-upgrade-consent",
+  FlatRateCdnMigrationOptOut: "flat-rate-cdn-migration-opt-out",
   GitIntegrationRepoPush: "git-integration-repo-push",
   GitAccountIntegrationLinkAdded: "git_account_integration_link_added",
   GlobalConfigBackupRestored: "global-config-backup-restored",
@@ -1422,6 +1447,11 @@ export const ReplacedBy = {
   PaymentMethodAdded: "payment-method-added",
   PaymentMethodDefaultUpdated: "payment-method-default-updated",
   PaymentMethodRemoved: "payment-method-removed",
+  PerimeterCreated: "perimeter-created",
+  PerimeterDeleted: "perimeter-deleted",
+  PerimeterRenamed: "perimeter-renamed",
+  PerimeterRolledBack: "perimeter-rolled-back",
+  PerimeterUpdated: "perimeter-updated",
   Plan: "plan",
   PreviewDeploymentSuffixDisabled: "preview-deployment-suffix-disabled",
   PreviewDeploymentSuffixEnabled: "preview-deployment-suffix-enabled",
@@ -1540,6 +1570,8 @@ export const ReplacedBy = {
     "project-prioritize-production-builds-updated",
   ProjectProgramEnrollmentChanged: "project-program-enrollment-changed",
   ProjectProtectedSourcemapsUpdated: "project-protected-sourcemaps-updated",
+  ProjectRemoveVercelRequestHeadersUpdated:
+    "project-remove-vercel-request-headers-updated",
   ProjectRollbackDescriptionUpdated: "project-rollback-description-updated",
   ProjectRollingReleaseAborted: "project-rolling-release-aborted",
   ProjectRollingReleaseApproved: "project-rolling-release-approved",
@@ -1584,6 +1616,10 @@ export const ReplacedBy = {
   RuntimeCachePurgeAll: "runtime-cache-purge-all",
   SamlConnectionCreated: "saml-connection-created",
   SamlConnectionDeleted: "saml-connection-deleted",
+  SamlIdpMaterialDeleted: "saml-idp-material-deleted",
+  SamlIdpMaterialSet: "saml-idp-material-set",
+  SamlIdpMaterialSystemDeleted: "saml-idp-material-system-deleted",
+  SamlIdpMaterialSystemSet: "saml-idp-material-system-set",
   SandboxAliasAssigned: "sandbox-alias-assigned",
   SandboxAliasDelete: "sandbox-alias-delete",
   SandboxDriveCreated: "sandbox-drive-created",
@@ -1779,6 +1815,7 @@ export const ReplacedBy = {
     "vercel-agent-elevated-permissions-approved",
   VercelAgentElevatedPermissionsRequested:
     "vercel-agent-elevated-permissions-requested",
+  VercelAgentSecurityFindingClosed: "vercel-agent-security-finding-closed",
   VercelAgentSecurityFindingCreated: "vercel-agent-security-finding-created",
   VercelAgentSecurityFindingDismissed:
     "vercel-agent-security-finding-dismissed",
@@ -1800,6 +1837,7 @@ export const ReplacedBy = {
   VercelCiRepositoryGithubRunnersUpdated:
     "vercel-ci-repository-github-runners-updated",
   VercelCiRepositorySettingsUpdated: "vercel-ci-repository-settings-updated",
+  VercelCiRunApproved: "vercel-ci-run-approved",
   VercelToolbar: "vercel-toolbar",
   VpcPeeringConnectionAccepted: "vpc-peering-connection-accepted",
   VpcPeeringConnectionDeleted: "vpc-peering-connection-deleted",

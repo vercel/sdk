@@ -58,10 +58,8 @@ import {
   UploadProjectAvatarLastRollbackTarget$inboundSchema,
 } from "./uploadprojectavatarchecksconclusion.js";
 import {
-  UploadProjectAvatarFrom1,
-  UploadProjectAvatarFrom1$inboundSchema,
-  UploadProjectAvatarFrom2,
-  UploadProjectAvatarFrom2$inboundSchema,
+  UploadProjectAvatarFrom,
+  UploadProjectAvatarFrom$inboundSchema,
   UploadProjectAvatarLatestDeployments,
   UploadProjectAvatarLatestDeployments$inboundSchema,
   UploadProjectAvatarLink,
@@ -108,40 +106,15 @@ import {
   UploadProjectAvatarTargets$inboundSchema,
   UploadProjectAvatarTier,
   UploadProjectAvatarTier$inboundSchema,
+  UploadProjectAvatarToProjects2,
+  UploadProjectAvatarToProjects2$inboundSchema,
+  UploadProjectAvatarToProjectsResponsePreset,
+  UploadProjectAvatarToProjectsResponsePreset$inboundSchema,
   UploadProjectAvatarTracing,
   UploadProjectAvatarTracing$inboundSchema,
   UploadProjectAvatarTrustedIps,
   UploadProjectAvatarTrustedIps$inboundSchema,
-} from "./uploadprojectavatarfrom1.js";
-
-export type UploadProjectAvatarFrom =
-  | UploadProjectAvatarFrom1
-  | UploadProjectAvatarFrom2;
-
-export const UploadProjectAvatarToProjectsResponse200Preset = {
-  AllCustom: "all-custom",
-} as const;
-export type UploadProjectAvatarToProjectsResponse200Preset = ClosedEnum<
-  typeof UploadProjectAvatarToProjectsResponse200Preset
->;
-
-/**
- * The target envs on the current project that may be accessed.
- */
-export type UploadProjectAvatarToProjects2 = {
-  preset: UploadProjectAvatarToProjectsResponse200Preset;
-  /**
-   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
-   */
-  slugs?: Array<string> | undefined;
-};
-
-export const UploadProjectAvatarToProjectsResponsePreset = {
-  AllCustom: "all-custom",
-} as const;
-export type UploadProjectAvatarToProjectsResponsePreset = ClosedEnum<
-  typeof UploadProjectAvatarToProjectsResponsePreset
->;
+} from "./uploadprojectavatartoprojectsresponsepreset.js";
 
 /**
  * The target envs on the current project that may be accessed.
@@ -162,7 +135,7 @@ export type UploadProjectAvatarProjectsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type UploadProjectAvatarCustomAllow = {
-  from: UploadProjectAvatarFrom1 | UploadProjectAvatarFrom2;
+  from: UploadProjectAvatarFrom;
   to: UploadProjectAvatarToProjects1 | UploadProjectAvatarToProjects2;
 };
 
@@ -367,56 +340,6 @@ export type UploadProjectAvatarResponseBody = {
 };
 
 /** @internal */
-export const UploadProjectAvatarFrom$inboundSchema: z.ZodType<
-  UploadProjectAvatarFrom,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  UploadProjectAvatarFrom1$inboundSchema,
-  UploadProjectAvatarFrom2$inboundSchema,
-]);
-
-export function uploadProjectAvatarFromFromJSON(
-  jsonString: string,
-): SafeParseResult<UploadProjectAvatarFrom, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadProjectAvatarFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadProjectAvatarFrom' from JSON`,
-  );
-}
-
-/** @internal */
-export const UploadProjectAvatarToProjectsResponse200Preset$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarToProjectsResponse200Preset> = z
-    .nativeEnum(UploadProjectAvatarToProjectsResponse200Preset);
-
-/** @internal */
-export const UploadProjectAvatarToProjects2$inboundSchema: z.ZodType<
-  UploadProjectAvatarToProjects2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  preset: UploadProjectAvatarToProjectsResponse200Preset$inboundSchema,
-  slugs: types.optional(z.array(types.string())),
-});
-
-export function uploadProjectAvatarToProjects2FromJSON(
-  jsonString: string,
-): SafeParseResult<UploadProjectAvatarToProjects2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UploadProjectAvatarToProjects2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UploadProjectAvatarToProjects2' from JSON`,
-  );
-}
-
-/** @internal */
-export const UploadProjectAvatarToProjectsResponsePreset$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarToProjectsResponsePreset> = z
-    .nativeEnum(UploadProjectAvatarToProjectsResponsePreset);
-
-/** @internal */
 export const UploadProjectAvatarToProjects1$inboundSchema: z.ZodType<
   UploadProjectAvatarToProjects1,
   z.ZodTypeDef,
@@ -445,7 +368,7 @@ export const UploadProjectAvatarProjectsTo$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => UploadProjectAvatarToProjects1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarToProjects2$inboundSchema),
+  UploadProjectAvatarToProjects2$inboundSchema,
 ]);
 
 export function uploadProjectAvatarProjectsToFromJSON(
@@ -464,13 +387,10 @@ export const UploadProjectAvatarCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: smartUnion([
-    UploadProjectAvatarFrom1$inboundSchema,
-    UploadProjectAvatarFrom2$inboundSchema,
-  ]),
+  from: UploadProjectAvatarFrom$inboundSchema,
   to: smartUnion([
     z.lazy(() => UploadProjectAvatarToProjects1$inboundSchema),
-    z.lazy(() => UploadProjectAvatarToProjects2$inboundSchema),
+    UploadProjectAvatarToProjects2$inboundSchema,
   ]),
 });
 

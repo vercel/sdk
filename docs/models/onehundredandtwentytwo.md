@@ -5,22 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyTwo } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
+import { OneHundredAndTwentyTwo } from "@vercel/sdk/models/usereventpayload72action.js";
 
 let value: OneHundredAndTwentyTwo = {
-  prevPurchasedAmount: 7446.88,
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
-  purchasedAmount: 412.1,
+  bitbucketAccountId: "<id>",
+  bitbucketLogin: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `prevPurchasedAmount`                                                        | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `project`                                                                    | [models.UserEventPayload122Project](../models/usereventpayload122project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
-| `purchasedAmount`                                                            | *number*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `bitbucketAccountId` | *string*             | :heavy_check_mark:   | N/A                  |
+| `bitbucketLogin`     | *string*             | :heavy_check_mark:   | N/A                  |

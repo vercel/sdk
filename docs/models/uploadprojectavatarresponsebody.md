@@ -83,26 +83,6 @@ let value: UploadProjectAvatarResponseBody = {
   },
   rollingRelease: {
     canaryResponseHeader: false,
-    gate: {
-      action: "pause",
-      checks: [
-        {
-          excludePaths: [
-            "/api/health",
-          ],
-          excludeStatusCodes: [
-            503,
-          ],
-          ingestWatermarkSeconds: 30,
-          significanceLevel: 0.05,
-          type: "error-rate-5xx",
-        },
-      ],
-      dryRun: false,
-      enabled: true,
-      failureThreshold: 3,
-      windowSize: 5,
-    },
     stages: [
       {
         duration: 600,

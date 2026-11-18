@@ -3,6 +3,63 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
+import { ClosedEnum } from "../types/enums.js";
+
+/**
+ * `rewrite` sends requests for the matched model to another model. `deny` rejects them.
+ */
+export const CreateAiGatewayRuleType = {
+  Rewrite: "rewrite",
+  Deny: "deny",
+} as const;
+/**
+ * `rewrite` sends requests for the matched model to another model. `deny` rejects them.
+ */
+export type CreateAiGatewayRuleType = ClosedEnum<
+  typeof CreateAiGatewayRuleType
+>;
+
+export type CreateAiGatewayRuleMatch = {
+  /**
+   * The model that the rule applies to.
+   */
+  model: string;
+};
+
+/**
+ * Required when `type` is `rewrite`.
+ */
+export type CreateAiGatewayRuleAction = {
+  /**
+   * The model that serves the request: a catalog model, or one of your virtual models as `vmc/<slug>`. It must exist and be active. Required when `type` is `rewrite`.
+   */
+  rewriteModel?: string | undefined;
+  /**
+   * Why the model is denied. Used when `type` is `deny`.
+   */
+  reason?: string | undefined;
+};
+
+export type CreateAiGatewayRuleRequestBody = {
+  /**
+   * `rewrite` sends requests for the matched model to another model. `deny` rejects them.
+   */
+  type: CreateAiGatewayRuleType;
+  match: CreateAiGatewayRuleMatch;
+  /**
+   * Required when `type` is `rewrite`.
+   */
+  action?: CreateAiGatewayRuleAction | undefined;
+  /**
+   * Whether the rule is enabled. Defaults to `true`.
+   */
+  enabled?: boolean | undefined;
+  /**
+   * A free-text note about the rule.
+   */
+  description?: string | undefined;
+};
 
 export type CreateAiGatewayRuleRequest = {
   /**
@@ -13,12 +70,97 @@ export type CreateAiGatewayRuleRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
+  requestBody?: CreateAiGatewayRuleRequestBody | undefined;
 };
+
+/** @internal */
+export const CreateAiGatewayRuleType$outboundSchema: z.ZodNativeEnum<
+  typeof CreateAiGatewayRuleType
+> = z.nativeEnum(CreateAiGatewayRuleType);
+
+/** @internal */
+export type CreateAiGatewayRuleMatch$Outbound = {
+  model: string;
+};
+
+/** @internal */
+export const CreateAiGatewayRuleMatch$outboundSchema: z.ZodType<
+  CreateAiGatewayRuleMatch$Outbound,
+  z.ZodTypeDef,
+  CreateAiGatewayRuleMatch
+> = z.object({
+  model: z.string(),
+});
+
+export function createAiGatewayRuleMatchToJSON(
+  createAiGatewayRuleMatch: CreateAiGatewayRuleMatch,
+): string {
+  return JSON.stringify(
+    CreateAiGatewayRuleMatch$outboundSchema.parse(createAiGatewayRuleMatch),
+  );
+}
+
+/** @internal */
+export type CreateAiGatewayRuleAction$Outbound = {
+  rewriteModel?: string | undefined;
+  reason?: string | undefined;
+};
+
+/** @internal */
+export const CreateAiGatewayRuleAction$outboundSchema: z.ZodType<
+  CreateAiGatewayRuleAction$Outbound,
+  z.ZodTypeDef,
+  CreateAiGatewayRuleAction
+> = z.object({
+  rewriteModel: z.string().optional(),
+  reason: z.string().optional(),
+});
+
+export function createAiGatewayRuleActionToJSON(
+  createAiGatewayRuleAction: CreateAiGatewayRuleAction,
+): string {
+  return JSON.stringify(
+    CreateAiGatewayRuleAction$outboundSchema.parse(createAiGatewayRuleAction),
+  );
+}
+
+/** @internal */
+export type CreateAiGatewayRuleRequestBody$Outbound = {
+  type: string;
+  match: CreateAiGatewayRuleMatch$Outbound;
+  action?: CreateAiGatewayRuleAction$Outbound | undefined;
+  enabled?: boolean | undefined;
+  description?: string | undefined;
+};
+
+/** @internal */
+export const CreateAiGatewayRuleRequestBody$outboundSchema: z.ZodType<
+  CreateAiGatewayRuleRequestBody$Outbound,
+  z.ZodTypeDef,
+  CreateAiGatewayRuleRequestBody
+> = z.object({
+  type: CreateAiGatewayRuleType$outboundSchema,
+  match: z.lazy(() => CreateAiGatewayRuleMatch$outboundSchema),
+  action: z.lazy(() => CreateAiGatewayRuleAction$outboundSchema).optional(),
+  enabled: z.boolean().optional(),
+  description: z.string().optional(),
+});
+
+export function createAiGatewayRuleRequestBodyToJSON(
+  createAiGatewayRuleRequestBody: CreateAiGatewayRuleRequestBody,
+): string {
+  return JSON.stringify(
+    CreateAiGatewayRuleRequestBody$outboundSchema.parse(
+      createAiGatewayRuleRequestBody,
+    ),
+  );
+}
 
 /** @internal */
 export type CreateAiGatewayRuleRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
+  RequestBody?: CreateAiGatewayRuleRequestBody$Outbound | undefined;
 };
 
 /** @internal */
@@ -29,6 +171,12 @@ export const CreateAiGatewayRuleRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
+  requestBody: z.lazy(() => CreateAiGatewayRuleRequestBody$outboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    requestBody: "RequestBody",
+  });
 });
 
 export function createAiGatewayRuleRequestToJSON(

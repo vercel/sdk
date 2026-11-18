@@ -5,24 +5,29 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndTwentyThree } from "@vercel/sdk/models/usereventpayload491previous.js";
+import { FiveHundredAndTwentyThree } from "@vercel/sdk/models/usereventpayload499next.js";
 
 let value: FiveHundredAndTwentyThree = {
-  next: {
-    access: "default",
+  configuration: {
+    id: "<id>",
   },
-  previous: {
-    access: "default",
+  peering: {
+    accountId: "<id>",
+    id: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
   },
-  userId: "<id>",
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `next`                               | *models.UserEventPayload523Next*     | :heavy_check_mark:                   | N/A                                  |
-| `previous`                           | *models.UserEventPayload523Previous* | :heavy_check_mark:                   | N/A                                  |
-| `userId`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `userName`                           | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `configuration`                                                                          | [models.UserEventPayload523Configuration](../models/usereventpayload523configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `team`                                                                                   | [models.UserEventPayload523Team](../models/usereventpayload523team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

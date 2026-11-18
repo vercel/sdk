@@ -87,14 +87,6 @@ let value: GetProjectResponseBody = {
   },
   rollingRelease: {
     canaryResponseHeader: false,
-    gate: {
-      action: "rollback",
-      checks: [],
-      dryRun: true,
-      enabled: true,
-      failureThreshold: 3,
-      windowSize: 5,
-    },
     stages: [
       {
         duration: 600,

@@ -5,18 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/threehundredandfour.js";
+import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/payloadaws.js";
 
 let value: ThreeHundredAndFiftySix = {
-  consent: "granted",
+  projectId: "<id>",
   projectName: "<value>",
+  removeVercelRequestHeaders: true,
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `consent`                              | [models.Consent](../models/consent.md) | :heavy_check_mark:                     | N/A                                    |
-| `projectId`                            | *string*                               | :heavy_minus_sign:                     | N/A                                    |
-| `projectName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `projectId`                  | *string*                     | :heavy_check_mark:           | N/A                          |
+| `projectName`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `removeVercelRequestHeaders` | *boolean*                    | :heavy_check_mark:           | N/A                          |

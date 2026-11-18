@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThirtyFour } from "@vercel/sdk/models/usereventprincipaltype.js";
+import { ThirtyFour } from "@vercel/sdk/models/payloadaction.js";
 
 let value: ThirtyFour = {
   apiKey: {

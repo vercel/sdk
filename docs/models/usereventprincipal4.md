@@ -5,7 +5,7 @@ The principal who rolled back the project. Absent on historical rollbacks where 
 ## Example Usage
 
 ```typescript
-import { UserEventPrincipal4 } from "@vercel/sdk/models/threehundredandfour.js";
+import { UserEventPrincipal4 } from "@vercel/sdk/models/payloadaws.js";
 
 let value: UserEventPrincipal4 = {
   type: "system",

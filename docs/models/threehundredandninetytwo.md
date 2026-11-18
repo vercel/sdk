@@ -5,10 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyTwo } from "@vercel/sdk/models/threehundredandsixtysix.js";
+import { ThreeHundredAndNinetyTwo } from "@vercel/sdk/models/threehundredandseventyfive.js";
 
 let value: ThreeHundredAndNinetyTwo = {
-  email: "Jeffry99@yahoo.com",
+  alias: "<value>",
+  sandboxName: "<value>",
 };
 ```
 
@@ -16,4 +17,7 @@ let value: ThreeHundredAndNinetyTwo = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `alias`            | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `sandboxId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `sandboxName`      | *string*           | :heavy_check_mark: | N/A                |

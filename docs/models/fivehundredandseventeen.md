@@ -5,24 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndSeventeen } from "@vercel/sdk/models/usereventpayload491previous.js";
+import { FiveHundredAndSeventeen } from "@vercel/sdk/models/usereventpayload499next.js";
 
 let value: FiveHundredAndSeventeen = {
-  cadence: "monthly",
-  projectIds: [
-    "<value 1>",
-    "<value 2>",
-  ],
-  team: {
-    id: "<id>",
-  },
+  nextProjectCount: null,
+  previousProjectCount: 6244.61,
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload517Team](../models/usereventpayload517team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `nextProjectCount`     | *number*               | :heavy_check_mark:     | N/A                    |
+| `previousProjectCount` | *number*               | :heavy_check_mark:     | N/A                    |

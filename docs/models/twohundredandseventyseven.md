@@ -5,16 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/usereventpayload238prevproject.js";
+import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/twohundredandfortyfive.js";
 
 let value: TwoHundredAndSeventySeven = {
-  next: [],
-  previous: [
-    {
-      envId: "production",
-      perimeterId: "<id>",
-    },
-  ],
+  next: {},
+  previous: {},
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -22,9 +17,9 @@ let value: TwoHundredAndSeventySeven = {
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `next`                                                                           | [models.UserEventPayload277Next](../models/usereventpayload277next.md)[]         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `previous`                                                                       | [models.UserEventPayload277Previous](../models/usereventpayload277previous.md)[] | :heavy_check_mark:                                                               | N/A                                                                              |
-| `projectId`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `projectName`                                                                    | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload277Next](../models/usereventpayload277next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload277Previous](../models/usereventpayload277previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

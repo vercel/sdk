@@ -46,6 +46,7 @@ export type RevokeKmsSigningKeyAlgorithm = ClosedEnum<
 
 export const RevokeKmsSigningKeyDiscoveryLayout = {
   Connect: "connect",
+  Integrations: "integrations",
   Kms: "kms",
 } as const;
 export type RevokeKmsSigningKeyDiscoveryLayout = ClosedEnum<

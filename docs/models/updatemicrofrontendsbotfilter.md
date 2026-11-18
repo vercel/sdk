@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsBotFilter } from "@vercel/sdk/models/updatemicrofrontendsfrompreset.js";
+import { UpdateMicrofrontendsBotFilter } from "@vercel/sdk/models/updatemicrofrontendstoprojects2.js";
 
 let value: UpdateMicrofrontendsBotFilter = {
   active: false,
@@ -12,7 +12,7 @@ let value: UpdateMicrofrontendsBotFilter = {
 
 ## Fields
 
-| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `action`                                                                                                           | [models.UpdateMicrofrontendsProjectsResponse200Action](../models/updatemicrofrontendsprojectsresponse200action.md) | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
-| `active`                                                                                                           | *boolean*                                                                                                          | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `action`                                                                                                     | [models.UpdateMicrofrontendsProjectsResponseAction](../models/updatemicrofrontendsprojectsresponseaction.md) | :heavy_minus_sign:                                                                                           | N/A                                                                                                          |
+| `active`                                                                                                     | *boolean*                                                                                                    | :heavy_check_mark:                                                                                           | N/A                                                                                                          |

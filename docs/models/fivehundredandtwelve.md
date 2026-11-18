@@ -5,19 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndTwelve } from "@vercel/sdk/models/usereventpayload491previous.js";
+import { FiveHundredAndTwelve } from "@vercel/sdk/models/usereventpayload499next.js";
 
 let value: FiveHundredAndTwelve = {
-  ciEnabled: true,
-  organizationId: "<id>",
-  repository: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
+  repositoryName: "<value>",
+  sharedWithTeamId: "<id>",
+  sharedWithTeamSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `ciEnabled`        | *boolean*          | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `repository`       | *string*           | :heavy_check_mark: | N/A                |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
+| `repositoryName`     | *string*             | :heavy_check_mark:   | N/A                  |
+| `sharedWithTeamId`   | *string*             | :heavy_check_mark:   | N/A                  |
+| `sharedWithTeamSlug` | *string*             | :heavy_check_mark:   | N/A                  |

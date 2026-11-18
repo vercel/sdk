@@ -26,18 +26,33 @@ export type GetTeamsRequest = {
   until?: number | undefined;
 };
 
-export type GetTeamsTeams = Team | TeamLimited;
+export type ResponseBodyTeams = Team | TeamLimited;
 
 /**
  * A paginated list of teams.
  */
-export type GetTeamsResponseBody = {
+export type GetTeamsResponseBody2 = {
   /**
    * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
    */
   pagination: Pagination;
   teams: Array<Team | TeamLimited>;
 };
+
+export type GetTeamsResponseBody1 = {
+  /**
+   * This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data.
+   */
+  pagination: Pagination;
+  teams: Array<Team>;
+};
+
+/**
+ * A paginated list of teams.
+ */
+export type GetTeamsResponseBody =
+  | GetTeamsResponseBody1
+  | GetTeamsResponseBody2;
 
 /** @internal */
 export type GetTeamsRequest$Outbound = {
@@ -64,19 +79,59 @@ export function getTeamsRequestToJSON(
 }
 
 /** @internal */
-export const GetTeamsTeams$inboundSchema: z.ZodType<
-  GetTeamsTeams,
+export const ResponseBodyTeams$inboundSchema: z.ZodType<
+  ResponseBodyTeams,
   z.ZodTypeDef,
   unknown
 > = smartUnion([Team$inboundSchema, TeamLimited$inboundSchema]);
 
-export function getTeamsTeamsFromJSON(
+export function responseBodyTeamsFromJSON(
   jsonString: string,
-): SafeParseResult<GetTeamsTeams, SDKValidationError> {
+): SafeParseResult<ResponseBodyTeams, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetTeamsTeams$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetTeamsTeams' from JSON`,
+    (x) => ResponseBodyTeams$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ResponseBodyTeams' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetTeamsResponseBody2$inboundSchema: z.ZodType<
+  GetTeamsResponseBody2,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  pagination: Pagination$inboundSchema,
+  teams: z.array(smartUnion([Team$inboundSchema, TeamLimited$inboundSchema])),
+});
+
+export function getTeamsResponseBody2FromJSON(
+  jsonString: string,
+): SafeParseResult<GetTeamsResponseBody2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTeamsResponseBody2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeamsResponseBody2' from JSON`,
+  );
+}
+
+/** @internal */
+export const GetTeamsResponseBody1$inboundSchema: z.ZodType<
+  GetTeamsResponseBody1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  pagination: Pagination$inboundSchema,
+  teams: z.array(Team$inboundSchema),
+});
+
+export function getTeamsResponseBody1FromJSON(
+  jsonString: string,
+): SafeParseResult<GetTeamsResponseBody1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetTeamsResponseBody1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetTeamsResponseBody1' from JSON`,
   );
 }
 
@@ -85,10 +140,10 @@ export const GetTeamsResponseBody$inboundSchema: z.ZodType<
   GetTeamsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: Pagination$inboundSchema,
-  teams: z.array(smartUnion([Team$inboundSchema, TeamLimited$inboundSchema])),
-});
+> = smartUnion([
+  z.lazy(() => GetTeamsResponseBody1$inboundSchema),
+  z.lazy(() => GetTeamsResponseBody2$inboundSchema),
+]);
 
 export function getTeamsResponseBodyFromJSON(
   jsonString: string,

@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndForty } from "@vercel/sdk/models/usereventpayloadallowlistedreadystatereasoninternal.js";
+import { OneHundredAndForty } from "@vercel/sdk/models/job2.js";
 
 let value: OneHundredAndForty = {
   mode: "none",
-  previousMode: "email-domain",
+  previousMode: "none",
+  scope: "organization",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `mode`                                                                 | [models.UserEventPayload140Mode](../models/usereventpayload140mode.md) | :heavy_check_mark:                                                     | N/A                                                                    |
-| `previousMode`                                                         | [models.PayloadPreviousMode](../models/payloadpreviousmode.md)         | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `mode`                                                                   | [models.UserEventPayloadMode](../models/usereventpayloadmode.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
+| `previousMode`                                                           | [models.PreviousMode](../models/previousmode.md)                         | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload140Scope](../models/usereventpayload140scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

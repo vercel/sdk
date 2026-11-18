@@ -1,0 +1,15 @@
+# UserEventJobPayload1359Action
+
+## Example Usage
+
+```typescript
+import { UserEventJobPayload1359Action } from "@vercel/sdk/models/job2.js";
+
+let value: UserEventJobPayload1359Action = "auto-approved-pending-invite";
+```
+
+## Values
+
+```typescript
+"auto-approved-member" | "auto-approved-pending-invite"
+```

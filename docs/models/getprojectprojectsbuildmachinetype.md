@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsBuildMachineType } from "@vercel/sdk/models/getprojectfrom2.js";
+import { GetProjectProjectsBuildMachineType } from "@vercel/sdk/models/getprojecttoprojectsresponse200preset.js";
 
 let value: GetProjectProjectsBuildMachineType = "14cpu-28gb";
 ```

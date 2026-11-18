@@ -5,29 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndTwentySix } from "@vercel/sdk/models/usereventpayload491previous.js";
+import { FiveHundredAndTwentySix } from "@vercel/sdk/models/usereventpayload499next.js";
 
 let value: FiveHundredAndTwentySix = {
-  next: {
-    enabled: true,
-    issuerUrls: [
-      "<value 1>",
-    ],
+  cadence: "monthly",
+  projectIds: [
+    "<value 1>",
+  ],
+  team: {
+    id: "<id>",
   },
-  previous: {
-    enabled: false,
-    issuerUrls: [
-      "<value 1>",
-    ],
-  },
-  scope: "team",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload526Next](../models/usereventpayload526next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload526Previous](../models/usereventpayload526previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `scope`                                                                        | [models.UserEventPayload526Scope](../models/usereventpayload526scope.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload526Team](../models/usereventpayload526team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

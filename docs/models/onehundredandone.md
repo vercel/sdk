@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndOne } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
+import { OneHundredAndOne } from "@vercel/sdk/models/usereventpayload72action.js";
 
 let value: OneHundredAndOne = {
   cns: [

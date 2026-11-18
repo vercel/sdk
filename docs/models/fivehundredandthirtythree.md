@@ -5,22 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndThirtyThree } from "@vercel/sdk/models/usereventpayload491previous.js";
+import { FiveHundredAndThirtyThree } from "@vercel/sdk/models/usereventpayload499next.js";
 
 let value: FiveHundredAndThirtyThree = {
-  actorTokenId: "<id>",
-  deletedCount: 6880.92,
+  next: {
+    access: "unlimited",
+  },
+  previous: {
+    access: "none",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `actorTokenId`                                                                       | *string*                                                                             | :heavy_check_mark:                                                                   | The token's public ID.                                                               |
-| `deletedCount`                                                                       | *number*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
-| `geolocation`                                                                        | [models.UserEventPayload533Geolocation](../models/usereventpayload533geolocation.md) | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `ip`                                                                                 | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqId`                                                                              | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `reqUrl`                                                                             | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
-| `userAgent`                                                                          | *string*                                                                             | :heavy_minus_sign:                                                                   | N/A                                                                                  |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `next`                               | *models.UserEventPayload533Next*     | :heavy_check_mark:                   | N/A                                  |
+| `previous`                           | *models.UserEventPayload533Previous* | :heavy_check_mark:                   | N/A                                  |

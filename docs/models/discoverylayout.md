@@ -5,11 +5,11 @@
 ```typescript
 import { DiscoveryLayout } from "@vercel/sdk/models/createkmsissuerop.js";
 
-let value: DiscoveryLayout = "kms";
+let value: DiscoveryLayout = "integrations";
 ```
 
 ## Values
 
 ```typescript
-"connect" | "kms"
+"connect" | "integrations" | "kms"
 ```

@@ -1025,13 +1025,13 @@ export type ResponseBodyDeploymentPolicy = {
   gitSources?: Array<ResponseBodyGitSources> | null | undefined;
 };
 
-export const GetProjectsResponseBodyProjectsAction = {
+export const GetProjectsResponseBodyAction = {
   Accept: "accept",
   Cancel: "cancel",
   Delete: "delete",
 } as const;
-export type GetProjectsResponseBodyProjectsAction = ClosedEnum<
-  typeof GetProjectsResponseBodyProjectsAction
+export type GetProjectsResponseBodyAction = ClosedEnum<
+  typeof GetProjectsResponseBodyAction
 >;
 
 export type GetProjectsValueCurrentValue = string | number | boolean;
@@ -1046,7 +1046,7 @@ export type GetProjectsValue3 = {
 export type ResponseBodyValue = GetProjectsValue3 | string | number | boolean;
 
 export type ResponseBodyDismissedToasts = {
-  action: GetProjectsResponseBodyProjectsAction;
+  action: GetProjectsResponseBodyAction;
   dismissedAt: number;
   key: string;
   value: GetProjectsValue3 | string | number | boolean | null;
@@ -3376,10 +3376,9 @@ export function responseBodyDeploymentPolicyFromJSON(
 }
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsAction$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsAction> = z.nativeEnum(
-    GetProjectsResponseBodyProjectsAction,
-  );
+export const GetProjectsResponseBodyAction$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectsResponseBodyAction
+> = z.nativeEnum(GetProjectsResponseBodyAction);
 
 /** @internal */
 export const GetProjectsValueCurrentValue$inboundSchema: z.ZodType<
@@ -3463,7 +3462,7 @@ export const ResponseBodyDismissedToasts$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: GetProjectsResponseBodyProjectsAction$inboundSchema,
+  action: GetProjectsResponseBodyAction$inboundSchema,
   dismissedAt: types.number(),
   key: types.string(),
   value: types.nullable(

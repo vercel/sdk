@@ -56,14 +56,6 @@ let value: UpdateProjectResponseBody = {
   },
   rollingRelease: {
     canaryResponseHeader: false,
-    gate: {
-      action: "pause",
-      checks: [],
-      dryRun: false,
-      enabled: false,
-      failureThreshold: 3,
-      windowSize: 5,
-    },
     stages: [
       {
         duration: 600,

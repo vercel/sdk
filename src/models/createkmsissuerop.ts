@@ -128,6 +128,7 @@ export type CreateKmsIssuerAlgorithm = ClosedEnum<
 
 export const DiscoveryLayout = {
   Connect: "connect",
+  Integrations: "integrations",
   Kms: "kms",
 } as const;
 export type DiscoveryLayout = ClosedEnum<typeof DiscoveryLayout>;

@@ -1952,6 +1952,14 @@ export type UpdateProjectPermissions = {
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
    */
+  perimeter?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
+  perimeterLink?: Array<ACLAction> | undefined;
+  /**
+   * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
+   */
   permissions?: Array<ACLAction> | undefined;
   /**
    * Requested and authorized operations when `checkPermissions` is used. Legacy `includePermissions` responses contain a broader, non-authoritative permission summary.
@@ -5297,6 +5305,8 @@ export const UpdateProjectPermissions$inboundSchema: z.ZodType<
     z.array(ACLAction$inboundSchema),
   ),
   paymentMethod: types.optional(z.array(ACLAction$inboundSchema)),
+  perimeter: types.optional(z.array(ACLAction$inboundSchema)),
+  perimeterLink: types.optional(z.array(ACLAction$inboundSchema)),
   permissions: types.optional(z.array(ACLAction$inboundSchema)),
   postgres: types.optional(z.array(ACLAction$inboundSchema)),
   postgresStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),

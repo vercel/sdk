@@ -7,11 +7,11 @@ Whether the manifest is a multi-platform image index, a single-platform image ma
 ```typescript
 import { VcrImageListItemKind } from "@vercel/sdk/models/vcrimagelistitem.js";
 
-let value: VcrImageListItemKind = "attestation";
+let value: VcrImageListItemKind = "artifact";
 ```
 
 ## Values
 
 ```typescript
-"attestation" | "index" | "manifest"
+"artifact" | "attestation" | "index" | "manifest"
 ```

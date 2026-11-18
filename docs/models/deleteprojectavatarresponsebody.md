@@ -54,26 +54,6 @@ let value: DeleteProjectAvatarResponseBody = {
   },
   rollingRelease: {
     canaryResponseHeader: false,
-    gate: {
-      action: "pause",
-      checks: [
-        {
-          excludePaths: [
-            "/api/health",
-          ],
-          excludeStatusCodes: [
-            503,
-          ],
-          ingestWatermarkSeconds: 30,
-          significanceLevel: 0.05,
-          type: "error-rate-5xx",
-        },
-      ],
-      dryRun: true,
-      enabled: true,
-      failureThreshold: 3,
-      windowSize: 5,
-    },
     stages: null,
     target: "production",
   },

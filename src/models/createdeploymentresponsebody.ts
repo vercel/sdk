@@ -4,7 +4,6 @@
 
 import * as z from "zod/v3";
 import { safeParse } from "../lib/schemas.js";
-import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -17,41 +16,12 @@ import {
   CreateDeploymentResponseBodyAliasWarning$inboundSchema,
   CreateDeploymentResponseBodyDuration,
   CreateDeploymentResponseBodyDuration$inboundSchema,
-} from "./createdeploymentresponsebodyduration.js";
+  CreateDeploymentResponseBodyReadyState,
+  CreateDeploymentResponseBodyReadyState$inboundSchema,
+  CreateDeploymentResponseBodyTarget,
+  CreateDeploymentResponseBodyTarget$inboundSchema,
+} from "./createdeploymentresponsebodytarget.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-/**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export const CreateDeploymentResponseBodyReadyState = {
-  Blocked: "BLOCKED",
-  Building: "BUILDING",
-  Canceled: "CANCELED",
-  Error: "ERROR",
-  Initializing: "INITIALIZING",
-  Queued: "QUEUED",
-  Ready: "READY",
-} as const;
-/**
- * The state of the deployment depending on the process of deploying, or if it is ready or in an error state
- */
-export type CreateDeploymentResponseBodyReadyState = ClosedEnum<
-  typeof CreateDeploymentResponseBodyReadyState
->;
-
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export const CreateDeploymentResponseBodyTarget = {
-  Production: "production",
-  Staging: "staging",
-} as const;
-/**
- * If defined, either `staging` if a staging alias in the format `<project>.<team>.now.sh` was assigned upon creation, or `production` if the aliases from `alias` were assigned. `null` value indicates the "preview" deployment.
- */
-export type CreateDeploymentResponseBodyTarget = ClosedEnum<
-  typeof CreateDeploymentResponseBodyTarget
->;
 
 /**
  * Returns the reduced deployment view for anonymous (`vcn_`) callers. Pool-team details are withheld.
@@ -90,17 +60,6 @@ export type CreateDeploymentResponseBody1 = {
 export type CreateDeploymentResponseBody =
   | CreateDeploymentResponseBody2
   | CreateDeploymentResponseBody1;
-
-/** @internal */
-export const CreateDeploymentResponseBodyReadyState$inboundSchema:
-  z.ZodNativeEnum<typeof CreateDeploymentResponseBodyReadyState> = z.nativeEnum(
-    CreateDeploymentResponseBodyReadyState,
-  );
-
-/** @internal */
-export const CreateDeploymentResponseBodyTarget$inboundSchema: z.ZodNativeEnum<
-  typeof CreateDeploymentResponseBodyTarget
-> = z.nativeEnum(CreateDeploymentResponseBodyTarget);
 
 /** @internal */
 export const CreateDeploymentResponseBody1$inboundSchema: z.ZodType<

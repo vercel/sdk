@@ -57,10 +57,8 @@ import {
   GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
 } from "./getmicrofrontendsingroupchecksconclusion.js";
 import {
-  GetMicrofrontendsInGroupFrom1,
-  GetMicrofrontendsInGroupFrom1$inboundSchema,
-  GetMicrofrontendsInGroupFrom2,
-  GetMicrofrontendsInGroupFrom2$inboundSchema,
+  GetMicrofrontendsInGroupFrom,
+  GetMicrofrontendsInGroupFrom$inboundSchema,
   GetMicrofrontendsInGroupLatestDeployments,
   GetMicrofrontendsInGroupLatestDeployments$inboundSchema,
   GetMicrofrontendsInGroupLink,
@@ -107,40 +105,16 @@ import {
   GetMicrofrontendsInGroupTargets$inboundSchema,
   GetMicrofrontendsInGroupTier,
   GetMicrofrontendsInGroupTier$inboundSchema,
+  GetMicrofrontendsInGroupToMicrofrontends2,
+  GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
+  GetMicrofrontendsInGroupToMicrofrontendsResponsePreset,
+  GetMicrofrontendsInGroupToMicrofrontendsResponsePreset$inboundSchema,
   GetMicrofrontendsInGroupTracing,
   GetMicrofrontendsInGroupTracing$inboundSchema,
   GetMicrofrontendsInGroupTrustedIps,
   GetMicrofrontendsInGroupTrustedIps$inboundSchema,
-} from "./getmicrofrontendsingroupfrom1.js";
+} from "./getmicrofrontendsingrouptomicrofrontendsresponsepreset.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type GetMicrofrontendsInGroupFrom =
-  | GetMicrofrontendsInGroupFrom1
-  | GetMicrofrontendsInGroupFrom2;
-
-export const GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset = {
-  AllCustom: "all-custom",
-} as const;
-export type GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset =
-  ClosedEnum<typeof GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset>;
-
-/**
- * The target envs on the current project that may be accessed.
- */
-export type GetMicrofrontendsInGroupToMicrofrontends2 = {
-  preset: GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset;
-  /**
-   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
-   */
-  slugs?: Array<string> | undefined;
-};
-
-export const GetMicrofrontendsInGroupToMicrofrontendsResponsePreset = {
-  AllCustom: "all-custom",
-} as const;
-export type GetMicrofrontendsInGroupToMicrofrontendsResponsePreset = ClosedEnum<
-  typeof GetMicrofrontendsInGroupToMicrofrontendsResponsePreset
->;
 
 /**
  * The target envs on the current project that may be accessed.
@@ -161,7 +135,7 @@ export type GetMicrofrontendsInGroupMicrofrontendsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type GetMicrofrontendsInGroupCustomAllow = {
-  from: GetMicrofrontendsInGroupFrom1 | GetMicrofrontendsInGroupFrom2;
+  from: GetMicrofrontendsInGroupFrom;
   to:
     | GetMicrofrontendsInGroupToMicrofrontends1
     | GetMicrofrontendsInGroupToMicrofrontends2;
@@ -393,65 +367,6 @@ export type GetMicrofrontendsInGroupResponseBody = {
 };
 
 /** @internal */
-export const GetMicrofrontendsInGroupFrom$inboundSchema: z.ZodType<
-  GetMicrofrontendsInGroupFrom,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  GetMicrofrontendsInGroupFrom1$inboundSchema,
-  GetMicrofrontendsInGroupFrom2$inboundSchema,
-]);
-
-export function getMicrofrontendsInGroupFromFromJSON(
-  jsonString: string,
-): SafeParseResult<GetMicrofrontendsInGroupFrom, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetMicrofrontendsInGroupFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetMicrofrontendsInGroupFrom' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset
-  > = z.nativeEnum(GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset);
-
-/** @internal */
-export const GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema: z.ZodType<
-  GetMicrofrontendsInGroupToMicrofrontends2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  preset:
-    GetMicrofrontendsInGroupToMicrofrontendsResponse200Preset$inboundSchema,
-  slugs: types.optional(z.array(types.string())),
-});
-
-export function getMicrofrontendsInGroupToMicrofrontends2FromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetMicrofrontendsInGroupToMicrofrontends2,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetMicrofrontendsInGroupToMicrofrontends2' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetMicrofrontendsInGroupToMicrofrontendsResponsePreset$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetMicrofrontendsInGroupToMicrofrontendsResponsePreset
-  > = z.nativeEnum(GetMicrofrontendsInGroupToMicrofrontendsResponsePreset);
-
-/** @internal */
 export const GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupToMicrofrontends1,
   z.ZodTypeDef,
@@ -486,7 +401,7 @@ export const GetMicrofrontendsInGroupMicrofrontendsTo$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema),
+  GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
 ]);
 
 export function getMicrofrontendsInGroupMicrofrontendsToFromJSON(
@@ -511,13 +426,10 @@ export const GetMicrofrontendsInGroupCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: smartUnion([
-    GetMicrofrontendsInGroupFrom1$inboundSchema,
-    GetMicrofrontendsInGroupFrom2$inboundSchema,
-  ]),
+  from: GetMicrofrontendsInGroupFrom$inboundSchema,
   to: smartUnion([
     z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
-    z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema),
+    GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
   ]),
 });
 

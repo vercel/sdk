@@ -3,6 +3,307 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
+import { ClosedEnum } from "../types/enums.js";
+import { smartUnion } from "../types/smartUnion.js";
+
+export type Any = {};
+
+export type All = {};
+
+export type CreateAiGatewayVirtualModelConfigModelsConditions = {};
+
+export type ModelsAtLeast = {
+  /**
+   * Must not be more than the number of conditions.
+   */
+  count: number;
+  /**
+   * Nested conditions. Each one has the same shape as `when`.
+   */
+  conditions: Array<CreateAiGatewayVirtualModelConfigModelsConditions>;
+};
+
+/**
+ * The fallback model is used when the answers of the primary model match this condition. Set exactly one of `confidenceBelow`, `probabilityBetween`, `any`, `all`, or `atLeast`. A condition tree can be 5 levels deep and can hold 100 conditions.
+ */
+export type When = {
+  /**
+   * The question to check, with `confidenceBelow` or `probabilityBetween`. Without it, the condition checks every question of the applicable type.
+   */
+  question?: string | undefined;
+  confidenceBelow?: number | undefined;
+  /**
+   * A `[lower, upper]` pair.
+   */
+  probabilityBetween?: Array<number> | undefined;
+  /**
+   * Nested conditions. Each one has the same shape as `when`.
+   */
+  any?: Array<Any> | undefined;
+  /**
+   * Nested conditions. Each one has the same shape as `when`.
+   */
+  all?: Array<All> | undefined;
+  atLeast?: ModelsAtLeast | undefined;
+};
+
+/**
+ * A conditional fallback. Only an alias can have one.
+ */
+export type Models2 = {
+  /**
+   * A model ID: a catalog model such as `openai/gpt-4o`, or one of your team's private models as `private/<slug>`. A fallback can also name a virtual model as `vmc/<slug>`.
+   */
+  model: string;
+  /**
+   * The fallback model is used when the answers of the primary model match this condition. Set exactly one of `confidenceBelow`, `probabilityBetween`, `any`, `all`, or `atLeast`. A condition tree can be 5 levels deep and can hold 100 conditions.
+   */
+  when: When;
+};
+
+export type CreateAiGatewayVirtualModelConfigModels = Models2 | string;
+
+/**
+ * The pin scope: `zone` (a geo zone) or `global`.
+ */
+export const CreateAiGatewayVirtualModelConfigAiGatewayScope = {
+  Zone: "zone",
+  Global: "global",
+} as const;
+/**
+ * The pin scope: `zone` (a geo zone) or `global`.
+ */
+export type CreateAiGatewayVirtualModelConfigAiGatewayScope = ClosedEnum<
+  typeof CreateAiGatewayVirtualModelConfigAiGatewayScope
+>;
+
+/**
+ * The pin scope: `zone` (a geo zone) or `global`.
+ */
+export const CreateAiGatewayVirtualModelConfigScope = {
+  Zone: "zone",
+  Global: "global",
+} as const;
+/**
+ * The pin scope: `zone` (a geo zone) or `global`.
+ */
+export type CreateAiGatewayVirtualModelConfigScope = ClosedEnum<
+  typeof CreateAiGatewayVirtualModelConfigScope
+>;
+
+export type CreateAiGatewayVirtualModelConfigProviders = {
+  /**
+   * The pin scope: `zone` (a geo zone) or `global`.
+   */
+  scope?: CreateAiGatewayVirtualModelConfigScope | undefined;
+  /**
+   * The geo zone, for example `us` or `eu`. Required when `scope` is `zone`.
+   */
+  geoRegion?: string | undefined;
+};
+
+/**
+ * The region that requests are pinned to.
+ */
+export type CreateAiGatewayVirtualModelConfigInferenceRegion = {
+  /**
+   * The pin scope: `zone` (a geo zone) or `global`.
+   */
+  scope?: CreateAiGatewayVirtualModelConfigAiGatewayScope | undefined;
+  /**
+   * The geo zone, for example `us` or `eu`. Required when `scope` is `zone`.
+   */
+  geoRegion?: string | undefined;
+  /**
+   * Region overrides for each provider, keyed by provider slug.
+   */
+  providers?:
+    | { [k: string]: CreateAiGatewayVirtualModelConfigProviders | null }
+    | undefined;
+};
+
+/**
+ * Rank eligible providers by an attribute. `@default` ignores the value from the inference request.
+ */
+export const CreateAiGatewayVirtualModelConfigSort = {
+  AtDefault: "@default",
+  Cost: "cost",
+  Ttft: "ttft",
+  Tps: "tps",
+  Price: "price",
+  Latency: "latency",
+  Throughput: "throughput",
+} as const;
+/**
+ * Rank eligible providers by an attribute. `@default` ignores the value from the inference request.
+ */
+export type CreateAiGatewayVirtualModelConfigSort = ClosedEnum<
+  typeof CreateAiGatewayVirtualModelConfigSort
+>;
+
+export const CreateAiGatewayVirtualModelConfigHas = {
+  ImplicitCaching: "implicit-caching",
+  Reasoning: "reasoning",
+  StructuredOutput: "structured-output",
+  ToolUse: "tool-use",
+  Vision: "vision",
+} as const;
+export type CreateAiGatewayVirtualModelConfigHas = ClosedEnum<
+  typeof CreateAiGatewayVirtualModelConfigHas
+>;
+
+/**
+ * Use caching if available. `@default` ignores the value from the inference request.
+ */
+export const CreateAiGatewayVirtualModelConfigCaching = {
+  AtDefault: "@default",
+  Auto: "auto",
+} as const;
+/**
+ * Use caching if available. `@default` ignores the value from the inference request.
+ */
+export type CreateAiGatewayVirtualModelConfigCaching = ClosedEnum<
+  typeof CreateAiGatewayVirtualModelConfigCaching
+>;
+
+/**
+ * The service tier for providers that support it. `@default` ignores the value from the inference request.
+ */
+export const CreateAiGatewayVirtualModelConfigServiceTier = {
+  AtDefault: "@default",
+  Flex: "flex",
+  Priority: "priority",
+  Fast: "fast",
+} as const;
+/**
+ * The service tier for providers that support it. `@default` ignores the value from the inference request.
+ */
+export type CreateAiGatewayVirtualModelConfigServiceTier = ClosedEnum<
+  typeof CreateAiGatewayVirtualModelConfigServiceTier
+>;
+
+export type ProviderTimeouts2 = {
+  /**
+   * The timeout for each provider that uses a BYOK credential, keyed by provider slug.
+   */
+  byok?: { [k: string]: number } | undefined;
+};
+
+export const ProviderTimeouts1 = {
+  AtDefault: "@default",
+} as const;
+export type ProviderTimeouts1 = ClosedEnum<typeof ProviderTimeouts1>;
+
+/**
+ * Provider timeouts in milliseconds. `@default` ignores the value from the inference request.
+ */
+export type CreateAiGatewayVirtualModelConfigProviderTimeouts =
+  | ProviderTimeouts1
+  | ProviderTimeouts2;
+
+/**
+ * Only use the fastest providers, with short timeouts.
+ */
+export const CreateAiGatewayVirtualModelConfigSpeed = {
+  Fast: "fast",
+} as const;
+/**
+ * Only use the fastest providers, with short timeouts.
+ */
+export type CreateAiGatewayVirtualModelConfigSpeed = ClosedEnum<
+  typeof CreateAiGatewayVirtualModelConfigSpeed
+>;
+
+export type CreateAiGatewayVirtualModelConfigRequestBody = {
+  /**
+   * The slug of the virtual model. Requests name it as `vmc/<slug>`. `list` is reserved.
+   */
+  virtualModelSlug: string;
+  /**
+   * The name shown in the UI.
+   */
+  displayName?: string | undefined;
+  description?: string | undefined;
+  /**
+   * The lifecycle status: `draft`, `active`, or `archived`. Any value other than `active` stops it serving requests. Defaults to `active`.
+   */
+  status?: string | undefined;
+  /**
+   * The model that the virtual model resolves to: a catalog model such as `openai/gpt-4o-mini`, or one of your team's private models as `private/<slug>`. Required on create.
+   */
+  modelSlug?: string | undefined;
+  /**
+   * The ordered fallback models, optionally led by one conditional `{ model, when }` entry.
+   */
+  models?: Array<Models2 | string> | undefined;
+  /**
+   * The providers to try, in order.
+   */
+  providerOrder?: Array<string> | undefined;
+  /**
+   * Restrict routing to these providers.
+   */
+  providerOnly?: Array<string> | undefined;
+  /**
+   * Observability tags attached to requests through this virtual model.
+   */
+  observabilityTags?: Array<string> | undefined;
+  /**
+   * Provider-specific options, keyed by provider slug. The slug of one of your team's private providers is also valid.
+   */
+  providerOptions?: { [k: string]: { [k: string]: any } } | undefined;
+  /**
+   * The BYOK credentials that this virtual model can use.
+   */
+  byokCredentialIds?: Array<string> | undefined;
+  /**
+   * The region that requests are pinned to.
+   */
+  inferenceRegion?:
+    | CreateAiGatewayVirtualModelConfigInferenceRegion
+    | undefined;
+  /**
+   * Rank eligible providers by an attribute. `@default` ignores the value from the inference request.
+   */
+  sort?: CreateAiGatewayVirtualModelConfigSort | undefined;
+  /**
+   * Limit providers to those with these features.
+   */
+  has?: Array<CreateAiGatewayVirtualModelConfigHas> | undefined;
+  /**
+   * Use caching if available. `@default` ignores the value from the inference request.
+   */
+  caching?: CreateAiGatewayVirtualModelConfigCaching | undefined;
+  /**
+   * The service tier for providers that support it. `@default` ignores the value from the inference request.
+   */
+  serviceTier?: CreateAiGatewayVirtualModelConfigServiceTier | undefined;
+  /**
+   * Provider timeouts in milliseconds. `@default` ignores the value from the inference request.
+   */
+  providerTimeouts?: ProviderTimeouts1 | ProviderTimeouts2 | undefined;
+  /**
+   * Only use providers with zero data retention.
+   */
+  zeroDataRetention?: boolean | undefined;
+  /**
+   * Only use HIPAA-compliant providers.
+   */
+  hipaaCompliant?: boolean | undefined;
+  /**
+   * Only use providers that do not train on prompts.
+   */
+  disallowPromptTraining?: boolean | undefined;
+  /**
+   * Only use the fastest providers, with short timeouts.
+   */
+  speed?: CreateAiGatewayVirtualModelConfigSpeed | undefined;
+  /**
+   * Allow fallback from fast to standard providers on failure.
+   */
+  allowFallbackFromFast?: boolean | undefined;
+};
 
 export type CreateAiGatewayVirtualModelConfigRequest = {
   /**
@@ -13,12 +314,389 @@ export type CreateAiGatewayVirtualModelConfigRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
+  requestBody?: CreateAiGatewayVirtualModelConfigRequestBody | undefined;
 };
+
+/** @internal */
+export type Any$Outbound = {};
+
+/** @internal */
+export const Any$outboundSchema: z.ZodType<Any$Outbound, z.ZodTypeDef, Any> = z
+  .object({});
+
+export function anyToJSON(any: Any): string {
+  return JSON.stringify(Any$outboundSchema.parse(any));
+}
+
+/** @internal */
+export type All$Outbound = {};
+
+/** @internal */
+export const All$outboundSchema: z.ZodType<All$Outbound, z.ZodTypeDef, All> = z
+  .object({});
+
+export function allToJSON(all: All): string {
+  return JSON.stringify(All$outboundSchema.parse(all));
+}
+
+/** @internal */
+export type CreateAiGatewayVirtualModelConfigModelsConditions$Outbound = {};
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigModelsConditions$outboundSchema:
+  z.ZodType<
+    CreateAiGatewayVirtualModelConfigModelsConditions$Outbound,
+    z.ZodTypeDef,
+    CreateAiGatewayVirtualModelConfigModelsConditions
+  > = z.object({});
+
+export function createAiGatewayVirtualModelConfigModelsConditionsToJSON(
+  createAiGatewayVirtualModelConfigModelsConditions:
+    CreateAiGatewayVirtualModelConfigModelsConditions,
+): string {
+  return JSON.stringify(
+    CreateAiGatewayVirtualModelConfigModelsConditions$outboundSchema.parse(
+      createAiGatewayVirtualModelConfigModelsConditions,
+    ),
+  );
+}
+
+/** @internal */
+export type ModelsAtLeast$Outbound = {
+  count: number;
+  conditions: Array<CreateAiGatewayVirtualModelConfigModelsConditions$Outbound>;
+};
+
+/** @internal */
+export const ModelsAtLeast$outboundSchema: z.ZodType<
+  ModelsAtLeast$Outbound,
+  z.ZodTypeDef,
+  ModelsAtLeast
+> = z.object({
+  count: z.number().int(),
+  conditions: z.array(
+    z.lazy(() =>
+      CreateAiGatewayVirtualModelConfigModelsConditions$outboundSchema
+    ),
+  ),
+});
+
+export function modelsAtLeastToJSON(modelsAtLeast: ModelsAtLeast): string {
+  return JSON.stringify(ModelsAtLeast$outboundSchema.parse(modelsAtLeast));
+}
+
+/** @internal */
+export type When$Outbound = {
+  question?: string | undefined;
+  confidenceBelow?: number | undefined;
+  probabilityBetween?: Array<number> | undefined;
+  any?: Array<Any$Outbound> | undefined;
+  all?: Array<All$Outbound> | undefined;
+  atLeast?: ModelsAtLeast$Outbound | undefined;
+};
+
+/** @internal */
+export const When$outboundSchema: z.ZodType<When$Outbound, z.ZodTypeDef, When> =
+  z.object({
+    question: z.string().optional(),
+    confidenceBelow: z.number().optional(),
+    probabilityBetween: z.array(z.number()).optional(),
+    any: z.array(z.lazy(() => Any$outboundSchema)).optional(),
+    all: z.array(z.lazy(() => All$outboundSchema)).optional(),
+    atLeast: z.lazy(() => ModelsAtLeast$outboundSchema).optional(),
+  });
+
+export function whenToJSON(when: When): string {
+  return JSON.stringify(When$outboundSchema.parse(when));
+}
+
+/** @internal */
+export type Models2$Outbound = {
+  model: string;
+  when: When$Outbound;
+};
+
+/** @internal */
+export const Models2$outboundSchema: z.ZodType<
+  Models2$Outbound,
+  z.ZodTypeDef,
+  Models2
+> = z.object({
+  model: z.string(),
+  when: z.lazy(() => When$outboundSchema),
+});
+
+export function models2ToJSON(models2: Models2): string {
+  return JSON.stringify(Models2$outboundSchema.parse(models2));
+}
+
+/** @internal */
+export type CreateAiGatewayVirtualModelConfigModels$Outbound =
+  | Models2$Outbound
+  | string;
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigModels$outboundSchema: z.ZodType<
+  CreateAiGatewayVirtualModelConfigModels$Outbound,
+  z.ZodTypeDef,
+  CreateAiGatewayVirtualModelConfigModels
+> = smartUnion([z.lazy(() => Models2$outboundSchema), z.string()]);
+
+export function createAiGatewayVirtualModelConfigModelsToJSON(
+  createAiGatewayVirtualModelConfigModels:
+    CreateAiGatewayVirtualModelConfigModels,
+): string {
+  return JSON.stringify(
+    CreateAiGatewayVirtualModelConfigModels$outboundSchema.parse(
+      createAiGatewayVirtualModelConfigModels,
+    ),
+  );
+}
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigAiGatewayScope$outboundSchema:
+  z.ZodNativeEnum<typeof CreateAiGatewayVirtualModelConfigAiGatewayScope> = z
+    .nativeEnum(CreateAiGatewayVirtualModelConfigAiGatewayScope);
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigScope$outboundSchema:
+  z.ZodNativeEnum<typeof CreateAiGatewayVirtualModelConfigScope> = z.nativeEnum(
+    CreateAiGatewayVirtualModelConfigScope,
+  );
+
+/** @internal */
+export type CreateAiGatewayVirtualModelConfigProviders$Outbound = {
+  scope?: string | undefined;
+  geoRegion?: string | undefined;
+};
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigProviders$outboundSchema:
+  z.ZodType<
+    CreateAiGatewayVirtualModelConfigProviders$Outbound,
+    z.ZodTypeDef,
+    CreateAiGatewayVirtualModelConfigProviders
+  > = z.object({
+    scope: CreateAiGatewayVirtualModelConfigScope$outboundSchema.optional(),
+    geoRegion: z.string().optional(),
+  });
+
+export function createAiGatewayVirtualModelConfigProvidersToJSON(
+  createAiGatewayVirtualModelConfigProviders:
+    CreateAiGatewayVirtualModelConfigProviders,
+): string {
+  return JSON.stringify(
+    CreateAiGatewayVirtualModelConfigProviders$outboundSchema.parse(
+      createAiGatewayVirtualModelConfigProviders,
+    ),
+  );
+}
+
+/** @internal */
+export type CreateAiGatewayVirtualModelConfigInferenceRegion$Outbound = {
+  scope?: string | undefined;
+  geoRegion?: string | undefined;
+  providers?: {
+    [k: string]: CreateAiGatewayVirtualModelConfigProviders$Outbound | null;
+  } | undefined;
+};
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigInferenceRegion$outboundSchema:
+  z.ZodType<
+    CreateAiGatewayVirtualModelConfigInferenceRegion$Outbound,
+    z.ZodTypeDef,
+    CreateAiGatewayVirtualModelConfigInferenceRegion
+  > = z.object({
+    scope: CreateAiGatewayVirtualModelConfigAiGatewayScope$outboundSchema
+      .optional(),
+    geoRegion: z.string().optional(),
+    providers: z.record(
+      z.nullable(z.lazy(() =>
+        CreateAiGatewayVirtualModelConfigProviders$outboundSchema
+      )),
+    ).optional(),
+  });
+
+export function createAiGatewayVirtualModelConfigInferenceRegionToJSON(
+  createAiGatewayVirtualModelConfigInferenceRegion:
+    CreateAiGatewayVirtualModelConfigInferenceRegion,
+): string {
+  return JSON.stringify(
+    CreateAiGatewayVirtualModelConfigInferenceRegion$outboundSchema.parse(
+      createAiGatewayVirtualModelConfigInferenceRegion,
+    ),
+  );
+}
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigSort$outboundSchema:
+  z.ZodNativeEnum<typeof CreateAiGatewayVirtualModelConfigSort> = z.nativeEnum(
+    CreateAiGatewayVirtualModelConfigSort,
+  );
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigHas$outboundSchema:
+  z.ZodNativeEnum<typeof CreateAiGatewayVirtualModelConfigHas> = z.nativeEnum(
+    CreateAiGatewayVirtualModelConfigHas,
+  );
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigCaching$outboundSchema:
+  z.ZodNativeEnum<typeof CreateAiGatewayVirtualModelConfigCaching> = z
+    .nativeEnum(CreateAiGatewayVirtualModelConfigCaching);
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigServiceTier$outboundSchema:
+  z.ZodNativeEnum<typeof CreateAiGatewayVirtualModelConfigServiceTier> = z
+    .nativeEnum(CreateAiGatewayVirtualModelConfigServiceTier);
+
+/** @internal */
+export type ProviderTimeouts2$Outbound = {
+  byok?: { [k: string]: number } | undefined;
+};
+
+/** @internal */
+export const ProviderTimeouts2$outboundSchema: z.ZodType<
+  ProviderTimeouts2$Outbound,
+  z.ZodTypeDef,
+  ProviderTimeouts2
+> = z.object({
+  byok: z.record(z.number().int()).optional(),
+});
+
+export function providerTimeouts2ToJSON(
+  providerTimeouts2: ProviderTimeouts2,
+): string {
+  return JSON.stringify(
+    ProviderTimeouts2$outboundSchema.parse(providerTimeouts2),
+  );
+}
+
+/** @internal */
+export const ProviderTimeouts1$outboundSchema: z.ZodNativeEnum<
+  typeof ProviderTimeouts1
+> = z.nativeEnum(ProviderTimeouts1);
+
+/** @internal */
+export type CreateAiGatewayVirtualModelConfigProviderTimeouts$Outbound =
+  | string
+  | ProviderTimeouts2$Outbound;
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigProviderTimeouts$outboundSchema:
+  z.ZodType<
+    CreateAiGatewayVirtualModelConfigProviderTimeouts$Outbound,
+    z.ZodTypeDef,
+    CreateAiGatewayVirtualModelConfigProviderTimeouts
+  > = smartUnion([
+    ProviderTimeouts1$outboundSchema,
+    z.lazy(() => ProviderTimeouts2$outboundSchema),
+  ]);
+
+export function createAiGatewayVirtualModelConfigProviderTimeoutsToJSON(
+  createAiGatewayVirtualModelConfigProviderTimeouts:
+    CreateAiGatewayVirtualModelConfigProviderTimeouts,
+): string {
+  return JSON.stringify(
+    CreateAiGatewayVirtualModelConfigProviderTimeouts$outboundSchema.parse(
+      createAiGatewayVirtualModelConfigProviderTimeouts,
+    ),
+  );
+}
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigSpeed$outboundSchema:
+  z.ZodNativeEnum<typeof CreateAiGatewayVirtualModelConfigSpeed> = z.nativeEnum(
+    CreateAiGatewayVirtualModelConfigSpeed,
+  );
+
+/** @internal */
+export type CreateAiGatewayVirtualModelConfigRequestBody$Outbound = {
+  virtualModelSlug: string;
+  displayName?: string | undefined;
+  description?: string | undefined;
+  status?: string | undefined;
+  modelSlug?: string | undefined;
+  models?: Array<Models2$Outbound | string> | undefined;
+  providerOrder?: Array<string> | undefined;
+  providerOnly?: Array<string> | undefined;
+  observabilityTags?: Array<string> | undefined;
+  providerOptions?: { [k: string]: { [k: string]: any } } | undefined;
+  byokCredentialIds?: Array<string> | undefined;
+  inferenceRegion?:
+    | CreateAiGatewayVirtualModelConfigInferenceRegion$Outbound
+    | undefined;
+  sort?: string | undefined;
+  has?: Array<string> | undefined;
+  caching?: string | undefined;
+  serviceTier?: string | undefined;
+  providerTimeouts?: string | ProviderTimeouts2$Outbound | undefined;
+  zeroDataRetention?: boolean | undefined;
+  hipaaCompliant?: boolean | undefined;
+  disallowPromptTraining?: boolean | undefined;
+  speed?: string | undefined;
+  allowFallbackFromFast?: boolean | undefined;
+};
+
+/** @internal */
+export const CreateAiGatewayVirtualModelConfigRequestBody$outboundSchema:
+  z.ZodType<
+    CreateAiGatewayVirtualModelConfigRequestBody$Outbound,
+    z.ZodTypeDef,
+    CreateAiGatewayVirtualModelConfigRequestBody
+  > = z.object({
+    virtualModelSlug: z.string(),
+    displayName: z.string().optional(),
+    description: z.string().optional(),
+    status: z.string().optional(),
+    modelSlug: z.string().optional(),
+    models: z.array(
+      smartUnion([z.lazy(() => Models2$outboundSchema), z.string()]),
+    ).optional(),
+    providerOrder: z.array(z.string()).optional(),
+    providerOnly: z.array(z.string()).optional(),
+    observabilityTags: z.array(z.string()).optional(),
+    providerOptions: z.record(z.record(z.any())).optional(),
+    byokCredentialIds: z.array(z.string()).optional(),
+    inferenceRegion: z.lazy(() =>
+      CreateAiGatewayVirtualModelConfigInferenceRegion$outboundSchema
+    ).optional(),
+    sort: CreateAiGatewayVirtualModelConfigSort$outboundSchema.optional(),
+    has: z.array(CreateAiGatewayVirtualModelConfigHas$outboundSchema)
+      .optional(),
+    caching: CreateAiGatewayVirtualModelConfigCaching$outboundSchema.optional(),
+    serviceTier: CreateAiGatewayVirtualModelConfigServiceTier$outboundSchema
+      .optional(),
+    providerTimeouts: smartUnion([
+      ProviderTimeouts1$outboundSchema,
+      z.lazy(() => ProviderTimeouts2$outboundSchema),
+    ]).optional(),
+    zeroDataRetention: z.boolean().optional(),
+    hipaaCompliant: z.boolean().optional(),
+    disallowPromptTraining: z.boolean().optional(),
+    speed: CreateAiGatewayVirtualModelConfigSpeed$outboundSchema.optional(),
+    allowFallbackFromFast: z.boolean().optional(),
+  });
+
+export function createAiGatewayVirtualModelConfigRequestBodyToJSON(
+  createAiGatewayVirtualModelConfigRequestBody:
+    CreateAiGatewayVirtualModelConfigRequestBody,
+): string {
+  return JSON.stringify(
+    CreateAiGatewayVirtualModelConfigRequestBody$outboundSchema.parse(
+      createAiGatewayVirtualModelConfigRequestBody,
+    ),
+  );
+}
 
 /** @internal */
 export type CreateAiGatewayVirtualModelConfigRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
+  RequestBody?:
+    | CreateAiGatewayVirtualModelConfigRequestBody$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -29,6 +707,13 @@ export const CreateAiGatewayVirtualModelConfigRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
+  requestBody: z.lazy(() =>
+    CreateAiGatewayVirtualModelConfigRequestBody$outboundSchema
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    requestBody: "RequestBody",
+  });
 });
 
 export function createAiGatewayVirtualModelConfigRequestToJSON(

@@ -11,5 +11,5 @@ let value: GetKmsIssuerDiscoveryLayout = "kms";
 ## Values
 
 ```typescript
-"connect" | "kms"
+"connect" | "integrations" | "kms"
 ```

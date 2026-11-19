@@ -1,18 +1,16 @@
 # GetProjectsResponseBodyProjectsResponse200ApplicationJson3Action
 
-What to do when the gate trips: pause the rollout, or roll it back.
-
 ## Example Usage
 
 ```typescript
-import { GetProjectsResponseBodyProjectsResponse200ApplicationJson3Action } from "@vercel/sdk/models/getprojectstoprojectsresponse2001.js";
+import { GetProjectsResponseBodyProjectsResponse200ApplicationJson3Action } from "@vercel/sdk/models/getprojectsfromprojectsresponse2.js";
 
 let value: GetProjectsResponseBodyProjectsResponse200ApplicationJson3Action =
-  "rollback";
+  "redirect";
 ```
 
 ## Values
 
 ```typescript
-"pause" | "rollback"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

@@ -5,17 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndForty } from "@vercel/sdk/models/threehundredandfour.js";
+import { ThreeHundredAndForty } from "@vercel/sdk/models/threehundredandfifteen.js";
 
 let value: ThreeHundredAndForty = {
-  projects: [],
+  domain: "left-submitter.org",
+  gitBranch: null,
+  projectId: "<id>",
+  projectName: "<value>",
+  redirect: "<value>",
+  redirectStatusCode: 5064.17,
+  target: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `directoryType`                                          | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
-| `projects`                                               | [models.PayloadProjects](../models/payloadprojects.md)[] | :heavy_check_mark:                                       | N/A                                                      |
-| `teamMembership`                                         | [models.TeamMembership](../models/teammembership.md)     | :heavy_minus_sign:                                       | N/A                                                      |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `configuredBy`       | *string*             | :heavy_minus_sign:   | N/A                  |
+| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
+| `gitBranch`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
+| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
+| `redirect`           | *string*             | :heavy_check_mark:   | N/A                  |
+| `redirectStatusCode` | *number*             | :heavy_check_mark:   | N/A                  |
+| `target`             | *string*             | :heavy_check_mark:   | N/A                  |

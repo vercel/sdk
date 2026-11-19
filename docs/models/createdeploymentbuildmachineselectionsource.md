@@ -5,7 +5,7 @@ The setting which selected the build machine when the deployment was created. Fr
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentBuildMachineSelectionSource } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200type.js";
+import { CreateDeploymentBuildMachineSelectionSource } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2serviceseq.js";
 
 let value: CreateDeploymentBuildMachineSelectionSource = "team-setting";
 ```

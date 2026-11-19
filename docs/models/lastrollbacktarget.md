@@ -5,7 +5,7 @@ Legacy mirror of `lastAliasRequest` without `type`, kept for CLI compatibility. 
 ## Example Usage
 
 ```typescript
-import { LastRollbackTarget } from "@vercel/sdk/models/createprojectprojectsoidctokenclaims.js";
+import { LastRollbackTarget } from "@vercel/sdk/models/createprojectprojectsresponse200applicationjsonresponsebodytargetstype.js";
 
 let value: LastRollbackTarget = {};
 ```

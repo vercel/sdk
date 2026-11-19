@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarIssuerMode } from "@vercel/sdk/models/uploadprojectavatarfrom1.js";
+import { UploadProjectAvatarIssuerMode } from "@vercel/sdk/models/uploadprojectavatartoprojectsresponsepreset.js";
 
 let value: UploadProjectAvatarIssuerMode = "global";
 ```

@@ -5,17 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightySix } from "@vercel/sdk/models/threehundredandsixtysix.js";
+import { ThreeHundredAndEightySix } from "@vercel/sdk/models/ssoprotectioncve55182migrationappliedfrom.js";
 
 let value: ThreeHundredAndEightySix = {
-  projectId: "<id>",
-  sandboxId: "<id>",
+  connectionId: "<id>",
+  actorType: "admin",
+  certificateFingerprints: [],
+  created: false,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `sandboxId`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `connectionId`                                                                   | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload386ActorType](../models/usereventpayload386actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `certificateFingerprints`                                                        | *string*[]                                                                       | :heavy_check_mark:                                                               | N/A                                                                              |
+| `attributeMappingChanged`                                                        | *true*                                                                           | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `created`                                                                        | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
+| `previousCertificateFingerprints`                                                | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |

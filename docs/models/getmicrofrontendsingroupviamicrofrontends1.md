@@ -5,7 +5,7 @@ Set when a Vercel App or Integration acts on behalf of a {@link User}. Captures 
 ## Example Usage
 
 ```typescript
-import { GetMicrofrontendsInGroupViaMicrofrontends1 } from "@vercel/sdk/models/getmicrofrontendsingroupfrom1.js";
+import { GetMicrofrontendsInGroupViaMicrofrontends1 } from "@vercel/sdk/models/getmicrofrontendsingrouptomicrofrontendsresponsepreset.js";
 
 let value: GetMicrofrontendsInGroupViaMicrofrontends1 = {
   app: {

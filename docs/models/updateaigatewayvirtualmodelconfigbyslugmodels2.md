@@ -1,0 +1,21 @@
+# UpdateAiGatewayVirtualModelConfigBySlugModels2
+
+A conditional fallback. Only an alias can have one.
+
+## Example Usage
+
+```typescript
+import { UpdateAiGatewayVirtualModelConfigBySlugModels2 } from "@vercel/sdk/models/updateaigatewayvirtualmodelconfigbyslugop.js";
+
+let value: UpdateAiGatewayVirtualModelConfigBySlugModels2 = {
+  model: "Aventador",
+  when: {},
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                                             | Type                                                                                                                                                                                                                                              | Required                                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `model`                                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                                                | A model ID: a catalog model such as `openai/gpt-4o`, or one of your team's private models as `private/<slug>`. A fallback can also name a virtual model as `vmc/<slug>`.                                                                          |
+| `when`                                                                                                                                                                                                                                            | [models.UpdateAiGatewayVirtualModelConfigBySlugModelsWhen](../models/updateaigatewayvirtualmodelconfigbyslugmodelswhen.md)                                                                                                                        | :heavy_check_mark:                                                                                                                                                                                                                                | The fallback model is used when the answers of the primary model match this condition. Set exactly one of `confidenceBelow`, `probabilityBetween`, `any`, `all`, or `atLeast`. A condition tree can be 5 levels deep and can hold 100 conditions. |

@@ -5,21 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtyFive } from "@vercel/sdk/models/fourhundredandnineteen.js";
+import { FourHundredAndThirtyFive } from "@vercel/sdk/models/usereventpayloadtargetkind.js";
 
-let value: FourHundredAndThirtyFive = {
-  enabled: false,
-  environment: "preview",
-  projectId: "<id>",
-  projectName: "<value>",
-};
+let value: FourHundredAndThirtyFive = {};
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `enabled`                                                    | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |
-| `environment`                                                | [models.PayloadEnvironment](../models/payloadenvironment.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `projectName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `disabled`                                                                       | *boolean*                                                                        | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload435ActorType](../models/usereventpayload435actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarBotFilter } from "@vercel/sdk/models/deleteprojectavatarfrom1.js";
+import { DeleteProjectAvatarBotFilter } from "@vercel/sdk/models/deleteprojectavatartoprojectsresponsepreset.js";
 
 let value: DeleteProjectAvatarBotFilter = {
   active: false,
@@ -12,7 +12,7 @@ let value: DeleteProjectAvatarBotFilter = {
 
 ## Fields
 
-| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `action`                                                                                                         | [models.DeleteProjectAvatarProjectsResponse200Action](../models/deleteprojectavatarprojectsresponse200action.md) | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
-| `active`                                                                                                         | *boolean*                                                                                                        | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                   | [models.DeleteProjectAvatarProjectsResponseAction](../models/deleteprojectavatarprojectsresponseaction.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
+| `active`                                                                                                   | *boolean*                                                                                                  | :heavy_check_mark:                                                                                         | N/A                                                                                                        |

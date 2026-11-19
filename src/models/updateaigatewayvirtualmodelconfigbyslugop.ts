@@ -3,6 +3,320 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
+import { ClosedEnum } from "../types/enums.js";
+import { smartUnion } from "../types/smartUnion.js";
+
+export type UpdateAiGatewayVirtualModelConfigBySlugModelsAny = {};
+
+export type UpdateAiGatewayVirtualModelConfigBySlugModelsAll = {};
+
+export type UpdateAiGatewayVirtualModelConfigBySlugModelsConditions = {};
+
+export type UpdateAiGatewayVirtualModelConfigBySlugModelsAtLeast = {
+  /**
+   * Must not be more than the number of conditions.
+   */
+  count: number;
+  /**
+   * Nested conditions. Each one has the same shape as `when`.
+   */
+  conditions: Array<UpdateAiGatewayVirtualModelConfigBySlugModelsConditions>;
+};
+
+/**
+ * The fallback model is used when the answers of the primary model match this condition. Set exactly one of `confidenceBelow`, `probabilityBetween`, `any`, `all`, or `atLeast`. A condition tree can be 5 levels deep and can hold 100 conditions.
+ */
+export type UpdateAiGatewayVirtualModelConfigBySlugModelsWhen = {
+  /**
+   * The question to check, with `confidenceBelow` or `probabilityBetween`. Without it, the condition checks every question of the applicable type.
+   */
+  question?: string | undefined;
+  confidenceBelow?: number | undefined;
+  /**
+   * A `[lower, upper]` pair.
+   */
+  probabilityBetween?: Array<number> | undefined;
+  /**
+   * Nested conditions. Each one has the same shape as `when`.
+   */
+  any?: Array<UpdateAiGatewayVirtualModelConfigBySlugModelsAny> | undefined;
+  /**
+   * Nested conditions. Each one has the same shape as `when`.
+   */
+  all?: Array<UpdateAiGatewayVirtualModelConfigBySlugModelsAll> | undefined;
+  atLeast?: UpdateAiGatewayVirtualModelConfigBySlugModelsAtLeast | undefined;
+};
+
+/**
+ * A conditional fallback. Only an alias can have one.
+ */
+export type UpdateAiGatewayVirtualModelConfigBySlugModels2 = {
+  /**
+   * A model ID: a catalog model such as `openai/gpt-4o`, or one of your team's private models as `private/<slug>`. A fallback can also name a virtual model as `vmc/<slug>`.
+   */
+  model: string;
+  /**
+   * The fallback model is used when the answers of the primary model match this condition. Set exactly one of `confidenceBelow`, `probabilityBetween`, `any`, `all`, or `atLeast`. A condition tree can be 5 levels deep and can hold 100 conditions.
+   */
+  when: UpdateAiGatewayVirtualModelConfigBySlugModelsWhen;
+};
+
+export type UpdateAiGatewayVirtualModelConfigBySlugModels =
+  | UpdateAiGatewayVirtualModelConfigBySlugModels2
+  | string;
+
+/**
+ * The pin scope: `zone` (a geo zone) or `global`.
+ */
+export const UpdateAiGatewayVirtualModelConfigBySlugScope = {
+  Zone: "zone",
+  Global: "global",
+} as const;
+/**
+ * The pin scope: `zone` (a geo zone) or `global`.
+ */
+export type UpdateAiGatewayVirtualModelConfigBySlugScope = ClosedEnum<
+  typeof UpdateAiGatewayVirtualModelConfigBySlugScope
+>;
+
+/**
+ * The pin scope: `zone` (a geo zone) or `global`.
+ */
+export const UpdateAiGatewayVirtualModelConfigBySlugAiGatewayScope = {
+  Zone: "zone",
+  Global: "global",
+} as const;
+/**
+ * The pin scope: `zone` (a geo zone) or `global`.
+ */
+export type UpdateAiGatewayVirtualModelConfigBySlugAiGatewayScope = ClosedEnum<
+  typeof UpdateAiGatewayVirtualModelConfigBySlugAiGatewayScope
+>;
+
+export type UpdateAiGatewayVirtualModelConfigBySlugProviders = {
+  /**
+   * The pin scope: `zone` (a geo zone) or `global`.
+   */
+  scope?: UpdateAiGatewayVirtualModelConfigBySlugAiGatewayScope | undefined;
+  /**
+   * The geo zone, for example `us` or `eu`. Required when `scope` is `zone`.
+   */
+  geoRegion?: string | undefined;
+};
+
+/**
+ * The region that requests are pinned to. `null` removes the stored value.
+ */
+export type UpdateAiGatewayVirtualModelConfigBySlugInferenceRegion = {
+  /**
+   * The pin scope: `zone` (a geo zone) or `global`.
+   */
+  scope?: UpdateAiGatewayVirtualModelConfigBySlugScope | undefined;
+  /**
+   * The geo zone, for example `us` or `eu`. Required when `scope` is `zone`.
+   */
+  geoRegion?: string | undefined;
+  /**
+   * Region overrides for each provider, keyed by provider slug.
+   */
+  providers?: {
+    [k: string]: UpdateAiGatewayVirtualModelConfigBySlugProviders | null;
+  } | undefined;
+};
+
+/**
+ * Rank eligible providers by an attribute. `@default` ignores the value from the inference request. `null` removes the stored value.
+ */
+export const UpdateAiGatewayVirtualModelConfigBySlugSort = {
+  AtDefault: "@default",
+  Cost: "cost",
+  Ttft: "ttft",
+  Tps: "tps",
+  Price: "price",
+  Latency: "latency",
+  Throughput: "throughput",
+} as const;
+/**
+ * Rank eligible providers by an attribute. `@default` ignores the value from the inference request. `null` removes the stored value.
+ */
+export type UpdateAiGatewayVirtualModelConfigBySlugSort = ClosedEnum<
+  typeof UpdateAiGatewayVirtualModelConfigBySlugSort
+>;
+
+export const UpdateAiGatewayVirtualModelConfigBySlugHas = {
+  ImplicitCaching: "implicit-caching",
+  Reasoning: "reasoning",
+  StructuredOutput: "structured-output",
+  ToolUse: "tool-use",
+  Vision: "vision",
+} as const;
+export type UpdateAiGatewayVirtualModelConfigBySlugHas = ClosedEnum<
+  typeof UpdateAiGatewayVirtualModelConfigBySlugHas
+>;
+
+/**
+ * Use caching if available. `@default` ignores the value from the inference request. `null` removes the stored value.
+ */
+export const UpdateAiGatewayVirtualModelConfigBySlugCaching = {
+  AtDefault: "@default",
+  Auto: "auto",
+} as const;
+/**
+ * Use caching if available. `@default` ignores the value from the inference request. `null` removes the stored value.
+ */
+export type UpdateAiGatewayVirtualModelConfigBySlugCaching = ClosedEnum<
+  typeof UpdateAiGatewayVirtualModelConfigBySlugCaching
+>;
+
+/**
+ * The service tier for providers that support it. `@default` ignores the value from the inference request. `null` removes the stored value.
+ */
+export const UpdateAiGatewayVirtualModelConfigBySlugServiceTier = {
+  AtDefault: "@default",
+  Flex: "flex",
+  Priority: "priority",
+  Fast: "fast",
+} as const;
+/**
+ * The service tier for providers that support it. `@default` ignores the value from the inference request. `null` removes the stored value.
+ */
+export type UpdateAiGatewayVirtualModelConfigBySlugServiceTier = ClosedEnum<
+  typeof UpdateAiGatewayVirtualModelConfigBySlugServiceTier
+>;
+
+export type UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2 = {
+  /**
+   * The timeout for each provider that uses a BYOK credential, keyed by provider slug.
+   */
+  byok?: { [k: string]: number } | undefined;
+};
+
+export const UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts1 = {
+  AtDefault: "@default",
+} as const;
+export type UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts1 =
+  ClosedEnum<typeof UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts1>;
+
+/**
+ * Provider timeouts in milliseconds. `@default` ignores the value from the inference request. `null` removes the stored value.
+ */
+export type UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts =
+  | UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts1
+  | UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2;
+
+/**
+ * Only use the fastest providers, with short timeouts. `null` removes the stored value.
+ */
+export const UpdateAiGatewayVirtualModelConfigBySlugSpeed = {
+  Fast: "fast",
+} as const;
+/**
+ * Only use the fastest providers, with short timeouts. `null` removes the stored value.
+ */
+export type UpdateAiGatewayVirtualModelConfigBySlugSpeed = ClosedEnum<
+  typeof UpdateAiGatewayVirtualModelConfigBySlugSpeed
+>;
+
+export type UpdateAiGatewayVirtualModelConfigBySlugRequestBody = {
+  /**
+   * The name shown in the UI.
+   */
+  displayName?: string | undefined;
+  description?: string | undefined;
+  /**
+   * The lifecycle status: `draft`, `active`, or `archived`. Any value other than `active` stops it serving requests. Defaults to `active`.
+   */
+  status?: string | undefined;
+  /**
+   * The model that the virtual model resolves to: a catalog model such as `openai/gpt-4o-mini`, or one of your team's private models as `private/<slug>`. Required on create.
+   */
+  modelSlug?: string | undefined;
+  /**
+   * The ordered fallback models, optionally led by one conditional `{ model, when }` entry.
+   */
+  models?:
+    | Array<UpdateAiGatewayVirtualModelConfigBySlugModels2 | string>
+    | undefined;
+  /**
+   * The providers to try, in order.
+   */
+  providerOrder?: Array<string> | undefined;
+  /**
+   * Restrict routing to these providers.
+   */
+  providerOnly?: Array<string> | undefined;
+  /**
+   * Observability tags attached to requests through this virtual model.
+   */
+  observabilityTags?: Array<string> | undefined;
+  /**
+   * Set to `false` to restore a deleted virtual model.
+   */
+  deleted?: false | undefined;
+  /**
+   * Provider-specific options, keyed by provider slug. The slug of one of your team's private providers is also valid. `null` removes the stored value.
+   */
+  providerOptions?: { [k: string]: { [k: string]: any } } | null | undefined;
+  /**
+   * The BYOK credentials that this virtual model can use. `null` removes the stored value.
+   */
+  byokCredentialIds?: Array<string> | null | undefined;
+  /**
+   * The region that requests are pinned to. `null` removes the stored value.
+   */
+  inferenceRegion?:
+    | UpdateAiGatewayVirtualModelConfigBySlugInferenceRegion
+    | null
+    | undefined;
+  /**
+   * Rank eligible providers by an attribute. `@default` ignores the value from the inference request. `null` removes the stored value.
+   */
+  sort?: UpdateAiGatewayVirtualModelConfigBySlugSort | null | undefined;
+  /**
+   * Limit providers to those with these features. `null` removes the stored value.
+   */
+  has?: Array<UpdateAiGatewayVirtualModelConfigBySlugHas> | null | undefined;
+  /**
+   * Use caching if available. `@default` ignores the value from the inference request. `null` removes the stored value.
+   */
+  caching?: UpdateAiGatewayVirtualModelConfigBySlugCaching | null | undefined;
+  /**
+   * The service tier for providers that support it. `@default` ignores the value from the inference request. `null` removes the stored value.
+   */
+  serviceTier?:
+    | UpdateAiGatewayVirtualModelConfigBySlugServiceTier
+    | null
+    | undefined;
+  /**
+   * Provider timeouts in milliseconds. `@default` ignores the value from the inference request. `null` removes the stored value.
+   */
+  providerTimeouts?:
+    | UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts1
+    | UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2
+    | null
+    | undefined;
+  /**
+   * Only use providers with zero data retention. `null` removes the stored value.
+   */
+  zeroDataRetention?: boolean | null | undefined;
+  /**
+   * Only use HIPAA-compliant providers. `null` removes the stored value.
+   */
+  hipaaCompliant?: boolean | null | undefined;
+  /**
+   * Only use providers that do not train on prompts. `null` removes the stored value.
+   */
+  disallowPromptTraining?: boolean | null | undefined;
+  /**
+   * Only use the fastest providers, with short timeouts. `null` removes the stored value.
+   */
+  speed?: UpdateAiGatewayVirtualModelConfigBySlugSpeed | null | undefined;
+  /**
+   * Allow fallback from fast to standard providers on failure. `null` removes the stored value.
+   */
+  allowFallbackFromFast?: boolean | null | undefined;
+};
 
 export type UpdateAiGatewayVirtualModelConfigBySlugRequest = {
   vmcSlug: string;
@@ -14,13 +328,494 @@ export type UpdateAiGatewayVirtualModelConfigBySlugRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
+  requestBody?: UpdateAiGatewayVirtualModelConfigBySlugRequestBody | undefined;
 };
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugModelsAny$Outbound = {};
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugModelsAny$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAny$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAny
+  > = z.object({});
+
+export function updateAiGatewayVirtualModelConfigBySlugModelsAnyToJSON(
+  updateAiGatewayVirtualModelConfigBySlugModelsAny:
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAny,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAny$outboundSchema.parse(
+      updateAiGatewayVirtualModelConfigBySlugModelsAny,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugModelsAll$Outbound = {};
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugModelsAll$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAll$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAll
+  > = z.object({});
+
+export function updateAiGatewayVirtualModelConfigBySlugModelsAllToJSON(
+  updateAiGatewayVirtualModelConfigBySlugModelsAll:
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAll,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAll$outboundSchema.parse(
+      updateAiGatewayVirtualModelConfigBySlugModelsAll,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugModelsConditions$Outbound =
+  {};
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugModelsConditions$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugModelsConditions$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugModelsConditions
+  > = z.object({});
+
+export function updateAiGatewayVirtualModelConfigBySlugModelsConditionsToJSON(
+  updateAiGatewayVirtualModelConfigBySlugModelsConditions:
+    UpdateAiGatewayVirtualModelConfigBySlugModelsConditions,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugModelsConditions$outboundSchema
+      .parse(updateAiGatewayVirtualModelConfigBySlugModelsConditions),
+  );
+}
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugModelsAtLeast$Outbound = {
+  count: number;
+  conditions: Array<
+    UpdateAiGatewayVirtualModelConfigBySlugModelsConditions$Outbound
+  >;
+};
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugModelsAtLeast$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAtLeast$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAtLeast
+  > = z.object({
+    count: z.number().int(),
+    conditions: z.array(
+      z.lazy(() =>
+        UpdateAiGatewayVirtualModelConfigBySlugModelsConditions$outboundSchema
+      ),
+    ),
+  });
+
+export function updateAiGatewayVirtualModelConfigBySlugModelsAtLeastToJSON(
+  updateAiGatewayVirtualModelConfigBySlugModelsAtLeast:
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAtLeast,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugModelsAtLeast$outboundSchema.parse(
+      updateAiGatewayVirtualModelConfigBySlugModelsAtLeast,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugModelsWhen$Outbound = {
+  question?: string | undefined;
+  confidenceBelow?: number | undefined;
+  probabilityBetween?: Array<number> | undefined;
+  any?:
+    | Array<UpdateAiGatewayVirtualModelConfigBySlugModelsAny$Outbound>
+    | undefined;
+  all?:
+    | Array<UpdateAiGatewayVirtualModelConfigBySlugModelsAll$Outbound>
+    | undefined;
+  atLeast?:
+    | UpdateAiGatewayVirtualModelConfigBySlugModelsAtLeast$Outbound
+    | undefined;
+};
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugModelsWhen$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugModelsWhen$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugModelsWhen
+  > = z.object({
+    question: z.string().optional(),
+    confidenceBelow: z.number().optional(),
+    probabilityBetween: z.array(z.number()).optional(),
+    any: z.array(
+      z.lazy(() =>
+        UpdateAiGatewayVirtualModelConfigBySlugModelsAny$outboundSchema
+      ),
+    ).optional(),
+    all: z.array(
+      z.lazy(() =>
+        UpdateAiGatewayVirtualModelConfigBySlugModelsAll$outboundSchema
+      ),
+    ).optional(),
+    atLeast: z.lazy(() =>
+      UpdateAiGatewayVirtualModelConfigBySlugModelsAtLeast$outboundSchema
+    ).optional(),
+  });
+
+export function updateAiGatewayVirtualModelConfigBySlugModelsWhenToJSON(
+  updateAiGatewayVirtualModelConfigBySlugModelsWhen:
+    UpdateAiGatewayVirtualModelConfigBySlugModelsWhen,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugModelsWhen$outboundSchema.parse(
+      updateAiGatewayVirtualModelConfigBySlugModelsWhen,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugModels2$Outbound = {
+  model: string;
+  when: UpdateAiGatewayVirtualModelConfigBySlugModelsWhen$Outbound;
+};
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugModels2$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugModels2$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugModels2
+  > = z.object({
+    model: z.string(),
+    when: z.lazy(() =>
+      UpdateAiGatewayVirtualModelConfigBySlugModelsWhen$outboundSchema
+    ),
+  });
+
+export function updateAiGatewayVirtualModelConfigBySlugModels2ToJSON(
+  updateAiGatewayVirtualModelConfigBySlugModels2:
+    UpdateAiGatewayVirtualModelConfigBySlugModels2,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugModels2$outboundSchema.parse(
+      updateAiGatewayVirtualModelConfigBySlugModels2,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugModels$Outbound =
+  | UpdateAiGatewayVirtualModelConfigBySlugModels2$Outbound
+  | string;
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugModels$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugModels$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugModels
+  > = smartUnion([
+    z.lazy(() => UpdateAiGatewayVirtualModelConfigBySlugModels2$outboundSchema),
+    z.string(),
+  ]);
+
+export function updateAiGatewayVirtualModelConfigBySlugModelsToJSON(
+  updateAiGatewayVirtualModelConfigBySlugModels:
+    UpdateAiGatewayVirtualModelConfigBySlugModels,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugModels$outboundSchema.parse(
+      updateAiGatewayVirtualModelConfigBySlugModels,
+    ),
+  );
+}
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugScope$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateAiGatewayVirtualModelConfigBySlugScope> = z
+    .nativeEnum(UpdateAiGatewayVirtualModelConfigBySlugScope);
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugAiGatewayScope$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateAiGatewayVirtualModelConfigBySlugAiGatewayScope
+  > = z.nativeEnum(UpdateAiGatewayVirtualModelConfigBySlugAiGatewayScope);
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugProviders$Outbound = {
+  scope?: string | undefined;
+  geoRegion?: string | undefined;
+};
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugProviders$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugProviders$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugProviders
+  > = z.object({
+    scope: UpdateAiGatewayVirtualModelConfigBySlugAiGatewayScope$outboundSchema
+      .optional(),
+    geoRegion: z.string().optional(),
+  });
+
+export function updateAiGatewayVirtualModelConfigBySlugProvidersToJSON(
+  updateAiGatewayVirtualModelConfigBySlugProviders:
+    UpdateAiGatewayVirtualModelConfigBySlugProviders,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugProviders$outboundSchema.parse(
+      updateAiGatewayVirtualModelConfigBySlugProviders,
+    ),
+  );
+}
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugInferenceRegion$Outbound = {
+  scope?: string | undefined;
+  geoRegion?: string | undefined;
+  providers?: {
+    [k: string]:
+      | UpdateAiGatewayVirtualModelConfigBySlugProviders$Outbound
+      | null;
+  } | undefined;
+};
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugInferenceRegion$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugInferenceRegion$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugInferenceRegion
+  > = z.object({
+    scope: UpdateAiGatewayVirtualModelConfigBySlugScope$outboundSchema
+      .optional(),
+    geoRegion: z.string().optional(),
+    providers: z.record(
+      z.nullable(z.lazy(() =>
+        UpdateAiGatewayVirtualModelConfigBySlugProviders$outboundSchema
+      )),
+    ).optional(),
+  });
+
+export function updateAiGatewayVirtualModelConfigBySlugInferenceRegionToJSON(
+  updateAiGatewayVirtualModelConfigBySlugInferenceRegion:
+    UpdateAiGatewayVirtualModelConfigBySlugInferenceRegion,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugInferenceRegion$outboundSchema.parse(
+      updateAiGatewayVirtualModelConfigBySlugInferenceRegion,
+    ),
+  );
+}
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugSort$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateAiGatewayVirtualModelConfigBySlugSort> = z
+    .nativeEnum(UpdateAiGatewayVirtualModelConfigBySlugSort);
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugHas$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateAiGatewayVirtualModelConfigBySlugHas> = z
+    .nativeEnum(UpdateAiGatewayVirtualModelConfigBySlugHas);
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugCaching$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateAiGatewayVirtualModelConfigBySlugCaching> = z
+    .nativeEnum(UpdateAiGatewayVirtualModelConfigBySlugCaching);
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugServiceTier$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateAiGatewayVirtualModelConfigBySlugServiceTier> = z
+    .nativeEnum(UpdateAiGatewayVirtualModelConfigBySlugServiceTier);
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2$Outbound =
+  {
+    byok?: { [k: string]: number } | undefined;
+  };
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2
+  > = z.object({
+    byok: z.record(z.number().int()).optional(),
+  });
+
+export function updateAiGatewayVirtualModelConfigBySlugProviderTimeouts2ToJSON(
+  updateAiGatewayVirtualModelConfigBySlugProviderTimeouts2:
+    UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2$outboundSchema
+      .parse(updateAiGatewayVirtualModelConfigBySlugProviderTimeouts2),
+  );
+}
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts1$outboundSchema:
+  z.ZodNativeEnum<
+    typeof UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts1
+  > = z.nativeEnum(UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts1);
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts$Outbound =
+  | string
+  | UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2$Outbound;
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts
+  > = smartUnion([
+    UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts1$outboundSchema,
+    z.lazy(() =>
+      UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2$outboundSchema
+    ),
+  ]);
+
+export function updateAiGatewayVirtualModelConfigBySlugProviderTimeoutsToJSON(
+  updateAiGatewayVirtualModelConfigBySlugProviderTimeouts:
+    UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts$outboundSchema
+      .parse(updateAiGatewayVirtualModelConfigBySlugProviderTimeouts),
+  );
+}
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugSpeed$outboundSchema:
+  z.ZodNativeEnum<typeof UpdateAiGatewayVirtualModelConfigBySlugSpeed> = z
+    .nativeEnum(UpdateAiGatewayVirtualModelConfigBySlugSpeed);
+
+/** @internal */
+export type UpdateAiGatewayVirtualModelConfigBySlugRequestBody$Outbound = {
+  displayName?: string | undefined;
+  description?: string | undefined;
+  status?: string | undefined;
+  modelSlug?: string | undefined;
+  models?:
+    | Array<UpdateAiGatewayVirtualModelConfigBySlugModels2$Outbound | string>
+    | undefined;
+  providerOrder?: Array<string> | undefined;
+  providerOnly?: Array<string> | undefined;
+  observabilityTags?: Array<string> | undefined;
+  deleted?: false | undefined;
+  providerOptions?: { [k: string]: { [k: string]: any } } | null | undefined;
+  byokCredentialIds?: Array<string> | null | undefined;
+  inferenceRegion?:
+    | UpdateAiGatewayVirtualModelConfigBySlugInferenceRegion$Outbound
+    | null
+    | undefined;
+  sort?: string | null | undefined;
+  has?: Array<string> | null | undefined;
+  caching?: string | null | undefined;
+  serviceTier?: string | null | undefined;
+  providerTimeouts?:
+    | string
+    | UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2$Outbound
+    | null
+    | undefined;
+  zeroDataRetention?: boolean | null | undefined;
+  hipaaCompliant?: boolean | null | undefined;
+  disallowPromptTraining?: boolean | null | undefined;
+  speed?: string | null | undefined;
+  allowFallbackFromFast?: boolean | null | undefined;
+};
+
+/** @internal */
+export const UpdateAiGatewayVirtualModelConfigBySlugRequestBody$outboundSchema:
+  z.ZodType<
+    UpdateAiGatewayVirtualModelConfigBySlugRequestBody$Outbound,
+    z.ZodTypeDef,
+    UpdateAiGatewayVirtualModelConfigBySlugRequestBody
+  > = z.object({
+    displayName: z.string().optional(),
+    description: z.string().optional(),
+    status: z.string().optional(),
+    modelSlug: z.string().optional(),
+    models: z.array(
+      smartUnion([
+        z.lazy(() =>
+          UpdateAiGatewayVirtualModelConfigBySlugModels2$outboundSchema
+        ),
+        z.string(),
+      ]),
+    ).optional(),
+    providerOrder: z.array(z.string()).optional(),
+    providerOnly: z.array(z.string()).optional(),
+    observabilityTags: z.array(z.string()).optional(),
+    deleted: z.literal(false).optional(),
+    providerOptions: z.nullable(z.record(z.record(z.any()))).optional(),
+    byokCredentialIds: z.nullable(z.array(z.string())).optional(),
+    inferenceRegion: z.nullable(
+      z.lazy(() =>
+        UpdateAiGatewayVirtualModelConfigBySlugInferenceRegion$outboundSchema
+      ),
+    ).optional(),
+    sort: z.nullable(UpdateAiGatewayVirtualModelConfigBySlugSort$outboundSchema)
+      .optional(),
+    has: z.nullable(
+      z.array(UpdateAiGatewayVirtualModelConfigBySlugHas$outboundSchema),
+    ).optional(),
+    caching: z.nullable(
+      UpdateAiGatewayVirtualModelConfigBySlugCaching$outboundSchema,
+    ).optional(),
+    serviceTier: z.nullable(
+      UpdateAiGatewayVirtualModelConfigBySlugServiceTier$outboundSchema,
+    ).optional(),
+    providerTimeouts: z.nullable(
+      smartUnion([
+        UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts1$outboundSchema,
+        z.lazy(() =>
+          UpdateAiGatewayVirtualModelConfigBySlugProviderTimeouts2$outboundSchema
+        ),
+      ]),
+    ).optional(),
+    zeroDataRetention: z.nullable(z.boolean()).optional(),
+    hipaaCompliant: z.nullable(z.boolean()).optional(),
+    disallowPromptTraining: z.nullable(z.boolean()).optional(),
+    speed: z.nullable(
+      UpdateAiGatewayVirtualModelConfigBySlugSpeed$outboundSchema,
+    ).optional(),
+    allowFallbackFromFast: z.nullable(z.boolean()).optional(),
+  });
+
+export function updateAiGatewayVirtualModelConfigBySlugRequestBodyToJSON(
+  updateAiGatewayVirtualModelConfigBySlugRequestBody:
+    UpdateAiGatewayVirtualModelConfigBySlugRequestBody,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayVirtualModelConfigBySlugRequestBody$outboundSchema.parse(
+      updateAiGatewayVirtualModelConfigBySlugRequestBody,
+    ),
+  );
+}
 
 /** @internal */
 export type UpdateAiGatewayVirtualModelConfigBySlugRequest$Outbound = {
   vmcSlug: string;
   teamId?: string | undefined;
   slug?: string | undefined;
+  RequestBody?:
+    | UpdateAiGatewayVirtualModelConfigBySlugRequestBody$Outbound
+    | undefined;
 };
 
 /** @internal */
@@ -33,6 +828,13 @@ export const UpdateAiGatewayVirtualModelConfigBySlugRequest$outboundSchema:
     vmcSlug: z.string(),
     teamId: z.string().optional(),
     slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      UpdateAiGatewayVirtualModelConfigBySlugRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
   });
 
 export function updateAiGatewayVirtualModelConfigBySlugRequestToJSON(

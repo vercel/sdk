@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyFive } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
+import { EightyFive } from "@vercel/sdk/models/payloadresources.js";
 
 let value: EightyFive = {
   autoExposeSystemEnvs: false,

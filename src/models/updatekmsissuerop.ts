@@ -54,6 +54,7 @@ export type UpdateKmsIssuerAlgorithm = ClosedEnum<
 
 export const UpdateKmsIssuerDiscoveryLayout = {
   Connect: "connect",
+  Integrations: "integrations",
   Kms: "kms",
 } as const;
 export type UpdateKmsIssuerDiscoveryLayout = ClosedEnum<

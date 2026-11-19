@@ -5,7 +5,7 @@ Password protection settings returned without the secret password hash.
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarPasswordProtection } from "@vercel/sdk/models/uploadprojectavatarfrom1.js";
+import { UploadProjectAvatarPasswordProtection } from "@vercel/sdk/models/uploadprojectavatartoprojectsresponsepreset.js";
 
 let value: UploadProjectAvatarPasswordProtection = {
   deploymentType: "preview",

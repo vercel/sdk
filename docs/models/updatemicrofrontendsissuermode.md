@@ -5,7 +5,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateMicrofrontendsIssuerMode } from "@vercel/sdk/models/updatemicrofrontendsfrompreset.js";
+import { UpdateMicrofrontendsIssuerMode } from "@vercel/sdk/models/updatemicrofrontendstoprojects2.js";
 
 let value: UpdateMicrofrontendsIssuerMode = "global";
 ```

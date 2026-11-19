@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CodeReviewSelection } from "@vercel/sdk/models/threehundredandsixtysix.js";
+import { CodeReviewSelection } from "@vercel/sdk/models/ssoprotectioncve55182migrationappliedfrom.js";
 
 let value: CodeReviewSelection = {
   initial: true,

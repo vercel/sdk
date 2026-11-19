@@ -40,6 +40,10 @@ export type ConnectConnectorUpdateResult = {
    * Provider-side configuration synchronization result.
    */
   serviceSync?: ConnectServiceSync | undefined;
+  /**
+   * When true, scopes were removed. The provider keeps scopes it already granted, so remove the app from the provider workspace and install it again before the removal takes effect. Reinstalling alone does not remove scopes.
+   */
+  uninstallNeeded?: boolean | undefined;
 };
 
 /** @internal */
@@ -52,6 +56,7 @@ export const ConnectConnectorUpdateResult$inboundSchema: z.ZodType<
   reconsentNeeded: types.optional(ConnectReconsent$inboundSchema),
   reinstallNeeded: types.optional(types.boolean()),
   serviceSync: types.optional(ConnectServiceSync$inboundSchema),
+  uninstallNeeded: types.optional(types.boolean()),
 });
 
 export function connectConnectorUpdateResultFromJSON(

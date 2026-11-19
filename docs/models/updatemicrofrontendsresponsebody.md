@@ -82,14 +82,6 @@ let value: UpdateMicrofrontendsResponseBody = {
   },
   rollingRelease: {
     canaryResponseHeader: false,
-    gate: {
-      action: "pause",
-      checks: [],
-      dryRun: true,
-      enabled: true,
-      failureThreshold: 3,
-      windowSize: 5,
-    },
     stages: [
       {
         duration: 600,

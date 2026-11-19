@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventyThree } from "@vercel/sdk/models/threehundredandsixtysix.js";
+import { ThreeHundredAndSeventyThree } from "@vercel/sdk/models/threehundredandfifteen.js";
 
 let value: ThreeHundredAndSeventyThree = {
-  oldSsoProtection: "preview",
-  ssoProtection: {
-    deploymentType: "prod_deployment_urls_and_all_previews",
-  },
+  projectId: "<id>",
+  projectName: "<value>",
+  publicSource: true,
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `oldSsoProtection`               | *models.PayloadOldSsoProtection* | :heavy_check_mark:               | N/A                              |
-| `projectId`                      | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `projectName`                    | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `ssoProtection`                  | *models.PayloadSsoProtection*    | :heavy_check_mark:               | N/A                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `publicSource`     | *boolean*          | :heavy_check_mark: | N/A                |

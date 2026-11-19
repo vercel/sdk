@@ -285,6 +285,7 @@ export type CreateIntegrationStoreDirectBillingPlan = {
   description: string;
   details?: Array<CreateIntegrationStoreDirectDetails> | undefined;
   disabled?: boolean | undefined;
+  disabledReason?: string | undefined;
   effectiveDate?: string | undefined;
   highlightedDetails?:
     | Array<CreateIntegrationStoreDirectHighlightedDetails>
@@ -1776,6 +1777,7 @@ export const CreateIntegrationStoreDirectBillingPlan$inboundSchema: z.ZodType<
     z.array(z.lazy(() => CreateIntegrationStoreDirectDetails$inboundSchema)),
   ),
   disabled: types.optional(types.boolean()),
+  disabledReason: types.optional(types.string()),
   effectiveDate: types.optional(types.string()),
   highlightedDetails: types.optional(
     z.array(z.lazy(() =>

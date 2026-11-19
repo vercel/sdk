@@ -1,6 +1,6 @@
 # SearchVercelCiLogsResponseBody
 
-Successfully searched task logs.
+Successfully searched setup and task logs.
 
 ## Example Usage
 

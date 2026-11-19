@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentServicesHttpGet } from "@vercel/sdk/models/servicesdestination.js";
+import { CancelDeploymentServicesHttpGet } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicestype.js";
 
 let value: CancelDeploymentServicesHttpGet = {
   port: 8447.8,

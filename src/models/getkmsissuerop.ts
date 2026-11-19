@@ -40,6 +40,7 @@ export type GetKmsIssuerAlgorithm = ClosedEnum<typeof GetKmsIssuerAlgorithm>;
 
 export const GetKmsIssuerDiscoveryLayout = {
   Connect: "connect",
+  Integrations: "integrations",
   Kms: "kms",
 } as const;
 export type GetKmsIssuerDiscoveryLayout = ClosedEnum<

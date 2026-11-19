@@ -3,19 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload323Next } from "@vercel/sdk/models/threehundredandfour.js";
+import { UserEventPayload323Next } from "@vercel/sdk/models/threehundredandfifteen.js";
 
 let value: UserEventPayload323Next = {
-  gitProvider: "vercel",
-  gitRepoId: "<id>",
-  gitRepositoryName: "<value>",
+  functionDefaultRegions: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `gitProvider`                                                                  | [models.UserEventPayloadGitProvider](../models/usereventpayloadgitprovider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `gitRepoId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `gitRepositoryName`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultRegions` | *string*[]               | :heavy_check_mark:       | N/A                      |

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OldPasswordProtection } from "@vercel/sdk/models/allowlistedreadystatereasoninternal.js";
+import { OldPasswordProtection } from "@vercel/sdk/models/payloadresources.js";
 
 let value: OldPasswordProtection = {
   deploymentType: "all",
@@ -14,4 +14,4 @@ let value: OldPasswordProtection = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `deploymentType`                                                                           | [models.UserEventPayload127DeploymentType](../models/usereventpayload127deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `deploymentType`                                                                           | [models.UserEventPayload128DeploymentType](../models/usereventpayload128deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

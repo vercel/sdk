@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadPassport } from "@vercel/sdk/models/usereventpayload238prevproject.js";
+import { UserEventPayloadPassport } from "@vercel/sdk/models/twohundredandfiftytwo.js";
 
 let value: UserEventPayloadPassport = {
   connectorId: "<id>",
@@ -16,4 +16,4 @@ let value: UserEventPayloadPassport = {
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
 | `connectorId`                                                                              | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
-| `deploymentType`                                                                           | [models.UserEventPayload276DeploymentType](../models/usereventpayload276deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `deploymentType`                                                                           | [models.UserEventPayload278DeploymentType](../models/usereventpayload278deploymenttype.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

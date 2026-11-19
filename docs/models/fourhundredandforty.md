@@ -5,22 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndForty } from "@vercel/sdk/models/fourhundredandnineteen.js";
+import { FourHundredAndForty } from "@vercel/sdk/models/usereventpayloadtargetkind.js";
 
 let value: FourHundredAndForty = {
-  teamName: "<value>",
+  next: {},
+  previous: {},
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `bitbucketUsername` | *string*            | :heavy_minus_sign:  | N/A                 |
-| `githubUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
-| `gitlabUsername`    | *string*            | :heavy_minus_sign:  | N/A                 |
-| `gitUsername`       | *string*            | :heavy_minus_sign:  | N/A                 |
-| `teamId`            | *string*            | :heavy_minus_sign:  | N/A                 |
-| `teamName`          | *string*            | :heavy_check_mark:  | N/A                 |
-| `updatedUid`        | *string*            | :heavy_minus_sign:  | N/A                 |
-| `username`          | *string*            | :heavy_minus_sign:  | N/A                 |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload440Next](../models/usereventpayload440next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload440Previous](../models/usereventpayload440previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

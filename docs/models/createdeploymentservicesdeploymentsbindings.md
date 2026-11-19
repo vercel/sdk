@@ -5,7 +5,7 @@ Bindings to services in the same deployment.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesDeploymentsBindings } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200type.js";
+import { CreateDeploymentServicesDeploymentsBindings } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2serviceseq.js";
 
 let value: CreateDeploymentServicesDeploymentsBindings = {
   env: "<value>",

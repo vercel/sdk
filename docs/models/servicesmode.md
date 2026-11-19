@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ServicesMode } from "@vercel/sdk/models/servicesdestination.js";
+import { ServicesMode } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicestype.js";
 
 let value: ServicesMode = "strict";
 ```

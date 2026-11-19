@@ -5,13 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNine } from "@vercel/sdk/models/threehundredandfour.js";
+import { ThreeHundredAndNine } from "@vercel/sdk/models/twohundredandfiftytwo.js";
 
 let value: ThreeHundredAndNine = {
-  elasticConcurrencyEnabled: false,
-  oldElasticConcurrencyEnabled: true,
-  projectId: "<id>",
-  projectName: "<value>",
+  project: {
+    id: "<id>",
+    newConnectConfigurations: [],
+    oldConnectConfigurations: [
+      {
+        buildsEnabled: true,
+        connectConfigurationId: "<id>",
+        createdAt: 7630.36,
+        envId: "<id>",
+        passive: false,
+        updatedAt: 8968.35,
+      },
+    ],
+  },
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
@@ -19,9 +33,5 @@ let value: ThreeHundredAndNine = {
 
 | Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
 | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `buildQueueConfiguration`                                                    | [models.BuildQueueConfiguration](../models/buildqueueconfiguration.md)       | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `elasticConcurrencyEnabled`                                                  | *boolean*                                                                    | :heavy_check_mark:                                                           | N/A                                                                          |
-| `oldBuildQueueConfiguration`                                                 | [models.OldBuildQueueConfiguration](../models/oldbuildqueueconfiguration.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `oldElasticConcurrencyEnabled`                                               | *boolean*                                                                    | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `projectName`                                                                | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload309Project](../models/usereventpayload309project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `team`                                                                       | [models.UserEventPayload309Team](../models/usereventpayload309team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |

@@ -229,14 +229,31 @@ export type SearchVercelCiLogsTasks = {
   lines: Array<SearchVercelCiLogsLines>;
 };
 
+export type SearchVercelCiLogsVercelCiLines = {
+  level: string;
+  timestamp: number;
+  message: string;
+};
+
+/**
+ * Matching lines from the setup logs. Present only when a setup line matches.
+ */
+export type Setup = {
+  lines: Array<SearchVercelCiLogsVercelCiLines>;
+};
+
 export type SearchVercelCiLogsInvocations = {
   invocationId: string;
   attempt: number;
   tasks: Array<SearchVercelCiLogsTasks>;
+  /**
+   * Matching lines from the setup logs. Present only when a setup line matches.
+   */
+  setup?: Setup | undefined;
 };
 
 /**
- * Successfully searched task logs.
+ * Successfully searched setup and task logs.
  */
 export type SearchVercelCiLogsResponseBody = {
   invocations: Array<SearchVercelCiLogsInvocations>;
@@ -609,6 +626,43 @@ export function searchVercelCiLogsTasksFromJSON(
 }
 
 /** @internal */
+export const SearchVercelCiLogsVercelCiLines$inboundSchema: z.ZodType<
+  SearchVercelCiLogsVercelCiLines,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  level: types.string(),
+  timestamp: types.number(),
+  message: types.string(),
+});
+
+export function searchVercelCiLogsVercelCiLinesFromJSON(
+  jsonString: string,
+): SafeParseResult<SearchVercelCiLogsVercelCiLines, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SearchVercelCiLogsVercelCiLines$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SearchVercelCiLogsVercelCiLines' from JSON`,
+  );
+}
+
+/** @internal */
+export const Setup$inboundSchema: z.ZodType<Setup, z.ZodTypeDef, unknown> = z
+  .object({
+    lines: z.array(z.lazy(() => SearchVercelCiLogsVercelCiLines$inboundSchema)),
+  });
+
+export function setupFromJSON(
+  jsonString: string,
+): SafeParseResult<Setup, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Setup$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Setup' from JSON`,
+  );
+}
+
+/** @internal */
 export const SearchVercelCiLogsInvocations$inboundSchema: z.ZodType<
   SearchVercelCiLogsInvocations,
   z.ZodTypeDef,
@@ -617,6 +671,7 @@ export const SearchVercelCiLogsInvocations$inboundSchema: z.ZodType<
   invocationId: types.string(),
   attempt: types.number(),
   tasks: z.array(z.lazy(() => SearchVercelCiLogsTasks$inboundSchema)),
+  setup: types.optional(z.lazy(() => Setup$inboundSchema)),
 });
 
 export function searchVercelCiLogsInvocationsFromJSON(

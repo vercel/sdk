@@ -5,7 +5,7 @@
 ```typescript
 import {
   GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12,
-} from "@vercel/sdk/models/getdeploymentservicesdeploymentsbindings.js";
+} from "@vercel/sdk/models/getdeploymentservicesdeploymentshttpheaders.js";
 
 let value:
   GetDeploymentValueDeploymentsResponse200ApplicationJSONResponseBody2Services2Routes12 =

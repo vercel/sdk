@@ -8,14 +8,6 @@ import { GetRollingReleaseConfigResponseBody } from "@vercel/sdk/models/getrolli
 let value: GetRollingReleaseConfigResponseBody = {
   rollingRelease: {
     canaryResponseHeader: false,
-    gate: {
-      action: "pause",
-      checks: [],
-      dryRun: true,
-      enabled: false,
-      failureThreshold: 3,
-      windowSize: 5,
-    },
     stages: [
       {
         duration: 600,

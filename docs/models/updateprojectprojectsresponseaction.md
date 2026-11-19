@@ -1,17 +1,15 @@
 # UpdateProjectProjectsResponseAction
 
-What to do when the gate trips: pause the rollout, or roll it back.
-
 ## Example Usage
 
 ```typescript
 import { UpdateProjectProjectsResponseAction } from "@vercel/sdk/models/updateprojectresponsebody.js";
 
-let value: UpdateProjectProjectsResponseAction = "rollback";
+let value: UpdateProjectProjectsResponseAction = "rate_limit";
 ```
 
 ## Values
 
 ```typescript
-"pause" | "rollback"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

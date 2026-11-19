@@ -1,15 +1,23 @@
 # UserEventPayload426Previous
 
+Mirrors the `security-review` setting value in `@api/api-settings`.
+
 ## Example Usage
 
 ```typescript
-import { UserEventPayload426Previous } from "@vercel/sdk/models/fourhundredandnineteen.js";
+import { UserEventPayload426Previous } from "@vercel/sdk/models/ssoprotectioncve55182migrationappliedfrom.js";
 
-let value: UserEventPayload426Previous = "manual-approval";
+let value: UserEventPayload426Previous = {
+  enabled: false,
+  projectScope: "selected",
+};
 ```
 
-## Values
+## Fields
 
-```typescript
-"auto-approval" | "block" | "manual-approval"
-```
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `enabled`                                                            | *boolean*                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
+| `projectIds`                                                         | *string*[]                                                           | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `projectScope`                                                       | [models.PayloadProjectScope](../models/payloadprojectscope.md)       | :heavy_check_mark:                                                   | N/A                                                                  |
+| `repositoryScope`                                                    | [models.PayloadRepositoryScope](../models/payloadrepositoryscope.md) | :heavy_minus_sign:                                                   | N/A                                                                  |

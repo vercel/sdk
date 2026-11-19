@@ -5,11 +5,11 @@
 ```typescript
 import { RevokeKmsSigningKeyDiscoveryLayout } from "@vercel/sdk/models/revokekmssigningkeyop.js";
 
-let value: RevokeKmsSigningKeyDiscoveryLayout = "kms";
+let value: RevokeKmsSigningKeyDiscoveryLayout = "integrations";
 ```
 
 ## Values
 
 ```typescript
-"connect" | "kms"
+"connect" | "integrations" | "kms"
 ```

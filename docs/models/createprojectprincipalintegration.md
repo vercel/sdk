@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CreateProjectPrincipalIntegration } from "@vercel/sdk/models/createprojectprojectsoidctokenclaims.js";
+import { CreateProjectPrincipalIntegration } from "@vercel/sdk/models/createprojectprojectsresponse200applicationjsonresponsebodytargetstype.js";
 
 let value: CreateProjectPrincipalIntegration = {
   configurationId: "<id>",

@@ -145,92 +145,6 @@ export type UpdateProjectRollbackDescription = {
 };
 
 /**
- * What to do when the gate trips: pause the rollout, or roll it back.
- */
-export const UpdateProjectProjectsResponseAction = {
-  Pause: "pause",
-  Rollback: "rollback",
-} as const;
-/**
- * What to do when the gate trips: pause the rollout, or roll it back.
- */
-export type UpdateProjectProjectsResponseAction = ClosedEnum<
-  typeof UpdateProjectProjectsResponseAction
->;
-
-/**
- * The metric this check evaluates.
- */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType =
-  {
-    ErrorRate5xx: "error-rate-5xx",
-  } as const;
-/**
- * The metric this check evaluates.
- */
-export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType =
-  ClosedEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType
-  >;
-
-/**
- * The checks to evaluate. An empty array means nothing is evaluated.
- */
-export type UpdateProjectChecks = {
-  /**
-   * Request paths to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Matched exactly against the request path with any query string removed; no prefix or glob matching. Defaults to `[]` when omitted.
-   */
-  excludePaths?: Array<string> | undefined;
-  /**
-   * Response status codes to ignore entirely — dropped from both the numerator (errors) and the denominator (total requests). Defaults to `[]` when omitted.
-   */
-  excludeStatusCodes?: Array<number> | undefined;
-  /**
-   * Seconds of ingest lag to allow for: the query's upper bound is `now() - this value`, so the check never reads a window that is still filling. Defaults to `30` when omitted.
-   */
-  ingestWatermarkSeconds?: number | undefined;
-  /**
-   * A run fails only when the canary's error rate is higher and its one-sided Fisher p-value is below this significance level. Defaults to `0.05`; lower values require stronger evidence.
-   */
-  significanceLevel?: number | undefined;
-  /**
-   * The metric this check evaluates.
-   */
-  type:
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType;
-};
-
-/**
- * Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`.
- */
-export type UpdateProjectGate = {
-  /**
-   * What to do when the gate trips: pause the rollout, or roll it back.
-   */
-  action: UpdateProjectProjectsResponseAction;
-  /**
-   * The checks to evaluate. An empty array means nothing is evaluated.
-   */
-  checks: Array<UpdateProjectChecks>;
-  /**
-   * When true, a tripped gate is only reported — {@link action} is not taken.
-   */
-  dryRun: boolean;
-  /**
-   * Whether automated gating is enabled for this project's rollouts.
-   */
-  enabled: boolean;
-  /**
-   * How many failing evaluations within {@link windowSize} trip the gate. Defaults to `3` when omitted.
-   */
-  failureThreshold?: number | undefined;
-  /**
-   * How many of the most recent evaluations {@link failureThreshold} is counted against. Defaults to `5` when omitted.
-   */
-  windowSize?: number | undefined;
-};
-
-/**
  * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
  */
 export type UpdateProjectStages = {
@@ -260,10 +174,6 @@ export type UpdateProjectRollingRelease = {
    * Whether the request served by a canary deployment should return a header indicating a canary was served. Defaults to `false` when omitted.
    */
   canaryResponseHeader?: boolean | undefined;
-  /**
-   * Automated gating configuration. Omitted (the default) means no gating is configured, which is equivalent to `enabled: false`.
-   */
-  gate?: UpdateProjectGate | undefined;
   /**
    * An array of all the stages required during a deployment release. Each stage defines a target percentage and advancement rules. The final stage must always have targetPercentage: 100.
    */
@@ -338,21 +248,35 @@ export type UpdateProjectLogHeaders2 = ClosedEnum<
 
 export type UpdateProjectLogHeaders = Array<string> | UpdateProjectLogHeaders2;
 
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction =
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
   {
     Challenge: "challenge",
     Deny: "deny",
     Log: "log",
   } as const;
-export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction =
+export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
   ClosedEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
   >;
 
 export type UpdateProjectAiBots = {
   action?:
-    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction
+    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
     | undefined;
+  active: boolean;
+};
+
+export const UpdateProjectProjectsResponse200Action = {
+  Challenge: "challenge",
+  Deny: "deny",
+  Log: "log",
+} as const;
+export type UpdateProjectProjectsResponse200Action = ClosedEnum<
+  typeof UpdateProjectProjectsResponse200Action
+>;
+
+export type UpdateProjectBotFilter = {
+  action?: UpdateProjectProjectsResponse200Action | undefined;
   active: boolean;
 };
 
@@ -365,7 +289,7 @@ export type UpdateProjectProjectsResponse200ApplicationJSONAction = ClosedEnum<
   typeof UpdateProjectProjectsResponse200ApplicationJSONAction
 >;
 
-export type UpdateProjectBotFilter = {
+export type UpdateProjectOwasp = {
   action?: UpdateProjectProjectsResponse200ApplicationJSONAction | undefined;
   active: boolean;
 };
@@ -381,7 +305,7 @@ export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction =
     typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
   >;
 
-export type UpdateProjectOwasp = {
+export type UpdateProjectTrafficSources = {
   action?:
     | UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
     | undefined;
@@ -399,27 +323,9 @@ export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityA
     typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
   >;
 
-export type UpdateProjectTrafficSources = {
-  action?:
-    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
-    | undefined;
-  active: boolean;
-};
-
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
-  {
-    Challenge: "challenge",
-    Deny: "deny",
-    Log: "log",
-  } as const;
-export type UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction =
-  ClosedEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
-  >;
-
 export type UpdateProjectVercelRuleset = {
   action?:
-    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+    | UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
     | undefined;
   active: boolean;
 };
@@ -432,7 +338,7 @@ export type UpdateProjectManagedRules = {
   vercelRuleset: UpdateProjectVercelRuleset;
 };
 
-export const UpdateProjectProjectsResponse200Action = {
+export const UpdateProjectProjectsResponseAction = {
   Allow: "allow",
   Bypass: "bypass",
   Challenge: "challenge",
@@ -441,8 +347,8 @@ export const UpdateProjectProjectsResponse200Action = {
   RateLimit: "rate_limit",
   Redirect: "redirect",
 } as const;
-export type UpdateProjectProjectsResponse200Action = ClosedEnum<
-  typeof UpdateProjectProjectsResponse200Action
+export type UpdateProjectProjectsResponseAction = ClosedEnum<
+  typeof UpdateProjectProjectsResponseAction
 >;
 
 export const UpdateProjectLogHeadersProjects2 = {
@@ -491,7 +397,7 @@ export type UpdateProjectRedirect = {
 };
 
 export type UpdateProjectRulesets = {
-  action: UpdateProjectProjectsResponse200Action;
+  action: UpdateProjectProjectsResponseAction;
   actionDuration?: string | null | undefined;
   bypassSystem?: boolean | null | undefined;
   logHeaders?: Array<string> | UpdateProjectLogHeadersProjects2 | undefined;
@@ -1396,67 +1302,6 @@ export function updateProjectRollbackDescriptionFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
-  typeof UpdateProjectProjectsResponseAction
-> = z.nativeEnum(UpdateProjectProjectsResponseAction);
-
-/** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType
-  > = z.nativeEnum(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType,
-  );
-
-/** @internal */
-export const UpdateProjectChecks$inboundSchema: z.ZodType<
-  UpdateProjectChecks,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  excludePaths: types.optional(z.array(types.string())),
-  excludeStatusCodes: types.optional(z.array(types.number())),
-  ingestWatermarkSeconds: types.optional(types.number()),
-  significanceLevel: types.optional(types.number()),
-  type:
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyRollingReleaseType$inboundSchema,
-});
-
-export function updateProjectChecksFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectChecks, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectChecks$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectChecks' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateProjectGate$inboundSchema: z.ZodType<
-  UpdateProjectGate,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  action: UpdateProjectProjectsResponseAction$inboundSchema,
-  checks: z.array(z.lazy(() => UpdateProjectChecks$inboundSchema)),
-  dryRun: types.boolean(),
-  enabled: types.boolean(),
-  failureThreshold: types.optional(types.number()),
-  windowSize: types.optional(types.number()),
-});
-
-export function updateProjectGateFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateProjectGate, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateProjectGate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateProjectGate' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateProjectStages$inboundSchema: z.ZodType<
   UpdateProjectStages,
   z.ZodTypeDef,
@@ -1485,7 +1330,6 @@ export const UpdateProjectRollingRelease$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   canaryResponseHeader: types.optional(types.boolean()),
-  gate: types.optional(z.lazy(() => UpdateProjectGate$inboundSchema)),
   stages: z.nullable(z.array(z.lazy(() => UpdateProjectStages$inboundSchema)))
     .optional(),
   target: types.string(),
@@ -1560,11 +1404,11 @@ export function updateProjectLogHeadersFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction$inboundSchema:
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
   > = z.nativeEnum(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction,
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction,
   );
 
 /** @internal */
@@ -1574,7 +1418,7 @@ export const UpdateProjectAiBots$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action: types.optional(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAiBotsAction$inboundSchema,
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema,
   ),
   active: types.boolean(),
 });
@@ -1590,10 +1434,10 @@ export function updateProjectAiBotsFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
-  > = z.nativeEnum(UpdateProjectProjectsResponse200ApplicationJSONAction);
+export const UpdateProjectProjectsResponse200Action$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
+    UpdateProjectProjectsResponse200Action,
+  );
 
 /** @internal */
 export const UpdateProjectBotFilter$inboundSchema: z.ZodType<
@@ -1601,9 +1445,7 @@ export const UpdateProjectBotFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: types.optional(
-    UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema,
-  ),
+  action: types.optional(UpdateProjectProjectsResponse200Action$inboundSchema),
   active: types.boolean(),
 });
 
@@ -1618,12 +1460,10 @@ export function updateProjectBotFilterFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
+export const UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
-  > = z.nativeEnum(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction,
-  );
+    typeof UpdateProjectProjectsResponse200ApplicationJSONAction
+  > = z.nativeEnum(UpdateProjectProjectsResponse200ApplicationJSONAction);
 
 /** @internal */
 export const UpdateProjectOwasp$inboundSchema: z.ZodType<
@@ -1632,7 +1472,7 @@ export const UpdateProjectOwasp$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action: types.optional(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+    UpdateProjectProjectsResponse200ApplicationJSONAction$inboundSchema,
   ),
   active: types.boolean(),
 });
@@ -1648,11 +1488,11 @@ export function updateProjectOwaspFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema:
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction
   > = z.nativeEnum(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction,
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction,
   );
 
 /** @internal */
@@ -1662,7 +1502,7 @@ export const UpdateProjectTrafficSources$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action: types.optional(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
   ),
   active: types.boolean(),
 });
@@ -1678,11 +1518,11 @@ export function updateProjectTrafficSourcesFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema:
+export const UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema:
   z.ZodNativeEnum<
-    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction
+    typeof UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction
   > = z.nativeEnum(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction,
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction,
   );
 
 /** @internal */
@@ -1692,7 +1532,7 @@ export const UpdateProjectVercelRuleset$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   action: types.optional(
-    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityManagedRulesAction$inboundSchema,
+    UpdateProjectProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
   ),
   active: types.boolean(),
 });
@@ -1738,10 +1578,9 @@ export function updateProjectManagedRulesFromJSON(
 }
 
 /** @internal */
-export const UpdateProjectProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateProjectProjectsResponse200Action> = z.nativeEnum(
-    UpdateProjectProjectsResponse200Action,
-  );
+export const UpdateProjectProjectsResponseAction$inboundSchema: z.ZodNativeEnum<
+  typeof UpdateProjectProjectsResponseAction
+> = z.nativeEnum(UpdateProjectProjectsResponseAction);
 
 /** @internal */
 export const UpdateProjectLogHeadersProjects2$inboundSchema: z.ZodNativeEnum<
@@ -1832,7 +1671,7 @@ export const UpdateProjectRulesets$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  action: UpdateProjectProjectsResponse200Action$inboundSchema,
+  action: UpdateProjectProjectsResponseAction$inboundSchema,
   actionDuration: z.nullable(types.string()).optional(),
   bypassSystem: z.nullable(types.boolean()).optional(),
   logHeaders: types.optional(

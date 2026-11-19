@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadMostSpecificSubdivision } from "@vercel/sdk/models/threehundredandsixtysix.js";
+import { PayloadMostSpecificSubdivision } from "@vercel/sdk/models/ssoprotectioncve55182migrationappliedfrom.js";
 
 let value: PayloadMostSpecificSubdivision = {
   names: {
@@ -16,4 +16,4 @@ let value: PayloadMostSpecificSubdivision = {
 
 | Field                                                                                                                                        | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
 | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `names`                                                                                                                                      | [models.UserEventPayload398GeolocationMostSpecificSubdivisionNames](../models/usereventpayload398geolocationmostspecificsubdivisionnames.md) | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |
+| `names`                                                                                                                                      | [models.UserEventPayload405GeolocationMostSpecificSubdivisionNames](../models/usereventpayload405geolocationmostspecificsubdivisionnames.md) | :heavy_check_mark:                                                                                                                           | N/A                                                                                                                                          |

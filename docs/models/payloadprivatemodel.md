@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadPrivateModel } from "@vercel/sdk/models/usereventprincipaltype.js";
+import { PayloadPrivateModel } from "@vercel/sdk/models/thirteen.js";
 
 let value: PayloadPrivateModel = {
   slug: "<value>",

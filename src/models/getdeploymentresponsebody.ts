@@ -53,7 +53,9 @@ import {
   GetDeploymentServices2$inboundSchema,
   GetDeploymentServicesDeploymentsBindings,
   GetDeploymentServicesDeploymentsBindings$inboundSchema,
-} from "./getdeploymentservicesdeploymentsbindings.js";
+  GetDeploymentServicesDeploymentsHttpHeaders,
+  GetDeploymentServicesDeploymentsHttpHeaders$inboundSchema,
+} from "./getdeploymentservicesdeploymentshttpheaders.js";
 import {
   GetDeploymentResponseBodyGitSource,
   GetDeploymentResponseBodyGitSource$inboundSchema,
@@ -93,11 +95,6 @@ import {
   ResponseBodyReadyState$inboundSchema,
 } from "./getdeploymentserviceshttpget.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type GetDeploymentServicesDeploymentsHttpHeaders = {
-  name: string;
-  value: string;
-};
 
 export const GetDeploymentServicesDeploymentsScheme = {
   Http: "HTTP",
@@ -308,6 +305,7 @@ export type GetDeploymentServicesDeploymentsFunctions = {
     | GetDeploymentMaxDurationDeploymentsResponse2
     | undefined;
   memory?: number | undefined;
+  perimeter?: string | undefined;
   regions?: Array<string> | undefined;
   runtime?: string | undefined;
   supportsCancellation?: boolean | undefined;
@@ -352,30 +350,11 @@ export type GetDeploymentServicesDeploymentsProjectSettings = {
   vercelFlags?: GetDeploymentServicesDeploymentsVercelFlags | undefined;
 };
 
-export type GetDeploymentServicesEntrypoints = {
-  /**
-   * Runtime-specific entrypoint locator from `vercel.json`.
-   */
-  entrypoint: string;
-  /**
-   * Names of the schedules that dispatch to this entrypoint, in config order.
-   */
-  scheduleNames: Array<string>;
-  /**
-   * Project-relative source file that contains the entrypoint.
-   */
-  sourceFile: string;
-};
-
 /**
- * Set when this build produces a function for schedule entrypoints.
+ * Set when this build serves a Python schedule's module: the `@schedule` handlers that importing `module` registers.
  */
-export type GetDeploymentServicesScheduleFunction = {
-  entrypoints: Array<GetDeploymentServicesEntrypoints>;
-  /**
-   * Function output path every schedule in this build targets.
-   */
-  outputPath: string;
+export type GetDeploymentServicesSchedulesModule = {
+  module: string;
 };
 
 export type GetDeploymentServicesDeploymentsConfig = {
@@ -414,9 +393,13 @@ export type GetDeploymentServicesDeploymentsConfig = {
   projectSettings?: GetDeploymentServicesDeploymentsProjectSettings | undefined;
   rust?: string | undefined;
   /**
-   * Set when this build produces a function for schedule entrypoints.
+   * Set when this build serves a JavaScript or TypeScript schedule: the entrypoint's default export runs each firing, and its `export const config` sets the schedule.
    */
-  scheduleFunction?: GetDeploymentServicesScheduleFunction | undefined;
+  schedulesEntrypoint?: boolean | undefined;
+  /**
+   * Set when this build serves a Python schedule's module: the `@schedule` handlers that importing `module` registers.
+   */
+  schedulesModule?: GetDeploymentServicesSchedulesModule | undefined;
   /**
    * Owning service name; scopes per-function config such as the v2beta consumer.
    */
@@ -908,33 +891,6 @@ export type GetDeploymentResponseBody =
   | GetDeploymentResponseBody1;
 
 /** @internal */
-export const GetDeploymentServicesDeploymentsHttpHeaders$inboundSchema:
-  z.ZodType<
-    GetDeploymentServicesDeploymentsHttpHeaders,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    name: types.string(),
-    value: types.string(),
-  });
-
-export function getDeploymentServicesDeploymentsHttpHeadersFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetDeploymentServicesDeploymentsHttpHeaders,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetDeploymentServicesDeploymentsHttpHeaders$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetDeploymentServicesDeploymentsHttpHeaders' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetDeploymentServicesDeploymentsScheme$inboundSchema:
   z.ZodNativeEnum<typeof GetDeploymentServicesDeploymentsScheme> = z.nativeEnum(
     GetDeploymentServicesDeploymentsScheme,
@@ -948,9 +904,7 @@ export const GetDeploymentServicesDeploymentsHttpGet$inboundSchema: z.ZodType<
 > = z.object({
   host: types.optional(types.string()),
   httpHeaders: types.optional(
-    z.array(z.lazy(() =>
-      GetDeploymentServicesDeploymentsHttpHeaders$inboundSchema
-    )),
+    z.array(GetDeploymentServicesDeploymentsHttpHeaders$inboundSchema),
   ),
   path: types.optional(types.string()),
   port: types.number(),
@@ -1343,6 +1297,7 @@ export const GetDeploymentServicesDeploymentsFunctions$inboundSchema: z.ZodType<
     ]),
   ),
   memory: types.optional(types.number()),
+  perimeter: types.optional(types.string()),
   regions: types.optional(z.array(types.string())),
   runtime: types.optional(types.string()),
   supportsCancellation: types.optional(types.boolean()),
@@ -1474,46 +1429,22 @@ export function getDeploymentServicesDeploymentsProjectSettingsFromJSON(
 }
 
 /** @internal */
-export const GetDeploymentServicesEntrypoints$inboundSchema: z.ZodType<
-  GetDeploymentServicesEntrypoints,
+export const GetDeploymentServicesSchedulesModule$inboundSchema: z.ZodType<
+  GetDeploymentServicesSchedulesModule,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  entrypoint: types.string(),
-  scheduleNames: z.array(types.string()),
-  sourceFile: types.string(),
+  module: types.string(),
 });
 
-export function getDeploymentServicesEntrypointsFromJSON(
+export function getDeploymentServicesSchedulesModuleFromJSON(
   jsonString: string,
-): SafeParseResult<GetDeploymentServicesEntrypoints, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetDeploymentServicesEntrypoints$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentServicesEntrypoints' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetDeploymentServicesScheduleFunction$inboundSchema: z.ZodType<
-  GetDeploymentServicesScheduleFunction,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  entrypoints: z.array(
-    z.lazy(() => GetDeploymentServicesEntrypoints$inboundSchema),
-  ),
-  outputPath: types.string(),
-});
-
-export function getDeploymentServicesScheduleFunctionFromJSON(
-  jsonString: string,
-): SafeParseResult<GetDeploymentServicesScheduleFunction, SDKValidationError> {
+): SafeParseResult<GetDeploymentServicesSchedulesModule, SDKValidationError> {
   return safeParse(
     jsonString,
     (x) =>
-      GetDeploymentServicesScheduleFunction$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetDeploymentServicesScheduleFunction' from JSON`,
+      GetDeploymentServicesSchedulesModule$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetDeploymentServicesSchedulesModule' from JSON`,
   );
 }
 
@@ -1562,8 +1493,9 @@ export const GetDeploymentServicesDeploymentsConfig$inboundSchema: z.ZodType<
     z.lazy(() => GetDeploymentServicesDeploymentsProjectSettings$inboundSchema),
   ),
   rust: types.optional(types.string()),
-  scheduleFunction: types.optional(
-    z.lazy(() => GetDeploymentServicesScheduleFunction$inboundSchema),
+  schedulesEntrypoint: types.optional(types.boolean()),
+  schedulesModule: types.optional(
+    z.lazy(() => GetDeploymentServicesSchedulesModule$inboundSchema),
   ),
   serviceName: types.optional(types.string()),
   zeroConfig: types.optional(types.boolean()),

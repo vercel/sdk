@@ -5,7 +5,7 @@ A Kubernetes-style HTTP liveness probe.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentServicesDeploymentsLivenessProbe } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200type.js";
+import { CreateDeploymentServicesDeploymentsLivenessProbe } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2serviceseq.js";
 
 let value: CreateDeploymentServicesDeploymentsLivenessProbe = {
   httpGet: {

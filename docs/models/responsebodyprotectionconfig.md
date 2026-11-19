@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ResponseBodyProtectionConfig } from "@vercel/sdk/models/getprojectstoprojectsresponse2001.js";
+import { ResponseBodyProtectionConfig } from "@vercel/sdk/models/getprojectsfromprojectsresponse2.js";
 
 let value: ResponseBodyProtectionConfig = {};
 ```

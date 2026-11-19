@@ -8,7 +8,7 @@ import { UpdateKmsIssuerResponseBody } from "@vercel/sdk/models/updatekmsissuero
 let value: UpdateKmsIssuerResponseBody = {
   algorithm: "RS256",
   createdAt: "1704756688213",
-  discoveryLayout: "kms",
+  discoveryLayout: "integrations",
   id: "<id>",
   name: "<value>",
   origin: "external",

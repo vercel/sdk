@@ -75,8 +75,16 @@ import {
   CreateProjectProjectsChecksState$inboundSchema,
   CreateProjectProjectsOidcTokenClaims,
   CreateProjectProjectsOidcTokenClaims$inboundSchema,
+  CreateProjectProjectsPlan,
+  CreateProjectProjectsPlan$inboundSchema,
+  CreateProjectProjectsReadyState,
+  CreateProjectProjectsReadyState$inboundSchema,
+  CreateProjectProjectsReadySubstate,
+  CreateProjectProjectsReadySubstate$inboundSchema,
   CreateProjectProjectsResourceConfig,
   CreateProjectProjectsResourceConfig$inboundSchema,
+  CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType,
+  CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema,
   CreateProjectProjectsResponseBranchMatcher,
   CreateProjectProjectsResponseBranchMatcher$inboundSchema,
   CreateProjectProjectsResponseCreator,
@@ -113,48 +121,8 @@ import {
   RollingRelease$inboundSchema,
   SpeedInsights,
   SpeedInsights$inboundSchema,
-} from "./createprojectprojectsoidctokenclaims.js";
+} from "./createprojectprojectsresponse200applicationjsonresponsebodytargetstype.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export const CreateProjectProjectsPlan = {
-  Enterprise: "enterprise",
-  Hobby: "hobby",
-  Pro: "pro",
-} as const;
-export type CreateProjectProjectsPlan = ClosedEnum<
-  typeof CreateProjectProjectsPlan
->;
-
-export const CreateProjectProjectsReadyState = {
-  Blocked: "BLOCKED",
-  Building: "BUILDING",
-  Canceled: "CANCELED",
-  Error: "ERROR",
-  Initializing: "INITIALIZING",
-  Queued: "QUEUED",
-  Ready: "READY",
-} as const;
-export type CreateProjectProjectsReadyState = ClosedEnum<
-  typeof CreateProjectProjectsReadyState
->;
-
-export const CreateProjectProjectsReadySubstate = {
-  Promoted: "PROMOTED",
-  Rolling: "ROLLING",
-  Staged: "STAGED",
-} as const;
-export type CreateProjectProjectsReadySubstate = ClosedEnum<
-  typeof CreateProjectProjectsReadySubstate
->;
-
-export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType =
-  {
-    Lambdas: "LAMBDAS",
-  } as const;
-export type CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType =
-  ClosedEnum<
-    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType
-  >;
 
 export type CreateProjectTargets = {
   alias?: Array<string> | undefined;
@@ -616,29 +584,6 @@ export type CreateProjectResponseBody = {
   vercelFlags?: VercelFlags | undefined;
   webAnalytics?: CreateProjectWebAnalytics | undefined;
 };
-
-/** @internal */
-export const CreateProjectProjectsPlan$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectProjectsPlan
-> = z.nativeEnum(CreateProjectProjectsPlan);
-
-/** @internal */
-export const CreateProjectProjectsReadyState$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectProjectsReadyState
-> = z.nativeEnum(CreateProjectProjectsReadyState);
-
-/** @internal */
-export const CreateProjectProjectsReadySubstate$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectProjectsReadySubstate
-> = z.nativeEnum(CreateProjectProjectsReadySubstate);
-
-/** @internal */
-export const CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType
-  > = z.nativeEnum(
-    CreateProjectProjectsResponse200ApplicationJSONResponseBodyTargetsType,
-  );
 
 /** @internal */
 export const CreateProjectTargets$inboundSchema: z.ZodType<

@@ -5,28 +5,31 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyOne } from "@vercel/sdk/models/usereventpayload238prevproject.js";
+import { TwoHundredAndNinetyOne } from "@vercel/sdk/models/twohundredandfiftytwo.js";
 
 let value: TwoHundredAndNinetyOne = {
-  prevProjectAnalytics: {
-    disabledAt: 2946.34,
-    enabledAt: 1193.57,
+  current: {
+    awsServiceName: "<value>",
     id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
   },
-  projectAnalytics: {
-    disabledAt: 4740.08,
-    enabledAt: 7590.21,
+  prev: {
+    awsServiceName: "<value>",
     id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
   },
-  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `prevProjectAnalytics`                                           | [models.PrevProjectAnalytics](../models/prevprojectanalytics.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `projectAnalytics`                                               | [models.ProjectAnalytics](../models/projectanalytics.md)         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectName`                                                    | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `current`                                                                | [models.PayloadCurrent](../models/payloadcurrent.md)                     | :heavy_check_mark:                                                       | N/A                                                                      |
+| `prev`                                                                   | [models.UserEventPayload291Prev](../models/usereventpayload291prev.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `projectName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload291Scope](../models/usereventpayload291scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

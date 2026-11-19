@@ -1,17 +1,15 @@
 # UploadProjectAvatarProjectsAction
 
-What to do when the gate trips: pause the rollout, or roll it back.
-
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarProjectsAction } from "@vercel/sdk/models/uploadprojectavatarfrom1.js";
+import { UploadProjectAvatarProjectsAction } from "@vercel/sdk/models/uploadprojectavatartoprojectsresponsepreset.js";
 
-let value: UploadProjectAvatarProjectsAction = "rollback";
+let value: UploadProjectAvatarProjectsAction = "log";
 ```
 
 ## Values
 
 ```typescript
-"pause" | "rollback"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

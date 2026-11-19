@@ -1209,6 +1209,7 @@ export type ResponseBodyFunctions = {
   maxConcurrency?: number | undefined;
   maxDuration?: number | CreateDeploymentMaxDuration2 | undefined;
   memory?: number | undefined;
+  perimeter?: string | undefined;
   regions?: Array<string> | undefined;
   runtime?: string | undefined;
   supportsCancellation?: boolean | undefined;
@@ -3417,6 +3418,7 @@ export const ResponseBodyFunctions$inboundSchema: z.ZodType<
     smartUnion([types.number(), CreateDeploymentMaxDuration2$inboundSchema]),
   ),
   memory: types.optional(types.number()),
+  perimeter: types.optional(types.string()),
   regions: types.optional(z.array(types.string())),
   runtime: types.optional(types.string()),
   supportsCancellation: types.optional(types.boolean()),

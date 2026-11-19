@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectProjectsResponse200Action } from "@vercel/sdk/models/updateprojectresponsebody.js";
 
-let value: UpdateProjectProjectsResponse200Action = "redirect";
+let value: UpdateProjectProjectsResponse200Action = "log";
 ```
 
 ## Values
 
 ```typescript
-"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
+"challenge" | "deny" | "log"
 ```

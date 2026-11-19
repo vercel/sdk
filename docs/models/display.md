@@ -5,7 +5,7 @@ Recognition context that should remain visible in a compact feed row.
 ## Example Usage
 
 ```typescript
-import { Display } from "@vercel/sdk/models/usereventpayload491previous.js";
+import { Display } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: Display = "inline";
 ```

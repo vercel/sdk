@@ -1,17 +1,15 @@
 # DeleteProjectAvatarProjectsAction
 
-What to do when the gate trips: pause the rollout, or roll it back.
-
 ## Example Usage
 
 ```typescript
-import { DeleteProjectAvatarProjectsAction } from "@vercel/sdk/models/deleteprojectavatarfrom1.js";
+import { DeleteProjectAvatarProjectsAction } from "@vercel/sdk/models/deleteprojectavatartoprojectsresponsepreset.js";
 
-let value: DeleteProjectAvatarProjectsAction = "pause";
+let value: DeleteProjectAvatarProjectsAction = "bypass";
 ```
 
 ## Values
 
 ```typescript
-"pause" | "rollback"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

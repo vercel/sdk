@@ -13,5 +13,5 @@ let value: VcrImageDetailKind = "manifest";
 ## Values
 
 ```typescript
-"attestation" | "index" | "manifest"
+"artifact" | "attestation" | "index" | "manifest"
 ```

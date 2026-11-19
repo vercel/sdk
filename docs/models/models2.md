@@ -1,0 +1,21 @@
+# Models2
+
+A conditional fallback. Only an alias can have one.
+
+## Example Usage
+
+```typescript
+import { Models2 } from "@vercel/sdk/models/createaigatewayvirtualmodelconfigop.js";
+
+let value: Models2 = {
+  model: "PT Cruiser",
+  when: {},
+};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                                                             | Type                                                                                                                                                                                                                                              | Required                                                                                                                                                                                                                                          | Description                                                                                                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `model`                                                                                                                                                                                                                                           | *string*                                                                                                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                                                                                                | A model ID: a catalog model such as `openai/gpt-4o`, or one of your team's private models as `private/<slug>`. A fallback can also name a virtual model as `vmc/<slug>`.                                                                          |
+| `when`                                                                                                                                                                                                                                            | [models.When](../models/when.md)                                                                                                                                                                                                                  | :heavy_check_mark:                                                                                                                                                                                                                                | The fallback model is used when the answers of the primary model match this condition. Set exactly one of `confidenceBelow`, `probabilityBetween`, `any`, `all`, or `atLeast`. A condition tree can be 5 levels deep and can hold 100 conditions. |

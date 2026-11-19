@@ -29,7 +29,6 @@ export type UpdateFlagSettingsEntities = {
 };
 
 export type UpdateFlagSettingsRequestBody = {
-  enabled?: boolean | undefined;
   entities?: Array<UpdateFlagSettingsEntities> | undefined;
   /**
    * The environments to sync
@@ -217,7 +216,6 @@ export function updateFlagSettingsEntitiesToJSON(
 
 /** @internal */
 export type UpdateFlagSettingsRequestBody$Outbound = {
-  enabled?: boolean | undefined;
   entities?: Array<UpdateFlagSettingsEntities$Outbound> | undefined;
   environments?: Array<string> | undefined;
 };
@@ -228,7 +226,6 @@ export const UpdateFlagSettingsRequestBody$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   UpdateFlagSettingsRequestBody
 > = z.object({
-  enabled: z.boolean().optional(),
   entities: z.array(z.lazy(() => UpdateFlagSettingsEntities$outboundSchema))
     .optional(),
   environments: z.array(z.string()).optional(),

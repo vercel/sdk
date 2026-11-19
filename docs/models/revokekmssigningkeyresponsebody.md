@@ -8,7 +8,7 @@ import { RevokeKmsSigningKeyResponseBody } from "@vercel/sdk/models/revokekmssig
 let value: RevokeKmsSigningKeyResponseBody = {
   algorithm: "ES384",
   createdAt: "1705060274009",
-  discoveryLayout: "kms",
+  discoveryLayout: "integrations",
   id: "<id>",
   name: "<value>",
   origin: "external",

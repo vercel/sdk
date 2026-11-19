@@ -57,10 +57,8 @@ import {
   DeleteProjectAvatarLastRollbackTarget$inboundSchema,
 } from "./deleteprojectavatarchecksconclusion.js";
 import {
-  DeleteProjectAvatarFrom1,
-  DeleteProjectAvatarFrom1$inboundSchema,
-  DeleteProjectAvatarFrom2,
-  DeleteProjectAvatarFrom2$inboundSchema,
+  DeleteProjectAvatarFrom,
+  DeleteProjectAvatarFrom$inboundSchema,
   DeleteProjectAvatarLatestDeployments,
   DeleteProjectAvatarLatestDeployments$inboundSchema,
   DeleteProjectAvatarLink,
@@ -107,41 +105,16 @@ import {
   DeleteProjectAvatarTargets$inboundSchema,
   DeleteProjectAvatarTier,
   DeleteProjectAvatarTier$inboundSchema,
+  DeleteProjectAvatarToProjects2,
+  DeleteProjectAvatarToProjects2$inboundSchema,
+  DeleteProjectAvatarToProjectsResponsePreset,
+  DeleteProjectAvatarToProjectsResponsePreset$inboundSchema,
   DeleteProjectAvatarTracing,
   DeleteProjectAvatarTracing$inboundSchema,
   DeleteProjectAvatarTrustedIps,
   DeleteProjectAvatarTrustedIps$inboundSchema,
-} from "./deleteprojectavatarfrom1.js";
+} from "./deleteprojectavatartoprojectsresponsepreset.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-
-export type DeleteProjectAvatarFrom =
-  | DeleteProjectAvatarFrom1
-  | DeleteProjectAvatarFrom2;
-
-export const DeleteProjectAvatarToProjectsResponse200Preset = {
-  AllCustom: "all-custom",
-} as const;
-export type DeleteProjectAvatarToProjectsResponse200Preset = ClosedEnum<
-  typeof DeleteProjectAvatarToProjectsResponse200Preset
->;
-
-/**
- * The target envs on the current project that may be accessed.
- */
-export type DeleteProjectAvatarToProjects2 = {
-  preset: DeleteProjectAvatarToProjectsResponse200Preset;
-  /**
-   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
-   */
-  slugs?: Array<string> | undefined;
-};
-
-export const DeleteProjectAvatarToProjectsResponsePreset = {
-  AllCustom: "all-custom",
-} as const;
-export type DeleteProjectAvatarToProjectsResponsePreset = ClosedEnum<
-  typeof DeleteProjectAvatarToProjectsResponsePreset
->;
 
 /**
  * The target envs on the current project that may be accessed.
@@ -162,7 +135,7 @@ export type DeleteProjectAvatarProjectsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type DeleteProjectAvatarCustomAllow = {
-  from: DeleteProjectAvatarFrom1 | DeleteProjectAvatarFrom2;
+  from: DeleteProjectAvatarFrom;
   to: DeleteProjectAvatarToProjects1 | DeleteProjectAvatarToProjects2;
 };
 
@@ -367,56 +340,6 @@ export type DeleteProjectAvatarResponseBody = {
 };
 
 /** @internal */
-export const DeleteProjectAvatarFrom$inboundSchema: z.ZodType<
-  DeleteProjectAvatarFrom,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  DeleteProjectAvatarFrom1$inboundSchema,
-  DeleteProjectAvatarFrom2$inboundSchema,
-]);
-
-export function deleteProjectAvatarFromFromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteProjectAvatarFrom, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteProjectAvatarFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteProjectAvatarFrom' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeleteProjectAvatarToProjectsResponse200Preset$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarToProjectsResponse200Preset> = z
-    .nativeEnum(DeleteProjectAvatarToProjectsResponse200Preset);
-
-/** @internal */
-export const DeleteProjectAvatarToProjects2$inboundSchema: z.ZodType<
-  DeleteProjectAvatarToProjects2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  preset: DeleteProjectAvatarToProjectsResponse200Preset$inboundSchema,
-  slugs: types.optional(z.array(types.string())),
-});
-
-export function deleteProjectAvatarToProjects2FromJSON(
-  jsonString: string,
-): SafeParseResult<DeleteProjectAvatarToProjects2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => DeleteProjectAvatarToProjects2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'DeleteProjectAvatarToProjects2' from JSON`,
-  );
-}
-
-/** @internal */
-export const DeleteProjectAvatarToProjectsResponsePreset$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarToProjectsResponsePreset> = z
-    .nativeEnum(DeleteProjectAvatarToProjectsResponsePreset);
-
-/** @internal */
 export const DeleteProjectAvatarToProjects1$inboundSchema: z.ZodType<
   DeleteProjectAvatarToProjects1,
   z.ZodTypeDef,
@@ -445,7 +368,7 @@ export const DeleteProjectAvatarProjectsTo$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => DeleteProjectAvatarToProjects1$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarToProjects2$inboundSchema),
+  DeleteProjectAvatarToProjects2$inboundSchema,
 ]);
 
 export function deleteProjectAvatarProjectsToFromJSON(
@@ -464,13 +387,10 @@ export const DeleteProjectAvatarCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: smartUnion([
-    DeleteProjectAvatarFrom1$inboundSchema,
-    DeleteProjectAvatarFrom2$inboundSchema,
-  ]),
+  from: DeleteProjectAvatarFrom$inboundSchema,
   to: smartUnion([
     z.lazy(() => DeleteProjectAvatarToProjects1$inboundSchema),
-    z.lazy(() => DeleteProjectAvatarToProjects2$inboundSchema),
+    DeleteProjectAvatarToProjects2$inboundSchema,
   ]),
 });
 

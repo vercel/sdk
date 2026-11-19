@@ -314,6 +314,10 @@ export type AuthUserResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
+  enableMessageboardPrivateBoards?: boolean | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
   flagsExplorerOverridesThreshold?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
@@ -331,6 +335,10 @@ export type AuthUserResourceConfig = {
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
   kvDatabases?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  messageboardBoards?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -1015,11 +1023,13 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
   edgeFunctionExecutionTimeoutMs: types.optional(types.number()),
   edgeFunctionMaxSizeBytes: types.optional(types.number()),
   elasticConcurrencyEnabled: types.optional(types.boolean()),
+  enableMessageboardPrivateBoards: types.optional(types.boolean()),
   flagsExplorerOverridesThreshold: types.optional(types.number()),
   flagsExplorerUnlimitedOverrides: types.optional(types.boolean()),
   imageOptimizationType: types.optional(types.string()),
   integrationStores: types.optional(types.number()),
   kvDatabases: types.optional(types.number()),
+  messageboardBoards: types.optional(types.number()),
   microfrontendGroupsPerTeam: types.optional(types.number()),
   microfrontendProjectsPerGroup: types.optional(types.number()),
   nodeType: types.optional(types.string()),

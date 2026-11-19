@@ -3,6 +3,40 @@
  */
 
 import * as z from "zod/v3";
+import { remap as remap$ } from "../lib/primitives.js";
+
+/**
+ * Replaces the stored action. For a rewrite rule it must contain `rewriteModel`.
+ */
+export type UpdateAiGatewayRuleAction = {
+  /**
+   * The model that serves the request, for a rewrite rule: a catalog model, or one of your virtual models as `vmc/<slug>`. It must exist and be active.
+   */
+  rewriteModel?: string | undefined;
+  /**
+   * Why the model is denied, for a deny rule.
+   */
+  reason?: string | undefined;
+};
+
+export type UpdateAiGatewayRuleRequestBody = {
+  /**
+   * The ID of the rule to update. Send at least one of `enabled`, `description`, or `action` with it.
+   */
+  ruleId: string;
+  /**
+   * Whether the rule is enabled.
+   */
+  enabled?: boolean | undefined;
+  /**
+   * A free-text note about the rule.
+   */
+  description?: string | undefined;
+  /**
+   * Replaces the stored action. For a rewrite rule it must contain `rewriteModel`.
+   */
+  action?: UpdateAiGatewayRuleAction | undefined;
+};
 
 export type UpdateAiGatewayRuleRequest = {
   /**
@@ -13,12 +47,68 @@ export type UpdateAiGatewayRuleRequest = {
    * The Team slug to perform the request on behalf of.
    */
   slug?: string | undefined;
+  requestBody?: UpdateAiGatewayRuleRequestBody | undefined;
 };
+
+/** @internal */
+export type UpdateAiGatewayRuleAction$Outbound = {
+  rewriteModel?: string | undefined;
+  reason?: string | undefined;
+};
+
+/** @internal */
+export const UpdateAiGatewayRuleAction$outboundSchema: z.ZodType<
+  UpdateAiGatewayRuleAction$Outbound,
+  z.ZodTypeDef,
+  UpdateAiGatewayRuleAction
+> = z.object({
+  rewriteModel: z.string().optional(),
+  reason: z.string().optional(),
+});
+
+export function updateAiGatewayRuleActionToJSON(
+  updateAiGatewayRuleAction: UpdateAiGatewayRuleAction,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayRuleAction$outboundSchema.parse(updateAiGatewayRuleAction),
+  );
+}
+
+/** @internal */
+export type UpdateAiGatewayRuleRequestBody$Outbound = {
+  ruleId: string;
+  enabled?: boolean | undefined;
+  description?: string | undefined;
+  action?: UpdateAiGatewayRuleAction$Outbound | undefined;
+};
+
+/** @internal */
+export const UpdateAiGatewayRuleRequestBody$outboundSchema: z.ZodType<
+  UpdateAiGatewayRuleRequestBody$Outbound,
+  z.ZodTypeDef,
+  UpdateAiGatewayRuleRequestBody
+> = z.object({
+  ruleId: z.string(),
+  enabled: z.boolean().optional(),
+  description: z.string().optional(),
+  action: z.lazy(() => UpdateAiGatewayRuleAction$outboundSchema).optional(),
+});
+
+export function updateAiGatewayRuleRequestBodyToJSON(
+  updateAiGatewayRuleRequestBody: UpdateAiGatewayRuleRequestBody,
+): string {
+  return JSON.stringify(
+    UpdateAiGatewayRuleRequestBody$outboundSchema.parse(
+      updateAiGatewayRuleRequestBody,
+    ),
+  );
+}
 
 /** @internal */
 export type UpdateAiGatewayRuleRequest$Outbound = {
   teamId?: string | undefined;
   slug?: string | undefined;
+  RequestBody?: UpdateAiGatewayRuleRequestBody$Outbound | undefined;
 };
 
 /** @internal */
@@ -29,6 +119,12 @@ export const UpdateAiGatewayRuleRequest$outboundSchema: z.ZodType<
 > = z.object({
   teamId: z.string().optional(),
   slug: z.string().optional(),
+  requestBody: z.lazy(() => UpdateAiGatewayRuleRequestBody$outboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    requestBody: "RequestBody",
+  });
 });
 
 export function updateAiGatewayRuleRequestToJSON(

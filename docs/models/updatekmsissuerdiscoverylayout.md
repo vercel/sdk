@@ -11,5 +11,5 @@ let value: UpdateKmsIssuerDiscoveryLayout = "kms";
 ## Values
 
 ```typescript
-"connect" | "kms"
+"connect" | "integrations" | "kms"
 ```

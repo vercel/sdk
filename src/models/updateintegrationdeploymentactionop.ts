@@ -16,7 +16,7 @@ export type UpdateIntegrationDeploymentActionStatus = ClosedEnum<
   typeof UpdateIntegrationDeploymentActionStatus
 >;
 
-export type When = {
+export type OutcomesWhen = {
   /**
    * Applies only when the token is minted for one of these roles.
    */
@@ -32,7 +32,7 @@ export type Claims1 = string | number | boolean;
 export type OutcomesClaims = string | number | boolean | Array<string>;
 
 export type ClaimRules = {
-  when?: When | undefined;
+  when?: OutcomesWhen | undefined;
   /**
    * Claims to set (string, number, boolean, or array of strings), shallow-merged over earlier rules and over the default claims. `null` removes a claim. Reserved claims cannot be set; `aud` and `sub` can be overridden with a string but not removed.
    */
@@ -83,20 +83,23 @@ export const UpdateIntegrationDeploymentActionStatus$outboundSchema:
     .nativeEnum(UpdateIntegrationDeploymentActionStatus);
 
 /** @internal */
-export type When$Outbound = {
+export type OutcomesWhen$Outbound = {
   role?: Array<string> | undefined;
   environment?: Array<string> | undefined;
 };
 
 /** @internal */
-export const When$outboundSchema: z.ZodType<When$Outbound, z.ZodTypeDef, When> =
-  z.object({
-    role: z.array(z.string()).optional(),
-    environment: z.array(z.string()).optional(),
-  });
+export const OutcomesWhen$outboundSchema: z.ZodType<
+  OutcomesWhen$Outbound,
+  z.ZodTypeDef,
+  OutcomesWhen
+> = z.object({
+  role: z.array(z.string()).optional(),
+  environment: z.array(z.string()).optional(),
+});
 
-export function whenToJSON(when: When): string {
-  return JSON.stringify(When$outboundSchema.parse(when));
+export function outcomesWhenToJSON(outcomesWhen: OutcomesWhen): string {
+  return JSON.stringify(OutcomesWhen$outboundSchema.parse(outcomesWhen));
 }
 
 /** @internal */
@@ -132,7 +135,7 @@ export function outcomesClaimsToJSON(outcomesClaims: OutcomesClaims): string {
 
 /** @internal */
 export type ClaimRules$Outbound = {
-  when?: When$Outbound | undefined;
+  when?: OutcomesWhen$Outbound | undefined;
   claims: { [k: string]: string | number | boolean | Array<string> | null };
 };
 
@@ -142,7 +145,7 @@ export const ClaimRules$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ClaimRules
 > = z.object({
-  when: z.lazy(() => When$outboundSchema).optional(),
+  when: z.lazy(() => OutcomesWhen$outboundSchema).optional(),
   claims: z.record(
     z.nullable(
       smartUnion([

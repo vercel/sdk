@@ -230,7 +230,7 @@ export class Teams extends ClientSDK {
    * List all teams
    *
    * @remarks
-   * Get a paginated list of all the Teams the authenticated User is a member of.
+   * Get a paginated list of all the Teams the authenticated User is a member of. An app-principal token needs `read:team` and lists only the team it is bound to.
    */
   async getTeams(
     request: GetTeamsRequest,

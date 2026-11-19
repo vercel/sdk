@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { LogoutSource } from "@vercel/sdk/models/usereventpayload491previous.js";
+import { LogoutSource } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: LogoutSource = "vercel";
 ```

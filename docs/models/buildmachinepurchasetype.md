@@ -5,7 +5,7 @@ Machine type purchased for this build. `basic` is the 2vCPU tier, recorded so th
 ## Example Usage
 
 ```typescript
-import { BuildMachinePurchaseType } from "@vercel/sdk/models/servicesdestination.js";
+import { BuildMachinePurchaseType } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicestype.js";
 
 let value: BuildMachinePurchaseType = "basic";
 ```

@@ -1,0 +1,21 @@
+# UserEventPayload281Next
+
+## Example Usage
+
+```typescript
+import { UserEventPayload281Next } from "@vercel/sdk/models/twohundredandfiftytwo.js";
+
+let value: UserEventPayload281Next = {
+  envId: "<id>",
+  perimeterId: "<id>",
+};
+```
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `enableBuilds`                                                                       | *boolean*                                                                            | :heavy_minus_sign:                                                                   | Explicit opt-in; missing values are false.                                           |
+| `enableFunctions`                                                                    | *boolean*                                                                            | :heavy_minus_sign:                                                                   | Explicit opt-in; missing values are false. Authorization does not enable a workload. |
+| `envId`                                                                              | *models.EnvId*                                                                       | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `perimeterId`                                                                        | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |

@@ -5,7 +5,7 @@
 ```typescript
 import {
   DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction,
-} from "@vercel/sdk/models/deleteprojectavatarfrom1.js";
+} from "@vercel/sdk/models/deleteprojectavatartoprojectsresponsepreset.js";
 
 let value:
   DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction =

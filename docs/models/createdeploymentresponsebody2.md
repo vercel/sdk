@@ -5,7 +5,7 @@ Returns the newly created deployment object. Poll `readyState` to track build pr
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentResponseBody2 } from "@vercel/sdk/models/createdeploymentresponsebodyduration.js";
+import { CreateDeploymentResponseBody2 } from "@vercel/sdk/models/createdeploymentresponsebodytarget.js";
 
 let value: CreateDeploymentResponseBody2 = {
   alias: [],

@@ -1,9 +1,11 @@
 # Teams
 
+Replaces the default team roles for each specified child team.
+
 ## Example Usage
 
 ```typescript
-import { Teams } from "@vercel/sdk/models/usereventpayload238prevproject.js";
+import { Teams } from "@vercel/sdk/models/organizationdirectorysyncgroup.js";
 
 let value: Teams = {
   teamRoles: [],
@@ -12,6 +14,6 @@ let value: Teams = {
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `teamRoles`                                                                        | [models.UserEventPayload246TeamRoles](../models/usereventpayload246teamroles.md)[] | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                                                                                                          | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `teamRoles`                                                                                                                    | [models.OrganizationDirectorySyncGroupAssignmentsTeamRoles](../models/organizationdirectorysyncgroupassignmentsteamroles.md)[] | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |

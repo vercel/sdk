@@ -5,7 +5,7 @@ Vercel Flags activation metadata copied from the project at deployment creation.
 ## Example Usage
 
 ```typescript
-import { ResponseBodyVercelFlags } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200type.js";
+import { ResponseBodyVercelFlags } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2serviceseq.js";
 
 let value: ResponseBodyVercelFlags = {};
 ```

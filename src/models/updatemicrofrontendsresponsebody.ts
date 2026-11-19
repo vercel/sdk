@@ -58,10 +58,8 @@ import {
   UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
 } from "./updatemicrofrontendsbuilds.js";
 import {
-  UpdateMicrofrontendsFrom2,
-  UpdateMicrofrontendsFrom2$inboundSchema,
-  UpdateMicrofrontendsFromPreset,
-  UpdateMicrofrontendsFromPreset$inboundSchema,
+  UpdateMicrofrontendsFrom,
+  UpdateMicrofrontendsFrom$inboundSchema,
   UpdateMicrofrontendsLatestDeployments,
   UpdateMicrofrontendsLatestDeployments$inboundSchema,
   UpdateMicrofrontendsLink,
@@ -108,44 +106,13 @@ import {
   UpdateMicrofrontendsTargets$inboundSchema,
   UpdateMicrofrontendsTier,
   UpdateMicrofrontendsTier$inboundSchema,
+  UpdateMicrofrontendsToProjects2,
+  UpdateMicrofrontendsToProjects2$inboundSchema,
   UpdateMicrofrontendsTracing,
   UpdateMicrofrontendsTracing$inboundSchema,
   UpdateMicrofrontendsTrustedIps,
   UpdateMicrofrontendsTrustedIps$inboundSchema,
-} from "./updatemicrofrontendsfrompreset.js";
-
-/**
- * The source envs on the trusted project that are allowed to access `to`.
- */
-export type UpdateMicrofrontendsFrom1 = {
-  preset?: UpdateMicrofrontendsFromPreset | undefined;
-  /**
-   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
-   */
-  slugs: Array<string>;
-};
-
-export type UpdateMicrofrontendsFrom =
-  | UpdateMicrofrontendsFrom1
-  | UpdateMicrofrontendsFrom2;
-
-export const UpdateMicrofrontendsToProjectsResponse200Preset = {
-  AllCustom: "all-custom",
-} as const;
-export type UpdateMicrofrontendsToProjectsResponse200Preset = ClosedEnum<
-  typeof UpdateMicrofrontendsToProjectsResponse200Preset
->;
-
-/**
- * The target envs on the current project that may be accessed.
- */
-export type UpdateMicrofrontendsToProjects2 = {
-  preset: UpdateMicrofrontendsToProjectsResponse200Preset;
-  /**
-   * System environment slugs (`production`, `preview`) and/or custom environment slugs defined on the referenced project.
-   */
-  slugs?: Array<string> | undefined;
-};
+} from "./updatemicrofrontendstoprojects2.js";
 
 export const UpdateMicrofrontendsToProjectsResponsePreset = {
   AllCustom: "all-custom",
@@ -173,7 +140,7 @@ export type UpdateMicrofrontendsProjectsTo =
  * Optional overrides for the default same-env-by-slug matching. Provide explicit rules to allow cross-env access or presets. An empty array denies all access and is only allowed for the current project.
  */
 export type UpdateMicrofrontendsCustomAllow = {
-  from: UpdateMicrofrontendsFrom1 | UpdateMicrofrontendsFrom2;
+  from: UpdateMicrofrontendsFrom;
   to: UpdateMicrofrontendsToProjects1 | UpdateMicrofrontendsToProjects2;
 };
 
@@ -386,71 +353,6 @@ export type UpdateMicrofrontendsResponseBody = {
 };
 
 /** @internal */
-export const UpdateMicrofrontendsFrom1$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsFrom1,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  preset: types.optional(UpdateMicrofrontendsFromPreset$inboundSchema),
-  slugs: z.array(types.string()),
-});
-
-export function updateMicrofrontendsFrom1FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsFrom1, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateMicrofrontendsFrom1$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsFrom1' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateMicrofrontendsFrom$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsFrom,
-  z.ZodTypeDef,
-  unknown
-> = smartUnion([
-  z.lazy(() => UpdateMicrofrontendsFrom1$inboundSchema),
-  UpdateMicrofrontendsFrom2$inboundSchema,
-]);
-
-export function updateMicrofrontendsFromFromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsFrom, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateMicrofrontendsFrom$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsFrom' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateMicrofrontendsToProjectsResponse200Preset$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsToProjectsResponse200Preset> = z
-    .nativeEnum(UpdateMicrofrontendsToProjectsResponse200Preset);
-
-/** @internal */
-export const UpdateMicrofrontendsToProjects2$inboundSchema: z.ZodType<
-  UpdateMicrofrontendsToProjects2,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  preset: UpdateMicrofrontendsToProjectsResponse200Preset$inboundSchema,
-  slugs: types.optional(z.array(types.string())),
-});
-
-export function updateMicrofrontendsToProjects2FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateMicrofrontendsToProjects2, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateMicrofrontendsToProjects2$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateMicrofrontendsToProjects2' from JSON`,
-  );
-}
-
-/** @internal */
 export const UpdateMicrofrontendsToProjectsResponsePreset$inboundSchema:
   z.ZodNativeEnum<typeof UpdateMicrofrontendsToProjectsResponsePreset> = z
     .nativeEnum(UpdateMicrofrontendsToProjectsResponsePreset);
@@ -484,7 +386,7 @@ export const UpdateMicrofrontendsProjectsTo$inboundSchema: z.ZodType<
   unknown
 > = smartUnion([
   z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
-  z.lazy(() => UpdateMicrofrontendsToProjects2$inboundSchema),
+  UpdateMicrofrontendsToProjects2$inboundSchema,
 ]);
 
 export function updateMicrofrontendsProjectsToFromJSON(
@@ -503,13 +405,10 @@ export const UpdateMicrofrontendsCustomAllow$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  from: smartUnion([
-    z.lazy(() => UpdateMicrofrontendsFrom1$inboundSchema),
-    UpdateMicrofrontendsFrom2$inboundSchema,
-  ]),
+  from: UpdateMicrofrontendsFrom$inboundSchema,
   to: smartUnion([
     z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
-    z.lazy(() => UpdateMicrofrontendsToProjects2$inboundSchema),
+    UpdateMicrofrontendsToProjects2$inboundSchema,
   ]),
 });
 

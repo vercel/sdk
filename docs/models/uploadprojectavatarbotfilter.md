@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UploadProjectAvatarBotFilter } from "@vercel/sdk/models/uploadprojectavatarfrom1.js";
+import { UploadProjectAvatarBotFilter } from "@vercel/sdk/models/uploadprojectavatartoprojectsresponsepreset.js";
 
 let value: UploadProjectAvatarBotFilter = {
   active: true,
@@ -12,7 +12,7 @@ let value: UploadProjectAvatarBotFilter = {
 
 ## Fields
 
-| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `action`                                                                                                         | [models.UploadProjectAvatarProjectsResponse200Action](../models/uploadprojectavatarprojectsresponse200action.md) | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
-| `active`                                                                                                         | *boolean*                                                                                                        | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `action`                                                                                                   | [models.UploadProjectAvatarProjectsResponseAction](../models/uploadprojectavatarprojectsresponseaction.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
+| `active`                                                                                                   | *boolean*                                                                                                  | :heavy_check_mark:                                                                                         | N/A                                                                                                        |

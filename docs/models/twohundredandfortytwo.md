@@ -5,17 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/usereventpayload238prevproject.js";
+import { TwoHundredAndFortyTwo } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
 
 let value: TwoHundredAndFortyTwo = {
-  avatar: "https://loremflickr.com/3477/1700?lock=3268890296497014",
-  organizationId: "<id>",
+  reason: "<value>",
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `avatar`           | *string*           | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                    | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `reason`                                                 | *string*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| `actorId`                                                | *string*                                                 | :heavy_check_mark:                                       | Okta user id.                                            |
+| `actorName`                                              | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      |
+| `actorType`                                              | [models.PayloadActorType](../models/payloadactortype.md) | :heavy_check_mark:                                       | N/A                                                      |

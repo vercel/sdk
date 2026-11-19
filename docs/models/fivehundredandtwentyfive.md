@@ -5,20 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndTwentyFive } from "@vercel/sdk/models/usereventpayload491previous.js";
+import { FiveHundredAndTwentyFive } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyFive = {
-  deploymentId: "<id>",
-  projectId: "<id>",
-  runId: "<id>",
+  commitSha: "<value>",
+  invocationId: "<id>",
+  organizationId: "<id>",
+  pullRequestNumber: 4628.63,
+  repository: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
-| `runId`            | *string*           | :heavy_check_mark: | N/A                |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `commitSha`         | *string*            | :heavy_check_mark:  | N/A                 |
+| `invocationId`      | *string*            | :heavy_check_mark:  | N/A                 |
+| `organizationId`    | *string*            | :heavy_check_mark:  | N/A                 |
+| `pullRequestNumber` | *number*            | :heavy_check_mark:  | N/A                 |
+| `repository`        | *string*            | :heavy_check_mark:  | N/A                 |

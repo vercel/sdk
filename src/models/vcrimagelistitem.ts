@@ -13,6 +13,7 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
  * Whether the manifest is a multi-platform image index, a single-platform image manifest or an attestation.
  */
 export const VcrImageListItemKind = {
+  Artifact: "artifact",
   Attestation: "attestation",
   Index: "index",
   Manifest: "manifest",

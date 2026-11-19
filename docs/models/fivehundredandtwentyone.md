@@ -5,29 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndTwentyOne } from "@vercel/sdk/models/usereventpayload491previous.js";
+import { FiveHundredAndTwentyOne } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyOne = {
-  chatId: "<id>",
-  events: [],
-  inputTokens: 2174.71,
-  messageId: "<id>",
-  model: "2",
-  outputTokens: 4193.13,
-  timestamp: 7507.46,
-  useCase: "<value>",
+  alertType: "<value>",
+  groupId: "<id>",
+  projectId: "<id>",
+  destinations: {},
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `chatId`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `events`                               | [models.Events](../models/events.md)[] | :heavy_check_mark:                     | N/A                                    |
-| `inputTokens`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `model`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `outputTokens`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `timestamp`                            | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `useCase`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `alertType`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `groupId`                                                      | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `severity`                                                     | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `destinations`                                                 | [models.PayloadDestinations](../models/payloaddestinations.md) | :heavy_check_mark:                                             | N/A                                                            |
+| `title`                                                        | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |

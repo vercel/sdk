@@ -3,20 +3,37 @@
  */
 
 import { organizationsCreateOrganization } from "../funcs/organizationsCreateOrganization.js";
+import { organizationsDeleteOrganizationDsyncGroup } from "../funcs/organizationsDeleteOrganizationDsyncGroup.js";
 import { organizationsGetOrganization } from "../funcs/organizationsGetOrganization.js";
+import { organizationsGetOrganizationDsyncGroup } from "../funcs/organizationsGetOrganizationDsyncGroup.js";
+import { organizationsListOrganizationDsyncGroups } from "../funcs/organizationsListOrganizationDsyncGroups.js";
 import { organizationsListOrganizations } from "../funcs/organizationsListOrganizations.js";
 import { organizationsListOrganizationTeams } from "../funcs/organizationsListOrganizationTeams.js";
+import { organizationsPutOrganizationDsyncGroup } from "../funcs/organizationsPutOrganizationDsyncGroup.js";
+import { organizationsPutOrganizationTeamDsync } from "../funcs/organizationsPutOrganizationTeamDsync.js";
 import { organizationsRemoveOrganizationTeam } from "../funcs/organizationsRemoveOrganizationTeam.js";
 import { organizationsUpdateOrganization } from "../funcs/organizationsUpdateOrganization.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import { CreateOrganizationRequest } from "../models/createorganizationop.js";
+import { DeleteOrganizationDsyncGroupRequest } from "../models/deleteorganizationdsyncgroupop.js";
+import { GetOrganizationDsyncGroupRequest } from "../models/getorganizationdsyncgroupop.js";
 import { GetOrganizationRequest } from "../models/getorganizationop.js";
+import {
+  ListOrganizationDsyncGroupsRequest,
+  ListOrganizationDsyncGroupsResponseBody,
+} from "../models/listorganizationdsyncgroupsop.js";
 import { ListOrganizationsResponseBody } from "../models/listorganizationsop.js";
 import {
   ListOrganizationTeamsRequest,
   ListOrganizationTeamsResponseBody,
 } from "../models/listorganizationteamsop.js";
 import { Organization } from "../models/organization.js";
+import { OrganizationDirectorySyncGroup } from "../models/organizationdirectorysyncgroup.js";
+import { PutOrganizationDsyncGroupRequest } from "../models/putorganizationdsyncgroupop.js";
+import {
+  PutOrganizationTeamDsyncRequest,
+  PutOrganizationTeamDsyncResponseBody,
+} from "../models/putorganizationteamdsyncop.js";
 import {
   RemoveOrganizationTeamRequest,
   RemoveOrganizationTeamResponseBody,
@@ -119,6 +136,91 @@ export class Organizations extends ClientSDK {
     options?: RequestOptions,
   ): Promise<RemoveOrganizationTeamResponseBody> {
     return unwrapAsync(organizationsRemoveOrganizationTeam(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Organization Team Directory Sync Mode
+   *
+   * @remarks
+   * Select whether one Organization team's memberships are governed by the Organization's Directory Sync or by the team's own directory. The team's own directory connection is kept either way.
+   */
+  async putOrganizationTeamDsync(
+    request: PutOrganizationTeamDsyncRequest,
+    options?: RequestOptions,
+  ): Promise<PutOrganizationTeamDsyncResponseBody> {
+    return unwrapAsync(organizationsPutOrganizationTeamDsync(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Organization Directory Sync Groups
+   *
+   * @remarks
+   * List the groups in an organization's Identity Provider directory, along with their Directory Sync group configuration when one exists.
+   */
+  async listOrganizationDsyncGroups(
+    request: ListOrganizationDsyncGroupsRequest,
+    options?: RequestOptions,
+  ): Promise<ListOrganizationDsyncGroupsResponseBody> {
+    return unwrapAsync(organizationsListOrganizationDsyncGroups(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create or Replace Organization Directory Sync Group Configuration
+   *
+   * @remarks
+   * Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin.
+   */
+  async putOrganizationDsyncGroup(
+    request: PutOrganizationDsyncGroupRequest,
+    options?: RequestOptions,
+  ): Promise<OrganizationDirectorySyncGroup> {
+    return unwrapAsync(organizationsPutOrganizationDsyncGroup(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete Organization Directory Sync Group Configuration
+   *
+   * @remarks
+   * Delete one organization's Directory Sync group configuration. The last group granting OrgAdmin cannot be removed.
+   */
+  async deleteOrganizationDsyncGroup(
+    request: DeleteOrganizationDsyncGroupRequest,
+    options?: RequestOptions,
+  ): Promise<void> {
+    return unwrapAsync(organizationsDeleteOrganizationDsyncGroup(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Organization Directory Sync Group
+   *
+   * @remarks
+   * Get one group from the organization's Identity Provider directory, joined with its Directory Sync group configuration when one exists.
+   */
+  async getOrganizationDsyncGroup(
+    request: GetOrganizationDsyncGroupRequest,
+    options?: RequestOptions,
+  ): Promise<OrganizationDirectorySyncGroup> {
+    return unwrapAsync(organizationsGetOrganizationDsyncGroup(
       this,
       request,
       options,

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectBotFilter } from "@vercel/sdk/models/getprojectfrom2.js";
+import { GetProjectBotFilter } from "@vercel/sdk/models/getprojecttoprojectsresponse200preset.js";
 
 let value: GetProjectBotFilter = {
   active: true,
@@ -12,7 +12,7 @@ let value: GetProjectBotFilter = {
 
 ## Fields
 
-| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `action`                                                                                       | [models.GetProjectProjectsResponse200Action](../models/getprojectprojectsresponse200action.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
-| `active`                                                                                       | *boolean*                                                                                      | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `action`                                                                                 | [models.GetProjectProjectsResponseAction](../models/getprojectprojectsresponseaction.md) | :heavy_minus_sign:                                                                       | N/A                                                                                      |
+| `active`                                                                                 | *boolean*                                                                                | :heavy_check_mark:                                                                       | N/A                                                                                      |

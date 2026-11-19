@@ -5,7 +5,7 @@ Bindings to services in the same deployment.
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentServicesDeploymentsBindings } from "@vercel/sdk/models/servicesdestination.js";
+import { CancelDeploymentServicesDeploymentsBindings } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicestype.js";
 
 let value: CancelDeploymentServicesDeploymentsBindings = {
   env: "<value>",

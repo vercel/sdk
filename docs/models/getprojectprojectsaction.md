@@ -1,17 +1,15 @@
 # GetProjectProjectsAction
 
-What to do when the gate trips: pause the rollout, or roll it back.
-
 ## Example Usage
 
 ```typescript
-import { GetProjectProjectsAction } from "@vercel/sdk/models/getprojectfrom2.js";
+import { GetProjectProjectsAction } from "@vercel/sdk/models/getprojecttoprojectsresponse200preset.js";
 
-let value: GetProjectProjectsAction = "rollback";
+let value: GetProjectProjectsAction = "log";
 ```
 
 ## Values
 
 ```typescript
-"pause" | "rollback"
+"allow" | "bypass" | "challenge" | "deny" | "log" | "rate_limit" | "redirect"
 ```

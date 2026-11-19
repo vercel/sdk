@@ -5,7 +5,7 @@ The last promote or rollback request for the project and its job status. Only po
 ## Example Usage
 
 ```typescript
-import { LastAliasRequest } from "@vercel/sdk/models/createprojectprojectsoidctokenclaims.js";
+import { LastAliasRequest } from "@vercel/sdk/models/createprojectprojectsresponse200applicationjsonresponsebodytargetstype.js";
 
 let value: LastAliasRequest = {
   fromDeploymentId: "<id>",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetProjectSandboxUrls } from "@vercel/sdk/models/getprojectfrom2.js";
+import { GetProjectSandboxUrls } from "@vercel/sdk/models/getprojecttoprojectsresponse200preset.js";
 
 let value: GetProjectSandboxUrls = {};
 ```

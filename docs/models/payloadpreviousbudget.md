@@ -5,7 +5,7 @@ Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in 
 ## Example Usage
 
 ```typescript
-import { PayloadPreviousBudget } from "@vercel/sdk/models/usereventprincipaltype.js";
+import { PayloadPreviousBudget } from "@vercel/sdk/models/thirteen.js";
 
 let value: PayloadPreviousBudget = {
   limitAmount: 4633.42,

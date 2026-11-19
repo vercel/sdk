@@ -5,7 +5,7 @@ Machine type purchased for this build.
 ## Example Usage
 
 ```typescript
-import { CreateDeploymentBuildMachineDeploymentsPurchaseType } from "@vercel/sdk/models/createdeploymentmissingdeploymentsresponse200type.js";
+import { CreateDeploymentBuildMachineDeploymentsPurchaseType } from "@vercel/sdk/models/createdeploymentvaluedeploymentsresponse200applicationjsonresponsebody2serviceseq.js";
 
 let value: CreateDeploymentBuildMachineDeploymentsPurchaseType = "standard";
 ```

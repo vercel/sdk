@@ -73,6 +73,7 @@ export type Plans = {
   description: string;
   details?: Array<GetBillingPlansDetails> | undefined;
   disabled?: boolean | undefined;
+  disabledReason?: string | undefined;
   effectiveDate?: string | undefined;
   highlightedDetails?: Array<GetBillingPlansHighlightedDetails> | undefined;
   id: string;
@@ -207,6 +208,7 @@ export const Plans$inboundSchema: z.ZodType<Plans, z.ZodTypeDef, unknown> = z
       z.array(z.lazy(() => GetBillingPlansDetails$inboundSchema)),
     ),
     disabled: types.optional(types.boolean()),
+    disabledReason: types.optional(types.string()),
     effectiveDate: types.optional(types.string()),
     highlightedDetails: types.optional(
       z.array(z.lazy(() => GetBillingPlansHighlightedDetails$inboundSchema)),

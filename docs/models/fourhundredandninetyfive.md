@@ -5,17 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNinetyFive } from "@vercel/sdk/models/usereventpayload491previous.js";
+import { FourHundredAndNinetyFive } from "@vercel/sdk/models/usereventpayloadtargetkind.js";
 
 let value: FourHundredAndNinetyFive = {
-  enabled: false,
-  totpVerified: true,
+  scope: "organization",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `totpVerified`     | *boolean*          | :heavy_check_mark: | N/A                |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `scope`                                                                  | [models.UserEventPayload495Scope](../models/usereventpayload495scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scopeId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

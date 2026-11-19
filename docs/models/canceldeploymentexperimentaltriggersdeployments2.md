@@ -5,7 +5,7 @@ Queue trigger input event for v2beta (from vercel.json config). Consumer name is
 ## Example Usage
 
 ```typescript
-import { CancelDeploymentExperimentalTriggersDeployments2 } from "@vercel/sdk/models/servicesdestination.js";
+import { CancelDeploymentExperimentalTriggersDeployments2 } from "@vercel/sdk/models/canceldeploymenthasdeploymentsresponse200applicationjsonresponsebodyservicestype.js";
 
 let value: CancelDeploymentExperimentalTriggersDeployments2 = {
   topic: "<value>",

@@ -32,8 +32,9 @@
     "lint": "oxlint --max-warnings=0 --deny-warnings --no-error-on-unmatched-pattern src",
     "build": "tsgo",
     "prepublishOnly": "npm run build",
-    "test": "npm run test:connect-environments",
-    "test:connect-environments": "npm run build && node --test tests/connect-integration-resource-to-project.test.mjs"
+    "test": "npm run test:connect-environments && npm run test:debug-logger",
+    "test:connect-environments": "npm run build && node --test tests/connect-integration-resource-to-project.test.mjs",
+    "test:debug-logger": "npm run build && node --test tests/debug-logger-redaction.test.mjs"
   },
   "peerDependencies": {
     

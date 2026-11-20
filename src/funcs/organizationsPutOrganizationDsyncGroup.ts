@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  * Create or Replace Organization Directory Sync Group Configuration
  *
  * @remarks
- * Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin.
+ * Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin. A group that grants OrgAdmin must also grant the Owner role on the organization's root team, as its default role or for that team.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

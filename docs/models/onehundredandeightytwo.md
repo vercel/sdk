@@ -5,9 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyTwo } from "@vercel/sdk/models/job4.js";
+import { OneHundredAndEightyTwo } from "@vercel/sdk/models/usereventjobpayloaddeployhook.js";
 
 let value: OneHundredAndEightyTwo = {
+  previousRule: {
+    email: "Judah_Altenwerth@yahoo.com",
+  },
   team: {
     id: "<id>",
   },
@@ -18,6 +21,5 @@ let value: OneHundredAndEightyTwo = {
 
 | Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `previousRule`                                                         | [models.PreviousRule](../models/previousrule.md)                       | :heavy_check_mark:                                                     | N/A                                                                    |
 | `team`                                                                 | [models.UserEventPayload182Team](../models/usereventpayload182team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

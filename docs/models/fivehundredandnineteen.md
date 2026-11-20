@@ -8,21 +8,14 @@ The payload of the event, if requested.
 import { FiveHundredAndNineteen } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndNineteen = {
-  alertType: "<value>",
-  groupId: "<id>",
-  projectId: "<id>",
-  detectionCount: 5843.42,
-  detections: [],
+  nextProjectCount: 813.36,
+  previousProjectCount: 8437.29,
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `alertType`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `groupId`                                      | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `severity`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `detectionCount`                               | *number*                                       | :heavy_check_mark:                             | N/A                                            |
-| `detections`                                   | [models.Detections](../models/detections.md)[] | :heavy_check_mark:                             | N/A                                            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `nextProjectCount`     | *number*               | :heavy_check_mark:     | N/A                    |
+| `previousProjectCount` | *number*               | :heavy_check_mark:     | N/A                    |

@@ -8,20 +8,16 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentyFive } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyFive = {
-  commitSha: "<value>",
-  invocationId: "<id>",
-  organizationId: "<id>",
-  pullRequestNumber: 4628.63,
-  repository: "<value>",
+  enabled: true,
+  repositoryId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `commitSha`         | *string*            | :heavy_check_mark:  | N/A                 |
-| `invocationId`      | *string*            | :heavy_check_mark:  | N/A                 |
-| `organizationId`    | *string*            | :heavy_check_mark:  | N/A                 |
-| `pullRequestNumber` | *number*            | :heavy_check_mark:  | N/A                 |
-| `repository`        | *string*            | :heavy_check_mark:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_minus_sign: | N/A                |
+| `repository`       | *string*           | :heavy_minus_sign: | N/A                |
+| `repositoryId`     | *string*           | :heavy_check_mark: | N/A                |

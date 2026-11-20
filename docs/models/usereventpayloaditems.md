@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadItems } from "@vercel/sdk/models/payloadresources.js";
+import { UserEventPayloadItems } from "@vercel/sdk/models/usereventpayloadresources.js";
 
 let value: UserEventPayloadItems = {
   type: "string",
@@ -14,4 +14,4 @@ let value: UserEventPayloadItems = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `type`                                                                         | [models.UserEventPayload79AfterType](../models/usereventpayload79aftertype.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `type`                                                                         | [models.UserEventPayload80AfterType](../models/usereventpayload80aftertype.md) | :heavy_check_mark:                                                             | N/A                                                                            |

@@ -1,22 +1,38 @@
 # UserEventPayload539Previous
 
-## Example Usage
+
+## Supported Types
+
+### `models.UserEventPreviousPayload1`
 
 ```typescript
-import { UserEventPayload539Previous } from "@vercel/sdk/models/payloadoutcome.js";
-
-let value: UserEventPayload539Previous = {
-  enabled: true,
-  issuerUrls: [
-    "<value 1>",
-    "<value 2>",
-  ],
+const value: models.UserEventPreviousPayload1 = {
+  access: "default",
 };
 ```
 
-## Fields
+### `models.UserEventPreviousPayload1`
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `issuerUrls`       | *string*[]         | :heavy_check_mark: | N/A                |
+```typescript
+const value: models.UserEventPreviousPayload1 = {
+  access: "default",
+};
+```
+
+### `models.UserEventPreviousPayload1`
+
+```typescript
+const value: models.UserEventPreviousPayload1 = {
+  access: "default",
+};
+```
+
+### `models.UserEventPreviousPayload2`
+
+```typescript
+const value: models.UserEventPreviousPayload2 = {
+  access: "limited",
+  limit: "<value>",
+};
+```
+

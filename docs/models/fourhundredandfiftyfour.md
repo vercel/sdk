@@ -5,22 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFiftyFour } from "@vercel/sdk/models/usereventpayloadtargetkind.js";
+import { FourHundredAndFiftyFour } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
 
 let value: FourHundredAndFiftyFour = {
-  requestedTeamName: "<value>",
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Anabel1",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `bitbucketUsername`                                                  | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `githubUsername`                                                     | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `gitlabUsername`                                                     | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `gitUsername`                                                        | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `requestedTeamName`                                                  | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `requestedTeamSlug`                                                  | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `requestedUserName`                                                  | *string*                                                             | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `source`                                                             | [models.UserEventPayloadSource](../models/usereventpayloadsource.md) | :heavy_minus_sign:                                                   | N/A                                                                  |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `entitlement`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `previousCanceledAt`                                             | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `user`                                                           | [models.UserEventPayloadUser](../models/usereventpayloaduser.md) | :heavy_check_mark:                                               | N/A                                                              |

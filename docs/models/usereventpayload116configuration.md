@@ -3,13 +3,16 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload116Configuration } from "@vercel/sdk/models/version.js";
+import { UserEventPayload116Configuration } from "@vercel/sdk/models/usereventpayloadresources.js";
 
-let value: UserEventPayload116Configuration = "WAIT_FOR_NAMESPACE_QUEUE";
+let value: UserEventPayload116Configuration = {
+  id: "<id>",
+};
 ```
 
-## Values
+## Fields
 
-```typescript
-"SKIP_NAMESPACE_QUEUE" | "WAIT_FOR_NAMESPACE_QUEUE"
-```
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `id`               | *string*           | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |

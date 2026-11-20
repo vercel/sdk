@@ -8,21 +8,26 @@ The payload of the event, if requested.
 import { FiveHundredAndThirtySix } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtySix = {
-  next: {
-    access: "none",
-  },
-  previous: {
-    access: "unlimited",
-  },
-  userId: "<id>",
+  chatId: "<id>",
+  events: [],
+  inputTokens: 5454.1,
+  messageId: "<id>",
+  model: "Altima",
+  outputTokens: 4853.67,
+  timestamp: 4194.96,
+  useCase: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `next`                               | *models.UserEventPayload536Next*     | :heavy_check_mark:                   | N/A                                  |
-| `previous`                           | *models.UserEventPayload536Previous* | :heavy_check_mark:                   | N/A                                  |
-| `userId`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |
-| `userName`                           | *string*                             | :heavy_minus_sign:                   | N/A                                  |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `chatId`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `events`                               | [models.Events](../models/events.md)[] | :heavy_check_mark:                     | N/A                                    |
+| `inputTokens`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `model`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `outputTokens`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `timestamp`                            | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `useCase`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |

@@ -9,27 +9,17 @@ import { FiveHundredAndThirtyNine } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtyNine = {
   next: {
-    enabled: false,
-    issuerUrls: [
-      "<value 1>",
-      "<value 2>",
-    ],
+    access: "unlimited",
   },
   previous: {
-    enabled: false,
-    issuerUrls: [
-      "<value 1>",
-      "<value 2>",
-    ],
+    access: "unlimited",
   },
-  scope: "team",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload539Next](../models/usereventpayload539next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload539Previous](../models/usereventpayload539previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `scope`                                                                        | [models.UserEventPayload539Scope](../models/usereventpayload539scope.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `next`                               | *models.UserEventPayload539Next*     | :heavy_check_mark:                   | N/A                                  |
+| `previous`                           | *models.UserEventPayload539Previous* | :heavy_check_mark:                   | N/A                                  |

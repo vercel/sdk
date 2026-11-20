@@ -9,7 +9,6 @@ import { FiveHundredAndThirtyFive } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtyFive = {
   chatId: "<id>",
-  messageId: "<id>",
 };
 ```
 
@@ -19,4 +18,3 @@ let value: FiveHundredAndThirtyFive = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `chatId`           | *string*           | :heavy_check_mark: | N/A                |
 | `chatTitle`        | *string*           | :heavy_minus_sign: | N/A                |
-| `messageId`        | *string*           | :heavy_check_mark: | N/A                |

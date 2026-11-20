@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload95Action } from "@vercel/sdk/models/payloadresources.js";
+import { UserEventPayload95Action } from "@vercel/sdk/models/usereventpayloadresources.js";
 
-let value: UserEventPayload95Action = "resume_plan";
+let value: UserEventPayload95Action = "cancel_plan";
 ```
 
 ## Values
 
 ```typescript
-"resume_plan"
+"cancel_plan"
 ```

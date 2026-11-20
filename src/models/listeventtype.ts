@@ -79,6 +79,7 @@ export const Name = {
   AgenticProvisioningPlanChanged: "agentic-provisioning-plan-changed",
   AgenticProvisioningTeamCreated: "agentic-provisioning-team-created",
   AiAgentUsageBilling: "ai-agent-usage-billing",
+  AiAgentUsageBillingConsent: "ai-agent-usage-billing-consent",
   AiAlertInvestigation: "ai-alert-investigation",
   AiCodeReview: "ai-code-review",
   AiGatewayAccessPolicyCreated: "ai-gateway-access-policy-created",
@@ -101,6 +102,10 @@ export const Name = {
   AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
   AiGatewayInferenceHooksEndpointUpdated:
     "ai-gateway-inference-hooks-endpoint-updated",
+  AiGatewayInferenceHooksHeadersCleared:
+    "ai-gateway-inference-hooks-headers-cleared",
+  AiGatewayInferenceHooksHeadersUpdated:
+    "ai-gateway-inference-hooks-headers-updated",
   AiGatewayInferenceHooksRemoved: "ai-gateway-inference-hooks-removed",
   AiGatewayInferenceHooksSettingsUpdated:
     "ai-gateway-inference-hooks-settings-updated",
@@ -150,6 +155,7 @@ export const Name = {
   AiGatewayZeroDataRetentionToggled: "ai-gateway-zero-data-retention-toggled",
   AiOmniagent: "ai-omniagent",
   AiSecurityReview: "ai-security-review",
+  AiVerification: "ai-verification",
   AlertGroupDetected: "alert-group-detected",
   AlertGroupInvestigationCompleted: "alert-group-investigation-completed",
   AlertGroupPublished: "alert-group-published",
@@ -679,8 +685,6 @@ export const Name = {
   ProjectRollingReleaseEnabled: "project-rolling-release-enabled",
   ProjectRollingReleasePaused: "project-rolling-release-paused",
   ProjectRollingReleaseStarted: "project-rolling-release-started",
-  ProjectRollingReleaseSuggestedActionsGenerated:
-    "project-rolling-release-suggested-actions-generated",
   ProjectRollingReleaseTimer: "project-rolling-release-timer",
   ProjectRootDirectoryUpdated: "project-root-directory-updated",
   ProjectRoutesVersionPromoted: "project-routes-version-promoted",
@@ -990,6 +994,7 @@ export const ReplacedBy = {
   AgenticProvisioningPlanChanged: "agentic-provisioning-plan-changed",
   AgenticProvisioningTeamCreated: "agentic-provisioning-team-created",
   AiAgentUsageBilling: "ai-agent-usage-billing",
+  AiAgentUsageBillingConsent: "ai-agent-usage-billing-consent",
   AiAlertInvestigation: "ai-alert-investigation",
   AiCodeReview: "ai-code-review",
   AiGatewayAccessPolicyCreated: "ai-gateway-access-policy-created",
@@ -1012,6 +1017,10 @@ export const ReplacedBy = {
   AiGatewayHipaaComplianceToggled: "ai-gateway-hipaa-compliance-toggled",
   AiGatewayInferenceHooksEndpointUpdated:
     "ai-gateway-inference-hooks-endpoint-updated",
+  AiGatewayInferenceHooksHeadersCleared:
+    "ai-gateway-inference-hooks-headers-cleared",
+  AiGatewayInferenceHooksHeadersUpdated:
+    "ai-gateway-inference-hooks-headers-updated",
   AiGatewayInferenceHooksRemoved: "ai-gateway-inference-hooks-removed",
   AiGatewayInferenceHooksSettingsUpdated:
     "ai-gateway-inference-hooks-settings-updated",
@@ -1061,6 +1070,7 @@ export const ReplacedBy = {
   AiGatewayZeroDataRetentionToggled: "ai-gateway-zero-data-retention-toggled",
   AiOmniagent: "ai-omniagent",
   AiSecurityReview: "ai-security-review",
+  AiVerification: "ai-verification",
   AlertGroupDetected: "alert-group-detected",
   AlertGroupInvestigationCompleted: "alert-group-investigation-completed",
   AlertGroupPublished: "alert-group-published",
@@ -1590,8 +1600,6 @@ export const ReplacedBy = {
   ProjectRollingReleaseEnabled: "project-rolling-release-enabled",
   ProjectRollingReleasePaused: "project-rolling-release-paused",
   ProjectRollingReleaseStarted: "project-rolling-release-started",
-  ProjectRollingReleaseSuggestedActionsGenerated:
-    "project-rolling-release-suggested-actions-generated",
   ProjectRollingReleaseTimer: "project-rolling-release-timer",
   ProjectRootDirectoryUpdated: "project-root-directory-updated",
   ProjectRoutesVersionPromoted: "project-routes-version-promoted",

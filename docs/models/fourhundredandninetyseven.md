@@ -5,22 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNinetySeven } from "@vercel/sdk/models/usereventpayloadtargetkind.js";
+import { FourHundredAndNinetySeven } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
 
 let value: FourHundredAndNinetySeven = {
-  allowedMethods: [
-    "recovery-code",
-  ],
-  firstFactor: "<value>",
-  flowId: "<id>",
+  scope: "team",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `allowedMethods`                                       | [models.AllowedMethods](../models/allowedmethods.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `firstFactor`                                          | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `flowId`                                               | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
-| `loginSessionId`                                       | *string*                                               | :heavy_minus_sign:                                     | N/A                                                    |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `scope`                                                                  | [models.UserEventPayload497Scope](../models/usereventpayload497scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scopeId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |

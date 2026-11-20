@@ -8,16 +8,19 @@ The payload of the event, if requested.
 import { FiveHundredAndNine } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndNine = {
-  projectId: "<id>",
-  projectName: "<value>",
-  repositoryName: "<value>",
+  email: "Dejon71@hotmail.com",
+  prevEmail: "<value>",
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `email`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `prevEmail`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
+| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload509ActorType](../models/usereventpayload509actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |

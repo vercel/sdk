@@ -5,11 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwo } from "@vercel/sdk/models/twohundredandfiftytwo.js";
+import { ThreeHundredAndTwo } from "@vercel/sdk/models/payloaddsyncmode.js";
 
 let value: ThreeHundredAndTwo = {
-  next: {},
-  previous: {},
+  enableExternalRewriteCaching: false,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,9 +16,8 @@ let value: ThreeHundredAndTwo = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload302Next](../models/usereventpayload302next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload302Previous](../models/usereventpayload302previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `enableExternalRewriteCaching` | *boolean*                      | :heavy_check_mark:             | N/A                            |
+| `projectId`                    | *string*                       | :heavy_check_mark:             | N/A                            |
+| `projectName`                  | *string*                       | :heavy_check_mark:             | N/A                            |

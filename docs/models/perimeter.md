@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Perimeter } from "@vercel/sdk/models/twohundredandfiftytwo.js";
+import { Perimeter } from "@vercel/sdk/models/payloaddsyncmode.js";
 
 let value: Perimeter = {
   id: "<id>",

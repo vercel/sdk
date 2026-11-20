@@ -122,6 +122,12 @@ export const GetWebhookEvents = {
   ObservabilityAnomalyError: "observability.anomaly-error",
   ObservabilityErrorAnomaly: "observability.error-anomaly",
   ObservabilityUsageAnomaly: "observability.usage-anomaly",
+  PageIntegrityConnectSrcDetected: "page-integrity.connect-src.detected",
+  PageIntegrityHeaderChanged: "page-integrity.header.changed",
+  PageIntegrityRuntimeWarningDetected:
+    "page-integrity.runtime-warning.detected",
+  PageIntegrityScriptChanged: "page-integrity.script.changed",
+  PageIntegrityScriptDetected: "page-integrity.script.detected",
   ProjectCreatedHyphen: "project-created",
   ProjectRemovedHyphen: "project-removed",
   ProjectCreated: "project.created",

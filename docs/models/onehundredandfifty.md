@@ -5,17 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndFifty } from "@vercel/sdk/models/job4.js";
+import { OneHundredAndFifty } from "@vercel/sdk/models/usereventjobpayloaddeployhook.js";
 
 let value: OneHundredAndFifty = {
+  cdnEnabled: true,
   name: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `name`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
-| `newTeam`                                                                    | [models.UserEventPayload150NewTeam](../models/usereventpayload150newteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
-| `oldTeam`                                                                    | [models.UserEventPayload150OldTeam](../models/usereventpayload150oldteam.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `cdnEnabled`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |

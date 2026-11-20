@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadRepositoryScope } from "@vercel/sdk/models/ssoprotectioncve55182migrationappliedfrom.js";
+import { PayloadRepositoryScope } from "@vercel/sdk/models/oldssoprotection2.js";
 
 let value: PayloadRepositoryScope = "all";
 ```

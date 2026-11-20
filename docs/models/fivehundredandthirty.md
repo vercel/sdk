@@ -8,18 +8,23 @@ The payload of the event, if requested.
 import { FiveHundredAndThirty } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirty = {
-  cadence: "weekly",
-  projectIds: [],
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    id: "<id>",
+  },
   team: {
     id: "<id>",
+    name: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload530Team](../models/usereventpayload530team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `configuration`                                                                          | [models.UserEventPayload530Configuration](../models/usereventpayload530configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `team`                                                                                   | [models.UserEventPayload530Team](../models/usereventpayload530team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

@@ -99354,7 +99354,7 @@
     },
     "/v1/organizations/{organizationId}/teams/{targetTeamId}/dsync": {
       "put": {
-        "description": "Select whether one Organization team's memberships are governed by the Organization's Directory Sync or by the team's own directory. The team's own directory connection is kept either way.",
+        "description": "Select whether one Organization team's memberships are governed by the Organization's Directory Sync or by the team's own directory. The team's own directory connection is kept either way. The root team can follow the Organization's Directory Sync only when no group grants OrgAdmin or at least one OrgAdmin group also grants the Owner role on it.",
         "operationId": "putOrganizationTeamDsync",
         "security": [
           {
@@ -99583,7 +99583,7 @@
     },
     "/v1/organizations/{organizationId}/dsync/groups/{groupId}": {
       "put": {
-        "description": "Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin.",
+        "description": "Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin. A group that grants OrgAdmin must also grant the Owner role on the organization's root team, as its default role or for that team.",
         "operationId": "putOrganizationDsyncGroup",
         "security": [
           {
@@ -189418,7 +189418,6 @@
                     "example": "node24"
                   },
                   "architecture": {
-                    "description": "CPU architecture. Inherits a snapshot or single image manifest when omitted. Image indexes default to amd64. Must match the source. ARM64 creation requires API v3 or v4 without runtime and team access.",
                     "type": "string",
                     "enum": [
                       "amd64",
@@ -195374,7 +195373,6 @@
                     ]
                   },
                   "architecture": {
-                    "description": "CPU architecture. Inherits a snapshot or single image manifest when omitted. Image indexes default to amd64. Must match the source. ARM64 creation requires API v3 or v4 without runtime and team access.",
                     "type": "string",
                     "enum": [
                       "amd64",
@@ -197135,7 +197133,6 @@
                     ]
                   },
                   "architecture": {
-                    "description": "CPU architecture. Inherits a snapshot or single image manifest when omitted. Image indexes default to amd64. Must match the source. ARM64 creation requires API v3 or v4 without runtime and team access.",
                     "type": "string",
                     "enum": [
                       "amd64",
@@ -234628,6 +234625,11 @@
                           "observability.anomaly-error",
                           "observability.error-anomaly",
                           "observability.usage-anomaly",
+                          "page-integrity.connect-src.detected",
+                          "page-integrity.header.changed",
+                          "page-integrity.runtime-warning.detected",
+                          "page-integrity.script.changed",
+                          "page-integrity.script.detected",
                           "project-created",
                           "project-removed",
                           "project.created",
@@ -234921,6 +234923,11 @@
                         "ai-gateway.balance-depleted",
                         "ai-gateway.auto-reload.limit-reached",
                         "ai-gateway.budget.updated",
+                        "page-integrity.script.detected",
+                        "page-integrity.script.changed",
+                        "page-integrity.connect-src.detected",
+                        "page-integrity.header.changed",
+                        "page-integrity.runtime-warning.detected",
                         "observability.anomaly",
                         "observability.anomaly-error",
                         "observability.usage-anomaly",
@@ -235169,6 +235176,11 @@
                                 "observability.anomaly-error",
                                 "observability.error-anomaly",
                                 "observability.usage-anomaly",
+                                "page-integrity.connect-src.detected",
+                                "page-integrity.header.changed",
+                                "page-integrity.runtime-warning.detected",
+                                "page-integrity.script.changed",
+                                "page-integrity.script.detected",
                                 "project-created",
                                 "project-removed",
                                 "project.created",
@@ -235527,6 +235539,11 @@
                                 "observability.anomaly-error",
                                 "observability.error-anomaly",
                                 "observability.usage-anomaly",
+                                "page-integrity.connect-src.detected",
+                                "page-integrity.header.changed",
+                                "page-integrity.runtime-warning.detected",
+                                "page-integrity.script.changed",
+                                "page-integrity.script.detected",
                                 "project-created",
                                 "project-removed",
                                 "project.created",
@@ -235849,6 +235866,11 @@
                           "observability.anomaly-error",
                           "observability.error-anomaly",
                           "observability.usage-anomaly",
+                          "page-integrity.connect-src.detected",
+                          "page-integrity.header.changed",
+                          "page-integrity.runtime-warning.detected",
+                          "page-integrity.script.changed",
+                          "page-integrity.script.detected",
                           "project-created",
                           "project-removed",
                           "project.created",
@@ -248207,6 +248229,21 @@
               },
               {
                 "properties": {
+                  "headerNames": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  }
+                },
+                "required": [
+                  "headerNames"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "retention": {
                     "properties": {
                       "ceilingDays": {
@@ -249065,6 +249102,7 @@
                         "read:billing",
                         "read:connect",
                         "read:deployment",
+                        "read:deployment-check",
                         "read:domain",
                         "read:drive",
                         "read:event",
@@ -249205,6 +249243,7 @@
                         "read:billing",
                         "read:connect",
                         "read:deployment",
+                        "read:deployment-check",
                         "read:domain",
                         "read:drive",
                         "read:event",
@@ -249324,6 +249363,7 @@
                             "read:billing",
                             "read:connect",
                             "read:deployment",
+                            "read:deployment-check",
                             "read:domain",
                             "read:drive",
                             "read:event",
@@ -249473,6 +249513,7 @@
                             "read:billing",
                             "read:connect",
                             "read:deployment",
+                            "read:deployment-check",
                             "read:domain",
                             "read:drive",
                             "read:event",
@@ -249638,6 +249679,7 @@
                         "read:billing",
                         "read:connect",
                         "read:deployment",
+                        "read:deployment-check",
                         "read:domain",
                         "read:drive",
                         "read:event",
@@ -263396,28 +263438,6 @@
               },
               {
                 "properties": {
-                  "projectId": {
-                    "type": "string"
-                  },
-                  "projectName": {
-                    "type": "string"
-                  },
-                  "targetDeploymentId": {
-                    "type": "string"
-                  },
-                  "action": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "projectId",
-                  "projectName"
-                ],
-                "type": "object",
-                "description": "The payload of the event, if requested."
-              },
-              {
-                "properties": {
                   "next": {
                     "nullable": true,
                     "properties": {
@@ -266092,6 +266112,25 @@
               },
               {
                 "properties": {
+                  "billingConsent": {
+                    "type": "string",
+                    "enum": [
+                      "security-review-usage-billing-v1"
+                    ]
+                  },
+                  "source": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "billingConsent",
+                  "source"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "action": {
                     "type": "string",
                     "enum": [
@@ -266433,6 +266472,62 @@
                     ],
                     "type": "object",
                     "description": "Mirrors the `security-review` setting value in `@api/api-settings`."
+                  }
+                },
+                "required": [
+                  "next",
+                  "previous"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "next": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      },
+                      "repositoryScope": {
+                        "type": "string",
+                        "enum": [
+                          "all",
+                          "none",
+                          "selected"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "enabled"
+                    ],
+                    "type": "object"
+                  },
+                  "previous": {
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "enum": [
+                          false,
+                          true
+                        ]
+                      },
+                      "repositoryScope": {
+                        "type": "string",
+                        "enum": [
+                          "all",
+                          "none",
+                          "selected"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "enabled"
+                    ],
+                    "type": "object"
                   }
                 },
                 "required": [
@@ -268346,6 +268441,26 @@
                 "properties": {
                   "exportId": {
                     "type": "string"
+                  },
+                  "filters": {
+                    "properties": {
+                      "alertGroupId": {
+                        "type": "string"
+                      },
+                      "projectIds": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "types": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      }
+                    },
+                    "type": "object"
                   },
                   "format": {
                     "type": "string"
@@ -271705,6 +271820,7 @@
               "agentic-provisioning-plan-changed",
               "agentic-provisioning-team-created",
               "ai-agent-usage-billing",
+              "ai-agent-usage-billing-consent",
               "ai-alert-investigation",
               "ai-code-review",
               "ai-gateway-access-policy-created",
@@ -271726,6 +271842,8 @@
               "ai-gateway-headquarters-updated",
               "ai-gateway-hipaa-compliance-toggled",
               "ai-gateway-inference-hooks-endpoint-updated",
+              "ai-gateway-inference-hooks-headers-cleared",
+              "ai-gateway-inference-hooks-headers-updated",
               "ai-gateway-inference-hooks-removed",
               "ai-gateway-inference-hooks-settings-updated",
               "ai-gateway-inference-hooks-signing-secret-created",
@@ -271763,6 +271881,7 @@
               "ai-gateway-zero-data-retention-toggled",
               "ai-omniagent",
               "ai-security-review",
+              "ai-verification",
               "alert-group-detected",
               "alert-group-investigation-completed",
               "alert-group-published",
@@ -272250,7 +272369,6 @@
               "project-rolling-release-enabled",
               "project-rolling-release-paused",
               "project-rolling-release-started",
-              "project-rolling-release-suggested-actions-generated",
               "project-rolling-release-timer",
               "project-root-directory-updated",
               "project-routes-version-promoted",
@@ -272778,6 +272896,7 @@
               "agentic-provisioning-plan-changed",
               "agentic-provisioning-team-created",
               "ai-agent-usage-billing",
+              "ai-agent-usage-billing-consent",
               "ai-alert-investigation",
               "ai-code-review",
               "ai-gateway-access-policy-created",
@@ -272799,6 +272918,8 @@
               "ai-gateway-headquarters-updated",
               "ai-gateway-hipaa-compliance-toggled",
               "ai-gateway-inference-hooks-endpoint-updated",
+              "ai-gateway-inference-hooks-headers-cleared",
+              "ai-gateway-inference-hooks-headers-updated",
               "ai-gateway-inference-hooks-removed",
               "ai-gateway-inference-hooks-settings-updated",
               "ai-gateway-inference-hooks-signing-secret-created",
@@ -272836,6 +272957,7 @@
               "ai-gateway-zero-data-retention-toggled",
               "ai-omniagent",
               "ai-security-review",
+              "ai-verification",
               "alert-group-detected",
               "alert-group-investigation-completed",
               "alert-group-published",
@@ -273323,7 +273445,6 @@
               "project-rolling-release-enabled",
               "project-rolling-release-paused",
               "project-rolling-release-started",
-              "project-rolling-release-suggested-actions-generated",
               "project-rolling-release-timer",
               "project-root-directory-updated",
               "project-routes-version-promoted",
@@ -273609,6 +273730,7 @@
                 "agentic-provisioning-plan-changed",
                 "agentic-provisioning-team-created",
                 "ai-agent-usage-billing",
+                "ai-agent-usage-billing-consent",
                 "ai-alert-investigation",
                 "ai-code-review",
                 "ai-gateway-access-policy-created",
@@ -273630,6 +273752,8 @@
                 "ai-gateway-headquarters-updated",
                 "ai-gateway-hipaa-compliance-toggled",
                 "ai-gateway-inference-hooks-endpoint-updated",
+                "ai-gateway-inference-hooks-headers-cleared",
+                "ai-gateway-inference-hooks-headers-updated",
                 "ai-gateway-inference-hooks-removed",
                 "ai-gateway-inference-hooks-settings-updated",
                 "ai-gateway-inference-hooks-signing-secret-created",
@@ -273667,6 +273791,7 @@
                 "ai-gateway-zero-data-retention-toggled",
                 "ai-omniagent",
                 "ai-security-review",
+                "ai-verification",
                 "alert-group-detected",
                 "alert-group-investigation-completed",
                 "alert-group-published",
@@ -274154,7 +274279,6 @@
                 "project-rolling-release-enabled",
                 "project-rolling-release-paused",
                 "project-rolling-release-started",
-                "project-rolling-release-suggested-actions-generated",
                 "project-rolling-release-timer",
                 "project-root-directory-updated",
                 "project-routes-version-promoted",

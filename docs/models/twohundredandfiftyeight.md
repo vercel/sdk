@@ -5,13 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyEight } from "@vercel/sdk/models/twohundredandfiftytwo.js";
+import { TwoHundredAndFiftyEight } from "@vercel/sdk/models/payloaddsyncmode.js";
 
 let value: TwoHundredAndFiftyEight = {
-  enforced: true,
+  connectionType: "<value>",
   organizationId: "<id>",
   organizationSlug: "<value>",
-  previousEnforced: true,
 };
 ```
 
@@ -19,7 +18,6 @@ let value: TwoHundredAndFiftyEight = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `connectionType`   | *string*           | :heavy_check_mark: | N/A                |
 | `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
 | `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
-| `previousEnforced` | *boolean*          | :heavy_check_mark: | N/A                |

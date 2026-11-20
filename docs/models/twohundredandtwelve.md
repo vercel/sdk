@@ -5,23 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwelve } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
+import { TwoHundredAndTwelve } from "@vercel/sdk/models/newprojects.js";
 
 let value: TwoHundredAndTwelve = {
-  configurations: [
-    {
-      configurationId: "<id>",
-      integrationId: "<id>",
-      integrationSlug: "<value>",
-    },
-  ],
-  ownerId: "<id>",
+  integration: {
+    configurationId: "<id>",
+    id: "<id>",
+    name: "<value>",
+    slug: "<value>",
+  },
+  originTeamId: "<id>",
+  originTeamName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                  | Type                                                   | Required                                               | Description                                            |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| `configurations`                                       | [models.Configurations](../models/configurations.md)[] | :heavy_check_mark:                                     | N/A                                                    |
-| `ownerId`                                              | *string*                                               | :heavy_check_mark:                                     | N/A                                                    |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `integration`                                                | [models.PayloadIntegration](../models/payloadintegration.md) | :heavy_check_mark:                                           | N/A                                                          |
+| `originTeamId`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `originTeamName`                                             | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |

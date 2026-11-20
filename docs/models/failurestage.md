@@ -5,7 +5,7 @@ Mirrors `PushFailureStage` in `api-git-providers`.
 ## Example Usage
 
 ```typescript
-import { FailureStage } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
+import { FailureStage } from "@vercel/sdk/models/newprojects.js";
 
 let value: FailureStage = "push";
 ```

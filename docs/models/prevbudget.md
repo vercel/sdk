@@ -5,7 +5,7 @@ Represents a budget for tracking and notifying teams on their spending.
 ## Example Usage
 
 ```typescript
-import { PrevBudget } from "@vercel/sdk/models/ssoprotectioncve55182migrationappliedfrom.js";
+import { PrevBudget } from "@vercel/sdk/models/oldssoprotection2.js";
 
 let value: PrevBudget = {
   createdAt: 8873.84,

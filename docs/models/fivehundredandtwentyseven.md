@@ -8,26 +8,20 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentySeven } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentySeven = {
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    accountId: "<id>",
-    id: "<id>",
-    region: "<value>",
-    vpcId: "<id>",
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
+  commitSha: "<value>",
+  invocationId: "<id>",
+  organizationId: "<id>",
+  pullRequestNumber: 5242.35,
+  repository: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `configuration`                                                                          | [models.UserEventPayload527Configuration](../models/usereventpayload527configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `team`                                                                                   | [models.UserEventPayload527Team](../models/usereventpayload527team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `commitSha`         | *string*            | :heavy_check_mark:  | N/A                 |
+| `invocationId`      | *string*            | :heavy_check_mark:  | N/A                 |
+| `organizationId`    | *string*            | :heavy_check_mark:  | N/A                 |
+| `pullRequestNumber` | *number*            | :heavy_check_mark:  | N/A                 |
+| `repository`        | *string*            | :heavy_check_mark:  | N/A                 |

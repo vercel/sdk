@@ -5,22 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyFive } from "@vercel/sdk/models/lasteditedbyprincipal1.js";
+import { TwoHundredAndThirtyFive } from "@vercel/sdk/models/newprojects.js";
 
 let value: TwoHundredAndThirtyFive = {
-  periods: [
-    {
-      endDate: "<value>",
-      percent: "<value>",
-      periodNumber: 4098.45,
-      startDate: "<value>",
-    },
-  ],
+  invoiceCollection: false,
 };
 ```
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `periods`                                | [models.Periods](../models/periods.md)[] | :heavy_check_mark:                       | N/A                                      |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `invoiceCollection` | *boolean*           | :heavy_check_mark:  | N/A                 |

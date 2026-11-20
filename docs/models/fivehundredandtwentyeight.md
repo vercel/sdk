@@ -8,23 +8,18 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentyEight } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyEight = {
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
+  protectedProjectCount: 7319.99,
+  protectionEnabled: false,
+  vulnerabilities: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `configuration`                                                                          | [models.UserEventPayload528Configuration](../models/usereventpayload528configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `team`                                                                                   | [models.UserEventPayload528Team](../models/usereventpayload528team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `protectedProjectCount` | *number*                | :heavy_check_mark:      | N/A                     |
+| `protectionEnabled`     | *boolean*               | :heavy_check_mark:      | N/A                     |
+| `vulnerabilities`       | *string*[]              | :heavy_check_mark:      | N/A                     |

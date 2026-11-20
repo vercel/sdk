@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload322Previous } from "@vercel/sdk/models/threehundredandfifteen.js";
+import { UserEventPayload322Previous } from "@vercel/sdk/models/usereventpayload317type.js";
 
 let value: UserEventPayload322Previous = {
-  functionDefaultMemoryType: "<value>",
+  functionDefaultTimeout: 885.42,
 };
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `functionDefaultMemoryType` | *string*                    | :heavy_check_mark:          | N/A                         |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `functionDefaultTimeout` | *number*                 | :heavy_check_mark:       | N/A                      |

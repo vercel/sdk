@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FailureMode } from "@vercel/sdk/models/thirteen.js";
+import { FailureMode } from "@vercel/sdk/models/twenty.js";
 
 let value: FailureMode = "open";
 ```

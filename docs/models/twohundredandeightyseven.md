@@ -5,24 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightySeven } from "@vercel/sdk/models/twohundredandfiftytwo.js";
+import { TwoHundredAndEightySeven } from "@vercel/sdk/models/payloaddsyncmode.js";
 
 let value: TwoHundredAndEightySeven = {
-  endpoint: {
-    awsServiceName: "<value>",
-    configurationId: "<id>",
-    id: "<id>",
-    name: "<value>",
-    vercelRegion: "<value>",
-  },
-  scope: "network",
+  previousTeamSuffix: null,
+  projectCount: 1879.14,
+  reason: "<value>",
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `endpoint`                                                               | [models.Endpoint](../models/endpoint.md)                                 | :heavy_check_mark:                                                       | N/A                                                                      |
-| `networkName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload287Scope](../models/usereventpayload287scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `previousTeamSuffix`                                                             | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `projectCount`                                                                   | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `reason`                                                                         | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
+| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload287ActorType](../models/usereventpayload287actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |

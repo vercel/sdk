@@ -5,21 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentySeven } from "@vercel/sdk/models/ssoprotectioncve55182migrationappliedfrom.js";
+import { FourHundredAndTwentySeven } from "@vercel/sdk/models/oldssoprotection2.js";
 
 let value: FourHundredAndTwentySeven = {
-  amount: "556.76",
-  currency: "Afghani",
-  expiresAt: "1766220465319",
-  trialCreditsIssuedAt: 9051.16,
+  next: {
+    enabled: false,
+    projectScope: "all",
+  },
+  previous: {
+    enabled: false,
+    projectScope: "selected",
+  },
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload427Next](../models/usereventpayload427next.md)         | :heavy_check_mark:                                                             | Mirrors the `security-review` setting value in `@api/api-settings`.            |
+| `previous`                                                                     | [models.UserEventPayload427Previous](../models/usereventpayload427previous.md) | :heavy_check_mark:                                                             | Mirrors the `security-review` setting value in `@api/api-settings`.            |

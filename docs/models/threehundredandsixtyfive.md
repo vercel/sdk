@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyFive } from "@vercel/sdk/models/threehundredandfifteen.js";
+import { ThreeHundredAndSixtyFive } from "@vercel/sdk/models/usereventpayload317type.js";
 
 let value: ThreeHundredAndSixtyFive = {
   projectId: "<id>",
@@ -15,9 +15,9 @@ let value: ThreeHundredAndSixtyFive = {
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `targetDeploymentId` | *string*             | :heavy_minus_sign:   | N/A                  |
-| `action`             | *string*             | :heavy_minus_sign:   | N/A                  |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
+| `projectName`         | *string*              | :heavy_check_mark:    | N/A                   |
+| `targetDeploymentId`  | *string*              | :heavy_minus_sign:    | N/A                   |
+| `newTargetPercentage` | *number*              | :heavy_minus_sign:    | N/A                   |

@@ -146,7 +146,7 @@ export class Organizations extends ClientSDK {
    * Update Organization Team Directory Sync Mode
    *
    * @remarks
-   * Select whether one Organization team's memberships are governed by the Organization's Directory Sync or by the team's own directory. The team's own directory connection is kept either way.
+   * Select whether one Organization team's memberships are governed by the Organization's Directory Sync or by the team's own directory. The team's own directory connection is kept either way. The root team can follow the Organization's Directory Sync only when no group grants OrgAdmin or at least one OrgAdmin group also grants the Owner role on it.
    */
   async putOrganizationTeamDsync(
     request: PutOrganizationTeamDsyncRequest,
@@ -180,7 +180,7 @@ export class Organizations extends ClientSDK {
    * Create or Replace Organization Directory Sync Group Configuration
    *
    * @remarks
-   * Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin.
+   * Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin. A group that grants OrgAdmin must also grant the Owner role on the organization's root team, as its default role or for that team.
    */
   async putOrganizationDsyncGroup(
     request: PutOrganizationDsyncGroupRequest,

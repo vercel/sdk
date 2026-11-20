@@ -5,11 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyNine } from "@vercel/sdk/models/threehundredandfifteen.js";
+import { ThreeHundredAndThirtyNine } from "@vercel/sdk/models/usereventpayload317type.js";
 
 let value: ThreeHundredAndThirtyNine = {
-  next: {},
-  previous: {},
+  consolidatedGitCommitStatus: {
+    enabled: false,
+    propagateFailures: false,
+  },
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -19,7 +21,6 @@ let value: ThreeHundredAndThirtyNine = {
 
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload339Next](../models/usereventpayload339next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload339Previous](../models/usereventpayload339previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `consolidatedGitCommitStatus`                                                  | [models.ConsolidatedGitCommitStatus](../models/consolidatedgitcommitstatus.md) | :heavy_check_mark:                                                             | N/A                                                                            |
 | `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
 | `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

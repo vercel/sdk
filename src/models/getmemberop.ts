@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -47,10 +47,12 @@ export const GetMemberRequest$outboundSchema: z.ZodType<
   GetMemberRequest$Outbound,
   z.ZodTypeDef,
   GetMemberRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  memberId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    memberId: z.string(),
+  })
+);
 
 export function getMemberRequestToJSON(
   getMemberRequest: GetMemberRequest,
@@ -63,19 +65,21 @@ export function getMemberRequestToJSON(
 /** @internal */
 export const GetMemberRole$inboundSchema: z.ZodNativeEnum<
   typeof GetMemberRole
-> = z.nativeEnum(GetMemberRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetMemberRole));
 
 /** @internal */
 export const GetMemberResponseBody$inboundSchema: z.ZodType<
   GetMemberResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  globalUserId: types.optional(types.string()),
-  id: types.string(),
-  role: GetMemberRole$inboundSchema,
-  userEmail: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    globalUserId: types.optional(types.string()),
+    id: types.string(),
+    role: GetMemberRole$inboundSchema,
+    userEmail: types.optional(types.string()),
+  })
+);
 
 export function getMemberResponseBodyFromJSON(
   jsonString: string,

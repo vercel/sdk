@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const RequestBodyAction = {
@@ -34,7 +35,7 @@ export type UpdateInvoiceRequest = {
 /** @internal */
 export const RequestBodyAction$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyAction
-> = z.nativeEnum(RequestBodyAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RequestBodyAction));
 
 /** @internal */
 export type UpdateInvoiceRequestBody1$Outbound = {
@@ -48,11 +49,13 @@ export const UpdateInvoiceRequestBody1$outboundSchema: z.ZodType<
   UpdateInvoiceRequestBody1$Outbound,
   z.ZodTypeDef,
   UpdateInvoiceRequestBody1
-> = z.object({
-  action: RequestBodyAction$outboundSchema,
-  reason: z.string(),
-  total: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: RequestBodyAction$outboundSchema,
+    reason: z.string(),
+    total: z.string(),
+  })
+);
 
 export function updateInvoiceRequestBody1ToJSON(
   updateInvoiceRequestBody1: UpdateInvoiceRequestBody1,
@@ -71,7 +74,9 @@ export const UpdateInvoiceRequestBody$outboundSchema: z.ZodType<
   UpdateInvoiceRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateInvoiceRequestBody
-> = z.lazy(() => UpdateInvoiceRequestBody1$outboundSchema);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.lazy(() => UpdateInvoiceRequestBody1$outboundSchema)
+);
 
 export function updateInvoiceRequestBodyToJSON(
   updateInvoiceRequestBody: UpdateInvoiceRequestBody,
@@ -93,15 +98,17 @@ export const UpdateInvoiceRequest$outboundSchema: z.ZodType<
   UpdateInvoiceRequest$Outbound,
   z.ZodTypeDef,
   UpdateInvoiceRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  invoiceId: z.string(),
-  requestBody: z.lazy(() => UpdateInvoiceRequestBody1$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    invoiceId: z.string(),
+    requestBody: z.lazy(() => UpdateInvoiceRequestBody1$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateInvoiceRequestToJSON(
   updateInvoiceRequest: UpdateInvoiceRequest,

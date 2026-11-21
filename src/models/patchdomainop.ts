@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -117,10 +117,12 @@ export const PatchDomainRequestBody2$outboundSchema: z.ZodType<
   PatchDomainRequestBody2$Outbound,
   z.ZodTypeDef,
   PatchDomainRequestBody2
-> = z.object({
-  op: z.string().optional(),
-  destination: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    op: z.string().optional(),
+    destination: z.string().optional(),
+  })
+);
 
 export function patchDomainRequestBody2ToJSON(
   patchDomainRequestBody2: PatchDomainRequestBody2,
@@ -133,7 +135,7 @@ export function patchDomainRequestBody2ToJSON(
 /** @internal */
 export const RequestBodyEchMode$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyEchMode
-> = z.nativeEnum(RequestBodyEchMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RequestBodyEchMode));
 
 /** @internal */
 export type PatchDomainRequestBody1$Outbound = {
@@ -149,13 +151,15 @@ export const PatchDomainRequestBody1$outboundSchema: z.ZodType<
   PatchDomainRequestBody1$Outbound,
   z.ZodTypeDef,
   PatchDomainRequestBody1
-> = z.object({
-  op: z.string().optional(),
-  renew: z.boolean().optional(),
-  customNameservers: z.array(z.string()).optional(),
-  zone: z.boolean().optional(),
-  echMode: RequestBodyEchMode$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    op: z.string().optional(),
+    renew: z.boolean().optional(),
+    customNameservers: z.array(z.string()).optional(),
+    zone: z.boolean().optional(),
+    echMode: RequestBodyEchMode$outboundSchema.optional(),
+  })
+);
 
 export function patchDomainRequestBody1ToJSON(
   patchDomainRequestBody1: PatchDomainRequestBody1,
@@ -175,10 +179,12 @@ export const PatchDomainRequestBody$outboundSchema: z.ZodType<
   PatchDomainRequestBody$Outbound,
   z.ZodTypeDef,
   PatchDomainRequestBody
-> = smartUnion([
-  z.lazy(() => PatchDomainRequestBody1$outboundSchema),
-  z.lazy(() => PatchDomainRequestBody2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => PatchDomainRequestBody1$outboundSchema),
+    z.lazy(() => PatchDomainRequestBody2$outboundSchema),
+  ])
+);
 
 export function patchDomainRequestBodyToJSON(
   patchDomainRequestBody: PatchDomainRequestBody,
@@ -203,19 +209,21 @@ export const PatchDomainRequest$outboundSchema: z.ZodType<
   PatchDomainRequest$Outbound,
   z.ZodTypeDef,
   PatchDomainRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => PatchDomainRequestBody1$outboundSchema),
-    z.lazy(() => PatchDomainRequestBody2$outboundSchema),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => PatchDomainRequestBody1$outboundSchema),
+      z.lazy(() => PatchDomainRequestBody2$outboundSchema),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function patchDomainRequestToJSON(
   patchDomainRequest: PatchDomainRequest,
@@ -228,19 +236,21 @@ export function patchDomainRequestToJSON(
 /** @internal */
 export const ResponseBodyEchMode$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyEchMode
-> = z.nativeEnum(ResponseBodyEchMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyEchMode));
 
 /** @internal */
 export const PatchDomainResponseBody3$inboundSchema: z.ZodType<
   PatchDomainResponseBody3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  customNameservers: types.optional(z.array(types.string())),
-  echMode: ResponseBodyEchMode$inboundSchema,
-  renew: types.optional(types.boolean()),
-  zone: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customNameservers: types.optional(z.array(types.string())),
+    echMode: ResponseBodyEchMode$inboundSchema,
+    renew: types.optional(types.boolean()),
+    zone: types.optional(types.boolean()),
+  })
+);
 
 export function patchDomainResponseBody3FromJSON(
   jsonString: string,
@@ -257,10 +267,12 @@ export const PatchDomainResponseBody2$inboundSchema: z.ZodType<
   PatchDomainResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  moved: types.boolean(),
-  token: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    moved: types.boolean(),
+    token: types.string(),
+  })
+);
 
 export function patchDomainResponseBody2FromJSON(
   jsonString: string,
@@ -277,9 +289,11 @@ export const PatchDomainResponseBody1$inboundSchema: z.ZodType<
   PatchDomainResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  moved: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    moved: types.boolean(),
+  })
+);
 
 export function patchDomainResponseBody1FromJSON(
   jsonString: string,
@@ -296,11 +310,13 @@ export const PatchDomainResponseBody$inboundSchema: z.ZodType<
   PatchDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => PatchDomainResponseBody2$inboundSchema),
-  z.lazy(() => PatchDomainResponseBody1$inboundSchema),
-  z.lazy(() => PatchDomainResponseBody3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => PatchDomainResponseBody2$inboundSchema),
+    z.lazy(() => PatchDomainResponseBody1$inboundSchema),
+    z.lazy(() => PatchDomainResponseBody3$inboundSchema),
+  ])
+);
 
 export function patchDomainResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -42,27 +42,33 @@ export type AiGatewayBudgetDefault = {
 /** @internal */
 export const AiGatewayBudgetDefaultRefreshPeriod$inboundSchema: z.ZodNativeEnum<
   typeof AiGatewayBudgetDefaultRefreshPeriod
-> = z.nativeEnum(AiGatewayBudgetDefaultRefreshPeriod);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(AiGatewayBudgetDefaultRefreshPeriod)
+);
 
 /** @internal */
 export const AiGatewayBudgetDefaultScopeType$inboundSchema: z.ZodNativeEnum<
   typeof AiGatewayBudgetDefaultScopeType
-> = z.nativeEnum(AiGatewayBudgetDefaultScopeType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(AiGatewayBudgetDefaultScopeType)
+);
 
 /** @internal */
 export const AiGatewayBudgetDefault$inboundSchema: z.ZodType<
   AiGatewayBudgetDefault,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  active: types.boolean(),
-  alertThresholds: types.optional(z.array(types.number())),
-  createdAt: types.number(),
-  limitAmount: types.number(),
-  refreshPeriod: AiGatewayBudgetDefaultRefreshPeriod$inboundSchema,
-  scopeType: AiGatewayBudgetDefaultScopeType$inboundSchema,
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: types.boolean(),
+    alertThresholds: types.optional(z.array(types.number())),
+    createdAt: types.number(),
+    limitAmount: types.number(),
+    refreshPeriod: AiGatewayBudgetDefaultRefreshPeriod$inboundSchema,
+    scopeType: AiGatewayBudgetDefaultScopeType$inboundSchema,
+    updatedAt: types.number(),
+  })
+);
 
 export function aiGatewayBudgetDefaultFromJSON(
   jsonString: string,

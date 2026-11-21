@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -360,10 +360,12 @@ export const GetProjectToProjects2$inboundSchema: z.ZodType<
   GetProjectToProjects2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preset: GetProjectToProjectsResponse200Preset$inboundSchema,
-  slugs: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset: GetProjectToProjectsResponse200Preset$inboundSchema,
+    slugs: types.optional(z.array(types.string())),
+  })
+);
 
 export function getProjectToProjects2FromJSON(
   jsonString: string,
@@ -378,17 +380,21 @@ export function getProjectToProjects2FromJSON(
 /** @internal */
 export const GetProjectToProjectsResponsePreset$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectToProjectsResponsePreset
-> = z.nativeEnum(GetProjectToProjectsResponsePreset);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetProjectToProjectsResponsePreset)
+);
 
 /** @internal */
 export const GetProjectToProjects1$inboundSchema: z.ZodType<
   GetProjectToProjects1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preset: types.optional(GetProjectToProjectsResponsePreset$inboundSchema),
-  slugs: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset: types.optional(GetProjectToProjectsResponsePreset$inboundSchema),
+    slugs: z.array(types.string()),
+  })
+);
 
 export function getProjectToProjects1FromJSON(
   jsonString: string,
@@ -405,10 +411,12 @@ export const GetProjectProjectsTo$inboundSchema: z.ZodType<
   GetProjectProjectsTo,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetProjectToProjects1$inboundSchema),
-  z.lazy(() => GetProjectToProjects2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetProjectToProjects1$inboundSchema),
+    z.lazy(() => GetProjectToProjects2$inboundSchema),
+  ])
+);
 
 export function getProjectProjectsToFromJSON(
   jsonString: string,
@@ -425,13 +433,15 @@ export const GetProjectCustomAllow$inboundSchema: z.ZodType<
   GetProjectCustomAllow,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  from: GetProjectFrom$inboundSchema,
-  to: smartUnion([
-    z.lazy(() => GetProjectToProjects1$inboundSchema),
-    z.lazy(() => GetProjectToProjects2$inboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    from: GetProjectFrom$inboundSchema,
+    to: smartUnion([
+      z.lazy(() => GetProjectToProjects1$inboundSchema),
+      z.lazy(() => GetProjectToProjects2$inboundSchema),
+    ]),
+  })
+);
 
 export function getProjectCustomAllowFromJSON(
   jsonString: string,
@@ -448,12 +458,14 @@ export const GetProjectProjects$inboundSchema: z.ZodType<
   GetProjectProjects,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  customAllow: types.optional(
-    z.array(z.lazy(() => GetProjectCustomAllow$inboundSchema)),
-  ),
-  label: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customAllow: types.optional(
+      z.array(z.lazy(() => GetProjectCustomAllow$inboundSchema)),
+    ),
+    label: types.optional(types.string()),
+  })
+);
 
 export function getProjectProjectsFromJSON(
   jsonString: string,
@@ -470,15 +482,17 @@ export const GetProjectTrustedSources$inboundSchema: z.ZodType<
   GetProjectTrustedSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enableVercelCiSameRepository: types.optional(types.boolean()),
-  oidcProviders: types.optional(
-    z.record(z.array(GetProjectOidcProviders$inboundSchema)),
-  ),
-  projects: types.optional(
-    z.record(z.lazy(() => GetProjectProjects$inboundSchema)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enableVercelCiSameRepository: types.optional(types.boolean()),
+    oidcProviders: types.optional(
+      z.record(z.array(GetProjectOidcProviders$inboundSchema)),
+    ),
+    projects: types.optional(
+      z.record(z.lazy(() => GetProjectProjects$inboundSchema)),
+    ),
+  })
+);
 
 export function getProjectTrustedSourcesFromJSON(
   jsonString: string,
@@ -493,20 +507,22 @@ export function getProjectTrustedSourcesFromJSON(
 /** @internal */
 export const GetProjectKind$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectKind
-> = z.nativeEnum(GetProjectKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetProjectKind));
 
 /** @internal */
 export const GetProjectUsageStatus$inboundSchema: z.ZodType<
   GetProjectUsageStatus,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bypassThrottleUntil: types.optional(types.number()),
-  exceededAllowanceUntil: types.optional(types.number()),
-  kind: GetProjectKind$inboundSchema,
-  teamThrottled: types.optional(types.boolean()),
-  throttled: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bypassThrottleUntil: types.optional(types.number()),
+    exceededAllowanceUntil: types.optional(types.number()),
+    kind: GetProjectKind$inboundSchema,
+    teamThrottled: types.optional(types.boolean()),
+    throttled: types.optional(types.boolean()),
+  })
+);
 
 export function getProjectUsageStatusFromJSON(
   jsonString: string,
@@ -523,9 +539,11 @@ export const GetProjectVercelFlags$inboundSchema: z.ZodType<
   GetProjectVercelFlags,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabledAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabledAt: types.optional(types.number()),
+  })
+);
 
 export function getProjectVercelFlagsFromJSON(
   jsonString: string,
@@ -542,13 +560,15 @@ export const GetProjectWebAnalytics$inboundSchema: z.ZodType<
   GetProjectWebAnalytics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: types.optional(types.number()),
-  disabledAt: types.optional(types.number()),
-  enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.literal(true)),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: types.optional(types.number()),
+    disabledAt: types.optional(types.number()),
+    enabledAt: types.optional(types.number()),
+    hasData: types.optional(types.literal(true)),
+    id: types.string(),
+  })
+);
 
 export function getProjectWebAnalyticsFromJSON(
   jsonString: string,
@@ -565,138 +585,141 @@ export const GetProjectResponseBody$inboundSchema: z.ZodType<
   GetProjectResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountId: types.string(),
-  alias: z.array(GetProjectAlias$inboundSchema),
-  analytics: types.optional(GetProjectAnalytics$inboundSchema),
-  appliedCve55182Migration: types.optional(types.boolean()),
-  autoAssignCustomDomains: types.optional(types.boolean()),
-  autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
-  autoExposeSystemEnvs: types.optional(types.boolean()),
-  avatar: z.nullable(types.string()).optional(),
-  avatarDarkMode: z.nullable(types.string()).optional(),
-  blobs: types.optional(GetProjectBlobs$inboundSchema),
-  buildCommand: z.nullable(types.string()).optional(),
-  commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
-  concurrencyBucketName: types.optional(types.string()),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: z.nullable(types.string()).optional(),
-  connectConfigurations: z.nullable(
-    z.array(GetProjectConnectConfigurations$inboundSchema),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  creator: types.optional(GetProjectCreator$inboundSchema),
-  crons: types.optional(GetProjectCrons$inboundSchema),
-  customEnvironments: types.optional(
-    z.array(GetProjectCustomEnvironments$inboundSchema),
-  ),
-  customerSupportCodeVisibility: types.optional(types.boolean()),
-  dataCache: types.optional(GetProjectDataCache$inboundSchema),
-  defaultResourceConfig: GetProjectDefaultResourceConfig$inboundSchema,
-  deploymentExpiration: GetProjectDeploymentExpiration$inboundSchema,
-  deploymentPolicy: z.nullable(GetProjectDeploymentPolicy$inboundSchema)
-    .optional(),
-  devCommand: z.nullable(types.string()).optional(),
-  directoryListing: types.boolean(),
-  dismissedToasts: types.optional(
-    z.array(GetProjectDismissedToasts$inboundSchema),
-  ),
-  enableAffectedProjectsDeployments: types.optional(types.boolean()),
-  enableExternalRewriteCaching: types.optional(types.boolean()),
-  enablePreviewFeedback: z.nullable(types.boolean()).optional(),
-  enableProductionFeedback: z.nullable(types.boolean()).optional(),
-  env: types.optional(z.array(GetProjectEnv$inboundSchema)),
-  expiration: types.optional(GetProjectExpiration$inboundSchema),
-  features: types.optional(GetProjectFeatures$inboundSchema),
-  framework: z.nullable(GetProjectFramework$inboundSchema).optional(),
-  gitComments: types.optional(GetProjectGitComments$inboundSchema),
-  gitForkProtection: types.optional(types.boolean()),
-  gitLFS: types.optional(types.boolean()),
-  gitProviderOptions: types.optional(
-    GetProjectGitProviderOptions$inboundSchema,
-  ),
-  hasActiveBranches: types.optional(types.boolean()),
-  hasDeployments: types.optional(types.boolean()),
-  id: types.string(),
-  installCommand: z.nullable(types.string()).optional(),
-  integrations: types.optional(z.array(GetProjectIntegrations$inboundSchema)),
-  internalRoutes: types.optional(
-    z.array(GetProjectInternalRoutes$inboundSchema),
-  ),
-  ipBuckets: types.optional(z.array(GetProjectIpBuckets$inboundSchema)),
-  jobs: types.optional(GetProjectJobs$inboundSchema),
-  lastAliasRequest: z.nullable(GetProjectLastAliasRequest$inboundSchema)
-    .optional(),
-  lastRollbackTarget: z.nullable(GetProjectLastRollbackTarget$inboundSchema)
-    .optional(),
-  latestDeployments: types.optional(
-    z.array(GetProjectLatestDeployments$inboundSchema),
-  ),
-  link: types.optional(GetProjectLink$inboundSchema),
-  live: types.optional(types.boolean()),
-  microfrontends: types.optional(GetProjectMicrofrontends$inboundSchema),
-  name: types.string(),
-  nodeVersion: GetProjectNodeVersion$inboundSchema,
-  oidcTokenConfig: types.optional(GetProjectOidcTokenConfig$inboundSchema),
-  optionsAllowlist: z.nullable(GetProjectOptionsAllowlist$inboundSchema)
-    .optional(),
-  outputDirectory: z.nullable(types.string()).optional(),
-  passiveConnectConfigurationId: z.nullable(types.string()).optional(),
-  passport: z.nullable(GetProjectPassport$inboundSchema).optional(),
-  passwordProtection: z.nullable(GetProjectPasswordProtection$inboundSchema)
-    .optional(),
-  paused: types.optional(types.boolean()),
-  permissions: types.optional(GetProjectPermissions$inboundSchema),
-  productionDeploymentsFastLane: types.optional(types.boolean()),
-  protectedSourcemaps: types.optional(types.boolean()),
-  protectionBypass: types.optional(
-    z.record(GetProjectProtectionBypass$inboundSchema),
-  ),
-  protectionConfig: types.optional(GetProjectProtectionConfig$inboundSchema),
-  resourceConfig: GetProjectResourceConfig$inboundSchema,
-  rollbackDescription: types.optional(
-    GetProjectRollbackDescription$inboundSchema,
-  ),
-  rollingRelease: z.nullable(GetProjectRollingRelease$inboundSchema).optional(),
-  rootDirectory: z.nullable(types.string()).optional(),
-  sandbox: types.optional(GetProjectSandbox$inboundSchema),
-  security: types.optional(GetProjectSecurity$inboundSchema),
-  serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
-  services: types.optional(z.array(GetProjectServices$inboundSchema)),
-  skewProtectionAllowedDomains: types.optional(z.array(types.string())),
-  skewProtectionBoundaryAt: types.optional(types.number()),
-  skewProtectionMaxAge: types.optional(types.number()),
-  skipGitConnectDuringLink: types.optional(types.boolean()),
-  sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
-  speedInsights: types.optional(GetProjectSpeedInsights$inboundSchema),
-  ssoProtection: z.nullable(GetProjectSsoProtection$inboundSchema).optional(),
-  staticIps: types.optional(GetProjectStaticIps$inboundSchema),
-  targets: types.optional(
-    z.record(types.nullable(GetProjectTargets$inboundSchema)),
-  ),
-  tier: types.optional(GetProjectTier$inboundSchema),
-  tracing: types.optional(GetProjectTracing$inboundSchema),
-  transferCompletedAt: types.optional(types.number()),
-  transferredFromAccountId: types.optional(types.string()),
-  transferStartedAt: types.optional(types.number()),
-  transferToAccountId: types.optional(types.string()),
-  trustedIps: z.nullable(GetProjectTrustedIps$inboundSchema).optional(),
-  trustedSources: z.nullable(
-    z.lazy(() => GetProjectTrustedSources$inboundSchema),
-  ).optional(),
-  updatedAt: types.optional(types.number()),
-  usageStatus: types.optional(
-    z.lazy(() => GetProjectUsageStatus$inboundSchema),
-  ),
-  v0: types.optional(types.boolean()),
-  v0Created: types.optional(types.boolean()),
-  vercelFlags: types.optional(
-    z.lazy(() => GetProjectVercelFlags$inboundSchema),
-  ),
-  webAnalytics: types.optional(
-    z.lazy(() => GetProjectWebAnalytics$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountId: types.string(),
+    alias: z.array(GetProjectAlias$inboundSchema),
+    analytics: types.optional(GetProjectAnalytics$inboundSchema),
+    appliedCve55182Migration: types.optional(types.boolean()),
+    autoAssignCustomDomains: types.optional(types.boolean()),
+    autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
+    autoExposeSystemEnvs: types.optional(types.boolean()),
+    avatar: z.nullable(types.string()).optional(),
+    avatarDarkMode: z.nullable(types.string()).optional(),
+    blobs: types.optional(GetProjectBlobs$inboundSchema),
+    buildCommand: z.nullable(types.string()).optional(),
+    commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+    concurrencyBucketName: types.optional(types.string()),
+    connectBuildsEnabled: types.optional(types.boolean()),
+    connectConfigurationId: z.nullable(types.string()).optional(),
+    connectConfigurations: z.nullable(
+      z.array(GetProjectConnectConfigurations$inboundSchema),
+    ).optional(),
+    createdAt: types.optional(types.number()),
+    creator: types.optional(GetProjectCreator$inboundSchema),
+    crons: types.optional(GetProjectCrons$inboundSchema),
+    customEnvironments: types.optional(
+      z.array(GetProjectCustomEnvironments$inboundSchema),
+    ),
+    customerSupportCodeVisibility: types.optional(types.boolean()),
+    dataCache: types.optional(GetProjectDataCache$inboundSchema),
+    defaultResourceConfig: GetProjectDefaultResourceConfig$inboundSchema,
+    deploymentExpiration: GetProjectDeploymentExpiration$inboundSchema,
+    deploymentPolicy: z.nullable(GetProjectDeploymentPolicy$inboundSchema)
+      .optional(),
+    devCommand: z.nullable(types.string()).optional(),
+    directoryListing: types.boolean(),
+    dismissedToasts: types.optional(
+      z.array(GetProjectDismissedToasts$inboundSchema),
+    ),
+    enableAffectedProjectsDeployments: types.optional(types.boolean()),
+    enableExternalRewriteCaching: types.optional(types.boolean()),
+    enablePreviewFeedback: z.nullable(types.boolean()).optional(),
+    enableProductionFeedback: z.nullable(types.boolean()).optional(),
+    env: types.optional(z.array(GetProjectEnv$inboundSchema)),
+    expiration: types.optional(GetProjectExpiration$inboundSchema),
+    features: types.optional(GetProjectFeatures$inboundSchema),
+    framework: z.nullable(GetProjectFramework$inboundSchema).optional(),
+    gitComments: types.optional(GetProjectGitComments$inboundSchema),
+    gitForkProtection: types.optional(types.boolean()),
+    gitLFS: types.optional(types.boolean()),
+    gitProviderOptions: types.optional(
+      GetProjectGitProviderOptions$inboundSchema,
+    ),
+    hasActiveBranches: types.optional(types.boolean()),
+    hasDeployments: types.optional(types.boolean()),
+    id: types.string(),
+    installCommand: z.nullable(types.string()).optional(),
+    integrations: types.optional(z.array(GetProjectIntegrations$inboundSchema)),
+    internalRoutes: types.optional(
+      z.array(GetProjectInternalRoutes$inboundSchema),
+    ),
+    ipBuckets: types.optional(z.array(GetProjectIpBuckets$inboundSchema)),
+    jobs: types.optional(GetProjectJobs$inboundSchema),
+    lastAliasRequest: z.nullable(GetProjectLastAliasRequest$inboundSchema)
+      .optional(),
+    lastRollbackTarget: z.nullable(GetProjectLastRollbackTarget$inboundSchema)
+      .optional(),
+    latestDeployments: types.optional(
+      z.array(GetProjectLatestDeployments$inboundSchema),
+    ),
+    link: types.optional(GetProjectLink$inboundSchema),
+    live: types.optional(types.boolean()),
+    microfrontends: types.optional(GetProjectMicrofrontends$inboundSchema),
+    name: types.string(),
+    nodeVersion: GetProjectNodeVersion$inboundSchema,
+    oidcTokenConfig: types.optional(GetProjectOidcTokenConfig$inboundSchema),
+    optionsAllowlist: z.nullable(GetProjectOptionsAllowlist$inboundSchema)
+      .optional(),
+    outputDirectory: z.nullable(types.string()).optional(),
+    passiveConnectConfigurationId: z.nullable(types.string()).optional(),
+    passport: z.nullable(GetProjectPassport$inboundSchema).optional(),
+    passwordProtection: z.nullable(GetProjectPasswordProtection$inboundSchema)
+      .optional(),
+    paused: types.optional(types.boolean()),
+    permissions: types.optional(GetProjectPermissions$inboundSchema),
+    productionDeploymentsFastLane: types.optional(types.boolean()),
+    protectedSourcemaps: types.optional(types.boolean()),
+    protectionBypass: types.optional(
+      z.record(GetProjectProtectionBypass$inboundSchema),
+    ),
+    protectionConfig: types.optional(GetProjectProtectionConfig$inboundSchema),
+    resourceConfig: GetProjectResourceConfig$inboundSchema,
+    rollbackDescription: types.optional(
+      GetProjectRollbackDescription$inboundSchema,
+    ),
+    rollingRelease: z.nullable(GetProjectRollingRelease$inboundSchema)
+      .optional(),
+    rootDirectory: z.nullable(types.string()).optional(),
+    sandbox: types.optional(GetProjectSandbox$inboundSchema),
+    security: types.optional(GetProjectSecurity$inboundSchema),
+    serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
+    services: types.optional(z.array(GetProjectServices$inboundSchema)),
+    skewProtectionAllowedDomains: types.optional(z.array(types.string())),
+    skewProtectionBoundaryAt: types.optional(types.number()),
+    skewProtectionMaxAge: types.optional(types.number()),
+    skipGitConnectDuringLink: types.optional(types.boolean()),
+    sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+    speedInsights: types.optional(GetProjectSpeedInsights$inboundSchema),
+    ssoProtection: z.nullable(GetProjectSsoProtection$inboundSchema).optional(),
+    staticIps: types.optional(GetProjectStaticIps$inboundSchema),
+    targets: types.optional(
+      z.record(types.nullable(GetProjectTargets$inboundSchema)),
+    ),
+    tier: types.optional(GetProjectTier$inboundSchema),
+    tracing: types.optional(GetProjectTracing$inboundSchema),
+    transferCompletedAt: types.optional(types.number()),
+    transferredFromAccountId: types.optional(types.string()),
+    transferStartedAt: types.optional(types.number()),
+    transferToAccountId: types.optional(types.string()),
+    trustedIps: z.nullable(GetProjectTrustedIps$inboundSchema).optional(),
+    trustedSources: z.nullable(
+      z.lazy(() => GetProjectTrustedSources$inboundSchema),
+    ).optional(),
+    updatedAt: types.optional(types.number()),
+    usageStatus: types.optional(
+      z.lazy(() => GetProjectUsageStatus$inboundSchema),
+    ),
+    v0: types.optional(types.boolean()),
+    v0Created: types.optional(types.boolean()),
+    vercelFlags: types.optional(
+      z.lazy(() => GetProjectVercelFlags$inboundSchema),
+    ),
+    webAnalytics: types.optional(
+      z.lazy(() => GetProjectWebAnalytics$inboundSchema),
+    ),
+  })
+);
 
 export function getProjectResponseBodyFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import {
   ConnectReplaceTriggerDestinationsRequest,
   ConnectReplaceTriggerDestinationsRequest$Outbound,
@@ -42,18 +43,20 @@ export const ReplaceConnectorTriggerDestinationsRequest$outboundSchema:
     ReplaceConnectorTriggerDestinationsRequest$Outbound,
     z.ZodTypeDef,
     ReplaceConnectorTriggerDestinationsRequest
-  > = z.object({
-    connector: z.string(),
-    teamId: z.string().optional(),
-    slug: z.string().optional(),
-    connectReplaceTriggerDestinationsRequest:
-      ConnectReplaceTriggerDestinationsRequest$outboundSchema,
-  }).transform((v) => {
-    return remap$(v, {
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      connector: z.string(),
+      teamId: z.string().optional(),
+      slug: z.string().optional(),
       connectReplaceTriggerDestinationsRequest:
-        "ConnectReplaceTriggerDestinationsRequest",
-    });
-  });
+        ConnectReplaceTriggerDestinationsRequest$outboundSchema,
+    }).transform((v) => {
+      return remap$(v, {
+        connectReplaceTriggerDestinationsRequest:
+          "ConnectReplaceTriggerDestinationsRequest",
+      });
+    })
+  );
 
 export function replaceConnectorTriggerDestinationsRequestToJSON(
   replaceConnectorTriggerDestinationsRequest:

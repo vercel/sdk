@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -49,27 +50,30 @@ export class DomainCannotBeTransferedOutUntil extends VercelError {
 
 /** @internal */
 export const DomainCannotBeTransferedOutUntilCode$inboundSchema:
-  z.ZodNativeEnum<typeof DomainCannotBeTransferedOutUntilCode> = z.nativeEnum(
-    DomainCannotBeTransferedOutUntilCode,
-  );
+  z.ZodNativeEnum<typeof DomainCannotBeTransferedOutUntilCode> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DomainCannotBeTransferedOutUntilCode)
+    );
 
 /** @internal */
 export const DomainCannotBeTransferedOutUntil$inboundSchema: z.ZodType<
   DomainCannotBeTransferedOutUntil,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: DomainCannotBeTransferedOutUntilCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new DomainCannotBeTransferedOutUntil(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: DomainCannotBeTransferedOutUntilCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new DomainCannotBeTransferedOutUntil(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

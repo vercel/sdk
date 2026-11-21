@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -132,11 +132,13 @@ export const ListDeploymentAliasesRequest$outboundSchema: z.ZodType<
   ListDeploymentAliasesRequest$Outbound,
   z.ZodTypeDef,
   ListDeploymentAliasesRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listDeploymentAliasesRequestToJSON(
   listDeploymentAliasesRequest: ListDeploymentAliasesRequest,
@@ -153,12 +155,14 @@ export const ListDeploymentAliasesProtectionBypass4$inboundSchema: z.ZodType<
   ListDeploymentAliasesProtectionBypass4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  lastUpdatedAt: types.number(),
-  lastUpdatedBy: types.string(),
-  scope: types.literal("email_invite"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    lastUpdatedAt: types.number(),
+    lastUpdatedBy: types.string(),
+    scope: types.literal("email_invite"),
+  })
+);
 
 export function listDeploymentAliasesProtectionBypass4FromJSON(
   jsonString: string,
@@ -176,11 +180,13 @@ export const ListDeploymentAliasesProtectionBypass3$inboundSchema: z.ZodType<
   ListDeploymentAliasesProtectionBypass3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.string(),
-  scope: types.literal("alias-protection-override"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.string(),
+    scope: types.literal("alias-protection-override"),
+  })
+);
 
 export function listDeploymentAliasesProtectionBypass3FromJSON(
   jsonString: string,
@@ -195,21 +201,25 @@ export function listDeploymentAliasesProtectionBypass3FromJSON(
 
 /** @internal */
 export const ListDeploymentAliasesProtectionBypassAccess$inboundSchema:
-  z.ZodNativeEnum<typeof ListDeploymentAliasesProtectionBypassAccess> = z
-    .nativeEnum(ListDeploymentAliasesProtectionBypassAccess);
+  z.ZodNativeEnum<typeof ListDeploymentAliasesProtectionBypassAccess> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListDeploymentAliasesProtectionBypassAccess)
+    );
 
 /** @internal */
 export const ListDeploymentAliasesProtectionBypass2$inboundSchema: z.ZodType<
   ListDeploymentAliasesProtectionBypass2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  access: ListDeploymentAliasesProtectionBypassAccess$inboundSchema,
-  createdAt: types.number(),
-  lastUpdatedAt: types.number(),
-  lastUpdatedBy: types.string(),
-  scope: types.literal("user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    access: ListDeploymentAliasesProtectionBypassAccess$inboundSchema,
+    createdAt: types.number(),
+    lastUpdatedAt: types.number(),
+    lastUpdatedBy: types.string(),
+    scope: types.literal("user"),
+  })
+);
 
 export function listDeploymentAliasesProtectionBypass2FromJSON(
   jsonString: string,
@@ -227,12 +237,14 @@ export const ListDeploymentAliasesProtectionBypass1$inboundSchema: z.ZodType<
   ListDeploymentAliasesProtectionBypass1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.string(),
-  expires: types.optional(types.number()),
-  scope: types.literal("shareable-link"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.string(),
+    expires: types.optional(types.number()),
+    scope: types.literal("shareable-link"),
+  })
+);
 
 export function listDeploymentAliasesProtectionBypass1FromJSON(
   jsonString: string,
@@ -250,12 +262,14 @@ export const ListDeploymentAliasesProtectionBypass$inboundSchema: z.ZodType<
   ListDeploymentAliasesProtectionBypass,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => ListDeploymentAliasesProtectionBypass1$inboundSchema),
-  z.lazy(() => ListDeploymentAliasesProtectionBypass2$inboundSchema),
-  z.lazy(() => ListDeploymentAliasesProtectionBypass3$inboundSchema),
-  z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => ListDeploymentAliasesProtectionBypass1$inboundSchema),
+    z.lazy(() => ListDeploymentAliasesProtectionBypass2$inboundSchema),
+    z.lazy(() => ListDeploymentAliasesProtectionBypass3$inboundSchema),
+    z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
+  ])
+);
 
 export function listDeploymentAliasesProtectionBypassFromJSON(
   jsonString: string,
@@ -270,22 +284,22 @@ export function listDeploymentAliasesProtectionBypassFromJSON(
 
 /** @internal */
 export const Aliases$inboundSchema: z.ZodType<Aliases, z.ZodTypeDef, unknown> =
-  z.object({
-    alias: types.string(),
-    created: types.date(),
-    protectionBypass: types.optional(
-      z.record(z.union([
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      alias: types.string(),
+      created: types.date(),
+      protectionBypass: types.optional(z.record(z.union([
         z.lazy(() => ListDeploymentAliasesProtectionBypass1$inboundSchema),
         z.lazy(() =>
           ListDeploymentAliasesProtectionBypass2$inboundSchema
         ),
         z.lazy(() => ListDeploymentAliasesProtectionBypass3$inboundSchema),
         z.lazy(() => ListDeploymentAliasesProtectionBypass4$inboundSchema),
-      ])),
-    ),
-    redirect: z.nullable(types.string()).optional(),
-    uid: types.string(),
-  });
+      ]))),
+      redirect: z.nullable(types.string()).optional(),
+      uid: types.string(),
+    })
+  );
 
 export function aliasesFromJSON(
   jsonString: string,
@@ -302,9 +316,11 @@ export const ListDeploymentAliasesResponseBody$inboundSchema: z.ZodType<
   ListDeploymentAliasesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  aliases: z.array(z.lazy(() => Aliases$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    aliases: z.array(z.lazy(() => Aliases$inboundSchema)),
+  })
+);
 
 export function listDeploymentAliasesResponseBodyFromJSON(
   jsonString: string,

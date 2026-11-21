@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -31,17 +31,19 @@ export const Organization$inboundSchema: z.ZodType<
   Organization,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  avatar: types.nullable(types.string()),
-  createdAt: types.string(),
-  name: types.optional(types.string()),
-  organizationId: types.string(),
-  slug: types.string(),
-  teamCount: types.number(),
-  teamId: types.string(),
-  updatedAt: types.string(),
-  userRole: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: types.nullable(types.string()),
+    createdAt: types.string(),
+    name: types.optional(types.string()),
+    organizationId: types.string(),
+    slug: types.string(),
+    teamCount: types.number(),
+    teamId: types.string(),
+    updatedAt: types.string(),
+    userRole: types.optional(types.string()),
+  })
+);
 
 export function organizationFromJSON(
   jsonString: string,

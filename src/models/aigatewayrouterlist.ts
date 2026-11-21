@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
   AiGatewayVirtualModelConfig,
@@ -23,9 +23,11 @@ export const AiGatewayRouterList$inboundSchema: z.ZodType<
   AiGatewayRouterList,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  routers: z.array(AiGatewayVirtualModelConfig$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    routers: z.array(AiGatewayVirtualModelConfig$inboundSchema),
+  })
+);
 
 export function aiGatewayRouterListFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -77,11 +77,13 @@ export const UpdateRollingReleaseConfigRequest$outboundSchema: z.ZodType<
   UpdateRollingReleaseConfigRequest$Outbound,
   z.ZodTypeDef,
   UpdateRollingReleaseConfigRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function updateRollingReleaseConfigRequestToJSON(
   updateRollingReleaseConfigRequest: UpdateRollingReleaseConfigRequest,
@@ -99,12 +101,14 @@ export const UpdateRollingReleaseConfigResponseBodyStages$inboundSchema:
     UpdateRollingReleaseConfigResponseBodyStages,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    duration: types.optional(types.number()),
-    linearShift: types.optional(types.boolean()),
-    requireApproval: types.optional(types.boolean()),
-    targetPercentage: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      duration: types.optional(types.number()),
+      linearShift: types.optional(types.boolean()),
+      requireApproval: types.optional(types.boolean()),
+      targetPercentage: types.number(),
+    })
+  );
 
 export function updateRollingReleaseConfigResponseBodyStagesFromJSON(
   jsonString: string,
@@ -128,13 +132,13 @@ export const UpdateRollingReleaseConfigResponseBodyRollingRelease$inboundSchema:
     UpdateRollingReleaseConfigResponseBodyRollingRelease,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    stages: z.nullable(
-      z.array(z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      stages: z.nullable(z.array(z.lazy(() =>
         UpdateRollingReleaseConfigResponseBodyStages$inboundSchema
-      )),
-    ).optional(),
-  });
+      ))).optional(),
+    })
+  );
 
 export function updateRollingReleaseConfigResponseBodyRollingReleaseFromJSON(
   jsonString: string,
@@ -157,13 +161,13 @@ export const UpdateRollingReleaseConfigResponseBody2$inboundSchema: z.ZodType<
   UpdateRollingReleaseConfigResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rollingRelease: types.nullable(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rollingRelease: types.nullable(z.lazy(() =>
       UpdateRollingReleaseConfigResponseBodyRollingRelease$inboundSchema
-    ),
-  ),
-});
+    )),
+  })
+);
 
 export function updateRollingReleaseConfigResponseBody2FromJSON(
   jsonString: string,
@@ -186,9 +190,11 @@ export const UpdateRollingReleaseConfigResponseBody1$inboundSchema: z.ZodType<
   UpdateRollingReleaseConfigResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rollingRelease: z.nullable(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rollingRelease: z.nullable(z.any()).optional(),
+  })
+);
 
 export function updateRollingReleaseConfigResponseBody1FromJSON(
   jsonString: string,
@@ -211,10 +217,12 @@ export const UpdateRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
   UpdateRollingReleaseConfigResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UpdateRollingReleaseConfigResponseBody1$inboundSchema),
-  z.lazy(() => UpdateRollingReleaseConfigResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateRollingReleaseConfigResponseBody1$inboundSchema),
+    z.lazy(() => UpdateRollingReleaseConfigResponseBody2$inboundSchema),
+  ])
+);
 
 export function updateRollingReleaseConfigResponseBodyFromJSON(
   jsonString: string,

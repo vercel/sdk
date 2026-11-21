@@ -410,7 +410,7 @@ export class AiGateway extends ClientSDK {
    * Upsert AI Gateway budget
    *
    * @remarks
-   * Create or update a team-, project-, or user-scope AI Gateway budget.
+   * Create or update a team-, project-, or user-scope AI Gateway budget. Set a total with `limitAmount`, or raise the current budget with `increaseBy`.
    */
   async upsertAiGatewayBudget(
     request: UpsertAiGatewayBudgetRequest,

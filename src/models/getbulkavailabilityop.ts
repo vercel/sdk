@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -46,9 +46,11 @@ export const GetBulkAvailabilityRequestBody$outboundSchema: z.ZodType<
   GetBulkAvailabilityRequestBody$Outbound,
   z.ZodTypeDef,
   GetBulkAvailabilityRequestBody
-> = z.object({
-  domains: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domains: z.array(z.string()),
+  })
+);
 
 export function getBulkAvailabilityRequestBodyToJSON(
   getBulkAvailabilityRequestBody: GetBulkAvailabilityRequestBody,
@@ -71,14 +73,16 @@ export const GetBulkAvailabilityRequest$outboundSchema: z.ZodType<
   GetBulkAvailabilityRequest$Outbound,
   z.ZodTypeDef,
   GetBulkAvailabilityRequest
-> = z.object({
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => GetBulkAvailabilityRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() => GetBulkAvailabilityRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function getBulkAvailabilityRequestToJSON(
   getBulkAvailabilityRequest: GetBulkAvailabilityRequest,
@@ -93,10 +97,12 @@ export const GetBulkAvailabilityResults$inboundSchema: z.ZodType<
   GetBulkAvailabilityResults,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  available: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    available: types.boolean(),
+  })
+);
 
 export function getBulkAvailabilityResultsFromJSON(
   jsonString: string,
@@ -113,9 +119,11 @@ export const GetBulkAvailabilityResponseBody$inboundSchema: z.ZodType<
   GetBulkAvailabilityResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  results: z.array(z.lazy(() => GetBulkAvailabilityResults$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    results: z.array(z.lazy(() => GetBulkAvailabilityResults$inboundSchema)),
+  })
+);
 
 export function getBulkAvailabilityResponseBodyFromJSON(
   jsonString: string,

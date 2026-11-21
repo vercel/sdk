@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -301,7 +301,9 @@ export type UpdateSharedEnvVariableResponseBody = {
 /** @internal */
 export const UpdateSharedEnvVariableTarget$outboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget
-> = z.nativeEnum(UpdateSharedEnvVariableTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateSharedEnvVariableTarget)
+);
 
 /** @internal */
 export type ProjectIdUpdates$Outbound = {
@@ -314,10 +316,12 @@ export const ProjectIdUpdates$outboundSchema: z.ZodType<
   ProjectIdUpdates$Outbound,
   z.ZodTypeDef,
   ProjectIdUpdates
-> = z.object({
-  link: z.array(z.string()).optional(),
-  unlink: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    link: z.array(z.string()).optional(),
+    unlink: z.array(z.string()).optional(),
+  })
+);
 
 export function projectIdUpdatesToJSON(
   projectIdUpdates: ProjectIdUpdates,
@@ -330,7 +334,9 @@ export function projectIdUpdatesToJSON(
 /** @internal */
 export const UpdateSharedEnvVariableType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableType
-> = z.nativeEnum(UpdateSharedEnvVariableType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateSharedEnvVariableType)
+);
 
 /** @internal */
 export type Updates$Outbound = {
@@ -348,15 +354,17 @@ export const Updates$outboundSchema: z.ZodType<
   Updates$Outbound,
   z.ZodTypeDef,
   Updates
-> = z.object({
-  key: z.string().optional(),
-  value: z.string().optional(),
-  target: z.array(UpdateSharedEnvVariableTarget$outboundSchema).optional(),
-  projectId: z.array(z.string()).optional(),
-  projectIdUpdates: z.lazy(() => ProjectIdUpdates$outboundSchema).optional(),
-  type: UpdateSharedEnvVariableType$outboundSchema.optional(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.string().optional(),
+    value: z.string().optional(),
+    target: z.array(UpdateSharedEnvVariableTarget$outboundSchema).optional(),
+    projectId: z.array(z.string()).optional(),
+    projectIdUpdates: z.lazy(() => ProjectIdUpdates$outboundSchema).optional(),
+    type: UpdateSharedEnvVariableType$outboundSchema.optional(),
+    comment: z.string().optional(),
+  })
+);
 
 export function updatesToJSON(updates: Updates): string {
   return JSON.stringify(Updates$outboundSchema.parse(updates));
@@ -372,9 +380,11 @@ export const UpdateSharedEnvVariableRequestBody$outboundSchema: z.ZodType<
   UpdateSharedEnvVariableRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateSharedEnvVariableRequestBody
-> = z.object({
-  updates: z.record(z.lazy(() => Updates$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    updates: z.record(z.lazy(() => Updates$outboundSchema)),
+  })
+);
 
 export function updateSharedEnvVariableRequestBodyToJSON(
   updateSharedEnvVariableRequestBody: UpdateSharedEnvVariableRequestBody,
@@ -398,16 +408,18 @@ export const UpdateSharedEnvVariableRequest$outboundSchema: z.ZodType<
   UpdateSharedEnvVariableRequest$Outbound,
   z.ZodTypeDef,
   UpdateSharedEnvVariableRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateSharedEnvVariableRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateSharedEnvVariableRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateSharedEnvVariableRequestToJSON(
   updateSharedEnvVariableRequest: UpdateSharedEnvVariableRequest,
@@ -422,12 +434,16 @@ export function updateSharedEnvVariableRequestToJSON(
 /** @internal */
 export const UpdateSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget2
-> = z.nativeEnum(UpdateSharedEnvVariableTarget2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateSharedEnvVariableTarget2)
+);
 
 /** @internal */
 export const UpdateSharedEnvVariableTarget1$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableTarget1
-> = z.nativeEnum(UpdateSharedEnvVariableTarget1);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateSharedEnvVariableTarget1)
+);
 
 /** @internal */
 export const UpdateSharedEnvVariableEnvironmentResponseTarget$inboundSchema:
@@ -435,10 +451,12 @@ export const UpdateSharedEnvVariableEnvironmentResponseTarget$inboundSchema:
     UpdateSharedEnvVariableEnvironmentResponseTarget,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(UpdateSharedEnvVariableTarget1$inboundSchema),
-    UpdateSharedEnvVariableTarget2$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(UpdateSharedEnvVariableTarget1$inboundSchema),
+      UpdateSharedEnvVariableTarget2$inboundSchema,
+    ])
+  );
 
 export function updateSharedEnvVariableEnvironmentResponseTargetFromJSON(
   jsonString: string,
@@ -459,17 +477,21 @@ export function updateSharedEnvVariableEnvironmentResponseTargetFromJSON(
 /** @internal */
 export const UpdateSharedEnvVariableValue2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateSharedEnvVariableValue2
-> = z.nativeEnum(UpdateSharedEnvVariableValue2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateSharedEnvVariableValue2)
+);
 
 /** @internal */
 export const UpdateSharedEnvVariableValue$inboundSchema: z.ZodType<
   UpdateSharedEnvVariableValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  types.string(),
-  z.array(UpdateSharedEnvVariableValue2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    types.string(),
+    z.array(UpdateSharedEnvVariableValue2$inboundSchema),
+  ])
+);
 
 export function updateSharedEnvVariableValueFromJSON(
   jsonString: string,
@@ -486,29 +508,31 @@ export const UpdateSharedEnvVariableError$inboundSchema: z.ZodType<
   UpdateSharedEnvVariableError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(types.string()),
-  code: types.string(),
-  envVarId: types.optional(types.string()),
-  envVarKey: types.optional(types.string()),
-  gitBranch: types.optional(types.string()),
-  key: types.optional(types.string()),
-  link: types.optional(types.string()),
-  message: types.string(),
-  project: types.optional(types.string()),
-  target: types.optional(
-    smartUnion([
-      z.array(UpdateSharedEnvVariableTarget1$inboundSchema),
-      UpdateSharedEnvVariableTarget2$inboundSchema,
-    ]),
-  ),
-  value: types.optional(
-    smartUnion([
-      types.string(),
-      z.array(UpdateSharedEnvVariableValue2$inboundSchema),
-    ]),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(types.string()),
+    code: types.string(),
+    envVarId: types.optional(types.string()),
+    envVarKey: types.optional(types.string()),
+    gitBranch: types.optional(types.string()),
+    key: types.optional(types.string()),
+    link: types.optional(types.string()),
+    message: types.string(),
+    project: types.optional(types.string()),
+    target: types.optional(
+      smartUnion([
+        z.array(UpdateSharedEnvVariableTarget1$inboundSchema),
+        UpdateSharedEnvVariableTarget2$inboundSchema,
+      ]),
+    ),
+    value: types.optional(
+      smartUnion([
+        types.string(),
+        z.array(UpdateSharedEnvVariableValue2$inboundSchema),
+      ]),
+    ),
+  })
+);
 
 export function updateSharedEnvVariableErrorFromJSON(
   jsonString: string,
@@ -525,9 +549,11 @@ export const UpdateSharedEnvVariableFailed$inboundSchema: z.ZodType<
   UpdateSharedEnvVariableFailed,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => UpdateSharedEnvVariableError$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => UpdateSharedEnvVariableError$inboundSchema),
+  })
+);
 
 export function updateSharedEnvVariableFailedFromJSON(
   jsonString: string,
@@ -545,12 +571,14 @@ export const UpdateSharedEnvVariableLastEditedByPrincipal2$inboundSchema:
     UpdateSharedEnvVariableLastEditedByPrincipal2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    avatar: types.optional(types.string()),
-    id: types.string(),
-    name: types.string(),
-    type: types.literal("app"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      avatar: types.optional(types.string()),
+      id: types.string(),
+      name: types.string(),
+      type: types.literal("app"),
+    })
+  );
 
 export function updateSharedEnvVariableLastEditedByPrincipal2FromJSON(
   jsonString: string,
@@ -574,13 +602,15 @@ export const UpdateSharedEnvVariableLastEditedByPrincipal1$inboundSchema:
     UpdateSharedEnvVariableLastEditedByPrincipal1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    avatar: types.optional(types.string()),
-    id: types.string(),
-    name: z.nullable(types.string()).optional(),
-    type: types.literal("user"),
-    username: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      avatar: types.optional(types.string()),
+      id: types.string(),
+      name: z.nullable(types.string()).optional(),
+      type: types.literal("user"),
+      username: types.string(),
+    })
+  );
 
 export function updateSharedEnvVariableLastEditedByPrincipal1FromJSON(
   jsonString: string,
@@ -604,10 +634,12 @@ export const UpdateSharedEnvVariableLastEditedByPrincipal$inboundSchema:
     UpdateSharedEnvVariableLastEditedByPrincipal,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => UpdateSharedEnvVariableLastEditedByPrincipal1$inboundSchema),
-    z.lazy(() => UpdateSharedEnvVariableLastEditedByPrincipal2$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => UpdateSharedEnvVariableLastEditedByPrincipal1$inboundSchema),
+      z.lazy(() => UpdateSharedEnvVariableLastEditedByPrincipal2$inboundSchema),
+    ])
+  );
 
 export function updateSharedEnvVariableLastEditedByPrincipalFromJSON(
   jsonString: string,
@@ -627,50 +659,55 @@ export function updateSharedEnvVariableLastEditedByPrincipalFromJSON(
 
 /** @internal */
 export const UpdateSharedEnvVariableEnvironmentTarget$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentTarget> = z
-    .nativeEnum(UpdateSharedEnvVariableEnvironmentTarget);
+  z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentTarget> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateSharedEnvVariableEnvironmentTarget)
+    );
 
 /** @internal */
 export const UpdateSharedEnvVariableEnvironmentType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentType> = z.nativeEnum(
-    UpdateSharedEnvVariableEnvironmentType,
-  );
+  z.ZodNativeEnum<typeof UpdateSharedEnvVariableEnvironmentType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateSharedEnvVariableEnvironmentType)
+    );
 
 /** @internal */
 export const Updated$inboundSchema: z.ZodType<Updated, z.ZodTypeDef, unknown> =
-  z.object({
-    applyToAllCustomEnvironments: types.optional(types.boolean()),
-    comment: types.optional(types.string()),
-    created: types.optional(types.date()),
-    createdAt: types.optional(types.number()),
-    createdBy: z.nullable(types.string()).optional(),
-    customEnvironmentIds: types.optional(z.array(types.string())),
-    decrypted: types.optional(types.boolean()),
-    deletedAt: types.optional(types.number()),
-    deletedBy: z.nullable(types.string()).optional(),
-    id: types.optional(types.string()),
-    key: types.optional(types.string()),
-    lastEditedByDisplayName: types.optional(types.string()),
-    lastEditedByPrincipal: types.optional(
-      z.union([
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      applyToAllCustomEnvironments: types.optional(types.boolean()),
+      comment: types.optional(types.string()),
+      created: types.optional(types.date()),
+      createdAt: types.optional(types.number()),
+      createdBy: z.nullable(types.string()).optional(),
+      customEnvironmentIds: types.optional(z.array(types.string())),
+      decrypted: types.optional(types.boolean()),
+      deletedAt: types.optional(types.number()),
+      deletedBy: z.nullable(types.string()).optional(),
+      id: types.optional(types.string()),
+      key: types.optional(types.string()),
+      lastEditedByDisplayName: types.optional(types.string()),
+      lastEditedByPrincipal: types.optional(z.union([
         z.lazy(() =>
           UpdateSharedEnvVariableLastEditedByPrincipal1$inboundSchema
         ),
         z.lazy(() =>
           UpdateSharedEnvVariableLastEditedByPrincipal2$inboundSchema
         ),
-      ]),
-    ),
-    ownerId: z.nullable(types.string()).optional(),
-    projectId: types.optional(z.array(types.string())),
-    target: types.optional(
-      z.array(UpdateSharedEnvVariableEnvironmentTarget$inboundSchema),
-    ),
-    type: types.optional(UpdateSharedEnvVariableEnvironmentType$inboundSchema),
-    updatedAt: types.optional(types.number()),
-    updatedBy: z.nullable(types.string()).optional(),
-    value: types.optional(types.string()),
-  });
+      ])),
+      ownerId: z.nullable(types.string()).optional(),
+      projectId: types.optional(z.array(types.string())),
+      target: types.optional(
+        z.array(UpdateSharedEnvVariableEnvironmentTarget$inboundSchema),
+      ),
+      type: types.optional(
+        UpdateSharedEnvVariableEnvironmentType$inboundSchema,
+      ),
+      updatedAt: types.optional(types.number()),
+      updatedBy: z.nullable(types.string()).optional(),
+      value: types.optional(types.string()),
+    })
+  );
 
 export function updatedFromJSON(
   jsonString: string,
@@ -687,10 +724,12 @@ export const UpdateSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   UpdateSharedEnvVariableResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  failed: z.array(z.lazy(() => UpdateSharedEnvVariableFailed$inboundSchema)),
-  updated: z.array(z.lazy(() => Updated$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    failed: z.array(z.lazy(() => UpdateSharedEnvVariableFailed$inboundSchema)),
+    updated: z.array(z.lazy(() => Updated$inboundSchema)),
+  })
+);
 
 export function updateSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -48,9 +48,11 @@ export const UpdateObservabilityConfigurationProjectRequestBody$outboundSchema:
     UpdateObservabilityConfigurationProjectRequestBody$Outbound,
     z.ZodTypeDef,
     UpdateObservabilityConfigurationProjectRequestBody
-  > = z.object({
-    disabled: z.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      disabled: z.boolean(),
+    })
+  );
 
 export function updateObservabilityConfigurationProjectRequestBodyToJSON(
   updateObservabilityConfigurationProjectRequestBody:
@@ -79,18 +81,20 @@ export const UpdateObservabilityConfigurationProjectRequest$outboundSchema:
     UpdateObservabilityConfigurationProjectRequest$Outbound,
     z.ZodTypeDef,
     UpdateObservabilityConfigurationProjectRequest
-  > = z.object({
-    projectIdOrName: z.string(),
-    teamId: z.string().optional(),
-    slug: z.string().optional(),
-    requestBody: z.lazy(() =>
-      UpdateObservabilityConfigurationProjectRequestBody$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      requestBody: "RequestBody",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      projectIdOrName: z.string(),
+      teamId: z.string().optional(),
+      slug: z.string().optional(),
+      requestBody: z.lazy(() =>
+        UpdateObservabilityConfigurationProjectRequestBody$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        requestBody: "RequestBody",
+      });
+    })
+  );
 
 export function updateObservabilityConfigurationProjectRequestToJSON(
   updateObservabilityConfigurationProjectRequest:
@@ -109,10 +113,12 @@ export const UpdateObservabilityConfigurationProjectResponseBody$inboundSchema:
     UpdateObservabilityConfigurationProjectResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    disabledAt: types.optional(types.number()),
-    id: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      disabledAt: types.optional(types.number()),
+      id: types.string(),
+    })
+  );
 
 export function updateObservabilityConfigurationProjectResponseBodyFromJSON(
   jsonString: string,

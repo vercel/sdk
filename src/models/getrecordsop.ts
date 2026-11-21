@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -139,14 +139,16 @@ export const GetRecordsRequest$outboundSchema: z.ZodType<
   GetRecordsRequest$Outbound,
   z.ZodTypeDef,
   GetRecordsRequest
-> = z.object({
-  domain: z.string(),
-  limit: z.string().optional(),
-  since: z.string().optional(),
-  until: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    limit: z.string().optional(),
+    since: z.string().optional(),
+    until: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getRecordsRequestToJSON(
   getRecordsRequest: GetRecordsRequest,
@@ -159,29 +161,33 @@ export function getRecordsRequestToJSON(
 /** @internal */
 export const GetRecordsResponseBodyDnsType$inboundSchema: z.ZodNativeEnum<
   typeof GetRecordsResponseBodyDnsType
-> = z.nativeEnum(GetRecordsResponseBodyDnsType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetRecordsResponseBodyDnsType)
+);
 
 /** @internal */
 export const ResponseBodyRecords$inboundSchema: z.ZodType<
   ResponseBodyRecords,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  created: types.nullable(types.number()),
-  createdAt: types.nullable(types.number()),
-  creator: types.string(),
-  id: types.string(),
-  mxPriority: types.optional(types.number()),
-  name: types.string(),
-  priority: types.optional(types.number()),
-  slug: types.string(),
-  ttl: types.optional(types.number()),
-  type: GetRecordsResponseBodyDnsType$inboundSchema,
-  updated: types.nullable(types.number()),
-  updatedAt: types.nullable(types.number()),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    created: types.nullable(types.number()),
+    createdAt: types.nullable(types.number()),
+    creator: types.string(),
+    id: types.string(),
+    mxPriority: types.optional(types.number()),
+    name: types.string(),
+    priority: types.optional(types.number()),
+    slug: types.string(),
+    ttl: types.optional(types.number()),
+    type: GetRecordsResponseBodyDnsType$inboundSchema,
+    updated: types.nullable(types.number()),
+    updatedAt: types.nullable(types.number()),
+    value: types.string(),
+  })
+);
 
 export function responseBodyRecordsFromJSON(
   jsonString: string,
@@ -198,10 +204,12 @@ export const GetRecordsResponseBody3$inboundSchema: z.ZodType<
   GetRecordsResponseBody3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: Pagination$inboundSchema,
-  records: z.array(z.lazy(() => ResponseBodyRecords$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: Pagination$inboundSchema,
+    records: z.array(z.lazy(() => ResponseBodyRecords$inboundSchema)),
+  })
+);
 
 export function getRecordsResponseBody3FromJSON(
   jsonString: string,
@@ -216,26 +224,28 @@ export function getRecordsResponseBody3FromJSON(
 /** @internal */
 export const GetRecordsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetRecordsResponseBodyType
-> = z.nativeEnum(GetRecordsResponseBodyType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetRecordsResponseBodyType));
 
 /** @internal */
 export const Records$inboundSchema: z.ZodType<Records, z.ZodTypeDef, unknown> =
-  z.object({
-    comment: types.optional(types.string()),
-    created: types.nullable(types.number()),
-    createdAt: types.nullable(types.number()),
-    creator: types.string(),
-    id: types.string(),
-    mxPriority: types.optional(types.number()),
-    name: types.string(),
-    priority: types.optional(types.number()),
-    slug: types.string(),
-    ttl: types.optional(types.number()),
-    type: GetRecordsResponseBodyType$inboundSchema,
-    updated: types.nullable(types.number()),
-    updatedAt: types.nullable(types.number()),
-    value: types.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      comment: types.optional(types.string()),
+      created: types.nullable(types.number()),
+      createdAt: types.nullable(types.number()),
+      creator: types.string(),
+      id: types.string(),
+      mxPriority: types.optional(types.number()),
+      name: types.string(),
+      priority: types.optional(types.number()),
+      slug: types.string(),
+      ttl: types.optional(types.number()),
+      type: GetRecordsResponseBodyType$inboundSchema,
+      updated: types.nullable(types.number()),
+      updatedAt: types.nullable(types.number()),
+      value: types.string(),
+    })
+  );
 
 export function recordsFromJSON(
   jsonString: string,
@@ -252,9 +262,11 @@ export const GetRecordsResponseBody2$inboundSchema: z.ZodType<
   GetRecordsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  records: z.array(z.lazy(() => Records$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    records: z.array(z.lazy(() => Records$inboundSchema)),
+  })
+);
 
 export function getRecordsResponseBody2FromJSON(
   jsonString: string,
@@ -271,11 +283,13 @@ export const GetRecordsResponseBody$inboundSchema: z.ZodType<
   GetRecordsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetRecordsResponseBody3$inboundSchema),
-  z.lazy(() => GetRecordsResponseBody2$inboundSchema),
-  types.string(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetRecordsResponseBody3$inboundSchema),
+    z.lazy(() => GetRecordsResponseBody2$inboundSchema),
+    types.string(),
+  ])
+);
 
 export function getRecordsResponseBodyFromJSON(
   jsonString: string,

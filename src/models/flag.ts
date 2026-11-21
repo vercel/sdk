@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -331,9 +331,11 @@ export const Fallthrough4$inboundSchema: z.ZodType<
   Fallthrough4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("experiment"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("experiment"),
+  })
+);
 
 export function fallthrough4FromJSON(
   jsonString: string,
@@ -348,18 +350,22 @@ export function fallthrough4FromJSON(
 /** @internal */
 export const FlagFallthroughEnvironments3Type$inboundSchema: z.ZodNativeEnum<
   typeof FlagFallthroughEnvironments3Type
-> = z.nativeEnum(FlagFallthroughEnvironments3Type);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(FlagFallthroughEnvironments3Type)
+);
 
 /** @internal */
 export const FallthroughBase$inboundSchema: z.ZodType<
   FallthroughBase,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attribute: types.string(),
-  kind: types.string(),
-  type: FlagFallthroughEnvironments3Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attribute: types.string(),
+    kind: types.string(),
+    type: FlagFallthroughEnvironments3Type$inboundSchema,
+  })
+);
 
 export function fallthroughBaseFromJSON(
   jsonString: string,
@@ -372,11 +378,13 @@ export function fallthroughBaseFromJSON(
 }
 
 /** @internal */
-export const Slots$inboundSchema: z.ZodType<Slots, z.ZodTypeDef, unknown> = z
-  .object({
-    durationMs: types.number(),
-    promille: types.number(),
-  });
+export const Slots$inboundSchema: z.ZodType<Slots, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      durationMs: types.number(),
+      promille: types.number(),
+    })
+  );
 
 export function slotsFromJSON(
   jsonString: string,
@@ -393,16 +401,18 @@ export const Fallthrough3$inboundSchema: z.ZodType<
   Fallthrough3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  base: z.lazy(() => FallthroughBase$inboundSchema),
-  defaultVariantId: types.string(),
-  finalPromille: types.optional(types.number()),
-  rollFromVariantId: types.string(),
-  rollToVariantId: types.string(),
-  slots: z.array(z.lazy(() => Slots$inboundSchema)),
-  startTimestamp: types.number(),
-  type: types.literal("rollout"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    base: z.lazy(() => FallthroughBase$inboundSchema),
+    defaultVariantId: types.string(),
+    finalPromille: types.optional(types.number()),
+    rollFromVariantId: types.string(),
+    rollToVariantId: types.string(),
+    slots: z.array(z.lazy(() => Slots$inboundSchema)),
+    startTimestamp: types.number(),
+    type: types.literal("rollout"),
+  })
+);
 
 export function fallthrough3FromJSON(
   jsonString: string,
@@ -417,15 +427,19 @@ export function fallthrough3FromJSON(
 /** @internal */
 export const FlagFallthroughEnvironments2Type$inboundSchema: z.ZodNativeEnum<
   typeof FlagFallthroughEnvironments2Type
-> = z.nativeEnum(FlagFallthroughEnvironments2Type);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(FlagFallthroughEnvironments2Type)
+);
 
 /** @internal */
-export const Base$inboundSchema: z.ZodType<Base, z.ZodTypeDef, unknown> = z
-  .object({
-    attribute: types.string(),
-    kind: types.string(),
-    type: FlagFallthroughEnvironments2Type$inboundSchema,
-  });
+export const Base$inboundSchema: z.ZodType<Base, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      attribute: types.string(),
+      kind: types.string(),
+      type: FlagFallthroughEnvironments2Type$inboundSchema,
+    })
+  );
 
 export function baseFromJSON(
   jsonString: string,
@@ -442,12 +456,14 @@ export const Fallthrough2$inboundSchema: z.ZodType<
   Fallthrough2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  base: z.lazy(() => Base$inboundSchema),
-  defaultVariantId: types.string(),
-  type: types.literal("split"),
-  weights: z.record(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    base: z.lazy(() => Base$inboundSchema),
+    defaultVariantId: types.string(),
+    type: types.literal("split"),
+    weights: z.record(types.number()),
+  })
+);
 
 export function fallthrough2FromJSON(
   jsonString: string,
@@ -464,10 +480,12 @@ export const Fallthrough1$inboundSchema: z.ZodType<
   Fallthrough1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("variant"),
-  variantId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("variant"),
+    variantId: types.string(),
+  })
+);
 
 export function fallthrough1FromJSON(
   jsonString: string,
@@ -484,12 +502,14 @@ export const Fallthrough$inboundSchema: z.ZodType<
   Fallthrough,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => Fallthrough1$inboundSchema),
-  z.lazy(() => Fallthrough2$inboundSchema),
-  z.lazy(() => Fallthrough3$inboundSchema),
-  z.lazy(() => Fallthrough4$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => Fallthrough1$inboundSchema),
+    z.lazy(() => Fallthrough2$inboundSchema),
+    z.lazy(() => Fallthrough3$inboundSchema),
+    z.lazy(() => Fallthrough4$inboundSchema),
+  ])
+);
 
 export function fallthroughFromJSON(
   jsonString: string,
@@ -502,18 +522,20 @@ export function fallthroughFromJSON(
 }
 
 /** @internal */
-export const FlagType$inboundSchema: z.ZodNativeEnum<typeof FlagType> = z
-  .nativeEnum(FlagType);
+export const FlagType$inboundSchema: z.ZodNativeEnum<typeof FlagType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FlagType));
 
 /** @internal */
 export const PausedOutcome$inboundSchema: z.ZodType<
   PausedOutcome,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: FlagType$inboundSchema,
-  variantId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: FlagType$inboundSchema,
+    variantId: types.string(),
+  })
+);
 
 export function pausedOutcomeFromJSON(
   jsonString: string,
@@ -526,11 +548,13 @@ export function pausedOutcomeFromJSON(
 }
 
 /** @internal */
-export const Reuse$inboundSchema: z.ZodType<Reuse, z.ZodTypeDef, unknown> = z
-  .object({
-    active: types.boolean(),
-    environment: types.string(),
-  });
+export const Reuse$inboundSchema: z.ZodType<Reuse, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      active: types.boolean(),
+      environment: types.string(),
+    })
+  );
 
 export function reuseFromJSON(
   jsonString: string,
@@ -543,16 +567,19 @@ export function reuseFromJSON(
 }
 
 /** @internal */
-export const Cmp$inboundSchema: z.ZodNativeEnum<typeof Cmp> = z.nativeEnum(Cmp);
+export const Cmp$inboundSchema: z.ZodNativeEnum<typeof Cmp> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Cmp));
 
 /** @internal */
 export const CmpOptions$inboundSchema: z.ZodType<
   CmpOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ignoreCase: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ignoreCase: types.optional(types.boolean()),
+  })
+);
 
 export function cmpOptionsFromJSON(
   jsonString: string,
@@ -565,12 +592,14 @@ export function cmpOptionsFromJSON(
 }
 
 /** @internal */
-export const Lhs2$inboundSchema: z.ZodType<Lhs2, z.ZodTypeDef, unknown> = z
-  .object({
-    attribute: types.string(),
-    kind: types.string(),
-    type: types.literal("entity"),
-  });
+export const Lhs2$inboundSchema: z.ZodType<Lhs2, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      attribute: types.string(),
+      kind: types.string(),
+      type: types.literal("entity"),
+    })
+  );
 
 export function lhs2FromJSON(
   jsonString: string,
@@ -583,10 +612,12 @@ export function lhs2FromJSON(
 }
 
 /** @internal */
-export const Lhs1$inboundSchema: z.ZodType<Lhs1, z.ZodTypeDef, unknown> = z
-  .object({
-    type: types.literal("segment"),
-  });
+export const Lhs1$inboundSchema: z.ZodType<Lhs1, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type: types.literal("segment"),
+    })
+  );
 
 export function lhs1FromJSON(
   jsonString: string,
@@ -599,9 +630,13 @@ export function lhs1FromJSON(
 }
 
 /** @internal */
-export const Lhs$inboundSchema: z.ZodType<Lhs, z.ZodTypeDef, unknown> = z.union(
-  [z.lazy(() => Lhs1$inboundSchema), z.lazy(() => Lhs2$inboundSchema)],
-);
+export const Lhs$inboundSchema: z.ZodType<Lhs, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => Lhs1$inboundSchema),
+      z.lazy(() => Lhs2$inboundSchema),
+    ])
+  );
 
 export function lhsFromJSON(
   jsonString: string,
@@ -614,16 +649,18 @@ export function lhsFromJSON(
 }
 
 /** @internal */
-export const FlagRhsType$inboundSchema: z.ZodNativeEnum<typeof FlagRhsType> = z
-  .nativeEnum(FlagRhsType);
+export const FlagRhsType$inboundSchema: z.ZodNativeEnum<typeof FlagRhsType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FlagRhsType));
 
 /** @internal */
-export const Rhs4$inboundSchema: z.ZodType<Rhs4, z.ZodTypeDef, unknown> = z
-  .object({
-    flags: types.string(),
-    pattern: types.string(),
-    type: FlagRhsType$inboundSchema,
-  });
+export const Rhs4$inboundSchema: z.ZodType<Rhs4, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      flags: types.string(),
+      pattern: types.string(),
+      type: FlagRhsType$inboundSchema,
+    })
+  );
 
 export function rhs4FromJSON(
   jsonString: string,
@@ -636,12 +673,14 @@ export function rhs4FromJSON(
 }
 
 /** @internal */
-export const Items2$inboundSchema: z.ZodType<Items2, z.ZodTypeDef, unknown> = z
-  .object({
-    label: types.optional(types.string()),
-    note: types.optional(types.string()),
-    value: types.string(),
-  });
+export const Items2$inboundSchema: z.ZodType<Items2, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      label: types.optional(types.string()),
+      note: types.optional(types.string()),
+      value: types.string(),
+    })
+  );
 
 export function items2FromJSON(
   jsonString: string,
@@ -654,12 +693,14 @@ export function items2FromJSON(
 }
 
 /** @internal */
-export const Items1$inboundSchema: z.ZodType<Items1, z.ZodTypeDef, unknown> = z
-  .object({
-    label: types.optional(types.string()),
-    note: types.optional(types.string()),
-    value: types.number(),
-  });
+export const Items1$inboundSchema: z.ZodType<Items1, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      label: types.optional(types.string()),
+      note: types.optional(types.string()),
+      value: types.number(),
+    })
+  );
 
 export function items1FromJSON(
   jsonString: string,
@@ -676,10 +717,12 @@ export const RhsItems$inboundSchema: z.ZodType<
   RhsItems,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => Items1$inboundSchema),
-  z.lazy(() => Items2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Items1$inboundSchema),
+    z.lazy(() => Items2$inboundSchema),
+  ])
+);
 
 export function rhsItemsFromJSON(
   jsonString: string,
@@ -692,20 +735,20 @@ export function rhsItemsFromJSON(
 }
 
 /** @internal */
-export const RhsType$inboundSchema: z.ZodNativeEnum<typeof RhsType> = z
-  .nativeEnum(RhsType);
+export const RhsType$inboundSchema: z.ZodNativeEnum<typeof RhsType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RhsType));
 
 /** @internal */
-export const Rhs3$inboundSchema: z.ZodType<Rhs3, z.ZodTypeDef, unknown> = z
-  .object({
-    items: z.array(
-      smartUnion([
+export const Rhs3$inboundSchema: z.ZodType<Rhs3, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      items: z.array(smartUnion([
         z.lazy(() => Items1$inboundSchema),
         z.lazy(() => Items2$inboundSchema),
-      ]),
-    ),
-    type: RhsType$inboundSchema,
-  });
+      ])),
+      type: RhsType$inboundSchema,
+    })
+  );
 
 export function rhs3FromJSON(
   jsonString: string,
@@ -719,13 +762,15 @@ export function rhs3FromJSON(
 
 /** @internal */
 export const Rhs$inboundSchema: z.ZodType<Rhs, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Rhs4$inboundSchema),
-    z.lazy(() => Rhs3$inboundSchema),
-    types.string(),
-    types.number(),
-    types.boolean(),
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() => Rhs4$inboundSchema),
+      z.lazy(() => Rhs3$inboundSchema),
+      types.string(),
+      types.number(),
+      types.boolean(),
+    ])
+  );
 
 export function rhsFromJSON(
   jsonString: string,
@@ -742,23 +787,23 @@ export const Conditions$inboundSchema: z.ZodType<
   Conditions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cmp: Cmp$inboundSchema,
-  cmpOptions: types.optional(z.lazy(() => CmpOptions$inboundSchema)),
-  lhs: z.union([
-    z.lazy(() => Lhs1$inboundSchema),
-    z.lazy(() => Lhs2$inboundSchema),
-  ]),
-  rhs: types.optional(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cmp: Cmp$inboundSchema,
+    cmpOptions: types.optional(z.lazy(() => CmpOptions$inboundSchema)),
+    lhs: z.union([
+      z.lazy(() => Lhs1$inboundSchema),
+      z.lazy(() => Lhs2$inboundSchema),
+    ]),
+    rhs: types.optional(smartUnion([
       z.lazy(() => Rhs4$inboundSchema),
       z.lazy(() => Rhs3$inboundSchema),
       types.string(),
       types.number(),
       types.boolean(),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function conditionsFromJSON(
   jsonString: string,
@@ -775,9 +820,11 @@ export const Outcome4$inboundSchema: z.ZodType<
   Outcome4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("experiment"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("experiment"),
+  })
+);
 
 export function outcome4FromJSON(
   jsonString: string,
@@ -792,18 +839,22 @@ export function outcome4FromJSON(
 /** @internal */
 export const FlagOutcomeEnvironmentsRules3Type$inboundSchema: z.ZodNativeEnum<
   typeof FlagOutcomeEnvironmentsRules3Type
-> = z.nativeEnum(FlagOutcomeEnvironmentsRules3Type);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(FlagOutcomeEnvironmentsRules3Type)
+);
 
 /** @internal */
 export const FlagOutcomeBase$inboundSchema: z.ZodType<
   FlagOutcomeBase,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attribute: types.string(),
-  kind: types.string(),
-  type: FlagOutcomeEnvironmentsRules3Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attribute: types.string(),
+    kind: types.string(),
+    type: FlagOutcomeEnvironmentsRules3Type$inboundSchema,
+  })
+);
 
 export function flagOutcomeBaseFromJSON(
   jsonString: string,
@@ -820,10 +871,12 @@ export const OutcomeSlots$inboundSchema: z.ZodType<
   OutcomeSlots,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  durationMs: types.number(),
-  promille: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    durationMs: types.number(),
+    promille: types.number(),
+  })
+);
 
 export function outcomeSlotsFromJSON(
   jsonString: string,
@@ -840,16 +893,18 @@ export const Outcome3$inboundSchema: z.ZodType<
   Outcome3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  base: z.lazy(() => FlagOutcomeBase$inboundSchema),
-  defaultVariantId: types.string(),
-  finalPromille: types.optional(types.number()),
-  rollFromVariantId: types.string(),
-  rollToVariantId: types.string(),
-  slots: z.array(z.lazy(() => OutcomeSlots$inboundSchema)),
-  startTimestamp: types.number(),
-  type: types.literal("rollout"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    base: z.lazy(() => FlagOutcomeBase$inboundSchema),
+    defaultVariantId: types.string(),
+    finalPromille: types.optional(types.number()),
+    rollFromVariantId: types.string(),
+    rollToVariantId: types.string(),
+    slots: z.array(z.lazy(() => OutcomeSlots$inboundSchema)),
+    startTimestamp: types.number(),
+    type: types.literal("rollout"),
+  })
+);
 
 export function outcome3FromJSON(
   jsonString: string,
@@ -864,18 +919,22 @@ export function outcome3FromJSON(
 /** @internal */
 export const FlagOutcomeEnvironmentsRules2Type$inboundSchema: z.ZodNativeEnum<
   typeof FlagOutcomeEnvironmentsRules2Type
-> = z.nativeEnum(FlagOutcomeEnvironmentsRules2Type);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(FlagOutcomeEnvironmentsRules2Type)
+);
 
 /** @internal */
 export const OutcomeBase$inboundSchema: z.ZodType<
   OutcomeBase,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attribute: types.string(),
-  kind: types.string(),
-  type: FlagOutcomeEnvironmentsRules2Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attribute: types.string(),
+    kind: types.string(),
+    type: FlagOutcomeEnvironmentsRules2Type$inboundSchema,
+  })
+);
 
 export function outcomeBaseFromJSON(
   jsonString: string,
@@ -892,12 +951,14 @@ export const Outcome2$inboundSchema: z.ZodType<
   Outcome2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  base: z.lazy(() => OutcomeBase$inboundSchema),
-  defaultVariantId: types.string(),
-  type: types.literal("split"),
-  weights: z.record(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    base: z.lazy(() => OutcomeBase$inboundSchema),
+    defaultVariantId: types.string(),
+    type: types.literal("split"),
+    weights: z.record(types.number()),
+  })
+);
 
 export function outcome2FromJSON(
   jsonString: string,
@@ -914,10 +975,12 @@ export const Outcome1$inboundSchema: z.ZodType<
   Outcome1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("variant"),
-  variantId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("variant"),
+    variantId: types.string(),
+  })
+);
 
 export function outcome1FromJSON(
   jsonString: string,
@@ -934,12 +997,14 @@ export const FlagOutcome$inboundSchema: z.ZodType<
   FlagOutcome,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => Outcome1$inboundSchema),
-  z.lazy(() => Outcome2$inboundSchema),
-  z.lazy(() => Outcome3$inboundSchema),
-  z.lazy(() => Outcome4$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => Outcome1$inboundSchema),
+    z.lazy(() => Outcome2$inboundSchema),
+    z.lazy(() => Outcome3$inboundSchema),
+    z.lazy(() => Outcome4$inboundSchema),
+  ])
+);
 
 export function flagOutcomeFromJSON(
   jsonString: string,
@@ -952,17 +1017,19 @@ export function flagOutcomeFromJSON(
 }
 
 /** @internal */
-export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> = z
-  .object({
-    conditions: z.array(z.lazy(() => Conditions$inboundSchema)),
-    id: types.string(),
-    outcome: z.union([
-      z.lazy(() => Outcome1$inboundSchema),
-      z.lazy(() => Outcome2$inboundSchema),
-      z.lazy(() => Outcome3$inboundSchema),
-      z.lazy(() => Outcome4$inboundSchema),
-    ]),
-  });
+export const Rules$inboundSchema: z.ZodType<Rules, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      conditions: z.array(z.lazy(() => Conditions$inboundSchema)),
+      id: types.string(),
+      outcome: z.union([
+        z.lazy(() => Outcome1$inboundSchema),
+        z.lazy(() => Outcome2$inboundSchema),
+        z.lazy(() => Outcome3$inboundSchema),
+        z.lazy(() => Outcome4$inboundSchema),
+      ]),
+    })
+  );
 
 export function rulesFromJSON(
   jsonString: string,
@@ -976,10 +1043,12 @@ export function rulesFromJSON(
 
 /** @internal */
 export const Targets$inboundSchema: z.ZodType<Targets, z.ZodTypeDef, unknown> =
-  z.object({
-    note: types.optional(types.string()),
-    value: types.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      note: types.optional(types.string()),
+      value: types.string(),
+    })
+  );
 
 export function targetsFromJSON(
   jsonString: string,
@@ -996,22 +1065,26 @@ export const FlagEnvironments$inboundSchema: z.ZodType<
   FlagEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  active: types.boolean(),
-  fallthrough: z.union([
-    z.lazy(() => Fallthrough1$inboundSchema),
-    z.lazy(() => Fallthrough2$inboundSchema),
-    z.lazy(() => Fallthrough3$inboundSchema),
-    z.lazy(() => Fallthrough4$inboundSchema),
-  ]),
-  pausedOutcome: z.lazy(() => PausedOutcome$inboundSchema),
-  reuse: types.optional(z.lazy(() => Reuse$inboundSchema)),
-  revision: types.optional(types.number()),
-  rules: z.array(z.lazy(() => Rules$inboundSchema)),
-  targets: types.optional(
-    z.record(z.record(z.record(z.array(z.lazy(() => Targets$inboundSchema))))),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: types.boolean(),
+    fallthrough: z.union([
+      z.lazy(() => Fallthrough1$inboundSchema),
+      z.lazy(() => Fallthrough2$inboundSchema),
+      z.lazy(() => Fallthrough3$inboundSchema),
+      z.lazy(() => Fallthrough4$inboundSchema),
+    ]),
+    pausedOutcome: z.lazy(() => PausedOutcome$inboundSchema),
+    reuse: types.optional(z.lazy(() => Reuse$inboundSchema)),
+    revision: types.optional(types.number()),
+    rules: z.array(z.lazy(() => Rules$inboundSchema)),
+    targets: types.optional(
+      z.record(
+        z.record(z.record(z.array(z.lazy(() => Targets$inboundSchema)))),
+      ),
+    ),
+  })
+);
 
 export function flagEnvironmentsFromJSON(
   jsonString: string,
@@ -1024,28 +1097,28 @@ export function flagEnvironmentsFromJSON(
 }
 
 /** @internal */
-export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> = z.nativeEnum(
-  Kind,
-);
+export const Kind$inboundSchema: z.ZodNativeEnum<typeof Kind> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Kind));
 
 /** @internal */
-export const State$inboundSchema: z.ZodNativeEnum<typeof State> = z.nativeEnum(
-  State,
-);
+export const State$inboundSchema: z.ZodNativeEnum<typeof State> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(State));
 
 /** @internal */
-export const TypeName$inboundSchema: z.ZodNativeEnum<typeof TypeName> = z
-  .nativeEnum(TypeName);
+export const TypeName$inboundSchema: z.ZodNativeEnum<typeof TypeName> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TypeName));
 
 /** @internal */
 export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> =
-  smartUnion([
-    types.string(),
-    types.number(),
-    z.record(z.any()),
-    z.array(z.any()),
-    types.boolean(),
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      types.string(),
+      types.number(),
+      z.record(z.any()),
+      z.array(z.any()),
+      types.boolean(),
+    ])
+  );
 
 export function valueFromJSON(
   jsonString: string,
@@ -1062,20 +1135,22 @@ export const Variants$inboundSchema: z.ZodType<
   Variants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  id: types.string(),
-  label: types.optional(types.string()),
-  value: types.nullable(
-    smartUnion([
-      types.string(),
-      types.number(),
-      z.record(z.any()),
-      z.array(z.any()),
-      types.boolean(),
-    ]),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.optional(types.string()),
+    id: types.string(),
+    label: types.optional(types.string()),
+    value: types.nullable(
+      smartUnion([
+        types.string(),
+        types.number(),
+        z.record(z.any()),
+        z.array(z.any()),
+        types.boolean(),
+      ]),
+    ),
+  })
+);
 
 export function variantsFromJSON(
   jsonString: string,
@@ -1089,10 +1164,12 @@ export function variantsFromJSON(
 
 /** @internal */
 export const Creator$inboundSchema: z.ZodType<Creator, z.ZodTypeDef, unknown> =
-  z.object({
-    id: types.string(),
-    name: types.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: types.string(),
+      name: types.string(),
+    })
+  );
 
 export function creatorFromJSON(
   jsonString: string,
@@ -1109,9 +1186,11 @@ export const Metadata$inboundSchema: z.ZodType<
   Metadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  creator: types.optional(z.lazy(() => Creator$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    creator: types.optional(z.lazy(() => Creator$inboundSchema)),
+  })
+);
 
 export function metadataFromJSON(
   jsonString: string,
@@ -1124,30 +1203,32 @@ export function metadataFromJSON(
 }
 
 /** @internal */
-export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> = z
-  .object({
-    createdAt: types.number(),
-    createdBy: types.string(),
-    description: types.optional(types.string()),
-    environments: z.record(z.lazy(() => FlagEnvironments$inboundSchema)),
-    id: types.string(),
-    kind: Kind$inboundSchema,
-    maintainerIds: types.optional(z.array(types.string())),
-    ownerId: types.string(),
-    permanent: types.optional(types.boolean()),
-    projectId: types.string(),
-    revision: types.number(),
-    seed: types.number(),
-    seenInProduction: types.optional(types.boolean()),
-    slug: types.string(),
-    state: State$inboundSchema,
-    tags: types.optional(z.array(types.string())),
-    typeName: TypeName$inboundSchema,
-    updatedAt: types.number(),
-    updatedBy: types.optional(types.string()),
-    variants: z.array(z.lazy(() => Variants$inboundSchema)),
-    metadata: types.optional(z.lazy(() => Metadata$inboundSchema)),
-  });
+export const Flag$inboundSchema: z.ZodType<Flag, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.number(),
+      createdBy: types.string(),
+      description: types.optional(types.string()),
+      environments: z.record(z.lazy(() => FlagEnvironments$inboundSchema)),
+      id: types.string(),
+      kind: Kind$inboundSchema,
+      maintainerIds: types.optional(z.array(types.string())),
+      ownerId: types.string(),
+      permanent: types.optional(types.boolean()),
+      projectId: types.string(),
+      revision: types.number(),
+      seed: types.number(),
+      seenInProduction: types.optional(types.boolean()),
+      slug: types.string(),
+      state: State$inboundSchema,
+      tags: types.optional(z.array(types.string())),
+      typeName: TypeName$inboundSchema,
+      updatedAt: types.number(),
+      updatedBy: types.optional(types.string()),
+      variants: z.array(z.lazy(() => Variants$inboundSchema)),
+      metadata: types.optional(z.lazy(() => Metadata$inboundSchema)),
+    })
+  );
 
 export function flagFromJSON(
   jsonString: string,

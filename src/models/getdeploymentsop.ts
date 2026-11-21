@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -886,24 +886,26 @@ export const GetDeploymentsRequest$outboundSchema: z.ZodType<
   GetDeploymentsRequest$Outbound,
   z.ZodTypeDef,
   GetDeploymentsRequest
-> = z.object({
-  app: z.string().optional(),
-  from: z.number().optional(),
-  limit: z.number().optional(),
-  projectId: z.string().optional(),
-  projectIds: z.array(z.string()).optional(),
-  target: z.string().optional(),
-  to: z.number().optional(),
-  users: z.string().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  state: z.string().optional(),
-  rollbackCandidate: z.boolean().optional(),
-  branch: z.string().optional(),
-  sha: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    app: z.string().optional(),
+    from: z.number().optional(),
+    limit: z.number().optional(),
+    projectId: z.string().optional(),
+    projectIds: z.array(z.string()).optional(),
+    target: z.string().optional(),
+    to: z.number().optional(),
+    users: z.string().optional(),
+    since: z.number().optional(),
+    until: z.number().optional(),
+    state: z.string().optional(),
+    rollbackCandidate: z.boolean().optional(),
+    branch: z.string().optional(),
+    sha: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getDeploymentsRequestToJSON(
   getDeploymentsRequest: GetDeploymentsRequest,
@@ -918,7 +920,9 @@ export const GetDeploymentsAliasAssigned$inboundSchema: z.ZodType<
   GetDeploymentsAliasAssigned,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.boolean()])
+);
 
 export function getDeploymentsAliasAssignedFromJSON(
   jsonString: string,
@@ -935,10 +939,12 @@ export const GetDeploymentsAliasError$inboundSchema: z.ZodType<
   GetDeploymentsAliasError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function getDeploymentsAliasErrorFromJSON(
   jsonString: string,
@@ -955,11 +961,13 @@ export const GetDeploymentsCommitMeta$inboundSchema: z.ZodType<
   GetDeploymentsCommitMeta,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: types.optional(types.string()),
-  isVerified: types.optional(types.boolean()),
-  name: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: types.optional(types.string()),
+    isVerified: types.optional(types.boolean()),
+    name: types.optional(types.string()),
+  })
+);
 
 export function getDeploymentsCommitMetaFromJSON(
   jsonString: string,
@@ -976,7 +984,9 @@ export const GetDeploymentsId$inboundSchema: z.ZodType<
   GetDeploymentsId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function getDeploymentsIdFromJSON(
   jsonString: string,
@@ -993,12 +1003,14 @@ export const GetDeploymentsGitUser$inboundSchema: z.ZodType<
   GetDeploymentsGitUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: smartUnion([types.string(), types.number()]),
-  login: types.string(),
-  provider: types.optional(types.string()),
-  type: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: smartUnion([types.string(), types.number()]),
+    login: types.string(),
+    provider: types.optional(types.string()),
+    type: types.optional(types.string()),
+  })
+);
 
 export function getDeploymentsGitUserFromJSON(
   jsonString: string,
@@ -1015,11 +1027,13 @@ export const GetDeploymentsVercelUser$inboundSchema: z.ZodType<
   GetDeploymentsVercelUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  teamRoles: types.optional(z.array(types.string())),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    teamRoles: types.optional(z.array(types.string())),
+    username: types.string(),
+  })
+);
 
 export function getDeploymentsVercelUserFromJSON(
   jsonString: string,
@@ -1036,15 +1050,17 @@ export const GetDeploymentsAttribution$inboundSchema: z.ZodType<
   GetDeploymentsAttribution,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  commitMeta: types.optional(
-    z.lazy(() => GetDeploymentsCommitMeta$inboundSchema),
-  ),
-  gitUser: types.optional(z.lazy(() => GetDeploymentsGitUser$inboundSchema)),
-  vercelUser: types.optional(
-    z.lazy(() => GetDeploymentsVercelUser$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    commitMeta: types.optional(
+      z.lazy(() => GetDeploymentsCommitMeta$inboundSchema),
+    ),
+    gitUser: types.optional(z.lazy(() => GetDeploymentsGitUser$inboundSchema)),
+    vercelUser: types.optional(
+      z.lazy(() => GetDeploymentsVercelUser$inboundSchema),
+    ),
+  })
+);
 
 export function getDeploymentsAttributionFromJSON(
   jsonString: string,
@@ -1058,20 +1074,23 @@ export function getDeploymentsAttributionFromJSON(
 
 /** @internal */
 export const GetDeploymentsDeploymentsResponseState$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseState> = z.nativeEnum(
-    GetDeploymentsDeploymentsResponseState,
-  );
+  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseState> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetDeploymentsDeploymentsResponseState)
+    );
 
 /** @internal */
 export const GetDeploymentsDeploymentAlias$inboundSchema: z.ZodType<
   GetDeploymentsDeploymentAlias,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  completedAt: types.optional(types.number()),
-  startedAt: types.number(),
-  state: GetDeploymentsDeploymentsResponseState$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    completedAt: types.optional(types.number()),
+    startedAt: types.number(),
+    state: GetDeploymentsDeploymentsResponseState$inboundSchema,
+  })
+);
 
 export function getDeploymentsDeploymentAliasFromJSON(
   jsonString: string,
@@ -1088,13 +1107,17 @@ export const GetDeploymentsChecks$inboundSchema: z.ZodType<
   GetDeploymentsChecks,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "deployment-alias": z.lazy(() => GetDeploymentsDeploymentAlias$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "deployment-alias": "deploymentAlias",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "deployment-alias": z.lazy(() =>
+      GetDeploymentsDeploymentAlias$inboundSchema
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "deployment-alias": "deploymentAlias",
+    });
+  })
+);
 
 export function getDeploymentsChecksFromJSON(
   jsonString: string,
@@ -1109,31 +1132,37 @@ export function getDeploymentsChecksFromJSON(
 /** @internal */
 export const GetDeploymentsChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsChecksConclusion
-> = z.nativeEnum(GetDeploymentsChecksConclusion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDeploymentsChecksConclusion)
+);
 
 /** @internal */
 export const GetDeploymentsChecksState$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsChecksState
-> = z.nativeEnum(GetDeploymentsChecksState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsChecksState));
 
 /** @internal */
 export const GetDeploymentsDeploymentsType$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsDeploymentsType
-> = z.nativeEnum(GetDeploymentsDeploymentsType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDeploymentsDeploymentsType)
+);
 
 /** @internal */
 export const GetDeploymentsCreator$inboundSchema: z.ZodType<
   GetDeploymentsCreator,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: types.optional(types.string()),
-  githubLogin: types.optional(types.string()),
-  gitlabLogin: types.optional(types.string()),
-  type: types.optional(GetDeploymentsDeploymentsType$inboundSchema),
-  uid: types.string(),
-  username: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: types.optional(types.string()),
+    githubLogin: types.optional(types.string()),
+    gitlabLogin: types.optional(types.string()),
+    type: types.optional(GetDeploymentsDeploymentsType$inboundSchema),
+    uid: types.string(),
+    username: types.optional(types.string()),
+  })
+);
 
 export function getDeploymentsCreatorFromJSON(
   jsonString: string,
@@ -1150,10 +1179,12 @@ export const GetDeploymentsCustomEnvironment$inboundSchema: z.ZodType<
   GetDeploymentsCustomEnvironment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  slug: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    slug: types.optional(types.string()),
+  })
+);
 
 export function getDeploymentsCustomEnvironmentFromJSON(
   jsonString: string,
@@ -1168,17 +1199,21 @@ export function getDeploymentsCustomEnvironmentFromJSON(
 /** @internal */
 export const GetDeploymentsDeploymentsState$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsDeploymentsState
-> = z.nativeEnum(GetDeploymentsDeploymentsState);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDeploymentsDeploymentsState)
+);
 
 /** @internal */
 export const GetDeploymentsManualProvisioning$inboundSchema: z.ZodType<
   GetDeploymentsManualProvisioning,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  completedAt: types.optional(types.number()),
-  state: GetDeploymentsDeploymentsState$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    completedAt: types.optional(types.number()),
+    state: GetDeploymentsDeploymentsState$inboundSchema,
+  })
+);
 
 export function getDeploymentsManualProvisioningFromJSON(
   jsonString: string,
@@ -1193,17 +1228,19 @@ export function getDeploymentsManualProvisioningFromJSON(
 /** @internal */
 export const GetDeploymentsOomReport$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsOomReport
-> = z.nativeEnum(GetDeploymentsOomReport);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsOomReport));
 
 /** @internal */
 export const GetDeploymentsDeploymentsCreator$inboundSchema: z.ZodType<
   GetDeploymentsDeploymentsCreator,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  avatar: types.optional(types.string()),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: types.optional(types.string()),
+    name: types.string(),
+  })
+);
 
 export function getDeploymentsDeploymentsCreatorFromJSON(
   jsonString: string,
@@ -1217,19 +1254,22 @@ export function getDeploymentsDeploymentsCreatorFromJSON(
 
 /** @internal */
 export const GetDeploymentsDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseType> = z.nativeEnum(
-    GetDeploymentsDeploymentsResponseType,
-  );
+  z.ZodNativeEnum<typeof GetDeploymentsDeploymentsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetDeploymentsDeploymentsResponseType)
+    );
 
 /** @internal */
 export const GetDeploymentsOrigin$inboundSchema: z.ZodType<
   GetDeploymentsOrigin,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: GetDeploymentsDeploymentsResponseType$inboundSchema,
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: GetDeploymentsDeploymentsResponseType$inboundSchema,
+    value: types.string(),
+  })
+);
 
 export function getDeploymentsOriginFromJSON(
   jsonString: string,
@@ -1246,9 +1286,11 @@ export const GetDeploymentsDeploymentsSource$inboundSchema: z.ZodType<
   GetDeploymentsDeploymentsSource,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+  })
+);
 
 export function getDeploymentsDeploymentsSourceFromJSON(
   jsonString: string,
@@ -1265,12 +1307,14 @@ export const GetDeploymentsPlatform$inboundSchema: z.ZodType<
   GetDeploymentsPlatform,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  creator: z.lazy(() => GetDeploymentsDeploymentsCreator$inboundSchema),
-  meta: types.optional(z.record(types.string())),
-  origin: z.lazy(() => GetDeploymentsOrigin$inboundSchema),
-  source: z.lazy(() => GetDeploymentsDeploymentsSource$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    creator: z.lazy(() => GetDeploymentsDeploymentsCreator$inboundSchema),
+    meta: types.optional(z.record(types.string())),
+    origin: z.lazy(() => GetDeploymentsOrigin$inboundSchema),
+    source: z.lazy(() => GetDeploymentsDeploymentsSource$inboundSchema),
+  })
+);
 
 export function getDeploymentsPlatformFromJSON(
   jsonString: string,
@@ -1285,17 +1329,19 @@ export function getDeploymentsPlatformFromJSON(
 /** @internal */
 export const GetDeploymentsFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsFramework
-> = z.nativeEnum(GetDeploymentsFramework);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsFramework));
 
 /** @internal */
 export const GetDeploymentsGitComments$inboundSchema: z.ZodType<
   GetDeploymentsGitComments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  onCommit: types.boolean(),
-  onPullRequest: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    onCommit: types.boolean(),
+    onPullRequest: types.boolean(),
+  })
+);
 
 export function getDeploymentsGitCommentsFromJSON(
   jsonString: string,
@@ -1310,22 +1356,24 @@ export function getDeploymentsGitCommentsFromJSON(
 /** @internal */
 export const GetDeploymentsNodeVersion$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsNodeVersion
-> = z.nativeEnum(GetDeploymentsNodeVersion);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsNodeVersion));
 
 /** @internal */
 export const GetDeploymentsSpeedInsights$inboundSchema: z.ZodType<
   GetDeploymentsSpeedInsights,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: types.optional(types.number()),
-  dataReceivedAt: types.optional(types.number()),
-  disabledAt: types.optional(types.number()),
-  enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.boolean()),
-  id: types.string(),
-  paidAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: types.optional(types.number()),
+    dataReceivedAt: types.optional(types.number()),
+    disabledAt: types.optional(types.number()),
+    enabledAt: types.optional(types.number()),
+    hasData: types.optional(types.boolean()),
+    id: types.string(),
+    paidAt: types.optional(types.number()),
+  })
+);
 
 export function getDeploymentsSpeedInsightsFromJSON(
   jsonString: string,
@@ -1342,9 +1390,11 @@ export const GetDeploymentsVercelFlags$inboundSchema: z.ZodType<
   GetDeploymentsVercelFlags,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabledAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabledAt: types.optional(types.number()),
+  })
+);
 
 export function getDeploymentsVercelFlagsFromJSON(
   jsonString: string,
@@ -1361,13 +1411,15 @@ export const GetDeploymentsWebAnalytics$inboundSchema: z.ZodType<
   GetDeploymentsWebAnalytics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: types.optional(types.number()),
-  disabledAt: types.optional(types.number()),
-  enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.literal(true)),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: types.optional(types.number()),
+    disabledAt: types.optional(types.number()),
+    enabledAt: types.optional(types.number()),
+    hasData: types.optional(types.literal(true)),
+    id: types.string(),
+  })
+);
 
 export function getDeploymentsWebAnalyticsFromJSON(
   jsonString: string,
@@ -1384,34 +1436,36 @@ export const GetDeploymentsProjectSettings$inboundSchema: z.ZodType<
   GetDeploymentsProjectSettings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  buildCommand: z.nullable(types.string()).optional(),
-  commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
-  createdAt: types.optional(types.number()),
-  customerSupportCodeVisibility: types.optional(types.boolean()),
-  devCommand: z.nullable(types.string()).optional(),
-  framework: z.nullable(GetDeploymentsFramework$inboundSchema).optional(),
-  gitComments: types.optional(
-    z.lazy(() => GetDeploymentsGitComments$inboundSchema),
-  ),
-  gitForkProtection: types.optional(types.boolean()),
-  gitLFS: types.optional(types.boolean()),
-  installCommand: z.nullable(types.string()).optional(),
-  nodeVersion: types.optional(GetDeploymentsNodeVersion$inboundSchema),
-  outputDirectory: z.nullable(types.string()).optional(),
-  rootDirectory: z.nullable(types.string()).optional(),
-  skipGitConnectDuringLink: types.optional(types.boolean()),
-  sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
-  speedInsights: types.optional(
-    z.lazy(() => GetDeploymentsSpeedInsights$inboundSchema),
-  ),
-  vercelFlags: types.optional(
-    z.lazy(() => GetDeploymentsVercelFlags$inboundSchema),
-  ),
-  webAnalytics: types.optional(
-    z.lazy(() => GetDeploymentsWebAnalytics$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    buildCommand: z.nullable(types.string()).optional(),
+    commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+    createdAt: types.optional(types.number()),
+    customerSupportCodeVisibility: types.optional(types.boolean()),
+    devCommand: z.nullable(types.string()).optional(),
+    framework: z.nullable(GetDeploymentsFramework$inboundSchema).optional(),
+    gitComments: types.optional(
+      z.lazy(() => GetDeploymentsGitComments$inboundSchema),
+    ),
+    gitForkProtection: types.optional(types.boolean()),
+    gitLFS: types.optional(types.boolean()),
+    installCommand: z.nullable(types.string()).optional(),
+    nodeVersion: types.optional(GetDeploymentsNodeVersion$inboundSchema),
+    outputDirectory: z.nullable(types.string()).optional(),
+    rootDirectory: z.nullable(types.string()).optional(),
+    skipGitConnectDuringLink: types.optional(types.boolean()),
+    sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+    speedInsights: types.optional(
+      z.lazy(() => GetDeploymentsSpeedInsights$inboundSchema),
+    ),
+    vercelFlags: types.optional(
+      z.lazy(() => GetDeploymentsVercelFlags$inboundSchema),
+    ),
+    webAnalytics: types.optional(
+      z.lazy(() => GetDeploymentsWebAnalytics$inboundSchema),
+    ),
+  })
+);
 
 export function getDeploymentsProjectSettingsFromJSON(
   jsonString: string,
@@ -1426,29 +1480,33 @@ export function getDeploymentsProjectSettingsFromJSON(
 /** @internal */
 export const GetDeploymentsReadyState$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsReadyState
-> = z.nativeEnum(GetDeploymentsReadyState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsReadyState));
 
 /** @internal */
 export const GetDeploymentsReadySubstate$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsReadySubstate
-> = z.nativeEnum(GetDeploymentsReadySubstate);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDeploymentsReadySubstate)
+);
 
 /** @internal */
 export const GetDeploymentsBlockCode$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsBlockCode
-> = z.nativeEnum(GetDeploymentsBlockCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsBlockCode));
 
 /** @internal */
 export const GetDeploymentsGitProvider$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsGitProvider
-> = z.nativeEnum(GetDeploymentsGitProvider);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsGitProvider));
 
 /** @internal */
 export const GetDeploymentsGitUserId$inboundSchema: z.ZodType<
   GetDeploymentsGitUserId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function getDeploymentsGitUserIdFromJSON(
   jsonString: string,
@@ -1465,13 +1523,15 @@ export const GetDeploymentsSeatBlock$inboundSchema: z.ZodType<
   GetDeploymentsSeatBlock,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  blockCode: GetDeploymentsBlockCode$inboundSchema,
-  gitProvider: types.optional(GetDeploymentsGitProvider$inboundSchema),
-  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  isVerified: types.optional(types.boolean()),
-  userId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    blockCode: GetDeploymentsBlockCode$inboundSchema,
+    gitProvider: types.optional(GetDeploymentsGitProvider$inboundSchema),
+    gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+    isVerified: types.optional(types.boolean()),
+    userId: types.optional(types.string()),
+  })
+);
 
 export function getDeploymentsSeatBlockFromJSON(
   jsonString: string,
@@ -1486,86 +1546,90 @@ export function getDeploymentsSeatBlockFromJSON(
 /** @internal */
 export const GetDeploymentsSource$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsSource
-> = z.nativeEnum(GetDeploymentsSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsSource));
 
 /** @internal */
 export const GetDeploymentsState$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsState
-> = z.nativeEnum(GetDeploymentsState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsState));
 
 /** @internal */
 export const GetDeploymentsTarget$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsTarget
-> = z.nativeEnum(GetDeploymentsTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsTarget));
 
 /** @internal */
 export const GetDeploymentsType$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentsType
-> = z.nativeEnum(GetDeploymentsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentsType));
 
 /** @internal */
 export const Deployments$inboundSchema: z.ZodType<
   Deployments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
-    .optional(),
-  aliasError: z.nullable(z.lazy(() => GetDeploymentsAliasError$inboundSchema))
-    .optional(),
-  attribution: types.optional(
-    z.lazy(() => GetDeploymentsAttribution$inboundSchema),
-  ),
-  buildingAt: types.optional(types.number()),
-  checks: types.optional(z.lazy(() => GetDeploymentsChecks$inboundSchema)),
-  checksConclusion: types.optional(
-    GetDeploymentsChecksConclusion$inboundSchema,
-  ),
-  checksState: types.optional(GetDeploymentsChecksState$inboundSchema),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: types.optional(types.string()),
-  created: types.number(),
-  createdAt: types.number(),
-  creator: z.lazy(() => GetDeploymentsCreator$inboundSchema),
-  customEnvironment: types.optional(
-    z.lazy(() => GetDeploymentsCustomEnvironment$inboundSchema),
-  ),
-  defaultRoute: types.optional(types.string()),
-  deleted: types.optional(types.number()),
-  errorCode: types.optional(types.string()),
-  errorMessage: z.nullable(types.string()).optional(),
-  expiration: types.optional(types.number()),
-  inspectorUrl: types.nullable(types.string()),
-  isRollbackCandidate: z.nullable(types.boolean()).optional(),
-  manualProvisioning: types.optional(
-    z.lazy(() => GetDeploymentsManualProvisioning$inboundSchema),
-  ),
-  meta: types.optional(z.record(types.string())),
-  name: types.string(),
-  oomReport: types.optional(GetDeploymentsOomReport$inboundSchema),
-  passiveConnectConfigurationId: types.optional(types.string()),
-  platform: types.optional(z.lazy(() => GetDeploymentsPlatform$inboundSchema)),
-  prebuilt: types.optional(types.boolean()),
-  projectId: types.string(),
-  projectSettings: types.optional(
-    z.lazy(() => GetDeploymentsProjectSettings$inboundSchema),
-  ),
-  proposedExpiration: types.optional(types.number()),
-  ready: types.optional(types.number()),
-  readyState: GetDeploymentsReadyState$inboundSchema,
-  readySubstate: types.optional(GetDeploymentsReadySubstate$inboundSchema),
-  seatBlock: types.optional(
-    z.lazy(() => GetDeploymentsSeatBlock$inboundSchema),
-  ),
-  softDeletedByRetention: types.optional(types.boolean()),
-  source: types.optional(GetDeploymentsSource$inboundSchema),
-  state: types.optional(GetDeploymentsState$inboundSchema),
-  target: z.nullable(GetDeploymentsTarget$inboundSchema).optional(),
-  type: GetDeploymentsType$inboundSchema,
-  uid: types.string(),
-  undeleted: types.optional(types.number()),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
+      .optional(),
+    aliasError: z.nullable(z.lazy(() => GetDeploymentsAliasError$inboundSchema))
+      .optional(),
+    attribution: types.optional(
+      z.lazy(() => GetDeploymentsAttribution$inboundSchema),
+    ),
+    buildingAt: types.optional(types.number()),
+    checks: types.optional(z.lazy(() => GetDeploymentsChecks$inboundSchema)),
+    checksConclusion: types.optional(
+      GetDeploymentsChecksConclusion$inboundSchema,
+    ),
+    checksState: types.optional(GetDeploymentsChecksState$inboundSchema),
+    connectBuildsEnabled: types.optional(types.boolean()),
+    connectConfigurationId: types.optional(types.string()),
+    created: types.number(),
+    createdAt: types.number(),
+    creator: z.lazy(() => GetDeploymentsCreator$inboundSchema),
+    customEnvironment: types.optional(
+      z.lazy(() => GetDeploymentsCustomEnvironment$inboundSchema),
+    ),
+    defaultRoute: types.optional(types.string()),
+    deleted: types.optional(types.number()),
+    errorCode: types.optional(types.string()),
+    errorMessage: z.nullable(types.string()).optional(),
+    expiration: types.optional(types.number()),
+    inspectorUrl: types.nullable(types.string()),
+    isRollbackCandidate: z.nullable(types.boolean()).optional(),
+    manualProvisioning: types.optional(
+      z.lazy(() => GetDeploymentsManualProvisioning$inboundSchema),
+    ),
+    meta: types.optional(z.record(types.string())),
+    name: types.string(),
+    oomReport: types.optional(GetDeploymentsOomReport$inboundSchema),
+    passiveConnectConfigurationId: types.optional(types.string()),
+    platform: types.optional(
+      z.lazy(() => GetDeploymentsPlatform$inboundSchema),
+    ),
+    prebuilt: types.optional(types.boolean()),
+    projectId: types.string(),
+    projectSettings: types.optional(
+      z.lazy(() => GetDeploymentsProjectSettings$inboundSchema),
+    ),
+    proposedExpiration: types.optional(types.number()),
+    ready: types.optional(types.number()),
+    readyState: GetDeploymentsReadyState$inboundSchema,
+    readySubstate: types.optional(GetDeploymentsReadySubstate$inboundSchema),
+    seatBlock: types.optional(
+      z.lazy(() => GetDeploymentsSeatBlock$inboundSchema),
+    ),
+    softDeletedByRetention: types.optional(types.boolean()),
+    source: types.optional(GetDeploymentsSource$inboundSchema),
+    state: types.optional(GetDeploymentsState$inboundSchema),
+    target: z.nullable(GetDeploymentsTarget$inboundSchema).optional(),
+    type: GetDeploymentsType$inboundSchema,
+    uid: types.string(),
+    undeleted: types.optional(types.number()),
+    url: types.string(),
+  })
+);
 
 export function deploymentsFromJSON(
   jsonString: string,
@@ -1582,10 +1646,12 @@ export const GetDeploymentsResponseBody$inboundSchema: z.ZodType<
   GetDeploymentsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deployments: z.array(z.lazy(() => Deployments$inboundSchema)),
-  pagination: Pagination$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deployments: z.array(z.lazy(() => Deployments$inboundSchema)),
+    pagination: Pagination$inboundSchema,
+  })
+);
 
 export function getDeploymentsResponseBodyFromJSON(
   jsonString: string,

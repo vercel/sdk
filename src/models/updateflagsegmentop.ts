@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -221,12 +222,11 @@ export type UpdateFlagSegmentRequest = {
 /** @internal */
 export const UpdateFlagSegmentAction$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagSegmentAction
-> = z.nativeEnum(UpdateFlagSegmentAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFlagSegmentAction));
 
 /** @internal */
-export const Field$outboundSchema: z.ZodNativeEnum<typeof Field> = z.nativeEnum(
-  Field,
-);
+export const Field$outboundSchema: z.ZodNativeEnum<typeof Field> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Field));
 
 /** @internal */
 export type UpdateFlagSegmentValue$Outbound = {
@@ -239,10 +239,12 @@ export const UpdateFlagSegmentValue$outboundSchema: z.ZodType<
   UpdateFlagSegmentValue$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentValue
-> = z.object({
-  note: z.string().optional(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: z.string().optional(),
+    value: z.string(),
+  })
+);
 
 export function updateFlagSegmentValueToJSON(
   updateFlagSegmentValue: UpdateFlagSegmentValue,
@@ -266,13 +268,15 @@ export const Operations$outboundSchema: z.ZodType<
   Operations$Outbound,
   z.ZodTypeDef,
   Operations
-> = z.object({
-  action: UpdateFlagSegmentAction$outboundSchema,
-  field: Field$outboundSchema,
-  entity: z.string(),
-  attribute: z.string(),
-  value: z.lazy(() => UpdateFlagSegmentValue$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: UpdateFlagSegmentAction$outboundSchema,
+    field: Field$outboundSchema,
+    entity: z.string(),
+    attribute: z.string(),
+    value: z.lazy(() => UpdateFlagSegmentValue$outboundSchema),
+  })
+);
 
 export function operationsToJSON(operations: Operations): string {
   return JSON.stringify(Operations$outboundSchema.parse(operations));
@@ -290,11 +294,13 @@ export const UpdateFlagSegmentLhs2$outboundSchema: z.ZodType<
   UpdateFlagSegmentLhs2$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentLhs2
-> = z.object({
-  type: z.any().optional(),
-  kind: z.string(),
-  attribute: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    kind: z.string(),
+    attribute: z.string(),
+  })
+);
 
 export function updateFlagSegmentLhs2ToJSON(
   updateFlagSegmentLhs2: UpdateFlagSegmentLhs2,
@@ -314,9 +320,11 @@ export const UpdateFlagSegmentLhs1$outboundSchema: z.ZodType<
   UpdateFlagSegmentLhs1$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentLhs1
-> = z.object({
-  type: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+  })
+);
 
 export function updateFlagSegmentLhs1ToJSON(
   updateFlagSegmentLhs1: UpdateFlagSegmentLhs1,
@@ -336,10 +344,12 @@ export const UpdateFlagSegmentLhs$outboundSchema: z.ZodType<
   UpdateFlagSegmentLhs$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentLhs
-> = smartUnion([
-  z.lazy(() => UpdateFlagSegmentLhs2$outboundSchema),
-  z.lazy(() => UpdateFlagSegmentLhs1$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagSegmentLhs2$outboundSchema),
+    z.lazy(() => UpdateFlagSegmentLhs1$outboundSchema),
+  ])
+);
 
 export function updateFlagSegmentLhsToJSON(
   updateFlagSegmentLhs: UpdateFlagSegmentLhs,
@@ -352,7 +362,7 @@ export function updateFlagSegmentLhsToJSON(
 /** @internal */
 export const UpdateFlagSegmentCmp$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagSegmentCmp
-> = z.nativeEnum(UpdateFlagSegmentCmp);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFlagSegmentCmp));
 
 /** @internal */
 export type UpdateFlagSegmentRhs2$Outbound = {
@@ -366,11 +376,13 @@ export const UpdateFlagSegmentRhs2$outboundSchema: z.ZodType<
   UpdateFlagSegmentRhs2$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentRhs2
-> = z.object({
-  type: z.any().optional(),
-  pattern: z.string(),
-  flags: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    pattern: z.string(),
+    flags: z.string(),
+  })
+);
 
 export function updateFlagSegmentRhs2ToJSON(
   updateFlagSegmentRhs2: UpdateFlagSegmentRhs2,
@@ -383,7 +395,7 @@ export function updateFlagSegmentRhs2ToJSON(
 /** @internal */
 export const UpdateFlagSegmentRhsType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagSegmentRhsType
-> = z.nativeEnum(UpdateFlagSegmentRhsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFlagSegmentRhsType));
 
 /** @internal */
 export type UpdateFlagSegmentItems2$Outbound = {
@@ -397,11 +409,13 @@ export const UpdateFlagSegmentItems2$outboundSchema: z.ZodType<
   UpdateFlagSegmentItems2$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentItems2
-> = z.object({
-  label: z.string().optional(),
-  note: z.string().optional(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string().optional(),
+    note: z.string().optional(),
+    value: z.string(),
+  })
+);
 
 export function updateFlagSegmentItems2ToJSON(
   updateFlagSegmentItems2: UpdateFlagSegmentItems2,
@@ -423,11 +437,13 @@ export const UpdateFlagSegmentItems1$outboundSchema: z.ZodType<
   UpdateFlagSegmentItems1$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentItems1
-> = z.object({
-  label: z.string().optional(),
-  note: z.string().optional(),
-  value: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string().optional(),
+    note: z.string().optional(),
+    value: z.number(),
+  })
+);
 
 export function updateFlagSegmentItems1ToJSON(
   updateFlagSegmentItems1: UpdateFlagSegmentItems1,
@@ -447,10 +463,12 @@ export const UpdateFlagSegmentRhsItems$outboundSchema: z.ZodType<
   UpdateFlagSegmentRhsItems$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentRhsItems
-> = smartUnion([
-  z.lazy(() => UpdateFlagSegmentItems1$outboundSchema),
-  z.lazy(() => UpdateFlagSegmentItems2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagSegmentItems1$outboundSchema),
+    z.lazy(() => UpdateFlagSegmentItems2$outboundSchema),
+  ])
+);
 
 export function updateFlagSegmentRhsItemsToJSON(
   updateFlagSegmentRhsItems: UpdateFlagSegmentRhsItems,
@@ -473,15 +491,15 @@ export const UpdateFlagSegmentRhs1$outboundSchema: z.ZodType<
   UpdateFlagSegmentRhs1$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentRhs1
-> = z.object({
-  type: UpdateFlagSegmentRhsType$outboundSchema,
-  items: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: UpdateFlagSegmentRhsType$outboundSchema,
+    items: z.array(smartUnion([
       z.lazy(() => UpdateFlagSegmentItems1$outboundSchema),
       z.lazy(() => UpdateFlagSegmentItems2$outboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function updateFlagSegmentRhs1ToJSON(
   updateFlagSegmentRhs1: UpdateFlagSegmentRhs1,
@@ -504,13 +522,15 @@ export const UpdateFlagSegmentRhs$outboundSchema: z.ZodType<
   UpdateFlagSegmentRhs$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentRhs
-> = smartUnion([
-  z.lazy(() => UpdateFlagSegmentRhs2$outboundSchema),
-  z.lazy(() => UpdateFlagSegmentRhs1$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagSegmentRhs2$outboundSchema),
+    z.lazy(() => UpdateFlagSegmentRhs1$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+  ])
+);
 
 export function updateFlagSegmentRhsToJSON(
   updateFlagSegmentRhs: UpdateFlagSegmentRhs,
@@ -530,9 +550,11 @@ export const UpdateFlagSegmentCmpOptions$outboundSchema: z.ZodType<
   UpdateFlagSegmentCmpOptions$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentCmpOptions
-> = z.object({
-  ignoreCase: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ignoreCase: z.boolean().optional(),
+  })
+);
 
 export function updateFlagSegmentCmpOptionsToJSON(
   updateFlagSegmentCmpOptions: UpdateFlagSegmentCmpOptions,
@@ -563,22 +585,24 @@ export const UpdateFlagSegmentConditions$outboundSchema: z.ZodType<
   UpdateFlagSegmentConditions$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentConditions
-> = z.object({
-  lhs: smartUnion([
-    z.lazy(() => UpdateFlagSegmentLhs2$outboundSchema),
-    z.lazy(() => UpdateFlagSegmentLhs1$outboundSchema),
-  ]),
-  cmp: UpdateFlagSegmentCmp$outboundSchema,
-  rhs: smartUnion([
-    z.lazy(() => UpdateFlagSegmentRhs2$outboundSchema),
-    z.lazy(() => UpdateFlagSegmentRhs1$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-  ]).optional(),
-  cmpOptions: z.lazy(() => UpdateFlagSegmentCmpOptions$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lhs: smartUnion([
+      z.lazy(() => UpdateFlagSegmentLhs2$outboundSchema),
+      z.lazy(() => UpdateFlagSegmentLhs1$outboundSchema),
+    ]),
+    cmp: UpdateFlagSegmentCmp$outboundSchema,
+    rhs: smartUnion([
+      z.lazy(() => UpdateFlagSegmentRhs2$outboundSchema),
+      z.lazy(() => UpdateFlagSegmentRhs1$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+    ]).optional(),
+    cmpOptions: z.lazy(() => UpdateFlagSegmentCmpOptions$outboundSchema)
+      .optional(),
+  })
+);
 
 export function updateFlagSegmentConditionsToJSON(
   updateFlagSegmentConditions: UpdateFlagSegmentConditions,
@@ -602,11 +626,13 @@ export const UpdateFlagSegmentOutcomeBase$outboundSchema: z.ZodType<
   UpdateFlagSegmentOutcomeBase$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentOutcomeBase
-> = z.object({
-  type: z.any().optional(),
-  kind: z.string(),
-  attribute: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    kind: z.string(),
+    attribute: z.string(),
+  })
+);
 
 export function updateFlagSegmentOutcomeBaseToJSON(
   updateFlagSegmentOutcomeBase: UpdateFlagSegmentOutcomeBase,
@@ -630,11 +656,13 @@ export const UpdateFlagSegmentOutcome2$outboundSchema: z.ZodType<
   UpdateFlagSegmentOutcome2$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentOutcome2
-> = z.object({
-  type: z.any().optional(),
-  base: z.lazy(() => UpdateFlagSegmentOutcomeBase$outboundSchema),
-  passPromille: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    base: z.lazy(() => UpdateFlagSegmentOutcomeBase$outboundSchema),
+    passPromille: z.number(),
+  })
+);
 
 export function updateFlagSegmentOutcome2ToJSON(
   updateFlagSegmentOutcome2: UpdateFlagSegmentOutcome2,
@@ -654,9 +682,11 @@ export const UpdateFlagSegmentOutcome1$outboundSchema: z.ZodType<
   UpdateFlagSegmentOutcome1$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentOutcome1
-> = z.object({
-  type: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+  })
+);
 
 export function updateFlagSegmentOutcome1ToJSON(
   updateFlagSegmentOutcome1: UpdateFlagSegmentOutcome1,
@@ -676,10 +706,12 @@ export const UpdateFlagSegmentOutcome$outboundSchema: z.ZodType<
   UpdateFlagSegmentOutcome$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentOutcome
-> = smartUnion([
-  z.lazy(() => UpdateFlagSegmentOutcome2$outboundSchema),
-  z.lazy(() => UpdateFlagSegmentOutcome1$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagSegmentOutcome2$outboundSchema),
+    z.lazy(() => UpdateFlagSegmentOutcome1$outboundSchema),
+  ])
+);
 
 export function updateFlagSegmentOutcomeToJSON(
   updateFlagSegmentOutcome: UpdateFlagSegmentOutcome,
@@ -703,14 +735,18 @@ export const UpdateFlagSegmentRules$outboundSchema: z.ZodType<
   UpdateFlagSegmentRules$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentRules
-> = z.object({
-  id: z.string(),
-  conditions: z.array(z.lazy(() => UpdateFlagSegmentConditions$outboundSchema)),
-  outcome: smartUnion([
-    z.lazy(() => UpdateFlagSegmentOutcome2$outboundSchema),
-    z.lazy(() => UpdateFlagSegmentOutcome1$outboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    conditions: z.array(
+      z.lazy(() => UpdateFlagSegmentConditions$outboundSchema),
+    ),
+    outcome: smartUnion([
+      z.lazy(() => UpdateFlagSegmentOutcome2$outboundSchema),
+      z.lazy(() => UpdateFlagSegmentOutcome1$outboundSchema),
+    ]),
+  })
+);
 
 export function updateFlagSegmentRulesToJSON(
   updateFlagSegmentRules: UpdateFlagSegmentRules,
@@ -731,10 +767,12 @@ export const UpdateFlagSegmentInclude$outboundSchema: z.ZodType<
   UpdateFlagSegmentInclude$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentInclude
-> = z.object({
-  note: z.string().optional(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: z.string().optional(),
+    value: z.string(),
+  })
+);
 
 export function updateFlagSegmentIncludeToJSON(
   updateFlagSegmentInclude: UpdateFlagSegmentInclude,
@@ -755,10 +793,12 @@ export const UpdateFlagSegmentExclude$outboundSchema: z.ZodType<
   UpdateFlagSegmentExclude$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentExclude
-> = z.object({
-  note: z.string().optional(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: z.string().optional(),
+    value: z.string(),
+  })
+);
 
 export function updateFlagSegmentExcludeToJSON(
   updateFlagSegmentExclude: UpdateFlagSegmentExclude,
@@ -784,16 +824,18 @@ export const UpdateFlagSegmentData$outboundSchema: z.ZodType<
   UpdateFlagSegmentData$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentData
-> = z.object({
-  rules: z.array(z.lazy(() => UpdateFlagSegmentRules$outboundSchema))
-    .optional(),
-  include: z.record(
-    z.record(z.array(z.lazy(() => UpdateFlagSegmentInclude$outboundSchema))),
-  ).optional(),
-  exclude: z.record(
-    z.record(z.array(z.lazy(() => UpdateFlagSegmentExclude$outboundSchema))),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rules: z.array(z.lazy(() => UpdateFlagSegmentRules$outboundSchema))
+      .optional(),
+    include: z.record(
+      z.record(z.array(z.lazy(() => UpdateFlagSegmentInclude$outboundSchema))),
+    ).optional(),
+    exclude: z.record(
+      z.record(z.array(z.lazy(() => UpdateFlagSegmentExclude$outboundSchema))),
+    ).optional(),
+  })
+);
 
 export function updateFlagSegmentDataToJSON(
   updateFlagSegmentData: UpdateFlagSegmentData,
@@ -817,13 +859,15 @@ export const UpdateFlagSegmentRequestBody$outboundSchema: z.ZodType<
   UpdateFlagSegmentRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentRequestBody
-> = z.object({
-  operations: z.array(z.lazy(() => Operations$outboundSchema)).optional(),
-  label: z.string().optional(),
-  description: z.string().optional(),
-  data: z.lazy(() => UpdateFlagSegmentData$outboundSchema).optional(),
-  hint: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    operations: z.array(z.lazy(() => Operations$outboundSchema)).optional(),
+    label: z.string().optional(),
+    description: z.string().optional(),
+    data: z.lazy(() => UpdateFlagSegmentData$outboundSchema).optional(),
+    hint: z.string().optional(),
+  })
+);
 
 export function updateFlagSegmentRequestBodyToJSON(
   updateFlagSegmentRequestBody: UpdateFlagSegmentRequestBody,
@@ -850,19 +894,21 @@ export const UpdateFlagSegmentRequest$outboundSchema: z.ZodType<
   UpdateFlagSegmentRequest$Outbound,
   z.ZodTypeDef,
   UpdateFlagSegmentRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  segmentIdOrSlug: z.string(),
-  withMetadata: z.boolean().default(false),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateFlagSegmentRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    segmentIdOrSlug: z.string(),
+    withMetadata: z.boolean().default(false),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateFlagSegmentRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateFlagSegmentRequestToJSON(
   updateFlagSegmentRequest: UpdateFlagSegmentRequest,

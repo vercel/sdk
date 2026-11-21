@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -48,25 +49,27 @@ export class DomainNotRenewable extends VercelError {
 /** @internal */
 export const DomainNotRenewableCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainNotRenewableCode
-> = z.nativeEnum(DomainNotRenewableCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DomainNotRenewableCode));
 
 /** @internal */
 export const DomainNotRenewable$inboundSchema: z.ZodType<
   DomainNotRenewable,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: DomainNotRenewableCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new DomainNotRenewable(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: DomainNotRenewableCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new DomainNotRenewable(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -62,17 +62,19 @@ export class TooManyRequests extends VercelError {
 /** @internal */
 export const TooManyRequestsCode$inboundSchema: z.ZodNativeEnum<
   typeof TooManyRequestsCode
-> = z.nativeEnum(TooManyRequestsCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TooManyRequestsCode));
 
 /** @internal */
 export const RetryAfter$inboundSchema: z.ZodType<
   RetryAfter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: types.number(),
-  str: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: types.number(),
+    str: types.string(),
+  })
+);
 
 export function retryAfterFromJSON(
   jsonString: string,
@@ -85,12 +87,14 @@ export function retryAfterFromJSON(
 }
 
 /** @internal */
-export const Limit$inboundSchema: z.ZodType<Limit, z.ZodTypeDef, unknown> = z
-  .object({
-    total: types.number(),
-    remaining: types.number(),
-    reset: types.number(),
-  });
+export const Limit$inboundSchema: z.ZodType<Limit, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      total: types.number(),
+      remaining: types.number(),
+      reset: types.number(),
+    })
+  );
 
 export function limitFromJSON(
   jsonString: string,
@@ -107,20 +111,22 @@ export const TooManyRequests$inboundSchema: z.ZodType<
   TooManyRequests,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: TooManyRequestsCode$inboundSchema,
-  message: types.string(),
-  retryAfter: z.lazy(() => RetryAfter$inboundSchema),
-  limit: z.lazy(() => Limit$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new TooManyRequests(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: TooManyRequestsCode$inboundSchema,
+    message: types.string(),
+    retryAfter: z.lazy(() => RetryAfter$inboundSchema),
+    limit: z.lazy(() => Limit$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new TooManyRequests(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

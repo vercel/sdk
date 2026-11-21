@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -58,10 +58,12 @@ export const RequestDeleteReasons$outboundSchema: z.ZodType<
   RequestDeleteReasons$Outbound,
   z.ZodTypeDef,
   RequestDeleteReasons
-> = z.object({
-  slug: z.string(),
-  description: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    slug: z.string(),
+    description: z.string(),
+  })
+);
 
 export function requestDeleteReasonsToJSON(
   requestDeleteReasons: RequestDeleteReasons,
@@ -81,10 +83,12 @@ export const RequestDeleteRequestBody$outboundSchema: z.ZodType<
   RequestDeleteRequestBody$Outbound,
   z.ZodTypeDef,
   RequestDeleteRequestBody
-> = z.object({
-  reasons: z.array(z.lazy(() => RequestDeleteReasons$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    reasons: z.array(z.lazy(() => RequestDeleteReasons$outboundSchema))
+      .optional(),
+  })
+);
 
 export function requestDeleteRequestBodyToJSON(
   requestDeleteRequestBody: RequestDeleteRequestBody,
@@ -99,11 +103,13 @@ export const RequestDeleteResponseBody$inboundSchema: z.ZodType<
   RequestDeleteResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: types.string(),
-  id: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: types.string(),
+    id: types.string(),
+    message: types.string(),
+  })
+);
 
 export function requestDeleteResponseBodyFromJSON(
   jsonString: string,

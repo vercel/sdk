@@ -3,6 +3,11 @@
  */
 
 import * as z from "zod/v3";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest =
   {
@@ -39,12 +44,49 @@ export const ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceR
     ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest$Outbound,
     z.ZodTypeDef,
     ReplaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest
-  > = z.object({
-    teamSlug: z.string(),
-    projectSlug: z.string(),
-    repositoryName: z.string(),
-    reference: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      teamSlug: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9](?:[a-z0-9_-]{0,46}[a-z0-9])?$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9](?:[a-z0-9_-]{0,46}[a-z0-9])?$",
+        },
+      ),
+      projectSlug: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+        },
+      ),
+      repositoryName: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$",
+        },
+      ),
+      reference: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$(
+          "^(?:[a-zA-Z0-9_][a-zA-Z0-9._-]{0,127}|[A-Za-z0-9_+.-]+:[A-Fa-f0-9]+)$",
+          255,
+        ),
+        {
+          message:
+            "Value must match pattern ^(?:[a-zA-Z0-9_][a-zA-Z0-9._-]{0,127}|[A-Za-z0-9_+.-]+:[A-Fa-f0-9]+)$",
+        },
+      ),
+    })
+  );
 
 export function replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequestToJSON(
   replaceByTeamSlugByProjectSlugByRepositoryNameManifestsByReferenceRequest:

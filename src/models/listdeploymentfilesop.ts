@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type ListDeploymentFilesRequest = {
   /**
@@ -31,11 +32,13 @@ export const ListDeploymentFilesRequest$outboundSchema: z.ZodType<
   ListDeploymentFilesRequest$Outbound,
   z.ZodTypeDef,
   ListDeploymentFilesRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listDeploymentFilesRequestToJSON(
   listDeploymentFilesRequest: ListDeploymentFilesRequest,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -31,10 +31,12 @@ export const GetMicrofrontendsGroupsRequest$outboundSchema: z.ZodType<
   GetMicrofrontendsGroupsRequest$Outbound,
   z.ZodTypeDef,
   GetMicrofrontendsGroupsRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getMicrofrontendsGroupsRequestToJSON(
   getMicrofrontendsGroupsRequest: GetMicrofrontendsGroupsRequest,
@@ -51,7 +53,7 @@ export const GetMicrofrontendsGroupsResponseBody$inboundSchema: z.ZodType<
   GetMicrofrontendsGroupsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getMicrofrontendsGroupsResponseBodyFromJSON(
   jsonString: string,

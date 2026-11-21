@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -352,29 +352,34 @@ export type AiGatewayVirtualModelConfig = {
 };
 
 /** @internal */
-export const Caching$inboundSchema: z.ZodNativeEnum<typeof Caching> = z
-  .nativeEnum(Caching);
+export const Caching$inboundSchema: z.ZodNativeEnum<typeof Caching> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Caching));
 
 /** @internal */
-export const Has$inboundSchema: z.ZodNativeEnum<typeof Has> = z.nativeEnum(Has);
+export const Has$inboundSchema: z.ZodNativeEnum<typeof Has> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Has));
 
 /** @internal */
 export const AiGatewayVirtualModelConfigInferenceRegionScope$inboundSchema:
-  z.ZodNativeEnum<typeof AiGatewayVirtualModelConfigInferenceRegionScope> = z
-    .nativeEnum(AiGatewayVirtualModelConfigInferenceRegionScope);
+  z.ZodNativeEnum<typeof AiGatewayVirtualModelConfigInferenceRegionScope> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(AiGatewayVirtualModelConfigInferenceRegionScope)
+    );
 
 /** @internal */
 export const Providers$inboundSchema: z.ZodType<
   Providers,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  geoRegion: types.optional(types.string()),
-  providerRegion: types.optional(types.string()),
-  scope: types.optional(
-    AiGatewayVirtualModelConfigInferenceRegionScope$inboundSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    geoRegion: types.optional(types.string()),
+    providerRegion: types.optional(types.string()),
+    scope: types.optional(
+      AiGatewayVirtualModelConfigInferenceRegionScope$inboundSchema,
+    ),
+  })
+);
 
 export function providersFromJSON(
   jsonString: string,
@@ -389,21 +394,25 @@ export function providersFromJSON(
 /** @internal */
 export const AiGatewayVirtualModelConfigScope$inboundSchema: z.ZodNativeEnum<
   typeof AiGatewayVirtualModelConfigScope
-> = z.nativeEnum(AiGatewayVirtualModelConfigScope);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(AiGatewayVirtualModelConfigScope)
+);
 
 /** @internal */
 export const InferenceRegion$inboundSchema: z.ZodType<
   InferenceRegion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  geoRegion: types.optional(types.string()),
-  providerRegion: types.optional(types.string()),
-  providers: types.optional(
-    z.record(types.nullable(z.lazy(() => Providers$inboundSchema))),
-  ),
-  scope: types.optional(AiGatewayVirtualModelConfigScope$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    geoRegion: types.optional(types.string()),
+    providerRegion: types.optional(types.string()),
+    providers: types.optional(
+      z.record(types.nullable(z.lazy(() => Providers$inboundSchema))),
+    ),
+    scope: types.optional(AiGatewayVirtualModelConfigScope$inboundSchema),
+  })
+);
 
 export function inferenceRegionFromJSON(
   jsonString: string,
@@ -416,11 +425,13 @@ export function inferenceRegionFromJSON(
 }
 
 /** @internal */
-export const Three$inboundSchema: z.ZodType<Three, z.ZodTypeDef, unknown> = z
-  .object({
-    model: types.string(),
-    when: AiGatewayEvaluationFallbackCondition$inboundSchema,
-  });
+export const Three$inboundSchema: z.ZodType<Three, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      model: types.string(),
+      when: AiGatewayEvaluationFallbackCondition$inboundSchema,
+    })
+  );
 
 export function threeFromJSON(
   jsonString: string,
@@ -433,11 +444,13 @@ export function threeFromJSON(
 }
 
 /** @internal */
-export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> = z
-  .object({
-    intelligence: types.optional(types.number()),
-    slug: types.string(),
-  });
+export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      intelligence: types.optional(types.number()),
+      slug: types.string(),
+    })
+  );
 
 export function twoFromJSON(
   jsonString: string,
@@ -451,11 +464,13 @@ export function twoFromJSON(
 
 /** @internal */
 export const Models$inboundSchema: z.ZodType<Models, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Three$inboundSchema),
-    z.lazy(() => Two$inboundSchema),
-    types.string(),
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() => Three$inboundSchema),
+      z.lazy(() => Two$inboundSchema),
+      types.string(),
+    ])
+  );
 
 export function modelsFromJSON(
   jsonString: string,
@@ -472,9 +487,11 @@ export const ProviderTimeouts$inboundSchema: z.ZodType<
   ProviderTimeouts,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  byok: types.optional(z.record(types.number())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    byok: types.optional(z.record(types.number())),
+  })
+);
 
 export function providerTimeoutsFromJSON(
   jsonString: string,
@@ -487,19 +504,21 @@ export function providerTimeoutsFromJSON(
 }
 
 /** @internal */
-export const Selector$inboundSchema: z.ZodNativeEnum<typeof Selector> = z
-  .nativeEnum(Selector);
+export const Selector$inboundSchema: z.ZodNativeEnum<typeof Selector> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Selector));
 
 /** @internal */
 export const SelectorOptions$inboundSchema: z.ZodType<
   SelectorOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cost: types.optional(z.record(z.any())),
-  tps: types.optional(z.record(z.any())),
-  ttft: types.optional(z.record(z.any())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cost: types.optional(z.record(z.any())),
+    tps: types.optional(z.record(z.any())),
+    ttft: types.optional(z.record(z.any())),
+  })
+);
 
 export function selectorOptionsFromJSON(
   jsonString: string,
@@ -512,70 +531,74 @@ export function selectorOptionsFromJSON(
 }
 
 /** @internal */
-export const ServiceTier$inboundSchema: z.ZodNativeEnum<typeof ServiceTier> = z
-  .nativeEnum(ServiceTier);
+export const ServiceTier$inboundSchema: z.ZodNativeEnum<typeof ServiceTier> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ServiceTier));
 
 /** @internal */
-export const Sort$inboundSchema: z.ZodNativeEnum<typeof Sort> = z.nativeEnum(
-  Sort,
-);
+export const Sort$inboundSchema: z.ZodNativeEnum<typeof Sort> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Sort));
 
 /** @internal */
-export const Speed$inboundSchema: z.ZodNativeEnum<typeof Speed> = z.nativeEnum(
-  Speed,
-);
+export const Speed$inboundSchema: z.ZodNativeEnum<typeof Speed> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Speed));
 
 /** @internal */
 export const AiGatewayVirtualModelConfig$inboundSchema: z.ZodType<
   AiGatewayVirtualModelConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowFallbackFromFast: types.optional(types.boolean()),
-  baseUrl: types.optional(types.string()),
-  byokCredentialIds: types.optional(z.array(types.string())),
-  caching: types.optional(Caching$inboundSchema),
-  createdAt: types.number(),
-  createdBy: types.optional(types.string()),
-  deleted: types.boolean(),
-  description: types.optional(types.string()),
-  disallowPromptTraining: types.optional(types.boolean()),
-  displayName: types.optional(types.string()),
-  has: types.optional(z.array(Has$inboundSchema)),
-  hipaaCompliant: types.optional(types.boolean()),
-  inferenceRegion: types.optional(z.lazy(() => InferenceRegion$inboundSchema)),
-  instanceId: types.optional(types.string()),
-  kind: types.string(),
-  models: types.optional(
-    z.array(smartUnion([
-      z.lazy(() => Three$inboundSchema),
-      z.lazy(() =>
-        Two$inboundSchema
-      ),
-      types.string(),
-    ])),
-  ),
-  modelSlug: types.optional(types.string()),
-  observabilityTags: types.optional(z.array(types.string())),
-  ownerId: types.string(),
-  providerOnly: types.optional(z.array(types.string())),
-  providerOptions: types.optional(z.record(z.record(z.any()))),
-  providerOrder: types.optional(z.array(types.string())),
-  providerTimeouts: types.optional(
-    z.lazy(() => ProviderTimeouts$inboundSchema),
-  ),
-  selector: types.optional(Selector$inboundSchema),
-  selectorOptions: types.optional(z.lazy(() => SelectorOptions$inboundSchema)),
-  serviceTier: types.optional(ServiceTier$inboundSchema),
-  sort: types.optional(Sort$inboundSchema),
-  speed: types.optional(Speed$inboundSchema),
-  status: types.string(),
-  updatedAt: types.number(),
-  updatedBy: types.optional(types.string()),
-  virtualModelSlug: types.string(),
-  visibility: types.optional(types.string()),
-  zeroDataRetention: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowFallbackFromFast: types.optional(types.boolean()),
+    baseUrl: types.optional(types.string()),
+    byokCredentialIds: types.optional(z.array(types.string())),
+    caching: types.optional(Caching$inboundSchema),
+    createdAt: types.number(),
+    createdBy: types.optional(types.string()),
+    deleted: types.boolean(),
+    description: types.optional(types.string()),
+    disallowPromptTraining: types.optional(types.boolean()),
+    displayName: types.optional(types.string()),
+    has: types.optional(z.array(Has$inboundSchema)),
+    hipaaCompliant: types.optional(types.boolean()),
+    inferenceRegion: types.optional(
+      z.lazy(() => InferenceRegion$inboundSchema),
+    ),
+    instanceId: types.optional(types.string()),
+    kind: types.string(),
+    models: types.optional(
+      z.array(smartUnion([
+        z.lazy(() => Three$inboundSchema),
+        z.lazy(() =>
+          Two$inboundSchema
+        ),
+        types.string(),
+      ])),
+    ),
+    modelSlug: types.optional(types.string()),
+    observabilityTags: types.optional(z.array(types.string())),
+    ownerId: types.string(),
+    providerOnly: types.optional(z.array(types.string())),
+    providerOptions: types.optional(z.record(z.record(z.any()))),
+    providerOrder: types.optional(z.array(types.string())),
+    providerTimeouts: types.optional(
+      z.lazy(() => ProviderTimeouts$inboundSchema),
+    ),
+    selector: types.optional(Selector$inboundSchema),
+    selectorOptions: types.optional(
+      z.lazy(() => SelectorOptions$inboundSchema),
+    ),
+    serviceTier: types.optional(ServiceTier$inboundSchema),
+    sort: types.optional(Sort$inboundSchema),
+    speed: types.optional(Speed$inboundSchema),
+    status: types.string(),
+    updatedAt: types.number(),
+    updatedBy: types.optional(types.string()),
+    virtualModelSlug: types.string(),
+    visibility: types.optional(types.string()),
+    zeroDataRetention: types.optional(types.boolean()),
+  })
+);
 
 export function aiGatewayVirtualModelConfigFromJSON(
   jsonString: string,

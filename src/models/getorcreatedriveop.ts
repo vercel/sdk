@@ -3,8 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -92,7 +96,7 @@ export type GetOrCreateDriveResponse =
 /** @internal */
 export const GetOrCreateDriveRegion$outboundSchema: z.ZodNativeEnum<
   typeof GetOrCreateDriveRegion
-> = z.nativeEnum(GetOrCreateDriveRegion);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetOrCreateDriveRegion));
 
 /** @internal */
 export type GetOrCreateDriveRequestBody$Outbound = {
@@ -106,11 +110,13 @@ export const GetOrCreateDriveRequestBody$outboundSchema: z.ZodType<
   GetOrCreateDriveRequestBody$Outbound,
   z.ZodTypeDef,
   GetOrCreateDriveRequestBody
-> = z.object({
-  projectId: z.string().optional(),
-  maxSizeBytes: z.number().int().optional(),
-  region: GetOrCreateDriveRegion$outboundSchema.default("iad1"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string().optional(),
+    maxSizeBytes: z.number().int().optional(),
+    region: GetOrCreateDriveRegion$outboundSchema.default("iad1"),
+  })
+);
 
 export function getOrCreateDriveRequestBodyToJSON(
   getOrCreateDriveRequestBody: GetOrCreateDriveRequestBody,
@@ -135,17 +141,23 @@ export const GetOrCreateDriveRequest$outboundSchema: z.ZodType<
   GetOrCreateDriveRequest$Outbound,
   z.ZodTypeDef,
   GetOrCreateDriveRequest
-> = z.object({
-  name: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => GetOrCreateDriveRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().refine(withinMaxLength$(64), {
+      message: "Value must be at most 64 characters long",
+    }).refine(matchesPattern$("^[a-zA-Z0-9_-]+$", 64), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => GetOrCreateDriveRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function getOrCreateDriveRequestToJSON(
   getOrCreateDriveRequest: GetOrCreateDriveRequest,
@@ -160,9 +172,11 @@ export const GetOrCreateDriveSandboxesResponseBody$inboundSchema: z.ZodType<
   GetOrCreateDriveSandboxesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  drive: Drive$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    drive: Drive$inboundSchema,
+  })
+);
 
 export function getOrCreateDriveSandboxesResponseBodyFromJSON(
   jsonString: string,
@@ -180,9 +194,11 @@ export const GetOrCreateDriveResponseBody$inboundSchema: z.ZodType<
   GetOrCreateDriveResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  drive: Drive$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    drive: Drive$inboundSchema,
+  })
+);
 
 export function getOrCreateDriveResponseBodyFromJSON(
   jsonString: string,
@@ -199,10 +215,12 @@ export const GetOrCreateDriveResponse$inboundSchema: z.ZodType<
   GetOrCreateDriveResponse,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetOrCreateDriveResponseBody$inboundSchema),
-  z.lazy(() => GetOrCreateDriveSandboxesResponseBody$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetOrCreateDriveResponseBody$inboundSchema),
+    z.lazy(() => GetOrCreateDriveSandboxesResponseBody$inboundSchema),
+  ])
+);
 
 export function getOrCreateDriveResponseFromJSON(
   jsonString: string,

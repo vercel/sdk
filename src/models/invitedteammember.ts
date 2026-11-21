@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -105,32 +105,33 @@ export type InvitedTeamMember = {
 };
 
 /** @internal */
-export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> = z.nativeEnum(
-  Role,
-);
+export const Role$inboundSchema: z.ZodNativeEnum<typeof Role> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Role));
 
 /** @internal */
 export const TeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof TeamPermissions
-> = z.nativeEnum(TeamPermissions);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamPermissions));
 
 /** @internal */
-export const TeamRoles$inboundSchema: z.ZodNativeEnum<typeof TeamRoles> = z
-  .nativeEnum(TeamRoles);
+export const TeamRoles$inboundSchema: z.ZodNativeEnum<typeof TeamRoles> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamRoles));
 
 /** @internal */
 export const InvitedTeamMember$inboundSchema: z.ZodType<
   InvitedTeamMember,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: types.string(),
-  role: Role$inboundSchema,
-  teamPermissions: types.optional(z.array(TeamPermissions$inboundSchema)),
-  teamRoles: types.optional(z.array(TeamRoles$inboundSchema)),
-  uid: types.string(),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: types.string(),
+    role: Role$inboundSchema,
+    teamPermissions: types.optional(z.array(TeamPermissions$inboundSchema)),
+    teamRoles: types.optional(z.array(TeamRoles$inboundSchema)),
+    uid: types.string(),
+    username: types.string(),
+  })
+);
 
 export function invitedTeamMemberFromJSON(
   jsonString: string,

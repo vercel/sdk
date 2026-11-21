@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type InvalidateBySrcImagesRequestBody = {
   srcImages: Array<string>;
@@ -32,9 +33,11 @@ export const InvalidateBySrcImagesRequestBody$outboundSchema: z.ZodType<
   InvalidateBySrcImagesRequestBody$Outbound,
   z.ZodTypeDef,
   InvalidateBySrcImagesRequestBody
-> = z.object({
-  srcImages: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    srcImages: z.array(z.string()),
+  })
+);
 
 export function invalidateBySrcImagesRequestBodyToJSON(
   invalidateBySrcImagesRequestBody: InvalidateBySrcImagesRequestBody,
@@ -59,17 +62,19 @@ export const InvalidateBySrcImagesRequest$outboundSchema: z.ZodType<
   InvalidateBySrcImagesRequest$Outbound,
   z.ZodTypeDef,
   InvalidateBySrcImagesRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => InvalidateBySrcImagesRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => InvalidateBySrcImagesRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function invalidateBySrcImagesRequestToJSON(
   invalidateBySrcImagesRequest: InvalidateBySrcImagesRequest,

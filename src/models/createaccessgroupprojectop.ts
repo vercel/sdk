@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -71,7 +71,9 @@ export type CreateAccessGroupProjectResponseBody = {
 /** @internal */
 export const CreateAccessGroupProjectRole$outboundSchema: z.ZodNativeEnum<
   typeof CreateAccessGroupProjectRole
-> = z.nativeEnum(CreateAccessGroupProjectRole);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateAccessGroupProjectRole)
+);
 
 /** @internal */
 export type CreateAccessGroupProjectRequestBody$Outbound = {
@@ -84,10 +86,12 @@ export const CreateAccessGroupProjectRequestBody$outboundSchema: z.ZodType<
   CreateAccessGroupProjectRequestBody$Outbound,
   z.ZodTypeDef,
   CreateAccessGroupProjectRequestBody
-> = z.object({
-  projectId: z.string(),
-  role: CreateAccessGroupProjectRole$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    role: CreateAccessGroupProjectRole$outboundSchema,
+  })
+);
 
 export function createAccessGroupProjectRequestBodyToJSON(
   createAccessGroupProjectRequestBody: CreateAccessGroupProjectRequestBody,
@@ -112,16 +116,20 @@ export const CreateAccessGroupProjectRequest$outboundSchema: z.ZodType<
   CreateAccessGroupProjectRequest$Outbound,
   z.ZodTypeDef,
   CreateAccessGroupProjectRequest
-> = z.object({
-  accessGroupIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateAccessGroupProjectRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroupIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      CreateAccessGroupProjectRequestBody$outboundSchema
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createAccessGroupProjectRequestToJSON(
   createAccessGroupProjectRequest: CreateAccessGroupProjectRequest,
@@ -135,22 +143,26 @@ export function createAccessGroupProjectRequestToJSON(
 
 /** @internal */
 export const CreateAccessGroupProjectAccessGroupsRole$inboundSchema:
-  z.ZodNativeEnum<typeof CreateAccessGroupProjectAccessGroupsRole> = z
-    .nativeEnum(CreateAccessGroupProjectAccessGroupsRole);
+  z.ZodNativeEnum<typeof CreateAccessGroupProjectAccessGroupsRole> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateAccessGroupProjectAccessGroupsRole)
+    );
 
 /** @internal */
 export const CreateAccessGroupProjectResponseBody$inboundSchema: z.ZodType<
   CreateAccessGroupProjectResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessGroupId: types.string(),
-  createdAt: types.string(),
-  projectId: types.string(),
-  role: CreateAccessGroupProjectAccessGroupsRole$inboundSchema,
-  teamId: types.string(),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroupId: types.string(),
+    createdAt: types.string(),
+    projectId: types.string(),
+    role: CreateAccessGroupProjectAccessGroupsRole$inboundSchema,
+    teamId: types.string(),
+    updatedAt: types.string(),
+  })
+);
 
 export function createAccessGroupProjectResponseBodyFromJSON(
   jsonString: string,

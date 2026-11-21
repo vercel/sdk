@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -44,7 +45,9 @@ export const DangerouslyDeleteByTagsTags$outboundSchema: z.ZodType<
   DangerouslyDeleteByTagsTags$Outbound,
   z.ZodTypeDef,
   DangerouslyDeleteByTagsTags
-> = smartUnion([z.array(z.string()), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.array(z.string()), z.string()])
+);
 
 export function dangerouslyDeleteByTagsTagsToJSON(
   dangerouslyDeleteByTagsTags: DangerouslyDeleteByTagsTags,
@@ -59,7 +62,9 @@ export function dangerouslyDeleteByTagsTagsToJSON(
 /** @internal */
 export const DangerouslyDeleteByTagsTarget$outboundSchema: z.ZodNativeEnum<
   typeof DangerouslyDeleteByTagsTarget
-> = z.nativeEnum(DangerouslyDeleteByTagsTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DangerouslyDeleteByTagsTarget)
+);
 
 /** @internal */
 export type DangerouslyDeleteByTagsRequestBody$Outbound = {
@@ -73,11 +78,13 @@ export const DangerouslyDeleteByTagsRequestBody$outboundSchema: z.ZodType<
   DangerouslyDeleteByTagsRequestBody$Outbound,
   z.ZodTypeDef,
   DangerouslyDeleteByTagsRequestBody
-> = z.object({
-  revalidationDeadlineSeconds: z.number().int().optional(),
-  tags: smartUnion([z.array(z.string()), z.string()]),
-  target: DangerouslyDeleteByTagsTarget$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    revalidationDeadlineSeconds: z.number().int().optional(),
+    tags: smartUnion([z.array(z.string()), z.string()]),
+    target: DangerouslyDeleteByTagsTarget$outboundSchema.optional(),
+  })
+);
 
 export function dangerouslyDeleteByTagsRequestBodyToJSON(
   dangerouslyDeleteByTagsRequestBody: DangerouslyDeleteByTagsRequestBody,
@@ -102,17 +109,19 @@ export const DangerouslyDeleteByTagsRequest$outboundSchema: z.ZodType<
   DangerouslyDeleteByTagsRequest$Outbound,
   z.ZodTypeDef,
   DangerouslyDeleteByTagsRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => DangerouslyDeleteByTagsRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => DangerouslyDeleteByTagsRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function dangerouslyDeleteByTagsRequestToJSON(
   dangerouslyDeleteByTagsRequest: DangerouslyDeleteByTagsRequest,

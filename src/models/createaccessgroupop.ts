@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -102,7 +102,7 @@ export type CreateAccessGroupResponseBody = {
 /** @internal */
 export const CreateAccessGroupRole$outboundSchema: z.ZodNativeEnum<
   typeof CreateAccessGroupRole
-> = z.nativeEnum(CreateAccessGroupRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateAccessGroupRole));
 
 /** @internal */
 export type CreateAccessGroupProjects$Outbound = {
@@ -115,10 +115,12 @@ export const CreateAccessGroupProjects$outboundSchema: z.ZodType<
   CreateAccessGroupProjects$Outbound,
   z.ZodTypeDef,
   CreateAccessGroupProjects
-> = z.object({
-  projectId: z.string(),
-  role: z.nullable(CreateAccessGroupRole$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    role: z.nullable(CreateAccessGroupRole$outboundSchema),
+  })
+);
 
 export function createAccessGroupProjectsToJSON(
   createAccessGroupProjects: CreateAccessGroupProjects,
@@ -140,12 +142,14 @@ export const CreateAccessGroupRequestBody$outboundSchema: z.ZodType<
   CreateAccessGroupRequestBody$Outbound,
   z.ZodTypeDef,
   CreateAccessGroupRequestBody
-> = z.object({
-  name: z.string(),
-  projects: z.array(z.lazy(() => CreateAccessGroupProjects$outboundSchema))
-    .optional(),
-  membersToAdd: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    projects: z.array(z.lazy(() => CreateAccessGroupProjects$outboundSchema))
+      .optional(),
+    membersToAdd: z.array(z.string()).optional(),
+  })
+);
 
 export function createAccessGroupRequestBodyToJSON(
   createAccessGroupRequestBody: CreateAccessGroupRequestBody,
@@ -169,15 +173,17 @@ export const CreateAccessGroupRequest$outboundSchema: z.ZodType<
   CreateAccessGroupRequest$Outbound,
   z.ZodTypeDef,
   CreateAccessGroupRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateAccessGroupRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateAccessGroupRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createAccessGroupRequestToJSON(
   createAccessGroupRequest: CreateAccessGroupRequest,
@@ -190,25 +196,29 @@ export function createAccessGroupRequestToJSON(
 /** @internal */
 export const CreateAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
   typeof CreateAccessGroupEntitlements
-> = z.nativeEnum(CreateAccessGroupEntitlements);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateAccessGroupEntitlements)
+);
 
 /** @internal */
 export const CreateAccessGroupResponseBody$inboundSchema: z.ZodType<
   CreateAccessGroupResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessGroupId: types.string(),
-  createdAt: types.string(),
-  entitlements: z.array(CreateAccessGroupEntitlements$inboundSchema),
-  membersCount: types.number(),
-  name: types.string(),
-  projectsCount: types.number(),
-  teamId: types.string(),
-  teamPermissions: types.optional(z.array(types.string())),
-  teamRoles: types.optional(z.array(types.string())),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroupId: types.string(),
+    createdAt: types.string(),
+    entitlements: z.array(CreateAccessGroupEntitlements$inboundSchema),
+    membersCount: types.number(),
+    name: types.string(),
+    projectsCount: types.number(),
+    teamId: types.string(),
+    teamPermissions: types.optional(z.array(types.string())),
+    teamRoles: types.optional(z.array(types.string())),
+    updatedAt: types.string(),
+  })
+);
 
 export function createAccessGroupResponseBodyFromJSON(
   jsonString: string,

@@ -8,18 +8,13 @@ The payload of the event, if requested.
 import { FiveHundredAndThirtyNine } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtyNine = {
-  next: {
-    access: "unlimited",
-  },
-  previous: {
-    access: "unlimited",
-  },
+  chatId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `next`                               | *models.UserEventPayload539Next*     | :heavy_check_mark:                   | N/A                                  |
-| `previous`                           | *models.UserEventPayload539Previous* | :heavy_check_mark:                   | N/A                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `chatId`           | *string*           | :heavy_check_mark: | N/A                |
+| `chatTitle`        | *string*           | :heavy_minus_sign: | N/A                |

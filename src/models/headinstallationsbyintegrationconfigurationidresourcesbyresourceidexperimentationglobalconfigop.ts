@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -49,10 +49,12 @@ export const HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdE
     HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest$Outbound,
     z.ZodTypeDef,
     HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest
-  > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integrationConfigurationId: z.string(),
+      resourceId: z.string(),
+    })
+  );
 
 export function headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestToJSON(
   headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest:
@@ -67,8 +69,8 @@ export function headInstallationsByIntegrationConfigurationIdResourcesByResource
 }
 
 /** @internal */
-export const Purpose$inboundSchema: z.ZodNativeEnum<typeof Purpose> = z
-  .nativeEnum(Purpose);
+export const Purpose$inboundSchema: z.ZodNativeEnum<typeof Purpose> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Purpose));
 
 /** @internal */
 export const HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody$inboundSchema:
@@ -76,12 +78,14 @@ export const HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdE
     HeadInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    digest: types.string(),
-    items: z.record(types.nullable(GlobalConfigItemValue$inboundSchema)),
-    purpose: types.optional(Purpose$inboundSchema),
-    updatedAt: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      digest: types.string(),
+      items: z.record(types.nullable(GlobalConfigItemValue$inboundSchema)),
+      purpose: types.optional(Purpose$inboundSchema),
+      updatedAt: types.number(),
+    })
+  );
 
 export function headInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBodyFromJSON(
   jsonString: string,

@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import {
   collectExtraKeys as collectExtraKeys$,
+  lazySchema as lazySchema$,
   safeParse,
 } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -65,13 +66,15 @@ export class ConnectError extends VercelError {
 
 /** @internal */
 export const ErrorT$inboundSchema: z.ZodType<ErrorT, z.ZodTypeDef, unknown> =
-  collectExtraKeys$(
-    z.object({
-      code: types.string(),
-      message: types.string(),
-    }).catchall(z.any()),
-    "additionalProperties",
-    true,
+  /* @__PURE__ */ lazySchema$(() =>
+    collectExtraKeys$(
+      z.object({
+        code: types.string(),
+        message: types.string(),
+      }).catchall(z.any()),
+      "additionalProperties",
+      true,
+    )
   );
 
 export function errorFromJSON(
@@ -89,16 +92,18 @@ export const ConnectError$inboundSchema: z.ZodType<
   ConnectError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => ErrorT$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ConnectError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => ErrorT$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ConnectError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

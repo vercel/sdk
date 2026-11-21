@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { NamedSandbox, NamedSandbox$inboundSchema } from "./namedsandbox.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -52,13 +56,19 @@ export const DeleteSandboxRequest$outboundSchema: z.ZodType<
   DeleteSandboxRequest$Outbound,
   z.ZodTypeDef,
   DeleteSandboxRequest
-> = z.object({
-  name: z.string(),
-  projectId: z.string().optional(),
-  deleteOrphanSnapshots: z.boolean().default(false),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().refine(withinMaxLength$(128), {
+      message: "Value must be at most 128 characters long",
+    }).refine(matchesPattern$("^[a-zA-Z0-9_-]+$", 128), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }),
+    projectId: z.string().optional(),
+    deleteOrphanSnapshots: z.boolean().default(false),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteSandboxRequestToJSON(
   deleteSandboxRequest: DeleteSandboxRequest,
@@ -73,9 +83,11 @@ export const DeleteSandboxResponseBody$inboundSchema: z.ZodType<
   DeleteSandboxResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sandbox: NamedSandbox$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sandbox: NamedSandbox$inboundSchema,
+  })
+);
 
 export function deleteSandboxResponseBodyFromJSON(
   jsonString: string,

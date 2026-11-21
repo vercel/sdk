@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -32,9 +32,11 @@ export const CreateSpeedInsightsToggleRequestBody$outboundSchema: z.ZodType<
   CreateSpeedInsightsToggleRequestBody$Outbound,
   z.ZodTypeDef,
   CreateSpeedInsightsToggleRequestBody
-> = z.object({
-  value: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.boolean(),
+  })
+);
 
 export function createSpeedInsightsToggleRequestBodyToJSON(
   createSpeedInsightsToggleRequestBody: CreateSpeedInsightsToggleRequestBody,
@@ -57,15 +59,18 @@ export const CreateSpeedInsightsToggleRequest$outboundSchema: z.ZodType<
   CreateSpeedInsightsToggleRequest$Outbound,
   z.ZodTypeDef,
   CreateSpeedInsightsToggleRequest
-> = z.object({
-  projectId: z.string(),
-  requestBody: z.lazy(() => CreateSpeedInsightsToggleRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    requestBody: z.lazy(() =>
+      CreateSpeedInsightsToggleRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createSpeedInsightsToggleRequestToJSON(
   createSpeedInsightsToggleRequest: CreateSpeedInsightsToggleRequest,
@@ -82,9 +87,11 @@ export const CreateSpeedInsightsToggleResponseBody$inboundSchema: z.ZodType<
   CreateSpeedInsightsToggleResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: types.boolean(),
+  })
+);
 
 export function createSpeedInsightsToggleResponseBodyFromJSON(
   jsonString: string,

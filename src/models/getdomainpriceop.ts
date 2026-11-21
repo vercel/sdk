@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -68,11 +68,13 @@ export const GetDomainPriceRequest$outboundSchema: z.ZodType<
   GetDomainPriceRequest$Outbound,
   z.ZodTypeDef,
   GetDomainPriceRequest
-> = z.object({
-  domain: z.string(),
-  years: z.string().optional(),
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    years: z.string().optional(),
+    teamId: z.string().optional(),
+  })
+);
 
 export function getDomainPriceRequestToJSON(
   getDomainPriceRequest: GetDomainPriceRequest,
@@ -85,12 +87,14 @@ export function getDomainPriceRequestToJSON(
 /** @internal */
 export const GetDomainPriceDomainsRegistrarResponseBody$inboundSchema:
   z.ZodType<GetDomainPriceDomainsRegistrarResponseBody, z.ZodTypeDef, unknown> =
-    smartUnion([
-      BadRequest$inboundSchema,
-      DomainTooShort$inboundSchema,
-      TldNotSupported$inboundSchema,
-      HttpApiDecodeError$inboundSchema,
-    ]);
+    /* @__PURE__ */ lazySchema$(() =>
+      smartUnion([
+        BadRequest$inboundSchema,
+        DomainTooShort$inboundSchema,
+        TldNotSupported$inboundSchema,
+        HttpApiDecodeError$inboundSchema,
+      ])
+    );
 
 export function getDomainPriceDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -113,7 +117,9 @@ export const GetDomainPricePurchasePrice$inboundSchema: z.ZodType<
   GetDomainPricePurchasePrice,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.string()])
+);
 
 export function getDomainPricePurchasePriceFromJSON(
   jsonString: string,
@@ -130,7 +136,9 @@ export const GetDomainPriceRenewalPrice$inboundSchema: z.ZodType<
   GetDomainPriceRenewalPrice,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.string()])
+);
 
 export function getDomainPriceRenewalPriceFromJSON(
   jsonString: string,
@@ -147,7 +155,9 @@ export const GetDomainPriceTransferPrice$inboundSchema: z.ZodType<
   GetDomainPriceTransferPrice,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.string()])
+);
 
 export function getDomainPriceTransferPriceFromJSON(
   jsonString: string,
@@ -164,12 +174,14 @@ export const GetDomainPriceResponseBody$inboundSchema: z.ZodType<
   GetDomainPriceResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  years: types.number(),
-  purchasePrice: smartUnion([types.number(), types.string()]),
-  renewalPrice: smartUnion([types.number(), types.string()]),
-  transferPrice: smartUnion([types.number(), types.string()]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    years: types.number(),
+    purchasePrice: smartUnion([types.number(), types.string()]),
+    renewalPrice: smartUnion([types.number(), types.string()]),
+    transferPrice: smartUnion([types.number(), types.string()]),
+  })
+);
 
 export function getDomainPriceResponseBodyFromJSON(
   jsonString: string,

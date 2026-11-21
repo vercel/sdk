@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OptionsAllowlist } from "@vercel/sdk/models/usereventpayload317type.js";
+import { OptionsAllowlist } from "@vercel/sdk/models/threehundredandtwentyone.js";
 
 let value: OptionsAllowlist = {
   paths: [

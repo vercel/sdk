@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type GetTeamRequest = {
   slug?: string | undefined;
@@ -23,10 +24,12 @@ export const GetTeamRequest$outboundSchema: z.ZodType<
   GetTeamRequest$Outbound,
   z.ZodTypeDef,
   GetTeamRequest
-> = z.object({
-  slug: z.string().optional(),
-  teamId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    slug: z.string().optional(),
+    teamId: z.string(),
+  })
+);
 
 export function getTeamRequestToJSON(getTeamRequest: GetTeamRequest): string {
   return JSON.stringify(GetTeamRequest$outboundSchema.parse(getTeamRequest));

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -50,25 +51,27 @@ export class DomainAlreadyRenewing extends VercelError {
 /** @internal */
 export const DomainAlreadyRenewingCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainAlreadyRenewingCode
-> = z.nativeEnum(DomainAlreadyRenewingCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DomainAlreadyRenewingCode));
 
 /** @internal */
 export const DomainAlreadyRenewing$inboundSchema: z.ZodType<
   DomainAlreadyRenewing,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: DomainAlreadyRenewingCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new DomainAlreadyRenewing(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: DomainAlreadyRenewingCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new DomainAlreadyRenewing(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

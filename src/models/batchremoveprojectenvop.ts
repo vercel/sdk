@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -47,9 +47,11 @@ export const BatchRemoveProjectEnvRequestBody$outboundSchema: z.ZodType<
   BatchRemoveProjectEnvRequestBody$Outbound,
   z.ZodTypeDef,
   BatchRemoveProjectEnvRequestBody
-> = z.object({
-  ids: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ids: z.array(z.string()),
+  })
+);
 
 export function batchRemoveProjectEnvRequestBodyToJSON(
   batchRemoveProjectEnvRequestBody: BatchRemoveProjectEnvRequestBody,
@@ -74,17 +76,19 @@ export const BatchRemoveProjectEnvRequest$outboundSchema: z.ZodType<
   BatchRemoveProjectEnvRequest$Outbound,
   z.ZodTypeDef,
   BatchRemoveProjectEnvRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => BatchRemoveProjectEnvRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => BatchRemoveProjectEnvRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function batchRemoveProjectEnvRequestToJSON(
   batchRemoveProjectEnvRequest: BatchRemoveProjectEnvRequest,
@@ -101,10 +105,12 @@ export const BatchRemoveProjectEnvResponseBody$inboundSchema: z.ZodType<
   BatchRemoveProjectEnvResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deleted: types.number(),
-  ids: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deleted: types.number(),
+    ids: z.array(types.string()),
+  })
+);
 
 export function batchRemoveProjectEnvResponseBodyFromJSON(
   jsonString: string,

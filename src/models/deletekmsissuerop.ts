@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteKmsIssuerRequest = {
   /**
@@ -31,11 +32,13 @@ export const DeleteKmsIssuerRequest$outboundSchema: z.ZodType<
   DeleteKmsIssuerRequest$Outbound,
   z.ZodTypeDef,
   DeleteKmsIssuerRequest
-> = z.object({
-  issuerId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuerId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteKmsIssuerRequestToJSON(
   deleteKmsIssuerRequest: DeleteKmsIssuerRequest,

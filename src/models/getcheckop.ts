@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -151,12 +151,14 @@ export const GetCheckRequest$outboundSchema: z.ZodType<
   GetCheckRequest$Outbound,
   z.ZodTypeDef,
   GetCheckRequest
-> = z.object({
-  deploymentId: z.string(),
-  checkId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentId: z.string(),
+    checkId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getCheckRequestToJSON(
   getCheckRequest: GetCheckRequest,
@@ -167,23 +169,25 @@ export function getCheckRequestToJSON(
 /** @internal */
 export const GetCheckConclusion$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckConclusion
-> = z.nativeEnum(GetCheckConclusion);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetCheckConclusion));
 
 /** @internal */
 export const GetCheckSource$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckSource
-> = z.nativeEnum(GetCheckSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetCheckSource));
 
 /** @internal */
 export const GetCheckCLS$inboundSchema: z.ZodType<
   GetCheckCLS,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  previousValue: types.optional(types.number()),
-  source: GetCheckSource$inboundSchema,
-  value: types.nullable(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    previousValue: types.optional(types.number()),
+    source: GetCheckSource$inboundSchema,
+    value: types.nullable(types.number()),
+  })
+);
 
 export function getCheckCLSFromJSON(
   jsonString: string,
@@ -198,18 +202,20 @@ export function getCheckCLSFromJSON(
 /** @internal */
 export const GetCheckChecksSource$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckChecksSource
-> = z.nativeEnum(GetCheckChecksSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetCheckChecksSource));
 
 /** @internal */
 export const GetCheckFCP$inboundSchema: z.ZodType<
   GetCheckFCP,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  previousValue: types.optional(types.number()),
-  source: GetCheckChecksSource$inboundSchema,
-  value: types.nullable(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    previousValue: types.optional(types.number()),
+    source: GetCheckChecksSource$inboundSchema,
+    value: types.nullable(types.number()),
+  })
+);
 
 export function getCheckFCPFromJSON(
   jsonString: string,
@@ -224,18 +230,22 @@ export function getCheckFCPFromJSON(
 /** @internal */
 export const GetCheckChecksResponseSource$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckChecksResponseSource
-> = z.nativeEnum(GetCheckChecksResponseSource);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetCheckChecksResponseSource)
+);
 
 /** @internal */
 export const GetCheckLCP$inboundSchema: z.ZodType<
   GetCheckLCP,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  previousValue: types.optional(types.number()),
-  source: GetCheckChecksResponseSource$inboundSchema,
-  value: types.nullable(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    previousValue: types.optional(types.number()),
+    source: GetCheckChecksResponseSource$inboundSchema,
+    value: types.nullable(types.number()),
+  })
+);
 
 export function getCheckLCPFromJSON(
   jsonString: string,
@@ -250,18 +260,22 @@ export function getCheckLCPFromJSON(
 /** @internal */
 export const GetCheckChecksResponse200Source$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckChecksResponse200Source
-> = z.nativeEnum(GetCheckChecksResponse200Source);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetCheckChecksResponse200Source)
+);
 
 /** @internal */
 export const GetCheckTBT$inboundSchema: z.ZodType<
   GetCheckTBT,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  previousValue: types.optional(types.number()),
-  source: GetCheckChecksResponse200Source$inboundSchema,
-  value: types.nullable(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    previousValue: types.optional(types.number()),
+    source: GetCheckChecksResponse200Source$inboundSchema,
+    value: types.nullable(types.number()),
+  })
+);
 
 export function getCheckTBTFromJSON(
   jsonString: string,
@@ -275,19 +289,23 @@ export function getCheckTBTFromJSON(
 
 /** @internal */
 export const GetCheckChecksResponse200ApplicationJSONSource$inboundSchema:
-  z.ZodNativeEnum<typeof GetCheckChecksResponse200ApplicationJSONSource> = z
-    .nativeEnum(GetCheckChecksResponse200ApplicationJSONSource);
+  z.ZodNativeEnum<typeof GetCheckChecksResponse200ApplicationJSONSource> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetCheckChecksResponse200ApplicationJSONSource)
+    );
 
 /** @internal */
 export const GetCheckVirtualExperienceScore$inboundSchema: z.ZodType<
   GetCheckVirtualExperienceScore,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  previousValue: types.optional(types.number()),
-  source: GetCheckChecksResponse200ApplicationJSONSource$inboundSchema,
-  value: types.nullable(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    previousValue: types.optional(types.number()),
+    source: GetCheckChecksResponse200ApplicationJSONSource$inboundSchema,
+    value: types.nullable(types.number()),
+  })
+);
 
 export function getCheckVirtualExperienceScoreFromJSON(
   jsonString: string,
@@ -304,22 +322,24 @@ export const GetCheckMetrics$inboundSchema: z.ZodType<
   GetCheckMetrics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  CLS: z.lazy(() => GetCheckCLS$inboundSchema),
-  FCP: z.lazy(() => GetCheckFCP$inboundSchema),
-  LCP: z.lazy(() => GetCheckLCP$inboundSchema),
-  TBT: z.lazy(() => GetCheckTBT$inboundSchema),
-  virtualExperienceScore: types.optional(
-    z.lazy(() => GetCheckVirtualExperienceScore$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "CLS": "cls",
-    "FCP": "fcp",
-    "LCP": "lcp",
-    "TBT": "tbt",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    CLS: z.lazy(() => GetCheckCLS$inboundSchema),
+    FCP: z.lazy(() => GetCheckFCP$inboundSchema),
+    LCP: z.lazy(() => GetCheckLCP$inboundSchema),
+    TBT: z.lazy(() => GetCheckTBT$inboundSchema),
+    virtualExperienceScore: types.optional(
+      z.lazy(() => GetCheckVirtualExperienceScore$inboundSchema),
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "CLS": "cls",
+      "FCP": "fcp",
+      "LCP": "lcp",
+      "TBT": "tbt",
+    });
+  })
+);
 
 export function getCheckMetricsFromJSON(
   jsonString: string,
@@ -336,9 +356,11 @@ export const GetCheckOutput$inboundSchema: z.ZodType<
   GetCheckOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  metrics: types.optional(z.lazy(() => GetCheckMetrics$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    metrics: types.optional(z.lazy(() => GetCheckMetrics$inboundSchema)),
+  })
+);
 
 export function getCheckOutputFromJSON(
   jsonString: string,
@@ -353,31 +375,33 @@ export function getCheckOutputFromJSON(
 /** @internal */
 export const GetCheckStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetCheckStatus
-> = z.nativeEnum(GetCheckStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetCheckStatus));
 
 /** @internal */
 export const GetCheckResponseBody$inboundSchema: z.ZodType<
   GetCheckResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  blocking: types.boolean(),
-  completedAt: types.optional(types.number()),
-  conclusion: types.optional(GetCheckConclusion$inboundSchema),
-  createdAt: types.number(),
-  deploymentId: types.string(),
-  detailsUrl: types.optional(types.string()),
-  externalId: types.optional(types.string()),
-  id: types.string(),
-  integrationId: types.string(),
-  name: types.string(),
-  output: types.optional(z.lazy(() => GetCheckOutput$inboundSchema)),
-  path: types.optional(types.string()),
-  rerequestable: types.optional(types.boolean()),
-  startedAt: types.optional(types.number()),
-  status: GetCheckStatus$inboundSchema,
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    blocking: types.boolean(),
+    completedAt: types.optional(types.number()),
+    conclusion: types.optional(GetCheckConclusion$inboundSchema),
+    createdAt: types.number(),
+    deploymentId: types.string(),
+    detailsUrl: types.optional(types.string()),
+    externalId: types.optional(types.string()),
+    id: types.string(),
+    integrationId: types.string(),
+    name: types.string(),
+    output: types.optional(z.lazy(() => GetCheckOutput$inboundSchema)),
+    path: types.optional(types.string()),
+    rerequestable: types.optional(types.boolean()),
+    startedAt: types.optional(types.number()),
+    status: GetCheckStatus$inboundSchema,
+    updatedAt: types.number(),
+  })
+);
 
 export function getCheckResponseBodyFromJSON(
   jsonString: string,

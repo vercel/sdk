@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { matchesPattern as matchesPattern$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -49,12 +50,16 @@ export const RestoreEdgeConfigBackupRequest$outboundSchema: z.ZodType<
   RestoreEdgeConfigBackupRequest$Outbound,
   z.ZodTypeDef,
   RestoreEdgeConfigBackupRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  edgeConfigBackupVersionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string().refine(matchesPattern$("^ecfg_"), {
+      message: "Value must match pattern ^ecfg_",
+    }),
+    edgeConfigBackupVersionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function restoreEdgeConfigBackupRequestToJSON(
   restoreEdgeConfigBackupRequest: RestoreEdgeConfigBackupRequest,
@@ -69,19 +74,23 @@ export function restoreEdgeConfigBackupRequestToJSON(
 /** @internal */
 export const RestoreEdgeConfigBackupStatus$inboundSchema: z.ZodNativeEnum<
   typeof RestoreEdgeConfigBackupStatus
-> = z.nativeEnum(RestoreEdgeConfigBackupStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(RestoreEdgeConfigBackupStatus)
+);
 
 /** @internal */
 export const RestoreEdgeConfigBackupResponseBody$inboundSchema: z.ZodType<
   RestoreEdgeConfigBackupResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  digest: types.string(),
-  previousDigest: types.string(),
-  restoredFrom: types.string(),
-  status: RestoreEdgeConfigBackupStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    digest: types.string(),
+    previousDigest: types.string(),
+    restoredFrom: types.string(),
+    status: RestoreEdgeConfigBackupStatus$inboundSchema,
+  })
+);
 
 export function restoreEdgeConfigBackupResponseBodyFromJSON(
   jsonString: string,

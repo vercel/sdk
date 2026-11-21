@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -208,8 +208,10 @@ export type UpdateVercelCiRepositorySettingsResponseBody = {
 
 /** @internal */
 export const UpdateVercelCiRepositorySettingsQueryParamProvider$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateVercelCiRepositorySettingsQueryParamProvider> = z
-    .nativeEnum(UpdateVercelCiRepositorySettingsQueryParamProvider);
+  z.ZodNativeEnum<typeof UpdateVercelCiRepositorySettingsQueryParamProvider> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateVercelCiRepositorySettingsQueryParamProvider)
+    );
 
 /** @internal */
 export type UpdateVercelCiRepositorySettingsRequestBody$Outbound = {
@@ -222,9 +224,11 @@ export const UpdateVercelCiRepositorySettingsRequestBody$outboundSchema:
     UpdateVercelCiRepositorySettingsRequestBody$Outbound,
     z.ZodTypeDef,
     UpdateVercelCiRepositorySettingsRequestBody
-  > = z.object({
-    ciEnabled: z.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      ciEnabled: z.boolean(),
+    })
+  );
 
 export function updateVercelCiRepositorySettingsRequestBodyToJSON(
   updateVercelCiRepositorySettingsRequestBody:
@@ -254,20 +258,22 @@ export const UpdateVercelCiRepositorySettingsRequest$outboundSchema: z.ZodType<
   UpdateVercelCiRepositorySettingsRequest$Outbound,
   z.ZodTypeDef,
   UpdateVercelCiRepositorySettingsRequest
-> = z.object({
-  provider: UpdateVercelCiRepositorySettingsQueryParamProvider$outboundSchema,
-  organizationId: z.string(),
-  repository: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    UpdateVercelCiRepositorySettingsRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: UpdateVercelCiRepositorySettingsQueryParamProvider$outboundSchema,
+    organizationId: z.string(),
+    repository: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      UpdateVercelCiRepositorySettingsRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateVercelCiRepositorySettingsRequestToJSON(
   updateVercelCiRepositorySettingsRequest:
@@ -286,10 +292,12 @@ export const UpdateVercelCiRepositorySettingsVercelCiResponse500Error$inboundSch
     UpdateVercelCiRepositorySettingsVercelCiResponse500Error,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    message: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      message: types.string(),
+    })
+  );
 
 export function updateVercelCiRepositorySettingsVercelCiResponse500ErrorFromJSON(
   jsonString: string,
@@ -312,20 +320,22 @@ export const UpdateVercelCiRepositorySettingsVercelCiResponse500ResponseBody$inb
     UpdateVercelCiRepositorySettingsVercelCiResponse500ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      UpdateVercelCiRepositorySettingsVercelCiResponse500Error$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new UpdateVercelCiRepositorySettingsVercelCiResponse500ResponseBody(
-        v,
-        { request: v.request$, response: v.response$, body: v.body$ },
-      );
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        UpdateVercelCiRepositorySettingsVercelCiResponse500Error$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new UpdateVercelCiRepositorySettingsVercelCiResponse500ResponseBody(
+          v,
+          { request: v.request$, response: v.response$, body: v.body$ },
+        );
+      })
+  );
 
 /** @internal */
 export const UpdateVercelCiRepositorySettingsVercelCiResponseError$inboundSchema:
@@ -333,12 +343,14 @@ export const UpdateVercelCiRepositorySettingsVercelCiResponseError$inboundSchema
     UpdateVercelCiRepositorySettingsVercelCiResponseError,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    name: types.string(),
-    message: types.string(),
-    limit: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      name: types.string(),
+      message: types.string(),
+      limit: types.number(),
+    })
+  );
 
 export function updateVercelCiRepositorySettingsVercelCiResponseErrorFromJSON(
   jsonString: string,
@@ -362,20 +374,22 @@ export const UpdateVercelCiRepositorySettingsVercelCiResponse429ResponseBody$inb
     UpdateVercelCiRepositorySettingsVercelCiResponse429ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      UpdateVercelCiRepositorySettingsVercelCiResponseError$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new UpdateVercelCiRepositorySettingsVercelCiResponse429ResponseBody(
-        v,
-        { request: v.request$, response: v.response$, body: v.body$ },
-      );
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        UpdateVercelCiRepositorySettingsVercelCiResponseError$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new UpdateVercelCiRepositorySettingsVercelCiResponse429ResponseBody(
+          v,
+          { request: v.request$, response: v.response$, body: v.body$ },
+        );
+      })
+  );
 
 /** @internal */
 export const UpdateVercelCiRepositorySettingsVercelCiError$inboundSchema:
@@ -383,10 +397,12 @@ export const UpdateVercelCiRepositorySettingsVercelCiError$inboundSchema:
     UpdateVercelCiRepositorySettingsVercelCiError,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    message: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      message: types.string(),
+    })
+  );
 
 export function updateVercelCiRepositorySettingsVercelCiErrorFromJSON(
   jsonString: string,
@@ -410,30 +426,34 @@ export const UpdateVercelCiRepositorySettingsVercelCiResponseResponseBody$inboun
     UpdateVercelCiRepositorySettingsVercelCiResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      UpdateVercelCiRepositorySettingsVercelCiError$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new UpdateVercelCiRepositorySettingsVercelCiResponseResponseBody(
-        v,
-        { request: v.request$, response: v.response$, body: v.body$ },
-      );
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        UpdateVercelCiRepositorySettingsVercelCiError$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new UpdateVercelCiRepositorySettingsVercelCiResponseResponseBody(
+          v,
+          { request: v.request$, response: v.response$, body: v.body$ },
+        );
+      })
+  );
 
 /** @internal */
 export const UpdateVercelCiRepositorySettingsError$inboundSchema: z.ZodType<
   UpdateVercelCiRepositorySettingsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function updateVercelCiRepositorySettingsErrorFromJSON(
   jsonString: string,
@@ -452,24 +472,28 @@ export const UpdateVercelCiRepositorySettingsVercelCiResponseBody$inboundSchema:
     UpdateVercelCiRepositorySettingsVercelCiResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() => UpdateVercelCiRepositorySettingsError$inboundSchema),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new UpdateVercelCiRepositorySettingsVercelCiResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() => UpdateVercelCiRepositorySettingsError$inboundSchema),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new UpdateVercelCiRepositorySettingsVercelCiResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const UpdateVercelCiRepositorySettingsProvider$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateVercelCiRepositorySettingsProvider> = z
-    .nativeEnum(UpdateVercelCiRepositorySettingsProvider);
+  z.ZodNativeEnum<typeof UpdateVercelCiRepositorySettingsProvider> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateVercelCiRepositorySettingsProvider)
+    );
 
 /** @internal */
 export const UpdateVercelCiRepositorySettingsResponseBody$inboundSchema:
@@ -477,14 +501,16 @@ export const UpdateVercelCiRepositorySettingsResponseBody$inboundSchema:
     UpdateVercelCiRepositorySettingsResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    provider: UpdateVercelCiRepositorySettingsProvider$inboundSchema,
-    organizationId: types.string(),
-    repository: types.string(),
-    ciEnabled: types.boolean(),
-    ciEnabledAt: types.optional(types.number()),
-    updatedAt: types.optional(types.number()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      provider: UpdateVercelCiRepositorySettingsProvider$inboundSchema,
+      organizationId: types.string(),
+      repository: types.string(),
+      ciEnabled: types.boolean(),
+      ciEnabledAt: types.optional(types.number()),
+      updatedAt: types.optional(types.number()),
+    })
+  );
 
 export function updateVercelCiRepositorySettingsResponseBodyFromJSON(
   jsonString: string,

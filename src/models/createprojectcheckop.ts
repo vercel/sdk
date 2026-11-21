@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -171,17 +171,17 @@ export type CreateProjectCheckResponseBody = {
 };
 
 /** @internal */
-export const Requires$outboundSchema: z.ZodNativeEnum<typeof Requires> = z
-  .nativeEnum(Requires);
+export const Requires$outboundSchema: z.ZodNativeEnum<typeof Requires> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Requires));
 
 /** @internal */
-export const Blocks$outboundSchema: z.ZodNativeEnum<typeof Blocks> = z
-  .nativeEnum(Blocks);
+export const Blocks$outboundSchema: z.ZodNativeEnum<typeof Blocks> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Blocks));
 
 /** @internal */
 export const SourceProvider$outboundSchema: z.ZodNativeEnum<
   typeof SourceProvider
-> = z.nativeEnum(SourceProvider);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SourceProvider));
 
 /** @internal */
 export type Source3$Outbound = {
@@ -195,11 +195,13 @@ export const Source3$outboundSchema: z.ZodType<
   Source3$Outbound,
   z.ZodTypeDef,
   Source3
-> = z.object({
-  kind: z.string(),
-  externalCheckName: z.string(),
-  provider: SourceProvider$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.string(),
+    externalCheckName: z.string(),
+    provider: SourceProvider$outboundSchema,
+  })
+);
 
 export function source3ToJSON(source3: Source3): string {
   return JSON.stringify(Source3$outboundSchema.parse(source3));
@@ -216,10 +218,12 @@ export const Source2$outboundSchema: z.ZodType<
   Source2$Outbound,
   z.ZodTypeDef,
   Source2
-> = z.object({
-  kind: z.string(),
-  webhookId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.string(),
+    webhookId: z.string().optional(),
+  })
+);
 
 export function source2ToJSON(source2: Source2): string {
   return JSON.stringify(Source2$outboundSchema.parse(source2));
@@ -239,13 +243,15 @@ export const Source1$outboundSchema: z.ZodType<
   Source1$Outbound,
   z.ZodTypeDef,
   Source1
-> = z.object({
-  kind: z.string().default("integration"),
-  integrationId: z.string().optional(),
-  integrationConfigurationId: z.string().optional(),
-  resourceId: z.string().optional(),
-  externalResourceId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.string().default("integration"),
+    integrationId: z.string().optional(),
+    integrationConfigurationId: z.string().optional(),
+    resourceId: z.string().optional(),
+    externalResourceId: z.string().optional(),
+  })
+);
 
 export function source1ToJSON(source1: Source1): string {
   return JSON.stringify(Source1$outboundSchema.parse(source1));
@@ -262,11 +268,13 @@ export const CreateProjectCheckSource$outboundSchema: z.ZodType<
   CreateProjectCheckSource$Outbound,
   z.ZodTypeDef,
   CreateProjectCheckSource
-> = smartUnion([
-  z.lazy(() => Source3$outboundSchema),
-  z.lazy(() => Source2$outboundSchema),
-  z.lazy(() => Source1$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Source3$outboundSchema),
+    z.lazy(() => Source2$outboundSchema),
+    z.lazy(() => Source1$outboundSchema),
+  ])
+);
 
 export function createProjectCheckSourceToJSON(
   createProjectCheckSource: CreateProjectCheckSource,
@@ -292,19 +300,21 @@ export const CreateProjectCheckRequestBody$outboundSchema: z.ZodType<
   CreateProjectCheckRequestBody$Outbound,
   z.ZodTypeDef,
   CreateProjectCheckRequestBody
-> = z.object({
-  name: z.string(),
-  isRerequestable: z.boolean().optional(),
-  requires: Requires$outboundSchema.default("deployment-url"),
-  targets: z.array(z.string()).optional(),
-  blocks: Blocks$outboundSchema.default("deployment-alias"),
-  source: smartUnion([
-    z.lazy(() => Source3$outboundSchema),
-    z.lazy(() => Source2$outboundSchema),
-    z.lazy(() => Source1$outboundSchema),
-  ]).optional(),
-  timeout: z.number().default(300),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    isRerequestable: z.boolean().optional(),
+    requires: Requires$outboundSchema.default("deployment-url"),
+    targets: z.array(z.string()).optional(),
+    blocks: Blocks$outboundSchema.default("deployment-alias"),
+    source: smartUnion([
+      z.lazy(() => Source3$outboundSchema),
+      z.lazy(() => Source2$outboundSchema),
+      z.lazy(() => Source1$outboundSchema),
+    ]).optional(),
+    timeout: z.number().default(300),
+  })
+);
 
 export function createProjectCheckRequestBodyToJSON(
   createProjectCheckRequestBody: CreateProjectCheckRequestBody,
@@ -329,17 +339,19 @@ export const CreateProjectCheckRequest$outboundSchema: z.ZodType<
   CreateProjectCheckRequest$Outbound,
   z.ZodTypeDef,
   CreateProjectCheckRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateProjectCheckRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateProjectCheckRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createProjectCheckRequestToJSON(
   createProjectCheckRequest: CreateProjectCheckRequest,
@@ -352,28 +364,32 @@ export function createProjectCheckRequestToJSON(
 /** @internal */
 export const CreateProjectCheckBlocks$inboundSchema: z.ZodNativeEnum<
   typeof CreateProjectCheckBlocks
-> = z.nativeEnum(CreateProjectCheckBlocks);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateProjectCheckBlocks));
 
 /** @internal */
 export const CreateProjectCheckRequires$inboundSchema: z.ZodNativeEnum<
   typeof CreateProjectCheckRequires
-> = z.nativeEnum(CreateProjectCheckRequires);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateProjectCheckRequires));
 
 /** @internal */
 export const CreateProjectCheckSourceProvider$inboundSchema: z.ZodNativeEnum<
   typeof CreateProjectCheckSourceProvider
-> = z.nativeEnum(CreateProjectCheckSourceProvider);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateProjectCheckSourceProvider)
+);
 
 /** @internal */
 export const CreateProjectCheckSource3$inboundSchema: z.ZodType<
   CreateProjectCheckSource3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalCheckName: types.string(),
-  kind: types.literal("git-provider"),
-  provider: CreateProjectCheckSourceProvider$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalCheckName: types.string(),
+    kind: types.literal("git-provider"),
+    provider: CreateProjectCheckSourceProvider$inboundSchema,
+  })
+);
 
 export function createProjectCheckSource3FromJSON(
   jsonString: string,
@@ -390,10 +406,12 @@ export const CreateProjectCheckSource2$inboundSchema: z.ZodType<
   CreateProjectCheckSource2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: types.literal("webhook"),
-  webhookId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: types.literal("webhook"),
+    webhookId: types.optional(types.string()),
+  })
+);
 
 export function createProjectCheckSource2FromJSON(
   jsonString: string,
@@ -410,13 +428,15 @@ export const CreateProjectCheckSource1$inboundSchema: z.ZodType<
   CreateProjectCheckSource1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalResourceId: types.optional(types.string()),
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  kind: types.literal("integration"),
-  resourceId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalResourceId: types.optional(types.string()),
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    kind: types.literal("integration"),
+    resourceId: types.optional(types.string()),
+  })
+);
 
 export function createProjectCheckSource1FromJSON(
   jsonString: string,
@@ -433,11 +453,13 @@ export const CreateProjectCheckChecksV2Source$inboundSchema: z.ZodType<
   CreateProjectCheckChecksV2Source,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => CreateProjectCheckSource1$inboundSchema),
-  z.lazy(() => CreateProjectCheckSource2$inboundSchema),
-  z.lazy(() => CreateProjectCheckSource3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => CreateProjectCheckSource1$inboundSchema),
+    z.lazy(() => CreateProjectCheckSource2$inboundSchema),
+    z.lazy(() => CreateProjectCheckSource3$inboundSchema),
+  ])
+);
 
 export function createProjectCheckChecksV2SourceFromJSON(
   jsonString: string,
@@ -450,35 +472,37 @@ export function createProjectCheckChecksV2SourceFromJSON(
 }
 
 /** @internal */
-export const SourceKind$inboundSchema: z.ZodNativeEnum<typeof SourceKind> = z
-  .nativeEnum(SourceKind);
+export const SourceKind$inboundSchema: z.ZodNativeEnum<typeof SourceKind> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SourceKind));
 
 /** @internal */
 export const CreateProjectCheckResponseBody$inboundSchema: z.ZodType<
   CreateProjectCheckResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  blocks: CreateProjectCheckBlocks$inboundSchema,
-  createdAt: types.number(),
-  deletedAt: types.optional(types.number()),
-  id: types.string(),
-  isRerequestable: types.boolean(),
-  name: types.string(),
-  ownerId: types.string(),
-  projectId: types.string(),
-  requires: CreateProjectCheckRequires$inboundSchema,
-  source: z.union([
-    z.lazy(() => CreateProjectCheckSource1$inboundSchema),
-    z.lazy(() => CreateProjectCheckSource2$inboundSchema),
-    z.lazy(() => CreateProjectCheckSource3$inboundSchema),
-  ]),
-  sourceIntegrationConfigurationId: types.optional(types.string()),
-  sourceKind: SourceKind$inboundSchema,
-  targets: z.array(types.string()),
-  timeout: types.number(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    blocks: CreateProjectCheckBlocks$inboundSchema,
+    createdAt: types.number(),
+    deletedAt: types.optional(types.number()),
+    id: types.string(),
+    isRerequestable: types.boolean(),
+    name: types.string(),
+    ownerId: types.string(),
+    projectId: types.string(),
+    requires: CreateProjectCheckRequires$inboundSchema,
+    source: z.union([
+      z.lazy(() => CreateProjectCheckSource1$inboundSchema),
+      z.lazy(() => CreateProjectCheckSource2$inboundSchema),
+      z.lazy(() => CreateProjectCheckSource3$inboundSchema),
+    ]),
+    sourceIntegrationConfigurationId: types.optional(types.string()),
+    sourceKind: SourceKind$inboundSchema,
+    targets: z.array(types.string()),
+    timeout: types.number(),
+    updatedAt: types.number(),
+  })
+);
 
 export function createProjectCheckResponseBodyFromJSON(
   jsonString: string,

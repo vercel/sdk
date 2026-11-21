@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import { VcrTag, VcrTag$inboundSchema } from "./vcrtag.js";
@@ -46,13 +46,15 @@ export const GetRepositoryTagRequest$outboundSchema: z.ZodType<
   GetRepositoryTagRequest$Outbound,
   z.ZodTypeDef,
   GetRepositoryTagRequest
-> = z.object({
-  projectId: z.string(),
-  idOrName: z.string(),
-  tag: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    idOrName: z.string(),
+    tag: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getRepositoryTagRequestToJSON(
   getRepositoryTagRequest: GetRepositoryTagRequest,
@@ -67,9 +69,11 @@ export const GetRepositoryTagResponseBody$inboundSchema: z.ZodType<
   GetRepositoryTagResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tag: VcrTag$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tag: VcrTag$inboundSchema,
+  })
+);
 
 export function getRepositoryTagResponseBodyFromJSON(
   jsonString: string,

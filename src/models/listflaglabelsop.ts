@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -64,16 +64,18 @@ export const ListFlagLabelsRequest$outboundSchema: z.ZodType<
   ListFlagLabelsRequest$Outbound,
   z.ZodTypeDef,
   ListFlagLabelsRequest
-> = z.object({
-  limit: z.number().int().default(20),
-  cursor: z.string().optional(),
-  search: z.string().optional(),
-  entityKind: z.string(),
-  attributeKey: z.string(),
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    limit: z.number().int().default(20),
+    cursor: z.string().optional(),
+    search: z.string().optional(),
+    entityKind: z.string(),
+    attributeKey: z.string(),
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listFlagLabelsRequestToJSON(
   listFlagLabelsRequest: ListFlagLabelsRequest,
@@ -88,12 +90,14 @@ export const ListFlagLabelsData$inboundSchema: z.ZodType<
   ListFlagLabelsData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attributeKey: types.string(),
-  entityKind: types.string(),
-  label: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attributeKey: types.string(),
+    entityKind: types.string(),
+    label: types.string(),
+    value: types.string(),
+  })
+);
 
 export function listFlagLabelsDataFromJSON(
   jsonString: string,
@@ -110,9 +114,11 @@ export const ListFlagLabelsPagination$inboundSchema: z.ZodType<
   ListFlagLabelsPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: types.nullable(types.string()),
+  })
+);
 
 export function listFlagLabelsPaginationFromJSON(
   jsonString: string,
@@ -129,10 +135,12 @@ export const ListFlagLabelsResponseBody$inboundSchema: z.ZodType<
   ListFlagLabelsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: z.array(z.lazy(() => ListFlagLabelsData$inboundSchema)),
-  pagination: z.lazy(() => ListFlagLabelsPagination$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: z.array(z.lazy(() => ListFlagLabelsData$inboundSchema)),
+    pagination: z.lazy(() => ListFlagLabelsPagination$inboundSchema),
+  })
+);
 
 export function listFlagLabelsResponseBodyFromJSON(
   jsonString: string,

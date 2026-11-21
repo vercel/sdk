@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -54,12 +54,14 @@ export const ReadAccessGroupProjectRequest$outboundSchema: z.ZodType<
   ReadAccessGroupProjectRequest$Outbound,
   z.ZodTypeDef,
   ReadAccessGroupProjectRequest
-> = z.object({
-  accessGroupIdOrName: z.string(),
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroupIdOrName: z.string(),
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function readAccessGroupProjectRequestToJSON(
   readAccessGroupProjectRequest: ReadAccessGroupProjectRequest,
@@ -74,21 +76,23 @@ export function readAccessGroupProjectRequestToJSON(
 /** @internal */
 export const ReadAccessGroupProjectRole$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupProjectRole
-> = z.nativeEnum(ReadAccessGroupProjectRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ReadAccessGroupProjectRole));
 
 /** @internal */
 export const ReadAccessGroupProjectResponseBody$inboundSchema: z.ZodType<
   ReadAccessGroupProjectResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessGroupId: types.string(),
-  createdAt: types.string(),
-  projectId: types.string(),
-  role: ReadAccessGroupProjectRole$inboundSchema,
-  teamId: types.string(),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroupId: types.string(),
+    createdAt: types.string(),
+    projectId: types.string(),
+    role: ReadAccessGroupProjectRole$inboundSchema,
+    teamId: types.string(),
+    updatedAt: types.string(),
+  })
+);
 
 export function readAccessGroupProjectResponseBodyFromJSON(
   jsonString: string,

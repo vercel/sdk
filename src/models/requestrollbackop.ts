@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type RequestRollbackRequest = {
   projectId: string;
@@ -38,13 +39,15 @@ export const RequestRollbackRequest$outboundSchema: z.ZodType<
   RequestRollbackRequest$Outbound,
   z.ZodTypeDef,
   RequestRollbackRequest
-> = z.object({
-  projectId: z.string(),
-  deploymentId: z.string(),
-  description: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    deploymentId: z.string(),
+    description: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function requestRollbackRequestToJSON(
   requestRollbackRequest: RequestRollbackRequest,

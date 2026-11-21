@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type ReadSessionFileRequestBody = {
   /**
@@ -43,10 +44,12 @@ export const ReadSessionFileRequestBody$outboundSchema: z.ZodType<
   ReadSessionFileRequestBody$Outbound,
   z.ZodTypeDef,
   ReadSessionFileRequestBody
-> = z.object({
-  cwd: z.string().optional(),
-  path: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cwd: z.string().optional(),
+    path: z.string(),
+  })
+);
 
 export function readSessionFileRequestBodyToJSON(
   readSessionFileRequestBody: ReadSessionFileRequestBody,
@@ -69,17 +72,19 @@ export const ReadSessionFileRequest$outboundSchema: z.ZodType<
   ReadSessionFileRequest$Outbound,
   z.ZodTypeDef,
   ReadSessionFileRequest
-> = z.object({
-  sessionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => ReadSessionFileRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => ReadSessionFileRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function readSessionFileRequestToJSON(
   readSessionFileRequest: ReadSessionFileRequest,

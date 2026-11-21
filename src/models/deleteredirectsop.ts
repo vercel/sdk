@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -161,10 +161,12 @@ export const DeleteRedirectsRequestBody$outboundSchema: z.ZodType<
   DeleteRedirectsRequestBody$Outbound,
   z.ZodTypeDef,
   DeleteRedirectsRequestBody
-> = z.object({
-  name: z.string().optional(),
-  redirects: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    redirects: z.array(z.string()),
+  })
+);
 
 export function deleteRedirectsRequestBodyToJSON(
   deleteRedirectsRequestBody: DeleteRedirectsRequestBody,
@@ -187,17 +189,19 @@ export const DeleteRedirectsRequest$outboundSchema: z.ZodType<
   DeleteRedirectsRequest$Outbound,
   z.ZodTypeDef,
   DeleteRedirectsRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => DeleteRedirectsRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => DeleteRedirectsRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function deleteRedirectsRequestToJSON(
   deleteRedirectsRequest: DeleteRedirectsRequest,
@@ -213,17 +217,19 @@ export const DeleteRedirectsResponseBodyBulkRedirectsResponseVersion$inboundSche
     DeleteRedirectsResponseBodyBulkRedirectsResponseVersion,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    alias: types.optional(types.string()),
-    createdBy: types.string(),
-    id: types.string(),
-    isLive: types.optional(types.boolean()),
-    isStaging: types.optional(types.boolean()),
-    key: types.string(),
-    lastModified: types.number(),
-    name: types.optional(types.string()),
-    redirectCount: types.optional(types.number()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      alias: types.optional(types.string()),
+      createdBy: types.string(),
+      id: types.string(),
+      isLive: types.optional(types.boolean()),
+      isStaging: types.optional(types.boolean()),
+      key: types.string(),
+      lastModified: types.number(),
+      name: types.optional(types.string()),
+      redirectCount: types.optional(types.number()),
+    })
+  );
 
 export function deleteRedirectsResponseBodyBulkRedirectsResponseVersionFromJSON(
   jsonString: string,
@@ -245,12 +251,14 @@ export const DeleteRedirectsResponseBody3$inboundSchema: z.ZodType<
   DeleteRedirectsResponseBody3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.nullable(types.string()),
-  version: z.lazy(() =>
-    DeleteRedirectsResponseBodyBulkRedirectsResponseVersion$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.nullable(types.string()),
+    version: z.lazy(() =>
+      DeleteRedirectsResponseBodyBulkRedirectsResponseVersion$inboundSchema
+    ),
+  })
+);
 
 export function deleteRedirectsResponseBody3FromJSON(
   jsonString: string,
@@ -268,17 +276,19 @@ export const DeleteRedirectsResponseBodyBulkRedirectsVersion$inboundSchema:
     DeleteRedirectsResponseBodyBulkRedirectsVersion,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    alias: types.optional(types.string()),
-    createdBy: types.string(),
-    id: types.string(),
-    isLive: types.optional(types.boolean()),
-    isStaging: types.optional(types.boolean()),
-    key: types.string(),
-    lastModified: types.number(),
-    name: types.optional(types.string()),
-    redirectCount: types.optional(types.number()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      alias: types.optional(types.string()),
+      createdBy: types.string(),
+      id: types.string(),
+      isLive: types.optional(types.boolean()),
+      isStaging: types.optional(types.boolean()),
+      key: types.string(),
+      lastModified: types.number(),
+      name: types.optional(types.string()),
+      redirectCount: types.optional(types.number()),
+    })
+  );
 
 export function deleteRedirectsResponseBodyBulkRedirectsVersionFromJSON(
   jsonString: string,
@@ -301,12 +311,14 @@ export const DeleteRedirectsResponseBody2$inboundSchema: z.ZodType<
   DeleteRedirectsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: z.nullable(z.any()).optional(),
-  version: z.lazy(() =>
-    DeleteRedirectsResponseBodyBulkRedirectsVersion$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: z.nullable(z.any()).optional(),
+    version: z.lazy(() =>
+      DeleteRedirectsResponseBodyBulkRedirectsVersion$inboundSchema
+    ),
+  })
+);
 
 export function deleteRedirectsResponseBody2FromJSON(
   jsonString: string,
@@ -323,17 +335,19 @@ export const DeleteRedirectsResponseBodyVersion$inboundSchema: z.ZodType<
   DeleteRedirectsResponseBodyVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  key: types.string(),
-  lastModified: types.number(),
-  name: types.optional(types.string()),
-  redirectCount: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    key: types.string(),
+    lastModified: types.number(),
+    name: types.optional(types.string()),
+    redirectCount: types.optional(types.number()),
+  })
+);
 
 export function deleteRedirectsResponseBodyVersionFromJSON(
   jsonString: string,
@@ -351,10 +365,12 @@ export const DeleteRedirectsResponseBody1$inboundSchema: z.ZodType<
   DeleteRedirectsResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  version: z.lazy(() => DeleteRedirectsResponseBodyVersion$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    version: z.lazy(() => DeleteRedirectsResponseBodyVersion$inboundSchema),
+  })
+);
 
 export function deleteRedirectsResponseBody1FromJSON(
   jsonString: string,
@@ -371,11 +387,13 @@ export const DeleteRedirectsResponseBody$inboundSchema: z.ZodType<
   DeleteRedirectsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => DeleteRedirectsResponseBody2$inboundSchema),
-  z.lazy(() => DeleteRedirectsResponseBody3$inboundSchema),
-  z.lazy(() => DeleteRedirectsResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => DeleteRedirectsResponseBody2$inboundSchema),
+    z.lazy(() => DeleteRedirectsResponseBody3$inboundSchema),
+    z.lazy(() => DeleteRedirectsResponseBody1$inboundSchema),
+  ])
+);
 
 export function deleteRedirectsResponseBodyFromJSON(
   jsonString: string,

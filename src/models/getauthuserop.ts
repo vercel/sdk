@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { AuthUser, AuthUser$inboundSchema } from "./authuser.js";
@@ -27,7 +27,9 @@ export const GetAuthUserUser$inboundSchema: z.ZodType<
   GetAuthUserUser,
   z.ZodTypeDef,
   unknown
-> = smartUnion([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([AuthUser$inboundSchema, AuthUserLimited$inboundSchema])
+);
 
 export function getAuthUserUserFromJSON(
   jsonString: string,
@@ -44,9 +46,11 @@ export const GetAuthUserResponseBody$inboundSchema: z.ZodType<
   GetAuthUserResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  user: smartUnion([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    user: smartUnion([AuthUser$inboundSchema, AuthUserLimited$inboundSchema]),
+  })
+);
 
 export function getAuthUserResponseBodyFromJSON(
   jsonString: string,

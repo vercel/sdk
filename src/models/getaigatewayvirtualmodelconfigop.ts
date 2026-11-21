@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
@@ -50,14 +50,16 @@ export const GetAiGatewayVirtualModelConfigRequest$outboundSchema: z.ZodType<
   GetAiGatewayVirtualModelConfigRequest$Outbound,
   z.ZodTypeDef,
   GetAiGatewayVirtualModelConfigRequest
-> = z.object({
-  ownerId: z.string().optional(),
-  virtualModelSlug: z.string().optional(),
-  limit: z.number().int().optional(),
-  cursor: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ownerId: z.string().optional(),
+    virtualModelSlug: z.string().optional(),
+    limit: z.number().int().optional(),
+    cursor: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getAiGatewayVirtualModelConfigRequestToJSON(
   getAiGatewayVirtualModelConfigRequest: GetAiGatewayVirtualModelConfigRequest,
@@ -72,10 +74,12 @@ export function getAiGatewayVirtualModelConfigRequestToJSON(
 /** @internal */
 export const GetAiGatewayVirtualModelConfigResponseBody$inboundSchema:
   z.ZodType<GetAiGatewayVirtualModelConfigResponseBody, z.ZodTypeDef, unknown> =
-    smartUnion([
-      AiGatewayVirtualModelConfig$inboundSchema,
-      AiGatewayVirtualModelConfigList$inboundSchema,
-    ]);
+    /* @__PURE__ */ lazySchema$(() =>
+      smartUnion([
+        AiGatewayVirtualModelConfig$inboundSchema,
+        AiGatewayVirtualModelConfigList$inboundSchema,
+      ])
+    );
 
 export function getAiGatewayVirtualModelConfigResponseBodyFromJSON(
   jsonString: string,

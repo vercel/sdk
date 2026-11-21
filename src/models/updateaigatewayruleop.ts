@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 /**
  * Replaces the stored action. For a rewrite rule it must contain `rewriteModel`.
@@ -61,10 +62,12 @@ export const UpdateAiGatewayRuleAction$outboundSchema: z.ZodType<
   UpdateAiGatewayRuleAction$Outbound,
   z.ZodTypeDef,
   UpdateAiGatewayRuleAction
-> = z.object({
-  rewriteModel: z.string().optional(),
-  reason: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rewriteModel: z.string().optional(),
+    reason: z.string().optional(),
+  })
+);
 
 export function updateAiGatewayRuleActionToJSON(
   updateAiGatewayRuleAction: UpdateAiGatewayRuleAction,
@@ -87,12 +90,14 @@ export const UpdateAiGatewayRuleRequestBody$outboundSchema: z.ZodType<
   UpdateAiGatewayRuleRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateAiGatewayRuleRequestBody
-> = z.object({
-  ruleId: z.string(),
-  enabled: z.boolean().optional(),
-  description: z.string().optional(),
-  action: z.lazy(() => UpdateAiGatewayRuleAction$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ruleId: z.string(),
+    enabled: z.boolean().optional(),
+    description: z.string().optional(),
+    action: z.lazy(() => UpdateAiGatewayRuleAction$outboundSchema).optional(),
+  })
+);
 
 export function updateAiGatewayRuleRequestBodyToJSON(
   updateAiGatewayRuleRequestBody: UpdateAiGatewayRuleRequestBody,
@@ -116,16 +121,18 @@ export const UpdateAiGatewayRuleRequest$outboundSchema: z.ZodType<
   UpdateAiGatewayRuleRequest$Outbound,
   z.ZodTypeDef,
   UpdateAiGatewayRuleRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateAiGatewayRuleRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateAiGatewayRuleRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateAiGatewayRuleRequestToJSON(
   updateAiGatewayRuleRequest: UpdateAiGatewayRuleRequest,

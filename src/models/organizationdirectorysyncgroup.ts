@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -103,25 +103,31 @@ export type OrganizationDirectorySyncGroup = {
 /** @internal */
 export const OrganizationPermissions$inboundSchema: z.ZodNativeEnum<
   typeof OrganizationPermissions
-> = z.nativeEnum(OrganizationPermissions);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OrganizationPermissions));
 
 /** @internal */
 export const OrganizationDirectorySyncGroupTeamRoles$inboundSchema:
-  z.ZodNativeEnum<typeof OrganizationDirectorySyncGroupTeamRoles> = z
-    .nativeEnum(OrganizationDirectorySyncGroupTeamRoles);
+  z.ZodNativeEnum<typeof OrganizationDirectorySyncGroupTeamRoles> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(OrganizationDirectorySyncGroupTeamRoles)
+    );
 
 /** @internal */
 export const OrganizationDirectorySyncGroupAssignmentsTeamRoles$inboundSchema:
-  z.ZodNativeEnum<typeof OrganizationDirectorySyncGroupAssignmentsTeamRoles> = z
-    .nativeEnum(OrganizationDirectorySyncGroupAssignmentsTeamRoles);
+  z.ZodNativeEnum<typeof OrganizationDirectorySyncGroupAssignmentsTeamRoles> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(OrganizationDirectorySyncGroupAssignmentsTeamRoles)
+    );
 
 /** @internal */
-export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> = z
-  .object({
-    teamRoles: z.array(
-      OrganizationDirectorySyncGroupAssignmentsTeamRoles$inboundSchema,
-    ),
-  });
+export const Teams$inboundSchema: z.ZodType<Teams, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      teamRoles: z.array(
+        OrganizationDirectorySyncGroupAssignmentsTeamRoles$inboundSchema,
+      ),
+    })
+  );
 
 export function teamsFromJSON(
   jsonString: string,
@@ -138,11 +144,13 @@ export const Assignments$inboundSchema: z.ZodType<
   Assignments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  organizationPermissions: z.array(OrganizationPermissions$inboundSchema),
-  teamRoles: z.array(OrganizationDirectorySyncGroupTeamRoles$inboundSchema),
-  teams: z.record(z.lazy(() => Teams$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizationPermissions: z.array(OrganizationPermissions$inboundSchema),
+    teamRoles: z.array(OrganizationDirectorySyncGroupTeamRoles$inboundSchema),
+    teams: z.record(z.lazy(() => Teams$inboundSchema)),
+  })
+);
 
 export function assignmentsFromJSON(
   jsonString: string,
@@ -159,15 +167,17 @@ export const OrganizationDirectorySyncGroup$inboundSchema: z.ZodType<
   OrganizationDirectorySyncGroup,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  assignments: types.nullable(z.lazy(() => Assignments$inboundSchema)),
-  createdAt: types.nullable(types.string()),
-  directoryGroupId: types.string(),
-  directoryId: types.string(),
-  name: types.string(),
-  organizationId: types.string(),
-  updatedAt: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    assignments: types.nullable(z.lazy(() => Assignments$inboundSchema)),
+    createdAt: types.nullable(types.string()),
+    directoryGroupId: types.string(),
+    directoryId: types.string(),
+    name: types.string(),
+    organizationId: types.string(),
+    updatedAt: types.nullable(types.string()),
+  })
+);
 
 export function organizationDirectorySyncGroupFromJSON(
   jsonString: string,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type RequestPromoteRequest = {
   projectId: string;
@@ -30,12 +31,14 @@ export const RequestPromoteRequest$outboundSchema: z.ZodType<
   RequestPromoteRequest$Outbound,
   z.ZodTypeDef,
   RequestPromoteRequest
-> = z.object({
-  projectId: z.string(),
-  deploymentId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    deploymentId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function requestPromoteRequestToJSON(
   requestPromoteRequest: RequestPromoteRequest,

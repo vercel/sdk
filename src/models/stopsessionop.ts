@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { NamedSandbox, NamedSandbox$inboundSchema } from "./namedsandbox.js";
@@ -67,11 +67,13 @@ export const StopSessionRequest$outboundSchema: z.ZodType<
   StopSessionRequest$Outbound,
   z.ZodTypeDef,
   StopSessionRequest
-> = z.object({
-  sessionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function stopSessionRequestToJSON(
   stopSessionRequest: StopSessionRequest,
@@ -86,11 +88,13 @@ export const StopSessionResponseBody2$inboundSchema: z.ZodType<
   StopSessionResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sandbox: NamedSandbox$inboundSchema,
-  session: Session$inboundSchema,
-  snapshot: Snapshot$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sandbox: NamedSandbox$inboundSchema,
+    session: Session$inboundSchema,
+    snapshot: Snapshot$inboundSchema,
+  })
+);
 
 export function stopSessionResponseBody2FromJSON(
   jsonString: string,
@@ -107,9 +111,11 @@ export const StopSessionResponseBody1$inboundSchema: z.ZodType<
   StopSessionResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session: Session$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session: Session$inboundSchema,
+  })
+);
 
 export function stopSessionResponseBody1FromJSON(
   jsonString: string,
@@ -126,10 +132,12 @@ export const StopSessionResponseBody$inboundSchema: z.ZodType<
   StopSessionResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => StopSessionResponseBody2$inboundSchema),
-  z.lazy(() => StopSessionResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => StopSessionResponseBody2$inboundSchema),
+    z.lazy(() => StopSessionResponseBody1$inboundSchema),
+  ])
+);
 
 export function stopSessionResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -77,24 +77,26 @@ export type Drive = {
 
 /** @internal */
 export const WorkloadType$inboundSchema: z.ZodNativeEnum<typeof WorkloadType> =
-  z.nativeEnum(WorkloadType);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(WorkloadType));
 
 /** @internal */
-export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> = z
-  .object({
-    createdAt: types.number(),
-    currentSandboxName: types.optional(types.string()),
-    currentSessionId: types.optional(types.string()),
-    id: types.string(),
-    maxSizeBytes: types.number(),
-    name: types.string(),
-    parentDriveId: types.optional(types.string()),
-    projectId: types.string(),
-    region: types.string(),
-    rootDriveId: types.optional(types.string()),
-    updatedAt: types.number(),
-    workloadType: types.optional(WorkloadType$inboundSchema),
-  });
+export const Drive$inboundSchema: z.ZodType<Drive, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.number(),
+      currentSandboxName: types.optional(types.string()),
+      currentSessionId: types.optional(types.string()),
+      id: types.string(),
+      maxSizeBytes: types.number(),
+      name: types.string(),
+      parentDriveId: types.optional(types.string()),
+      projectId: types.string(),
+      region: types.string(),
+      rootDriveId: types.optional(types.string()),
+      updatedAt: types.number(),
+      workloadType: types.optional(WorkloadType$inboundSchema),
+    })
+  );
 
 export function driveFromJSON(
   jsonString: string,

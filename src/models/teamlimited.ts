@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -73,6 +73,10 @@ export type TeamLimitedJoinedFrom = {
   repoId?: string | undefined;
   repoPath?: string | undefined;
   ssoConnectedAt?: number | undefined;
+  /**
+   * How `ssoUserId` and `idpUserId` were made; absent when unknown.
+   */
+  ssoIdFingerprint?: string | undefined;
   ssoUserId?: string | undefined;
 };
 
@@ -307,20 +311,24 @@ export type TeamLimited = {
 /** @internal */
 export const TeamLimitedDirectorySyncSource$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedDirectorySyncSource
-> = z.nativeEnum(TeamLimitedDirectorySyncSource);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(TeamLimitedDirectorySyncSource)
+);
 
 /** @internal */
-export const LimitedBy$inboundSchema: z.ZodNativeEnum<typeof LimitedBy> = z
-  .nativeEnum(LimitedBy);
+export const LimitedBy$inboundSchema: z.ZodNativeEnum<typeof LimitedBy> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(LimitedBy));
 
 /** @internal */
 export const TeamLimitedEntitlements$inboundSchema: z.ZodType<
   TeamLimitedEntitlements,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  entitlement: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entitlement: types.string(),
+  })
+);
 
 export function teamLimitedEntitlementsFromJSON(
   jsonString: string,
@@ -337,7 +345,9 @@ export const TeamLimitedGitUserId$inboundSchema: z.ZodType<
   TeamLimitedGitUserId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function teamLimitedGitUserIdFromJSON(
   jsonString: string,
@@ -352,26 +362,29 @@ export function teamLimitedGitUserIdFromJSON(
 /** @internal */
 export const TeamLimitedOrigin$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedOrigin
-> = z.nativeEnum(TeamLimitedOrigin);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamLimitedOrigin));
 
 /** @internal */
 export const TeamLimitedJoinedFrom$inboundSchema: z.ZodType<
   TeamLimitedJoinedFrom,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  commitId: types.optional(types.string()),
-  dsyncConnectedAt: types.optional(types.number()),
-  dsyncUserId: types.optional(types.string()),
-  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  gitUserLogin: types.optional(types.string()),
-  idpUserId: types.optional(types.string()),
-  origin: TeamLimitedOrigin$inboundSchema,
-  repoId: types.optional(types.string()),
-  repoPath: types.optional(types.string()),
-  ssoConnectedAt: types.optional(types.number()),
-  ssoUserId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    commitId: types.optional(types.string()),
+    dsyncConnectedAt: types.optional(types.number()),
+    dsyncUserId: types.optional(types.string()),
+    gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+    gitUserLogin: types.optional(types.string()),
+    idpUserId: types.optional(types.string()),
+    origin: TeamLimitedOrigin$inboundSchema,
+    repoId: types.optional(types.string()),
+    repoPath: types.optional(types.string()),
+    ssoConnectedAt: types.optional(types.number()),
+    ssoIdFingerprint: types.optional(types.string()),
+    ssoUserId: types.optional(types.string()),
+  })
+);
 
 export function teamLimitedJoinedFromFromJSON(
   jsonString: string,
@@ -386,42 +399,46 @@ export function teamLimitedJoinedFromFromJSON(
 /** @internal */
 export const TeamLimitedRole$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedRole
-> = z.nativeEnum(TeamLimitedRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamLimitedRole));
 
 /** @internal */
 export const TeamLimitedTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedTeamPermissions
-> = z.nativeEnum(TeamLimitedTeamPermissions);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamLimitedTeamPermissions));
 
 /** @internal */
 export const TeamLimitedTeamRoles$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedTeamRoles
-> = z.nativeEnum(TeamLimitedTeamRoles);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamLimitedTeamRoles));
 
 /** @internal */
 export const TeamLimitedMembership$inboundSchema: z.ZodType<
   TeamLimitedMembership,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessRequestedAt: types.optional(types.number()),
-  confirmed: types.literal(true),
-  created: types.number(),
-  createdAt: types.number(),
-  entitlements: types.optional(
-    z.array(z.lazy(() => TeamLimitedEntitlements$inboundSchema)),
-  ),
-  isOrgBackingTeamMembership: types.optional(types.boolean()),
-  joinedFrom: types.optional(z.lazy(() => TeamLimitedJoinedFrom$inboundSchema)),
-  organizationId: types.optional(types.string()),
-  role: TeamLimitedRole$inboundSchema,
-  teamId: types.optional(types.string()),
-  teamPermissions: types.optional(
-    z.array(TeamLimitedTeamPermissions$inboundSchema),
-  ),
-  teamRoles: types.optional(z.array(TeamLimitedTeamRoles$inboundSchema)),
-  uid: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessRequestedAt: types.optional(types.number()),
+    confirmed: types.literal(true),
+    created: types.number(),
+    createdAt: types.number(),
+    entitlements: types.optional(
+      z.array(z.lazy(() => TeamLimitedEntitlements$inboundSchema)),
+    ),
+    isOrgBackingTeamMembership: types.optional(types.boolean()),
+    joinedFrom: types.optional(
+      z.lazy(() => TeamLimitedJoinedFrom$inboundSchema),
+    ),
+    organizationId: types.optional(types.string()),
+    role: TeamLimitedRole$inboundSchema,
+    teamId: types.optional(types.string()),
+    teamPermissions: types.optional(
+      z.array(TeamLimitedTeamPermissions$inboundSchema),
+    ),
+    teamRoles: types.optional(z.array(TeamLimitedTeamRoles$inboundSchema)),
+    uid: types.optional(types.string()),
+  })
+);
 
 export function teamLimitedMembershipFromJSON(
   jsonString: string,
@@ -436,22 +453,24 @@ export function teamLimitedMembershipFromJSON(
 /** @internal */
 export const TeamLimitedSyncState$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedSyncState
-> = z.nativeEnum(TeamLimitedSyncState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamLimitedSyncState));
 
 /** @internal */
 export const TeamLimitedConnection$inboundSchema: z.ZodType<
   TeamLimitedConnection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  connectedAt: types.number(),
-  lastReceivedWebhookEvent: types.optional(types.number()),
-  lastSyncedAt: types.optional(types.number()),
-  state: types.string(),
-  syncState: types.optional(TeamLimitedSyncState$inboundSchema),
-  type: types.string(),
-  status: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connectedAt: types.number(),
+    lastReceivedWebhookEvent: types.optional(types.number()),
+    lastSyncedAt: types.optional(types.number()),
+    state: types.string(),
+    syncState: types.optional(TeamLimitedSyncState$inboundSchema),
+    type: types.string(),
+    status: types.string(),
+  })
+);
 
 export function teamLimitedConnectionFromJSON(
   jsonString: string,
@@ -466,21 +485,23 @@ export function teamLimitedConnectionFromJSON(
 /** @internal */
 export const TeamLimitedSamlSyncState$inboundSchema: z.ZodNativeEnum<
   typeof TeamLimitedSamlSyncState
-> = z.nativeEnum(TeamLimitedSamlSyncState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamLimitedSamlSyncState));
 
 /** @internal */
 export const TeamLimitedDirectory$inboundSchema: z.ZodType<
   TeamLimitedDirectory,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  connectedAt: types.number(),
-  lastReceivedWebhookEvent: types.optional(types.number()),
-  lastSyncedAt: types.optional(types.number()),
-  state: types.string(),
-  syncState: types.optional(TeamLimitedSamlSyncState$inboundSchema),
-  type: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connectedAt: types.number(),
+    lastReceivedWebhookEvent: types.optional(types.number()),
+    lastSyncedAt: types.optional(types.number()),
+    state: types.string(),
+    syncState: types.optional(TeamLimitedSamlSyncState$inboundSchema),
+    type: types.string(),
+  })
+);
 
 export function teamLimitedDirectoryFromJSON(
   jsonString: string,
@@ -497,11 +518,15 @@ export const TeamLimitedSaml$inboundSchema: z.ZodType<
   TeamLimitedSaml,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  connection: types.optional(z.lazy(() => TeamLimitedConnection$inboundSchema)),
-  directory: types.optional(z.lazy(() => TeamLimitedDirectory$inboundSchema)),
-  enforced: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connection: types.optional(
+      z.lazy(() => TeamLimitedConnection$inboundSchema),
+    ),
+    directory: types.optional(z.lazy(() => TeamLimitedDirectory$inboundSchema)),
+    enforced: types.boolean(),
+  })
+);
 
 export function teamLimitedSamlFromJSON(
   jsonString: string,
@@ -518,21 +543,25 @@ export const TeamLimited$inboundSchema: z.ZodType<
   TeamLimited,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  avatar: types.nullable(types.string()),
-  createdAt: types.number(),
-  directorySyncSource: TeamLimitedDirectorySyncSource$inboundSchema,
-  directorySyncType: types.optional(types.string()),
-  id: types.string(),
-  limited: types.literal(true),
-  limitedBy: z.array(LimitedBy$inboundSchema),
-  membership: types.optional(z.lazy(() => TeamLimitedMembership$inboundSchema)),
-  name: types.nullable(types.string()),
-  orgRootTeamId: types.optional(types.string()),
-  parentId: types.optional(types.string()),
-  saml: types.optional(z.lazy(() => TeamLimitedSaml$inboundSchema)),
-  slug: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: types.nullable(types.string()),
+    createdAt: types.number(),
+    directorySyncSource: TeamLimitedDirectorySyncSource$inboundSchema,
+    directorySyncType: types.optional(types.string()),
+    id: types.string(),
+    limited: types.literal(true),
+    limitedBy: z.array(LimitedBy$inboundSchema),
+    membership: types.optional(
+      z.lazy(() => TeamLimitedMembership$inboundSchema),
+    ),
+    name: types.nullable(types.string()),
+    orgRootTeamId: types.optional(types.string()),
+    parentId: types.optional(types.string()),
+    saml: types.optional(z.lazy(() => TeamLimitedSaml$inboundSchema)),
+    slug: types.string(),
+  })
+);
 
 export function teamLimitedFromJSON(
   jsonString: string,

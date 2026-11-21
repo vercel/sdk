@@ -5,21 +5,40 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentyNine } from "@vercel/sdk/models/oldssoprotection2.js";
+import { FourHundredAndTwentyNine } from "@vercel/sdk/models/threehundredandeightytwo.js";
 
 let value: FourHundredAndTwentyNine = {
-  amount: "168.20",
-  currency: "Balboa",
-  expiresAt: "1756093364375",
-  trialCreditsIssuedAt: 4930.99,
+  action: "enable",
+  codeReviewEnabled: false,
+  cumulativeBalance: "<value>",
+  endpoint: "/v1/vade/usage-billing",
+  ledgerId: "<id>",
+  next: {
+    enabled: false,
+    maximumOverdraft: "<value>",
+  },
+  previous: {
+    enabled: true,
+    maximumOverdraft: null,
+  },
+  removedTopupIds: [],
+  source: "<value>",
+  topupCleanupCompleted: true,
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `amount`               | *string*               | :heavy_check_mark:     | N/A                    |
-| `currency`             | *string*               | :heavy_check_mark:     | N/A                    |
-| `expiresAt`            | *string*               | :heavy_check_mark:     | N/A                    |
-| `trialCreditsIssuedAt` | *number*               | :heavy_check_mark:     | N/A                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `action`                                                                       | [models.UserEventPayload429Action](../models/usereventpayload429action.md)     | :heavy_check_mark:                                                             | N/A                                                                            |
+| `codeReviewEnabled`                                                            | *boolean*                                                                      | :heavy_check_mark:                                                             | N/A                                                                            |
+| `codeReviewSelection`                                                          | [models.CodeReviewSelection](../models/codereviewselection.md)                 | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `cumulativeBalance`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `endpoint`                                                                     | [models.UserEventPayloadEndpoint](../models/usereventpayloadendpoint.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `ledgerId`                                                                     | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload429Next](../models/usereventpayload429next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload429Previous](../models/usereventpayload429previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `removedTopupIds`                                                              | *string*[]                                                                     | :heavy_check_mark:                                                             | N/A                                                                            |
+| `source`                                                                       | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `topupCleanupCompleted`                                                        | *boolean*                                                                      | :heavy_check_mark:                                                             | N/A                                                                            |

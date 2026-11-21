@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteNetworkRequest = {
   /**
@@ -31,11 +32,13 @@ export const DeleteNetworkRequest$outboundSchema: z.ZodType<
   DeleteNetworkRequest$Outbound,
   z.ZodTypeDef,
   DeleteNetworkRequest
-> = z.object({
-  networkId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    networkId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteNetworkRequestToJSON(
   deleteNetworkRequest: DeleteNetworkRequest,

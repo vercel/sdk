@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -100,12 +100,14 @@ export const ListTeamFlagSettingsRequest$outboundSchema: z.ZodType<
   ListTeamFlagSettingsRequest$Outbound,
   z.ZodTypeDef,
   ListTeamFlagSettingsRequest
-> = z.object({
-  limit: z.number().int().default(20),
-  cursor: z.string().optional(),
-  teamId: z.string(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    limit: z.number().int().default(20),
+    cursor: z.string().optional(),
+    teamId: z.string(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listTeamFlagSettingsRequestToJSON(
   listTeamFlagSettingsRequest: ListTeamFlagSettingsRequest,
@@ -122,10 +124,12 @@ export const ResponseBodyLabels$inboundSchema: z.ZodType<
   ResponseBodyLabels,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.string(),
+    value: types.string(),
+  })
+);
 
 export function responseBodyLabelsFromJSON(
   jsonString: string,
@@ -142,13 +146,15 @@ export const ResponseBodyAttributes$inboundSchema: z.ZodType<
   ResponseBodyAttributes,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  key: types.string(),
-  labels: types.optional(
-    z.array(z.lazy(() => ResponseBodyLabels$inboundSchema)),
-  ),
-  type: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: types.string(),
+    labels: types.optional(
+      z.array(z.lazy(() => ResponseBodyLabels$inboundSchema)),
+    ),
+    type: types.string(),
+  })
+);
 
 export function responseBodyAttributesFromJSON(
   jsonString: string,
@@ -165,11 +171,13 @@ export const ResponseBodyEntities$inboundSchema: z.ZodType<
   ResponseBodyEntities,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attributes: z.array(z.lazy(() => ResponseBodyAttributes$inboundSchema)),
-  kind: types.string(),
-  label: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attributes: z.array(z.lazy(() => ResponseBodyAttributes$inboundSchema)),
+    kind: types.string(),
+    label: types.string(),
+  })
+);
 
 export function responseBodyEntitiesFromJSON(
   jsonString: string,
@@ -186,14 +194,16 @@ export const ListTeamFlagSettingsResponseBodyMetadata$inboundSchema: z.ZodType<
   ListTeamFlagSettingsResponseBodyMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  activeFlagCount: types.number(),
-  archivedFlagCount: types.number(),
-  configUpdatedAt: types.optional(types.number()),
-  packRevision: types.optional(types.number()),
-  packSizeInBytes: types.number(),
-  segmentCount: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    activeFlagCount: types.number(),
+    archivedFlagCount: types.number(),
+    configUpdatedAt: types.optional(types.number()),
+    packRevision: types.optional(types.number()),
+    packSizeInBytes: types.number(),
+    segmentCount: types.number(),
+  })
+);
 
 export function listTeamFlagSettingsResponseBodyMetadataFromJSON(
   jsonString: string,
@@ -214,26 +224,28 @@ export function listTeamFlagSettingsResponseBodyMetadataFromJSON(
 /** @internal */
 export const ResponseBodyTypeName$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyTypeName
-> = z.nativeEnum(ResponseBodyTypeName);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyTypeName));
 
 /** @internal */
 export const ResponseBodyData$inboundSchema: z.ZodType<
   ResponseBodyData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  enabled: types.boolean(),
-  entities: z.array(z.lazy(() => ResponseBodyEntities$inboundSchema)),
-  environments: z.array(types.string()),
-  metadata: z.lazy(() =>
-    ListTeamFlagSettingsResponseBodyMetadata$inboundSchema
-  ),
-  ownerId: types.optional(types.string()),
-  projectId: types.string(),
-  typeName: ResponseBodyTypeName$inboundSchema,
-  updatedAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    enabled: types.boolean(),
+    entities: z.array(z.lazy(() => ResponseBodyEntities$inboundSchema)),
+    environments: z.array(types.string()),
+    metadata: z.lazy(() =>
+      ListTeamFlagSettingsResponseBodyMetadata$inboundSchema
+    ),
+    ownerId: types.optional(types.string()),
+    projectId: types.string(),
+    typeName: ResponseBodyTypeName$inboundSchema,
+    updatedAt: types.optional(types.number()),
+  })
+);
 
 export function responseBodyDataFromJSON(
   jsonString: string,
@@ -248,9 +260,11 @@ export function responseBodyDataFromJSON(
 /** @internal */
 export const ListTeamFlagSettingsResponseBodyPagination$inboundSchema:
   z.ZodType<ListTeamFlagSettingsResponseBodyPagination, z.ZodTypeDef, unknown> =
-    z.object({
-      next: types.nullable(types.string()),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        next: types.nullable(types.string()),
+      })
+    );
 
 export function listTeamFlagSettingsResponseBodyPaginationFromJSON(
   jsonString: string,
@@ -273,12 +287,14 @@ export const ListTeamFlagSettingsResponseBody2$inboundSchema: z.ZodType<
   ListTeamFlagSettingsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: z.array(z.lazy(() => ResponseBodyData$inboundSchema)),
-  pagination: z.lazy(() =>
-    ListTeamFlagSettingsResponseBodyPagination$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: z.array(z.lazy(() => ResponseBodyData$inboundSchema)),
+    pagination: z.lazy(() =>
+      ListTeamFlagSettingsResponseBodyPagination$inboundSchema
+    ),
+  })
+);
 
 export function listTeamFlagSettingsResponseBody2FromJSON(
   jsonString: string,
@@ -295,7 +311,7 @@ export const ListTeamFlagSettingsResponseBody1$inboundSchema: z.ZodType<
   ListTeamFlagSettingsResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function listTeamFlagSettingsResponseBody1FromJSON(
   jsonString: string,
@@ -312,10 +328,12 @@ export const ListTeamFlagSettingsResponseBody$inboundSchema: z.ZodType<
   ListTeamFlagSettingsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => ListTeamFlagSettingsResponseBody2$inboundSchema),
-  z.lazy(() => ListTeamFlagSettingsResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => ListTeamFlagSettingsResponseBody2$inboundSchema),
+    z.lazy(() => ListTeamFlagSettingsResponseBody1$inboundSchema),
+  ])
+);
 
 export function listTeamFlagSettingsResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { Organization, Organization$inboundSchema } from "./organization.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -17,9 +17,11 @@ export const ListOrganizationsResponseBody$inboundSchema: z.ZodType<
   ListOrganizationsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  organizations: z.array(Organization$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizations: z.array(Organization$inboundSchema),
+  })
+);
 
 export function listOrganizationsResponseBodyFromJSON(
   jsonString: string,

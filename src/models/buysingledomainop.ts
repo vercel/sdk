@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -194,7 +194,7 @@ export const Additional$outboundSchema: z.ZodType<
   Additional$Outbound,
   z.ZodTypeDef,
   Additional
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function additionalToJSON(additional: Additional): string {
   return JSON.stringify(Additional$outboundSchema.parse(additional));
@@ -222,21 +222,23 @@ export const ContactInformation$outboundSchema: z.ZodType<
   ContactInformation$Outbound,
   z.ZodTypeDef,
   ContactInformation
-> = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string(),
-  phone: z.string(),
-  address1: z.string(),
-  address2: z.string().optional(),
-  city: z.string(),
-  state: z.string(),
-  zip: z.string(),
-  country: z.string(),
-  companyName: z.string().optional(),
-  fax: z.string().optional(),
-  additional: z.lazy(() => Additional$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: z.string(),
+    lastName: z.string(),
+    email: z.string(),
+    phone: z.string(),
+    address1: z.string(),
+    address2: z.string().optional(),
+    city: z.string(),
+    state: z.string(),
+    zip: z.string(),
+    country: z.string(),
+    companyName: z.string().optional(),
+    fax: z.string().optional(),
+    additional: z.lazy(() => Additional$outboundSchema).optional(),
+  })
+);
 
 export function contactInformationToJSON(
   contactInformation: ContactInformation,
@@ -260,13 +262,15 @@ export const BuySingleDomainRequestBody$outboundSchema: z.ZodType<
   BuySingleDomainRequestBody$Outbound,
   z.ZodTypeDef,
   BuySingleDomainRequestBody
-> = z.object({
-  autoRenew: z.boolean(),
-  years: z.number(),
-  expectedPrice: z.number(),
-  contactInformation: z.lazy(() => ContactInformation$outboundSchema),
-  languageCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    autoRenew: z.boolean(),
+    years: z.number(),
+    expectedPrice: z.number(),
+    contactInformation: z.lazy(() => ContactInformation$outboundSchema),
+    languageCode: z.string().optional(),
+  })
+);
 
 export function buySingleDomainRequestBodyToJSON(
   buySingleDomainRequestBody: BuySingleDomainRequestBody,
@@ -288,15 +292,17 @@ export const BuySingleDomainRequest$outboundSchema: z.ZodType<
   BuySingleDomainRequest$Outbound,
   z.ZodTypeDef,
   BuySingleDomainRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => BuySingleDomainRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() => BuySingleDomainRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function buySingleDomainRequestToJSON(
   buySingleDomainRequest: BuySingleDomainRequest,
@@ -312,12 +318,14 @@ export const BuySingleDomainDomainsRegistrarResponseResponseBody$inboundSchema:
     BuySingleDomainDomainsRegistrarResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Forbidden$inboundSchema,
-    NotAuthorizedForScope$inboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      Forbidden$inboundSchema,
+      NotAuthorizedForScope$inboundSchema.and(
+        z.object({ code: z.literal("not_authorized_for_scope") }),
+      ),
+    ])
+  );
 
 export function buySingleDomainDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
@@ -341,18 +349,20 @@ export const BuySingleDomainDomainsRegistrarResponseBody$inboundSchema:
     BuySingleDomainDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    DomainTooShort$inboundSchema,
-    OrderTooExpensive$inboundSchema,
-    InvalidAdditionalContactInfo$inboundSchema,
-    AdditionalContactInfoRequired$inboundSchema,
-    ExpectedPriceMismatch$inboundSchema,
-    DomainNotAvailable$inboundSchema,
-    EmojiTldNotSupported$inboundSchema,
-    LanguageCodeRequired$inboundSchema,
-    TldNotSupported$inboundSchema,
-    HttpApiDecodeError$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      DomainTooShort$inboundSchema,
+      OrderTooExpensive$inboundSchema,
+      InvalidAdditionalContactInfo$inboundSchema,
+      AdditionalContactInfoRequired$inboundSchema,
+      ExpectedPriceMismatch$inboundSchema,
+      DomainNotAvailable$inboundSchema,
+      EmojiTldNotSupported$inboundSchema,
+      LanguageCodeRequired$inboundSchema,
+      TldNotSupported$inboundSchema,
+      HttpApiDecodeError$inboundSchema,
+    ])
+  );
 
 export function buySingleDomainDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -373,14 +383,16 @@ export function buySingleDomainDomainsRegistrarResponseBodyFromJSON(
 /** @internal */
 export const BuySingleDomainMethod$inboundSchema: z.ZodNativeEnum<
   typeof BuySingleDomainMethod
-> = z.nativeEnum(BuySingleDomainMethod);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BuySingleDomainMethod));
 
 /** @internal */
-export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> = z
-  .object({
-    href: types.string(),
-    method: BuySingleDomainMethod$inboundSchema,
-  });
+export const Links$inboundSchema: z.ZodType<Links, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      href: types.string(),
+      method: BuySingleDomainMethod$inboundSchema,
+    })
+  );
 
 export function linksFromJSON(
   jsonString: string,
@@ -397,14 +409,16 @@ export const BuySingleDomainResponseBody$inboundSchema: z.ZodType<
   BuySingleDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  orderId: types.string(),
-  _links: z.record(z.lazy(() => Links$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "_links": "links",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    orderId: types.string(),
+    _links: z.record(z.lazy(() => Links$inboundSchema)),
+  }).transform((v) => {
+    return remap$(v, {
+      "_links": "links",
+    });
+  })
+);
 
 export function buySingleDomainResponseBodyFromJSON(
   jsonString: string,

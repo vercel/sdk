@@ -5,28 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyOne } from "@vercel/sdk/models/usereventpayload317type.js";
+import { ThreeHundredAndFortyOne } from "@vercel/sdk/models/threehundredandtwentyone.js";
 
 let value: ThreeHundredAndFortyOne = {
-  domain: "excellent-affect.org",
-  gitBranch: "<value>",
+  gitLFS: true,
   projectId: "<id>",
   projectName: "<value>",
-  redirect: "<value>",
-  redirectStatusCode: null,
-  target: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `configuredBy`       | *string*             | :heavy_minus_sign:   | N/A                  |
-| `domain`             | *string*             | :heavy_check_mark:   | N/A                  |
-| `gitBranch`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirect`           | *string*             | :heavy_check_mark:   | N/A                  |
-| `redirectStatusCode` | *number*             | :heavy_check_mark:   | N/A                  |
-| `target`             | *string*             | :heavy_check_mark:   | N/A                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `gitLFS`           | *boolean*          | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

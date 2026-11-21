@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -64,18 +64,20 @@ export type GetSecurityFirewallEventsSummaryResponseBody = {
 
 /** @internal */
 export const GetSecurityFirewallEventsSummaryQueryParamAction$outboundSchema:
-  z.ZodNativeEnum<typeof GetSecurityFirewallEventsSummaryQueryParamAction> = z
-    .nativeEnum(GetSecurityFirewallEventsSummaryQueryParamAction);
+  z.ZodNativeEnum<typeof GetSecurityFirewallEventsSummaryQueryParamAction> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetSecurityFirewallEventsSummaryQueryParamAction)
+    );
 
 /** @internal */
 export const QueryParamActionType$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamActionType
-> = z.nativeEnum(QueryParamActionType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamActionType));
 
 /** @internal */
 export const QueryParamRuleKind$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamRuleKind
-> = z.nativeEnum(QueryParamRuleKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamRuleKind));
 
 /** @internal */
 export type GetSecurityFirewallEventsSummaryRequest$Outbound = {
@@ -98,22 +100,24 @@ export const GetSecurityFirewallEventsSummaryRequest$outboundSchema: z.ZodType<
   GetSecurityFirewallEventsSummaryRequest$Outbound,
   z.ZodTypeDef,
   GetSecurityFirewallEventsSummaryRequest
-> = z.object({
-  projectId: z.string(),
-  startTimestamp: z.number().int().optional(),
-  endTimestamp: z.number().int().optional(),
-  hosts: z.string().optional(),
-  ip: z.array(z.string()).optional(),
-  isActive: z.boolean().optional(),
-  action: z.array(
-    GetSecurityFirewallEventsSummaryQueryParamAction$outboundSchema,
-  ).optional(),
-  actionType: z.array(QueryParamActionType$outboundSchema).optional(),
-  ruleKind: QueryParamRuleKind$outboundSchema.optional(),
-  ruleId: z.array(z.string()).optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    startTimestamp: z.number().int().optional(),
+    endTimestamp: z.number().int().optional(),
+    hosts: z.string().optional(),
+    ip: z.array(z.string()).optional(),
+    isActive: z.boolean().optional(),
+    action: z.array(
+      GetSecurityFirewallEventsSummaryQueryParamAction$outboundSchema,
+    ).optional(),
+    actionType: z.array(QueryParamActionType$outboundSchema).optional(),
+    ruleKind: QueryParamRuleKind$outboundSchema.optional(),
+    ruleId: z.array(z.string()).optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getSecurityFirewallEventsSummaryRequestToJSON(
   getSecurityFirewallEventsSummaryRequest:
@@ -132,14 +136,16 @@ export const GetSecurityFirewallEventsSummaryResponseBody$inboundSchema:
     GetSecurityFirewallEventsSummaryResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    blockingIps: types.number(),
-    byAction: z.record(types.number()),
-    byActionType: z.record(types.number()),
-    challengingIps: types.number(),
-    other: types.number(),
-    total: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      blockingIps: types.number(),
+      byAction: z.record(types.number()),
+      byActionType: z.record(types.number()),
+      challengingIps: types.number(),
+      other: types.number(),
+      total: types.number(),
+    })
+  );
 
 export function getSecurityFirewallEventsSummaryResponseBodyFromJSON(
   jsonString: string,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type ReadPrivateLinkEndpointRequest = {
   /**
@@ -36,12 +37,14 @@ export const ReadPrivateLinkEndpointRequest$outboundSchema: z.ZodType<
   ReadPrivateLinkEndpointRequest$Outbound,
   z.ZodTypeDef,
   ReadPrivateLinkEndpointRequest
-> = z.object({
-  projectId: z.string(),
-  endpointId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    endpointId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function readPrivateLinkEndpointRequestToJSON(
   readPrivateLinkEndpointRequest: ReadPrivateLinkEndpointRequest,

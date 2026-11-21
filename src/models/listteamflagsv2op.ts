@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -105,12 +105,14 @@ export type ListTeamFlagsV2ResponseBody = {
 /** @internal */
 export const ListTeamFlagsV2QueryParamState$outboundSchema: z.ZodNativeEnum<
   typeof ListTeamFlagsV2QueryParamState
-> = z.nativeEnum(ListTeamFlagsV2QueryParamState);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListTeamFlagsV2QueryParamState)
+);
 
 /** @internal */
 export const QueryParamKind$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamKind
-> = z.nativeEnum(QueryParamKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamKind));
 
 /** @internal */
 export type ListTeamFlagsV2Request$Outbound = {
@@ -132,19 +134,21 @@ export const ListTeamFlagsV2Request$outboundSchema: z.ZodType<
   ListTeamFlagsV2Request$Outbound,
   z.ZodTypeDef,
   ListTeamFlagsV2Request
-> = z.object({
-  state: ListTeamFlagsV2QueryParamState$outboundSchema.optional(),
-  limit: z.number().int().default(25),
-  cursor: z.string().optional(),
-  search: z.string().optional(),
-  kind: QueryParamKind$outboundSchema.optional(),
-  tags: z.array(z.string()).optional(),
-  createdBy: z.string().optional(),
-  maintainerIds: z.array(z.string()).optional(),
-  includeMarketplaceFlags: z.boolean().optional(),
-  teamId: z.string(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    state: ListTeamFlagsV2QueryParamState$outboundSchema.optional(),
+    limit: z.number().int().default(25),
+    cursor: z.string().optional(),
+    search: z.string().optional(),
+    kind: QueryParamKind$outboundSchema.optional(),
+    tags: z.array(z.string()).optional(),
+    createdBy: z.string().optional(),
+    maintainerIds: z.array(z.string()).optional(),
+    includeMarketplaceFlags: z.boolean().optional(),
+    teamId: z.string(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listTeamFlagsV2RequestToJSON(
   listTeamFlagsV2Request: ListTeamFlagsV2Request,
@@ -159,9 +163,11 @@ export const ListTeamFlagsV2Pagination$inboundSchema: z.ZodType<
   ListTeamFlagsV2Pagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: types.nullable(types.string()),
+  })
+);
 
 export function listTeamFlagsV2PaginationFromJSON(
   jsonString: string,
@@ -178,10 +184,12 @@ export const ListTeamFlagsV2Data$inboundSchema: z.ZodType<
   ListTeamFlagsV2Data,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  Flag$inboundSchema.and(z.object({ typeName: z.literal("flag") })),
-  MarketplaceFlag$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    Flag$inboundSchema.and(z.object({ typeName: z.literal("flag") })),
+    MarketplaceFlag$inboundSchema,
+  ])
+);
 
 export function listTeamFlagsV2DataFromJSON(
   jsonString: string,
@@ -198,15 +206,17 @@ export const ListTeamFlagsV2ResponseBody$inboundSchema: z.ZodType<
   ListTeamFlagsV2ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: z.lazy(() => ListTeamFlagsV2Pagination$inboundSchema),
-  data: z.array(
-    z.union([
-      Flag$inboundSchema.and(z.object({ typeName: z.literal("flag") })),
-      MarketplaceFlag$inboundSchema,
-    ]),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: z.lazy(() => ListTeamFlagsV2Pagination$inboundSchema),
+    data: z.array(
+      z.union([
+        Flag$inboundSchema.and(z.object({ typeName: z.literal("flag") })),
+        MarketplaceFlag$inboundSchema,
+      ]),
+    ),
+  })
+);
 
 export function listTeamFlagsV2ResponseBodyFromJSON(
   jsonString: string,

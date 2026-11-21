@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -65,7 +65,9 @@ export const CreateSandboxesSessionsBySessionIdSnapshotV3Expiration$outboundSche
     CreateSandboxesSessionsBySessionIdSnapshotV3Expiration$Outbound,
     z.ZodTypeDef,
     CreateSandboxesSessionsBySessionIdSnapshotV3Expiration
-  > = smartUnion([z.any(), z.number().int()]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([z.any(), z.number().int()])
+  );
 
 export function createSandboxesSessionsBySessionIdSnapshotV3ExpirationToJSON(
   createSandboxesSessionsBySessionIdSnapshotV3Expiration:
@@ -89,9 +91,11 @@ export const CreateSandboxesSessionsBySessionIdSnapshotV3RequestBody$outboundSch
     CreateSandboxesSessionsBySessionIdSnapshotV3RequestBody$Outbound,
     z.ZodTypeDef,
     CreateSandboxesSessionsBySessionIdSnapshotV3RequestBody
-  > = z.object({
-    expiration: smartUnion([z.any(), z.number().int()]).optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      expiration: smartUnion([z.any(), z.number().int()]).optional(),
+    })
+  );
 
 export function createSandboxesSessionsBySessionIdSnapshotV3RequestBodyToJSON(
   createSandboxesSessionsBySessionIdSnapshotV3RequestBody:
@@ -119,18 +123,20 @@ export const CreateSandboxesSessionsBySessionIdSnapshotV3Request$outboundSchema:
     CreateSandboxesSessionsBySessionIdSnapshotV3Request$Outbound,
     z.ZodTypeDef,
     CreateSandboxesSessionsBySessionIdSnapshotV3Request
-  > = z.object({
-    sessionId: z.string(),
-    teamId: z.string().optional(),
-    slug: z.string().optional(),
-    requestBody: z.lazy(() =>
-      CreateSandboxesSessionsBySessionIdSnapshotV3RequestBody$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      requestBody: "RequestBody",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      sessionId: z.string(),
+      teamId: z.string().optional(),
+      slug: z.string().optional(),
+      requestBody: z.lazy(() =>
+        CreateSandboxesSessionsBySessionIdSnapshotV3RequestBody$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        requestBody: "RequestBody",
+      });
+    })
+  );
 
 export function createSandboxesSessionsBySessionIdSnapshotV3RequestToJSON(
   createSandboxesSessionsBySessionIdSnapshotV3Request:
@@ -149,10 +155,12 @@ export const CreateSandboxesSessionsBySessionIdSnapshotV3ResponseBody$inboundSch
     CreateSandboxesSessionsBySessionIdSnapshotV3ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    session: Session$inboundSchema,
-    snapshot: Snapshot$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      session: Session$inboundSchema,
+      snapshot: Snapshot$inboundSchema,
+    })
+  );
 
 export function createSandboxesSessionsBySessionIdSnapshotV3ResponseBodyFromJSON(
   jsonString: string,

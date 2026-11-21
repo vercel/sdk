@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -102,13 +102,16 @@ export type ListRepositoryTagsResponseBody = {
 /** @internal */
 export const ListRepositoryTagsQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof ListRepositoryTagsQueryParamSortBy
-> = z.nativeEnum(ListRepositoryTagsQueryParamSortBy);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListRepositoryTagsQueryParamSortBy)
+);
 
 /** @internal */
 export const ListRepositoryTagsQueryParamSortOrder$outboundSchema:
-  z.ZodNativeEnum<typeof ListRepositoryTagsQueryParamSortOrder> = z.nativeEnum(
-    ListRepositoryTagsQueryParamSortOrder,
-  );
+  z.ZodNativeEnum<typeof ListRepositoryTagsQueryParamSortOrder> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListRepositoryTagsQueryParamSortOrder)
+    );
 
 /** @internal */
 export type ListRepositoryTagsRequest$Outbound = {
@@ -127,20 +130,22 @@ export const ListRepositoryTagsRequest$outboundSchema: z.ZodType<
   ListRepositoryTagsRequest$Outbound,
   z.ZodTypeDef,
   ListRepositoryTagsRequest
-> = z.object({
-  projectId: z.string(),
-  idOrName: z.string(),
-  limit: z.number().int().optional(),
-  cursor: z.string().optional(),
-  sortBy: ListRepositoryTagsQueryParamSortBy$outboundSchema.default(
-    "updatedAt",
-  ),
-  sortOrder: ListRepositoryTagsQueryParamSortOrder$outboundSchema.default(
-    "desc",
-  ),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    idOrName: z.string(),
+    limit: z.number().int().optional(),
+    cursor: z.string().optional(),
+    sortBy: ListRepositoryTagsQueryParamSortBy$outboundSchema.default(
+      "updatedAt",
+    ),
+    sortOrder: ListRepositoryTagsQueryParamSortOrder$outboundSchema.default(
+      "desc",
+    ),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listRepositoryTagsRequestToJSON(
   listRepositoryTagsRequest: ListRepositoryTagsRequest,
@@ -153,31 +158,33 @@ export function listRepositoryTagsRequestToJSON(
 /** @internal */
 export const ListRepositoryTagsKind$inboundSchema: z.ZodNativeEnum<
   typeof ListRepositoryTagsKind
-> = z.nativeEnum(ListRepositoryTagsKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListRepositoryTagsKind));
 
 /** @internal */
 export const ListRepositoryTagsStatus$inboundSchema: z.ZodNativeEnum<
   typeof ListRepositoryTagsStatus
-> = z.nativeEnum(ListRepositoryTagsStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListRepositoryTagsStatus));
 
 /** @internal */
 export const ListRepositoryTagsTags$inboundSchema: z.ZodType<
   ListRepositoryTagsTags,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  arch: types.optional(types.string()),
-  createdAt: types.string(),
-  imageId: types.string(),
-  kind: ListRepositoryTagsKind$inboundSchema,
-  manifestDigest: types.string(),
-  platform: types.optional(types.string()),
-  pushedBy: types.optional(types.string()),
-  sizeInBytes: types.number(),
-  status: types.nullable(ListRepositoryTagsStatus$inboundSchema),
-  tag: types.string(),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    arch: types.optional(types.string()),
+    createdAt: types.string(),
+    imageId: types.string(),
+    kind: ListRepositoryTagsKind$inboundSchema,
+    manifestDigest: types.string(),
+    platform: types.optional(types.string()),
+    pushedBy: types.optional(types.string()),
+    sizeInBytes: types.number(),
+    status: types.nullable(ListRepositoryTagsStatus$inboundSchema),
+    tag: types.string(),
+    updatedAt: types.string(),
+  })
+);
 
 export function listRepositoryTagsTagsFromJSON(
   jsonString: string,
@@ -194,10 +201,12 @@ export const ListRepositoryTagsResponseBody$inboundSchema: z.ZodType<
   ListRepositoryTagsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  nextCursor: types.optional(types.string()),
-  tags: z.array(z.lazy(() => ListRepositoryTagsTags$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    nextCursor: types.optional(types.string()),
+    tags: z.array(z.lazy(() => ListRepositoryTagsTags$inboundSchema)),
+  })
+);
 
 export function listRepositoryTagsResponseBodyFromJSON(
   jsonString: string,

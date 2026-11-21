@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -729,7 +729,7 @@ export type FilterProjectEnvsResponseBody =
 /** @internal */
 export const QueryParamDecrypt$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamDecrypt
-> = z.nativeEnum(QueryParamDecrypt);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamDecrypt));
 
 /** @internal */
 export type FilterProjectEnvsRequest$Outbound = {
@@ -748,16 +748,18 @@ export const FilterProjectEnvsRequest$outboundSchema: z.ZodType<
   FilterProjectEnvsRequest$Outbound,
   z.ZodTypeDef,
   FilterProjectEnvsRequest
-> = z.object({
-  idOrName: z.string(),
-  gitBranch: z.string().optional(),
-  decrypt: QueryParamDecrypt$outboundSchema.optional(),
-  source: z.string().optional(),
-  customEnvironmentId: z.string().optional(),
-  customEnvironmentSlug: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    gitBranch: z.string().optional(),
+    decrypt: QueryParamDecrypt$outboundSchema.optional(),
+    source: z.string().optional(),
+    customEnvironmentId: z.string().optional(),
+    customEnvironmentSlug: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function filterProjectEnvsRequestToJSON(
   filterProjectEnvsRequest: FilterProjectEnvsRequest,
@@ -773,10 +775,12 @@ export const FilterProjectEnvsContentHintProjectsResponse17$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse17,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    projectId: types.string(),
-    type: types.literal("flags-connection-string"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      projectId: types.string(),
+      type: types.literal("flags-connection-string"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse17FromJSON(
   jsonString: string,
@@ -800,13 +804,15 @@ export const FilterProjectEnvsContentHintProjectsResponse16$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse16,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    integrationConfigurationId: types.string(),
-    integrationId: types.string(),
-    integrationProductId: types.string(),
-    storeId: types.string(),
-    type: types.literal("integration-store-secret"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integrationConfigurationId: types.string(),
+      integrationId: types.string(),
+      integrationProductId: types.string(),
+      storeId: types.string(),
+      type: types.literal("integration-store-secret"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse16FromJSON(
   jsonString: string,
@@ -830,10 +836,12 @@ export const FilterProjectEnvsContentHintProjectsResponse15$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse15,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-url-no-ssl"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-url-no-ssl"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse15FromJSON(
   jsonString: string,
@@ -857,10 +865,12 @@ export const FilterProjectEnvsContentHintProjectsResponse14$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse14,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-database"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-database"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse14FromJSON(
   jsonString: string,
@@ -884,10 +894,12 @@ export const FilterProjectEnvsContentHintProjectsResponse13$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse13,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-password"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-password"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse13FromJSON(
   jsonString: string,
@@ -911,10 +923,12 @@ export const FilterProjectEnvsContentHintProjectsResponse12$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse12,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-host"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-host"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse12FromJSON(
   jsonString: string,
@@ -938,10 +952,12 @@ export const FilterProjectEnvsContentHintProjectsResponse11$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse11,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-user"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-user"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse11FromJSON(
   jsonString: string,
@@ -965,10 +981,12 @@ export const FilterProjectEnvsContentHintProjectsResponse10$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse10,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-prisma-url"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-prisma-url"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse10FromJSON(
   jsonString: string,
@@ -992,10 +1010,12 @@ export const FilterProjectEnvsContentHintProjectsResponse9$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse9,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-url-non-pooling"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-url-non-pooling"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse9FromJSON(
   jsonString: string,
@@ -1019,10 +1039,12 @@ export const FilterProjectEnvsContentHintProjectsResponse8$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse8,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-url"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-url"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse8FromJSON(
   jsonString: string,
@@ -1046,10 +1068,12 @@ export const FilterProjectEnvsContentHintProjectsResponse7$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse7,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("blob-webhook-public-key"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("blob-webhook-public-key"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse7FromJSON(
   jsonString: string,
@@ -1073,10 +1097,12 @@ export const FilterProjectEnvsContentHintProjectsResponse6$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse6,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("blob-store-id"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("blob-store-id"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse6FromJSON(
   jsonString: string,
@@ -1100,10 +1126,12 @@ export const FilterProjectEnvsContentHintProjectsResponse5$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse5,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("blob-read-write-token"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("blob-read-write-token"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse5FromJSON(
   jsonString: string,
@@ -1127,10 +1155,12 @@ export const FilterProjectEnvsContentHintProjectsResponse4$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse4,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("redis-rest-api-read-only-token"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("redis-rest-api-read-only-token"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse4FromJSON(
   jsonString: string,
@@ -1154,10 +1184,12 @@ export const FilterProjectEnvsContentHintProjectsResponse3$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse3,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("redis-rest-api-token"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("redis-rest-api-token"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse3FromJSON(
   jsonString: string,
@@ -1181,10 +1213,12 @@ export const FilterProjectEnvsContentHintProjectsResponse2$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("redis-rest-api-url"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("redis-rest-api-url"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse2FromJSON(
   jsonString: string,
@@ -1208,10 +1242,12 @@ export const FilterProjectEnvsContentHintProjectsResponse1$inboundSchema:
     FilterProjectEnvsContentHintProjectsResponse1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("redis-url"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("redis-url"),
+    })
+  );
 
 export function filterProjectEnvsContentHintProjectsResponse1FromJSON(
   jsonString: string,
@@ -1235,108 +1271,10 @@ export const FilterProjectEnvsResponseBodyProjectsContentHint$inboundSchema:
     FilterProjectEnvsResponseBodyProjectsContentHint,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse1$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse2$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse3$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse4$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse5$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse6$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse7$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse8$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse9$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse10$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse11$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse12$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse13$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse14$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse15$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse16$inboundSchema),
-    z.lazy(() => FilterProjectEnvsContentHintProjectsResponse17$inboundSchema),
-  ]);
-
-export function filterProjectEnvsResponseBodyProjectsContentHintFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  FilterProjectEnvsResponseBodyProjectsContentHint,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      FilterProjectEnvsResponseBodyProjectsContentHint$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'FilterProjectEnvsResponseBodyProjectsContentHint' from JSON`,
-  );
-}
-
-/** @internal */
-export const FilterProjectEnvsResponseBodyProjectsSecurityIssues$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsSecurityIssues> =
-    z.nativeEnum(FilterProjectEnvsResponseBodyProjectsSecurityIssues);
-
-/** @internal */
-export const FilterProjectEnvsTargetProjectsResponse2$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsTargetProjectsResponse2> = z
-    .nativeEnum(FilterProjectEnvsTargetProjectsResponse2);
-
-/** @internal */
-export const FilterProjectEnvsTargetProjectsResponse1$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsTargetProjectsResponse1> = z
-    .nativeEnum(FilterProjectEnvsTargetProjectsResponse1);
-
-/** @internal */
-export const FilterProjectEnvsResponseBodyProjectsResponseTarget$inboundSchema:
-  z.ZodType<
-    FilterProjectEnvsResponseBodyProjectsResponseTarget,
-    z.ZodTypeDef,
-    unknown
-  > = smartUnion([
-    z.array(FilterProjectEnvsTargetProjectsResponse1$inboundSchema),
-    FilterProjectEnvsTargetProjectsResponse2$inboundSchema,
-  ]);
-
-export function filterProjectEnvsResponseBodyProjectsResponseTargetFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  FilterProjectEnvsResponseBodyProjectsResponseTarget,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      FilterProjectEnvsResponseBodyProjectsResponseTarget$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'FilterProjectEnvsResponseBodyProjectsResponseTarget' from JSON`,
-  );
-}
-
-/** @internal */
-export const FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponseType> = z
-    .nativeEnum(FilterProjectEnvsResponseBodyProjectsResponseType);
-
-/** @internal */
-export const FilterProjectEnvsResponseBodyProjectsVisibility$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsVisibility> = z
-    .nativeEnum(FilterProjectEnvsResponseBodyProjectsVisibility);
-
-/** @internal */
-export const ResponseBodyEnvs$inboundSchema: z.ZodType<
-  ResponseBodyEnvs,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  configurationId: z.nullable(types.string()).optional(),
-  contentHint: z.nullable(
+  > = /* @__PURE__ */ lazySchema$(() =>
     z.union([
       z.lazy(() => FilterProjectEnvsContentHintProjectsResponse1$inboundSchema),
-      z.lazy(() =>
-        FilterProjectEnvsContentHintProjectsResponse2$inboundSchema
-      ),
+      z.lazy(() => FilterProjectEnvsContentHintProjectsResponse2$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHintProjectsResponse3$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHintProjectsResponse4$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHintProjectsResponse5$inboundSchema),
@@ -1368,36 +1306,166 @@ export const ResponseBodyEnvs$inboundSchema: z.ZodType<
       z.lazy(() =>
         FilterProjectEnvsContentHintProjectsResponse17$inboundSchema
       ),
-    ]),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  id: types.optional(types.string()),
-  key: types.string(),
-  securityIssues: z.array(
-    FilterProjectEnvsResponseBodyProjectsSecurityIssues$inboundSchema,
-  ),
-  sunsetSecretId: types.optional(types.string()),
-  system: types.optional(types.boolean()),
-  target: types.optional(
+    ])
+  );
+
+export function filterProjectEnvsResponseBodyProjectsContentHintFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  FilterProjectEnvsResponseBodyProjectsContentHint,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      FilterProjectEnvsResponseBodyProjectsContentHint$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'FilterProjectEnvsResponseBodyProjectsContentHint' from JSON`,
+  );
+}
+
+/** @internal */
+export const FilterProjectEnvsResponseBodyProjectsSecurityIssues$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsSecurityIssues> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(FilterProjectEnvsResponseBodyProjectsSecurityIssues)
+    );
+
+/** @internal */
+export const FilterProjectEnvsTargetProjectsResponse2$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsTargetProjectsResponse2> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(FilterProjectEnvsTargetProjectsResponse2)
+    );
+
+/** @internal */
+export const FilterProjectEnvsTargetProjectsResponse1$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsTargetProjectsResponse1> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(FilterProjectEnvsTargetProjectsResponse1)
+    );
+
+/** @internal */
+export const FilterProjectEnvsResponseBodyProjectsResponseTarget$inboundSchema:
+  z.ZodType<
+    FilterProjectEnvsResponseBodyProjectsResponseTarget,
+    z.ZodTypeDef,
+    unknown
+  > = /* @__PURE__ */ lazySchema$(() =>
     smartUnion([
       z.array(FilterProjectEnvsTargetProjectsResponse1$inboundSchema),
       FilterProjectEnvsTargetProjectsResponse2$inboundSchema,
-    ]),
-  ),
-  type: FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema,
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.string(),
-  visibility: types.optional(
-    FilterProjectEnvsResponseBodyProjectsVisibility$inboundSchema,
-  ),
-});
+    ])
+  );
+
+export function filterProjectEnvsResponseBodyProjectsResponseTargetFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  FilterProjectEnvsResponseBodyProjectsResponseTarget,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      FilterProjectEnvsResponseBodyProjectsResponseTarget$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'FilterProjectEnvsResponseBodyProjectsResponseTarget' from JSON`,
+  );
+}
+
+/** @internal */
+export const FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(FilterProjectEnvsResponseBodyProjectsResponseType)
+    );
+
+/** @internal */
+export const FilterProjectEnvsResponseBodyProjectsVisibility$inboundSchema:
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsVisibility> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(FilterProjectEnvsResponseBodyProjectsVisibility)
+    );
+
+/** @internal */
+export const ResponseBodyEnvs$inboundSchema: z.ZodType<
+  ResponseBodyEnvs,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    configurationId: z.nullable(types.string()).optional(),
+    contentHint: z.nullable(z.union([
+      z.lazy(() => FilterProjectEnvsContentHintProjectsResponse1$inboundSchema),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse2$inboundSchema
+      ),
+      z.lazy(() => FilterProjectEnvsContentHintProjectsResponse3$inboundSchema),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse4$inboundSchema
+      ),
+      z.lazy(() => FilterProjectEnvsContentHintProjectsResponse5$inboundSchema),
+      z.lazy(() => FilterProjectEnvsContentHintProjectsResponse6$inboundSchema),
+      z.lazy(() => FilterProjectEnvsContentHintProjectsResponse7$inboundSchema),
+      z.lazy(() => FilterProjectEnvsContentHintProjectsResponse8$inboundSchema),
+      z.lazy(() => FilterProjectEnvsContentHintProjectsResponse9$inboundSchema),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse10$inboundSchema
+      ),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse11$inboundSchema
+      ),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse12$inboundSchema
+      ),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse13$inboundSchema
+      ),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse14$inboundSchema
+      ),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse15$inboundSchema
+      ),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse16$inboundSchema
+      ),
+      z.lazy(() =>
+        FilterProjectEnvsContentHintProjectsResponse17$inboundSchema
+      ),
+    ])).optional(),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.optional(types.boolean()),
+    edgeConfigId: z.nullable(types.string()).optional(),
+    edgeConfigTokenId: z.nullable(types.string()).optional(),
+    gitBranch: types.optional(types.string()),
+    id: types.optional(types.string()),
+    key: types.string(),
+    securityIssues: z.array(
+      FilterProjectEnvsResponseBodyProjectsSecurityIssues$inboundSchema,
+    ),
+    sunsetSecretId: types.optional(types.string()),
+    system: types.optional(types.boolean()),
+    target: types.optional(
+      smartUnion([
+        z.array(FilterProjectEnvsTargetProjectsResponse1$inboundSchema),
+        FilterProjectEnvsTargetProjectsResponse2$inboundSchema,
+      ]),
+    ),
+    type: FilterProjectEnvsResponseBodyProjectsResponseType$inboundSchema,
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.string(),
+    visibility: types.optional(
+      FilterProjectEnvsResponseBodyProjectsVisibility$inboundSchema,
+    ),
+  })
+);
 
 export function responseBodyEnvsFromJSON(
   jsonString: string,
@@ -1414,10 +1482,12 @@ export const FilterProjectEnvsResponseBody3$inboundSchema: z.ZodType<
   FilterProjectEnvsResponseBody3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  envs: z.array(z.lazy(() => ResponseBodyEnvs$inboundSchema)),
-  hiddenProductionEnvCount: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    envs: z.array(z.lazy(() => ResponseBodyEnvs$inboundSchema)),
+    hiddenProductionEnvCount: types.number(),
+  })
+);
 
 export function filterProjectEnvsResponseBody3FromJSON(
   jsonString: string,
@@ -1434,10 +1504,12 @@ export const FilterProjectEnvsContentHintProjects17$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects17,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectId: types.string(),
-  type: types.literal("flags-connection-string"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: types.string(),
+    type: types.literal("flags-connection-string"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects17FromJSON(
   jsonString: string,
@@ -1455,13 +1527,15 @@ export const FilterProjectEnvsContentHintProjects16$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects16,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  integrationProductId: types.string(),
-  storeId: types.string(),
-  type: types.literal("integration-store-secret"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    integrationProductId: types.string(),
+    storeId: types.string(),
+    type: types.literal("integration-store-secret"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects16FromJSON(
   jsonString: string,
@@ -1479,10 +1553,12 @@ export const FilterProjectEnvsContentHintProjects15$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects15,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-no-ssl"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-no-ssl"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects15FromJSON(
   jsonString: string,
@@ -1500,10 +1576,12 @@ export const FilterProjectEnvsContentHintProjects14$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects14,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-database"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-database"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects14FromJSON(
   jsonString: string,
@@ -1521,10 +1599,12 @@ export const FilterProjectEnvsContentHintProjects13$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects13,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-password"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-password"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects13FromJSON(
   jsonString: string,
@@ -1542,10 +1622,12 @@ export const FilterProjectEnvsContentHintProjects12$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects12,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-host"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-host"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects12FromJSON(
   jsonString: string,
@@ -1563,10 +1645,12 @@ export const FilterProjectEnvsContentHintProjects11$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects11,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-user"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects11FromJSON(
   jsonString: string,
@@ -1584,10 +1668,12 @@ export const FilterProjectEnvsContentHintProjects10$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects10,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-prisma-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-prisma-url"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects10FromJSON(
   jsonString: string,
@@ -1605,10 +1691,12 @@ export const FilterProjectEnvsContentHintProjects9$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects9,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-non-pooling"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-non-pooling"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects9FromJSON(
   jsonString: string,
@@ -1626,10 +1714,12 @@ export const FilterProjectEnvsContentHintProjects8$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects8,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects8FromJSON(
   jsonString: string,
@@ -1647,10 +1737,12 @@ export const FilterProjectEnvsContentHintProjects7$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-webhook-public-key"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-webhook-public-key"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects7FromJSON(
   jsonString: string,
@@ -1668,10 +1760,12 @@ export const FilterProjectEnvsContentHintProjects6$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-store-id"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-store-id"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects6FromJSON(
   jsonString: string,
@@ -1689,10 +1783,12 @@ export const FilterProjectEnvsContentHintProjects5$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-read-write-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-read-write-token"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects5FromJSON(
   jsonString: string,
@@ -1710,10 +1806,12 @@ export const FilterProjectEnvsContentHintProjects4$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-read-only-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-read-only-token"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects4FromJSON(
   jsonString: string,
@@ -1731,10 +1829,12 @@ export const FilterProjectEnvsContentHintProjects3$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-token"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects3FromJSON(
   jsonString: string,
@@ -1752,10 +1852,12 @@ export const FilterProjectEnvsContentHintProjects2$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-url"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects2FromJSON(
   jsonString: string,
@@ -1773,10 +1875,12 @@ export const FilterProjectEnvsContentHintProjects1$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHintProjects1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-url"),
+  })
+);
 
 export function filterProjectEnvsContentHintProjects1FromJSON(
   jsonString: string,
@@ -1794,25 +1898,27 @@ export const FilterProjectEnvsResponseBodyContentHint$inboundSchema: z.ZodType<
   FilterProjectEnvsResponseBodyContentHint,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => FilterProjectEnvsContentHintProjects1$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects2$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects3$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects4$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects5$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects6$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects7$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects8$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects9$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects10$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects11$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects12$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects13$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects14$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects15$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects16$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHintProjects17$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => FilterProjectEnvsContentHintProjects1$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects2$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects3$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects4$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects5$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects6$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects7$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects8$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects9$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects10$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects11$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects12$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects13$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects14$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects15$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects16$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHintProjects17$inboundSchema),
+  ])
+);
 
 export function filterProjectEnvsResponseBodyContentHintFromJSON(
   jsonString: string,
@@ -1832,18 +1938,24 @@ export function filterProjectEnvsResponseBodyContentHintFromJSON(
 
 /** @internal */
 export const FilterProjectEnvsResponseBodySecurityIssues$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodySecurityIssues> = z
-    .nativeEnum(FilterProjectEnvsResponseBodySecurityIssues);
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodySecurityIssues> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(FilterProjectEnvsResponseBodySecurityIssues)
+    );
 
 /** @internal */
 export const FilterProjectEnvsTargetProjects2$inboundSchema: z.ZodNativeEnum<
   typeof FilterProjectEnvsTargetProjects2
-> = z.nativeEnum(FilterProjectEnvsTargetProjects2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(FilterProjectEnvsTargetProjects2)
+);
 
 /** @internal */
 export const FilterProjectEnvsTargetProjects1$inboundSchema: z.ZodNativeEnum<
   typeof FilterProjectEnvsTargetProjects1
-> = z.nativeEnum(FilterProjectEnvsTargetProjects1);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(FilterProjectEnvsTargetProjects1)
+);
 
 /** @internal */
 export const FilterProjectEnvsResponseBodyProjectsTarget$inboundSchema:
@@ -1851,10 +1963,12 @@ export const FilterProjectEnvsResponseBodyProjectsTarget$inboundSchema:
     FilterProjectEnvsResponseBodyProjectsTarget,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(FilterProjectEnvsTargetProjects1$inboundSchema),
-    FilterProjectEnvsTargetProjects2$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(FilterProjectEnvsTargetProjects1$inboundSchema),
+      FilterProjectEnvsTargetProjects2$inboundSchema,
+    ])
+  );
 
 export function filterProjectEnvsResponseBodyProjectsTargetFromJSON(
   jsonString: string,
@@ -1874,21 +1988,25 @@ export function filterProjectEnvsResponseBodyProjectsTargetFromJSON(
 
 /** @internal */
 export const FilterProjectEnvsResponseBodyProjectsType$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsType> = z
-    .nativeEnum(FilterProjectEnvsResponseBodyProjectsType);
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyProjectsType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(FilterProjectEnvsResponseBodyProjectsType)
+    );
 
 /** @internal */
 export const FilterProjectEnvsResponseBodyVisibility$inboundSchema:
-  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyVisibility> = z
-    .nativeEnum(FilterProjectEnvsResponseBodyVisibility);
+  z.ZodNativeEnum<typeof FilterProjectEnvsResponseBodyVisibility> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(FilterProjectEnvsResponseBodyVisibility)
+    );
 
 /** @internal */
-export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> = z
-  .object({
-    comment: types.optional(types.string()),
-    configurationId: z.nullable(types.string()).optional(),
-    contentHint: z.nullable(
-      z.union([
+export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      comment: types.optional(types.string()),
+      configurationId: z.nullable(types.string()).optional(),
+      contentHint: z.nullable(z.union([
         z.lazy(() => FilterProjectEnvsContentHintProjects1$inboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects2$inboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects3$inboundSchema),
@@ -1906,36 +2024,36 @@ export const Envs$inboundSchema: z.ZodType<Envs, z.ZodTypeDef, unknown> = z
         z.lazy(() => FilterProjectEnvsContentHintProjects15$inboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects16$inboundSchema),
         z.lazy(() => FilterProjectEnvsContentHintProjects17$inboundSchema),
-      ]),
-    ).optional(),
-    createdAt: types.optional(types.number()),
-    createdBy: z.nullable(types.string()).optional(),
-    customEnvironmentIds: types.optional(z.array(types.string())),
-    decrypted: types.optional(types.boolean()),
-    edgeConfigId: z.nullable(types.string()).optional(),
-    edgeConfigTokenId: z.nullable(types.string()).optional(),
-    gitBranch: types.optional(types.string()),
-    id: types.optional(types.string()),
-    key: types.string(),
-    securityIssues: z.array(
-      FilterProjectEnvsResponseBodySecurityIssues$inboundSchema,
-    ),
-    sunsetSecretId: types.optional(types.string()),
-    system: types.optional(types.boolean()),
-    target: types.optional(
-      smartUnion([
-        z.array(FilterProjectEnvsTargetProjects1$inboundSchema),
-        FilterProjectEnvsTargetProjects2$inboundSchema,
-      ]),
-    ),
-    type: FilterProjectEnvsResponseBodyProjectsType$inboundSchema,
-    updatedAt: types.optional(types.number()),
-    updatedBy: z.nullable(types.string()).optional(),
-    value: types.string(),
-    visibility: types.optional(
-      FilterProjectEnvsResponseBodyVisibility$inboundSchema,
-    ),
-  });
+      ])).optional(),
+      createdAt: types.optional(types.number()),
+      createdBy: z.nullable(types.string()).optional(),
+      customEnvironmentIds: types.optional(z.array(types.string())),
+      decrypted: types.optional(types.boolean()),
+      edgeConfigId: z.nullable(types.string()).optional(),
+      edgeConfigTokenId: z.nullable(types.string()).optional(),
+      gitBranch: types.optional(types.string()),
+      id: types.optional(types.string()),
+      key: types.string(),
+      securityIssues: z.array(
+        FilterProjectEnvsResponseBodySecurityIssues$inboundSchema,
+      ),
+      sunsetSecretId: types.optional(types.string()),
+      system: types.optional(types.boolean()),
+      target: types.optional(
+        smartUnion([
+          z.array(FilterProjectEnvsTargetProjects1$inboundSchema),
+          FilterProjectEnvsTargetProjects2$inboundSchema,
+        ]),
+      ),
+      type: FilterProjectEnvsResponseBodyProjectsType$inboundSchema,
+      updatedAt: types.optional(types.number()),
+      updatedBy: z.nullable(types.string()).optional(),
+      value: types.string(),
+      visibility: types.optional(
+        FilterProjectEnvsResponseBodyVisibility$inboundSchema,
+      ),
+    })
+  );
 
 export function envsFromJSON(
   jsonString: string,
@@ -1952,10 +2070,12 @@ export const FilterProjectEnvsResponseBody2$inboundSchema: z.ZodType<
   FilterProjectEnvsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  envs: z.array(z.lazy(() => Envs$inboundSchema)),
-  pagination: Pagination$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    envs: z.array(z.lazy(() => Envs$inboundSchema)),
+    pagination: Pagination$inboundSchema,
+  })
+);
 
 export function filterProjectEnvsResponseBody2FromJSON(
   jsonString: string,
@@ -1972,10 +2092,12 @@ export const FilterProjectEnvsContentHint17$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint17,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectId: types.string(),
-  type: types.literal("flags-connection-string"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: types.string(),
+    type: types.literal("flags-connection-string"),
+  })
+);
 
 export function filterProjectEnvsContentHint17FromJSON(
   jsonString: string,
@@ -1992,13 +2114,15 @@ export const FilterProjectEnvsContentHint16$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint16,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  integrationProductId: types.string(),
-  storeId: types.string(),
-  type: types.literal("integration-store-secret"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    integrationProductId: types.string(),
+    storeId: types.string(),
+    type: types.literal("integration-store-secret"),
+  })
+);
 
 export function filterProjectEnvsContentHint16FromJSON(
   jsonString: string,
@@ -2015,10 +2139,12 @@ export const FilterProjectEnvsContentHint15$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint15,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-no-ssl"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-no-ssl"),
+  })
+);
 
 export function filterProjectEnvsContentHint15FromJSON(
   jsonString: string,
@@ -2035,10 +2161,12 @@ export const FilterProjectEnvsContentHint14$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint14,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-database"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-database"),
+  })
+);
 
 export function filterProjectEnvsContentHint14FromJSON(
   jsonString: string,
@@ -2055,10 +2183,12 @@ export const FilterProjectEnvsContentHint13$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint13,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-password"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-password"),
+  })
+);
 
 export function filterProjectEnvsContentHint13FromJSON(
   jsonString: string,
@@ -2075,10 +2205,12 @@ export const FilterProjectEnvsContentHint12$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint12,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-host"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-host"),
+  })
+);
 
 export function filterProjectEnvsContentHint12FromJSON(
   jsonString: string,
@@ -2095,10 +2227,12 @@ export const FilterProjectEnvsContentHint11$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint11,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-user"),
+  })
+);
 
 export function filterProjectEnvsContentHint11FromJSON(
   jsonString: string,
@@ -2115,10 +2249,12 @@ export const FilterProjectEnvsContentHint10$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint10,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-prisma-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-prisma-url"),
+  })
+);
 
 export function filterProjectEnvsContentHint10FromJSON(
   jsonString: string,
@@ -2135,10 +2271,12 @@ export const FilterProjectEnvsContentHint9$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint9,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-non-pooling"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-non-pooling"),
+  })
+);
 
 export function filterProjectEnvsContentHint9FromJSON(
   jsonString: string,
@@ -2155,10 +2293,12 @@ export const FilterProjectEnvsContentHint8$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint8,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url"),
+  })
+);
 
 export function filterProjectEnvsContentHint8FromJSON(
   jsonString: string,
@@ -2175,10 +2315,12 @@ export const FilterProjectEnvsContentHint7$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-webhook-public-key"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-webhook-public-key"),
+  })
+);
 
 export function filterProjectEnvsContentHint7FromJSON(
   jsonString: string,
@@ -2195,10 +2337,12 @@ export const FilterProjectEnvsContentHint6$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-store-id"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-store-id"),
+  })
+);
 
 export function filterProjectEnvsContentHint6FromJSON(
   jsonString: string,
@@ -2215,10 +2359,12 @@ export const FilterProjectEnvsContentHint5$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-read-write-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-read-write-token"),
+  })
+);
 
 export function filterProjectEnvsContentHint5FromJSON(
   jsonString: string,
@@ -2235,10 +2381,12 @@ export const FilterProjectEnvsContentHint4$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-read-only-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-read-only-token"),
+  })
+);
 
 export function filterProjectEnvsContentHint4FromJSON(
   jsonString: string,
@@ -2255,10 +2403,12 @@ export const FilterProjectEnvsContentHint3$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-token"),
+  })
+);
 
 export function filterProjectEnvsContentHint3FromJSON(
   jsonString: string,
@@ -2275,10 +2425,12 @@ export const FilterProjectEnvsContentHint2$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-url"),
+  })
+);
 
 export function filterProjectEnvsContentHint2FromJSON(
   jsonString: string,
@@ -2295,10 +2447,12 @@ export const FilterProjectEnvsContentHint1$inboundSchema: z.ZodType<
   FilterProjectEnvsContentHint1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-url"),
+  })
+);
 
 export function filterProjectEnvsContentHint1FromJSON(
   jsonString: string,
@@ -2315,25 +2469,27 @@ export const ResponseBodyContentHint$inboundSchema: z.ZodType<
   ResponseBodyContentHint,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => FilterProjectEnvsContentHint1$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint2$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint3$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint4$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint5$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint6$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint7$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint8$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint9$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint10$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint11$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint12$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint13$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint14$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint15$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint16$inboundSchema),
-  z.lazy(() => FilterProjectEnvsContentHint17$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => FilterProjectEnvsContentHint1$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint2$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint3$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint4$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint5$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint6$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint7$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint8$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint9$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint10$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint11$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint12$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint13$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint14$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint15$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint16$inboundSchema),
+    z.lazy(() => FilterProjectEnvsContentHint17$inboundSchema),
+  ])
+);
 
 export function responseBodyContentHintFromJSON(
   jsonString: string,
@@ -2348,27 +2504,29 @@ export function responseBodyContentHintFromJSON(
 /** @internal */
 export const ResponseBodySecurityIssues$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodySecurityIssues
-> = z.nativeEnum(ResponseBodySecurityIssues);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodySecurityIssues));
 
 /** @internal */
 export const FilterProjectEnvsTarget2$inboundSchema: z.ZodNativeEnum<
   typeof FilterProjectEnvsTarget2
-> = z.nativeEnum(FilterProjectEnvsTarget2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FilterProjectEnvsTarget2));
 
 /** @internal */
 export const FilterProjectEnvsTarget1$inboundSchema: z.ZodNativeEnum<
   typeof FilterProjectEnvsTarget1
-> = z.nativeEnum(FilterProjectEnvsTarget1);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FilterProjectEnvsTarget1));
 
 /** @internal */
 export const FilterProjectEnvsResponseBodyTarget$inboundSchema: z.ZodType<
   FilterProjectEnvsResponseBodyTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(FilterProjectEnvsTarget1$inboundSchema),
-  FilterProjectEnvsTarget2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(FilterProjectEnvsTarget1$inboundSchema),
+    FilterProjectEnvsTarget2$inboundSchema,
+  ])
+);
 
 export function filterProjectEnvsResponseBodyTargetFromJSON(
   jsonString: string,
@@ -2384,23 +2542,25 @@ export function filterProjectEnvsResponseBodyTargetFromJSON(
 /** @internal */
 export const FilterProjectEnvsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof FilterProjectEnvsResponseBodyType
-> = z.nativeEnum(FilterProjectEnvsResponseBodyType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(FilterProjectEnvsResponseBodyType)
+);
 
 /** @internal */
 export const ResponseBodyVisibility$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyVisibility
-> = z.nativeEnum(ResponseBodyVisibility);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyVisibility));
 
 /** @internal */
 export const FilterProjectEnvsResponseBody1$inboundSchema: z.ZodType<
   FilterProjectEnvsResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  configurationId: z.nullable(types.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    configurationId: z.nullable(types.string()).optional(),
+    contentHint: z.nullable(z.union([
       z.lazy(() => FilterProjectEnvsContentHint1$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint2$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint3$inboundSchema),
@@ -2418,32 +2578,32 @@ export const FilterProjectEnvsResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => FilterProjectEnvsContentHint15$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint16$inboundSchema),
       z.lazy(() => FilterProjectEnvsContentHint17$inboundSchema),
-    ]),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  id: types.optional(types.string()),
-  key: types.string(),
-  securityIssues: z.array(ResponseBodySecurityIssues$inboundSchema),
-  sunsetSecretId: types.optional(types.string()),
-  system: types.optional(types.boolean()),
-  target: types.optional(
-    smartUnion([
-      z.array(FilterProjectEnvsTarget1$inboundSchema),
-      FilterProjectEnvsTarget2$inboundSchema,
-    ]),
-  ),
-  type: FilterProjectEnvsResponseBodyType$inboundSchema,
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.string(),
-  visibility: types.optional(ResponseBodyVisibility$inboundSchema),
-});
+    ])).optional(),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.optional(types.boolean()),
+    edgeConfigId: z.nullable(types.string()).optional(),
+    edgeConfigTokenId: z.nullable(types.string()).optional(),
+    gitBranch: types.optional(types.string()),
+    id: types.optional(types.string()),
+    key: types.string(),
+    securityIssues: z.array(ResponseBodySecurityIssues$inboundSchema),
+    sunsetSecretId: types.optional(types.string()),
+    system: types.optional(types.boolean()),
+    target: types.optional(
+      smartUnion([
+        z.array(FilterProjectEnvsTarget1$inboundSchema),
+        FilterProjectEnvsTarget2$inboundSchema,
+      ]),
+    ),
+    type: FilterProjectEnvsResponseBodyType$inboundSchema,
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.string(),
+    visibility: types.optional(ResponseBodyVisibility$inboundSchema),
+  })
+);
 
 export function filterProjectEnvsResponseBody1FromJSON(
   jsonString: string,
@@ -2460,11 +2620,13 @@ export const FilterProjectEnvsResponseBody$inboundSchema: z.ZodType<
   FilterProjectEnvsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => FilterProjectEnvsResponseBody1$inboundSchema),
-  z.lazy(() => FilterProjectEnvsResponseBody2$inboundSchema),
-  z.lazy(() => FilterProjectEnvsResponseBody3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => FilterProjectEnvsResponseBody1$inboundSchema),
+    z.lazy(() => FilterProjectEnvsResponseBody2$inboundSchema),
+    z.lazy(() => FilterProjectEnvsResponseBody3$inboundSchema),
+  ])
+);
 
 export function filterProjectEnvsResponseBodyFromJSON(
   jsonString: string,

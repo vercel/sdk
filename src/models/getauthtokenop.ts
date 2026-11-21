@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { AuthToken, AuthToken$inboundSchema } from "./authtoken.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -35,9 +35,11 @@ export const GetAuthTokenRequest$outboundSchema: z.ZodType<
   GetAuthTokenRequest$Outbound,
   z.ZodTypeDef,
   GetAuthTokenRequest
-> = z.object({
-  tokenId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tokenId: z.string(),
+  })
+);
 
 export function getAuthTokenRequestToJSON(
   getAuthTokenRequest: GetAuthTokenRequest,
@@ -52,9 +54,11 @@ export const GetAuthTokenResponseBody$inboundSchema: z.ZodType<
   GetAuthTokenResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: AuthToken$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: AuthToken$inboundSchema,
+  })
+);
 
 export function getAuthTokenResponseBodyFromJSON(
   jsonString: string,

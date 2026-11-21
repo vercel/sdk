@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -72,11 +72,13 @@ export const GetRollingReleaseBillingStatusRequest$outboundSchema: z.ZodType<
   GetRollingReleaseBillingStatusRequest$Outbound,
   z.ZodTypeDef,
   GetRollingReleaseBillingStatusRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getRollingReleaseBillingStatusRequestToJSON(
   getRollingReleaseBillingStatusRequest: GetRollingReleaseBillingStatusRequest,
@@ -94,11 +96,13 @@ export const GetRollingReleaseBillingStatusResponseBody4$inboundSchema:
     GetRollingReleaseBillingStatusResponseBody4,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    availableSlots: types.number(),
-    message: types.string(),
-    reason: types.literal("available_slots"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      availableSlots: types.number(),
+      message: types.string(),
+      reason: types.literal("available_slots"),
+    })
+  );
 
 export function getRollingReleaseBillingStatusResponseBody4FromJSON(
   jsonString: string,
@@ -122,12 +126,14 @@ export const GetRollingReleaseBillingStatusResponseBody3$inboundSchema:
     GetRollingReleaseBillingStatusResponseBody3,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    availableSlots: types.number(),
-    enabledProjects: z.array(types.string()),
-    message: types.string(),
-    reason: types.literal("no_available_slots"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      availableSlots: types.number(),
+      enabledProjects: z.array(types.string()),
+      message: types.string(),
+      reason: types.literal("no_available_slots"),
+    })
+  );
 
 export function getRollingReleaseBillingStatusResponseBody3FromJSON(
   jsonString: string,
@@ -148,7 +154,7 @@ export function getRollingReleaseBillingStatusResponseBody3FromJSON(
 /** @internal */
 export const AvailableSlots$inboundSchema: z.ZodNativeEnum<
   typeof AvailableSlots
-> = z.nativeEnum(AvailableSlots);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AvailableSlots));
 
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBody2$inboundSchema:
@@ -156,11 +162,13 @@ export const GetRollingReleaseBillingStatusResponseBody2$inboundSchema:
     GetRollingReleaseBillingStatusResponseBody2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    availableSlots: AvailableSlots$inboundSchema,
-    message: types.string(),
-    reason: types.literal("unlimited_slots"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      availableSlots: AvailableSlots$inboundSchema,
+      message: types.string(),
+      reason: types.literal("unlimited_slots"),
+    })
+  );
 
 export function getRollingReleaseBillingStatusResponseBody2FromJSON(
   jsonString: string,
@@ -184,11 +192,13 @@ export const GetRollingReleaseBillingStatusResponseBody1$inboundSchema:
     GetRollingReleaseBillingStatusResponseBody1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    availableSlots: types.number(),
-    message: types.string(),
-    reason: types.literal("plan_not_supported"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      availableSlots: types.number(),
+      message: types.string(),
+      reason: types.literal("plan_not_supported"),
+    })
+  );
 
 export function getRollingReleaseBillingStatusResponseBody1FromJSON(
   jsonString: string,
@@ -209,12 +219,14 @@ export function getRollingReleaseBillingStatusResponseBody1FromJSON(
 /** @internal */
 export const GetRollingReleaseBillingStatusResponseBody$inboundSchema:
   z.ZodType<GetRollingReleaseBillingStatusResponseBody, z.ZodTypeDef, unknown> =
-    z.union([
-      z.lazy(() => GetRollingReleaseBillingStatusResponseBody1$inboundSchema),
-      z.lazy(() => GetRollingReleaseBillingStatusResponseBody2$inboundSchema),
-      z.lazy(() => GetRollingReleaseBillingStatusResponseBody3$inboundSchema),
-      z.lazy(() => GetRollingReleaseBillingStatusResponseBody4$inboundSchema),
-    ]);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.union([
+        z.lazy(() => GetRollingReleaseBillingStatusResponseBody1$inboundSchema),
+        z.lazy(() => GetRollingReleaseBillingStatusResponseBody2$inboundSchema),
+        z.lazy(() => GetRollingReleaseBillingStatusResponseBody3$inboundSchema),
+        z.lazy(() => GetRollingReleaseBillingStatusResponseBody4$inboundSchema),
+      ])
+    );
 
 export function getRollingReleaseBillingStatusResponseBodyFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -399,10 +399,12 @@ export const UpdateSessionNetworkPolicyAllowPath$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyAllowPath$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyAllowPath
-> = z.object({
-  exact: z.string().optional(),
-  startsWith: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    exact: z.string().optional(),
+    startsWith: z.string().optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyAllowPathToJSON(
   updateSessionNetworkPolicyAllowPath: UpdateSessionNetworkPolicyAllowPath,
@@ -425,10 +427,12 @@ export const UpdateSessionNetworkPolicyAllowKey$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyAllowKey$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyAllowKey
-> = z.object({
-  exact: z.string().optional(),
-  startsWith: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    exact: z.string().optional(),
+    startsWith: z.string().optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyAllowKeyToJSON(
   updateSessionNetworkPolicyAllowKey: UpdateSessionNetworkPolicyAllowKey,
@@ -451,10 +455,12 @@ export const UpdateSessionNetworkPolicyAllowValue$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyAllowValue$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyAllowValue
-> = z.object({
-  exact: z.string().optional(),
-  startsWith: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    exact: z.string().optional(),
+    startsWith: z.string().optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyAllowValueToJSON(
   updateSessionNetworkPolicyAllowValue: UpdateSessionNetworkPolicyAllowValue,
@@ -478,12 +484,14 @@ export const UpdateSessionNetworkPolicyAllowQueryString$outboundSchema:
     UpdateSessionNetworkPolicyAllowQueryString$Outbound,
     z.ZodTypeDef,
     UpdateSessionNetworkPolicyAllowQueryString
-  > = z.object({
-    key: z.lazy(() => UpdateSessionNetworkPolicyAllowKey$outboundSchema)
-      .optional(),
-    value: z.lazy(() => UpdateSessionNetworkPolicyAllowValue$outboundSchema)
-      .optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      key: z.lazy(() => UpdateSessionNetworkPolicyAllowKey$outboundSchema)
+        .optional(),
+      value: z.lazy(() => UpdateSessionNetworkPolicyAllowValue$outboundSchema)
+        .optional(),
+    })
+  );
 
 export function updateSessionNetworkPolicyAllowQueryStringToJSON(
   updateSessionNetworkPolicyAllowQueryString:
@@ -508,10 +516,12 @@ export const UpdateSessionNetworkPolicyAllowSandboxesKey$outboundSchema:
     UpdateSessionNetworkPolicyAllowSandboxesKey$Outbound,
     z.ZodTypeDef,
     UpdateSessionNetworkPolicyAllowSandboxesKey
-  > = z.object({
-    exact: z.string().optional(),
-    startsWith: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      exact: z.string().optional(),
+      startsWith: z.string().optional(),
+    })
+  );
 
 export function updateSessionNetworkPolicyAllowSandboxesKeyToJSON(
   updateSessionNetworkPolicyAllowSandboxesKey:
@@ -536,10 +546,12 @@ export const UpdateSessionNetworkPolicyAllowSandboxesValue$outboundSchema:
     UpdateSessionNetworkPolicyAllowSandboxesValue$Outbound,
     z.ZodTypeDef,
     UpdateSessionNetworkPolicyAllowSandboxesValue
-  > = z.object({
-    exact: z.string().optional(),
-    startsWith: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      exact: z.string().optional(),
+      startsWith: z.string().optional(),
+    })
+  );
 
 export function updateSessionNetworkPolicyAllowSandboxesValueToJSON(
   updateSessionNetworkPolicyAllowSandboxesValue:
@@ -563,13 +575,16 @@ export const UpdateSessionNetworkPolicyAllowHeaders$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyAllowHeaders$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyAllowHeaders
-> = z.object({
-  key: z.lazy(() => UpdateSessionNetworkPolicyAllowSandboxesKey$outboundSchema)
-    .optional(),
-  value: z.lazy(() =>
-    UpdateSessionNetworkPolicyAllowSandboxesValue$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.lazy(() =>
+      UpdateSessionNetworkPolicyAllowSandboxesKey$outboundSchema
+    ).optional(),
+    value: z.lazy(() =>
+      UpdateSessionNetworkPolicyAllowSandboxesValue$outboundSchema
+    ).optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyAllowHeadersToJSON(
   updateSessionNetworkPolicyAllowHeaders:
@@ -597,17 +612,19 @@ export const UpdateSessionNetworkPolicyAllowMatch$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyAllowMatch$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyAllowMatch
-> = z.object({
-  path: z.lazy(() => UpdateSessionNetworkPolicyAllowPath$outboundSchema)
-    .optional(),
-  method: z.array(z.string()).optional(),
-  queryString: z.array(
-    z.lazy(() => UpdateSessionNetworkPolicyAllowQueryString$outboundSchema),
-  ).optional(),
-  headers: z.array(
-    z.lazy(() => UpdateSessionNetworkPolicyAllowHeaders$outboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    path: z.lazy(() => UpdateSessionNetworkPolicyAllowPath$outboundSchema)
+      .optional(),
+    method: z.array(z.string()).optional(),
+    queryString: z.array(
+      z.lazy(() => UpdateSessionNetworkPolicyAllowQueryString$outboundSchema),
+    ).optional(),
+    headers: z.array(
+      z.lazy(() => UpdateSessionNetworkPolicyAllowHeaders$outboundSchema),
+    ).optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyAllowMatchToJSON(
   updateSessionNetworkPolicyAllowMatch: UpdateSessionNetworkPolicyAllowMatch,
@@ -629,9 +646,11 @@ export const UpdateSessionNetworkPolicyAllowTransform$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyAllowTransform$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyAllowTransform
-> = z.object({
-  headers: z.record(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    headers: z.record(z.string()).optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyAllowTransformToJSON(
   updateSessionNetworkPolicyAllowTransform:
@@ -657,12 +676,14 @@ export const UpdateSessionNetworkPolicyAllowResponse$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyAllowResponse$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyAllowResponse
-> = z.object({
-  statusCode: z.number().int(),
-  headers: z.record(z.string()).optional(),
-  body: z.string().optional(),
-  contentType: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    statusCode: z.number().int(),
+    headers: z.record(z.string()).optional(),
+    body: z.string().optional(),
+    contentType: z.string().optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyAllowResponseToJSON(
   updateSessionNetworkPolicyAllowResponse:
@@ -690,16 +711,19 @@ export const UpdateSessionNetworkPolicyAllow2$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyAllow2$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyAllow2
-> = z.object({
-  match: z.lazy(() => UpdateSessionNetworkPolicyAllowMatch$outboundSchema)
-    .optional(),
-  transform: z.array(
-    z.lazy(() => UpdateSessionNetworkPolicyAllowTransform$outboundSchema),
-  ).optional(),
-  forwardURL: z.string().optional(),
-  response: z.lazy(() => UpdateSessionNetworkPolicyAllowResponse$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    match: z.lazy(() => UpdateSessionNetworkPolicyAllowMatch$outboundSchema)
+      .optional(),
+    transform: z.array(
+      z.lazy(() => UpdateSessionNetworkPolicyAllowTransform$outboundSchema),
+    ).optional(),
+    forwardURL: z.string().optional(),
+    response: z.lazy(() =>
+      UpdateSessionNetworkPolicyAllowResponse$outboundSchema
+    ).optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyAllow2ToJSON(
   updateSessionNetworkPolicyAllow2: UpdateSessionNetworkPolicyAllow2,
@@ -721,12 +745,14 @@ export const RequestBodyAllow$outboundSchema: z.ZodType<
   RequestBodyAllow$Outbound,
   z.ZodTypeDef,
   RequestBodyAllow
-> = smartUnion([
-  z.array(z.string()),
-  z.record(
-    z.array(z.lazy(() => UpdateSessionNetworkPolicyAllow2$outboundSchema)),
-  ),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(z.string()),
+    z.record(
+      z.array(z.lazy(() => UpdateSessionNetworkPolicyAllow2$outboundSchema)),
+    ),
+  ])
+);
 
 export function requestBodyAllowToJSON(
   requestBodyAllow: RequestBodyAllow,
@@ -747,10 +773,12 @@ export const RequestBodySubnets$outboundSchema: z.ZodType<
   RequestBodySubnets$Outbound,
   z.ZodTypeDef,
   RequestBodySubnets
-> = z.object({
-  allow: z.array(z.string()).optional(),
-  deny: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allow: z.array(z.string()).optional(),
+    deny: z.array(z.string()).optional(),
+  })
+);
 
 export function requestBodySubnetsToJSON(
   requestBodySubnets: RequestBodySubnets,
@@ -773,15 +801,17 @@ export const UpdateSessionNetworkPolicyRequestBody2$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyRequestBody2$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyRequestBody2
-> = z.object({
-  allow: smartUnion([
-    z.array(z.string()),
-    z.record(
-      z.array(z.lazy(() => UpdateSessionNetworkPolicyAllow2$outboundSchema)),
-    ),
-  ]).optional(),
-  subnets: z.lazy(() => RequestBodySubnets$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allow: smartUnion([
+      z.array(z.string()),
+      z.record(
+        z.array(z.lazy(() => UpdateSessionNetworkPolicyAllow2$outboundSchema)),
+      ),
+    ]).optional(),
+    subnets: z.lazy(() => RequestBodySubnets$outboundSchema).optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyRequestBody2ToJSON(
   updateSessionNetworkPolicyRequestBody2:
@@ -796,8 +826,10 @@ export function updateSessionNetworkPolicyRequestBody2ToJSON(
 
 /** @internal */
 export const UpdateSessionNetworkPolicyRequestBodyMode$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateSessionNetworkPolicyRequestBodyMode> = z
-    .nativeEnum(UpdateSessionNetworkPolicyRequestBodyMode);
+  z.ZodNativeEnum<typeof UpdateSessionNetworkPolicyRequestBodyMode> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateSessionNetworkPolicyRequestBodyMode)
+    );
 
 /** @internal */
 export type RequestBodyPath$Outbound = {
@@ -810,10 +842,12 @@ export const RequestBodyPath$outboundSchema: z.ZodType<
   RequestBodyPath$Outbound,
   z.ZodTypeDef,
   RequestBodyPath
-> = z.object({
-  exact: z.string().optional(),
-  startsWith: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    exact: z.string().optional(),
+    startsWith: z.string().optional(),
+  })
+);
 
 export function requestBodyPathToJSON(
   requestBodyPath: RequestBodyPath,
@@ -832,10 +866,12 @@ export const RequestBodyKey$outboundSchema: z.ZodType<
   RequestBodyKey$Outbound,
   z.ZodTypeDef,
   RequestBodyKey
-> = z.object({
-  exact: z.string().optional(),
-  startsWith: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    exact: z.string().optional(),
+    startsWith: z.string().optional(),
+  })
+);
 
 export function requestBodyKeyToJSON(requestBodyKey: RequestBodyKey): string {
   return JSON.stringify(RequestBodyKey$outboundSchema.parse(requestBodyKey));
@@ -853,10 +889,12 @@ export const UpdateSessionNetworkPolicyRequestBodySandboxesValue$outboundSchema:
     UpdateSessionNetworkPolicyRequestBodySandboxesValue$Outbound,
     z.ZodTypeDef,
     UpdateSessionNetworkPolicyRequestBodySandboxesValue
-  > = z.object({
-    exact: z.string().optional(),
-    startsWith: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      exact: z.string().optional(),
+      startsWith: z.string().optional(),
+    })
+  );
 
 export function updateSessionNetworkPolicyRequestBodySandboxesValueToJSON(
   updateSessionNetworkPolicyRequestBodySandboxesValue:
@@ -882,12 +920,14 @@ export const RequestBodyQueryString$outboundSchema: z.ZodType<
   RequestBodyQueryString$Outbound,
   z.ZodTypeDef,
   RequestBodyQueryString
-> = z.object({
-  key: z.lazy(() => RequestBodyKey$outboundSchema).optional(),
-  value: z.lazy(() =>
-    UpdateSessionNetworkPolicyRequestBodySandboxesValue$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.lazy(() => RequestBodyKey$outboundSchema).optional(),
+    value: z.lazy(() =>
+      UpdateSessionNetworkPolicyRequestBodySandboxesValue$outboundSchema
+    ).optional(),
+  })
+);
 
 export function requestBodyQueryStringToJSON(
   requestBodyQueryString: RequestBodyQueryString,
@@ -908,10 +948,12 @@ export const UpdateSessionNetworkPolicyRequestBodyKey$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyRequestBodyKey$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyRequestBodyKey
-> = z.object({
-  exact: z.string().optional(),
-  startsWith: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    exact: z.string().optional(),
+    startsWith: z.string().optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyRequestBodyKeyToJSON(
   updateSessionNetworkPolicyRequestBodyKey:
@@ -936,10 +978,12 @@ export const UpdateSessionNetworkPolicyRequestBodyValue$outboundSchema:
     UpdateSessionNetworkPolicyRequestBodyValue$Outbound,
     z.ZodTypeDef,
     UpdateSessionNetworkPolicyRequestBodyValue
-  > = z.object({
-    exact: z.string().optional(),
-    startsWith: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      exact: z.string().optional(),
+      startsWith: z.string().optional(),
+    })
+  );
 
 export function updateSessionNetworkPolicyRequestBodyValueToJSON(
   updateSessionNetworkPolicyRequestBodyValue:
@@ -963,12 +1007,15 @@ export const RequestBodyHeaders$outboundSchema: z.ZodType<
   RequestBodyHeaders$Outbound,
   z.ZodTypeDef,
   RequestBodyHeaders
-> = z.object({
-  key: z.lazy(() => UpdateSessionNetworkPolicyRequestBodyKey$outboundSchema)
-    .optional(),
-  value: z.lazy(() => UpdateSessionNetworkPolicyRequestBodyValue$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.lazy(() => UpdateSessionNetworkPolicyRequestBodyKey$outboundSchema)
+      .optional(),
+    value: z.lazy(() =>
+      UpdateSessionNetworkPolicyRequestBodyValue$outboundSchema
+    ).optional(),
+  })
+);
 
 export function requestBodyHeadersToJSON(
   requestBodyHeaders: RequestBodyHeaders,
@@ -991,13 +1038,16 @@ export const RequestBodyMatch$outboundSchema: z.ZodType<
   RequestBodyMatch$Outbound,
   z.ZodTypeDef,
   RequestBodyMatch
-> = z.object({
-  path: z.lazy(() => RequestBodyPath$outboundSchema).optional(),
-  method: z.array(z.string()).optional(),
-  queryString: z.array(z.lazy(() => RequestBodyQueryString$outboundSchema))
-    .optional(),
-  headers: z.array(z.lazy(() => RequestBodyHeaders$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    path: z.lazy(() => RequestBodyPath$outboundSchema).optional(),
+    method: z.array(z.string()).optional(),
+    queryString: z.array(z.lazy(() => RequestBodyQueryString$outboundSchema))
+      .optional(),
+    headers: z.array(z.lazy(() => RequestBodyHeaders$outboundSchema))
+      .optional(),
+  })
+);
 
 export function requestBodyMatchToJSON(
   requestBodyMatch: RequestBodyMatch,
@@ -1019,11 +1069,13 @@ export const RequestBodyInjectionRules$outboundSchema: z.ZodType<
   RequestBodyInjectionRules$Outbound,
   z.ZodTypeDef,
   RequestBodyInjectionRules
-> = z.object({
-  domain: z.string(),
-  headers: z.record(z.string()),
-  match: z.lazy(() => RequestBodyMatch$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    headers: z.record(z.string()),
+    match: z.lazy(() => RequestBodyMatch$outboundSchema).optional(),
+  })
+);
 
 export function requestBodyInjectionRulesToJSON(
   requestBodyInjectionRules: RequestBodyInjectionRules,
@@ -1047,15 +1099,17 @@ export const UpdateSessionNetworkPolicyRequestBody1$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyRequestBody1$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyRequestBody1
-> = z.object({
-  mode: UpdateSessionNetworkPolicyRequestBodyMode$outboundSchema,
-  allowedDomains: z.array(z.string()).optional(),
-  allowedCIDRs: z.array(z.string()).optional(),
-  deniedCIDRs: z.array(z.string()).optional(),
-  injectionRules: z.array(
-    z.lazy(() => RequestBodyInjectionRules$outboundSchema),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: UpdateSessionNetworkPolicyRequestBodyMode$outboundSchema,
+    allowedDomains: z.array(z.string()).optional(),
+    allowedCIDRs: z.array(z.string()).optional(),
+    deniedCIDRs: z.array(z.string()).optional(),
+    injectionRules: z.array(
+      z.lazy(() => RequestBodyInjectionRules$outboundSchema),
+    ).optional(),
+  })
+);
 
 export function updateSessionNetworkPolicyRequestBody1ToJSON(
   updateSessionNetworkPolicyRequestBody1:
@@ -1078,10 +1132,12 @@ export const UpdateSessionNetworkPolicyRequestBody$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyRequestBody
-> = smartUnion([
-  z.lazy(() => UpdateSessionNetworkPolicyRequestBody1$outboundSchema),
-  z.lazy(() => UpdateSessionNetworkPolicyRequestBody2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateSessionNetworkPolicyRequestBody1$outboundSchema),
+    z.lazy(() => UpdateSessionNetworkPolicyRequestBody2$outboundSchema),
+  ])
+);
 
 export function updateSessionNetworkPolicyRequestBodyToJSON(
   updateSessionNetworkPolicyRequestBody: UpdateSessionNetworkPolicyRequestBody,
@@ -1109,19 +1165,21 @@ export const UpdateSessionNetworkPolicyRequest$outboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyRequest$Outbound,
   z.ZodTypeDef,
   UpdateSessionNetworkPolicyRequest
-> = z.object({
-  sessionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => UpdateSessionNetworkPolicyRequestBody1$outboundSchema),
-    z.lazy(() => UpdateSessionNetworkPolicyRequestBody2$outboundSchema),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => UpdateSessionNetworkPolicyRequestBody1$outboundSchema),
+      z.lazy(() => UpdateSessionNetworkPolicyRequestBody2$outboundSchema),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateSessionNetworkPolicyRequestToJSON(
   updateSessionNetworkPolicyRequest: UpdateSessionNetworkPolicyRequest,
@@ -1138,9 +1196,11 @@ export const UpdateSessionNetworkPolicyResponseBody$inboundSchema: z.ZodType<
   UpdateSessionNetworkPolicyResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session: Session$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session: Session$inboundSchema,
+  })
+);
 
 export function updateSessionNetworkPolicyResponseBodyFromJSON(
   jsonString: string,

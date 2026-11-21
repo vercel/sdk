@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import {
   ConnectConnectorUpdateData,
@@ -107,8 +108,10 @@ export type ConnectUpdateConnectorRequest = {
 
 /** @internal */
 export const ConnectUpdateConnectorRequestMcpEventsUiVisibility$outboundSchema:
-  z.ZodNativeEnum<typeof ConnectUpdateConnectorRequestMcpEventsUiVisibility> = z
-    .nativeEnum(ConnectUpdateConnectorRequestMcpEventsUiVisibility);
+  z.ZodNativeEnum<typeof ConnectUpdateConnectorRequestMcpEventsUiVisibility> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ConnectUpdateConnectorRequestMcpEventsUiVisibility)
+    );
 
 /** @internal */
 export type ConnectUpdateConnectorRequest$Outbound = {
@@ -130,21 +133,23 @@ export const ConnectUpdateConnectorRequest$outboundSchema: z.ZodType<
   ConnectUpdateConnectorRequest$Outbound,
   z.ZodTypeDef,
   ConnectUpdateConnectorRequest
-> = z.object({
-  triggers: z.boolean().optional(),
-  triggerVerificationInput: z.record(z.any()).optional(),
-  triggerRegistrationInput: z.record(z.any()).optional(),
-  events: z.array(z.string()).optional(),
-  mcpEventsUiVisibility:
-    ConnectUpdateConnectorRequestMcpEventsUiVisibility$outboundSchema
-      .optional(),
-  data: ConnectConnectorUpdateData$outboundSchema.optional(),
-  icon: z.string().optional(),
-  backgroundColor: z.string().optional(),
-  accentColor: z.string().optional(),
-  uid: z.string().optional(),
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    triggers: z.boolean().optional(),
+    triggerVerificationInput: z.record(z.any()).optional(),
+    triggerRegistrationInput: z.record(z.any()).optional(),
+    events: z.array(z.string()).optional(),
+    mcpEventsUiVisibility:
+      ConnectUpdateConnectorRequestMcpEventsUiVisibility$outboundSchema
+        .optional(),
+    data: ConnectConnectorUpdateData$outboundSchema.optional(),
+    icon: z.string().optional(),
+    backgroundColor: z.string().optional(),
+    accentColor: z.string().optional(),
+    uid: z.string().optional(),
+    name: z.string().optional(),
+  })
+);
 
 export function connectUpdateConnectorRequestToJSON(
   connectUpdateConnectorRequest: ConnectUpdateConnectorRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -166,9 +166,11 @@ export const RemoveCustomEnvironmentRequestBody$outboundSchema: z.ZodType<
   RemoveCustomEnvironmentRequestBody$Outbound,
   z.ZodTypeDef,
   RemoveCustomEnvironmentRequestBody
-> = z.object({
-  deleteUnassignedEnvironmentVariables: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deleteUnassignedEnvironmentVariables: z.boolean().optional(),
+  })
+);
 
 export function removeCustomEnvironmentRequestBodyToJSON(
   removeCustomEnvironmentRequestBody: RemoveCustomEnvironmentRequestBody,
@@ -194,18 +196,20 @@ export const RemoveCustomEnvironmentRequest$outboundSchema: z.ZodType<
   RemoveCustomEnvironmentRequest$Outbound,
   z.ZodTypeDef,
   RemoveCustomEnvironmentRequest
-> = z.object({
-  idOrName: z.string(),
-  environmentSlugOrId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => RemoveCustomEnvironmentRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    environmentSlugOrId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => RemoveCustomEnvironmentRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function removeCustomEnvironmentRequestToJSON(
   removeCustomEnvironmentRequest: RemoveCustomEnvironmentRequest,
@@ -219,19 +223,22 @@ export function removeCustomEnvironmentRequestToJSON(
 
 /** @internal */
 export const RemoveCustomEnvironmentEnvironmentType$inboundSchema:
-  z.ZodNativeEnum<typeof RemoveCustomEnvironmentEnvironmentType> = z.nativeEnum(
-    RemoveCustomEnvironmentEnvironmentType,
-  );
+  z.ZodNativeEnum<typeof RemoveCustomEnvironmentEnvironmentType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RemoveCustomEnvironmentEnvironmentType)
+    );
 
 /** @internal */
 export const RemoveCustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
   RemoveCustomEnvironmentBranchMatcher,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pattern: types.string(),
-  type: RemoveCustomEnvironmentEnvironmentType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pattern: types.string(),
+    type: RemoveCustomEnvironmentEnvironmentType$inboundSchema,
+  })
+);
 
 export function removeCustomEnvironmentBranchMatcherFromJSON(
   jsonString: string,
@@ -249,12 +256,14 @@ export const RemoveCustomEnvironmentVerification$inboundSchema: z.ZodType<
   RemoveCustomEnvironmentVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  reason: types.string(),
-  type: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    reason: types.string(),
+    type: types.string(),
+    value: types.string(),
+  })
+);
 
 export function removeCustomEnvironmentVerificationFromJSON(
   jsonString: string,
@@ -272,21 +281,23 @@ export const RemoveCustomEnvironmentDomains$inboundSchema: z.ZodType<
   RemoveCustomEnvironmentDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apexName: types.string(),
-  createdAt: types.optional(types.number()),
-  customEnvironmentId: z.nullable(types.string()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  name: types.string(),
-  projectId: types.string(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  updatedAt: types.optional(types.number()),
-  verification: types.optional(
-    z.array(z.lazy(() => RemoveCustomEnvironmentVerification$inboundSchema)),
-  ),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apexName: types.string(),
+    createdAt: types.optional(types.number()),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    name: types.string(),
+    projectId: types.string(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    updatedAt: types.optional(types.number()),
+    verification: types.optional(
+      z.array(z.lazy(() => RemoveCustomEnvironmentVerification$inboundSchema)),
+    ),
+    verified: types.boolean(),
+  })
+);
 
 export function removeCustomEnvironmentDomainsFromJSON(
   jsonString: string,
@@ -301,28 +312,32 @@ export function removeCustomEnvironmentDomainsFromJSON(
 /** @internal */
 export const RemoveCustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
   typeof RemoveCustomEnvironmentType
-> = z.nativeEnum(RemoveCustomEnvironmentType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(RemoveCustomEnvironmentType)
+);
 
 /** @internal */
 export const RemoveCustomEnvironmentResponseBody$inboundSchema: z.ZodType<
   RemoveCustomEnvironmentResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  branchMatcher: types.optional(
-    z.lazy(() => RemoveCustomEnvironmentBranchMatcher$inboundSchema),
-  ),
-  createdAt: types.number(),
-  currentDeploymentAliases: types.optional(z.array(types.string())),
-  description: types.optional(types.string()),
-  domains: types.optional(
-    z.array(z.lazy(() => RemoveCustomEnvironmentDomains$inboundSchema)),
-  ),
-  id: types.string(),
-  slug: types.string(),
-  type: RemoveCustomEnvironmentType$inboundSchema,
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    branchMatcher: types.optional(
+      z.lazy(() => RemoveCustomEnvironmentBranchMatcher$inboundSchema),
+    ),
+    createdAt: types.number(),
+    currentDeploymentAliases: types.optional(z.array(types.string())),
+    description: types.optional(types.string()),
+    domains: types.optional(
+      z.array(z.lazy(() => RemoveCustomEnvironmentDomains$inboundSchema)),
+    ),
+    id: types.string(),
+    slug: types.string(),
+    type: RemoveCustomEnvironmentType$inboundSchema,
+    updatedAt: types.number(),
+  })
+);
 
 export function removeCustomEnvironmentResponseBodyFromJSON(
   jsonString: string,

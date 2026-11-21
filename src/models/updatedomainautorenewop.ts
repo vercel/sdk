@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
@@ -66,9 +66,11 @@ export const UpdateDomainAutoRenewRequestBody$outboundSchema: z.ZodType<
   UpdateDomainAutoRenewRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateDomainAutoRenewRequestBody
-> = z.object({
-  autoRenew: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    autoRenew: z.boolean(),
+  })
+);
 
 export function updateDomainAutoRenewRequestBodyToJSON(
   updateDomainAutoRenewRequestBody: UpdateDomainAutoRenewRequestBody,
@@ -92,15 +94,17 @@ export const UpdateDomainAutoRenewRequest$outboundSchema: z.ZodType<
   UpdateDomainAutoRenewRequest$Outbound,
   z.ZodTypeDef,
   UpdateDomainAutoRenewRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => UpdateDomainAutoRenewRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() => UpdateDomainAutoRenewRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateDomainAutoRenewRequestToJSON(
   updateDomainAutoRenewRequest: UpdateDomainAutoRenewRequest,
@@ -118,12 +122,14 @@ export const UpdateDomainAutoRenewDomainsRegistrarResponseBody$inboundSchema:
     UpdateDomainAutoRenewDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Forbidden$inboundSchema,
-    NotAuthorizedForScope$inboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      Forbidden$inboundSchema,
+      NotAuthorizedForScope$inboundSchema.and(
+        z.object({ code: z.literal("not_authorized_for_scope") }),
+      ),
+    ])
+  );
 
 export function updateDomainAutoRenewDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -146,12 +152,14 @@ export const UpdateDomainAutoRenewResponseBody$inboundSchema: z.ZodType<
   UpdateDomainAutoRenewResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  DomainAlreadyRenewing$inboundSchema,
-  DomainNotRenewable$inboundSchema,
-  DomainNotRegistered$inboundSchema,
-  HttpApiDecodeError$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    DomainAlreadyRenewing$inboundSchema,
+    DomainNotRenewable$inboundSchema,
+    DomainNotRegistered$inboundSchema,
+    HttpApiDecodeError$inboundSchema,
+  ])
+);
 
 export function updateDomainAutoRenewResponseBodyFromJSON(
   jsonString: string,

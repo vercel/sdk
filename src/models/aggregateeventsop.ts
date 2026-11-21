@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import {
   collectExtraKeys as collectExtraKeys$,
+  lazySchema as lazySchema$,
   safeParse,
 } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
@@ -220,7 +221,7 @@ export type AggregateEventsResponseBody = {
 /** @internal */
 export const ByQueryParam1$outboundSchema: z.ZodNativeEnum<
   typeof ByQueryParam1
-> = z.nativeEnum(ByQueryParam1);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ByQueryParam1));
 
 /** @internal */
 export type QueryParamBy$Outbound = string | string;
@@ -230,7 +231,9 @@ export const QueryParamBy$outboundSchema: z.ZodType<
   QueryParamBy$Outbound,
   z.ZodTypeDef,
   QueryParamBy
-> = smartUnion([ByQueryParam1$outboundSchema, z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([ByQueryParam1$outboundSchema, z.string()])
+);
 
 export function queryParamByToJSON(queryParamBy: QueryParamBy): string {
   return JSON.stringify(QueryParamBy$outboundSchema.parse(queryParamBy));
@@ -244,7 +247,7 @@ export const QueryParamSince$outboundSchema: z.ZodType<
   QueryParamSince$Outbound,
   z.ZodTypeDef,
   QueryParamSince
-> = smartUnion([z.number(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => smartUnion([z.number(), z.string()]));
 
 export function queryParamSinceToJSON(
   queryParamSince: QueryParamSince,
@@ -260,7 +263,7 @@ export const QueryParamUntil$outboundSchema: z.ZodType<
   QueryParamUntil$Outbound,
   z.ZodTypeDef,
   QueryParamUntil
-> = smartUnion([z.number(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => smartUnion([z.number(), z.string()]));
 
 export function queryParamUntilToJSON(
   queryParamUntil: QueryParamUntil,
@@ -285,16 +288,18 @@ export const AggregateEventsRequest$outboundSchema: z.ZodType<
   AggregateEventsRequest$Outbound,
   z.ZodTypeDef,
   AggregateEventsRequest
-> = z.object({
-  projectId: z.string(),
-  by: z.array(smartUnion([ByQueryParam1$outboundSchema, z.string()])),
-  since: smartUnion([z.number(), z.string()]),
-  until: smartUnion([z.number(), z.string()]),
-  limit: z.number().int().default(10),
-  filter: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    by: z.array(smartUnion([ByQueryParam1$outboundSchema, z.string()])),
+    since: smartUnion([z.number(), z.string()]),
+    until: smartUnion([z.number(), z.string()]),
+    limit: z.number().int().default(10),
+    filter: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function aggregateEventsRequestToJSON(
   aggregateEventsRequest: AggregateEventsRequest,
@@ -309,33 +314,35 @@ export const AggregateEventsData2$inboundSchema: z.ZodType<
   AggregateEventsData2,
   z.ZodTypeDef,
   unknown
-> = collectExtraKeys$(
-  z.object({
-    browserName: types.string(),
-    country: types.string(),
-    deviceType: types.string(),
-    environment: types.string(),
-    eventData: types.string(),
-    eventName: types.string(),
-    flags: types.string(),
-    groupId: types.string(),
-    osName: types.string(),
-    projectId: types.string(),
-    projectName: types.string(),
-    referrerHostname: types.string(),
-    requestHostname: types.string(),
-    requestPath: types.string(),
-    route: types.string(),
-    userId: types.string(),
-    utmCampaign: types.string(),
-    utmContent: types.string(),
-    utmMedium: types.string(),
-    utmSource: types.string(),
-    utmTerm: types.string(),
-    visitorId: types.string(),
-  }).catchall(types.number()),
-  "additionalProperties",
-  true,
+> = /* @__PURE__ */ lazySchema$(() =>
+  collectExtraKeys$(
+    z.object({
+      browserName: types.string(),
+      country: types.string(),
+      deviceType: types.string(),
+      environment: types.string(),
+      eventData: types.string(),
+      eventName: types.string(),
+      flags: types.string(),
+      groupId: types.string(),
+      osName: types.string(),
+      projectId: types.string(),
+      projectName: types.string(),
+      referrerHostname: types.string(),
+      requestHostname: types.string(),
+      requestPath: types.string(),
+      route: types.string(),
+      userId: types.string(),
+      utmCampaign: types.string(),
+      utmContent: types.string(),
+      utmMedium: types.string(),
+      utmSource: types.string(),
+      utmTerm: types.string(),
+      visitorId: types.string(),
+    }).catchall(types.number()),
+    "additionalProperties",
+    true,
+  )
 );
 
 export function aggregateEventsData2FromJSON(
@@ -353,31 +360,33 @@ export const AggregateEventsData1$inboundSchema: z.ZodType<
   AggregateEventsData1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  browserName: types.optional(types.string()),
-  country: types.optional(types.string()),
-  deviceType: types.optional(types.string()),
-  environment: types.optional(types.string()),
-  eventData: types.optional(types.string()),
-  eventName: types.optional(types.string()),
-  flags: types.optional(types.string()),
-  groupId: types.optional(types.string()),
-  osName: types.optional(types.string()),
-  projectId: types.optional(types.string()),
-  projectName: types.optional(types.string()),
-  referrerHostname: types.optional(types.string()),
-  requestHostname: types.optional(types.string()),
-  requestPath: types.optional(types.string()),
-  route: types.optional(types.string()),
-  userId: types.optional(types.string()),
-  utmCampaign: types.optional(types.string()),
-  utmContent: types.optional(types.string()),
-  utmMedium: types.optional(types.string()),
-  utmSource: types.optional(types.string()),
-  utmTerm: types.optional(types.string()),
-  visitorId: types.optional(types.string()),
-  timestamp: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    browserName: types.optional(types.string()),
+    country: types.optional(types.string()),
+    deviceType: types.optional(types.string()),
+    environment: types.optional(types.string()),
+    eventData: types.optional(types.string()),
+    eventName: types.optional(types.string()),
+    flags: types.optional(types.string()),
+    groupId: types.optional(types.string()),
+    osName: types.optional(types.string()),
+    projectId: types.optional(types.string()),
+    projectName: types.optional(types.string()),
+    referrerHostname: types.optional(types.string()),
+    requestHostname: types.optional(types.string()),
+    requestPath: types.optional(types.string()),
+    route: types.optional(types.string()),
+    userId: types.optional(types.string()),
+    utmCampaign: types.optional(types.string()),
+    utmContent: types.optional(types.string()),
+    utmMedium: types.optional(types.string()),
+    utmSource: types.optional(types.string()),
+    utmTerm: types.optional(types.string()),
+    visitorId: types.optional(types.string()),
+    timestamp: types.date(),
+  })
+);
 
 export function aggregateEventsData1FromJSON(
   jsonString: string,
@@ -394,10 +403,12 @@ export const AggregateEventsData$inboundSchema: z.ZodType<
   AggregateEventsData,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(z.lazy(() => AggregateEventsData1$inboundSchema)),
-  z.array(z.lazy(() => AggregateEventsData2$inboundSchema)),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(z.lazy(() => AggregateEventsData1$inboundSchema)),
+    z.array(z.lazy(() => AggregateEventsData2$inboundSchema)),
+  ])
+);
 
 export function aggregateEventsDataFromJSON(
   jsonString: string,
@@ -412,14 +423,16 @@ export function aggregateEventsDataFromJSON(
 /** @internal */
 export const AggregateEventsGroupBy2$inboundSchema: z.ZodNativeEnum<
   typeof AggregateEventsGroupBy2
-> = z.nativeEnum(AggregateEventsGroupBy2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AggregateEventsGroupBy2));
 
 /** @internal */
 export const AggregateEventsGroupBy$inboundSchema: z.ZodType<
   AggregateEventsGroupBy,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), AggregateEventsGroupBy2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), AggregateEventsGroupBy2$inboundSchema])
+);
 
 export function aggregateEventsGroupByFromJSON(
   jsonString: string,
@@ -436,17 +449,19 @@ export const AggregateEventsQuery$inboundSchema: z.ZodType<
   AggregateEventsQuery,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  filter: types.optional(types.string()),
-  groupBy: types.optional(
-    z.array(
-      smartUnion([types.string(), AggregateEventsGroupBy2$inboundSchema]),
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    filter: types.optional(types.string()),
+    groupBy: types.optional(
+      z.array(
+        smartUnion([types.string(), AggregateEventsGroupBy2$inboundSchema]),
+      ),
     ),
-  ),
-  limit: types.number(),
-  since: types.string(),
-  until: types.string(),
-});
+    limit: types.number(),
+    since: types.string(),
+    until: types.string(),
+  })
+);
 
 export function aggregateEventsQueryFromJSON(
   jsonString: string,
@@ -463,14 +478,16 @@ export const AggregateEventsResponseBody$inboundSchema: z.ZodType<
   AggregateEventsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: smartUnion([
-    z.array(z.lazy(() => AggregateEventsData1$inboundSchema)),
-    z.array(z.lazy(() => AggregateEventsData2$inboundSchema)),
-  ]),
-  query: z.lazy(() => AggregateEventsQuery$inboundSchema),
-  version: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: smartUnion([
+      z.array(z.lazy(() => AggregateEventsData1$inboundSchema)),
+      z.array(z.lazy(() => AggregateEventsData2$inboundSchema)),
+    ]),
+    query: z.lazy(() => AggregateEventsQuery$inboundSchema),
+    version: types.number(),
+  })
+);
 
 export function aggregateEventsResponseBodyFromJSON(
   jsonString: string,

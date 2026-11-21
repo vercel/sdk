@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  * Upsert AI Gateway budget
  *
  * @remarks
- * Create or update a team-, project-, or user-scope AI Gateway budget.
+ * Create or update a team-, project-, or user-scope AI Gateway budget. Set a total with `limitAmount`, or raise the current budget with `increaseBy`.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

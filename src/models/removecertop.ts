@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -36,11 +36,13 @@ export const RemoveCertRequest$outboundSchema: z.ZodType<
   RemoveCertRequest$Outbound,
   z.ZodTypeDef,
   RemoveCertRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function removeCertRequestToJSON(
   removeCertRequest: RemoveCertRequest,
@@ -55,7 +57,7 @@ export const RemoveCertResponseBody$inboundSchema: z.ZodType<
   RemoveCertResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function removeCertResponseBodyFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -41,9 +41,11 @@ export const PatchEdgeConfigSchemaRequestBody$outboundSchema: z.ZodType<
   PatchEdgeConfigSchemaRequestBody$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigSchemaRequestBody
-> = z.object({
-  definition: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    definition: z.any().optional(),
+  })
+);
 
 export function patchEdgeConfigSchemaRequestBodyToJSON(
   patchEdgeConfigSchemaRequestBody: PatchEdgeConfigSchemaRequestBody,
@@ -69,17 +71,19 @@ export const PatchEdgeConfigSchemaRequest$outboundSchema: z.ZodType<
   PatchEdgeConfigSchemaRequest$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigSchemaRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  dryRun: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => PatchEdgeConfigSchemaRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string(),
+    dryRun: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => PatchEdgeConfigSchemaRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function patchEdgeConfigSchemaRequestToJSON(
   patchEdgeConfigSchemaRequest: PatchEdgeConfigSchemaRequest,
@@ -96,7 +100,7 @@ export const PatchEdgeConfigSchemaResponseBody$inboundSchema: z.ZodType<
   PatchEdgeConfigSchemaResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function patchEdgeConfigSchemaResponseBodyFromJSON(
   jsonString: string,

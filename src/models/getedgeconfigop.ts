@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -53,11 +53,13 @@ export const GetEdgeConfigRequest$outboundSchema: z.ZodType<
   GetEdgeConfigRequest$Outbound,
   z.ZodTypeDef,
   GetEdgeConfigRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getEdgeConfigRequestToJSON(
   getEdgeConfigRequest: GetEdgeConfigRequest,
@@ -72,17 +74,19 @@ export const GetEdgeConfigResponseBody$inboundSchema: z.ZodType<
   GetEdgeConfigResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.optional(types.string()),
-  digest: types.string(),
-  id: types.string(),
-  itemCount: types.number(),
-  ownerId: types.string(),
-  sizeInBytes: types.number(),
-  slug: types.string(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.optional(types.string()),
+    digest: types.string(),
+    id: types.string(),
+    itemCount: types.number(),
+    ownerId: types.string(),
+    sizeInBytes: types.number(),
+    slug: types.string(),
+    updatedAt: types.number(),
+  })
+);
 
 export function getEdgeConfigResponseBodyFromJSON(
   jsonString: string,

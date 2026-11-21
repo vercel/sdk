@@ -5,43 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventeen } from "@vercel/sdk/models/newprojects.js";
+import { TwoHundredAndSeventeen } from "@vercel/sdk/models/oldenvvar.js";
 
 let value: TwoHundredAndSeventeen = {
-  configurationId: "<id>",
-  databaseName: "<value>",
-  errorCode: null,
-  failedQueryIndex: 8990.7,
   integrationId: "<id>",
-  integrationProductSlug: "<value>",
+  integrationName: "<value>",
   integrationSlug: "<value>",
-  queries: [
-    {
-      command: "<value>",
-    },
-  ],
-  queryCount: 1324.27,
-  queryType: "schema",
-  readonly: true,
-  resourceId: "<id>",
-  rolledBack: false,
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `configurationId`                          | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `databaseName`                             | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `errorCode`                                | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `failedQueryIndex`                         | *number*                                   | :heavy_check_mark:                         | N/A                                        |
-| `integrationId`                            | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `integrationProductSlug`                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `integrationSlug`                          | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `queries`                                  | [models.Queries](../models/queries.md)[]   | :heavy_check_mark:                         | N/A                                        |
-| `queryCount`                               | *number*                                   | :heavy_check_mark:                         | N/A                                        |
-| `queryType`                                | [models.QueryType](../models/querytype.md) | :heavy_check_mark:                         | N/A                                        |
-| `readonly`                                 | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
-| `resourceId`                               | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `rolledBack`                               | *boolean*                                  | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
+| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
+| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |

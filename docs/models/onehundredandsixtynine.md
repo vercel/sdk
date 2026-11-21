@@ -5,15 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyNine } from "@vercel/sdk/models/usereventjobpayloaddeployhook.js";
+import { OneHundredAndSixtyNine } from "@vercel/sdk/models/job5.js";
 
 let value: OneHundredAndSixtyNine = {
   driveName: "<value>",
   projectId: "<id>",
   projectName: "<value>",
   region: "<value>",
-  snapshotId: "<id>",
-  snapshotName: "<value>",
 };
 ```
 
@@ -25,5 +23,3 @@ let value: OneHundredAndSixtyNine = {
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
 | `region`           | *string*           | :heavy_check_mark: | N/A                |
-| `snapshotId`       | *string*           | :heavy_check_mark: | N/A                |
-| `snapshotName`     | *string*           | :heavy_check_mark: | N/A                |

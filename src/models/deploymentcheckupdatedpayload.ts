@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -29,10 +29,12 @@ export type DeploymentCheckUpdatedPayload = {
 };
 
 /** @internal */
-export const Next$inboundSchema: z.ZodType<Next, z.ZodTypeDef, unknown> = z
-  .object({
-    targets: z.array(types.string()),
-  });
+export const Next$inboundSchema: z.ZodType<Next, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      targets: z.array(types.string()),
+    })
+  );
 
 export function nextFromJSON(
   jsonString: string,
@@ -49,9 +51,11 @@ export const Previous$inboundSchema: z.ZodType<
   Previous,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function previousFromJSON(
   jsonString: string,
@@ -68,14 +72,16 @@ export const DeploymentCheckUpdatedPayload$inboundSchema: z.ZodType<
   DeploymentCheckUpdatedPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  checkId: types.string(),
-  checkName: types.string(),
-  next: types.optional(z.lazy(() => Next$inboundSchema)),
-  previous: types.optional(z.lazy(() => Previous$inboundSchema)),
-  projectId: types.string(),
-  projectName: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    checkId: types.string(),
+    checkName: types.string(),
+    next: types.optional(z.lazy(() => Next$inboundSchema)),
+    previous: types.optional(z.lazy(() => Previous$inboundSchema)),
+    projectId: types.string(),
+    projectName: types.string(),
+  })
+);
 
 export function deploymentCheckUpdatedPayloadFromJSON(
   jsonString: string,

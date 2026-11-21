@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteConnectorRequest = {
   /**
@@ -31,11 +32,13 @@ export const DeleteConnectorRequest$outboundSchema: z.ZodType<
   DeleteConnectorRequest$Outbound,
   z.ZodTypeDef,
   DeleteConnectorRequest
-> = z.object({
-  connector: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connector: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteConnectorRequestToJSON(
   deleteConnectorRequest: DeleteConnectorRequest,

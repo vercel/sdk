@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DisconnectConnectorProjectEnvironmentRequest = {
   connector: string;
@@ -33,13 +34,15 @@ export const DisconnectConnectorProjectEnvironmentRequest$outboundSchema:
     DisconnectConnectorProjectEnvironmentRequest$Outbound,
     z.ZodTypeDef,
     DisconnectConnectorProjectEnvironmentRequest
-  > = z.object({
-    connector: z.string(),
-    projectId: z.string(),
-    environment: z.string(),
-    slug: z.string().optional(),
-    teamId: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      connector: z.string(),
+      projectId: z.string(),
+      environment: z.string(),
+      slug: z.string().optional(),
+      teamId: z.string().optional(),
+    })
+  );
 
 export function disconnectConnectorProjectEnvironmentRequestToJSON(
   disconnectConnectorProjectEnvironmentRequest:

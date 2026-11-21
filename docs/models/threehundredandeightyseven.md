@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightySeven } from "@vercel/sdk/models/oldssoprotection2.js";
+import { ThreeHundredAndEightySeven } from "@vercel/sdk/models/threehundredandeightytwo.js";
 
 let value: ThreeHundredAndEightySeven = {
-  certificateFingerprints: [],
-  connectionId: "<id>",
-  created: false,
+  gitProvider: "<value>",
+  gitProviderGroupDescriptor: "<value>",
+  gitScope: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `attributeMappingChanged`         | *true*                            | :heavy_minus_sign:                | N/A                               |
-| `certificateFingerprints`         | *string*[]                        | :heavy_check_mark:                | N/A                               |
-| `connectionId`                    | *string*                          | :heavy_check_mark:                | N/A                               |
-| `created`                         | *boolean*                         | :heavy_check_mark:                | N/A                               |
-| `previousCertificateFingerprints` | *string*[]                        | :heavy_minus_sign:                | N/A                               |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `gitProvider`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitProviderGroupDescriptor` | *string*                     | :heavy_check_mark:           | N/A                          |
+| `gitScope`                   | *string*                     | :heavy_check_mark:           | N/A                          |

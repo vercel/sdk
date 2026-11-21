@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -69,10 +69,12 @@ export const AssignAliasRequestBody$outboundSchema: z.ZodType<
   AssignAliasRequestBody$Outbound,
   z.ZodTypeDef,
   AssignAliasRequestBody
-> = z.object({
-  alias: z.string().optional(),
-  redirect: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: z.string().optional(),
+    redirect: z.nullable(z.string()).optional(),
+  })
+);
 
 export function assignAliasRequestBodyToJSON(
   assignAliasRequestBody: AssignAliasRequestBody,
@@ -95,16 +97,18 @@ export const AssignAliasRequest$outboundSchema: z.ZodType<
   AssignAliasRequest$Outbound,
   z.ZodTypeDef,
   AssignAliasRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => AssignAliasRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => AssignAliasRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function assignAliasRequestToJSON(
   assignAliasRequest: AssignAliasRequest,
@@ -119,12 +123,14 @@ export const AssignAliasResponseBody$inboundSchema: z.ZodType<
   AssignAliasResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.string(),
-  created: types.date(),
-  oldDeploymentId: z.nullable(types.string()).optional(),
-  uid: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.string(),
+    created: types.date(),
+    oldDeploymentId: z.nullable(types.string()).optional(),
+    uid: types.string(),
+  })
+);
 
 export function assignAliasResponseBodyFromJSON(
   jsonString: string,

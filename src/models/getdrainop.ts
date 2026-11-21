@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -401,12 +401,14 @@ export const GetDrainRequest$outboundSchema: z.ZodType<
   GetDrainRequest$Outbound,
   z.ZodTypeDef,
   GetDrainRequest
-> = z.object({
-  id: z.string(),
-  includeDeliveryStats: z.boolean().default(false),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    includeDeliveryStats: z.boolean().default(false),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getDrainRequestToJSON(
   getDrainRequest: GetDrainRequest,
@@ -417,17 +419,19 @@ export function getDrainRequestToJSON(
 /** @internal */
 export const DeliveryTarget$inboundSchema: z.ZodNativeEnum<
   typeof DeliveryTarget
-> = z.nativeEnum(DeliveryTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeliveryTarget));
 
 /** @internal */
 export const Delivery5$inboundSchema: z.ZodType<
   Delivery5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  target: DeliveryTarget$inboundSchema,
-  type: types.literal("internal"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    target: DeliveryTarget$inboundSchema,
+    type: types.literal("internal"),
+  })
+);
 
 export function delivery5FromJSON(
   jsonString: string,
@@ -442,49 +446,57 @@ export function delivery5FromJSON(
 /** @internal */
 export const GetDrainDeliveryDrainsCompression$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainDeliveryDrainsCompression
-> = z.nativeEnum(GetDrainDeliveryDrainsCompression);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDrainDeliveryDrainsCompression)
+);
 
 /** @internal */
 export const GetDrainDeliveryDrainsResponseEncoding$inboundSchema:
-  z.ZodNativeEnum<typeof GetDrainDeliveryDrainsResponseEncoding> = z.nativeEnum(
-    GetDrainDeliveryDrainsResponseEncoding,
-  );
+  z.ZodNativeEnum<typeof GetDrainDeliveryDrainsResponseEncoding> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetDrainDeliveryDrainsResponseEncoding)
+    );
 
 /** @internal */
 export const GetDrainDeliveryFileStructure$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainDeliveryFileStructure
-> = z.nativeEnum(GetDrainDeliveryFileStructure);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDrainDeliveryFileStructure)
+);
 
 /** @internal */
 export const GetDrainDeliveryObjectAcl$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainDeliveryObjectAcl
-> = z.nativeEnum(GetDrainDeliveryObjectAcl);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDrainDeliveryObjectAcl));
 
 /** @internal */
 export const GetDrainDeliveryServerSideEncryption$inboundSchema:
-  z.ZodNativeEnum<typeof GetDrainDeliveryServerSideEncryption> = z.nativeEnum(
-    GetDrainDeliveryServerSideEncryption,
-  );
+  z.ZodNativeEnum<typeof GetDrainDeliveryServerSideEncryption> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetDrainDeliveryServerSideEncryption)
+    );
 
 /** @internal */
 export const Delivery4$inboundSchema: z.ZodType<
   Delivery4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  compression: GetDrainDeliveryDrainsCompression$inboundSchema,
-  encoding: GetDrainDeliveryDrainsResponseEncoding$inboundSchema,
-  endpoint: types.string(),
-  fileStructure: GetDrainDeliveryFileStructure$inboundSchema,
-  kmsKeyId: types.optional(types.string()),
-  objectAcl: types.optional(GetDrainDeliveryObjectAcl$inboundSchema),
-  region: types.string(),
-  roleArn: types.string(),
-  serverSideEncryption: types.optional(
-    GetDrainDeliveryServerSideEncryption$inboundSchema,
-  ),
-  type: types.literal("s3"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    compression: GetDrainDeliveryDrainsCompression$inboundSchema,
+    encoding: GetDrainDeliveryDrainsResponseEncoding$inboundSchema,
+    endpoint: types.string(),
+    fileStructure: GetDrainDeliveryFileStructure$inboundSchema,
+    kmsKeyId: types.optional(types.string()),
+    objectAcl: types.optional(GetDrainDeliveryObjectAcl$inboundSchema),
+    region: types.string(),
+    roleArn: types.string(),
+    serverSideEncryption: types.optional(
+      GetDrainDeliveryServerSideEncryption$inboundSchema,
+    ),
+    type: types.literal("s3"),
+  })
+);
 
 export function delivery4FromJSON(
   jsonString: string,
@@ -501,11 +513,13 @@ export const GetDrainDelivery3$inboundSchema: z.ZodType<
   GetDrainDelivery3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  endpoint: types.string(),
-  table: types.string(),
-  type: types.literal("clickhouse"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    endpoint: types.string(),
+    table: types.string(),
+    type: types.literal("clickhouse"),
+  })
+);
 
 export function getDrainDelivery3FromJSON(
   jsonString: string,
@@ -520,16 +534,20 @@ export function getDrainDelivery3FromJSON(
 /** @internal */
 export const GetDrainDeliveryDrainsEncoding$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainDeliveryDrainsEncoding
-> = z.nativeEnum(GetDrainDeliveryDrainsEncoding);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDrainDeliveryDrainsEncoding)
+);
 
 /** @internal */
 export const GetDrainDeliveryEndpoint$inboundSchema: z.ZodType<
   GetDrainDeliveryEndpoint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  traces: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    traces: types.string(),
+  })
+);
 
 export function getDrainDeliveryEndpointFromJSON(
   jsonString: string,
@@ -544,16 +562,18 @@ export function getDrainDeliveryEndpointFromJSON(
 /** @internal */
 export const GetDrainSecretKind$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainSecretKind
-> = z.nativeEnum(GetDrainSecretKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDrainSecretKind));
 
 /** @internal */
 export const GetDrainSecret2$inboundSchema: z.ZodType<
   GetDrainSecret2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: GetDrainSecretKind$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: GetDrainSecretKind$inboundSchema,
+  })
+);
 
 export function getDrainSecret2FromJSON(
   jsonString: string,
@@ -570,7 +590,9 @@ export const DeliverySecret$inboundSchema: z.ZodType<
   DeliverySecret,
   z.ZodTypeDef,
   unknown
-> = smartUnion([z.lazy(() => GetDrainSecret2$inboundSchema), types.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.lazy(() => GetDrainSecret2$inboundSchema), types.string()])
+);
 
 export function deliverySecretFromJSON(
   jsonString: string,
@@ -587,15 +609,17 @@ export const GetDrainDelivery2$inboundSchema: z.ZodType<
   GetDrainDelivery2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  encoding: GetDrainDeliveryDrainsEncoding$inboundSchema,
-  endpoint: z.lazy(() => GetDrainDeliveryEndpoint$inboundSchema),
-  headers: z.record(types.string()),
-  secret: types.optional(
-    smartUnion([z.lazy(() => GetDrainSecret2$inboundSchema), types.string()]),
-  ),
-  type: types.literal("otlphttp"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    encoding: GetDrainDeliveryDrainsEncoding$inboundSchema,
+    endpoint: z.lazy(() => GetDrainDeliveryEndpoint$inboundSchema),
+    headers: z.record(types.string()),
+    secret: types.optional(
+      smartUnion([z.lazy(() => GetDrainSecret2$inboundSchema), types.string()]),
+    ),
+    type: types.literal("otlphttp"),
+  })
+);
 
 export function getDrainDelivery2FromJSON(
   jsonString: string,
@@ -610,22 +634,26 @@ export function getDrainDelivery2FromJSON(
 /** @internal */
 export const GetDrainDeliveryCompression$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainDeliveryCompression
-> = z.nativeEnum(GetDrainDeliveryCompression);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDrainDeliveryCompression)
+);
 
 /** @internal */
 export const GetDrainDeliveryEncoding$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainDeliveryEncoding
-> = z.nativeEnum(GetDrainDeliveryEncoding);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDrainDeliveryEncoding));
 
 /** @internal */
-export const SecretKind$inboundSchema: z.ZodNativeEnum<typeof SecretKind> = z
-  .nativeEnum(SecretKind);
+export const SecretKind$inboundSchema: z.ZodNativeEnum<typeof SecretKind> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SecretKind));
 
 /** @internal */
 export const Secret2$inboundSchema: z.ZodType<Secret2, z.ZodTypeDef, unknown> =
-  z.object({
-    kind: SecretKind$inboundSchema,
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      kind: SecretKind$inboundSchema,
+    })
+  );
 
 export function secret2FromJSON(
   jsonString: string,
@@ -639,7 +667,9 @@ export function secret2FromJSON(
 
 /** @internal */
 export const Secret$inboundSchema: z.ZodType<Secret, z.ZodTypeDef, unknown> =
-  smartUnion([z.lazy(() => Secret2$inboundSchema), types.string()]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([z.lazy(() => Secret2$inboundSchema), types.string()])
+  );
 
 export function secretFromJSON(
   jsonString: string,
@@ -656,16 +686,18 @@ export const GetDrainDelivery1$inboundSchema: z.ZodType<
   GetDrainDelivery1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  compression: types.optional(GetDrainDeliveryCompression$inboundSchema),
-  encoding: GetDrainDeliveryEncoding$inboundSchema,
-  endpoint: types.string(),
-  headers: z.record(types.string()),
-  secret: types.optional(
-    smartUnion([z.lazy(() => Secret2$inboundSchema), types.string()]),
-  ),
-  type: types.literal("http"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    compression: types.optional(GetDrainDeliveryCompression$inboundSchema),
+    encoding: GetDrainDeliveryEncoding$inboundSchema,
+    endpoint: types.string(),
+    headers: z.record(types.string()),
+    secret: types.optional(
+      smartUnion([z.lazy(() => Secret2$inboundSchema), types.string()]),
+    ),
+    type: types.literal("http"),
+  })
+);
 
 export function getDrainDelivery1FromJSON(
   jsonString: string,
@@ -682,13 +714,15 @@ export const GetDrainDelivery$inboundSchema: z.ZodType<
   GetDrainDelivery,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetDrainDelivery1$inboundSchema),
-  z.lazy(() => GetDrainDelivery2$inboundSchema),
-  z.lazy(() => GetDrainDelivery3$inboundSchema),
-  z.lazy(() => Delivery4$inboundSchema),
-  z.lazy(() => Delivery5$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetDrainDelivery1$inboundSchema),
+    z.lazy(() => GetDrainDelivery2$inboundSchema),
+    z.lazy(() => GetDrainDelivery3$inboundSchema),
+    z.lazy(() => Delivery4$inboundSchema),
+    z.lazy(() => Delivery5$inboundSchema),
+  ])
+);
 
 export function getDrainDeliveryFromJSON(
   jsonString: string,
@@ -703,27 +737,29 @@ export function getDrainDeliveryFromJSON(
 /** @internal */
 export const DisabledReason$inboundSchema: z.ZodNativeEnum<
   typeof DisabledReason
-> = z.nativeEnum(DisabledReason);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DisabledReason));
 
 /** @internal */
-export const GetDrainEnv$inboundSchema: z.ZodNativeEnum<typeof GetDrainEnv> = z
-  .nativeEnum(GetDrainEnv);
+export const GetDrainEnv$inboundSchema: z.ZodNativeEnum<typeof GetDrainEnv> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDrainEnv));
 
 /** @internal */
 export const GetDrainType$inboundSchema: z.ZodNativeEnum<typeof GetDrainType> =
-  z.nativeEnum(GetDrainType);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDrainType));
 
 /** @internal */
 export const GetDrainSampling$inboundSchema: z.ZodType<
   GetDrainSampling,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  env: types.optional(GetDrainEnv$inboundSchema),
-  rate: types.number(),
-  requestPath: types.optional(types.string()),
-  type: GetDrainType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    env: types.optional(GetDrainEnv$inboundSchema),
+    rate: types.number(),
+    requestPath: types.optional(types.string()),
+    type: GetDrainType$inboundSchema,
+  })
+);
 
 export function getDrainSamplingFromJSON(
   jsonString: string,
@@ -740,7 +776,7 @@ export const AiGateway$inboundSchema: z.ZodType<
   AiGateway,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function aiGatewayFromJSON(
   jsonString: string,
@@ -757,7 +793,7 @@ export const GetDrainAnalytics$inboundSchema: z.ZodType<
   GetDrainAnalytics,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getDrainAnalyticsFromJSON(
   jsonString: string,
@@ -774,7 +810,7 @@ export const AuditLog$inboundSchema: z.ZodType<
   AuditLog,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function auditLogFromJSON(
   jsonString: string,
@@ -791,7 +827,7 @@ export const GetDrainConnect$inboundSchema: z.ZodType<
   GetDrainConnect,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getDrainConnectFromJSON(
   jsonString: string,
@@ -808,7 +844,7 @@ export const GetDrainLog$inboundSchema: z.ZodType<
   GetDrainLog,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getDrainLogFromJSON(
   jsonString: string,
@@ -825,7 +861,7 @@ export const GetDrainSpeedInsights$inboundSchema: z.ZodType<
   GetDrainSpeedInsights,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getDrainSpeedInsightsFromJSON(
   jsonString: string,
@@ -842,7 +878,7 @@ export const GetDrainTrace$inboundSchema: z.ZodType<
   GetDrainTrace,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getDrainTraceFromJSON(
   jsonString: string,
@@ -859,23 +895,25 @@ export const GetDrainSchemas$inboundSchema: z.ZodType<
   GetDrainSchemas,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ai_gateway: types.optional(z.lazy(() => AiGateway$inboundSchema)),
-  analytics: types.optional(z.lazy(() => GetDrainAnalytics$inboundSchema)),
-  audit_log: types.optional(z.lazy(() => AuditLog$inboundSchema)),
-  connect: types.optional(z.lazy(() => GetDrainConnect$inboundSchema)),
-  log: types.optional(z.lazy(() => GetDrainLog$inboundSchema)),
-  speed_insights: types.optional(
-    z.lazy(() => GetDrainSpeedInsights$inboundSchema),
-  ),
-  trace: types.optional(z.lazy(() => GetDrainTrace$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "ai_gateway": "aiGateway",
-    "audit_log": "auditLog",
-    "speed_insights": "speedInsights",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ai_gateway: types.optional(z.lazy(() => AiGateway$inboundSchema)),
+    analytics: types.optional(z.lazy(() => GetDrainAnalytics$inboundSchema)),
+    audit_log: types.optional(z.lazy(() => AuditLog$inboundSchema)),
+    connect: types.optional(z.lazy(() => GetDrainConnect$inboundSchema)),
+    log: types.optional(z.lazy(() => GetDrainLog$inboundSchema)),
+    speed_insights: types.optional(
+      z.lazy(() => GetDrainSpeedInsights$inboundSchema),
+    ),
+    trace: types.optional(z.lazy(() => GetDrainTrace$inboundSchema)),
+  }).transform((v) => {
+    return remap$(v, {
+      "ai_gateway": "aiGateway",
+      "audit_log": "auditLog",
+      "speed_insights": "speedInsights",
+    });
+  })
+);
 
 export function getDrainSchemasFromJSON(
   jsonString: string,
@@ -892,13 +930,15 @@ export const GetDrainSource2$inboundSchema: z.ZodType<
   GetDrainSource2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalResourceId: types.optional(types.string()),
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  kind: types.literal("integration"),
-  resourceId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalResourceId: types.optional(types.string()),
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    kind: types.literal("integration"),
+    resourceId: types.optional(types.string()),
+  })
+);
 
 export function getDrainSource2FromJSON(
   jsonString: string,
@@ -911,18 +951,20 @@ export function getDrainSource2FromJSON(
 }
 
 /** @internal */
-export const DefaultFor$inboundSchema: z.ZodNativeEnum<typeof DefaultFor> = z
-  .nativeEnum(DefaultFor);
+export const DefaultFor$inboundSchema: z.ZodNativeEnum<typeof DefaultFor> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DefaultFor));
 
 /** @internal */
 export const GetDrainSource1$inboundSchema: z.ZodType<
   GetDrainSource1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultFor: types.optional(DefaultFor$inboundSchema),
-  kind: types.literal("self-served"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultFor: types.optional(DefaultFor$inboundSchema),
+    kind: types.literal("self-served"),
+  })
+);
 
 export function getDrainSource1FromJSON(
   jsonString: string,
@@ -939,10 +981,12 @@ export const GetDrainSource$inboundSchema: z.ZodType<
   GetDrainSource,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetDrainSource1$inboundSchema),
-  z.lazy(() => GetDrainSource2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetDrainSource1$inboundSchema),
+    z.lazy(() => GetDrainSource2$inboundSchema),
+  ])
+);
 
 export function getDrainSourceFromJSON(
   jsonString: string,
@@ -957,31 +1001,33 @@ export function getDrainSourceFromJSON(
 /** @internal */
 export const GetDrainStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainStatus
-> = z.nativeEnum(GetDrainStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDrainStatus));
 
 /** @internal */
 export const GetDrainState$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainState
-> = z.nativeEnum(GetDrainState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDrainState));
 
 /** @internal */
-export const Window$inboundSchema: z.ZodNativeEnum<typeof Window> = z
-  .nativeEnum(Window);
+export const Window$inboundSchema: z.ZodNativeEnum<typeof Window> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Window));
 
 /** @internal */
 export const DeliveryStats$inboundSchema: z.ZodType<
   DeliveryStats,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attempts: types.number(),
-  failures: types.number(),
-  state: GetDrainState$inboundSchema,
-  totalFailedDeliveries: types.number(),
-  totalRetriedDeliveries: types.number(),
-  totalSuccessfulDeliveries: types.number(),
-  window: Window$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attempts: types.number(),
+    failures: types.number(),
+    state: GetDrainState$inboundSchema,
+    totalFailedDeliveries: types.number(),
+    totalRetriedDeliveries: types.number(),
+    totalSuccessfulDeliveries: types.number(),
+    window: Window$inboundSchema,
+  })
+);
 
 export function deliveryStatsFromJSON(
   jsonString: string,
@@ -998,10 +1044,12 @@ export const GetDrainFilter2$inboundSchema: z.ZodType<
   GetDrainFilter2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  text: types.string(),
-  type: types.literal("odata"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    text: types.string(),
+    type: types.literal("odata"),
+  })
+);
 
 export function getDrainFilter2FromJSON(
   jsonString: string,
@@ -1016,18 +1064,20 @@ export function getDrainFilter2FromJSON(
 /** @internal */
 export const GetDrainFilterEnvironments$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainFilterEnvironments
-> = z.nativeEnum(GetDrainFilterEnvironments);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDrainFilterEnvironments));
 
 /** @internal */
 export const GetDrainFilterDeployment$inboundSchema: z.ZodType<
   GetDrainFilterDeployment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environments: types.optional(
-    z.array(GetDrainFilterEnvironments$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environments: types.optional(
+      z.array(GetDrainFilterEnvironments$inboundSchema),
+    ),
+  })
+);
 
 export function getDrainFilterDeploymentFromJSON(
   jsonString: string,
@@ -1042,21 +1092,24 @@ export function getDrainFilterDeploymentFromJSON(
 /** @internal */
 export const GetDrainFilterSources$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainFilterSources
-> = z.nativeEnum(GetDrainFilterSources);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDrainFilterSources));
 
 /** @internal */
 export const GetDrainFilterLog$inboundSchema: z.ZodType<
   GetDrainFilterLog,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  legacy_excludeCachedStaticAssetLogs: types.optional(types.boolean()),
-  sources: types.optional(z.array(GetDrainFilterSources$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "legacy_excludeCachedStaticAssetLogs": "legacyExcludeCachedStaticAssetLogs",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    legacy_excludeCachedStaticAssetLogs: types.optional(types.boolean()),
+    sources: types.optional(z.array(GetDrainFilterSources$inboundSchema)),
+  }).transform((v) => {
+    return remap$(v, {
+      "legacy_excludeCachedStaticAssetLogs":
+        "legacyExcludeCachedStaticAssetLogs",
+    });
+  })
+);
 
 export function getDrainFilterLogFromJSON(
   jsonString: string,
@@ -1073,9 +1126,11 @@ export const GetDrainFilterProject$inboundSchema: z.ZodType<
   GetDrainFilterProject,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ids: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ids: types.optional(z.array(types.string())),
+  })
+);
 
 export function getDrainFilterProjectFromJSON(
   jsonString: string,
@@ -1092,14 +1147,16 @@ export const GetDrainFilter1$inboundSchema: z.ZodType<
   GetDrainFilter1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deployment: types.optional(
-    z.lazy(() => GetDrainFilterDeployment$inboundSchema),
-  ),
-  log: types.optional(z.lazy(() => GetDrainFilterLog$inboundSchema)),
-  project: types.optional(z.lazy(() => GetDrainFilterProject$inboundSchema)),
-  type: types.literal("basic"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deployment: types.optional(
+      z.lazy(() => GetDrainFilterDeployment$inboundSchema),
+    ),
+    log: types.optional(z.lazy(() => GetDrainFilterLog$inboundSchema)),
+    project: types.optional(z.lazy(() => GetDrainFilterProject$inboundSchema)),
+    type: types.literal("basic"),
+  })
+);
 
 export function getDrainFilter1FromJSON(
   jsonString: string,
@@ -1116,10 +1173,12 @@ export const GetDrainFilter$inboundSchema: z.ZodType<
   GetDrainFilter,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetDrainFilter1$inboundSchema),
-  z.lazy(() => GetDrainFilter2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetDrainFilter1$inboundSchema),
+    z.lazy(() => GetDrainFilter2$inboundSchema),
+  ])
+);
 
 export function getDrainFilterFromJSON(
   jsonString: string,
@@ -1134,20 +1193,22 @@ export function getDrainFilterFromJSON(
 /** @internal */
 export const GetDrainVersion$inboundSchema: z.ZodNativeEnum<
   typeof GetDrainVersion
-> = z.nativeEnum(GetDrainVersion);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDrainVersion));
 
 /** @internal */
 export const FilterV2$inboundSchema: z.ZodType<
   FilterV2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  filter: z.union([
-    z.lazy(() => GetDrainFilter1$inboundSchema),
-    z.lazy(() => GetDrainFilter2$inboundSchema),
-  ]),
-  version: GetDrainVersion$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    filter: z.union([
+      z.lazy(() => GetDrainFilter1$inboundSchema),
+      z.lazy(() => GetDrainFilter2$inboundSchema),
+    ]),
+    version: GetDrainVersion$inboundSchema,
+  })
+);
 
 export function filterV2FromJSON(
   jsonString: string,
@@ -1164,37 +1225,39 @@ export const GetDrainResponseBody$inboundSchema: z.ZodType<
   GetDrainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  delivery: z.union([
-    z.lazy(() => GetDrainDelivery1$inboundSchema),
-    z.lazy(() => GetDrainDelivery2$inboundSchema),
-    z.lazy(() => GetDrainDelivery3$inboundSchema),
-    z.lazy(() => Delivery4$inboundSchema),
-    z.lazy(() => Delivery5$inboundSchema),
-  ]),
-  disabledAt: types.optional(types.number()),
-  disabledBy: types.optional(types.string()),
-  disabledReason: types.optional(DisabledReason$inboundSchema),
-  firstErrorTimestamp: types.optional(types.number()),
-  id: types.string(),
-  name: types.string(),
-  ownerId: types.string(),
-  projectIds: types.optional(z.array(types.string())),
-  sampling: types.optional(
-    z.array(z.lazy(() => GetDrainSampling$inboundSchema)),
-  ),
-  schemas: z.lazy(() => GetDrainSchemas$inboundSchema),
-  source: z.union([
-    z.lazy(() => GetDrainSource1$inboundSchema),
-    z.lazy(() => GetDrainSource2$inboundSchema),
-  ]),
-  status: types.optional(GetDrainStatus$inboundSchema),
-  teamId: z.nullable(types.string()).optional(),
-  updatedAt: types.number(),
-  deliveryStats: types.optional(z.lazy(() => DeliveryStats$inboundSchema)),
-  filterV2: types.optional(z.lazy(() => FilterV2$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    delivery: z.union([
+      z.lazy(() => GetDrainDelivery1$inboundSchema),
+      z.lazy(() => GetDrainDelivery2$inboundSchema),
+      z.lazy(() => GetDrainDelivery3$inboundSchema),
+      z.lazy(() => Delivery4$inboundSchema),
+      z.lazy(() => Delivery5$inboundSchema),
+    ]),
+    disabledAt: types.optional(types.number()),
+    disabledBy: types.optional(types.string()),
+    disabledReason: types.optional(DisabledReason$inboundSchema),
+    firstErrorTimestamp: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ownerId: types.string(),
+    projectIds: types.optional(z.array(types.string())),
+    sampling: types.optional(
+      z.array(z.lazy(() => GetDrainSampling$inboundSchema)),
+    ),
+    schemas: z.lazy(() => GetDrainSchemas$inboundSchema),
+    source: z.union([
+      z.lazy(() => GetDrainSource1$inboundSchema),
+      z.lazy(() => GetDrainSource2$inboundSchema),
+    ]),
+    status: types.optional(GetDrainStatus$inboundSchema),
+    teamId: z.nullable(types.string()).optional(),
+    updatedAt: types.number(),
+    deliveryStats: types.optional(z.lazy(() => DeliveryStats$inboundSchema)),
+    filterV2: types.optional(z.lazy(() => FilterV2$inboundSchema)),
+  })
+);
 
 export function getDrainResponseBodyFromJSON(
   jsonString: string,

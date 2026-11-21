@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
   SandboxPublicRoute,
@@ -50,11 +50,13 @@ export const GetSessionRequest$outboundSchema: z.ZodType<
   GetSessionRequest$Outbound,
   z.ZodTypeDef,
   GetSessionRequest
-> = z.object({
-  sessionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getSessionRequestToJSON(
   getSessionRequest: GetSessionRequest,
@@ -69,10 +71,12 @@ export const GetSessionResponseBody$inboundSchema: z.ZodType<
   GetSessionResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  routes: z.array(SandboxPublicRoute$inboundSchema),
-  session: Session$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    routes: z.array(SandboxPublicRoute$inboundSchema),
+    session: Session$inboundSchema,
+  })
+);
 
 export function getSessionResponseBodyFromJSON(
   jsonString: string,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const IncludeDisabled = {
@@ -34,7 +35,7 @@ export type ListAiGatewayRulesRequest = {
 /** @internal */
 export const IncludeDisabled$outboundSchema: z.ZodNativeEnum<
   typeof IncludeDisabled
-> = z.nativeEnum(IncludeDisabled);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(IncludeDisabled));
 
 /** @internal */
 export type ListAiGatewayRulesRequest$Outbound = {
@@ -50,13 +51,15 @@ export const ListAiGatewayRulesRequest$outboundSchema: z.ZodType<
   ListAiGatewayRulesRequest$Outbound,
   z.ZodTypeDef,
   ListAiGatewayRulesRequest
-> = z.object({
-  includeDisabled: IncludeDisabled$outboundSchema.optional(),
-  limit: z.number().int().optional(),
-  cursor: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    includeDisabled: IncludeDisabled$outboundSchema.optional(),
+    limit: z.number().int().optional(),
+    cursor: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listAiGatewayRulesRequestToJSON(
   listAiGatewayRulesRequest: ListAiGatewayRulesRequest,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -175,15 +175,17 @@ export const GetProjectMembersRequest$outboundSchema: z.ZodType<
   GetProjectMembersRequest$Outbound,
   z.ZodTypeDef,
   GetProjectMembersRequest
-> = z.object({
-  idOrName: z.string(),
-  limit: z.number().int().optional(),
-  since: z.number().int().optional(),
-  until: z.number().int().optional(),
-  search: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    limit: z.number().int().optional(),
+    since: z.number().int().optional(),
+    until: z.number().int().optional(),
+    search: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getProjectMembersRequestToJSON(
   getProjectMembersRequest: GetProjectMembersRequest,
@@ -196,34 +198,36 @@ export function getProjectMembersRequestToJSON(
 /** @internal */
 export const ComputedProjectRole$inboundSchema: z.ZodNativeEnum<
   typeof ComputedProjectRole
-> = z.nativeEnum(ComputedProjectRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ComputedProjectRole));
 
 /** @internal */
 export const ResponseBodyRole$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyRole
-> = z.nativeEnum(ResponseBodyRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyRole));
 
 /** @internal */
 export const ResponseBodyTeamRole$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyTeamRole
-> = z.nativeEnum(ResponseBodyTeamRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyTeamRole));
 
 /** @internal */
 export const ResponseBodyMembers$inboundSchema: z.ZodType<
   ResponseBodyMembers,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  avatar: types.optional(types.string()),
-  computedProjectRole: ComputedProjectRole$inboundSchema,
-  createdAt: types.number(),
-  email: types.string(),
-  name: types.optional(types.string()),
-  role: ResponseBodyRole$inboundSchema,
-  teamRole: ResponseBodyTeamRole$inboundSchema,
-  uid: types.string(),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: types.optional(types.string()),
+    computedProjectRole: ComputedProjectRole$inboundSchema,
+    createdAt: types.number(),
+    email: types.string(),
+    name: types.optional(types.string()),
+    role: ResponseBodyRole$inboundSchema,
+    teamRole: ResponseBodyTeamRole$inboundSchema,
+    uid: types.string(),
+    username: types.string(),
+  })
+);
 
 export function responseBodyMembersFromJSON(
   jsonString: string,
@@ -240,12 +244,14 @@ export const GetProjectMembersResponseBodyPagination$inboundSchema: z.ZodType<
   GetProjectMembersResponseBodyPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  hasNext: types.boolean(),
-  next: types.nullable(types.number()),
-  prev: types.nullable(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    hasNext: types.boolean(),
+    next: types.nullable(types.number()),
+    prev: types.nullable(types.number()),
+  })
+);
 
 export function getProjectMembersResponseBodyPaginationFromJSON(
   jsonString: string,
@@ -268,12 +274,14 @@ export const GetProjectMembersResponseBody2$inboundSchema: z.ZodType<
   GetProjectMembersResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  members: z.array(z.lazy(() => ResponseBodyMembers$inboundSchema)),
-  pagination: z.lazy(() =>
-    GetProjectMembersResponseBodyPagination$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    members: z.array(z.lazy(() => ResponseBodyMembers$inboundSchema)),
+    pagination: z.lazy(() =>
+      GetProjectMembersResponseBodyPagination$inboundSchema
+    ),
+  })
+);
 
 export function getProjectMembersResponseBody2FromJSON(
   jsonString: string,
@@ -290,7 +298,7 @@ export const GetProjectMembersResponseBody1$inboundSchema: z.ZodType<
   GetProjectMembersResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getProjectMembersResponseBody1FromJSON(
   jsonString: string,
@@ -307,10 +315,12 @@ export const GetProjectMembersResponseBody$inboundSchema: z.ZodType<
   GetProjectMembersResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetProjectMembersResponseBody2$inboundSchema),
-  z.lazy(() => GetProjectMembersResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetProjectMembersResponseBody2$inboundSchema),
+    z.lazy(() => GetProjectMembersResponseBody1$inboundSchema),
+  ])
+);
 
 export function getProjectMembersResponseBodyFromJSON(
   jsonString: string,

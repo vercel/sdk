@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -95,7 +95,7 @@ export type UpdateProjectDomainResponseBody = {
 /** @internal */
 export const RedirectStatusCode$outboundSchema: z.ZodNativeEnum<
   typeof RedirectStatusCode
-> = z.nativeEnum(RedirectStatusCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RedirectStatusCode));
 
 /** @internal */
 export type UpdateProjectDomainRequestBody$Outbound = {
@@ -109,11 +109,14 @@ export const UpdateProjectDomainRequestBody$outboundSchema: z.ZodType<
   UpdateProjectDomainRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateProjectDomainRequestBody
-> = z.object({
-  gitBranch: z.nullable(z.string()).optional(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(RedirectStatusCode$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    gitBranch: z.nullable(z.string()).optional(),
+    redirect: z.nullable(z.string()).optional(),
+    redirectStatusCode: z.nullable(RedirectStatusCode$outboundSchema)
+      .optional(),
+  })
+);
 
 export function updateProjectDomainRequestBodyToJSON(
   updateProjectDomainRequestBody: UpdateProjectDomainRequestBody,
@@ -139,17 +142,19 @@ export const UpdateProjectDomainRequest$outboundSchema: z.ZodType<
   UpdateProjectDomainRequest$Outbound,
   z.ZodTypeDef,
   UpdateProjectDomainRequest
-> = z.object({
-  idOrName: z.string(),
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateProjectDomainRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    domain: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateProjectDomainRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateProjectDomainRequestToJSON(
   updateProjectDomainRequest: UpdateProjectDomainRequest,
@@ -164,12 +169,14 @@ export const UpdateProjectDomainVerification$inboundSchema: z.ZodType<
   UpdateProjectDomainVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  reason: types.string(),
-  type: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    reason: types.string(),
+    type: types.string(),
+    value: types.string(),
+  })
+);
 
 export function updateProjectDomainVerificationFromJSON(
   jsonString: string,
@@ -186,21 +193,23 @@ export const UpdateProjectDomainResponseBody$inboundSchema: z.ZodType<
   UpdateProjectDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apexName: types.string(),
-  createdAt: types.optional(types.number()),
-  customEnvironmentId: z.nullable(types.string()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  name: types.string(),
-  projectId: types.string(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  updatedAt: types.optional(types.number()),
-  verification: types.optional(
-    z.array(z.lazy(() => UpdateProjectDomainVerification$inboundSchema)),
-  ),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apexName: types.string(),
+    createdAt: types.optional(types.number()),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    name: types.string(),
+    projectId: types.string(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    updatedAt: types.optional(types.number()),
+    verification: types.optional(
+      z.array(z.lazy(() => UpdateProjectDomainVerification$inboundSchema)),
+    ),
+    verified: types.boolean(),
+  })
+);
 
 export function updateProjectDomainResponseBodyFromJSON(
   jsonString: string,

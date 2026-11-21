@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -53,9 +53,11 @@ export const JoinTeamRequestBody$outboundSchema: z.ZodType<
   JoinTeamRequestBody$Outbound,
   z.ZodTypeDef,
   JoinTeamRequestBody
-> = z.object({
-  inviteCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    inviteCode: z.string().optional(),
+  })
+);
 
 export function joinTeamRequestBodyToJSON(
   joinTeamRequestBody: JoinTeamRequestBody,
@@ -76,14 +78,16 @@ export const JoinTeamRequest$outboundSchema: z.ZodType<
   JoinTeamRequest$Outbound,
   z.ZodTypeDef,
   JoinTeamRequest
-> = z.object({
-  teamId: z.string(),
-  requestBody: z.lazy(() => JoinTeamRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string(),
+    requestBody: z.lazy(() => JoinTeamRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function joinTeamRequestToJSON(
   joinTeamRequest: JoinTeamRequest,
@@ -96,12 +100,14 @@ export const JoinTeamResponseBody$inboundSchema: z.ZodType<
   JoinTeamResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  from: types.string(),
-  name: types.string(),
-  slug: types.string(),
-  teamId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    from: types.string(),
+    name: types.string(),
+    slug: types.string(),
+    teamId: types.string(),
+  })
+);
 
 export function joinTeamResponseBodyFromJSON(
   jsonString: string,

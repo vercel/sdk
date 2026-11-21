@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -190,11 +190,13 @@ export const GetMicrofrontendsConfigForProjectRequest$outboundSchema: z.ZodType<
   GetMicrofrontendsConfigForProjectRequest$Outbound,
   z.ZodTypeDef,
   GetMicrofrontendsConfigForProjectRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getMicrofrontendsConfigForProjectRequestToJSON(
   getMicrofrontendsConfigForProjectRequest:
@@ -213,7 +215,9 @@ export const GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal$in
     GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocal,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.string(), types.number()]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), types.number()])
+  );
 
 export function getMicrofrontendsConfigForProjectApplicationsMicrofrontendsLocalFromJSON(
   jsonString: string,
@@ -236,11 +240,13 @@ export const GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopm
     GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    fallback: types.optional(types.string()),
-    local: types.optional(smartUnion([types.string(), types.number()])),
-    task: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      fallback: types.optional(types.string()),
+      local: types.optional(smartUnion([types.string(), types.number()])),
+      task: types.optional(types.string()),
+    })
+  );
 
 export function getMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopmentFromJSON(
   jsonString: string,
@@ -262,11 +268,13 @@ export const ApplicationsRouting$inboundSchema: z.ZodType<
   ApplicationsRouting,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  flag: types.optional(types.string()),
-  group: types.optional(types.string()),
-  paths: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    flag: types.optional(types.string()),
+    group: types.optional(types.string()),
+    paths: z.array(types.string()),
+  })
+);
 
 export function applicationsRoutingFromJSON(
   jsonString: string,
@@ -284,17 +292,19 @@ export const GetMicrofrontendsConfigForProjectApplications2$inboundSchema:
     GetMicrofrontendsConfigForProjectApplications2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    assetPrefix: types.optional(types.string()),
-    development: types.optional(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      assetPrefix: types.optional(types.string()),
+      development: types.optional(z.lazy(() =>
         GetMicrofrontendsConfigForProjectApplicationsMicrofrontendsDevelopment$inboundSchema
-      ),
-    ),
-    packageName: types.optional(types.string()),
-    routing: z.array(z.lazy(() => ApplicationsRouting$inboundSchema)),
-    projectId: types.string(),
-  });
+      )),
+      packageName: types.optional(types.string()),
+      routing: z.array(z.lazy(() =>
+        ApplicationsRouting$inboundSchema
+      )),
+      projectId: types.string(),
+    })
+  );
 
 export function getMicrofrontendsConfigForProjectApplications2FromJSON(
   jsonString: string,
@@ -318,7 +328,9 @@ export const GetMicrofrontendsConfigForProjectApplicationsLocal$inboundSchema:
     GetMicrofrontendsConfigForProjectApplicationsLocal,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.string(), types.number()]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), types.number()])
+  );
 
 export function getMicrofrontendsConfigForProjectApplicationsLocalFromJSON(
   jsonString: string,
@@ -342,11 +354,13 @@ export const GetMicrofrontendsConfigForProjectApplicationsDevelopment$inboundSch
     GetMicrofrontendsConfigForProjectApplicationsDevelopment,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    fallback: types.string(),
-    local: types.optional(smartUnion([types.string(), types.number()])),
-    task: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      fallback: types.string(),
+      local: types.optional(smartUnion([types.string(), types.number()])),
+      task: types.optional(types.string()),
+    })
+  );
 
 export function getMicrofrontendsConfigForProjectApplicationsDevelopmentFromJSON(
   jsonString: string,
@@ -369,13 +383,15 @@ export const GetMicrofrontendsConfigForProjectApplications1$inboundSchema:
     GetMicrofrontendsConfigForProjectApplications1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    development: z.lazy(() =>
-      GetMicrofrontendsConfigForProjectApplicationsDevelopment$inboundSchema
-    ),
-    packageName: types.optional(types.string()),
-    projectId: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      development: z.lazy(() =>
+        GetMicrofrontendsConfigForProjectApplicationsDevelopment$inboundSchema
+      ),
+      packageName: types.optional(types.string()),
+      projectId: types.string(),
+    })
+  );
 
 export function getMicrofrontendsConfigForProjectApplications1FromJSON(
   jsonString: string,
@@ -399,10 +415,16 @@ export const GetMicrofrontendsConfigForProjectApplications$inboundSchema:
     GetMicrofrontendsConfigForProjectApplications,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.lazy(() => GetMicrofrontendsConfigForProjectApplications1$inboundSchema),
-    z.lazy(() => GetMicrofrontendsConfigForProjectApplications2$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() =>
+        GetMicrofrontendsConfigForProjectApplications1$inboundSchema
+      ),
+      z.lazy(() =>
+        GetMicrofrontendsConfigForProjectApplications2$inboundSchema
+      ),
+    ])
+  );
 
 export function getMicrofrontendsConfigForProjectApplicationsFromJSON(
   jsonString: string,
@@ -425,10 +447,12 @@ export const GetMicrofrontendsConfigForProjectOptions$inboundSchema: z.ZodType<
   GetMicrofrontendsConfigForProjectOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  disableOverrides: types.optional(types.boolean()),
-  localProxyPort: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    disableOverrides: types.optional(types.boolean()),
+    localProxyPort: types.optional(types.number()),
+  })
+);
 
 export function getMicrofrontendsConfigForProjectOptionsFromJSON(
   jsonString: string,
@@ -448,37 +472,39 @@ export function getMicrofrontendsConfigForProjectOptionsFromJSON(
 
 /** @internal */
 export const GetMicrofrontendsConfigForProjectVersion$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsConfigForProjectVersion> = z
-    .nativeEnum(GetMicrofrontendsConfigForProjectVersion);
+  z.ZodNativeEnum<typeof GetMicrofrontendsConfigForProjectVersion> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsConfigForProjectVersion)
+    );
 
 /** @internal */
 export const GetMicrofrontendsConfigForProjectConfig$inboundSchema: z.ZodType<
   GetMicrofrontendsConfigForProjectConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  $schema: types.optional(types.string()),
-  applications: z.record(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    $schema: types.optional(types.string()),
+    applications: z.record(smartUnion([
       z.lazy(() =>
         GetMicrofrontendsConfigForProjectApplications1$inboundSchema
       ),
       z.lazy(() =>
         GetMicrofrontendsConfigForProjectApplications2$inboundSchema
       ),
-    ]),
-  ),
-  options: types.optional(
-    z.lazy(() => GetMicrofrontendsConfigForProjectOptions$inboundSchema),
-  ),
-  version: types.optional(
-    GetMicrofrontendsConfigForProjectVersion$inboundSchema,
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "$schema": "dollarSchema",
-  });
-});
+    ])),
+    options: types.optional(z.lazy(() =>
+      GetMicrofrontendsConfigForProjectOptions$inboundSchema
+    )),
+    version: types.optional(
+      GetMicrofrontendsConfigForProjectVersion$inboundSchema,
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "$schema": "dollarSchema",
+    });
+  })
+);
 
 export function getMicrofrontendsConfigForProjectConfigFromJSON(
   jsonString: string,
@@ -502,11 +528,13 @@ export const GetMicrofrontendsConfigForProjectResponseBody$inboundSchema:
     GetMicrofrontendsConfigForProjectResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    config: types.nullable(
-      z.lazy(() => GetMicrofrontendsConfigForProjectConfig$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      config: types.nullable(
+        z.lazy(() => GetMicrofrontendsConfigForProjectConfig$inboundSchema),
+      ),
+    })
+  );
 
 export function getMicrofrontendsConfigForProjectResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -110,8 +110,8 @@ export type GetDomainConfigResponseBody = {
 };
 
 /** @internal */
-export const Strict$outboundSchema: z.ZodNativeEnum<typeof Strict> = z
-  .nativeEnum(Strict);
+export const Strict$outboundSchema: z.ZodNativeEnum<typeof Strict> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Strict));
 
 /** @internal */
 export type GetDomainConfigRequest$Outbound = {
@@ -127,13 +127,15 @@ export const GetDomainConfigRequest$outboundSchema: z.ZodType<
   GetDomainConfigRequest$Outbound,
   z.ZodTypeDef,
   GetDomainConfigRequest
-> = z.object({
-  domain: z.string(),
-  projectIdOrName: z.string().optional(),
-  strict: Strict$outboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    projectIdOrName: z.string().optional(),
+    strict: Strict$outboundSchema.optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getDomainConfigRequestToJSON(
   getDomainConfigRequest: GetDomainConfigRequest,
@@ -146,21 +148,23 @@ export function getDomainConfigRequestToJSON(
 /** @internal */
 export const AcceptedChallenges$inboundSchema: z.ZodNativeEnum<
   typeof AcceptedChallenges
-> = z.nativeEnum(AcceptedChallenges);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AcceptedChallenges));
 
 /** @internal */
 export const ConfiguredBy$inboundSchema: z.ZodNativeEnum<typeof ConfiguredBy> =
-  z.nativeEnum(ConfiguredBy);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ConfiguredBy));
 
 /** @internal */
 export const RecommendedCNAME$inboundSchema: z.ZodType<
   RecommendedCNAME,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rank: types.number(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rank: types.number(),
+    value: types.string(),
+  })
+);
 
 export function recommendedCNAMEFromJSON(
   jsonString: string,
@@ -177,10 +181,12 @@ export const RecommendedIPv4$inboundSchema: z.ZodType<
   RecommendedIPv4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rank: types.number(),
-  value: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rank: types.number(),
+    value: z.array(types.string()),
+  })
+);
 
 export function recommendedIPv4FromJSON(
   jsonString: string,
@@ -197,13 +203,15 @@ export const GetDomainConfigResponseBody$inboundSchema: z.ZodType<
   GetDomainConfigResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  acceptedChallenges: z.array(AcceptedChallenges$inboundSchema),
-  configuredBy: types.nullable(ConfiguredBy$inboundSchema),
-  recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$inboundSchema)),
-  recommendedIPv4: z.array(z.lazy(() => RecommendedIPv4$inboundSchema)),
-  misconfigured: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    acceptedChallenges: z.array(AcceptedChallenges$inboundSchema),
+    configuredBy: types.nullable(ConfiguredBy$inboundSchema),
+    recommendedCNAME: z.array(z.lazy(() => RecommendedCNAME$inboundSchema)),
+    recommendedIPv4: z.array(z.lazy(() => RecommendedIPv4$inboundSchema)),
+    misconfigured: types.boolean(),
+  })
+);
 
 export function getDomainConfigResponseBodyFromJSON(
   jsonString: string,

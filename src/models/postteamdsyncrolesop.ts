@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -66,9 +66,11 @@ export const PostTeamDsyncRolesRoles2$outboundSchema: z.ZodType<
   PostTeamDsyncRolesRoles2$Outbound,
   z.ZodTypeDef,
   PostTeamDsyncRolesRoles2
-> = z.object({
-  accessGroupId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroupId: z.string(),
+  })
+);
 
 export function postTeamDsyncRolesRoles2ToJSON(
   postTeamDsyncRolesRoles2: PostTeamDsyncRolesRoles2,
@@ -81,7 +83,7 @@ export function postTeamDsyncRolesRoles2ToJSON(
 /** @internal */
 export const PostTeamDsyncRolesRoles1$outboundSchema: z.ZodNativeEnum<
   typeof PostTeamDsyncRolesRoles1
-> = z.nativeEnum(PostTeamDsyncRolesRoles1);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PostTeamDsyncRolesRoles1));
 
 /** @internal */
 export type PostTeamDsyncRolesRoles$Outbound =
@@ -93,10 +95,12 @@ export const PostTeamDsyncRolesRoles$outboundSchema: z.ZodType<
   PostTeamDsyncRolesRoles$Outbound,
   z.ZodTypeDef,
   PostTeamDsyncRolesRoles
-> = smartUnion([
-  z.lazy(() => PostTeamDsyncRolesRoles2$outboundSchema),
-  PostTeamDsyncRolesRoles1$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => PostTeamDsyncRolesRoles2$outboundSchema),
+    PostTeamDsyncRolesRoles1$outboundSchema,
+  ])
+);
 
 export function postTeamDsyncRolesRolesToJSON(
   postTeamDsyncRolesRoles: PostTeamDsyncRolesRoles,
@@ -116,14 +120,14 @@ export const PostTeamDsyncRolesRequestBody$outboundSchema: z.ZodType<
   PostTeamDsyncRolesRequestBody$Outbound,
   z.ZodTypeDef,
   PostTeamDsyncRolesRequestBody
-> = z.object({
-  roles: z.record(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    roles: z.record(smartUnion([
       z.lazy(() => PostTeamDsyncRolesRoles2$outboundSchema),
       PostTeamDsyncRolesRoles1$outboundSchema,
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function postTeamDsyncRolesRequestBodyToJSON(
   postTeamDsyncRolesRequestBody: PostTeamDsyncRolesRequestBody,
@@ -147,16 +151,18 @@ export const PostTeamDsyncRolesRequest$outboundSchema: z.ZodType<
   PostTeamDsyncRolesRequest$Outbound,
   z.ZodTypeDef,
   PostTeamDsyncRolesRequest
-> = z.object({
-  teamId: z.string(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => PostTeamDsyncRolesRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => PostTeamDsyncRolesRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function postTeamDsyncRolesRequestToJSON(
   postTeamDsyncRolesRequest: PostTeamDsyncRolesRequest,
@@ -171,9 +177,11 @@ export const PostTeamDsyncRolesResponseBody$inboundSchema: z.ZodType<
   PostTeamDsyncRolesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ok: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ok: types.boolean(),
+  })
+);
 
 export function postTeamDsyncRolesResponseBodyFromJSON(
   jsonString: string,

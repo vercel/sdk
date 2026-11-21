@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -56,11 +56,13 @@ export const CreateSessionDirectoryRequestBody$outboundSchema: z.ZodType<
   CreateSessionDirectoryRequestBody$Outbound,
   z.ZodTypeDef,
   CreateSessionDirectoryRequestBody
-> = z.object({
-  cwd: z.string().optional(),
-  path: z.string(),
-  recursive: z.boolean().default(true),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cwd: z.string().optional(),
+    path: z.string(),
+    recursive: z.boolean().default(true),
+  })
+);
 
 export function createSessionDirectoryRequestBodyToJSON(
   createSessionDirectoryRequestBody: CreateSessionDirectoryRequestBody,
@@ -85,17 +87,19 @@ export const CreateSessionDirectoryRequest$outboundSchema: z.ZodType<
   CreateSessionDirectoryRequest$Outbound,
   z.ZodTypeDef,
   CreateSessionDirectoryRequest
-> = z.object({
-  sessionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateSessionDirectoryRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateSessionDirectoryRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createSessionDirectoryRequestToJSON(
   createSessionDirectoryRequest: CreateSessionDirectoryRequest,
@@ -112,7 +116,7 @@ export const CreateSessionDirectoryResponseBody$inboundSchema: z.ZodType<
   CreateSessionDirectoryResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function createSessionDirectoryResponseBodyFromJSON(
   jsonString: string,

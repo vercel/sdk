@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -102,12 +102,14 @@ export type UpdateTeamMemberResponseBody = {
 /** @internal */
 export const UpdateTeamMemberTeamPermissions$outboundSchema: z.ZodNativeEnum<
   typeof UpdateTeamMemberTeamPermissions
-> = z.nativeEnum(UpdateTeamMemberTeamPermissions);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateTeamMemberTeamPermissions)
+);
 
 /** @internal */
 export const UpdateTeamMemberRole$outboundSchema: z.ZodNativeEnum<
   typeof UpdateTeamMemberRole
-> = z.nativeEnum(UpdateTeamMemberRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateTeamMemberRole));
 
 /** @internal */
 export type UpdateTeamMemberProjects$Outbound = {
@@ -120,10 +122,12 @@ export const UpdateTeamMemberProjects$outboundSchema: z.ZodType<
   UpdateTeamMemberProjects$Outbound,
   z.ZodTypeDef,
   UpdateTeamMemberProjects
-> = z.object({
-  projectId: z.string(),
-  role: z.nullable(UpdateTeamMemberRole$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    role: z.nullable(UpdateTeamMemberRole$outboundSchema),
+  })
+);
 
 export function updateTeamMemberProjectsToJSON(
   updateTeamMemberProjects: UpdateTeamMemberProjects,
@@ -143,9 +147,11 @@ export const UpdateTeamMemberJoinedFrom$outboundSchema: z.ZodType<
   UpdateTeamMemberJoinedFrom$Outbound,
   z.ZodTypeDef,
   UpdateTeamMemberJoinedFrom
-> = z.object({
-  ssoUserId: z.nullable(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ssoUserId: z.nullable(z.any()).optional(),
+  })
+);
 
 export function updateTeamMemberJoinedFromToJSON(
   updateTeamMemberJoinedFrom: UpdateTeamMemberJoinedFrom,
@@ -169,16 +175,18 @@ export const UpdateTeamMemberRequestBody$outboundSchema: z.ZodType<
   UpdateTeamMemberRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateTeamMemberRequestBody
-> = z.object({
-  confirmed: z.literal(true).optional(),
-  role: z.string().default("MEMBER"),
-  teamPermissions: z.array(UpdateTeamMemberTeamPermissions$outboundSchema)
-    .optional(),
-  projects: z.array(z.lazy(() => UpdateTeamMemberProjects$outboundSchema))
-    .optional(),
-  joinedFrom: z.lazy(() => UpdateTeamMemberJoinedFrom$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    confirmed: z.literal(true).optional(),
+    role: z.string().default("MEMBER"),
+    teamPermissions: z.array(UpdateTeamMemberTeamPermissions$outboundSchema)
+      .optional(),
+    projects: z.array(z.lazy(() => UpdateTeamMemberProjects$outboundSchema))
+      .optional(),
+    joinedFrom: z.lazy(() => UpdateTeamMemberJoinedFrom$outboundSchema)
+      .optional(),
+  })
+);
 
 export function updateTeamMemberRequestBodyToJSON(
   updateTeamMemberRequestBody: UpdateTeamMemberRequestBody,
@@ -202,15 +210,17 @@ export const UpdateTeamMemberRequest$outboundSchema: z.ZodType<
   UpdateTeamMemberRequest$Outbound,
   z.ZodTypeDef,
   UpdateTeamMemberRequest
-> = z.object({
-  uid: z.string(),
-  teamId: z.string(),
-  requestBody: z.lazy(() => UpdateTeamMemberRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uid: z.string(),
+    teamId: z.string(),
+    requestBody: z.lazy(() => UpdateTeamMemberRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateTeamMemberRequestToJSON(
   updateTeamMemberRequest: UpdateTeamMemberRequest,
@@ -225,9 +235,11 @@ export const UpdateTeamMemberResponseBody$inboundSchema: z.ZodType<
   UpdateTeamMemberResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function updateTeamMemberResponseBodyFromJSON(
   jsonString: string,

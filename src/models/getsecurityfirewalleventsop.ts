@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -91,21 +91,23 @@ export type GetSecurityFirewallEventsResponseBody = {
 
 /** @internal */
 export const GetSecurityFirewallEventsQueryParamSort$outboundSchema:
-  z.ZodNativeEnum<typeof GetSecurityFirewallEventsQueryParamSort> = z
-    .nativeEnum(GetSecurityFirewallEventsQueryParamSort);
+  z.ZodNativeEnum<typeof GetSecurityFirewallEventsQueryParamSort> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetSecurityFirewallEventsQueryParamSort)
+    );
 
 /** @internal */
 export const QueryParamAction$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamAction
-> = z.nativeEnum(QueryParamAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamAction));
 
 /** @internal */
-export const ActionType$outboundSchema: z.ZodNativeEnum<typeof ActionType> = z
-  .nativeEnum(ActionType);
+export const ActionType$outboundSchema: z.ZodNativeEnum<typeof ActionType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ActionType));
 
 /** @internal */
-export const RuleKind$outboundSchema: z.ZodNativeEnum<typeof RuleKind> = z
-  .nativeEnum(RuleKind);
+export const RuleKind$outboundSchema: z.ZodNativeEnum<typeof RuleKind> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RuleKind));
 
 /** @internal */
 export type GetSecurityFirewallEventsRequest$Outbound = {
@@ -131,23 +133,25 @@ export const GetSecurityFirewallEventsRequest$outboundSchema: z.ZodType<
   GetSecurityFirewallEventsRequest$Outbound,
   z.ZodTypeDef,
   GetSecurityFirewallEventsRequest
-> = z.object({
-  sort: GetSecurityFirewallEventsQueryParamSort$outboundSchema.optional(),
-  limit: z.number().int().optional(),
-  cursor: z.string().optional(),
-  projectId: z.string(),
-  startTimestamp: z.number().int().optional(),
-  endTimestamp: z.number().int().optional(),
-  hosts: z.string().optional(),
-  ip: z.array(z.string()).optional(),
-  isActive: z.boolean().optional(),
-  action: z.array(QueryParamAction$outboundSchema).optional(),
-  actionType: z.array(ActionType$outboundSchema).optional(),
-  ruleKind: RuleKind$outboundSchema.optional(),
-  ruleId: z.array(z.string()).optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sort: GetSecurityFirewallEventsQueryParamSort$outboundSchema.optional(),
+    limit: z.number().int().optional(),
+    cursor: z.string().optional(),
+    projectId: z.string(),
+    startTimestamp: z.number().int().optional(),
+    endTimestamp: z.number().int().optional(),
+    hosts: z.string().optional(),
+    ip: z.array(z.string()).optional(),
+    isActive: z.boolean().optional(),
+    action: z.array(QueryParamAction$outboundSchema).optional(),
+    actionType: z.array(ActionType$outboundSchema).optional(),
+    ruleKind: RuleKind$outboundSchema.optional(),
+    ruleId: z.array(z.string()).optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getSecurityFirewallEventsRequestToJSON(
   getSecurityFirewallEventsRequest: GetSecurityFirewallEventsRequest,
@@ -164,23 +168,25 @@ export const GetSecurityFirewallEventsActions$inboundSchema: z.ZodType<
   GetSecurityFirewallEventsActions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.string(),
-  action_type: types.string(),
-  count: types.number(),
-  endTime: types.string(),
-  host: types.string(),
-  isActive: types.boolean(),
-  public_ip: types.string(),
-  ruleId: types.nullable(types.string()),
-  ruleName: types.nullable(types.string()),
-  startTime: types.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "action_type": "actionType",
-    "public_ip": "publicIp",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.string(),
+    action_type: types.string(),
+    count: types.number(),
+    endTime: types.string(),
+    host: types.string(),
+    isActive: types.boolean(),
+    public_ip: types.string(),
+    ruleId: types.nullable(types.string()),
+    ruleName: types.nullable(types.string()),
+    startTime: types.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "action_type": "actionType",
+      "public_ip": "publicIp",
+    });
+  })
+);
 
 export function getSecurityFirewallEventsActionsFromJSON(
   jsonString: string,
@@ -197,10 +203,12 @@ export const GetSecurityFirewallEventsPagination$inboundSchema: z.ZodType<
   GetSecurityFirewallEventsPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  hasMore: types.boolean(),
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    hasMore: types.boolean(),
+    next: types.nullable(types.string()),
+  })
+);
 
 export function getSecurityFirewallEventsPaginationFromJSON(
   jsonString: string,
@@ -218,12 +226,14 @@ export const GetSecurityFirewallEventsResponseBody$inboundSchema: z.ZodType<
   GetSecurityFirewallEventsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  actions: z.array(
-    z.lazy(() => GetSecurityFirewallEventsActions$inboundSchema),
-  ),
-  pagination: z.lazy(() => GetSecurityFirewallEventsPagination$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    actions: z.array(
+      z.lazy(() => GetSecurityFirewallEventsActions$inboundSchema),
+    ),
+    pagination: z.lazy(() => GetSecurityFirewallEventsPagination$inboundSchema),
+  })
+);
 
 export function getSecurityFirewallEventsResponseBodyFromJSON(
   jsonString: string,

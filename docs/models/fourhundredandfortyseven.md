@@ -5,13 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFortySeven } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndFortySeven } from "@vercel/sdk/models/fourhundredandthirtynine.js";
 
-let value: FourHundredAndFortySeven = {};
+let value: FourHundredAndFortySeven = {
+  action: "reset",
+  targetId: "<id>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `emailDomain`      | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload447Action](../models/usereventpayload447action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `targetId`                                                                 | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

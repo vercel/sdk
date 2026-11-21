@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -92,32 +92,34 @@ export type VcrImageDetail = {
 /** @internal */
 export const VcrImageDetailKind$inboundSchema: z.ZodNativeEnum<
   typeof VcrImageDetailKind
-> = z.nativeEnum(VcrImageDetailKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VcrImageDetailKind));
 
 /** @internal */
 export const VcrImageDetailStatus$inboundSchema: z.ZodNativeEnum<
   typeof VcrImageDetailStatus
-> = z.nativeEnum(VcrImageDetailStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VcrImageDetailStatus));
 
 /** @internal */
 export const VcrImageDetail$inboundSchema: z.ZodType<
   VcrImageDetail,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  arch: types.optional(types.string()),
-  createdAt: types.string(),
-  id: types.string(),
-  kind: VcrImageDetailKind$inboundSchema,
-  layers: z.array(VcrImageLayer$inboundSchema),
-  manifestDigest: types.string(),
-  platform: types.optional(types.string()),
-  pushedBy: types.optional(types.string()),
-  repositoryId: types.string(),
-  sizeInBytes: types.number(),
-  status: types.nullable(VcrImageDetailStatus$inboundSchema),
-  tags: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    arch: types.optional(types.string()),
+    createdAt: types.string(),
+    id: types.string(),
+    kind: VcrImageDetailKind$inboundSchema,
+    layers: z.array(VcrImageLayer$inboundSchema),
+    manifestDigest: types.string(),
+    platform: types.optional(types.string()),
+    pushedBy: types.optional(types.string()),
+    repositoryId: types.string(),
+    sizeInBytes: types.number(),
+    status: types.nullable(VcrImageDetailStatus$inboundSchema),
+    tags: z.array(types.string()),
+  })
+);
 
 export function vcrImageDetailFromJSON(
   jsonString: string,

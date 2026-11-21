@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -100,9 +100,10 @@ export type MoveProjectDomainResponseBody = {
 
 /** @internal */
 export const MoveProjectDomainRedirectStatusCode$outboundSchema:
-  z.ZodNativeEnum<typeof MoveProjectDomainRedirectStatusCode> = z.nativeEnum(
-    MoveProjectDomainRedirectStatusCode,
-  );
+  z.ZodNativeEnum<typeof MoveProjectDomainRedirectStatusCode> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(MoveProjectDomainRedirectStatusCode)
+    );
 
 /** @internal */
 export type MoveProjectDomainRequestBody$Outbound = {
@@ -117,14 +118,16 @@ export const MoveProjectDomainRequestBody$outboundSchema: z.ZodType<
   MoveProjectDomainRequestBody$Outbound,
   z.ZodTypeDef,
   MoveProjectDomainRequestBody
-> = z.object({
-  projectId: z.string(),
-  gitBranch: z.nullable(z.string()).optional(),
-  redirect: z.nullable(z.string()).optional(),
-  redirectStatusCode: z.nullable(
-    MoveProjectDomainRedirectStatusCode$outboundSchema,
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    gitBranch: z.nullable(z.string()).optional(),
+    redirect: z.nullable(z.string()).optional(),
+    redirectStatusCode: z.nullable(
+      MoveProjectDomainRedirectStatusCode$outboundSchema,
+    ).optional(),
+  })
+);
 
 export function moveProjectDomainRequestBodyToJSON(
   moveProjectDomainRequestBody: MoveProjectDomainRequestBody,
@@ -150,18 +153,20 @@ export const MoveProjectDomainRequest$outboundSchema: z.ZodType<
   MoveProjectDomainRequest$Outbound,
   z.ZodTypeDef,
   MoveProjectDomainRequest
-> = z.object({
-  idOrName: z.string(),
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => MoveProjectDomainRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    domain: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => MoveProjectDomainRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function moveProjectDomainRequestToJSON(
   moveProjectDomainRequest: MoveProjectDomainRequest,
@@ -176,12 +181,14 @@ export const MoveProjectDomainVerification$inboundSchema: z.ZodType<
   MoveProjectDomainVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  reason: types.string(),
-  type: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    reason: types.string(),
+    type: types.string(),
+    value: types.string(),
+  })
+);
 
 export function moveProjectDomainVerificationFromJSON(
   jsonString: string,
@@ -198,21 +205,23 @@ export const MoveProjectDomainResponseBody$inboundSchema: z.ZodType<
   MoveProjectDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apexName: types.string(),
-  createdAt: types.optional(types.number()),
-  customEnvironmentId: z.nullable(types.string()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  name: types.string(),
-  projectId: types.string(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  updatedAt: types.optional(types.number()),
-  verification: types.optional(
-    z.array(z.lazy(() => MoveProjectDomainVerification$inboundSchema)),
-  ),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apexName: types.string(),
+    createdAt: types.optional(types.number()),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    name: types.string(),
+    projectId: types.string(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    updatedAt: types.optional(types.number()),
+    verification: types.optional(
+      z.array(z.lazy(() => MoveProjectDomainVerification$inboundSchema)),
+    ),
+    verified: types.boolean(),
+  })
+);
 
 export function moveProjectDomainResponseBodyFromJSON(
   jsonString: string,

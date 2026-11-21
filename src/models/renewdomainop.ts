@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -172,20 +172,22 @@ export const RenewDomainContactInformation$outboundSchema: z.ZodType<
   RenewDomainContactInformation$Outbound,
   z.ZodTypeDef,
   RenewDomainContactInformation
-> = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string(),
-  phone: z.string(),
-  address1: z.string(),
-  address2: z.string().optional(),
-  city: z.string(),
-  state: z.string(),
-  zip: z.string(),
-  country: z.string(),
-  companyName: z.string().optional(),
-  fax: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: z.string(),
+    lastName: z.string(),
+    email: z.string(),
+    phone: z.string(),
+    address1: z.string(),
+    address2: z.string().optional(),
+    city: z.string(),
+    state: z.string(),
+    zip: z.string(),
+    country: z.string(),
+    companyName: z.string().optional(),
+    fax: z.string().optional(),
+  })
+);
 
 export function renewDomainContactInformationToJSON(
   renewDomainContactInformation: RenewDomainContactInformation,
@@ -209,12 +211,15 @@ export const RenewDomainRequestBody$outboundSchema: z.ZodType<
   RenewDomainRequestBody$Outbound,
   z.ZodTypeDef,
   RenewDomainRequestBody
-> = z.object({
-  years: z.number(),
-  expectedPrice: z.number(),
-  contactInformation: z.lazy(() => RenewDomainContactInformation$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    years: z.number(),
+    expectedPrice: z.number(),
+    contactInformation: z.lazy(() =>
+      RenewDomainContactInformation$outboundSchema
+    ).optional(),
+  })
+);
 
 export function renewDomainRequestBodyToJSON(
   renewDomainRequestBody: RenewDomainRequestBody,
@@ -236,15 +241,17 @@ export const RenewDomainRequest$outboundSchema: z.ZodType<
   RenewDomainRequest$Outbound,
   z.ZodTypeDef,
   RenewDomainRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => RenewDomainRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() => RenewDomainRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function renewDomainRequestToJSON(
   renewDomainRequest: RenewDomainRequest,
@@ -260,12 +267,14 @@ export const RenewDomainDomainsRegistrarResponseResponseBody$inboundSchema:
     RenewDomainDomainsRegistrarResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Forbidden$inboundSchema,
-    NotAuthorizedForScope$inboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      Forbidden$inboundSchema,
+      NotAuthorizedForScope$inboundSchema.and(
+        z.object({ code: z.literal("not_authorized_for_scope") }),
+      ),
+    ])
+  );
 
 export function renewDomainDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
@@ -288,15 +297,17 @@ export const RenewDomainDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   RenewDomainDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  BadRequest$inboundSchema,
-  DomainTooShort$inboundSchema,
-  DomainNotRegistered$inboundSchema,
-  ExpectedPriceMismatch$inboundSchema,
-  DomainNotAvailable$inboundSchema,
-  TldNotSupported$inboundSchema,
-  HttpApiDecodeError$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    BadRequest$inboundSchema,
+    DomainTooShort$inboundSchema,
+    DomainNotRegistered$inboundSchema,
+    ExpectedPriceMismatch$inboundSchema,
+    DomainNotAvailable$inboundSchema,
+    TldNotSupported$inboundSchema,
+    HttpApiDecodeError$inboundSchema,
+  ])
+);
 
 export function renewDomainDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -317,17 +328,19 @@ export function renewDomainDomainsRegistrarResponseBodyFromJSON(
 /** @internal */
 export const RenewDomainMethod$inboundSchema: z.ZodNativeEnum<
   typeof RenewDomainMethod
-> = z.nativeEnum(RenewDomainMethod);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RenewDomainMethod));
 
 /** @internal */
 export const RenewDomainLinks$inboundSchema: z.ZodType<
   RenewDomainLinks,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  href: types.string(),
-  method: RenewDomainMethod$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    href: types.string(),
+    method: RenewDomainMethod$inboundSchema,
+  })
+);
 
 export function renewDomainLinksFromJSON(
   jsonString: string,
@@ -344,14 +357,16 @@ export const RenewDomainResponseBody$inboundSchema: z.ZodType<
   RenewDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  orderId: types.string(),
-  _links: z.record(z.lazy(() => RenewDomainLinks$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "_links": "links",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    orderId: types.string(),
+    _links: z.record(z.lazy(() => RenewDomainLinks$inboundSchema)),
+  }).transform((v) => {
+    return remap$(v, {
+      "_links": "links",
+    });
+  })
+);
 
 export function renewDomainResponseBodyFromJSON(
   jsonString: string,

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type Event2 = {
   type: "resource.updated";
@@ -48,11 +49,13 @@ export const Event2$outboundSchema: z.ZodType<
   Event2$Outbound,
   z.ZodTypeDef,
   Event2
-> = z.object({
-  type: z.literal("resource.updated"),
-  productId: z.string().optional(),
-  resourceId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("resource.updated"),
+    productId: z.string().optional(),
+    resourceId: z.string(),
+  })
+);
 
 export function event2ToJSON(event2: Event2): string {
   return JSON.stringify(Event2$outboundSchema.parse(event2));
@@ -69,10 +72,12 @@ export const Event1$outboundSchema: z.ZodType<
   Event1$Outbound,
   z.ZodTypeDef,
   Event1
-> = z.object({
-  type: z.literal("installation.updated"),
-  billingPlanId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("installation.updated"),
+    billingPlanId: z.string().optional(),
+  })
+);
 
 export function event1ToJSON(event1: Event1): string {
   return JSON.stringify(Event1$outboundSchema.parse(event1));
@@ -86,10 +91,12 @@ export const CreateEventEvent$outboundSchema: z.ZodType<
   CreateEventEvent$Outbound,
   z.ZodTypeDef,
   CreateEventEvent
-> = z.union([
-  z.lazy(() => Event1$outboundSchema),
-  z.lazy(() => Event2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => Event1$outboundSchema),
+    z.lazy(() => Event2$outboundSchema),
+  ])
+);
 
 export function createEventEventToJSON(
   createEventEvent: CreateEventEvent,
@@ -109,12 +116,14 @@ export const CreateEventRequestBody$outboundSchema: z.ZodType<
   CreateEventRequestBody$Outbound,
   z.ZodTypeDef,
   CreateEventRequestBody
-> = z.object({
-  event: z.union([
-    z.lazy(() => Event1$outboundSchema),
-    z.lazy(() => Event2$outboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    event: z.union([
+      z.lazy(() => Event1$outboundSchema),
+      z.lazy(() => Event2$outboundSchema),
+    ]),
+  })
+);
 
 export function createEventRequestBodyToJSON(
   createEventRequestBody: CreateEventRequestBody,
@@ -135,14 +144,16 @@ export const CreateEventRequest$outboundSchema: z.ZodType<
   CreateEventRequest$Outbound,
   z.ZodTypeDef,
   CreateEventRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  requestBody: z.lazy(() => CreateEventRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    requestBody: z.lazy(() => CreateEventRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createEventRequestToJSON(
   createEventRequest: CreateEventRequest,

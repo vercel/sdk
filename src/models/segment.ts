@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -181,10 +181,12 @@ export const ExcludeT$inboundSchema: z.ZodType<
   ExcludeT,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: types.optional(types.string()),
+    value: types.string(),
+  })
+);
 
 export function excludeFromJSON(
   jsonString: string,
@@ -198,10 +200,12 @@ export function excludeFromJSON(
 
 /** @internal */
 export const Include$inboundSchema: z.ZodType<Include, z.ZodTypeDef, unknown> =
-  z.object({
-    note: types.optional(types.string()),
-    value: types.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      note: types.optional(types.string()),
+      value: types.string(),
+    })
+  );
 
 export function includeFromJSON(
   jsonString: string,
@@ -214,17 +218,19 @@ export function includeFromJSON(
 }
 
 /** @internal */
-export const SegmentCmp$inboundSchema: z.ZodNativeEnum<typeof SegmentCmp> = z
-  .nativeEnum(SegmentCmp);
+export const SegmentCmp$inboundSchema: z.ZodNativeEnum<typeof SegmentCmp> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SegmentCmp));
 
 /** @internal */
 export const SegmentCmpOptions$inboundSchema: z.ZodType<
   SegmentCmpOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ignoreCase: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ignoreCase: types.optional(types.boolean()),
+  })
+);
 
 export function segmentCmpOptionsFromJSON(
   jsonString: string,
@@ -241,11 +247,13 @@ export const SegmentLhs2$inboundSchema: z.ZodType<
   SegmentLhs2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attribute: types.string(),
-  kind: types.string(),
-  type: types.literal("entity"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attribute: types.string(),
+    kind: types.string(),
+    type: types.literal("entity"),
+  })
+);
 
 export function segmentLhs2FromJSON(
   jsonString: string,
@@ -262,9 +270,11 @@ export const SegmentLhs1$inboundSchema: z.ZodType<
   SegmentLhs1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("segment"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("segment"),
+  })
+);
 
 export function segmentLhs1FromJSON(
   jsonString: string,
@@ -281,10 +291,12 @@ export const SegmentLhs$inboundSchema: z.ZodType<
   SegmentLhs,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => SegmentLhs1$inboundSchema),
-  z.lazy(() => SegmentLhs2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => SegmentLhs1$inboundSchema),
+    z.lazy(() => SegmentLhs2$inboundSchema),
+  ])
+);
 
 export function segmentLhsFromJSON(
   jsonString: string,
@@ -299,18 +311,20 @@ export function segmentLhsFromJSON(
 /** @internal */
 export const SegmentRhsDataType$inboundSchema: z.ZodNativeEnum<
   typeof SegmentRhsDataType
-> = z.nativeEnum(SegmentRhsDataType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SegmentRhsDataType));
 
 /** @internal */
 export const SegmentRhs4$inboundSchema: z.ZodType<
   SegmentRhs4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  flags: types.string(),
-  pattern: types.string(),
-  type: SegmentRhsDataType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    flags: types.string(),
+    pattern: types.string(),
+    type: SegmentRhsDataType$inboundSchema,
+  })
+);
 
 export function segmentRhs4FromJSON(
   jsonString: string,
@@ -327,11 +341,13 @@ export const SegmentItems2$inboundSchema: z.ZodType<
   SegmentItems2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.optional(types.string()),
-  note: types.optional(types.string()),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.optional(types.string()),
+    note: types.optional(types.string()),
+    value: types.string(),
+  })
+);
 
 export function segmentItems2FromJSON(
   jsonString: string,
@@ -348,11 +364,13 @@ export const SegmentItems1$inboundSchema: z.ZodType<
   SegmentItems1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.optional(types.string()),
-  note: types.optional(types.string()),
-  value: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.optional(types.string()),
+    note: types.optional(types.string()),
+    value: types.number(),
+  })
+);
 
 export function segmentItems1FromJSON(
   jsonString: string,
@@ -369,10 +387,12 @@ export const SegmentRhsItems$inboundSchema: z.ZodType<
   SegmentRhsItems,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => SegmentItems1$inboundSchema),
-  z.lazy(() => SegmentItems2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => SegmentItems1$inboundSchema),
+    z.lazy(() => SegmentItems2$inboundSchema),
+  ])
+);
 
 export function segmentRhsItemsFromJSON(
   jsonString: string,
@@ -387,22 +407,22 @@ export function segmentRhsItemsFromJSON(
 /** @internal */
 export const SegmentRhsType$inboundSchema: z.ZodNativeEnum<
   typeof SegmentRhsType
-> = z.nativeEnum(SegmentRhsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SegmentRhsType));
 
 /** @internal */
 export const SegmentRhs3$inboundSchema: z.ZodType<
   SegmentRhs3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(smartUnion([
       z.lazy(() => SegmentItems1$inboundSchema),
       z.lazy(() => SegmentItems2$inboundSchema),
-    ]),
-  ),
-  type: SegmentRhsType$inboundSchema,
-});
+    ])),
+    type: SegmentRhsType$inboundSchema,
+  })
+);
 
 export function segmentRhs3FromJSON(
   jsonString: string,
@@ -419,13 +439,15 @@ export const SegmentRhs$inboundSchema: z.ZodType<
   SegmentRhs,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => SegmentRhs4$inboundSchema),
-  z.lazy(() => SegmentRhs3$inboundSchema),
-  types.string(),
-  types.number(),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => SegmentRhs4$inboundSchema),
+    z.lazy(() => SegmentRhs3$inboundSchema),
+    types.string(),
+    types.number(),
+    types.boolean(),
+  ])
+);
 
 export function segmentRhsFromJSON(
   jsonString: string,
@@ -442,23 +464,23 @@ export const SegmentConditions$inboundSchema: z.ZodType<
   SegmentConditions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cmp: SegmentCmp$inboundSchema,
-  cmpOptions: types.optional(z.lazy(() => SegmentCmpOptions$inboundSchema)),
-  lhs: z.union([
-    z.lazy(() => SegmentLhs1$inboundSchema),
-    z.lazy(() => SegmentLhs2$inboundSchema),
-  ]),
-  rhs: types.optional(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cmp: SegmentCmp$inboundSchema,
+    cmpOptions: types.optional(z.lazy(() => SegmentCmpOptions$inboundSchema)),
+    lhs: z.union([
+      z.lazy(() => SegmentLhs1$inboundSchema),
+      z.lazy(() => SegmentLhs2$inboundSchema),
+    ]),
+    rhs: types.optional(smartUnion([
       z.lazy(() => SegmentRhs4$inboundSchema),
       z.lazy(() => SegmentRhs3$inboundSchema),
       types.string(),
       types.number(),
       types.boolean(),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function segmentConditionsFromJSON(
   jsonString: string,
@@ -473,18 +495,22 @@ export function segmentConditionsFromJSON(
 /** @internal */
 export const SegmentOutcomeDataRulesType$inboundSchema: z.ZodNativeEnum<
   typeof SegmentOutcomeDataRulesType
-> = z.nativeEnum(SegmentOutcomeDataRulesType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(SegmentOutcomeDataRulesType)
+);
 
 /** @internal */
 export const SegmentOutcomeBase$inboundSchema: z.ZodType<
   SegmentOutcomeBase,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attribute: types.string(),
-  kind: types.string(),
-  type: SegmentOutcomeDataRulesType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attribute: types.string(),
+    kind: types.string(),
+    type: SegmentOutcomeDataRulesType$inboundSchema,
+  })
+);
 
 export function segmentOutcomeBaseFromJSON(
   jsonString: string,
@@ -501,11 +527,13 @@ export const SegmentOutcome2$inboundSchema: z.ZodType<
   SegmentOutcome2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  base: z.lazy(() => SegmentOutcomeBase$inboundSchema),
-  passPromille: types.number(),
-  type: types.literal("split"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    base: z.lazy(() => SegmentOutcomeBase$inboundSchema),
+    passPromille: types.number(),
+    type: types.literal("split"),
+  })
+);
 
 export function segmentOutcome2FromJSON(
   jsonString: string,
@@ -522,9 +550,11 @@ export const SegmentOutcome1$inboundSchema: z.ZodType<
   SegmentOutcome1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("all"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("all"),
+  })
+);
 
 export function segmentOutcome1FromJSON(
   jsonString: string,
@@ -541,10 +571,12 @@ export const SegmentOutcome$inboundSchema: z.ZodType<
   SegmentOutcome,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => SegmentOutcome1$inboundSchema),
-  z.lazy(() => SegmentOutcome2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => SegmentOutcome1$inboundSchema),
+    z.lazy(() => SegmentOutcome2$inboundSchema),
+  ])
+);
 
 export function segmentOutcomeFromJSON(
   jsonString: string,
@@ -561,14 +593,16 @@ export const SegmentRules$inboundSchema: z.ZodType<
   SegmentRules,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  conditions: z.array(z.lazy(() => SegmentConditions$inboundSchema)),
-  id: types.string(),
-  outcome: z.union([
-    z.lazy(() => SegmentOutcome1$inboundSchema),
-    z.lazy(() => SegmentOutcome2$inboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    conditions: z.array(z.lazy(() => SegmentConditions$inboundSchema)),
+    id: types.string(),
+    outcome: z.union([
+      z.lazy(() => SegmentOutcome1$inboundSchema),
+      z.lazy(() => SegmentOutcome2$inboundSchema),
+    ]),
+  })
+);
 
 export function segmentRulesFromJSON(
   jsonString: string,
@@ -581,16 +615,18 @@ export function segmentRulesFromJSON(
 }
 
 /** @internal */
-export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> = z
-  .object({
-    exclude: types.optional(
-      z.record(z.record(z.array(z.lazy(() => ExcludeT$inboundSchema)))),
-    ),
-    include: types.optional(
-      z.record(z.record(z.array(z.lazy(() => Include$inboundSchema)))),
-    ),
-    rules: types.optional(z.array(z.lazy(() => SegmentRules$inboundSchema))),
-  });
+export const Data$inboundSchema: z.ZodType<Data, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      exclude: types.optional(
+        z.record(z.record(z.array(z.lazy(() => ExcludeT$inboundSchema)))),
+      ),
+      include: types.optional(
+        z.record(z.record(z.array(z.lazy(() => Include$inboundSchema)))),
+      ),
+      rules: types.optional(z.array(z.lazy(() => SegmentRules$inboundSchema))),
+    })
+  );
 
 export function dataFromJSON(
   jsonString: string,
@@ -605,17 +641,19 @@ export function dataFromJSON(
 /** @internal */
 export const SegmentTypeName$inboundSchema: z.ZodNativeEnum<
   typeof SegmentTypeName
-> = z.nativeEnum(SegmentTypeName);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SegmentTypeName));
 
 /** @internal */
 export const SegmentCreator$inboundSchema: z.ZodType<
   SegmentCreator,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    name: types.string(),
+  })
+);
 
 export function segmentCreatorFromJSON(
   jsonString: string,
@@ -632,9 +670,11 @@ export const SegmentMetadata$inboundSchema: z.ZodType<
   SegmentMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  creator: types.optional(z.lazy(() => SegmentCreator$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    creator: types.optional(z.lazy(() => SegmentCreator$inboundSchema)),
+  })
+);
 
 export function segmentMetadataFromJSON(
   jsonString: string,
@@ -648,22 +688,24 @@ export function segmentMetadataFromJSON(
 
 /** @internal */
 export const Segment$inboundSchema: z.ZodType<Segment, z.ZodTypeDef, unknown> =
-  z.object({
-    createdAt: types.number(),
-    createdBy: types.optional(types.string()),
-    data: z.lazy(() => Data$inboundSchema),
-    description: types.optional(types.string()),
-    hint: types.string(),
-    id: types.string(),
-    label: types.string(),
-    projectId: types.string(),
-    slug: types.string(),
-    typeName: SegmentTypeName$inboundSchema,
-    updatedAt: types.number(),
-    usedByFlags: types.optional(z.array(types.string())),
-    usedBySegments: types.optional(z.array(types.string())),
-    metadata: types.optional(z.lazy(() => SegmentMetadata$inboundSchema)),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.number(),
+      createdBy: types.optional(types.string()),
+      data: z.lazy(() => Data$inboundSchema),
+      description: types.optional(types.string()),
+      hint: types.string(),
+      id: types.string(),
+      label: types.string(),
+      projectId: types.string(),
+      slug: types.string(),
+      typeName: SegmentTypeName$inboundSchema,
+      updatedAt: types.number(),
+      usedByFlags: types.optional(z.array(types.string())),
+      usedBySegments: types.optional(z.array(types.string())),
+      metadata: types.optional(z.lazy(() => SegmentMetadata$inboundSchema)),
+    })
+  );
 
 export function segmentFromJSON(
   jsonString: string,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type ArtifactExistsRequest = {
   /**
@@ -31,11 +32,13 @@ export const ArtifactExistsRequest$outboundSchema: z.ZodType<
   ArtifactExistsRequest$Outbound,
   z.ZodTypeDef,
   ArtifactExistsRequest
-> = z.object({
-  hash: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    hash: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function artifactExistsRequestToJSON(
   artifactExistsRequest: ArtifactExistsRequest,

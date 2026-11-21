@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -47,10 +47,12 @@ export const CreateTraceSessionRequestBody$outboundSchema: z.ZodType<
   CreateTraceSessionRequestBody$Outbound,
   z.ZodTypeDef,
   CreateTraceSessionRequestBody
-> = z.object({
-  projectId: z.string(),
-  hostname: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    hostname: z.string(),
+  })
+);
 
 export function createTraceSessionRequestBodyToJSON(
   createTraceSessionRequestBody: CreateTraceSessionRequestBody,
@@ -74,16 +76,18 @@ export const CreateTraceSessionRequest$outboundSchema: z.ZodType<
   CreateTraceSessionRequest$Outbound,
   z.ZodTypeDef,
   CreateTraceSessionRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateTraceSessionRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateTraceSessionRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createTraceSessionRequestToJSON(
   createTraceSessionRequest: CreateTraceSessionRequest,
@@ -98,9 +102,11 @@ export const CreateTraceSessionResponseBody$inboundSchema: z.ZodType<
   CreateTraceSessionResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: types.string(),
+  })
+);
 
 export function createTraceSessionResponseBodyFromJSON(
   jsonString: string,

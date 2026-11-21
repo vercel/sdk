@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -60,7 +61,7 @@ export type ListConnectorsRequest = {
 /** @internal */
 export const QueryParamSort$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSort
-> = z.nativeEnum(QueryParamSort);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamSort));
 
 /** @internal */
 export type ListConnectorsRequest$Outbound = {
@@ -80,17 +81,19 @@ export const ListConnectorsRequest$outboundSchema: z.ZodType<
   ListConnectorsRequest$Outbound,
   z.ZodTypeDef,
   ListConnectorsRequest
-> = z.object({
-  limit: z.number().int().optional(),
-  cursor: z.string().optional(),
-  projectId: z.string().optional(),
-  search: z.string().optional(),
-  type: z.string().optional(),
-  service: z.string().optional(),
-  sort: QueryParamSort$outboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    limit: z.number().int().optional(),
+    cursor: z.string().optional(),
+    projectId: z.string().optional(),
+    search: z.string().optional(),
+    type: z.string().optional(),
+    service: z.string().optional(),
+    sort: QueryParamSort$outboundSchema.optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listConnectorsRequestToJSON(
   listConnectorsRequest: ListConnectorsRequest,

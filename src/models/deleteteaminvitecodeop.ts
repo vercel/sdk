@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -40,10 +40,12 @@ export const DeleteTeamInviteCodeRequest$outboundSchema: z.ZodType<
   DeleteTeamInviteCodeRequest$Outbound,
   z.ZodTypeDef,
   DeleteTeamInviteCodeRequest
-> = z.object({
-  inviteId: z.string(),
-  teamId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    inviteId: z.string(),
+    teamId: z.string(),
+  })
+);
 
 export function deleteTeamInviteCodeRequestToJSON(
   deleteTeamInviteCodeRequest: DeleteTeamInviteCodeRequest,
@@ -60,9 +62,11 @@ export const DeleteTeamInviteCodeResponseBody$inboundSchema: z.ZodType<
   DeleteTeamInviteCodeResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function deleteTeamInviteCodeResponseBodyFromJSON(
   jsonString: string,

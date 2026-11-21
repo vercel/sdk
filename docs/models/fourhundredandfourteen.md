@@ -5,15 +5,30 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFourteen } from "@vercel/sdk/models/oldssoprotection2.js";
+import { FourHundredAndFourteen } from "@vercel/sdk/models/threehundredandeightytwo.js";
 
-let value: FourHundredAndFourteen = {};
+let value: FourHundredAndFourteen = {
+  budget: {
+    budgetItem: {
+      createdAt: 6784.51,
+      fixedBudget: 9156.54,
+      id: "<id>",
+      isActive: false,
+      notifiedAt: [
+        7197.25,
+      ],
+      previousSpend: [],
+      teamId: "<id>",
+      type: "fixed",
+    },
+  },
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
-| `webhookUrl`       | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `budget`                                                                   | [models.UserEventPayload414Budget](../models/usereventpayload414budget.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | Stored for project budgets. Same value as `budget.scopeId`.                |
+| `projectName`                                                              | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

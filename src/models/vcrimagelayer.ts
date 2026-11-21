@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -217,26 +217,28 @@ export type VcrImageLayer =
 /** @internal */
 export const VcrImageLayer4Operation$inboundSchema: z.ZodNativeEnum<
   typeof VcrImageLayer4Operation
-> = z.nativeEnum(VcrImageLayer4Operation);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VcrImageLayer4Operation));
 
 /** @internal */
 export const VcrImageLayer4Type$inboundSchema: z.ZodNativeEnum<
   typeof VcrImageLayer4Type
-> = z.nativeEnum(VcrImageLayer4Type);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VcrImageLayer4Type));
 
 /** @internal */
 export const VcrImageLayer4$inboundSchema: z.ZodType<
   VcrImageLayer4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdBy: types.nullable(types.string()),
-  digest: types.nullable(types.string()),
-  operation: VcrImageLayer4Operation$inboundSchema,
-  sizeBytes: types.nullable(types.number()),
-  type: VcrImageLayer4Type$inboundSchema,
-  value: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdBy: types.nullable(types.string()),
+    digest: types.nullable(types.string()),
+    operation: VcrImageLayer4Operation$inboundSchema,
+    sizeBytes: types.nullable(types.number()),
+    type: VcrImageLayer4Type$inboundSchema,
+    value: types.nullable(types.string()),
+  })
+);
 
 export function vcrImageLayer4FromJSON(
   jsonString: string,
@@ -251,21 +253,23 @@ export function vcrImageLayer4FromJSON(
 /** @internal */
 export const VcrImageLayer3Operation$inboundSchema: z.ZodNativeEnum<
   typeof VcrImageLayer3Operation
-> = z.nativeEnum(VcrImageLayer3Operation);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VcrImageLayer3Operation));
 
 /** @internal */
 export const VcrImageLayer3$inboundSchema: z.ZodType<
   VcrImageLayer3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdBy: types.nullable(types.string()),
-  digest: types.nullable(types.string()),
-  operation: VcrImageLayer3Operation$inboundSchema,
-  sizeBytes: types.nullable(types.number()),
-  env: types.nullable(types.string()),
-  type: types.literal("ENV"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdBy: types.nullable(types.string()),
+    digest: types.nullable(types.string()),
+    operation: VcrImageLayer3Operation$inboundSchema,
+    sizeBytes: types.nullable(types.number()),
+    env: types.nullable(types.string()),
+    type: types.literal("ENV"),
+  })
+);
 
 export function vcrImageLayer3FromJSON(
   jsonString: string,
@@ -280,21 +284,23 @@ export function vcrImageLayer3FromJSON(
 /** @internal */
 export const VcrImageLayerOperation$inboundSchema: z.ZodNativeEnum<
   typeof VcrImageLayerOperation
-> = z.nativeEnum(VcrImageLayerOperation);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VcrImageLayerOperation));
 
 /** @internal */
 export const VcrImageLayer2$inboundSchema: z.ZodType<
   VcrImageLayer2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdBy: types.nullable(types.string()),
-  digest: types.nullable(types.string()),
-  operation: VcrImageLayerOperation$inboundSchema,
-  sizeBytes: types.nullable(types.number()),
-  command: types.nullable(types.string()),
-  type: types.literal("RUN"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdBy: types.nullable(types.string()),
+    digest: types.nullable(types.string()),
+    operation: VcrImageLayerOperation$inboundSchema,
+    sizeBytes: types.nullable(types.number()),
+    command: types.nullable(types.string()),
+    type: types.literal("RUN"),
+  })
+);
 
 export function vcrImageLayer2FromJSON(
   jsonString: string,
@@ -307,24 +313,26 @@ export function vcrImageLayer2FromJSON(
 }
 
 /** @internal */
-export const Operation$inboundSchema: z.ZodNativeEnum<typeof Operation> = z
-  .nativeEnum(Operation);
+export const Operation$inboundSchema: z.ZodNativeEnum<typeof Operation> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Operation));
 
 /** @internal */
 export const VcrImageLayer1$inboundSchema: z.ZodType<
   VcrImageLayer1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdBy: types.nullable(types.string()),
-  digest: types.nullable(types.string()),
-  operation: Operation$inboundSchema,
-  sizeBytes: types.nullable(types.number()),
-  baseImage: types.nullable(types.string()),
-  collapsedDigests: z.array(types.string()),
-  collapsedLayerCount: types.number(),
-  type: types.literal("FROM"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdBy: types.nullable(types.string()),
+    digest: types.nullable(types.string()),
+    operation: Operation$inboundSchema,
+    sizeBytes: types.nullable(types.number()),
+    baseImage: types.nullable(types.string()),
+    collapsedDigests: z.array(types.string()),
+    collapsedLayerCount: types.number(),
+    type: types.literal("FROM"),
+  })
+);
 
 export function vcrImageLayer1FromJSON(
   jsonString: string,
@@ -341,56 +349,58 @@ export const VcrImageLayer$inboundSchema: z.ZodType<
   VcrImageLayer,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => VcrImageLayer1$inboundSchema),
-  z.lazy(() => VcrImageLayer2$inboundSchema),
-  z.lazy(() => VcrImageLayer3$inboundSchema),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("ADD") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("ARG") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("CMD") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("COPY") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("ENTRYPOINT") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("EXPOSE") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("HEALTHCHECK") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("LABEL") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("ONBUILD") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("SHELL") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("STOPSIGNAL") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("UNKNOWN") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("USER") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("VOLUME") }),
-  ),
-  z.lazy(() => VcrImageLayer4$inboundSchema).and(
-    z.object({ type: z.literal("WORKDIR") }),
-  ),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => VcrImageLayer1$inboundSchema),
+    z.lazy(() => VcrImageLayer2$inboundSchema),
+    z.lazy(() => VcrImageLayer3$inboundSchema),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("ADD") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("ARG") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("CMD") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("COPY") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("ENTRYPOINT") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("EXPOSE") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("HEALTHCHECK") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("LABEL") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("ONBUILD") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("SHELL") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("STOPSIGNAL") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("UNKNOWN") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("USER") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("VOLUME") }),
+    ),
+    z.lazy(() => VcrImageLayer4$inboundSchema).and(
+      z.object({ type: z.literal("WORKDIR") }),
+    ),
+  ])
+);
 
 export function vcrImageLayerFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -88,10 +88,12 @@ export const DefaultApp$outboundSchema: z.ZodType<
   DefaultApp$Outbound,
   z.ZodTypeDef,
   DefaultApp
-> = z.object({
-  projectId: z.string(),
-  defaultRoute: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    defaultRoute: z.string().optional(),
+  })
+);
 
 export function defaultAppToJSON(defaultApp: DefaultApp): string {
   return JSON.stringify(DefaultApp$outboundSchema.parse(defaultApp));
@@ -108,10 +110,12 @@ export const OtherApplications$outboundSchema: z.ZodType<
   OtherApplications$Outbound,
   z.ZodTypeDef,
   OtherApplications
-> = z.object({
-  projectId: z.string(),
-  defaultRoute: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    defaultRoute: z.string().optional(),
+  })
+);
 
 export function otherApplicationsToJSON(
   otherApplications: OtherApplications,
@@ -134,11 +138,15 @@ export const CreateMicrofrontendsGroupWithApplicationsRequestBody$outboundSchema
     CreateMicrofrontendsGroupWithApplicationsRequestBody$Outbound,
     z.ZodTypeDef,
     CreateMicrofrontendsGroupWithApplicationsRequestBody
-  > = z.object({
-    groupName: z.string(),
-    defaultApp: z.lazy(() => DefaultApp$outboundSchema),
-    otherApplications: z.array(z.lazy(() => OtherApplications$outboundSchema)),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      groupName: z.string(),
+      defaultApp: z.lazy(() => DefaultApp$outboundSchema),
+      otherApplications: z.array(
+        z.lazy(() => OtherApplications$outboundSchema),
+      ),
+    })
+  );
 
 export function createMicrofrontendsGroupWithApplicationsRequestBodyToJSON(
   createMicrofrontendsGroupWithApplicationsRequestBody:
@@ -166,17 +174,19 @@ export const CreateMicrofrontendsGroupWithApplicationsRequest$outboundSchema:
     CreateMicrofrontendsGroupWithApplicationsRequest$Outbound,
     z.ZodTypeDef,
     CreateMicrofrontendsGroupWithApplicationsRequest
-  > = z.object({
-    teamId: z.string().optional(),
-    slug: z.string().optional(),
-    requestBody: z.lazy(() =>
-      CreateMicrofrontendsGroupWithApplicationsRequestBody$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      requestBody: "RequestBody",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      teamId: z.string().optional(),
+      slug: z.string().optional(),
+      requestBody: z.lazy(() =>
+        CreateMicrofrontendsGroupWithApplicationsRequestBody$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        requestBody: "RequestBody",
+      });
+    })
+  );
 
 export function createMicrofrontendsGroupWithApplicationsRequestToJSON(
   createMicrofrontendsGroupWithApplicationsRequest:
@@ -194,15 +204,17 @@ export const NewMicrofrontendsGroup$inboundSchema: z.ZodType<
   NewMicrofrontendsGroup,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  enablePolyrepoBranchRouting: types.boolean(),
-  fallbackEnvironment: types.string(),
-  id: types.string(),
-  name: types.string(),
-  slug: types.string(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    enablePolyrepoBranchRouting: types.boolean(),
+    fallbackEnvironment: types.string(),
+    id: types.string(),
+    name: types.string(),
+    slug: types.string(),
+    updatedAt: types.number(),
+  })
+);
 
 export function newMicrofrontendsGroupFromJSON(
   jsonString: string,
@@ -220,9 +232,13 @@ export const CreateMicrofrontendsGroupWithApplicationsResponseBody$inboundSchema
     CreateMicrofrontendsGroupWithApplicationsResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    newMicrofrontendsGroup: z.lazy(() => NewMicrofrontendsGroup$inboundSchema),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      newMicrofrontendsGroup: z.lazy(() =>
+        NewMicrofrontendsGroup$inboundSchema
+      ),
+    })
+  );
 
 export function createMicrofrontendsGroupWithApplicationsResponseBodyFromJSON(
   jsonString: string,

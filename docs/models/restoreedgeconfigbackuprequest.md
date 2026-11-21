@@ -6,7 +6,7 @@
 import { RestoreEdgeConfigBackupRequest } from "@vercel/sdk/models/restoreedgeconfigbackupop.js";
 
 let value: RestoreEdgeConfigBackupRequest = {
-  edgeConfigId: "<id>",
+  edgeConfigId: "ecfg_",
   edgeConfigBackupVersionId: "<id>",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",

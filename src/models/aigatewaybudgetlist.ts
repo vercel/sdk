@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
@@ -40,16 +40,18 @@ export const DefaultCoveredCounts$inboundSchema: z.ZodType<
   DefaultCoveredCounts,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "api-key": types.number(),
-  project: types.number(),
-  team: types.number(),
-  user: types.number(),
-}).transform((v) => {
-  return remap$(v, {
-    "api-key": "apiKey",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "api-key": types.number(),
+    project: types.number(),
+    team: types.number(),
+    user: types.number(),
+  }).transform((v) => {
+    return remap$(v, {
+      "api-key": "apiKey",
+    });
+  })
+);
 
 export function defaultCoveredCountsFromJSON(
   jsonString: string,
@@ -66,13 +68,15 @@ export const AiGatewayBudgetList$inboundSchema: z.ZodType<
   AiGatewayBudgetList,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  budgets: z.array(AiGatewayBudget$inboundSchema),
-  defaultCoveredCounts: types.optional(
-    z.lazy(() => DefaultCoveredCounts$inboundSchema),
-  ),
-  nextCursor: z.nullable(types.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    budgets: z.array(AiGatewayBudget$inboundSchema),
+    defaultCoveredCounts: types.optional(
+      z.lazy(() => DefaultCoveredCounts$inboundSchema),
+    ),
+    nextCursor: z.nullable(types.string()).optional(),
+  })
+);
 
 export function aiGatewayBudgetListFromJSON(
   jsonString: string,

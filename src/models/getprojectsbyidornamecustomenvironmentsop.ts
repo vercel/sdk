@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -177,12 +177,14 @@ export const GetProjectsByIdOrNameCustomEnvironmentsRequest$outboundSchema:
     GetProjectsByIdOrNameCustomEnvironmentsRequest$Outbound,
     z.ZodTypeDef,
     GetProjectsByIdOrNameCustomEnvironmentsRequest
-  > = z.object({
-    idOrName: z.string(),
-    gitBranch: z.string().optional(),
-    teamId: z.string().optional(),
-    slug: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      idOrName: z.string(),
+      gitBranch: z.string().optional(),
+      teamId: z.string().optional(),
+      slug: z.string().optional(),
+    })
+  );
 
 export function getProjectsByIdOrNameCustomEnvironmentsRequestToJSON(
   getProjectsByIdOrNameCustomEnvironmentsRequest:
@@ -200,9 +202,11 @@ export const AccountLimit$inboundSchema: z.ZodType<
   AccountLimit,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  total: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    total: types.number(),
+  })
+);
 
 export function accountLimitFromJSON(
   jsonString: string,
@@ -218,7 +222,9 @@ export function accountLimitFromJSON(
 export const GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType
-  > = z.nativeEnum(GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType)
+  );
 
 /** @internal */
 export const GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema:
@@ -226,10 +232,13 @@ export const GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema:
     GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    pattern: types.string(),
-    type: GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      pattern: types.string(),
+      type:
+        GetProjectsByIdOrNameCustomEnvironmentsEnvironmentType$inboundSchema,
+    })
+  );
 
 export function getProjectsByIdOrNameCustomEnvironmentsBranchMatcherFromJSON(
   jsonString: string,
@@ -253,12 +262,14 @@ export const GetProjectsByIdOrNameCustomEnvironmentsVerification$inboundSchema:
     GetProjectsByIdOrNameCustomEnvironmentsVerification,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    domain: types.string(),
-    reason: types.string(),
-    type: types.string(),
-    value: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      domain: types.string(),
+      reason: types.string(),
+      type: types.string(),
+      value: types.string(),
+    })
+  );
 
 export function getProjectsByIdOrNameCustomEnvironmentsVerificationFromJSON(
   jsonString: string,
@@ -282,23 +293,23 @@ export const GetProjectsByIdOrNameCustomEnvironmentsDomains$inboundSchema:
     GetProjectsByIdOrNameCustomEnvironmentsDomains,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    apexName: types.string(),
-    createdAt: types.optional(types.number()),
-    customEnvironmentId: z.nullable(types.string()).optional(),
-    gitBranch: z.nullable(types.string()).optional(),
-    name: types.string(),
-    projectId: types.string(),
-    redirect: z.nullable(types.string()).optional(),
-    redirectStatusCode: z.nullable(types.number()).optional(),
-    updatedAt: types.optional(types.number()),
-    verification: types.optional(
-      z.array(z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      apexName: types.string(),
+      createdAt: types.optional(types.number()),
+      customEnvironmentId: z.nullable(types.string()).optional(),
+      gitBranch: z.nullable(types.string()).optional(),
+      name: types.string(),
+      projectId: types.string(),
+      redirect: z.nullable(types.string()).optional(),
+      redirectStatusCode: z.nullable(types.number()).optional(),
+      updatedAt: types.optional(types.number()),
+      verification: types.optional(z.array(z.lazy(() =>
         GetProjectsByIdOrNameCustomEnvironmentsVerification$inboundSchema
-      )),
-    ),
-    verified: types.boolean(),
-  });
+      ))),
+      verified: types.boolean(),
+    })
+  );
 
 export function getProjectsByIdOrNameCustomEnvironmentsDomainsFromJSON(
   jsonString: string,
@@ -318,8 +329,10 @@ export function getProjectsByIdOrNameCustomEnvironmentsDomainsFromJSON(
 
 /** @internal */
 export const GetProjectsByIdOrNameCustomEnvironmentsType$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsByIdOrNameCustomEnvironmentsType> = z
-    .nativeEnum(GetProjectsByIdOrNameCustomEnvironmentsType);
+  z.ZodNativeEnum<typeof GetProjectsByIdOrNameCustomEnvironmentsType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetProjectsByIdOrNameCustomEnvironmentsType)
+    );
 
 /** @internal */
 export const GetProjectsByIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
@@ -327,25 +340,23 @@ export const GetProjectsByIdOrNameCustomEnvironmentsEnvironments$inboundSchema:
     GetProjectsByIdOrNameCustomEnvironmentsEnvironments,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    branchMatcher: types.optional(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      branchMatcher: types.optional(z.lazy(() =>
         GetProjectsByIdOrNameCustomEnvironmentsBranchMatcher$inboundSchema
-      ),
-    ),
-    createdAt: types.number(),
-    currentDeploymentAliases: types.optional(z.array(types.string())),
-    description: types.optional(types.string()),
-    domains: types.optional(
-      z.array(z.lazy(() =>
-        GetProjectsByIdOrNameCustomEnvironmentsDomains$inboundSchema
       )),
-    ),
-    id: types.string(),
-    slug: types.string(),
-    type: GetProjectsByIdOrNameCustomEnvironmentsType$inboundSchema,
-    updatedAt: types.number(),
-  });
+      createdAt: types.number(),
+      currentDeploymentAliases: types.optional(z.array(types.string())),
+      description: types.optional(types.string()),
+      domains: types.optional(z.array(z.lazy(() =>
+        GetProjectsByIdOrNameCustomEnvironmentsDomains$inboundSchema
+      ))),
+      id: types.string(),
+      slug: types.string(),
+      type: GetProjectsByIdOrNameCustomEnvironmentsType$inboundSchema,
+      updatedAt: types.number(),
+    })
+  );
 
 export function getProjectsByIdOrNameCustomEnvironmentsEnvironmentsFromJSON(
   jsonString: string,
@@ -369,14 +380,14 @@ export const GetProjectsByIdOrNameCustomEnvironmentsResponseBody$inboundSchema:
     GetProjectsByIdOrNameCustomEnvironmentsResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    accountLimit: z.lazy(() => AccountLimit$inboundSchema),
-    environments: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      accountLimit: z.lazy(() => AccountLimit$inboundSchema),
+      environments: z.array(z.lazy(() =>
         GetProjectsByIdOrNameCustomEnvironmentsEnvironments$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function getProjectsByIdOrNameCustomEnvironmentsResponseBodyFromJSON(
   jsonString: string,

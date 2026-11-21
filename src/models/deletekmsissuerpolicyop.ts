@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -46,7 +47,9 @@ export type DeleteKmsIssuerPolicyRequest = {
 /** @internal */
 export const DeleteKmsIssuerPolicyPathParamKind$outboundSchema: z.ZodNativeEnum<
   typeof DeleteKmsIssuerPolicyPathParamKind
-> = z.nativeEnum(DeleteKmsIssuerPolicyPathParamKind);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteKmsIssuerPolicyPathParamKind)
+);
 
 /** @internal */
 export type DeleteKmsIssuerPolicyRequest$Outbound = {
@@ -62,13 +65,15 @@ export const DeleteKmsIssuerPolicyRequest$outboundSchema: z.ZodType<
   DeleteKmsIssuerPolicyRequest$Outbound,
   z.ZodTypeDef,
   DeleteKmsIssuerPolicyRequest
-> = z.object({
-  issuerId: z.string(),
-  kind: DeleteKmsIssuerPolicyPathParamKind$outboundSchema,
-  policyKey: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuerId: z.string(),
+    kind: DeleteKmsIssuerPolicyPathParamKind$outboundSchema,
+    policyKey: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteKmsIssuerPolicyRequestToJSON(
   deleteKmsIssuerPolicyRequest: DeleteKmsIssuerPolicyRequest,

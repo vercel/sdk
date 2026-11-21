@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -42,8 +43,10 @@ export type ArchiveAiGatewayBudgetDefaultRequest = {
 
 /** @internal */
 export const ArchiveAiGatewayBudgetDefaultQueryParamScopeType$outboundSchema:
-  z.ZodNativeEnum<typeof ArchiveAiGatewayBudgetDefaultQueryParamScopeType> = z
-    .nativeEnum(ArchiveAiGatewayBudgetDefaultQueryParamScopeType);
+  z.ZodNativeEnum<typeof ArchiveAiGatewayBudgetDefaultQueryParamScopeType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ArchiveAiGatewayBudgetDefaultQueryParamScopeType)
+    );
 
 /** @internal */
 export type ArchiveAiGatewayBudgetDefaultRequest$Outbound = {
@@ -58,12 +61,14 @@ export const ArchiveAiGatewayBudgetDefaultRequest$outboundSchema: z.ZodType<
   ArchiveAiGatewayBudgetDefaultRequest$Outbound,
   z.ZodTypeDef,
   ArchiveAiGatewayBudgetDefaultRequest
-> = z.object({
-  scopeType: ArchiveAiGatewayBudgetDefaultQueryParamScopeType$outboundSchema,
-  justification: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scopeType: ArchiveAiGatewayBudgetDefaultQueryParamScopeType$outboundSchema,
+    justification: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function archiveAiGatewayBudgetDefaultRequestToJSON(
   archiveAiGatewayBudgetDefaultRequest: ArchiveAiGatewayBudgetDefaultRequest,

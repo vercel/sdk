@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -38,7 +39,9 @@ export type Tags$Outbound = Array<string> | string;
 
 /** @internal */
 export const Tags$outboundSchema: z.ZodType<Tags$Outbound, z.ZodTypeDef, Tags> =
-  smartUnion([z.array(z.string()), z.string()]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([z.array(z.string()), z.string()])
+  );
 
 export function tagsToJSON(tags: Tags): string {
   return JSON.stringify(Tags$outboundSchema.parse(tags));
@@ -47,7 +50,7 @@ export function tagsToJSON(tags: Tags): string {
 /** @internal */
 export const InvalidateByTagsTarget$outboundSchema: z.ZodNativeEnum<
   typeof InvalidateByTagsTarget
-> = z.nativeEnum(InvalidateByTagsTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(InvalidateByTagsTarget));
 
 /** @internal */
 export type InvalidateByTagsRequestBody$Outbound = {
@@ -60,10 +63,12 @@ export const InvalidateByTagsRequestBody$outboundSchema: z.ZodType<
   InvalidateByTagsRequestBody$Outbound,
   z.ZodTypeDef,
   InvalidateByTagsRequestBody
-> = z.object({
-  tags: smartUnion([z.array(z.string()), z.string()]),
-  target: InvalidateByTagsTarget$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tags: smartUnion([z.array(z.string()), z.string()]),
+    target: InvalidateByTagsTarget$outboundSchema.optional(),
+  })
+);
 
 export function invalidateByTagsRequestBodyToJSON(
   invalidateByTagsRequestBody: InvalidateByTagsRequestBody,
@@ -88,17 +93,19 @@ export const InvalidateByTagsRequest$outboundSchema: z.ZodType<
   InvalidateByTagsRequest$Outbound,
   z.ZodTypeDef,
   InvalidateByTagsRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => InvalidateByTagsRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => InvalidateByTagsRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function invalidateByTagsRequestToJSON(
   invalidateByTagsRequest: InvalidateByTagsRequest,

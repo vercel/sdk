@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -182,20 +182,22 @@ export const TransferInDomainContactInformation$outboundSchema: z.ZodType<
   TransferInDomainContactInformation$Outbound,
   z.ZodTypeDef,
   TransferInDomainContactInformation
-> = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string(),
-  phone: z.string(),
-  address1: z.string(),
-  address2: z.string().optional(),
-  city: z.string(),
-  state: z.string(),
-  zip: z.string(),
-  country: z.string(),
-  companyName: z.string().optional(),
-  fax: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: z.string(),
+    lastName: z.string(),
+    email: z.string(),
+    phone: z.string(),
+    address1: z.string(),
+    address2: z.string().optional(),
+    city: z.string(),
+    state: z.string(),
+    zip: z.string(),
+    country: z.string(),
+    companyName: z.string().optional(),
+    fax: z.string().optional(),
+  })
+);
 
 export function transferInDomainContactInformationToJSON(
   transferInDomainContactInformation: TransferInDomainContactInformation,
@@ -221,15 +223,17 @@ export const TransferInDomainRequestBody$outboundSchema: z.ZodType<
   TransferInDomainRequestBody$Outbound,
   z.ZodTypeDef,
   TransferInDomainRequestBody
-> = z.object({
-  authCode: z.string(),
-  autoRenew: z.boolean(),
-  years: z.number(),
-  expectedPrice: z.number(),
-  contactInformation: z.lazy(() =>
-    TransferInDomainContactInformation$outboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authCode: z.string(),
+    autoRenew: z.boolean(),
+    years: z.number(),
+    expectedPrice: z.number(),
+    contactInformation: z.lazy(() =>
+      TransferInDomainContactInformation$outboundSchema
+    ),
+  })
+);
 
 export function transferInDomainRequestBodyToJSON(
   transferInDomainRequestBody: TransferInDomainRequestBody,
@@ -253,15 +257,17 @@ export const TransferInDomainRequest$outboundSchema: z.ZodType<
   TransferInDomainRequest$Outbound,
   z.ZodTypeDef,
   TransferInDomainRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => TransferInDomainRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() => TransferInDomainRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function transferInDomainRequestToJSON(
   transferInDomainRequest: TransferInDomainRequest,
@@ -277,12 +283,14 @@ export const TransferInDomainDomainsRegistrarResponseResponseBody$inboundSchema:
     TransferInDomainDomainsRegistrarResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Forbidden$inboundSchema,
-    NotAuthorizedForScope$inboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      Forbidden$inboundSchema,
+      NotAuthorizedForScope$inboundSchema.and(
+        z.object({ code: z.literal("not_authorized_for_scope") }),
+      ),
+    ])
+  );
 
 export function transferInDomainDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
@@ -306,16 +314,18 @@ export const TransferInDomainDomainsRegistrarResponseBody$inboundSchema:
     TransferInDomainDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    BadRequest$inboundSchema,
-    DomainAlreadyOwned$inboundSchema,
-    DomainTooShort$inboundSchema,
-    DNSSECEnabled$inboundSchema,
-    ExpectedPriceMismatch$inboundSchema,
-    DomainNotAvailable$inboundSchema,
-    TldNotSupported$inboundSchema,
-    HttpApiDecodeError$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      BadRequest$inboundSchema,
+      DomainAlreadyOwned$inboundSchema,
+      DomainTooShort$inboundSchema,
+      DNSSECEnabled$inboundSchema,
+      ExpectedPriceMismatch$inboundSchema,
+      DomainNotAvailable$inboundSchema,
+      TldNotSupported$inboundSchema,
+      HttpApiDecodeError$inboundSchema,
+    ])
+  );
 
 export function transferInDomainDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -336,17 +346,19 @@ export function transferInDomainDomainsRegistrarResponseBodyFromJSON(
 /** @internal */
 export const TransferInDomainMethod$inboundSchema: z.ZodNativeEnum<
   typeof TransferInDomainMethod
-> = z.nativeEnum(TransferInDomainMethod);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TransferInDomainMethod));
 
 /** @internal */
 export const TransferInDomainLinks$inboundSchema: z.ZodType<
   TransferInDomainLinks,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  href: types.string(),
-  method: TransferInDomainMethod$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    href: types.string(),
+    method: TransferInDomainMethod$inboundSchema,
+  })
+);
 
 export function transferInDomainLinksFromJSON(
   jsonString: string,
@@ -363,14 +375,16 @@ export const TransferInDomainResponseBody$inboundSchema: z.ZodType<
   TransferInDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  orderId: types.string(),
-  _links: z.record(z.lazy(() => TransferInDomainLinks$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "_links": "links",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    orderId: types.string(),
+    _links: z.record(z.lazy(() => TransferInDomainLinks$inboundSchema)),
+  }).transform((v) => {
+    return remap$(v, {
+      "_links": "links",
+    });
+  })
+);
 
 export function transferInDomainResponseBodyFromJSON(
   jsonString: string,

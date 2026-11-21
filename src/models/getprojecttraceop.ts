@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -90,12 +90,14 @@ export const GetProjectTraceRequest$outboundSchema: z.ZodType<
   GetProjectTraceRequest$Outbound,
   z.ZodTypeDef,
   GetProjectTraceRequest
-> = z.object({
-  projectId: z.string(),
-  requestId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    requestId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getProjectTraceRequestToJSON(
   getProjectTraceRequest: GetProjectTraceRequest,
@@ -110,10 +112,12 @@ export const GetProjectTraceResources$inboundSchema: z.ZodType<
   GetProjectTraceResources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attributes: z.record(types.string()),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attributes: z.record(types.string()),
+    name: types.string(),
+  })
+);
 
 export function getProjectTraceResourcesFromJSON(
   jsonString: string,
@@ -130,11 +134,13 @@ export const GetProjectTraceEvents$inboundSchema: z.ZodType<
   GetProjectTraceEvents,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attributes: z.record(z.any()),
-  name: types.string(),
-  timestamp: z.array(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attributes: z.record(z.any()),
+    name: types.string(),
+    timestamp: z.array(types.number()),
+  })
+);
 
 export function getProjectTraceEventsFromJSON(
   jsonString: string,
@@ -148,10 +154,12 @@ export function getProjectTraceEventsFromJSON(
 
 /** @internal */
 export const Library$inboundSchema: z.ZodType<Library, z.ZodTypeDef, unknown> =
-  z.object({
-    name: types.string(),
-    version: types.optional(types.string()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: types.string(),
+      version: types.optional(types.string()),
+    })
+  );
 
 export function libraryFromJSON(
   jsonString: string,
@@ -168,10 +176,12 @@ export const GetProjectTraceStatus$inboundSchema: z.ZodType<
   GetProjectTraceStatus,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.number(),
-  message: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.number(),
+    message: types.optional(types.string()),
+  })
+);
 
 export function getProjectTraceStatusFromJSON(
   jsonString: string,
@@ -184,24 +194,26 @@ export function getProjectTraceStatusFromJSON(
 }
 
 /** @internal */
-export const Spans$inboundSchema: z.ZodType<Spans, z.ZodTypeDef, unknown> = z
-  .object({
-    attributes: z.record(z.any()),
-    duration: z.array(types.number()),
-    endTime: z.array(types.number()),
-    events: z.array(z.lazy(() => GetProjectTraceEvents$inboundSchema)),
-    kind: types.number(),
-    library: z.lazy(() => Library$inboundSchema),
-    links: z.array(z.record(z.any())),
-    name: types.string(),
-    parentSpanId: types.optional(types.string()),
-    resource: types.string(),
-    spanId: types.string(),
-    startTime: z.array(types.number()),
-    status: z.lazy(() => GetProjectTraceStatus$inboundSchema),
-    traceFlags: types.number(),
-    traceState: types.optional(types.string()),
-  });
+export const Spans$inboundSchema: z.ZodType<Spans, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      attributes: z.record(z.any()),
+      duration: z.array(types.number()),
+      endTime: z.array(types.number()),
+      events: z.array(z.lazy(() => GetProjectTraceEvents$inboundSchema)),
+      kind: types.number(),
+      library: z.lazy(() => Library$inboundSchema),
+      links: z.array(z.record(z.any())),
+      name: types.string(),
+      parentSpanId: types.optional(types.string()),
+      resource: types.string(),
+      spanId: types.string(),
+      startTime: z.array(types.number()),
+      status: z.lazy(() => GetProjectTraceStatus$inboundSchema),
+      traceFlags: types.number(),
+      traceState: types.optional(types.string()),
+    })
+  );
 
 export function spansFromJSON(
   jsonString: string,
@@ -214,15 +226,17 @@ export function spansFromJSON(
 }
 
 /** @internal */
-export const Trace$inboundSchema: z.ZodType<Trace, z.ZodTypeDef, unknown> = z
-  .object({
-    resources: types.optional(
-      z.array(z.lazy(() => GetProjectTraceResources$inboundSchema)),
-    ),
-    rootSpanId: types.optional(types.string()),
-    spans: z.array(z.lazy(() => Spans$inboundSchema)),
-    traceId: types.string(),
-  });
+export const Trace$inboundSchema: z.ZodType<Trace, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      resources: types.optional(
+        z.array(z.lazy(() => GetProjectTraceResources$inboundSchema)),
+      ),
+      rootSpanId: types.optional(types.string()),
+      spans: z.array(z.lazy(() => Spans$inboundSchema)),
+      traceId: types.string(),
+    })
+  );
 
 export function traceFromJSON(
   jsonString: string,
@@ -239,9 +253,11 @@ export const GetProjectTraceResponseBody$inboundSchema: z.ZodType<
   GetProjectTraceResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  trace: z.lazy(() => Trace$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    trace: z.lazy(() => Trace$inboundSchema),
+  })
+);
 
 export function getProjectTraceResponseBodyFromJSON(
   jsonString: string,

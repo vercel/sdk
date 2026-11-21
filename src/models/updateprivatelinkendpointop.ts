@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type UpdatePrivateLinkEndpointRequestBody = {
   /**
@@ -47,10 +48,12 @@ export const UpdatePrivateLinkEndpointRequestBody$outboundSchema: z.ZodType<
   UpdatePrivateLinkEndpointRequestBody$Outbound,
   z.ZodTypeDef,
   UpdatePrivateLinkEndpointRequestBody
-> = z.object({
-  name: z.string().optional(),
-  enablePrivateDns: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    enablePrivateDns: z.boolean().optional(),
+  })
+);
 
 export function updatePrivateLinkEndpointRequestBodyToJSON(
   updatePrivateLinkEndpointRequestBody: UpdatePrivateLinkEndpointRequestBody,
@@ -76,18 +79,21 @@ export const UpdatePrivateLinkEndpointRequest$outboundSchema: z.ZodType<
   UpdatePrivateLinkEndpointRequest$Outbound,
   z.ZodTypeDef,
   UpdatePrivateLinkEndpointRequest
-> = z.object({
-  projectId: z.string(),
-  endpointId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdatePrivateLinkEndpointRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    endpointId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      UpdatePrivateLinkEndpointRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updatePrivateLinkEndpointRequestToJSON(
   updatePrivateLinkEndpointRequest: UpdatePrivateLinkEndpointRequest,

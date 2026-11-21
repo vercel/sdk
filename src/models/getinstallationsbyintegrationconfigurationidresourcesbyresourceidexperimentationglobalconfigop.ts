@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -55,10 +55,12 @@ export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdEx
     GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest$Outbound,
     z.ZodTypeDef,
     GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest
-  > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integrationConfigurationId: z.string(),
+      resourceId: z.string(),
+    })
+  );
 
 export function getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestToJSON(
   getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest:
@@ -76,8 +78,10 @@ export function getInstallationsByIntegrationConfigurationIdResourcesByResourceI
 export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose$inboundSchema:
   z.ZodNativeEnum<
     typeof GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose
-  > = z.nativeEnum(
-    GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose,
+    )
   );
 
 /** @internal */
@@ -86,14 +90,16 @@ export const GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdEx
     GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    digest: types.string(),
-    items: z.record(types.nullable(GlobalConfigItemValue$inboundSchema)),
-    purpose: types.optional(
-      GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose$inboundSchema,
-    ),
-    updatedAt: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      digest: types.string(),
+      items: z.record(types.nullable(GlobalConfigItemValue$inboundSchema)),
+      purpose: types.optional(
+        GetInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose$inboundSchema,
+      ),
+      updatedAt: types.number(),
+    })
+  );
 
 export function getInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBodyFromJSON(
   jsonString: string,

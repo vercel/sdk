@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
@@ -22,10 +22,12 @@ export const AiGatewayRuleList$inboundSchema: z.ZodType<
   AiGatewayRuleList,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  nextCursor: types.nullable(types.string()),
-  rules: z.array(AiGatewayRuleListItem$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    nextCursor: types.nullable(types.string()),
+    rules: z.array(AiGatewayRuleListItem$inboundSchema),
+  })
+);
 
 export function aiGatewayRuleListFromJSON(
   jsonString: string,

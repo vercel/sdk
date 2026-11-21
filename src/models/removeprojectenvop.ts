@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -758,13 +758,15 @@ export const RemoveProjectEnvRequest$outboundSchema: z.ZodType<
   RemoveProjectEnvRequest$Outbound,
   z.ZodTypeDef,
   RemoveProjectEnvRequest
-> = z.object({
-  idOrName: z.string(),
-  id: z.string(),
-  customEnvironmentId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    id: z.string(),
+    customEnvironmentId: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function removeProjectEnvRequestToJSON(
   removeProjectEnvRequest: RemoveProjectEnvRequest,
@@ -780,10 +782,12 @@ export const RemoveProjectEnvContentHintProjectsResponse17$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse17,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    projectId: types.string(),
-    type: types.literal("flags-connection-string"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      projectId: types.string(),
+      type: types.literal("flags-connection-string"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse17FromJSON(
   jsonString: string,
@@ -807,13 +811,15 @@ export const RemoveProjectEnvContentHintProjectsResponse16$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse16,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    integrationConfigurationId: types.string(),
-    integrationId: types.string(),
-    integrationProductId: types.string(),
-    storeId: types.string(),
-    type: types.literal("integration-store-secret"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integrationConfigurationId: types.string(),
+      integrationId: types.string(),
+      integrationProductId: types.string(),
+      storeId: types.string(),
+      type: types.literal("integration-store-secret"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse16FromJSON(
   jsonString: string,
@@ -837,10 +843,12 @@ export const RemoveProjectEnvContentHintProjectsResponse15$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse15,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-url-no-ssl"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-url-no-ssl"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse15FromJSON(
   jsonString: string,
@@ -864,10 +872,12 @@ export const RemoveProjectEnvContentHintProjectsResponse14$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse14,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-database"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-database"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse14FromJSON(
   jsonString: string,
@@ -891,10 +901,12 @@ export const RemoveProjectEnvContentHintProjectsResponse13$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse13,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-password"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-password"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse13FromJSON(
   jsonString: string,
@@ -918,10 +930,12 @@ export const RemoveProjectEnvContentHintProjectsResponse12$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse12,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-host"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-host"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse12FromJSON(
   jsonString: string,
@@ -945,10 +959,12 @@ export const RemoveProjectEnvContentHintProjectsResponse11$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse11,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-user"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-user"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse11FromJSON(
   jsonString: string,
@@ -972,10 +988,12 @@ export const RemoveProjectEnvContentHintProjectsResponse10$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse10,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-prisma-url"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-prisma-url"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse10FromJSON(
   jsonString: string,
@@ -999,10 +1017,12 @@ export const RemoveProjectEnvContentHintProjectsResponse9$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse9,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-url-non-pooling"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-url-non-pooling"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse9FromJSON(
   jsonString: string,
@@ -1026,10 +1046,12 @@ export const RemoveProjectEnvContentHintProjectsResponse8$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse8,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("postgres-url"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("postgres-url"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse8FromJSON(
   jsonString: string,
@@ -1053,10 +1075,12 @@ export const RemoveProjectEnvContentHintProjectsResponse7$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse7,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("blob-webhook-public-key"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("blob-webhook-public-key"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse7FromJSON(
   jsonString: string,
@@ -1080,10 +1104,12 @@ export const RemoveProjectEnvContentHintProjectsResponse6$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse6,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("blob-store-id"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("blob-store-id"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse6FromJSON(
   jsonString: string,
@@ -1107,10 +1133,12 @@ export const RemoveProjectEnvContentHintProjectsResponse5$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse5,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("blob-read-write-token"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("blob-read-write-token"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse5FromJSON(
   jsonString: string,
@@ -1134,10 +1162,12 @@ export const RemoveProjectEnvContentHintProjectsResponse4$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse4,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("redis-rest-api-read-only-token"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("redis-rest-api-read-only-token"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse4FromJSON(
   jsonString: string,
@@ -1161,10 +1191,12 @@ export const RemoveProjectEnvContentHintProjectsResponse3$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse3,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("redis-rest-api-token"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("redis-rest-api-token"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse3FromJSON(
   jsonString: string,
@@ -1188,10 +1220,12 @@ export const RemoveProjectEnvContentHintProjectsResponse2$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("redis-rest-api-url"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("redis-rest-api-url"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse2FromJSON(
   jsonString: string,
@@ -1215,10 +1249,12 @@ export const RemoveProjectEnvContentHintProjectsResponse1$inboundSchema:
     RemoveProjectEnvContentHintProjectsResponse1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    storeId: types.string(),
-    type: types.literal("redis-url"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      storeId: types.string(),
+      type: types.literal("redis-url"),
+    })
+  );
 
 export function removeProjectEnvContentHintProjectsResponse1FromJSON(
   jsonString: string,
@@ -1242,25 +1278,27 @@ export const RemoveProjectEnvResponseBodyProjectsResponseContentHint$inboundSche
     RemoveProjectEnvResponseBodyProjectsResponseContentHint,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse1$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse2$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse3$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse4$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse5$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse6$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse7$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse8$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse9$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse10$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse11$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse12$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse13$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse14$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse15$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse16$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjectsResponse17$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse1$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse2$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse3$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse4$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse5$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse6$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse7$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse8$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse9$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse10$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse11$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse12$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse13$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse14$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse15$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse16$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjectsResponse17$inboundSchema),
+    ])
+  );
 
 export function removeProjectEnvResponseBodyProjectsResponseContentHintFromJSON(
   jsonString: string,
@@ -1281,8 +1319,10 @@ export function removeProjectEnvResponseBodyProjectsResponseContentHintFromJSON(
 export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType
-  > = z.nativeEnum(
-    RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType,
+    )
   );
 
 /** @internal */
@@ -1291,11 +1331,13 @@ export const RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$inb
     RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    encryptedValue: types.string(),
-    type:
-      RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      encryptedValue: types.string(),
+      type:
+        RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJSONType$inboundSchema,
+    })
+  );
 
 export function removeProjectEnvResponseBodyProjectsResponseInternalContentHintFromJSON(
   jsonString: string,
@@ -1314,13 +1356,17 @@ export function removeProjectEnvResponseBodyProjectsResponseInternalContentHintF
 
 /** @internal */
 export const RemoveProjectEnvTargetProjectsResponse2$inboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse2> = z
-    .nativeEnum(RemoveProjectEnvTargetProjectsResponse2);
+  z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse2> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RemoveProjectEnvTargetProjectsResponse2)
+    );
 
 /** @internal */
 export const RemoveProjectEnvTargetProjectsResponse1$inboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse1> = z
-    .nativeEnum(RemoveProjectEnvTargetProjectsResponse1);
+  z.ZodNativeEnum<typeof RemoveProjectEnvTargetProjectsResponse1> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RemoveProjectEnvTargetProjectsResponse1)
+    );
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponseTarget$inboundSchema:
@@ -1328,10 +1374,12 @@ export const RemoveProjectEnvResponseBodyProjectsResponseTarget$inboundSchema:
     RemoveProjectEnvResponseBodyProjectsResponseTarget,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(RemoveProjectEnvTargetProjectsResponse1$inboundSchema),
-    RemoveProjectEnvTargetProjectsResponse2$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(RemoveProjectEnvTargetProjectsResponse1$inboundSchema),
+      RemoveProjectEnvTargetProjectsResponse2$inboundSchema,
+    ])
+  );
 
 export function removeProjectEnvResponseBodyProjectsResponseTargetFromJSON(
   jsonString: string,
@@ -1351,25 +1399,29 @@ export function removeProjectEnvResponseBodyProjectsResponseTargetFromJSON(
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponseType> = z
-    .nativeEnum(RemoveProjectEnvResponseBodyProjectsResponseType);
+  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RemoveProjectEnvResponseBodyProjectsResponseType)
+    );
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponseVisibility$inboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvResponseBodyProjectsResponseVisibility
-  > = z.nativeEnum(RemoveProjectEnvResponseBodyProjectsResponseVisibility);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(RemoveProjectEnvResponseBodyProjectsResponseVisibility)
+  );
 
 /** @internal */
 export const RemoveProjectEnvResponseBody3$inboundSchema: z.ZodType<
   RemoveProjectEnvResponseBody3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  configurationId: z.nullable(types.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    configurationId: z.nullable(types.string()).optional(),
+    contentHint: z.nullable(z.union([
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse1$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse2$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse3$inboundSchema),
@@ -1387,38 +1439,36 @@ export const RemoveProjectEnvResponseBody3$inboundSchema: z.ZodType<
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse15$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse16$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjectsResponse17$inboundSchema),
-    ]),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  id: types.optional(types.string()),
-  internalContentHint: z.nullable(
-    z.lazy(() =>
+    ])).optional(),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.optional(types.boolean()),
+    edgeConfigId: z.nullable(types.string()).optional(),
+    edgeConfigTokenId: z.nullable(types.string()).optional(),
+    gitBranch: types.optional(types.string()),
+    id: types.optional(types.string()),
+    internalContentHint: z.nullable(z.lazy(() =>
       RemoveProjectEnvResponseBodyProjectsResponseInternalContentHint$inboundSchema
+    )).optional(),
+    key: types.string(),
+    legacyValue: types.optional(types.string()),
+    sunsetSecretId: types.optional(types.string()),
+    target: types.optional(
+      smartUnion([
+        z.array(RemoveProjectEnvTargetProjectsResponse1$inboundSchema),
+        RemoveProjectEnvTargetProjectsResponse2$inboundSchema,
+      ]),
     ),
-  ).optional(),
-  key: types.string(),
-  legacyValue: types.optional(types.string()),
-  sunsetSecretId: types.optional(types.string()),
-  target: types.optional(
-    smartUnion([
-      z.array(RemoveProjectEnvTargetProjectsResponse1$inboundSchema),
-      RemoveProjectEnvTargetProjectsResponse2$inboundSchema,
-    ]),
-  ),
-  type: RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema,
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.string(),
-  visibility: types.optional(
-    RemoveProjectEnvResponseBodyProjectsResponseVisibility$inboundSchema,
-  ),
-});
+    type: RemoveProjectEnvResponseBodyProjectsResponseType$inboundSchema,
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.string(),
+    visibility: types.optional(
+      RemoveProjectEnvResponseBodyProjectsResponseVisibility$inboundSchema,
+    ),
+  })
+);
 
 export function removeProjectEnvResponseBody3FromJSON(
   jsonString: string,
@@ -1435,10 +1485,12 @@ export const RemoveProjectEnvContentHintProjects17$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects17,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectId: types.string(),
-  type: types.literal("flags-connection-string"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: types.string(),
+    type: types.literal("flags-connection-string"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects17FromJSON(
   jsonString: string,
@@ -1456,13 +1508,15 @@ export const RemoveProjectEnvContentHintProjects16$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects16,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  integrationProductId: types.string(),
-  storeId: types.string(),
-  type: types.literal("integration-store-secret"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    integrationProductId: types.string(),
+    storeId: types.string(),
+    type: types.literal("integration-store-secret"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects16FromJSON(
   jsonString: string,
@@ -1480,10 +1534,12 @@ export const RemoveProjectEnvContentHintProjects15$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects15,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-no-ssl"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-no-ssl"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects15FromJSON(
   jsonString: string,
@@ -1501,10 +1557,12 @@ export const RemoveProjectEnvContentHintProjects14$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects14,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-database"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-database"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects14FromJSON(
   jsonString: string,
@@ -1522,10 +1580,12 @@ export const RemoveProjectEnvContentHintProjects13$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects13,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-password"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-password"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects13FromJSON(
   jsonString: string,
@@ -1543,10 +1603,12 @@ export const RemoveProjectEnvContentHintProjects12$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects12,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-host"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-host"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects12FromJSON(
   jsonString: string,
@@ -1564,10 +1626,12 @@ export const RemoveProjectEnvContentHintProjects11$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects11,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-user"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects11FromJSON(
   jsonString: string,
@@ -1585,10 +1649,12 @@ export const RemoveProjectEnvContentHintProjects10$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects10,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-prisma-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-prisma-url"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects10FromJSON(
   jsonString: string,
@@ -1606,10 +1672,12 @@ export const RemoveProjectEnvContentHintProjects9$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects9,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-non-pooling"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-non-pooling"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects9FromJSON(
   jsonString: string,
@@ -1627,10 +1695,12 @@ export const RemoveProjectEnvContentHintProjects8$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects8,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects8FromJSON(
   jsonString: string,
@@ -1648,10 +1718,12 @@ export const RemoveProjectEnvContentHintProjects7$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-webhook-public-key"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-webhook-public-key"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects7FromJSON(
   jsonString: string,
@@ -1669,10 +1741,12 @@ export const RemoveProjectEnvContentHintProjects6$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-store-id"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-store-id"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects6FromJSON(
   jsonString: string,
@@ -1690,10 +1764,12 @@ export const RemoveProjectEnvContentHintProjects5$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-read-write-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-read-write-token"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects5FromJSON(
   jsonString: string,
@@ -1711,10 +1787,12 @@ export const RemoveProjectEnvContentHintProjects4$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-read-only-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-read-only-token"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects4FromJSON(
   jsonString: string,
@@ -1732,10 +1810,12 @@ export const RemoveProjectEnvContentHintProjects3$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-token"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects3FromJSON(
   jsonString: string,
@@ -1753,10 +1833,12 @@ export const RemoveProjectEnvContentHintProjects2$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-url"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects2FromJSON(
   jsonString: string,
@@ -1774,10 +1856,12 @@ export const RemoveProjectEnvContentHintProjects1$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHintProjects1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-url"),
+  })
+);
 
 export function removeProjectEnvContentHintProjects1FromJSON(
   jsonString: string,
@@ -1796,25 +1880,27 @@ export const RemoveProjectEnvResponseBodyProjectsContentHint$inboundSchema:
     RemoveProjectEnvResponseBodyProjectsContentHint,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => RemoveProjectEnvContentHintProjects1$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects2$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects3$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects4$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects5$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects6$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects7$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects8$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects9$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects10$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects11$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects12$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects13$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects14$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects15$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects16$inboundSchema),
-    z.lazy(() => RemoveProjectEnvContentHintProjects17$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => RemoveProjectEnvContentHintProjects1$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects2$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects3$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects4$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects5$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects6$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects7$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects8$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects9$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects10$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects11$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects12$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects13$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects14$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects15$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects16$inboundSchema),
+      z.lazy(() => RemoveProjectEnvContentHintProjects17$inboundSchema),
+    ])
+  );
 
 export function removeProjectEnvResponseBodyProjectsContentHintFromJSON(
   jsonString: string,
@@ -1836,8 +1922,10 @@ export function removeProjectEnvResponseBodyProjectsContentHintFromJSON(
 export const RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson2Type$inboundSchema:
   z.ZodNativeEnum<
     typeof RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson2Type
-  > = z.nativeEnum(
-    RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson2Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson2Type,
+    )
   );
 
 /** @internal */
@@ -1846,11 +1934,13 @@ export const RemoveProjectEnvResponseBodyProjectsInternalContentHint$inboundSche
     RemoveProjectEnvResponseBodyProjectsInternalContentHint,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    encryptedValue: types.string(),
-    type:
-      RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson2Type$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      encryptedValue: types.string(),
+      type:
+        RemoveProjectEnvResponseBodyProjectsResponse200ApplicationJson2Type$inboundSchema,
+    })
+  );
 
 export function removeProjectEnvResponseBodyProjectsInternalContentHintFromJSON(
   jsonString: string,
@@ -1870,20 +1960,26 @@ export function removeProjectEnvResponseBodyProjectsInternalContentHintFromJSON(
 /** @internal */
 export const RemoveProjectEnvTargetProjects2$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTargetProjects2
-> = z.nativeEnum(RemoveProjectEnvTargetProjects2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(RemoveProjectEnvTargetProjects2)
+);
 
 /** @internal */
 export const RemoveProjectEnvTargetProjects1$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTargetProjects1
-> = z.nativeEnum(RemoveProjectEnvTargetProjects1);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(RemoveProjectEnvTargetProjects1)
+);
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsTarget$inboundSchema:
   z.ZodType<RemoveProjectEnvResponseBodyProjectsTarget, z.ZodTypeDef, unknown> =
-    smartUnion([
-      z.array(RemoveProjectEnvTargetProjects1$inboundSchema),
-      RemoveProjectEnvTargetProjects2$inboundSchema,
-    ]);
+    /* @__PURE__ */ lazySchema$(() =>
+      smartUnion([
+        z.array(RemoveProjectEnvTargetProjects1$inboundSchema),
+        RemoveProjectEnvTargetProjects2$inboundSchema,
+      ])
+    );
 
 export function removeProjectEnvResponseBodyProjectsTargetFromJSON(
   jsonString: string,
@@ -1903,24 +1999,28 @@ export function removeProjectEnvResponseBodyProjectsTargetFromJSON(
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsType$inboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsType> = z
-    .nativeEnum(RemoveProjectEnvResponseBodyProjectsType);
+  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RemoveProjectEnvResponseBodyProjectsType)
+    );
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsVisibility$inboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsVisibility> = z
-    .nativeEnum(RemoveProjectEnvResponseBodyProjectsVisibility);
+  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsVisibility> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RemoveProjectEnvResponseBodyProjectsVisibility)
+    );
 
 /** @internal */
 export const RemoveProjectEnvResponseBody2$inboundSchema: z.ZodType<
   RemoveProjectEnvResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  configurationId: z.nullable(types.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    configurationId: z.nullable(types.string()).optional(),
+    contentHint: z.nullable(z.union([
       z.lazy(() => RemoveProjectEnvContentHintProjects1$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjects2$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjects3$inboundSchema),
@@ -1938,39 +2038,37 @@ export const RemoveProjectEnvResponseBody2$inboundSchema: z.ZodType<
       z.lazy(() => RemoveProjectEnvContentHintProjects15$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjects16$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHintProjects17$inboundSchema),
-    ]),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  id: types.optional(types.string()),
-  internalContentHint: z.nullable(
-    z.lazy(() =>
+    ])).optional(),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.optional(types.boolean()),
+    edgeConfigId: z.nullable(types.string()).optional(),
+    edgeConfigTokenId: z.nullable(types.string()).optional(),
+    gitBranch: types.optional(types.string()),
+    id: types.optional(types.string()),
+    internalContentHint: z.nullable(z.lazy(() =>
       RemoveProjectEnvResponseBodyProjectsInternalContentHint$inboundSchema
+    )).optional(),
+    key: types.string(),
+    legacyValue: types.optional(types.string()),
+    sunsetSecretId: types.optional(types.string()),
+    system: types.optional(types.boolean()),
+    target: types.optional(
+      smartUnion([
+        z.array(RemoveProjectEnvTargetProjects1$inboundSchema),
+        RemoveProjectEnvTargetProjects2$inboundSchema,
+      ]),
     ),
-  ).optional(),
-  key: types.string(),
-  legacyValue: types.optional(types.string()),
-  sunsetSecretId: types.optional(types.string()),
-  system: types.optional(types.boolean()),
-  target: types.optional(
-    smartUnion([
-      z.array(RemoveProjectEnvTargetProjects1$inboundSchema),
-      RemoveProjectEnvTargetProjects2$inboundSchema,
-    ]),
-  ),
-  type: RemoveProjectEnvResponseBodyProjectsType$inboundSchema,
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.string(),
-  visibility: types.optional(
-    RemoveProjectEnvResponseBodyProjectsVisibility$inboundSchema,
-  ),
-});
+    type: RemoveProjectEnvResponseBodyProjectsType$inboundSchema,
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.string(),
+    visibility: types.optional(
+      RemoveProjectEnvResponseBodyProjectsVisibility$inboundSchema,
+    ),
+  })
+);
 
 export function removeProjectEnvResponseBody2FromJSON(
   jsonString: string,
@@ -1987,10 +2085,12 @@ export const RemoveProjectEnvContentHint17$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint17,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectId: types.string(),
-  type: types.literal("flags-connection-string"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: types.string(),
+    type: types.literal("flags-connection-string"),
+  })
+);
 
 export function removeProjectEnvContentHint17FromJSON(
   jsonString: string,
@@ -2007,13 +2107,15 @@ export const RemoveProjectEnvContentHint16$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint16,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  integrationProductId: types.string(),
-  storeId: types.string(),
-  type: types.literal("integration-store-secret"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    integrationProductId: types.string(),
+    storeId: types.string(),
+    type: types.literal("integration-store-secret"),
+  })
+);
 
 export function removeProjectEnvContentHint16FromJSON(
   jsonString: string,
@@ -2030,10 +2132,12 @@ export const RemoveProjectEnvContentHint15$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint15,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-no-ssl"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-no-ssl"),
+  })
+);
 
 export function removeProjectEnvContentHint15FromJSON(
   jsonString: string,
@@ -2050,10 +2154,12 @@ export const RemoveProjectEnvContentHint14$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint14,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-database"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-database"),
+  })
+);
 
 export function removeProjectEnvContentHint14FromJSON(
   jsonString: string,
@@ -2070,10 +2176,12 @@ export const RemoveProjectEnvContentHint13$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint13,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-password"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-password"),
+  })
+);
 
 export function removeProjectEnvContentHint13FromJSON(
   jsonString: string,
@@ -2090,10 +2198,12 @@ export const RemoveProjectEnvContentHint12$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint12,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-host"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-host"),
+  })
+);
 
 export function removeProjectEnvContentHint12FromJSON(
   jsonString: string,
@@ -2110,10 +2220,12 @@ export const RemoveProjectEnvContentHint11$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint11,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-user"),
+  })
+);
 
 export function removeProjectEnvContentHint11FromJSON(
   jsonString: string,
@@ -2130,10 +2242,12 @@ export const RemoveProjectEnvContentHint10$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint10,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-prisma-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-prisma-url"),
+  })
+);
 
 export function removeProjectEnvContentHint10FromJSON(
   jsonString: string,
@@ -2150,10 +2264,12 @@ export const RemoveProjectEnvContentHint9$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint9,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-non-pooling"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-non-pooling"),
+  })
+);
 
 export function removeProjectEnvContentHint9FromJSON(
   jsonString: string,
@@ -2170,10 +2286,12 @@ export const RemoveProjectEnvContentHint8$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint8,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url"),
+  })
+);
 
 export function removeProjectEnvContentHint8FromJSON(
   jsonString: string,
@@ -2190,10 +2308,12 @@ export const RemoveProjectEnvContentHint7$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-webhook-public-key"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-webhook-public-key"),
+  })
+);
 
 export function removeProjectEnvContentHint7FromJSON(
   jsonString: string,
@@ -2210,10 +2330,12 @@ export const RemoveProjectEnvContentHint6$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-store-id"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-store-id"),
+  })
+);
 
 export function removeProjectEnvContentHint6FromJSON(
   jsonString: string,
@@ -2230,10 +2352,12 @@ export const RemoveProjectEnvContentHint5$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-read-write-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-read-write-token"),
+  })
+);
 
 export function removeProjectEnvContentHint5FromJSON(
   jsonString: string,
@@ -2250,10 +2374,12 @@ export const RemoveProjectEnvContentHint4$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-read-only-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-read-only-token"),
+  })
+);
 
 export function removeProjectEnvContentHint4FromJSON(
   jsonString: string,
@@ -2270,10 +2396,12 @@ export const RemoveProjectEnvContentHint3$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-token"),
+  })
+);
 
 export function removeProjectEnvContentHint3FromJSON(
   jsonString: string,
@@ -2290,10 +2418,12 @@ export const RemoveProjectEnvContentHint2$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-url"),
+  })
+);
 
 export function removeProjectEnvContentHint2FromJSON(
   jsonString: string,
@@ -2310,10 +2440,12 @@ export const RemoveProjectEnvContentHint1$inboundSchema: z.ZodType<
   RemoveProjectEnvContentHint1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-url"),
+  })
+);
 
 export function removeProjectEnvContentHint1FromJSON(
   jsonString: string,
@@ -2330,25 +2462,27 @@ export const RemoveProjectEnvResponseBodyContentHint$inboundSchema: z.ZodType<
   RemoveProjectEnvResponseBodyContentHint,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => RemoveProjectEnvContentHint1$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint2$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint3$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint4$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint5$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint6$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint7$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint8$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint9$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint10$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint11$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint12$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint13$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint14$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint15$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint16$inboundSchema),
-  z.lazy(() => RemoveProjectEnvContentHint17$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => RemoveProjectEnvContentHint1$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint2$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint3$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint4$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint5$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint6$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint7$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint8$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint9$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint10$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint11$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint12$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint13$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint14$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint15$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint16$inboundSchema),
+    z.lazy(() => RemoveProjectEnvContentHint17$inboundSchema),
+  ])
+);
 
 export function removeProjectEnvResponseBodyContentHintFromJSON(
   jsonString: string,
@@ -2369,7 +2503,9 @@ export function removeProjectEnvResponseBodyContentHintFromJSON(
 /** @internal */
 export const RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema:
   z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyProjectsResponse200Type> =
-    z.nativeEnum(RemoveProjectEnvResponseBodyProjectsResponse200Type);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RemoveProjectEnvResponseBodyProjectsResponse200Type)
+    );
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyInternalContentHint$inboundSchema:
@@ -2377,10 +2513,12 @@ export const RemoveProjectEnvResponseBodyInternalContentHint$inboundSchema:
     RemoveProjectEnvResponseBodyInternalContentHint,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    encryptedValue: types.string(),
-    type: RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      encryptedValue: types.string(),
+      type: RemoveProjectEnvResponseBodyProjectsResponse200Type$inboundSchema,
+    })
+  );
 
 export function removeProjectEnvResponseBodyInternalContentHintFromJSON(
   jsonString: string,
@@ -2401,22 +2539,24 @@ export function removeProjectEnvResponseBodyInternalContentHintFromJSON(
 /** @internal */
 export const RemoveProjectEnvTarget2$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTarget2
-> = z.nativeEnum(RemoveProjectEnvTarget2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RemoveProjectEnvTarget2));
 
 /** @internal */
 export const RemoveProjectEnvTarget1$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvTarget1
-> = z.nativeEnum(RemoveProjectEnvTarget1);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RemoveProjectEnvTarget1));
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyTarget$inboundSchema: z.ZodType<
   RemoveProjectEnvResponseBodyTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(RemoveProjectEnvTarget1$inboundSchema),
-  RemoveProjectEnvTarget2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(RemoveProjectEnvTarget1$inboundSchema),
+    RemoveProjectEnvTarget2$inboundSchema,
+  ])
+);
 
 export function removeProjectEnvResponseBodyTargetFromJSON(
   jsonString: string,
@@ -2432,24 +2572,27 @@ export function removeProjectEnvResponseBodyTargetFromJSON(
 /** @internal */
 export const RemoveProjectEnvResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof RemoveProjectEnvResponseBodyType
-> = z.nativeEnum(RemoveProjectEnvResponseBodyType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(RemoveProjectEnvResponseBodyType)
+);
 
 /** @internal */
 export const RemoveProjectEnvResponseBodyVisibility$inboundSchema:
-  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyVisibility> = z.nativeEnum(
-    RemoveProjectEnvResponseBodyVisibility,
-  );
+  z.ZodNativeEnum<typeof RemoveProjectEnvResponseBodyVisibility> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(RemoveProjectEnvResponseBodyVisibility)
+    );
 
 /** @internal */
 export const RemoveProjectEnvResponseBody1$inboundSchema: z.ZodType<
   RemoveProjectEnvResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  configurationId: z.nullable(types.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    configurationId: z.nullable(types.string()).optional(),
+    contentHint: z.nullable(z.union([
       z.lazy(() => RemoveProjectEnvContentHint1$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHint2$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHint3$inboundSchema),
@@ -2467,36 +2610,36 @@ export const RemoveProjectEnvResponseBody1$inboundSchema: z.ZodType<
       z.lazy(() => RemoveProjectEnvContentHint15$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHint16$inboundSchema),
       z.lazy(() => RemoveProjectEnvContentHint17$inboundSchema),
-    ]),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  id: types.optional(types.string()),
-  internalContentHint: z.nullable(
-    z.lazy(() => RemoveProjectEnvResponseBodyInternalContentHint$inboundSchema),
-  ).optional(),
-  key: types.string(),
-  legacyValue: types.optional(types.string()),
-  sunsetSecretId: types.optional(types.string()),
-  target: types.optional(
-    smartUnion([
-      z.array(RemoveProjectEnvTarget1$inboundSchema),
-      RemoveProjectEnvTarget2$inboundSchema,
-    ]),
-  ),
-  type: RemoveProjectEnvResponseBodyType$inboundSchema,
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.string(),
-  visibility: types.optional(
-    RemoveProjectEnvResponseBodyVisibility$inboundSchema,
-  ),
-});
+    ])).optional(),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.optional(types.boolean()),
+    edgeConfigId: z.nullable(types.string()).optional(),
+    edgeConfigTokenId: z.nullable(types.string()).optional(),
+    gitBranch: types.optional(types.string()),
+    id: types.optional(types.string()),
+    internalContentHint: z.nullable(z.lazy(() =>
+      RemoveProjectEnvResponseBodyInternalContentHint$inboundSchema
+    )).optional(),
+    key: types.string(),
+    legacyValue: types.optional(types.string()),
+    sunsetSecretId: types.optional(types.string()),
+    target: types.optional(
+      smartUnion([
+        z.array(RemoveProjectEnvTarget1$inboundSchema),
+        RemoveProjectEnvTarget2$inboundSchema,
+      ]),
+    ),
+    type: RemoveProjectEnvResponseBodyType$inboundSchema,
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.string(),
+    visibility: types.optional(
+      RemoveProjectEnvResponseBodyVisibility$inboundSchema,
+    ),
+  })
+);
 
 export function removeProjectEnvResponseBody1FromJSON(
   jsonString: string,
@@ -2513,13 +2656,15 @@ export const RemoveProjectEnvResponseBody$inboundSchema: z.ZodType<
   RemoveProjectEnvResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => RemoveProjectEnvResponseBody2$inboundSchema),
-  z.lazy(() => RemoveProjectEnvResponseBody3$inboundSchema),
-  z.array(
-    types.nullable(z.lazy(() => RemoveProjectEnvResponseBody1$inboundSchema)),
-  ),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => RemoveProjectEnvResponseBody2$inboundSchema),
+    z.lazy(() => RemoveProjectEnvResponseBody3$inboundSchema),
+    z.array(
+      types.nullable(z.lazy(() => RemoveProjectEnvResponseBody1$inboundSchema)),
+    ),
+  ])
+);
 
 export function removeProjectEnvResponseBodyFromJSON(
   jsonString: string,

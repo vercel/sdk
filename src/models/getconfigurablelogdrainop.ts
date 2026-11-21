@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -130,11 +130,13 @@ export const GetConfigurableLogDrainRequest$outboundSchema: z.ZodType<
   GetConfigurableLogDrainRequest$Outbound,
   z.ZodTypeDef,
   GetConfigurableLogDrainRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getConfigurableLogDrainRequestToJSON(
   getConfigurableLogDrainRequest: GetConfigurableLogDrainRequest,
@@ -149,20 +151,24 @@ export function getConfigurableLogDrainRequestToJSON(
 /** @internal */
 export const GetConfigurableLogDrainFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurableLogDrainFramework
-> = z.nativeEnum(GetConfigurableLogDrainFramework);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetConfigurableLogDrainFramework)
+);
 
 /** @internal */
 export const ProjectsMetadata$inboundSchema: z.ZodType<
   ProjectsMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  framework: z.nullable(GetConfigurableLogDrainFramework$inboundSchema)
-    .optional(),
-  id: types.string(),
-  latestDeployment: types.optional(types.string()),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    framework: z.nullable(GetConfigurableLogDrainFramework$inboundSchema)
+      .optional(),
+    id: types.string(),
+    latestDeployment: types.optional(types.string()),
+    name: types.string(),
+  })
+);
 
 export function projectsMetadataFromJSON(
   jsonString: string,
@@ -179,17 +185,19 @@ export const GetConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   GetConfigurableLogDrainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.optional(types.string()),
-  configurationId: types.optional(types.string()),
-  createdFrom: types.string(),
-  integrationConfigurationUri: types.optional(types.string()),
-  integrationIcon: types.optional(types.string()),
-  integrationWebsite: types.optional(types.string()),
-  projectsMetadata: z.nullable(
-    z.array(z.lazy(() => ProjectsMetadata$inboundSchema)),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.optional(types.string()),
+    configurationId: types.optional(types.string()),
+    createdFrom: types.string(),
+    integrationConfigurationUri: types.optional(types.string()),
+    integrationIcon: types.optional(types.string()),
+    integrationWebsite: types.optional(types.string()),
+    projectsMetadata: z.nullable(
+      z.array(z.lazy(() => ProjectsMetadata$inboundSchema)),
+    ).optional(),
+  })
+);
 
 export function getConfigurableLogDrainResponseBodyFromJSON(
   jsonString: string,

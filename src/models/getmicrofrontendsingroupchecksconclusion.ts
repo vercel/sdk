@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -1522,11 +1522,13 @@ export const GetMicrofrontendsInGroupRequest$outboundSchema: z.ZodType<
   GetMicrofrontendsInGroupRequest$Outbound,
   z.ZodTypeDef,
   GetMicrofrontendsInGroupRequest
-> = z.object({
-  groupId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    groupId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getMicrofrontendsInGroupRequestToJSON(
   getMicrofrontendsInGroupRequest: GetMicrofrontendsInGroupRequest,
@@ -1540,9 +1542,10 @@ export function getMicrofrontendsInGroupRequestToJSON(
 
 /** @internal */
 export const GetMicrofrontendsInGroupConfiguredBy$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupConfiguredBy> = z.nativeEnum(
-    GetMicrofrontendsInGroupConfiguredBy,
-  );
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupConfiguredBy> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupConfiguredBy)
+    );
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsResponseAliasAssigned$inboundSchema:
@@ -1550,7 +1553,9 @@ export const GetMicrofrontendsInGroupMicrofrontendsResponseAliasAssigned$inbound
     GetMicrofrontendsInGroupMicrofrontendsResponseAliasAssigned,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.number(), types.boolean()]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.number(), types.boolean()])
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsResponseAliasAssignedFromJSON(
   jsonString: string,
@@ -1573,10 +1578,12 @@ export const GetMicrofrontendsInGroupMicrofrontendsResponseAliasError$inboundSch
     GetMicrofrontendsInGroupMicrofrontendsResponseAliasError,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    message: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      message: types.string(),
+    })
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsResponseAliasErrorFromJSON(
   jsonString: string,
@@ -1597,8 +1604,10 @@ export function getMicrofrontendsInGroupMicrofrontendsResponseAliasErrorFromJSON
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasType
-  > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasType,
+    )
   );
 
 /** @internal */
@@ -1607,11 +1616,13 @@ export const GetMicrofrontendsInGroupMicrofrontendsResponse200BranchMatcher$inbo
     GetMicrofrontendsInGroupMicrofrontendsResponse200BranchMatcher,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    pattern: types.string(),
-    type:
-      GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      pattern: types.string(),
+      type:
+        GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsAliasType$inboundSchema,
+    })
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsResponse200BranchMatcherFromJSON(
   jsonString: string,
@@ -1634,11 +1645,13 @@ export const GetMicrofrontendsInGroupMicrofrontendsResponseBuilds$inboundSchema:
     GetMicrofrontendsInGroupMicrofrontendsResponseBuilds,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    dest: types.optional(types.string()),
-    src: types.optional(types.string()),
-    use: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      dest: types.optional(types.string()),
+      src: types.optional(types.string()),
+      use: types.string(),
+    })
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsResponseBuildsFromJSON(
   jsonString: string,
@@ -1660,15 +1673,17 @@ export function getMicrofrontendsInGroupMicrofrontendsResponseBuildsFromJSON(
 export const GetMicrofrontendsInGroupMicrofrontendsResponseChecksConclusion$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsResponseChecksConclusion
-  > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsResponseChecksConclusion,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseChecksConclusion)
   );
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsResponseChecksState$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsResponseChecksState
-  > = z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseChecksState);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseChecksState)
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200Creator$inboundSchema:
@@ -1676,13 +1691,15 @@ export const GetMicrofrontendsInGroupMicrofrontendsResponse200Creator$inboundSch
     GetMicrofrontendsInGroupMicrofrontendsResponse200Creator,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    email: types.string(),
-    githubLogin: types.optional(types.string()),
-    gitlabLogin: types.optional(types.string()),
-    uid: types.string(),
-    username: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      email: types.string(),
+      githubLogin: types.optional(types.string()),
+      gitlabLogin: types.optional(types.string()),
+      uid: types.string(),
+      username: types.string(),
+    })
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsResponse200CreatorFromJSON(
   jsonString: string,
@@ -1705,29 +1722,31 @@ export const GetMicrofrontendsInGroupMicrofrontendsResponseOidcTokenClaims$inbou
     GetMicrofrontendsInGroupMicrofrontendsResponseOidcTokenClaims,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    aud: types.string(),
-    custom_environment_id: types.optional(types.string()),
-    deployment_id: types.optional(types.string()),
-    environment: types.string(),
-    iss: types.string(),
-    mfe_group_ids: types.optional(z.array(types.string())),
-    owner: types.string(),
-    owner_id: types.string(),
-    plan: types.optional(types.string()),
-    project: types.string(),
-    project_id: types.string(),
-    scope: types.string(),
-    sub: types.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "custom_environment_id": "customEnvironmentId",
-      "deployment_id": "deploymentId",
-      "mfe_group_ids": "mfeGroupIds",
-      "owner_id": "ownerId",
-      "project_id": "projectId",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      aud: types.string(),
+      custom_environment_id: types.optional(types.string()),
+      deployment_id: types.optional(types.string()),
+      environment: types.string(),
+      iss: types.string(),
+      mfe_group_ids: types.optional(z.array(types.string())),
+      owner: types.string(),
+      owner_id: types.string(),
+      plan: types.optional(types.string()),
+      project: types.string(),
+      project_id: types.string(),
+      scope: types.string(),
+      sub: types.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        "custom_environment_id": "customEnvironmentId",
+        "deployment_id": "deploymentId",
+        "mfe_group_ids": "mfeGroupIds",
+        "owner_id": "ownerId",
+        "project_id": "projectId",
+      });
+    })
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsResponseOidcTokenClaimsFromJSON(
   jsonString: string,
@@ -1746,27 +1765,35 @@ export function getMicrofrontendsInGroupMicrofrontendsResponseOidcTokenClaimsFro
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsResponsePlan$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponsePlan> = z
-    .nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponsePlan);
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponsePlan> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponsePlan)
+    );
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsResponseReadyState$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsResponseReadyState
-  > = z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseReadyState);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseReadyState)
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsResponseReadySubstate$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsResponseReadySubstate
-  > = z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseReadySubstate);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseReadySubstate)
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyType,
+    )
   );
 
 /** @internal */
@@ -1774,73 +1801,65 @@ export const GetMicrofrontendsInGroupDeployment$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDeployment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(z.array(types.string())),
-  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
-    .optional(),
-  aliasError: z.nullable(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(z.array(types.string())),
+    aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
+      .optional(),
+    aliasError: z.nullable(z.lazy(() =>
       GetMicrofrontendsInGroupMicrofrontendsResponseAliasError$inboundSchema
-    ),
-  ).optional(),
-  aliasFinal: z.nullable(types.string()).optional(),
-  automaticAliases: types.optional(z.array(types.string())),
-  branchMatcher: types.optional(
-    z.lazy(() =>
+    )).optional(),
+    aliasFinal: z.nullable(types.string()).optional(),
+    automaticAliases: types.optional(z.array(types.string())),
+    branchMatcher: types.optional(z.lazy(() =>
       GetMicrofrontendsInGroupMicrofrontendsResponse200BranchMatcher$inboundSchema
-    ),
-  ),
-  buildingAt: types.optional(types.number()),
-  builds: types.optional(
-    z.array(z.lazy(() =>
-      GetMicrofrontendsInGroupMicrofrontendsResponseBuilds$inboundSchema
     )),
-  ),
-  checksConclusion: types.optional(
-    GetMicrofrontendsInGroupMicrofrontendsResponseChecksConclusion$inboundSchema,
-  ),
-  checksState: types.optional(
-    GetMicrofrontendsInGroupMicrofrontendsResponseChecksState$inboundSchema,
-  ),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: types.optional(types.string()),
-  createdAt: types.number(),
-  createdIn: types.string(),
-  creator: types.nullable(
-    z.lazy(() =>
+    buildingAt: types.optional(types.number()),
+    builds: types.optional(z.array(z.lazy(() =>
+      GetMicrofrontendsInGroupMicrofrontendsResponseBuilds$inboundSchema
+    ))),
+    checksConclusion: types.optional(
+      GetMicrofrontendsInGroupMicrofrontendsResponseChecksConclusion$inboundSchema,
+    ),
+    checksState: types.optional(
+      GetMicrofrontendsInGroupMicrofrontendsResponseChecksState$inboundSchema,
+    ),
+    connectBuildsEnabled: types.optional(types.boolean()),
+    connectConfigurationId: types.optional(types.string()),
+    createdAt: types.number(),
+    createdIn: types.string(),
+    creator: types.nullable(z.lazy(() =>
       GetMicrofrontendsInGroupMicrofrontendsResponse200Creator$inboundSchema
-    ),
-  ),
-  deletedAt: types.optional(types.number()),
-  deploymentHostname: types.string(),
-  forced: types.optional(types.boolean()),
-  id: types.string(),
-  meta: types.optional(z.record(types.string())),
-  monorepoManager: z.nullable(types.string()).optional(),
-  name: types.string(),
-  oidcTokenClaims: types.optional(
-    z.lazy(() =>
+    )),
+    deletedAt: types.optional(types.number()),
+    deploymentHostname: types.string(),
+    forced: types.optional(types.boolean()),
+    id: types.string(),
+    meta: types.optional(z.record(types.string())),
+    monorepoManager: z.nullable(types.string()).optional(),
+    name: types.string(),
+    oidcTokenClaims: types.optional(z.lazy(() =>
       GetMicrofrontendsInGroupMicrofrontendsResponseOidcTokenClaims$inboundSchema
+    )),
+    plan: GetMicrofrontendsInGroupMicrofrontendsResponsePlan$inboundSchema,
+    previewCommentsEnabled: types.optional(types.boolean()),
+    private: types.boolean(),
+    readyAt: types.optional(types.number()),
+    readyState:
+      GetMicrofrontendsInGroupMicrofrontendsResponseReadyState$inboundSchema,
+    readySubstate: types.optional(
+      GetMicrofrontendsInGroupMicrofrontendsResponseReadySubstate$inboundSchema,
     ),
-  ),
-  plan: GetMicrofrontendsInGroupMicrofrontendsResponsePlan$inboundSchema,
-  previewCommentsEnabled: types.optional(types.boolean()),
-  private: types.boolean(),
-  readyAt: types.optional(types.number()),
-  readyState:
-    GetMicrofrontendsInGroupMicrofrontendsResponseReadyState$inboundSchema,
-  readySubstate: types.optional(
-    GetMicrofrontendsInGroupMicrofrontendsResponseReadySubstate$inboundSchema,
-  ),
-  requestedAt: types.optional(types.number()),
-  target: z.nullable(types.string()).optional(),
-  teamId: z.nullable(types.string()).optional(),
-  type:
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyType$inboundSchema,
-  url: types.string(),
-  userId: types.optional(types.string()),
-  withCache: types.optional(types.boolean()),
-});
+    requestedAt: types.optional(types.number()),
+    target: z.nullable(types.string()).optional(),
+    teamId: z.nullable(types.string()).optional(),
+    type:
+      GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+    url: types.string(),
+    userId: types.optional(types.string()),
+    withCache: types.optional(types.boolean()),
+  })
+);
 
 export function getMicrofrontendsInGroupDeploymentFromJSON(
   jsonString: string,
@@ -1856,33 +1875,39 @@ export function getMicrofrontendsInGroupDeploymentFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupEnvironment$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupEnvironment
-> = z.nativeEnum(GetMicrofrontendsInGroupEnvironment);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupEnvironment)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupTarget$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupTarget
-> = z.nativeEnum(GetMicrofrontendsInGroupTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupTarget)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupAlias$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupAlias,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuredBy: z.nullable(GetMicrofrontendsInGroupConfiguredBy$inboundSchema)
-    .optional(),
-  configuredChangedAt: z.nullable(types.number()).optional(),
-  createdAt: z.nullable(types.number()).optional(),
-  deployment: types.nullable(
-    z.lazy(() => GetMicrofrontendsInGroupDeployment$inboundSchema),
-  ),
-  domain: types.string(),
-  environment: GetMicrofrontendsInGroupEnvironment$inboundSchema,
-  gitBranch: z.nullable(types.string()).optional(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  target: GetMicrofrontendsInGroupTarget$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuredBy: z.nullable(GetMicrofrontendsInGroupConfiguredBy$inboundSchema)
+      .optional(),
+    configuredChangedAt: z.nullable(types.number()).optional(),
+    createdAt: z.nullable(types.number()).optional(),
+    deployment: types.nullable(
+      z.lazy(() => GetMicrofrontendsInGroupDeployment$inboundSchema),
+    ),
+    domain: types.string(),
+    environment: GetMicrofrontendsInGroupEnvironment$inboundSchema,
+    gitBranch: z.nullable(types.string()).optional(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    target: GetMicrofrontendsInGroupTarget$inboundSchema,
+  })
+);
 
 export function getMicrofrontendsInGroupAliasFromJSON(
   jsonString: string,
@@ -1899,15 +1924,17 @@ export const GetMicrofrontendsInGroupAnalytics$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupAnalytics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: z.nullable(types.number()).optional(),
-  disabledAt: types.number(),
-  enabledAt: types.number(),
-  id: types.string(),
-  paidAt: types.optional(types.number()),
-  sampleRatePercent: z.nullable(types.number()).optional(),
-  spendLimitInDollars: z.nullable(types.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: z.nullable(types.number()).optional(),
+    disabledAt: types.number(),
+    enabledAt: types.number(),
+    id: types.string(),
+    paidAt: types.optional(types.number()),
+    sampleRatePercent: z.nullable(types.number()).optional(),
+    spendLimitInDollars: z.nullable(types.number()).optional(),
+  })
+);
 
 export function getMicrofrontendsInGroupAnalyticsFromJSON(
   jsonString: string,
@@ -1924,9 +1951,11 @@ export const GetMicrofrontendsInGroupBlobs$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupBlobs,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  isDefaultApp: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isDefaultApp: types.optional(types.boolean()),
+  })
+);
 
 export function getMicrofrontendsInGroupBlobsFromJSON(
   jsonString: string,
@@ -1943,10 +1972,12 @@ export const GetMicrofrontendsInGroupAws$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupAws,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  securityGroupId: types.optional(types.string()),
-  subnetIds: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    securityGroupId: types.optional(types.string()),
+    subnetIds: z.array(types.string()),
+  })
+);
 
 export function getMicrofrontendsInGroupAwsFromJSON(
   jsonString: string,
@@ -1961,14 +1992,18 @@ export function getMicrofrontendsInGroupAwsFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupEnvId2$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupEnvId2
-> = z.nativeEnum(GetMicrofrontendsInGroupEnvId2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupEnvId2)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupEnvId$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupEnvId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), GetMicrofrontendsInGroupEnvId2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), GetMicrofrontendsInGroupEnvId2$inboundSchema])
+);
 
 export function getMicrofrontendsInGroupEnvIdFromJSON(
   jsonString: string,
@@ -1986,21 +2021,23 @@ export const GetMicrofrontendsInGroupConnectConfigurations$inboundSchema:
     GetMicrofrontendsInGroupConnectConfigurations,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    aws: types.optional(
-      z.lazy(() => GetMicrofrontendsInGroupAws$inboundSchema),
-    ),
-    buildsEnabled: types.boolean(),
-    connectConfigurationId: types.string(),
-    createdAt: types.number(),
-    dc: types.optional(types.string()),
-    envId: smartUnion([
-      types.string(),
-      GetMicrofrontendsInGroupEnvId2$inboundSchema,
-    ]),
-    passive: types.boolean(),
-    updatedAt: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      aws: types.optional(
+        z.lazy(() => GetMicrofrontendsInGroupAws$inboundSchema),
+      ),
+      buildsEnabled: types.boolean(),
+      connectConfigurationId: types.string(),
+      createdAt: types.number(),
+      dc: types.optional(types.string()),
+      envId: smartUnion([
+        types.string(),
+        GetMicrofrontendsInGroupEnvId2$inboundSchema,
+      ]),
+      passive: types.boolean(),
+      updatedAt: types.number(),
+    })
+  );
 
 export function getMicrofrontendsInGroupConnectConfigurationsFromJSON(
   jsonString: string,
@@ -2023,9 +2060,11 @@ export const GetMicrofrontendsInGroupCreator5$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCreator5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("system"),
+  })
+);
 
 export function getMicrofrontendsInGroupCreator5FromJSON(
   jsonString: string,
@@ -2040,10 +2079,12 @@ export function getMicrofrontendsInGroupCreator5FromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupCreatorIntegration$inboundSchema:
   z.ZodType<GetMicrofrontendsInGroupCreatorIntegration, z.ZodTypeDef, unknown> =
-    z.object({
-      configurationId: types.string(),
-      integrationId: types.string(),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        configurationId: types.string(),
+        integrationId: types.string(),
+      })
+    );
 
 export function getMicrofrontendsInGroupCreatorIntegrationFromJSON(
   jsonString: string,
@@ -2066,12 +2107,14 @@ export const GetMicrofrontendsInGroupCreator4$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCreator4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integration: z.lazy(() =>
-    GetMicrofrontendsInGroupCreatorIntegration$inboundSchema
-  ),
-  type: types.literal("integration"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration: z.lazy(() =>
+      GetMicrofrontendsInGroupCreatorIntegration$inboundSchema
+    ),
+    type: types.literal("integration"),
+  })
+);
 
 export function getMicrofrontendsInGroupCreator4FromJSON(
   jsonString: string,
@@ -2088,10 +2131,12 @@ export const GetMicrofrontendsInGroupCreatorApp$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCreatorApp,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.optional(types.string()),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.optional(types.string()),
+    id: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupCreatorAppFromJSON(
   jsonString: string,
@@ -2109,10 +2154,12 @@ export const GetMicrofrontendsInGroupCreator3$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCreator3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  app: z.lazy(() => GetMicrofrontendsInGroupCreatorApp$inboundSchema),
-  type: types.literal("app"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    app: z.lazy(() => GetMicrofrontendsInGroupCreatorApp$inboundSchema),
+    type: types.literal("app"),
+  })
+);
 
 export function getMicrofrontendsInGroupCreator3FromJSON(
   jsonString: string,
@@ -2129,9 +2176,11 @@ export const GetMicrofrontendsInGroupCreatorProject$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCreatorProject,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupCreatorProjectFromJSON(
   jsonString: string,
@@ -2149,10 +2198,12 @@ export const GetMicrofrontendsInGroupCreator2$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCreator2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  project: z.lazy(() => GetMicrofrontendsInGroupCreatorProject$inboundSchema),
-  type: types.literal("project"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    project: z.lazy(() => GetMicrofrontendsInGroupCreatorProject$inboundSchema),
+    type: types.literal("project"),
+  })
+);
 
 export function getMicrofrontendsInGroupCreator2FromJSON(
   jsonString: string,
@@ -2169,10 +2220,12 @@ export const GetMicrofrontendsInGroupViaIntegration$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupViaIntegration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configurationId: types.string(),
-  integrationId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configurationId: types.string(),
+    integrationId: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupViaIntegrationFromJSON(
   jsonString: string,
@@ -2190,12 +2243,14 @@ export const GetMicrofrontendsInGroupVia2$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupVia2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integration: z.lazy(() =>
-    GetMicrofrontendsInGroupViaIntegration$inboundSchema
-  ),
-  type: types.literal("integration"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration: z.lazy(() =>
+      GetMicrofrontendsInGroupViaIntegration$inboundSchema
+    ),
+    type: types.literal("integration"),
+  })
+);
 
 export function getMicrofrontendsInGroupVia2FromJSON(
   jsonString: string,
@@ -2212,10 +2267,12 @@ export const GetMicrofrontendsInGroupViaApp$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupViaApp,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.optional(types.string()),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.optional(types.string()),
+    id: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupViaAppFromJSON(
   jsonString: string,
@@ -2232,10 +2289,12 @@ export const GetMicrofrontendsInGroupVia1$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupVia1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  app: z.lazy(() => GetMicrofrontendsInGroupViaApp$inboundSchema),
-  type: types.literal("app"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    app: z.lazy(() => GetMicrofrontendsInGroupViaApp$inboundSchema),
+    type: types.literal("app"),
+  })
+);
 
 export function getMicrofrontendsInGroupVia1FromJSON(
   jsonString: string,
@@ -2252,10 +2311,12 @@ export const GetMicrofrontendsInGroupCreatorVia$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCreatorVia,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetMicrofrontendsInGroupVia1$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupVia2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetMicrofrontendsInGroupVia1$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupVia2$inboundSchema),
+  ])
+);
 
 export function getMicrofrontendsInGroupCreatorViaFromJSON(
   jsonString: string,
@@ -2273,9 +2334,11 @@ export const GetMicrofrontendsInGroupCreatorUser$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCreatorUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupCreatorUserFromJSON(
   jsonString: string,
@@ -2293,16 +2356,18 @@ export const GetMicrofrontendsInGroupCreator1$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCreator1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("user"),
-  via: types.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("user"),
+    via: types.nullable(z.union([
       z.lazy(() => GetMicrofrontendsInGroupVia1$inboundSchema),
       z.lazy(() => GetMicrofrontendsInGroupVia2$inboundSchema),
-    ]),
-  ),
-  user: z.lazy(() => GetMicrofrontendsInGroupCreatorUser$inboundSchema),
-});
+    ])),
+    user: z.lazy(() =>
+      GetMicrofrontendsInGroupCreatorUser$inboundSchema
+    ),
+  })
+);
 
 export function getMicrofrontendsInGroupCreator1FromJSON(
   jsonString: string,
@@ -2319,13 +2384,15 @@ export const GetMicrofrontendsInGroupCreator$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCreator,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetMicrofrontendsInGroupCreator1$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupCreator2$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupCreator3$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupCreator4$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupCreator5$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetMicrofrontendsInGroupCreator1$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupCreator2$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupCreator3$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupCreator4$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupCreator5$inboundSchema),
+  ])
+);
 
 export function getMicrofrontendsInGroupCreatorFromJSON(
   jsonString: string,
@@ -2340,21 +2407,25 @@ export function getMicrofrontendsInGroupCreatorFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupSource$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupSource
-> = z.nativeEnum(GetMicrofrontendsInGroupSource);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupSource)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupDefinitions$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDefinitions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  host: types.string(),
-  hostInferred: types.optional(types.boolean()),
-  path: types.string(),
-  schedule: types.string(),
-  source: types.optional(GetMicrofrontendsInGroupSource$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.optional(types.string()),
+    host: types.string(),
+    hostInferred: types.optional(types.boolean()),
+    path: types.string(),
+    schedule: types.string(),
+    source: types.optional(GetMicrofrontendsInGroupSource$inboundSchema),
+  })
+);
 
 export function getMicrofrontendsInGroupDefinitionsFromJSON(
   jsonString: string,
@@ -2372,15 +2443,17 @@ export const GetMicrofrontendsInGroupCrons$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCrons,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  definitions: z.array(
-    z.lazy(() => GetMicrofrontendsInGroupDefinitions$inboundSchema),
-  ),
-  deploymentId: types.nullable(types.string()),
-  disabledAt: types.nullable(types.number()),
-  enabledAt: types.number(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    definitions: z.array(
+      z.lazy(() => GetMicrofrontendsInGroupDefinitions$inboundSchema),
+    ),
+    deploymentId: types.nullable(types.string()),
+    disabledAt: types.nullable(types.number()),
+    enabledAt: types.number(),
+    updatedAt: types.number(),
+  })
+);
 
 export function getMicrofrontendsInGroupCronsFromJSON(
   jsonString: string,
@@ -2396,8 +2469,10 @@ export function getMicrofrontendsInGroupCronsFromJSON(
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType
-  > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType,
+    )
   );
 
 /** @internal */
@@ -2405,11 +2480,13 @@ export const GetMicrofrontendsInGroupBranchMatcher$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupBranchMatcher,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pattern: types.string(),
-  type:
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pattern: types.string(),
+    type:
+      GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsCustomEnvironmentsType$inboundSchema,
+  })
+);
 
 export function getMicrofrontendsInGroupBranchMatcherFromJSON(
   jsonString: string,
@@ -2427,12 +2504,14 @@ export const GetMicrofrontendsInGroupVerification$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  reason: types.string(),
-  type: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    reason: types.string(),
+    type: types.string(),
+    value: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupVerificationFromJSON(
   jsonString: string,
@@ -2450,21 +2529,23 @@ export const GetMicrofrontendsInGroupDomains$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apexName: types.string(),
-  createdAt: types.optional(types.number()),
-  customEnvironmentId: z.nullable(types.string()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  name: types.string(),
-  projectId: types.string(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  updatedAt: types.optional(types.number()),
-  verification: types.optional(
-    z.array(z.lazy(() => GetMicrofrontendsInGroupVerification$inboundSchema)),
-  ),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apexName: types.string(),
+    createdAt: types.optional(types.number()),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    name: types.string(),
+    projectId: types.string(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    updatedAt: types.optional(types.number()),
+    verification: types.optional(
+      z.array(z.lazy(() => GetMicrofrontendsInGroupVerification$inboundSchema)),
+    ),
+    verified: types.boolean(),
+  })
+);
 
 export function getMicrofrontendsInGroupDomainsFromJSON(
   jsonString: string,
@@ -2479,26 +2560,30 @@ export function getMicrofrontendsInGroupDomainsFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupType$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupType
-> = z.nativeEnum(GetMicrofrontendsInGroupType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupType)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupCustomEnvironments$inboundSchema:
   z.ZodType<GetMicrofrontendsInGroupCustomEnvironments, z.ZodTypeDef, unknown> =
-    z.object({
-      branchMatcher: types.optional(
-        z.lazy(() => GetMicrofrontendsInGroupBranchMatcher$inboundSchema),
-      ),
-      createdAt: types.number(),
-      currentDeploymentAliases: types.optional(z.array(types.string())),
-      description: types.optional(types.string()),
-      domains: types.optional(
-        z.array(z.lazy(() => GetMicrofrontendsInGroupDomains$inboundSchema)),
-      ),
-      id: types.string(),
-      slug: types.string(),
-      type: GetMicrofrontendsInGroupType$inboundSchema,
-      updatedAt: types.number(),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        branchMatcher: types.optional(
+          z.lazy(() => GetMicrofrontendsInGroupBranchMatcher$inboundSchema),
+        ),
+        createdAt: types.number(),
+        currentDeploymentAliases: types.optional(z.array(types.string())),
+        description: types.optional(types.string()),
+        domains: types.optional(
+          z.array(z.lazy(() => GetMicrofrontendsInGroupDomains$inboundSchema)),
+        ),
+        id: types.string(),
+        slug: types.string(),
+        type: GetMicrofrontendsInGroupType$inboundSchema,
+        updatedAt: types.number(),
+      })
+    );
 
 export function getMicrofrontendsInGroupCustomEnvironmentsFromJSON(
   jsonString: string,
@@ -2521,11 +2606,13 @@ export const GetMicrofrontendsInGroupDataCache$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDataCache,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storageSizeBytes: z.nullable(types.number()).optional(),
-  unlimited: types.optional(types.boolean()),
-  userDisabled: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storageSizeBytes: z.nullable(types.number()).optional(),
+    unlimited: types.optional(types.boolean()),
+    userDisabled: types.boolean(),
+  })
+);
 
 export function getMicrofrontendsInGroupDataCacheFromJSON(
   jsonString: string,
@@ -2541,14 +2628,18 @@ export function getMicrofrontendsInGroupDataCacheFromJSON(
 export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticReason$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticReason
-  > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticReason,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticReason,
+    )
   );
 
 /** @internal */
 export const GetMicrofrontendsInGroupDirection$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupDirection
-> = z.nativeEnum(GetMicrofrontendsInGroupDirection);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupDirection)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticTransition$inboundSchema:
@@ -2556,11 +2647,13 @@ export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticTransition
     GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticTransition,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    algorithmVersion: types.string(),
-    at: types.number(),
-    direction: GetMicrofrontendsInGroupDirection$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      algorithmVersion: types.string(),
+      at: types.number(),
+      direction: GetMicrofrontendsInGroupDirection$inboundSchema,
+    })
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsBuildMachineElasticTransitionFromJSON(
   jsonString: string,
@@ -2581,30 +2674,37 @@ export function getMicrofrontendsInGroupMicrofrontendsBuildMachineElasticTransit
 export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection
-  > = z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection)
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsBuildMachineType
-  > = z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsBuildMachineType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsBuildMachineType)
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupConfiguration$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupConfiguration> = z.nativeEnum(
-    GetMicrofrontendsInGroupConfiguration,
-  );
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupConfiguration> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupConfiguration)
+    );
 
 /** @internal */
 export const GetMicrofrontendsInGroupBuildQueue$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupBuildQueue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuration: types.optional(
-    GetMicrofrontendsInGroupConfiguration$inboundSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuration: types.optional(
+      GetMicrofrontendsInGroupConfiguration$inboundSchema,
+    ),
+  })
+);
 
 export function getMicrofrontendsInGroupBuildQueueFromJSON(
   jsonString: string,
@@ -2621,8 +2721,10 @@ export function getMicrofrontendsInGroupBuildQueueFromJSON(
 export const GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType
-  > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType,
+    )
   );
 
 /** @internal */
@@ -2631,11 +2733,13 @@ export const GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4$inboundS
     GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: types.literal("turbo"),
-    memory: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cores: types.number(),
+      label: types.literal("turbo"),
+      memory: types.number(),
+    })
+  );
 
 export function getMicrofrontendsInGroupElasticBuildMachineMicrofrontends4FromJSON(
   jsonString: string,
@@ -2658,11 +2762,13 @@ export const GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends3$inboundS
     GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends3,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: types.literal("14cpu-28gb"),
-    memory: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cores: types.number(),
+      label: types.literal("14cpu-28gb"),
+      memory: types.number(),
+    })
+  );
 
 export function getMicrofrontendsInGroupElasticBuildMachineMicrofrontends3FromJSON(
   jsonString: string,
@@ -2685,11 +2791,13 @@ export const GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2$inboundS
     GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: types.literal("enhanced"),
-    memory: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cores: types.number(),
+      label: types.literal("enhanced"),
+      memory: types.number(),
+    })
+  );
 
 export function getMicrofrontendsInGroupElasticBuildMachineMicrofrontends2FromJSON(
   jsonString: string,
@@ -2712,11 +2820,13 @@ export const GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends1$inboundS
     GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: types.literal("standard"),
-    memory: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cores: types.number(),
+      label: types.literal("standard"),
+      memory: types.number(),
+    })
+  );
 
 export function getMicrofrontendsInGroupElasticBuildMachineMicrofrontends1FromJSON(
   jsonString: string,
@@ -2739,20 +2849,22 @@ export const GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine$inboundSc
     GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() =>
-      GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends1$inboundSchema
-    ),
-    z.lazy(() =>
-      GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2$inboundSchema
-    ),
-    z.lazy(() =>
-      GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends3$inboundSchema
-    ),
-    z.lazy(() =>
-      GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4$inboundSchema
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() =>
+        GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends1$inboundSchema
+      ),
+      z.lazy(() =>
+        GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2$inboundSchema
+      ),
+      z.lazy(() =>
+        GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends3$inboundSchema
+      ),
+      z.lazy(() =>
+        GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4$inboundSchema
+      ),
+    ])
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsElasticBuildMachineFromJSON(
   jsonString: string,
@@ -2775,37 +2887,35 @@ export const GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema:
     GetMicrofrontendsInGroupDefaultResourceConfig,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    buildMachineElasticLastUpdated: types.optional(types.number()),
-    buildMachineElasticReason: types.optional(
-      GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticReason$inboundSchema,
-    ),
-    buildMachineElasticTransition: types.optional(
-      z.lazy(() =>
-        GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticTransition$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      buildMachineElasticLastUpdated: types.optional(types.number()),
+      buildMachineElasticReason: types.optional(
+        GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticReason$inboundSchema,
       ),
-    ),
-    buildMachineSelection: types.optional(
-      GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection$inboundSchema,
-    ),
-    buildMachineType: types.optional(
-      GetMicrofrontendsInGroupMicrofrontendsBuildMachineType$inboundSchema,
-    ),
-    buildQueue: types.optional(
-      z.lazy(() => GetMicrofrontendsInGroupBuildQueue$inboundSchema),
-    ),
-    elasticConcurrencyEnabled: types.optional(types.boolean()),
-    enableFunctionsBeta: types.optional(types.boolean()),
-    fluid: types.optional(types.boolean()),
-    functionDefaultMemoryType: types.optional(
-      GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType$inboundSchema,
-    ),
-    functionDefaultRegions: z.array(types.string()),
-    functionDefaultTimeout: types.optional(types.number()),
-    functionZeroConfigFailover: types.optional(types.boolean()),
-    isNSNBDisabled: types.optional(types.boolean()),
-    elasticBuildMachine: types.optional(
-      z.union([
+      buildMachineElasticTransition: types.optional(z.lazy(() =>
+        GetMicrofrontendsInGroupMicrofrontendsBuildMachineElasticTransition$inboundSchema
+      )),
+      buildMachineSelection: types.optional(
+        GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection$inboundSchema,
+      ),
+      buildMachineType: types.optional(
+        GetMicrofrontendsInGroupMicrofrontendsBuildMachineType$inboundSchema,
+      ),
+      buildQueue: types.optional(z.lazy(() =>
+        GetMicrofrontendsInGroupBuildQueue$inboundSchema
+      )),
+      elasticConcurrencyEnabled: types.optional(types.boolean()),
+      enableFunctionsBeta: types.optional(types.boolean()),
+      fluid: types.optional(types.boolean()),
+      functionDefaultMemoryType: types.optional(
+        GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType$inboundSchema,
+      ),
+      functionDefaultRegions: z.array(types.string()),
+      functionDefaultTimeout: types.optional(types.number()),
+      functionZeroConfigFailover: types.optional(types.boolean()),
+      isNSNBDisabled: types.optional(types.boolean()),
+      elasticBuildMachine: types.optional(z.union([
         z.lazy(() =>
           GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends1$inboundSchema
         ),
@@ -2818,9 +2928,9 @@ export const GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema:
         z.lazy(() =>
           GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4$inboundSchema
         ),
-      ]),
-    ),
-  });
+      ])),
+    })
+  );
 
 export function getMicrofrontendsInGroupDefaultResourceConfigFromJSON(
   jsonString: string,
@@ -2844,13 +2954,15 @@ export const GetMicrofrontendsInGroupDeploymentExpiration$inboundSchema:
     GetMicrofrontendsInGroupDeploymentExpiration,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    deploymentsToKeep: types.optional(types.number()),
-    expirationDays: types.optional(types.number()),
-    expirationDaysCanceled: types.optional(types.number()),
-    expirationDaysErrored: types.optional(types.number()),
-    expirationDaysProduction: types.optional(types.number()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      deploymentsToKeep: types.optional(types.number()),
+      expirationDays: types.optional(types.number()),
+      expirationDaysCanceled: types.optional(types.number()),
+      expirationDaysErrored: types.optional(types.number()),
+      expirationDaysProduction: types.optional(types.number()),
+    })
+  );
 
 export function getMicrofrontendsInGroupDeploymentExpirationFromJSON(
   jsonString: string,
@@ -2874,10 +2986,12 @@ export const GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema:
     GetMicrofrontendsInGroupEnvironmentsMicrofrontends2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    environmentId: types.string(),
-    type: types.literal("custom"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      environmentId: types.string(),
+      type: types.literal("custom"),
+    })
+  );
 
 export function getMicrofrontendsInGroupEnvironmentsMicrofrontends2FromJSON(
   jsonString: string,
@@ -2899,18 +3013,22 @@ export function getMicrofrontendsInGroupEnvironmentsMicrofrontends2FromJSON(
 export const GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget
-  > = z.nativeEnum(GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget)
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupEnvironments1$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupEnvironments1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  target:
-    GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget$inboundSchema,
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    target:
+      GetMicrofrontendsInGroupEnvironmentsMicrofrontendsTarget$inboundSchema,
+    type: types.literal("system"),
+  })
+);
 
 export function getMicrofrontendsInGroupEnvironments1FromJSON(
   jsonString: string,
@@ -2928,12 +3046,14 @@ export const GetMicrofrontendsInGroupEnvironments$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetMicrofrontendsInGroupEnvironments1$inboundSchema),
-  z.lazy(() =>
-    GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema
-  ),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetMicrofrontendsInGroupEnvironments1$inboundSchema),
+    z.lazy(() =>
+      GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema
+    ),
+  ])
+);
 
 export function getMicrofrontendsInGroupEnvironmentsFromJSON(
   jsonString: string,
@@ -2949,25 +3069,27 @@ export function getMicrofrontendsInGroupEnvironmentsFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupSources$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupSources
-> = z.nativeEnum(GetMicrofrontendsInGroupSources);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupSources)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupDeploymentSources$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDeploymentSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  environments: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    environments: z.array(z.union([
       z.lazy(() => GetMicrofrontendsInGroupEnvironments1$inboundSchema),
       z.lazy(() =>
         GetMicrofrontendsInGroupEnvironmentsMicrofrontends2$inboundSchema
       ),
-    ]),
-  ),
-  sources: z.array(GetMicrofrontendsInGroupSources$inboundSchema),
-});
+    ])),
+    sources: z.array(GetMicrofrontendsInGroupSources$inboundSchema),
+  })
+);
 
 export function getMicrofrontendsInGroupDeploymentSourcesFromJSON(
   jsonString: string,
@@ -2990,10 +3112,12 @@ export const GetMicrofrontendsInGroupEnvironments2$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupEnvironments2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environmentId: types.string(),
-  type: types.literal("custom"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environmentId: types.string(),
+    type: types.literal("custom"),
+  })
+);
 
 export function getMicrofrontendsInGroupEnvironments2FromJSON(
   jsonString: string,
@@ -3008,8 +3132,10 @@ export function getMicrofrontendsInGroupEnvironments2FromJSON(
 
 /** @internal */
 export const GetMicrofrontendsInGroupEnvironmentsTarget$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupEnvironmentsTarget> = z
-    .nativeEnum(GetMicrofrontendsInGroupEnvironmentsTarget);
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupEnvironmentsTarget> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupEnvironmentsTarget)
+    );
 
 /** @internal */
 export const GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema:
@@ -3017,10 +3143,12 @@ export const GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema:
     GetMicrofrontendsInGroupEnvironmentsMicrofrontends1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    target: GetMicrofrontendsInGroupEnvironmentsTarget$inboundSchema,
-    type: types.literal("system"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      target: GetMicrofrontendsInGroupEnvironmentsTarget$inboundSchema,
+      type: types.literal("system"),
+    })
+  );
 
 export function getMicrofrontendsInGroupEnvironmentsMicrofrontends1FromJSON(
   jsonString: string,
@@ -3044,12 +3172,14 @@ export const GetMicrofrontendsInGroupMicrofrontendsEnvironments$inboundSchema:
     GetMicrofrontendsInGroupMicrofrontendsEnvironments,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() =>
-      GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema
-    ),
-    z.lazy(() => GetMicrofrontendsInGroupEnvironments2$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() =>
+        GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema
+      ),
+      z.lazy(() => GetMicrofrontendsInGroupEnvironments2$inboundSchema),
+    ])
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsEnvironmentsFromJSON(
   jsonString: string,
@@ -3072,11 +3202,13 @@ export const GetMicrofrontendsInGroupSources2$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupSources2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  namespace: types.string(),
-  project: types.optional(types.string()),
-  provider: types.literal("gitlab"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    namespace: types.string(),
+    project: types.optional(types.string()),
+    provider: types.literal("gitlab"),
+  })
+);
 
 export function getMicrofrontendsInGroupSources2FromJSON(
   jsonString: string,
@@ -3092,18 +3224,23 @@ export function getMicrofrontendsInGroupSources2FromJSON(
 export const GetMicrofrontendsInGroupSourcesMicrofrontendsProvider$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupSourcesMicrofrontendsProvider
-  > = z.nativeEnum(GetMicrofrontendsInGroupSourcesMicrofrontendsProvider);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetMicrofrontendsInGroupSourcesMicrofrontendsProvider)
+  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupSources1$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupSources1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  org: types.string(),
-  provider: GetMicrofrontendsInGroupSourcesMicrofrontendsProvider$inboundSchema,
-  repo: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    org: types.string(),
+    provider:
+      GetMicrofrontendsInGroupSourcesMicrofrontendsProvider$inboundSchema,
+    repo: types.optional(types.string()),
+  })
+);
 
 export function getMicrofrontendsInGroupSources1FromJSON(
   jsonString: string,
@@ -3121,15 +3258,17 @@ export const GetMicrofrontendsInGroupMicrofrontendsSources$inboundSchema:
     GetMicrofrontendsInGroupMicrofrontendsSources,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema).and(
-      z.object({ provider: z.literal("bitbucket") }),
-    ),
-    z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema).and(
-      z.object({ provider: z.literal("github") }),
-    ),
-    z.lazy(() => GetMicrofrontendsInGroupSources2$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema).and(
+        z.object({ provider: z.literal("bitbucket") }),
+      ),
+      z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema).and(
+        z.object({ provider: z.literal("github") }),
+      ),
+      z.lazy(() => GetMicrofrontendsInGroupSources2$inboundSchema),
+    ])
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsSourcesFromJSON(
   jsonString: string,
@@ -3152,18 +3291,16 @@ export const GetMicrofrontendsInGroupGitSources$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupGitSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  environments: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    environments: z.array(z.union([
       z.lazy(() =>
         GetMicrofrontendsInGroupEnvironmentsMicrofrontends1$inboundSchema
       ),
       z.lazy(() => GetMicrofrontendsInGroupEnvironments2$inboundSchema),
-    ]),
-  ),
-  sources: z.array(
-    z.union([
+    ])),
+    sources: z.array(z.union([
       z.lazy(() => GetMicrofrontendsInGroupSources1$inboundSchema).and(
         z.object({ provider: z.literal("bitbucket") }),
       ),
@@ -3171,9 +3308,9 @@ export const GetMicrofrontendsInGroupGitSources$inboundSchema: z.ZodType<
         z.object({ provider: z.literal("github") }),
       ),
       z.lazy(() => GetMicrofrontendsInGroupSources2$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function getMicrofrontendsInGroupGitSourcesFromJSON(
   jsonString: string,
@@ -3191,16 +3328,16 @@ export const GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDeploymentPolicy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentSources: z.nullable(
-    z.array(
-      z.lazy(() => GetMicrofrontendsInGroupDeploymentSources$inboundSchema),
-    ),
-  ).optional(),
-  gitSources: z.nullable(
-    z.array(z.lazy(() => GetMicrofrontendsInGroupGitSources$inboundSchema)),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentSources: z.nullable(z.array(z.lazy(() =>
+      GetMicrofrontendsInGroupDeploymentSources$inboundSchema
+    ))).optional(),
+    gitSources: z.nullable(z.array(z.lazy(() =>
+      GetMicrofrontendsInGroupGitSources$inboundSchema
+    ))).optional(),
+  })
+);
 
 export function getMicrofrontendsInGroupDeploymentPolicyFromJSON(
   jsonString: string,
@@ -3221,14 +3358,18 @@ export function getMicrofrontendsInGroupDeploymentPolicyFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupAction$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupAction
-> = z.nativeEnum(GetMicrofrontendsInGroupAction);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupAction)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupValueCurrentValue$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupValueCurrentValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number(), types.boolean()])
+);
 
 export function getMicrofrontendsInGroupValueCurrentValueFromJSON(
   jsonString: string,
@@ -3249,7 +3390,9 @@ export function getMicrofrontendsInGroupValueCurrentValueFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupValuePreviousValue$inboundSchema:
   z.ZodType<GetMicrofrontendsInGroupValuePreviousValue, z.ZodTypeDef, unknown> =
-    smartUnion([types.string(), types.number(), types.boolean()]);
+    /* @__PURE__ */ lazySchema$(() =>
+      smartUnion([types.string(), types.number(), types.boolean()])
+    );
 
 export function getMicrofrontendsInGroupValuePreviousValueFromJSON(
   jsonString: string,
@@ -3272,10 +3415,16 @@ export const GetMicrofrontendsInGroupValue3$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupValue3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
-  previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
+    previousValue: smartUnion([
+      types.string(),
+      types.number(),
+      types.boolean(),
+    ]),
+  })
+);
 
 export function getMicrofrontendsInGroupValue3FromJSON(
   jsonString: string,
@@ -3292,12 +3441,14 @@ export const GetMicrofrontendsInGroupValue$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetMicrofrontendsInGroupValue3$inboundSchema),
-  types.string(),
-  types.number(),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetMicrofrontendsInGroupValue3$inboundSchema),
+    types.string(),
+    types.number(),
+    types.boolean(),
+  ])
+);
 
 export function getMicrofrontendsInGroupValueFromJSON(
   jsonString: string,
@@ -3314,19 +3465,19 @@ export const GetMicrofrontendsInGroupDismissedToasts$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupDismissedToasts,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: GetMicrofrontendsInGroupAction$inboundSchema,
-  dismissedAt: types.number(),
-  key: types.string(),
-  value: types.nullable(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: GetMicrofrontendsInGroupAction$inboundSchema,
+    dismissedAt: types.number(),
+    key: types.string(),
+    value: types.nullable(smartUnion([
       z.lazy(() => GetMicrofrontendsInGroupValue3$inboundSchema),
       types.string(),
       types.number(),
       types.boolean(),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function getMicrofrontendsInGroupDismissedToastsFromJSON(
   jsonString: string,
@@ -3349,10 +3500,12 @@ export const GetMicrofrontendsInGroupContentHint17$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint17,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectId: types.string(),
-  type: types.literal("flags-connection-string"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: types.string(),
+    type: types.literal("flags-connection-string"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint17FromJSON(
   jsonString: string,
@@ -3370,13 +3523,15 @@ export const GetMicrofrontendsInGroupContentHint16$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint16,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  integrationProductId: types.string(),
-  storeId: types.string(),
-  type: types.literal("integration-store-secret"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    integrationProductId: types.string(),
+    storeId: types.string(),
+    type: types.literal("integration-store-secret"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint16FromJSON(
   jsonString: string,
@@ -3394,10 +3549,12 @@ export const GetMicrofrontendsInGroupContentHint15$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint15,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-no-ssl"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-no-ssl"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint15FromJSON(
   jsonString: string,
@@ -3415,10 +3572,12 @@ export const GetMicrofrontendsInGroupContentHint14$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint14,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-database"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-database"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint14FromJSON(
   jsonString: string,
@@ -3436,10 +3595,12 @@ export const GetMicrofrontendsInGroupContentHint13$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint13,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-password"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-password"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint13FromJSON(
   jsonString: string,
@@ -3457,10 +3618,12 @@ export const GetMicrofrontendsInGroupContentHint12$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint12,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-host"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-host"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint12FromJSON(
   jsonString: string,
@@ -3478,10 +3641,12 @@ export const GetMicrofrontendsInGroupContentHint11$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint11,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-user"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint11FromJSON(
   jsonString: string,
@@ -3499,10 +3664,12 @@ export const GetMicrofrontendsInGroupContentHint10$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint10,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-prisma-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-prisma-url"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint10FromJSON(
   jsonString: string,
@@ -3520,10 +3687,12 @@ export const GetMicrofrontendsInGroupContentHint9$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint9,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-non-pooling"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-non-pooling"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint9FromJSON(
   jsonString: string,
@@ -3541,10 +3710,12 @@ export const GetMicrofrontendsInGroupContentHint8$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint8,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint8FromJSON(
   jsonString: string,
@@ -3562,10 +3733,12 @@ export const GetMicrofrontendsInGroupContentHint7$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-webhook-public-key"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-webhook-public-key"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint7FromJSON(
   jsonString: string,
@@ -3583,10 +3756,12 @@ export const GetMicrofrontendsInGroupContentHint6$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-store-id"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-store-id"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint6FromJSON(
   jsonString: string,
@@ -3604,10 +3779,12 @@ export const GetMicrofrontendsInGroupContentHint5$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-read-write-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-read-write-token"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint5FromJSON(
   jsonString: string,
@@ -3625,10 +3802,12 @@ export const GetMicrofrontendsInGroupContentHint4$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-read-only-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-read-only-token"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint4FromJSON(
   jsonString: string,
@@ -3646,10 +3825,12 @@ export const GetMicrofrontendsInGroupContentHint3$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-token"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint3FromJSON(
   jsonString: string,
@@ -3667,10 +3848,12 @@ export const GetMicrofrontendsInGroupContentHint2$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-url"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint2FromJSON(
   jsonString: string,
@@ -3688,10 +3871,12 @@ export const GetMicrofrontendsInGroupContentHint1$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-url"),
+  })
+);
 
 export function getMicrofrontendsInGroupContentHint1FromJSON(
   jsonString: string,
@@ -3709,25 +3894,27 @@ export const GetMicrofrontendsInGroupContentHint$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupContentHint,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetMicrofrontendsInGroupContentHint1$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint2$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint3$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint4$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint5$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint6$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint7$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint8$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint9$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint10$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint11$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint12$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint13$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint14$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint15$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint16$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupContentHint17$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetMicrofrontendsInGroupContentHint1$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint2$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint3$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint4$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint5$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint6$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint7$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint8$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint9$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint10$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint11$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint12$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint13$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint14$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint15$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint16$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupContentHint17$inboundSchema),
+  ])
+);
 
 export function getMicrofrontendsInGroupContentHintFromJSON(
   jsonString: string,
@@ -3744,8 +3931,10 @@ export function getMicrofrontendsInGroupContentHintFromJSON(
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsEnvType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsEnvType
-  > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsEnvType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsEnvType,
+    )
   );
 
 /** @internal */
@@ -3754,11 +3943,13 @@ export const GetMicrofrontendsInGroupInternalContentHint$inboundSchema:
     GetMicrofrontendsInGroupInternalContentHint,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    encryptedValue: types.string(),
-    type:
-      GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsEnvType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      encryptedValue: types.string(),
+      type:
+        GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsEnvType$inboundSchema,
+    })
+  );
 
 export function getMicrofrontendsInGroupInternalContentHintFromJSON(
   jsonString: string,
@@ -3779,12 +3970,16 @@ export function getMicrofrontendsInGroupInternalContentHintFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupTarget2$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupTarget2
-> = z.nativeEnum(GetMicrofrontendsInGroupTarget2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupTarget2)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupTarget1$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupTarget1
-> = z.nativeEnum(GetMicrofrontendsInGroupTarget1);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupTarget1)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsTarget$inboundSchema:
@@ -3792,10 +3987,12 @@ export const GetMicrofrontendsInGroupMicrofrontendsTarget$inboundSchema:
     GetMicrofrontendsInGroupMicrofrontendsTarget,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(GetMicrofrontendsInGroupTarget1$inboundSchema),
-    GetMicrofrontendsInGroupTarget2$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(GetMicrofrontendsInGroupTarget1$inboundSchema),
+      GetMicrofrontendsInGroupTarget2$inboundSchema,
+    ])
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsTargetFromJSON(
   jsonString: string,
@@ -3815,24 +4012,28 @@ export function getMicrofrontendsInGroupMicrofrontendsTargetFromJSON(
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsType$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsType> = z
-    .nativeEnum(GetMicrofrontendsInGroupMicrofrontendsType);
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsType)
+    );
 
 /** @internal */
 export const GetMicrofrontendsInGroupVisibility$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupVisibility
-> = z.nativeEnum(GetMicrofrontendsInGroupVisibility);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupVisibility)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupEnv$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupEnv,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  configurationId: z.nullable(types.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    configurationId: z.nullable(types.string()).optional(),
+    contentHint: z.nullable(z.union([
       z.lazy(() => GetMicrofrontendsInGroupContentHint1$inboundSchema),
       z.lazy(() => GetMicrofrontendsInGroupContentHint2$inboundSchema),
       z.lazy(() => GetMicrofrontendsInGroupContentHint3$inboundSchema),
@@ -3850,35 +4051,37 @@ export const GetMicrofrontendsInGroupEnv$inboundSchema: z.ZodType<
       z.lazy(() => GetMicrofrontendsInGroupContentHint15$inboundSchema),
       z.lazy(() => GetMicrofrontendsInGroupContentHint16$inboundSchema),
       z.lazy(() => GetMicrofrontendsInGroupContentHint17$inboundSchema),
-    ]),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  id: types.optional(types.string()),
-  internalContentHint: z.nullable(
-    z.lazy(() => GetMicrofrontendsInGroupInternalContentHint$inboundSchema),
-  ).optional(),
-  key: types.string(),
-  legacyValue: types.optional(types.string()),
-  sunsetSecretId: types.optional(types.string()),
-  target: types.optional(
-    smartUnion([
-      z.array(GetMicrofrontendsInGroupTarget1$inboundSchema),
-      GetMicrofrontendsInGroupTarget2$inboundSchema,
-    ]),
-  ),
-  type: GetMicrofrontendsInGroupMicrofrontendsType$inboundSchema,
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.string(),
-  visibility: types.optional(GetMicrofrontendsInGroupVisibility$inboundSchema),
-  vsmValue: types.optional(types.string()),
-});
+    ])).optional(),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.optional(types.boolean()),
+    edgeConfigId: z.nullable(types.string()).optional(),
+    edgeConfigTokenId: z.nullable(types.string()).optional(),
+    gitBranch: types.optional(types.string()),
+    id: types.optional(types.string()),
+    internalContentHint: z.nullable(z.lazy(() =>
+      GetMicrofrontendsInGroupInternalContentHint$inboundSchema
+    )).optional(),
+    key: types.string(),
+    legacyValue: types.optional(types.string()),
+    sunsetSecretId: types.optional(types.string()),
+    target: types.optional(
+      smartUnion([
+        z.array(GetMicrofrontendsInGroupTarget1$inboundSchema),
+        GetMicrofrontendsInGroupTarget2$inboundSchema,
+      ]),
+    ),
+    type: GetMicrofrontendsInGroupMicrofrontendsType$inboundSchema,
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.string(),
+    visibility: types.optional(
+      GetMicrofrontendsInGroupVisibility$inboundSchema,
+    ),
+    vsmValue: types.optional(types.string()),
+  })
+);
 
 export function getMicrofrontendsInGroupEnvFromJSON(
   jsonString: string,
@@ -3895,10 +4098,12 @@ export const GetMicrofrontendsInGroupExpiration2$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupExpiration2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  lockedAt: types.number(),
-  lockedBy: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lockedAt: types.number(),
+    lockedBy: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupExpiration2FromJSON(
   jsonString: string,
@@ -3916,9 +4121,11 @@ export const GetMicrofrontendsInGroupExpiration1$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupExpiration1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expiresAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expiresAt: types.number(),
+  })
+);
 
 export function getMicrofrontendsInGroupExpiration1FromJSON(
   jsonString: string,
@@ -3936,10 +4143,12 @@ export const GetMicrofrontendsInGroupExpiration$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupExpiration,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetMicrofrontendsInGroupExpiration2$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupExpiration1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetMicrofrontendsInGroupExpiration2$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupExpiration1$inboundSchema),
+  ])
+);
 
 export function getMicrofrontendsInGroupExpirationFromJSON(
   jsonString: string,
@@ -3957,9 +4166,11 @@ export const GetMicrofrontendsInGroupFeatures$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupFeatures,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  webAnalytics: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webAnalytics: types.optional(types.boolean()),
+  })
+);
 
 export function getMicrofrontendsInGroupFeaturesFromJSON(
   jsonString: string,
@@ -3974,17 +4185,21 @@ export function getMicrofrontendsInGroupFeaturesFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupFramework
-> = z.nativeEnum(GetMicrofrontendsInGroupFramework);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupFramework)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupGitComments$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupGitComments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  onCommit: types.boolean(),
-  onPullRequest: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    onCommit: types.boolean(),
+    onPullRequest: types.boolean(),
+  })
+);
 
 export function getMicrofrontendsInGroupGitCommentsFromJSON(
   jsonString: string,
@@ -4003,10 +4218,12 @@ export const GetMicrofrontendsInGroupConsolidatedGitCommitStatus$inboundSchema:
     GetMicrofrontendsInGroupConsolidatedGitCommitStatus,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    enabled: types.boolean(),
-    propagateFailures: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      enabled: types.boolean(),
+      propagateFailures: types.boolean(),
+    })
+  );
 
 export function getMicrofrontendsInGroupConsolidatedGitCommitStatusFromJSON(
   jsonString: string,
@@ -4026,24 +4243,26 @@ export function getMicrofrontendsInGroupConsolidatedGitCommitStatusFromJSON(
 
 /** @internal */
 export const GetMicrofrontendsInGroupCreateDeployments$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupCreateDeployments> = z
-    .nativeEnum(GetMicrofrontendsInGroupCreateDeployments);
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupCreateDeployments> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupCreateDeployments)
+    );
 
 /** @internal */
 export const GetMicrofrontendsInGroupGitProviderOptions$inboundSchema:
   z.ZodType<GetMicrofrontendsInGroupGitProviderOptions, z.ZodTypeDef, unknown> =
-    z.object({
-      consolidatedGitCommitStatus: types.optional(
-        z.lazy(() =>
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        consolidatedGitCommitStatus: types.optional(z.lazy(() =>
           GetMicrofrontendsInGroupConsolidatedGitCommitStatus$inboundSchema
-        ),
-      ),
-      createDeployments:
-        GetMicrofrontendsInGroupCreateDeployments$inboundSchema,
-      disableRepositoryDispatchEvents: types.optional(types.boolean()),
-      gitCommitStatus: types.optional(types.boolean()),
-      requireVerifiedCommits: types.optional(types.boolean()),
-    });
+        )),
+        createDeployments:
+          GetMicrofrontendsInGroupCreateDeployments$inboundSchema,
+        disableRepositoryDispatchEvents: types.optional(types.boolean()),
+        gitCommitStatus: types.optional(types.boolean()),
+        requireVerifiedCommits: types.optional(types.boolean()),
+      })
+    );
 
 export function getMicrofrontendsInGroupGitProviderOptionsFromJSON(
   jsonString: string,
@@ -4067,9 +4286,11 @@ export const GetMicrofrontendsInGroupHasMicrofrontendsValue$inboundSchema:
     GetMicrofrontendsInGroupHasMicrofrontendsValue,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    eq: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      eq: types.string(),
+    })
+  );
 
 export function getMicrofrontendsInGroupHasMicrofrontendsValueFromJSON(
   jsonString: string,
@@ -4092,12 +4313,14 @@ export const GetMicrofrontendsInGroupHas2$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupHas2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("host"),
-  value: z.lazy(() =>
-    GetMicrofrontendsInGroupHasMicrofrontendsValue$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("host"),
+    value: z.lazy(() =>
+      GetMicrofrontendsInGroupHasMicrofrontendsValue$inboundSchema
+    ),
+  })
+);
 
 export function getMicrofrontendsInGroupHas2FromJSON(
   jsonString: string,
@@ -4112,16 +4335,20 @@ export function getMicrofrontendsInGroupHas2FromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupHasKey$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupHasKey
-> = z.nativeEnum(GetMicrofrontendsInGroupHasKey);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupHasKey)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupHasValue$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupHasValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eq: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eq: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupHasValueFromJSON(
   jsonString: string,
@@ -4138,11 +4365,13 @@ export const GetMicrofrontendsInGroupHas1$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupHas1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  key: GetMicrofrontendsInGroupHasKey$inboundSchema,
-  type: types.literal("header"),
-  value: z.lazy(() => GetMicrofrontendsInGroupHasValue$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: GetMicrofrontendsInGroupHasKey$inboundSchema,
+    type: types.literal("header"),
+    value: z.lazy(() => GetMicrofrontendsInGroupHasValue$inboundSchema),
+  })
+);
 
 export function getMicrofrontendsInGroupHas1FromJSON(
   jsonString: string,
@@ -4159,10 +4388,12 @@ export const GetMicrofrontendsInGroupInternalRoutesHas$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupInternalRoutesHas,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetMicrofrontendsInGroupHas1$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupHas2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetMicrofrontendsInGroupHas1$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupHas2$inboundSchema),
+  ])
+);
 
 export function getMicrofrontendsInGroupInternalRoutesHasFromJSON(
   jsonString: string,
@@ -4182,8 +4413,10 @@ export function getMicrofrontendsInGroupInternalRoutesHasFromJSON(
 
 /** @internal */
 export const GetMicrofrontendsInGroupInternalRoutesAction$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupInternalRoutesAction> = z
-    .nativeEnum(GetMicrofrontendsInGroupInternalRoutesAction);
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupInternalRoutesAction> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupInternalRoutesAction)
+    );
 
 /** @internal */
 export const GetMicrofrontendsInGroupInternalRoutesMitigate$inboundSchema:
@@ -4191,9 +4424,11 @@ export const GetMicrofrontendsInGroupInternalRoutesMitigate$inboundSchema:
     GetMicrofrontendsInGroupInternalRoutesMitigate,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: GetMicrofrontendsInGroupInternalRoutesAction$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: GetMicrofrontendsInGroupInternalRoutesAction$inboundSchema,
+    })
+  );
 
 export function getMicrofrontendsInGroupInternalRoutesMitigateFromJSON(
   jsonString: string,
@@ -4216,18 +4451,18 @@ export const GetMicrofrontendsInGroupInternalRoutes2$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupInternalRoutes2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  has: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    has: z.array(z.union([
       z.lazy(() => GetMicrofrontendsInGroupHas1$inboundSchema),
       z.lazy(() => GetMicrofrontendsInGroupHas2$inboundSchema),
-    ]),
-  ),
-  mitigate: z.lazy(() =>
-    GetMicrofrontendsInGroupInternalRoutesMitigate$inboundSchema
-  ),
-  src: types.optional(types.string()),
-});
+    ])),
+    mitigate: z.lazy(() =>
+      GetMicrofrontendsInGroupInternalRoutesMitigate$inboundSchema
+    ),
+    src: types.optional(types.string()),
+  })
+);
 
 export function getMicrofrontendsInGroupInternalRoutes2FromJSON(
   jsonString: string,
@@ -4250,11 +4485,13 @@ export const GetMicrofrontendsInGroupInternalRoutes1$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupInternalRoutes1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expiry: types.optional(types.number()),
-  src: types.string(),
-  status: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expiry: types.optional(types.number()),
+    src: types.string(),
+    status: types.number(),
+  })
+);
 
 export function getMicrofrontendsInGroupInternalRoutes1FromJSON(
   jsonString: string,
@@ -4277,10 +4514,12 @@ export const GetMicrofrontendsInGroupInternalRoutes$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupInternalRoutes,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetMicrofrontendsInGroupInternalRoutes1$inboundSchema),
-  z.lazy(() => GetMicrofrontendsInGroupInternalRoutes2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetMicrofrontendsInGroupInternalRoutes1$inboundSchema),
+    z.lazy(() => GetMicrofrontendsInGroupInternalRoutes2$inboundSchema),
+  ])
+);
 
 export function getMicrofrontendsInGroupInternalRoutesFromJSON(
   jsonString: string,
@@ -4298,11 +4537,13 @@ export const GetMicrofrontendsInGroupIpBuckets$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupIpBuckets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bucket: types.string(),
-  default: types.optional(types.boolean()),
-  supportUntil: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bucket: types.string(),
+    default: types.optional(types.boolean()),
+    supportUntil: types.optional(types.number()),
+  })
+);
 
 export function getMicrofrontendsInGroupIpBucketsFromJSON(
   jsonString: string,
@@ -4320,9 +4561,11 @@ export const GetMicrofrontendsInGroupFlagDefinitionsPresent$inboundSchema:
     GetMicrofrontendsInGroupFlagDefinitionsPresent,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    targets: z.array(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      targets: z.array(types.string()),
+    })
+  );
 
 export function getMicrofrontendsInGroupFlagDefinitionsPresentFromJSON(
   jsonString: string,
@@ -4345,9 +4588,11 @@ export const GetMicrofrontendsInGroupHealthCheck$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupHealthCheck,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function getMicrofrontendsInGroupHealthCheckFromJSON(
   jsonString: string,
@@ -4365,9 +4610,11 @@ export const GetMicrofrontendsInGroupLint$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupLint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function getMicrofrontendsInGroupLintFromJSON(
   jsonString: string,
@@ -4384,9 +4631,11 @@ export const GetMicrofrontendsInGroupMfeConfigPresent$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupMfeConfigPresent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function getMicrofrontendsInGroupMfeConfigPresentFromJSON(
   jsonString: string,
@@ -4409,9 +4658,11 @@ export const GetMicrofrontendsInGroupTypecheck$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupTypecheck,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function getMicrofrontendsInGroupTypecheckFromJSON(
   jsonString: string,
@@ -4428,29 +4679,33 @@ export const GetMicrofrontendsInGroupJobs$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupJobs,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "flag-definitions-present": types.optional(
-    z.lazy(() => GetMicrofrontendsInGroupFlagDefinitionsPresent$inboundSchema),
-  ),
-  "health-check": types.optional(
-    z.lazy(() => GetMicrofrontendsInGroupHealthCheck$inboundSchema),
-  ),
-  lint: types.optional(
-    z.lazy(() => GetMicrofrontendsInGroupLint$inboundSchema),
-  ),
-  "mfe-config-present": types.optional(
-    z.lazy(() => GetMicrofrontendsInGroupMfeConfigPresent$inboundSchema),
-  ),
-  typecheck: types.optional(
-    z.lazy(() => GetMicrofrontendsInGroupTypecheck$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "flag-definitions-present": "flagDefinitionsPresent",
-    "health-check": "healthCheck",
-    "mfe-config-present": "mfeConfigPresent",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "flag-definitions-present": types.optional(
+      z.lazy(() =>
+        GetMicrofrontendsInGroupFlagDefinitionsPresent$inboundSchema
+      ),
+    ),
+    "health-check": types.optional(
+      z.lazy(() => GetMicrofrontendsInGroupHealthCheck$inboundSchema),
+    ),
+    lint: types.optional(
+      z.lazy(() => GetMicrofrontendsInGroupLint$inboundSchema),
+    ),
+    "mfe-config-present": types.optional(
+      z.lazy(() => GetMicrofrontendsInGroupMfeConfigPresent$inboundSchema),
+    ),
+    typecheck: types.optional(
+      z.lazy(() => GetMicrofrontendsInGroupTypecheck$inboundSchema),
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "flag-definitions-present": "flagDefinitionsPresent",
+      "health-check": "healthCheck",
+      "mfe-config-present": "mfeConfigPresent",
+    });
+  })
+);
 
 export function getMicrofrontendsInGroupJobsFromJSON(
   jsonString: string,
@@ -4465,26 +4720,32 @@ export function getMicrofrontendsInGroupJobsFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupJobStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupJobStatus
-> = z.nativeEnum(GetMicrofrontendsInGroupJobStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupJobStatus)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponseType> = z
-    .nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseType);
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsResponseType)
+    );
 
 /** @internal */
 export const GetMicrofrontendsInGroupLastAliasRequest$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupLastAliasRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fromDeploymentId: types.nullable(types.string()),
-  fromRollingReleaseId: types.optional(types.string()),
-  jobStatus: GetMicrofrontendsInGroupJobStatus$inboundSchema,
-  requestedAt: types.number(),
-  toDeploymentId: types.string(),
-  type: GetMicrofrontendsInGroupMicrofrontendsResponseType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fromDeploymentId: types.nullable(types.string()),
+    fromRollingReleaseId: types.optional(types.string()),
+    jobStatus: GetMicrofrontendsInGroupJobStatus$inboundSchema,
+    requestedAt: types.number(),
+    toDeploymentId: types.string(),
+    type: GetMicrofrontendsInGroupMicrofrontendsResponseType$inboundSchema,
+  })
+);
 
 export function getMicrofrontendsInGroupLastAliasRequestFromJSON(
   jsonString: string,
@@ -4505,7 +4766,7 @@ export function getMicrofrontendsInGroupLastAliasRequestFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema:
   z.ZodType<GetMicrofrontendsInGroupLastRollbackTarget, z.ZodTypeDef, unknown> =
-    z.object({});
+    /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getMicrofrontendsInGroupLastRollbackTargetFromJSON(
   jsonString: string,
@@ -4529,7 +4790,9 @@ export const GetMicrofrontendsInGroupMicrofrontendsAliasAssigned$inboundSchema:
     GetMicrofrontendsInGroupMicrofrontendsAliasAssigned,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.number(), types.boolean()]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.number(), types.boolean()])
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsAliasAssignedFromJSON(
   jsonString: string,
@@ -4552,10 +4815,12 @@ export const GetMicrofrontendsInGroupAliasError$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupAliasError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupAliasErrorFromJSON(
   jsonString: string,
@@ -4572,8 +4837,10 @@ export function getMicrofrontendsInGroupAliasErrorFromJSON(
 export const GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsType
-  > = z.nativeEnum(
-    GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsType,
+    )
   );
 
 /** @internal */
@@ -4582,11 +4849,13 @@ export const GetMicrofrontendsInGroupMicrofrontendsBranchMatcher$inboundSchema:
     GetMicrofrontendsInGroupMicrofrontendsBranchMatcher,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    pattern: types.string(),
-    type:
-      GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      pattern: types.string(),
+      type:
+        GetMicrofrontendsInGroupMicrofrontendsResponse200ApplicationJSONResponseBodyProjectsType$inboundSchema,
+    })
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsBranchMatcherFromJSON(
   jsonString: string,
@@ -4609,11 +4878,13 @@ export const GetMicrofrontendsInGroupBuilds$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupBuilds,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dest: types.optional(types.string()),
-  src: types.optional(types.string()),
-  use: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dest: types.optional(types.string()),
+    src: types.optional(types.string()),
+    use: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupBuildsFromJSON(
   jsonString: string,
@@ -4627,5 +4898,7 @@ export function getMicrofrontendsInGroupBuildsFromJSON(
 
 /** @internal */
 export const GetMicrofrontendsInGroupChecksConclusion$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupChecksConclusion> = z
-    .nativeEnum(GetMicrofrontendsInGroupChecksConclusion);
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupChecksConclusion> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupChecksConclusion)
+    );

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -203,6 +203,10 @@ export type GetTeamMembersJoinedFrom = {
   repoId?: string | undefined;
   repoPath?: string | undefined;
   ssoConnectedAt?: number | undefined;
+  /**
+   * How `ssoUserId` and `idpUserId` were made; absent when unknown.
+   */
+  ssoIdFingerprint?: string | undefined;
   ssoUserId?: string | undefined;
 };
 
@@ -350,7 +354,9 @@ export type GetTeamMembersResponseBody = {
 /** @internal */
 export const GetTeamMembersQueryParamRole$outboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersQueryParamRole
-> = z.nativeEnum(GetTeamMembersQueryParamRole);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetTeamMembersQueryParamRole)
+);
 
 /** @internal */
 export type GetTeamMembersRequest$Outbound = {
@@ -370,17 +376,19 @@ export const GetTeamMembersRequest$outboundSchema: z.ZodType<
   GetTeamMembersRequest$Outbound,
   z.ZodTypeDef,
   GetTeamMembersRequest
-> = z.object({
-  limit: z.number().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  search: z.string().optional(),
-  role: GetTeamMembersQueryParamRole$outboundSchema.optional(),
-  excludeProject: z.string().optional(),
-  eligibleMembersForProjectId: z.string().optional(),
-  teamId: z.string(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    limit: z.number().optional(),
+    since: z.number().optional(),
+    until: z.number().optional(),
+    search: z.string().optional(),
+    role: GetTeamMembersQueryParamRole$outboundSchema.optional(),
+    excludeProject: z.string().optional(),
+    eligibleMembersForProjectId: z.string().optional(),
+    teamId: z.string(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getTeamMembersRequestToJSON(
   getTeamMembersRequest: GetTeamMembersRequest,
@@ -393,43 +401,47 @@ export function getTeamMembersRequestToJSON(
 /** @internal */
 export const GetTeamMembersProjects$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersProjects
-> = z.nativeEnum(GetTeamMembersProjects);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetTeamMembersProjects));
 
 /** @internal */
 export const GetTeamMembersRole$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersRole
-> = z.nativeEnum(GetTeamMembersRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetTeamMembersRole));
 
 /** @internal */
 export const GetTeamMembersTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamPermissions
-> = z.nativeEnum(GetTeamMembersTeamPermissions);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetTeamMembersTeamPermissions)
+);
 
 /** @internal */
 export const GetTeamMembersTeamRoles$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamRoles
-> = z.nativeEnum(GetTeamMembersTeamRoles);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetTeamMembersTeamRoles));
 
 /** @internal */
 export const EmailInviteCodes$inboundSchema: z.ZodType<
   EmailInviteCodes,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessGroups: types.optional(z.array(types.string())),
-  createdAt: types.optional(types.number()),
-  email: types.optional(types.string()),
-  entitlements: types.optional(z.array(types.string())),
-  expired: types.optional(types.literal(true)),
-  id: types.string(),
-  isDSyncUser: types.boolean(),
-  projects: types.optional(z.record(GetTeamMembersProjects$inboundSchema)),
-  role: types.optional(GetTeamMembersRole$inboundSchema),
-  teamPermissions: types.optional(
-    z.array(GetTeamMembersTeamPermissions$inboundSchema),
-  ),
-  teamRoles: types.optional(z.array(GetTeamMembersTeamRoles$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroups: types.optional(z.array(types.string())),
+    createdAt: types.optional(types.number()),
+    email: types.optional(types.string()),
+    entitlements: types.optional(z.array(types.string())),
+    expired: types.optional(types.literal(true)),
+    id: types.string(),
+    isDSyncUser: types.boolean(),
+    projects: types.optional(z.record(GetTeamMembersProjects$inboundSchema)),
+    role: types.optional(GetTeamMembersRole$inboundSchema),
+    teamPermissions: types.optional(
+      z.array(GetTeamMembersTeamPermissions$inboundSchema),
+    ),
+    teamRoles: types.optional(z.array(GetTeamMembersTeamRoles$inboundSchema)),
+  })
+);
 
 export function emailInviteCodesFromJSON(
   jsonString: string,
@@ -446,9 +458,11 @@ export const GetTeamMembersBitbucket$inboundSchema: z.ZodType<
   GetTeamMembersBitbucket,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  login: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    login: types.optional(types.string()),
+  })
+);
 
 export function getTeamMembersBitbucketFromJSON(
   jsonString: string,
@@ -465,9 +479,11 @@ export const GetTeamMembersGithub$inboundSchema: z.ZodType<
   GetTeamMembersGithub,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  login: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    login: types.optional(types.string()),
+  })
+);
 
 export function getTeamMembersGithubFromJSON(
   jsonString: string,
@@ -484,9 +500,11 @@ export const GetTeamMembersGitlab$inboundSchema: z.ZodType<
   GetTeamMembersGitlab,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  login: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    login: types.optional(types.string()),
+  })
+);
 
 export function getTeamMembersGitlabFromJSON(
   jsonString: string,
@@ -503,7 +521,9 @@ export const GetTeamMembersGitUserId$inboundSchema: z.ZodType<
   GetTeamMembersGitUserId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function getTeamMembersGitUserIdFromJSON(
   jsonString: string,
@@ -518,26 +538,29 @@ export function getTeamMembersGitUserIdFromJSON(
 /** @internal */
 export const GetTeamMembersOrigin$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersOrigin
-> = z.nativeEnum(GetTeamMembersOrigin);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetTeamMembersOrigin));
 
 /** @internal */
 export const GetTeamMembersJoinedFrom$inboundSchema: z.ZodType<
   GetTeamMembersJoinedFrom,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  commitId: types.optional(types.string()),
-  dsyncConnectedAt: types.optional(types.number()),
-  dsyncUserId: types.optional(types.string()),
-  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  gitUserLogin: types.optional(types.string()),
-  idpUserId: types.optional(types.string()),
-  origin: GetTeamMembersOrigin$inboundSchema,
-  repoId: types.optional(types.string()),
-  repoPath: types.optional(types.string()),
-  ssoConnectedAt: types.optional(types.number()),
-  ssoUserId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    commitId: types.optional(types.string()),
+    dsyncConnectedAt: types.optional(types.number()),
+    dsyncUserId: types.optional(types.string()),
+    gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+    gitUserLogin: types.optional(types.string()),
+    idpUserId: types.optional(types.string()),
+    origin: GetTeamMembersOrigin$inboundSchema,
+    repoId: types.optional(types.string()),
+    repoPath: types.optional(types.string()),
+    ssoConnectedAt: types.optional(types.number()),
+    ssoIdFingerprint: types.optional(types.string()),
+    ssoUserId: types.optional(types.string()),
+  })
+);
 
 export function getTeamMembersJoinedFromFromJSON(
   jsonString: string,
@@ -552,23 +575,27 @@ export function getTeamMembersJoinedFromFromJSON(
 /** @internal */
 export const MembershipSource$inboundSchema: z.ZodNativeEnum<
   typeof MembershipSource
-> = z.nativeEnum(MembershipSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(MembershipSource));
 
 /** @internal */
 export const GetTeamMembersTeamsResponseRole$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsResponseRole
-> = z.nativeEnum(GetTeamMembersTeamsResponseRole);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetTeamMembersTeamsResponseRole)
+);
 
 /** @internal */
 export const GetTeamMembersTeamsProjects$inboundSchema: z.ZodType<
   GetTeamMembersTeamsProjects,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  name: types.string(),
-  role: types.optional(GetTeamMembersTeamsResponseRole$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    name: types.string(),
+    role: types.optional(GetTeamMembersTeamsResponseRole$inboundSchema),
+  })
+);
 
 export function getTeamMembersTeamsProjectsFromJSON(
   jsonString: string,
@@ -583,37 +610,39 @@ export function getTeamMembersTeamsProjectsFromJSON(
 /** @internal */
 export const GetTeamMembersTeamsRole$inboundSchema: z.ZodNativeEnum<
   typeof GetTeamMembersTeamsRole
-> = z.nativeEnum(GetTeamMembersTeamsRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetTeamMembersTeamsRole));
 
 /** @internal */
 export const GetTeamMembersMembers$inboundSchema: z.ZodType<
   GetTeamMembersMembers,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessRequestedAt: types.optional(types.number()),
-  avatar: types.optional(types.string()),
-  bitbucket: types.optional(
-    z.lazy(() => GetTeamMembersBitbucket$inboundSchema),
-  ),
-  confirmed: types.boolean(),
-  createdAt: types.number(),
-  email: types.string(),
-  github: types.optional(z.lazy(() => GetTeamMembersGithub$inboundSchema)),
-  gitlab: types.optional(z.lazy(() => GetTeamMembersGitlab$inboundSchema)),
-  isEnterpriseManaged: types.optional(types.boolean()),
-  joinedFrom: types.optional(
-    z.lazy(() => GetTeamMembersJoinedFrom$inboundSchema),
-  ),
-  membershipSource: MembershipSource$inboundSchema,
-  name: types.optional(types.string()),
-  projects: types.optional(
-    z.array(z.lazy(() => GetTeamMembersTeamsProjects$inboundSchema)),
-  ),
-  role: GetTeamMembersTeamsRole$inboundSchema,
-  uid: types.string(),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessRequestedAt: types.optional(types.number()),
+    avatar: types.optional(types.string()),
+    bitbucket: types.optional(
+      z.lazy(() => GetTeamMembersBitbucket$inboundSchema),
+    ),
+    confirmed: types.boolean(),
+    createdAt: types.number(),
+    email: types.string(),
+    github: types.optional(z.lazy(() => GetTeamMembersGithub$inboundSchema)),
+    gitlab: types.optional(z.lazy(() => GetTeamMembersGitlab$inboundSchema)),
+    isEnterpriseManaged: types.optional(types.boolean()),
+    joinedFrom: types.optional(
+      z.lazy(() => GetTeamMembersJoinedFrom$inboundSchema),
+    ),
+    membershipSource: MembershipSource$inboundSchema,
+    name: types.optional(types.string()),
+    projects: types.optional(
+      z.array(z.lazy(() => GetTeamMembersTeamsProjects$inboundSchema)),
+    ),
+    role: GetTeamMembersTeamsRole$inboundSchema,
+    uid: types.string(),
+    username: types.string(),
+  })
+);
 
 export function getTeamMembersMembersFromJSON(
   jsonString: string,
@@ -630,12 +659,14 @@ export const GetTeamMembersPagination$inboundSchema: z.ZodType<
   GetTeamMembersPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  hasNext: types.boolean(),
-  next: types.nullable(types.number()),
-  prev: types.nullable(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    hasNext: types.boolean(),
+    next: types.nullable(types.number()),
+    prev: types.nullable(types.number()),
+  })
+);
 
 export function getTeamMembersPaginationFromJSON(
   jsonString: string,
@@ -652,13 +683,15 @@ export const GetTeamMembersResponseBody$inboundSchema: z.ZodType<
   GetTeamMembersResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  emailInviteCodes: types.optional(
-    z.array(z.lazy(() => EmailInviteCodes$inboundSchema)),
-  ),
-  members: z.array(z.lazy(() => GetTeamMembersMembers$inboundSchema)),
-  pagination: z.lazy(() => GetTeamMembersPagination$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    emailInviteCodes: types.optional(
+      z.array(z.lazy(() => EmailInviteCodes$inboundSchema)),
+    ),
+    members: z.array(z.lazy(() => GetTeamMembersMembers$inboundSchema)),
+    pagination: z.lazy(() => GetTeamMembersPagination$inboundSchema),
+  })
+);
 
 export function getTeamMembersResponseBodyFromJSON(
   jsonString: string,

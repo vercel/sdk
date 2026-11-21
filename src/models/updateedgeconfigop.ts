@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -57,9 +57,11 @@ export const UpdateEdgeConfigRequestBody$outboundSchema: z.ZodType<
   UpdateEdgeConfigRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateEdgeConfigRequestBody
-> = z.object({
-  slug: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    slug: z.string(),
+  })
+);
 
 export function updateEdgeConfigRequestBodyToJSON(
   updateEdgeConfigRequestBody: UpdateEdgeConfigRequestBody,
@@ -84,16 +86,18 @@ export const UpdateEdgeConfigRequest$outboundSchema: z.ZodType<
   UpdateEdgeConfigRequest$Outbound,
   z.ZodTypeDef,
   UpdateEdgeConfigRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateEdgeConfigRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateEdgeConfigRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateEdgeConfigRequestToJSON(
   updateEdgeConfigRequest: UpdateEdgeConfigRequest,
@@ -108,17 +112,19 @@ export const UpdateEdgeConfigResponseBody$inboundSchema: z.ZodType<
   UpdateEdgeConfigResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.optional(types.string()),
-  digest: types.string(),
-  id: types.string(),
-  itemCount: types.number(),
-  ownerId: types.string(),
-  sizeInBytes: types.number(),
-  slug: types.string(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.optional(types.string()),
+    digest: types.string(),
+    id: types.string(),
+    itemCount: types.number(),
+    ownerId: types.string(),
+    sizeInBytes: types.number(),
+    slug: types.string(),
+    updatedAt: types.number(),
+  })
+);
 
 export function updateEdgeConfigResponseBodyFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -27,21 +27,24 @@ export type PropertyKey3 = {
 export type PropertyKey = PropertyKey3 | string | number;
 
 /** @internal */
-export const Tag$inboundSchema: z.ZodNativeEnum<typeof Tag> = z.nativeEnum(Tag);
+export const Tag$inboundSchema: z.ZodNativeEnum<typeof Tag> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Tag));
 
 /** @internal */
 export const PropertyKey3$inboundSchema: z.ZodType<
   PropertyKey3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  _tag: Tag$inboundSchema,
-  key: types.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "_tag": "tag",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    _tag: Tag$inboundSchema,
+    key: types.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "_tag": "tag",
+    });
+  })
+);
 
 export function propertyKey3FromJSON(
   jsonString: string,
@@ -58,11 +61,13 @@ export const PropertyKey$inboundSchema: z.ZodType<
   PropertyKey,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => PropertyKey3$inboundSchema),
-  types.string(),
-  types.number(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => PropertyKey3$inboundSchema),
+    types.string(),
+    types.number(),
+  ])
+);
 
 export function propertyKeyFromJSON(
   jsonString: string,

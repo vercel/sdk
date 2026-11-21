@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { CloseReason } from "@vercel/sdk/models/oldssoprotection2.js";
+import { CloseReason } from "@vercel/sdk/models/threehundredandeightytwo.js";
 
 let value: CloseReason = "resolved";
 ```

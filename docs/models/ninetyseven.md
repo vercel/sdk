@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { NinetySeven } from "@vercel/sdk/models/usereventpayloadresources.js";
+import { NinetySeven } from "@vercel/sdk/models/usereventpayloaditems.js";
 
 let value: NinetySeven = {
-  action: "mutate",
+  action: "resume_plan",
   data: {
-    "key": "<value>",
+    planSlug: "v0_business",
   },
 };
 ```
@@ -21,4 +21,4 @@ let value: NinetySeven = {
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
 | `subscriptionId`                                                         | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
 | `action`                                                                 | [models.UserEventPayload97Action](../models/usereventpayload97action.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `data`                                                                   | Record<string, *any*>                                                    | :heavy_check_mark:                                                       | N/A                                                                      |
+| `data`                                                                   | [models.PayloadData](../models/payloaddata.md)                           | :heavy_check_mark:                                                       | N/A                                                                      |

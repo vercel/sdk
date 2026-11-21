@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -101,9 +101,11 @@ export const DeleteSharedEnvVariableRequestBody$outboundSchema: z.ZodType<
   DeleteSharedEnvVariableRequestBody$Outbound,
   z.ZodTypeDef,
   DeleteSharedEnvVariableRequestBody
-> = z.object({
-  ids: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ids: z.array(z.string()),
+  })
+);
 
 export function deleteSharedEnvVariableRequestBodyToJSON(
   deleteSharedEnvVariableRequestBody: DeleteSharedEnvVariableRequestBody,
@@ -127,16 +129,18 @@ export const DeleteSharedEnvVariableRequest$outboundSchema: z.ZodType<
   DeleteSharedEnvVariableRequest$Outbound,
   z.ZodTypeDef,
   DeleteSharedEnvVariableRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => DeleteSharedEnvVariableRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => DeleteSharedEnvVariableRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function deleteSharedEnvVariableRequestToJSON(
   deleteSharedEnvVariableRequest: DeleteSharedEnvVariableRequest,
@@ -151,22 +155,28 @@ export function deleteSharedEnvVariableRequestToJSON(
 /** @internal */
 export const DeleteSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableTarget2
-> = z.nativeEnum(DeleteSharedEnvVariableTarget2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteSharedEnvVariableTarget2)
+);
 
 /** @internal */
 export const DeleteSharedEnvVariableTarget1$inboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableTarget1
-> = z.nativeEnum(DeleteSharedEnvVariableTarget1);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteSharedEnvVariableTarget1)
+);
 
 /** @internal */
 export const DeleteSharedEnvVariableTarget$inboundSchema: z.ZodType<
   DeleteSharedEnvVariableTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(DeleteSharedEnvVariableTarget1$inboundSchema),
-  DeleteSharedEnvVariableTarget2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(DeleteSharedEnvVariableTarget1$inboundSchema),
+    DeleteSharedEnvVariableTarget2$inboundSchema,
+  ])
+);
 
 export function deleteSharedEnvVariableTargetFromJSON(
   jsonString: string,
@@ -181,17 +191,21 @@ export function deleteSharedEnvVariableTargetFromJSON(
 /** @internal */
 export const DeleteSharedEnvVariableValue2$inboundSchema: z.ZodNativeEnum<
   typeof DeleteSharedEnvVariableValue2
-> = z.nativeEnum(DeleteSharedEnvVariableValue2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteSharedEnvVariableValue2)
+);
 
 /** @internal */
 export const DeleteSharedEnvVariableValue$inboundSchema: z.ZodType<
   DeleteSharedEnvVariableValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  types.string(),
-  z.array(DeleteSharedEnvVariableValue2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    types.string(),
+    z.array(DeleteSharedEnvVariableValue2$inboundSchema),
+  ])
+);
 
 export function deleteSharedEnvVariableValueFromJSON(
   jsonString: string,
@@ -208,29 +222,31 @@ export const DeleteSharedEnvVariableError$inboundSchema: z.ZodType<
   DeleteSharedEnvVariableError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(types.string()),
-  code: types.string(),
-  envVarId: types.optional(types.string()),
-  envVarKey: types.optional(types.string()),
-  gitBranch: types.optional(types.string()),
-  key: types.optional(types.string()),
-  link: types.optional(types.string()),
-  message: types.string(),
-  project: types.optional(types.string()),
-  target: types.optional(
-    smartUnion([
-      z.array(DeleteSharedEnvVariableTarget1$inboundSchema),
-      DeleteSharedEnvVariableTarget2$inboundSchema,
-    ]),
-  ),
-  value: types.optional(
-    smartUnion([
-      types.string(),
-      z.array(DeleteSharedEnvVariableValue2$inboundSchema),
-    ]),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(types.string()),
+    code: types.string(),
+    envVarId: types.optional(types.string()),
+    envVarKey: types.optional(types.string()),
+    gitBranch: types.optional(types.string()),
+    key: types.optional(types.string()),
+    link: types.optional(types.string()),
+    message: types.string(),
+    project: types.optional(types.string()),
+    target: types.optional(
+      smartUnion([
+        z.array(DeleteSharedEnvVariableTarget1$inboundSchema),
+        DeleteSharedEnvVariableTarget2$inboundSchema,
+      ]),
+    ),
+    value: types.optional(
+      smartUnion([
+        types.string(),
+        z.array(DeleteSharedEnvVariableValue2$inboundSchema),
+      ]),
+    ),
+  })
+);
 
 export function deleteSharedEnvVariableErrorFromJSON(
   jsonString: string,
@@ -247,9 +263,11 @@ export const DeleteSharedEnvVariableFailed$inboundSchema: z.ZodType<
   DeleteSharedEnvVariableFailed,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => DeleteSharedEnvVariableError$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => DeleteSharedEnvVariableError$inboundSchema),
+  })
+);
 
 export function deleteSharedEnvVariableFailedFromJSON(
   jsonString: string,
@@ -266,10 +284,12 @@ export const DeleteSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   DeleteSharedEnvVariableResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deleted: z.array(types.string()),
-  failed: z.array(z.lazy(() => DeleteSharedEnvVariableFailed$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deleted: z.array(types.string()),
+    failed: z.array(z.lazy(() => DeleteSharedEnvVariableFailed$inboundSchema)),
+  })
+);
 
 export function deleteSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,

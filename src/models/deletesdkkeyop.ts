@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteSDKKeyRequest = {
   /**
@@ -36,12 +37,14 @@ export const DeleteSDKKeyRequest$outboundSchema: z.ZodType<
   DeleteSDKKeyRequest$Outbound,
   z.ZodTypeDef,
   DeleteSDKKeyRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  hashKey: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    hashKey: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteSDKKeyRequestToJSON(
   deleteSDKKeyRequest: DeleteSDKKeyRequest,

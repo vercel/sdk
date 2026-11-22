@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type ListRepositoryImagesRequest = {
   /**
@@ -42,15 +43,17 @@ export const ListRepositoryImagesRequest$outboundSchema: z.ZodType<
   ListRepositoryImagesRequest$Outbound,
   z.ZodTypeDef,
   ListRepositoryImagesRequest
-> = z.object({
-  projectId: z.string(),
-  idOrName: z.string(),
-  limit: z.number().int().optional(),
-  cursor: z.string().optional(),
-  untagged: z.boolean().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    idOrName: z.string(),
+    limit: z.number().int().optional(),
+    cursor: z.string().optional(),
+    untagged: z.boolean().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listRepositoryImagesRequestToJSON(
   listRepositoryImagesRequest: ListRepositoryImagesRequest,

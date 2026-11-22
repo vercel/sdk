@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -45,16 +45,18 @@ export const WriteSessionFilesRequest$outboundSchema: z.ZodType<
   WriteSessionFilesRequest$Outbound,
   z.ZodTypeDef,
   WriteSessionFilesRequest
-> = z.object({
-  xCwd: z.string().optional(),
-  sessionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xCwd: "x-cwd",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    xCwd: z.string().optional(),
+    sessionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      xCwd: "x-cwd",
+    });
+  })
+);
 
 export function writeSessionFilesRequestToJSON(
   writeSessionFilesRequest: WriteSessionFilesRequest,
@@ -69,7 +71,7 @@ export const WriteSessionFilesResponseBody$inboundSchema: z.ZodType<
   WriteSessionFilesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function writeSessionFilesResponseBodyFromJSON(
   jsonString: string,

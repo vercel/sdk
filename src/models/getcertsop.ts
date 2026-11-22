@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { Pagination, Pagination$inboundSchema } from "./pagination.js";
@@ -47,10 +47,12 @@ export const GetCertsRequest$outboundSchema: z.ZodType<
   GetCertsRequest$Outbound,
   z.ZodTypeDef,
   GetCertsRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getCertsRequestToJSON(
   getCertsRequest: GetCertsRequest,
@@ -59,14 +61,16 @@ export function getCertsRequestToJSON(
 }
 
 /** @internal */
-export const Certs$inboundSchema: z.ZodType<Certs, z.ZodTypeDef, unknown> = z
-  .object({
-    autoRenew: types.boolean(),
-    cns: z.array(types.string()),
-    createdAt: types.number(),
-    expiresAt: types.number(),
-    id: types.string(),
-  });
+export const Certs$inboundSchema: z.ZodType<Certs, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      autoRenew: types.boolean(),
+      cns: z.array(types.string()),
+      createdAt: types.number(),
+      expiresAt: types.number(),
+      id: types.string(),
+    })
+  );
 
 export function certsFromJSON(
   jsonString: string,
@@ -83,10 +87,12 @@ export const GetCertsResponseBody$inboundSchema: z.ZodType<
   GetCertsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  certs: z.array(z.lazy(() => Certs$inboundSchema)),
-  pagination: Pagination$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    certs: z.array(z.lazy(() => Certs$inboundSchema)),
+    pagination: Pagination$inboundSchema,
+  })
+);
 
 export function getCertsResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -103,11 +103,13 @@ export const ReadAccessGroupRequest$outboundSchema: z.ZodType<
   ReadAccessGroupRequest$Outbound,
   z.ZodTypeDef,
   ReadAccessGroupRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function readAccessGroupRequestToJSON(
   readAccessGroupRequest: ReadAccessGroupRequest,
@@ -120,35 +122,41 @@ export function readAccessGroupRequestToJSON(
 /** @internal */
 export const ReadAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupEntitlements
-> = z.nativeEnum(ReadAccessGroupEntitlements);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ReadAccessGroupEntitlements)
+);
 
 /** @internal */
 export const ReadAccessGroupTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof ReadAccessGroupTeamPermissions
-> = z.nativeEnum(ReadAccessGroupTeamPermissions);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ReadAccessGroupTeamPermissions)
+);
 
 /** @internal */
 export const ReadAccessGroupResponseBody$inboundSchema: z.ZodType<
   ReadAccessGroupResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessGroupId: types.string(),
-  createdAt: types.string(),
-  entitlements: types.optional(
-    z.array(ReadAccessGroupEntitlements$inboundSchema),
-  ),
-  isDsyncManaged: types.boolean(),
-  membersCount: types.number(),
-  name: types.string(),
-  projectsCount: types.number(),
-  teamId: types.string(),
-  teamPermissions: types.optional(
-    z.array(ReadAccessGroupTeamPermissions$inboundSchema),
-  ),
-  teamRoles: types.optional(z.array(types.string())),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroupId: types.string(),
+    createdAt: types.string(),
+    entitlements: types.optional(
+      z.array(ReadAccessGroupEntitlements$inboundSchema),
+    ),
+    isDsyncManaged: types.boolean(),
+    membersCount: types.number(),
+    name: types.string(),
+    projectsCount: types.number(),
+    teamId: types.string(),
+    teamPermissions: types.optional(
+      z.array(ReadAccessGroupTeamPermissions$inboundSchema),
+    ),
+    teamRoles: types.optional(z.array(types.string())),
+    updatedAt: types.string(),
+  })
+);
 
 export function readAccessGroupResponseBodyFromJSON(
   jsonString: string,

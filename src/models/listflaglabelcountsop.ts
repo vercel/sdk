@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -56,14 +56,16 @@ export const ListFlagLabelCountsRequest$outboundSchema: z.ZodType<
   ListFlagLabelCountsRequest$Outbound,
   z.ZodTypeDef,
   ListFlagLabelCountsRequest
-> = z.object({
-  entityKind: z.string().optional(),
-  limit: z.number().int().default(20),
-  cursor: z.string().optional(),
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entityKind: z.string().optional(),
+    limit: z.number().int().default(20),
+    cursor: z.string().optional(),
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listFlagLabelCountsRequestToJSON(
   listFlagLabelCountsRequest: ListFlagLabelCountsRequest,
@@ -78,11 +80,13 @@ export const ListFlagLabelCountsData$inboundSchema: z.ZodType<
   ListFlagLabelCountsData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attributeKey: types.string(),
-  entityKind: types.string(),
-  count: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attributeKey: types.string(),
+    entityKind: types.string(),
+    count: types.number(),
+  })
+);
 
 export function listFlagLabelCountsDataFromJSON(
   jsonString: string,
@@ -99,9 +103,11 @@ export const ListFlagLabelCountsPagination$inboundSchema: z.ZodType<
   ListFlagLabelCountsPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: types.nullable(types.string()),
+  })
+);
 
 export function listFlagLabelCountsPaginationFromJSON(
   jsonString: string,
@@ -118,10 +124,12 @@ export const ListFlagLabelCountsResponseBody$inboundSchema: z.ZodType<
   ListFlagLabelCountsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: z.array(z.lazy(() => ListFlagLabelCountsData$inboundSchema)),
-  pagination: z.lazy(() => ListFlagLabelCountsPagination$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: z.array(z.lazy(() => ListFlagLabelCountsData$inboundSchema)),
+    pagination: z.lazy(() => ListFlagLabelCountsPagination$inboundSchema),
+  })
+);
 
 export function listFlagLabelCountsResponseBodyFromJSON(
   jsonString: string,

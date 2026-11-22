@@ -5,19 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyTwo } from "@vercel/sdk/models/oldssoprotection2.js";
+import { ThreeHundredAndNinetyTwo } from "@vercel/sdk/models/threehundredandeightytwo.js";
 
 let value: ThreeHundredAndNinetyTwo = {
-  alias: "<value>",
-  sandboxName: "<value>",
+  certificateFingerprints: [
+    "<value 1>",
+  ],
+  connectionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `alias`            | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `sandboxId`        | *string*           | :heavy_minus_sign: | N/A                |
-| `sandboxName`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                     | Type                      | Required                  | Description               |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `certificateFingerprints` | *string*[]                | :heavy_check_mark:        | N/A                       |
+| `connectionId`            | *string*                  | :heavy_check_mark:        | N/A                       |

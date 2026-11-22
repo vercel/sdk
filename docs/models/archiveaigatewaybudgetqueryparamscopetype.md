@@ -7,11 +7,11 @@ The budget scope to archive.
 ```typescript
 import { ArchiveAiGatewayBudgetQueryParamScopeType } from "@vercel/sdk/models/archiveaigatewaybudgetop.js";
 
-let value: ArchiveAiGatewayBudgetQueryParamScopeType = "project";
+let value: ArchiveAiGatewayBudgetQueryParamScopeType = "user";
 ```
 
 ## Values
 
 ```typescript
-"team" | "project" | "user"
+"team" | "project" | "user" | "app"
 ```

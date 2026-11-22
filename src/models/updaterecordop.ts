@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -124,7 +124,7 @@ export type UpdateRecordResponseBody = {
 /** @internal */
 export const UpdateRecordType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateRecordType
-> = z.nativeEnum(UpdateRecordType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateRecordType));
 
 /** @internal */
 export type Srv$Outbound = {
@@ -135,13 +135,15 @@ export type Srv$Outbound = {
 };
 
 /** @internal */
-export const Srv$outboundSchema: z.ZodType<Srv$Outbound, z.ZodTypeDef, Srv> = z
-  .object({
-    target: z.nullable(z.string()),
-    weight: z.nullable(z.number().int()),
-    port: z.nullable(z.number().int()),
-    priority: z.nullable(z.number().int()),
-  });
+export const Srv$outboundSchema: z.ZodType<Srv$Outbound, z.ZodTypeDef, Srv> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      target: z.nullable(z.string()),
+      weight: z.nullable(z.number().int()),
+      port: z.nullable(z.number().int()),
+      priority: z.nullable(z.number().int()),
+    })
+  );
 
 export function srvToJSON(srv: Srv): string {
   return JSON.stringify(Srv$outboundSchema.parse(srv));
@@ -159,11 +161,13 @@ export const Https$outboundSchema: z.ZodType<
   Https$Outbound,
   z.ZodTypeDef,
   Https
-> = z.object({
-  priority: z.nullable(z.number().int()),
-  target: z.nullable(z.string()),
-  params: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    priority: z.nullable(z.number().int()),
+    target: z.nullable(z.string()),
+    params: z.nullable(z.string()).optional(),
+  })
+);
 
 export function httpsToJSON(https: Https): string {
   return JSON.stringify(Https$outboundSchema.parse(https));
@@ -186,16 +190,18 @@ export const UpdateRecordRequestBody$outboundSchema: z.ZodType<
   UpdateRecordRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateRecordRequestBody
-> = z.object({
-  name: z.nullable(z.string()).optional(),
-  value: z.nullable(z.string()).optional(),
-  type: z.nullable(UpdateRecordType$outboundSchema).optional(),
-  ttl: z.nullable(z.number().int()).optional(),
-  mxPriority: z.nullable(z.number().int()).optional(),
-  srv: z.nullable(z.lazy(() => Srv$outboundSchema)).optional(),
-  https: z.nullable(z.lazy(() => Https$outboundSchema)).optional(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.nullable(z.string()).optional(),
+    value: z.nullable(z.string()).optional(),
+    type: z.nullable(UpdateRecordType$outboundSchema).optional(),
+    ttl: z.nullable(z.number().int()).optional(),
+    mxPriority: z.nullable(z.number().int()).optional(),
+    srv: z.nullable(z.lazy(() => Srv$outboundSchema)).optional(),
+    https: z.nullable(z.lazy(() => Https$outboundSchema)).optional(),
+    comment: z.string().optional(),
+  })
+);
 
 export function updateRecordRequestBodyToJSON(
   updateRecordRequestBody: UpdateRecordRequestBody,
@@ -218,16 +224,18 @@ export const UpdateRecordRequest$outboundSchema: z.ZodType<
   UpdateRecordRequest$Outbound,
   z.ZodTypeDef,
   UpdateRecordRequest
-> = z.object({
-  recordId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateRecordRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    recordId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateRecordRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateRecordRequestToJSON(
   updateRecordRequest: UpdateRecordRequest,
@@ -240,30 +248,32 @@ export function updateRecordRequestToJSON(
 /** @internal */
 export const UpdateRecordRecordType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateRecordRecordType
-> = z.nativeEnum(UpdateRecordRecordType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateRecordRecordType));
 
 /** @internal */
 export const UpdateRecordDnsType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateRecordDnsType
-> = z.nativeEnum(UpdateRecordDnsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateRecordDnsType));
 
 /** @internal */
 export const UpdateRecordResponseBody$inboundSchema: z.ZodType<
   UpdateRecordResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  createdAt: z.nullable(types.number()).optional(),
-  creator: types.string(),
-  domain: types.string(),
-  id: types.string(),
-  name: types.string(),
-  recordType: UpdateRecordRecordType$inboundSchema,
-  ttl: types.optional(types.number()),
-  type: UpdateRecordDnsType$inboundSchema,
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    createdAt: z.nullable(types.number()).optional(),
+    creator: types.string(),
+    domain: types.string(),
+    id: types.string(),
+    name: types.string(),
+    recordType: UpdateRecordRecordType$inboundSchema,
+    ttl: types.optional(types.number()),
+    type: UpdateRecordDnsType$inboundSchema,
+    value: types.string(),
+  })
+);
 
 export function updateRecordResponseBodyFromJSON(
   jsonString: string,

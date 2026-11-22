@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
@@ -51,13 +51,15 @@ export const ConnectConnectorUpdateResult$inboundSchema: z.ZodType<
   ConnectConnectorUpdateResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  connector: ConnectConnector$inboundSchema,
-  reconsentNeeded: types.optional(ConnectReconsent$inboundSchema),
-  reinstallNeeded: types.optional(types.boolean()),
-  serviceSync: types.optional(ConnectServiceSync$inboundSchema),
-  uninstallNeeded: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connector: ConnectConnector$inboundSchema,
+    reconsentNeeded: types.optional(ConnectReconsent$inboundSchema),
+    reinstallNeeded: types.optional(types.boolean()),
+    serviceSync: types.optional(ConnectServiceSync$inboundSchema),
+    uninstallNeeded: types.optional(types.boolean()),
+  })
+);
 
 export function connectConnectorUpdateResultFromJSON(
   jsonString: string,

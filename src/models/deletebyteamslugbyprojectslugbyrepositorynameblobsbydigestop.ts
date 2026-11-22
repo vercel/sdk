@@ -3,6 +3,11 @@
  */
 
 import * as z from "zod/v3";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest =
   {
@@ -39,12 +44,42 @@ export const DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest$o
     DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest$Outbound,
     z.ZodTypeDef,
     DeleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest
-  > = z.object({
-    teamSlug: z.string(),
-    projectSlug: z.string(),
-    repositoryName: z.string(),
-    digest: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      teamSlug: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9](?:[a-z0-9_-]{0,46}[a-z0-9])?$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9](?:[a-z0-9_-]{0,46}[a-z0-9])?$",
+        },
+      ),
+      projectSlug: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+        },
+      ),
+      repositoryName: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$",
+        },
+      ),
+      digest: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(matchesPattern$("^[A-Za-z0-9_+.-]+:[A-Fa-f0-9]+$", 255), {
+        message: "Value must match pattern ^[A-Za-z0-9_+.-]+:[A-Fa-f0-9]+$",
+      }),
+    })
+  );
 
 export function deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequestToJSON(
   deleteByTeamSlugByProjectSlugByRepositoryNameBlobsByDigestRequest:

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -219,12 +219,16 @@ export type CreateConditionalBypassResponseBody = {
 /** @internal */
 export const CreateConditionalBypassConditionsSecurityRequestType$outboundSchema:
   z.ZodNativeEnum<typeof CreateConditionalBypassConditionsSecurityRequestType> =
-    z.nativeEnum(CreateConditionalBypassConditionsSecurityRequestType);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateConditionalBypassConditionsSecurityRequestType)
+    );
 
 /** @internal */
 export const CreateConditionalBypassConditionsSecurityRequestOp$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConditionalBypassConditionsSecurityRequestOp> = z
-    .nativeEnum(CreateConditionalBypassConditionsSecurityRequestOp);
+  z.ZodNativeEnum<typeof CreateConditionalBypassConditionsSecurityRequestOp> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateConditionalBypassConditionsSecurityRequestOp)
+    );
 
 /** @internal */
 export type Conditions4$Outbound = {
@@ -238,11 +242,13 @@ export const Conditions4$outboundSchema: z.ZodType<
   Conditions4$Outbound,
   z.ZodTypeDef,
   Conditions4
-> = z.object({
-  type: CreateConditionalBypassConditionsSecurityRequestType$outboundSchema,
-  op: CreateConditionalBypassConditionsSecurityRequestOp$outboundSchema,
-  key: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: CreateConditionalBypassConditionsSecurityRequestType$outboundSchema,
+    op: CreateConditionalBypassConditionsSecurityRequestOp$outboundSchema,
+    key: z.string(),
+  })
+);
 
 export function conditions4ToJSON(conditions4: Conditions4): string {
   return JSON.stringify(Conditions4$outboundSchema.parse(conditions4));
@@ -250,13 +256,17 @@ export function conditions4ToJSON(conditions4: Conditions4): string {
 
 /** @internal */
 export const CreateConditionalBypassConditionsSecurityType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConditionalBypassConditionsSecurityType> = z
-    .nativeEnum(CreateConditionalBypassConditionsSecurityType);
+  z.ZodNativeEnum<typeof CreateConditionalBypassConditionsSecurityType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateConditionalBypassConditionsSecurityType)
+    );
 
 /** @internal */
 export const CreateConditionalBypassConditionsSecurityOp$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConditionalBypassConditionsSecurityOp> = z
-    .nativeEnum(CreateConditionalBypassConditionsSecurityOp);
+  z.ZodNativeEnum<typeof CreateConditionalBypassConditionsSecurityOp> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateConditionalBypassConditionsSecurityOp)
+    );
 
 /** @internal */
 export type Conditions3$Outbound = {
@@ -271,12 +281,14 @@ export const Conditions3$outboundSchema: z.ZodType<
   Conditions3$Outbound,
   z.ZodTypeDef,
   Conditions3
-> = z.object({
-  type: CreateConditionalBypassConditionsSecurityType$outboundSchema,
-  op: CreateConditionalBypassConditionsSecurityOp$outboundSchema,
-  key: z.string(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: CreateConditionalBypassConditionsSecurityType$outboundSchema,
+    op: CreateConditionalBypassConditionsSecurityOp$outboundSchema,
+    key: z.string(),
+    value: z.string(),
+  })
+);
 
 export function conditions3ToJSON(conditions3: Conditions3): string {
   return JSON.stringify(Conditions3$outboundSchema.parse(conditions3));
@@ -284,15 +296,17 @@ export function conditions3ToJSON(conditions3: Conditions3): string {
 
 /** @internal */
 export const CreateConditionalBypassConditionsType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConditionalBypassConditionsType> = z.nativeEnum(
-    CreateConditionalBypassConditionsType,
-  );
+  z.ZodNativeEnum<typeof CreateConditionalBypassConditionsType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateConditionalBypassConditionsType)
+    );
 
 /** @internal */
 export const CreateConditionalBypassConditionsOp$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConditionalBypassConditionsOp> = z.nativeEnum(
-    CreateConditionalBypassConditionsOp,
-  );
+  z.ZodNativeEnum<typeof CreateConditionalBypassConditionsOp> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateConditionalBypassConditionsOp)
+    );
 
 /** @internal */
 export type Conditions2$Outbound = {
@@ -306,11 +320,13 @@ export const Conditions2$outboundSchema: z.ZodType<
   Conditions2$Outbound,
   z.ZodTypeDef,
   Conditions2
-> = z.object({
-  type: CreateConditionalBypassConditionsType$outboundSchema,
-  op: CreateConditionalBypassConditionsOp$outboundSchema,
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: CreateConditionalBypassConditionsType$outboundSchema,
+    op: CreateConditionalBypassConditionsOp$outboundSchema,
+    value: z.string(),
+  })
+);
 
 export function conditions2ToJSON(conditions2: Conditions2): string {
   return JSON.stringify(Conditions2$outboundSchema.parse(conditions2));
@@ -319,16 +335,16 @@ export function conditions2ToJSON(conditions2: Conditions2): string {
 /** @internal */
 export const ConditionsType$outboundSchema: z.ZodNativeEnum<
   typeof ConditionsType
-> = z.nativeEnum(ConditionsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ConditionsType));
 
 /** @internal */
 export const ConditionsOp$outboundSchema: z.ZodNativeEnum<typeof ConditionsOp> =
-  z.nativeEnum(ConditionsOp);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ConditionsOp));
 
 /** @internal */
 export const ConditionsKey$outboundSchema: z.ZodNativeEnum<
   typeof ConditionsKey
-> = z.nativeEnum(ConditionsKey);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ConditionsKey));
 
 /** @internal */
 export type Conditions1$Outbound = {
@@ -343,12 +359,14 @@ export const Conditions1$outboundSchema: z.ZodType<
   Conditions1$Outbound,
   z.ZodTypeDef,
   Conditions1
-> = z.object({
-  type: ConditionsType$outboundSchema,
-  op: ConditionsOp$outboundSchema,
-  value: z.string(),
-  key: ConditionsKey$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: ConditionsType$outboundSchema,
+    op: ConditionsOp$outboundSchema,
+    value: z.string(),
+    key: ConditionsKey$outboundSchema.optional(),
+  })
+);
 
 export function conditions1ToJSON(conditions1: Conditions1): string {
   return JSON.stringify(Conditions1$outboundSchema.parse(conditions1));
@@ -366,12 +384,14 @@ export const CreateConditionalBypassConditions$outboundSchema: z.ZodType<
   CreateConditionalBypassConditions$Outbound,
   z.ZodTypeDef,
   CreateConditionalBypassConditions
-> = smartUnion([
-  z.lazy(() => Conditions3$outboundSchema),
-  z.lazy(() => Conditions1$outboundSchema),
-  z.lazy(() => Conditions2$outboundSchema),
-  z.lazy(() => Conditions4$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Conditions3$outboundSchema),
+    z.lazy(() => Conditions1$outboundSchema),
+    z.lazy(() => Conditions2$outboundSchema),
+    z.lazy(() => Conditions4$outboundSchema),
+  ])
+);
 
 export function createConditionalBypassConditionsToJSON(
   createConditionalBypassConditions: CreateConditionalBypassConditions,
@@ -398,16 +418,16 @@ export const CreateConditionalBypassConditionGroup$outboundSchema: z.ZodType<
   CreateConditionalBypassConditionGroup$Outbound,
   z.ZodTypeDef,
   CreateConditionalBypassConditionGroup
-> = z.object({
-  conditions: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    conditions: z.array(smartUnion([
       z.lazy(() => Conditions3$outboundSchema),
       z.lazy(() => Conditions1$outboundSchema),
       z.lazy(() => Conditions2$outboundSchema),
       z.lazy(() => Conditions4$outboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function createConditionalBypassConditionGroupToJSON(
   createConditionalBypassConditionGroup: CreateConditionalBypassConditionGroup,
@@ -431,13 +451,15 @@ export const CreateConditionalBypassRequestBody$outboundSchema: z.ZodType<
   CreateConditionalBypassRequestBody$Outbound,
   z.ZodTypeDef,
   CreateConditionalBypassRequestBody
-> = z.object({
-  domain: z.string(),
-  conditionGroup: z.array(
-    z.lazy(() => CreateConditionalBypassConditionGroup$outboundSchema),
-  ),
-  note: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    conditionGroup: z.array(
+      z.lazy(() => CreateConditionalBypassConditionGroup$outboundSchema),
+    ),
+    note: z.string().optional(),
+  })
+);
 
 export function createConditionalBypassRequestBodyToJSON(
   createConditionalBypassRequestBody: CreateConditionalBypassRequestBody,
@@ -462,17 +484,19 @@ export const CreateConditionalBypassRequest$outboundSchema: z.ZodType<
   CreateConditionalBypassRequest$Outbound,
   z.ZodTypeDef,
   CreateConditionalBypassRequest
-> = z.object({
-  projectId: z.string(),
-  slug: z.string().optional(),
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => CreateConditionalBypassRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    slug: z.string().optional(),
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() => CreateConditionalBypassRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createConditionalBypassRequestToJSON(
   createConditionalBypassRequest: CreateConditionalBypassRequest,
@@ -487,19 +511,23 @@ export function createConditionalBypassRequestToJSON(
 /** @internal */
 export const CreateConditionalBypassOp$inboundSchema: z.ZodNativeEnum<
   typeof CreateConditionalBypassOp
-> = z.nativeEnum(CreateConditionalBypassOp);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateConditionalBypassOp));
 
 /** @internal */
 export const CreateConditionalBypassType$inboundSchema: z.ZodNativeEnum<
   typeof CreateConditionalBypassType
-> = z.nativeEnum(CreateConditionalBypassType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateConditionalBypassType)
+);
 
 /** @internal */
 export const CreateConditionalBypassValue$inboundSchema: z.ZodType<
   CreateConditionalBypassValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number(), z.array(types.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number(), z.array(types.string())])
+);
 
 export function createConditionalBypassValueFromJSON(
   jsonString: string,
@@ -516,15 +544,17 @@ export const CreateConditionalBypassSecurityConditions$inboundSchema: z.ZodType<
   CreateConditionalBypassSecurityConditions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  key: types.optional(types.string()),
-  neg: types.optional(types.boolean()),
-  op: CreateConditionalBypassOp$inboundSchema,
-  type: CreateConditionalBypassType$inboundSchema,
-  value: types.optional(
-    smartUnion([types.string(), types.number(), z.array(types.string())]),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: types.optional(types.string()),
+    neg: types.optional(types.boolean()),
+    op: CreateConditionalBypassOp$inboundSchema,
+    type: CreateConditionalBypassType$inboundSchema,
+    value: types.optional(
+      smartUnion([types.string(), types.number(), z.array(types.string())]),
+    ),
+  })
+);
 
 export function createConditionalBypassSecurityConditionsFromJSON(
   jsonString: string,
@@ -548,11 +578,13 @@ export const CreateConditionalBypassSecurityConditionGroup$inboundSchema:
     CreateConditionalBypassSecurityConditionGroup,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    conditions: z.array(
-      z.lazy(() => CreateConditionalBypassSecurityConditions$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      conditions: z.array(
+        z.lazy(() => CreateConditionalBypassSecurityConditions$inboundSchema),
+      ),
+    })
+  );
 
 export function createConditionalBypassSecurityConditionGroupFromJSON(
   jsonString: string,
@@ -575,18 +607,20 @@ export const CreateConditionalBypassResponseBody$inboundSchema: z.ZodType<
   CreateConditionalBypassResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  condition: types.string(),
-  conditionGroup: z.array(
-    z.lazy(() => CreateConditionalBypassSecurityConditionGroup$inboundSchema),
-  ),
-  createdAt: types.string(),
-  domain: types.string(),
-  id: types.string(),
-  note: types.optional(types.string()),
-  projectId: types.string(),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    condition: types.string(),
+    conditionGroup: z.array(
+      z.lazy(() => CreateConditionalBypassSecurityConditionGroup$inboundSchema),
+    ),
+    createdAt: types.string(),
+    domain: types.string(),
+    id: types.string(),
+    note: types.optional(types.string()),
+    projectId: types.string(),
+    updatedAt: types.string(),
+  })
+);
 
 export function createConditionalBypassResponseBodyFromJSON(
   jsonString: string,

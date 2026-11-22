@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const IncludeArchived = {
@@ -29,7 +30,7 @@ export type ListAiGatewayVirtualModelConfigsRequest = {
 /** @internal */
 export const IncludeArchived$outboundSchema: z.ZodNativeEnum<
   typeof IncludeArchived
-> = z.nativeEnum(IncludeArchived);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(IncludeArchived));
 
 /** @internal */
 export type ListAiGatewayVirtualModelConfigsRequest$Outbound = {
@@ -46,14 +47,16 @@ export const ListAiGatewayVirtualModelConfigsRequest$outboundSchema: z.ZodType<
   ListAiGatewayVirtualModelConfigsRequest$Outbound,
   z.ZodTypeDef,
   ListAiGatewayVirtualModelConfigsRequest
-> = z.object({
-  ownerId: z.string().optional(),
-  limit: z.number().int().optional(),
-  cursor: z.string().optional(),
-  includeArchived: IncludeArchived$outboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ownerId: z.string().optional(),
+    limit: z.number().int().optional(),
+    cursor: z.string().optional(),
+    includeArchived: IncludeArchived$outboundSchema.optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listAiGatewayVirtualModelConfigsRequestToJSON(
   listAiGatewayVirtualModelConfigsRequest:

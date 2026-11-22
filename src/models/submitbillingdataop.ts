@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -234,10 +235,12 @@ export const Period$outboundSchema: z.ZodType<
   Period$Outbound,
   z.ZodTypeDef,
   Period
-> = z.object({
-  start: z.date().transform(v => v.toISOString()),
-  end: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    start: z.date().transform(v => v.toISOString()),
+    end: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function periodToJSON(period: Period): string {
   return JSON.stringify(Period$outboundSchema.parse(period));
@@ -262,18 +265,20 @@ export const BillingItems$outboundSchema: z.ZodType<
   BillingItems$Outbound,
   z.ZodTypeDef,
   BillingItems
-> = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.date().transform(v => v.toISOString()).optional(),
-  end: z.date().transform(v => v.toISOString()).optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  price: z.string(),
-  quantity: z.number(),
-  units: z.string(),
-  total: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    billingPlanId: z.string(),
+    resourceId: z.string().optional(),
+    start: z.date().transform(v => v.toISOString()).optional(),
+    end: z.date().transform(v => v.toISOString()).optional(),
+    name: z.string(),
+    details: z.string().optional(),
+    price: z.string(),
+    quantity: z.number(),
+    units: z.string(),
+    total: z.string(),
+  })
+);
 
 export function billingItemsToJSON(billingItems: BillingItems): string {
   return JSON.stringify(BillingItems$outboundSchema.parse(billingItems));
@@ -295,15 +300,17 @@ export const Discounts$outboundSchema: z.ZodType<
   Discounts$Outbound,
   z.ZodTypeDef,
   Discounts
-> = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.date().transform(v => v.toISOString()).optional(),
-  end: z.date().transform(v => v.toISOString()).optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  amount: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    billingPlanId: z.string(),
+    resourceId: z.string().optional(),
+    start: z.date().transform(v => v.toISOString()).optional(),
+    end: z.date().transform(v => v.toISOString()).optional(),
+    name: z.string(),
+    details: z.string().optional(),
+    amount: z.string(),
+  })
+);
 
 export function discountsToJSON(discounts: Discounts): string {
   return JSON.stringify(Discounts$outboundSchema.parse(discounts));
@@ -320,10 +327,12 @@ export const Billing2$outboundSchema: z.ZodType<
   Billing2$Outbound,
   z.ZodTypeDef,
   Billing2
-> = z.object({
-  items: z.array(z.lazy(() => BillingItems$outboundSchema)),
-  discounts: z.array(z.lazy(() => Discounts$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(z.lazy(() => BillingItems$outboundSchema)),
+    discounts: z.array(z.lazy(() => Discounts$outboundSchema)).optional(),
+  })
+);
 
 export function billing2ToJSON(billing2: Billing2): string {
   return JSON.stringify(Billing2$outboundSchema.parse(billing2));
@@ -348,18 +357,20 @@ export const Billing1$outboundSchema: z.ZodType<
   Billing1$Outbound,
   z.ZodTypeDef,
   Billing1
-> = z.object({
-  billingPlanId: z.string(),
-  resourceId: z.string().optional(),
-  start: z.date().transform(v => v.toISOString()).optional(),
-  end: z.date().transform(v => v.toISOString()).optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  price: z.string(),
-  quantity: z.number(),
-  units: z.string(),
-  total: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    billingPlanId: z.string(),
+    resourceId: z.string().optional(),
+    start: z.date().transform(v => v.toISOString()).optional(),
+    end: z.date().transform(v => v.toISOString()).optional(),
+    name: z.string(),
+    details: z.string().optional(),
+    price: z.string(),
+    quantity: z.number(),
+    units: z.string(),
+    total: z.string(),
+  })
+);
 
 export function billing1ToJSON(billing1: Billing1): string {
   return JSON.stringify(Billing1$outboundSchema.parse(billing1));
@@ -375,10 +386,12 @@ export const SubmitBillingDataBilling$outboundSchema: z.ZodType<
   SubmitBillingDataBilling$Outbound,
   z.ZodTypeDef,
   SubmitBillingDataBilling
-> = smartUnion([
-  z.lazy(() => Billing2$outboundSchema),
-  z.array(z.lazy(() => Billing1$outboundSchema)),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Billing2$outboundSchema),
+    z.array(z.lazy(() => Billing1$outboundSchema)),
+  ])
+);
 
 export function submitBillingDataBillingToJSON(
   submitBillingDataBilling: SubmitBillingDataBilling,
@@ -391,7 +404,7 @@ export function submitBillingDataBillingToJSON(
 /** @internal */
 export const SubmitBillingDataType$outboundSchema: z.ZodNativeEnum<
   typeof SubmitBillingDataType
-> = z.nativeEnum(SubmitBillingDataType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SubmitBillingDataType));
 
 /** @internal */
 export type Usage$Outbound = {
@@ -409,15 +422,17 @@ export const Usage$outboundSchema: z.ZodType<
   Usage$Outbound,
   z.ZodTypeDef,
   Usage
-> = z.object({
-  resourceId: z.string().optional(),
-  name: z.string(),
-  type: SubmitBillingDataType$outboundSchema,
-  units: z.string(),
-  dayValue: z.number(),
-  periodValue: z.number(),
-  planValue: z.number().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    resourceId: z.string().optional(),
+    name: z.string(),
+    type: SubmitBillingDataType$outboundSchema,
+    units: z.string(),
+    dayValue: z.number(),
+    periodValue: z.number(),
+    planValue: z.number().optional(),
+  })
+);
 
 export function usageToJSON(usage: Usage): string {
   return JSON.stringify(Usage$outboundSchema.parse(usage));
@@ -437,16 +452,18 @@ export const SubmitBillingDataRequestBody$outboundSchema: z.ZodType<
   SubmitBillingDataRequestBody$Outbound,
   z.ZodTypeDef,
   SubmitBillingDataRequestBody
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()),
-  eod: z.date().transform(v => v.toISOString()),
-  period: z.lazy(() => Period$outboundSchema),
-  billing: smartUnion([
-    z.lazy(() => Billing2$outboundSchema),
-    z.array(z.lazy(() => Billing1$outboundSchema)),
-  ]),
-  usage: z.array(z.lazy(() => Usage$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()),
+    eod: z.date().transform(v => v.toISOString()),
+    period: z.lazy(() => Period$outboundSchema),
+    billing: smartUnion([
+      z.lazy(() => Billing2$outboundSchema),
+      z.array(z.lazy(() => Billing1$outboundSchema)),
+    ]),
+    usage: z.array(z.lazy(() => Usage$outboundSchema)),
+  })
+);
 
 export function submitBillingDataRequestBodyToJSON(
   submitBillingDataRequestBody: SubmitBillingDataRequestBody,
@@ -469,14 +486,16 @@ export const SubmitBillingDataRequest$outboundSchema: z.ZodType<
   SubmitBillingDataRequest$Outbound,
   z.ZodTypeDef,
   SubmitBillingDataRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  requestBody: z.lazy(() => SubmitBillingDataRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    requestBody: z.lazy(() => SubmitBillingDataRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function submitBillingDataRequestToJSON(
   submitBillingDataRequest: SubmitBillingDataRequest,

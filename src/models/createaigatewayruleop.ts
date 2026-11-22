@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -76,7 +77,7 @@ export type CreateAiGatewayRuleRequest = {
 /** @internal */
 export const CreateAiGatewayRuleType$outboundSchema: z.ZodNativeEnum<
   typeof CreateAiGatewayRuleType
-> = z.nativeEnum(CreateAiGatewayRuleType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateAiGatewayRuleType));
 
 /** @internal */
 export type CreateAiGatewayRuleMatch$Outbound = {
@@ -88,9 +89,11 @@ export const CreateAiGatewayRuleMatch$outboundSchema: z.ZodType<
   CreateAiGatewayRuleMatch$Outbound,
   z.ZodTypeDef,
   CreateAiGatewayRuleMatch
-> = z.object({
-  model: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    model: z.string(),
+  })
+);
 
 export function createAiGatewayRuleMatchToJSON(
   createAiGatewayRuleMatch: CreateAiGatewayRuleMatch,
@@ -111,10 +114,12 @@ export const CreateAiGatewayRuleAction$outboundSchema: z.ZodType<
   CreateAiGatewayRuleAction$Outbound,
   z.ZodTypeDef,
   CreateAiGatewayRuleAction
-> = z.object({
-  rewriteModel: z.string().optional(),
-  reason: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rewriteModel: z.string().optional(),
+    reason: z.string().optional(),
+  })
+);
 
 export function createAiGatewayRuleActionToJSON(
   createAiGatewayRuleAction: CreateAiGatewayRuleAction,
@@ -138,13 +143,15 @@ export const CreateAiGatewayRuleRequestBody$outboundSchema: z.ZodType<
   CreateAiGatewayRuleRequestBody$Outbound,
   z.ZodTypeDef,
   CreateAiGatewayRuleRequestBody
-> = z.object({
-  type: CreateAiGatewayRuleType$outboundSchema,
-  match: z.lazy(() => CreateAiGatewayRuleMatch$outboundSchema),
-  action: z.lazy(() => CreateAiGatewayRuleAction$outboundSchema).optional(),
-  enabled: z.boolean().optional(),
-  description: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: CreateAiGatewayRuleType$outboundSchema,
+    match: z.lazy(() => CreateAiGatewayRuleMatch$outboundSchema),
+    action: z.lazy(() => CreateAiGatewayRuleAction$outboundSchema).optional(),
+    enabled: z.boolean().optional(),
+    description: z.string().optional(),
+  })
+);
 
 export function createAiGatewayRuleRequestBodyToJSON(
   createAiGatewayRuleRequestBody: CreateAiGatewayRuleRequestBody,
@@ -168,16 +175,18 @@ export const CreateAiGatewayRuleRequest$outboundSchema: z.ZodType<
   CreateAiGatewayRuleRequest$Outbound,
   z.ZodTypeDef,
   CreateAiGatewayRuleRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateAiGatewayRuleRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateAiGatewayRuleRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createAiGatewayRuleRequestToJSON(
   createAiGatewayRuleRequest: CreateAiGatewayRuleRequest,

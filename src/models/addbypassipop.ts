@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -121,14 +121,16 @@ export const AddBypassIpRequestBody2$outboundSchema: z.ZodType<
   AddBypassIpRequestBody2$Outbound,
   z.ZodTypeDef,
   AddBypassIpRequestBody2
-> = z.object({
-  domain: z.string().optional(),
-  projectScope: z.boolean(),
-  sourceIp: z.string().optional(),
-  allSources: z.boolean().optional(),
-  ttl: z.number().optional(),
-  note: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string().optional(),
+    projectScope: z.boolean(),
+    sourceIp: z.string().optional(),
+    allSources: z.boolean().optional(),
+    ttl: z.number().optional(),
+    note: z.string().optional(),
+  })
+);
 
 export function addBypassIpRequestBody2ToJSON(
   addBypassIpRequestBody2: AddBypassIpRequestBody2,
@@ -153,14 +155,16 @@ export const AddBypassIpRequestBody1$outboundSchema: z.ZodType<
   AddBypassIpRequestBody1$Outbound,
   z.ZodTypeDef,
   AddBypassIpRequestBody1
-> = z.object({
-  domain: z.string(),
-  projectScope: z.boolean().optional(),
-  sourceIp: z.string().optional(),
-  allSources: z.boolean().optional(),
-  ttl: z.number().optional(),
-  note: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    projectScope: z.boolean().optional(),
+    sourceIp: z.string().optional(),
+    allSources: z.boolean().optional(),
+    ttl: z.number().optional(),
+    note: z.string().optional(),
+  })
+);
 
 export function addBypassIpRequestBody1ToJSON(
   addBypassIpRequestBody1: AddBypassIpRequestBody1,
@@ -180,10 +184,12 @@ export const AddBypassIpRequestBody$outboundSchema: z.ZodType<
   AddBypassIpRequestBody$Outbound,
   z.ZodTypeDef,
   AddBypassIpRequestBody
-> = smartUnion([
-  z.lazy(() => AddBypassIpRequestBody1$outboundSchema),
-  z.lazy(() => AddBypassIpRequestBody2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => AddBypassIpRequestBody1$outboundSchema),
+    z.lazy(() => AddBypassIpRequestBody2$outboundSchema),
+  ])
+);
 
 export function addBypassIpRequestBodyToJSON(
   addBypassIpRequestBody: AddBypassIpRequestBody,
@@ -209,19 +215,21 @@ export const AddBypassIpRequest$outboundSchema: z.ZodType<
   AddBypassIpRequest$Outbound,
   z.ZodTypeDef,
   AddBypassIpRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => AddBypassIpRequestBody1$outboundSchema),
-    z.lazy(() => AddBypassIpRequestBody2$outboundSchema),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => AddBypassIpRequestBody1$outboundSchema),
+      z.lazy(() => AddBypassIpRequestBody2$outboundSchema),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function addBypassIpRequestToJSON(
   addBypassIpRequest: AddBypassIpRequest,
@@ -234,46 +242,48 @@ export function addBypassIpRequestToJSON(
 /** @internal */
 export const ResponseBodyAction$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyAction
-> = z.nativeEnum(ResponseBodyAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyAction));
 
 /** @internal */
 export const AddBypassIpResponseBodyResult$inboundSchema: z.ZodType<
   AddBypassIpResponseBodyResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Action: types.optional(ResponseBodyAction$inboundSchema),
-  ActorId: types.optional(types.string()),
-  CreatedAt: types.string(),
-  DeletedAt: types.optional(types.string()),
-  Domain: types.string(),
-  ExpiresAt: z.nullable(types.number()).optional(),
-  Id: types.string(),
-  Ip: types.string(),
-  IsProjectRule: types.optional(types.boolean()),
-  Note: types.optional(types.string()),
-  OwnerId: types.string(),
-  ProjectId: types.optional(types.string()),
-  UpdatedAt: types.string(),
-  UpdatedAtHour: types.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "Action": "action",
-    "ActorId": "actorId",
-    "CreatedAt": "createdAt",
-    "DeletedAt": "deletedAt",
-    "Domain": "domain",
-    "ExpiresAt": "expiresAt",
-    "Id": "id",
-    "Ip": "ip",
-    "IsProjectRule": "isProjectRule",
-    "Note": "note",
-    "OwnerId": "ownerId",
-    "ProjectId": "projectId",
-    "UpdatedAt": "updatedAt",
-    "UpdatedAtHour": "updatedAtHour",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Action: types.optional(ResponseBodyAction$inboundSchema),
+    ActorId: types.optional(types.string()),
+    CreatedAt: types.string(),
+    DeletedAt: types.optional(types.string()),
+    Domain: types.string(),
+    ExpiresAt: z.nullable(types.number()).optional(),
+    Id: types.string(),
+    Ip: types.string(),
+    IsProjectRule: types.optional(types.boolean()),
+    Note: types.optional(types.string()),
+    OwnerId: types.string(),
+    ProjectId: types.optional(types.string()),
+    UpdatedAt: types.string(),
+    UpdatedAtHour: types.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "Action": "action",
+      "ActorId": "actorId",
+      "CreatedAt": "createdAt",
+      "DeletedAt": "deletedAt",
+      "Domain": "domain",
+      "ExpiresAt": "expiresAt",
+      "Id": "id",
+      "Ip": "ip",
+      "IsProjectRule": "isProjectRule",
+      "Note": "note",
+      "OwnerId": "ownerId",
+      "ProjectId": "projectId",
+      "UpdatedAt": "updatedAt",
+      "UpdatedAtHour": "updatedAtHour",
+    });
+  })
+);
 
 export function addBypassIpResponseBodyResultFromJSON(
   jsonString: string,
@@ -290,12 +300,14 @@ export const AddBypassIpResponseBody2$inboundSchema: z.ZodType<
   AddBypassIpResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ok: types.boolean(),
-  result: types.optional(
-    z.array(z.lazy(() => AddBypassIpResponseBodyResult$inboundSchema)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ok: types.boolean(),
+    result: types.optional(
+      z.array(z.lazy(() => AddBypassIpResponseBodyResult$inboundSchema)),
+    ),
+  })
+);
 
 export function addBypassIpResponseBody2FromJSON(
   jsonString: string,
@@ -312,25 +324,27 @@ export const ResponseBodyResult$inboundSchema: z.ZodType<
   ResponseBodyResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Domain: types.string(),
-  Id: types.string(),
-  Ip: types.optional(types.string()),
-  IsProjectRule: types.boolean(),
-  Note: types.string(),
-  OwnerId: types.string(),
-  ProjectId: types.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "Domain": "domain",
-    "Id": "id",
-    "Ip": "ip",
-    "IsProjectRule": "isProjectRule",
-    "Note": "note",
-    "OwnerId": "ownerId",
-    "ProjectId": "projectId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Domain: types.string(),
+    Id: types.string(),
+    Ip: types.optional(types.string()),
+    IsProjectRule: types.boolean(),
+    Note: types.string(),
+    OwnerId: types.string(),
+    ProjectId: types.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "Domain": "domain",
+      "Id": "id",
+      "Ip": "ip",
+      "IsProjectRule": "isProjectRule",
+      "Note": "note",
+      "OwnerId": "ownerId",
+      "ProjectId": "projectId",
+    });
+  })
+);
 
 export function responseBodyResultFromJSON(
   jsonString: string,
@@ -347,11 +361,13 @@ export const AddBypassIpResponseBody1$inboundSchema: z.ZodType<
   AddBypassIpResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ok: types.boolean(),
-  pagination: z.nullable(z.any()).optional(),
-  result: z.array(z.lazy(() => ResponseBodyResult$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ok: types.boolean(),
+    pagination: z.nullable(z.any()).optional(),
+    result: z.array(z.lazy(() => ResponseBodyResult$inboundSchema)),
+  })
+);
 
 export function addBypassIpResponseBody1FromJSON(
   jsonString: string,
@@ -368,10 +384,12 @@ export const AddBypassIpResponseBody$inboundSchema: z.ZodType<
   AddBypassIpResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => AddBypassIpResponseBody1$inboundSchema),
-  z.lazy(() => AddBypassIpResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => AddBypassIpResponseBody1$inboundSchema),
+    z.lazy(() => AddBypassIpResponseBody2$inboundSchema),
+  ])
+);
 
 export function addBypassIpResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -50,10 +50,12 @@ export const GetTldRequest$outboundSchema: z.ZodType<
   GetTldRequest$Outbound,
   z.ZodTypeDef,
   GetTldRequest
-> = z.object({
-  tld: z.string(),
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tld: z.string(),
+    teamId: z.string().optional(),
+  })
+);
 
 export function getTldRequestToJSON(getTldRequest: GetTldRequest): string {
   return JSON.stringify(GetTldRequest$outboundSchema.parse(getTldRequest));
@@ -64,10 +66,9 @@ export const GetTldDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   GetTldDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  TldNotSupported$inboundSchema,
-  HttpApiDecodeError$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([TldNotSupported$inboundSchema, HttpApiDecodeError$inboundSchema])
+);
 
 export function getTldDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -85,9 +86,11 @@ export const GetTldResponseBody$inboundSchema: z.ZodType<
   GetTldResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  supportedLanguageCodes: z.record(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    supportedLanguageCodes: z.record(types.string()),
+  })
+);
 
 export function getTldResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -344,12 +344,14 @@ export const UploadProjectAvatarToProjects1$inboundSchema: z.ZodType<
   UploadProjectAvatarToProjects1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preset: types.optional(
-    UploadProjectAvatarToProjectsResponsePreset$inboundSchema,
-  ),
-  slugs: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset: types.optional(
+      UploadProjectAvatarToProjectsResponsePreset$inboundSchema,
+    ),
+    slugs: z.array(types.string()),
+  })
+);
 
 export function uploadProjectAvatarToProjects1FromJSON(
   jsonString: string,
@@ -366,10 +368,12 @@ export const UploadProjectAvatarProjectsTo$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsTo,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarToProjects1$inboundSchema),
-  UploadProjectAvatarToProjects2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UploadProjectAvatarToProjects1$inboundSchema),
+    UploadProjectAvatarToProjects2$inboundSchema,
+  ])
+);
 
 export function uploadProjectAvatarProjectsToFromJSON(
   jsonString: string,
@@ -386,13 +390,15 @@ export const UploadProjectAvatarCustomAllow$inboundSchema: z.ZodType<
   UploadProjectAvatarCustomAllow,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  from: UploadProjectAvatarFrom$inboundSchema,
-  to: smartUnion([
-    z.lazy(() => UploadProjectAvatarToProjects1$inboundSchema),
-    UploadProjectAvatarToProjects2$inboundSchema,
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    from: UploadProjectAvatarFrom$inboundSchema,
+    to: smartUnion([
+      z.lazy(() => UploadProjectAvatarToProjects1$inboundSchema),
+      UploadProjectAvatarToProjects2$inboundSchema,
+    ]),
+  })
+);
 
 export function uploadProjectAvatarCustomAllowFromJSON(
   jsonString: string,
@@ -409,12 +415,14 @@ export const UploadProjectAvatarProjects$inboundSchema: z.ZodType<
   UploadProjectAvatarProjects,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  customAllow: types.optional(
-    z.array(z.lazy(() => UploadProjectAvatarCustomAllow$inboundSchema)),
-  ),
-  label: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customAllow: types.optional(
+      z.array(z.lazy(() => UploadProjectAvatarCustomAllow$inboundSchema)),
+    ),
+    label: types.optional(types.string()),
+  })
+);
 
 export function uploadProjectAvatarProjectsFromJSON(
   jsonString: string,
@@ -431,15 +439,17 @@ export const UploadProjectAvatarTrustedSources$inboundSchema: z.ZodType<
   UploadProjectAvatarTrustedSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enableVercelCiSameRepository: types.optional(types.boolean()),
-  oidcProviders: types.optional(
-    z.record(z.array(UploadProjectAvatarOidcProviders$inboundSchema)),
-  ),
-  projects: types.optional(
-    z.record(z.lazy(() => UploadProjectAvatarProjects$inboundSchema)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enableVercelCiSameRepository: types.optional(types.boolean()),
+    oidcProviders: types.optional(
+      z.record(z.array(UploadProjectAvatarOidcProviders$inboundSchema)),
+    ),
+    projects: types.optional(
+      z.record(z.lazy(() => UploadProjectAvatarProjects$inboundSchema)),
+    ),
+  })
+);
 
 export function uploadProjectAvatarTrustedSourcesFromJSON(
   jsonString: string,
@@ -454,20 +464,22 @@ export function uploadProjectAvatarTrustedSourcesFromJSON(
 /** @internal */
 export const UploadProjectAvatarKind$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarKind
-> = z.nativeEnum(UploadProjectAvatarKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarKind));
 
 /** @internal */
 export const UploadProjectAvatarUsageStatus$inboundSchema: z.ZodType<
   UploadProjectAvatarUsageStatus,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bypassThrottleUntil: types.optional(types.number()),
-  exceededAllowanceUntil: types.optional(types.number()),
-  kind: UploadProjectAvatarKind$inboundSchema,
-  teamThrottled: types.optional(types.boolean()),
-  throttled: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bypassThrottleUntil: types.optional(types.number()),
+    exceededAllowanceUntil: types.optional(types.number()),
+    kind: UploadProjectAvatarKind$inboundSchema,
+    teamThrottled: types.optional(types.boolean()),
+    throttled: types.optional(types.boolean()),
+  })
+);
 
 export function uploadProjectAvatarUsageStatusFromJSON(
   jsonString: string,
@@ -484,9 +496,11 @@ export const UploadProjectAvatarVercelFlags$inboundSchema: z.ZodType<
   UploadProjectAvatarVercelFlags,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabledAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabledAt: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarVercelFlagsFromJSON(
   jsonString: string,
@@ -503,13 +517,15 @@ export const UploadProjectAvatarWebAnalytics$inboundSchema: z.ZodType<
   UploadProjectAvatarWebAnalytics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: types.optional(types.number()),
-  disabledAt: types.optional(types.number()),
-  enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.literal(true)),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: types.optional(types.number()),
+    disabledAt: types.optional(types.number()),
+    enabledAt: types.optional(types.number()),
+    hasData: types.optional(types.literal(true)),
+    id: types.string(),
+  })
+);
 
 export function uploadProjectAvatarWebAnalyticsFromJSON(
   jsonString: string,
@@ -526,153 +542,161 @@ export const UploadProjectAvatarResponseBody$inboundSchema: z.ZodType<
   UploadProjectAvatarResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountId: types.string(),
-  alias: z.array(UploadProjectAvatarAlias$inboundSchema),
-  analytics: types.optional(UploadProjectAvatarAnalytics$inboundSchema),
-  appliedCve55182Migration: types.optional(types.boolean()),
-  autoAssignCustomDomains: types.optional(types.boolean()),
-  autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
-  autoExposeSystemEnvs: types.optional(types.boolean()),
-  avatar: z.nullable(types.string()).optional(),
-  avatarDarkMode: z.nullable(types.string()).optional(),
-  blobs: types.optional(UploadProjectAvatarBlobs$inboundSchema),
-  buildCommand: z.nullable(types.string()).optional(),
-  commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
-  concurrencyBucketName: types.optional(types.string()),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: z.nullable(types.string()).optional(),
-  connectConfigurations: z.nullable(
-    z.array(UploadProjectAvatarConnectConfigurations$inboundSchema),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  creator: types.optional(UploadProjectAvatarCreator$inboundSchema),
-  crons: types.optional(UploadProjectAvatarCrons$inboundSchema),
-  customEnvironments: types.optional(
-    z.array(UploadProjectAvatarCustomEnvironments$inboundSchema),
-  ),
-  customerSupportCodeVisibility: types.optional(types.boolean()),
-  dataCache: types.optional(UploadProjectAvatarDataCache$inboundSchema),
-  defaultResourceConfig: UploadProjectAvatarDefaultResourceConfig$inboundSchema,
-  deploymentExpiration: UploadProjectAvatarDeploymentExpiration$inboundSchema,
-  deploymentPolicy: z.nullable(
-    UploadProjectAvatarDeploymentPolicy$inboundSchema,
-  ).optional(),
-  devCommand: z.nullable(types.string()).optional(),
-  directoryListing: types.boolean(),
-  dismissedToasts: types.optional(
-    z.array(UploadProjectAvatarDismissedToasts$inboundSchema),
-  ),
-  enableAffectedProjectsDeployments: types.optional(types.boolean()),
-  enableExternalRewriteCaching: types.optional(types.boolean()),
-  enablePreviewFeedback: z.nullable(types.boolean()).optional(),
-  enableProductionFeedback: z.nullable(types.boolean()).optional(),
-  env: types.optional(z.array(UploadProjectAvatarEnv$inboundSchema)),
-  expiration: types.optional(UploadProjectAvatarExpiration$inboundSchema),
-  features: types.optional(UploadProjectAvatarFeatures$inboundSchema),
-  framework: z.nullable(UploadProjectAvatarFramework$inboundSchema).optional(),
-  gitComments: types.optional(UploadProjectAvatarGitComments$inboundSchema),
-  gitForkProtection: types.optional(types.boolean()),
-  gitLFS: types.optional(types.boolean()),
-  gitProviderOptions: types.optional(
-    UploadProjectAvatarGitProviderOptions$inboundSchema,
-  ),
-  hasActiveBranches: types.optional(types.boolean()),
-  hasDeployments: types.optional(types.boolean()),
-  id: types.string(),
-  installCommand: z.nullable(types.string()).optional(),
-  internalRoutes: types.optional(
-    z.array(UploadProjectAvatarInternalRoutes$inboundSchema),
-  ),
-  ipBuckets: types.optional(
-    z.array(UploadProjectAvatarIpBuckets$inboundSchema),
-  ),
-  jobs: types.optional(UploadProjectAvatarJobs$inboundSchema),
-  lastAliasRequest: z.nullable(
-    UploadProjectAvatarLastAliasRequest$inboundSchema,
-  ).optional(),
-  lastRollbackTarget: z.nullable(
-    UploadProjectAvatarLastRollbackTarget$inboundSchema,
-  ).optional(),
-  latestDeployments: types.optional(
-    z.array(UploadProjectAvatarLatestDeployments$inboundSchema),
-  ),
-  link: types.optional(UploadProjectAvatarLink$inboundSchema),
-  live: types.optional(types.boolean()),
-  microfrontends: types.optional(
-    UploadProjectAvatarMicrofrontends$inboundSchema,
-  ),
-  name: types.string(),
-  nodeVersion: UploadProjectAvatarNodeVersion$inboundSchema,
-  oidcTokenConfig: types.optional(
-    UploadProjectAvatarOidcTokenConfig$inboundSchema,
-  ),
-  optionsAllowlist: z.nullable(
-    UploadProjectAvatarOptionsAllowlist$inboundSchema,
-  ).optional(),
-  outputDirectory: z.nullable(types.string()).optional(),
-  passiveConnectConfigurationId: z.nullable(types.string()).optional(),
-  passport: z.nullable(UploadProjectAvatarPassport$inboundSchema).optional(),
-  passwordProtection: z.nullable(
-    UploadProjectAvatarPasswordProtection$inboundSchema,
-  ).optional(),
-  paused: types.optional(types.boolean()),
-  permissions: types.optional(UploadProjectAvatarPermissions$inboundSchema),
-  productionDeploymentsFastLane: types.optional(types.boolean()),
-  protectedSourcemaps: types.optional(types.boolean()),
-  protectionBypass: types.optional(
-    z.record(UploadProjectAvatarProtectionBypass$inboundSchema),
-  ),
-  protectionConfig: types.optional(
-    UploadProjectAvatarProtectionConfig$inboundSchema,
-  ),
-  resourceConfig: UploadProjectAvatarResourceConfig$inboundSchema,
-  rollbackDescription: types.optional(
-    UploadProjectAvatarRollbackDescription$inboundSchema,
-  ),
-  rollingRelease: z.nullable(UploadProjectAvatarRollingRelease$inboundSchema)
-    .optional(),
-  rootDirectory: z.nullable(types.string()).optional(),
-  sandbox: types.optional(UploadProjectAvatarSandbox$inboundSchema),
-  security: types.optional(UploadProjectAvatarSecurity$inboundSchema),
-  serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
-  services: types.optional(z.array(UploadProjectAvatarServices$inboundSchema)),
-  skewProtectionAllowedDomains: types.optional(z.array(types.string())),
-  skewProtectionBoundaryAt: types.optional(types.number()),
-  skewProtectionMaxAge: types.optional(types.number()),
-  skipGitConnectDuringLink: types.optional(types.boolean()),
-  sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
-  speedInsights: types.optional(UploadProjectAvatarSpeedInsights$inboundSchema),
-  ssoProtection: z.nullable(UploadProjectAvatarSsoProtection$inboundSchema)
-    .optional(),
-  staticIps: types.optional(UploadProjectAvatarStaticIps$inboundSchema),
-  targets: types.optional(
-    z.record(types.nullable(UploadProjectAvatarTargets$inboundSchema)),
-  ),
-  tier: types.optional(UploadProjectAvatarTier$inboundSchema),
-  tracing: types.optional(UploadProjectAvatarTracing$inboundSchema),
-  transferCompletedAt: types.optional(types.number()),
-  transferredFromAccountId: types.optional(types.string()),
-  transferStartedAt: types.optional(types.number()),
-  transferToAccountId: types.optional(types.string()),
-  trustedIps: z.nullable(UploadProjectAvatarTrustedIps$inboundSchema)
-    .optional(),
-  trustedSources: z.nullable(
-    z.lazy(() => UploadProjectAvatarTrustedSources$inboundSchema),
-  ).optional(),
-  updatedAt: types.optional(types.number()),
-  usageStatus: types.optional(
-    z.lazy(() => UploadProjectAvatarUsageStatus$inboundSchema),
-  ),
-  v0: types.optional(types.boolean()),
-  v0Created: types.optional(types.boolean()),
-  vercelFlags: types.optional(
-    z.lazy(() => UploadProjectAvatarVercelFlags$inboundSchema),
-  ),
-  webAnalytics: types.optional(
-    z.lazy(() => UploadProjectAvatarWebAnalytics$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountId: types.string(),
+    alias: z.array(UploadProjectAvatarAlias$inboundSchema),
+    analytics: types.optional(UploadProjectAvatarAnalytics$inboundSchema),
+    appliedCve55182Migration: types.optional(types.boolean()),
+    autoAssignCustomDomains: types.optional(types.boolean()),
+    autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
+    autoExposeSystemEnvs: types.optional(types.boolean()),
+    avatar: z.nullable(types.string()).optional(),
+    avatarDarkMode: z.nullable(types.string()).optional(),
+    blobs: types.optional(UploadProjectAvatarBlobs$inboundSchema),
+    buildCommand: z.nullable(types.string()).optional(),
+    commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+    concurrencyBucketName: types.optional(types.string()),
+    connectBuildsEnabled: types.optional(types.boolean()),
+    connectConfigurationId: z.nullable(types.string()).optional(),
+    connectConfigurations: z.nullable(
+      z.array(UploadProjectAvatarConnectConfigurations$inboundSchema),
+    ).optional(),
+    createdAt: types.optional(types.number()),
+    creator: types.optional(UploadProjectAvatarCreator$inboundSchema),
+    crons: types.optional(UploadProjectAvatarCrons$inboundSchema),
+    customEnvironments: types.optional(
+      z.array(UploadProjectAvatarCustomEnvironments$inboundSchema),
+    ),
+    customerSupportCodeVisibility: types.optional(types.boolean()),
+    dataCache: types.optional(UploadProjectAvatarDataCache$inboundSchema),
+    defaultResourceConfig:
+      UploadProjectAvatarDefaultResourceConfig$inboundSchema,
+    deploymentExpiration: UploadProjectAvatarDeploymentExpiration$inboundSchema,
+    deploymentPolicy: z.nullable(
+      UploadProjectAvatarDeploymentPolicy$inboundSchema,
+    ).optional(),
+    devCommand: z.nullable(types.string()).optional(),
+    directoryListing: types.boolean(),
+    dismissedToasts: types.optional(
+      z.array(UploadProjectAvatarDismissedToasts$inboundSchema),
+    ),
+    enableAffectedProjectsDeployments: types.optional(types.boolean()),
+    enableExternalRewriteCaching: types.optional(types.boolean()),
+    enablePreviewFeedback: z.nullable(types.boolean()).optional(),
+    enableProductionFeedback: z.nullable(types.boolean()).optional(),
+    env: types.optional(z.array(UploadProjectAvatarEnv$inboundSchema)),
+    expiration: types.optional(UploadProjectAvatarExpiration$inboundSchema),
+    features: types.optional(UploadProjectAvatarFeatures$inboundSchema),
+    framework: z.nullable(UploadProjectAvatarFramework$inboundSchema)
+      .optional(),
+    gitComments: types.optional(UploadProjectAvatarGitComments$inboundSchema),
+    gitForkProtection: types.optional(types.boolean()),
+    gitLFS: types.optional(types.boolean()),
+    gitProviderOptions: types.optional(
+      UploadProjectAvatarGitProviderOptions$inboundSchema,
+    ),
+    hasActiveBranches: types.optional(types.boolean()),
+    hasDeployments: types.optional(types.boolean()),
+    id: types.string(),
+    installCommand: z.nullable(types.string()).optional(),
+    internalRoutes: types.optional(
+      z.array(UploadProjectAvatarInternalRoutes$inboundSchema),
+    ),
+    ipBuckets: types.optional(
+      z.array(UploadProjectAvatarIpBuckets$inboundSchema),
+    ),
+    jobs: types.optional(UploadProjectAvatarJobs$inboundSchema),
+    lastAliasRequest: z.nullable(
+      UploadProjectAvatarLastAliasRequest$inboundSchema,
+    ).optional(),
+    lastRollbackTarget: z.nullable(
+      UploadProjectAvatarLastRollbackTarget$inboundSchema,
+    ).optional(),
+    latestDeployments: types.optional(
+      z.array(UploadProjectAvatarLatestDeployments$inboundSchema),
+    ),
+    link: types.optional(UploadProjectAvatarLink$inboundSchema),
+    live: types.optional(types.boolean()),
+    microfrontends: types.optional(
+      UploadProjectAvatarMicrofrontends$inboundSchema,
+    ),
+    name: types.string(),
+    nodeVersion: UploadProjectAvatarNodeVersion$inboundSchema,
+    oidcTokenConfig: types.optional(
+      UploadProjectAvatarOidcTokenConfig$inboundSchema,
+    ),
+    optionsAllowlist: z.nullable(
+      UploadProjectAvatarOptionsAllowlist$inboundSchema,
+    ).optional(),
+    outputDirectory: z.nullable(types.string()).optional(),
+    passiveConnectConfigurationId: z.nullable(types.string()).optional(),
+    passport: z.nullable(UploadProjectAvatarPassport$inboundSchema).optional(),
+    passwordProtection: z.nullable(
+      UploadProjectAvatarPasswordProtection$inboundSchema,
+    ).optional(),
+    paused: types.optional(types.boolean()),
+    permissions: types.optional(UploadProjectAvatarPermissions$inboundSchema),
+    productionDeploymentsFastLane: types.optional(types.boolean()),
+    protectedSourcemaps: types.optional(types.boolean()),
+    protectionBypass: types.optional(
+      z.record(UploadProjectAvatarProtectionBypass$inboundSchema),
+    ),
+    protectionConfig: types.optional(
+      UploadProjectAvatarProtectionConfig$inboundSchema,
+    ),
+    resourceConfig: UploadProjectAvatarResourceConfig$inboundSchema,
+    rollbackDescription: types.optional(
+      UploadProjectAvatarRollbackDescription$inboundSchema,
+    ),
+    rollingRelease: z.nullable(UploadProjectAvatarRollingRelease$inboundSchema)
+      .optional(),
+    rootDirectory: z.nullable(types.string()).optional(),
+    sandbox: types.optional(UploadProjectAvatarSandbox$inboundSchema),
+    security: types.optional(UploadProjectAvatarSecurity$inboundSchema),
+    serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
+    services: types.optional(
+      z.array(UploadProjectAvatarServices$inboundSchema),
+    ),
+    skewProtectionAllowedDomains: types.optional(z.array(types.string())),
+    skewProtectionBoundaryAt: types.optional(types.number()),
+    skewProtectionMaxAge: types.optional(types.number()),
+    skipGitConnectDuringLink: types.optional(types.boolean()),
+    sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+    speedInsights: types.optional(
+      UploadProjectAvatarSpeedInsights$inboundSchema,
+    ),
+    ssoProtection: z.nullable(UploadProjectAvatarSsoProtection$inboundSchema)
+      .optional(),
+    staticIps: types.optional(UploadProjectAvatarStaticIps$inboundSchema),
+    targets: types.optional(
+      z.record(types.nullable(UploadProjectAvatarTargets$inboundSchema)),
+    ),
+    tier: types.optional(UploadProjectAvatarTier$inboundSchema),
+    tracing: types.optional(UploadProjectAvatarTracing$inboundSchema),
+    transferCompletedAt: types.optional(types.number()),
+    transferredFromAccountId: types.optional(types.string()),
+    transferStartedAt: types.optional(types.number()),
+    transferToAccountId: types.optional(types.string()),
+    trustedIps: z.nullable(UploadProjectAvatarTrustedIps$inboundSchema)
+      .optional(),
+    trustedSources: z.nullable(
+      z.lazy(() => UploadProjectAvatarTrustedSources$inboundSchema),
+    ).optional(),
+    updatedAt: types.optional(types.number()),
+    usageStatus: types.optional(
+      z.lazy(() => UploadProjectAvatarUsageStatus$inboundSchema),
+    ),
+    v0: types.optional(types.boolean()),
+    v0Created: types.optional(types.boolean()),
+    vercelFlags: types.optional(
+      z.lazy(() => UploadProjectAvatarVercelFlags$inboundSchema),
+    ),
+    webAnalytics: types.optional(
+      z.lazy(() => UploadProjectAvatarWebAnalytics$inboundSchema),
+    ),
+  })
+);
 
 export function uploadProjectAvatarResponseBodyFromJSON(
   jsonString: string,

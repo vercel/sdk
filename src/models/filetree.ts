@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -57,21 +57,23 @@ export type FileTree = {
 
 /** @internal */
 export const FileTreeType$inboundSchema: z.ZodNativeEnum<typeof FileTreeType> =
-  z.nativeEnum(FileTreeType);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FileTreeType));
 
 /** @internal */
 export const FileTree$inboundSchema: z.ZodType<
   FileTree,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  children: types.optional(z.array(z.lazy(() => FileTree$inboundSchema))),
-  contentType: types.optional(types.string()),
-  mode: types.number(),
-  name: types.string(),
-  type: FileTreeType$inboundSchema,
-  uid: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    children: types.optional(z.array(z.lazy(() => FileTree$inboundSchema))),
+    contentType: types.optional(types.string()),
+    mode: types.number(),
+    name: types.string(),
+    type: FileTreeType$inboundSchema,
+    uid: types.optional(types.string()),
+  })
+);
 
 export function fileTreeFromJSON(
   jsonString: string,

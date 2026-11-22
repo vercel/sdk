@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -120,12 +120,14 @@ export const GetProjectCheckRequest$outboundSchema: z.ZodType<
   GetProjectCheckRequest$Outbound,
   z.ZodTypeDef,
   GetProjectCheckRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  checkId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    checkId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getProjectCheckRequestToJSON(
   getProjectCheckRequest: GetProjectCheckRequest,
@@ -138,28 +140,32 @@ export function getProjectCheckRequestToJSON(
 /** @internal */
 export const GetProjectCheckBlocks$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectCheckBlocks
-> = z.nativeEnum(GetProjectCheckBlocks);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetProjectCheckBlocks));
 
 /** @internal */
 export const GetProjectCheckRequires$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectCheckRequires
-> = z.nativeEnum(GetProjectCheckRequires);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetProjectCheckRequires));
 
 /** @internal */
 export const GetProjectCheckSourceProvider$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectCheckSourceProvider
-> = z.nativeEnum(GetProjectCheckSourceProvider);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetProjectCheckSourceProvider)
+);
 
 /** @internal */
 export const GetProjectCheckSource3$inboundSchema: z.ZodType<
   GetProjectCheckSource3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalCheckName: types.string(),
-  kind: types.literal("git-provider"),
-  provider: GetProjectCheckSourceProvider$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalCheckName: types.string(),
+    kind: types.literal("git-provider"),
+    provider: GetProjectCheckSourceProvider$inboundSchema,
+  })
+);
 
 export function getProjectCheckSource3FromJSON(
   jsonString: string,
@@ -176,10 +182,12 @@ export const GetProjectCheckSource2$inboundSchema: z.ZodType<
   GetProjectCheckSource2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: types.literal("webhook"),
-  webhookId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: types.literal("webhook"),
+    webhookId: types.optional(types.string()),
+  })
+);
 
 export function getProjectCheckSource2FromJSON(
   jsonString: string,
@@ -196,13 +204,15 @@ export const GetProjectCheckSource1$inboundSchema: z.ZodType<
   GetProjectCheckSource1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalResourceId: types.optional(types.string()),
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  kind: types.literal("integration"),
-  resourceId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalResourceId: types.optional(types.string()),
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    kind: types.literal("integration"),
+    resourceId: types.optional(types.string()),
+  })
+);
 
 export function getProjectCheckSource1FromJSON(
   jsonString: string,
@@ -219,11 +229,13 @@ export const GetProjectCheckSource$inboundSchema: z.ZodType<
   GetProjectCheckSource,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetProjectCheckSource1$inboundSchema),
-  z.lazy(() => GetProjectCheckSource2$inboundSchema),
-  z.lazy(() => GetProjectCheckSource3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetProjectCheckSource1$inboundSchema),
+    z.lazy(() => GetProjectCheckSource2$inboundSchema),
+    z.lazy(() => GetProjectCheckSource3$inboundSchema),
+  ])
+);
 
 export function getProjectCheckSourceFromJSON(
   jsonString: string,
@@ -238,34 +250,36 @@ export function getProjectCheckSourceFromJSON(
 /** @internal */
 export const GetProjectCheckSourceKind$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectCheckSourceKind
-> = z.nativeEnum(GetProjectCheckSourceKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetProjectCheckSourceKind));
 
 /** @internal */
 export const GetProjectCheckResponseBody$inboundSchema: z.ZodType<
   GetProjectCheckResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  blocks: GetProjectCheckBlocks$inboundSchema,
-  createdAt: types.number(),
-  deletedAt: types.optional(types.number()),
-  id: types.string(),
-  isRerequestable: types.boolean(),
-  name: types.string(),
-  ownerId: types.string(),
-  projectId: types.string(),
-  requires: GetProjectCheckRequires$inboundSchema,
-  source: z.union([
-    z.lazy(() => GetProjectCheckSource1$inboundSchema),
-    z.lazy(() => GetProjectCheckSource2$inboundSchema),
-    z.lazy(() => GetProjectCheckSource3$inboundSchema),
-  ]),
-  sourceIntegrationConfigurationId: types.optional(types.string()),
-  sourceKind: GetProjectCheckSourceKind$inboundSchema,
-  targets: z.array(types.string()),
-  timeout: types.number(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    blocks: GetProjectCheckBlocks$inboundSchema,
+    createdAt: types.number(),
+    deletedAt: types.optional(types.number()),
+    id: types.string(),
+    isRerequestable: types.boolean(),
+    name: types.string(),
+    ownerId: types.string(),
+    projectId: types.string(),
+    requires: GetProjectCheckRequires$inboundSchema,
+    source: z.union([
+      z.lazy(() => GetProjectCheckSource1$inboundSchema),
+      z.lazy(() => GetProjectCheckSource2$inboundSchema),
+      z.lazy(() => GetProjectCheckSource3$inboundSchema),
+    ]),
+    sourceIntegrationConfigurationId: types.optional(types.string()),
+    sourceKind: GetProjectCheckSourceKind$inboundSchema,
+    targets: z.array(types.string()),
+    timeout: types.number(),
+    updatedAt: types.number(),
+  })
+);
 
 export function getProjectCheckResponseBodyFromJSON(
   jsonString: string,

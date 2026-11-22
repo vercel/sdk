@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -101,15 +101,17 @@ export const Redirect$outboundSchema: z.ZodType<
   Redirect$Outbound,
   z.ZodTypeDef,
   Redirect
-> = z.object({
-  source: z.string(),
-  destination: z.string().optional(),
-  statusCode: z.number().optional(),
-  permanent: z.boolean().optional(),
-  caseSensitive: z.boolean().optional(),
-  query: z.boolean().optional(),
-  preserveQueryParams: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source: z.string(),
+    destination: z.string().optional(),
+    statusCode: z.number().optional(),
+    permanent: z.boolean().optional(),
+    caseSensitive: z.boolean().optional(),
+    query: z.boolean().optional(),
+    preserveQueryParams: z.boolean().optional(),
+  })
+);
 
 export function redirectToJSON(redirect: Redirect): string {
   return JSON.stringify(Redirect$outboundSchema.parse(redirect));
@@ -127,11 +129,13 @@ export const EditRedirectRequestBody$outboundSchema: z.ZodType<
   EditRedirectRequestBody$Outbound,
   z.ZodTypeDef,
   EditRedirectRequestBody
-> = z.object({
-  name: z.string().optional(),
-  redirect: z.lazy(() => Redirect$outboundSchema),
-  restore: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    redirect: z.lazy(() => Redirect$outboundSchema),
+    restore: z.boolean().optional(),
+  })
+);
 
 export function editRedirectRequestBodyToJSON(
   editRedirectRequestBody: EditRedirectRequestBody,
@@ -154,16 +158,19 @@ export const EditRedirectRequest$outboundSchema: z.ZodType<
   EditRedirectRequest$Outbound,
   z.ZodTypeDef,
   EditRedirectRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => EditRedirectRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => EditRedirectRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function editRedirectRequestToJSON(
   editRedirectRequest: EditRedirectRequest,
@@ -178,17 +185,19 @@ export const EditRedirectVersion$inboundSchema: z.ZodType<
   EditRedirectVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  key: types.string(),
-  lastModified: types.number(),
-  name: types.optional(types.string()),
-  redirectCount: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    key: types.string(),
+    lastModified: types.number(),
+    name: types.optional(types.string()),
+    redirectCount: types.optional(types.number()),
+  })
+);
 
 export function editRedirectVersionFromJSON(
   jsonString: string,
@@ -205,10 +214,12 @@ export const EditRedirectResponseBody$inboundSchema: z.ZodType<
   EditRedirectResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.nullable(types.string()),
-  version: z.lazy(() => EditRedirectVersion$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.nullable(types.string()),
+    version: z.lazy(() => EditRedirectVersion$inboundSchema),
+  })
+);
 
 export function editRedirectResponseBodyFromJSON(
   jsonString: string,

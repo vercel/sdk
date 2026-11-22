@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -104,16 +104,16 @@ export type ListAiGatewayByokCredentialsResponseBody = {
 /** @internal */
 export const IncludeDeleted$outboundSchema: z.ZodNativeEnum<
   typeof IncludeDeleted
-> = z.nativeEnum(IncludeDeleted);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(IncludeDeleted));
 
 /** @internal */
-export const Decrypt$outboundSchema: z.ZodNativeEnum<typeof Decrypt> = z
-  .nativeEnum(Decrypt);
+export const Decrypt$outboundSchema: z.ZodNativeEnum<typeof Decrypt> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Decrypt));
 
 /** @internal */
 export const IncludeModelMappings$outboundSchema: z.ZodNativeEnum<
   typeof IncludeModelMappings
-> = z.nativeEnum(IncludeModelMappings);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(IncludeModelMappings));
 
 /** @internal */
 export type ListAiGatewayByokCredentialsRequest$Outbound = {
@@ -131,15 +131,17 @@ export const ListAiGatewayByokCredentialsRequest$outboundSchema: z.ZodType<
   ListAiGatewayByokCredentialsRequest$Outbound,
   z.ZodTypeDef,
   ListAiGatewayByokCredentialsRequest
-> = z.object({
-  ownerId: z.string().optional(),
-  providerSlug: z.string().optional(),
-  includeDeleted: IncludeDeleted$outboundSchema.default("false"),
-  decrypt: Decrypt$outboundSchema.default("false"),
-  includeModelMappings: IncludeModelMappings$outboundSchema.default("false"),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ownerId: z.string().optional(),
+    providerSlug: z.string().optional(),
+    includeDeleted: IncludeDeleted$outboundSchema.default("false"),
+    decrypt: Decrypt$outboundSchema.default("false"),
+    includeModelMappings: IncludeModelMappings$outboundSchema.default("false"),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listAiGatewayByokCredentialsRequestToJSON(
   listAiGatewayByokCredentialsRequest: ListAiGatewayByokCredentialsRequest,
@@ -156,10 +158,12 @@ export const ModelMappings$inboundSchema: z.ZodType<
   ModelMappings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  customModelId: types.string(),
-  gatewayModelSlug: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customModelId: types.string(),
+    gatewayModelSlug: types.string(),
+  })
+);
 
 export function modelMappingsFromJSON(
   jsonString: string,
@@ -176,21 +180,23 @@ export const Credentials$inboundSchema: z.ZodType<
   Credentials,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  active: types.boolean(),
-  createdAt: types.number(),
-  credential: types.nullable(types.string()),
-  credentialId: types.string(),
-  deleted: types.boolean(),
-  lastFourChars: types.string(),
-  modelMappings: z.array(z.lazy(() => ModelMappings$inboundSchema)),
-  name: types.string(),
-  ownerId: types.string(),
-  providerSlug: types.string(),
-  rotatedAt: types.nullable(types.number()),
-  updatedAt: types.number(),
-  zeroDataRetention: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: types.boolean(),
+    createdAt: types.number(),
+    credential: types.nullable(types.string()),
+    credentialId: types.string(),
+    deleted: types.boolean(),
+    lastFourChars: types.string(),
+    modelMappings: z.array(z.lazy(() => ModelMappings$inboundSchema)),
+    name: types.string(),
+    ownerId: types.string(),
+    providerSlug: types.string(),
+    rotatedAt: types.nullable(types.number()),
+    updatedAt: types.number(),
+    zeroDataRetention: types.boolean(),
+  })
+);
 
 export function credentialsFromJSON(
   jsonString: string,
@@ -207,9 +213,11 @@ export const ListAiGatewayByokCredentialsResponseBody$inboundSchema: z.ZodType<
   ListAiGatewayByokCredentialsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  credentials: z.array(z.lazy(() => Credentials$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    credentials: z.array(z.lazy(() => Credentials$inboundSchema)),
+  })
+);
 
 export function listAiGatewayByokCredentialsResponseBodyFromJSON(
   jsonString: string,

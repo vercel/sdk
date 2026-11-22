@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -46,9 +46,11 @@ export const GetProjectTokenRequestBody$outboundSchema: z.ZodType<
   GetProjectTokenRequestBody$Outbound,
   z.ZodTypeDef,
   GetProjectTokenRequestBody
-> = z.object({
-  source: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source: z.string().optional(),
+  })
+);
 
 export function getProjectTokenRequestBodyToJSON(
   getProjectTokenRequestBody: GetProjectTokenRequestBody,
@@ -71,17 +73,19 @@ export const GetProjectTokenRequest$outboundSchema: z.ZodType<
   GetProjectTokenRequest$Outbound,
   z.ZodTypeDef,
   GetProjectTokenRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => GetProjectTokenRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => GetProjectTokenRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function getProjectTokenRequestToJSON(
   getProjectTokenRequest: GetProjectTokenRequest,
@@ -96,9 +100,11 @@ export const GetProjectTokenResponseBody$inboundSchema: z.ZodType<
   GetProjectTokenResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  token: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: types.string(),
+  })
+);
 
 export function getProjectTokenResponseBodyFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -37,16 +37,18 @@ export const RevokeInstallationCredentialRequestBody$outboundSchema: z.ZodType<
   RevokeInstallationCredentialRequestBody$Outbound,
   z.ZodTypeDef,
   RevokeInstallationCredentialRequestBody
-> = z.object({
-  token: z.string(),
-  clientSecret: z.string(),
-  clientId: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    clientSecret: "client_secret",
-    clientId: "client_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    token: z.string(),
+    clientSecret: z.string(),
+    clientId: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      clientSecret: "client_secret",
+      clientId: "client_id",
+    });
+  })
+);
 
 export function revokeInstallationCredentialRequestBodyToJSON(
   revokeInstallationCredentialRequestBody:
@@ -70,16 +72,18 @@ export const RevokeInstallationCredentialRequest$outboundSchema: z.ZodType<
   RevokeInstallationCredentialRequest$Outbound,
   z.ZodTypeDef,
   RevokeInstallationCredentialRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  requestBody: z.lazy(() =>
-    RevokeInstallationCredentialRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    requestBody: z.lazy(() =>
+      RevokeInstallationCredentialRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function revokeInstallationCredentialRequestToJSON(
   revokeInstallationCredentialRequest: RevokeInstallationCredentialRequest,
@@ -96,14 +100,16 @@ export const RevokeInstallationCredentialResponseBody$inboundSchema: z.ZodType<
   RevokeInstallationCredentialResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  already_revoked: types.boolean(),
-  revoked: types.boolean(),
-}).transform((v) => {
-  return remap$(v, {
-    "already_revoked": "alreadyRevoked",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    already_revoked: types.boolean(),
+    revoked: types.boolean(),
+  }).transform((v) => {
+    return remap$(v, {
+      "already_revoked": "alreadyRevoked",
+    });
+  })
+);
 
 export function revokeInstallationCredentialResponseBodyFromJSON(
   jsonString: string,

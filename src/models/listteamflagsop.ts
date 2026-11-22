@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -91,12 +91,16 @@ export type ListTeamFlagsResponseBody = {
 /** @internal */
 export const ListTeamFlagsQueryParamState$outboundSchema: z.ZodNativeEnum<
   typeof ListTeamFlagsQueryParamState
-> = z.nativeEnum(ListTeamFlagsQueryParamState);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListTeamFlagsQueryParamState)
+);
 
 /** @internal */
 export const ListTeamFlagsQueryParamKind$outboundSchema: z.ZodNativeEnum<
   typeof ListTeamFlagsQueryParamKind
-> = z.nativeEnum(ListTeamFlagsQueryParamKind);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListTeamFlagsQueryParamKind)
+);
 
 /** @internal */
 export type ListTeamFlagsRequest$Outbound = {
@@ -116,17 +120,19 @@ export const ListTeamFlagsRequest$outboundSchema: z.ZodType<
   ListTeamFlagsRequest$Outbound,
   z.ZodTypeDef,
   ListTeamFlagsRequest
-> = z.object({
-  state: ListTeamFlagsQueryParamState$outboundSchema.optional(),
-  withMetadata: z.boolean().optional(),
-  limit: z.number().int().default(20),
-  cursor: z.string().optional(),
-  search: z.string().optional(),
-  kind: ListTeamFlagsQueryParamKind$outboundSchema.optional(),
-  tags: z.array(z.string()).optional(),
-  teamId: z.string(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    state: ListTeamFlagsQueryParamState$outboundSchema.optional(),
+    withMetadata: z.boolean().optional(),
+    limit: z.number().int().default(20),
+    cursor: z.string().optional(),
+    search: z.string().optional(),
+    kind: ListTeamFlagsQueryParamKind$outboundSchema.optional(),
+    tags: z.array(z.string()).optional(),
+    teamId: z.string(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listTeamFlagsRequestToJSON(
   listTeamFlagsRequest: ListTeamFlagsRequest,
@@ -141,9 +147,11 @@ export const ListTeamFlagsPagination$inboundSchema: z.ZodType<
   ListTeamFlagsPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: types.nullable(types.string()),
+  })
+);
 
 export function listTeamFlagsPaginationFromJSON(
   jsonString: string,
@@ -160,10 +168,12 @@ export const ListTeamFlagsResponseBody$inboundSchema: z.ZodType<
   ListTeamFlagsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: z.array(Flag$inboundSchema),
-  pagination: z.lazy(() => ListTeamFlagsPagination$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: z.array(Flag$inboundSchema),
+    pagination: z.lazy(() => ListTeamFlagsPagination$inboundSchema),
+  })
+);
 
 export function listTeamFlagsResponseBodyFromJSON(
   jsonString: string,

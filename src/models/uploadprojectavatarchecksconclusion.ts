@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -1507,21 +1507,23 @@ export const UploadProjectAvatarRequest$outboundSchema: z.ZodType<
   UploadProjectAvatarRequest$Outbound,
   z.ZodTypeDef,
   UploadProjectAvatarRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function uploadProjectAvatarRequestToJSON(
   uploadProjectAvatarRequest: UploadProjectAvatarRequest,
@@ -1534,7 +1536,9 @@ export function uploadProjectAvatarRequestToJSON(
 /** @internal */
 export const UploadProjectAvatarConfiguredBy$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarConfiguredBy
-> = z.nativeEnum(UploadProjectAvatarConfiguredBy);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarConfiguredBy)
+);
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponseAliasAssigned$inboundSchema:
@@ -1542,7 +1546,9 @@ export const UploadProjectAvatarProjectsResponseAliasAssigned$inboundSchema:
     UploadProjectAvatarProjectsResponseAliasAssigned,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.number(), types.boolean()]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.number(), types.boolean()])
+  );
 
 export function uploadProjectAvatarProjectsResponseAliasAssignedFromJSON(
   jsonString: string,
@@ -1566,10 +1572,12 @@ export const UploadProjectAvatarProjectsResponseAliasError$inboundSchema:
     UploadProjectAvatarProjectsResponseAliasError,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    message: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      message: types.string(),
+    })
+  );
 
 export function uploadProjectAvatarProjectsResponseAliasErrorFromJSON(
   jsonString: string,
@@ -1591,8 +1599,10 @@ export function uploadProjectAvatarProjectsResponseAliasErrorFromJSON(
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType
-  > = z.nativeEnum(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType,
+    )
   );
 
 /** @internal */
@@ -1601,11 +1611,13 @@ export const UploadProjectAvatarProjectsResponse200BranchMatcher$inboundSchema:
     UploadProjectAvatarProjectsResponse200BranchMatcher,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    pattern: types.string(),
-    type:
-      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      pattern: types.string(),
+      type:
+        UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType$inboundSchema,
+    })
+  );
 
 export function uploadProjectAvatarProjectsResponse200BranchMatcherFromJSON(
   jsonString: string,
@@ -1628,11 +1640,13 @@ export const UploadProjectAvatarProjectsResponseBuilds$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsResponseBuilds,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dest: types.optional(types.string()),
-  src: types.optional(types.string()),
-  use: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dest: types.optional(types.string()),
+    src: types.optional(types.string()),
+    use: types.string(),
+  })
+);
 
 export function uploadProjectAvatarProjectsResponseBuildsFromJSON(
   jsonString: string,
@@ -1653,12 +1667,16 @@ export function uploadProjectAvatarProjectsResponseBuildsFromJSON(
 /** @internal */
 export const UploadProjectAvatarProjectsResponseChecksConclusion$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseChecksConclusion> =
-    z.nativeEnum(UploadProjectAvatarProjectsResponseChecksConclusion);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsResponseChecksConclusion)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponseChecksState$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseChecksState> = z
-    .nativeEnum(UploadProjectAvatarProjectsResponseChecksState);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseChecksState> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsResponseChecksState)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponse200Creator$inboundSchema:
@@ -1666,13 +1684,15 @@ export const UploadProjectAvatarProjectsResponse200Creator$inboundSchema:
     UploadProjectAvatarProjectsResponse200Creator,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    email: types.string(),
-    githubLogin: types.optional(types.string()),
-    gitlabLogin: types.optional(types.string()),
-    uid: types.string(),
-    username: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      email: types.string(),
+      githubLogin: types.optional(types.string()),
+      gitlabLogin: types.optional(types.string()),
+      uid: types.string(),
+      username: types.string(),
+    })
+  );
 
 export function uploadProjectAvatarProjectsResponse200CreatorFromJSON(
   jsonString: string,
@@ -1696,29 +1716,31 @@ export const UploadProjectAvatarProjectsResponseOidcTokenClaims$inboundSchema:
     UploadProjectAvatarProjectsResponseOidcTokenClaims,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    aud: types.string(),
-    custom_environment_id: types.optional(types.string()),
-    deployment_id: types.optional(types.string()),
-    environment: types.string(),
-    iss: types.string(),
-    mfe_group_ids: types.optional(z.array(types.string())),
-    owner: types.string(),
-    owner_id: types.string(),
-    plan: types.optional(types.string()),
-    project: types.string(),
-    project_id: types.string(),
-    scope: types.string(),
-    sub: types.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "custom_environment_id": "customEnvironmentId",
-      "deployment_id": "deploymentId",
-      "mfe_group_ids": "mfeGroupIds",
-      "owner_id": "ownerId",
-      "project_id": "projectId",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      aud: types.string(),
+      custom_environment_id: types.optional(types.string()),
+      deployment_id: types.optional(types.string()),
+      environment: types.string(),
+      iss: types.string(),
+      mfe_group_ids: types.optional(z.array(types.string())),
+      owner: types.string(),
+      owner_id: types.string(),
+      plan: types.optional(types.string()),
+      project: types.string(),
+      project_id: types.string(),
+      scope: types.string(),
+      sub: types.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        "custom_environment_id": "customEnvironmentId",
+        "deployment_id": "deploymentId",
+        "mfe_group_ids": "mfeGroupIds",
+        "owner_id": "ownerId",
+        "project_id": "projectId",
+      });
+    })
+  );
 
 export function uploadProjectAvatarProjectsResponseOidcTokenClaimsFromJSON(
   jsonString: string,
@@ -1738,25 +1760,33 @@ export function uploadProjectAvatarProjectsResponseOidcTokenClaimsFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponsePlan$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponsePlan> = z
-    .nativeEnum(UploadProjectAvatarProjectsResponsePlan);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponsePlan> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsResponsePlan)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponseReadyState$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseReadyState> = z
-    .nativeEnum(UploadProjectAvatarProjectsResponseReadyState);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseReadyState> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsResponseReadyState)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponseReadySubstate$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseReadySubstate> = z
-    .nativeEnum(UploadProjectAvatarProjectsResponseReadySubstate);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseReadySubstate> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsResponseReadySubstate)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType,
+    )
   );
 
 /** @internal */
@@ -1764,68 +1794,64 @@ export const UploadProjectAvatarDeployment$inboundSchema: z.ZodType<
   UploadProjectAvatarDeployment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(z.array(types.string())),
-  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
-    .optional(),
-  aliasError: z.nullable(
-    z.lazy(() => UploadProjectAvatarProjectsResponseAliasError$inboundSchema),
-  ).optional(),
-  aliasFinal: z.nullable(types.string()).optional(),
-  automaticAliases: types.optional(z.array(types.string())),
-  branchMatcher: types.optional(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(z.array(types.string())),
+    aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
+      .optional(),
+    aliasError: z.nullable(
+      z.lazy(() => UploadProjectAvatarProjectsResponseAliasError$inboundSchema),
+    ).optional(),
+    aliasFinal: z.nullable(types.string()).optional(),
+    automaticAliases: types.optional(z.array(types.string())),
+    branchMatcher: types.optional(z.lazy(() =>
       UploadProjectAvatarProjectsResponse200BranchMatcher$inboundSchema
+    )),
+    buildingAt: types.optional(types.number()),
+    builds: types.optional(z.array(z.lazy(() =>
+      UploadProjectAvatarProjectsResponseBuilds$inboundSchema
+    ))),
+    checksConclusion: types.optional(
+      UploadProjectAvatarProjectsResponseChecksConclusion$inboundSchema,
     ),
-  ),
-  buildingAt: types.optional(types.number()),
-  builds: types.optional(
-    z.array(
-      z.lazy(() => UploadProjectAvatarProjectsResponseBuilds$inboundSchema),
+    checksState: types.optional(
+      UploadProjectAvatarProjectsResponseChecksState$inboundSchema,
     ),
-  ),
-  checksConclusion: types.optional(
-    UploadProjectAvatarProjectsResponseChecksConclusion$inboundSchema,
-  ),
-  checksState: types.optional(
-    UploadProjectAvatarProjectsResponseChecksState$inboundSchema,
-  ),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: types.optional(types.string()),
-  createdAt: types.number(),
-  createdIn: types.string(),
-  creator: types.nullable(
-    z.lazy(() => UploadProjectAvatarProjectsResponse200Creator$inboundSchema),
-  ),
-  deletedAt: types.optional(types.number()),
-  deploymentHostname: types.string(),
-  forced: types.optional(types.boolean()),
-  id: types.string(),
-  meta: types.optional(z.record(types.string())),
-  monorepoManager: z.nullable(types.string()).optional(),
-  name: types.string(),
-  oidcTokenClaims: types.optional(
-    z.lazy(() =>
+    connectBuildsEnabled: types.optional(types.boolean()),
+    connectConfigurationId: types.optional(types.string()),
+    createdAt: types.number(),
+    createdIn: types.string(),
+    creator: types.nullable(z.lazy(() =>
+      UploadProjectAvatarProjectsResponse200Creator$inboundSchema
+    )),
+    deletedAt: types.optional(types.number()),
+    deploymentHostname: types.string(),
+    forced: types.optional(types.boolean()),
+    id: types.string(),
+    meta: types.optional(z.record(types.string())),
+    monorepoManager: z.nullable(types.string()).optional(),
+    name: types.string(),
+    oidcTokenClaims: types.optional(z.lazy(() =>
       UploadProjectAvatarProjectsResponseOidcTokenClaims$inboundSchema
+    )),
+    plan: UploadProjectAvatarProjectsResponsePlan$inboundSchema,
+    previewCommentsEnabled: types.optional(types.boolean()),
+    private: types.boolean(),
+    readyAt: types.optional(types.number()),
+    readyState: UploadProjectAvatarProjectsResponseReadyState$inboundSchema,
+    readySubstate: types.optional(
+      UploadProjectAvatarProjectsResponseReadySubstate$inboundSchema,
     ),
-  ),
-  plan: UploadProjectAvatarProjectsResponsePlan$inboundSchema,
-  previewCommentsEnabled: types.optional(types.boolean()),
-  private: types.boolean(),
-  readyAt: types.optional(types.number()),
-  readyState: UploadProjectAvatarProjectsResponseReadyState$inboundSchema,
-  readySubstate: types.optional(
-    UploadProjectAvatarProjectsResponseReadySubstate$inboundSchema,
-  ),
-  requestedAt: types.optional(types.number()),
-  target: z.nullable(types.string()).optional(),
-  teamId: z.nullable(types.string()).optional(),
-  type:
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
-  url: types.string(),
-  userId: types.optional(types.string()),
-  withCache: types.optional(types.boolean()),
-});
+    requestedAt: types.optional(types.number()),
+    target: z.nullable(types.string()).optional(),
+    teamId: z.nullable(types.string()).optional(),
+    type:
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+    url: types.string(),
+    userId: types.optional(types.string()),
+    withCache: types.optional(types.boolean()),
+  })
+);
 
 export function uploadProjectAvatarDeploymentFromJSON(
   jsonString: string,
@@ -1840,33 +1866,37 @@ export function uploadProjectAvatarDeploymentFromJSON(
 /** @internal */
 export const UploadProjectAvatarEnvironment$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarEnvironment
-> = z.nativeEnum(UploadProjectAvatarEnvironment);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarEnvironment)
+);
 
 /** @internal */
 export const UploadProjectAvatarTarget$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarTarget
-> = z.nativeEnum(UploadProjectAvatarTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarTarget));
 
 /** @internal */
 export const UploadProjectAvatarAlias$inboundSchema: z.ZodType<
   UploadProjectAvatarAlias,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuredBy: z.nullable(UploadProjectAvatarConfiguredBy$inboundSchema)
-    .optional(),
-  configuredChangedAt: z.nullable(types.number()).optional(),
-  createdAt: z.nullable(types.number()).optional(),
-  deployment: types.nullable(
-    z.lazy(() => UploadProjectAvatarDeployment$inboundSchema),
-  ),
-  domain: types.string(),
-  environment: UploadProjectAvatarEnvironment$inboundSchema,
-  gitBranch: z.nullable(types.string()).optional(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  target: UploadProjectAvatarTarget$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuredBy: z.nullable(UploadProjectAvatarConfiguredBy$inboundSchema)
+      .optional(),
+    configuredChangedAt: z.nullable(types.number()).optional(),
+    createdAt: z.nullable(types.number()).optional(),
+    deployment: types.nullable(
+      z.lazy(() => UploadProjectAvatarDeployment$inboundSchema),
+    ),
+    domain: types.string(),
+    environment: UploadProjectAvatarEnvironment$inboundSchema,
+    gitBranch: z.nullable(types.string()).optional(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    target: UploadProjectAvatarTarget$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarAliasFromJSON(
   jsonString: string,
@@ -1883,15 +1913,17 @@ export const UploadProjectAvatarAnalytics$inboundSchema: z.ZodType<
   UploadProjectAvatarAnalytics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: z.nullable(types.number()).optional(),
-  disabledAt: types.number(),
-  enabledAt: types.number(),
-  id: types.string(),
-  paidAt: types.optional(types.number()),
-  sampleRatePercent: z.nullable(types.number()).optional(),
-  spendLimitInDollars: z.nullable(types.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: z.nullable(types.number()).optional(),
+    disabledAt: types.number(),
+    enabledAt: types.number(),
+    id: types.string(),
+    paidAt: types.optional(types.number()),
+    sampleRatePercent: z.nullable(types.number()).optional(),
+    spendLimitInDollars: z.nullable(types.number()).optional(),
+  })
+);
 
 export function uploadProjectAvatarAnalyticsFromJSON(
   jsonString: string,
@@ -1908,9 +1940,11 @@ export const UploadProjectAvatarBlobs$inboundSchema: z.ZodType<
   UploadProjectAvatarBlobs,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  isDefaultApp: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isDefaultApp: types.optional(types.boolean()),
+  })
+);
 
 export function uploadProjectAvatarBlobsFromJSON(
   jsonString: string,
@@ -1927,10 +1961,12 @@ export const UploadProjectAvatarAws$inboundSchema: z.ZodType<
   UploadProjectAvatarAws,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  securityGroupId: types.optional(types.string()),
-  subnetIds: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    securityGroupId: types.optional(types.string()),
+    subnetIds: z.array(types.string()),
+  })
+);
 
 export function uploadProjectAvatarAwsFromJSON(
   jsonString: string,
@@ -1945,14 +1981,16 @@ export function uploadProjectAvatarAwsFromJSON(
 /** @internal */
 export const UploadProjectAvatarEnvId2$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarEnvId2
-> = z.nativeEnum(UploadProjectAvatarEnvId2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarEnvId2));
 
 /** @internal */
 export const UploadProjectAvatarEnvId$inboundSchema: z.ZodType<
   UploadProjectAvatarEnvId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), UploadProjectAvatarEnvId2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), UploadProjectAvatarEnvId2$inboundSchema])
+);
 
 export function uploadProjectAvatarEnvIdFromJSON(
   jsonString: string,
@@ -1969,16 +2007,21 @@ export const UploadProjectAvatarConnectConfigurations$inboundSchema: z.ZodType<
   UploadProjectAvatarConnectConfigurations,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  aws: types.optional(z.lazy(() => UploadProjectAvatarAws$inboundSchema)),
-  buildsEnabled: types.boolean(),
-  connectConfigurationId: types.string(),
-  createdAt: types.number(),
-  dc: types.optional(types.string()),
-  envId: smartUnion([types.string(), UploadProjectAvatarEnvId2$inboundSchema]),
-  passive: types.boolean(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    aws: types.optional(z.lazy(() => UploadProjectAvatarAws$inboundSchema)),
+    buildsEnabled: types.boolean(),
+    connectConfigurationId: types.string(),
+    createdAt: types.number(),
+    dc: types.optional(types.string()),
+    envId: smartUnion([
+      types.string(),
+      UploadProjectAvatarEnvId2$inboundSchema,
+    ]),
+    passive: types.boolean(),
+    updatedAt: types.number(),
+  })
+);
 
 export function uploadProjectAvatarConnectConfigurationsFromJSON(
   jsonString: string,
@@ -2001,9 +2044,11 @@ export const UploadProjectAvatarCreator5$inboundSchema: z.ZodType<
   UploadProjectAvatarCreator5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("system"),
+  })
+);
 
 export function uploadProjectAvatarCreator5FromJSON(
   jsonString: string,
@@ -2020,10 +2065,12 @@ export const UploadProjectAvatarCreatorIntegration$inboundSchema: z.ZodType<
   UploadProjectAvatarCreatorIntegration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configurationId: types.string(),
-  integrationId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configurationId: types.string(),
+    integrationId: types.string(),
+  })
+);
 
 export function uploadProjectAvatarCreatorIntegrationFromJSON(
   jsonString: string,
@@ -2041,12 +2088,14 @@ export const UploadProjectAvatarCreator4$inboundSchema: z.ZodType<
   UploadProjectAvatarCreator4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integration: z.lazy(() =>
-    UploadProjectAvatarCreatorIntegration$inboundSchema
-  ),
-  type: types.literal("integration"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration: z.lazy(() =>
+      UploadProjectAvatarCreatorIntegration$inboundSchema
+    ),
+    type: types.literal("integration"),
+  })
+);
 
 export function uploadProjectAvatarCreator4FromJSON(
   jsonString: string,
@@ -2063,10 +2112,12 @@ export const UploadProjectAvatarCreatorApp$inboundSchema: z.ZodType<
   UploadProjectAvatarCreatorApp,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.optional(types.string()),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.optional(types.string()),
+    id: types.string(),
+  })
+);
 
 export function uploadProjectAvatarCreatorAppFromJSON(
   jsonString: string,
@@ -2083,10 +2134,12 @@ export const UploadProjectAvatarCreator3$inboundSchema: z.ZodType<
   UploadProjectAvatarCreator3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  app: z.lazy(() => UploadProjectAvatarCreatorApp$inboundSchema),
-  type: types.literal("app"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    app: z.lazy(() => UploadProjectAvatarCreatorApp$inboundSchema),
+    type: types.literal("app"),
+  })
+);
 
 export function uploadProjectAvatarCreator3FromJSON(
   jsonString: string,
@@ -2103,9 +2156,11 @@ export const UploadProjectAvatarCreatorProject$inboundSchema: z.ZodType<
   UploadProjectAvatarCreatorProject,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function uploadProjectAvatarCreatorProjectFromJSON(
   jsonString: string,
@@ -2122,10 +2177,12 @@ export const UploadProjectAvatarCreator2$inboundSchema: z.ZodType<
   UploadProjectAvatarCreator2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  project: z.lazy(() => UploadProjectAvatarCreatorProject$inboundSchema),
-  type: types.literal("project"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    project: z.lazy(() => UploadProjectAvatarCreatorProject$inboundSchema),
+    type: types.literal("project"),
+  })
+);
 
 export function uploadProjectAvatarCreator2FromJSON(
   jsonString: string,
@@ -2142,10 +2199,12 @@ export const UploadProjectAvatarViaIntegration$inboundSchema: z.ZodType<
   UploadProjectAvatarViaIntegration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configurationId: types.string(),
-  integrationId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configurationId: types.string(),
+    integrationId: types.string(),
+  })
+);
 
 export function uploadProjectAvatarViaIntegrationFromJSON(
   jsonString: string,
@@ -2162,10 +2221,12 @@ export const UploadProjectAvatarVia2$inboundSchema: z.ZodType<
   UploadProjectAvatarVia2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integration: z.lazy(() => UploadProjectAvatarViaIntegration$inboundSchema),
-  type: types.literal("integration"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration: z.lazy(() => UploadProjectAvatarViaIntegration$inboundSchema),
+    type: types.literal("integration"),
+  })
+);
 
 export function uploadProjectAvatarVia2FromJSON(
   jsonString: string,
@@ -2182,10 +2243,12 @@ export const UploadProjectAvatarViaApp$inboundSchema: z.ZodType<
   UploadProjectAvatarViaApp,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.optional(types.string()),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.optional(types.string()),
+    id: types.string(),
+  })
+);
 
 export function uploadProjectAvatarViaAppFromJSON(
   jsonString: string,
@@ -2202,10 +2265,12 @@ export const UploadProjectAvatarVia1$inboundSchema: z.ZodType<
   UploadProjectAvatarVia1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  app: z.lazy(() => UploadProjectAvatarViaApp$inboundSchema),
-  type: types.literal("app"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    app: z.lazy(() => UploadProjectAvatarViaApp$inboundSchema),
+    type: types.literal("app"),
+  })
+);
 
 export function uploadProjectAvatarVia1FromJSON(
   jsonString: string,
@@ -2222,10 +2287,12 @@ export const UploadProjectAvatarCreatorVia$inboundSchema: z.ZodType<
   UploadProjectAvatarCreatorVia,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarVia1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarVia2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarVia1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarVia2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarCreatorViaFromJSON(
   jsonString: string,
@@ -2242,9 +2309,11 @@ export const UploadProjectAvatarCreatorUser$inboundSchema: z.ZodType<
   UploadProjectAvatarCreatorUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function uploadProjectAvatarCreatorUserFromJSON(
   jsonString: string,
@@ -2261,16 +2330,18 @@ export const UploadProjectAvatarCreator1$inboundSchema: z.ZodType<
   UploadProjectAvatarCreator1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("user"),
-  via: types.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("user"),
+    via: types.nullable(z.union([
       z.lazy(() => UploadProjectAvatarVia1$inboundSchema),
       z.lazy(() => UploadProjectAvatarVia2$inboundSchema),
-    ]),
-  ),
-  user: z.lazy(() => UploadProjectAvatarCreatorUser$inboundSchema),
-});
+    ])),
+    user: z.lazy(() =>
+      UploadProjectAvatarCreatorUser$inboundSchema
+    ),
+  })
+);
 
 export function uploadProjectAvatarCreator1FromJSON(
   jsonString: string,
@@ -2287,13 +2358,15 @@ export const UploadProjectAvatarCreator$inboundSchema: z.ZodType<
   UploadProjectAvatarCreator,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarCreator1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarCreator2$inboundSchema),
-  z.lazy(() => UploadProjectAvatarCreator3$inboundSchema),
-  z.lazy(() => UploadProjectAvatarCreator4$inboundSchema),
-  z.lazy(() => UploadProjectAvatarCreator5$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarCreator1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarCreator2$inboundSchema),
+    z.lazy(() => UploadProjectAvatarCreator3$inboundSchema),
+    z.lazy(() => UploadProjectAvatarCreator4$inboundSchema),
+    z.lazy(() => UploadProjectAvatarCreator5$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarCreatorFromJSON(
   jsonString: string,
@@ -2308,21 +2381,23 @@ export function uploadProjectAvatarCreatorFromJSON(
 /** @internal */
 export const UploadProjectAvatarSource$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarSource
-> = z.nativeEnum(UploadProjectAvatarSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarSource));
 
 /** @internal */
 export const UploadProjectAvatarDefinitions$inboundSchema: z.ZodType<
   UploadProjectAvatarDefinitions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  host: types.string(),
-  hostInferred: types.optional(types.boolean()),
-  path: types.string(),
-  schedule: types.string(),
-  source: types.optional(UploadProjectAvatarSource$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.optional(types.string()),
+    host: types.string(),
+    hostInferred: types.optional(types.boolean()),
+    path: types.string(),
+    schedule: types.string(),
+    source: types.optional(UploadProjectAvatarSource$inboundSchema),
+  })
+);
 
 export function uploadProjectAvatarDefinitionsFromJSON(
   jsonString: string,
@@ -2339,15 +2414,17 @@ export const UploadProjectAvatarCrons$inboundSchema: z.ZodType<
   UploadProjectAvatarCrons,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  definitions: z.array(
-    z.lazy(() => UploadProjectAvatarDefinitions$inboundSchema),
-  ),
-  deploymentId: types.nullable(types.string()),
-  disabledAt: types.nullable(types.number()),
-  enabledAt: types.number(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    definitions: z.array(
+      z.lazy(() => UploadProjectAvatarDefinitions$inboundSchema),
+    ),
+    deploymentId: types.nullable(types.string()),
+    disabledAt: types.nullable(types.number()),
+    enabledAt: types.number(),
+    updatedAt: types.number(),
+  })
+);
 
 export function uploadProjectAvatarCronsFromJSON(
   jsonString: string,
@@ -2363,8 +2440,10 @@ export function uploadProjectAvatarCronsFromJSON(
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType
-  > = z.nativeEnum(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType,
+    )
   );
 
 /** @internal */
@@ -2372,11 +2451,13 @@ export const UploadProjectAvatarBranchMatcher$inboundSchema: z.ZodType<
   UploadProjectAvatarBranchMatcher,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pattern: types.string(),
-  type:
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pattern: types.string(),
+    type:
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarBranchMatcherFromJSON(
   jsonString: string,
@@ -2393,12 +2474,14 @@ export const UploadProjectAvatarVerification$inboundSchema: z.ZodType<
   UploadProjectAvatarVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  reason: types.string(),
-  type: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    reason: types.string(),
+    type: types.string(),
+    value: types.string(),
+  })
+);
 
 export function uploadProjectAvatarVerificationFromJSON(
   jsonString: string,
@@ -2415,21 +2498,23 @@ export const UploadProjectAvatarDomains$inboundSchema: z.ZodType<
   UploadProjectAvatarDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apexName: types.string(),
-  createdAt: types.optional(types.number()),
-  customEnvironmentId: z.nullable(types.string()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  name: types.string(),
-  projectId: types.string(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  updatedAt: types.optional(types.number()),
-  verification: types.optional(
-    z.array(z.lazy(() => UploadProjectAvatarVerification$inboundSchema)),
-  ),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apexName: types.string(),
+    createdAt: types.optional(types.number()),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    name: types.string(),
+    projectId: types.string(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    updatedAt: types.optional(types.number()),
+    verification: types.optional(
+      z.array(z.lazy(() => UploadProjectAvatarVerification$inboundSchema)),
+    ),
+    verified: types.boolean(),
+  })
+);
 
 export function uploadProjectAvatarDomainsFromJSON(
   jsonString: string,
@@ -2444,28 +2529,30 @@ export function uploadProjectAvatarDomainsFromJSON(
 /** @internal */
 export const UploadProjectAvatarType$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarType
-> = z.nativeEnum(UploadProjectAvatarType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarType));
 
 /** @internal */
 export const UploadProjectAvatarCustomEnvironments$inboundSchema: z.ZodType<
   UploadProjectAvatarCustomEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  branchMatcher: types.optional(
-    z.lazy(() => UploadProjectAvatarBranchMatcher$inboundSchema),
-  ),
-  createdAt: types.number(),
-  currentDeploymentAliases: types.optional(z.array(types.string())),
-  description: types.optional(types.string()),
-  domains: types.optional(
-    z.array(z.lazy(() => UploadProjectAvatarDomains$inboundSchema)),
-  ),
-  id: types.string(),
-  slug: types.string(),
-  type: UploadProjectAvatarType$inboundSchema,
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    branchMatcher: types.optional(
+      z.lazy(() => UploadProjectAvatarBranchMatcher$inboundSchema),
+    ),
+    createdAt: types.number(),
+    currentDeploymentAliases: types.optional(z.array(types.string())),
+    description: types.optional(types.string()),
+    domains: types.optional(
+      z.array(z.lazy(() => UploadProjectAvatarDomains$inboundSchema)),
+    ),
+    id: types.string(),
+    slug: types.string(),
+    type: UploadProjectAvatarType$inboundSchema,
+    updatedAt: types.number(),
+  })
+);
 
 export function uploadProjectAvatarCustomEnvironmentsFromJSON(
   jsonString: string,
@@ -2483,11 +2570,13 @@ export const UploadProjectAvatarDataCache$inboundSchema: z.ZodType<
   UploadProjectAvatarDataCache,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storageSizeBytes: z.nullable(types.number()).optional(),
-  unlimited: types.optional(types.boolean()),
-  userDisabled: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storageSizeBytes: z.nullable(types.number()).optional(),
+    unlimited: types.optional(types.boolean()),
+    userDisabled: types.boolean(),
+  })
+);
 
 export function uploadProjectAvatarDataCacheFromJSON(
   jsonString: string,
@@ -2501,13 +2590,17 @@ export function uploadProjectAvatarDataCacheFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarBuildMachineElasticReason$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarBuildMachineElasticReason> = z
-    .nativeEnum(UploadProjectAvatarBuildMachineElasticReason);
+  z.ZodNativeEnum<typeof UploadProjectAvatarBuildMachineElasticReason> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarBuildMachineElasticReason)
+    );
 
 /** @internal */
 export const UploadProjectAvatarDirection$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarDirection
-> = z.nativeEnum(UploadProjectAvatarDirection);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarDirection)
+);
 
 /** @internal */
 export const UploadProjectAvatarBuildMachineElasticTransition$inboundSchema:
@@ -2515,11 +2608,13 @@ export const UploadProjectAvatarBuildMachineElasticTransition$inboundSchema:
     UploadProjectAvatarBuildMachineElasticTransition,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    algorithmVersion: types.string(),
-    at: types.number(),
-    direction: UploadProjectAvatarDirection$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      algorithmVersion: types.string(),
+      at: types.number(),
+      direction: UploadProjectAvatarDirection$inboundSchema,
+    })
+  );
 
 export function uploadProjectAvatarBuildMachineElasticTransitionFromJSON(
   jsonString: string,
@@ -2539,27 +2634,37 @@ export function uploadProjectAvatarBuildMachineElasticTransitionFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarBuildMachineSelection$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarBuildMachineSelection> = z
-    .nativeEnum(UploadProjectAvatarBuildMachineSelection);
+  z.ZodNativeEnum<typeof UploadProjectAvatarBuildMachineSelection> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarBuildMachineSelection)
+    );
 
 /** @internal */
 export const UploadProjectAvatarBuildMachineType$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarBuildMachineType
-> = z.nativeEnum(UploadProjectAvatarBuildMachineType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarBuildMachineType)
+);
 
 /** @internal */
 export const UploadProjectAvatarConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarConfiguration
-> = z.nativeEnum(UploadProjectAvatarConfiguration);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarConfiguration)
+);
 
 /** @internal */
 export const UploadProjectAvatarBuildQueue$inboundSchema: z.ZodType<
   UploadProjectAvatarBuildQueue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuration: types.optional(UploadProjectAvatarConfiguration$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuration: types.optional(
+      UploadProjectAvatarConfiguration$inboundSchema,
+    ),
+  })
+);
 
 export function uploadProjectAvatarBuildQueueFromJSON(
   jsonString: string,
@@ -2573,19 +2678,23 @@ export function uploadProjectAvatarBuildQueueFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarFunctionDefaultMemoryType$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarFunctionDefaultMemoryType> = z
-    .nativeEnum(UploadProjectAvatarFunctionDefaultMemoryType);
+  z.ZodNativeEnum<typeof UploadProjectAvatarFunctionDefaultMemoryType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarFunctionDefaultMemoryType)
+    );
 
 /** @internal */
 export const UploadProjectAvatarElasticBuildMachine4$inboundSchema: z.ZodType<
   UploadProjectAvatarElasticBuildMachine4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cores: types.number(),
-  label: types.literal("turbo"),
-  memory: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cores: types.number(),
+    label: types.literal("turbo"),
+    memory: types.number(),
+  })
+);
 
 export function uploadProjectAvatarElasticBuildMachine4FromJSON(
   jsonString: string,
@@ -2608,11 +2717,13 @@ export const UploadProjectAvatarElasticBuildMachine3$inboundSchema: z.ZodType<
   UploadProjectAvatarElasticBuildMachine3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cores: types.number(),
-  label: types.literal("14cpu-28gb"),
-  memory: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cores: types.number(),
+    label: types.literal("14cpu-28gb"),
+    memory: types.number(),
+  })
+);
 
 export function uploadProjectAvatarElasticBuildMachine3FromJSON(
   jsonString: string,
@@ -2635,11 +2746,13 @@ export const UploadProjectAvatarElasticBuildMachine2$inboundSchema: z.ZodType<
   UploadProjectAvatarElasticBuildMachine2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cores: types.number(),
-  label: types.literal("enhanced"),
-  memory: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cores: types.number(),
+    label: types.literal("enhanced"),
+    memory: types.number(),
+  })
+);
 
 export function uploadProjectAvatarElasticBuildMachine2FromJSON(
   jsonString: string,
@@ -2662,11 +2775,13 @@ export const UploadProjectAvatarElasticBuildMachine1$inboundSchema: z.ZodType<
   UploadProjectAvatarElasticBuildMachine1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cores: types.number(),
-  label: types.literal("standard"),
-  memory: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cores: types.number(),
+    label: types.literal("standard"),
+    memory: types.number(),
+  })
+);
 
 export function uploadProjectAvatarElasticBuildMachine1FromJSON(
   jsonString: string,
@@ -2689,12 +2804,14 @@ export const UploadProjectAvatarElasticBuildMachine$inboundSchema: z.ZodType<
   UploadProjectAvatarElasticBuildMachine,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarElasticBuildMachine1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarElasticBuildMachine2$inboundSchema),
-  z.lazy(() => UploadProjectAvatarElasticBuildMachine3$inboundSchema),
-  z.lazy(() => UploadProjectAvatarElasticBuildMachine4$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarElasticBuildMachine1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarElasticBuildMachine2$inboundSchema),
+    z.lazy(() => UploadProjectAvatarElasticBuildMachine3$inboundSchema),
+    z.lazy(() => UploadProjectAvatarElasticBuildMachine4$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarElasticBuildMachineFromJSON(
   jsonString: string,
@@ -2712,44 +2829,44 @@ export const UploadProjectAvatarDefaultResourceConfig$inboundSchema: z.ZodType<
   UploadProjectAvatarDefaultResourceConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  buildMachineElasticLastUpdated: types.optional(types.number()),
-  buildMachineElasticReason: types.optional(
-    UploadProjectAvatarBuildMachineElasticReason$inboundSchema,
-  ),
-  buildMachineElasticTransition: types.optional(
-    z.lazy(() =>
-      UploadProjectAvatarBuildMachineElasticTransition$inboundSchema
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    buildMachineElasticLastUpdated: types.optional(types.number()),
+    buildMachineElasticReason: types.optional(
+      UploadProjectAvatarBuildMachineElasticReason$inboundSchema,
     ),
-  ),
-  buildMachineSelection: types.optional(
-    UploadProjectAvatarBuildMachineSelection$inboundSchema,
-  ),
-  buildMachineType: types.optional(
-    UploadProjectAvatarBuildMachineType$inboundSchema,
-  ),
-  buildQueue: types.optional(
-    z.lazy(() => UploadProjectAvatarBuildQueue$inboundSchema),
-  ),
-  elasticConcurrencyEnabled: types.optional(types.boolean()),
-  enableFunctionsBeta: types.optional(types.boolean()),
-  fluid: types.optional(types.boolean()),
-  functionDefaultMemoryType: types.optional(
-    UploadProjectAvatarFunctionDefaultMemoryType$inboundSchema,
-  ),
-  functionDefaultRegions: z.array(types.string()),
-  functionDefaultTimeout: types.optional(types.number()),
-  functionZeroConfigFailover: types.optional(types.boolean()),
-  isNSNBDisabled: types.optional(types.boolean()),
-  elasticBuildMachine: types.optional(
-    z.union([
+    buildMachineElasticTransition: types.optional(z.lazy(() =>
+      UploadProjectAvatarBuildMachineElasticTransition$inboundSchema
+    )),
+    buildMachineSelection: types.optional(
+      UploadProjectAvatarBuildMachineSelection$inboundSchema,
+    ),
+    buildMachineType: types.optional(
+      UploadProjectAvatarBuildMachineType$inboundSchema,
+    ),
+    buildQueue: types.optional(z.lazy(() =>
+      UploadProjectAvatarBuildQueue$inboundSchema
+    )),
+    elasticConcurrencyEnabled: types.optional(types.boolean()),
+    enableFunctionsBeta: types.optional(types.boolean()),
+    fluid: types.optional(types.boolean()),
+    functionDefaultMemoryType: types.optional(
+      UploadProjectAvatarFunctionDefaultMemoryType$inboundSchema,
+    ),
+    functionDefaultRegions: z.array(types.string()),
+    functionDefaultTimeout: types.optional(types.number()),
+    functionZeroConfigFailover: types.optional(types.boolean()),
+    isNSNBDisabled: types.optional(types.boolean()),
+    elasticBuildMachine: types.optional(z.union([
       z.lazy(() => UploadProjectAvatarElasticBuildMachine1$inboundSchema),
-      z.lazy(() => UploadProjectAvatarElasticBuildMachine2$inboundSchema),
+      z.lazy(() =>
+        UploadProjectAvatarElasticBuildMachine2$inboundSchema
+      ),
       z.lazy(() => UploadProjectAvatarElasticBuildMachine3$inboundSchema),
       z.lazy(() => UploadProjectAvatarElasticBuildMachine4$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function uploadProjectAvatarDefaultResourceConfigFromJSON(
   jsonString: string,
@@ -2772,13 +2889,15 @@ export const UploadProjectAvatarDeploymentExpiration$inboundSchema: z.ZodType<
   UploadProjectAvatarDeploymentExpiration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentsToKeep: types.optional(types.number()),
-  expirationDays: types.optional(types.number()),
-  expirationDaysCanceled: types.optional(types.number()),
-  expirationDaysErrored: types.optional(types.number()),
-  expirationDaysProduction: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentsToKeep: types.optional(types.number()),
+    expirationDays: types.optional(types.number()),
+    expirationDaysCanceled: types.optional(types.number()),
+    expirationDaysErrored: types.optional(types.number()),
+    expirationDaysProduction: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarDeploymentExpirationFromJSON(
   jsonString: string,
@@ -2801,10 +2920,12 @@ export const UploadProjectAvatarEnvironments2$inboundSchema: z.ZodType<
   UploadProjectAvatarEnvironments2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environmentId: types.string(),
-  type: types.literal("custom"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environmentId: types.string(),
+    type: types.literal("custom"),
+  })
+);
 
 export function uploadProjectAvatarEnvironments2FromJSON(
   jsonString: string,
@@ -2818,19 +2939,22 @@ export function uploadProjectAvatarEnvironments2FromJSON(
 
 /** @internal */
 export const UploadProjectAvatarEnvironmentsTarget$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarEnvironmentsTarget> = z.nativeEnum(
-    UploadProjectAvatarEnvironmentsTarget,
-  );
+  z.ZodNativeEnum<typeof UploadProjectAvatarEnvironmentsTarget> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarEnvironmentsTarget)
+    );
 
 /** @internal */
 export const UploadProjectAvatarEnvironments1$inboundSchema: z.ZodType<
   UploadProjectAvatarEnvironments1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  target: UploadProjectAvatarEnvironmentsTarget$inboundSchema,
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    target: UploadProjectAvatarEnvironmentsTarget$inboundSchema,
+    type: types.literal("system"),
+  })
+);
 
 export function uploadProjectAvatarEnvironments1FromJSON(
   jsonString: string,
@@ -2847,10 +2971,12 @@ export const UploadProjectAvatarEnvironments$inboundSchema: z.ZodType<
   UploadProjectAvatarEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarEnvironments1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarEnvironments2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarEnvironments1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarEnvironments2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarEnvironmentsFromJSON(
   jsonString: string,
@@ -2865,23 +2991,23 @@ export function uploadProjectAvatarEnvironmentsFromJSON(
 /** @internal */
 export const UploadProjectAvatarSources$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarSources
-> = z.nativeEnum(UploadProjectAvatarSources);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarSources));
 
 /** @internal */
 export const UploadProjectAvatarDeploymentSources$inboundSchema: z.ZodType<
   UploadProjectAvatarDeploymentSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  environments: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    environments: z.array(z.union([
       z.lazy(() => UploadProjectAvatarEnvironments1$inboundSchema),
       z.lazy(() => UploadProjectAvatarEnvironments2$inboundSchema),
-    ]),
-  ),
-  sources: z.array(UploadProjectAvatarSources$inboundSchema),
-});
+    ])),
+    sources: z.array(UploadProjectAvatarSources$inboundSchema),
+  })
+);
 
 export function uploadProjectAvatarDeploymentSourcesFromJSON(
   jsonString: string,
@@ -2899,10 +3025,12 @@ export const UploadProjectAvatarEnvironmentsProjects2$inboundSchema: z.ZodType<
   UploadProjectAvatarEnvironmentsProjects2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environmentId: types.string(),
-  type: types.literal("custom"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environmentId: types.string(),
+    type: types.literal("custom"),
+  })
+);
 
 export function uploadProjectAvatarEnvironmentsProjects2FromJSON(
   jsonString: string,
@@ -2922,18 +3050,22 @@ export function uploadProjectAvatarEnvironmentsProjects2FromJSON(
 
 /** @internal */
 export const UploadProjectAvatarEnvironmentsProjectsTarget$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarEnvironmentsProjectsTarget> = z
-    .nativeEnum(UploadProjectAvatarEnvironmentsProjectsTarget);
+  z.ZodNativeEnum<typeof UploadProjectAvatarEnvironmentsProjectsTarget> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarEnvironmentsProjectsTarget)
+    );
 
 /** @internal */
 export const UploadProjectAvatarEnvironmentsProjects1$inboundSchema: z.ZodType<
   UploadProjectAvatarEnvironmentsProjects1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  target: UploadProjectAvatarEnvironmentsProjectsTarget$inboundSchema,
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    target: UploadProjectAvatarEnvironmentsProjectsTarget$inboundSchema,
+    type: types.literal("system"),
+  })
+);
 
 export function uploadProjectAvatarEnvironmentsProjects1FromJSON(
   jsonString: string,
@@ -2956,10 +3088,12 @@ export const UploadProjectAvatarProjectsEnvironments$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarEnvironmentsProjects1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarEnvironmentsProjects2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarEnvironmentsProjects1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarEnvironmentsProjects2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarProjectsEnvironmentsFromJSON(
   jsonString: string,
@@ -2982,11 +3116,13 @@ export const UploadProjectAvatarSources2$inboundSchema: z.ZodType<
   UploadProjectAvatarSources2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  namespace: types.string(),
-  project: types.optional(types.string()),
-  provider: types.literal("gitlab"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    namespace: types.string(),
+    project: types.optional(types.string()),
+    provider: types.literal("gitlab"),
+  })
+);
 
 export function uploadProjectAvatarSources2FromJSON(
   jsonString: string,
@@ -3001,18 +3137,22 @@ export function uploadProjectAvatarSources2FromJSON(
 /** @internal */
 export const UploadProjectAvatarSourcesProvider$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarSourcesProvider
-> = z.nativeEnum(UploadProjectAvatarSourcesProvider);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarSourcesProvider)
+);
 
 /** @internal */
 export const UploadProjectAvatarSources1$inboundSchema: z.ZodType<
   UploadProjectAvatarSources1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  org: types.string(),
-  provider: UploadProjectAvatarSourcesProvider$inboundSchema,
-  repo: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    org: types.string(),
+    provider: UploadProjectAvatarSourcesProvider$inboundSchema,
+    repo: types.optional(types.string()),
+  })
+);
 
 export function uploadProjectAvatarSources1FromJSON(
   jsonString: string,
@@ -3029,15 +3169,17 @@ export const UploadProjectAvatarProjectsSources$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsSources,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarSources1$inboundSchema).and(
-    z.object({ provider: z.literal("bitbucket") }),
-  ),
-  z.lazy(() => UploadProjectAvatarSources1$inboundSchema).and(
-    z.object({ provider: z.literal("github") }),
-  ),
-  z.lazy(() => UploadProjectAvatarSources2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarSources1$inboundSchema).and(
+      z.object({ provider: z.literal("bitbucket") }),
+    ),
+    z.lazy(() => UploadProjectAvatarSources1$inboundSchema).and(
+      z.object({ provider: z.literal("github") }),
+    ),
+    z.lazy(() => UploadProjectAvatarSources2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarProjectsSourcesFromJSON(
   jsonString: string,
@@ -3055,16 +3197,14 @@ export const UploadProjectAvatarGitSources$inboundSchema: z.ZodType<
   UploadProjectAvatarGitSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  environments: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    environments: z.array(z.union([
       z.lazy(() => UploadProjectAvatarEnvironmentsProjects1$inboundSchema),
       z.lazy(() => UploadProjectAvatarEnvironmentsProjects2$inboundSchema),
-    ]),
-  ),
-  sources: z.array(
-    z.union([
+    ])),
+    sources: z.array(z.union([
       z.lazy(() => UploadProjectAvatarSources1$inboundSchema).and(
         z.object({ provider: z.literal("bitbucket") }),
       ),
@@ -3072,9 +3212,9 @@ export const UploadProjectAvatarGitSources$inboundSchema: z.ZodType<
         z.object({ provider: z.literal("github") }),
       ),
       z.lazy(() => UploadProjectAvatarSources2$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function uploadProjectAvatarGitSourcesFromJSON(
   jsonString: string,
@@ -3091,14 +3231,16 @@ export const UploadProjectAvatarDeploymentPolicy$inboundSchema: z.ZodType<
   UploadProjectAvatarDeploymentPolicy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentSources: z.nullable(
-    z.array(z.lazy(() => UploadProjectAvatarDeploymentSources$inboundSchema)),
-  ).optional(),
-  gitSources: z.nullable(
-    z.array(z.lazy(() => UploadProjectAvatarGitSources$inboundSchema)),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentSources: z.nullable(
+      z.array(z.lazy(() => UploadProjectAvatarDeploymentSources$inboundSchema)),
+    ).optional(),
+    gitSources: z.nullable(
+      z.array(z.lazy(() => UploadProjectAvatarGitSources$inboundSchema)),
+    ).optional(),
+  })
+);
 
 export function uploadProjectAvatarDeploymentPolicyFromJSON(
   jsonString: string,
@@ -3114,14 +3256,16 @@ export function uploadProjectAvatarDeploymentPolicyFromJSON(
 /** @internal */
 export const UploadProjectAvatarAction$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarAction
-> = z.nativeEnum(UploadProjectAvatarAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarAction));
 
 /** @internal */
 export const UploadProjectAvatarValueCurrentValue$inboundSchema: z.ZodType<
   UploadProjectAvatarValueCurrentValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number(), types.boolean()])
+);
 
 export function uploadProjectAvatarValueCurrentValueFromJSON(
   jsonString: string,
@@ -3139,7 +3283,9 @@ export const UploadProjectAvatarValuePreviousValue$inboundSchema: z.ZodType<
   UploadProjectAvatarValuePreviousValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number(), types.boolean()])
+);
 
 export function uploadProjectAvatarValuePreviousValueFromJSON(
   jsonString: string,
@@ -3157,10 +3303,16 @@ export const UploadProjectAvatarValue3$inboundSchema: z.ZodType<
   UploadProjectAvatarValue3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
-  previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
+    previousValue: smartUnion([
+      types.string(),
+      types.number(),
+      types.boolean(),
+    ]),
+  })
+);
 
 export function uploadProjectAvatarValue3FromJSON(
   jsonString: string,
@@ -3177,12 +3329,14 @@ export const UploadProjectAvatarValue$inboundSchema: z.ZodType<
   UploadProjectAvatarValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarValue3$inboundSchema),
-  types.string(),
-  types.number(),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UploadProjectAvatarValue3$inboundSchema),
+    types.string(),
+    types.number(),
+    types.boolean(),
+  ])
+);
 
 export function uploadProjectAvatarValueFromJSON(
   jsonString: string,
@@ -3199,19 +3353,19 @@ export const UploadProjectAvatarDismissedToasts$inboundSchema: z.ZodType<
   UploadProjectAvatarDismissedToasts,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: UploadProjectAvatarAction$inboundSchema,
-  dismissedAt: types.number(),
-  key: types.string(),
-  value: types.nullable(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: UploadProjectAvatarAction$inboundSchema,
+    dismissedAt: types.number(),
+    key: types.string(),
+    value: types.nullable(smartUnion([
       z.lazy(() => UploadProjectAvatarValue3$inboundSchema),
       types.string(),
       types.number(),
       types.boolean(),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function uploadProjectAvatarDismissedToastsFromJSON(
   jsonString: string,
@@ -3229,10 +3383,12 @@ export const UploadProjectAvatarContentHint17$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint17,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectId: types.string(),
-  type: types.literal("flags-connection-string"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: types.string(),
+    type: types.literal("flags-connection-string"),
+  })
+);
 
 export function uploadProjectAvatarContentHint17FromJSON(
   jsonString: string,
@@ -3249,13 +3405,15 @@ export const UploadProjectAvatarContentHint16$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint16,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  integrationProductId: types.string(),
-  storeId: types.string(),
-  type: types.literal("integration-store-secret"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    integrationProductId: types.string(),
+    storeId: types.string(),
+    type: types.literal("integration-store-secret"),
+  })
+);
 
 export function uploadProjectAvatarContentHint16FromJSON(
   jsonString: string,
@@ -3272,10 +3430,12 @@ export const UploadProjectAvatarContentHint15$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint15,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-no-ssl"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-no-ssl"),
+  })
+);
 
 export function uploadProjectAvatarContentHint15FromJSON(
   jsonString: string,
@@ -3292,10 +3452,12 @@ export const UploadProjectAvatarContentHint14$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint14,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-database"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-database"),
+  })
+);
 
 export function uploadProjectAvatarContentHint14FromJSON(
   jsonString: string,
@@ -3312,10 +3474,12 @@ export const UploadProjectAvatarContentHint13$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint13,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-password"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-password"),
+  })
+);
 
 export function uploadProjectAvatarContentHint13FromJSON(
   jsonString: string,
@@ -3332,10 +3496,12 @@ export const UploadProjectAvatarContentHint12$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint12,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-host"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-host"),
+  })
+);
 
 export function uploadProjectAvatarContentHint12FromJSON(
   jsonString: string,
@@ -3352,10 +3518,12 @@ export const UploadProjectAvatarContentHint11$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint11,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-user"),
+  })
+);
 
 export function uploadProjectAvatarContentHint11FromJSON(
   jsonString: string,
@@ -3372,10 +3540,12 @@ export const UploadProjectAvatarContentHint10$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint10,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-prisma-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-prisma-url"),
+  })
+);
 
 export function uploadProjectAvatarContentHint10FromJSON(
   jsonString: string,
@@ -3392,10 +3562,12 @@ export const UploadProjectAvatarContentHint9$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint9,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-non-pooling"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-non-pooling"),
+  })
+);
 
 export function uploadProjectAvatarContentHint9FromJSON(
   jsonString: string,
@@ -3412,10 +3584,12 @@ export const UploadProjectAvatarContentHint8$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint8,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url"),
+  })
+);
 
 export function uploadProjectAvatarContentHint8FromJSON(
   jsonString: string,
@@ -3432,10 +3606,12 @@ export const UploadProjectAvatarContentHint7$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-webhook-public-key"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-webhook-public-key"),
+  })
+);
 
 export function uploadProjectAvatarContentHint7FromJSON(
   jsonString: string,
@@ -3452,10 +3628,12 @@ export const UploadProjectAvatarContentHint6$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-store-id"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-store-id"),
+  })
+);
 
 export function uploadProjectAvatarContentHint6FromJSON(
   jsonString: string,
@@ -3472,10 +3650,12 @@ export const UploadProjectAvatarContentHint5$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-read-write-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-read-write-token"),
+  })
+);
 
 export function uploadProjectAvatarContentHint5FromJSON(
   jsonString: string,
@@ -3492,10 +3672,12 @@ export const UploadProjectAvatarContentHint4$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-read-only-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-read-only-token"),
+  })
+);
 
 export function uploadProjectAvatarContentHint4FromJSON(
   jsonString: string,
@@ -3512,10 +3694,12 @@ export const UploadProjectAvatarContentHint3$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-token"),
+  })
+);
 
 export function uploadProjectAvatarContentHint3FromJSON(
   jsonString: string,
@@ -3532,10 +3716,12 @@ export const UploadProjectAvatarContentHint2$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-url"),
+  })
+);
 
 export function uploadProjectAvatarContentHint2FromJSON(
   jsonString: string,
@@ -3552,10 +3738,12 @@ export const UploadProjectAvatarContentHint1$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-url"),
+  })
+);
 
 export function uploadProjectAvatarContentHint1FromJSON(
   jsonString: string,
@@ -3572,25 +3760,27 @@ export const UploadProjectAvatarContentHint$inboundSchema: z.ZodType<
   UploadProjectAvatarContentHint,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarContentHint1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint2$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint3$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint4$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint5$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint6$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint7$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint8$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint9$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint10$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint11$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint12$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint13$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint14$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint15$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint16$inboundSchema),
-  z.lazy(() => UploadProjectAvatarContentHint17$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarContentHint1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint2$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint3$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint4$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint5$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint6$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint7$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint8$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint9$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint10$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint11$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint12$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint13$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint14$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint15$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint16$inboundSchema),
+    z.lazy(() => UploadProjectAvatarContentHint17$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarContentHintFromJSON(
   jsonString: string,
@@ -3606,8 +3796,10 @@ export function uploadProjectAvatarContentHintFromJSON(
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType
-  > = z.nativeEnum(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType,
+    )
   );
 
 /** @internal */
@@ -3615,11 +3807,13 @@ export const UploadProjectAvatarInternalContentHint$inboundSchema: z.ZodType<
   UploadProjectAvatarInternalContentHint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  encryptedValue: types.string(),
-  type:
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    encryptedValue: types.string(),
+    type:
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarInternalContentHintFromJSON(
   jsonString: string,
@@ -3635,22 +3829,24 @@ export function uploadProjectAvatarInternalContentHintFromJSON(
 /** @internal */
 export const UploadProjectAvatarTarget2$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarTarget2
-> = z.nativeEnum(UploadProjectAvatarTarget2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarTarget2));
 
 /** @internal */
 export const UploadProjectAvatarTarget1$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarTarget1
-> = z.nativeEnum(UploadProjectAvatarTarget1);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarTarget1));
 
 /** @internal */
 export const UploadProjectAvatarProjectsTarget$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(UploadProjectAvatarTarget1$inboundSchema),
-  UploadProjectAvatarTarget2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(UploadProjectAvatarTarget1$inboundSchema),
+    UploadProjectAvatarTarget2$inboundSchema,
+  ])
+);
 
 export function uploadProjectAvatarProjectsTargetFromJSON(
   jsonString: string,
@@ -3665,23 +3861,27 @@ export function uploadProjectAvatarProjectsTargetFromJSON(
 /** @internal */
 export const UploadProjectAvatarProjectsType$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarProjectsType
-> = z.nativeEnum(UploadProjectAvatarProjectsType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarProjectsType)
+);
 
 /** @internal */
 export const UploadProjectAvatarVisibility$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarVisibility
-> = z.nativeEnum(UploadProjectAvatarVisibility);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarVisibility)
+);
 
 /** @internal */
 export const UploadProjectAvatarEnv$inboundSchema: z.ZodType<
   UploadProjectAvatarEnv,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  configurationId: z.nullable(types.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    configurationId: z.nullable(types.string()).optional(),
+    contentHint: z.nullable(z.union([
       z.lazy(() => UploadProjectAvatarContentHint1$inboundSchema),
       z.lazy(() => UploadProjectAvatarContentHint2$inboundSchema),
       z.lazy(() => UploadProjectAvatarContentHint3$inboundSchema),
@@ -3699,35 +3899,35 @@ export const UploadProjectAvatarEnv$inboundSchema: z.ZodType<
       z.lazy(() => UploadProjectAvatarContentHint15$inboundSchema),
       z.lazy(() => UploadProjectAvatarContentHint16$inboundSchema),
       z.lazy(() => UploadProjectAvatarContentHint17$inboundSchema),
-    ]),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  id: types.optional(types.string()),
-  internalContentHint: z.nullable(
-    z.lazy(() => UploadProjectAvatarInternalContentHint$inboundSchema),
-  ).optional(),
-  key: types.string(),
-  legacyValue: types.optional(types.string()),
-  sunsetSecretId: types.optional(types.string()),
-  target: types.optional(
-    smartUnion([
-      z.array(UploadProjectAvatarTarget1$inboundSchema),
-      UploadProjectAvatarTarget2$inboundSchema,
-    ]),
-  ),
-  type: UploadProjectAvatarProjectsType$inboundSchema,
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.string(),
-  visibility: types.optional(UploadProjectAvatarVisibility$inboundSchema),
-  vsmValue: types.optional(types.string()),
-});
+    ])).optional(),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.optional(types.boolean()),
+    edgeConfigId: z.nullable(types.string()).optional(),
+    edgeConfigTokenId: z.nullable(types.string()).optional(),
+    gitBranch: types.optional(types.string()),
+    id: types.optional(types.string()),
+    internalContentHint: z.nullable(z.lazy(() =>
+      UploadProjectAvatarInternalContentHint$inboundSchema
+    )).optional(),
+    key: types.string(),
+    legacyValue: types.optional(types.string()),
+    sunsetSecretId: types.optional(types.string()),
+    target: types.optional(
+      smartUnion([
+        z.array(UploadProjectAvatarTarget1$inboundSchema),
+        UploadProjectAvatarTarget2$inboundSchema,
+      ]),
+    ),
+    type: UploadProjectAvatarProjectsType$inboundSchema,
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.string(),
+    visibility: types.optional(UploadProjectAvatarVisibility$inboundSchema),
+    vsmValue: types.optional(types.string()),
+  })
+);
 
 export function uploadProjectAvatarEnvFromJSON(
   jsonString: string,
@@ -3744,10 +3944,12 @@ export const UploadProjectAvatarExpiration2$inboundSchema: z.ZodType<
   UploadProjectAvatarExpiration2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  lockedAt: types.number(),
-  lockedBy: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lockedAt: types.number(),
+    lockedBy: types.string(),
+  })
+);
 
 export function uploadProjectAvatarExpiration2FromJSON(
   jsonString: string,
@@ -3764,9 +3966,11 @@ export const UploadProjectAvatarExpiration1$inboundSchema: z.ZodType<
   UploadProjectAvatarExpiration1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expiresAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expiresAt: types.number(),
+  })
+);
 
 export function uploadProjectAvatarExpiration1FromJSON(
   jsonString: string,
@@ -3783,10 +3987,12 @@ export const UploadProjectAvatarExpiration$inboundSchema: z.ZodType<
   UploadProjectAvatarExpiration,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarExpiration2$inboundSchema),
-  z.lazy(() => UploadProjectAvatarExpiration1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UploadProjectAvatarExpiration2$inboundSchema),
+    z.lazy(() => UploadProjectAvatarExpiration1$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarExpirationFromJSON(
   jsonString: string,
@@ -3803,9 +4009,11 @@ export const UploadProjectAvatarFeatures$inboundSchema: z.ZodType<
   UploadProjectAvatarFeatures,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  webAnalytics: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webAnalytics: types.optional(types.boolean()),
+  })
+);
 
 export function uploadProjectAvatarFeaturesFromJSON(
   jsonString: string,
@@ -3820,17 +4028,21 @@ export function uploadProjectAvatarFeaturesFromJSON(
 /** @internal */
 export const UploadProjectAvatarFramework$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarFramework
-> = z.nativeEnum(UploadProjectAvatarFramework);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarFramework)
+);
 
 /** @internal */
 export const UploadProjectAvatarGitComments$inboundSchema: z.ZodType<
   UploadProjectAvatarGitComments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  onCommit: types.boolean(),
-  onPullRequest: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    onCommit: types.boolean(),
+    onPullRequest: types.boolean(),
+  })
+);
 
 export function uploadProjectAvatarGitCommentsFromJSON(
   jsonString: string,
@@ -3848,10 +4060,12 @@ export const UploadProjectAvatarConsolidatedGitCommitStatus$inboundSchema:
     UploadProjectAvatarConsolidatedGitCommitStatus,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    enabled: types.boolean(),
-    propagateFailures: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      enabled: types.boolean(),
+      propagateFailures: types.boolean(),
+    })
+  );
 
 export function uploadProjectAvatarConsolidatedGitCommitStatusFromJSON(
   jsonString: string,
@@ -3871,24 +4085,29 @@ export function uploadProjectAvatarConsolidatedGitCommitStatusFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarCreateDeployments$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarCreateDeployments> = z.nativeEnum(
-    UploadProjectAvatarCreateDeployments,
-  );
+  z.ZodNativeEnum<typeof UploadProjectAvatarCreateDeployments> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarCreateDeployments)
+    );
 
 /** @internal */
 export const UploadProjectAvatarGitProviderOptions$inboundSchema: z.ZodType<
   UploadProjectAvatarGitProviderOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  consolidatedGitCommitStatus: types.optional(
-    z.lazy(() => UploadProjectAvatarConsolidatedGitCommitStatus$inboundSchema),
-  ),
-  createDeployments: UploadProjectAvatarCreateDeployments$inboundSchema,
-  disableRepositoryDispatchEvents: types.optional(types.boolean()),
-  gitCommitStatus: types.optional(types.boolean()),
-  requireVerifiedCommits: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    consolidatedGitCommitStatus: types.optional(
+      z.lazy(() =>
+        UploadProjectAvatarConsolidatedGitCommitStatus$inboundSchema
+      ),
+    ),
+    createDeployments: UploadProjectAvatarCreateDeployments$inboundSchema,
+    disableRepositoryDispatchEvents: types.optional(types.boolean()),
+    gitCommitStatus: types.optional(types.boolean()),
+    requireVerifiedCommits: types.optional(types.boolean()),
+  })
+);
 
 export function uploadProjectAvatarGitProviderOptionsFromJSON(
   jsonString: string,
@@ -3906,9 +4125,11 @@ export const UploadProjectAvatarHasProjectsValue$inboundSchema: z.ZodType<
   UploadProjectAvatarHasProjectsValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eq: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eq: types.string(),
+  })
+);
 
 export function uploadProjectAvatarHasProjectsValueFromJSON(
   jsonString: string,
@@ -3926,10 +4147,12 @@ export const UploadProjectAvatarHas2$inboundSchema: z.ZodType<
   UploadProjectAvatarHas2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("host"),
-  value: z.lazy(() => UploadProjectAvatarHasProjectsValue$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("host"),
+    value: z.lazy(() => UploadProjectAvatarHasProjectsValue$inboundSchema),
+  })
+);
 
 export function uploadProjectAvatarHas2FromJSON(
   jsonString: string,
@@ -3944,16 +4167,18 @@ export function uploadProjectAvatarHas2FromJSON(
 /** @internal */
 export const UploadProjectAvatarHasKey$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarHasKey
-> = z.nativeEnum(UploadProjectAvatarHasKey);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarHasKey));
 
 /** @internal */
 export const UploadProjectAvatarHasValue$inboundSchema: z.ZodType<
   UploadProjectAvatarHasValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eq: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eq: types.string(),
+  })
+);
 
 export function uploadProjectAvatarHasValueFromJSON(
   jsonString: string,
@@ -3970,11 +4195,13 @@ export const UploadProjectAvatarHas1$inboundSchema: z.ZodType<
   UploadProjectAvatarHas1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  key: UploadProjectAvatarHasKey$inboundSchema,
-  type: types.literal("header"),
-  value: z.lazy(() => UploadProjectAvatarHasValue$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: UploadProjectAvatarHasKey$inboundSchema,
+    type: types.literal("header"),
+    value: z.lazy(() => UploadProjectAvatarHasValue$inboundSchema),
+  })
+);
 
 export function uploadProjectAvatarHas1FromJSON(
   jsonString: string,
@@ -3991,10 +4218,12 @@ export const UploadProjectAvatarInternalRoutesHas$inboundSchema: z.ZodType<
   UploadProjectAvatarInternalRoutesHas,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarHas1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarHas2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarHas1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarHas2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarInternalRoutesHasFromJSON(
   jsonString: string,
@@ -4009,17 +4238,21 @@ export function uploadProjectAvatarInternalRoutesHasFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarInternalRoutesAction$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarInternalRoutesAction> = z
-    .nativeEnum(UploadProjectAvatarInternalRoutesAction);
+  z.ZodNativeEnum<typeof UploadProjectAvatarInternalRoutesAction> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarInternalRoutesAction)
+    );
 
 /** @internal */
 export const UploadProjectAvatarInternalRoutesMitigate$inboundSchema: z.ZodType<
   UploadProjectAvatarInternalRoutesMitigate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: UploadProjectAvatarInternalRoutesAction$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: UploadProjectAvatarInternalRoutesAction$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarInternalRoutesMitigateFromJSON(
   jsonString: string,
@@ -4042,18 +4275,18 @@ export const UploadProjectAvatarInternalRoutes2$inboundSchema: z.ZodType<
   UploadProjectAvatarInternalRoutes2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  has: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    has: z.array(z.union([
       z.lazy(() => UploadProjectAvatarHas1$inboundSchema),
       z.lazy(() => UploadProjectAvatarHas2$inboundSchema),
-    ]),
-  ),
-  mitigate: z.lazy(() =>
-    UploadProjectAvatarInternalRoutesMitigate$inboundSchema
-  ),
-  src: types.optional(types.string()),
-});
+    ])),
+    mitigate: z.lazy(() =>
+      UploadProjectAvatarInternalRoutesMitigate$inboundSchema
+    ),
+    src: types.optional(types.string()),
+  })
+);
 
 export function uploadProjectAvatarInternalRoutes2FromJSON(
   jsonString: string,
@@ -4071,11 +4304,13 @@ export const UploadProjectAvatarInternalRoutes1$inboundSchema: z.ZodType<
   UploadProjectAvatarInternalRoutes1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expiry: types.optional(types.number()),
-  src: types.string(),
-  status: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expiry: types.optional(types.number()),
+    src: types.string(),
+    status: types.number(),
+  })
+);
 
 export function uploadProjectAvatarInternalRoutes1FromJSON(
   jsonString: string,
@@ -4093,10 +4328,12 @@ export const UploadProjectAvatarInternalRoutes$inboundSchema: z.ZodType<
   UploadProjectAvatarInternalRoutes,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarInternalRoutes1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarInternalRoutes2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UploadProjectAvatarInternalRoutes1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarInternalRoutes2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarInternalRoutesFromJSON(
   jsonString: string,
@@ -4113,11 +4350,13 @@ export const UploadProjectAvatarIpBuckets$inboundSchema: z.ZodType<
   UploadProjectAvatarIpBuckets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bucket: types.string(),
-  default: types.optional(types.boolean()),
-  supportUntil: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bucket: types.string(),
+    default: types.optional(types.boolean()),
+    supportUntil: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarIpBucketsFromJSON(
   jsonString: string,
@@ -4134,9 +4373,11 @@ export const UploadProjectAvatarFlagDefinitionsPresent$inboundSchema: z.ZodType<
   UploadProjectAvatarFlagDefinitionsPresent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function uploadProjectAvatarFlagDefinitionsPresentFromJSON(
   jsonString: string,
@@ -4159,9 +4400,11 @@ export const UploadProjectAvatarHealthCheck$inboundSchema: z.ZodType<
   UploadProjectAvatarHealthCheck,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function uploadProjectAvatarHealthCheckFromJSON(
   jsonString: string,
@@ -4178,9 +4421,11 @@ export const UploadProjectAvatarLint$inboundSchema: z.ZodType<
   UploadProjectAvatarLint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function uploadProjectAvatarLintFromJSON(
   jsonString: string,
@@ -4197,9 +4442,11 @@ export const UploadProjectAvatarMfeConfigPresent$inboundSchema: z.ZodType<
   UploadProjectAvatarMfeConfigPresent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function uploadProjectAvatarMfeConfigPresentFromJSON(
   jsonString: string,
@@ -4217,9 +4464,11 @@ export const UploadProjectAvatarTypecheck$inboundSchema: z.ZodType<
   UploadProjectAvatarTypecheck,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function uploadProjectAvatarTypecheckFromJSON(
   jsonString: string,
@@ -4236,27 +4485,29 @@ export const UploadProjectAvatarJobs$inboundSchema: z.ZodType<
   UploadProjectAvatarJobs,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "flag-definitions-present": types.optional(
-    z.lazy(() => UploadProjectAvatarFlagDefinitionsPresent$inboundSchema),
-  ),
-  "health-check": types.optional(
-    z.lazy(() => UploadProjectAvatarHealthCheck$inboundSchema),
-  ),
-  lint: types.optional(z.lazy(() => UploadProjectAvatarLint$inboundSchema)),
-  "mfe-config-present": types.optional(
-    z.lazy(() => UploadProjectAvatarMfeConfigPresent$inboundSchema),
-  ),
-  typecheck: types.optional(
-    z.lazy(() => UploadProjectAvatarTypecheck$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "flag-definitions-present": "flagDefinitionsPresent",
-    "health-check": "healthCheck",
-    "mfe-config-present": "mfeConfigPresent",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "flag-definitions-present": types.optional(
+      z.lazy(() => UploadProjectAvatarFlagDefinitionsPresent$inboundSchema),
+    ),
+    "health-check": types.optional(
+      z.lazy(() => UploadProjectAvatarHealthCheck$inboundSchema),
+    ),
+    lint: types.optional(z.lazy(() => UploadProjectAvatarLint$inboundSchema)),
+    "mfe-config-present": types.optional(
+      z.lazy(() => UploadProjectAvatarMfeConfigPresent$inboundSchema),
+    ),
+    typecheck: types.optional(
+      z.lazy(() => UploadProjectAvatarTypecheck$inboundSchema),
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "flag-definitions-present": "flagDefinitionsPresent",
+      "health-check": "healthCheck",
+      "mfe-config-present": "mfeConfigPresent",
+    });
+  })
+);
 
 export function uploadProjectAvatarJobsFromJSON(
   jsonString: string,
@@ -4271,26 +4522,32 @@ export function uploadProjectAvatarJobsFromJSON(
 /** @internal */
 export const UploadProjectAvatarJobStatus$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarJobStatus
-> = z.nativeEnum(UploadProjectAvatarJobStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarJobStatus)
+);
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseType> = z
-    .nativeEnum(UploadProjectAvatarProjectsResponseType);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsResponseType)
+    );
 
 /** @internal */
 export const UploadProjectAvatarLastAliasRequest$inboundSchema: z.ZodType<
   UploadProjectAvatarLastAliasRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fromDeploymentId: types.nullable(types.string()),
-  fromRollingReleaseId: types.optional(types.string()),
-  jobStatus: UploadProjectAvatarJobStatus$inboundSchema,
-  requestedAt: types.number(),
-  toDeploymentId: types.string(),
-  type: UploadProjectAvatarProjectsResponseType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fromDeploymentId: types.nullable(types.string()),
+    fromRollingReleaseId: types.optional(types.string()),
+    jobStatus: UploadProjectAvatarJobStatus$inboundSchema,
+    requestedAt: types.number(),
+    toDeploymentId: types.string(),
+    type: UploadProjectAvatarProjectsResponseType$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarLastAliasRequestFromJSON(
   jsonString: string,
@@ -4308,7 +4565,7 @@ export const UploadProjectAvatarLastRollbackTarget$inboundSchema: z.ZodType<
   UploadProjectAvatarLastRollbackTarget,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function uploadProjectAvatarLastRollbackTargetFromJSON(
   jsonString: string,
@@ -4326,7 +4583,9 @@ export const UploadProjectAvatarAliasAssigned$inboundSchema: z.ZodType<
   UploadProjectAvatarAliasAssigned,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.boolean()])
+);
 
 export function uploadProjectAvatarAliasAssignedFromJSON(
   jsonString: string,
@@ -4343,10 +4602,12 @@ export const UploadProjectAvatarAliasError$inboundSchema: z.ZodType<
   UploadProjectAvatarAliasError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function uploadProjectAvatarAliasErrorFromJSON(
   jsonString: string,
@@ -4362,8 +4623,10 @@ export function uploadProjectAvatarAliasErrorFromJSON(
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType
-  > = z.nativeEnum(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType,
+    )
   );
 
 /** @internal */
@@ -4371,11 +4634,13 @@ export const UploadProjectAvatarProjectsBranchMatcher$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsBranchMatcher,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pattern: types.string(),
-  type:
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pattern: types.string(),
+    type:
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarProjectsBranchMatcherFromJSON(
   jsonString: string,
@@ -4398,11 +4663,13 @@ export const UploadProjectAvatarBuilds$inboundSchema: z.ZodType<
   UploadProjectAvatarBuilds,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dest: types.optional(types.string()),
-  src: types.optional(types.string()),
-  use: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dest: types.optional(types.string()),
+    src: types.optional(types.string()),
+    use: types.string(),
+  })
+);
 
 export function uploadProjectAvatarBuildsFromJSON(
   jsonString: string,
@@ -4417,4 +4684,6 @@ export function uploadProjectAvatarBuildsFromJSON(
 /** @internal */
 export const UploadProjectAvatarChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarChecksConclusion
-> = z.nativeEnum(UploadProjectAvatarChecksConclusion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarChecksConclusion)
+);

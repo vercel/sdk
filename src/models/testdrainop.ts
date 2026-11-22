@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -160,9 +160,11 @@ export const TestDrainSchemas$outboundSchema: z.ZodType<
   TestDrainSchemas$Outbound,
   z.ZodTypeDef,
   TestDrainSchemas
-> = z.object({
-  version: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.string(),
+  })
+);
 
 export function testDrainSchemasToJSON(
   testDrainSchemas: TestDrainSchemas,
@@ -174,30 +176,36 @@ export function testDrainSchemasToJSON(
 
 /** @internal */
 export const TestDrainDeliveryDrainsRequestEncoding$outboundSchema:
-  z.ZodNativeEnum<typeof TestDrainDeliveryDrainsRequestEncoding> = z.nativeEnum(
-    TestDrainDeliveryDrainsRequestEncoding,
-  );
+  z.ZodNativeEnum<typeof TestDrainDeliveryDrainsRequestEncoding> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(TestDrainDeliveryDrainsRequestEncoding)
+    );
 
 /** @internal */
 export const TestDrainDeliveryDrainsCompression$outboundSchema: z.ZodNativeEnum<
   typeof TestDrainDeliveryDrainsCompression
-> = z.nativeEnum(TestDrainDeliveryDrainsCompression);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(TestDrainDeliveryDrainsCompression)
+);
 
 /** @internal */
 export const TestDrainDeliveryFileStructure$outboundSchema: z.ZodNativeEnum<
   typeof TestDrainDeliveryFileStructure
-> = z.nativeEnum(TestDrainDeliveryFileStructure);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(TestDrainDeliveryFileStructure)
+);
 
 /** @internal */
 export const TestDrainDeliveryServerSideEncryption$outboundSchema:
-  z.ZodNativeEnum<typeof TestDrainDeliveryServerSideEncryption> = z.nativeEnum(
-    TestDrainDeliveryServerSideEncryption,
-  );
+  z.ZodNativeEnum<typeof TestDrainDeliveryServerSideEncryption> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(TestDrainDeliveryServerSideEncryption)
+    );
 
 /** @internal */
 export const TestDrainDeliveryObjectAcl$outboundSchema: z.ZodNativeEnum<
   typeof TestDrainDeliveryObjectAcl
-> = z.nativeEnum(TestDrainDeliveryObjectAcl);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TestDrainDeliveryObjectAcl));
 
 /** @internal */
 export type TestDrainDelivery3$Outbound = {
@@ -218,19 +226,21 @@ export const TestDrainDelivery3$outboundSchema: z.ZodType<
   TestDrainDelivery3$Outbound,
   z.ZodTypeDef,
   TestDrainDelivery3
-> = z.object({
-  type: z.string(),
-  endpoint: z.string(),
-  encoding: TestDrainDeliveryDrainsRequestEncoding$outboundSchema,
-  compression: TestDrainDeliveryDrainsCompression$outboundSchema,
-  fileStructure: TestDrainDeliveryFileStructure$outboundSchema,
-  roleArn: z.string(),
-  region: z.string(),
-  serverSideEncryption: TestDrainDeliveryServerSideEncryption$outboundSchema
-    .default("AES256"),
-  kmsKeyId: z.string().optional(),
-  objectAcl: TestDrainDeliveryObjectAcl$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string(),
+    endpoint: z.string(),
+    encoding: TestDrainDeliveryDrainsRequestEncoding$outboundSchema,
+    compression: TestDrainDeliveryDrainsCompression$outboundSchema,
+    fileStructure: TestDrainDeliveryFileStructure$outboundSchema,
+    roleArn: z.string(),
+    region: z.string(),
+    serverSideEncryption: TestDrainDeliveryServerSideEncryption$outboundSchema
+      .default("AES256"),
+    kmsKeyId: z.string().optional(),
+    objectAcl: TestDrainDeliveryObjectAcl$outboundSchema.optional(),
+  })
+);
 
 export function testDrainDelivery3ToJSON(
   testDrainDelivery3: TestDrainDelivery3,
@@ -250,9 +260,11 @@ export const TestDrainEndpoint1$outboundSchema: z.ZodType<
   TestDrainEndpoint1$Outbound,
   z.ZodTypeDef,
   TestDrainEndpoint1
-> = z.object({
-  traces: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    traces: z.string(),
+  })
+);
 
 export function testDrainEndpoint1ToJSON(
   testDrainEndpoint1: TestDrainEndpoint1,
@@ -270,7 +282,9 @@ export const TestDrainDeliveryEndpoint$outboundSchema: z.ZodType<
   TestDrainDeliveryEndpoint$Outbound,
   z.ZodTypeDef,
   TestDrainDeliveryEndpoint
-> = z.lazy(() => TestDrainEndpoint1$outboundSchema);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.lazy(() => TestDrainEndpoint1$outboundSchema)
+);
 
 export function testDrainDeliveryEndpointToJSON(
   testDrainDeliveryEndpoint: TestDrainDeliveryEndpoint,
@@ -283,7 +297,9 @@ export function testDrainDeliveryEndpointToJSON(
 /** @internal */
 export const TestDrainDeliveryDrainsEncoding$outboundSchema: z.ZodNativeEnum<
   typeof TestDrainDeliveryDrainsEncoding
-> = z.nativeEnum(TestDrainDeliveryDrainsEncoding);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(TestDrainDeliveryDrainsEncoding)
+);
 
 /** @internal */
 export type TestDrainDelivery2$Outbound = {
@@ -299,13 +315,15 @@ export const TestDrainDelivery2$outboundSchema: z.ZodType<
   TestDrainDelivery2$Outbound,
   z.ZodTypeDef,
   TestDrainDelivery2
-> = z.object({
-  type: z.string(),
-  endpoint: z.lazy(() => TestDrainEndpoint1$outboundSchema),
-  encoding: TestDrainDeliveryDrainsEncoding$outboundSchema,
-  headers: z.record(z.string()),
-  secret: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string(),
+    endpoint: z.lazy(() => TestDrainEndpoint1$outboundSchema),
+    encoding: TestDrainDeliveryDrainsEncoding$outboundSchema,
+    headers: z.record(z.string()),
+    secret: z.string().optional(),
+  })
+);
 
 export function testDrainDelivery2ToJSON(
   testDrainDelivery2: TestDrainDelivery2,
@@ -318,12 +336,14 @@ export function testDrainDelivery2ToJSON(
 /** @internal */
 export const TestDrainDeliveryCompression$outboundSchema: z.ZodNativeEnum<
   typeof TestDrainDeliveryCompression
-> = z.nativeEnum(TestDrainDeliveryCompression);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(TestDrainDeliveryCompression)
+);
 
 /** @internal */
 export const TestDrainDeliveryEncoding$outboundSchema: z.ZodNativeEnum<
   typeof TestDrainDeliveryEncoding
-> = z.nativeEnum(TestDrainDeliveryEncoding);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TestDrainDeliveryEncoding));
 
 /** @internal */
 export type TestDrainDelivery1$Outbound = {
@@ -340,14 +360,16 @@ export const TestDrainDelivery1$outboundSchema: z.ZodType<
   TestDrainDelivery1$Outbound,
   z.ZodTypeDef,
   TestDrainDelivery1
-> = z.object({
-  type: z.string(),
-  endpoint: z.string(),
-  compression: TestDrainDeliveryCompression$outboundSchema.optional(),
-  encoding: TestDrainDeliveryEncoding$outboundSchema,
-  headers: z.record(z.string()),
-  secret: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string(),
+    endpoint: z.string(),
+    compression: TestDrainDeliveryCompression$outboundSchema.optional(),
+    encoding: TestDrainDeliveryEncoding$outboundSchema,
+    headers: z.record(z.string()),
+    secret: z.string().optional(),
+  })
+);
 
 export function testDrainDelivery1ToJSON(
   testDrainDelivery1: TestDrainDelivery1,
@@ -368,11 +390,13 @@ export const TestDrainDelivery$outboundSchema: z.ZodType<
   TestDrainDelivery$Outbound,
   z.ZodTypeDef,
   TestDrainDelivery
-> = smartUnion([
-  z.lazy(() => TestDrainDelivery3$outboundSchema),
-  z.lazy(() => TestDrainDelivery1$outboundSchema),
-  z.lazy(() => TestDrainDelivery2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => TestDrainDelivery3$outboundSchema),
+    z.lazy(() => TestDrainDelivery1$outboundSchema),
+    z.lazy(() => TestDrainDelivery2$outboundSchema),
+  ])
+);
 
 export function testDrainDeliveryToJSON(
   testDrainDelivery: TestDrainDelivery,
@@ -396,14 +420,16 @@ export const TestDrainRequestBody$outboundSchema: z.ZodType<
   TestDrainRequestBody$Outbound,
   z.ZodTypeDef,
   TestDrainRequestBody
-> = z.object({
-  schemas: z.record(z.lazy(() => TestDrainSchemas$outboundSchema)),
-  delivery: smartUnion([
-    z.lazy(() => TestDrainDelivery3$outboundSchema),
-    z.lazy(() => TestDrainDelivery1$outboundSchema),
-    z.lazy(() => TestDrainDelivery2$outboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    schemas: z.record(z.lazy(() => TestDrainSchemas$outboundSchema)),
+    delivery: smartUnion([
+      z.lazy(() => TestDrainDelivery3$outboundSchema),
+      z.lazy(() => TestDrainDelivery1$outboundSchema),
+      z.lazy(() => TestDrainDelivery2$outboundSchema),
+    ]),
+  })
+);
 
 export function testDrainRequestBodyToJSON(
   testDrainRequestBody: TestDrainRequestBody,
@@ -425,15 +451,17 @@ export const TestDrainRequest$outboundSchema: z.ZodType<
   TestDrainRequest$Outbound,
   z.ZodTypeDef,
   TestDrainRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => TestDrainRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => TestDrainRequestBody$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function testDrainRequestToJSON(
   testDrainRequest: TestDrainRequest,
@@ -448,11 +476,13 @@ export const TestDrainResponseBody2$inboundSchema: z.ZodType<
   TestDrainResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  endpoint: types.string(),
-  error: types.string(),
-  status: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    endpoint: types.string(),
+    error: types.string(),
+    status: types.string(),
+  })
+);
 
 export function testDrainResponseBody2FromJSON(
   jsonString: string,
@@ -469,7 +499,7 @@ export const TestDrainResponseBody1$inboundSchema: z.ZodType<
   TestDrainResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function testDrainResponseBody1FromJSON(
   jsonString: string,
@@ -486,10 +516,12 @@ export const TestDrainResponseBody$inboundSchema: z.ZodType<
   TestDrainResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => TestDrainResponseBody2$inboundSchema),
-  z.lazy(() => TestDrainResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => TestDrainResponseBody2$inboundSchema),
+    z.lazy(() => TestDrainResponseBody1$inboundSchema),
+  ])
+);
 
 export function testDrainResponseBodyFromJSON(
   jsonString: string,

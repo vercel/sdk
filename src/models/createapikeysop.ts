@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -223,7 +223,7 @@ export type CreateApiKeysResponseBody = {
 /** @internal */
 export const CreateApiKeysRefreshPeriod$outboundSchema: z.ZodNativeEnum<
   typeof CreateApiKeysRefreshPeriod
-> = z.nativeEnum(CreateApiKeysRefreshPeriod);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateApiKeysRefreshPeriod));
 
 /** @internal */
 export type AiGatewayQuota$Outbound = {
@@ -238,12 +238,14 @@ export const AiGatewayQuota$outboundSchema: z.ZodType<
   AiGatewayQuota$Outbound,
   z.ZodTypeDef,
   AiGatewayQuota
-> = z.object({
-  limitAmount: z.number(),
-  includeByokInQuota: z.boolean().default(false),
-  refreshPeriod: CreateApiKeysRefreshPeriod$outboundSchema.default("none"),
-  alertThresholds: z.array(z.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    limitAmount: z.number(),
+    includeByokInQuota: z.boolean().default(false),
+    refreshPeriod: CreateApiKeysRefreshPeriod$outboundSchema.default("none"),
+    alertThresholds: z.array(z.number()).optional(),
+  })
+);
 
 export function aiGatewayQuotaToJSON(aiGatewayQuota: AiGatewayQuota): string {
   return JSON.stringify(AiGatewayQuota$outboundSchema.parse(aiGatewayQuota));
@@ -264,14 +266,16 @@ export const CreateApiKeysRequestBody$outboundSchema: z.ZodType<
   CreateApiKeysRequestBody$Outbound,
   z.ZodTypeDef,
   CreateApiKeysRequestBody
-> = z.object({
-  purpose: z.string(),
-  projectId: z.string().optional(),
-  name: z.string().optional(),
-  expiresAt: z.number().optional(),
-  aiGatewayQuota: z.lazy(() => AiGatewayQuota$outboundSchema).optional(),
-  metadata: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    purpose: z.string(),
+    projectId: z.string().optional(),
+    name: z.string().optional(),
+    expiresAt: z.number().optional(),
+    aiGatewayQuota: z.lazy(() => AiGatewayQuota$outboundSchema).optional(),
+    metadata: z.record(z.any()).optional(),
+  })
+);
 
 export function createApiKeysRequestBodyToJSON(
   createApiKeysRequestBody: CreateApiKeysRequestBody,
@@ -286,10 +290,12 @@ export const CreateApiKeysResponse500Error$inboundSchema: z.ZodType<
   CreateApiKeysResponse500Error,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function createApiKeysResponse500ErrorFromJSON(
   jsonString: string,
@@ -306,31 +312,35 @@ export const CreateApiKeysResponse500ResponseBody$inboundSchema: z.ZodType<
   CreateApiKeysResponse500ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => CreateApiKeysResponse500Error$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreateApiKeysResponse500ResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => CreateApiKeysResponse500Error$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreateApiKeysResponse500ResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export const CreateApiKeysResponse429Error$inboundSchema: z.ZodType<
   CreateApiKeysResponse429Error,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  name: types.string(),
-  message: types.string(),
-  limit: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    name: types.string(),
+    message: types.string(),
+    limit: types.number(),
+  })
+);
 
 export function createApiKeysResponse429ErrorFromJSON(
   jsonString: string,
@@ -347,29 +357,33 @@ export const CreateApiKeysResponse429ResponseBody$inboundSchema: z.ZodType<
   CreateApiKeysResponse429ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => CreateApiKeysResponse429Error$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreateApiKeysResponse429ResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => CreateApiKeysResponse429Error$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreateApiKeysResponse429ResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export const CreateApiKeysResponseError$inboundSchema: z.ZodType<
   CreateApiKeysResponseError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function createApiKeysResponseErrorFromJSON(
   jsonString: string,
@@ -386,29 +400,33 @@ export const CreateApiKeysResponse403ResponseBody$inboundSchema: z.ZodType<
   CreateApiKeysResponse403ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => CreateApiKeysResponseError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreateApiKeysResponse403ResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => CreateApiKeysResponseError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreateApiKeysResponse403ResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export const CreateApiKeysError$inboundSchema: z.ZodType<
   CreateApiKeysError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function createApiKeysErrorFromJSON(
   jsonString: string,
@@ -425,29 +443,33 @@ export const CreateApiKeysResponseResponseBody$inboundSchema: z.ZodType<
   CreateApiKeysResponseResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => CreateApiKeysError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new CreateApiKeysResponseResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => CreateApiKeysError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new CreateApiKeysResponseResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export const CreateApiKeysResponseBody$inboundSchema: z.ZodType<
   CreateApiKeysResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiKeyString: types.string(),
-  apiKey: APIKey$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiKeyString: types.string(),
+    apiKey: APIKey$inboundSchema,
+  })
+);
 
 export function createApiKeysResponseBodyFromJSON(
   jsonString: string,

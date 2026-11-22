@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import { UserEvent, UserEvent$inboundSchema } from "./userevent.js";
@@ -85,19 +85,21 @@ export const ListUserEventsRequest$outboundSchema: z.ZodType<
   ListUserEventsRequest$Outbound,
   z.ZodTypeDef,
   ListUserEventsRequest
-> = z.object({
-  limit: z.number().optional(),
-  since: z.string().optional(),
-  until: z.string().optional(),
-  types: z.string().optional(),
-  userId: z.string().optional(),
-  principalId: z.string().optional(),
-  projectIds: z.string().optional(),
-  entityId: z.string().optional(),
-  withPayload: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    limit: z.number().optional(),
+    since: z.string().optional(),
+    until: z.string().optional(),
+    types: z.string().optional(),
+    userId: z.string().optional(),
+    principalId: z.string().optional(),
+    projectIds: z.string().optional(),
+    entityId: z.string().optional(),
+    withPayload: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listUserEventsRequestToJSON(
   listUserEventsRequest: ListUserEventsRequest,
@@ -112,9 +114,11 @@ export const ListUserEventsResponseBody$inboundSchema: z.ZodType<
   ListUserEventsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  events: z.array(UserEvent$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    events: z.array(UserEvent$inboundSchema),
+  })
+);
 
 export function listUserEventsResponseBodyFromJSON(
   jsonString: string,

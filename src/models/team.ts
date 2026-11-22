@@ -6,6 +6,7 @@ import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
 import {
   collectExtraKeys as collectExtraKeys$,
+  lazySchema as lazySchema$,
   safeParse,
 } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
@@ -508,6 +509,10 @@ export type JoinedFrom = {
   repoId?: string | undefined;
   repoPath?: string | undefined;
   ssoConnectedAt?: number | undefined;
+  /**
+   * How `ssoUserId` and `idpUserId` were made; absent when unknown.
+   */
+  ssoIdFingerprint?: string | undefined;
   ssoUserId?: string | undefined;
 };
 
@@ -1123,15 +1128,16 @@ export type Team = {
 };
 
 /** @internal */
-export const Plan$inboundSchema: z.ZodNativeEnum<typeof Plan> = z.nativeEnum(
-  Plan,
-);
+export const Plan$inboundSchema: z.ZodNativeEnum<typeof Plan> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Plan));
 
 /** @internal */
 export const Billing$inboundSchema: z.ZodType<Billing, z.ZodTypeDef, unknown> =
-  z.object({
-    plan: Plan$inboundSchema,
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      plan: Plan$inboundSchema,
+    })
+  );
 
 export function billingFromJSON(
   jsonString: string,
@@ -1145,9 +1151,11 @@ export function billingFromJSON(
 
 /** @internal */
 export const Connect$inboundSchema: z.ZodType<Connect, z.ZodTypeDef, unknown> =
-  z.object({
-    enabled: types.optional(types.boolean()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      enabled: types.optional(types.boolean()),
+    })
+  );
 
 export function connectFromJSON(
   jsonString: string,
@@ -1162,16 +1170,18 @@ export function connectFromJSON(
 /** @internal */
 export const DefaultContinuousUsageKind$inboundSchema: z.ZodNativeEnum<
   typeof DefaultContinuousUsageKind
-> = z.nativeEnum(DefaultContinuousUsageKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DefaultContinuousUsageKind));
 
 /** @internal */
 export const PasswordProtection$inboundSchema: z.ZodType<
   PasswordProtection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentType: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentType: types.string(),
+  })
+);
 
 export function passwordProtectionFromJSON(
   jsonString: string,
@@ -1188,9 +1198,11 @@ export const SsoProtection$inboundSchema: z.ZodType<
   SsoProtection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentType: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentType: types.string(),
+  })
+);
 
 export function ssoProtectionFromJSON(
   jsonString: string,
@@ -1207,12 +1219,15 @@ export const DefaultDeploymentProtection$inboundSchema: z.ZodType<
   DefaultDeploymentProtection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  passwordProtection: z.nullable(z.lazy(() => PasswordProtection$inboundSchema))
-    .optional(),
-  ssoProtection: z.nullable(z.lazy(() => SsoProtection$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    passwordProtection: z.nullable(
+      z.lazy(() => PasswordProtection$inboundSchema),
+    ).optional(),
+    ssoProtection: z.nullable(z.lazy(() => SsoProtection$inboundSchema))
+      .optional(),
+  })
+);
 
 export function defaultDeploymentProtectionFromJSON(
   jsonString: string,
@@ -1229,13 +1244,15 @@ export const DefaultExpirationSettings$inboundSchema: z.ZodType<
   DefaultExpirationSettings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentsToKeep: types.optional(types.number()),
-  expirationDays: types.optional(types.number()),
-  expirationDaysCanceled: types.optional(types.number()),
-  expirationDaysErrored: types.optional(types.number()),
-  expirationDaysProduction: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentsToKeep: types.optional(types.number()),
+    expirationDays: types.optional(types.number()),
+    expirationDaysCanceled: types.optional(types.number()),
+    expirationDaysErrored: types.optional(types.number()),
+    expirationDaysProduction: types.optional(types.number()),
+  })
+);
 
 export function defaultExpirationSettingsFromJSON(
   jsonString: string,
@@ -1250,17 +1267,19 @@ export function defaultExpirationSettingsFromJSON(
 /** @internal */
 export const DeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof DeploymentType
-> = z.nativeEnum(DeploymentType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeploymentType));
 
 /** @internal */
 export const DefaultPassport$inboundSchema: z.ZodType<
   DefaultPassport,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  connectorId: types.string(),
-  deploymentType: DeploymentType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connectorId: types.string(),
+    deploymentType: DeploymentType$inboundSchema,
+  })
+);
 
 export function defaultPassportFromJSON(
   jsonString: string,
@@ -1277,9 +1296,11 @@ export const FlagDefinitionsPresent$inboundSchema: z.ZodType<
   FlagDefinitionsPresent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function flagDefinitionsPresentFromJSON(
   jsonString: string,
@@ -1296,9 +1317,11 @@ export const HealthCheck$inboundSchema: z.ZodType<
   HealthCheck,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function healthCheckFromJSON(
   jsonString: string,
@@ -1311,10 +1334,12 @@ export function healthCheckFromJSON(
 }
 
 /** @internal */
-export const Lint$inboundSchema: z.ZodType<Lint, z.ZodTypeDef, unknown> = z
-  .object({
-    targets: z.array(types.string()),
-  });
+export const Lint$inboundSchema: z.ZodType<Lint, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      targets: z.array(types.string()),
+    })
+  );
 
 export function lintFromJSON(
   jsonString: string,
@@ -1331,9 +1356,11 @@ export const MfeConfigPresent$inboundSchema: z.ZodType<
   MfeConfigPresent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function mfeConfigPresentFromJSON(
   jsonString: string,
@@ -1350,9 +1377,11 @@ export const Typecheck$inboundSchema: z.ZodType<
   Typecheck,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function typecheckFromJSON(
   jsonString: string,
@@ -1369,23 +1398,25 @@ export const DefaultProjectJobs$inboundSchema: z.ZodType<
   DefaultProjectJobs,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "flag-definitions-present": types.optional(
-    z.lazy(() => FlagDefinitionsPresent$inboundSchema),
-  ),
-  "health-check": types.optional(z.lazy(() => HealthCheck$inboundSchema)),
-  lint: types.optional(z.lazy(() => Lint$inboundSchema)),
-  "mfe-config-present": types.optional(
-    z.lazy(() => MfeConfigPresent$inboundSchema),
-  ),
-  typecheck: types.optional(z.lazy(() => Typecheck$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "flag-definitions-present": "flagDefinitionsPresent",
-    "health-check": "healthCheck",
-    "mfe-config-present": "mfeConfigPresent",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "flag-definitions-present": types.optional(
+      z.lazy(() => FlagDefinitionsPresent$inboundSchema),
+    ),
+    "health-check": types.optional(z.lazy(() => HealthCheck$inboundSchema)),
+    lint: types.optional(z.lazy(() => Lint$inboundSchema)),
+    "mfe-config-present": types.optional(
+      z.lazy(() => MfeConfigPresent$inboundSchema),
+    ),
+    typecheck: types.optional(z.lazy(() => Typecheck$inboundSchema)),
+  }).transform((v) => {
+    return remap$(v, {
+      "flag-definitions-present": "flagDefinitionsPresent",
+      "health-check": "healthCheck",
+      "mfe-config-present": "mfeConfigPresent",
+    });
+  })
+);
 
 export function defaultProjectJobsFromJSON(
   jsonString: string,
@@ -1400,22 +1431,24 @@ export function defaultProjectJobsFromJSON(
 /** @internal */
 export const TeamTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof TeamTeamPermissions
-> = z.nativeEnum(TeamTeamPermissions);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamTeamPermissions));
 
 /** @internal */
 export const TeamTeamRoles$inboundSchema: z.ZodNativeEnum<
   typeof TeamTeamRoles
-> = z.nativeEnum(TeamTeamRoles);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamTeamRoles));
 
 /** @internal */
 export const DefaultRoles$inboundSchema: z.ZodType<
   DefaultRoles,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  teamPermissions: types.optional(z.array(TeamTeamPermissions$inboundSchema)),
-  teamRoles: types.optional(z.array(TeamTeamRoles$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamPermissions: types.optional(z.array(TeamTeamPermissions$inboundSchema)),
+    teamRoles: types.optional(z.array(TeamTeamRoles$inboundSchema)),
+  })
+);
 
 export function defaultRolesFromJSON(
   jsonString: string,
@@ -1432,10 +1465,12 @@ export const Environments2$inboundSchema: z.ZodType<
   Environments2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environmentId: types.string(),
-  type: types.literal("custom"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environmentId: types.string(),
+    type: types.literal("custom"),
+  })
+);
 
 export function environments2FromJSON(
   jsonString: string,
@@ -1450,17 +1485,19 @@ export function environments2FromJSON(
 /** @internal */
 export const EnvironmentsTarget$inboundSchema: z.ZodNativeEnum<
   typeof EnvironmentsTarget
-> = z.nativeEnum(EnvironmentsTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(EnvironmentsTarget));
 
 /** @internal */
 export const TeamEnvironments1$inboundSchema: z.ZodType<
   TeamEnvironments1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  target: EnvironmentsTarget$inboundSchema,
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    target: EnvironmentsTarget$inboundSchema,
+    type: types.literal("system"),
+  })
+);
 
 export function teamEnvironments1FromJSON(
   jsonString: string,
@@ -1477,10 +1514,12 @@ export const TeamEnvironments$inboundSchema: z.ZodType<
   TeamEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => TeamEnvironments1$inboundSchema),
-  z.lazy(() => Environments2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => TeamEnvironments1$inboundSchema),
+    z.lazy(() => Environments2$inboundSchema),
+  ])
+);
 
 export function teamEnvironmentsFromJSON(
   jsonString: string,
@@ -1493,24 +1532,24 @@ export function teamEnvironmentsFromJSON(
 }
 
 /** @internal */
-export const Sources$inboundSchema: z.ZodNativeEnum<typeof Sources> = z
-  .nativeEnum(Sources);
+export const Sources$inboundSchema: z.ZodNativeEnum<typeof Sources> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Sources));
 
 /** @internal */
 export const DeploymentSources$inboundSchema: z.ZodType<
   DeploymentSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  environments: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    environments: z.array(z.union([
       z.lazy(() => TeamEnvironments1$inboundSchema),
       z.lazy(() => Environments2$inboundSchema),
-    ]),
-  ),
-  sources: z.array(Sources$inboundSchema),
-});
+    ])),
+    sources: z.array(Sources$inboundSchema),
+  })
+);
 
 export function deploymentSourcesFromJSON(
   jsonString: string,
@@ -1527,10 +1566,12 @@ export const TeamEnvironments2$inboundSchema: z.ZodType<
   TeamEnvironments2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environmentId: types.string(),
-  type: types.literal("custom"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environmentId: types.string(),
+    type: types.literal("custom"),
+  })
+);
 
 export function teamEnvironments2FromJSON(
   jsonString: string,
@@ -1545,17 +1586,19 @@ export function teamEnvironments2FromJSON(
 /** @internal */
 export const TeamEnvironmentsTarget$inboundSchema: z.ZodNativeEnum<
   typeof TeamEnvironmentsTarget
-> = z.nativeEnum(TeamEnvironmentsTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamEnvironmentsTarget));
 
 /** @internal */
 export const TeamEnvironmentsDeploymentPolicy1$inboundSchema: z.ZodType<
   TeamEnvironmentsDeploymentPolicy1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  target: TeamEnvironmentsTarget$inboundSchema,
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    target: TeamEnvironmentsTarget$inboundSchema,
+    type: types.literal("system"),
+  })
+);
 
 export function teamEnvironmentsDeploymentPolicy1FromJSON(
   jsonString: string,
@@ -1572,10 +1615,12 @@ export const TeamDeploymentPolicyEnvironments$inboundSchema: z.ZodType<
   TeamDeploymentPolicyEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => TeamEnvironmentsDeploymentPolicy1$inboundSchema),
-  z.lazy(() => TeamEnvironments2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => TeamEnvironmentsDeploymentPolicy1$inboundSchema),
+    z.lazy(() => TeamEnvironments2$inboundSchema),
+  ])
+);
 
 export function teamDeploymentPolicyEnvironmentsFromJSON(
   jsonString: string,
@@ -1592,11 +1637,13 @@ export const Sources2$inboundSchema: z.ZodType<
   Sources2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  namespace: types.string(),
-  project: types.optional(types.string()),
-  provider: types.literal("gitlab"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    namespace: types.string(),
+    project: types.optional(types.string()),
+    provider: types.literal("gitlab"),
+  })
+);
 
 export function sources2FromJSON(
   jsonString: string,
@@ -1611,18 +1658,20 @@ export function sources2FromJSON(
 /** @internal */
 export const SourcesProvider$inboundSchema: z.ZodNativeEnum<
   typeof SourcesProvider
-> = z.nativeEnum(SourcesProvider);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SourcesProvider));
 
 /** @internal */
 export const Sources1$inboundSchema: z.ZodType<
   Sources1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  org: types.string(),
-  provider: SourcesProvider$inboundSchema,
-  repo: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    org: types.string(),
+    provider: SourcesProvider$inboundSchema,
+    repo: types.optional(types.string()),
+  })
+);
 
 export function sources1FromJSON(
   jsonString: string,
@@ -1639,15 +1688,17 @@ export const TeamSources$inboundSchema: z.ZodType<
   TeamSources,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => Sources1$inboundSchema).and(
-    z.object({ provider: z.literal("bitbucket") }),
-  ),
-  z.lazy(() => Sources1$inboundSchema).and(
-    z.object({ provider: z.literal("github") }),
-  ),
-  z.lazy(() => Sources2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => Sources1$inboundSchema).and(
+      z.object({ provider: z.literal("bitbucket") }),
+    ),
+    z.lazy(() => Sources1$inboundSchema).and(
+      z.object({ provider: z.literal("github") }),
+    ),
+    z.lazy(() => Sources2$inboundSchema),
+  ])
+);
 
 export function teamSourcesFromJSON(
   jsonString: string,
@@ -1664,16 +1715,14 @@ export const GitSources$inboundSchema: z.ZodType<
   GitSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  environments: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    environments: z.array(z.union([
       z.lazy(() => TeamEnvironmentsDeploymentPolicy1$inboundSchema),
       z.lazy(() => TeamEnvironments2$inboundSchema),
-    ]),
-  ),
-  sources: z.array(
-    z.union([
+    ])),
+    sources: z.array(z.union([
       z.lazy(() => Sources1$inboundSchema).and(
         z.object({ provider: z.literal("bitbucket") }),
       ),
@@ -1681,9 +1730,9 @@ export const GitSources$inboundSchema: z.ZodType<
         z.object({ provider: z.literal("github") }),
       ),
       z.lazy(() => Sources2$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function gitSourcesFromJSON(
   jsonString: string,
@@ -1700,12 +1749,14 @@ export const DeploymentPolicy$inboundSchema: z.ZodType<
   DeploymentPolicy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentSources: types.optional(
-    z.array(z.lazy(() => DeploymentSources$inboundSchema)),
-  ),
-  gitSources: types.optional(z.array(z.lazy(() => GitSources$inboundSchema))),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentSources: types.optional(
+      z.array(z.lazy(() => DeploymentSources$inboundSchema)),
+    ),
+    gitSources: types.optional(z.array(z.lazy(() => GitSources$inboundSchema))),
+  })
+);
 
 export function deploymentPolicyFromJSON(
   jsonString: string,
@@ -1718,25 +1769,27 @@ export function deploymentPolicyFromJSON(
 }
 
 /** @internal */
-export const Cohort$inboundSchema: z.ZodNativeEnum<typeof Cohort> = z
-  .nativeEnum(Cohort);
+export const Cohort$inboundSchema: z.ZodNativeEnum<typeof Cohort> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Cohort));
 
 /** @internal */
-export const MeterReason$inboundSchema: z.ZodNativeEnum<typeof MeterReason> = z
-  .nativeEnum(MeterReason);
+export const MeterReason$inboundSchema: z.ZodNativeEnum<typeof MeterReason> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(MeterReason));
 
 /** @internal */
 export const DeploymentStorageRollout$inboundSchema: z.ZodType<
   DeploymentStorageRollout,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cohort: Cohort$inboundSchema,
-  meteredAt: types.optional(types.number()),
-  meterReason: types.optional(MeterReason$inboundSchema),
-  retentionAppliedAt: types.optional(types.number()),
-  retentionOptOutAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cohort: Cohort$inboundSchema,
+    meteredAt: types.optional(types.number()),
+    meterReason: types.optional(MeterReason$inboundSchema),
+    retentionAppliedAt: types.optional(types.number()),
+    retentionOptOutAt: types.optional(types.number()),
+  })
+);
 
 export function deploymentStorageRolloutFromJSON(
   jsonString: string,
@@ -1751,38 +1804,42 @@ export function deploymentStorageRolloutFromJSON(
 /** @internal */
 export const DirectorySyncSource$inboundSchema: z.ZodNativeEnum<
   typeof DirectorySyncSource
-> = z.nativeEnum(DirectorySyncSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DirectorySyncSource));
 
 /** @internal */
 export const DisjunctiveProductionSecretPolicy$inboundSchema: z.ZodNativeEnum<
   typeof DisjunctiveProductionSecretPolicy
-> = z.nativeEnum(DisjunctiveProductionSecretPolicy);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DisjunctiveProductionSecretPolicy)
+);
 
 /** @internal */
 export const DpAccessRequestsMode$inboundSchema: z.ZodNativeEnum<
   typeof DpAccessRequestsMode
-> = z.nativeEnum(DpAccessRequestsMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DpAccessRequestsMode));
 
 /** @internal */
 export const EnablePreviewFeedback$inboundSchema: z.ZodNativeEnum<
   typeof EnablePreviewFeedback
-> = z.nativeEnum(EnablePreviewFeedback);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(EnablePreviewFeedback));
 
 /** @internal */
 export const EnableProductionFeedback$inboundSchema: z.ZodNativeEnum<
   typeof EnableProductionFeedback
-> = z.nativeEnum(EnableProductionFeedback);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(EnableProductionFeedback));
 
 /** @internal */
 export const IpBuckets$inboundSchema: z.ZodType<
   IpBuckets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bucket: types.string(),
-  default: types.optional(types.boolean()),
-  supportUntil: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bucket: types.string(),
+    default: types.optional(types.boolean()),
+    supportUntil: types.optional(types.number()),
+  })
+);
 
 export function ipBucketsFromJSON(
   jsonString: string,
@@ -1799,9 +1856,11 @@ export const Entitlements$inboundSchema: z.ZodType<
   Entitlements,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  entitlement: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entitlement: types.string(),
+  })
+);
 
 export function entitlementsFromJSON(
   jsonString: string,
@@ -1818,7 +1877,9 @@ export const GitUserId$inboundSchema: z.ZodType<
   GitUserId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function gitUserIdFromJSON(
   jsonString: string,
@@ -1831,27 +1892,30 @@ export function gitUserIdFromJSON(
 }
 
 /** @internal */
-export const TeamOrigin$inboundSchema: z.ZodNativeEnum<typeof TeamOrigin> = z
-  .nativeEnum(TeamOrigin);
+export const TeamOrigin$inboundSchema: z.ZodNativeEnum<typeof TeamOrigin> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamOrigin));
 
 /** @internal */
 export const JoinedFrom$inboundSchema: z.ZodType<
   JoinedFrom,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  commitId: types.optional(types.string()),
-  dsyncConnectedAt: types.optional(types.number()),
-  dsyncUserId: types.optional(types.string()),
-  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  gitUserLogin: types.optional(types.string()),
-  idpUserId: types.optional(types.string()),
-  origin: TeamOrigin$inboundSchema,
-  repoId: types.optional(types.string()),
-  repoPath: types.optional(types.string()),
-  ssoConnectedAt: types.optional(types.number()),
-  ssoUserId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    commitId: types.optional(types.string()),
+    dsyncConnectedAt: types.optional(types.number()),
+    dsyncUserId: types.optional(types.string()),
+    gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+    gitUserLogin: types.optional(types.string()),
+    idpUserId: types.optional(types.string()),
+    origin: TeamOrigin$inboundSchema,
+    repoId: types.optional(types.string()),
+    repoPath: types.optional(types.string()),
+    ssoConnectedAt: types.optional(types.number()),
+    ssoIdFingerprint: types.optional(types.string()),
+    ssoUserId: types.optional(types.string()),
+  })
+);
 
 export function joinedFromFromJSON(
   jsonString: string,
@@ -1864,43 +1928,47 @@ export function joinedFromFromJSON(
 }
 
 /** @internal */
-export const TeamRole$inboundSchema: z.ZodNativeEnum<typeof TeamRole> = z
-  .nativeEnum(TeamRole);
+export const TeamRole$inboundSchema: z.ZodNativeEnum<typeof TeamRole> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamRole));
 
 /** @internal */
 export const TeamMembershipTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof TeamMembershipTeamPermissions
-> = z.nativeEnum(TeamMembershipTeamPermissions);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(TeamMembershipTeamPermissions)
+);
 
 /** @internal */
 export const TeamMembershipTeamRoles$inboundSchema: z.ZodNativeEnum<
   typeof TeamMembershipTeamRoles
-> = z.nativeEnum(TeamMembershipTeamRoles);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamMembershipTeamRoles));
 
 /** @internal */
 export const Membership$inboundSchema: z.ZodType<
   Membership,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessRequestedAt: types.optional(types.number()),
-  confirmed: types.literal(true),
-  created: types.number(),
-  createdAt: types.number(),
-  entitlements: types.optional(
-    z.array(z.lazy(() => Entitlements$inboundSchema)),
-  ),
-  isOrgBackingTeamMembership: types.optional(types.boolean()),
-  joinedFrom: types.optional(z.lazy(() => JoinedFrom$inboundSchema)),
-  organizationId: types.optional(types.string()),
-  role: TeamRole$inboundSchema,
-  teamId: types.optional(types.string()),
-  teamPermissions: types.optional(
-    z.array(TeamMembershipTeamPermissions$inboundSchema),
-  ),
-  teamRoles: types.optional(z.array(TeamMembershipTeamRoles$inboundSchema)),
-  uid: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessRequestedAt: types.optional(types.number()),
+    confirmed: types.literal(true),
+    created: types.number(),
+    createdAt: types.number(),
+    entitlements: types.optional(
+      z.array(z.lazy(() => Entitlements$inboundSchema)),
+    ),
+    isOrgBackingTeamMembership: types.optional(types.boolean()),
+    joinedFrom: types.optional(z.lazy(() => JoinedFrom$inboundSchema)),
+    organizationId: types.optional(types.string()),
+    role: TeamRole$inboundSchema,
+    teamId: types.optional(types.string()),
+    teamPermissions: types.optional(
+      z.array(TeamMembershipTeamPermissions$inboundSchema),
+    ),
+    teamRoles: types.optional(z.array(TeamMembershipTeamRoles$inboundSchema)),
+    uid: types.optional(types.string()),
+  })
+);
 
 export function membershipFromJSON(
   jsonString: string,
@@ -1913,17 +1981,19 @@ export function membershipFromJSON(
 }
 
 /** @internal */
-export const Preference$inboundSchema: z.ZodNativeEnum<typeof Preference> = z
-  .nativeEnum(Preference);
+export const Preference$inboundSchema: z.ZodNativeEnum<typeof Preference> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Preference));
 
 /** @internal */
 export const NsnbConfig$inboundSchema: z.ZodType<
   NsnbConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preference: Preference$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preference: Preference$inboundSchema,
+  })
+);
 
 export function nsnbConfigFromJSON(
   jsonString: string,
@@ -1940,9 +2010,11 @@ export const RemoteCaching$inboundSchema: z.ZodType<
   RemoteCaching,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.optional(types.boolean()),
+  })
+);
 
 export function remoteCachingFromJSON(
   jsonString: string,
@@ -1959,9 +2031,11 @@ export const BuildEntitlements$inboundSchema: z.ZodType<
   BuildEntitlements,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enhancedBuilds: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enhancedBuilds: types.optional(types.boolean()),
+  })
+);
 
 export function buildEntitlementsFromJSON(
   jsonString: string,
@@ -1974,17 +2048,19 @@ export function buildEntitlementsFromJSON(
 }
 
 /** @internal */
-export const Default$inboundSchema: z.ZodNativeEnum<typeof Default> = z
-  .nativeEnum(Default);
+export const Default$inboundSchema: z.ZodNativeEnum<typeof Default> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Default));
 
 /** @internal */
 export const BuildMachine$inboundSchema: z.ZodType<
   BuildMachine,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  default: types.optional(Default$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    default: types.optional(Default$inboundSchema),
+  })
+);
 
 export function buildMachineFromJSON(
   jsonString: string,
@@ -2001,21 +2077,23 @@ export const ResourceConfig$inboundSchema: z.ZodType<
   ResourceConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  blobStores: types.optional(types.number()),
-  buildEntitlements: types.optional(
-    z.lazy(() => BuildEntitlements$inboundSchema),
-  ),
-  buildMachine: types.optional(z.lazy(() => BuildMachine$inboundSchema)),
-  concurrentBuilds: types.optional(types.number()),
-  customEnvironmentsPerProject: types.optional(types.number()),
-  edgeConfigs: types.optional(types.number()),
-  edgeConfigSize: types.optional(types.number()),
-  elasticConcurrencyEnabled: types.optional(types.boolean()),
-  kvDatabases: types.optional(types.number()),
-  postgresDatabases: types.optional(types.number()),
-  serverlessFunctionMaxMemorySize: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    blobStores: types.optional(types.number()),
+    buildEntitlements: types.optional(
+      z.lazy(() => BuildEntitlements$inboundSchema),
+    ),
+    buildMachine: types.optional(z.lazy(() => BuildMachine$inboundSchema)),
+    concurrentBuilds: types.optional(types.number()),
+    customEnvironmentsPerProject: types.optional(types.number()),
+    edgeConfigs: types.optional(types.number()),
+    edgeConfigSize: types.optional(types.number()),
+    elasticConcurrencyEnabled: types.optional(types.boolean()),
+    kvDatabases: types.optional(types.number()),
+    postgresDatabases: types.optional(types.number()),
+    serverlessFunctionMaxMemorySize: types.optional(types.number()),
+  })
+);
 
 export function resourceConfigFromJSON(
   jsonString: string,
@@ -2028,23 +2106,25 @@ export function resourceConfigFromJSON(
 }
 
 /** @internal */
-export const SyncState$inboundSchema: z.ZodNativeEnum<typeof SyncState> = z
-  .nativeEnum(SyncState);
+export const SyncState$inboundSchema: z.ZodNativeEnum<typeof SyncState> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SyncState));
 
 /** @internal */
 export const Connection$inboundSchema: z.ZodType<
   Connection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  connectedAt: types.number(),
-  lastReceivedWebhookEvent: types.optional(types.number()),
-  lastSyncedAt: types.optional(types.number()),
-  state: types.string(),
-  syncState: types.optional(SyncState$inboundSchema),
-  type: types.string(),
-  status: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connectedAt: types.number(),
+    lastReceivedWebhookEvent: types.optional(types.number()),
+    lastSyncedAt: types.optional(types.number()),
+    state: types.string(),
+    syncState: types.optional(SyncState$inboundSchema),
+    type: types.string(),
+    status: types.string(),
+  })
+);
 
 export function connectionFromJSON(
   jsonString: string,
@@ -2059,26 +2139,28 @@ export function connectionFromJSON(
 /** @internal */
 export const DefaultRedirectUri$inboundSchema: z.ZodNativeEnum<
   typeof DefaultRedirectUri
-> = z.nativeEnum(DefaultRedirectUri);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DefaultRedirectUri));
 
 /** @internal */
 export const TeamSyncState$inboundSchema: z.ZodNativeEnum<
   typeof TeamSyncState
-> = z.nativeEnum(TeamSyncState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TeamSyncState));
 
 /** @internal */
 export const Directory$inboundSchema: z.ZodType<
   Directory,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  connectedAt: types.number(),
-  lastReceivedWebhookEvent: types.optional(types.number()),
-  lastSyncedAt: types.optional(types.number()),
-  state: types.string(),
-  syncState: types.optional(TeamSyncState$inboundSchema),
-  type: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connectedAt: types.number(),
+    lastReceivedWebhookEvent: types.optional(types.number()),
+    lastSyncedAt: types.optional(types.number()),
+    state: types.string(),
+    syncState: types.optional(TeamSyncState$inboundSchema),
+    type: types.string(),
+  })
+);
 
 export function directoryFromJSON(
   jsonString: string,
@@ -2091,27 +2173,29 @@ export function directoryFromJSON(
 }
 
 /** @internal */
-export const Roles3$inboundSchema: z.ZodNativeEnum<typeof Roles3> = z
-  .nativeEnum(Roles3);
+export const Roles3$inboundSchema: z.ZodNativeEnum<typeof Roles3> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Roles3));
 
 /** @internal */
 export const RolesTeamPermissions$inboundSchema: z.ZodNativeEnum<
   typeof RolesTeamPermissions
-> = z.nativeEnum(RolesTeamPermissions);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RolesTeamPermissions));
 
 /** @internal */
 export const RolesTeamRoles$inboundSchema: z.ZodNativeEnum<
   typeof RolesTeamRoles
-> = z.nativeEnum(RolesTeamRoles);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RolesTeamRoles));
 
 /** @internal */
-export const Roles2$inboundSchema: z.ZodType<Roles2, z.ZodTypeDef, unknown> = z
-  .object({
-    teamPermissions: types.optional(
-      z.array(RolesTeamPermissions$inboundSchema),
-    ),
-    teamRoles: z.array(RolesTeamRoles$inboundSchema),
-  });
+export const Roles2$inboundSchema: z.ZodType<Roles2, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      teamPermissions: types.optional(
+        z.array(RolesTeamPermissions$inboundSchema),
+      ),
+      teamRoles: z.array(RolesTeamRoles$inboundSchema),
+    })
+  );
 
 export function roles2FromJSON(
   jsonString: string,
@@ -2124,10 +2208,12 @@ export function roles2FromJSON(
 }
 
 /** @internal */
-export const Roles1$inboundSchema: z.ZodType<Roles1, z.ZodTypeDef, unknown> = z
-  .object({
-    accessGroupId: types.string(),
-  });
+export const Roles1$inboundSchema: z.ZodType<Roles1, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      accessGroupId: types.string(),
+    })
+  );
 
 export function roles1FromJSON(
   jsonString: string,
@@ -2141,11 +2227,13 @@ export function roles1FromJSON(
 
 /** @internal */
 export const Roles$inboundSchema: z.ZodType<Roles, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Roles1$inboundSchema),
-    z.lazy(() => Roles2$inboundSchema),
-    Roles3$inboundSchema,
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() => Roles1$inboundSchema),
+      z.lazy(() => Roles2$inboundSchema),
+      Roles3$inboundSchema,
+    ])
+  );
 
 export function rolesFromJSON(
   jsonString: string,
@@ -2158,22 +2246,22 @@ export function rolesFromJSON(
 }
 
 /** @internal */
-export const Saml$inboundSchema: z.ZodType<Saml, z.ZodTypeDef, unknown> = z
-  .object({
-    connection: types.optional(z.lazy(() => Connection$inboundSchema)),
-    defaultRedirectUri: types.optional(DefaultRedirectUri$inboundSchema),
-    directory: types.optional(z.lazy(() => Directory$inboundSchema)),
-    enforced: types.boolean(),
-    roles: types.optional(
-      z.record(smartUnion([
+export const Saml$inboundSchema: z.ZodType<Saml, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      connection: types.optional(z.lazy(() => Connection$inboundSchema)),
+      defaultRedirectUri: types.optional(DefaultRedirectUri$inboundSchema),
+      directory: types.optional(z.lazy(() => Directory$inboundSchema)),
+      enforced: types.boolean(),
+      roles: types.optional(z.record(smartUnion([
         z.lazy(() => Roles1$inboundSchema),
         z.lazy(() =>
           Roles2$inboundSchema
         ),
         Roles3$inboundSchema,
-      ])),
-    ),
-  });
+      ]))),
+    })
+  );
 
 export function samlFromJSON(
   jsonString: string,
@@ -2188,17 +2276,21 @@ export function samlFromJSON(
 /** @internal */
 export const SensitiveEnvironmentVariablePolicy$inboundSchema: z.ZodNativeEnum<
   typeof SensitiveEnvironmentVariablePolicy
-> = z.nativeEnum(SensitiveEnvironmentVariablePolicy);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(SensitiveEnvironmentVariablePolicy)
+);
 
 /** @internal */
 export const StrictConnectors$inboundSchema: z.ZodType<
   StrictConnectors,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    updatedAt: types.number(),
+  })
+);
 
 export function strictConnectorsFromJSON(
   jsonString: string,
@@ -2215,10 +2307,12 @@ export const StrictDeploymentProtectionSettings$inboundSchema: z.ZodType<
   StrictDeploymentProtectionSettings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    updatedAt: types.number(),
+  })
+);
 
 export function strictDeploymentProtectionSettingsFromJSON(
   jsonString: string,
@@ -2236,10 +2330,12 @@ export const StrictPasswordProtectionSettings$inboundSchema: z.ZodType<
   StrictPasswordProtectionSettings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    updatedAt: types.number(),
+  })
+);
 
 export function strictPasswordProtectionSettingsFromJSON(
   jsonString: string,
@@ -2256,10 +2352,12 @@ export const StrictShareableLinks$inboundSchema: z.ZodType<
   StrictShareableLinks,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    updatedAt: types.number(),
+  })
+);
 
 export function strictShareableLinksFromJSON(
   jsonString: string,
@@ -2273,92 +2371,100 @@ export function strictShareableLinksFromJSON(
 
 /** @internal */
 export const Team$inboundSchema: z.ZodType<Team, z.ZodTypeDef, unknown> =
-  collectExtraKeys$(
-    z.object({
-      apiKeysInvalidatedAt: types.optional(types.number()),
-      appTokensInvalidatedAt: types.optional(types.number()),
-      avatar: types.nullable(types.string()),
-      billing: types.nullable(z.lazy(() => Billing$inboundSchema)),
-      connect: types.optional(z.lazy(() => Connect$inboundSchema)),
-      createdAt: types.number(),
-      creatorId: types.string(),
-      defaultContinuousUsageKind: types.optional(
-        DefaultContinuousUsageKind$inboundSchema,
-      ),
-      defaultDeploymentProtection: z.lazy(() =>
-        DefaultDeploymentProtection$inboundSchema
-      ),
-      defaultExpirationSettings: types.optional(
-        z.lazy(() => DefaultExpirationSettings$inboundSchema),
-      ),
-      defaultPassport: z.nullable(z.lazy(() => DefaultPassport$inboundSchema))
-        .optional(),
-      defaultProjectJobs: types.optional(
-        z.lazy(() => DefaultProjectJobs$inboundSchema),
-      ),
-      defaultRoles: types.optional(z.lazy(() => DefaultRoles$inboundSchema)),
-      deploymentPolicy: types.optional(
-        z.lazy(() => DeploymentPolicy$inboundSchema),
-      ),
-      deploymentStorageRollout: types.optional(
-        z.lazy(() => DeploymentStorageRollout$inboundSchema),
-      ),
-      description: types.nullable(types.string()),
-      directorySyncSource: DirectorySyncSource$inboundSchema,
-      directorySyncType: types.optional(types.string()),
-      disableRepositoryDispatchEvents: types.optional(types.boolean()),
-      disjunctiveProductionSecretPolicy: z.nullable(
-        DisjunctiveProductionSecretPolicy$inboundSchema,
-      ).optional(),
-      dpAccessRequestsMode: types.optional(DpAccessRequestsMode$inboundSchema),
-      emailDomain: z.nullable(types.string()).optional(),
-      enablePreviewFeedback: z.nullable(EnablePreviewFeedback$inboundSchema)
-        .optional(),
-      enableProductionFeedback: z.nullable(
-        EnableProductionFeedback$inboundSchema,
-      ).optional(),
-      hideIpAddresses: z.nullable(types.boolean()).optional(),
-      hideIpAddressesInLogDrains: z.nullable(types.boolean()).optional(),
-      id: types.string(),
-      integrationTokensInvalidatedAt: types.optional(types.number()),
-      inviteCode: types.optional(types.string()),
-      ipBuckets: types.optional(z.array(z.lazy(() => IpBuckets$inboundSchema))),
-      limited: types.literal(false),
-      membership: types.optional(z.lazy(() => Membership$inboundSchema)),
-      name: types.nullable(types.string()),
-      nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),
-      orgRootTeamId: types.optional(types.string()),
-      parentId: types.optional(types.string()),
-      personalAccessTokensInvalidatedAt: types.optional(types.number()),
-      platform: types.optional(types.boolean()),
-      previewDeploymentSuffix: z.nullable(types.string()).optional(),
-      remoteCaching: types.optional(z.lazy(() => RemoteCaching$inboundSchema)),
-      requireVerifiedCommits: types.optional(types.boolean()),
-      resourceConfig: types.optional(
-        z.lazy(() => ResourceConfig$inboundSchema),
-      ),
-      saml: types.optional(z.lazy(() => Saml$inboundSchema)),
-      sensitiveEnvironmentVariablePolicy: z.nullable(
-        SensitiveEnvironmentVariablePolicy$inboundSchema,
-      ).optional(),
-      slug: types.string(),
-      stagingPrefix: types.string(),
-      strictConnectors: types.optional(
-        z.lazy(() => StrictConnectors$inboundSchema),
-      ),
-      strictDeploymentProtectionSettings: types.optional(
-        z.lazy(() => StrictDeploymentProtectionSettings$inboundSchema),
-      ),
-      strictPasswordProtectionSettings: types.optional(
-        z.lazy(() => StrictPasswordProtectionSettings$inboundSchema),
-      ),
-      strictShareableLinks: types.optional(
-        z.lazy(() => StrictShareableLinks$inboundSchema),
-      ),
-      updatedAt: types.number(),
-    }).catchall(z.any()),
-    "additionalProperties",
-    true,
+  /* @__PURE__ */ lazySchema$(() =>
+    collectExtraKeys$(
+      z.object({
+        apiKeysInvalidatedAt: types.optional(types.number()),
+        appTokensInvalidatedAt: types.optional(types.number()),
+        avatar: types.nullable(types.string()),
+        billing: types.nullable(z.lazy(() => Billing$inboundSchema)),
+        connect: types.optional(z.lazy(() => Connect$inboundSchema)),
+        createdAt: types.number(),
+        creatorId: types.string(),
+        defaultContinuousUsageKind: types.optional(
+          DefaultContinuousUsageKind$inboundSchema,
+        ),
+        defaultDeploymentProtection: z.lazy(() =>
+          DefaultDeploymentProtection$inboundSchema
+        ),
+        defaultExpirationSettings: types.optional(
+          z.lazy(() => DefaultExpirationSettings$inboundSchema),
+        ),
+        defaultPassport: z.nullable(z.lazy(() => DefaultPassport$inboundSchema))
+          .optional(),
+        defaultProjectJobs: types.optional(
+          z.lazy(() => DefaultProjectJobs$inboundSchema),
+        ),
+        defaultRoles: types.optional(z.lazy(() => DefaultRoles$inboundSchema)),
+        deploymentPolicy: types.optional(
+          z.lazy(() => DeploymentPolicy$inboundSchema),
+        ),
+        deploymentStorageRollout: types.optional(
+          z.lazy(() => DeploymentStorageRollout$inboundSchema),
+        ),
+        description: types.nullable(types.string()),
+        directorySyncSource: DirectorySyncSource$inboundSchema,
+        directorySyncType: types.optional(types.string()),
+        disableRepositoryDispatchEvents: types.optional(types.boolean()),
+        disjunctiveProductionSecretPolicy: z.nullable(
+          DisjunctiveProductionSecretPolicy$inboundSchema,
+        ).optional(),
+        dpAccessRequestsMode: types.optional(
+          DpAccessRequestsMode$inboundSchema,
+        ),
+        emailDomain: z.nullable(types.string()).optional(),
+        enablePreviewFeedback: z.nullable(EnablePreviewFeedback$inboundSchema)
+          .optional(),
+        enableProductionFeedback: z.nullable(
+          EnableProductionFeedback$inboundSchema,
+        ).optional(),
+        hideIpAddresses: z.nullable(types.boolean()).optional(),
+        hideIpAddressesInLogDrains: z.nullable(types.boolean()).optional(),
+        id: types.string(),
+        integrationTokensInvalidatedAt: types.optional(types.number()),
+        inviteCode: types.optional(types.string()),
+        ipBuckets: types.optional(
+          z.array(z.lazy(() => IpBuckets$inboundSchema)),
+        ),
+        limited: types.literal(false),
+        membership: types.optional(z.lazy(() => Membership$inboundSchema)),
+        name: types.nullable(types.string()),
+        nsnbConfig: types.optional(z.lazy(() => NsnbConfig$inboundSchema)),
+        orgRootTeamId: types.optional(types.string()),
+        parentId: types.optional(types.string()),
+        personalAccessTokensInvalidatedAt: types.optional(types.number()),
+        platform: types.optional(types.boolean()),
+        previewDeploymentSuffix: z.nullable(types.string()).optional(),
+        remoteCaching: types.optional(
+          z.lazy(() => RemoteCaching$inboundSchema),
+        ),
+        requireVerifiedCommits: types.optional(types.boolean()),
+        resourceConfig: types.optional(
+          z.lazy(() => ResourceConfig$inboundSchema),
+        ),
+        saml: types.optional(z.lazy(() => Saml$inboundSchema)),
+        sensitiveEnvironmentVariablePolicy: z.nullable(
+          SensitiveEnvironmentVariablePolicy$inboundSchema,
+        ).optional(),
+        slug: types.string(),
+        stagingPrefix: types.string(),
+        strictConnectors: types.optional(
+          z.lazy(() => StrictConnectors$inboundSchema),
+        ),
+        strictDeploymentProtectionSettings: types.optional(
+          z.lazy(() => StrictDeploymentProtectionSettings$inboundSchema),
+        ),
+        strictPasswordProtectionSettings: types.optional(
+          z.lazy(() => StrictPasswordProtectionSettings$inboundSchema),
+        ),
+        strictShareableLinks: types.optional(
+          z.lazy(() => StrictShareableLinks$inboundSchema),
+        ),
+        updatedAt: types.number(),
+      }).catchall(z.any()),
+      "additionalProperties",
+      true,
+    )
   );
 
 export function teamFromJSON(

@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const PutOrganizationDsyncGroupOrganizationPermissions = {
@@ -75,18 +79,24 @@ export type PutOrganizationDsyncGroupRequest = {
 
 /** @internal */
 export const PutOrganizationDsyncGroupOrganizationPermissions$outboundSchema:
-  z.ZodNativeEnum<typeof PutOrganizationDsyncGroupOrganizationPermissions> = z
-    .nativeEnum(PutOrganizationDsyncGroupOrganizationPermissions);
+  z.ZodNativeEnum<typeof PutOrganizationDsyncGroupOrganizationPermissions> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PutOrganizationDsyncGroupOrganizationPermissions)
+    );
 
 /** @internal */
 export const PutOrganizationDsyncGroupTeamRoles$outboundSchema: z.ZodNativeEnum<
   typeof PutOrganizationDsyncGroupTeamRoles
-> = z.nativeEnum(PutOrganizationDsyncGroupTeamRoles);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PutOrganizationDsyncGroupTeamRoles)
+);
 
 /** @internal */
 export const PutOrganizationDsyncGroupOrganizationsTeamRoles$outboundSchema:
-  z.ZodNativeEnum<typeof PutOrganizationDsyncGroupOrganizationsTeamRoles> = z
-    .nativeEnum(PutOrganizationDsyncGroupOrganizationsTeamRoles);
+  z.ZodNativeEnum<typeof PutOrganizationDsyncGroupOrganizationsTeamRoles> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PutOrganizationDsyncGroupOrganizationsTeamRoles)
+    );
 
 /** @internal */
 export type PutOrganizationDsyncGroupTeams$Outbound = {
@@ -98,11 +108,13 @@ export const PutOrganizationDsyncGroupTeams$outboundSchema: z.ZodType<
   PutOrganizationDsyncGroupTeams$Outbound,
   z.ZodTypeDef,
   PutOrganizationDsyncGroupTeams
-> = z.object({
-  teamRoles: z.array(
-    PutOrganizationDsyncGroupOrganizationsTeamRoles$outboundSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamRoles: z.array(
+      PutOrganizationDsyncGroupOrganizationsTeamRoles$outboundSchema,
+    ),
+  })
+);
 
 export function putOrganizationDsyncGroupTeamsToJSON(
   putOrganizationDsyncGroupTeams: PutOrganizationDsyncGroupTeams,
@@ -126,15 +138,17 @@ export const PutOrganizationDsyncGroupAssignments$outboundSchema: z.ZodType<
   PutOrganizationDsyncGroupAssignments$Outbound,
   z.ZodTypeDef,
   PutOrganizationDsyncGroupAssignments
-> = z.object({
-  organizationPermissions: z.array(
-    PutOrganizationDsyncGroupOrganizationPermissions$outboundSchema,
-  ).optional(),
-  teamRoles: z.array(PutOrganizationDsyncGroupTeamRoles$outboundSchema)
-    .optional(),
-  teams: z.record(z.lazy(() => PutOrganizationDsyncGroupTeams$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizationPermissions: z.array(
+      PutOrganizationDsyncGroupOrganizationPermissions$outboundSchema,
+    ).optional(),
+    teamRoles: z.array(PutOrganizationDsyncGroupTeamRoles$outboundSchema)
+      .optional(),
+    teams: z.record(z.lazy(() => PutOrganizationDsyncGroupTeams$outboundSchema))
+      .optional(),
+  })
+);
 
 export function putOrganizationDsyncGroupAssignmentsToJSON(
   putOrganizationDsyncGroupAssignments: PutOrganizationDsyncGroupAssignments,
@@ -156,11 +170,13 @@ export const PutOrganizationDsyncGroupRequestBody$outboundSchema: z.ZodType<
   PutOrganizationDsyncGroupRequestBody$Outbound,
   z.ZodTypeDef,
   PutOrganizationDsyncGroupRequestBody
-> = z.object({
-  assignments: z.lazy(() =>
-    PutOrganizationDsyncGroupAssignments$outboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    assignments: z.lazy(() =>
+      PutOrganizationDsyncGroupAssignments$outboundSchema
+    ),
+  })
+);
 
 export function putOrganizationDsyncGroupRequestBodyToJSON(
   putOrganizationDsyncGroupRequestBody: PutOrganizationDsyncGroupRequestBody,
@@ -188,22 +204,27 @@ export const PutOrganizationDsyncGroupRequest$outboundSchema: z.ZodType<
   PutOrganizationDsyncGroupRequest$Outbound,
   z.ZodTypeDef,
   PutOrganizationDsyncGroupRequest
-> = z.object({
-  ifMatch: z.string().optional(),
-  ifNoneMatch: z.literal("*").optional(),
-  organizationId: z.string(),
-  groupId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => PutOrganizationDsyncGroupRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    ifMatch: "If-Match",
-    ifNoneMatch: "If-None-Match",
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ifMatch: z.string().refine(matchesPattern$("^\"\\d+\"$"), {
+      message: "Value must match pattern ^\"\\d+\"$",
+    }).optional(),
+    ifNoneMatch: z.literal("*").optional(),
+    organizationId: z.string(),
+    groupId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      PutOrganizationDsyncGroupRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      ifMatch: "If-Match",
+      ifNoneMatch: "If-None-Match",
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function putOrganizationDsyncGroupRequestToJSON(
   putOrganizationDsyncGroupRequest: PutOrganizationDsyncGroupRequest,

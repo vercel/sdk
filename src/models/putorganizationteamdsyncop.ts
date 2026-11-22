@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -59,7 +59,9 @@ export type PutOrganizationTeamDsyncResponseBody = {
 /** @internal */
 export const PutOrganizationTeamDsyncDsyncMode$outboundSchema: z.ZodNativeEnum<
   typeof PutOrganizationTeamDsyncDsyncMode
-> = z.nativeEnum(PutOrganizationTeamDsyncDsyncMode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PutOrganizationTeamDsyncDsyncMode)
+);
 
 /** @internal */
 export type PutOrganizationTeamDsyncRequestBody$Outbound = {
@@ -71,9 +73,11 @@ export const PutOrganizationTeamDsyncRequestBody$outboundSchema: z.ZodType<
   PutOrganizationTeamDsyncRequestBody$Outbound,
   z.ZodTypeDef,
   PutOrganizationTeamDsyncRequestBody
-> = z.object({
-  dsyncMode: PutOrganizationTeamDsyncDsyncMode$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dsyncMode: PutOrganizationTeamDsyncDsyncMode$outboundSchema,
+  })
+);
 
 export function putOrganizationTeamDsyncRequestBodyToJSON(
   putOrganizationTeamDsyncRequestBody: PutOrganizationTeamDsyncRequestBody,
@@ -99,18 +103,21 @@ export const PutOrganizationTeamDsyncRequest$outboundSchema: z.ZodType<
   PutOrganizationTeamDsyncRequest$Outbound,
   z.ZodTypeDef,
   PutOrganizationTeamDsyncRequest
-> = z.object({
-  organizationId: z.string(),
-  targetTeamId: z.string(),
-  slug: z.string().optional(),
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => PutOrganizationTeamDsyncRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizationId: z.string(),
+    targetTeamId: z.string(),
+    slug: z.string().optional(),
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() =>
+      PutOrganizationTeamDsyncRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function putOrganizationTeamDsyncRequestToJSON(
   putOrganizationTeamDsyncRequest: PutOrganizationTeamDsyncRequest,
@@ -124,19 +131,23 @@ export function putOrganizationTeamDsyncRequestToJSON(
 
 /** @internal */
 export const PutOrganizationTeamDsyncOrganizationsDsyncMode$inboundSchema:
-  z.ZodNativeEnum<typeof PutOrganizationTeamDsyncOrganizationsDsyncMode> = z
-    .nativeEnum(PutOrganizationTeamDsyncOrganizationsDsyncMode);
+  z.ZodNativeEnum<typeof PutOrganizationTeamDsyncOrganizationsDsyncMode> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PutOrganizationTeamDsyncOrganizationsDsyncMode)
+    );
 
 /** @internal */
 export const PutOrganizationTeamDsyncResponseBody$inboundSchema: z.ZodType<
   PutOrganizationTeamDsyncResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dsyncMode: PutOrganizationTeamDsyncOrganizationsDsyncMode$inboundSchema,
-  organizationId: types.string(),
-  teamId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dsyncMode: PutOrganizationTeamDsyncOrganizationsDsyncMode$inboundSchema,
+    organizationId: types.string(),
+    teamId: types.string(),
+  })
+);
 
 export function putOrganizationTeamDsyncResponseBodyFromJSON(
   jsonString: string,

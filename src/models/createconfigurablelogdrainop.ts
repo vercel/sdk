@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -88,18 +88,21 @@ export type CreateConfigurableLogDrainResponseBody = {};
 /** @internal */
 export const DeliveryFormat$outboundSchema: z.ZodNativeEnum<
   typeof DeliveryFormat
-> = z.nativeEnum(DeliveryFormat);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeliveryFormat));
 
 /** @internal */
 export const CreateConfigurableLogDrainSources$outboundSchema: z.ZodNativeEnum<
   typeof CreateConfigurableLogDrainSources
-> = z.nativeEnum(CreateConfigurableLogDrainSources);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateConfigurableLogDrainSources)
+);
 
 /** @internal */
 export const CreateConfigurableLogDrainEnvironments$outboundSchema:
-  z.ZodNativeEnum<typeof CreateConfigurableLogDrainEnvironments> = z.nativeEnum(
-    CreateConfigurableLogDrainEnvironments,
-  );
+  z.ZodNativeEnum<typeof CreateConfigurableLogDrainEnvironments> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateConfigurableLogDrainEnvironments)
+    );
 
 /** @internal */
 export type CreateConfigurableLogDrainRequestBody$Outbound = {
@@ -119,18 +122,20 @@ export const CreateConfigurableLogDrainRequestBody$outboundSchema: z.ZodType<
   CreateConfigurableLogDrainRequestBody$Outbound,
   z.ZodTypeDef,
   CreateConfigurableLogDrainRequestBody
-> = z.object({
-  deliveryFormat: DeliveryFormat$outboundSchema,
-  url: z.string(),
-  headers: z.record(z.string()).optional(),
-  projectIds: z.array(z.string()).optional(),
-  sources: z.array(CreateConfigurableLogDrainSources$outboundSchema),
-  environments: z.array(CreateConfigurableLogDrainEnvironments$outboundSchema)
-    .optional(),
-  secret: z.string().optional(),
-  samplingRate: z.number().optional(),
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deliveryFormat: DeliveryFormat$outboundSchema,
+    url: z.string(),
+    headers: z.record(z.string()).optional(),
+    projectIds: z.array(z.string()).optional(),
+    sources: z.array(CreateConfigurableLogDrainSources$outboundSchema),
+    environments: z.array(CreateConfigurableLogDrainEnvironments$outboundSchema)
+      .optional(),
+    secret: z.string().optional(),
+    samplingRate: z.number().optional(),
+    name: z.string().optional(),
+  })
+);
 
 export function createConfigurableLogDrainRequestBodyToJSON(
   createConfigurableLogDrainRequestBody: CreateConfigurableLogDrainRequestBody,
@@ -154,17 +159,19 @@ export const CreateConfigurableLogDrainRequest$outboundSchema: z.ZodType<
   CreateConfigurableLogDrainRequest$Outbound,
   z.ZodTypeDef,
   CreateConfigurableLogDrainRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    CreateConfigurableLogDrainRequestBody$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      CreateConfigurableLogDrainRequestBody$outboundSchema
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createConfigurableLogDrainRequestToJSON(
   createConfigurableLogDrainRequest: CreateConfigurableLogDrainRequest,
@@ -181,7 +188,7 @@ export const CreateConfigurableLogDrainResponseBody$inboundSchema: z.ZodType<
   CreateConfigurableLogDrainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function createConfigurableLogDrainResponseBodyFromJSON(
   jsonString: string,

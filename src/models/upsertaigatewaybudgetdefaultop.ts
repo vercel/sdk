@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const UpsertAiGatewayBudgetDefaultScopeType = {
@@ -11,6 +12,7 @@ export const UpsertAiGatewayBudgetDefaultScopeType = {
   Project: "project",
   ApiKey: "api-key",
   User: "user",
+  App: "app",
 } as const;
 export type UpsertAiGatewayBudgetDefaultScopeType = ClosedEnum<
   typeof UpsertAiGatewayBudgetDefaultScopeType
@@ -54,14 +56,17 @@ export type UpsertAiGatewayBudgetDefaultRequest = {
 
 /** @internal */
 export const UpsertAiGatewayBudgetDefaultScopeType$outboundSchema:
-  z.ZodNativeEnum<typeof UpsertAiGatewayBudgetDefaultScopeType> = z.nativeEnum(
-    UpsertAiGatewayBudgetDefaultScopeType,
-  );
+  z.ZodNativeEnum<typeof UpsertAiGatewayBudgetDefaultScopeType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpsertAiGatewayBudgetDefaultScopeType)
+    );
 
 /** @internal */
 export const UpsertAiGatewayBudgetDefaultRefreshPeriod$outboundSchema:
-  z.ZodNativeEnum<typeof UpsertAiGatewayBudgetDefaultRefreshPeriod> = z
-    .nativeEnum(UpsertAiGatewayBudgetDefaultRefreshPeriod);
+  z.ZodNativeEnum<typeof UpsertAiGatewayBudgetDefaultRefreshPeriod> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpsertAiGatewayBudgetDefaultRefreshPeriod)
+    );
 
 /** @internal */
 export type UpsertAiGatewayBudgetDefaultRequestBody$Outbound = {
@@ -77,14 +82,16 @@ export const UpsertAiGatewayBudgetDefaultRequestBody$outboundSchema: z.ZodType<
   UpsertAiGatewayBudgetDefaultRequestBody$Outbound,
   z.ZodTypeDef,
   UpsertAiGatewayBudgetDefaultRequestBody
-> = z.object({
-  scopeType: UpsertAiGatewayBudgetDefaultScopeType$outboundSchema,
-  limitAmount: z.number(),
-  refreshPeriod: UpsertAiGatewayBudgetDefaultRefreshPeriod$outboundSchema
-    .optional(),
-  alertThresholds: z.array(z.number()).optional(),
-  justification: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scopeType: UpsertAiGatewayBudgetDefaultScopeType$outboundSchema,
+    limitAmount: z.number(),
+    refreshPeriod: UpsertAiGatewayBudgetDefaultRefreshPeriod$outboundSchema
+      .optional(),
+    alertThresholds: z.array(z.number()).optional(),
+    justification: z.string().optional(),
+  })
+);
 
 export function upsertAiGatewayBudgetDefaultRequestBodyToJSON(
   upsertAiGatewayBudgetDefaultRequestBody:
@@ -109,17 +116,19 @@ export const UpsertAiGatewayBudgetDefaultRequest$outboundSchema: z.ZodType<
   UpsertAiGatewayBudgetDefaultRequest$Outbound,
   z.ZodTypeDef,
   UpsertAiGatewayBudgetDefaultRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    UpsertAiGatewayBudgetDefaultRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      UpsertAiGatewayBudgetDefaultRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function upsertAiGatewayBudgetDefaultRequestToJSON(
   upsertAiGatewayBudgetDefaultRequest: UpsertAiGatewayBudgetDefaultRequest,

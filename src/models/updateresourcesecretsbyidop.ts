@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 /**
  * A map of environments to override values for the secret, used for setting different values across deployments in production, preview, and development environments. Note: the same value will be used for all deployments in the given environment.
@@ -62,11 +63,13 @@ export const UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema:
     UpdateResourceSecretsByIdEnvironmentOverrides$Outbound,
     z.ZodTypeDef,
     UpdateResourceSecretsByIdEnvironmentOverrides
-  > = z.object({
-    development: z.string().optional(),
-    preview: z.string().optional(),
-    production: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      development: z.string().optional(),
+      preview: z.string().optional(),
+      production: z.string().optional(),
+    })
+  );
 
 export function updateResourceSecretsByIdEnvironmentOverridesToJSON(
   updateResourceSecretsByIdEnvironmentOverrides:
@@ -94,14 +97,16 @@ export const UpdateResourceSecretsByIdSecrets$outboundSchema: z.ZodType<
   UpdateResourceSecretsByIdSecrets$Outbound,
   z.ZodTypeDef,
   UpdateResourceSecretsByIdSecrets
-> = z.object({
-  name: z.string(),
-  value: z.string(),
-  prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() =>
-    UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    value: z.string(),
+    prefix: z.string().optional(),
+    environmentOverrides: z.lazy(() =>
+      UpdateResourceSecretsByIdEnvironmentOverrides$outboundSchema
+    ).optional(),
+  })
+);
 
 export function updateResourceSecretsByIdSecretsToJSON(
   updateResourceSecretsByIdSecrets: UpdateResourceSecretsByIdSecrets,
@@ -124,12 +129,14 @@ export const UpdateResourceSecretsByIdRequestBody$outboundSchema: z.ZodType<
   UpdateResourceSecretsByIdRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateResourceSecretsByIdRequestBody
-> = z.object({
-  secrets: z.array(
-    z.lazy(() => UpdateResourceSecretsByIdSecrets$outboundSchema),
-  ),
-  partial: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    secrets: z.array(
+      z.lazy(() => UpdateResourceSecretsByIdSecrets$outboundSchema),
+    ),
+    partial: z.boolean().optional(),
+  })
+);
 
 export function updateResourceSecretsByIdRequestBodyToJSON(
   updateResourceSecretsByIdRequestBody: UpdateResourceSecretsByIdRequestBody,
@@ -153,16 +160,19 @@ export const UpdateResourceSecretsByIdRequest$outboundSchema: z.ZodType<
   UpdateResourceSecretsByIdRequest$Outbound,
   z.ZodTypeDef,
   UpdateResourceSecretsByIdRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  resourceId: z.string(),
-  requestBody: z.lazy(() => UpdateResourceSecretsByIdRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    resourceId: z.string(),
+    requestBody: z.lazy(() =>
+      UpdateResourceSecretsByIdRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateResourceSecretsByIdRequestToJSON(
   updateResourceSecretsByIdRequest: UpdateResourceSecretsByIdRequest,

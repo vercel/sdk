@@ -6,7 +6,7 @@
 import { UpsertAiGatewayBudgetDefaultRequestBody } from "@vercel/sdk/models/upsertaigatewaybudgetdefaultop.js";
 
 let value: UpsertAiGatewayBudgetDefaultRequestBody = {
-  scopeType: "user",
+  scopeType: "app",
   limitAmount: 8745.95,
 };
 ```

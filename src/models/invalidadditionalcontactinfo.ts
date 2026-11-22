@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -50,25 +51,29 @@ export class InvalidAdditionalContactInfo extends VercelError {
 /** @internal */
 export const InvalidAdditionalContactInfoCode$inboundSchema: z.ZodNativeEnum<
   typeof InvalidAdditionalContactInfoCode
-> = z.nativeEnum(InvalidAdditionalContactInfoCode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(InvalidAdditionalContactInfoCode)
+);
 
 /** @internal */
 export const InvalidAdditionalContactInfo$inboundSchema: z.ZodType<
   InvalidAdditionalContactInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: InvalidAdditionalContactInfoCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new InvalidAdditionalContactInfo(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: InvalidAdditionalContactInfoCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new InvalidAdditionalContactInfo(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

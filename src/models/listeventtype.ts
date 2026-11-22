@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -106,6 +106,8 @@ export const Name = {
     "ai-gateway-inference-hooks-headers-cleared",
   AiGatewayInferenceHooksHeadersUpdated:
     "ai-gateway-inference-hooks-headers-updated",
+  AiGatewayInferenceHooksPreviousSigningSecretRetired:
+    "ai-gateway-inference-hooks-previous-signing-secret-retired",
   AiGatewayInferenceHooksRemoved: "ai-gateway-inference-hooks-removed",
   AiGatewayInferenceHooksSettingsUpdated:
     "ai-gateway-inference-hooks-settings-updated",
@@ -496,6 +498,8 @@ export const Name = {
   OidcPolicyDeleted: "oidc-policy-deleted",
   OidcPolicyUpdated: "oidc-policy-updated",
   OidcPolicyUsedToObtainAppToken: "oidc-policy-used-to-obtain-app-token",
+  OrganizationAdminInviteRevoked: "organization-admin-invite-revoked",
+  OrganizationAdminRemoved: "organization-admin-removed",
   OrganizationAvatarUpdate: "organization-avatar-update",
   OrganizationCreate: "organization-create",
   OrganizationDelete: "organization-delete",
@@ -727,6 +731,8 @@ export const Name = {
   SandboxDriveDeleted: "sandbox-drive-deleted",
   SandboxDriveSnapshotCreated: "sandbox-drive-snapshot-created",
   SandboxDriveSnapshotDeleted: "sandbox-drive-snapshot-deleted",
+  SandboxExpiryNotificationLeadTimeUpdated:
+    "sandbox-expiry-notification-lead-time-updated",
   SandboxNpmCredentialsConfigured: "sandbox-npm-credentials-configured",
   SandboxSignedCommitIdentityConfigured:
     "sandbox-signed-commit-identity-configured",
@@ -1021,6 +1027,8 @@ export const ReplacedBy = {
     "ai-gateway-inference-hooks-headers-cleared",
   AiGatewayInferenceHooksHeadersUpdated:
     "ai-gateway-inference-hooks-headers-updated",
+  AiGatewayInferenceHooksPreviousSigningSecretRetired:
+    "ai-gateway-inference-hooks-previous-signing-secret-retired",
   AiGatewayInferenceHooksRemoved: "ai-gateway-inference-hooks-removed",
   AiGatewayInferenceHooksSettingsUpdated:
     "ai-gateway-inference-hooks-settings-updated",
@@ -1411,6 +1419,8 @@ export const ReplacedBy = {
   OidcPolicyDeleted: "oidc-policy-deleted",
   OidcPolicyUpdated: "oidc-policy-updated",
   OidcPolicyUsedToObtainAppToken: "oidc-policy-used-to-obtain-app-token",
+  OrganizationAdminInviteRevoked: "organization-admin-invite-revoked",
+  OrganizationAdminRemoved: "organization-admin-removed",
   OrganizationAvatarUpdate: "organization-avatar-update",
   OrganizationCreate: "organization-create",
   OrganizationDelete: "organization-delete",
@@ -1642,6 +1652,8 @@ export const ReplacedBy = {
   SandboxDriveDeleted: "sandbox-drive-deleted",
   SandboxDriveSnapshotCreated: "sandbox-drive-snapshot-created",
   SandboxDriveSnapshotDeleted: "sandbox-drive-snapshot-deleted",
+  SandboxExpiryNotificationLeadTimeUpdated:
+    "sandbox-expiry-notification-lead-time-updated",
   SandboxNpmCredentialsConfigured: "sandbox-npm-credentials-configured",
   SandboxSignedCommitIdentityConfigured:
     "sandbox-signed-commit-identity-configured",
@@ -1903,29 +1915,30 @@ export type ListEventType = {
 /** @internal */
 export const ListEventTypeCategories$inboundSchema: z.ZodNativeEnum<
   typeof ListEventTypeCategories
-> = z.nativeEnum(ListEventTypeCategories);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListEventTypeCategories));
 
 /** @internal */
-export const Name$inboundSchema: z.ZodNativeEnum<typeof Name> = z.nativeEnum(
-  Name,
-);
+export const Name$inboundSchema: z.ZodNativeEnum<typeof Name> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Name));
 
 /** @internal */
-export const ReplacedBy$inboundSchema: z.ZodNativeEnum<typeof ReplacedBy> = z
-  .nativeEnum(ReplacedBy);
+export const ReplacedBy$inboundSchema: z.ZodNativeEnum<typeof ReplacedBy> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ReplacedBy));
 
 /** @internal */
 export const ListEventType$inboundSchema: z.ZodType<
   ListEventType,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  categories: z.array(ListEventTypeCategories$inboundSchema),
-  deprecated: types.optional(types.boolean()),
-  description: types.string(),
-  name: Name$inboundSchema,
-  replacedBy: types.optional(z.array(ReplacedBy$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    categories: z.array(ListEventTypeCategories$inboundSchema),
+    deprecated: types.optional(types.boolean()),
+    description: types.string(),
+    name: Name$inboundSchema,
+    replacedBy: types.optional(z.array(ReplacedBy$inboundSchema)),
+  })
+);
 
 export function listEventTypeFromJSON(
   jsonString: string,

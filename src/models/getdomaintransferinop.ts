@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { Forbidden, Forbidden$inboundSchema } from "./forbidden.js";
@@ -62,10 +62,12 @@ export const GetDomainTransferInRequest$outboundSchema: z.ZodType<
   GetDomainTransferInRequest$Outbound,
   z.ZodTypeDef,
   GetDomainTransferInRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+  })
+);
 
 export function getDomainTransferInRequestToJSON(
   getDomainTransferInRequest: GetDomainTransferInRequest,
@@ -81,12 +83,14 @@ export const GetDomainTransferInDomainsRegistrarResponseBody$inboundSchema:
     GetDomainTransferInDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Forbidden$inboundSchema,
-    NotAuthorizedForScope$inboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      Forbidden$inboundSchema,
+      NotAuthorizedForScope$inboundSchema.and(
+        z.object({ code: z.literal("not_authorized_for_scope") }),
+      ),
+    ])
+  );
 
 export function getDomainTransferInDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -107,16 +111,18 @@ export function getDomainTransferInDomainsRegistrarResponseBodyFromJSON(
 /** @internal */
 export const GetDomainTransferInStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainTransferInStatus
-> = z.nativeEnum(GetDomainTransferInStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDomainTransferInStatus));
 
 /** @internal */
 export const GetDomainTransferInResponseBody$inboundSchema: z.ZodType<
   GetDomainTransferInResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: GetDomainTransferInStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: GetDomainTransferInStatus$inboundSchema,
+  })
+);
 
 export function getDomainTransferInResponseBodyFromJSON(
   jsonString: string,

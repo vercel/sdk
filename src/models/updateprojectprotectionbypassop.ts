@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -131,10 +131,12 @@ export const Revoke$outboundSchema: z.ZodType<
   Revoke$Outbound,
   z.ZodTypeDef,
   Revoke
-> = z.object({
-  secret: z.string(),
-  regenerate: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    secret: z.string(),
+    regenerate: z.boolean(),
+  })
+);
 
 export function revokeToJSON(revoke: Revoke): string {
   return JSON.stringify(Revoke$outboundSchema.parse(revoke));
@@ -151,10 +153,12 @@ export const Generate$outboundSchema: z.ZodType<
   Generate$Outbound,
   z.ZodTypeDef,
   Generate
-> = z.object({
-  secret: z.string().optional(),
-  note: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    secret: z.string().optional(),
+    note: z.string().optional(),
+  })
+);
 
 export function generateToJSON(generate: Generate): string {
   return JSON.stringify(Generate$outboundSchema.parse(generate));
@@ -172,11 +176,13 @@ export const Update$outboundSchema: z.ZodType<
   Update$Outbound,
   z.ZodTypeDef,
   Update
-> = z.object({
-  secret: z.string(),
-  isEnvVar: z.boolean().optional(),
-  note: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    secret: z.string(),
+    isEnvVar: z.boolean().optional(),
+    note: z.string().optional(),
+  })
+);
 
 export function updateToJSON(update: Update): string {
   return JSON.stringify(Update$outboundSchema.parse(update));
@@ -194,11 +200,13 @@ export const UpdateProjectProtectionBypassRequestBody$outboundSchema: z.ZodType<
   UpdateProjectProtectionBypassRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateProjectProtectionBypassRequestBody
-> = z.object({
-  revoke: z.lazy(() => Revoke$outboundSchema).optional(),
-  generate: z.lazy(() => Generate$outboundSchema).optional(),
-  update: z.lazy(() => Update$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    revoke: z.lazy(() => Revoke$outboundSchema).optional(),
+    generate: z.lazy(() => Generate$outboundSchema).optional(),
+    update: z.lazy(() => Update$outboundSchema).optional(),
+  })
+);
 
 export function updateProjectProtectionBypassRequestBodyToJSON(
   updateProjectProtectionBypassRequestBody:
@@ -224,18 +232,20 @@ export const UpdateProjectProtectionBypassRequest$outboundSchema: z.ZodType<
   UpdateProjectProtectionBypassRequest$Outbound,
   z.ZodTypeDef,
   UpdateProjectProtectionBypassRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    UpdateProjectProtectionBypassRequestBody$outboundSchema
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      UpdateProjectProtectionBypassRequestBody$outboundSchema
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateProjectProtectionBypassRequestToJSON(
   updateProjectProtectionBypassRequest: UpdateProjectProtectionBypassRequest,
@@ -253,13 +263,15 @@ export const UpdateProjectProtectionBypassProtectionBypass2$inboundSchema:
     UpdateProjectProtectionBypassProtectionBypass2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    createdAt: types.number(),
-    createdBy: types.string(),
-    isEnvVar: types.optional(types.boolean()),
-    note: types.optional(types.string()),
-    scope: types.literal("automation-bypass"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.number(),
+      createdBy: types.string(),
+      isEnvVar: types.optional(types.boolean()),
+      note: types.optional(types.string()),
+      scope: types.literal("automation-bypass"),
+    })
+  );
 
 export function updateProjectProtectionBypassProtectionBypass2FromJSON(
   jsonString: string,
@@ -283,13 +295,15 @@ export const UpdateProjectProtectionBypassProtectionBypass1$inboundSchema:
     UpdateProjectProtectionBypassProtectionBypass1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    configurationId: types.string(),
-    createdAt: types.number(),
-    createdBy: types.string(),
-    integrationId: types.string(),
-    scope: types.literal("integration-automation-bypass"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      configurationId: types.string(),
+      createdAt: types.number(),
+      createdBy: types.string(),
+      integrationId: types.string(),
+      scope: types.literal("integration-automation-bypass"),
+    })
+  );
 
 export function updateProjectProtectionBypassProtectionBypass1FromJSON(
   jsonString: string,
@@ -313,10 +327,16 @@ export const UpdateProjectProtectionBypassProtectionBypass$inboundSchema:
     UpdateProjectProtectionBypassProtectionBypass,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass1$inboundSchema),
-    z.lazy(() => UpdateProjectProtectionBypassProtectionBypass2$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() =>
+        UpdateProjectProtectionBypassProtectionBypass1$inboundSchema
+      ),
+      z.lazy(() =>
+        UpdateProjectProtectionBypassProtectionBypass2$inboundSchema
+      ),
+    ])
+  );
 
 export function updateProjectProtectionBypassProtectionBypassFromJSON(
   jsonString: string,
@@ -339,18 +359,18 @@ export const UpdateProjectProtectionBypassResponseBody$inboundSchema: z.ZodType<
   UpdateProjectProtectionBypassResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  protectionBypass: types.optional(
-    z.record(z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    protectionBypass: types.optional(z.record(z.union([
       z.lazy(() =>
         UpdateProjectProtectionBypassProtectionBypass1$inboundSchema
       ),
       z.lazy(() =>
         UpdateProjectProtectionBypassProtectionBypass2$inboundSchema
       ),
-    ])),
-  ),
-});
+    ]))),
+  })
+);
 
 export function updateProjectProtectionBypassResponseBodyFromJSON(
   jsonString: string,

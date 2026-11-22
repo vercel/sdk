@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody =
   {
@@ -34,9 +35,11 @@ export const UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionReq
     UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody$Outbound,
     z.ZodTypeDef,
     UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody
-  > = z.object({
-    description: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      description: z.string().optional(),
+    })
+  );
 
 export function updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBodyToJSON(
   updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody:
@@ -66,17 +69,19 @@ export const UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionReq
     UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest$Outbound,
     z.ZodTypeDef,
     UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest
-  > = z.object({
-    projectId: z.string(),
-    deploymentId: z.string(),
-    requestBody: z.lazy(() =>
-      UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      requestBody: "RequestBody",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      projectId: z.string(),
+      deploymentId: z.string(),
+      requestBody: z.lazy(() =>
+        UpdateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestBody$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        requestBody: "RequestBody",
+      });
+    })
+  );
 
 export function updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequestToJSON(
   updateProjectsByProjectIdRollbackByDeploymentIdUpdateDescriptionRequest:

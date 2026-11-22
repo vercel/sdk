@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -79,8 +80,10 @@ export type UpdateIntegrationDeploymentActionRequest = {
 
 /** @internal */
 export const UpdateIntegrationDeploymentActionStatus$outboundSchema:
-  z.ZodNativeEnum<typeof UpdateIntegrationDeploymentActionStatus> = z
-    .nativeEnum(UpdateIntegrationDeploymentActionStatus);
+  z.ZodNativeEnum<typeof UpdateIntegrationDeploymentActionStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateIntegrationDeploymentActionStatus)
+    );
 
 /** @internal */
 export type OutcomesWhen$Outbound = {
@@ -93,10 +96,12 @@ export const OutcomesWhen$outboundSchema: z.ZodType<
   OutcomesWhen$Outbound,
   z.ZodTypeDef,
   OutcomesWhen
-> = z.object({
-  role: z.array(z.string()).optional(),
-  environment: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role: z.array(z.string()).optional(),
+    environment: z.array(z.string()).optional(),
+  })
+);
 
 export function outcomesWhenToJSON(outcomesWhen: OutcomesWhen): string {
   return JSON.stringify(OutcomesWhen$outboundSchema.parse(outcomesWhen));
@@ -110,7 +115,9 @@ export const Claims1$outboundSchema: z.ZodType<
   Claims1$Outbound,
   z.ZodTypeDef,
   Claims1
-> = smartUnion([z.string(), z.number(), z.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.string(), z.number(), z.boolean()])
+);
 
 export function claims1ToJSON(claims1: Claims1): string {
   return JSON.stringify(Claims1$outboundSchema.parse(claims1));
@@ -124,10 +131,12 @@ export const OutcomesClaims$outboundSchema: z.ZodType<
   OutcomesClaims$Outbound,
   z.ZodTypeDef,
   OutcomesClaims
-> = smartUnion([
-  smartUnion([z.string(), z.number(), z.boolean()]),
-  z.array(z.string()),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    smartUnion([z.string(), z.number(), z.boolean()]),
+    z.array(z.string()),
+  ])
+);
 
 export function outcomesClaimsToJSON(outcomesClaims: OutcomesClaims): string {
   return JSON.stringify(OutcomesClaims$outboundSchema.parse(outcomesClaims));
@@ -144,17 +153,19 @@ export const ClaimRules$outboundSchema: z.ZodType<
   ClaimRules$Outbound,
   z.ZodTypeDef,
   ClaimRules
-> = z.object({
-  when: z.lazy(() => OutcomesWhen$outboundSchema).optional(),
-  claims: z.record(
-    z.nullable(
-      smartUnion([
-        smartUnion([z.string(), z.number(), z.boolean()]),
-        z.array(z.string()),
-      ]),
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    when: z.lazy(() => OutcomesWhen$outboundSchema).optional(),
+    claims: z.record(
+      z.nullable(
+        smartUnion([
+          smartUnion([z.string(), z.number(), z.boolean()]),
+          z.array(z.string()),
+        ]),
+      ),
     ),
-  ),
-});
+  })
+);
 
 export function claimRulesToJSON(claimRules: ClaimRules): string {
   return JSON.stringify(ClaimRules$outboundSchema.parse(claimRules));
@@ -171,10 +182,12 @@ export const Outcomes2$outboundSchema: z.ZodType<
   Outcomes2$Outbound,
   z.ZodTypeDef,
   Outcomes2
-> = z.object({
-  kind: z.string(),
-  claimRules: z.array(z.lazy(() => ClaimRules$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.string(),
+    claimRules: z.array(z.lazy(() => ClaimRules$outboundSchema)),
+  })
+);
 
 export function outcomes2ToJSON(outcomes2: Outcomes2): string {
   return JSON.stringify(Outcomes2$outboundSchema.parse(outcomes2));
@@ -191,10 +204,12 @@ export const Secrets$outboundSchema: z.ZodType<
   Secrets$Outbound,
   z.ZodTypeDef,
   Secrets
-> = z.object({
-  name: z.string(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    value: z.string(),
+  })
+);
 
 export function secretsToJSON(secrets: Secrets): string {
   return JSON.stringify(Secrets$outboundSchema.parse(secrets));
@@ -211,10 +226,12 @@ export const Outcomes1$outboundSchema: z.ZodType<
   Outcomes1$Outbound,
   z.ZodTypeDef,
   Outcomes1
-> = z.object({
-  kind: z.string(),
-  secrets: z.array(z.lazy(() => Secrets$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: z.string(),
+    secrets: z.array(z.lazy(() => Secrets$outboundSchema)),
+  })
+);
 
 export function outcomes1ToJSON(outcomes1: Outcomes1): string {
   return JSON.stringify(Outcomes1$outboundSchema.parse(outcomes1));
@@ -228,10 +245,12 @@ export const Outcomes$outboundSchema: z.ZodType<
   Outcomes$Outbound,
   z.ZodTypeDef,
   Outcomes
-> = smartUnion([
-  z.lazy(() => Outcomes1$outboundSchema),
-  z.lazy(() => Outcomes2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Outcomes1$outboundSchema),
+    z.lazy(() => Outcomes2$outboundSchema),
+  ])
+);
 
 export function outcomesToJSON(outcomes: Outcomes): string {
   return JSON.stringify(Outcomes$outboundSchema.parse(outcomes));
@@ -251,17 +270,17 @@ export const UpdateIntegrationDeploymentActionRequestBody$outboundSchema:
     UpdateIntegrationDeploymentActionRequestBody$Outbound,
     z.ZodTypeDef,
     UpdateIntegrationDeploymentActionRequestBody
-  > = z.object({
-    status: UpdateIntegrationDeploymentActionStatus$outboundSchema.optional(),
-    statusText: z.string().optional(),
-    statusUrl: z.string().optional(),
-    outcomes: z.array(
-      smartUnion([
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      status: UpdateIntegrationDeploymentActionStatus$outboundSchema.optional(),
+      statusText: z.string().optional(),
+      statusUrl: z.string().optional(),
+      outcomes: z.array(smartUnion([
         z.lazy(() => Outcomes1$outboundSchema),
         z.lazy(() => Outcomes2$outboundSchema),
-      ]),
-    ).optional(),
-  });
+      ])).optional(),
+    })
+  );
 
 export function updateIntegrationDeploymentActionRequestBodyToJSON(
   updateIntegrationDeploymentActionRequestBody:
@@ -290,19 +309,21 @@ export const UpdateIntegrationDeploymentActionRequest$outboundSchema: z.ZodType<
   UpdateIntegrationDeploymentActionRequest$Outbound,
   z.ZodTypeDef,
   UpdateIntegrationDeploymentActionRequest
-> = z.object({
-  deploymentId: z.string(),
-  integrationConfigurationId: z.string(),
-  resourceId: z.string(),
-  action: z.string(),
-  requestBody: z.lazy(() =>
-    UpdateIntegrationDeploymentActionRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentId: z.string(),
+    integrationConfigurationId: z.string(),
+    resourceId: z.string(),
+    action: z.string(),
+    requestBody: z.lazy(() =>
+      UpdateIntegrationDeploymentActionRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateIntegrationDeploymentActionRequestToJSON(
   updateIntegrationDeploymentActionRequest:

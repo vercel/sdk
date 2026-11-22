@@ -7,8 +7,8 @@ import { RestartProjectDaemonInstanceRequest } from "@vercel/sdk/models/restartp
 
 let value: RestartProjectDaemonInstanceRequest = {
   idOrName: "<value>",
-  daemonName: "<value>",
-  instanceId: "<id>",
+  daemonName: "abc",
+  instanceId: "dmni_abcdefghjkmnpqrstvwxyz0123",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
 };

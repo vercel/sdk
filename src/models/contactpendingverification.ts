@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -25,11 +25,13 @@ export const ContactPendingVerification$inboundSchema: z.ZodType<
   ContactPendingVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  verified: types.literal(false),
-  verifyBy: types.string(),
-  email: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    verified: types.literal(false),
+    verifyBy: types.string(),
+    email: types.string(),
+  })
+);
 
 export function contactPendingVerificationFromJSON(
   jsonString: string,

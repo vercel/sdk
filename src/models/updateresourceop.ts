@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -223,17 +223,17 @@ export type UpdateResourceResponseBody = {
 /** @internal */
 export const UpdateResourceOwnership$outboundSchema: z.ZodNativeEnum<
   typeof UpdateResourceOwnership
-> = z.nativeEnum(UpdateResourceOwnership);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateResourceOwnership));
 
 /** @internal */
 export const UpdateResourceStatus$outboundSchema: z.ZodNativeEnum<
   typeof UpdateResourceStatus
-> = z.nativeEnum(UpdateResourceStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateResourceStatus));
 
 /** @internal */
 export const UpdateResourceType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateResourceType
-> = z.nativeEnum(UpdateResourceType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateResourceType));
 
 /** @internal */
 export type UpdateResourceDetails$Outbound = {
@@ -246,10 +246,12 @@ export const UpdateResourceDetails$outboundSchema: z.ZodType<
   UpdateResourceDetails$Outbound,
   z.ZodTypeDef,
   UpdateResourceDetails
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    value: z.string().optional(),
+  })
+);
 
 export function updateResourceDetailsToJSON(
   updateResourceDetails: UpdateResourceDetails,
@@ -270,10 +272,12 @@ export const UpdateResourceHighlightedDetails$outboundSchema: z.ZodType<
   UpdateResourceHighlightedDetails$Outbound,
   z.ZodTypeDef,
   UpdateResourceHighlightedDetails
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    value: z.string().optional(),
+  })
+);
 
 export function updateResourceHighlightedDetailsToJSON(
   updateResourceHighlightedDetails: UpdateResourceHighlightedDetails,
@@ -306,28 +310,30 @@ export const UpdateResourceBillingPlan$outboundSchema: z.ZodType<
   UpdateResourceBillingPlan$Outbound,
   z.ZodTypeDef,
   UpdateResourceBillingPlan
-> = z.object({
-  id: z.string(),
-  type: UpdateResourceType$outboundSchema,
-  name: z.string(),
-  description: z.string().optional(),
-  paymentMethodRequired: z.boolean().optional(),
-  cost: z.string().optional(),
-  details: z.array(z.lazy(() => UpdateResourceDetails$outboundSchema))
-    .optional(),
-  highlightedDetails: z.array(
-    z.lazy(() => UpdateResourceHighlightedDetails$outboundSchema),
-  ).optional(),
-  effectiveDate: z.string().optional(),
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      additionalProperties: null,
-    }),
-  };
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: UpdateResourceType$outboundSchema,
+    name: z.string(),
+    description: z.string().optional(),
+    paymentMethodRequired: z.boolean().optional(),
+    cost: z.string().optional(),
+    details: z.array(z.lazy(() => UpdateResourceDetails$outboundSchema))
+      .optional(),
+    highlightedDetails: z.array(
+      z.lazy(() => UpdateResourceHighlightedDetails$outboundSchema),
+    ).optional(),
+    effectiveDate: z.string().optional(),
+    additionalProperties: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        additionalProperties: null,
+      }),
+    };
+  })
+);
 
 export function updateResourceBillingPlanToJSON(
   updateResourceBillingPlan: UpdateResourceBillingPlan,
@@ -340,7 +346,7 @@ export function updateResourceBillingPlanToJSON(
 /** @internal */
 export const NotificationLevel$outboundSchema: z.ZodNativeEnum<
   typeof NotificationLevel
-> = z.nativeEnum(NotificationLevel);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NotificationLevel));
 
 /** @internal */
 export type UpdateResourceNotification1$Outbound = {
@@ -355,12 +361,14 @@ export const UpdateResourceNotification1$outboundSchema: z.ZodType<
   UpdateResourceNotification1$Outbound,
   z.ZodTypeDef,
   UpdateResourceNotification1
-> = z.object({
-  level: NotificationLevel$outboundSchema,
-  title: z.string(),
-  message: z.string().optional(),
-  href: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    level: NotificationLevel$outboundSchema,
+    title: z.string(),
+    message: z.string().optional(),
+    href: z.string().optional(),
+  })
+);
 
 export function updateResourceNotification1ToJSON(
   updateResourceNotification1: UpdateResourceNotification1,
@@ -382,10 +390,12 @@ export const UpdateResourceNotification$outboundSchema: z.ZodType<
   UpdateResourceNotification$Outbound,
   z.ZodTypeDef,
   UpdateResourceNotification
-> = smartUnion([
-  z.lazy(() => UpdateResourceNotification1$outboundSchema),
-  z.string(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateResourceNotification1$outboundSchema),
+    z.string(),
+  ])
+);
 
 export function updateResourceNotificationToJSON(
   updateResourceNotification: UpdateResourceNotification,
@@ -408,11 +418,13 @@ export const UpdateResourceSecretsMarketplaceEnvironmentOverrides$outboundSchema
     UpdateResourceSecretsMarketplaceEnvironmentOverrides$Outbound,
     z.ZodTypeDef,
     UpdateResourceSecretsMarketplaceEnvironmentOverrides
-  > = z.object({
-    development: z.string().optional(),
-    preview: z.string().optional(),
-    production: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      development: z.string().optional(),
+      preview: z.string().optional(),
+      production: z.string().optional(),
+    })
+  );
 
 export function updateResourceSecretsMarketplaceEnvironmentOverridesToJSON(
   updateResourceSecretsMarketplaceEnvironmentOverrides:
@@ -440,14 +452,16 @@ export const SecretsSecrets$outboundSchema: z.ZodType<
   SecretsSecrets$Outbound,
   z.ZodTypeDef,
   SecretsSecrets
-> = z.object({
-  name: z.string(),
-  value: z.string(),
-  prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() =>
-    UpdateResourceSecretsMarketplaceEnvironmentOverrides$outboundSchema
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    value: z.string(),
+    prefix: z.string().optional(),
+    environmentOverrides: z.lazy(() =>
+      UpdateResourceSecretsMarketplaceEnvironmentOverrides$outboundSchema
+    ).optional(),
+  })
+);
 
 export function secretsSecretsToJSON(secretsSecrets: SecretsSecrets): string {
   return JSON.stringify(SecretsSecrets$outboundSchema.parse(secretsSecrets));
@@ -464,10 +478,12 @@ export const Secrets2$outboundSchema: z.ZodType<
   Secrets2$Outbound,
   z.ZodTypeDef,
   Secrets2
-> = z.object({
-  secrets: z.array(z.lazy(() => SecretsSecrets$outboundSchema)),
-  partial: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    secrets: z.array(z.lazy(() => SecretsSecrets$outboundSchema)),
+    partial: z.boolean().optional(),
+  })
+);
 
 export function secrets2ToJSON(secrets2: Secrets2): string {
   return JSON.stringify(Secrets2$outboundSchema.parse(secrets2));
@@ -485,11 +501,13 @@ export const SecretsEnvironmentOverrides$outboundSchema: z.ZodType<
   SecretsEnvironmentOverrides$Outbound,
   z.ZodTypeDef,
   SecretsEnvironmentOverrides
-> = z.object({
-  development: z.string().optional(),
-  preview: z.string().optional(),
-  production: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    development: z.string().optional(),
+    preview: z.string().optional(),
+    production: z.string().optional(),
+  })
+);
 
 export function secretsEnvironmentOverridesToJSON(
   secretsEnvironmentOverrides: SecretsEnvironmentOverrides,
@@ -514,13 +532,16 @@ export const Secrets1$outboundSchema: z.ZodType<
   Secrets1$Outbound,
   z.ZodTypeDef,
   Secrets1
-> = z.object({
-  name: z.string(),
-  value: z.string(),
-  prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() => SecretsEnvironmentOverrides$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    value: z.string(),
+    prefix: z.string().optional(),
+    environmentOverrides: z.lazy(() =>
+      SecretsEnvironmentOverrides$outboundSchema
+    ).optional(),
+  })
+);
 
 export function secrets1ToJSON(secrets1: Secrets1): string {
   return JSON.stringify(Secrets1$outboundSchema.parse(secrets1));
@@ -536,10 +557,12 @@ export const UpdateResourceSecrets$outboundSchema: z.ZodType<
   UpdateResourceSecrets$Outbound,
   z.ZodTypeDef,
   UpdateResourceSecrets
-> = smartUnion([
-  z.lazy(() => Secrets2$outboundSchema),
-  z.array(z.lazy(() => Secrets1$outboundSchema)),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Secrets2$outboundSchema),
+    z.array(z.lazy(() => Secrets1$outboundSchema)),
+  ])
+);
 
 export function updateResourceSecretsToJSON(
   updateResourceSecrets: UpdateResourceSecrets,
@@ -560,10 +583,12 @@ export const UpdateResourceWhen$outboundSchema: z.ZodType<
   UpdateResourceWhen$Outbound,
   z.ZodTypeDef,
   UpdateResourceWhen
-> = z.object({
-  role: z.array(z.string()).optional(),
-  environment: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role: z.array(z.string()).optional(),
+    environment: z.array(z.string()).optional(),
+  })
+);
 
 export function updateResourceWhenToJSON(
   updateResourceWhen: UpdateResourceWhen,
@@ -581,7 +606,9 @@ export const UpdateResourceClaims1$outboundSchema: z.ZodType<
   UpdateResourceClaims1$Outbound,
   z.ZodTypeDef,
   UpdateResourceClaims1
-> = smartUnion([z.string(), z.number(), z.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.string(), z.number(), z.boolean()])
+);
 
 export function updateResourceClaims1ToJSON(
   updateResourceClaims1: UpdateResourceClaims1,
@@ -603,10 +630,12 @@ export const UpdateResourceClaims$outboundSchema: z.ZodType<
   UpdateResourceClaims$Outbound,
   z.ZodTypeDef,
   UpdateResourceClaims
-> = smartUnion([
-  smartUnion([z.string(), z.number(), z.boolean()]),
-  z.array(z.string()),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    smartUnion([z.string(), z.number(), z.boolean()]),
+    z.array(z.string()),
+  ])
+);
 
 export function updateResourceClaimsToJSON(
   updateResourceClaims: UpdateResourceClaims,
@@ -627,17 +656,19 @@ export const UpdateResourceClaimRules$outboundSchema: z.ZodType<
   UpdateResourceClaimRules$Outbound,
   z.ZodTypeDef,
   UpdateResourceClaimRules
-> = z.object({
-  when: z.lazy(() => UpdateResourceWhen$outboundSchema).optional(),
-  claims: z.record(
-    z.nullable(
-      smartUnion([
-        smartUnion([z.string(), z.number(), z.boolean()]),
-        z.array(z.string()),
-      ]),
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    when: z.lazy(() => UpdateResourceWhen$outboundSchema).optional(),
+    claims: z.record(
+      z.nullable(
+        smartUnion([
+          smartUnion([z.string(), z.number(), z.boolean()]),
+          z.array(z.string()),
+        ]),
+      ),
     ),
-  ),
-});
+  })
+);
 
 export function updateResourceClaimRulesToJSON(
   updateResourceClaimRules: UpdateResourceClaimRules,
@@ -659,12 +690,14 @@ export const UpdateResourceCustomClaims$outboundSchema: z.ZodType<
   UpdateResourceCustomClaims$Outbound,
   z.ZodTypeDef,
   UpdateResourceCustomClaims
-> = z.object({
-  roles: z.array(z.string()).optional(),
-  defaultRole: z.string().optional(),
-  claimRules: z.array(z.lazy(() => UpdateResourceClaimRules$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    roles: z.array(z.string()).optional(),
+    defaultRole: z.string().optional(),
+    claimRules: z.array(z.lazy(() => UpdateResourceClaimRules$outboundSchema))
+      .optional(),
+  })
+);
 
 export function updateResourceCustomClaimsToJSON(
   updateResourceCustomClaims: UpdateResourceCustomClaims,
@@ -677,7 +710,7 @@ export function updateResourceCustomClaimsToJSON(
 /** @internal */
 export const CredentialTypes$outboundSchema: z.ZodNativeEnum<
   typeof CredentialTypes
-> = z.nativeEnum(CredentialTypes);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CredentialTypes));
 
 /** @internal */
 export type UpdateResourceRequestBody$Outbound = {
@@ -698,26 +731,28 @@ export const UpdateResourceRequestBody$outboundSchema: z.ZodType<
   UpdateResourceRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateResourceRequestBody
-> = z.object({
-  ownership: UpdateResourceOwnership$outboundSchema.optional(),
-  name: z.string().optional(),
-  status: UpdateResourceStatus$outboundSchema.optional(),
-  metadata: z.record(z.any()).optional(),
-  billingPlan: z.lazy(() => UpdateResourceBillingPlan$outboundSchema)
-    .optional(),
-  notification: smartUnion([
-    z.lazy(() => UpdateResourceNotification1$outboundSchema),
-    z.string(),
-  ]).optional(),
-  extras: z.record(z.any()).optional(),
-  secrets: smartUnion([
-    z.lazy(() => Secrets2$outboundSchema),
-    z.array(z.lazy(() => Secrets1$outboundSchema)),
-  ]).optional(),
-  customClaims: z.lazy(() => UpdateResourceCustomClaims$outboundSchema)
-    .optional(),
-  credentialTypes: z.array(CredentialTypes$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ownership: UpdateResourceOwnership$outboundSchema.optional(),
+    name: z.string().optional(),
+    status: UpdateResourceStatus$outboundSchema.optional(),
+    metadata: z.record(z.any()).optional(),
+    billingPlan: z.lazy(() => UpdateResourceBillingPlan$outboundSchema)
+      .optional(),
+    notification: smartUnion([
+      z.lazy(() => UpdateResourceNotification1$outboundSchema),
+      z.string(),
+    ]).optional(),
+    extras: z.record(z.any()).optional(),
+    secrets: smartUnion([
+      z.lazy(() => Secrets2$outboundSchema),
+      z.array(z.lazy(() => Secrets1$outboundSchema)),
+    ]).optional(),
+    customClaims: z.lazy(() => UpdateResourceCustomClaims$outboundSchema)
+      .optional(),
+    credentialTypes: z.array(CredentialTypes$outboundSchema).optional(),
+  })
+);
 
 export function updateResourceRequestBodyToJSON(
   updateResourceRequestBody: UpdateResourceRequestBody,
@@ -739,16 +774,18 @@ export const UpdateResourceRequest$outboundSchema: z.ZodType<
   UpdateResourceRequest$Outbound,
   z.ZodTypeDef,
   UpdateResourceRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  resourceId: z.string(),
-  requestBody: z.lazy(() => UpdateResourceRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    resourceId: z.string(),
+    requestBody: z.lazy(() => UpdateResourceRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateResourceRequestToJSON(
   updateResourceRequest: UpdateResourceRequest,
@@ -763,9 +800,11 @@ export const UpdateResourceResponseBody$inboundSchema: z.ZodType<
   UpdateResourceResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+  })
+);
 
 export function updateResourceResponseBodyFromJSON(
   jsonString: string,

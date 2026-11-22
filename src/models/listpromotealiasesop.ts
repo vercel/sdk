@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -102,15 +102,17 @@ export const ListPromoteAliasesRequest$outboundSchema: z.ZodType<
   ListPromoteAliasesRequest$Outbound,
   z.ZodTypeDef,
   ListPromoteAliasesRequest
-> = z.object({
-  projectId: z.string(),
-  limit: z.number().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  failedOnly: z.boolean().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    limit: z.number().optional(),
+    since: z.number().optional(),
+    until: z.number().optional(),
+    failedOnly: z.boolean().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listPromoteAliasesRequestToJSON(
   listPromoteAliasesRequest: ListPromoteAliasesRequest,
@@ -122,20 +124,23 @@ export function listPromoteAliasesRequestToJSON(
 
 /** @internal */
 export const ListPromoteAliasesResponseBodyStatus$inboundSchema:
-  z.ZodNativeEnum<typeof ListPromoteAliasesResponseBodyStatus> = z.nativeEnum(
-    ListPromoteAliasesResponseBodyStatus,
-  );
+  z.ZodNativeEnum<typeof ListPromoteAliasesResponseBodyStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListPromoteAliasesResponseBodyStatus)
+    );
 
 /** @internal */
 export const ResponseBodyAliases$inboundSchema: z.ZodType<
   ResponseBodyAliases,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.string(),
-  id: types.string(),
-  status: ListPromoteAliasesResponseBodyStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.string(),
+    id: types.string(),
+    status: ListPromoteAliasesResponseBodyStatus$inboundSchema,
+  })
+);
 
 export function responseBodyAliasesFromJSON(
   jsonString: string,
@@ -152,10 +157,12 @@ export const ListPromoteAliasesResponseBody2$inboundSchema: z.ZodType<
   ListPromoteAliasesResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  aliases: z.array(z.lazy(() => ResponseBodyAliases$inboundSchema)),
-  pagination: Pagination$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    aliases: z.array(z.lazy(() => ResponseBodyAliases$inboundSchema)),
+    pagination: Pagination$inboundSchema,
+  })
+);
 
 export function listPromoteAliasesResponseBody2FromJSON(
   jsonString: string,
@@ -172,7 +179,7 @@ export const ListPromoteAliasesResponseBody1$inboundSchema: z.ZodType<
   ListPromoteAliasesResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function listPromoteAliasesResponseBody1FromJSON(
   jsonString: string,
@@ -189,10 +196,12 @@ export const ListPromoteAliasesResponseBody$inboundSchema: z.ZodType<
   ListPromoteAliasesResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => ListPromoteAliasesResponseBody2$inboundSchema),
-  z.lazy(() => ListPromoteAliasesResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => ListPromoteAliasesResponseBody2$inboundSchema),
+    z.lazy(() => ListPromoteAliasesResponseBody1$inboundSchema),
+  ])
+);
 
 export function listPromoteAliasesResponseBodyFromJSON(
   jsonString: string,

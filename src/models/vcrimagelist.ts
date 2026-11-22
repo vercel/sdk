@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -28,10 +28,12 @@ export const VcrImageList$inboundSchema: z.ZodType<
   VcrImageList,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  images: z.array(VcrImageListItem$inboundSchema),
-  nextCursor: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    images: z.array(VcrImageListItem$inboundSchema),
+    nextCursor: types.optional(types.string()),
+  })
+);
 
 export function vcrImageListFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -80,14 +80,16 @@ export type ConnectProjectConnection = {
 /** @internal */
 export const EnabledEnvironments2$inboundSchema: z.ZodNativeEnum<
   typeof EnabledEnvironments2
-> = z.nativeEnum(EnabledEnvironments2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(EnabledEnvironments2));
 
 /** @internal */
 export const EnabledEnvironments$inboundSchema: z.ZodType<
   EnabledEnvironments,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), EnabledEnvironments2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), EnabledEnvironments2$inboundSchema])
+);
 
 export function enabledEnvironmentsFromJSON(
   jsonString: string,
@@ -104,10 +106,12 @@ export const CustomEnvironments$inboundSchema: z.ZodType<
   CustomEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  slug: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    slug: types.string(),
+  })
+);
 
 export function customEnvironmentsFromJSON(
   jsonString: string,
@@ -121,13 +125,15 @@ export function customEnvironmentsFromJSON(
 
 /** @internal */
 export const Project$inboundSchema: z.ZodType<Project, z.ZodTypeDef, unknown> =
-  z.object({
-    customEnvironments: types.optional(
-      z.array(z.lazy(() => CustomEnvironments$inboundSchema)),
-    ),
-    id: types.string(),
-    name: types.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      customEnvironments: types.optional(
+        z.array(z.lazy(() => CustomEnvironments$inboundSchema)),
+      ),
+      id: types.string(),
+      name: types.string(),
+    })
+  );
 
 export function projectFromJSON(
   jsonString: string,
@@ -144,15 +150,17 @@ export const ConnectProjectConnection$inboundSchema: z.ZodType<
   ConnectProjectConnection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  connectorId: types.string(),
-  createdAt: types.number(),
-  enabledEnvironments: z.array(
-    smartUnion([types.string(), EnabledEnvironments2$inboundSchema]),
-  ),
-  project: z.lazy(() => Project$inboundSchema),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connectorId: types.string(),
+    createdAt: types.number(),
+    enabledEnvironments: z.array(
+      smartUnion([types.string(), EnabledEnvironments2$inboundSchema]),
+    ),
+    project: z.lazy(() => Project$inboundSchema),
+    updatedAt: types.number(),
+  })
+);
 
 export function connectProjectConnectionFromJSON(
   jsonString: string,

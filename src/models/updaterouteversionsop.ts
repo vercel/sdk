@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -85,7 +85,7 @@ export type UpdateRouteVersionsResponseBody = {
 /** @internal */
 export const UpdateRouteVersionsAction$outboundSchema: z.ZodNativeEnum<
   typeof UpdateRouteVersionsAction
-> = z.nativeEnum(UpdateRouteVersionsAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateRouteVersionsAction));
 
 /** @internal */
 export type UpdateRouteVersionsRequestBody$Outbound = {
@@ -98,10 +98,12 @@ export const UpdateRouteVersionsRequestBody$outboundSchema: z.ZodType<
   UpdateRouteVersionsRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateRouteVersionsRequestBody
-> = z.object({
-  id: z.string(),
-  action: UpdateRouteVersionsAction$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    action: UpdateRouteVersionsAction$outboundSchema,
+  })
+);
 
 export function updateRouteVersionsRequestBodyToJSON(
   updateRouteVersionsRequestBody: UpdateRouteVersionsRequestBody,
@@ -126,17 +128,19 @@ export const UpdateRouteVersionsRequest$outboundSchema: z.ZodType<
   UpdateRouteVersionsRequest$Outbound,
   z.ZodTypeDef,
   UpdateRouteVersionsRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateRouteVersionsRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateRouteVersionsRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateRouteVersionsRequestToJSON(
   updateRouteVersionsRequest: UpdateRouteVersionsRequest,
@@ -151,16 +155,18 @@ export const UpdateRouteVersionsVersion$inboundSchema: z.ZodType<
   UpdateRouteVersionsVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  lastModified: types.number(),
-  ruleCount: types.optional(types.number()),
-  s3Key: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    lastModified: types.number(),
+    ruleCount: types.optional(types.number()),
+    s3Key: types.string(),
+  })
+);
 
 export function updateRouteVersionsVersionFromJSON(
   jsonString: string,
@@ -177,9 +183,11 @@ export const UpdateRouteVersionsResponseBody$inboundSchema: z.ZodType<
   UpdateRouteVersionsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  version: z.lazy(() => UpdateRouteVersionsVersion$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.lazy(() => UpdateRouteVersionsVersion$inboundSchema),
+  })
+);
 
 export function updateRouteVersionsResponseBodyFromJSON(
   jsonString: string,

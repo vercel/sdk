@@ -11,6 +11,7 @@ let value: DeleteSandboxResponseBody = {
     currentSessionId: "<id>",
     cwd: "/vercel/sandbox",
     expiresAt: 1750344801629,
+    expiryNotificationLeadTime: 120000,
     failoverRegions: [
       "sfo1",
       "cle1",

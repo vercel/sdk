@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { smartUnion } from "../types/smartUnion.js";
 
 export type DeleteEdgeConfigTokensRequestBody2 = {
@@ -46,10 +50,12 @@ export const DeleteEdgeConfigTokensRequestBody2$outboundSchema: z.ZodType<
   DeleteEdgeConfigTokensRequestBody2$Outbound,
   z.ZodTypeDef,
   DeleteEdgeConfigTokensRequestBody2
-> = z.object({
-  tokens: z.array(z.string()).optional(),
-  ids: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tokens: z.array(z.string()).optional(),
+    ids: z.array(z.string()),
+  })
+);
 
 export function deleteEdgeConfigTokensRequestBody2ToJSON(
   deleteEdgeConfigTokensRequestBody2: DeleteEdgeConfigTokensRequestBody2,
@@ -72,10 +78,12 @@ export const DeleteEdgeConfigTokensRequestBody1$outboundSchema: z.ZodType<
   DeleteEdgeConfigTokensRequestBody1$Outbound,
   z.ZodTypeDef,
   DeleteEdgeConfigTokensRequestBody1
-> = z.object({
-  tokens: z.array(z.string()),
-  ids: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tokens: z.array(z.string()),
+    ids: z.array(z.string()).optional(),
+  })
+);
 
 export function deleteEdgeConfigTokensRequestBody1ToJSON(
   deleteEdgeConfigTokensRequestBody1: DeleteEdgeConfigTokensRequestBody1,
@@ -97,10 +105,12 @@ export const DeleteEdgeConfigTokensRequestBody$outboundSchema: z.ZodType<
   DeleteEdgeConfigTokensRequestBody$Outbound,
   z.ZodTypeDef,
   DeleteEdgeConfigTokensRequestBody
-> = smartUnion([
-  z.lazy(() => DeleteEdgeConfigTokensRequestBody1$outboundSchema),
-  z.lazy(() => DeleteEdgeConfigTokensRequestBody2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => DeleteEdgeConfigTokensRequestBody1$outboundSchema),
+    z.lazy(() => DeleteEdgeConfigTokensRequestBody2$outboundSchema),
+  ])
+);
 
 export function deleteEdgeConfigTokensRequestBodyToJSON(
   deleteEdgeConfigTokensRequestBody: DeleteEdgeConfigTokensRequestBody,
@@ -127,19 +137,23 @@ export const DeleteEdgeConfigTokensRequest$outboundSchema: z.ZodType<
   DeleteEdgeConfigTokensRequest$Outbound,
   z.ZodTypeDef,
   DeleteEdgeConfigTokensRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => DeleteEdgeConfigTokensRequestBody1$outboundSchema),
-    z.lazy(() => DeleteEdgeConfigTokensRequestBody2$outboundSchema),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string().refine(matchesPattern$("^ecfg_"), {
+      message: "Value must match pattern ^ecfg_",
+    }),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => DeleteEdgeConfigTokensRequestBody1$outboundSchema),
+      z.lazy(() => DeleteEdgeConfigTokensRequestBody2$outboundSchema),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function deleteEdgeConfigTokensRequestToJSON(
   deleteEdgeConfigTokensRequest: DeleteEdgeConfigTokensRequest,

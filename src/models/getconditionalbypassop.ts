@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -219,12 +219,14 @@ export const GetConditionalBypassRequest$outboundSchema: z.ZodType<
   GetConditionalBypassRequest$Outbound,
   z.ZodTypeDef,
   GetConditionalBypassRequest
-> = z.object({
-  projectId: z.string(),
-  slug: z.string().optional(),
-  domain: z.string().optional(),
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    slug: z.string().optional(),
+    domain: z.string().optional(),
+    teamId: z.string().optional(),
+  })
+);
 
 export function getConditionalBypassRequestToJSON(
   getConditionalBypassRequest: GetConditionalBypassRequest,
@@ -239,12 +241,16 @@ export function getConditionalBypassRequestToJSON(
 /** @internal */
 export const GetConditionalBypassResponseBodyOp$inboundSchema: z.ZodNativeEnum<
   typeof GetConditionalBypassResponseBodyOp
-> = z.nativeEnum(GetConditionalBypassResponseBodyOp);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetConditionalBypassResponseBodyOp)
+);
 
 /** @internal */
 export const GetConditionalBypassResponseBodySecurityType$inboundSchema:
-  z.ZodNativeEnum<typeof GetConditionalBypassResponseBodySecurityType> = z
-    .nativeEnum(GetConditionalBypassResponseBodySecurityType);
+  z.ZodNativeEnum<typeof GetConditionalBypassResponseBodySecurityType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetConditionalBypassResponseBodySecurityType)
+    );
 
 /** @internal */
 export const GetConditionalBypassResponseBodySecurityValue$inboundSchema:
@@ -252,7 +258,9 @@ export const GetConditionalBypassResponseBodySecurityValue$inboundSchema:
     GetConditionalBypassResponseBodySecurityValue,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.string(), types.number(), z.array(types.string())]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), types.number(), z.array(types.string())])
+  );
 
 export function getConditionalBypassResponseBodySecurityValueFromJSON(
   jsonString: string,
@@ -273,15 +281,17 @@ export function getConditionalBypassResponseBodySecurityValueFromJSON(
 /** @internal */
 export const GetConditionalBypassResponseBodyConditions$inboundSchema:
   z.ZodType<GetConditionalBypassResponseBodyConditions, z.ZodTypeDef, unknown> =
-    z.object({
-      key: types.optional(types.string()),
-      neg: types.optional(types.boolean()),
-      op: GetConditionalBypassResponseBodyOp$inboundSchema,
-      type: GetConditionalBypassResponseBodySecurityType$inboundSchema,
-      value: types.optional(
-        smartUnion([types.string(), types.number(), z.array(types.string())]),
-      ),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        key: types.optional(types.string()),
+        neg: types.optional(types.boolean()),
+        op: GetConditionalBypassResponseBodyOp$inboundSchema,
+        type: GetConditionalBypassResponseBodySecurityType$inboundSchema,
+        value: types.optional(
+          smartUnion([types.string(), types.number(), z.array(types.string())]),
+        ),
+      })
+    );
 
 export function getConditionalBypassResponseBodyConditionsFromJSON(
   jsonString: string,
@@ -305,11 +315,13 @@ export const GetConditionalBypassResponseBodyConditionGroup$inboundSchema:
     GetConditionalBypassResponseBodyConditionGroup,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    conditions: z.array(
-      z.lazy(() => GetConditionalBypassResponseBodyConditions$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      conditions: z.array(
+        z.lazy(() => GetConditionalBypassResponseBodyConditions$inboundSchema),
+      ),
+    })
+  );
 
 export function getConditionalBypassResponseBodyConditionGroupFromJSON(
   jsonString: string,
@@ -332,18 +344,22 @@ export const ResponseBodyRules$inboundSchema: z.ZodType<
   ResponseBodyRules,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  condition: types.string(),
-  conditionGroup: z.array(
-    z.lazy(() => GetConditionalBypassResponseBodyConditionGroup$inboundSchema),
-  ),
-  createdAt: types.string(),
-  domain: types.string(),
-  id: types.string(),
-  note: types.optional(types.string()),
-  projectId: types.string(),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    condition: types.string(),
+    conditionGroup: z.array(
+      z.lazy(() =>
+        GetConditionalBypassResponseBodyConditionGroup$inboundSchema
+      ),
+    ),
+    createdAt: types.string(),
+    domain: types.string(),
+    id: types.string(),
+    note: types.optional(types.string()),
+    projectId: types.string(),
+    updatedAt: types.string(),
+  })
+);
 
 export function responseBodyRulesFromJSON(
   jsonString: string,
@@ -360,9 +376,11 @@ export const GetConditionalBypassResponseBody2$inboundSchema: z.ZodType<
   GetConditionalBypassResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rules: z.array(z.lazy(() => ResponseBodyRules$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rules: z.array(z.lazy(() => ResponseBodyRules$inboundSchema)),
+  })
+);
 
 export function getConditionalBypassResponseBody2FromJSON(
   jsonString: string,
@@ -377,20 +395,23 @@ export function getConditionalBypassResponseBody2FromJSON(
 /** @internal */
 export const ResponseBodyOp$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyOp
-> = z.nativeEnum(ResponseBodyOp);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyOp));
 
 /** @internal */
 export const GetConditionalBypassResponseBodyType$inboundSchema:
-  z.ZodNativeEnum<typeof GetConditionalBypassResponseBodyType> = z.nativeEnum(
-    GetConditionalBypassResponseBodyType,
-  );
+  z.ZodNativeEnum<typeof GetConditionalBypassResponseBodyType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetConditionalBypassResponseBodyType)
+    );
 
 /** @internal */
 export const GetConditionalBypassResponseBodyValue$inboundSchema: z.ZodType<
   GetConditionalBypassResponseBodyValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number(), z.array(types.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number(), z.array(types.string())])
+);
 
 export function getConditionalBypassResponseBodyValueFromJSON(
   jsonString: string,
@@ -408,15 +429,17 @@ export const ResponseBodyConditions$inboundSchema: z.ZodType<
   ResponseBodyConditions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  key: types.optional(types.string()),
-  neg: types.optional(types.boolean()),
-  op: ResponseBodyOp$inboundSchema,
-  type: GetConditionalBypassResponseBodyType$inboundSchema,
-  value: types.optional(
-    smartUnion([types.string(), types.number(), z.array(types.string())]),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: types.optional(types.string()),
+    neg: types.optional(types.boolean()),
+    op: ResponseBodyOp$inboundSchema,
+    type: GetConditionalBypassResponseBodyType$inboundSchema,
+    value: types.optional(
+      smartUnion([types.string(), types.number(), z.array(types.string())]),
+    ),
+  })
+);
 
 export function responseBodyConditionsFromJSON(
   jsonString: string,
@@ -433,9 +456,11 @@ export const ResponseBodyConditionGroup$inboundSchema: z.ZodType<
   ResponseBodyConditionGroup,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  conditions: z.array(z.lazy(() => ResponseBodyConditions$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    conditions: z.array(z.lazy(() => ResponseBodyConditions$inboundSchema)),
+  })
+);
 
 export function responseBodyConditionGroupFromJSON(
   jsonString: string,
@@ -452,18 +477,20 @@ export const GetConditionalBypassResponseBody1$inboundSchema: z.ZodType<
   GetConditionalBypassResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  condition: types.string(),
-  conditionGroup: z.array(
-    z.lazy(() => ResponseBodyConditionGroup$inboundSchema),
-  ),
-  createdAt: types.string(),
-  domain: types.string(),
-  id: types.string(),
-  note: types.optional(types.string()),
-  projectId: types.string(),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    condition: types.string(),
+    conditionGroup: z.array(
+      z.lazy(() => ResponseBodyConditionGroup$inboundSchema),
+    ),
+    createdAt: types.string(),
+    domain: types.string(),
+    id: types.string(),
+    note: types.optional(types.string()),
+    projectId: types.string(),
+    updatedAt: types.string(),
+  })
+);
 
 export function getConditionalBypassResponseBody1FromJSON(
   jsonString: string,
@@ -480,10 +507,12 @@ export const GetConditionalBypassResponseBody$inboundSchema: z.ZodType<
   GetConditionalBypassResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetConditionalBypassResponseBody1$inboundSchema),
-  z.lazy(() => GetConditionalBypassResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetConditionalBypassResponseBody1$inboundSchema),
+    z.lazy(() => GetConditionalBypassResponseBody2$inboundSchema),
+  ])
+);
 
 export function getConditionalBypassResponseBodyFromJSON(
   jsonString: string,

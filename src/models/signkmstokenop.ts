@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -69,7 +69,7 @@ export const SignKmsTokenClaims$outboundSchema: z.ZodType<
   SignKmsTokenClaims$Outbound,
   z.ZodTypeDef,
   SignKmsTokenClaims
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function signKmsTokenClaimsToJSON(
   signKmsTokenClaims: SignKmsTokenClaims,
@@ -87,7 +87,7 @@ export const Headers$outboundSchema: z.ZodType<
   Headers$Outbound,
   z.ZodTypeDef,
   Headers
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function headersToJSON(headers: Headers): string {
   return JSON.stringify(Headers$outboundSchema.parse(headers));
@@ -105,11 +105,13 @@ export const SignKmsTokenRequestBody$outboundSchema: z.ZodType<
   SignKmsTokenRequestBody$Outbound,
   z.ZodTypeDef,
   SignKmsTokenRequestBody
-> = z.object({
-  claims: z.lazy(() => SignKmsTokenClaims$outboundSchema).optional(),
-  headers: z.lazy(() => Headers$outboundSchema).optional(),
-  ttl: z.nullable(z.number().default(300)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    claims: z.lazy(() => SignKmsTokenClaims$outboundSchema).optional(),
+    headers: z.lazy(() => Headers$outboundSchema).optional(),
+    ttl: z.nullable(z.number().default(300)),
+  })
+);
 
 export function signKmsTokenRequestBodyToJSON(
   signKmsTokenRequestBody: SignKmsTokenRequestBody,
@@ -130,14 +132,17 @@ export const SignKmsTokenRequest$outboundSchema: z.ZodType<
   SignKmsTokenRequest$Outbound,
   z.ZodTypeDef,
   SignKmsTokenRequest
-> = z.object({
-  issuerId: z.string(),
-  requestBody: z.lazy(() => SignKmsTokenRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuerId: z.string(),
+    requestBody: z.lazy(() => SignKmsTokenRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function signKmsTokenRequestToJSON(
   signKmsTokenRequest: SignKmsTokenRequest,
@@ -152,12 +157,14 @@ export const SignKmsTokenResponseBody$inboundSchema: z.ZodType<
   SignKmsTokenResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  algorithm: types.string(),
-  fingerprint: types.string(),
-  keyId: types.string(),
-  token: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    algorithm: types.string(),
+    fingerprint: types.string(),
+    keyId: types.string(),
+    token: types.string(),
+  })
+);
 
 export function signKmsTokenResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -47,11 +47,13 @@ export const DeleteAliasRequest$outboundSchema: z.ZodType<
   DeleteAliasRequest$Outbound,
   z.ZodTypeDef,
   DeleteAliasRequest
-> = z.object({
-  aliasId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    aliasId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteAliasRequestToJSON(
   deleteAliasRequest: DeleteAliasRequest,
@@ -64,16 +66,18 @@ export function deleteAliasRequestToJSON(
 /** @internal */
 export const DeleteAliasStatus$inboundSchema: z.ZodNativeEnum<
   typeof DeleteAliasStatus
-> = z.nativeEnum(DeleteAliasStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteAliasStatus));
 
 /** @internal */
 export const DeleteAliasResponseBody$inboundSchema: z.ZodType<
   DeleteAliasResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: DeleteAliasStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: DeleteAliasStatus$inboundSchema,
+  })
+);
 
 export function deleteAliasResponseBodyFromJSON(
   jsonString: string,

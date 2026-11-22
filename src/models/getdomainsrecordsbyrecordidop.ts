@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -79,11 +79,13 @@ export const GetDomainsRecordsByRecordIdRequest$outboundSchema: z.ZodType<
   GetDomainsRecordsByRecordIdRequest$Outbound,
   z.ZodTypeDef,
   GetDomainsRecordsByRecordIdRequest
-> = z.object({
-  recordId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    recordId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getDomainsRecordsByRecordIdRequestToJSON(
   getDomainsRecordsByRecordIdRequest: GetDomainsRecordsByRecordIdRequest,
@@ -96,31 +98,35 @@ export function getDomainsRecordsByRecordIdRequestToJSON(
 }
 
 /** @internal */
-export const RecordType$inboundSchema: z.ZodNativeEnum<typeof RecordType> = z
-  .nativeEnum(RecordType);
+export const RecordType$inboundSchema: z.ZodNativeEnum<typeof RecordType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RecordType));
 
 /** @internal */
 export const GetDomainsRecordsByRecordIdType$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainsRecordsByRecordIdType
-> = z.nativeEnum(GetDomainsRecordsByRecordIdType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDomainsRecordsByRecordIdType)
+);
 
 /** @internal */
 export const GetDomainsRecordsByRecordIdResponseBody$inboundSchema: z.ZodType<
   GetDomainsRecordsByRecordIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  createdAt: z.nullable(types.number()).optional(),
-  creator: types.string(),
-  domain: types.string(),
-  id: types.string(),
-  name: types.string(),
-  recordType: RecordType$inboundSchema,
-  ttl: types.optional(types.number()),
-  type: GetDomainsRecordsByRecordIdType$inboundSchema,
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    createdAt: z.nullable(types.number()).optional(),
+    creator: types.string(),
+    domain: types.string(),
+    id: types.string(),
+    name: types.string(),
+    recordType: RecordType$inboundSchema,
+    ttl: types.optional(types.number()),
+    type: GetDomainsRecordsByRecordIdType$inboundSchema,
+    value: types.string(),
+  })
+);
 
 export function getDomainsRecordsByRecordIdResponseBodyFromJSON(
   jsonString: string,

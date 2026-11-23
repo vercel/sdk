@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
@@ -54,13 +54,15 @@ export const ListOrganizationDsyncGroupsRequest$outboundSchema: z.ZodType<
   ListOrganizationDsyncGroupsRequest$Outbound,
   z.ZodTypeDef,
   ListOrganizationDsyncGroupsRequest
-> = z.object({
-  organizationId: z.string(),
-  cursor: z.string().optional(),
-  limit: z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizationId: z.string(),
+    cursor: z.string().optional(),
+    limit: z.number().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listOrganizationDsyncGroupsRequestToJSON(
   listOrganizationDsyncGroupsRequest: ListOrganizationDsyncGroupsRequest,
@@ -77,10 +79,12 @@ export const ListOrganizationDsyncGroupsResponseBody$inboundSchema: z.ZodType<
   ListOrganizationDsyncGroupsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cursor: types.optional(types.string()),
-  groups: z.array(OrganizationDirectorySyncGroup$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: types.optional(types.string()),
+    groups: z.array(OrganizationDirectorySyncGroup$inboundSchema),
+  })
+);
 
 export function listOrganizationDsyncGroupsResponseBodyFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import { VcrRepository, VcrRepository$inboundSchema } from "./vcrrepository.js";
@@ -50,10 +50,12 @@ export const CreateRepositoryRequestBody$outboundSchema: z.ZodType<
   CreateRepositoryRequestBody$Outbound,
   z.ZodTypeDef,
   CreateRepositoryRequestBody
-> = z.object({
-  projectId: z.string(),
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    name: z.string(),
+  })
+);
 
 export function createRepositoryRequestBodyToJSON(
   createRepositoryRequestBody: CreateRepositoryRequestBody,
@@ -77,16 +79,18 @@ export const CreateRepositoryRequest$outboundSchema: z.ZodType<
   CreateRepositoryRequest$Outbound,
   z.ZodTypeDef,
   CreateRepositoryRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateRepositoryRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateRepositoryRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createRepositoryRequestToJSON(
   createRepositoryRequest: CreateRepositoryRequest,
@@ -101,9 +105,11 @@ export const CreateRepositoryResponseBody$inboundSchema: z.ZodType<
   CreateRepositoryResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  repository: VcrRepository$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    repository: VcrRepository$inboundSchema,
+  })
+);
 
 export function createRepositoryResponseBodyFromJSON(
   jsonString: string,

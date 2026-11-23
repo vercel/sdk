@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -1886,11 +1886,11 @@ export type BuyCreditsResponseBody =
 /** @internal */
 export const BuyCreditsType$outboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsType
-> = z.nativeEnum(BuyCreditsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BuyCreditsType));
 
 /** @internal */
-export const CreditType$outboundSchema: z.ZodNativeEnum<typeof CreditType> = z
-  .nativeEnum(CreditType);
+export const CreditType$outboundSchema: z.ZodNativeEnum<typeof CreditType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreditType));
 
 /** @internal */
 export type Item$Outbound = {
@@ -1901,11 +1901,13 @@ export type Item$Outbound = {
 
 /** @internal */
 export const Item$outboundSchema: z.ZodType<Item$Outbound, z.ZodTypeDef, Item> =
-  z.object({
-    type: BuyCreditsType$outboundSchema,
-    creditType: CreditType$outboundSchema,
-    amount: z.number().int(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type: BuyCreditsType$outboundSchema,
+      creditType: CreditType$outboundSchema,
+      amount: z.number().int(),
+    })
+  );
 
 export function itemToJSON(item: Item): string {
   return JSON.stringify(Item$outboundSchema.parse(item));
@@ -1921,9 +1923,11 @@ export const BuyCreditsRequestBody$outboundSchema: z.ZodType<
   BuyCreditsRequestBody$Outbound,
   z.ZodTypeDef,
   BuyCreditsRequestBody
-> = z.object({
-  item: z.lazy(() => Item$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    item: z.lazy(() => Item$outboundSchema),
+  })
+);
 
 export function buyCreditsRequestBodyToJSON(
   buyCreditsRequestBody: BuyCreditsRequestBody,
@@ -1946,16 +1950,18 @@ export const BuyCreditsRequest$outboundSchema: z.ZodType<
   BuyCreditsRequest$Outbound,
   z.ZodTypeDef,
   BuyCreditsRequest
-> = z.object({
-  source: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => BuyCreditsRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => BuyCreditsRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function buyCreditsRequestToJSON(
   buyCreditsRequest: BuyCreditsRequest,
@@ -1971,11 +1977,13 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    addedResourceIds: z.array(types.string()),
-    productAlias: types.string(),
-    removedResourceIds: z.array(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      addedResourceIds: z.array(types.string()),
+      productAlias: types.string(),
+      removedResourceIds: z.array(types.string()),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5OptionsFromJSON(
   jsonString: string,
@@ -1998,15 +2006,17 @@ export const BuyCreditsConfigurationBillingResponseChangedResources$inboundSchem
     BuyCreditsConfigurationBillingResponseChangedResources,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    addedResourceIds: types.optional(z.array(types.string())),
-    effectiveAt: types.optional(types.string()),
-    productAlias: types.string(),
-    productId: types.string(),
-    quantity: types.number(),
-    removedResourceIds: types.optional(z.array(types.string())),
-    resourceIds: types.optional(z.array(types.string())),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      addedResourceIds: types.optional(z.array(types.string())),
+      effectiveAt: types.optional(types.string()),
+      productAlias: types.string(),
+      productId: types.string(),
+      quantity: types.number(),
+      removedResourceIds: types.optional(z.array(types.string())),
+      resourceIds: types.optional(z.array(types.string())),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponseChangedResourcesFromJSON(
   jsonString: string,
@@ -2027,12 +2037,16 @@ export function buyCreditsConfigurationBillingResponseChangedResourcesFromJSON(
 export const BuyCreditsConfigurationBillingResponseEffectiveBehavior$inboundSchema:
   z.ZodNativeEnum<
     typeof BuyCreditsConfigurationBillingResponseEffectiveBehavior
-  > = z.nativeEnum(BuyCreditsConfigurationBillingResponseEffectiveBehavior);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(BuyCreditsConfigurationBillingResponseEffectiveBehavior)
+  );
 
 /** @internal */
 export const BuyCreditsConfigurationBillingResponsePricingSource$inboundSchema:
   z.ZodNativeEnum<typeof BuyCreditsConfigurationBillingResponsePricingSource> =
-    z.nativeEnum(BuyCreditsConfigurationBillingResponsePricingSource);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(BuyCreditsConfigurationBillingResponsePricingSource)
+    );
 
 /** @internal */
 export const BuyCreditsConfigurationBillingResponseReferenceBillingPeriod$inboundSchema:
@@ -2040,10 +2054,12 @@ export const BuyCreditsConfigurationBillingResponseReferenceBillingPeriod$inboun
     BuyCreditsConfigurationBillingResponseReferenceBillingPeriod,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    endDate: types.string(),
-    startDate: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      endDate: types.string(),
+      startDate: types.string(),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponseReferenceBillingPeriodFromJSON(
   jsonString: string,
@@ -2066,27 +2082,25 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    changedResources: types.optional(
-      z.array(z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      changedResources: types.optional(z.array(z.lazy(() =>
         BuyCreditsConfigurationBillingResponseChangedResources$inboundSchema
-      )),
-    ),
-    customerTimezone: types.optional(types.string()),
-    effectiveBehavior:
-      BuyCreditsConfigurationBillingResponseEffectiveBehavior$inboundSchema,
-    metadata: types.optional(z.record(types.string())),
-    orbPriceId: types.string(),
-    pendingSubscriptionChangeId: types.optional(types.string()),
-    pricingSource:
-      BuyCreditsConfigurationBillingResponsePricingSource$inboundSchema,
-    productId: types.string(),
-    referenceBillingPeriod: types.optional(
-      z.lazy(() =>
+      ))),
+      customerTimezone: types.optional(types.string()),
+      effectiveBehavior:
+        BuyCreditsConfigurationBillingResponseEffectiveBehavior$inboundSchema,
+      metadata: types.optional(z.record(types.string())),
+      orbPriceId: types.string(),
+      pendingSubscriptionChangeId: types.optional(types.string()),
+      pricingSource:
+        BuyCreditsConfigurationBillingResponsePricingSource$inboundSchema,
+      productId: types.string(),
+      referenceBillingPeriod: types.optional(z.lazy(() =>
         BuyCreditsConfigurationBillingResponseReferenceBillingPeriod$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutputFromJSON(
   jsonString: string,
@@ -2107,8 +2121,10 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type$inboundSchema:
   z.ZodNativeEnum<
     typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type
-  > = z.nativeEnum(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type,
+    )
   );
 
 /** @internal */
@@ -2116,16 +2132,18 @@ export const BuyCreditsConfiguration5$inboundSchema: z.ZodType<
   BuyCreditsConfiguration5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options$inboundSchema
-  ),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput$inboundSchema
-  ),
-  type:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Options$inboundSchema
+    ),
+    output: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOutput$inboundSchema
+    ),
+    type:
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent5Type$inboundSchema,
+  })
+);
 
 export function buyCreditsConfiguration5FromJSON(
   jsonString: string,
@@ -2143,10 +2161,12 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    productAlias: types.string(),
-    resourceIds: z.array(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      productAlias: types.string(),
+      resourceIds: z.array(types.string()),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4OptionsFromJSON(
   jsonString: string,
@@ -2169,15 +2189,17 @@ export const BuyCreditsConfigurationBillingChangedResources$inboundSchema:
     BuyCreditsConfigurationBillingChangedResources,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    addedResourceIds: types.optional(z.array(types.string())),
-    effectiveAt: types.optional(types.string()),
-    productAlias: types.string(),
-    productId: types.string(),
-    quantity: types.number(),
-    removedResourceIds: types.optional(z.array(types.string())),
-    resourceIds: types.optional(z.array(types.string())),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      addedResourceIds: types.optional(z.array(types.string())),
+      effectiveAt: types.optional(types.string()),
+      productAlias: types.string(),
+      productId: types.string(),
+      quantity: types.number(),
+      removedResourceIds: types.optional(z.array(types.string())),
+      resourceIds: types.optional(z.array(types.string())),
+    })
+  );
 
 export function buyCreditsConfigurationBillingChangedResourcesFromJSON(
   jsonString: string,
@@ -2197,13 +2219,17 @@ export function buyCreditsConfigurationBillingChangedResourcesFromJSON(
 
 /** @internal */
 export const BuyCreditsConfigurationBillingEffectiveBehavior$inboundSchema:
-  z.ZodNativeEnum<typeof BuyCreditsConfigurationBillingEffectiveBehavior> = z
-    .nativeEnum(BuyCreditsConfigurationBillingEffectiveBehavior);
+  z.ZodNativeEnum<typeof BuyCreditsConfigurationBillingEffectiveBehavior> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(BuyCreditsConfigurationBillingEffectiveBehavior)
+    );
 
 /** @internal */
 export const BuyCreditsConfigurationBillingPricingSource$inboundSchema:
-  z.ZodNativeEnum<typeof BuyCreditsConfigurationBillingPricingSource> = z
-    .nativeEnum(BuyCreditsConfigurationBillingPricingSource);
+  z.ZodNativeEnum<typeof BuyCreditsConfigurationBillingPricingSource> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(BuyCreditsConfigurationBillingPricingSource)
+    );
 
 /** @internal */
 export const BuyCreditsConfigurationBillingReferenceBillingPeriod$inboundSchema:
@@ -2211,10 +2237,12 @@ export const BuyCreditsConfigurationBillingReferenceBillingPeriod$inboundSchema:
     BuyCreditsConfigurationBillingReferenceBillingPeriod,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    endDate: types.string(),
-    startDate: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      endDate: types.string(),
+      startDate: types.string(),
+    })
+  );
 
 export function buyCreditsConfigurationBillingReferenceBillingPeriodFromJSON(
   jsonString: string,
@@ -2238,26 +2266,24 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    changedResources: types.optional(
-      z.array(z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      changedResources: types.optional(z.array(z.lazy(() =>
         BuyCreditsConfigurationBillingChangedResources$inboundSchema
-      )),
-    ),
-    customerTimezone: types.optional(types.string()),
-    effectiveBehavior:
-      BuyCreditsConfigurationBillingEffectiveBehavior$inboundSchema,
-    metadata: types.optional(z.record(types.string())),
-    orbPriceId: types.string(),
-    pendingSubscriptionChangeId: types.optional(types.string()),
-    pricingSource: BuyCreditsConfigurationBillingPricingSource$inboundSchema,
-    productId: types.string(),
-    referenceBillingPeriod: types.optional(
-      z.lazy(() =>
+      ))),
+      customerTimezone: types.optional(types.string()),
+      effectiveBehavior:
+        BuyCreditsConfigurationBillingEffectiveBehavior$inboundSchema,
+      metadata: types.optional(z.record(types.string())),
+      orbPriceId: types.string(),
+      pendingSubscriptionChangeId: types.optional(types.string()),
+      pricingSource: BuyCreditsConfigurationBillingPricingSource$inboundSchema,
+      productId: types.string(),
+      referenceBillingPeriod: types.optional(z.lazy(() =>
         BuyCreditsConfigurationBillingReferenceBillingPeriod$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OutputFromJSON(
   jsonString: string,
@@ -2278,8 +2304,10 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type$inboundSchema:
   z.ZodNativeEnum<
     typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type
-  > = z.nativeEnum(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type,
+    )
   );
 
 /** @internal */
@@ -2287,16 +2315,18 @@ export const BuyCreditsConfiguration4$inboundSchema: z.ZodType<
   BuyCreditsConfiguration4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options$inboundSchema
-  ),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output$inboundSchema
-  ),
-  type:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Options$inboundSchema
+    ),
+    output: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Output$inboundSchema
+    ),
+    type:
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent4Type$inboundSchema,
+  })
+);
 
 export function buyCreditsConfiguration4FromJSON(
   jsonString: string,
@@ -2314,10 +2344,12 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    productAlias: types.string(),
-    resourceIds: z.array(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      productAlias: types.string(),
+      resourceIds: z.array(types.string()),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptionsFromJSON(
   jsonString: string,
@@ -2339,15 +2371,17 @@ export const BuyCreditsConfigurationChangedResources$inboundSchema: z.ZodType<
   BuyCreditsConfigurationChangedResources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  addedResourceIds: types.optional(z.array(types.string())),
-  effectiveAt: types.optional(types.string()),
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  removedResourceIds: types.optional(z.array(types.string())),
-  resourceIds: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addedResourceIds: types.optional(z.array(types.string())),
+    effectiveAt: types.optional(types.string()),
+    productAlias: types.string(),
+    productId: types.string(),
+    quantity: types.number(),
+    removedResourceIds: types.optional(z.array(types.string())),
+    resourceIds: types.optional(z.array(types.string())),
+  })
+);
 
 export function buyCreditsConfigurationChangedResourcesFromJSON(
   jsonString: string,
@@ -2367,14 +2401,17 @@ export function buyCreditsConfigurationChangedResourcesFromJSON(
 
 /** @internal */
 export const BuyCreditsConfigurationEffectiveBehavior$inboundSchema:
-  z.ZodNativeEnum<typeof BuyCreditsConfigurationEffectiveBehavior> = z
-    .nativeEnum(BuyCreditsConfigurationEffectiveBehavior);
+  z.ZodNativeEnum<typeof BuyCreditsConfigurationEffectiveBehavior> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(BuyCreditsConfigurationEffectiveBehavior)
+    );
 
 /** @internal */
 export const BuyCreditsConfigurationPricingSource$inboundSchema:
-  z.ZodNativeEnum<typeof BuyCreditsConfigurationPricingSource> = z.nativeEnum(
-    BuyCreditsConfigurationPricingSource,
-  );
+  z.ZodNativeEnum<typeof BuyCreditsConfigurationPricingSource> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(BuyCreditsConfigurationPricingSource)
+    );
 
 /** @internal */
 export const BuyCreditsConfigurationReferenceBillingPeriod$inboundSchema:
@@ -2382,10 +2419,12 @@ export const BuyCreditsConfigurationReferenceBillingPeriod$inboundSchema:
     BuyCreditsConfigurationReferenceBillingPeriod,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    endDate: types.string(),
-    startDate: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      endDate: types.string(),
+      startDate: types.string(),
+    })
+  );
 
 export function buyCreditsConfigurationReferenceBillingPeriodFromJSON(
   jsonString: string,
@@ -2409,23 +2448,23 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    changedResources: types.optional(
-      z.array(
-        z.lazy(() => BuyCreditsConfigurationChangedResources$inboundSchema),
-      ),
-    ),
-    customerTimezone: types.optional(types.string()),
-    effectiveBehavior: BuyCreditsConfigurationEffectiveBehavior$inboundSchema,
-    metadata: types.optional(z.record(types.string())),
-    orbPriceId: types.string(),
-    pendingSubscriptionChangeId: types.optional(types.string()),
-    pricingSource: BuyCreditsConfigurationPricingSource$inboundSchema,
-    productId: types.string(),
-    referenceBillingPeriod: types.optional(
-      z.lazy(() => BuyCreditsConfigurationReferenceBillingPeriod$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      changedResources: types.optional(z.array(z.lazy(() =>
+        BuyCreditsConfigurationChangedResources$inboundSchema
+      ))),
+      customerTimezone: types.optional(types.string()),
+      effectiveBehavior: BuyCreditsConfigurationEffectiveBehavior$inboundSchema,
+      metadata: types.optional(z.record(types.string())),
+      orbPriceId: types.string(),
+      pendingSubscriptionChangeId: types.optional(types.string()),
+      pricingSource: BuyCreditsConfigurationPricingSource$inboundSchema,
+      productId: types.string(),
+      referenceBillingPeriod: types.optional(z.lazy(() =>
+        BuyCreditsConfigurationReferenceBillingPeriod$inboundSchema
+      )),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutputFromJSON(
   jsonString: string,
@@ -2446,8 +2485,10 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponse
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type$inboundSchema:
   z.ZodNativeEnum<
     typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type
-  > = z.nativeEnum(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type,
+    )
   );
 
 /** @internal */
@@ -2455,16 +2496,18 @@ export const BuyCreditsConfiguration3$inboundSchema: z.ZodType<
   BuyCreditsConfiguration3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$inboundSchema
-  ),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema
-  ),
-  type:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentOptions$inboundSchema
+    ),
+    output: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOutput$inboundSchema
+    ),
+    type:
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntent3Type$inboundSchema,
+  })
+);
 
 export function buyCreditsConfiguration3FromJSON(
   jsonString: string,
@@ -2482,11 +2525,13 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    productAlias: types.string(),
-    quantity: types.number(),
-    resourceIds: z.array(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      productAlias: types.string(),
+      quantity: types.number(),
+      resourceIds: z.array(types.string()),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OptionsFromJSON(
   jsonString: string,
@@ -2508,15 +2553,17 @@ export const ConfigurationChangedResources$inboundSchema: z.ZodType<
   ConfigurationChangedResources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  addedResourceIds: types.optional(z.array(types.string())),
-  effectiveAt: types.optional(types.string()),
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  removedResourceIds: types.optional(z.array(types.string())),
-  resourceIds: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addedResourceIds: types.optional(z.array(types.string())),
+    effectiveAt: types.optional(types.string()),
+    productAlias: types.string(),
+    productId: types.string(),
+    quantity: types.number(),
+    removedResourceIds: types.optional(z.array(types.string())),
+    resourceIds: types.optional(z.array(types.string())),
+  })
+);
 
 export function configurationChangedResourcesFromJSON(
   jsonString: string,
@@ -2531,22 +2578,26 @@ export function configurationChangedResourcesFromJSON(
 /** @internal */
 export const ConfigurationEffectiveBehavior$inboundSchema: z.ZodNativeEnum<
   typeof ConfigurationEffectiveBehavior
-> = z.nativeEnum(ConfigurationEffectiveBehavior);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ConfigurationEffectiveBehavior)
+);
 
 /** @internal */
 export const ConfigurationPricingSource$inboundSchema: z.ZodNativeEnum<
   typeof ConfigurationPricingSource
-> = z.nativeEnum(ConfigurationPricingSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ConfigurationPricingSource));
 
 /** @internal */
 export const ConfigurationReferenceBillingPeriod$inboundSchema: z.ZodType<
   ConfigurationReferenceBillingPeriod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  endDate: types.string(),
-  startDate: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    endDate: types.string(),
+    startDate: types.string(),
+  })
+);
 
 export function configurationReferenceBillingPeriodFromJSON(
   jsonString: string,
@@ -2565,21 +2616,23 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inbo
     BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    changedResources: types.optional(
-      z.array(z.lazy(() => ConfigurationChangedResources$inboundSchema)),
-    ),
-    customerTimezone: types.optional(types.string()),
-    effectiveBehavior: ConfigurationEffectiveBehavior$inboundSchema,
-    metadata: types.optional(z.record(types.string())),
-    orbPriceId: types.string(),
-    pendingSubscriptionChangeId: types.optional(types.string()),
-    pricingSource: ConfigurationPricingSource$inboundSchema,
-    productId: types.string(),
-    referenceBillingPeriod: types.optional(
-      z.lazy(() => ConfigurationReferenceBillingPeriod$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      changedResources: types.optional(
+        z.array(z.lazy(() => ConfigurationChangedResources$inboundSchema)),
+      ),
+      customerTimezone: types.optional(types.string()),
+      effectiveBehavior: ConfigurationEffectiveBehavior$inboundSchema,
+      metadata: types.optional(z.record(types.string())),
+      orbPriceId: types.string(),
+      pendingSubscriptionChangeId: types.optional(types.string()),
+      pricingSource: ConfigurationPricingSource$inboundSchema,
+      productId: types.string(),
+      referenceBillingPeriod: types.optional(
+        z.lazy(() => ConfigurationReferenceBillingPeriod$inboundSchema),
+      ),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONOutputFromJSON(
   jsonString: string,
@@ -2600,8 +2653,10 @@ export function buyCreditsConfigurationBillingResponse200ApplicationJSONOutputFr
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType$inboundSchema:
   z.ZodNativeEnum<
     typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType
-  > = z.nativeEnum(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType,
+    )
   );
 
 /** @internal */
@@ -2609,16 +2664,18 @@ export const BuyCreditsConfiguration2$inboundSchema: z.ZodType<
   BuyCreditsConfiguration2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$inboundSchema
-  ),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema
-  ),
-  type:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Options$inboundSchema
+    ),
+    output: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONOutput$inboundSchema
+    ),
+    type:
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3OrbSubscriptionIntentType$inboundSchema,
+  })
+);
 
 export function buyCreditsConfiguration2FromJSON(
   jsonString: string,
@@ -2636,10 +2693,12 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    productAlias: types.string(),
-    quantity: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      productAlias: types.string(),
+      quantity: types.number(),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptionsFromJSON(
   jsonString: string,
@@ -2661,15 +2720,17 @@ export const ChangedResources$inboundSchema: z.ZodType<
   ChangedResources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  addedResourceIds: types.optional(z.array(types.string())),
-  effectiveAt: types.optional(types.string()),
-  productAlias: types.string(),
-  productId: types.string(),
-  quantity: types.number(),
-  removedResourceIds: types.optional(z.array(types.string())),
-  resourceIds: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addedResourceIds: types.optional(z.array(types.string())),
+    effectiveAt: types.optional(types.string()),
+    productAlias: types.string(),
+    productId: types.string(),
+    quantity: types.number(),
+    removedResourceIds: types.optional(z.array(types.string())),
+    resourceIds: types.optional(z.array(types.string())),
+  })
+);
 
 export function changedResourcesFromJSON(
   jsonString: string,
@@ -2684,22 +2745,24 @@ export function changedResourcesFromJSON(
 /** @internal */
 export const EffectiveBehavior$inboundSchema: z.ZodNativeEnum<
   typeof EffectiveBehavior
-> = z.nativeEnum(EffectiveBehavior);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(EffectiveBehavior));
 
 /** @internal */
 export const PricingSource$inboundSchema: z.ZodNativeEnum<
   typeof PricingSource
-> = z.nativeEnum(PricingSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PricingSource));
 
 /** @internal */
 export const ReferenceBillingPeriod$inboundSchema: z.ZodType<
   ReferenceBillingPeriod,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  endDate: types.string(),
-  startDate: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    endDate: types.string(),
+    startDate: types.string(),
+  })
+);
 
 export function referenceBillingPeriodFromJSON(
   jsonString: string,
@@ -2717,21 +2780,23 @@ export const BuyCreditsConfigurationBillingResponse200Output$inboundSchema:
     BuyCreditsConfigurationBillingResponse200Output,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    changedResources: types.optional(
-      z.array(z.lazy(() => ChangedResources$inboundSchema)),
-    ),
-    customerTimezone: types.optional(types.string()),
-    effectiveBehavior: EffectiveBehavior$inboundSchema,
-    metadata: types.optional(z.record(types.string())),
-    orbPriceId: types.string(),
-    pendingSubscriptionChangeId: types.optional(types.string()),
-    pricingSource: PricingSource$inboundSchema,
-    productId: types.string(),
-    referenceBillingPeriod: types.optional(
-      z.lazy(() => ReferenceBillingPeriod$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      changedResources: types.optional(
+        z.array(z.lazy(() => ChangedResources$inboundSchema)),
+      ),
+      customerTimezone: types.optional(types.string()),
+      effectiveBehavior: EffectiveBehavior$inboundSchema,
+      metadata: types.optional(z.record(types.string())),
+      orbPriceId: types.string(),
+      pendingSubscriptionChangeId: types.optional(types.string()),
+      pricingSource: PricingSource$inboundSchema,
+      productId: types.string(),
+      referenceBillingPeriod: types.optional(
+        z.lazy(() => ReferenceBillingPeriod$inboundSchema),
+      ),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200OutputFromJSON(
   jsonString: string,
@@ -2753,8 +2818,10 @@ export function buyCreditsConfigurationBillingResponse200OutputFromJSON(
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type$inboundSchema:
   z.ZodNativeEnum<
     typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type
-  > = z.nativeEnum(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type,
+    )
   );
 
 /** @internal */
@@ -2762,16 +2829,18 @@ export const BuyCreditsConfiguration1$inboundSchema: z.ZodType<
   BuyCreditsConfiguration1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$inboundSchema
-  ),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200Output$inboundSchema
-  ),
-  type:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBodyOptions$inboundSchema
+    ),
+    output: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200Output$inboundSchema
+    ),
+    type:
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody3Type$inboundSchema,
+  })
+);
 
 export function buyCreditsConfiguration1FromJSON(
   jsonString: string,
@@ -2788,13 +2857,15 @@ export const ResponseBodyConfiguration$inboundSchema: z.ZodType<
   ResponseBodyConfiguration,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => BuyCreditsConfiguration1$inboundSchema),
-  z.lazy(() => BuyCreditsConfiguration2$inboundSchema),
-  z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
-  z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
-  z.lazy(() => BuyCreditsConfiguration5$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => BuyCreditsConfiguration1$inboundSchema),
+    z.lazy(() => BuyCreditsConfiguration2$inboundSchema),
+    z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
+    z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
+    z.lazy(() => BuyCreditsConfiguration5$inboundSchema),
+  ])
+);
 
 export function responseBodyConfigurationFromJSON(
   jsonString: string,
@@ -2809,23 +2880,25 @@ export function responseBodyConfigurationFromJSON(
 /** @internal */
 export const BuyCreditsOrbUpdateMode$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsOrbUpdateMode
-> = z.nativeEnum(BuyCreditsOrbUpdateMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BuyCreditsOrbUpdateMode));
 
 /** @internal */
 export const BuyCreditsOrbUpdateStatus$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsOrbUpdateStatus
-> = z.nativeEnum(BuyCreditsOrbUpdateStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BuyCreditsOrbUpdateStatus));
 
 /** @internal */
 export const OrbUpdate3$inboundSchema: z.ZodType<
   OrbUpdate3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  appliedAt: types.string(),
-  mode: BuyCreditsOrbUpdateMode$inboundSchema,
-  status: BuyCreditsOrbUpdateStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    appliedAt: types.string(),
+    mode: BuyCreditsOrbUpdateMode$inboundSchema,
+    status: BuyCreditsOrbUpdateStatus$inboundSchema,
+  })
+);
 
 export function orbUpdate3FromJSON(
   jsonString: string,
@@ -2840,22 +2913,24 @@ export function orbUpdate3FromJSON(
 /** @internal */
 export const OrbUpdateMode$inboundSchema: z.ZodNativeEnum<
   typeof OrbUpdateMode
-> = z.nativeEnum(OrbUpdateMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OrbUpdateMode));
 
 /** @internal */
 export const OrbUpdateStatus$inboundSchema: z.ZodNativeEnum<
   typeof OrbUpdateStatus
-> = z.nativeEnum(OrbUpdateStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OrbUpdateStatus));
 
 /** @internal */
 export const OrbUpdate2$inboundSchema: z.ZodType<
   OrbUpdate2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  mode: OrbUpdateMode$inboundSchema,
-  status: OrbUpdateStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: OrbUpdateMode$inboundSchema,
+    status: OrbUpdateStatus$inboundSchema,
+  })
+);
 
 export function orbUpdate2FromJSON(
   jsonString: string,
@@ -2870,16 +2945,20 @@ export function orbUpdate2FromJSON(
 /** @internal */
 export const BuyCreditsOrbUpdateBillingMode$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsOrbUpdateBillingMode
-> = z.nativeEnum(BuyCreditsOrbUpdateBillingMode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(BuyCreditsOrbUpdateBillingMode)
+);
 
 /** @internal */
 export const OrbUpdate1$inboundSchema: z.ZodType<
   OrbUpdate1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  mode: BuyCreditsOrbUpdateBillingMode$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: BuyCreditsOrbUpdateBillingMode$inboundSchema,
+  })
+);
 
 export function orbUpdate1FromJSON(
   jsonString: string,
@@ -2896,11 +2975,13 @@ export const OrbUpdate$inboundSchema: z.ZodType<
   OrbUpdate,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => OrbUpdate3$inboundSchema),
-  z.lazy(() => OrbUpdate2$inboundSchema),
-  z.lazy(() => OrbUpdate1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => OrbUpdate3$inboundSchema),
+    z.lazy(() => OrbUpdate2$inboundSchema),
+    z.lazy(() => OrbUpdate1$inboundSchema),
+  ])
+);
 
 export function orbUpdateFromJSON(
   jsonString: string,
@@ -2915,34 +2996,38 @@ export function orbUpdateFromJSON(
 /** @internal */
 export const BuyCreditsResponseBodyBillingStatus$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsResponseBodyBillingStatus
-> = z.nativeEnum(BuyCreditsResponseBodyBillingStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(BuyCreditsResponseBodyBillingStatus)
+);
 
 /** @internal */
 export const OrbSubscriptionIntent$inboundSchema: z.ZodType<
   OrbSubscriptionIntent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuration: smartUnion([
-    z.lazy(() => BuyCreditsConfiguration1$inboundSchema),
-    z.lazy(() => BuyCreditsConfiguration2$inboundSchema),
-    z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
-    z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
-    z.lazy(() => BuyCreditsConfiguration5$inboundSchema),
-  ]),
-  createdAt: types.string(),
-  id: types.string(),
-  orbSubscriptionId: types.string(),
-  orbUpdate: smartUnion([
-    z.lazy(() => OrbUpdate3$inboundSchema),
-    z.lazy(() => OrbUpdate2$inboundSchema),
-    z.lazy(() => OrbUpdate1$inboundSchema),
-  ]),
-  ownerId: types.string(),
-  purchaseIntentId: types.optional(types.string()),
-  status: BuyCreditsResponseBodyBillingStatus$inboundSchema,
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuration: smartUnion([
+      z.lazy(() => BuyCreditsConfiguration1$inboundSchema),
+      z.lazy(() => BuyCreditsConfiguration2$inboundSchema),
+      z.lazy(() => BuyCreditsConfiguration3$inboundSchema),
+      z.lazy(() => BuyCreditsConfiguration4$inboundSchema),
+      z.lazy(() => BuyCreditsConfiguration5$inboundSchema),
+    ]),
+    createdAt: types.string(),
+    id: types.string(),
+    orbSubscriptionId: types.string(),
+    orbUpdate: smartUnion([
+      z.lazy(() => OrbUpdate3$inboundSchema),
+      z.lazy(() => OrbUpdate2$inboundSchema),
+      z.lazy(() => OrbUpdate1$inboundSchema),
+    ]),
+    ownerId: types.string(),
+    purchaseIntentId: types.optional(types.string()),
+    status: BuyCreditsResponseBodyBillingStatus$inboundSchema,
+    updatedAt: types.string(),
+  })
+);
 
 export function orbSubscriptionIntentFromJSON(
   jsonString: string,
@@ -2959,9 +3044,11 @@ export const BuyCreditsResponseBody3$inboundSchema: z.ZodType<
   BuyCreditsResponseBody3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  orbSubscriptionIntent: z.lazy(() => OrbSubscriptionIntent$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    orbSubscriptionIntent: z.lazy(() => OrbSubscriptionIntent$inboundSchema),
+  })
+);
 
 export function buyCreditsResponseBody3FromJSON(
   jsonString: string,
@@ -2978,9 +3065,11 @@ export const OptionsFromPlan$inboundSchema: z.ZodType<
   OptionsFromPlan,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  orbSubscriptionId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    orbSubscriptionId: types.string(),
+  })
+);
 
 export function optionsFromPlanFromJSON(
   jsonString: string,
@@ -2997,10 +3086,12 @@ export const OptionsPlanItemQuantities$inboundSchema: z.ZodType<
   OptionsPlanItemQuantities,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  planItemId: types.string(),
-  quantity: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    planItemId: types.string(),
+    quantity: types.number(),
+  })
+);
 
 export function optionsPlanItemQuantitiesFromJSON(
   jsonString: string,
@@ -3015,16 +3106,18 @@ export function optionsPlanItemQuantitiesFromJSON(
 /** @internal */
 export const BuyCreditsOptionsType$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsOptionsType
-> = z.nativeEnum(BuyCreditsOptionsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BuyCreditsOptionsType));
 
 /** @internal */
 export const OptionsTransition$inboundSchema: z.ZodType<
   OptionsTransition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: BuyCreditsOptionsType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: BuyCreditsOptionsType$inboundSchema,
+  })
+);
 
 export function optionsTransitionFromJSON(
   jsonString: string,
@@ -3041,14 +3134,16 @@ export const Options2$inboundSchema: z.ZodType<
   Options2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fromPlan: z.lazy(() => OptionsFromPlan$inboundSchema),
-  planId: types.string(),
-  planItemQuantities: types.optional(
-    z.array(z.lazy(() => OptionsPlanItemQuantities$inboundSchema)),
-  ),
-  transition: z.lazy(() => OptionsTransition$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fromPlan: z.lazy(() => OptionsFromPlan$inboundSchema),
+    planId: types.string(),
+    planItemQuantities: types.optional(
+      z.array(z.lazy(() => OptionsPlanItemQuantities$inboundSchema)),
+    ),
+    transition: z.lazy(() => OptionsTransition$inboundSchema),
+  })
+);
 
 export function options2FromJSON(
   jsonString: string,
@@ -3065,11 +3160,13 @@ export const AdditionalSubscriptions$inboundSchema: z.ZodType<
   AdditionalSubscriptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currentCycleEndDate: types.string(),
-  orbSubscriptionId: types.string(),
-  planId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currentCycleEndDate: types.string(),
+    orbSubscriptionId: types.string(),
+    planId: types.string(),
+  })
+);
 
 export function additionalSubscriptionsFromJSON(
   jsonString: string,
@@ -3083,17 +3180,19 @@ export function additionalSubscriptionsFromJSON(
 
 /** @internal */
 export const OptionsModel$inboundSchema: z.ZodNativeEnum<typeof OptionsModel> =
-  z.nativeEnum(OptionsModel);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OptionsModel));
 
 /** @internal */
 export const OptionsPrice$inboundSchema: z.ZodType<
   OptionsPrice,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  model: OptionsModel$inboundSchema,
-  unitAmount: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    model: OptionsModel$inboundSchema,
+    unitAmount: types.string(),
+  })
+);
 
 export function optionsPriceFromJSON(
   jsonString: string,
@@ -3110,10 +3209,12 @@ export const OptionsPlanItemPrices$inboundSchema: z.ZodType<
   OptionsPlanItemPrices,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  planItemId: types.string(),
-  price: z.lazy(() => OptionsPrice$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    planItemId: types.string(),
+    price: z.lazy(() => OptionsPrice$inboundSchema),
+  })
+);
 
 export function optionsPlanItemPricesFromJSON(
   jsonString: string,
@@ -3130,11 +3231,13 @@ export const BuyCreditsOptionsPlanItemQuantities$inboundSchema: z.ZodType<
   BuyCreditsOptionsPlanItemQuantities,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  planItemId: types.string(),
-  quantity: types.number(),
-  resourceIds: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    planItemId: types.string(),
+    quantity: types.number(),
+    resourceIds: types.optional(z.array(types.string())),
+  })
+);
 
 export function buyCreditsOptionsPlanItemQuantitiesFromJSON(
   jsonString: string,
@@ -3152,21 +3255,23 @@ export const BuyCreditsOptionsFromPlan$inboundSchema: z.ZodType<
   BuyCreditsOptionsFromPlan,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  additionalSubscriptions: types.optional(
-    z.array(z.lazy(() => AdditionalSubscriptions$inboundSchema)),
-  ),
-  currentCycleEndDate: types.string(),
-  orbSubscriptionId: types.string(),
-  planId: types.string(),
-  planItemPrices: types.optional(
-    z.array(z.lazy(() => OptionsPlanItemPrices$inboundSchema)),
-  ),
-  planItemQuantities: types.optional(
-    z.array(z.lazy(() => BuyCreditsOptionsPlanItemQuantities$inboundSchema)),
-  ),
-  rateVariantKey: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    additionalSubscriptions: types.optional(
+      z.array(z.lazy(() => AdditionalSubscriptions$inboundSchema)),
+    ),
+    currentCycleEndDate: types.string(),
+    orbSubscriptionId: types.string(),
+    planId: types.string(),
+    planItemPrices: types.optional(
+      z.array(z.lazy(() => OptionsPlanItemPrices$inboundSchema)),
+    ),
+    planItemQuantities: types.optional(
+      z.array(z.lazy(() => BuyCreditsOptionsPlanItemQuantities$inboundSchema)),
+    ),
+    rateVariantKey: types.optional(types.string()),
+  })
+);
 
 export function buyCreditsOptionsFromPlanFromJSON(
   jsonString: string,
@@ -3179,16 +3284,17 @@ export function buyCreditsOptionsFromPlanFromJSON(
 }
 
 /** @internal */
-export const Model$inboundSchema: z.ZodNativeEnum<typeof Model> = z.nativeEnum(
-  Model,
-);
+export const Model$inboundSchema: z.ZodNativeEnum<typeof Model> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Model));
 
 /** @internal */
-export const Price$inboundSchema: z.ZodType<Price, z.ZodTypeDef, unknown> = z
-  .object({
-    model: Model$inboundSchema,
-    unitAmount: types.string(),
-  });
+export const Price$inboundSchema: z.ZodType<Price, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      model: Model$inboundSchema,
+      unitAmount: types.string(),
+    })
+  );
 
 export function priceFromJSON(
   jsonString: string,
@@ -3205,10 +3311,12 @@ export const PlanItemPrices$inboundSchema: z.ZodType<
   PlanItemPrices,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  planItemId: types.string(),
-  price: z.lazy(() => Price$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    planItemId: types.string(),
+    price: z.lazy(() => Price$inboundSchema),
+  })
+);
 
 export function planItemPricesFromJSON(
   jsonString: string,
@@ -3225,11 +3333,13 @@ export const PlanItemQuantities$inboundSchema: z.ZodType<
   PlanItemQuantities,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  planItemId: types.string(),
-  quantity: types.number(),
-  resourceIds: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    planItemId: types.string(),
+    quantity: types.number(),
+    resourceIds: types.optional(z.array(types.string())),
+  })
+);
 
 export function planItemQuantitiesFromJSON(
   jsonString: string,
@@ -3242,17 +3352,19 @@ export function planItemQuantitiesFromJSON(
 }
 
 /** @internal */
-export const OptionsType$inboundSchema: z.ZodNativeEnum<typeof OptionsType> = z
-  .nativeEnum(OptionsType);
+export const OptionsType$inboundSchema: z.ZodNativeEnum<typeof OptionsType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OptionsType));
 
 /** @internal */
 export const Transition$inboundSchema: z.ZodType<
   Transition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: OptionsType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: OptionsType$inboundSchema,
+  })
+);
 
 export function transitionFromJSON(
   jsonString: string,
@@ -3269,20 +3381,22 @@ export const Options1$inboundSchema: z.ZodType<
   Options1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fromPlan: types.optional(
-    z.lazy(() => BuyCreditsOptionsFromPlan$inboundSchema),
-  ),
-  planId: types.string(),
-  planItemPrices: types.optional(
-    z.array(z.lazy(() => PlanItemPrices$inboundSchema)),
-  ),
-  planItemQuantities: types.optional(
-    z.array(z.lazy(() => PlanItemQuantities$inboundSchema)),
-  ),
-  rateVariantKey: types.optional(types.string()),
-  transition: types.optional(z.lazy(() => Transition$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fromPlan: types.optional(
+      z.lazy(() => BuyCreditsOptionsFromPlan$inboundSchema),
+    ),
+    planId: types.string(),
+    planItemPrices: types.optional(
+      z.array(z.lazy(() => PlanItemPrices$inboundSchema)),
+    ),
+    planItemQuantities: types.optional(
+      z.array(z.lazy(() => PlanItemQuantities$inboundSchema)),
+    ),
+    rateVariantKey: types.optional(types.string()),
+    transition: types.optional(z.lazy(() => Transition$inboundSchema)),
+  })
+);
 
 export function options1FromJSON(
   jsonString: string,
@@ -3300,10 +3414,12 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions$inb
     BuyCreditsConfigurationBillingResponse200ApplicationJSONOptions,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.lazy(() => Options2$inboundSchema),
-    z.lazy(() => Options1$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() => Options2$inboundSchema),
+      z.lazy(() => Options1$inboundSchema),
+    ])
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONOptionsFromJSON(
   jsonString: string,
@@ -3326,9 +3442,11 @@ export const BuyCreditsConfigurationBillingResponseOutput$inboundSchema:
     BuyCreditsConfigurationBillingResponseOutput,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    planChangeId: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      planChangeId: types.optional(types.string()),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponseOutputFromJSON(
   jsonString: string,
@@ -3351,16 +3469,18 @@ export const Configuration7$inboundSchema: z.ZodType<
   Configuration7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: smartUnion([
-    z.lazy(() => Options2$inboundSchema),
-    z.lazy(() => Options1$inboundSchema),
-  ]),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponseOutput$inboundSchema
-  ),
-  type: types.literal("subscription"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: smartUnion([
+      z.lazy(() => Options2$inboundSchema),
+      z.lazy(() => Options1$inboundSchema),
+    ]),
+    output: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponseOutput$inboundSchema
+    ),
+    type: types.literal("subscription"),
+  })
+);
 
 export function configuration7FromJSON(
   jsonString: string,
@@ -3377,17 +3497,19 @@ export const ConfigurationLineItems$inboundSchema: z.ZodType<
   ConfigurationLineItems,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.string(),
-  id: types.string(),
-  metadata: types.optional(z.record(types.string())),
-  name: types.string(),
-  productAlias: types.optional(types.string()),
-  productId: types.string(),
-  quantity: types.string(),
-  refund: types.optional(types.string()),
-  unitAmount: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.string(),
+    id: types.string(),
+    metadata: types.optional(z.record(types.string())),
+    name: types.string(),
+    productAlias: types.optional(types.string()),
+    productId: types.string(),
+    quantity: types.string(),
+    refund: types.optional(types.string()),
+    unitAmount: types.string(),
+  })
+);
 
 export function configurationLineItemsFromJSON(
   jsonString: string,
@@ -3405,17 +3527,19 @@ export const BuyCreditsConfigurationBillingResponse200Options$inboundSchema:
     BuyCreditsConfigurationBillingResponse200Options,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    lineItems: types.optional(
-      z.array(z.lazy(() => ConfigurationLineItems$inboundSchema)),
-    ),
-    orbCustomerId: types.string(),
-    orbExternalCustomerId: types.string(),
-    orbExternalPlanId: types.string(),
-    orbPendingSubscriptionChangeId: types.optional(types.string()),
-    orbPlanId: types.string(),
-    orbSubscriptionId: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      lineItems: types.optional(
+        z.array(z.lazy(() => ConfigurationLineItems$inboundSchema)),
+      ),
+      orbCustomerId: types.string(),
+      orbExternalCustomerId: types.string(),
+      orbExternalPlanId: types.string(),
+      orbPendingSubscriptionChangeId: types.optional(types.string()),
+      orbPlanId: types.string(),
+      orbSubscriptionId: types.string(),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200OptionsFromJSON(
   jsonString: string,
@@ -3438,9 +3562,11 @@ export const BuyCreditsConfigurationBillingOutput$inboundSchema: z.ZodType<
   BuyCreditsConfigurationBillingOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pendingSubscriptionChangeId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pendingSubscriptionChangeId: types.optional(types.string()),
+  })
+);
 
 export function buyCreditsConfigurationBillingOutputFromJSON(
   jsonString: string,
@@ -3458,13 +3584,15 @@ export const Configuration6$inboundSchema: z.ZodType<
   Configuration6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200Options$inboundSchema
-  ),
-  output: z.lazy(() => BuyCreditsConfigurationBillingOutput$inboundSchema),
-  type: types.literal("orb_subscription_intent"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200Options$inboundSchema
+    ),
+    output: z.lazy(() => BuyCreditsConfigurationBillingOutput$inboundSchema),
+    type: types.literal("orb_subscription_intent"),
+  })
+);
 
 export function configuration6FromJSON(
   jsonString: string,
@@ -3481,7 +3609,7 @@ export const AddPrices2$inboundSchema: z.ZodType<
   AddPrices2,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function addPrices2FromJSON(
   jsonString: string,
@@ -3498,9 +3626,11 @@ export const AddPrices1$inboundSchema: z.ZodType<
   AddPrices1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  priceId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    priceId: types.string(),
+  })
+);
 
 export function addPrices1FromJSON(
   jsonString: string,
@@ -3517,10 +3647,12 @@ export const AddPrices$inboundSchema: z.ZodType<
   AddPrices,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => AddPrices1$inboundSchema),
-  z.lazy(() => AddPrices2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => AddPrices1$inboundSchema),
+    z.lazy(() => AddPrices2$inboundSchema),
+  ])
+);
 
 export function addPricesFromJSON(
   jsonString: string,
@@ -3537,9 +3669,11 @@ export const RemovePrices$inboundSchema: z.ZodType<
   RemovePrices,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  priceId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    priceId: types.string(),
+  })
+);
 
 export function removePricesFromJSON(
   jsonString: string,
@@ -3556,10 +3690,12 @@ export const ConfigurationReplacePrices$inboundSchema: z.ZodType<
   ConfigurationReplacePrices,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fixedPriceQuantity: types.number(),
-  replacesPriceId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fixedPriceQuantity: types.number(),
+    replacesPriceId: types.string(),
+  })
+);
 
 export function configurationReplacePricesFromJSON(
   jsonString: string,
@@ -3577,28 +3713,28 @@ export const BuyCreditsConfigurationBillingResponseOptions$inboundSchema:
     BuyCreditsConfigurationBillingResponseOptions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    addPrices: types.optional(
-      z.array(smartUnion([
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      addPrices: types.optional(z.array(smartUnion([
         z.lazy(() => AddPrices1$inboundSchema),
         z.lazy(() =>
           AddPrices2$inboundSchema
         ),
-      ])),
-    ),
-    alignBillingWithSubscriptionStartDate: types.optional(types.boolean()),
-    couponRedemptionCode: types.optional(types.string()),
-    externalPlanId: types.string(),
-    initialPhaseOrder: types.optional(types.number()),
-    metadata: types.optional(z.record(types.nullable(types.string()))),
-    removePrices: types.optional(
-      z.array(z.lazy(() => RemovePrices$inboundSchema)),
-    ),
-    replacePrices: types.optional(
-      z.array(z.lazy(() => ConfigurationReplacePrices$inboundSchema)),
-    ),
-    startDate: types.optional(types.string()),
-  });
+      ]))),
+      alignBillingWithSubscriptionStartDate: types.optional(types.boolean()),
+      couponRedemptionCode: types.optional(types.string()),
+      externalPlanId: types.string(),
+      initialPhaseOrder: types.optional(types.number()),
+      metadata: types.optional(z.record(types.nullable(types.string()))),
+      removePrices: types.optional(z.array(z.lazy(() =>
+        RemovePrices$inboundSchema
+      ))),
+      replacePrices: types.optional(z.array(z.lazy(() =>
+        ConfigurationReplacePrices$inboundSchema
+      ))),
+      startDate: types.optional(types.string()),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponseOptionsFromJSON(
   jsonString: string,
@@ -3621,9 +3757,11 @@ export const BuyCreditsConfigurationOutput$inboundSchema: z.ZodType<
   BuyCreditsConfigurationOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pendingSubscriptionChangeId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pendingSubscriptionChangeId: types.string(),
+  })
+);
 
 export function buyCreditsConfigurationOutputFromJSON(
   jsonString: string,
@@ -3640,13 +3778,15 @@ export const Configuration5$inboundSchema: z.ZodType<
   Configuration5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponseOptions$inboundSchema
-  ),
-  output: z.lazy(() => BuyCreditsConfigurationOutput$inboundSchema),
-  type: types.literal("orb_subscription"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponseOptions$inboundSchema
+    ),
+    output: z.lazy(() => BuyCreditsConfigurationOutput$inboundSchema),
+    type: types.literal("orb_subscription"),
+  })
+);
 
 export function configuration5FromJSON(
   jsonString: string,
@@ -3663,14 +3803,16 @@ export const BuyCreditsConfigurationBillingOptions$inboundSchema: z.ZodType<
   BuyCreditsConfigurationBillingOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  add: types.optional(z.array(z.any())),
-  addAdjustments: types.optional(z.array(z.any())),
-  allowInvoiceCreditOrVoid: types.optional(types.boolean()),
-  edit: types.optional(z.array(z.any())),
-  editAdjustments: types.optional(z.array(z.any())),
-  orbSubscriptionId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    add: types.optional(z.array(z.any())),
+    addAdjustments: types.optional(z.array(z.any())),
+    allowInvoiceCreditOrVoid: types.optional(types.boolean()),
+    edit: types.optional(z.array(z.any())),
+    editAdjustments: types.optional(z.array(z.any())),
+    orbSubscriptionId: types.string(),
+  })
+);
 
 export function buyCreditsConfigurationBillingOptionsFromJSON(
   jsonString: string,
@@ -3688,9 +3830,11 @@ export const ConfigurationOutput$inboundSchema: z.ZodType<
   ConfigurationOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pendingSubscriptionChangeId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pendingSubscriptionChangeId: types.string(),
+  })
+);
 
 export function configurationOutputFromJSON(
   jsonString: string,
@@ -3707,11 +3851,13 @@ export const Configuration4$inboundSchema: z.ZodType<
   Configuration4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() => BuyCreditsConfigurationBillingOptions$inboundSchema),
-  output: z.lazy(() => ConfigurationOutput$inboundSchema),
-  type: types.literal("orb_price_interval"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() => BuyCreditsConfigurationBillingOptions$inboundSchema),
+    output: z.lazy(() => ConfigurationOutput$inboundSchema),
+    type: types.literal("orb_price_interval"),
+  })
+);
 
 export function configuration4FromJSON(
   jsonString: string,
@@ -3726,14 +3872,14 @@ export function configuration4FromJSON(
 /** @internal */
 export const EffectiveDate2$inboundSchema: z.ZodNativeEnum<
   typeof EffectiveDate2
-> = z.nativeEnum(EffectiveDate2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(EffectiveDate2));
 
 /** @internal */
 export const EffectiveDate1$inboundSchema: z.ZodType<
   EffectiveDate1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function effectiveDate1FromJSON(
   jsonString: string,
@@ -3750,10 +3896,12 @@ export const EffectiveDate$inboundSchema: z.ZodType<
   EffectiveDate,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => EffectiveDate1$inboundSchema),
-  EffectiveDate2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => EffectiveDate1$inboundSchema),
+    EffectiveDate2$inboundSchema,
+  ])
+);
 
 export function effectiveDateFromJSON(
   jsonString: string,
@@ -3770,10 +3918,12 @@ export const ReplacePrices$inboundSchema: z.ZodType<
   ReplacePrices,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fixedPriceQuantity: types.number(),
-  replacesPriceId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fixedPriceQuantity: types.number(),
+    replacesPriceId: types.string(),
+  })
+);
 
 export function replacePricesFromJSON(
   jsonString: string,
@@ -3790,19 +3940,21 @@ export const BuyCreditsConfigurationOptions$inboundSchema: z.ZodType<
   BuyCreditsConfigurationOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alignBillingWithPlanChangeDate: types.optional(types.boolean()),
-  couponRedemptionCode: types.optional(types.string()),
-  effectiveDate: smartUnion([
-    z.lazy(() => EffectiveDate1$inboundSchema),
-    EffectiveDate2$inboundSchema,
-  ]),
-  externalPlanId: types.optional(types.string()),
-  orbSubscriptionId: types.string(),
-  replacePrices: types.optional(
-    z.array(z.lazy(() => ReplacePrices$inboundSchema)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alignBillingWithPlanChangeDate: types.optional(types.boolean()),
+    couponRedemptionCode: types.optional(types.string()),
+    effectiveDate: smartUnion([
+      z.lazy(() => EffectiveDate1$inboundSchema),
+      EffectiveDate2$inboundSchema,
+    ]),
+    externalPlanId: types.optional(types.string()),
+    orbSubscriptionId: types.string(),
+    replacePrices: types.optional(
+      z.array(z.lazy(() => ReplacePrices$inboundSchema)),
+    ),
+  })
+);
 
 export function buyCreditsConfigurationOptionsFromJSON(
   jsonString: string,
@@ -3820,9 +3972,11 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    pendingSubscriptionChangeId: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      pendingSubscriptionChangeId: types.string(),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2OutputFromJSON(
   jsonString: string,
@@ -3844,13 +3998,15 @@ export const Configuration3$inboundSchema: z.ZodType<
   Configuration3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() => BuyCreditsConfigurationOptions$inboundSchema),
-  output: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output$inboundSchema
-  ),
-  type: types.literal("orb_plan_change"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() => BuyCreditsConfigurationOptions$inboundSchema),
+    output: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Output$inboundSchema
+    ),
+    type: types.literal("orb_plan_change"),
+  })
+);
 
 export function configuration3FromJSON(
   jsonString: string,
@@ -3866,8 +4022,10 @@ export function configuration3FromJSON(
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type$inboundSchema:
   z.ZodNativeEnum<
     typeof BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type
-  > = z.nativeEnum(
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type,
+    )
   );
 
 /** @internal */
@@ -3875,13 +4033,15 @@ export const ConfigurationItems$inboundSchema: z.ZodType<
   ConfigurationItems,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  subtotal: types.string(),
-  type:
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type$inboundSchema,
-  years: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    subtotal: types.string(),
+    type:
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Type$inboundSchema,
+    years: types.number(),
+  })
+);
 
 export function configurationItemsFromJSON(
   jsonString: string,
@@ -3898,10 +4058,12 @@ export const ConfigurationOptions$inboundSchema: z.ZodType<
   ConfigurationOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(z.lazy(() => ConfigurationItems$inboundSchema)),
-  orderId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(z.lazy(() => ConfigurationItems$inboundSchema)),
+    orderId: types.string(),
+  })
+);
 
 export function configurationOptionsFromJSON(
   jsonString: string,
@@ -3918,11 +4080,13 @@ export const Configuration2$inboundSchema: z.ZodType<
   Configuration2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() => ConfigurationOptions$inboundSchema),
-  output: z.nullable(z.any()).optional(),
-  type: types.literal("domain_name"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() => ConfigurationOptions$inboundSchema),
+    output: z.nullable(z.any()).optional(),
+    type: types.literal("domain_name"),
+  })
+);
 
 export function configuration2FromJSON(
   jsonString: string,
@@ -3937,7 +4101,7 @@ export function configuration2FromJSON(
 /** @internal */
 export const ConfigurationCurrency$inboundSchema: z.ZodNativeEnum<
   typeof ConfigurationCurrency
-> = z.nativeEnum(ConfigurationCurrency);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ConfigurationCurrency));
 
 /** @internal */
 export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options$inboundSchema:
@@ -3945,11 +4109,13 @@ export const BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBod
     BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    amount: types.string(),
-    currency: ConfigurationCurrency$inboundSchema,
-    expirationDate: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      amount: types.string(),
+      currency: ConfigurationCurrency$inboundSchema,
+      expirationDate: types.optional(types.string()),
+    })
+  );
 
 export function buyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2OptionsFromJSON(
   jsonString: string,
@@ -3971,13 +4137,15 @@ export const Configuration1$inboundSchema: z.ZodType<
   Configuration1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  options: z.lazy(() =>
-    BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options$inboundSchema
-  ),
-  output: z.nullable(z.any()).optional(),
-  type: types.literal("credit_topup"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    options: z.lazy(() =>
+      BuyCreditsConfigurationBillingResponse200ApplicationJSONResponseBody2Options$inboundSchema
+    ),
+    output: z.nullable(z.any()).optional(),
+    type: types.literal("credit_topup"),
+  })
+);
 
 export function configuration1FromJSON(
   jsonString: string,
@@ -3994,15 +4162,17 @@ export const BuyCreditsResponseBodyConfiguration$inboundSchema: z.ZodType<
   BuyCreditsResponseBodyConfiguration,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => Configuration1$inboundSchema),
-  z.lazy(() => Configuration2$inboundSchema),
-  z.lazy(() => Configuration3$inboundSchema),
-  z.lazy(() => Configuration4$inboundSchema),
-  z.lazy(() => Configuration5$inboundSchema),
-  z.lazy(() => Configuration6$inboundSchema),
-  z.lazy(() => Configuration7$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => Configuration1$inboundSchema),
+    z.lazy(() => Configuration2$inboundSchema),
+    z.lazy(() => Configuration3$inboundSchema),
+    z.lazy(() => Configuration4$inboundSchema),
+    z.lazy(() => Configuration5$inboundSchema),
+    z.lazy(() => Configuration6$inboundSchema),
+    z.lazy(() => Configuration7$inboundSchema),
+  ])
+);
 
 export function buyCreditsResponseBodyConfigurationFromJSON(
   jsonString: string,
@@ -4016,21 +4186,23 @@ export function buyCreditsResponseBodyConfigurationFromJSON(
 }
 
 /** @internal */
-export const Currency$inboundSchema: z.ZodNativeEnum<typeof Currency> = z
-  .nativeEnum(Currency);
+export const Currency$inboundSchema: z.ZodNativeEnum<typeof Currency> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Currency));
 
 /** @internal */
 export const Dispute$inboundSchema: z.ZodType<Dispute, z.ZodTypeDef, unknown> =
-  z.object({
-    amount: types.string(),
-    createdAt: types.string(),
-    currency: types.string(),
-    id: types.string(),
-    providerId: types.string(),
-    reason: types.nullable(types.string()),
-    status: types.string(),
-    updatedAt: types.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      amount: types.string(),
+      createdAt: types.string(),
+      currency: types.string(),
+      id: types.string(),
+      providerId: types.string(),
+      reason: types.nullable(types.string()),
+      status: types.string(),
+      updatedAt: types.string(),
+    })
+  );
 
 export function disputeFromJSON(
   jsonString: string,
@@ -4047,17 +4219,19 @@ export const LineItems$inboundSchema: z.ZodType<
   LineItems,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.string(),
-  id: types.string(),
-  metadata: types.optional(z.record(types.string())),
-  name: types.string(),
-  productAlias: types.optional(types.string()),
-  productId: types.string(),
-  quantity: types.string(),
-  refund: types.optional(types.string()),
-  unitAmount: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.string(),
+    id: types.string(),
+    metadata: types.optional(z.record(types.string())),
+    name: types.string(),
+    productAlias: types.optional(types.string()),
+    productId: types.string(),
+    quantity: types.string(),
+    refund: types.optional(types.string()),
+    unitAmount: types.string(),
+  })
+);
 
 export function lineItemsFromJSON(
   jsonString: string,
@@ -4072,19 +4246,21 @@ export function lineItemsFromJSON(
 /** @internal */
 export const BuyCreditsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsResponseBodyType
-> = z.nativeEnum(BuyCreditsResponseBodyType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BuyCreditsResponseBodyType));
 
 /** @internal */
 export const ResponseBodyProvider$inboundSchema: z.ZodType<
   ResponseBodyProvider,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currencyConversionRate: types.optional(types.string()),
-  resourceId: types.string(),
-  stripeSharedPaymentTokenUsed: types.optional(types.boolean()),
-  type: BuyCreditsResponseBodyType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currencyConversionRate: types.optional(types.string()),
+    resourceId: types.string(),
+    stripeSharedPaymentTokenUsed: types.optional(types.boolean()),
+    type: BuyCreditsResponseBodyType$inboundSchema,
+  })
+);
 
 export function responseBodyProviderFromJSON(
   jsonString: string,
@@ -4099,39 +4275,43 @@ export function responseBodyProviderFromJSON(
 /** @internal */
 export const BuyCreditsResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
   typeof BuyCreditsResponseBodyStatus
-> = z.nativeEnum(BuyCreditsResponseBodyStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(BuyCreditsResponseBodyStatus)
+);
 
 /** @internal */
 export const PurchaseIntent$inboundSchema: z.ZodType<
   PurchaseIntent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuration: z.union([
-    z.lazy(() => Configuration1$inboundSchema),
-    z.lazy(() => Configuration2$inboundSchema),
-    z.lazy(() => Configuration3$inboundSchema),
-    z.lazy(() => Configuration4$inboundSchema),
-    z.lazy(() => Configuration5$inboundSchema),
-    z.lazy(() => Configuration6$inboundSchema),
-    z.lazy(() => Configuration7$inboundSchema),
-  ]),
-  createdAt: types.string(),
-  currency: Currency$inboundSchema,
-  dispute: types.optional(z.lazy(() => Dispute$inboundSchema)),
-  id: types.string(),
-  lineItems: types.optional(z.array(z.lazy(() => LineItems$inboundSchema))),
-  metadata: types.optional(z.record(types.string())),
-  ownerId: types.string(),
-  provider: z.lazy(() => ResponseBodyProvider$inboundSchema),
-  refund: types.optional(types.string()),
-  returnUrl: types.optional(types.string()),
-  status: BuyCreditsResponseBodyStatus$inboundSchema,
-  subtotal: types.string(),
-  tax: types.string(),
-  total: types.string(),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuration: z.union([
+      z.lazy(() => Configuration1$inboundSchema),
+      z.lazy(() => Configuration2$inboundSchema),
+      z.lazy(() => Configuration3$inboundSchema),
+      z.lazy(() => Configuration4$inboundSchema),
+      z.lazy(() => Configuration5$inboundSchema),
+      z.lazy(() => Configuration6$inboundSchema),
+      z.lazy(() => Configuration7$inboundSchema),
+    ]),
+    createdAt: types.string(),
+    currency: Currency$inboundSchema,
+    dispute: types.optional(z.lazy(() => Dispute$inboundSchema)),
+    id: types.string(),
+    lineItems: types.optional(z.array(z.lazy(() => LineItems$inboundSchema))),
+    metadata: types.optional(z.record(types.string())),
+    ownerId: types.string(),
+    provider: z.lazy(() => ResponseBodyProvider$inboundSchema),
+    refund: types.optional(types.string()),
+    returnUrl: types.optional(types.string()),
+    status: BuyCreditsResponseBodyStatus$inboundSchema,
+    subtotal: types.string(),
+    tax: types.string(),
+    total: types.string(),
+    updatedAt: types.string(),
+  })
+);
 
 export function purchaseIntentFromJSON(
   jsonString: string,
@@ -4148,9 +4328,11 @@ export const BuyCreditsResponseBody2$inboundSchema: z.ZodType<
   BuyCreditsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  purchaseIntent: z.lazy(() => PurchaseIntent$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    purchaseIntent: z.lazy(() => PurchaseIntent$inboundSchema),
+  })
+);
 
 export function buyCreditsResponseBody2FromJSON(
   jsonString: string,
@@ -4167,10 +4349,12 @@ export const BuyCreditsResponseBody1$inboundSchema: z.ZodType<
   BuyCreditsResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  checkoutSessionId: types.string(),
-  checkoutSessionUrl: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    checkoutSessionId: types.string(),
+    checkoutSessionUrl: types.string(),
+  })
+);
 
 export function buyCreditsResponseBody1FromJSON(
   jsonString: string,
@@ -4187,11 +4371,13 @@ export const BuyCreditsResponseBody$inboundSchema: z.ZodType<
   BuyCreditsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => BuyCreditsResponseBody1$inboundSchema),
-  z.lazy(() => BuyCreditsResponseBody2$inboundSchema),
-  z.lazy(() => BuyCreditsResponseBody3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => BuyCreditsResponseBody1$inboundSchema),
+    z.lazy(() => BuyCreditsResponseBody2$inboundSchema),
+    z.lazy(() => BuyCreditsResponseBody3$inboundSchema),
+  ])
+);
 
 export function buyCreditsResponseBodyFromJSON(
   jsonString: string,

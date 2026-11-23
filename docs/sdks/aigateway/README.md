@@ -1400,7 +1400,7 @@ run();
 
 ## listAiGatewayBudgets
 
-List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.
+List the team's AI Gateway budgets (team/project/user/app scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.
 
 ### Example Usage
 
@@ -1475,7 +1475,7 @@ run();
 
 ## upsertAiGatewayBudget
 
-Create or update a team-, project-, or user-scope AI Gateway budget.
+Create or update a team-, project-, user-, or app-scope AI Gateway budget. Set a total with `limitAmount`, or raise the current budget with `increaseBy`.
 
 ### Example Usage
 
@@ -1550,7 +1550,7 @@ run();
 
 ## archiveAiGatewayBudget
 
-Archive a team-, project-, or user-scope AI Gateway budget.
+Archive a team-, project-, user-, or app-scope AI Gateway budget.
 
 ### Example Usage
 
@@ -1627,7 +1627,7 @@ run();
 
 ## listAiGatewayBudgetDefaults
 
-List the team's AI Gateway budget defaults as a flat per-scope list (one row per team/project/api-key/user scope with a default set). An empty list is a normal state for the dashboard.
+List the team's AI Gateway budget defaults as a flat per-scope list (one row per team/project/api-key/user/app scope with a default set). An empty list is a normal state for the dashboard.
 
 ### Example Usage
 

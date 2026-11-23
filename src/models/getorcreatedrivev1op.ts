@@ -3,8 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -90,8 +94,8 @@ export type GetOrCreateDriveV1Response =
   | GetOrCreateDriveV1DrivesResponseBody;
 
 /** @internal */
-export const Region$outboundSchema: z.ZodNativeEnum<typeof Region> = z
-  .nativeEnum(Region);
+export const Region$outboundSchema: z.ZodNativeEnum<typeof Region> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Region));
 
 /** @internal */
 export type GetOrCreateDriveV1RequestBody$Outbound = {
@@ -105,11 +109,13 @@ export const GetOrCreateDriveV1RequestBody$outboundSchema: z.ZodType<
   GetOrCreateDriveV1RequestBody$Outbound,
   z.ZodTypeDef,
   GetOrCreateDriveV1RequestBody
-> = z.object({
-  projectId: z.string().optional(),
-  maxSizeBytes: z.number().int().optional(),
-  region: Region$outboundSchema.default("iad1"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string().optional(),
+    maxSizeBytes: z.number().int().optional(),
+    region: Region$outboundSchema.default("iad1"),
+  })
+);
 
 export function getOrCreateDriveV1RequestBodyToJSON(
   getOrCreateDriveV1RequestBody: GetOrCreateDriveV1RequestBody,
@@ -134,17 +140,23 @@ export const GetOrCreateDriveV1Request$outboundSchema: z.ZodType<
   GetOrCreateDriveV1Request$Outbound,
   z.ZodTypeDef,
   GetOrCreateDriveV1Request
-> = z.object({
-  name: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => GetOrCreateDriveV1RequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().refine(withinMaxLength$(64), {
+      message: "Value must be at most 64 characters long",
+    }).refine(matchesPattern$("^[a-zA-Z0-9_-]+$", 64), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => GetOrCreateDriveV1RequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function getOrCreateDriveV1RequestToJSON(
   getOrCreateDriveV1Request: GetOrCreateDriveV1Request,
@@ -159,9 +171,11 @@ export const GetOrCreateDriveV1DrivesResponseBody$inboundSchema: z.ZodType<
   GetOrCreateDriveV1DrivesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  drive: Drive$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    drive: Drive$inboundSchema,
+  })
+);
 
 export function getOrCreateDriveV1DrivesResponseBodyFromJSON(
   jsonString: string,
@@ -179,9 +193,11 @@ export const GetOrCreateDriveV1ResponseBody$inboundSchema: z.ZodType<
   GetOrCreateDriveV1ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  drive: Drive$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    drive: Drive$inboundSchema,
+  })
+);
 
 export function getOrCreateDriveV1ResponseBodyFromJSON(
   jsonString: string,
@@ -198,10 +214,12 @@ export const GetOrCreateDriveV1Response$inboundSchema: z.ZodType<
   GetOrCreateDriveV1Response,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetOrCreateDriveV1ResponseBody$inboundSchema),
-  z.lazy(() => GetOrCreateDriveV1DrivesResponseBody$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetOrCreateDriveV1ResponseBody$inboundSchema),
+    z.lazy(() => GetOrCreateDriveV1DrivesResponseBody$inboundSchema),
+  ])
+);
 
 export function getOrCreateDriveV1ResponseFromJSON(
   jsonString: string,

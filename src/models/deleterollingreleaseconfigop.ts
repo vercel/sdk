@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -38,11 +38,13 @@ export const DeleteRollingReleaseConfigRequest$outboundSchema: z.ZodType<
   DeleteRollingReleaseConfigRequest$Outbound,
   z.ZodTypeDef,
   DeleteRollingReleaseConfigRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteRollingReleaseConfigRequestToJSON(
   deleteRollingReleaseConfigRequest: DeleteRollingReleaseConfigRequest,
@@ -59,9 +61,11 @@ export const DeleteRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
   DeleteRollingReleaseConfigResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rollingRelease: z.nullable(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rollingRelease: z.nullable(z.any()).optional(),
+  })
+);
 
 export function deleteRollingReleaseConfigResponseBodyFromJSON(
   jsonString: string,

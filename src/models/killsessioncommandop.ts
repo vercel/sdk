@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
@@ -59,9 +59,11 @@ export const KillSessionCommandRequestBody$outboundSchema: z.ZodType<
   KillSessionCommandRequestBody$Outbound,
   z.ZodTypeDef,
   KillSessionCommandRequestBody
-> = z.object({
-  signal: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    signal: z.number(),
+  })
+);
 
 export function killSessionCommandRequestBodyToJSON(
   killSessionCommandRequestBody: KillSessionCommandRequestBody,
@@ -87,18 +89,20 @@ export const KillSessionCommandRequest$outboundSchema: z.ZodType<
   KillSessionCommandRequest$Outbound,
   z.ZodTypeDef,
   KillSessionCommandRequest
-> = z.object({
-  cmdId: z.string(),
-  sessionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => KillSessionCommandRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cmdId: z.string(),
+    sessionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => KillSessionCommandRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function killSessionCommandRequestToJSON(
   killSessionCommandRequest: KillSessionCommandRequest,
@@ -113,9 +117,11 @@ export const KillSessionCommandResponseBody$inboundSchema: z.ZodType<
   KillSessionCommandResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  command: SessionCommand$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    command: SessionCommand$inboundSchema,
+  })
+);
 
 export function killSessionCommandResponseBodyFromJSON(
   jsonString: string,

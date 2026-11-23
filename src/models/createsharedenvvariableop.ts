@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -407,11 +407,13 @@ export const CreateSharedEnvVariableRequestBodyEvs$outboundSchema: z.ZodType<
   CreateSharedEnvVariableRequestBodyEvs$Outbound,
   z.ZodTypeDef,
   CreateSharedEnvVariableRequestBodyEvs
-> = z.object({
-  key: z.string(),
-  value: z.string(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.string(),
+    value: z.string(),
+    comment: z.string().optional(),
+  })
+);
 
 export function createSharedEnvVariableRequestBodyEvsToJSON(
   createSharedEnvVariableRequestBodyEvs: CreateSharedEnvVariableRequestBodyEvs,
@@ -427,12 +429,16 @@ export function createSharedEnvVariableRequestBodyEvsToJSON(
 export const CreateSharedEnvVariableRequestBodyEnvironmentRequestType$outboundSchema:
   z.ZodNativeEnum<
     typeof CreateSharedEnvVariableRequestBodyEnvironmentRequestType
-  > = z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentRequestType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentRequestType)
+  );
 
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyEnvironmentTarget$outboundSchema:
   z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentTarget> =
-    z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentTarget);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentTarget)
+    );
 
 /** @internal */
 export type CreateSharedEnvVariableRequestBody3$Outbound = {
@@ -447,17 +453,20 @@ export const CreateSharedEnvVariableRequestBody3$outboundSchema: z.ZodType<
   CreateSharedEnvVariableRequestBody3$Outbound,
   z.ZodTypeDef,
   CreateSharedEnvVariableRequestBody3
-> = z.object({
-  evs: z.array(
-    z.lazy(() => CreateSharedEnvVariableRequestBodyEvs$outboundSchema),
-  ),
-  type: CreateSharedEnvVariableRequestBodyEnvironmentRequestType$outboundSchema
-    .optional(),
-  target: z.array(
-    CreateSharedEnvVariableRequestBodyEnvironmentTarget$outboundSchema,
-  ).optional(),
-  projectId: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    evs: z.array(
+      z.lazy(() => CreateSharedEnvVariableRequestBodyEvs$outboundSchema),
+    ),
+    type:
+      CreateSharedEnvVariableRequestBodyEnvironmentRequestType$outboundSchema
+        .optional(),
+    target: z.array(
+      CreateSharedEnvVariableRequestBodyEnvironmentTarget$outboundSchema,
+    ).optional(),
+    projectId: z.array(z.string()).optional(),
+  })
+);
 
 export function createSharedEnvVariableRequestBody3ToJSON(
   createSharedEnvVariableRequestBody3: CreateSharedEnvVariableRequestBody3,
@@ -481,11 +490,13 @@ export const RequestBodyEvs$outboundSchema: z.ZodType<
   RequestBodyEvs$Outbound,
   z.ZodTypeDef,
   RequestBodyEvs
-> = z.object({
-  key: z.string(),
-  value: z.string(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.string(),
+    value: z.string(),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBodyEvsToJSON(requestBodyEvs: RequestBodyEvs): string {
   return JSON.stringify(RequestBodyEvs$outboundSchema.parse(requestBodyEvs));
@@ -493,13 +504,17 @@ export function requestBodyEvsToJSON(requestBodyEvs: RequestBodyEvs): string {
 
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyEnvironmentType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentType> = z
-    .nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentType);
+  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyEnvironmentType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateSharedEnvVariableRequestBodyEnvironmentType)
+    );
 
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyTarget$outboundSchema:
-  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyTarget> = z
-    .nativeEnum(CreateSharedEnvVariableRequestBodyTarget);
+  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyTarget> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateSharedEnvVariableRequestBodyTarget)
+    );
 
 /** @internal */
 export type CreateSharedEnvVariableRequestBody2$Outbound = {
@@ -514,14 +529,16 @@ export const CreateSharedEnvVariableRequestBody2$outboundSchema: z.ZodType<
   CreateSharedEnvVariableRequestBody2$Outbound,
   z.ZodTypeDef,
   CreateSharedEnvVariableRequestBody2
-> = z.object({
-  evs: z.array(z.lazy(() => RequestBodyEvs$outboundSchema)),
-  type: CreateSharedEnvVariableRequestBodyEnvironmentType$outboundSchema
-    .optional(),
-  target: z.array(CreateSharedEnvVariableRequestBodyTarget$outboundSchema)
-    .optional(),
-  projectId: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    evs: z.array(z.lazy(() => RequestBodyEvs$outboundSchema)),
+    type: CreateSharedEnvVariableRequestBodyEnvironmentType$outboundSchema
+      .optional(),
+    target: z.array(CreateSharedEnvVariableRequestBodyTarget$outboundSchema)
+      .optional(),
+    projectId: z.array(z.string()).optional(),
+  })
+);
 
 export function createSharedEnvVariableRequestBody2ToJSON(
   createSharedEnvVariableRequestBody2: CreateSharedEnvVariableRequestBody2,
@@ -541,12 +558,14 @@ export type Evs$Outbound = {
 };
 
 /** @internal */
-export const Evs$outboundSchema: z.ZodType<Evs$Outbound, z.ZodTypeDef, Evs> = z
-  .object({
-    key: z.string(),
-    value: z.string(),
-    comment: z.string().optional(),
-  });
+export const Evs$outboundSchema: z.ZodType<Evs$Outbound, z.ZodTypeDef, Evs> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      key: z.string(),
+      value: z.string(),
+      comment: z.string().optional(),
+    })
+  );
 
 export function evsToJSON(evs: Evs): string {
   return JSON.stringify(Evs$outboundSchema.parse(evs));
@@ -554,14 +573,15 @@ export function evsToJSON(evs: Evs): string {
 
 /** @internal */
 export const CreateSharedEnvVariableRequestBodyType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyType> = z.nativeEnum(
-    CreateSharedEnvVariableRequestBodyType,
-  );
+  z.ZodNativeEnum<typeof CreateSharedEnvVariableRequestBodyType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateSharedEnvVariableRequestBodyType)
+    );
 
 /** @internal */
 export const RequestBodyTarget$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyTarget
-> = z.nativeEnum(RequestBodyTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RequestBodyTarget));
 
 /** @internal */
 export type CreateSharedEnvVariableRequestBody1$Outbound = {
@@ -576,12 +596,14 @@ export const CreateSharedEnvVariableRequestBody1$outboundSchema: z.ZodType<
   CreateSharedEnvVariableRequestBody1$Outbound,
   z.ZodTypeDef,
   CreateSharedEnvVariableRequestBody1
-> = z.object({
-  evs: z.array(z.lazy(() => Evs$outboundSchema)),
-  type: CreateSharedEnvVariableRequestBodyType$outboundSchema.optional(),
-  target: z.array(RequestBodyTarget$outboundSchema),
-  projectId: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    evs: z.array(z.lazy(() => Evs$outboundSchema)),
+    type: CreateSharedEnvVariableRequestBodyType$outboundSchema.optional(),
+    target: z.array(RequestBodyTarget$outboundSchema),
+    projectId: z.array(z.string()).optional(),
+  })
+);
 
 export function createSharedEnvVariableRequestBody1ToJSON(
   createSharedEnvVariableRequestBody1: CreateSharedEnvVariableRequestBody1,
@@ -604,11 +626,13 @@ export const CreateSharedEnvVariableRequestBody$outboundSchema: z.ZodType<
   CreateSharedEnvVariableRequestBody$Outbound,
   z.ZodTypeDef,
   CreateSharedEnvVariableRequestBody
-> = smartUnion([
-  z.lazy(() => CreateSharedEnvVariableRequestBody1$outboundSchema),
-  z.lazy(() => CreateSharedEnvVariableRequestBody2$outboundSchema),
-  z.lazy(() => CreateSharedEnvVariableRequestBody3$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CreateSharedEnvVariableRequestBody1$outboundSchema),
+    z.lazy(() => CreateSharedEnvVariableRequestBody2$outboundSchema),
+    z.lazy(() => CreateSharedEnvVariableRequestBody3$outboundSchema),
+  ])
+);
 
 export function createSharedEnvVariableRequestBodyToJSON(
   createSharedEnvVariableRequestBody: CreateSharedEnvVariableRequestBody,
@@ -636,19 +660,21 @@ export const CreateSharedEnvVariableRequest$outboundSchema: z.ZodType<
   CreateSharedEnvVariableRequest$Outbound,
   z.ZodTypeDef,
   CreateSharedEnvVariableRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => CreateSharedEnvVariableRequestBody1$outboundSchema),
-    z.lazy(() => CreateSharedEnvVariableRequestBody2$outboundSchema),
-    z.lazy(() => CreateSharedEnvVariableRequestBody3$outboundSchema),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => CreateSharedEnvVariableRequestBody1$outboundSchema),
+      z.lazy(() => CreateSharedEnvVariableRequestBody2$outboundSchema),
+      z.lazy(() => CreateSharedEnvVariableRequestBody3$outboundSchema),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createSharedEnvVariableRequestToJSON(
   createSharedEnvVariableRequest: CreateSharedEnvVariableRequest,
@@ -666,12 +692,14 @@ export const CreateSharedEnvVariableLastEditedByPrincipal2$inboundSchema:
     CreateSharedEnvVariableLastEditedByPrincipal2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    avatar: types.optional(types.string()),
-    id: types.string(),
-    name: types.string(),
-    type: types.literal("app"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      avatar: types.optional(types.string()),
+      id: types.string(),
+      name: types.string(),
+      type: types.literal("app"),
+    })
+  );
 
 export function createSharedEnvVariableLastEditedByPrincipal2FromJSON(
   jsonString: string,
@@ -695,13 +723,15 @@ export const CreateSharedEnvVariableLastEditedByPrincipal1$inboundSchema:
     CreateSharedEnvVariableLastEditedByPrincipal1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    avatar: types.optional(types.string()),
-    id: types.string(),
-    name: z.nullable(types.string()).optional(),
-    type: types.literal("user"),
-    username: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      avatar: types.optional(types.string()),
+      id: types.string(),
+      name: z.nullable(types.string()).optional(),
+      type: types.literal("user"),
+      username: types.string(),
+    })
+  );
 
 export function createSharedEnvVariableLastEditedByPrincipal1FromJSON(
   jsonString: string,
@@ -725,10 +755,12 @@ export const CreateSharedEnvVariableLastEditedByPrincipal$inboundSchema:
     CreateSharedEnvVariableLastEditedByPrincipal,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => CreateSharedEnvVariableLastEditedByPrincipal1$inboundSchema),
-    z.lazy(() => CreateSharedEnvVariableLastEditedByPrincipal2$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => CreateSharedEnvVariableLastEditedByPrincipal1$inboundSchema),
+      z.lazy(() => CreateSharedEnvVariableLastEditedByPrincipal2$inboundSchema),
+    ])
+  );
 
 export function createSharedEnvVariableLastEditedByPrincipalFromJSON(
   jsonString: string,
@@ -749,48 +781,52 @@ export function createSharedEnvVariableLastEditedByPrincipalFromJSON(
 /** @internal */
 export const CreateSharedEnvVariableTarget$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget
-> = z.nativeEnum(CreateSharedEnvVariableTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateSharedEnvVariableTarget)
+);
 
 /** @internal */
 export const CreateSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableType
-> = z.nativeEnum(CreateSharedEnvVariableType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateSharedEnvVariableType)
+);
 
 /** @internal */
 export const Created$inboundSchema: z.ZodType<Created, z.ZodTypeDef, unknown> =
-  z.object({
-    applyToAllCustomEnvironments: types.optional(types.boolean()),
-    comment: types.optional(types.string()),
-    created: types.optional(types.date()),
-    createdAt: types.optional(types.number()),
-    createdBy: z.nullable(types.string()).optional(),
-    customEnvironmentIds: types.optional(z.array(types.string())),
-    decrypted: types.optional(types.boolean()),
-    deletedAt: types.optional(types.number()),
-    deletedBy: z.nullable(types.string()).optional(),
-    id: types.optional(types.string()),
-    key: types.optional(types.string()),
-    lastEditedByDisplayName: types.optional(types.string()),
-    lastEditedByPrincipal: types.optional(
-      z.union([
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      applyToAllCustomEnvironments: types.optional(types.boolean()),
+      comment: types.optional(types.string()),
+      created: types.optional(types.date()),
+      createdAt: types.optional(types.number()),
+      createdBy: z.nullable(types.string()).optional(),
+      customEnvironmentIds: types.optional(z.array(types.string())),
+      decrypted: types.optional(types.boolean()),
+      deletedAt: types.optional(types.number()),
+      deletedBy: z.nullable(types.string()).optional(),
+      id: types.optional(types.string()),
+      key: types.optional(types.string()),
+      lastEditedByDisplayName: types.optional(types.string()),
+      lastEditedByPrincipal: types.optional(z.union([
         z.lazy(() =>
           CreateSharedEnvVariableLastEditedByPrincipal1$inboundSchema
         ),
         z.lazy(() =>
           CreateSharedEnvVariableLastEditedByPrincipal2$inboundSchema
         ),
-      ]),
-    ),
-    ownerId: z.nullable(types.string()).optional(),
-    projectId: types.optional(z.array(types.string())),
-    target: types.optional(
-      z.array(CreateSharedEnvVariableTarget$inboundSchema),
-    ),
-    type: types.optional(CreateSharedEnvVariableType$inboundSchema),
-    updatedAt: types.optional(types.number()),
-    updatedBy: z.nullable(types.string()).optional(),
-    value: types.optional(types.string()),
-  });
+      ])),
+      ownerId: z.nullable(types.string()).optional(),
+      projectId: types.optional(z.array(types.string())),
+      target: types.optional(
+        z.array(CreateSharedEnvVariableTarget$inboundSchema),
+      ),
+      type: types.optional(CreateSharedEnvVariableType$inboundSchema),
+      updatedAt: types.optional(types.number()),
+      updatedBy: z.nullable(types.string()).optional(),
+      value: types.optional(types.string()),
+    })
+  );
 
 export function createdFromJSON(
   jsonString: string,
@@ -805,22 +841,28 @@ export function createdFromJSON(
 /** @internal */
 export const CreateSharedEnvVariableTarget2$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget2
-> = z.nativeEnum(CreateSharedEnvVariableTarget2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateSharedEnvVariableTarget2)
+);
 
 /** @internal */
 export const CreateSharedEnvVariableTarget1$inboundSchema: z.ZodNativeEnum<
   typeof CreateSharedEnvVariableTarget1
-> = z.nativeEnum(CreateSharedEnvVariableTarget1);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateSharedEnvVariableTarget1)
+);
 
 /** @internal */
 export const CreateSharedEnvVariableEnvironmentTarget$inboundSchema: z.ZodType<
   CreateSharedEnvVariableEnvironmentTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(CreateSharedEnvVariableTarget1$inboundSchema),
-  CreateSharedEnvVariableTarget2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(CreateSharedEnvVariableTarget1$inboundSchema),
+    CreateSharedEnvVariableTarget2$inboundSchema,
+  ])
+);
 
 export function createSharedEnvVariableEnvironmentTargetFromJSON(
   jsonString: string,
@@ -839,15 +881,17 @@ export function createSharedEnvVariableEnvironmentTargetFromJSON(
 }
 
 /** @internal */
-export const Value2$inboundSchema: z.ZodNativeEnum<typeof Value2> = z
-  .nativeEnum(Value2);
+export const Value2$inboundSchema: z.ZodNativeEnum<typeof Value2> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Value2));
 
 /** @internal */
 export const CreateSharedEnvVariableValue$inboundSchema: z.ZodType<
   CreateSharedEnvVariableValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), z.array(Value2$inboundSchema)]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), z.array(Value2$inboundSchema)])
+);
 
 export function createSharedEnvVariableValueFromJSON(
   jsonString: string,
@@ -864,26 +908,28 @@ export const CreateSharedEnvVariableError$inboundSchema: z.ZodType<
   CreateSharedEnvVariableError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(types.string()),
-  code: types.string(),
-  envVarId: types.optional(types.string()),
-  envVarKey: types.optional(types.string()),
-  gitBranch: types.optional(types.string()),
-  key: types.optional(types.string()),
-  link: types.optional(types.string()),
-  message: types.string(),
-  project: types.optional(types.string()),
-  target: types.optional(
-    smartUnion([
-      z.array(CreateSharedEnvVariableTarget1$inboundSchema),
-      CreateSharedEnvVariableTarget2$inboundSchema,
-    ]),
-  ),
-  value: types.optional(
-    smartUnion([types.string(), z.array(Value2$inboundSchema)]),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(types.string()),
+    code: types.string(),
+    envVarId: types.optional(types.string()),
+    envVarKey: types.optional(types.string()),
+    gitBranch: types.optional(types.string()),
+    key: types.optional(types.string()),
+    link: types.optional(types.string()),
+    message: types.string(),
+    project: types.optional(types.string()),
+    target: types.optional(
+      smartUnion([
+        z.array(CreateSharedEnvVariableTarget1$inboundSchema),
+        CreateSharedEnvVariableTarget2$inboundSchema,
+      ]),
+    ),
+    value: types.optional(
+      smartUnion([types.string(), z.array(Value2$inboundSchema)]),
+    ),
+  })
+);
 
 export function createSharedEnvVariableErrorFromJSON(
   jsonString: string,
@@ -896,10 +942,12 @@ export function createSharedEnvVariableErrorFromJSON(
 }
 
 /** @internal */
-export const Failed$inboundSchema: z.ZodType<Failed, z.ZodTypeDef, unknown> = z
-  .object({
-    error: z.lazy(() => CreateSharedEnvVariableError$inboundSchema),
-  });
+export const Failed$inboundSchema: z.ZodType<Failed, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() => CreateSharedEnvVariableError$inboundSchema),
+    })
+  );
 
 export function failedFromJSON(
   jsonString: string,
@@ -916,10 +964,12 @@ export const CreateSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   CreateSharedEnvVariableResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  created: z.array(z.lazy(() => Created$inboundSchema)),
-  failed: z.array(z.lazy(() => Failed$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    created: z.array(z.lazy(() => Created$inboundSchema)),
+    failed: z.array(z.lazy(() => Failed$inboundSchema)),
+  })
+);
 
 export function createSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,

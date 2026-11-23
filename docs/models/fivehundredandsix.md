@@ -5,23 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndSix } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FiveHundredAndSix } from "@vercel/sdk/models/fourhundredandthirtynine.js";
 
 let value: FiveHundredAndSix = {
-  next: {
-    enabled: true,
-    totpVerified: true,
-  },
-  previous: {
-    enabled: true,
-    totpVerified: true,
-  },
+  remaining: 3525.6,
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload506Next](../models/usereventpayload506next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload506Previous](../models/usereventpayload506previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `context`                                                    | [models.Context](../models/context.md)                       | :heavy_minus_sign:                                           | Absent on events predating the field; those were all logins. |
+| `remaining`                                                  | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |

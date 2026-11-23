@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -31,11 +31,13 @@ export const ConnectServiceSyncError$inboundSchema: z.ZodType<
   ConnectServiceSyncError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fields: types.optional(z.array(types.string())),
-  message: types.string(),
-  vendor: types.optional(z.record(z.any())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fields: types.optional(z.array(types.string())),
+    message: types.string(),
+    vendor: types.optional(z.record(z.any())),
+  })
+);
 
 export function connectServiceSyncErrorFromJSON(
   jsonString: string,

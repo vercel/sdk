@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
@@ -71,10 +71,12 @@ export const GetDomainContactVerificationRequest$outboundSchema: z.ZodType<
   GetDomainContactVerificationRequest$Outbound,
   z.ZodTypeDef,
   GetDomainContactVerificationRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+  })
+);
 
 export function getDomainContactVerificationRequestToJSON(
   getDomainContactVerificationRequest: GetDomainContactVerificationRequest,
@@ -92,12 +94,14 @@ export const GetDomainContactVerificationDomainsRegistrarResponseResponseBody$in
     GetDomainContactVerificationDomainsRegistrarResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Forbidden$inboundSchema,
-    NotAuthorizedForScope$inboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      Forbidden$inboundSchema,
+      NotAuthorizedForScope$inboundSchema.and(
+        z.object({ code: z.literal("not_authorized_for_scope") }),
+      ),
+    ])
+  );
 
 export function getDomainContactVerificationDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
@@ -120,11 +124,13 @@ export const GetDomainContactVerificationDomainsRegistrarResponseBody$inboundSch
     GetDomainContactVerificationDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    BoughtTooRecently$inboundSchema,
-    DomainNotRegistered$inboundSchema,
-    HttpApiDecodeError$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      BoughtTooRecently$inboundSchema,
+      DomainNotRegistered$inboundSchema,
+      HttpApiDecodeError$inboundSchema,
+    ])
+  );
 
 export function getDomainContactVerificationDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -146,10 +152,12 @@ export const GetDomainContactVerificationResponseBody$inboundSchema: z.ZodType<
   GetDomainContactVerificationResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  ContactPendingVerification$inboundSchema,
-  ContactVerified$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    ContactPendingVerification$inboundSchema,
+    ContactVerified$inboundSchema,
+  ])
+);
 
 export function getDomainContactVerificationResponseBodyFromJSON(
   jsonString: string,

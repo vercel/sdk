@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type UpdateOrganizationRequestBody = {
   /**
@@ -40,11 +41,13 @@ export const UpdateOrganizationRequestBody$outboundSchema: z.ZodType<
   UpdateOrganizationRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateOrganizationRequestBody
-> = z.object({
-  avatar: z.nullable(z.string()).optional(),
-  name: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: z.nullable(z.string()).optional(),
+    name: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function updateOrganizationRequestBodyToJSON(
   updateOrganizationRequestBody: UpdateOrganizationRequestBody,
@@ -67,15 +70,17 @@ export const UpdateOrganizationRequest$outboundSchema: z.ZodType<
   UpdateOrganizationRequest$Outbound,
   z.ZodTypeDef,
   UpdateOrganizationRequest
-> = z.object({
-  organizationId: z.string(),
-  requestBody: z.lazy(() => UpdateOrganizationRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizationId: z.string(),
+    requestBody: z.lazy(() => UpdateOrganizationRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateOrganizationRequestToJSON(
   updateOrganizationRequest: UpdateOrganizationRequest,

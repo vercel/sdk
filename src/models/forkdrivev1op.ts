@@ -3,8 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { Drive, Drive$inboundSchema } from "./drive.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -53,9 +57,11 @@ export const ForkDriveV1RequestBody$outboundSchema: z.ZodType<
   ForkDriveV1RequestBody$Outbound,
   z.ZodTypeDef,
   ForkDriveV1RequestBody
-> = z.object({
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+  })
+);
 
 export function forkDriveV1RequestBodyToJSON(
   forkDriveV1RequestBody: ForkDriveV1RequestBody,
@@ -79,17 +85,23 @@ export const ForkDriveV1Request$outboundSchema: z.ZodType<
   ForkDriveV1Request$Outbound,
   z.ZodTypeDef,
   ForkDriveV1Request
-> = z.object({
-  name: z.string(),
-  projectId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => ForkDriveV1RequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().refine(withinMaxLength$(64), {
+      message: "Value must be at most 64 characters long",
+    }).refine(matchesPattern$("^[a-zA-Z0-9_-]+$", 64), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }),
+    projectId: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => ForkDriveV1RequestBody$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function forkDriveV1RequestToJSON(
   forkDriveV1Request: ForkDriveV1Request,
@@ -104,9 +116,11 @@ export const ForkDriveV1ResponseBody$inboundSchema: z.ZodType<
   ForkDriveV1ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  drive: Drive$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    drive: Drive$inboundSchema,
+  })
+);
 
 export function forkDriveV1ResponseBodyFromJSON(
   jsonString: string,

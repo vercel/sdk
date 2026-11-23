@@ -6,7 +6,7 @@
 import { GetEdgeConfigItemsRequest } from "@vercel/sdk/models/getedgeconfigitemsop.js";
 
 let value: GetEdgeConfigItemsRequest = {
-  edgeConfigId: "<id>",
+  edgeConfigId: "ecfg_",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
 };

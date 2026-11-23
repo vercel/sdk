@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory =
@@ -44,8 +45,10 @@ export type UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceId
 export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory$outboundSchema:
   z.ZodNativeEnum<
     typeof UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory
-  > = z.nativeEnum(
-    UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory,
+    )
   );
 
 /** @internal */
@@ -67,18 +70,20 @@ export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceI
     UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody$Outbound,
     z.ZodTypeDef,
     UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody
-  > = z.object({
-    slug: z.string(),
-    origin: z.string(),
-    name: z.string().optional(),
-    category:
-      UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory$outboundSchema
-        .optional(),
-    description: z.string().optional(),
-    isArchived: z.boolean().optional(),
-    createdAt: z.number().optional(),
-    updatedAt: z.number().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      slug: z.string(),
+      origin: z.string(),
+      name: z.string().optional(),
+      category:
+        UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdCategory$outboundSchema
+          .optional(),
+      description: z.string().optional(),
+      isArchived: z.boolean().optional(),
+      createdAt: z.number().optional(),
+      updatedAt: z.number().optional(),
+    })
+  );
 
 export function updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBodyToJSON(
   updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody:
@@ -109,18 +114,20 @@ export const UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceI
     UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$Outbound,
     z.ZodTypeDef,
     UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest
-  > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
-    itemId: z.string(),
-    requestBody: z.lazy(() =>
-      UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      requestBody: "RequestBody",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integrationConfigurationId: z.string(),
+      resourceId: z.string(),
+      itemId: z.string(),
+      requestBody: z.lazy(() =>
+        UpdateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestBody$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        requestBody: "RequestBody",
+      });
+    })
+  );
 
 export function updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestToJSON(
   updateInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest:

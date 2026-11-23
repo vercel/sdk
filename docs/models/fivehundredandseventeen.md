@@ -10,7 +10,7 @@ import { FiveHundredAndSeventeen } from "@vercel/sdk/models/payloadoutcome.js";
 let value: FiveHundredAndSeventeen = {
   projectId: "<id>",
   projectName: "<value>",
-  removedTeamIds: [],
+  reference: "<value>",
   repositoryName: "<value>",
 };
 ```
@@ -21,5 +21,5 @@ let value: FiveHundredAndSeventeen = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `removedTeamIds`   | *string*[]         | :heavy_check_mark: | N/A                |
+| `reference`        | *string*           | :heavy_check_mark: | N/A                |
 | `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -37,9 +37,11 @@ export const GetObservabilitySchemaByMetricIdRequest$outboundSchema: z.ZodType<
   GetObservabilitySchemaByMetricIdRequest$Outbound,
   z.ZodTypeDef,
   GetObservabilitySchemaByMetricIdRequest
-> = z.object({
-  metricId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    metricId: z.string(),
+  })
+);
 
 export function getObservabilitySchemaByMetricIdRequestToJSON(
   getObservabilitySchemaByMetricIdRequest:
@@ -57,11 +59,13 @@ export const Dimensions$inboundSchema: z.ZodType<
   Dimensions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  label: types.string(),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.optional(types.string()),
+    label: types.string(),
+    name: types.string(),
+  })
+);
 
 export function dimensionsFromJSON(
   jsonString: string,
@@ -78,14 +82,16 @@ export const ResponseBody$inboundSchema: z.ZodType<
   ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  aggregations: z.array(types.string()),
-  defaultAggregation: types.string(),
-  description: types.string(),
-  dimensions: z.array(z.lazy(() => Dimensions$inboundSchema)),
-  id: types.string(),
-  unit: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    aggregations: z.array(types.string()),
+    defaultAggregation: types.string(),
+    description: types.string(),
+    dimensions: z.array(z.lazy(() => Dimensions$inboundSchema)),
+    id: types.string(),
+    unit: types.string(),
+  })
+);
 
 export function responseBodyFromJSON(
   jsonString: string,

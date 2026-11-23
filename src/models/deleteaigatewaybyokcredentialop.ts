@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteAiGatewayByokCredentialRequest = {
   ownerId?: string | undefined;
@@ -38,13 +39,15 @@ export const DeleteAiGatewayByokCredentialRequest$outboundSchema: z.ZodType<
   DeleteAiGatewayByokCredentialRequest$Outbound,
   z.ZodTypeDef,
   DeleteAiGatewayByokCredentialRequest
-> = z.object({
-  ownerId: z.string().optional(),
-  credentialId: z.string(),
-  userId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ownerId: z.string().optional(),
+    credentialId: z.string(),
+    userId: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteAiGatewayByokCredentialRequestToJSON(
   deleteAiGatewayByokCredentialRequest: DeleteAiGatewayByokCredentialRequest,

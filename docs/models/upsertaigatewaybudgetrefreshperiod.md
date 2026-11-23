@@ -1,5 +1,7 @@
 # UpsertAiGatewayBudgetRefreshPeriod
 
+Defaults to monthly with `limitAmount`; `increaseBy` keeps the current period.
+
 ## Example Usage
 
 ```typescript

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -43,28 +44,29 @@ export class Unauthorized extends VercelError {
 }
 
 /** @internal */
-export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> = z.nativeEnum(
-  Code,
-);
+export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Code));
 
 /** @internal */
 export const Unauthorized$inboundSchema: z.ZodType<
   Unauthorized,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: Code$inboundSchema,
-  message: types.string(),
-  reason: types.optional(types.string()),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new Unauthorized(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: Code$inboundSchema,
+    message: types.string(),
+    reason: types.optional(types.string()),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new Unauthorized(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

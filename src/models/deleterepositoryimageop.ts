@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteRepositoryImageRequest = {
   /**
@@ -35,13 +36,15 @@ export const DeleteRepositoryImageRequest$outboundSchema: z.ZodType<
   DeleteRepositoryImageRequest$Outbound,
   z.ZodTypeDef,
   DeleteRepositoryImageRequest
-> = z.object({
-  projectId: z.string(),
-  idOrName: z.string(),
-  imageId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    idOrName: z.string(),
+    imageId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteRepositoryImageRequestToJSON(
   deleteRepositoryImageRequest: DeleteRepositoryImageRequest,

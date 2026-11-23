@@ -5,18 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyFive } from "@vercel/sdk/models/twenty.js";
+import { FiftyFive } from "@vercel/sdk/models/twentythree.js";
 
 let value: FiftyFive = {
-  rule: {
-    id: "<id>",
-    type: "<value>",
+  retention: {
+    ceilingMode: "days",
+    defaultMode: "days",
   },
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `rule`                           | [models.Rule](../models/rule.md) | :heavy_check_mark:               | N/A                              |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `retention`                                | [models.Retention](../models/retention.md) | :heavy_check_mark:                         | N/A                                        |

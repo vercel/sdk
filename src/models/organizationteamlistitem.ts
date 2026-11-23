@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -87,35 +87,37 @@ export type OrganizationTeamListItem = {
 };
 
 /** @internal */
-export const BillingPlan$inboundSchema: z.ZodNativeEnum<typeof BillingPlan> = z
-  .nativeEnum(BillingPlan);
+export const BillingPlan$inboundSchema: z.ZodNativeEnum<typeof BillingPlan> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BillingPlan));
 
 /** @internal */
-export const DsyncMode$inboundSchema: z.ZodNativeEnum<typeof DsyncMode> = z
-  .nativeEnum(DsyncMode);
+export const DsyncMode$inboundSchema: z.ZodNativeEnum<typeof DsyncMode> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DsyncMode));
 
 /** @internal */
-export const SsoMode$inboundSchema: z.ZodNativeEnum<typeof SsoMode> = z
-  .nativeEnum(SsoMode);
+export const SsoMode$inboundSchema: z.ZodNativeEnum<typeof SsoMode> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SsoMode));
 
 /** @internal */
 export const OrganizationTeamListItem$inboundSchema: z.ZodType<
   OrganizationTeamListItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  avatar: types.nullable(types.string()),
-  billingPlan: types.optional(BillingPlan$inboundSchema),
-  createdAt: types.string(),
-  dsyncMode: DsyncMode$inboundSchema,
-  memberCount: types.optional(types.number()),
-  name: types.nullable(types.string()),
-  organizationId: types.string(),
-  slug: types.string(),
-  ssoMode: SsoMode$inboundSchema,
-  teamId: types.string(),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: types.nullable(types.string()),
+    billingPlan: types.optional(BillingPlan$inboundSchema),
+    createdAt: types.string(),
+    dsyncMode: DsyncMode$inboundSchema,
+    memberCount: types.optional(types.number()),
+    name: types.nullable(types.string()),
+    organizationId: types.string(),
+    slug: types.string(),
+    ssoMode: SsoMode$inboundSchema,
+    teamId: types.string(),
+    updatedAt: types.string(),
+  })
+);
 
 export function organizationTeamListItemFromJSON(
   jsonString: string,

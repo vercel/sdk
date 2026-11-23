@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import { Snapshot, Snapshot$inboundSchema } from "./snapshot.js";
@@ -42,11 +46,21 @@ export const GetSessionSnapshotRequest$outboundSchema: z.ZodType<
   GetSessionSnapshotRequest$Outbound,
   z.ZodTypeDef,
   GetSessionSnapshotRequest
-> = z.object({
-  snapshotId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    snapshotId: z.string().refine(withinMaxLength$(33), {
+      message: "Value must be at most 33 characters long",
+    }).refine(
+      matchesPattern$("^(?:snap_[A-Za-z0-9]{28}|vhs_[a-z0-9]{28})$", 33),
+      {
+        message:
+          "Value must match pattern ^(?:snap_[A-Za-z0-9]{28}|vhs_[a-z0-9]{28})$",
+      },
+    ),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getSessionSnapshotRequestToJSON(
   getSessionSnapshotRequest: GetSessionSnapshotRequest,
@@ -61,9 +75,11 @@ export const GetSessionSnapshotResponseBody$inboundSchema: z.ZodType<
   GetSessionSnapshotResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  snapshot: Snapshot$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    snapshot: Snapshot$inboundSchema,
+  })
+);
 
 export function getSessionSnapshotResponseBodyFromJSON(
   jsonString: string,

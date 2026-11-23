@@ -8,9 +8,8 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
-import { pathToFunc } from "../lib/url.js";
 import {
   GetAiGatewayByokCredentialRequest,
   GetAiGatewayByokCredentialRequest$outboundSchema,
@@ -99,9 +98,14 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/ai-gateway/byok-credentials/{credentialId}")(
+  const pathResult = encodePath(
+    "/ai-gateway/byok-credentials/{credentialId}",
     pathParams,
   );
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const query = encodeFormQuery({
     "ownerId": payload.ownerId,

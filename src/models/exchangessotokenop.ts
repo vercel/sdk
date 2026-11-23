@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -93,19 +93,21 @@ export const ExchangeSsoTokenRequestBody2$outboundSchema: z.ZodType<
   ExchangeSsoTokenRequestBody2$Outbound,
   z.ZodTypeDef,
   ExchangeSsoTokenRequestBody2
-> = z.object({
-  refreshToken: z.string(),
-  clientId: z.string(),
-  clientSecret: z.string(),
-  grantType: z.literal("refresh_token"),
-}).transform((v) => {
-  return remap$(v, {
-    refreshToken: "refresh_token",
-    clientId: "client_id",
-    clientSecret: "client_secret",
-    grantType: "grant_type",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    refreshToken: z.string(),
+    clientId: z.string(),
+    clientSecret: z.string(),
+    grantType: z.literal("refresh_token"),
+  }).transform((v) => {
+    return remap$(v, {
+      refreshToken: "refresh_token",
+      clientId: "client_id",
+      clientSecret: "client_secret",
+      grantType: "grant_type",
+    });
+  })
+);
 
 export function exchangeSsoTokenRequestBody2ToJSON(
   exchangeSsoTokenRequestBody2: ExchangeSsoTokenRequestBody2,
@@ -132,21 +134,23 @@ export const ExchangeSsoTokenRequestBody1$outboundSchema: z.ZodType<
   ExchangeSsoTokenRequestBody1$Outbound,
   z.ZodTypeDef,
   ExchangeSsoTokenRequestBody1
-> = z.object({
-  code: z.string(),
-  state: z.string().optional(),
-  clientId: z.string(),
-  clientSecret: z.string(),
-  redirectUri: z.string().optional(),
-  grantType: z.literal("authorization_code"),
-}).transform((v) => {
-  return remap$(v, {
-    clientId: "client_id",
-    clientSecret: "client_secret",
-    redirectUri: "redirect_uri",
-    grantType: "grant_type",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string(),
+    state: z.string().optional(),
+    clientId: z.string(),
+    clientSecret: z.string(),
+    redirectUri: z.string().optional(),
+    grantType: z.literal("authorization_code"),
+  }).transform((v) => {
+    return remap$(v, {
+      clientId: "client_id",
+      clientSecret: "client_secret",
+      redirectUri: "redirect_uri",
+      grantType: "grant_type",
+    });
+  })
+);
 
 export function exchangeSsoTokenRequestBody1ToJSON(
   exchangeSsoTokenRequestBody1: ExchangeSsoTokenRequestBody1,
@@ -168,10 +172,12 @@ export const ExchangeSsoTokenRequestBody$outboundSchema: z.ZodType<
   ExchangeSsoTokenRequestBody$Outbound,
   z.ZodTypeDef,
   ExchangeSsoTokenRequestBody
-> = z.union([
-  z.lazy(() => ExchangeSsoTokenRequestBody1$outboundSchema),
-  z.lazy(() => ExchangeSsoTokenRequestBody2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => ExchangeSsoTokenRequestBody1$outboundSchema),
+    z.lazy(() => ExchangeSsoTokenRequestBody2$outboundSchema),
+  ])
+);
 
 export function exchangeSsoTokenRequestBodyToJSON(
   exchangeSsoTokenRequestBody: ExchangeSsoTokenRequestBody,
@@ -188,21 +194,23 @@ export const ExchangeSsoTokenResponseBody2$inboundSchema: z.ZodType<
   ExchangeSsoTokenResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  access_token: types.string(),
-  expires_in: types.number(),
-  id_token: types.string(),
-  refresh_token: types.string(),
-  token_type: types.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "access_token": "accessToken",
-    "expires_in": "expiresIn",
-    "id_token": "idToken",
-    "refresh_token": "refreshToken",
-    "token_type": "tokenType",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    access_token: types.string(),
+    expires_in: types.number(),
+    id_token: types.string(),
+    refresh_token: types.string(),
+    token_type: types.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "access_token": "accessToken",
+      "expires_in": "expiresIn",
+      "id_token": "idToken",
+      "refresh_token": "refreshToken",
+      "token_type": "tokenType",
+    });
+  })
+);
 
 export function exchangeSsoTokenResponseBody2FromJSON(
   jsonString: string,
@@ -219,21 +227,23 @@ export const ExchangeSsoTokenResponseBody1$inboundSchema: z.ZodType<
   ExchangeSsoTokenResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  access_token: types.nullable(types.string()),
-  expires_in: types.optional(types.number()),
-  id_token: types.string(),
-  refresh_token: types.optional(types.string()),
-  token_type: types.nullable(types.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "access_token": "accessToken",
-    "expires_in": "expiresIn",
-    "id_token": "idToken",
-    "refresh_token": "refreshToken",
-    "token_type": "tokenType",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    access_token: types.nullable(types.string()),
+    expires_in: types.optional(types.number()),
+    id_token: types.string(),
+    refresh_token: types.optional(types.string()),
+    token_type: types.nullable(types.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "access_token": "accessToken",
+      "expires_in": "expiresIn",
+      "id_token": "idToken",
+      "refresh_token": "refreshToken",
+      "token_type": "tokenType",
+    });
+  })
+);
 
 export function exchangeSsoTokenResponseBody1FromJSON(
   jsonString: string,
@@ -250,10 +260,12 @@ export const ExchangeSsoTokenResponseBody$inboundSchema: z.ZodType<
   ExchangeSsoTokenResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => ExchangeSsoTokenResponseBody2$inboundSchema),
-  z.lazy(() => ExchangeSsoTokenResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => ExchangeSsoTokenResponseBody2$inboundSchema),
+    z.lazy(() => ExchangeSsoTokenResponseBody1$inboundSchema),
+  ])
+);
 
 export function exchangeSsoTokenResponseBodyFromJSON(
   jsonString: string,

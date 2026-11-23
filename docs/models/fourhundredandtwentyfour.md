@@ -5,17 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentyFour } from "@vercel/sdk/models/oldssoprotection2.js";
+import { FourHundredAndTwentyFour } from "@vercel/sdk/models/threehundredandeightytwo.js";
 
 let value: FourHundredAndTwentyFour = {
-  billingConsent: "security-review-usage-billing-v1",
-  source: "<value>",
+  store: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `billingConsent`                                     | [models.BillingConsent](../models/billingconsent.md) | :heavy_check_mark:                                   | N/A                                                  |
-| `source`                                             | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `ownerId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `store`                                                                  | [models.UserEventPayload424Store](../models/usereventpayload424store.md) | :heavy_check_mark:                                                       | N/A                                                                      |

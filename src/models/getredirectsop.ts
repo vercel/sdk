@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -168,27 +168,29 @@ export type GetRedirectsResponseBody =
   | { [k: string]: any };
 
 /** @internal */
-export const QueryParam2$outboundSchema: z.ZodNativeEnum<typeof QueryParam2> = z
-  .nativeEnum(QueryParam2);
+export const QueryParam2$outboundSchema: z.ZodNativeEnum<typeof QueryParam2> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParam2));
 
 /** @internal */
 export type Diff$Outbound = boolean | string;
 
 /** @internal */
 export const Diff$outboundSchema: z.ZodType<Diff$Outbound, z.ZodTypeDef, Diff> =
-  smartUnion([z.boolean(), QueryParam2$outboundSchema]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([z.boolean(), QueryParam2$outboundSchema])
+  );
 
 export function diffToJSON(diff: Diff): string {
   return JSON.stringify(Diff$outboundSchema.parse(diff));
 }
 
 /** @internal */
-export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> = z
-  .nativeEnum(SortBy);
+export const SortBy$outboundSchema: z.ZodNativeEnum<typeof SortBy> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SortBy));
 
 /** @internal */
-export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> = z
-  .nativeEnum(SortOrder);
+export const SortOrder$outboundSchema: z.ZodNativeEnum<typeof SortOrder> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SortOrder));
 
 /** @internal */
 export type GetRedirectsRequest$Outbound = {
@@ -209,24 +211,26 @@ export const GetRedirectsRequest$outboundSchema: z.ZodType<
   GetRedirectsRequest$Outbound,
   z.ZodTypeDef,
   GetRedirectsRequest
-> = z.object({
-  projectId: z.string(),
-  versionId: z.string().optional(),
-  q: z.string().optional(),
-  diff: smartUnion([z.boolean(), QueryParam2$outboundSchema]).optional(),
-  page: z.number().int().optional(),
-  perPage: z.number().int().optional(),
-  sortBy: SortBy$outboundSchema.optional(),
-  sortOrder: SortOrder$outboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    perPage: "per_page",
-    sortBy: "sort_by",
-    sortOrder: "sort_order",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    versionId: z.string().optional(),
+    q: z.string().optional(),
+    diff: smartUnion([z.boolean(), QueryParam2$outboundSchema]).optional(),
+    page: z.number().int().optional(),
+    perPage: z.number().int().optional(),
+    sortBy: SortBy$outboundSchema.optional(),
+    sortOrder: SortOrder$outboundSchema.optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      perPage: "per_page",
+      sortBy: "sort_by",
+      sortOrder: "sort_order",
+    });
+  })
+);
 
 export function getRedirectsRequestToJSON(
   getRedirectsRequest: GetRedirectsRequest,
@@ -242,15 +246,17 @@ export const GetRedirectsResponseBodyBulkRedirectsPagination$inboundSchema:
     GetRedirectsResponseBodyBulkRedirectsPagination,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    numPages: types.number(),
-    page: types.number(),
-    per_page: types.number(),
-  }).transform((v) => {
-    return remap$(v, {
-      "per_page": "perPage",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      numPages: types.number(),
+      page: types.number(),
+      per_page: types.number(),
+    }).transform((v) => {
+      return remap$(v, {
+        "per_page": "perPage",
+      });
+    })
+  );
 
 export function getRedirectsResponseBodyBulkRedirectsPaginationFromJSON(
   jsonString: string,
@@ -273,16 +279,18 @@ export const GetRedirectsResponseBodyRedirects$inboundSchema: z.ZodType<
   GetRedirectsResponseBodyRedirects,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  caseSensitive: types.optional(types.boolean()),
-  destination: types.string(),
-  permanent: types.optional(types.boolean()),
-  preserveQueryParams: types.optional(types.boolean()),
-  query: types.optional(types.boolean()),
-  sensitive: types.optional(types.boolean()),
-  source: types.string(),
-  statusCode: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    caseSensitive: types.optional(types.boolean()),
+    destination: types.string(),
+    permanent: types.optional(types.boolean()),
+    preserveQueryParams: types.optional(types.boolean()),
+    query: types.optional(types.boolean()),
+    sensitive: types.optional(types.boolean()),
+    source: types.string(),
+    statusCode: types.optional(types.number()),
+  })
+);
 
 export function getRedirectsResponseBodyRedirectsFromJSON(
   jsonString: string,
@@ -299,17 +307,19 @@ export const GetRedirectsResponseBodyVersion$inboundSchema: z.ZodType<
   GetRedirectsResponseBodyVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  key: types.string(),
-  lastModified: types.number(),
-  name: types.optional(types.string()),
-  redirectCount: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    key: types.string(),
+    lastModified: types.number(),
+    name: types.optional(types.string()),
+    redirectCount: types.optional(types.number()),
+  })
+);
 
 export function getRedirectsResponseBodyVersionFromJSON(
   jsonString: string,
@@ -326,15 +336,17 @@ export const GetRedirectsResponseBody3$inboundSchema: z.ZodType<
   GetRedirectsResponseBody3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: z.lazy(() =>
-    GetRedirectsResponseBodyBulkRedirectsPagination$inboundSchema
-  ),
-  redirects: z.array(
-    z.lazy(() => GetRedirectsResponseBodyRedirects$inboundSchema),
-  ),
-  version: z.lazy(() => GetRedirectsResponseBodyVersion$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: z.lazy(() =>
+      GetRedirectsResponseBodyBulkRedirectsPagination$inboundSchema
+    ),
+    redirects: z.array(
+      z.lazy(() => GetRedirectsResponseBodyRedirects$inboundSchema),
+    ),
+    version: z.lazy(() => GetRedirectsResponseBodyVersion$inboundSchema),
+  })
+);
 
 export function getRedirectsResponseBody3FromJSON(
   jsonString: string,
@@ -351,15 +363,17 @@ export const GetRedirectsResponseBodyPagination$inboundSchema: z.ZodType<
   GetRedirectsResponseBodyPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  numPages: types.number(),
-  page: types.number(),
-  per_page: types.number(),
-}).transform((v) => {
-  return remap$(v, {
-    "per_page": "perPage",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    numPages: types.number(),
+    page: types.number(),
+    per_page: types.number(),
+  }).transform((v) => {
+    return remap$(v, {
+      "per_page": "perPage",
+    });
+  })
+);
 
 export function getRedirectsResponseBodyPaginationFromJSON(
   jsonString: string,
@@ -377,16 +391,18 @@ export const ResponseBodyRedirects$inboundSchema: z.ZodType<
   ResponseBodyRedirects,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  caseSensitive: types.optional(types.boolean()),
-  destination: types.string(),
-  permanent: types.optional(types.boolean()),
-  preserveQueryParams: types.optional(types.boolean()),
-  query: types.optional(types.boolean()),
-  sensitive: types.optional(types.boolean()),
-  source: types.string(),
-  statusCode: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    caseSensitive: types.optional(types.boolean()),
+    destination: types.string(),
+    permanent: types.optional(types.boolean()),
+    preserveQueryParams: types.optional(types.boolean()),
+    query: types.optional(types.boolean()),
+    sensitive: types.optional(types.boolean()),
+    source: types.string(),
+    statusCode: types.optional(types.number()),
+  })
+);
 
 export function responseBodyRedirectsFromJSON(
   jsonString: string,
@@ -403,17 +419,19 @@ export const ResponseBodyVersion$inboundSchema: z.ZodType<
   ResponseBodyVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  key: types.string(),
-  lastModified: types.number(),
-  name: types.optional(types.string()),
-  redirectCount: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    key: types.string(),
+    lastModified: types.number(),
+    name: types.optional(types.string()),
+    redirectCount: types.optional(types.number()),
+  })
+);
 
 export function responseBodyVersionFromJSON(
   jsonString: string,
@@ -430,11 +448,13 @@ export const GetRedirectsResponseBody2$inboundSchema: z.ZodType<
   GetRedirectsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: z.lazy(() => GetRedirectsResponseBodyPagination$inboundSchema),
-  redirects: z.array(z.lazy(() => ResponseBodyRedirects$inboundSchema)),
-  version: types.optional(z.lazy(() => ResponseBodyVersion$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: z.lazy(() => GetRedirectsResponseBodyPagination$inboundSchema),
+    redirects: z.array(z.lazy(() => ResponseBodyRedirects$inboundSchema)),
+    version: types.optional(z.lazy(() => ResponseBodyVersion$inboundSchema)),
+  })
+);
 
 export function getRedirectsResponseBody2FromJSON(
   jsonString: string,
@@ -451,11 +471,13 @@ export const GetRedirectsResponseBody$inboundSchema: z.ZodType<
   GetRedirectsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetRedirectsResponseBody3$inboundSchema),
-  z.lazy(() => GetRedirectsResponseBody2$inboundSchema),
-  z.record(z.any()),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetRedirectsResponseBody3$inboundSchema),
+    z.lazy(() => GetRedirectsResponseBody2$inboundSchema),
+    z.record(z.any()),
+  ])
+);
 
 export function getRedirectsResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -84,11 +84,13 @@ export const GenerateFirewallRuleRequest$outboundSchema: z.ZodType<
   GenerateFirewallRuleRequest$Outbound,
   z.ZodTypeDef,
   GenerateFirewallRuleRequest
-> = z.object({
-  projectId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function generateFirewallRuleRequestToJSON(
   generateFirewallRuleRequest: GenerateFirewallRuleRequest,
@@ -105,13 +107,15 @@ export const GenerateFirewallRuleRateLimit$inboundSchema: z.ZodType<
   GenerateFirewallRuleRateLimit,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: z.nullable(types.string()).optional(),
-  algo: types.string(),
-  keys: z.array(types.string()),
-  limit: types.number(),
-  window: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: z.nullable(types.string()).optional(),
+    algo: types.string(),
+    keys: z.array(types.string()),
+    limit: types.number(),
+    window: types.number(),
+  })
+);
 
 export function generateFirewallRuleRateLimitFromJSON(
   jsonString: string,
@@ -128,10 +132,12 @@ export const GenerateFirewallRuleRedirect$inboundSchema: z.ZodType<
   GenerateFirewallRuleRedirect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  location: types.string(),
-  permanent: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    location: types.string(),
+    permanent: types.boolean(),
+  })
+);
 
 export function generateFirewallRuleRedirectFromJSON(
   jsonString: string,
@@ -148,15 +154,18 @@ export const GenerateFirewallRuleMitigate$inboundSchema: z.ZodType<
   GenerateFirewallRuleMitigate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.string(),
-  actionDuration: z.nullable(types.string()).optional(),
-  rateLimit: z.nullable(
-    z.lazy(() => GenerateFirewallRuleRateLimit$inboundSchema),
-  ).optional(),
-  redirect: z.nullable(z.lazy(() => GenerateFirewallRuleRedirect$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.string(),
+    actionDuration: z.nullable(types.string()).optional(),
+    rateLimit: z.nullable(
+      z.lazy(() => GenerateFirewallRuleRateLimit$inboundSchema),
+    ).optional(),
+    redirect: z.nullable(
+      z.lazy(() => GenerateFirewallRuleRedirect$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function generateFirewallRuleMitigateFromJSON(
   jsonString: string,
@@ -173,11 +182,13 @@ export const GenerateFirewallRuleAction$inboundSchema: z.ZodType<
   GenerateFirewallRuleAction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  mitigate: types.optional(
-    z.lazy(() => GenerateFirewallRuleMitigate$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mitigate: types.optional(
+      z.lazy(() => GenerateFirewallRuleMitigate$inboundSchema),
+    ),
+  })
+);
 
 export function generateFirewallRuleActionFromJSON(
   jsonString: string,
@@ -194,7 +205,9 @@ export const GenerateFirewallRuleValue$inboundSchema: z.ZodType<
   GenerateFirewallRuleValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number(), z.array(types.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number(), z.array(types.string())])
+);
 
 export function generateFirewallRuleValueFromJSON(
   jsonString: string,
@@ -211,15 +224,17 @@ export const GenerateFirewallRuleConditions$inboundSchema: z.ZodType<
   GenerateFirewallRuleConditions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  key: types.optional(types.string()),
-  neg: types.boolean(),
-  op: types.string(),
-  type: types.string(),
-  value: types.optional(
-    smartUnion([types.string(), types.number(), z.array(types.string())]),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: types.optional(types.string()),
+    neg: types.boolean(),
+    op: types.string(),
+    type: types.string(),
+    value: types.optional(
+      smartUnion([types.string(), types.number(), z.array(types.string())]),
+    ),
+  })
+);
 
 export function generateFirewallRuleConditionsFromJSON(
   jsonString: string,
@@ -236,11 +251,13 @@ export const GenerateFirewallRuleConditionGroup$inboundSchema: z.ZodType<
   GenerateFirewallRuleConditionGroup,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  conditions: z.array(
-    z.lazy(() => GenerateFirewallRuleConditions$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    conditions: z.array(
+      z.lazy(() => GenerateFirewallRuleConditions$inboundSchema),
+    ),
+  })
+);
 
 export function generateFirewallRuleConditionGroupFromJSON(
   jsonString: string,
@@ -258,15 +275,17 @@ export const GenerateFirewallRuleRule$inboundSchema: z.ZodType<
   GenerateFirewallRuleRule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: z.lazy(() => GenerateFirewallRuleAction$inboundSchema),
-  active: types.boolean(),
-  conditionGroup: z.array(
-    z.lazy(() => GenerateFirewallRuleConditionGroup$inboundSchema),
-  ),
-  description: types.optional(types.string()),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: z.lazy(() => GenerateFirewallRuleAction$inboundSchema),
+    active: types.boolean(),
+    conditionGroup: z.array(
+      z.lazy(() => GenerateFirewallRuleConditionGroup$inboundSchema),
+    ),
+    description: types.optional(types.string()),
+    name: types.string(),
+  })
+);
 
 export function generateFirewallRuleRuleFromJSON(
   jsonString: string,
@@ -283,10 +302,12 @@ export const GenerateFirewallRuleResponseBody$inboundSchema: z.ZodType<
   GenerateFirewallRuleResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: types.optional(types.string()),
-  rule: types.optional(z.lazy(() => GenerateFirewallRuleRule$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: types.optional(types.string()),
+    rule: types.optional(z.lazy(() => GenerateFirewallRuleRule$inboundSchema)),
+  })
+);
 
 export function generateFirewallRuleResponseBodyFromJSON(
   jsonString: string,

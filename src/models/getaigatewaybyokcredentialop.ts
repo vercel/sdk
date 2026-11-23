@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -50,12 +50,14 @@ export const GetAiGatewayByokCredentialRequest$outboundSchema: z.ZodType<
   GetAiGatewayByokCredentialRequest$Outbound,
   z.ZodTypeDef,
   GetAiGatewayByokCredentialRequest
-> = z.object({
-  ownerId: z.string().optional(),
-  credentialId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ownerId: z.string().optional(),
+    credentialId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getAiGatewayByokCredentialRequestToJSON(
   getAiGatewayByokCredentialRequest: GetAiGatewayByokCredentialRequest,
@@ -72,18 +74,20 @@ export const GetAiGatewayByokCredentialResponseBody$inboundSchema: z.ZodType<
   GetAiGatewayByokCredentialResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  active: types.boolean(),
-  createdAt: types.number(),
-  credentialId: types.string(),
-  lastFourChars: types.string(),
-  name: types.string(),
-  ownerId: types.string(),
-  providerSlug: types.string(),
-  rotatedAt: types.nullable(types.number()),
-  updatedAt: types.number(),
-  zeroDataRetention: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: types.boolean(),
+    createdAt: types.number(),
+    credentialId: types.string(),
+    lastFourChars: types.string(),
+    name: types.string(),
+    ownerId: types.string(),
+    providerSlug: types.string(),
+    rotatedAt: types.nullable(types.number()),
+    updatedAt: types.number(),
+    zeroDataRetention: types.boolean(),
+  })
+);
 
 export function getAiGatewayByokCredentialResponseBodyFromJSON(
   jsonString: string,

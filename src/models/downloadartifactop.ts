@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DownloadArtifactRequest = {
   /**
@@ -42,18 +43,20 @@ export const DownloadArtifactRequest$outboundSchema: z.ZodType<
   DownloadArtifactRequest$Outbound,
   z.ZodTypeDef,
   DownloadArtifactRequest
-> = z.object({
-  xArtifactClientCi: z.string().optional(),
-  xArtifactClientInteractive: z.number().int().optional(),
-  hash: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    xArtifactClientCi: "x-artifact-client-ci",
-    xArtifactClientInteractive: "x-artifact-client-interactive",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    xArtifactClientCi: z.string().optional(),
+    xArtifactClientInteractive: z.number().int().optional(),
+    hash: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      xArtifactClientCi: "x-artifact-client-ci",
+      xArtifactClientInteractive: "x-artifact-client-interactive",
+    });
+  })
+);
 
 export function downloadArtifactRequestToJSON(
   downloadArtifactRequest: DownloadArtifactRequest,

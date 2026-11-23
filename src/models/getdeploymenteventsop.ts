@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -710,7 +710,7 @@ export type GetDeploymentEventsResponse =
 /** @internal */
 export const QueryParamDirection$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamDirection
-> = z.nativeEnum(QueryParamDirection);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamDirection));
 
 /** @internal */
 export type QueryParamStatusCode$Outbound = number | string;
@@ -720,7 +720,7 @@ export const QueryParamStatusCode$outboundSchema: z.ZodType<
   QueryParamStatusCode$Outbound,
   z.ZodTypeDef,
   QueryParamStatusCode
-> = smartUnion([z.number(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => smartUnion([z.number(), z.string()]));
 
 export function queryParamStatusCodeToJSON(
   queryParamStatusCode: QueryParamStatusCode,
@@ -751,20 +751,22 @@ export const GetDeploymentEventsRequest$outboundSchema: z.ZodType<
   GetDeploymentEventsRequest$Outbound,
   z.ZodTypeDef,
   GetDeploymentEventsRequest
-> = z.object({
-  idOrUrl: z.string(),
-  direction: QueryParamDirection$outboundSchema.default("forward"),
-  follow: z.number().optional(),
-  limit: z.number().optional(),
-  name: z.string().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  statusCode: smartUnion([z.number(), z.string()]).optional(),
-  delimiter: z.number().optional(),
-  builds: z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrUrl: z.string(),
+    direction: QueryParamDirection$outboundSchema.default("forward"),
+    follow: z.number().optional(),
+    limit: z.number().optional(),
+    name: z.string().optional(),
+    since: z.number().optional(),
+    until: z.number().optional(),
+    statusCode: smartUnion([z.number(), z.string()]).optional(),
+    delimiter: z.number().optional(),
+    builds: z.number().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getDeploymentEventsRequestToJSON(
   getDeploymentEventsRequest: GetDeploymentEventsRequest,
@@ -778,8 +780,10 @@ export function getDeploymentEventsRequestToJSON(
 export const GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType
-  > = z.nativeEnum(
-    GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType,
+    )
   );
 
 /** @internal */
@@ -787,10 +791,12 @@ export const ThreeAliasError$inboundSchema: z.ZodType<
   ThreeAliasError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function threeAliasErrorFromJSON(
   jsonString: string,
@@ -807,12 +813,14 @@ export const ThreeAliasWarning$inboundSchema: z.ZodType<
   ThreeAliasWarning,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(types.string()),
-  code: types.string(),
-  link: types.optional(types.string()),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(types.string()),
+    code: types.string(),
+    link: types.optional(types.string()),
+    message: types.string(),
+  })
+);
 
 export function threeAliasWarningFromJSON(
   jsonString: string,
@@ -829,15 +837,17 @@ export const GetDeploymentEvents33$inboundSchema: z.ZodType<
   GetDeploymentEvents33,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  date: types.number(),
-  deploymentId: types.string(),
-  type:
-    GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType$inboundSchema,
-  alias: z.array(types.string()),
-  aliasError: types.nullable(z.lazy(() => ThreeAliasError$inboundSchema)),
-  aliasWarning: types.nullable(z.lazy(() => ThreeAliasWarning$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    date: types.number(),
+    deploymentId: types.string(),
+    type:
+      GetDeploymentEvents3DeploymentsResponse200ApplicationStreamPlusJsonType$inboundSchema,
+    alias: z.array(types.string()),
+    aliasError: types.nullable(z.lazy(() => ThreeAliasError$inboundSchema)),
+    aliasWarning: types.nullable(z.lazy(() => ThreeAliasWarning$inboundSchema)),
+  })
+);
 
 export function getDeploymentEvents33FromJSON(
   jsonString: string,
@@ -854,15 +864,17 @@ export const GetDeploymentEvents3Info$inboundSchema: z.ZodType<
   GetDeploymentEvents3Info,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  entrypoint: types.optional(types.string()),
-  name: types.string(),
-  path: types.optional(types.string()),
-  readyState: types.optional(types.string()),
-  serviceName: types.optional(types.string()),
-  step: types.optional(types.string()),
-  type: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entrypoint: types.optional(types.string()),
+    name: types.string(),
+    path: types.optional(types.string()),
+    readyState: types.optional(types.string()),
+    serviceName: types.optional(types.string()),
+    step: types.optional(types.string()),
+    type: types.string(),
+  })
+);
 
 export function getDeploymentEvents3InfoFromJSON(
   jsonString: string,
@@ -877,29 +889,33 @@ export function getDeploymentEvents3InfoFromJSON(
 /** @internal */
 export const GetDeploymentEvents3Level$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentEvents3Level
-> = z.nativeEnum(GetDeploymentEvents3Level);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentEvents3Level));
 
 /** @internal */
 export const GetDeploymentEvents3DeploymentsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEvents3DeploymentsResponse200Type> = z
-    .nativeEnum(GetDeploymentEvents3DeploymentsResponse200Type);
+  z.ZodNativeEnum<typeof GetDeploymentEvents3DeploymentsResponse200Type> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetDeploymentEvents3DeploymentsResponse200Type)
+    );
 
 /** @internal */
 export const GetDeploymentEvents32$inboundSchema: z.ZodType<
   GetDeploymentEvents32,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  created: types.number(),
-  date: types.number(),
-  deploymentId: types.string(),
-  id: types.string(),
-  info: z.lazy(() => GetDeploymentEvents3Info$inboundSchema),
-  level: types.optional(GetDeploymentEvents3Level$inboundSchema),
-  serial: types.string(),
-  text: types.optional(types.string()),
-  type: GetDeploymentEvents3DeploymentsResponse200Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    created: types.number(),
+    date: types.number(),
+    deploymentId: types.string(),
+    id: types.string(),
+    info: z.lazy(() => GetDeploymentEvents3Info$inboundSchema),
+    level: types.optional(GetDeploymentEvents3Level$inboundSchema),
+    serial: types.string(),
+    text: types.optional(types.string()),
+    type: GetDeploymentEvents3DeploymentsResponse200Type$inboundSchema,
+  })
+);
 
 export function getDeploymentEvents32FromJSON(
   jsonString: string,
@@ -916,15 +932,17 @@ export const GetDeploymentEvents3DeploymentsInfo$inboundSchema: z.ZodType<
   GetDeploymentEvents3DeploymentsInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  entrypoint: types.optional(types.string()),
-  name: types.string(),
-  path: types.optional(types.string()),
-  readyState: types.optional(types.string()),
-  serviceName: types.optional(types.string()),
-  step: types.optional(types.string()),
-  type: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entrypoint: types.optional(types.string()),
+    name: types.string(),
+    path: types.optional(types.string()),
+    readyState: types.optional(types.string()),
+    serviceName: types.optional(types.string()),
+    step: types.optional(types.string()),
+    type: types.string(),
+  })
+);
 
 export function getDeploymentEvents3DeploymentsInfoFromJSON(
   jsonString: string,
@@ -940,39 +958,45 @@ export function getDeploymentEvents3DeploymentsInfoFromJSON(
 /** @internal */
 export const GetDeploymentEvents3VercelCache$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentEvents3VercelCache
-> = z.nativeEnum(GetDeploymentEvents3VercelCache);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDeploymentEvents3VercelCache)
+);
 
 /** @internal */
 export const GetDeploymentEvents3WafAction$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentEvents3WafAction
-> = z.nativeEnum(GetDeploymentEvents3WafAction);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDeploymentEvents3WafAction)
+);
 
 /** @internal */
 export const GetDeploymentEvents3Proxy$inboundSchema: z.ZodType<
   GetDeploymentEvents3Proxy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cacheId: types.optional(types.string()),
-  clientIp: types.optional(types.string()),
-  host: types.string(),
-  lambdaRegion: types.optional(types.string()),
-  method: types.string(),
-  path: types.optional(types.string()),
-  pathType: types.optional(types.string()),
-  pathTypeVariant: types.optional(types.string()),
-  referer: types.optional(types.string()),
-  region: types.optional(types.string()),
-  responseByteSize: types.optional(types.number()),
-  scheme: types.optional(types.string()),
-  statusCode: types.optional(types.number()),
-  timestamp: types.number(),
-  userAgent: types.optional(z.array(types.string())),
-  vercelCache: types.optional(GetDeploymentEvents3VercelCache$inboundSchema),
-  vercelId: types.optional(types.string()),
-  wafAction: types.optional(GetDeploymentEvents3WafAction$inboundSchema),
-  wafRuleId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cacheId: types.optional(types.string()),
+    clientIp: types.optional(types.string()),
+    host: types.string(),
+    lambdaRegion: types.optional(types.string()),
+    method: types.string(),
+    path: types.optional(types.string()),
+    pathType: types.optional(types.string()),
+    pathTypeVariant: types.optional(types.string()),
+    referer: types.optional(types.string()),
+    region: types.optional(types.string()),
+    responseByteSize: types.optional(types.number()),
+    scheme: types.optional(types.string()),
+    statusCode: types.optional(types.number()),
+    timestamp: types.number(),
+    userAgent: types.optional(z.array(types.string())),
+    vercelCache: types.optional(GetDeploymentEvents3VercelCache$inboundSchema),
+    vercelId: types.optional(types.string()),
+    wafAction: types.optional(GetDeploymentEvents3WafAction$inboundSchema),
+    wafRuleId: types.optional(types.string()),
+  })
+);
 
 export function getDeploymentEvents3ProxyFromJSON(
   jsonString: string,
@@ -989,20 +1013,24 @@ export const GetDeploymentEvents3Payload$inboundSchema: z.ZodType<
   GetDeploymentEvents3Payload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  created: types.optional(types.number()),
-  date: types.number(),
-  deploymentId: types.string(),
-  id: types.string(),
-  info: types.optional(
-    z.lazy(() => GetDeploymentEvents3DeploymentsInfo$inboundSchema),
-  ),
-  proxy: types.optional(z.lazy(() => GetDeploymentEvents3Proxy$inboundSchema)),
-  requestId: types.optional(types.string()),
-  serial: types.string(),
-  statusCode: types.optional(types.number()),
-  text: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    created: types.optional(types.number()),
+    date: types.number(),
+    deploymentId: types.string(),
+    id: types.string(),
+    info: types.optional(
+      z.lazy(() => GetDeploymentEvents3DeploymentsInfo$inboundSchema),
+    ),
+    proxy: types.optional(
+      z.lazy(() => GetDeploymentEvents3Proxy$inboundSchema),
+    ),
+    requestId: types.optional(types.string()),
+    serial: types.string(),
+    statusCode: types.optional(types.number()),
+    text: types.optional(types.string()),
+  })
+);
 
 export function getDeploymentEvents3PayloadFromJSON(
   jsonString: string,
@@ -1016,19 +1044,23 @@ export function getDeploymentEvents3PayloadFromJSON(
 
 /** @internal */
 export const GetDeploymentEvents3DeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEvents3DeploymentsResponseType> = z
-    .nativeEnum(GetDeploymentEvents3DeploymentsResponseType);
+  z.ZodNativeEnum<typeof GetDeploymentEvents3DeploymentsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetDeploymentEvents3DeploymentsResponseType)
+    );
 
 /** @internal */
 export const GetDeploymentEvents31$inboundSchema: z.ZodType<
   GetDeploymentEvents31,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  created: types.number(),
-  payload: z.lazy(() => GetDeploymentEvents3Payload$inboundSchema),
-  type: GetDeploymentEvents3DeploymentsResponseType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    created: types.number(),
+    payload: z.lazy(() => GetDeploymentEvents3Payload$inboundSchema),
+    type: GetDeploymentEvents3DeploymentsResponseType$inboundSchema,
+  })
+);
 
 export function getDeploymentEvents31FromJSON(
   jsonString: string,
@@ -1046,11 +1078,13 @@ export const GetDeploymentEventsResponseBodyDeployments3$inboundSchema:
     GetDeploymentEventsResponseBodyDeployments3,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.lazy(() => GetDeploymentEvents32$inboundSchema),
-    z.lazy(() => GetDeploymentEvents33$inboundSchema),
-    z.lazy(() => GetDeploymentEvents31$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() => GetDeploymentEvents32$inboundSchema),
+      z.lazy(() => GetDeploymentEvents33$inboundSchema),
+      z.lazy(() => GetDeploymentEvents31$inboundSchema),
+    ])
+  );
 
 export function getDeploymentEventsResponseBodyDeployments3FromJSON(
   jsonString: string,
@@ -1073,15 +1107,17 @@ export const ResponseBodyInfo$inboundSchema: z.ZodType<
   ResponseBodyInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  entrypoint: types.optional(types.string()),
-  name: types.string(),
-  path: types.optional(types.string()),
-  readyState: types.optional(types.string()),
-  serviceName: types.optional(types.string()),
-  step: types.optional(types.string()),
-  type: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entrypoint: types.optional(types.string()),
+    name: types.string(),
+    path: types.optional(types.string()),
+    readyState: types.optional(types.string()),
+    serviceName: types.optional(types.string()),
+    step: types.optional(types.string()),
+    type: types.string(),
+  })
+);
 
 export function responseBodyInfoFromJSON(
   jsonString: string,
@@ -1096,13 +1132,15 @@ export function responseBodyInfoFromJSON(
 /** @internal */
 export const ResponseBodyLevel$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyLevel
-> = z.nativeEnum(ResponseBodyLevel);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyLevel));
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetDeploymentEventsResponseBodyDeploymentsResponseType
-  > = z.nativeEnum(GetDeploymentEventsResponseBodyDeploymentsResponseType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetDeploymentEventsResponseBodyDeploymentsResponseType)
+  );
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
@@ -1110,17 +1148,20 @@ export const GetDeploymentEventsResponseBodyDeployments2$inboundSchema:
     GetDeploymentEventsResponseBodyDeployments2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    created: types.number(),
-    date: types.number(),
-    deploymentId: types.string(),
-    id: types.string(),
-    info: z.lazy(() => ResponseBodyInfo$inboundSchema),
-    level: types.optional(ResponseBodyLevel$inboundSchema),
-    serial: types.string(),
-    text: types.optional(types.string()),
-    type: GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      created: types.number(),
+      date: types.number(),
+      deploymentId: types.string(),
+      id: types.string(),
+      info: z.lazy(() => ResponseBodyInfo$inboundSchema),
+      level: types.optional(ResponseBodyLevel$inboundSchema),
+      serial: types.string(),
+      text: types.optional(types.string()),
+      type:
+        GetDeploymentEventsResponseBodyDeploymentsResponseType$inboundSchema,
+    })
+  );
 
 export function getDeploymentEventsResponseBodyDeployments2FromJSON(
   jsonString: string,
@@ -1143,15 +1184,17 @@ export const GetDeploymentEventsResponseBodyInfo$inboundSchema: z.ZodType<
   GetDeploymentEventsResponseBodyInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  entrypoint: types.optional(types.string()),
-  name: types.string(),
-  path: types.optional(types.string()),
-  readyState: types.optional(types.string()),
-  serviceName: types.optional(types.string()),
-  step: types.optional(types.string()),
-  type: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entrypoint: types.optional(types.string()),
+    name: types.string(),
+    path: types.optional(types.string()),
+    readyState: types.optional(types.string()),
+    serviceName: types.optional(types.string()),
+    step: types.optional(types.string()),
+    type: types.string(),
+  })
+);
 
 export function getDeploymentEventsResponseBodyInfoFromJSON(
   jsonString: string,
@@ -1167,39 +1210,41 @@ export function getDeploymentEventsResponseBodyInfoFromJSON(
 /** @internal */
 export const ResponseBodyVercelCache$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyVercelCache
-> = z.nativeEnum(ResponseBodyVercelCache);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyVercelCache));
 
 /** @internal */
 export const ResponseBodyWafAction$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyWafAction
-> = z.nativeEnum(ResponseBodyWafAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyWafAction));
 
 /** @internal */
 export const ResponseBodyProxy$inboundSchema: z.ZodType<
   ResponseBodyProxy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cacheId: types.optional(types.string()),
-  clientIp: types.optional(types.string()),
-  host: types.string(),
-  lambdaRegion: types.optional(types.string()),
-  method: types.string(),
-  path: types.optional(types.string()),
-  pathType: types.optional(types.string()),
-  pathTypeVariant: types.optional(types.string()),
-  referer: types.optional(types.string()),
-  region: types.optional(types.string()),
-  responseByteSize: types.optional(types.number()),
-  scheme: types.optional(types.string()),
-  statusCode: types.optional(types.number()),
-  timestamp: types.number(),
-  userAgent: types.optional(z.array(types.string())),
-  vercelCache: types.optional(ResponseBodyVercelCache$inboundSchema),
-  vercelId: types.optional(types.string()),
-  wafAction: types.optional(ResponseBodyWafAction$inboundSchema),
-  wafRuleId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cacheId: types.optional(types.string()),
+    clientIp: types.optional(types.string()),
+    host: types.string(),
+    lambdaRegion: types.optional(types.string()),
+    method: types.string(),
+    path: types.optional(types.string()),
+    pathType: types.optional(types.string()),
+    pathTypeVariant: types.optional(types.string()),
+    referer: types.optional(types.string()),
+    region: types.optional(types.string()),
+    responseByteSize: types.optional(types.number()),
+    scheme: types.optional(types.string()),
+    statusCode: types.optional(types.number()),
+    timestamp: types.number(),
+    userAgent: types.optional(z.array(types.string())),
+    vercelCache: types.optional(ResponseBodyVercelCache$inboundSchema),
+    vercelId: types.optional(types.string()),
+    wafAction: types.optional(ResponseBodyWafAction$inboundSchema),
+    wafRuleId: types.optional(types.string()),
+  })
+);
 
 export function responseBodyProxyFromJSON(
   jsonString: string,
@@ -1216,20 +1261,22 @@ export const ResponseBodyPayload$inboundSchema: z.ZodType<
   ResponseBodyPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  created: types.optional(types.number()),
-  date: types.number(),
-  deploymentId: types.string(),
-  id: types.string(),
-  info: types.optional(
-    z.lazy(() => GetDeploymentEventsResponseBodyInfo$inboundSchema),
-  ),
-  proxy: types.optional(z.lazy(() => ResponseBodyProxy$inboundSchema)),
-  requestId: types.optional(types.string()),
-  serial: types.string(),
-  statusCode: types.optional(types.number()),
-  text: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    created: types.optional(types.number()),
+    date: types.number(),
+    deploymentId: types.string(),
+    id: types.string(),
+    info: types.optional(
+      z.lazy(() => GetDeploymentEventsResponseBodyInfo$inboundSchema),
+    ),
+    proxy: types.optional(z.lazy(() => ResponseBodyProxy$inboundSchema)),
+    requestId: types.optional(types.string()),
+    serial: types.string(),
+    statusCode: types.optional(types.number()),
+    text: types.optional(types.string()),
+  })
+);
 
 export function responseBodyPayloadFromJSON(
   jsonString: string,
@@ -1243,8 +1290,10 @@ export function responseBodyPayloadFromJSON(
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> = z
-    .nativeEnum(GetDeploymentEventsResponseBodyDeploymentsType);
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyDeploymentsType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetDeploymentEventsResponseBodyDeploymentsType)
+    );
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyDeployments1$inboundSchema:
@@ -1252,11 +1301,13 @@ export const GetDeploymentEventsResponseBodyDeployments1$inboundSchema:
     GetDeploymentEventsResponseBodyDeployments1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    created: types.number(),
-    payload: z.lazy(() => ResponseBodyPayload$inboundSchema),
-    type: GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      created: types.number(),
+      payload: z.lazy(() => ResponseBodyPayload$inboundSchema),
+      type: GetDeploymentEventsResponseBodyDeploymentsType$inboundSchema,
+    })
+  );
 
 export function getDeploymentEventsResponseBodyDeployments1FromJSON(
   jsonString: string,
@@ -1279,15 +1330,17 @@ export const GetDeploymentEventsResponseBody$inboundSchema: z.ZodType<
   GetDeploymentEventsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
-  z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
+> = /* @__PURE__ */ lazySchema$(() =>
   smartUnion([
-    z.lazy(() => GetDeploymentEvents32$inboundSchema),
-    z.lazy(() => GetDeploymentEvents33$inboundSchema),
-    z.lazy(() => GetDeploymentEvents31$inboundSchema),
-  ]),
-]);
+    z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
+    z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
+    smartUnion([
+      z.lazy(() => GetDeploymentEvents32$inboundSchema),
+      z.lazy(() => GetDeploymentEvents33$inboundSchema),
+      z.lazy(() => GetDeploymentEvents31$inboundSchema),
+    ]),
+  ])
+);
 
 export function getDeploymentEventsResponseBodyFromJSON(
   jsonString: string,
@@ -1302,17 +1355,21 @@ export function getDeploymentEventsResponseBodyFromJSON(
 /** @internal */
 export const GetDeploymentEvents3DeploymentsType$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentEvents3DeploymentsType
-> = z.nativeEnum(GetDeploymentEvents3DeploymentsType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDeploymentEvents3DeploymentsType)
+);
 
 /** @internal */
 export const GetDeploymentEvents3AliasError$inboundSchema: z.ZodType<
   GetDeploymentEvents3AliasError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function getDeploymentEvents3AliasErrorFromJSON(
   jsonString: string,
@@ -1329,12 +1386,14 @@ export const GetDeploymentEvents3AliasWarning$inboundSchema: z.ZodType<
   GetDeploymentEvents3AliasWarning,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(types.string()),
-  code: types.string(),
-  link: types.optional(types.string()),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(types.string()),
+    code: types.string(),
+    link: types.optional(types.string()),
+    message: types.string(),
+  })
+);
 
 export function getDeploymentEvents3AliasWarningFromJSON(
   jsonString: string,
@@ -1347,19 +1406,21 @@ export function getDeploymentEvents3AliasWarningFromJSON(
 }
 
 /** @internal */
-export const Three3$inboundSchema: z.ZodType<Three3, z.ZodTypeDef, unknown> = z
-  .object({
-    date: types.number(),
-    deploymentId: types.string(),
-    type: GetDeploymentEvents3DeploymentsType$inboundSchema,
-    alias: z.array(types.string()),
-    aliasError: types.nullable(
-      z.lazy(() => GetDeploymentEvents3AliasError$inboundSchema),
-    ),
-    aliasWarning: types.nullable(
-      z.lazy(() => GetDeploymentEvents3AliasWarning$inboundSchema),
-    ),
-  });
+export const Three3$inboundSchema: z.ZodType<Three3, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      date: types.number(),
+      deploymentId: types.string(),
+      type: GetDeploymentEvents3DeploymentsType$inboundSchema,
+      alias: z.array(types.string()),
+      aliasError: types.nullable(
+        z.lazy(() => GetDeploymentEvents3AliasError$inboundSchema),
+      ),
+      aliasWarning: types.nullable(
+        z.lazy(() => GetDeploymentEvents3AliasWarning$inboundSchema),
+      ),
+    })
+  );
 
 export function three3FromJSON(
   jsonString: string,
@@ -1376,15 +1437,17 @@ export const ThreeInfo$inboundSchema: z.ZodType<
   ThreeInfo,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  entrypoint: types.optional(types.string()),
-  name: types.string(),
-  path: types.optional(types.string()),
-  readyState: types.optional(types.string()),
-  serviceName: types.optional(types.string()),
-  step: types.optional(types.string()),
-  type: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    entrypoint: types.optional(types.string()),
+    name: types.string(),
+    path: types.optional(types.string()),
+    readyState: types.optional(types.string()),
+    serviceName: types.optional(types.string()),
+    step: types.optional(types.string()),
+    type: types.string(),
+  })
+);
 
 export function threeInfoFromJSON(
   jsonString: string,
@@ -1397,27 +1460,29 @@ export function threeInfoFromJSON(
 }
 
 /** @internal */
-export const ThreeLevel$inboundSchema: z.ZodNativeEnum<typeof ThreeLevel> = z
-  .nativeEnum(ThreeLevel);
+export const ThreeLevel$inboundSchema: z.ZodNativeEnum<typeof ThreeLevel> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ThreeLevel));
 
 /** @internal */
 export const GetDeploymentEvents3Type$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentEvents3Type
-> = z.nativeEnum(GetDeploymentEvents3Type);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDeploymentEvents3Type));
 
 /** @internal */
-export const Three2$inboundSchema: z.ZodType<Three2, z.ZodTypeDef, unknown> = z
-  .object({
-    created: types.number(),
-    date: types.number(),
-    deploymentId: types.string(),
-    id: types.string(),
-    info: z.lazy(() => ThreeInfo$inboundSchema),
-    level: types.optional(ThreeLevel$inboundSchema),
-    serial: types.string(),
-    text: types.optional(types.string()),
-    type: GetDeploymentEvents3Type$inboundSchema,
-  });
+export const Three2$inboundSchema: z.ZodType<Three2, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      created: types.number(),
+      date: types.number(),
+      deploymentId: types.string(),
+      id: types.string(),
+      info: z.lazy(() => ThreeInfo$inboundSchema),
+      level: types.optional(ThreeLevel$inboundSchema),
+      serial: types.string(),
+      text: types.optional(types.string()),
+      type: GetDeploymentEvents3Type$inboundSchema,
+    })
+  );
 
 export function three2FromJSON(
   jsonString: string,
@@ -1435,15 +1500,17 @@ export const GetDeploymentEvents3DeploymentsResponseInfo$inboundSchema:
     GetDeploymentEvents3DeploymentsResponseInfo,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    entrypoint: types.optional(types.string()),
-    name: types.string(),
-    path: types.optional(types.string()),
-    readyState: types.optional(types.string()),
-    serviceName: types.optional(types.string()),
-    step: types.optional(types.string()),
-    type: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      entrypoint: types.optional(types.string()),
+      name: types.string(),
+      path: types.optional(types.string()),
+      readyState: types.optional(types.string()),
+      serviceName: types.optional(types.string()),
+      step: types.optional(types.string()),
+      type: types.string(),
+    })
+  );
 
 export function getDeploymentEvents3DeploymentsResponseInfoFromJSON(
   jsonString: string,
@@ -1464,39 +1531,41 @@ export function getDeploymentEvents3DeploymentsResponseInfoFromJSON(
 /** @internal */
 export const ThreeVercelCache$inboundSchema: z.ZodNativeEnum<
   typeof ThreeVercelCache
-> = z.nativeEnum(ThreeVercelCache);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ThreeVercelCache));
 
 /** @internal */
 export const ThreeWafAction$inboundSchema: z.ZodNativeEnum<
   typeof ThreeWafAction
-> = z.nativeEnum(ThreeWafAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ThreeWafAction));
 
 /** @internal */
 export const ThreeProxy$inboundSchema: z.ZodType<
   ThreeProxy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cacheId: types.optional(types.string()),
-  clientIp: types.optional(types.string()),
-  host: types.string(),
-  lambdaRegion: types.optional(types.string()),
-  method: types.string(),
-  path: types.optional(types.string()),
-  pathType: types.optional(types.string()),
-  pathTypeVariant: types.optional(types.string()),
-  referer: types.optional(types.string()),
-  region: types.optional(types.string()),
-  responseByteSize: types.optional(types.number()),
-  scheme: types.optional(types.string()),
-  statusCode: types.optional(types.number()),
-  timestamp: types.number(),
-  userAgent: types.optional(z.array(types.string())),
-  vercelCache: types.optional(ThreeVercelCache$inboundSchema),
-  vercelId: types.optional(types.string()),
-  wafAction: types.optional(ThreeWafAction$inboundSchema),
-  wafRuleId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cacheId: types.optional(types.string()),
+    clientIp: types.optional(types.string()),
+    host: types.string(),
+    lambdaRegion: types.optional(types.string()),
+    method: types.string(),
+    path: types.optional(types.string()),
+    pathType: types.optional(types.string()),
+    pathTypeVariant: types.optional(types.string()),
+    referer: types.optional(types.string()),
+    region: types.optional(types.string()),
+    responseByteSize: types.optional(types.number()),
+    scheme: types.optional(types.string()),
+    statusCode: types.optional(types.number()),
+    timestamp: types.number(),
+    userAgent: types.optional(z.array(types.string())),
+    vercelCache: types.optional(ThreeVercelCache$inboundSchema),
+    vercelId: types.optional(types.string()),
+    wafAction: types.optional(ThreeWafAction$inboundSchema),
+    wafRuleId: types.optional(types.string()),
+  })
+);
 
 export function threeProxyFromJSON(
   jsonString: string,
@@ -1513,20 +1582,22 @@ export const ThreePayload$inboundSchema: z.ZodType<
   ThreePayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  created: types.optional(types.number()),
-  date: types.number(),
-  deploymentId: types.string(),
-  id: types.string(),
-  info: types.optional(
-    z.lazy(() => GetDeploymentEvents3DeploymentsResponseInfo$inboundSchema),
-  ),
-  proxy: types.optional(z.lazy(() => ThreeProxy$inboundSchema)),
-  requestId: types.optional(types.string()),
-  serial: types.string(),
-  statusCode: types.optional(types.number()),
-  text: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    created: types.optional(types.number()),
+    date: types.number(),
+    deploymentId: types.string(),
+    id: types.string(),
+    info: types.optional(
+      z.lazy(() => GetDeploymentEvents3DeploymentsResponseInfo$inboundSchema),
+    ),
+    proxy: types.optional(z.lazy(() => ThreeProxy$inboundSchema)),
+    requestId: types.optional(types.string()),
+    serial: types.string(),
+    statusCode: types.optional(types.number()),
+    text: types.optional(types.string()),
+  })
+);
 
 export function threePayloadFromJSON(
   jsonString: string,
@@ -1539,16 +1610,18 @@ export function threePayloadFromJSON(
 }
 
 /** @internal */
-export const ThreeType$inboundSchema: z.ZodNativeEnum<typeof ThreeType> = z
-  .nativeEnum(ThreeType);
+export const ThreeType$inboundSchema: z.ZodNativeEnum<typeof ThreeType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ThreeType));
 
 /** @internal */
-export const Three1$inboundSchema: z.ZodType<Three1, z.ZodTypeDef, unknown> = z
-  .object({
-    created: types.number(),
-    payload: z.lazy(() => ThreePayload$inboundSchema),
-    type: ThreeType$inboundSchema,
-  });
+export const Three1$inboundSchema: z.ZodType<Three1, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      created: types.number(),
+      payload: z.lazy(() => ThreePayload$inboundSchema),
+      type: ThreeType$inboundSchema,
+    })
+  );
 
 export function three1FromJSON(
   jsonString: string,
@@ -1565,11 +1638,13 @@ export const GetDeploymentEventsResponseBody3$inboundSchema: z.ZodType<
   GetDeploymentEventsResponseBody3,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => Three2$inboundSchema),
-  z.lazy(() => Three3$inboundSchema),
-  z.lazy(() => Three1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Three2$inboundSchema),
+    z.lazy(() => Three3$inboundSchema),
+    z.lazy(() => Three1$inboundSchema),
+  ])
+);
 
 export function getDeploymentEventsResponseBody3FromJSON(
   jsonString: string,
@@ -1582,16 +1657,18 @@ export function getDeploymentEventsResponseBody3FromJSON(
 }
 
 /** @internal */
-export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> = z
-  .object({
-    entrypoint: types.optional(types.string()),
-    name: types.string(),
-    path: types.optional(types.string()),
-    readyState: types.optional(types.string()),
-    serviceName: types.optional(types.string()),
-    step: types.optional(types.string()),
-    type: types.string(),
-  });
+export const Info$inboundSchema: z.ZodType<Info, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      entrypoint: types.optional(types.string()),
+      name: types.string(),
+      path: types.optional(types.string()),
+      readyState: types.optional(types.string()),
+      serviceName: types.optional(types.string()),
+      step: types.optional(types.string()),
+      type: types.string(),
+    })
+  );
 
 export function infoFromJSON(
   jsonString: string,
@@ -1605,31 +1682,36 @@ export function infoFromJSON(
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyLevel$inboundSchema:
-  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyLevel> = z.nativeEnum(
-    GetDeploymentEventsResponseBodyLevel,
-  );
+  z.ZodNativeEnum<typeof GetDeploymentEventsResponseBodyLevel> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetDeploymentEventsResponseBodyLevel)
+    );
 
 /** @internal */
 export const GetDeploymentEventsResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetDeploymentEventsResponseBodyType
-> = z.nativeEnum(GetDeploymentEventsResponseBodyType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetDeploymentEventsResponseBodyType)
+);
 
 /** @internal */
 export const GetDeploymentEventsResponseBody2$inboundSchema: z.ZodType<
   GetDeploymentEventsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  created: types.number(),
-  date: types.number(),
-  deploymentId: types.string(),
-  id: types.string(),
-  info: z.lazy(() => Info$inboundSchema),
-  level: types.optional(GetDeploymentEventsResponseBodyLevel$inboundSchema),
-  serial: types.string(),
-  text: types.optional(types.string()),
-  type: GetDeploymentEventsResponseBodyType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    created: types.number(),
+    date: types.number(),
+    deploymentId: types.string(),
+    id: types.string(),
+    info: z.lazy(() => Info$inboundSchema),
+    level: types.optional(GetDeploymentEventsResponseBodyLevel$inboundSchema),
+    serial: types.string(),
+    text: types.optional(types.string()),
+    type: GetDeploymentEventsResponseBodyType$inboundSchema,
+  })
+);
 
 export function getDeploymentEventsResponseBody2FromJSON(
   jsonString: string,
@@ -1647,15 +1729,17 @@ export const GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema:
     GetDeploymentEventsResponseBodyDeploymentsInfo,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    entrypoint: types.optional(types.string()),
-    name: types.string(),
-    path: types.optional(types.string()),
-    readyState: types.optional(types.string()),
-    serviceName: types.optional(types.string()),
-    step: types.optional(types.string()),
-    type: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      entrypoint: types.optional(types.string()),
+      name: types.string(),
+      path: types.optional(types.string()),
+      readyState: types.optional(types.string()),
+      serviceName: types.optional(types.string()),
+      step: types.optional(types.string()),
+      type: types.string(),
+    })
+  );
 
 export function getDeploymentEventsResponseBodyDeploymentsInfoFromJSON(
   jsonString: string,
@@ -1674,36 +1758,38 @@ export function getDeploymentEventsResponseBodyDeploymentsInfoFromJSON(
 }
 
 /** @internal */
-export const VercelCache$inboundSchema: z.ZodNativeEnum<typeof VercelCache> = z
-  .nativeEnum(VercelCache);
+export const VercelCache$inboundSchema: z.ZodNativeEnum<typeof VercelCache> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VercelCache));
 
 /** @internal */
-export const WafAction$inboundSchema: z.ZodNativeEnum<typeof WafAction> = z
-  .nativeEnum(WafAction);
+export const WafAction$inboundSchema: z.ZodNativeEnum<typeof WafAction> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(WafAction));
 
 /** @internal */
-export const Proxy$inboundSchema: z.ZodType<Proxy, z.ZodTypeDef, unknown> = z
-  .object({
-    cacheId: types.optional(types.string()),
-    clientIp: types.optional(types.string()),
-    host: types.string(),
-    lambdaRegion: types.optional(types.string()),
-    method: types.string(),
-    path: types.optional(types.string()),
-    pathType: types.optional(types.string()),
-    pathTypeVariant: types.optional(types.string()),
-    referer: types.optional(types.string()),
-    region: types.optional(types.string()),
-    responseByteSize: types.optional(types.number()),
-    scheme: types.optional(types.string()),
-    statusCode: types.optional(types.number()),
-    timestamp: types.number(),
-    userAgent: types.optional(z.array(types.string())),
-    vercelCache: types.optional(VercelCache$inboundSchema),
-    vercelId: types.optional(types.string()),
-    wafAction: types.optional(WafAction$inboundSchema),
-    wafRuleId: types.optional(types.string()),
-  });
+export const Proxy$inboundSchema: z.ZodType<Proxy, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cacheId: types.optional(types.string()),
+      clientIp: types.optional(types.string()),
+      host: types.string(),
+      lambdaRegion: types.optional(types.string()),
+      method: types.string(),
+      path: types.optional(types.string()),
+      pathType: types.optional(types.string()),
+      pathTypeVariant: types.optional(types.string()),
+      referer: types.optional(types.string()),
+      region: types.optional(types.string()),
+      responseByteSize: types.optional(types.number()),
+      scheme: types.optional(types.string()),
+      statusCode: types.optional(types.number()),
+      timestamp: types.number(),
+      userAgent: types.optional(z.array(types.string())),
+      vercelCache: types.optional(VercelCache$inboundSchema),
+      vercelId: types.optional(types.string()),
+      wafAction: types.optional(WafAction$inboundSchema),
+      wafRuleId: types.optional(types.string()),
+    })
+  );
 
 export function proxyFromJSON(
   jsonString: string,
@@ -1720,20 +1806,24 @@ export const GetDeploymentEventsResponseBodyPayload$inboundSchema: z.ZodType<
   GetDeploymentEventsResponseBodyPayload,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  created: types.optional(types.number()),
-  date: types.number(),
-  deploymentId: types.string(),
-  id: types.string(),
-  info: types.optional(
-    z.lazy(() => GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema),
-  ),
-  proxy: types.optional(z.lazy(() => Proxy$inboundSchema)),
-  requestId: types.optional(types.string()),
-  serial: types.string(),
-  statusCode: types.optional(types.number()),
-  text: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    created: types.optional(types.number()),
+    date: types.number(),
+    deploymentId: types.string(),
+    id: types.string(),
+    info: types.optional(
+      z.lazy(() =>
+        GetDeploymentEventsResponseBodyDeploymentsInfo$inboundSchema
+      ),
+    ),
+    proxy: types.optional(z.lazy(() => Proxy$inboundSchema)),
+    requestId: types.optional(types.string()),
+    serial: types.string(),
+    statusCode: types.optional(types.number()),
+    text: types.optional(types.string()),
+  })
+);
 
 export function getDeploymentEventsResponseBodyPayloadFromJSON(
   jsonString: string,
@@ -1749,18 +1839,20 @@ export function getDeploymentEventsResponseBodyPayloadFromJSON(
 /** @internal */
 export const ResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyType
-> = z.nativeEnum(ResponseBodyType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyType));
 
 /** @internal */
 export const GetDeploymentEventsResponseBody1$inboundSchema: z.ZodType<
   GetDeploymentEventsResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  created: types.number(),
-  payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$inboundSchema),
-  type: ResponseBodyType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    created: types.number(),
+    payload: z.lazy(() => GetDeploymentEventsResponseBodyPayload$inboundSchema),
+    type: ResponseBodyType$inboundSchema,
+  })
+);
 
 export function getDeploymentEventsResponseBody1FromJSON(
   jsonString: string,
@@ -1775,15 +1867,17 @@ export function getDeploymentEventsResponseBody1FromJSON(
 /** @internal */
 export const GetDeploymentEventsDeploymentsResponseBody$inboundSchema:
   z.ZodType<GetDeploymentEventsDeploymentsResponseBody, z.ZodTypeDef, unknown> =
-    smartUnion([
-      z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
-      z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
+    /* @__PURE__ */ lazySchema$(() =>
       smartUnion([
-        z.lazy(() => Three2$inboundSchema),
-        z.lazy(() => Three3$inboundSchema),
-        z.lazy(() => Three1$inboundSchema),
-      ]),
-    ]);
+        z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
+        z.lazy(() => GetDeploymentEventsResponseBody1$inboundSchema),
+        smartUnion([
+          z.lazy(() => Three2$inboundSchema),
+          z.lazy(() => Three3$inboundSchema),
+          z.lazy(() => Three1$inboundSchema),
+        ]),
+      ])
+    );
 
 export function getDeploymentEventsDeploymentsResponseBodyFromJSON(
   jsonString: string,
@@ -1806,28 +1900,30 @@ export const GetDeploymentEventsResponse$inboundSchema: z.ZodType<
   GetDeploymentEventsResponse,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(smartUnion([
-    z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
-    z.lazy(() =>
-      GetDeploymentEventsResponseBody1$inboundSchema
-    ),
-    smartUnion([
-      z.lazy(() => Three2$inboundSchema),
-      z.lazy(() => Three3$inboundSchema),
-      z.lazy(() => Three1$inboundSchema),
-    ]),
-  ])),
+> = /* @__PURE__ */ lazySchema$(() =>
   smartUnion([
-    z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
-    z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
+    z.array(smartUnion([
+      z.lazy(() => GetDeploymentEventsResponseBody2$inboundSchema),
+      z.lazy(() =>
+        GetDeploymentEventsResponseBody1$inboundSchema
+      ),
+      smartUnion([
+        z.lazy(() => Three2$inboundSchema),
+        z.lazy(() => Three3$inboundSchema),
+        z.lazy(() => Three1$inboundSchema),
+      ]),
+    ])),
     smartUnion([
-      z.lazy(() => GetDeploymentEvents32$inboundSchema),
-      z.lazy(() => GetDeploymentEvents33$inboundSchema),
-      z.lazy(() => GetDeploymentEvents31$inboundSchema),
+      z.lazy(() => GetDeploymentEventsResponseBodyDeployments2$inboundSchema),
+      z.lazy(() => GetDeploymentEventsResponseBodyDeployments1$inboundSchema),
+      smartUnion([
+        z.lazy(() => GetDeploymentEvents32$inboundSchema),
+        z.lazy(() => GetDeploymentEvents33$inboundSchema),
+        z.lazy(() => GetDeploymentEvents31$inboundSchema),
+      ]),
     ]),
-  ]),
-]);
+  ])
+);
 
 export function getDeploymentEventsResponseFromJSON(
   jsonString: string,

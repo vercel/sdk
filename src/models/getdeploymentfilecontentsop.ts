@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type GetDeploymentFileContentsRequest = {
   /**
@@ -41,13 +42,15 @@ export const GetDeploymentFileContentsRequest$outboundSchema: z.ZodType<
   GetDeploymentFileContentsRequest$Outbound,
   z.ZodTypeDef,
   GetDeploymentFileContentsRequest
-> = z.object({
-  id: z.string(),
-  fileId: z.string(),
-  path: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    fileId: z.string(),
+    path: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getDeploymentFileContentsRequestToJSON(
   getDeploymentFileContentsRequest: GetDeploymentFileContentsRequest,

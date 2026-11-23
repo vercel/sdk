@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteEdgeConfigRequest = {
   edgeConfigId: string;
@@ -28,11 +29,13 @@ export const DeleteEdgeConfigRequest$outboundSchema: z.ZodType<
   DeleteEdgeConfigRequest$Outbound,
   z.ZodTypeDef,
   DeleteEdgeConfigRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteEdgeConfigRequestToJSON(
   deleteEdgeConfigRequest: DeleteEdgeConfigRequest,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -45,9 +45,11 @@ export const GetAccountInfoRequest$outboundSchema: z.ZodType<
   GetAccountInfoRequest$Outbound,
   z.ZodTypeDef,
   GetAccountInfoRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+  })
+);
 
 export function getAccountInfoRequestToJSON(
   getAccountInfoRequest: GetAccountInfoRequest,
@@ -59,10 +61,12 @@ export function getAccountInfoRequestToJSON(
 
 /** @internal */
 export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> =
-  z.object({
-    email: types.string(),
-    name: types.optional(types.string()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      email: types.string(),
+      name: types.optional(types.string()),
+    })
+  );
 
 export function contactFromJSON(
   jsonString: string,
@@ -79,11 +83,13 @@ export const GetAccountInfoResponseBody$inboundSchema: z.ZodType<
   GetAccountInfoResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  contact: types.nullable(z.lazy(() => Contact$inboundSchema)),
-  name: types.optional(types.string()),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    contact: types.nullable(z.lazy(() => Contact$inboundSchema)),
+    name: types.optional(types.string()),
+    url: types.string(),
+  })
+);
 
 export function getAccountInfoResponseBodyFromJSON(
   jsonString: string,

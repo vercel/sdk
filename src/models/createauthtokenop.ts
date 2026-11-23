@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { AuthToken, AuthToken$inboundSchema } from "./authtoken.js";
@@ -57,11 +57,13 @@ export const CreateAuthTokenRequestBody$outboundSchema: z.ZodType<
   CreateAuthTokenRequestBody$Outbound,
   z.ZodTypeDef,
   CreateAuthTokenRequestBody
-> = z.object({
-  name: z.string(),
-  expiresAt: z.number().optional(),
-  projectId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    expiresAt: z.number().optional(),
+    projectId: z.string().optional(),
+  })
+);
 
 export function createAuthTokenRequestBodyToJSON(
   createAuthTokenRequestBody: CreateAuthTokenRequestBody,
@@ -83,15 +85,17 @@ export const CreateAuthTokenRequest$outboundSchema: z.ZodType<
   CreateAuthTokenRequest$Outbound,
   z.ZodTypeDef,
   CreateAuthTokenRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateAuthTokenRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateAuthTokenRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createAuthTokenRequestToJSON(
   createAuthTokenRequest: CreateAuthTokenRequest,
@@ -106,10 +110,12 @@ export const CreateAuthTokenResponseBody$inboundSchema: z.ZodType<
   CreateAuthTokenResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bearerToken: types.string(),
-  token: AuthToken$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bearerToken: types.string(),
+    token: AuthToken$inboundSchema,
+  })
+);
 
 export function createAuthTokenResponseBodyFromJSON(
   jsonString: string,

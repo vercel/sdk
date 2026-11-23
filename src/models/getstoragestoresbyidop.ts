@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -183,16 +183,18 @@ export const GetStorageStoresByIdRequest$outboundSchema: z.ZodType<
   GetStorageStoresByIdRequest$Outbound,
   z.ZodTypeDef,
   GetStorageStoresByIdRequest
-> = z.object({
-  id: z.string(),
-  skipMetadata: z.boolean().optional(),
-  includeGuides: z.boolean().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    skipMetadata: "skip-metadata",
-    includeGuides: "include-guides",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    skipMetadata: z.boolean().optional(),
+    includeGuides: z.boolean().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      skipMetadata: "skip-metadata",
+      includeGuides: "include-guides",
+    });
+  })
+);
 
 export function getStorageStoresByIdRequestToJSON(
   getStorageStoresByIdRequest: GetStorageStoresByIdRequest,
@@ -205,19 +207,21 @@ export function getStorageStoresByIdRequestToJSON(
 }
 
 /** @internal */
-export const Providers2$inboundSchema: z.ZodNativeEnum<typeof Providers2> = z
-  .nativeEnum(Providers2);
+export const Providers2$inboundSchema: z.ZodNativeEnum<typeof Providers2> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Providers2));
 
 /** @internal */
-export const Providers1$inboundSchema: z.ZodNativeEnum<typeof Providers1> = z
-  .nativeEnum(Providers1);
+export const Providers1$inboundSchema: z.ZodNativeEnum<typeof Providers1> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Providers1));
 
 /** @internal */
 export const GetStorageStoresByIdProviders$inboundSchema: z.ZodType<
   GetStorageStoresByIdProviders,
   z.ZodTypeDef,
   unknown
-> = smartUnion([z.array(Providers1$inboundSchema), Providers2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.array(Providers1$inboundSchema), Providers2$inboundSchema])
+);
 
 export function getStorageStoresByIdProvidersFromJSON(
   jsonString: string,
@@ -230,15 +234,17 @@ export function getStorageStoresByIdProvidersFromJSON(
 }
 
 /** @internal */
-export const Git$inboundSchema: z.ZodType<Git, z.ZodTypeDef, unknown> = z
-  .object({
-    owners: types.optional(z.array(types.string())),
-    providers: smartUnion([
-      z.array(Providers1$inboundSchema),
-      Providers2$inboundSchema,
-    ]),
-    repos: types.optional(z.array(types.string())),
-  });
+export const Git$inboundSchema: z.ZodType<Git, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      owners: types.optional(z.array(types.string())),
+      providers: smartUnion([
+        z.array(Providers1$inboundSchema),
+        Providers2$inboundSchema,
+      ]),
+      repos: types.optional(z.array(types.string())),
+    })
+  );
 
 export function gitFromJSON(
   jsonString: string,
@@ -255,9 +261,11 @@ export const ProjectFilter$inboundSchema: z.ZodType<
   ProjectFilter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  git: types.optional(z.lazy(() => Git$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    git: types.optional(z.lazy(() => Git$inboundSchema)),
+  })
+);
 
 export function projectFilterFromJSON(
   jsonString: string,
@@ -274,10 +282,12 @@ export const GetStorageStoresByIdActions$inboundSchema: z.ZodType<
   GetStorageStoresByIdActions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environments: z.array(types.string()),
-  slug: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environments: z.array(types.string()),
+    slug: types.string(),
+  })
+);
 
 export function getStorageStoresByIdActionsFromJSON(
   jsonString: string,
@@ -294,10 +304,12 @@ export const GetStorageStoresByIdDeployments$inboundSchema: z.ZodType<
   GetStorageStoresByIdDeployments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  actions: z.array(z.lazy(() => GetStorageStoresByIdActions$inboundSchema)),
-  required: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    actions: z.array(z.lazy(() => GetStorageStoresByIdActions$inboundSchema)),
+    required: types.boolean(),
+  })
+);
 
 export function getStorageStoresByIdDeploymentsFromJSON(
   jsonString: string,
@@ -312,28 +324,33 @@ export function getStorageStoresByIdDeploymentsFromJSON(
 /** @internal */
 export const GetStorageStoresByIdFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetStorageStoresByIdFramework
-> = z.nativeEnum(GetStorageStoresByIdFramework);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetStorageStoresByIdFramework)
+);
 
 /** @internal */
 export const GetStorageStoresByIdProjectsMetadata$inboundSchema: z.ZodType<
   GetStorageStoresByIdProjectsMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deployments: types.optional(
-    z.lazy(() => GetStorageStoresByIdDeployments$inboundSchema),
-  ),
-  environments: z.array(types.string()),
-  environmentVariables: z.array(types.string()),
-  envVarPrefix: types.nullable(types.string()),
-  framework: z.nullable(GetStorageStoresByIdFramework$inboundSchema).optional(),
-  id: types.string(),
-  latestDeployment: types.optional(types.string()),
-  makeEnvVarsSensitive: types.optional(types.boolean()),
-  name: types.string(),
-  projectId: types.string(),
-  secretsOutdated: types.optional(types.literal(true)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deployments: types.optional(
+      z.lazy(() => GetStorageStoresByIdDeployments$inboundSchema),
+    ),
+    environments: z.array(types.string()),
+    environmentVariables: z.array(types.string()),
+    envVarPrefix: types.nullable(types.string()),
+    framework: z.nullable(GetStorageStoresByIdFramework$inboundSchema)
+      .optional(),
+    id: types.string(),
+    latestDeployment: types.optional(types.string()),
+    makeEnvVarsSensitive: types.optional(types.boolean()),
+    name: types.string(),
+    projectId: types.string(),
+    secretsOutdated: types.optional(types.literal(true)),
+  })
+);
 
 export function getStorageStoresByIdProjectsMetadataFromJSON(
   jsonString: string,
@@ -349,22 +366,24 @@ export function getStorageStoresByIdProjectsMetadataFromJSON(
 /** @internal */
 export const GetStorageStoresByIdStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetStorageStoresByIdStatus
-> = z.nativeEnum(GetStorageStoresByIdStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetStorageStoresByIdStatus));
 
 /** @internal */
 export const GetStorageStoresByIdStore$inboundSchema: z.ZodType<
   GetStorageStoresByIdStore,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectFilter: types.optional(z.lazy(() => ProjectFilter$inboundSchema)),
-  projectsMetadata: z.array(
-    z.lazy(() => GetStorageStoresByIdProjectsMetadata$inboundSchema),
-  ),
-  status: types.nullable(GetStorageStoresByIdStatus$inboundSchema),
-  totalConnectedProjects: types.optional(types.number()),
-  usageQuotaExceeded: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectFilter: types.optional(z.lazy(() => ProjectFilter$inboundSchema)),
+    projectsMetadata: z.array(
+      z.lazy(() => GetStorageStoresByIdProjectsMetadata$inboundSchema),
+    ),
+    status: types.nullable(GetStorageStoresByIdStatus$inboundSchema),
+    totalConnectedProjects: types.optional(types.number()),
+    usageQuotaExceeded: types.boolean(),
+  })
+);
 
 export function getStorageStoresByIdStoreFromJSON(
   jsonString: string,
@@ -381,9 +400,11 @@ export const GetStorageStoresByIdResponseBody$inboundSchema: z.ZodType<
   GetStorageStoresByIdResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  store: z.lazy(() => GetStorageStoresByIdStore$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    store: z.lazy(() => GetStorageStoresByIdStore$inboundSchema),
+  })
+);
 
 export function getStorageStoresByIdResponseBodyFromJSON(
   jsonString: string,

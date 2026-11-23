@@ -1,6 +1,6 @@
 {
   "name": "@vercel/sdk",
-  "version": "1.28.67",
+  "version": "1.28.68",
   "author": "Speakeasy",
   "license": "Apache-2.0",
   "type": "module",
@@ -12,6 +12,11 @@
       "default": "./esm/index.js"
     },
     "./package.json": "./package.json",
+    "./node": {
+      "source": "./src/node.ts",
+      "types": "./esm/node.d.ts",
+      "default": "./esm/node.js"
+    },
     "./*.js": {
       "source": "./src/*.ts",
       "types": "./esm/*.d.ts",

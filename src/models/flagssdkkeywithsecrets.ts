@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -48,27 +48,29 @@ export type FlagsSDKKeyWithSecrets = {
 /** @internal */
 export const FlagsSDKKeyWithSecretsType$inboundSchema: z.ZodNativeEnum<
   typeof FlagsSDKKeyWithSecretsType
-> = z.nativeEnum(FlagsSDKKeyWithSecretsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FlagsSDKKeyWithSecretsType));
 
 /** @internal */
 export const FlagsSDKKeyWithSecrets$inboundSchema: z.ZodType<
   FlagsSDKKeyWithSecrets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.string(),
-  deletedAt: types.optional(types.number()),
-  environment: types.string(),
-  hashKey: types.string(),
-  label: types.optional(types.string()),
-  partialKeyValue: types.string(),
-  projectId: types.string(),
-  type: FlagsSDKKeyWithSecretsType$inboundSchema,
-  updatedAt: types.number(),
-  keyValue: types.string(),
-  tokenValue: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.string(),
+    deletedAt: types.optional(types.number()),
+    environment: types.string(),
+    hashKey: types.string(),
+    label: types.optional(types.string()),
+    partialKeyValue: types.string(),
+    projectId: types.string(),
+    type: FlagsSDKKeyWithSecretsType$inboundSchema,
+    updatedAt: types.number(),
+    keyValue: types.string(),
+    tokenValue: types.optional(types.string()),
+  })
+);
 
 export function flagsSDKKeyWithSecretsFromJSON(
   jsonString: string,

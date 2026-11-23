@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type RemoveRepositoryPermissionRequestBody = {
   /**
@@ -44,10 +45,12 @@ export const RemoveRepositoryPermissionRequestBody$outboundSchema: z.ZodType<
   RemoveRepositoryPermissionRequestBody$Outbound,
   z.ZodTypeDef,
   RemoveRepositoryPermissionRequestBody
-> = z.object({
-  teamId: z.string().optional(),
-  teamSlug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    teamSlug: z.string().optional(),
+  })
+);
 
 export function removeRepositoryPermissionRequestBodyToJSON(
   removeRepositoryPermissionRequestBody: RemoveRepositoryPermissionRequestBody,
@@ -73,19 +76,21 @@ export const RemoveRepositoryPermissionRequest$outboundSchema: z.ZodType<
   RemoveRepositoryPermissionRequest$Outbound,
   z.ZodTypeDef,
   RemoveRepositoryPermissionRequest
-> = z.object({
-  projectId: z.string(),
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    RemoveRepositoryPermissionRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      RemoveRepositoryPermissionRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function removeRepositoryPermissionRequestToJSON(
   removeRepositoryPermissionRequest: RemoveRepositoryPermissionRequest,

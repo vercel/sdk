@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -192,11 +192,13 @@ export const CreateOrTransferDomainRequestBody2$outboundSchema: z.ZodType<
   CreateOrTransferDomainRequestBody2$Outbound,
   z.ZodTypeDef,
   CreateOrTransferDomainRequestBody2
-> = z.object({
-  name: z.string(),
-  method: z.string(),
-  token: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    method: z.string(),
+    token: z.string().optional(),
+  })
+);
 
 export function createOrTransferDomainRequestBody2ToJSON(
   createOrTransferDomainRequestBody2: CreateOrTransferDomainRequestBody2,
@@ -221,12 +223,14 @@ export const CreateOrTransferDomainRequestBody1$outboundSchema: z.ZodType<
   CreateOrTransferDomainRequestBody1$Outbound,
   z.ZodTypeDef,
   CreateOrTransferDomainRequestBody1
-> = z.object({
-  name: z.string(),
-  cdnEnabled: z.boolean().optional(),
-  zone: z.boolean().optional(),
-  method: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    cdnEnabled: z.boolean().optional(),
+    zone: z.boolean().optional(),
+    method: z.string().optional(),
+  })
+);
 
 export function createOrTransferDomainRequestBody1ToJSON(
   createOrTransferDomainRequestBody1: CreateOrTransferDomainRequestBody1,
@@ -248,10 +252,12 @@ export const CreateOrTransferDomainRequestBody$outboundSchema: z.ZodType<
   CreateOrTransferDomainRequestBody$Outbound,
   z.ZodTypeDef,
   CreateOrTransferDomainRequestBody
-> = smartUnion([
-  z.lazy(() => CreateOrTransferDomainRequestBody2$outboundSchema),
-  z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CreateOrTransferDomainRequestBody2$outboundSchema),
+    z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
+  ])
+);
 
 export function createOrTransferDomainRequestBodyToJSON(
   createOrTransferDomainRequestBody: CreateOrTransferDomainRequestBody,
@@ -278,18 +284,20 @@ export const CreateOrTransferDomainRequest$outboundSchema: z.ZodType<
   CreateOrTransferDomainRequest$Outbound,
   z.ZodTypeDef,
   CreateOrTransferDomainRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => CreateOrTransferDomainRequestBody2$outboundSchema),
-    z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => CreateOrTransferDomainRequestBody2$outboundSchema),
+      z.lazy(() => CreateOrTransferDomainRequestBody1$outboundSchema),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createOrTransferDomainRequestToJSON(
   createOrTransferDomainRequest: CreateOrTransferDomainRequest,
@@ -306,13 +314,15 @@ export const CreateOrTransferDomainCreator$inboundSchema: z.ZodType<
   CreateOrTransferDomainCreator,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  customerId: z.nullable(types.string()).optional(),
-  email: types.string(),
-  id: types.string(),
-  isDomainReseller: types.optional(types.boolean()),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customerId: z.nullable(types.string()).optional(),
+    email: types.string(),
+    id: types.string(),
+    isDomainReseller: types.optional(types.boolean()),
+    username: types.string(),
+  })
+);
 
 export function createOrTransferDomainCreatorFromJSON(
   jsonString: string,
@@ -327,37 +337,43 @@ export function createOrTransferDomainCreatorFromJSON(
 /** @internal */
 export const CreateOrTransferDomainEchMode$inboundSchema: z.ZodNativeEnum<
   typeof CreateOrTransferDomainEchMode
-> = z.nativeEnum(CreateOrTransferDomainEchMode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateOrTransferDomainEchMode)
+);
 
 /** @internal */
 export const CreateOrTransferDomainServiceType$inboundSchema: z.ZodNativeEnum<
   typeof CreateOrTransferDomainServiceType
-> = z.nativeEnum(CreateOrTransferDomainServiceType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateOrTransferDomainServiceType)
+);
 
 /** @internal */
 export const CreateOrTransferDomainDomain$inboundSchema: z.ZodType<
   CreateOrTransferDomainDomain,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  boughtAt: types.nullable(types.number()),
-  createdAt: types.number(),
-  creator: z.lazy(() => CreateOrTransferDomainCreator$inboundSchema),
-  customNameservers: types.optional(z.array(types.string())),
-  echMode: CreateOrTransferDomainEchMode$inboundSchema,
-  expiresAt: types.nullable(types.number()),
-  id: types.string(),
-  intendedNameservers: z.array(types.string()),
-  name: types.string(),
-  nameservers: z.array(types.string()),
-  renew: types.optional(types.boolean()),
-  serviceType: CreateOrTransferDomainServiceType$inboundSchema,
-  teamId: types.nullable(types.string()),
-  transferredAt: z.nullable(types.number()).optional(),
-  transferStartedAt: types.optional(types.number()),
-  userId: types.string(),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    boughtAt: types.nullable(types.number()),
+    createdAt: types.number(),
+    creator: z.lazy(() => CreateOrTransferDomainCreator$inboundSchema),
+    customNameservers: types.optional(z.array(types.string())),
+    echMode: CreateOrTransferDomainEchMode$inboundSchema,
+    expiresAt: types.nullable(types.number()),
+    id: types.string(),
+    intendedNameservers: z.array(types.string()),
+    name: types.string(),
+    nameservers: z.array(types.string()),
+    renew: types.optional(types.boolean()),
+    serviceType: CreateOrTransferDomainServiceType$inboundSchema,
+    teamId: types.nullable(types.string()),
+    transferredAt: z.nullable(types.number()).optional(),
+    transferStartedAt: types.optional(types.number()),
+    userId: types.string(),
+    verified: types.boolean(),
+  })
+);
 
 export function createOrTransferDomainDomainFromJSON(
   jsonString: string,
@@ -374,9 +390,11 @@ export const CreateOrTransferDomainResponseBody$inboundSchema: z.ZodType<
   CreateOrTransferDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: z.lazy(() => CreateOrTransferDomainDomain$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.lazy(() => CreateOrTransferDomainDomain$inboundSchema),
+  })
+);
 
 export function createOrTransferDomainResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import { VcrRepository, VcrRepository$inboundSchema } from "./vcrrepository.js";
@@ -44,12 +44,14 @@ export const GetRepositoryRequest$outboundSchema: z.ZodType<
   GetRepositoryRequest$Outbound,
   z.ZodTypeDef,
   GetRepositoryRequest
-> = z.object({
-  projectId: z.string(),
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getRepositoryRequestToJSON(
   getRepositoryRequest: GetRepositoryRequest,
@@ -64,9 +66,11 @@ export const GetRepositoryResponseBody$inboundSchema: z.ZodType<
   GetRepositoryResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  repository: VcrRepository$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    repository: VcrRepository$inboundSchema,
+  })
+);
 
 export function getRepositoryResponseBodyFromJSON(
   jsonString: string,

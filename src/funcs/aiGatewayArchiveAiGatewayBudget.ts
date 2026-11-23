@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  * Archive AI Gateway budget
  *
  * @remarks
- * Archive a team-, project-, or user-scope AI Gateway budget.
+ * Archive a team-, project-, user-, or app-scope AI Gateway budget.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -98,6 +98,7 @@ async function $do(
   const path = pathToFunc("/ai-gateway/budgets")();
 
   const query = encodeFormQuery({
+    "appId": payload.appId,
     "justification": payload.justification,
     "projectId": payload.projectId,
     "scopeType": payload.scopeType,

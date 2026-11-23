@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteAiGatewayRuleRequest = {
   ruleId: string;
@@ -28,11 +29,13 @@ export const DeleteAiGatewayRuleRequest$outboundSchema: z.ZodType<
   DeleteAiGatewayRuleRequest$Outbound,
   z.ZodTypeDef,
   DeleteAiGatewayRuleRequest
-> = z.object({
-  ruleId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ruleId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteAiGatewayRuleRequestToJSON(
   deleteAiGatewayRuleRequest: DeleteAiGatewayRuleRequest,

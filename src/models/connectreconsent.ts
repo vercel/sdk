@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -30,18 +30,19 @@ export type ConnectReconsent = {
 };
 
 /** @internal */
-export const Scope$inboundSchema: z.ZodNativeEnum<typeof Scope> = z.nativeEnum(
-  Scope,
-);
+export const Scope$inboundSchema: z.ZodNativeEnum<typeof Scope> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Scope));
 
 /** @internal */
 export const ConnectReconsent$inboundSchema: z.ZodType<
   ConnectReconsent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  scope: Scope$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scope: Scope$inboundSchema,
+  })
+);
 
 export function connectReconsentFromJSON(
   jsonString: string,

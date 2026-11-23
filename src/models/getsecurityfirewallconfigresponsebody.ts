@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -87,18 +87,20 @@ export type GetSecurityFirewallConfigResponseBody = {
 /** @internal */
 export const GetSecurityFirewallConfigRulesetsSecurity1$inboundSchema:
   z.ZodType<GetSecurityFirewallConfigRulesetsSecurity1, z.ZodTypeDef, unknown> =
-    z.object({
-      active: types.boolean(),
-      conditionGroup: z.array(
-        GetSecurityFirewallConfigRulesetsSecurityConditionGroup$inboundSchema,
-      ),
-      description: types.optional(types.string()),
-      id: types.string(),
-      name: types.string(),
-      action: types.optional(
-        GetSecurityFirewallConfigRulesetsSecurityResponse200Action$inboundSchema,
-      ),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        active: types.boolean(),
+        conditionGroup: z.array(
+          GetSecurityFirewallConfigRulesetsSecurityConditionGroup$inboundSchema,
+        ),
+        description: types.optional(types.string()),
+        id: types.string(),
+        name: types.string(),
+        action: types.optional(
+          GetSecurityFirewallConfigRulesetsSecurityResponse200Action$inboundSchema,
+        ),
+      })
+    );
 
 export function getSecurityFirewallConfigRulesetsSecurity1FromJSON(
   jsonString: string,
@@ -122,12 +124,14 @@ export const GetSecurityFirewallConfigSecurityResponseRulesets$inboundSchema:
     GetSecurityFirewallConfigSecurityResponseRulesets,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(z.lazy(() =>
-      GetSecurityFirewallConfigRulesetsSecurity1$inboundSchema
-    )),
-    z.record(GetSecurityFirewallConfigRulesetsSecurity2$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(z.lazy(() =>
+        GetSecurityFirewallConfigRulesetsSecurity1$inboundSchema
+      )),
+      z.record(GetSecurityFirewallConfigRulesetsSecurity2$inboundSchema),
+    ])
+  );
 
 export function getSecurityFirewallConfigSecurityResponseRulesetsFromJSON(
   jsonString: string,
@@ -150,38 +154,46 @@ export const GetSecurityFirewallConfigVersions$inboundSchema: z.ZodType<
   GetSecurityFirewallConfigVersions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  botIdEnabled: types.optional(types.boolean()),
-  changes: z.array(
-    GetSecurityFirewallConfigSecurityResponseChanges$inboundSchema,
-  ),
-  conditions: types.optional(
-    z.array(GetSecurityFirewallConfigSecurityResponseConditions$inboundSchema),
-  ),
-  crs: types.optional(GetSecurityFirewallConfigSecurityCrs$inboundSchema),
-  firewallEnabled: types.boolean(),
-  id: types.string(),
-  ips: z.array(GetSecurityFirewallConfigSecurityIps$inboundSchema),
-  logHeaders: types.optional(
-    GetSecurityFirewallConfigSecurityResponseLogHeaders$inboundSchema,
-  ),
-  managedRules: types.optional(
-    GetSecurityFirewallConfigSecurityResponseManagedRules$inboundSchema,
-  ),
-  ownerId: types.string(),
-  projectKey: types.string(),
-  rules: z.array(GetSecurityFirewallConfigSecurityResponseRules$inboundSchema),
-  rulesets: types.optional(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    botIdEnabled: types.optional(types.boolean()),
+    changes: z.array(
+      GetSecurityFirewallConfigSecurityResponseChanges$inboundSchema,
+    ),
+    conditions: types.optional(
       z.array(
-        z.lazy(() => GetSecurityFirewallConfigRulesetsSecurity1$inboundSchema),
+        GetSecurityFirewallConfigSecurityResponseConditions$inboundSchema,
       ),
-      z.record(GetSecurityFirewallConfigRulesetsSecurity2$inboundSchema),
-    ]),
-  ),
-  updatedAt: types.string(),
-  version: types.number(),
-});
+    ),
+    crs: types.optional(GetSecurityFirewallConfigSecurityCrs$inboundSchema),
+    firewallEnabled: types.boolean(),
+    id: types.string(),
+    ips: z.array(GetSecurityFirewallConfigSecurityIps$inboundSchema),
+    logHeaders: types.optional(
+      GetSecurityFirewallConfigSecurityResponseLogHeaders$inboundSchema,
+    ),
+    managedRules: types.optional(
+      GetSecurityFirewallConfigSecurityResponseManagedRules$inboundSchema,
+    ),
+    ownerId: types.string(),
+    projectKey: types.string(),
+    rules: z.array(
+      GetSecurityFirewallConfigSecurityResponseRules$inboundSchema,
+    ),
+    rulesets: types.optional(
+      smartUnion([
+        z.array(
+          z.lazy(() =>
+            GetSecurityFirewallConfigRulesetsSecurity1$inboundSchema
+          ),
+        ),
+        z.record(GetSecurityFirewallConfigRulesetsSecurity2$inboundSchema),
+      ]),
+    ),
+    updatedAt: types.string(),
+    version: types.number(),
+  })
+);
 
 export function getSecurityFirewallConfigVersionsFromJSON(
   jsonString: string,
@@ -198,13 +210,15 @@ export const GetSecurityFirewallConfigResponseBody$inboundSchema: z.ZodType<
   GetSecurityFirewallConfigResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  active: types.nullable(Active$inboundSchema),
-  draft: types.nullable(Draft$inboundSchema),
-  versions: z.array(
-    z.lazy(() => GetSecurityFirewallConfigVersions$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: types.nullable(Active$inboundSchema),
+    draft: types.nullable(Draft$inboundSchema),
+    versions: z.array(
+      z.lazy(() => GetSecurityFirewallConfigVersions$inboundSchema),
+    ),
+  })
+);
 
 export function getSecurityFirewallConfigResponseBodyFromJSON(
   jsonString: string,

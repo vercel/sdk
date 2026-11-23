@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
@@ -45,11 +45,13 @@ export const ListSessionCommandsRequest$outboundSchema: z.ZodType<
   ListSessionCommandsRequest$Outbound,
   z.ZodTypeDef,
   ListSessionCommandsRequest
-> = z.object({
-  sessionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listSessionCommandsRequestToJSON(
   listSessionCommandsRequest: ListSessionCommandsRequest,
@@ -64,9 +66,11 @@ export const ListSessionCommandsResponseBody$inboundSchema: z.ZodType<
   ListSessionCommandsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  commands: z.array(SessionCommand$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    commands: z.array(SessionCommand$inboundSchema),
+  })
+);
 
 export function listSessionCommandsResponseBodyFromJSON(
   jsonString: string,

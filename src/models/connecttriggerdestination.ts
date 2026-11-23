@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -35,12 +35,14 @@ export const ConnectTriggerDestination$inboundSchema: z.ZodType<
   ConnectTriggerDestination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  branch: types.optional(types.string()),
-  customEnvironmentId: types.optional(types.string()),
-  path: types.optional(types.string()),
-  projectId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    branch: types.optional(types.string()),
+    customEnvironmentId: types.optional(types.string()),
+    path: types.optional(types.string()),
+    projectId: types.string(),
+  })
+);
 
 export function connectTriggerDestinationFromJSON(
   jsonString: string,

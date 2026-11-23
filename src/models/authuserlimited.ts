@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -55,17 +55,19 @@ export const AuthUserLimited$inboundSchema: z.ZodType<
   AuthUserLimited,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  avatar: types.nullable(types.string()),
-  defaultTeamId: types.nullable(types.string()),
-  email: types.string(),
-  id: types.string(),
-  isEnterpriseManaged: types.optional(types.boolean()),
-  limited: types.literal(true),
-  name: types.nullable(types.string()),
-  shouldShowEnterpriseManagedWelcome: types.optional(types.boolean()),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: types.nullable(types.string()),
+    defaultTeamId: types.nullable(types.string()),
+    email: types.string(),
+    id: types.string(),
+    isEnterpriseManaged: types.optional(types.boolean()),
+    limited: types.literal(true),
+    name: types.nullable(types.string()),
+    shouldShowEnterpriseManagedWelcome: types.optional(types.boolean()),
+    username: types.string(),
+  })
+);
 
 export function authUserLimitedFromJSON(
   jsonString: string,

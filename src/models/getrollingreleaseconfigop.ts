@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -82,11 +82,13 @@ export const GetRollingReleaseConfigRequest$outboundSchema: z.ZodType<
   GetRollingReleaseConfigRequest$Outbound,
   z.ZodTypeDef,
   GetRollingReleaseConfigRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getRollingReleaseConfigRequestToJSON(
   getRollingReleaseConfigRequest: GetRollingReleaseConfigRequest,
@@ -103,12 +105,14 @@ export const GetRollingReleaseConfigStages$inboundSchema: z.ZodType<
   GetRollingReleaseConfigStages,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  duration: types.optional(types.number()),
-  linearShift: types.optional(types.boolean()),
-  requireApproval: types.optional(types.boolean()),
-  targetPercentage: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    duration: types.optional(types.number()),
+    linearShift: types.optional(types.boolean()),
+    requireApproval: types.optional(types.boolean()),
+    targetPercentage: types.number(),
+  })
+);
 
 export function getRollingReleaseConfigStagesFromJSON(
   jsonString: string,
@@ -125,13 +129,15 @@ export const GetRollingReleaseConfigRollingRelease$inboundSchema: z.ZodType<
   GetRollingReleaseConfigRollingRelease,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canaryResponseHeader: types.optional(types.boolean()),
-  stages: z.nullable(
-    z.array(z.lazy(() => GetRollingReleaseConfigStages$inboundSchema)),
-  ).optional(),
-  target: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canaryResponseHeader: types.optional(types.boolean()),
+    stages: z.nullable(
+      z.array(z.lazy(() => GetRollingReleaseConfigStages$inboundSchema)),
+    ).optional(),
+    target: types.string(),
+  })
+);
 
 export function getRollingReleaseConfigRollingReleaseFromJSON(
   jsonString: string,
@@ -149,11 +155,13 @@ export const GetRollingReleaseConfigResponseBody$inboundSchema: z.ZodType<
   GetRollingReleaseConfigResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rollingRelease: types.nullable(
-    z.lazy(() => GetRollingReleaseConfigRollingRelease$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rollingRelease: types.nullable(
+      z.lazy(() => GetRollingReleaseConfigRollingRelease$inboundSchema),
+    ),
+  })
+);
 
 export function getRollingReleaseConfigResponseBodyFromJSON(
   jsonString: string,

@@ -5,29 +5,31 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyNine } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndSixtyNine } from "@vercel/sdk/models/usereventpayload260next.js";
 
 let value: TwoHundredAndSixtyNine = {
-  connectSrcCount: 6406.53,
-  connectSrcOriginCount: 9734.17,
-  deletedCount: 4008.74,
-  headerCount: 4318.76,
+  next: {
+    allowUnsafeScriptSrcKeywords: false,
+    enabled: false,
+    enforcePercentage: 4008.74,
+    mode: "<value>",
+    newResourceBlockingPolicy: "allow",
+  },
+  previous: {
+    allowUnsafeScriptSrcKeywords: true,
+    enabled: false,
+    enforcePercentage: 9914.99,
+    mode: "<value>",
+    newResourceBlockingPolicy: "allow",
+  },
   projectId: "<id>",
-  projectName: "<value>",
-  scriptCount: 1316.6,
 };
 ```
 
 ## Fields
 
-| Field                                  | Type                                   | Required                               | Description                            |
-| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
-| `connectSrcCount`                      | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcNormalizationRulesCleared`  | *boolean*                              | :heavy_minus_sign:                     | N/A                                    |
-| `connectSrcOriginCount`                | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `connectSrcUserNormalizationRuleCount` | *number*                               | :heavy_minus_sign:                     | N/A                                    |
-| `deletedCount`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `headerCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
-| `projectId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `projectName`                          | *string*                               | :heavy_check_mark:                     | N/A                                    |
-| `scriptCount`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload269Next](../models/usereventpayload269next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload269Previous](../models/usereventpayload269previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

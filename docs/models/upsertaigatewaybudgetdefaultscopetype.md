@@ -5,11 +5,11 @@
 ```typescript
 import { UpsertAiGatewayBudgetDefaultScopeType } from "@vercel/sdk/models/upsertaigatewaybudgetdefaultop.js";
 
-let value: UpsertAiGatewayBudgetDefaultScopeType = "project";
+let value: UpsertAiGatewayBudgetDefaultScopeType = "api-key";
 ```
 
 ## Values
 
 ```typescript
-"team" | "project" | "api-key" | "user"
+"team" | "project" | "api-key" | "user" | "app"
 ```

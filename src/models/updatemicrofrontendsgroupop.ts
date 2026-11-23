@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -61,11 +61,13 @@ export const UpdateMicrofrontendsGroupRequestBody$outboundSchema: z.ZodType<
   UpdateMicrofrontendsGroupRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateMicrofrontendsGroupRequestBody
-> = z.object({
-  name: z.string().optional(),
-  fallbackEnvironment: z.string().optional(),
-  enablePolyrepoBranchRouting: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    fallbackEnvironment: z.string().optional(),
+    enablePolyrepoBranchRouting: z.boolean().optional(),
+  })
+);
 
 export function updateMicrofrontendsGroupRequestBodyToJSON(
   updateMicrofrontendsGroupRequestBody: UpdateMicrofrontendsGroupRequestBody,
@@ -90,17 +92,20 @@ export const UpdateMicrofrontendsGroupRequest$outboundSchema: z.ZodType<
   UpdateMicrofrontendsGroupRequest$Outbound,
   z.ZodTypeDef,
   UpdateMicrofrontendsGroupRequest
-> = z.object({
-  groupId: z.string(),
-  teamId: z.string(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateMicrofrontendsGroupRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    groupId: z.string(),
+    teamId: z.string(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      UpdateMicrofrontendsGroupRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateMicrofrontendsGroupRequestToJSON(
   updateMicrofrontendsGroupRequest: UpdateMicrofrontendsGroupRequest,
@@ -117,13 +122,15 @@ export const UpdatedMicrofrontendsGroup$inboundSchema: z.ZodType<
   UpdatedMicrofrontendsGroup,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enablePolyrepoBranchRouting: types.optional(types.boolean()),
-  fallbackEnvironment: types.optional(types.string()),
-  id: types.string(),
-  name: types.optional(types.string()),
-  slug: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enablePolyrepoBranchRouting: types.optional(types.boolean()),
+    fallbackEnvironment: types.optional(types.string()),
+    id: types.string(),
+    name: types.optional(types.string()),
+    slug: types.optional(types.string()),
+  })
+);
 
 export function updatedMicrofrontendsGroupFromJSON(
   jsonString: string,
@@ -140,11 +147,13 @@ export const UpdateMicrofrontendsGroupResponseBody$inboundSchema: z.ZodType<
   UpdateMicrofrontendsGroupResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  updatedMicrofrontendsGroup: z.lazy(() =>
-    UpdatedMicrofrontendsGroup$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    updatedMicrofrontendsGroup: z.lazy(() =>
+      UpdatedMicrofrontendsGroup$inboundSchema
+    ),
+  })
+);
 
 export function updateMicrofrontendsGroupResponseBodyFromJSON(
   jsonString: string,

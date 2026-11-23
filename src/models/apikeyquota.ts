@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -63,19 +63,21 @@ export const APIKeyQuota$inboundSchema: z.ZodType<
   APIKeyQuota,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  quotaEntityId: types.string(),
-  limitAmount: types.number(),
-  currentSpend: types.number(),
-  currentByokSpend: types.number(),
-  includeByokInQuota: types.boolean(),
-  refreshPeriod: types.string(),
-  active: types.boolean(),
-  archived: types.boolean(),
-  alertThresholds: types.optional(z.array(types.number())),
-  createdAt: types.number(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    quotaEntityId: types.string(),
+    limitAmount: types.number(),
+    currentSpend: types.number(),
+    currentByokSpend: types.number(),
+    includeByokInQuota: types.boolean(),
+    refreshPeriod: types.string(),
+    active: types.boolean(),
+    archived: types.boolean(),
+    alertThresholds: types.optional(z.array(types.number())),
+    createdAt: types.number(),
+    updatedAt: types.number(),
+  })
+);
 
 export function apiKeyQuotaFromJSON(
   jsonString: string,

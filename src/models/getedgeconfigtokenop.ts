@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type GetEdgeConfigTokenRequest = {
   edgeConfigId: string;
@@ -30,12 +31,14 @@ export const GetEdgeConfigTokenRequest$outboundSchema: z.ZodType<
   GetEdgeConfigTokenRequest$Outbound,
   z.ZodTypeDef,
   GetEdgeConfigTokenRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  token: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string(),
+    token: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getEdgeConfigTokenRequestToJSON(
   getEdgeConfigTokenRequest: GetEdgeConfigTokenRequest,

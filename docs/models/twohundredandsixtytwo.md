@@ -5,21 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyTwo } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndSixtyTwo } from "@vercel/sdk/models/usereventpayload260next.js";
 
 let value: TwoHundredAndSixtyTwo = {
-  cause: "<value>",
-  ownerId: "<id>",
-  source: "<value>",
+  enforced: true,
+  organizationId: "<id>",
+  organizationSlug: "<value>",
+  previousEnforced: false,
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `blockReason`                              | *string*                                   | :heavy_minus_sign:                         | N/A                                        |
-| `cause`                                    | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `ownerId`                                  | *string*                                   | :heavy_check_mark:                         | N/A                                        |
-| `siftRoute`                                | [models.SiftRoute](../models/siftroute.md) | :heavy_minus_sign:                         | N/A                                        |
-| `source`                                   | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
+| `previousEnforced` | *boolean*          | :heavy_check_mark: | N/A                |

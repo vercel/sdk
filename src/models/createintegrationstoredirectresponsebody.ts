@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -292,10 +292,12 @@ export const CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSche
     CreateIntegrationStoreDirectSecretRotationIntegrations1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    customRotationWarning: types.optional(types.string()),
-    maxDelayHours: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      customRotationWarning: types.optional(types.string()),
+      maxDelayHours: types.number(),
+    })
+  );
 
 export function createIntegrationStoreDirectSecretRotationIntegrations1FromJSON(
   jsonString: string,
@@ -318,12 +320,14 @@ export const CreateIntegrationStoreDirectIntegrationsSecretRotation$inboundSchem
     CreateIntegrationStoreDirectIntegrationsSecretRotation,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.lazy(() =>
-      CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema
-    ),
-    types.boolean(),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() =>
+        CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema
+      ),
+      types.boolean(),
+    ])
+  );
 
 export function createIntegrationStoreDirectIntegrationsSecretRotationFromJSON(
   jsonString: string,
@@ -346,37 +350,37 @@ export const CreateIntegrationStoreDirectIntegrationsCapabilities$inboundSchema:
     CreateIntegrationStoreDirectIntegrationsCapabilities,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    billable: types.optional(types.boolean()),
-    checks: types.optional(types.boolean()),
-    connectedImportResource: types.optional(types.boolean()),
-    connectedProvisioning: types.optional(types.boolean()),
-    credentialTypesCreate: types.optional(
-      z.array(z.array(CredentialTypesCreate$inboundSchema)),
-    ),
-    flexCommitEligible: types.optional(types.boolean()),
-    importResource: types.optional(types.boolean()),
-    maxAllowedTeams: types.optional(types.number()),
-    mcp: types.optional(types.boolean()),
-    mcpConfiguration: types.optional(types.boolean()),
-    mcpReadonly: types.optional(types.boolean()),
-    nativeImportResource: types.optional(types.boolean()),
-    provisioning: types.optional(types.boolean()),
-    requiresBrowserInstall: types.optional(types.boolean()),
-    secretRotation: types.optional(
-      smartUnion([
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      billable: types.optional(types.boolean()),
+      checks: types.optional(types.boolean()),
+      connectedImportResource: types.optional(types.boolean()),
+      connectedProvisioning: types.optional(types.boolean()),
+      credentialTypesCreate: types.optional(
+        z.array(z.array(CredentialTypesCreate$inboundSchema)),
+      ),
+      flexCommitEligible: types.optional(types.boolean()),
+      importResource: types.optional(types.boolean()),
+      maxAllowedTeams: types.optional(types.number()),
+      mcp: types.optional(types.boolean()),
+      mcpConfiguration: types.optional(types.boolean()),
+      mcpReadonly: types.optional(types.boolean()),
+      nativeImportResource: types.optional(types.boolean()),
+      provisioning: types.optional(types.boolean()),
+      requiresBrowserInstall: types.optional(types.boolean()),
+      secretRotation: types.optional(smartUnion([
         z.lazy(() =>
           CreateIntegrationStoreDirectSecretRotationIntegrations1$inboundSchema
         ),
         types.boolean(),
-      ]),
-    ),
-    sso: types.optional(types.boolean()),
-    templateCloneOnly: types.optional(types.boolean()),
-    transferable: types.optional(types.boolean()),
-    updateConfiguration: types.optional(types.boolean()),
-    v0Flavors: types.optional(types.boolean()),
-  });
+      ])),
+      sso: types.optional(types.boolean()),
+      templateCloneOnly: types.optional(types.boolean()),
+      transferable: types.optional(types.boolean()),
+      updateConfiguration: types.optional(types.boolean()),
+      v0Flavors: types.optional(types.boolean()),
+    })
+  );
 
 export function createIntegrationStoreDirectIntegrationsCapabilitiesFromJSON(
   jsonString: string,
@@ -399,19 +403,19 @@ export const CreateIntegrationStoreDirectIntegration$inboundSchema: z.ZodType<
   CreateIntegrationStoreDirectIntegration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  capabilities: types.optional(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    capabilities: types.optional(z.lazy(() =>
       CreateIntegrationStoreDirectIntegrationsCapabilities$inboundSchema
-    ),
-  ),
-  flags: types.optional(z.array(types.string())),
-  icon: types.string(),
-  id: types.string(),
-  name: types.string(),
-  slug: types.string(),
-  supportsInstallationBillingPlans: types.optional(types.boolean()),
-});
+    )),
+    flags: types.optional(z.array(types.string())),
+    icon: types.string(),
+    id: types.string(),
+    name: types.string(),
+    slug: types.string(),
+    supportsInstallationBillingPlans: types.optional(types.boolean()),
+  })
+);
 
 export function createIntegrationStoreDirectIntegrationFromJSON(
   jsonString: string,
@@ -432,55 +436,59 @@ export function createIntegrationStoreDirectIntegrationFromJSON(
 /** @internal */
 export const LogDrainStatus$inboundSchema: z.ZodNativeEnum<
   typeof LogDrainStatus
-> = z.nativeEnum(LogDrainStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(LogDrainStatus));
 
 /** @internal */
 export const CreateIntegrationStoreDirectPrimaryProtocol$inboundSchema:
-  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectPrimaryProtocol> = z
-    .nativeEnum(CreateIntegrationStoreDirectPrimaryProtocol);
+  z.ZodNativeEnum<typeof CreateIntegrationStoreDirectPrimaryProtocol> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateIntegrationStoreDirectPrimaryProtocol)
+    );
 
 /** @internal */
 export const SupportedProtocols$inboundSchema: z.ZodNativeEnum<
   typeof SupportedProtocols
-> = z.nativeEnum(SupportedProtocols);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SupportedProtocols));
 
 /** @internal */
 export const Product$inboundSchema: z.ZodType<Product, z.ZodTypeDef, unknown> =
-  z.object({
-    agentSkills: types.optional(z.array(types.string())),
-    capabilities: types.optional(
-      CreateIntegrationStoreDirectCapabilities$inboundSchema,
-    ),
-    disableResourceRenaming: types.optional(types.boolean()),
-    iconUrl: types.optional(types.string()),
-    id: types.optional(types.string()),
-    metadataSchema: types.optional(
-      CreateIntegrationStoreDirectMetadataSchema$inboundSchema,
-    ),
-    name: types.optional(types.string()),
-    projectConnectionScopes: types.optional(
-      z.array(ProjectConnectionScopes$inboundSchema),
-    ),
-    resourceLinks: types.optional(z.array(ResourceLinks$inboundSchema)),
-    resourceTitle: types.optional(types.string()),
-    shortDescription: types.optional(types.string()),
-    showSSOLinkOnProjectConnection: types.optional(types.boolean()),
-    slug: types.optional(types.string()),
-    tags: types.optional(
-      z.array(CreateIntegrationStoreDirectTags$inboundSchema),
-    ),
-    repl: types.optional(Repl$inboundSchema),
-    guides: types.optional(z.array(Guides$inboundSchema)),
-    integration: z.lazy(() =>
-      CreateIntegrationStoreDirectIntegration$inboundSchema
-    ),
-    integrationConfigurationId: types.string(),
-    logDrainStatus: types.optional(LogDrainStatus$inboundSchema),
-    primaryProtocol: types.optional(
-      CreateIntegrationStoreDirectPrimaryProtocol$inboundSchema,
-    ),
-    supportedProtocols: z.array(SupportedProtocols$inboundSchema),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      agentSkills: types.optional(z.array(types.string())),
+      capabilities: types.optional(
+        CreateIntegrationStoreDirectCapabilities$inboundSchema,
+      ),
+      disableResourceRenaming: types.optional(types.boolean()),
+      iconUrl: types.optional(types.string()),
+      id: types.optional(types.string()),
+      metadataSchema: types.optional(
+        CreateIntegrationStoreDirectMetadataSchema$inboundSchema,
+      ),
+      name: types.optional(types.string()),
+      projectConnectionScopes: types.optional(
+        z.array(ProjectConnectionScopes$inboundSchema),
+      ),
+      resourceLinks: types.optional(z.array(ResourceLinks$inboundSchema)),
+      resourceTitle: types.optional(types.string()),
+      shortDescription: types.optional(types.string()),
+      showSSOLinkOnProjectConnection: types.optional(types.boolean()),
+      slug: types.optional(types.string()),
+      tags: types.optional(
+        z.array(CreateIntegrationStoreDirectTags$inboundSchema),
+      ),
+      repl: types.optional(Repl$inboundSchema),
+      guides: types.optional(z.array(Guides$inboundSchema)),
+      integration: z.lazy(() =>
+        CreateIntegrationStoreDirectIntegration$inboundSchema
+      ),
+      integrationConfigurationId: types.string(),
+      logDrainStatus: types.optional(LogDrainStatus$inboundSchema),
+      primaryProtocol: types.optional(
+        CreateIntegrationStoreDirectPrimaryProtocol$inboundSchema,
+      ),
+      supportedProtocols: z.array(SupportedProtocols$inboundSchema),
+    })
+  );
 
 export function productFromJSON(
   jsonString: string,
@@ -495,17 +503,21 @@ export function productFromJSON(
 /** @internal */
 export const CreateIntegrationStoreDirectTarget$inboundSchema: z.ZodNativeEnum<
   typeof CreateIntegrationStoreDirectTarget
-> = z.nativeEnum(CreateIntegrationStoreDirectTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateIntegrationStoreDirectTarget)
+);
 
 /** @internal */
 export const CreateIntegrationStoreDirectAppUrls$inboundSchema: z.ZodType<
   CreateIntegrationStoreDirectAppUrls,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  target: CreateIntegrationStoreDirectTarget$inboundSchema,
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    target: CreateIntegrationStoreDirectTarget$inboundSchema,
+    url: types.string(),
+  })
+);
 
 export function createIntegrationStoreDirectAppUrlsFromJSON(
   jsonString: string,
@@ -521,13 +533,13 @@ export function createIntegrationStoreDirectAppUrlsFromJSON(
 /** @internal */
 export const CreateIntegrationStoreDirectAuthentication$inboundSchema:
   z.ZodType<CreateIntegrationStoreDirectAuthentication, z.ZodTypeDef, unknown> =
-    z.object({
-      appUrls: types.optional(
-        z.array(
-          z.lazy(() => CreateIntegrationStoreDirectAppUrls$inboundSchema),
-        ),
-      ),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        appUrls: types.optional(z.array(z.lazy(() =>
+          CreateIntegrationStoreDirectAppUrls$inboundSchema
+        ))),
+      })
+    );
 
 export function createIntegrationStoreDirectAuthenticationFromJSON(
   jsonString: string,
@@ -551,13 +563,15 @@ export const CreateIntegrationStoreDirectExperimentation$inboundSchema:
     CreateIntegrationStoreDirectExperimentation,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    edgeConfigId: types.optional(types.string()),
-    edgeConfigSyncingEnabled: types.optional(types.boolean()),
-    edgeConfigTokenId: types.optional(types.string()),
-    globalConfigId: types.optional(types.string()),
-    globalConfigSyncingEnabled: types.optional(types.boolean()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      edgeConfigId: types.optional(types.string()),
+      edgeConfigSyncingEnabled: types.optional(types.boolean()),
+      edgeConfigTokenId: types.optional(types.string()),
+      globalConfigId: types.optional(types.string()),
+      globalConfigSyncingEnabled: types.optional(types.boolean()),
+    })
+  );
 
 export function createIntegrationStoreDirectExperimentationFromJSON(
   jsonString: string,
@@ -581,14 +595,16 @@ export const CreateIntegrationStoreDirectProtocolSettings$inboundSchema:
     CreateIntegrationStoreDirectProtocolSettings,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    authentication: types.optional(
-      z.lazy(() => CreateIntegrationStoreDirectAuthentication$inboundSchema),
-    ),
-    experimentation: types.optional(
-      z.lazy(() => CreateIntegrationStoreDirectExperimentation$inboundSchema),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      authentication: types.optional(
+        z.lazy(() => CreateIntegrationStoreDirectAuthentication$inboundSchema),
+      ),
+      experimentation: types.optional(
+        z.lazy(() => CreateIntegrationStoreDirectExperimentation$inboundSchema),
+      ),
+    })
+  );
 
 export function createIntegrationStoreDirectProtocolSettingsFromJSON(
   jsonString: string,
@@ -611,13 +627,15 @@ export const CreateIntegrationStoreDirectSecrets$inboundSchema: z.ZodType<
   CreateIntegrationStoreDirectSecrets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  frameworkPublishable: types.optional(types.boolean()),
-  length: types.number(),
-  name: types.string(),
-  nonSensitive: types.optional(types.boolean()),
-  tokenSetKey: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    frameworkPublishable: types.optional(types.boolean()),
+    length: types.number(),
+    name: types.string(),
+    nonSensitive: types.optional(types.boolean()),
+    tokenSetKey: types.optional(types.string()),
+  })
+);
 
 export function createIntegrationStoreDirectSecretsFromJSON(
   jsonString: string,
@@ -633,63 +651,67 @@ export function createIntegrationStoreDirectSecretsFromJSON(
 /** @internal */
 export const CreateIntegrationStoreDirectTargets$inboundSchema: z.ZodNativeEnum<
   typeof CreateIntegrationStoreDirectTargets
-> = z.nativeEnum(CreateIntegrationStoreDirectTargets);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateIntegrationStoreDirectTargets)
+);
 
 /** @internal */
 export const CreateIntegrationStoreDirectStore$inboundSchema: z.ZodType<
   CreateIntegrationStoreDirectStore,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectFilter: types.optional(
-    CreateIntegrationStoreDirectProjectFilter$inboundSchema,
-  ),
-  projectsMetadata: z.array(
-    CreateIntegrationStoreDirectProjectsMetadata$inboundSchema,
-  ),
-  status: types.nullable(CreateIntegrationStoreDirectStatus$inboundSchema),
-  totalConnectedProjects: types.optional(types.number()),
-  usageQuotaExceeded: types.boolean(),
-  billingPlan: types.optional(
-    CreateIntegrationStoreDirectBillingPlan$inboundSchema,
-  ),
-  capabilities: types.optional(Capabilities$inboundSchema),
-  credentialTypes: types.optional(
-    z.array(CreateIntegrationStoreDirectCredentialTypes$inboundSchema),
-  ),
-  credentialTypesTransition: types.optional(
-    CredentialTypesTransition$inboundSchema,
-  ),
-  directPartnerConsoleUrl: types.optional(types.string()),
-  externalResourceId: types.string(),
-  externalResourceStatus: z.nullable(ExternalResourceStatus$inboundSchema)
-    .optional(),
-  metadata: types.optional(
-    z.record(CreateIntegrationStoreDirectIntegrationsMetadata$inboundSchema),
-  ),
-  notification: types.optional(
-    CreateIntegrationStoreDirectNotification$inboundSchema,
-  ),
-  ownership: types.optional(
-    CreateIntegrationStoreDirectOwnership$inboundSchema,
-  ),
-  parentId: types.optional(types.string()),
-  product: z.lazy(() => Product$inboundSchema),
-  protocolSettings: types.optional(
-    z.lazy(() => CreateIntegrationStoreDirectProtocolSettings$inboundSchema),
-  ),
-  secretRotationCompletedAt: types.optional(types.number()),
-  secretRotationRequestedAt: types.optional(types.number()),
-  secretRotationRequestedBy: types.optional(types.string()),
-  secretRotationRequestedReason: types.optional(types.string()),
-  secrets: z.array(
-    z.lazy(() => CreateIntegrationStoreDirectSecrets$inboundSchema),
-  ),
-  secretsAppliedAt: types.optional(types.number()),
-  targets: types.optional(
-    z.array(CreateIntegrationStoreDirectTargets$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectFilter: types.optional(
+      CreateIntegrationStoreDirectProjectFilter$inboundSchema,
+    ),
+    projectsMetadata: z.array(
+      CreateIntegrationStoreDirectProjectsMetadata$inboundSchema,
+    ),
+    status: types.nullable(CreateIntegrationStoreDirectStatus$inboundSchema),
+    totalConnectedProjects: types.optional(types.number()),
+    usageQuotaExceeded: types.boolean(),
+    billingPlan: types.optional(
+      CreateIntegrationStoreDirectBillingPlan$inboundSchema,
+    ),
+    capabilities: types.optional(Capabilities$inboundSchema),
+    credentialTypes: types.optional(
+      z.array(CreateIntegrationStoreDirectCredentialTypes$inboundSchema),
+    ),
+    credentialTypesTransition: types.optional(
+      CredentialTypesTransition$inboundSchema,
+    ),
+    directPartnerConsoleUrl: types.optional(types.string()),
+    externalResourceId: types.string(),
+    externalResourceStatus: z.nullable(ExternalResourceStatus$inboundSchema)
+      .optional(),
+    metadata: types.optional(
+      z.record(CreateIntegrationStoreDirectIntegrationsMetadata$inboundSchema),
+    ),
+    notification: types.optional(
+      CreateIntegrationStoreDirectNotification$inboundSchema,
+    ),
+    ownership: types.optional(
+      CreateIntegrationStoreDirectOwnership$inboundSchema,
+    ),
+    parentId: types.optional(types.string()),
+    product: z.lazy(() => Product$inboundSchema),
+    protocolSettings: types.optional(
+      z.lazy(() => CreateIntegrationStoreDirectProtocolSettings$inboundSchema),
+    ),
+    secretRotationCompletedAt: types.optional(types.number()),
+    secretRotationRequestedAt: types.optional(types.number()),
+    secretRotationRequestedBy: types.optional(types.string()),
+    secretRotationRequestedReason: types.optional(types.string()),
+    secrets: z.array(
+      z.lazy(() => CreateIntegrationStoreDirectSecrets$inboundSchema),
+    ),
+    secretsAppliedAt: types.optional(types.number()),
+    targets: types.optional(
+      z.array(CreateIntegrationStoreDirectTargets$inboundSchema),
+    ),
+  })
+);
 
 export function createIntegrationStoreDirectStoreFromJSON(
   jsonString: string,
@@ -706,11 +728,13 @@ export const CreateIntegrationStoreDirectResponseBody$inboundSchema: z.ZodType<
   CreateIntegrationStoreDirectResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  store: types.nullable(
-    z.lazy(() => CreateIntegrationStoreDirectStore$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    store: types.nullable(
+      z.lazy(() => CreateIntegrationStoreDirectStore$inboundSchema),
+    ),
+  })
+);
 
 export function createIntegrationStoreDirectResponseBodyFromJSON(
   jsonString: string,

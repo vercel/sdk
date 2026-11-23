@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type ListProjectConnectorConnectionsRequest = {
   /**
@@ -41,13 +42,15 @@ export const ListProjectConnectorConnectionsRequest$outboundSchema: z.ZodType<
   ListProjectConnectorConnectionsRequest$Outbound,
   z.ZodTypeDef,
   ListProjectConnectorConnectionsRequest
-> = z.object({
-  projectId: z.string(),
-  limit: z.number().int().optional(),
-  cursor: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    limit: z.number().int().optional(),
+    cursor: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listProjectConnectorConnectionsRequestToJSON(
   listProjectConnectorConnectionsRequest:

@@ -8,20 +8,14 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentyThree } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyThree = {
-  alertType: "<value>",
-  groupId: "<id>",
-  projectId: "<id>",
-  destinations: {},
+  nextProjectCount: 1041.32,
+  previousProjectCount: 2260.24,
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `alertType`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `groupId`                                                      | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `severity`                                                     | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
-| `destinations`                                                 | [models.PayloadDestinations](../models/payloaddestinations.md) | :heavy_check_mark:                                             | N/A                                                            |
-| `title`                                                        | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `nextProjectCount`     | *number*               | :heavy_check_mark:     | N/A                    |
+| `previousProjectCount` | *number*               | :heavy_check_mark:     | N/A                    |

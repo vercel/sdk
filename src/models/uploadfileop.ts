@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -83,28 +83,30 @@ export const UploadFileRequest$outboundSchema: z.ZodType<
   UploadFileRequest$Outbound,
   z.ZodTypeDef,
   UploadFileRequest
-> = z.object({
-  contentLength: z.number().optional(),
-  xVercelDigest: z.string().optional(),
-  xNowDigest: z.string().optional(),
-  xNowSize: z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentLength: "Content-Length",
-    xVercelDigest: "x-vercel-digest",
-    xNowDigest: "x-now-digest",
-    xNowSize: "x-now-size",
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    contentLength: z.number().optional(),
+    xVercelDigest: z.string().optional(),
+    xNowDigest: z.string().optional(),
+    xNowSize: z.number().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      contentLength: "Content-Length",
+      xVercelDigest: "x-vercel-digest",
+      xNowDigest: "x-now-digest",
+      xNowSize: "x-now-size",
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function uploadFileRequestToJSON(
   uploadFileRequest: UploadFileRequest,
@@ -119,7 +121,7 @@ export const UploadFileResponseBody2$inboundSchema: z.ZodType<
   UploadFileResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function uploadFileResponseBody2FromJSON(
   jsonString: string,
@@ -136,9 +138,11 @@ export const UploadFileResponseBody1$inboundSchema: z.ZodType<
   UploadFileResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  urls: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    urls: z.array(types.string()),
+  })
+);
 
 export function uploadFileResponseBody1FromJSON(
   jsonString: string,
@@ -155,10 +159,12 @@ export const UploadFileResponseBody$inboundSchema: z.ZodType<
   UploadFileResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UploadFileResponseBody1$inboundSchema),
-  z.lazy(() => UploadFileResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UploadFileResponseBody1$inboundSchema),
+    z.lazy(() => UploadFileResponseBody2$inboundSchema),
+  ])
+);
 
 export function uploadFileResponseBodyFromJSON(
   jsonString: string,

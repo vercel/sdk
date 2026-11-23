@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -46,9 +46,11 @@ export const IssueCertRequestBody$outboundSchema: z.ZodType<
   IssueCertRequestBody$Outbound,
   z.ZodTypeDef,
   IssueCertRequestBody
-> = z.object({
-  cns: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cns: z.array(z.string()).optional(),
+  })
+);
 
 export function issueCertRequestBodyToJSON(
   issueCertRequestBody: IssueCertRequestBody,
@@ -70,15 +72,17 @@ export const IssueCertRequest$outboundSchema: z.ZodType<
   IssueCertRequest$Outbound,
   z.ZodTypeDef,
   IssueCertRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => IssueCertRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => IssueCertRequestBody$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function issueCertRequestToJSON(
   issueCertRequest: IssueCertRequest,
@@ -93,13 +97,15 @@ export const IssueCertResponseBody$inboundSchema: z.ZodType<
   IssueCertResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  autoRenew: types.boolean(),
-  cns: z.array(types.string()),
-  createdAt: types.number(),
-  expiresAt: types.number(),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    autoRenew: types.boolean(),
+    cns: z.array(types.string()),
+    createdAt: types.number(),
+    expiresAt: types.number(),
+    id: types.string(),
+  })
+);
 
 export function issueCertResponseBodyFromJSON(
   jsonString: string,

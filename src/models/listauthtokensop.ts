@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -39,10 +39,12 @@ export const ListAuthTokensResponseBody2$inboundSchema: z.ZodType<
   ListAuthTokensResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: Pagination$inboundSchema,
-  tokens: z.array(AuthToken$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: Pagination$inboundSchema,
+    tokens: z.array(AuthToken$inboundSchema),
+  })
+);
 
 export function listAuthTokensResponseBody2FromJSON(
   jsonString: string,
@@ -59,11 +61,13 @@ export const ListAuthTokensResponseBodyPagination$inboundSchema: z.ZodType<
   ListAuthTokensResponseBodyPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  next: types.nullable(types.string()),
-  prev: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    next: types.nullable(types.string()),
+    prev: types.nullable(types.string()),
+  })
+);
 
 export function listAuthTokensResponseBodyPaginationFromJSON(
   jsonString: string,
@@ -81,10 +85,14 @@ export const ListAuthTokensResponseBody1$inboundSchema: z.ZodType<
   ListAuthTokensResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: z.lazy(() => ListAuthTokensResponseBodyPagination$inboundSchema),
-  tokens: z.array(AuthToken$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: z.lazy(() =>
+      ListAuthTokensResponseBodyPagination$inboundSchema
+    ),
+    tokens: z.array(AuthToken$inboundSchema),
+  })
+);
 
 export function listAuthTokensResponseBody1FromJSON(
   jsonString: string,
@@ -101,10 +109,12 @@ export const ListAuthTokensResponseBody$inboundSchema: z.ZodType<
   ListAuthTokensResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => ListAuthTokensResponseBody1$inboundSchema),
-  z.lazy(() => ListAuthTokensResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => ListAuthTokensResponseBody1$inboundSchema),
+    z.lazy(() => ListAuthTokensResponseBody2$inboundSchema),
+  ])
+);
 
 export function listAuthTokensResponseBodyFromJSON(
   jsonString: string,

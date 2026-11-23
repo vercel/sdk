@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -93,11 +93,13 @@ export const PaidFeatures$outboundSchema: z.ZodType<
   PaidFeatures$Outbound,
   z.ZodTypeDef,
   PaidFeatures
-> = z.object({
-  concurrentBuilds: z.nullable(z.number().int()).optional(),
-  passwordProtection: z.nullable(z.boolean()).optional(),
-  previewDeploymentSuffix: z.nullable(z.boolean()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    concurrentBuilds: z.nullable(z.number().int()).optional(),
+    passwordProtection: z.nullable(z.boolean()).optional(),
+    previewDeploymentSuffix: z.nullable(z.boolean()).optional(),
+  })
+);
 
 export function paidFeaturesToJSON(paidFeatures: PaidFeatures): string {
   return JSON.stringify(PaidFeatures$outboundSchema.parse(paidFeatures));
@@ -115,19 +117,21 @@ export const AcceptedPolicies$outboundSchema: z.ZodType<
   AcceptedPolicies$Outbound,
   z.ZodTypeDef,
   AcceptedPolicies
-> = z.object({
-  eula: z.date().transform(v => v.toISOString()),
-  privacy: z.date().transform(v => v.toISOString()),
-  additionalProperties: z.record(z.date().transform(v => v.toISOString()))
-    .optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      additionalProperties: null,
-    }),
-  };
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eula: z.date().transform(v => v.toISOString()),
+    privacy: z.date().transform(v => v.toISOString()),
+    additionalProperties: z.record(z.date().transform(v => v.toISOString()))
+      .optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        additionalProperties: null,
+      }),
+    };
+  })
+);
 
 export function acceptedPoliciesToJSON(
   acceptedPolicies: AcceptedPolicies,
@@ -149,12 +153,14 @@ export const AcceptProjectTransferRequestRequestBody$outboundSchema: z.ZodType<
   AcceptProjectTransferRequestRequestBody$Outbound,
   z.ZodTypeDef,
   AcceptProjectTransferRequestRequestBody
-> = z.object({
-  newProjectName: z.string().optional(),
-  paidFeatures: z.lazy(() => PaidFeatures$outboundSchema).optional(),
-  acceptedPolicies: z.record(z.lazy(() => AcceptedPolicies$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    newProjectName: z.string().optional(),
+    paidFeatures: z.lazy(() => PaidFeatures$outboundSchema).optional(),
+    acceptedPolicies: z.record(z.lazy(() => AcceptedPolicies$outboundSchema))
+      .optional(),
+  })
+);
 
 export function acceptProjectTransferRequestRequestBodyToJSON(
   acceptProjectTransferRequestRequestBody:
@@ -180,18 +186,20 @@ export const AcceptProjectTransferRequestRequest$outboundSchema: z.ZodType<
   AcceptProjectTransferRequestRequest$Outbound,
   z.ZodTypeDef,
   AcceptProjectTransferRequestRequest
-> = z.object({
-  code: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    AcceptProjectTransferRequestRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      AcceptProjectTransferRequestRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function acceptProjectTransferRequestRequestToJSON(
   acceptProjectTransferRequestRequest: AcceptProjectTransferRequestRequest,
@@ -208,7 +216,7 @@ export const AcceptProjectTransferRequestError$inboundSchema: z.ZodType<
   AcceptProjectTransferRequestError,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function acceptProjectTransferRequestErrorFromJSON(
   jsonString: string,
@@ -223,20 +231,24 @@ export function acceptProjectTransferRequestErrorFromJSON(
 /** @internal */
 export const AcceptProjectTransferRequestStatus$inboundSchema: z.ZodNativeEnum<
   typeof AcceptProjectTransferRequestStatus
-> = z.nativeEnum(AcceptProjectTransferRequestStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(AcceptProjectTransferRequestStatus)
+);
 
 /** @internal */
 export const AcceptProjectTransferRequestResult$inboundSchema: z.ZodType<
   AcceptProjectTransferRequestResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.optional(types.string()),
-  error: types.optional(
-    z.lazy(() => AcceptProjectTransferRequestError$inboundSchema),
-  ),
-  status: AcceptProjectTransferRequestStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.optional(types.string()),
+    error: types.optional(
+      z.lazy(() => AcceptProjectTransferRequestError$inboundSchema),
+    ),
+    status: AcceptProjectTransferRequestStatus$inboundSchema,
+  })
+);
 
 export function acceptProjectTransferRequestResultFromJSON(
   jsonString: string,
@@ -254,11 +266,13 @@ export const PartnerCalls$inboundSchema: z.ZodType<
   PartnerCalls,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  installationId: types.string(),
-  resourceIds: z.array(types.string()),
-  result: z.lazy(() => AcceptProjectTransferRequestResult$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    installationId: types.string(),
+    resourceIds: z.array(types.string()),
+    result: z.lazy(() => AcceptProjectTransferRequestResult$inboundSchema),
+  })
+);
 
 export function partnerCallsFromJSON(
   jsonString: string,
@@ -275,7 +289,7 @@ export const ResourceTransferErrors$inboundSchema: z.ZodType<
   ResourceTransferErrors,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function resourceTransferErrorsFromJSON(
   jsonString: string,
@@ -292,14 +306,16 @@ export const AcceptProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
   AcceptProjectTransferRequestResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  partnerCalls: z.array(z.lazy(() => PartnerCalls$inboundSchema)),
-  projectName: types.string(),
-  resourceTransferErrors: z.array(
-    z.lazy(() => ResourceTransferErrors$inboundSchema),
-  ),
-  transferredStoreIds: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    partnerCalls: z.array(z.lazy(() => PartnerCalls$inboundSchema)),
+    projectName: types.string(),
+    resourceTransferErrors: z.array(
+      z.lazy(() => ResourceTransferErrors$inboundSchema),
+    ),
+    transferredStoreIds: z.array(types.string()),
+  })
+);
 
 export function acceptProjectTransferRequestResponseBodyFromJSON(
   jsonString: string,

@@ -3,14 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload442Next } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { UserEventPayload442Next } from "@vercel/sdk/models/fourhundredandthirtynine.js";
 
-let value: UserEventPayload442Next = {};
+let value: UserEventPayload442Next = "basic";
 ```
 
-## Fields
+## Values
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `deploymentSources` | *any*[]             | :heavy_minus_sign:  | N/A                 |
-| `gitSources`        | *any*[]             | :heavy_minus_sign:  | N/A                 |
+```typescript
+"basic" | "elastic" | "enhanced" | "standard" | "turbo"
+```

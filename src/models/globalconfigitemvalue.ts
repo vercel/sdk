@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -21,13 +21,15 @@ export const GlobalConfigItemValue$inboundSchema: z.ZodType<
   GlobalConfigItemValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  types.string(),
-  types.number(),
-  z.record(types.nullable(z.lazy(() => GlobalConfigItemValue$inboundSchema))),
-  z.array(types.nullable(z.lazy(() => GlobalConfigItemValue$inboundSchema))),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    types.string(),
+    types.number(),
+    z.record(types.nullable(z.lazy(() => GlobalConfigItemValue$inboundSchema))),
+    z.array(types.nullable(z.lazy(() => GlobalConfigItemValue$inboundSchema))),
+    types.boolean(),
+  ])
+);
 
 export function globalConfigItemValueFromJSON(
   jsonString: string,

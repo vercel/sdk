@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -85,14 +85,16 @@ export const ListAccessGroupMembersRequest$outboundSchema: z.ZodType<
   ListAccessGroupMembersRequest$Outbound,
   z.ZodTypeDef,
   ListAccessGroupMembersRequest
-> = z.object({
-  idOrName: z.string(),
-  limit: z.number().int().optional(),
-  next: z.string().optional(),
-  search: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    limit: z.number().int().optional(),
+    next: z.string().optional(),
+    search: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listAccessGroupMembersRequestToJSON(
   listAccessGroupMembersRequest: ListAccessGroupMembersRequest,
@@ -107,19 +109,23 @@ export function listAccessGroupMembersRequestToJSON(
 /** @internal */
 export const ListAccessGroupMembersTeamRole$inboundSchema: z.ZodNativeEnum<
   typeof ListAccessGroupMembersTeamRole
-> = z.nativeEnum(ListAccessGroupMembersTeamRole);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListAccessGroupMembersTeamRole)
+);
 
 /** @internal */
 export const Members$inboundSchema: z.ZodType<Members, z.ZodTypeDef, unknown> =
-  z.object({
-    avatar: types.optional(types.string()),
-    createdAt: types.optional(types.string()),
-    email: types.string(),
-    name: types.optional(types.string()),
-    teamRole: ListAccessGroupMembersTeamRole$inboundSchema,
-    uid: types.string(),
-    username: types.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      avatar: types.optional(types.string()),
+      createdAt: types.optional(types.string()),
+      email: types.string(),
+      name: types.optional(types.string()),
+      teamRole: ListAccessGroupMembersTeamRole$inboundSchema,
+      uid: types.string(),
+      username: types.string(),
+    })
+  );
 
 export function membersFromJSON(
   jsonString: string,
@@ -136,10 +142,12 @@ export const ListAccessGroupMembersPagination$inboundSchema: z.ZodType<
   ListAccessGroupMembersPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    next: types.nullable(types.string()),
+  })
+);
 
 export function listAccessGroupMembersPaginationFromJSON(
   jsonString: string,
@@ -156,10 +164,12 @@ export const ListAccessGroupMembersResponseBody$inboundSchema: z.ZodType<
   ListAccessGroupMembersResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  members: z.array(z.lazy(() => Members$inboundSchema)),
-  pagination: z.lazy(() => ListAccessGroupMembersPagination$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    members: z.array(z.lazy(() => Members$inboundSchema)),
+    pagination: z.lazy(() => ListAccessGroupMembersPagination$inboundSchema),
+  })
+);
 
 export function listAccessGroupMembersResponseBodyFromJSON(
   jsonString: string,

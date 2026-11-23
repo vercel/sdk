@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type PauseProjectRequest = {
   /**
@@ -31,11 +32,13 @@ export const PauseProjectRequest$outboundSchema: z.ZodType<
   PauseProjectRequest$Outbound,
   z.ZodTypeDef,
   PauseProjectRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function pauseProjectRequestToJSON(
   pauseProjectRequest: PauseProjectRequest,

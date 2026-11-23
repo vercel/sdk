@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -73,12 +73,14 @@ export const GetRuntimeLogsRequest$outboundSchema: z.ZodType<
   GetRuntimeLogsRequest$Outbound,
   z.ZodTypeDef,
   GetRuntimeLogsRequest
-> = z.object({
-  projectId: z.string(),
-  deploymentId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    deploymentId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getRuntimeLogsRequestToJSON(
   getRuntimeLogsRequest: GetRuntimeLogsRequest,
@@ -91,30 +93,32 @@ export function getRuntimeLogsRequestToJSON(
 /** @internal */
 export const GetRuntimeLogsLevel$inboundSchema: z.ZodNativeEnum<
   typeof GetRuntimeLogsLevel
-> = z.nativeEnum(GetRuntimeLogsLevel);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetRuntimeLogsLevel));
 
 /** @internal */
 export const GetRuntimeLogsSource$inboundSchema: z.ZodNativeEnum<
   typeof GetRuntimeLogsSource
-> = z.nativeEnum(GetRuntimeLogsSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetRuntimeLogsSource));
 
 /** @internal */
 export const GetRuntimeLogsResponseBody$inboundSchema: z.ZodType<
   GetRuntimeLogsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  level: GetRuntimeLogsLevel$inboundSchema,
-  message: types.string(),
-  messageTruncated: types.boolean(),
-  requestMethod: types.string(),
-  requestPath: types.string(),
-  responseStatusCode: types.number(),
-  rowId: types.string(),
-  source: GetRuntimeLogsSource$inboundSchema,
-  timestampInMs: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    level: GetRuntimeLogsLevel$inboundSchema,
+    message: types.string(),
+    messageTruncated: types.boolean(),
+    requestMethod: types.string(),
+    requestPath: types.string(),
+    responseStatusCode: types.number(),
+    rowId: types.string(),
+    source: GetRuntimeLogsSource$inboundSchema,
+    timestampInMs: types.number(),
+  })
+);
 
 export function getRuntimeLogsResponseBodyFromJSON(
   jsonString: string,

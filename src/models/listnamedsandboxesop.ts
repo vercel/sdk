@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -115,18 +115,21 @@ export type ListNamedSandboxesResponseBody = {
 /** @internal */
 export const ListNamedSandboxesQueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof ListNamedSandboxesQueryParamSortBy
-> = z.nativeEnum(ListNamedSandboxesQueryParamSortBy);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListNamedSandboxesQueryParamSortBy)
+);
 
 /** @internal */
 export const ListNamedSandboxesQueryParamSortOrder$outboundSchema:
-  z.ZodNativeEnum<typeof ListNamedSandboxesQueryParamSortOrder> = z.nativeEnum(
-    ListNamedSandboxesQueryParamSortOrder,
-  );
+  z.ZodNativeEnum<typeof ListNamedSandboxesQueryParamSortOrder> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListNamedSandboxesQueryParamSortOrder)
+    );
 
 /** @internal */
 export const QueryParamStatus$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamStatus
-> = z.nativeEnum(QueryParamStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamStatus));
 
 /** @internal */
 export type QueryParamTags$Outbound = string | Array<string>;
@@ -136,7 +139,9 @@ export const QueryParamTags$outboundSchema: z.ZodType<
   QueryParamTags$Outbound,
   z.ZodTypeDef,
   QueryParamTags
-> = smartUnion([z.string(), z.array(z.string())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.string(), z.array(z.string())])
+);
 
 export function queryParamTagsToJSON(queryParamTags: QueryParamTags): string {
   return JSON.stringify(QueryParamTags$outboundSchema.parse(queryParamTags));
@@ -161,22 +166,24 @@ export const ListNamedSandboxesRequest$outboundSchema: z.ZodType<
   ListNamedSandboxesRequest$Outbound,
   z.ZodTypeDef,
   ListNamedSandboxesRequest
-> = z.object({
-  project: z.string().optional(),
-  limit: z.number().default(20),
-  sortBy: ListNamedSandboxesQueryParamSortBy$outboundSchema.default(
-    "createdAt",
-  ),
-  namePrefix: z.string().optional(),
-  cursor: z.string().optional(),
-  sortOrder: ListNamedSandboxesQueryParamSortOrder$outboundSchema.default(
-    "desc",
-  ),
-  status: QueryParamStatus$outboundSchema.optional(),
-  tags: smartUnion([z.string(), z.array(z.string())]).optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    project: z.string().optional(),
+    limit: z.number().default(20),
+    sortBy: ListNamedSandboxesQueryParamSortBy$outboundSchema.default(
+      "createdAt",
+    ),
+    namePrefix: z.string().optional(),
+    cursor: z.string().optional(),
+    sortOrder: ListNamedSandboxesQueryParamSortOrder$outboundSchema.default(
+      "desc",
+    ),
+    status: QueryParamStatus$outboundSchema.optional(),
+    tags: smartUnion([z.string(), z.array(z.string())]).optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listNamedSandboxesRequestToJSON(
   listNamedSandboxesRequest: ListNamedSandboxesRequest,
@@ -191,10 +198,12 @@ export const ListNamedSandboxesPagination$inboundSchema: z.ZodType<
   ListNamedSandboxesPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    next: types.nullable(types.string()),
+  })
+);
 
 export function listNamedSandboxesPaginationFromJSON(
   jsonString: string,
@@ -211,10 +220,12 @@ export const ListNamedSandboxesResponseBody$inboundSchema: z.ZodType<
   ListNamedSandboxesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: z.lazy(() => ListNamedSandboxesPagination$inboundSchema),
-  sandboxes: z.array(NamedSandbox$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: z.lazy(() => ListNamedSandboxesPagination$inboundSchema),
+    sandboxes: z.array(NamedSandbox$inboundSchema),
+  })
+);
 
 export function listNamedSandboxesResponseBodyFromJSON(
   jsonString: string,

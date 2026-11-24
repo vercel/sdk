@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -38,12 +38,14 @@ export const RemoveRecordRequest$outboundSchema: z.ZodType<
   RemoveRecordRequest$Outbound,
   z.ZodTypeDef,
   RemoveRecordRequest
-> = z.object({
-  domain: z.string(),
-  recordId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    recordId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function removeRecordRequestToJSON(
   removeRecordRequest: RemoveRecordRequest,
@@ -58,7 +60,7 @@ export const RemoveRecordResponseBody$inboundSchema: z.ZodType<
   RemoveRecordResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function removeRecordResponseBodyFromJSON(
   jsonString: string,

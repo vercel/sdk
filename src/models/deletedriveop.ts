@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { Drive, Drive$inboundSchema } from "./drive.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -47,12 +51,18 @@ export const DeleteDriveRequest$outboundSchema: z.ZodType<
   DeleteDriveRequest$Outbound,
   z.ZodTypeDef,
   DeleteDriveRequest
-> = z.object({
-  nameOrId: z.string(),
-  projectId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    nameOrId: z.string().refine(withinMaxLength$(64), {
+      message: "Value must be at most 64 characters long",
+    }).refine(matchesPattern$("^[a-zA-Z0-9_-]+$", 64), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }),
+    projectId: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteDriveRequestToJSON(
   deleteDriveRequest: DeleteDriveRequest,
@@ -67,9 +77,11 @@ export const DeleteDriveResponseBody$inboundSchema: z.ZodType<
   DeleteDriveResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  drive: Drive$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    drive: Drive$inboundSchema,
+  })
+);
 
 export function deleteDriveResponseBodyFromJSON(
   jsonString: string,

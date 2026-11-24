@@ -5,22 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyEight } from "@vercel/sdk/models/oldssoprotection2.js";
+import { ThreeHundredAndNinetyEight } from "@vercel/sdk/models/payloadstaticips.js";
 
 let value: ThreeHundredAndNinetyEight = {
-  email: "Myrl39@gmail.com",
-  verified: true,
-  actorId: "<id>",
-  actorType: "admin",
+  expiryNotificationLeadTime: 1390.5,
+  projectId: "<id>",
+  projectName: "<value>",
+  sandboxName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `email`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `verified`                                                                       | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload398ActorType](../models/usereventpayload398actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `expiryNotificationLeadTime` | *number*                     | :heavy_check_mark:           | N/A                          |
+| `projectId`                  | *string*                     | :heavy_check_mark:           | N/A                          |
+| `projectName`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `sandboxName`                | *string*                     | :heavy_check_mark:           | N/A                          |

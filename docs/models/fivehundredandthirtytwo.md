@@ -8,18 +8,20 @@ The payload of the event, if requested.
 import { FiveHundredAndThirtyTwo } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtyTwo = {
-  cadence: "weekly",
-  projectIds: [],
-  team: {
-    id: "<id>",
-  },
+  commitSha: "<value>",
+  invocationId: "<id>",
+  organizationId: "<id>",
+  pullRequestNumber: 9596.59,
+  repository: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload532Team](../models/usereventpayload532team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `commitSha`         | *string*            | :heavy_check_mark:  | N/A                 |
+| `invocationId`      | *string*            | :heavy_check_mark:  | N/A                 |
+| `organizationId`    | *string*            | :heavy_check_mark:  | N/A                 |
+| `pullRequestNumber` | *number*            | :heavy_check_mark:  | N/A                 |
+| `repository`        | *string*            | :heavy_check_mark:  | N/A                 |

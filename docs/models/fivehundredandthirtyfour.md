@@ -8,14 +8,26 @@ The payload of the event, if requested.
 import { FiveHundredAndThirtyFour } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtyFour = {
-  id: "<id>",
-  url: "https://wrong-nun.name/",
+  configuration: {
+    id: "<id>",
+  },
+  peering: {
+    accountId: "<id>",
+    id: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
+  },
+  team: {
+    id: "<id>",
+    name: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `configuration`                                                                          | [models.UserEventPayload534Configuration](../models/usereventpayload534configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `team`                                                                                   | [models.UserEventPayload534Team](../models/usereventpayload534team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

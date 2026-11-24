@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -438,16 +438,18 @@ export const AppTokens$inboundSchema: z.ZodType<
   AppTokens,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  crossInstallation: types.boolean(),
-  isStaticCredential: types.boolean(),
-  permissionsUrl: types.optional(types.string()),
-  requiresReinstallation: types.optional(types.boolean()),
-  scopes: types.optional(z.array(types.string())),
-  supportedAuthorizationDetails: types.optional(z.array(types.string())),
-  supportsRefinement: types.boolean(),
-  supportsResources: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    crossInstallation: types.boolean(),
+    isStaticCredential: types.boolean(),
+    permissionsUrl: types.optional(types.string()),
+    requiresReinstallation: types.optional(types.boolean()),
+    scopes: types.optional(z.array(types.string())),
+    supportedAuthorizationDetails: types.optional(z.array(types.string())),
+    supportsRefinement: types.boolean(),
+    supportsResources: types.optional(types.boolean()),
+  })
+);
 
 export function appTokensFromJSON(
   jsonString: string,
@@ -461,14 +463,16 @@ export function appTokensFromJSON(
 
 /** @internal */
 export const Environment2$inboundSchema: z.ZodNativeEnum<typeof Environment2> =
-  z.nativeEnum(Environment2);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Environment2));
 
 /** @internal */
 export const Environment$inboundSchema: z.ZodType<
   Environment,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), Environment2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), Environment2$inboundSchema])
+);
 
 export function environmentFromJSON(
   jsonString: string,
@@ -485,11 +489,13 @@ export const CreatedBy3$inboundSchema: z.ZodType<
   CreatedBy3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environment: smartUnion([types.string(), Environment2$inboundSchema]),
-  id: types.string(),
-  type: types.literal("project"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environment: smartUnion([types.string(), Environment2$inboundSchema]),
+    id: types.string(),
+    type: types.literal("project"),
+  })
+);
 
 export function createdBy3FromJSON(
   jsonString: string,
@@ -506,10 +512,12 @@ export const CreatedBy2$inboundSchema: z.ZodType<
   CreatedBy2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  type: types.literal("user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    type: types.literal("user"),
+  })
+);
 
 export function createdBy2FromJSON(
   jsonString: string,
@@ -522,11 +530,13 @@ export function createdBy2FromJSON(
 }
 
 /** @internal */
-export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> = z
-  .object({
-    id: types.string(),
-    type: types.literal("app"),
-  });
+export const One$inboundSchema: z.ZodType<One, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: types.string(),
+      type: types.literal("app"),
+    })
+  );
 
 export function oneFromJSON(
   jsonString: string,
@@ -543,11 +553,13 @@ export const CreatedBy$inboundSchema: z.ZodType<
   CreatedBy,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => One$inboundSchema),
-  z.lazy(() => CreatedBy2$inboundSchema),
-  z.lazy(() => CreatedBy3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => One$inboundSchema),
+    z.lazy(() => CreatedBy2$inboundSchema),
+    z.lazy(() => CreatedBy3$inboundSchema),
+  ])
+);
 
 export function createdByFromJSON(
   jsonString: string,
@@ -561,13 +573,15 @@ export function createdByFromJSON(
 
 /** @internal */
 export const CreationMode$inboundSchema: z.ZodNativeEnum<typeof CreationMode> =
-  z.nativeEnum(CreationMode);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreationMode));
 
 /** @internal */
 export const Managed$inboundSchema: z.ZodType<Managed, z.ZodTypeDef, unknown> =
-  z.object({
-    sync: types.optional(types.boolean()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      sync: types.optional(types.boolean()),
+    })
+  );
 
 export function managedFromJSON(
   jsonString: string,
@@ -582,28 +596,32 @@ export function managedFromJSON(
 /** @internal */
 export const McpEventsUiVisibility$inboundSchema: z.ZodNativeEnum<
   typeof McpEventsUiVisibility
-> = z.nativeEnum(McpEventsUiVisibility);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(McpEventsUiVisibility));
 
 /** @internal */
 export const SupportsIcon$inboundSchema: z.ZodNativeEnum<typeof SupportsIcon> =
-  z.nativeEnum(SupportsIcon);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SupportsIcon));
 
 /** @internal */
 export const ConnectConnectorType$inboundSchema: z.ZodNativeEnum<
   typeof ConnectConnectorType
-> = z.nativeEnum(ConnectConnectorType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ConnectConnectorType));
 
 /** @internal */
 export const ConnectConnectorEnvironment2$inboundSchema: z.ZodNativeEnum<
   typeof ConnectConnectorEnvironment2
-> = z.nativeEnum(ConnectConnectorEnvironment2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ConnectConnectorEnvironment2)
+);
 
 /** @internal */
 export const UpdatedByEnvironment$inboundSchema: z.ZodType<
   UpdatedByEnvironment,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), ConnectConnectorEnvironment2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), ConnectConnectorEnvironment2$inboundSchema])
+);
 
 export function updatedByEnvironmentFromJSON(
   jsonString: string,
@@ -620,14 +638,16 @@ export const UpdatedBy3$inboundSchema: z.ZodType<
   UpdatedBy3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environment: smartUnion([
-    types.string(),
-    ConnectConnectorEnvironment2$inboundSchema,
-  ]),
-  id: types.string(),
-  type: types.literal("project"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environment: smartUnion([
+      types.string(),
+      ConnectConnectorEnvironment2$inboundSchema,
+    ]),
+    id: types.string(),
+    type: types.literal("project"),
+  })
+);
 
 export function updatedBy3FromJSON(
   jsonString: string,
@@ -644,10 +664,12 @@ export const UpdatedBy2$inboundSchema: z.ZodType<
   UpdatedBy2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  type: types.literal("user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    type: types.literal("user"),
+  })
+);
 
 export function updatedBy2FromJSON(
   jsonString: string,
@@ -664,10 +686,12 @@ export const UpdatedBy1$inboundSchema: z.ZodType<
   UpdatedBy1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  type: types.literal("app"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    type: types.literal("app"),
+  })
+);
 
 export function updatedBy1FromJSON(
   jsonString: string,
@@ -684,11 +708,13 @@ export const UpdatedBy$inboundSchema: z.ZodType<
   UpdatedBy,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UpdatedBy1$inboundSchema),
-  z.lazy(() => UpdatedBy2$inboundSchema),
-  z.lazy(() => UpdatedBy3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UpdatedBy1$inboundSchema),
+    z.lazy(() => UpdatedBy2$inboundSchema),
+    z.lazy(() => UpdatedBy3$inboundSchema),
+  ])
+);
 
 export function updatedByFromJSON(
   jsonString: string,
@@ -705,15 +731,17 @@ export const UserTokens$inboundSchema: z.ZodType<
   UserTokens,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  crossInstallation: types.boolean(),
-  isStaticCredential: types.boolean(),
-  manualCredentialInput: types.optional(types.boolean()),
-  scopes: types.optional(z.array(types.string())),
-  supportedAuthorizationDetails: types.optional(z.array(types.string())),
-  supportsRefinement: types.boolean(),
-  supportsResources: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    crossInstallation: types.boolean(),
+    isStaticCredential: types.boolean(),
+    manualCredentialInput: types.optional(types.boolean()),
+    scopes: types.optional(z.array(types.string())),
+    supportedAuthorizationDetails: types.optional(z.array(types.string())),
+    supportsRefinement: types.boolean(),
+    supportsResources: types.optional(types.boolean()),
+  })
+);
 
 export function userTokensFromJSON(
   jsonString: string,
@@ -730,63 +758,65 @@ export const ConnectConnector$inboundSchema: z.ZodType<
   ConnectConnector,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accentColor: types.optional(types.string()),
-  appTokens: types.optional(z.lazy(() => AppTokens$inboundSchema)),
-  backgroundColor: types.optional(types.string()),
-  clientUrl: z.nullable(types.string()).optional(),
-  connectionMethod: types.optional(types.string()),
-  createdAt: types.number(),
-  createdBy: types.optional(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accentColor: types.optional(types.string()),
+    appTokens: types.optional(z.lazy(() => AppTokens$inboundSchema)),
+    backgroundColor: types.optional(types.string()),
+    clientUrl: z.nullable(types.string()).optional(),
+    connectionMethod: types.optional(types.string()),
+    createdAt: types.number(),
+    createdBy: types.optional(z.union([
       z.lazy(() => One$inboundSchema),
       z.lazy(() => CreatedBy2$inboundSchema),
       z.lazy(() => CreatedBy3$inboundSchema),
-    ]),
-  ),
-  creationMode: types.optional(CreationMode$inboundSchema),
-  defaultInstallationId: types.optional(types.string()),
-  devsite: types.optional(types.string()),
-  displayName: types.string(),
-  docsite: types.optional(types.string()),
-  events: types.optional(z.array(types.string())),
-  hasMcpEventDeliveries: types.optional(types.boolean()),
-  icon: types.optional(types.string()),
-  id: types.string(),
-  knownStale: types.optional(types.boolean()),
-  managed: types.optional(z.lazy(() => Managed$inboundSchema)),
-  mcpEventsUiVisibility: types.optional(McpEventsUiVisibility$inboundSchema),
-  name: types.string(),
-  redirectUri: types.optional(types.string()),
-  reinstallAt: types.optional(types.number()),
-  service: types.string(),
-  serviceIcon: types.optional(types.string()),
-  supportedSubjectTypes: z.array(types.string()),
-  supportsIcon: SupportsIcon$inboundSchema,
-  supportsInstallation: types.boolean(),
-  supportsManagedEjection: types.optional(types.boolean()),
-  supportsRevocation: types.boolean(),
-  supportsTriggers: types.boolean(),
-  target: types.optional(types.string()),
-  triggerDestinations: types.optional(
-    z.array(ConnectTriggerDestination$inboundSchema),
-  ),
-  triggers: types.optional(ConnectTriggerConfiguration$inboundSchema),
-  type: ConnectConnectorType$inboundSchema,
-  typeIcon: types.optional(types.string()),
-  typeName: types.string(),
-  uid: types.string(),
-  updatedAt: types.number(),
-  updatedBy: types.optional(
-    z.union([
+    ])),
+    creationMode: types.optional(CreationMode$inboundSchema),
+    defaultInstallationId: types.optional(types.string()),
+    devsite: types.optional(types.string()),
+    displayName: types.string(),
+    docsite: types.optional(types.string()),
+    events: types.optional(z.array(types.string())),
+    hasMcpEventDeliveries: types.optional(types.boolean()),
+    icon: types.optional(types.string()),
+    id: types.string(),
+    knownStale: types.optional(types.boolean()),
+    managed: types.optional(z.lazy(() =>
+      Managed$inboundSchema
+    )),
+    mcpEventsUiVisibility: types.optional(McpEventsUiVisibility$inboundSchema),
+    name: types.string(),
+    redirectUri: types.optional(types.string()),
+    reinstallAt: types.optional(types.number()),
+    service: types.string(),
+    serviceIcon: types.optional(types.string()),
+    supportedSubjectTypes: z.array(types.string()),
+    supportsIcon: SupportsIcon$inboundSchema,
+    supportsInstallation: types.boolean(),
+    supportsManagedEjection: types.optional(types.boolean()),
+    supportsRevocation: types.boolean(),
+    supportsTriggers: types.boolean(),
+    target: types.optional(types.string()),
+    triggerDestinations: types.optional(
+      z.array(ConnectTriggerDestination$inboundSchema),
+    ),
+    triggers: types.optional(ConnectTriggerConfiguration$inboundSchema),
+    type: ConnectConnectorType$inboundSchema,
+    typeIcon: types.optional(types.string()),
+    typeName: types.string(),
+    uid: types.string(),
+    updatedAt: types.number(),
+    updatedBy: types.optional(z.union([
       z.lazy(() => UpdatedBy1$inboundSchema),
       z.lazy(() => UpdatedBy2$inboundSchema),
       z.lazy(() => UpdatedBy3$inboundSchema),
-    ]),
-  ),
-  userTokens: types.optional(z.lazy(() => UserTokens$inboundSchema)),
-  website: types.optional(types.string()),
-});
+    ])),
+    userTokens: types.optional(z.lazy(() =>
+      UserTokens$inboundSchema
+    )),
+    website: types.optional(types.string()),
+  })
+);
 
 export function connectConnectorFromJSON(
   jsonString: string,

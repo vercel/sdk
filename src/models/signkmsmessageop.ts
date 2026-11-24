@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -53,9 +53,11 @@ export const SignKmsMessageRequestBody$outboundSchema: z.ZodType<
   SignKmsMessageRequestBody$Outbound,
   z.ZodTypeDef,
   SignKmsMessageRequestBody
-> = z.object({
-  message: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    message: z.string(),
+  })
+);
 
 export function signKmsMessageRequestBodyToJSON(
   signKmsMessageRequestBody: SignKmsMessageRequestBody,
@@ -76,15 +78,17 @@ export const SignKmsMessageRequest$outboundSchema: z.ZodType<
   SignKmsMessageRequest$Outbound,
   z.ZodTypeDef,
   SignKmsMessageRequest
-> = z.object({
-  issuerId: z.string(),
-  requestBody: z.lazy(() => SignKmsMessageRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuerId: z.string(),
+    requestBody: z.lazy(() => SignKmsMessageRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function signKmsMessageRequestToJSON(
   signKmsMessageRequest: SignKmsMessageRequest,
@@ -99,12 +103,14 @@ export const SignKmsMessageResponseBody$inboundSchema: z.ZodType<
   SignKmsMessageResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  algorithm: types.string(),
-  fingerprint: types.string(),
-  keyId: types.string(),
-  signature: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    algorithm: types.string(),
+    fingerprint: types.string(),
+    keyId: types.string(),
+    signature: types.string(),
+  })
+);
 
 export function signKmsMessageResponseBodyFromJSON(
   jsonString: string,

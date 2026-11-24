@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -188,10 +188,12 @@ export const GetIntegrationLogDrainsRequest$outboundSchema: z.ZodType<
   GetIntegrationLogDrainsRequest$Outbound,
   z.ZodTypeDef,
   GetIntegrationLogDrainsRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getIntegrationLogDrainsRequestToJSON(
   getIntegrationLogDrainsRequest: GetIntegrationLogDrainsRequest,
@@ -204,32 +206,37 @@ export function getIntegrationLogDrainsRequestToJSON(
 }
 
 /** @internal */
-export const CreatedFrom$inboundSchema: z.ZodNativeEnum<typeof CreatedFrom> = z
-  .nativeEnum(CreatedFrom);
+export const CreatedFrom$inboundSchema: z.ZodNativeEnum<typeof CreatedFrom> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreatedFrom));
 
 /** @internal */
 export const GetIntegrationLogDrainsDeliveryFormat$inboundSchema:
-  z.ZodNativeEnum<typeof GetIntegrationLogDrainsDeliveryFormat> = z.nativeEnum(
-    GetIntegrationLogDrainsDeliveryFormat,
-  );
+  z.ZodNativeEnum<typeof GetIntegrationLogDrainsDeliveryFormat> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetIntegrationLogDrainsDeliveryFormat)
+    );
 
 /** @internal */
 export const GetIntegrationLogDrainsEnvironments$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationLogDrainsEnvironments
-> = z.nativeEnum(GetIntegrationLogDrainsEnvironments);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetIntegrationLogDrainsEnvironments)
+);
 
 /** @internal */
 export const GetIntegrationLogDrainsSource2$inboundSchema: z.ZodType<
   GetIntegrationLogDrainsSource2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalResourceId: types.optional(types.string()),
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  kind: types.literal("integration"),
-  resourceId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalResourceId: types.optional(types.string()),
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    kind: types.literal("integration"),
+    resourceId: types.optional(types.string()),
+  })
+);
 
 export function getIntegrationLogDrainsSource2FromJSON(
   jsonString: string,
@@ -244,17 +251,19 @@ export function getIntegrationLogDrainsSource2FromJSON(
 /** @internal */
 export const SourceDefaultFor$inboundSchema: z.ZodNativeEnum<
   typeof SourceDefaultFor
-> = z.nativeEnum(SourceDefaultFor);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SourceDefaultFor));
 
 /** @internal */
 export const GetIntegrationLogDrainsSource1$inboundSchema: z.ZodType<
   GetIntegrationLogDrainsSource1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultFor: types.optional(SourceDefaultFor$inboundSchema),
-  kind: types.literal("self-served"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultFor: types.optional(SourceDefaultFor$inboundSchema),
+    kind: types.literal("self-served"),
+  })
+);
 
 export function getIntegrationLogDrainsSource1FromJSON(
   jsonString: string,
@@ -271,10 +280,12 @@ export const GetIntegrationLogDrainsSource$inboundSchema: z.ZodType<
   GetIntegrationLogDrainsSource,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetIntegrationLogDrainsSource1$inboundSchema),
-  z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetIntegrationLogDrainsSource1$inboundSchema),
+    z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
+  ])
+);
 
 export function getIntegrationLogDrainsSourceFromJSON(
   jsonString: string,
@@ -289,41 +300,45 @@ export function getIntegrationLogDrainsSourceFromJSON(
 /** @internal */
 export const GetIntegrationLogDrainsSources$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationLogDrainsSources
-> = z.nativeEnum(GetIntegrationLogDrainsSources);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetIntegrationLogDrainsSources)
+);
 
 /** @internal */
 export const GetIntegrationLogDrainsResponseBody$inboundSchema: z.ZodType<
   GetIntegrationLogDrainsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  branch: types.optional(types.string()),
-  clientId: types.optional(types.string()),
-  configurationId: types.optional(types.string()),
-  createdAt: types.number(),
-  createdFrom: types.optional(CreatedFrom$inboundSchema),
-  deliveryFormat: types.optional(
-    GetIntegrationLogDrainsDeliveryFormat$inboundSchema,
-  ),
-  environments: types.optional(
-    z.array(GetIntegrationLogDrainsEnvironments$inboundSchema),
-  ),
-  headers: types.optional(z.record(types.string())),
-  id: types.string(),
-  name: types.string(),
-  ownerId: types.string(),
-  projectId: z.nullable(types.string()).optional(),
-  projectIds: types.optional(z.array(types.string())),
-  samplingRate: types.optional(types.number()),
-  source: z.union([
-    z.lazy(() => GetIntegrationLogDrainsSource1$inboundSchema),
-    z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
-  ]),
-  sources: types.optional(
-    z.array(GetIntegrationLogDrainsSources$inboundSchema),
-  ),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    branch: types.optional(types.string()),
+    clientId: types.optional(types.string()),
+    configurationId: types.optional(types.string()),
+    createdAt: types.number(),
+    createdFrom: types.optional(CreatedFrom$inboundSchema),
+    deliveryFormat: types.optional(
+      GetIntegrationLogDrainsDeliveryFormat$inboundSchema,
+    ),
+    environments: types.optional(
+      z.array(GetIntegrationLogDrainsEnvironments$inboundSchema),
+    ),
+    headers: types.optional(z.record(types.string())),
+    id: types.string(),
+    name: types.string(),
+    ownerId: types.string(),
+    projectId: z.nullable(types.string()).optional(),
+    projectIds: types.optional(z.array(types.string())),
+    samplingRate: types.optional(types.number()),
+    source: z.union([
+      z.lazy(() => GetIntegrationLogDrainsSource1$inboundSchema),
+      z.lazy(() => GetIntegrationLogDrainsSource2$inboundSchema),
+    ]),
+    sources: types.optional(
+      z.array(GetIntegrationLogDrainsSources$inboundSchema),
+    ),
+    url: types.string(),
+  })
+);
 
 export function getIntegrationLogDrainsResponseBodyFromJSON(
   jsonString: string,

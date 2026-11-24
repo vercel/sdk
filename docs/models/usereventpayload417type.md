@@ -1,15 +1,17 @@
 # UserEventPayload417Type
 
+The budget type
+
 ## Example Usage
 
 ```typescript
-import { UserEventPayload417Type } from "@vercel/sdk/models/oldssoprotection2.js";
+import { UserEventPayload417Type } from "@vercel/sdk/models/payloadstaticips.js";
 
-let value: UserEventPayload417Type = "redis";
+let value: UserEventPayload417Type = "fixed";
 ```
 
 ## Values
 
 ```typescript
-"blob" | "edge-config" | "integration" | "postgres" | "redis"
+"fixed"
 ```

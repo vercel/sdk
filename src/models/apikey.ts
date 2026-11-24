@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { APIKeyQuota, APIKeyQuota$inboundSchema } from "./apikeyquota.js";
@@ -97,7 +97,7 @@ export const APIKeyMetadata$inboundSchema: z.ZodType<
   APIKeyMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function apiKeyMetadataFromJSON(
   jsonString: string,
@@ -110,24 +110,26 @@ export function apiKeyMetadataFromJSON(
 }
 
 /** @internal */
-export const APIKey$inboundSchema: z.ZodType<APIKey, z.ZodTypeDef, unknown> = z
-  .object({
-    id: types.string(),
-    name: types.string(),
-    partialKey: types.string(),
-    teamId: types.string(),
-    purpose: types.string(),
-    projectId: types.nullable(types.string()),
-    expiresAt: types.nullable(types.number()),
-    activeAt: types.number(),
-    createdAt: types.number(),
-    createdBy: types.string(),
-    leakedAt: types.nullable(types.number()),
-    leakedUrl: types.nullable(types.string()),
-    createdByAppId: types.nullable(types.string()),
-    quota: types.optional(APIKeyQuota$inboundSchema),
-    metadata: types.optional(z.lazy(() => APIKeyMetadata$inboundSchema)),
-  });
+export const APIKey$inboundSchema: z.ZodType<APIKey, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: types.string(),
+      name: types.string(),
+      partialKey: types.string(),
+      teamId: types.string(),
+      purpose: types.string(),
+      projectId: types.nullable(types.string()),
+      expiresAt: types.nullable(types.number()),
+      activeAt: types.number(),
+      createdAt: types.number(),
+      createdBy: types.string(),
+      leakedAt: types.nullable(types.number()),
+      leakedUrl: types.nullable(types.string()),
+      createdByAppId: types.nullable(types.string()),
+      quota: types.optional(APIKeyQuota$inboundSchema),
+      metadata: types.optional(z.lazy(() => APIKeyMetadata$inboundSchema)),
+    })
+  );
 
 export function apiKeyFromJSON(
   jsonString: string,

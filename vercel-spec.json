@@ -4696,7 +4696,7 @@
     },
     "/ai-gateway/budgets/list": {
       "get": {
-        "description": "List the team's AI Gateway budgets (team/project/user scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.",
+        "description": "List the team's AI Gateway budgets (team/project/user/app scopes, plus default-covered api-key spend) as a flat list, optionally filtered by scope. Without `limit` or `cursor`, returns every budget. With either, returns one page ordered by `quotaEntityId` plus `nextCursor` (null on the last page) and `defaultCoveredCounts`. Paging still reads the full merge server-side: the gateway meter list it joins has no cursor.",
         "operationId": "listAiGatewayBudgets",
         "security": [
           {
@@ -4748,6 +4748,7 @@
                 "team",
                 "project",
                 "user",
+                "app",
                 "api-key"
               ],
               "description": "Restrict the list to a single budget scope."
@@ -4808,7 +4809,7 @@
     },
     "/ai-gateway/budgets": {
       "put": {
-        "description": "Create or update a team-, project-, or user-scope AI Gateway budget.",
+        "description": "Create or update a team-, project-, user-, or app-scope AI Gateway budget. Set a total with `limitAmount`, or raise the current budget with `increaseBy`.",
         "operationId": "upsertAiGatewayBudget",
         "security": [
           {
@@ -4876,8 +4877,7 @@
                 "type": "object",
                 "additionalProperties": false,
                 "required": [
-                  "scopeType",
-                  "limitAmount"
+                  "scopeType"
                 ],
                 "properties": {
                   "scopeType": {
@@ -4885,7 +4885,8 @@
                     "enum": [
                       "team",
                       "project",
-                      "user"
+                      "user",
+                      "app"
                     ]
                   },
                   "projectId": {
@@ -4896,10 +4897,19 @@
                     "type": "string",
                     "description": "Required when scopeType is \\\"user\\\"."
                   },
+                  "appId": {
+                    "type": "string",
+                    "description": "Required when scopeType is \\\"app\\\". The id of a Vercel App (`cl_…`)."
+                  },
                   "limitAmount": {
                     "type": "number",
                     "minimum": 1,
-                    "description": "Budget limit in dollars."
+                    "description": "Budget limit in dollars. Provide this or `increaseBy`, not both."
+                  },
+                  "increaseBy": {
+                    "type": "number",
+                    "minimum": 1,
+                    "description": "Dollars to add to the current budget, or to the scope's default when it has no budget of its own. Provide this or `limitAmount`, not both. Keeps the current refresh period and BYOK setting unless they are given."
                   },
                   "refreshPeriod": {
                     "type": "string",
@@ -4909,7 +4919,7 @@
                       "monthly",
                       "none"
                     ],
-                    "default": "monthly"
+                    "description": "Defaults to monthly with `limitAmount`; `increaseBy` keeps the current period. Ignored for a member's own change that lapses (`expiresAt`): it takes the user default's period."
                   },
                   "includeByokInQuota": {
                     "type": "boolean",
@@ -4937,7 +4947,7 @@
         }
       },
       "delete": {
-        "description": "Archive a team-, project-, or user-scope AI Gateway budget.",
+        "description": "Archive a team-, project-, user-, or app-scope AI Gateway budget.",
         "operationId": "archiveAiGatewayBudget",
         "security": [
           {
@@ -4989,7 +4999,8 @@
               "enum": [
                 "team",
                 "project",
-                "user"
+                "user",
+                "app"
               ],
               "description": "The budget scope to archive."
             }
@@ -5012,6 +5023,16 @@
             "schema": {
               "type": "string",
               "description": "Required when scopeType is \\\"user\\\"."
+            }
+          },
+          {
+            "name": "appId",
+            "description": "Required when scopeType is \\\"app\\\". The id of a Vercel App (`cl_…`).",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Required when scopeType is \\\"app\\\". The id of a Vercel App (`cl_…`)."
             }
           },
           {
@@ -5047,7 +5068,7 @@
     },
     "/ai-gateway/budgets/defaults/list": {
       "get": {
-        "description": "List the team's AI Gateway budget defaults as a flat per-scope list (one row per team/project/api-key/user scope with a default set). An empty list is a normal state for the dashboard.",
+        "description": "List the team's AI Gateway budget defaults as a flat per-scope list (one row per team/project/api-key/user/app scope with a default set). An empty list is a normal state for the dashboard.",
         "operationId": "listAiGatewayBudgetDefaults",
         "security": [
           {
@@ -5190,7 +5211,8 @@
                       "team",
                       "project",
                       "api-key",
-                      "user"
+                      "user",
+                      "app"
                     ]
                   },
                   "limitAmount": {
@@ -5217,6 +5239,19 @@
                         100
                       ]
                     }
+                  },
+                  "appliesTo": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "team",
+                        "user"
+                      ]
+                    },
+                    "description": "Key spend attributions the api-key default covers. Only valid when scopeType is api-key. Omit to keep the stored value; unset means both."
                   },
                   "justification": {
                     "type": "string",
@@ -5275,7 +5310,8 @@
                 "team",
                 "project",
                 "api-key",
-                "user"
+                "user",
+                "app"
               ],
               "description": "The budget default scope to delete."
             }
@@ -6400,141 +6436,9 @@
         ]
       }
     },
-    "/v1/billing/contract-commitments": {
-      "get": {
-        "description": "Returns commitment allocations per contract period in FOCUS v1.3 JSONL format for a specified Vercel team. The response is streamed as newline-delimited JSON (JSONL). This endpoint is only applicable to Enterprise Vercel customers. An empty response is returned for non-Enterprise (Pro/Flex) customers.",
-        "operationId": "listContractCommitments",
-        "security": [
-          {
-            "bearerToken": []
-          }
-        ],
-        "summary": "List FOCUS contract commitments",
-        "tags": [
-          "billing"
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/jsonl": {
-                "schema": {
-                  "properties": {
-                    "BillingCurrency": {
-                      "type": "string"
-                    },
-                    "ContractCommitmentCategory": {
-                      "type": "string",
-                      "enum": [
-                        "Spend",
-                        "Usage"
-                      ],
-                      "description": "Highest-level classification of the contract commitment. 'Spend' for Pro ($20/month), 'Usage' for Enterprise (MIU allocation)."
-                    },
-                    "ContractCommitmentCost": {
-                      "type": "number",
-                      "description": "Monetary value of the contract commitment (in BillingCurrency). Required when ContractCommitmentCategory is 'Spend'. For Pro: 20 (USD)"
-                    },
-                    "ContractCommitmentDescription": {
-                      "type": "string",
-                      "description": "Self-contained summary of the contract commitment's terms"
-                    },
-                    "ContractCommitmentId": {
-                      "type": "string",
-                      "description": "Unique identifier for a single contract term within a contract. Maps to specific commitment period or allocation ID."
-                    },
-                    "ContractCommitmentPeriodEnd": {
-                      "type": "string",
-                      "description": "Exclusive end of the commitment term period (ISO 8601 UTC)"
-                    },
-                    "ContractCommitmentPeriodStart": {
-                      "type": "string",
-                      "description": "Inclusive start of the commitment term period (ISO 8601 UTC)"
-                    },
-                    "ContractCommitmentQuantity": {
-                      "type": "number",
-                      "description": "Amount associated with the commitment (in ContractCommitmentUnit). Required when ContractCommitmentCategory is 'Usage'. For Enterprise: MIU allocation amount."
-                    },
-                    "ContractCommitmentType": {
-                      "type": "string",
-                      "description": "Service-provider-assigned name identifying the commitment type. 'Pro' or 'Enterprise' for Vercel."
-                    },
-                    "ContractCommitmentUnit": {
-                      "type": "string",
-                      "description": "Measurement unit for ContractCommitmentQuantity. 'MIUs' for Enterprise, 'USD' for Pro spend commitments."
-                    },
-                    "ContractId": {
-                      "type": "string",
-                      "description": "Service-provider-assigned identifier for a contract. Maps to Orb Subscription ID for Vercel."
-                    },
-                    "ContractPeriodEnd": {
-                      "type": "string",
-                      "description": "Exclusive end of the overall contract period (ISO 8601 UTC)"
-                    },
-                    "ContractPeriodStart": {
-                      "type": "string",
-                      "description": "Inclusive start of the overall contract period (ISO 8601 UTC)"
-                    }
-                  },
-                  "required": [
-                    "BillingCurrency",
-                    "ContractCommitmentCategory",
-                    "ContractCommitmentId",
-                    "ContractCommitmentPeriodEnd",
-                    "ContractCommitmentPeriodStart",
-                    "ContractCommitmentType",
-                    "ContractCommitmentUnit",
-                    "ContractId",
-                    "ContractPeriodEnd",
-                    "ContractPeriodStart"
-                  ],
-                  "type": "object",
-                  "description": "Contract commitment information describing terms within a contract. New in FOCUS v1.3 - tracks commitment terms separate from cost/usage rows. For Vercel: - Pro: $20 monthly spend commitment - Enterprise: MIU allocation per period (usage commitment)"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": ""
-          },
-          "401": {
-            "description": "The request is not authorized."
-          },
-          "403": {
-            "description": "You do not have permission to access this resource."
-          },
-          "404": {
-            "description": ""
-          },
-          "410": {
-            "description": ""
-          }
-        },
-        "parameters": [
-          {
-            "description": "The Team identifier to perform the request on behalf of.",
-            "in": "query",
-            "name": "teamId",
-            "schema": {
-              "type": "string",
-              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
-            }
-          },
-          {
-            "description": "The Team slug to perform the request on behalf of.",
-            "in": "query",
-            "name": "slug",
-            "schema": {
-              "type": "string",
-              "example": "my-team-url-slug"
-            }
-          }
-        ]
-      }
-    },
     "/v1/billing/buy": {
       "post": {
-        "description": "Purchases credits for a Vercel team using the default payment method on file. The purchase is charged immediately via Stripe invoice. Supported credit types are `v0`, `gateway`, and `agent`. The `amount` field specifies the number of credits to purchase and must be a positive integer. An optional `source` query parameter can be provided to identify the caller. Defaults to `api` if not specified. This is only available for Owner, Member, Developer, Security, and Billing roles for the supplied team.",
+        "description": "Purchases credits for a Vercel team using the default payment method on file. The purchase is charged immediately via Stripe invoice. Supported credit types are `v0`, `gateway`, and `agent`. The `amount` field specifies the number of credits to purchase and must be a positive integer. An optional `source` query parameter can be provided to identify the caller. Defaults to `api` if not specified. This is only available for Owner, Member, Developer, Security, and Billing roles for the supplied team. Pro subscription purchases additionally require permission to update the team's plan, and AI Gateway credit purchases require permission to create AI Gateway credits.",
         "operationId": "buyCredits",
         "security": [
           {
@@ -17974,12 +17878,12 @@
         "parameters": [
           {
             "name": "connector",
-            "description": "Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`.",
+            "description": "Stable connector ID or URL-encoded team- or organization-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`.",
             "in": "path",
             "required": true,
             "schema": {
               "type": "string",
-              "description": "Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`."
+              "description": "Stable connector ID or URL-encoded team- or organization-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`."
             }
           },
           {
@@ -19383,7 +19287,8 @@
                     }
                   },
                   "validityBufferMs": {
-                    "type": "number"
+                    "type": "number",
+                    "minimum": 0
                   }
                 }
               }
@@ -20231,7 +20136,7 @@
             }
           },
           "400": {
-            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.\nBoth `target` and `customEnvironmentId` were given."
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid.\nBoth `target` and `customEnvironmentId` were given.\nThe daemon cannot run outside its environment's Secure Compute regions."
           },
           "401": {
             "description": "The request is not authorized."
@@ -20241,6 +20146,9 @@
           },
           "404": {
             "description": "The project has no custom environment with this ID.\nThe daemon does not exist for this target or custom environment."
+          },
+          "409": {
+            "description": "The environment is linked to a Secure Compute network that is not ready yet, so daemon instances cannot start until it is."
           },
           "410": {
             "description": ""
@@ -54459,6 +54367,9 @@
           "404": {
             "description": ""
           },
+          "409": {
+            "description": ""
+          },
           "410": {
             "description": ""
           }
@@ -66991,6 +66902,124 @@
             }
           }
         ]
+      }
+    },
+    "/v1/projects/{projectIdOrName}/feature-flags/overrides/sign": {
+      "post": {
+        "description": "Signs flag overrides for the `vercel-flag-overrides` cookie, which the Flags SDK accepts without a `FLAGS_SECRET`. The overrides apply to one environment of the project and of the projects that share its microfrontends groups. An access token requires permission to read the project and an `environment`. A Vercel OIDC token signs only for its own project and environment.",
+        "operationId": "signFlagOverrides",
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Sign flag overrides",
+        "tags": [
+          "feature-flags"
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "expiresIn": {
+                      "type": "number"
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "expiresIn",
+                    "token"
+                  ],
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "One of the provided values in the request body is invalid.\nOne of the provided values in the request query is invalid."
+          },
+          "401": {
+            "description": "The request is not authorized."
+          },
+          "403": {
+            "description": "You do not have permission to access this resource."
+          },
+          "404": {
+            "description": ""
+          },
+          "410": {
+            "description": ""
+          },
+          "413": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "name": "projectIdOrName",
+            "description": "The project id or name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "The project id or name",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The Team identifier to perform the request on behalf of.",
+            "in": "query",
+            "name": "teamId",
+            "schema": {
+              "type": "string",
+              "example": "team_1a2b3c4d5e6f7g8h9i0j1k2l"
+            }
+          },
+          {
+            "description": "The Team slug to perform the request on behalf of.",
+            "in": "query",
+            "name": "slug",
+            "schema": {
+              "type": "string",
+              "example": "my-team-url-slug"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "overrides"
+                ],
+                "properties": {
+                  "overrides": {
+                    "description": "The value of each overridden flag, by flag key",
+                    "type": "object",
+                    "maxProperties": 100
+                  },
+                  "environment": {
+                    "description": "production, preview, development or the slug of a custom environment. Defaults to the environment of a Vercel OIDC token.",
+                    "type": "string",
+                    "pattern": "^[a-z0-9-]{1,64}$"
+                  },
+                  "ttl": {
+                    "description": "Seconds until the overrides expire. Defaults to one hour, at most one day.",
+                    "type": "integer",
+                    "minimum": 60,
+                    "maximum": 86400
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/v2/projects/{projectIdOrName}/feature-flags/flags": {
@@ -99117,7 +99146,7 @@
         ]
       },
       "post": {
-        "description": "Create a new team under an organization, or add an existing team. `mode: \"create\"` creates a brand-new child team from `slug` + `name` — a platform child by default, or an enterprise child (billed on the organization root's flex subscription) when `billingPlan: \"enterprise\"` is supplied. `mode: \"link\"` links an existing team identified by `teamId` or `slug`; the child's billing profile is derived from the target team's plan (enterprise team → enterprise child, else platform), or explicitly supplied. Both modes respond with the resulting organization-team link. This endpoint is in private beta. Contact your Vercel account team for access.",
+        "description": "Create a new team under an organization, or add an existing team. `mode: \"create\"` creates a brand-new child team from `slug` + `name` — a platform child by default, or an enterprise child (billed on the organization root's flex subscription) when `billingPlan: \"enterprise\"` is supplied. `mode: \"link\"` links an existing team identified by `teamId` or `slug`. The request must state the child's billing profile in `billingPlan`: `enterprise` or `platform`. Both modes respond with the resulting organization-team link. This endpoint is in private beta. Contact your Vercel account team for access.",
         "operationId": "addOrganizationTeam",
         "security": [
           {
@@ -99201,7 +99230,8 @@
                   {
                     "required": [
                       "mode",
-                      "teamId"
+                      "teamId",
+                      "billingPlan"
                     ],
                     "properties": {
                       "mode": {
@@ -99219,7 +99249,8 @@
                   {
                     "required": [
                       "mode",
-                      "slug"
+                      "slug",
+                      "billingPlan"
                     ],
                     "properties": {
                       "mode": {
@@ -189713,6 +189744,13 @@
                     ],
                     "example": 604800000
                   },
+                  "expiryNotificationLeadTime": {
+                    "description": "How long before a session expires, in milliseconds, the `sandbox.session.expiring` webhook is sent. It affects only that webhook. When a deadline is closer than the lead time, the webhook is sent right away: at the start of a session whose timeout is shorter, and after each extension that leaves the deadline within the lead time. Defaults to 1 minute. Takes effect from the next session.",
+                    "type": "integer",
+                    "minimum": 60000,
+                    "maximum": 3600000,
+                    "example": 300000
+                  },
                   "keepLastSnapshots": {
                     "description": "Protect the N most recent snapshots with different expiration/deletion behavior.",
                     "type": "object",
@@ -191398,6 +191436,13 @@
                       }
                     ],
                     "example": 604800000
+                  },
+                  "expiryNotificationLeadTime": {
+                    "description": "How long before a session expires, in milliseconds, the `sandbox.session.expiring` webhook is sent. It affects only that webhook. When a deadline is closer than the lead time, the webhook is sent right away: at the start of a session whose timeout is shorter, and after each extension that leaves the deadline within the lead time. Defaults to 1 minute. Takes effect from the next session.",
+                    "type": "integer",
+                    "minimum": 60000,
+                    "maximum": 3600000,
+                    "example": 300000
                   },
                   "keepLastSnapshots": {
                     "description": "Protect the N most recent snapshots with different expiration/deletion behavior. Set to null to clear.",
@@ -193258,6 +193303,12 @@
               "schema": {
                 "oneOf": [
                   {
+                    "description": "Network access policy for the sandbox.\\n    Controls which external hosts the sandbox can communicate with.\\n    Use \\\"allow-all\\\" mode to allow all traffic, \\\"deny-all\\\" to block all traffic or \\\"custom\\\" to provide specific rules.",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "mode"
+                    ],
                     "properties": {
                       "mode": {
                         "description": "The network access policy mode. Use \\\"allow-all\\\" to permit all outbound traffic. Use \\\"deny-all\\\" to block all outbound traffic. Use \\\"custom\\\" to specify explicit allow/deny rules.",
@@ -193440,15 +193491,11 @@
                           }
                         }
                       }
-                    },
-                    "description": "Network access policy for the sandbox.\\n    Controls which external hosts the sandbox can communicate with.\\n    Use \\\"allow-all\\\" mode to allow all traffic, \\\"deny-all\\\" to block all traffic or \\\"custom\\\" to provide specific rules.",
-                    "type": "object",
-                    "additionalProperties": false,
-                    "required": [
-                      "mode"
-                    ]
+                    }
                   },
                   {
+                    "type": "object",
+                    "additionalProperties": false,
                     "properties": {
                       "allow": {
                         "oneOf": [
@@ -193650,9 +193697,7 @@
                           }
                         }
                       }
-                    },
-                    "type": "object",
-                    "additionalProperties": false
+                    }
                   }
                 ]
               }
@@ -194815,6 +194860,13 @@
                     ],
                     "example": 604800000
                   },
+                  "expiryNotificationLeadTime": {
+                    "description": "How long before a session expires, in milliseconds, the `sandbox.session.expiring` webhook is sent. Defaults to the source sandbox setting.",
+                    "type": "integer",
+                    "minimum": 60000,
+                    "maximum": 3600000,
+                    "example": 300000
+                  },
                   "keepLastSnapshots": {
                     "description": "Protect the N most recent snapshots with different expiration/deletion behavior.",
                     "type": "object",
@@ -195667,6 +195719,13 @@
                       }
                     ],
                     "example": 604800000
+                  },
+                  "expiryNotificationLeadTime": {
+                    "description": "How long before a session expires, in milliseconds, the `sandbox.session.expiring` webhook is sent. It affects only that webhook. When a deadline is closer than the lead time, the webhook is sent right away: at the start of a session whose timeout is shorter, and after each extension that leaves the deadline within the lead time. Defaults to 1 minute. Takes effect from the next session.",
+                    "type": "integer",
+                    "minimum": 60000,
+                    "maximum": 3600000,
+                    "example": 300000
                   },
                   "keepLastSnapshots": {
                     "description": "Protect the N most recent snapshots with different expiration/deletion behavior.",
@@ -196568,6 +196627,13 @@
                     ],
                     "example": 604800000
                   },
+                  "expiryNotificationLeadTime": {
+                    "description": "How long before a session expires, in milliseconds, the `sandbox.session.expiring` webhook is sent. Defaults to the source sandbox setting.",
+                    "type": "integer",
+                    "minimum": 60000,
+                    "maximum": 3600000,
+                    "example": 300000
+                  },
                   "keepLastSnapshots": {
                     "description": "Protect the N most recent snapshots with different expiration/deletion behavior. Persistent sandboxes default to keeping only the last snapshot (evicted snapshots are deleted). Set to null to disable the limit.",
                     "oneOf": [
@@ -197427,6 +197493,13 @@
                       }
                     ],
                     "example": 604800000
+                  },
+                  "expiryNotificationLeadTime": {
+                    "description": "How long before a session expires, in milliseconds, the `sandbox.session.expiring` webhook is sent. It affects only that webhook. When a deadline is closer than the lead time, the webhook is sent right away: at the start of a session whose timeout is shorter, and after each extension that leaves the deadline within the lead time. Defaults to 1 minute. Takes effect from the next session.",
+                    "type": "integer",
+                    "minimum": 60000,
+                    "maximum": 3600000,
+                    "example": 300000
                   },
                   "keepLastSnapshots": {
                     "description": "Protect the N most recent snapshots with different expiration/deletion behavior. Persistent sandboxes default to keeping only the last snapshot (evicted snapshots are deleted). Set to null to disable the limit.",
@@ -218563,6 +218636,10 @@
                               "ssoConnectedAt": {
                                 "type": "number"
                               },
+                              "ssoIdFingerprint": {
+                                "type": "string",
+                                "description": "How `ssoUserId` and `idpUserId` were made; absent when unknown."
+                              },
                               "ssoUserId": {
                                 "type": "string"
                               }
@@ -219107,6 +219184,10 @@
                         "ssoConnectedAt": {
                           "type": "number"
                         },
+                        "ssoIdFingerprint": {
+                          "type": "string",
+                          "description": "How `ssoUserId` and `idpUserId` were made; absent when unknown."
+                        },
                         "ssoUserId": {
                           "type": "string"
                         }
@@ -219367,6 +219448,10 @@
                         },
                         "ssoConnectedAt": {
                           "type": "number"
+                        },
+                        "ssoIdFingerprint": {
+                          "type": "string",
+                          "description": "How `ssoUserId` and `idpUserId` were made; absent when unknown."
                         },
                         "ssoUserId": {
                           "type": "string"
@@ -221710,7 +221795,7 @@
             }
           },
           "400": {
-            "description": ""
+            "description": "One of the provided values in the request query is invalid."
           },
           "401": {
             "description": "The request is not authorized."
@@ -221729,7 +221814,38 @@
             "list"
           ]
         },
-        "parameters": []
+        "parameters": [
+          {
+            "name": "kind",
+            "description": "Filter by token kind. Omit or use `all` to include every kind.",
+            "in": "query",
+            "schema": {
+              "description": "Filter by token kind. Omit or use `all` to include every kind.",
+              "enum": [
+                "access-token",
+                "all",
+                "app",
+                "sign-in-session"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "description": "Filter by token status. Omit or use `all` to include every status.",
+            "in": "query",
+            "schema": {
+              "description": "Filter by token status. Omit or use `all` to include every status.",
+              "enum": [
+                "active",
+                "all",
+                "expired",
+                "revoked"
+              ],
+              "type": "string"
+            }
+          }
+        ]
       }
     },
     "/v3/user/tokens": {
@@ -234648,6 +234764,9 @@
                           "project.rolling-release.approved",
                           "project.rolling-release.completed",
                           "project.rolling-release.started",
+                          "sandbox.session.expiring",
+                          "sandbox.session.started",
+                          "sandbox.session.stopped",
                           "test-webhook",
                           "thread.resolved",
                           "thread.unresolved"
@@ -234691,6 +234810,9 @@
                           "integration-configuration.scope-change-confirmed": "IntegrationConfigurationScopeChangeConfirmed",
                           "integration-resource.project-connected": "IntegrationResourceProjectConnected",
                           "integration-resource.project-disconnected": "IntegrationResourceProjectDisconnected",
+                          "sandbox.session.expiring": "SandboxSessionExpiring",
+                          "sandbox.session.started": "SandboxSessionStarted",
+                          "sandbox.session.stopped": "SandboxSessionStopped",
                           "project.created": "ProjectCreated",
                           "project.removed": "ProjectRemoved",
                           "project.domain.created": "ProjectDomainCreated",
@@ -234883,6 +235005,9 @@
                         "integration-configuration.transferred",
                         "integration-resource.project-connected",
                         "integration-resource.project-disconnected",
+                        "sandbox.session.expiring",
+                        "sandbox.session.started",
+                        "sandbox.session.stopped",
                         "project.created",
                         "project.removed",
                         "project.renamed",
@@ -234994,6 +235119,9 @@
                         "integration-configuration.scope-change-confirmed": "IntegrationConfigurationScopeChangeConfirmed",
                         "integration-resource.project-connected": "IntegrationResourceProjectConnected",
                         "integration-resource.project-disconnected": "IntegrationResourceProjectDisconnected",
+                        "sandbox.session.expiring": "SandboxSessionExpiring",
+                        "sandbox.session.started": "SandboxSessionStarted",
+                        "sandbox.session.stopped": "SandboxSessionStopped",
                         "project.created": "ProjectCreated",
                         "project.removed": "ProjectRemoved",
                         "project.domain.created": "ProjectDomainCreated",
@@ -235199,6 +235327,9 @@
                                 "project.rolling-release.approved",
                                 "project.rolling-release.completed",
                                 "project.rolling-release.started",
+                                "sandbox.session.expiring",
+                                "sandbox.session.started",
+                                "sandbox.session.stopped",
                                 "test-webhook",
                                 "thread.resolved",
                                 "thread.unresolved"
@@ -235242,6 +235373,9 @@
                                 "integration-configuration.scope-change-confirmed": "IntegrationConfigurationScopeChangeConfirmed",
                                 "integration-resource.project-connected": "IntegrationResourceProjectConnected",
                                 "integration-resource.project-disconnected": "IntegrationResourceProjectDisconnected",
+                                "sandbox.session.expiring": "SandboxSessionExpiring",
+                                "sandbox.session.started": "SandboxSessionStarted",
+                                "sandbox.session.stopped": "SandboxSessionStopped",
                                 "project.created": "ProjectCreated",
                                 "project.removed": "ProjectRemoved",
                                 "project.domain.created": "ProjectDomainCreated",
@@ -235562,6 +235696,9 @@
                                 "project.rolling-release.approved",
                                 "project.rolling-release.completed",
                                 "project.rolling-release.started",
+                                "sandbox.session.expiring",
+                                "sandbox.session.started",
+                                "sandbox.session.stopped",
                                 "test-webhook",
                                 "thread.resolved",
                                 "thread.unresolved"
@@ -235605,6 +235742,9 @@
                                 "integration-configuration.scope-change-confirmed": "IntegrationConfigurationScopeChangeConfirmed",
                                 "integration-resource.project-connected": "IntegrationResourceProjectConnected",
                                 "integration-resource.project-disconnected": "IntegrationResourceProjectDisconnected",
+                                "sandbox.session.expiring": "SandboxSessionExpiring",
+                                "sandbox.session.started": "SandboxSessionStarted",
+                                "sandbox.session.stopped": "SandboxSessionStopped",
                                 "project.created": "ProjectCreated",
                                 "project.removed": "ProjectRemoved",
                                 "project.domain.created": "ProjectDomainCreated",
@@ -235889,6 +236029,9 @@
                           "project.rolling-release.approved",
                           "project.rolling-release.completed",
                           "project.rolling-release.started",
+                          "sandbox.session.expiring",
+                          "sandbox.session.started",
+                          "sandbox.session.stopped",
                           "test-webhook",
                           "thread.resolved",
                           "thread.unresolved"
@@ -235932,6 +236075,9 @@
                           "integration-configuration.scope-change-confirmed": "IntegrationConfigurationScopeChangeConfirmed",
                           "integration-resource.project-connected": "IntegrationResourceProjectConnected",
                           "integration-resource.project-disconnected": "IntegrationResourceProjectDisconnected",
+                          "sandbox.session.expiring": "SandboxSessionExpiring",
+                          "sandbox.session.started": "SandboxSessionStarted",
+                          "sandbox.session.stopped": "SandboxSessionStopped",
                           "project.created": "ProjectCreated",
                           "project.removed": "ProjectRemoved",
                           "project.domain.created": "ProjectDomainCreated",
@@ -240331,6 +240477,10 @@
           "currentSpend": {
             "type": "number"
           },
+          "expiresAt": {
+            "type": "number",
+            "description": "When a member's own budget change lapses and the user default applies again, in ms since the epoch. Absent means the budget is permanent."
+          },
           "includeByokInQuota": {
             "type": "boolean",
             "enum": [
@@ -240358,12 +240508,13 @@
           },
           "scopeId": {
             "type": "string",
-            "description": "The native Vercel id of the scoped entity. Team/project ids already carry their prefix, so this equals `quotaEntityId` (`team_…` / `prj_…`); for the api-key scope it is the api key id (the `api_key_id_` prefix stripped)."
+            "description": "The native Vercel id of the scoped entity. Team/project ids already carry their prefix, so this equals `quotaEntityId` (`team_…` / `prj_…`); user and app scopes also use the quota entity id (`usr_<userId>` / `app_<appId>`); for the api-key scope it is the api key id (the `api_key_id_` prefix stripped)."
           },
           "scopeType": {
             "type": "string",
             "enum": [
               "api-key",
+              "app",
               "project",
               "team",
               "user"
@@ -240408,6 +240559,10 @@
             "properties": {
               "api-key": {
                 "type": "number"
+              },
+              "app": {
+                "type": "number",
+                "description": "Omitted when no app row is default-covered."
               },
               "project": {
                 "type": "number"
@@ -240454,6 +240609,18 @@
             },
             "type": "array"
           },
+          "appliesTo": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "team",
+                "user"
+              ],
+              "description": "`api-key` scope only: key spend attributions covered. Absent means both."
+            },
+            "type": "array",
+            "description": "`api-key` scope only: key spend attributions covered. Absent means both."
+          },
           "createdAt": {
             "type": "number"
           },
@@ -240473,6 +240640,7 @@
             "type": "string",
             "enum": [
               "api-key",
+              "app",
               "project",
               "team",
               "user"
@@ -244507,7 +244675,7 @@
           },
           "uid": {
             "type": "string",
-            "description": "Full team-scoped UID, such as `slack/my-bot`. It cannot contain whitespace, `%`, `#`, control characters, or Vercel-owned namespaces. Changing it breaks callers that use the old UID. The stable connector ID does not change."
+            "description": "Full team- or organization-scoped UID, such as `slack/my-bot`. It cannot contain whitespace, `%`, `#`, control characters, or Vercel-owned namespaces. Changing it breaks callers that use the old UID. The stable connector ID does not change."
           },
           "name": {
             "type": "string",
@@ -247391,6 +247559,10 @@
                         },
                         "type": "array"
                       },
+                      "expiresAt": {
+                        "type": "number",
+                        "description": "When the budget lapses to the scope's default, in ms since the epoch."
+                      },
                       "limitAmount": {
                         "type": "number",
                         "description": "Spend cap, in dollars."
@@ -247485,6 +247657,10 @@
                         },
                         "type": "array"
                       },
+                      "expiresAt": {
+                        "type": "number",
+                        "description": "When the budget lapses to the scope's default, in ms since the epoch."
+                      },
                       "limitAmount": {
                         "type": "number",
                         "description": "Spend cap, in dollars."
@@ -247526,6 +247702,10 @@
                           "type": "number"
                         },
                         "type": "array"
+                      },
+                      "expiresAt": {
+                        "type": "number",
+                        "description": "When the budget lapses to the scope's default, in ms since the epoch."
                       },
                       "limitAmount": {
                         "type": "number",
@@ -247642,6 +247822,10 @@
                         },
                         "type": "array"
                       },
+                      "expiresAt": {
+                        "type": "number",
+                        "description": "When the budget lapses to the scope's default, in ms since the epoch."
+                      },
                       "limitAmount": {
                         "type": "number",
                         "description": "Spend cap, in dollars."
@@ -247654,6 +247838,16 @@
                           "none",
                           "weekly"
                         ]
+                      },
+                      "appliesTo": {
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "team",
+                            "user"
+                          ]
+                        },
+                        "type": "array"
                       }
                     },
                     "required": [
@@ -247661,7 +247855,7 @@
                       "refreshPeriod"
                     ],
                     "type": "object",
-                    "description": "Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
+                    "description": "`api-key` defaults may cover only some key spend attributions."
                   },
                   "change": {
                     "type": "string",
@@ -247684,6 +247878,10 @@
                         },
                         "type": "array"
                       },
+                      "expiresAt": {
+                        "type": "number",
+                        "description": "When the budget lapses to the scope's default, in ms since the epoch."
+                      },
                       "limitAmount": {
                         "type": "number",
                         "description": "Spend cap, in dollars."
@@ -247696,6 +247894,16 @@
                           "none",
                           "weekly"
                         ]
+                      },
+                      "appliesTo": {
+                        "items": {
+                          "type": "string",
+                          "enum": [
+                            "team",
+                            "user"
+                          ]
+                        },
+                        "type": "array"
                       }
                     },
                     "required": [
@@ -247703,12 +247911,13 @@
                       "refreshPeriod"
                     ],
                     "type": "object",
-                    "description": "Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`."
+                    "description": "`api-key` defaults may cover only some key spend attributions."
                   },
                   "scopeType": {
                     "type": "string",
                     "enum": [
                       "api-key",
+                      "app",
                       "project",
                       "team",
                       "user"
@@ -247724,6 +247933,13 @@
               },
               {
                 "properties": {
+                  "appId": {
+                    "type": "string",
+                    "description": "Associates the event with a Vercel App; rendered when `appName` is absent."
+                  },
+                  "appName": {
+                    "type": "string"
+                  },
                   "budget": {
                     "nullable": true,
                     "properties": {
@@ -247732,6 +247948,10 @@
                           "type": "number"
                         },
                         "type": "array"
+                      },
+                      "expiresAt": {
+                        "type": "number",
+                        "description": "When the budget lapses to the scope's default, in ms since the epoch."
                       },
                       "limitAmount": {
                         "type": "number",
@@ -247774,6 +247994,10 @@
                           "type": "number"
                         },
                         "type": "array"
+                      },
+                      "expiresAt": {
+                        "type": "number",
+                        "description": "When the budget lapses to the scope's default, in ms since the epoch."
                       },
                       "limitAmount": {
                         "type": "number",
@@ -247806,6 +248030,7 @@
                   "scopeType": {
                     "type": "string",
                     "enum": [
+                      "app",
                       "project",
                       "team",
                       "user"
@@ -248221,6 +248446,15 @@
                     "type": "number"
                   },
                   "timeoutMs": {
+                    "type": "number"
+                  }
+                },
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "previousSecretGracePeriodHours": {
                     "type": "number"
                   }
                 },
@@ -250414,6 +250648,14 @@
                   },
                   "headSha": {
                     "type": "string"
+                  },
+                  "isAuthor": {
+                    "type": "boolean",
+                    "enum": [
+                      false,
+                      true
+                    ],
+                    "description": "The actor opted in on their own pull request instead of approving it."
                   },
                   "prNumber": {
                     "type": "number"
@@ -255292,6 +255534,12 @@
                         ],
                         "description": "Indicates a value was submitted, not whether its plaintext changed."
                       },
+                      "customEnvironmentSlugsById": {
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "type": "object"
+                      },
                       "key": {
                         "type": "string"
                       },
@@ -256101,6 +256349,12 @@
                           true
                         ],
                         "description": "Indicates a value was submitted, not whether its plaintext changed."
+                      },
+                      "customEnvironmentSlugsById": {
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "type": "object"
                       },
                       "key": {
                         "type": "string"
@@ -258480,6 +258734,42 @@
               },
               {
                 "properties": {
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "organizationSlug": {
+                    "type": "string"
+                  },
+                  "targetUser": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "organizationId",
+                  "organizationSlug",
+                  "targetUser"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "organizationId": {
+                    "type": "string"
+                  },
+                  "organizationSlug": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "organizationId",
+                  "organizationSlug"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
                   "avatar": {
                     "nullable": true,
                     "type": "string"
@@ -260038,6 +260328,10 @@
                             "ssoConnectedAt": {
                               "type": "number"
                             },
+                            "ssoIdFingerprint": {
+                              "type": "string",
+                              "description": "How `ssoUserId` and `idpUserId` were made; absent when unknown."
+                            },
                             "ssoUserId": {
                               "type": "string"
                             }
@@ -260202,6 +260496,10 @@
                             },
                             "ssoConnectedAt": {
                               "type": "number"
+                            },
+                            "ssoIdFingerprint": {
+                              "type": "string",
+                              "description": "How `ssoUserId` and `idpUserId` were made; absent when unknown."
                             },
                             "ssoUserId": {
                               "type": "string"
@@ -264378,6 +264676,13 @@
                       "type": "string"
                     },
                     "type": "array"
+                  },
+                  "rebind": {
+                    "type": "boolean",
+                    "enum": [
+                      true
+                    ],
+                    "description": "The IdP or the user id rule changed, so members re-bind by email once."
                   }
                 },
                 "required": [
@@ -264418,6 +264723,13 @@
                       "type": "string"
                     },
                     "type": "array"
+                  },
+                  "rebind": {
+                    "type": "boolean",
+                    "enum": [
+                      true
+                    ],
+                    "description": "The IdP or the user id rule changed, so members re-bind by email once."
                   }
                 },
                 "required": [
@@ -264476,6 +264788,37 @@
                   "connectionId": {
                     "type": "string"
                   },
+                  "to": {
+                    "type": "string",
+                    "enum": [
+                      "vercel",
+                      "workos"
+                    ]
+                  },
+                  "certificateFingerprints": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "actorName": {
+                    "type": "string"
+                  },
+                  "actorType": {
+                    "type": "string",
+                    "enum": [
+                      "admin"
+                    ]
+                  }
+                },
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "connectionId": {
+                    "type": "string"
+                  },
                   "actorName": {
                     "type": "string"
                   },
@@ -264490,8 +264833,6 @@
                   }
                 },
                 "required": [
-                  "actorType",
-                  "connectionId",
                   "keyId"
                 ],
                 "type": "object",
@@ -264527,11 +264868,25 @@
                   }
                 },
                 "required": [
-                  "actorType",
-                  "connectionId",
                   "keyId",
                   "signingEnabled",
                   "signingKeyId"
+                ],
+                "type": "object",
+                "description": "The payload of the event, if requested."
+              },
+              {
+                "properties": {
+                  "projectId": {
+                    "type": "string"
+                  },
+                  "sandboxId": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "projectId",
+                  "sandboxId"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -264560,16 +264915,24 @@
               },
               {
                 "properties": {
+                  "expiryNotificationLeadTime": {
+                    "type": "number"
+                  },
                   "projectId": {
                     "type": "string"
                   },
-                  "sandboxId": {
+                  "projectName": {
+                    "type": "string"
+                  },
+                  "sandboxName": {
                     "type": "string"
                   }
                 },
                 "required": [
+                  "expiryNotificationLeadTime",
                   "projectId",
-                  "sandboxId"
+                  "projectName",
+                  "sandboxName"
                 ],
                 "type": "object",
                 "description": "The payload of the event, if requested."
@@ -271844,6 +272207,7 @@
               "ai-gateway-inference-hooks-endpoint-updated",
               "ai-gateway-inference-hooks-headers-cleared",
               "ai-gateway-inference-hooks-headers-updated",
+              "ai-gateway-inference-hooks-previous-signing-secret-retired",
               "ai-gateway-inference-hooks-removed",
               "ai-gateway-inference-hooks-settings-updated",
               "ai-gateway-inference-hooks-signing-secret-created",
@@ -272202,6 +272566,8 @@
               "oidc-policy-deleted",
               "oidc-policy-updated",
               "oidc-policy-used-to-obtain-app-token",
+              "organization-admin-invite-revoked",
+              "organization-admin-removed",
               "organization-avatar-update",
               "organization-create",
               "organization-delete",
@@ -272401,12 +272767,15 @@
               "saml-idp-material-set",
               "saml-idp-material-system-deleted",
               "saml-idp-material-system-set",
+              "saml-login-provider-changed",
+              "sandbox-ai-gateway-credentials-configured",
               "sandbox-alias-assigned",
               "sandbox-alias-delete",
               "sandbox-drive-created",
               "sandbox-drive-deleted",
               "sandbox-drive-snapshot-created",
               "sandbox-drive-snapshot-deleted",
+              "sandbox-expiry-notification-lead-time-updated",
               "sandbox-npm-credentials-configured",
               "sandbox-signed-commit-identity-configured",
               "sandbox-snapshot-regions-updated",
@@ -272920,6 +273289,7 @@
               "ai-gateway-inference-hooks-endpoint-updated",
               "ai-gateway-inference-hooks-headers-cleared",
               "ai-gateway-inference-hooks-headers-updated",
+              "ai-gateway-inference-hooks-previous-signing-secret-retired",
               "ai-gateway-inference-hooks-removed",
               "ai-gateway-inference-hooks-settings-updated",
               "ai-gateway-inference-hooks-signing-secret-created",
@@ -273278,6 +273648,8 @@
               "oidc-policy-deleted",
               "oidc-policy-updated",
               "oidc-policy-used-to-obtain-app-token",
+              "organization-admin-invite-revoked",
+              "organization-admin-removed",
               "organization-avatar-update",
               "organization-create",
               "organization-delete",
@@ -273477,12 +273849,15 @@
               "saml-idp-material-set",
               "saml-idp-material-system-deleted",
               "saml-idp-material-system-set",
+              "saml-login-provider-changed",
+              "sandbox-ai-gateway-credentials-configured",
               "sandbox-alias-assigned",
               "sandbox-alias-delete",
               "sandbox-drive-created",
               "sandbox-drive-deleted",
               "sandbox-drive-snapshot-created",
               "sandbox-drive-snapshot-deleted",
+              "sandbox-expiry-notification-lead-time-updated",
               "sandbox-npm-credentials-configured",
               "sandbox-signed-commit-identity-configured",
               "sandbox-snapshot-regions-updated",
@@ -273754,6 +274129,7 @@
                 "ai-gateway-inference-hooks-endpoint-updated",
                 "ai-gateway-inference-hooks-headers-cleared",
                 "ai-gateway-inference-hooks-headers-updated",
+                "ai-gateway-inference-hooks-previous-signing-secret-retired",
                 "ai-gateway-inference-hooks-removed",
                 "ai-gateway-inference-hooks-settings-updated",
                 "ai-gateway-inference-hooks-signing-secret-created",
@@ -274112,6 +274488,8 @@
                 "oidc-policy-deleted",
                 "oidc-policy-updated",
                 "oidc-policy-used-to-obtain-app-token",
+                "organization-admin-invite-revoked",
+                "organization-admin-removed",
                 "organization-avatar-update",
                 "organization-create",
                 "organization-delete",
@@ -274311,12 +274689,15 @@
                 "saml-idp-material-set",
                 "saml-idp-material-system-deleted",
                 "saml-idp-material-system-set",
+                "saml-login-provider-changed",
+                "sandbox-ai-gateway-credentials-configured",
                 "sandbox-alias-assigned",
                 "sandbox-alias-delete",
                 "sandbox-drive-created",
                 "sandbox-drive-deleted",
                 "sandbox-drive-snapshot-created",
                 "sandbox-drive-snapshot-deleted",
+                "sandbox-expiry-notification-lead-time-updated",
                 "sandbox-npm-credentials-configured",
                 "sandbox-signed-commit-identity-configured",
                 "sandbox-snapshot-regions-updated",
@@ -276402,6 +276783,11 @@
             "description": "The time at which the currently running sandbox will time out, in milliseconds since the epoch. Only present while a session is running.",
             "example": 1750344801629
           },
+          "expiryNotificationLeadTime": {
+            "type": "number",
+            "description": "How long before a session expires, in milliseconds, the `sandbox.session.expiring` webhook is sent. It affects only that webhook. When a deadline is closer than the lead time, the webhook is sent right away: at the start of a session whose timeout is shorter, and after each extension that leaves the deadline within the lead time.",
+            "example": 60000
+          },
           "failoverRegions": {
             "items": {
               "type": "string",
@@ -276651,6 +277037,7 @@
         "required": [
           "createdAt",
           "currentSessionId",
+          "expiryNotificationLeadTime",
           "name",
           "persistent",
           "status",
@@ -276986,6 +277373,18 @@
             "type": "number",
             "description": "The time when the sandbox was stopped, in milliseconds since the epoch.",
             "example": 1750344501629
+          },
+          "stopReason": {
+            "type": "string",
+            "enum": [
+              "error",
+              "exited",
+              "requested",
+              "snapshot",
+              "timeout"
+            ],
+            "description": "Why the sandbox stopped: `requested` for a stop requested through the API, `snapshot` for a stop to take a snapshot, `timeout` when the sandbox reached its timeout, `exited` when its main process exited on its own, and `error` when it failed or was stopped by the platform.",
+            "example": "requested"
           },
           "timeout": {
             "type": "number",
@@ -278073,6 +278472,10 @@
                   "ssoConnectedAt": {
                     "type": "number"
                   },
+                  "ssoIdFingerprint": {
+                    "type": "string",
+                    "description": "How `ssoUserId` and `idpUserId` were made; absent when unknown."
+                  },
                   "ssoUserId": {
                     "type": "string"
                   }
@@ -278780,6 +279183,10 @@
                   "ssoConnectedAt": {
                     "type": "number"
                   },
+                  "ssoIdFingerprint": {
+                    "type": "string",
+                    "description": "How `ssoUserId` and `idpUserId` were made; absent when unknown."
+                  },
                   "ssoUserId": {
                     "type": "string"
                   }
@@ -279030,6 +279437,17 @@
             "description": "The unique identifier of the token.",
             "example": "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391"
           },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "access-token",
+              "app",
+              "other",
+              "sign-in-session"
+            ],
+            "description": "The user-facing kind of the token.",
+            "example": "access-token"
+          },
           "leakedAt": {
             "type": "number",
             "description": "Timestamp (in milliseconds) of when the token was marked as leaked.",
@@ -279201,6 +279619,7 @@
           "activeAt",
           "createdAt",
           "id",
+          "kind",
           "name",
           "type"
         ],

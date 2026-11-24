@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -177,11 +177,13 @@ export const GetMicrofrontendsConfigRequest$outboundSchema: z.ZodType<
   GetMicrofrontendsConfigRequest$Outbound,
   z.ZodTypeDef,
   GetMicrofrontendsConfigRequest
-> = z.object({
-  deploymentId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getMicrofrontendsConfigRequestToJSON(
   getMicrofrontendsConfigRequest: GetMicrofrontendsConfigRequest,
@@ -198,7 +200,9 @@ export const ApplicationsLocal$inboundSchema: z.ZodType<
   ApplicationsLocal,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function applicationsLocalFromJSON(
   jsonString: string,
@@ -215,11 +219,13 @@ export const ApplicationsDevelopment$inboundSchema: z.ZodType<
   ApplicationsDevelopment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fallback: types.optional(types.string()),
-  local: types.optional(smartUnion([types.string(), types.number()])),
-  task: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fallback: types.optional(types.string()),
+    local: types.optional(smartUnion([types.string(), types.number()])),
+    task: types.optional(types.string()),
+  })
+);
 
 export function applicationsDevelopmentFromJSON(
   jsonString: string,
@@ -233,11 +239,13 @@ export function applicationsDevelopmentFromJSON(
 
 /** @internal */
 export const Routing$inboundSchema: z.ZodType<Routing, z.ZodTypeDef, unknown> =
-  z.object({
-    flag: types.optional(types.string()),
-    group: types.optional(types.string()),
-    paths: z.array(types.string()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      flag: types.optional(types.string()),
+      group: types.optional(types.string()),
+      paths: z.array(types.string()),
+    })
+  );
 
 export function routingFromJSON(
   jsonString: string,
@@ -254,15 +262,17 @@ export const Applications2$inboundSchema: z.ZodType<
   Applications2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  assetPrefix: types.optional(types.string()),
-  development: types.optional(
-    z.lazy(() => ApplicationsDevelopment$inboundSchema),
-  ),
-  packageName: types.optional(types.string()),
-  routing: z.array(z.lazy(() => Routing$inboundSchema)),
-  projectId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    assetPrefix: types.optional(types.string()),
+    development: types.optional(
+      z.lazy(() => ApplicationsDevelopment$inboundSchema),
+    ),
+    packageName: types.optional(types.string()),
+    routing: z.array(z.lazy(() => Routing$inboundSchema)),
+    projectId: types.string(),
+  })
+);
 
 export function applications2FromJSON(
   jsonString: string,
@@ -276,7 +286,9 @@ export function applications2FromJSON(
 
 /** @internal */
 export const Local$inboundSchema: z.ZodType<Local, z.ZodTypeDef, unknown> =
-  smartUnion([types.string(), types.number()]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), types.number()])
+  );
 
 export function localFromJSON(
   jsonString: string,
@@ -293,11 +305,13 @@ export const Development$inboundSchema: z.ZodType<
   Development,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fallback: types.string(),
-  local: types.optional(smartUnion([types.string(), types.number()])),
-  task: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fallback: types.string(),
+    local: types.optional(smartUnion([types.string(), types.number()])),
+    task: types.optional(types.string()),
+  })
+);
 
 export function developmentFromJSON(
   jsonString: string,
@@ -314,11 +328,13 @@ export const Applications1$inboundSchema: z.ZodType<
   Applications1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  development: z.lazy(() => Development$inboundSchema),
-  packageName: types.optional(types.string()),
-  projectId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    development: z.lazy(() => Development$inboundSchema),
+    packageName: types.optional(types.string()),
+    projectId: types.string(),
+  })
+);
 
 export function applications1FromJSON(
   jsonString: string,
@@ -335,10 +351,12 @@ export const Applications$inboundSchema: z.ZodType<
   Applications,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => Applications1$inboundSchema),
-  z.lazy(() => Applications2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Applications1$inboundSchema),
+    z.lazy(() => Applications2$inboundSchema),
+  ])
+);
 
 export function applicationsFromJSON(
   jsonString: string,
@@ -352,10 +370,12 @@ export function applicationsFromJSON(
 
 /** @internal */
 export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> =
-  z.object({
-    disableOverrides: types.optional(types.boolean()),
-    localProxyPort: types.optional(types.number()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      disableOverrides: types.optional(types.boolean()),
+      localProxyPort: types.optional(types.number()),
+    })
+  );
 
 export function optionsFromJSON(
   jsonString: string,
@@ -370,28 +390,32 @@ export function optionsFromJSON(
 /** @internal */
 export const GetMicrofrontendsConfigVersion$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsConfigVersion
-> = z.nativeEnum(GetMicrofrontendsConfigVersion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsConfigVersion)
+);
 
 /** @internal */
 export const GetMicrofrontendsConfigConfig$inboundSchema: z.ZodType<
   GetMicrofrontendsConfigConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  $schema: types.optional(types.string()),
-  applications: z.record(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    $schema: types.optional(types.string()),
+    applications: z.record(smartUnion([
       z.lazy(() => Applications1$inboundSchema),
       z.lazy(() => Applications2$inboundSchema),
-    ]),
-  ),
-  options: types.optional(z.lazy(() => Options$inboundSchema)),
-  version: types.optional(GetMicrofrontendsConfigVersion$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "$schema": "dollarSchema",
-  });
-});
+    ])),
+    options: types.optional(z.lazy(() =>
+      Options$inboundSchema
+    )),
+    version: types.optional(GetMicrofrontendsConfigVersion$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "$schema": "dollarSchema",
+    });
+  })
+);
 
 export function getMicrofrontendsConfigConfigFromJSON(
   jsonString: string,
@@ -408,11 +432,13 @@ export const GetMicrofrontendsConfigResponseBody$inboundSchema: z.ZodType<
   GetMicrofrontendsConfigResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  config: types.nullable(
-    z.lazy(() => GetMicrofrontendsConfigConfig$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    config: types.nullable(
+      z.lazy(() => GetMicrofrontendsConfigConfig$inboundSchema),
+    ),
+  })
+);
 
 export function getMicrofrontendsConfigResponseBodyFromJSON(
   jsonString: string,

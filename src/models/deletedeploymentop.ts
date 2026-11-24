@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -66,12 +66,14 @@ export const DeleteDeploymentRequest$outboundSchema: z.ZodType<
   DeleteDeploymentRequest$Outbound,
   z.ZodTypeDef,
   DeleteDeploymentRequest
-> = z.object({
-  id: z.string(),
-  url: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    url: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteDeploymentRequestToJSON(
   deleteDeploymentRequest: DeleteDeploymentRequest,
@@ -84,17 +86,19 @@ export function deleteDeploymentRequestToJSON(
 /** @internal */
 export const DeleteDeploymentState$inboundSchema: z.ZodNativeEnum<
   typeof DeleteDeploymentState
-> = z.nativeEnum(DeleteDeploymentState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteDeploymentState));
 
 /** @internal */
 export const DeleteDeploymentResponseBody$inboundSchema: z.ZodType<
   DeleteDeploymentResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  state: DeleteDeploymentState$inboundSchema,
-  uid: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    state: DeleteDeploymentState$inboundSchema,
+    uid: types.string(),
+  })
+);
 
 export function deleteDeploymentResponseBodyFromJSON(
   jsonString: string,

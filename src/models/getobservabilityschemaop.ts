@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -22,10 +22,12 @@ export const GetObservabilitySchemaMetrics$inboundSchema: z.ZodType<
   GetObservabilitySchemaMetrics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.string(),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.string(),
+    id: types.string(),
+  })
+);
 
 export function getObservabilitySchemaMetricsFromJSON(
   jsonString: string,
@@ -42,9 +44,11 @@ export const GetObservabilitySchemaResponseBody$inboundSchema: z.ZodType<
   GetObservabilitySchemaResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  metrics: z.array(z.lazy(() => GetObservabilitySchemaMetrics$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    metrics: z.array(z.lazy(() => GetObservabilitySchemaMetrics$inboundSchema)),
+  })
+);
 
 export function getObservabilitySchemaResponseBodyFromJSON(
   jsonString: string,

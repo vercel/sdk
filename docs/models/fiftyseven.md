@@ -5,17 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftySeven } from "@vercel/sdk/models/twenty.js";
+import { FiftySeven } from "@vercel/sdk/models/usereventpayload25provider.js";
 
 let value: FiftySeven = {
-  virtualModelConfig: {
+  rule: {
     id: "<id>",
+    type: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `virtualModelConfig`                                         | [models.VirtualModelConfig](../models/virtualmodelconfig.md) | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `changedFields`                                      | [models.ChangedFields](../models/changedfields.md)[] | :heavy_minus_sign:                                   | N/A                                                  |
+| `enabled`                                            | *boolean*                                            | :heavy_minus_sign:                                   | N/A                                                  |
+| `previousRewriteModel`                               | *string*                                             | :heavy_minus_sign:                                   | N/A                                                  |
+| `rule`                                               | [models.PayloadRule](../models/payloadrule.md)       | :heavy_check_mark:                                   | N/A                                                  |

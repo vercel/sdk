@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type CreateNetworkRequestBody = {
   awsAvailabilityZoneIds?: Array<string> | undefined;
@@ -46,12 +47,14 @@ export const CreateNetworkRequestBody$outboundSchema: z.ZodType<
   CreateNetworkRequestBody$Outbound,
   z.ZodTypeDef,
   CreateNetworkRequestBody
-> = z.object({
-  awsAvailabilityZoneIds: z.array(z.string()).optional(),
-  cidr: z.string(),
-  name: z.string(),
-  region: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    awsAvailabilityZoneIds: z.array(z.string()).optional(),
+    cidr: z.string(),
+    name: z.string(),
+    region: z.string(),
+  })
+);
 
 export function createNetworkRequestBodyToJSON(
   createNetworkRequestBody: CreateNetworkRequestBody,
@@ -73,15 +76,18 @@ export const CreateNetworkRequest$outboundSchema: z.ZodType<
   CreateNetworkRequest$Outbound,
   z.ZodTypeDef,
   CreateNetworkRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateNetworkRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateNetworkRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createNetworkRequestToJSON(
   createNetworkRequest: CreateNetworkRequest,

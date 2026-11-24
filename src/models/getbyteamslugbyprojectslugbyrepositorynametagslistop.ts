@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -49,13 +53,39 @@ export const GetByTeamSlugByProjectSlugByRepositoryNameTagsListRequest$outboundS
     GetByTeamSlugByProjectSlugByRepositoryNameTagsListRequest$Outbound,
     z.ZodTypeDef,
     GetByTeamSlugByProjectSlugByRepositoryNameTagsListRequest
-  > = z.object({
-    teamSlug: z.string(),
-    projectSlug: z.string(),
-    repositoryName: z.string(),
-    n: z.number().int().optional(),
-    last: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      teamSlug: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9](?:[a-z0-9_-]{0,46}[a-z0-9])?$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9](?:[a-z0-9_-]{0,46}[a-z0-9])?$",
+        },
+      ),
+      projectSlug: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+        },
+      ),
+      repositoryName: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$",
+        },
+      ),
+      n: z.number().int().optional(),
+      last: z.string().optional(),
+    })
+  );
 
 export function getByTeamSlugByProjectSlugByRepositoryNameTagsListRequestToJSON(
   getByTeamSlugByProjectSlugByRepositoryNameTagsListRequest:
@@ -73,10 +103,12 @@ export const GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponseBody$inbo
     GetByTeamSlugByProjectSlugByRepositoryNameTagsListResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    name: types.string(),
-    tags: z.array(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      name: types.string(),
+      tags: z.array(types.string()),
+    })
+  );
 
 export function getByTeamSlugByProjectSlugByRepositoryNameTagsListResponseBodyFromJSON(
   jsonString: string,

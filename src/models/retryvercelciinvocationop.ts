@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -179,12 +179,14 @@ export const RetryVercelCiInvocationRequest$outboundSchema: z.ZodType<
   RetryVercelCiInvocationRequest$Outbound,
   z.ZodTypeDef,
   RetryVercelCiInvocationRequest
-> = z.object({
-  invocationId: z.string(),
-  attempt: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    invocationId: z.string(),
+    attempt: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function retryVercelCiInvocationRequestToJSON(
   retryVercelCiInvocationRequest: RetryVercelCiInvocationRequest,
@@ -202,10 +204,12 @@ export const RetryVercelCiInvocationVercelCiResponse500Error$inboundSchema:
     RetryVercelCiInvocationVercelCiResponse500Error,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    message: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      message: types.string(),
+    })
+  );
 
 export function retryVercelCiInvocationVercelCiResponse500ErrorFromJSON(
   jsonString: string,
@@ -229,21 +233,23 @@ export const RetryVercelCiInvocationVercelCiResponse500ResponseBody$inboundSchem
     RetryVercelCiInvocationVercelCiResponse500ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      RetryVercelCiInvocationVercelCiResponse500Error$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new RetryVercelCiInvocationVercelCiResponse500ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        RetryVercelCiInvocationVercelCiResponse500Error$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new RetryVercelCiInvocationVercelCiResponse500ResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const RetryVercelCiInvocationVercelCiResponseError$inboundSchema:
@@ -251,12 +257,14 @@ export const RetryVercelCiInvocationVercelCiResponseError$inboundSchema:
     RetryVercelCiInvocationVercelCiResponseError,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    name: types.string(),
-    message: types.string(),
-    limit: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      name: types.string(),
+      message: types.string(),
+      limit: types.number(),
+    })
+  );
 
 export function retryVercelCiInvocationVercelCiResponseErrorFromJSON(
   jsonString: string,
@@ -280,31 +288,35 @@ export const RetryVercelCiInvocationVercelCiResponse429ResponseBody$inboundSchem
     RetryVercelCiInvocationVercelCiResponse429ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      RetryVercelCiInvocationVercelCiResponseError$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new RetryVercelCiInvocationVercelCiResponse429ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        RetryVercelCiInvocationVercelCiResponseError$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new RetryVercelCiInvocationVercelCiResponse429ResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const RetryVercelCiInvocationVercelCiError$inboundSchema: z.ZodType<
   RetryVercelCiInvocationVercelCiError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function retryVercelCiInvocationVercelCiErrorFromJSON(
   jsonString: string,
@@ -323,29 +335,33 @@ export const RetryVercelCiInvocationVercelCiResponseResponseBody$inboundSchema:
     RetryVercelCiInvocationVercelCiResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() => RetryVercelCiInvocationVercelCiError$inboundSchema),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new RetryVercelCiInvocationVercelCiResponseResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() => RetryVercelCiInvocationVercelCiError$inboundSchema),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new RetryVercelCiInvocationVercelCiResponseResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const RetryVercelCiInvocationError$inboundSchema: z.ZodType<
   RetryVercelCiInvocationError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function retryVercelCiInvocationErrorFromJSON(
   jsonString: string,
@@ -363,29 +379,33 @@ export const RetryVercelCiInvocationVercelCiResponseBody$inboundSchema:
     RetryVercelCiInvocationVercelCiResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() => RetryVercelCiInvocationError$inboundSchema),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new RetryVercelCiInvocationVercelCiResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() => RetryVercelCiInvocationError$inboundSchema),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new RetryVercelCiInvocationVercelCiResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const RetryVercelCiInvocationResponseBody$inboundSchema: z.ZodType<
   RetryVercelCiInvocationResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  invocationId: types.string(),
-  attempt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    invocationId: types.string(),
+    attempt: types.number(),
+  })
+);
 
 export function retryVercelCiInvocationResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -207,7 +207,9 @@ export type GetProjectBoxesResponseBody = {
 /** @internal */
 export const GetProjectBoxesQueryParamScopeType$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectBoxesQueryParamScopeType
-> = z.nativeEnum(GetProjectBoxesQueryParamScopeType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetProjectBoxesQueryParamScopeType)
+);
 
 /** @internal */
 export type GetProjectBoxesRequest$Outbound = {
@@ -225,15 +227,17 @@ export const GetProjectBoxesRequest$outboundSchema: z.ZodType<
   GetProjectBoxesRequest$Outbound,
   z.ZodTypeDef,
   GetProjectBoxesRequest
-> = z.object({
-  idOrName: z.string(),
-  limit: z.string().optional(),
-  cursor: z.string().optional(),
-  scopeType: GetProjectBoxesQueryParamScopeType$outboundSchema.optional(),
-  scopeValue: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    limit: z.string().optional(),
+    cursor: z.string().optional(),
+    scopeType: GetProjectBoxesQueryParamScopeType$outboundSchema.optional(),
+    scopeValue: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getProjectBoxesRequestToJSON(
   getProjectBoxesRequest: GetProjectBoxesRequest,
@@ -248,7 +252,9 @@ export const ConfiguredInstances$inboundSchema: z.ZodType<
   ConfiguredInstances,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), z.record(types.number())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), z.record(types.number())])
+);
 
 export function configuredInstancesFromJSON(
   jsonString: string,
@@ -261,11 +267,13 @@ export function configuredInstancesFromJSON(
 }
 
 /** @internal */
-export const Image$inboundSchema: z.ZodType<Image, z.ZodTypeDef, unknown> = z
-  .object({
-    requested: types.string(),
-    resolved: types.string(),
-  });
+export const Image$inboundSchema: z.ZodType<Image, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      requested: types.string(),
+      resolved: types.string(),
+    })
+  );
 
 export function imageFromJSON(
   jsonString: string,
@@ -282,7 +290,9 @@ export const GetProjectBoxesInstances$inboundSchema: z.ZodType<
   GetProjectBoxesInstances,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), z.record(types.number())]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), z.record(types.number())])
+);
 
 export function getProjectBoxesInstancesFromJSON(
   jsonString: string,
@@ -299,10 +309,12 @@ export const HttpHeaders$inboundSchema: z.ZodType<
   HttpHeaders,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    value: types.string(),
+  })
+);
 
 export function httpHeadersFromJSON(
   jsonString: string,
@@ -315,20 +327,22 @@ export function httpHeadersFromJSON(
 }
 
 /** @internal */
-export const Scheme$inboundSchema: z.ZodNativeEnum<typeof Scheme> = z
-  .nativeEnum(Scheme);
+export const Scheme$inboundSchema: z.ZodNativeEnum<typeof Scheme> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Scheme));
 
 /** @internal */
 export const HttpGet$inboundSchema: z.ZodType<HttpGet, z.ZodTypeDef, unknown> =
-  z.object({
-    host: types.optional(types.string()),
-    httpHeaders: types.optional(
-      z.array(z.lazy(() => HttpHeaders$inboundSchema)),
-    ),
-    path: types.string(),
-    port: types.number(),
-    scheme: Scheme$inboundSchema,
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      host: types.optional(types.string()),
+      httpHeaders: types.optional(
+        z.array(z.lazy(() => HttpHeaders$inboundSchema)),
+      ),
+      path: types.string(),
+      port: types.number(),
+      scheme: Scheme$inboundSchema,
+    })
+  );
 
 export function httpGetFromJSON(
   jsonString: string,
@@ -345,14 +359,16 @@ export const LivenessProbe$inboundSchema: z.ZodType<
   LivenessProbe,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  failureThreshold: types.optional(types.number()),
-  httpGet: z.lazy(() => HttpGet$inboundSchema),
-  initialDelaySeconds: types.optional(types.number()),
-  periodSeconds: types.optional(types.number()),
-  successThreshold: types.optional(types.number()),
-  timeoutSeconds: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    failureThreshold: types.optional(types.number()),
+    httpGet: z.lazy(() => HttpGet$inboundSchema),
+    initialDelaySeconds: types.optional(types.number()),
+    periodSeconds: types.optional(types.number()),
+    successThreshold: types.optional(types.number()),
+    timeoutSeconds: types.optional(types.number()),
+  })
+);
 
 export function livenessProbeFromJSON(
   jsonString: string,
@@ -369,9 +385,11 @@ export const Requests$inboundSchema: z.ZodType<
   Requests,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  memory: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    memory: types.string(),
+  })
+);
 
 export function requestsFromJSON(
   jsonString: string,
@@ -388,9 +406,11 @@ export const GetProjectBoxesResources$inboundSchema: z.ZodType<
   GetProjectBoxesResources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  requests: z.lazy(() => Requests$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    requests: z.lazy(() => Requests$inboundSchema),
+  })
+);
 
 export function getProjectBoxesResourcesFromJSON(
   jsonString: string,
@@ -407,17 +427,19 @@ export const GetProjectBoxesConfig$inboundSchema: z.ZodType<
   GetProjectBoxesConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  command: types.optional(z.array(types.string())),
-  configuredInstances: types.optional(
-    smartUnion([types.number(), z.record(types.number())]),
-  ),
-  image: z.lazy(() => Image$inboundSchema),
-  instances: smartUnion([types.number(), z.record(types.number())]),
-  livenessProbe: types.optional(z.lazy(() => LivenessProbe$inboundSchema)),
-  resources: z.lazy(() => GetProjectBoxesResources$inboundSchema),
-  terminationGracePeriodSeconds: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    command: types.optional(z.array(types.string())),
+    configuredInstances: types.optional(
+      smartUnion([types.number(), z.record(types.number())]),
+    ),
+    image: z.lazy(() => Image$inboundSchema),
+    instances: smartUnion([types.number(), z.record(types.number())]),
+    livenessProbe: types.optional(z.lazy(() => LivenessProbe$inboundSchema)),
+    resources: z.lazy(() => GetProjectBoxesResources$inboundSchema),
+    terminationGracePeriodSeconds: types.optional(types.number()),
+  })
+);
 
 export function getProjectBoxesConfigFromJSON(
   jsonString: string,
@@ -431,11 +453,13 @@ export function getProjectBoxesConfigFromJSON(
 
 /** @internal */
 export const Process$inboundSchema: z.ZodType<Process, z.ZodTypeDef, unknown> =
-  z.object({
-    lastExitCode: types.optional(types.number()),
-    restarts: types.number(),
-    crashLooping: types.boolean(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      lastExitCode: types.optional(types.number()),
+      restarts: types.number(),
+      crashLooping: types.boolean(),
+    })
+  );
 
 export function processFromJSON(
   jsonString: string,
@@ -452,17 +476,19 @@ export const GetProjectBoxesItems$inboundSchema: z.ZodType<
   GetProjectBoxesItems,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alive: types.optional(types.boolean()),
-  id: types.string(),
-  image: types.optional(types.string()),
-  lastCheckedAt: types.optional(types.string()),
-  memoryMiB: types.optional(types.number()),
-  process: types.optional(z.lazy(() => Process$inboundSchema)),
-  region: types.string(),
-  startedAt: types.string(),
-  stoppedAt: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alive: types.optional(types.boolean()),
+    id: types.string(),
+    image: types.optional(types.string()),
+    lastCheckedAt: types.optional(types.string()),
+    memoryMiB: types.optional(types.number()),
+    process: types.optional(z.lazy(() => Process$inboundSchema)),
+    region: types.string(),
+    startedAt: types.string(),
+    stoppedAt: types.optional(types.string()),
+  })
+);
 
 export function getProjectBoxesItemsFromJSON(
   jsonString: string,
@@ -479,12 +505,14 @@ export const Instances$inboundSchema: z.ZodType<
   Instances,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  desired: types.number(),
-  items: z.array(z.lazy(() => GetProjectBoxesItems$inboundSchema)),
-  ready: types.number(),
-  total: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    desired: types.number(),
+    items: z.array(z.lazy(() => GetProjectBoxesItems$inboundSchema)),
+    ready: types.number(),
+    total: types.number(),
+  })
+);
 
 export function instancesFromJSON(
   jsonString: string,
@@ -497,11 +525,13 @@ export function instancesFromJSON(
 }
 
 /** @internal */
-export const Scope3$inboundSchema: z.ZodType<Scope3, z.ZodTypeDef, unknown> = z
-  .object({
-    type: types.literal("customEnvironment"),
-    value: types.string(),
-  });
+export const Scope3$inboundSchema: z.ZodType<Scope3, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      type: types.literal("customEnvironment"),
+      value: types.string(),
+    })
+  );
 
 export function scope3FromJSON(
   jsonString: string,
@@ -518,10 +548,12 @@ export const GetProjectBoxesScope2$inboundSchema: z.ZodType<
   GetProjectBoxesScope2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("branch"),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("branch"),
+    value: types.string(),
+  })
+);
 
 export function getProjectBoxesScope2FromJSON(
   jsonString: string,
@@ -534,18 +566,20 @@ export function getProjectBoxesScope2FromJSON(
 }
 
 /** @internal */
-export const ScopeValue$inboundSchema: z.ZodNativeEnum<typeof ScopeValue> = z
-  .nativeEnum(ScopeValue);
+export const ScopeValue$inboundSchema: z.ZodNativeEnum<typeof ScopeValue> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ScopeValue));
 
 /** @internal */
 export const GetProjectBoxesScope1$inboundSchema: z.ZodType<
   GetProjectBoxesScope1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("target"),
-  value: ScopeValue$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("target"),
+    value: ScopeValue$inboundSchema,
+  })
+);
 
 export function getProjectBoxesScope1FromJSON(
   jsonString: string,
@@ -562,11 +596,13 @@ export const GetProjectBoxesScope$inboundSchema: z.ZodType<
   GetProjectBoxesScope,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetProjectBoxesScope1$inboundSchema),
-  z.lazy(() => GetProjectBoxesScope2$inboundSchema),
-  z.lazy(() => Scope3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetProjectBoxesScope1$inboundSchema),
+    z.lazy(() => GetProjectBoxesScope2$inboundSchema),
+    z.lazy(() => Scope3$inboundSchema),
+  ])
+);
 
 export function getProjectBoxesScopeFromJSON(
   jsonString: string,
@@ -581,24 +617,26 @@ export function getProjectBoxesScopeFromJSON(
 /** @internal */
 export const GetProjectBoxesStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectBoxesStatus
-> = z.nativeEnum(GetProjectBoxesStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetProjectBoxesStatus));
 
 /** @internal */
 export const Daemons$inboundSchema: z.ZodType<Daemons, z.ZodTypeDef, unknown> =
-  z.object({
-    config: z.lazy(() => GetProjectBoxesConfig$inboundSchema),
-    createdAt: types.string(),
-    deploymentId: types.optional(types.string()),
-    instances: z.lazy(() => Instances$inboundSchema),
-    name: types.string(),
-    scope: z.union([
-      z.lazy(() => GetProjectBoxesScope1$inboundSchema),
-      z.lazy(() => GetProjectBoxesScope2$inboundSchema),
-      z.lazy(() => Scope3$inboundSchema),
-    ]),
-    status: GetProjectBoxesStatus$inboundSchema,
-    updatedAt: types.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      config: z.lazy(() => GetProjectBoxesConfig$inboundSchema),
+      createdAt: types.string(),
+      deploymentId: types.optional(types.string()),
+      instances: z.lazy(() => Instances$inboundSchema),
+      name: types.string(),
+      scope: z.union([
+        z.lazy(() => GetProjectBoxesScope1$inboundSchema),
+        z.lazy(() => GetProjectBoxesScope2$inboundSchema),
+        z.lazy(() => Scope3$inboundSchema),
+      ]),
+      status: GetProjectBoxesStatus$inboundSchema,
+      updatedAt: types.string(),
+    })
+  );
 
 export function daemonsFromJSON(
   jsonString: string,
@@ -615,10 +653,12 @@ export const GetProjectBoxesPagination$inboundSchema: z.ZodType<
   GetProjectBoxesPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  next: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    next: types.optional(types.string()),
+  })
+);
 
 export function getProjectBoxesPaginationFromJSON(
   jsonString: string,
@@ -635,10 +675,12 @@ export const GetProjectBoxesResponseBody$inboundSchema: z.ZodType<
   GetProjectBoxesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  daemons: z.array(z.lazy(() => Daemons$inboundSchema)),
-  pagination: z.lazy(() => GetProjectBoxesPagination$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    daemons: z.array(z.lazy(() => Daemons$inboundSchema)),
+    pagination: z.lazy(() => GetProjectBoxesPagination$inboundSchema),
+  })
+);
 
 export function getProjectBoxesResponseBodyFromJSON(
   jsonString: string,

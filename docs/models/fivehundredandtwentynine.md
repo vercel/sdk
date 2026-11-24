@@ -8,26 +8,24 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentyNine } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyNine = {
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    accountId: "<id>",
-    id: "<id>",
-    region: "<value>",
-    vpcId: "<id>",
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
+  alertType: "<value>",
+  groupId: "<id>",
+  projectId: "<id>",
+  alertId: "<id>",
+  startedAt: 3364.32,
+  title: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `configuration`                                                                          | [models.UserEventPayload529Configuration](../models/usereventpayload529configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `team`                                                                                   | [models.UserEventPayload529Team](../models/usereventpayload529team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `alertType`        | *string*           | :heavy_check_mark: | N/A                |
+| `groupId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `severity`         | *string*           | :heavy_minus_sign: | N/A                |
+| `alertId`          | *string*           | :heavy_check_mark: | N/A                |
+| `resolvedAt`       | *number*           | :heavy_minus_sign: | N/A                |
+| `startedAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `title`            | *string*           | :heavy_check_mark: | N/A                |

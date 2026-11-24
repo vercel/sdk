@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadUpdateDiff } from "@vercel/sdk/models/usereventjobpayloaddeployhook.js";
+import { PayloadUpdateDiff } from "@vercel/sdk/models/usereventjobpayload137gitcomments.js";
 
 let value: PayloadUpdateDiff = {
   changedValue: true,
@@ -18,6 +18,7 @@ let value: PayloadUpdateDiff = {
 | `changedComment`                                                    | *boolean*                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `changedGitBranch`                                                  | *boolean*                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `changedValue`                                                      | *boolean*                                                           | :heavy_check_mark:                                                  | Indicates a value was submitted, not whether its plaintext changed. |
+| `customEnvironmentSlugsById`                                        | Record<string, *string*>                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `key`                                                               | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `newCustomEnvironmentIds`                                           | *string*[]                                                          | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `newKey`                                                            | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |

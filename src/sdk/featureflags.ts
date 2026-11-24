@@ -26,6 +26,7 @@ import { featureFlagsListTeamFlags } from "../funcs/featureFlagsListTeamFlags.js
 import { featureFlagsListTeamFlagSettings } from "../funcs/featureFlagsListTeamFlagSettings.js";
 import { featureFlagsListTeamFlagsV2 } from "../funcs/featureFlagsListTeamFlagsV2.js";
 import { featureFlagsLookupFlagLabels } from "../funcs/featureFlagsLookupFlagLabels.js";
+import { featureFlagsSignFlagOverrides } from "../funcs/featureFlagsSignFlagOverrides.js";
 import { featureFlagsUpdateFlag } from "../funcs/featureFlagsUpdateFlag.js";
 import { featureFlagsUpdateFlagSegment } from "../funcs/featureFlagsUpdateFlagSegment.js";
 import { featureFlagsUpdateFlagSettings } from "../funcs/featureFlagsUpdateFlagSettings.js";
@@ -109,6 +110,10 @@ import {
 } from "../models/lookupflaglabelsop.js";
 import { Segment } from "../models/segment.js";
 import {
+  SignFlagOverridesRequest,
+  SignFlagOverridesResponseBody,
+} from "../models/signflagoverridesop.js";
+import {
   UpdateFlagRequest,
   UpdateFlagResponseBody,
 } from "../models/updateflagop.js";
@@ -120,6 +125,23 @@ import {
 import { unwrapAsync } from "../types/fp.js";
 
 export class FeatureFlags extends ClientSDK {
+  /**
+   * Sign flag overrides
+   *
+   * @remarks
+   * Signs flag overrides for the `vercel-flag-overrides` cookie, which the Flags SDK accepts without a `FLAGS_SECRET`. The overrides apply to one environment of the project and of the projects that share its microfrontends groups. An access token requires permission to read the project and an `environment`. A Vercel OIDC token signs only for its own project and environment.
+   */
+  async signFlagOverrides(
+    request: SignFlagOverridesRequest,
+    options?: RequestOptions,
+  ): Promise<SignFlagOverridesResponseBody> {
+    return unwrapAsync(featureFlagsSignFlagOverrides(
+      this,
+      request,
+      options,
+    ));
+  }
+
   /**
    * List flags
    *

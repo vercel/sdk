@@ -5,7 +5,7 @@ Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in 
 ## Example Usage
 
 ```typescript
-import { PayloadBudget } from "@vercel/sdk/models/twenty.js";
+import { PayloadBudget } from "@vercel/sdk/models/usereventpayload25provider.js";
 
 let value: PayloadBudget = {
   limitAmount: 3089.34,
@@ -18,5 +18,6 @@ let value: PayloadBudget = {
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `alertThresholds`                                                                  | *number*[]                                                                         | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `expiresAt`                                                                        | *number*                                                                           | :heavy_minus_sign:                                                                 | When the budget lapses to the scope's default, in ms since the epoch.              |
 | `limitAmount`                                                                      | *number*                                                                           | :heavy_check_mark:                                                                 | Spend cap, in dollars.                                                             |
 | `refreshPeriod`                                                                    | [models.UserEventPayloadRefreshPeriod](../models/usereventpayloadrefreshperiod.md) | :heavy_check_mark:                                                                 | N/A                                                                                |

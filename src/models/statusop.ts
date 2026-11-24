@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -71,10 +71,12 @@ export const StatusRequest$outboundSchema: z.ZodType<
   StatusRequest$Outbound,
   z.ZodTypeDef,
   StatusRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function statusRequestToJSON(statusRequest: StatusRequest): string {
   return JSON.stringify(StatusRequest$outboundSchema.parse(statusRequest));
@@ -83,17 +85,19 @@ export function statusRequestToJSON(statusRequest: StatusRequest): string {
 /** @internal */
 export const ResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyStatus
-> = z.nativeEnum(ResponseBodyStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyStatus));
 
 /** @internal */
 export const ResponseBody3$inboundSchema: z.ZodType<
   ResponseBody3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  readOnly: types.optional(types.boolean()),
-  status: ResponseBodyStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    readOnly: types.optional(types.boolean()),
+    status: ResponseBodyStatus$inboundSchema,
+  })
+);
 
 export function responseBody3FromJSON(
   jsonString: string,
@@ -108,16 +112,18 @@ export function responseBody3FromJSON(
 /** @internal */
 export const StatusResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
   typeof StatusResponseBodyStatus
-> = z.nativeEnum(StatusResponseBodyStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StatusResponseBodyStatus));
 
 /** @internal */
 export const StatusResponseBody2$inboundSchema: z.ZodType<
   StatusResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: StatusResponseBodyStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: StatusResponseBodyStatus$inboundSchema,
+  })
+);
 
 export function statusResponseBody2FromJSON(
   jsonString: string,
@@ -134,9 +140,11 @@ export const StatusResponseBody1$inboundSchema: z.ZodType<
   StatusResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.string(),
+  })
+);
 
 export function statusResponseBody1FromJSON(
   jsonString: string,
@@ -153,11 +161,13 @@ export const StatusResponseBody$inboundSchema: z.ZodType<
   StatusResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => StatusResponseBody1$inboundSchema),
-  z.lazy(() => StatusResponseBody2$inboundSchema),
-  z.lazy(() => ResponseBody3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => StatusResponseBody1$inboundSchema),
+    z.lazy(() => StatusResponseBody2$inboundSchema),
+    z.lazy(() => ResponseBody3$inboundSchema),
+  ])
+);
 
 export function statusResponseBodyFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -85,9 +85,11 @@ export const DeleteRoutesRequestBody$outboundSchema: z.ZodType<
   DeleteRoutesRequestBody$Outbound,
   z.ZodTypeDef,
   DeleteRoutesRequestBody
-> = z.object({
-  routeIds: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    routeIds: z.array(z.string()),
+  })
+);
 
 export function deleteRoutesRequestBodyToJSON(
   deleteRoutesRequestBody: DeleteRoutesRequestBody,
@@ -110,16 +112,19 @@ export const DeleteRoutesRequest$outboundSchema: z.ZodType<
   DeleteRoutesRequest$Outbound,
   z.ZodTypeDef,
   DeleteRoutesRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => DeleteRoutesRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => DeleteRoutesRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function deleteRoutesRequestToJSON(
   deleteRoutesRequest: DeleteRoutesRequest,
@@ -134,16 +139,18 @@ export const DeleteRoutesVersion$inboundSchema: z.ZodType<
   DeleteRoutesVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  lastModified: types.number(),
-  ruleCount: types.optional(types.number()),
-  s3Key: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    lastModified: types.number(),
+    ruleCount: types.optional(types.number()),
+    s3Key: types.string(),
+  })
+);
 
 export function deleteRoutesVersionFromJSON(
   jsonString: string,
@@ -160,10 +167,12 @@ export const DeleteRoutesResponseBody$inboundSchema: z.ZodType<
   DeleteRoutesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deletedCount: types.number(),
-  version: z.lazy(() => DeleteRoutesVersion$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deletedCount: types.number(),
+    version: z.lazy(() => DeleteRoutesVersion$inboundSchema),
+  })
+);
 
 export function deleteRoutesResponseBodyFromJSON(
   jsonString: string,

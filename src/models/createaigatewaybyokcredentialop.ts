@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -87,10 +87,12 @@ export const Mappings$outboundSchema: z.ZodType<
   Mappings$Outbound,
   z.ZodTypeDef,
   Mappings
-> = z.object({
-  gatewayModelSlug: z.string(),
-  customModelId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    gatewayModelSlug: z.string(),
+    customModelId: z.string(),
+  })
+);
 
 export function mappingsToJSON(mappings: Mappings): string {
   return JSON.stringify(Mappings$outboundSchema.parse(mappings));
@@ -112,15 +114,17 @@ export const CreateAiGatewayByokCredentialRequestBody$outboundSchema: z.ZodType<
   CreateAiGatewayByokCredentialRequestBody$Outbound,
   z.ZodTypeDef,
   CreateAiGatewayByokCredentialRequestBody
-> = z.object({
-  ownerId: z.string().optional(),
-  providerSlug: z.string(),
-  name: z.string(),
-  active: z.boolean().default(true),
-  zeroDataRetention: z.boolean().default(false),
-  userId: z.string().optional(),
-  mappings: z.array(z.lazy(() => Mappings$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ownerId: z.string().optional(),
+    providerSlug: z.string(),
+    name: z.string(),
+    active: z.boolean().default(true),
+    zeroDataRetention: z.boolean().default(false),
+    userId: z.string().optional(),
+    mappings: z.array(z.lazy(() => Mappings$outboundSchema)).optional(),
+  })
+);
 
 export function createAiGatewayByokCredentialRequestBodyToJSON(
   createAiGatewayByokCredentialRequestBody:
@@ -145,17 +149,19 @@ export const CreateAiGatewayByokCredentialRequest$outboundSchema: z.ZodType<
   CreateAiGatewayByokCredentialRequest$Outbound,
   z.ZodTypeDef,
   CreateAiGatewayByokCredentialRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    CreateAiGatewayByokCredentialRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      CreateAiGatewayByokCredentialRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createAiGatewayByokCredentialRequestToJSON(
   createAiGatewayByokCredentialRequest: CreateAiGatewayByokCredentialRequest,
@@ -172,18 +178,20 @@ export const CreateAiGatewayByokCredentialResponseBody$inboundSchema: z.ZodType<
   CreateAiGatewayByokCredentialResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  active: types.boolean(),
-  createdAt: types.number(),
-  credentialId: types.string(),
-  lastFourChars: types.string(),
-  name: types.string(),
-  ownerId: types.string(),
-  providerSlug: types.string(),
-  rotatedAt: types.nullable(types.number()),
-  updatedAt: types.number(),
-  zeroDataRetention: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: types.boolean(),
+    createdAt: types.number(),
+    credentialId: types.string(),
+    lastFourChars: types.string(),
+    name: types.string(),
+    ownerId: types.string(),
+    providerSlug: types.string(),
+    rotatedAt: types.nullable(types.number()),
+    updatedAt: types.number(),
+    zeroDataRetention: types.boolean(),
+  })
+);
 
 export function createAiGatewayByokCredentialResponseBodyFromJSON(
   jsonString: string,

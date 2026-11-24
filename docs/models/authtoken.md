@@ -12,6 +12,7 @@ let value: AuthToken = {
   createdAt: 1632816536002,
   expiresAt: 1632816536002,
   id: "5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391",
+  kind: "access-token",
   leakedAt: 1632816536002,
   name: "<value>",
   origin: "github",
@@ -30,6 +31,7 @@ let value: AuthToken = {
 | `createdAt`                                                           | *number*                                                              | :heavy_check_mark:                                                    | Timestamp (in milliseconds) of when the token was created.            | 1632816536002                                                         |
 | `expiresAt`                                                           | *number*                                                              | :heavy_minus_sign:                                                    | Timestamp (in milliseconds) of when the token expires.                | 1632816536002                                                         |
 | `id`                                                                  | *string*                                                              | :heavy_check_mark:                                                    | The unique identifier of the token.                                   | 5d9f2ebd38ddca62e5d51e9c1704c72530bdc8bfdd41e782a6687c48399e8391      |
+| `kind`                                                                | [models.AuthTokenKind](../models/authtokenkind.md)                    | :heavy_check_mark:                                                    | The user-facing kind of the token.                                    | access-token                                                          |
 | `leakedAt`                                                            | *number*                                                              | :heavy_minus_sign:                                                    | Timestamp (in milliseconds) of when the token was marked as leaked.   | 1632816536002                                                         |
 | `leakedUrl`                                                           | *string*                                                              | :heavy_minus_sign:                                                    | URL where the token was discovered as leaked.                         |                                                                       |
 | `name`                                                                | *string*                                                              | :heavy_check_mark:                                                    | The human-readable name of the token.                                 |                                                                       |

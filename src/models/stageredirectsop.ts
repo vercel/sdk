@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -88,7 +88,7 @@ export const StatusCode$outboundSchema: z.ZodType<
   StatusCode$Outbound,
   z.ZodTypeDef,
   StatusCode
-> = smartUnion([z.number(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => smartUnion([z.number(), z.string()]));
 
 export function statusCodeToJSON(statusCode: StatusCode): string {
   return JSON.stringify(StatusCode$outboundSchema.parse(statusCode));
@@ -110,15 +110,17 @@ export const Redirects$outboundSchema: z.ZodType<
   Redirects$Outbound,
   z.ZodTypeDef,
   Redirects
-> = z.object({
-  source: z.string(),
-  destination: z.string(),
-  statusCode: smartUnion([z.number(), z.string()]).optional(),
-  permanent: z.boolean().optional(),
-  caseSensitive: z.boolean().optional(),
-  query: z.boolean().optional(),
-  preserveQueryParams: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    source: z.string(),
+    destination: z.string(),
+    statusCode: smartUnion([z.number(), z.string()]).optional(),
+    permanent: z.boolean().optional(),
+    caseSensitive: z.boolean().optional(),
+    query: z.boolean().optional(),
+    preserveQueryParams: z.boolean().optional(),
+  })
+);
 
 export function redirectsToJSON(redirects: Redirects): string {
   return JSON.stringify(Redirects$outboundSchema.parse(redirects));
@@ -138,13 +140,15 @@ export const StageRedirectsRequestBody$outboundSchema: z.ZodType<
   StageRedirectsRequestBody$Outbound,
   z.ZodTypeDef,
   StageRedirectsRequestBody
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string(),
-  overwrite: z.boolean().optional(),
-  name: z.string().optional(),
-  redirects: z.array(z.lazy(() => Redirects$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string(),
+    overwrite: z.boolean().optional(),
+    name: z.string().optional(),
+    redirects: z.array(z.lazy(() => Redirects$outboundSchema)).optional(),
+  })
+);
 
 export function stageRedirectsRequestBodyToJSON(
   stageRedirectsRequestBody: StageRedirectsRequestBody,
@@ -166,16 +170,18 @@ export const StageRedirectsRequest$outboundSchema: z.ZodType<
   StageRedirectsRequest$Outbound,
   z.ZodTypeDef,
   StageRedirectsRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => StageRedirectsRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => StageRedirectsRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function stageRedirectsRequestToJSON(
   stageRedirectsRequest: StageRedirectsRequest,
@@ -187,17 +193,19 @@ export function stageRedirectsRequestToJSON(
 
 /** @internal */
 export const Version$inboundSchema: z.ZodType<Version, z.ZodTypeDef, unknown> =
-  z.object({
-    alias: types.optional(types.string()),
-    createdBy: types.string(),
-    id: types.string(),
-    isLive: types.optional(types.boolean()),
-    isStaging: types.optional(types.boolean()),
-    key: types.string(),
-    lastModified: types.number(),
-    name: types.optional(types.string()),
-    redirectCount: types.optional(types.number()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      alias: types.optional(types.string()),
+      createdBy: types.string(),
+      id: types.string(),
+      isLive: types.optional(types.boolean()),
+      isStaging: types.optional(types.boolean()),
+      key: types.string(),
+      lastModified: types.number(),
+      name: types.optional(types.string()),
+      redirectCount: types.optional(types.number()),
+    })
+  );
 
 export function versionFromJSON(
   jsonString: string,
@@ -214,10 +222,12 @@ export const StageRedirectsResponseBody$inboundSchema: z.ZodType<
   StageRedirectsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.nullable(types.string()),
-  version: z.lazy(() => Version$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.nullable(types.string()),
+    version: z.lazy(() => Version$inboundSchema),
+  })
+);
 
 export function stageRedirectsResponseBodyFromJSON(
   jsonString: string,

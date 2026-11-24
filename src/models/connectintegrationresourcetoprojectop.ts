@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -39,7 +40,7 @@ export type ConnectIntegrationResourceToProjectRequest = {
 /** @internal */
 export const EnvVarEnvironments$outboundSchema: z.ZodNativeEnum<
   typeof EnvVarEnvironments
-> = z.nativeEnum(EnvVarEnvironments);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(EnvVarEnvironments));
 
 /** @internal */
 export type EnvVarEnvironmentsTarget$Outbound = string | string;
@@ -49,7 +50,9 @@ export const EnvVarEnvironmentsTarget$outboundSchema: z.ZodType<
   EnvVarEnvironmentsTarget$Outbound,
   z.ZodTypeDef,
   EnvVarEnvironmentsTarget
-> = smartUnion([EnvVarEnvironments$outboundSchema, z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([EnvVarEnvironments$outboundSchema, z.string()])
+);
 
 export function envVarEnvironmentsTargetToJSON(
   envVarEnvironmentsTarget: EnvVarEnvironmentsTarget,
@@ -72,13 +75,15 @@ export const ConnectIntegrationResourceToProjectRequestBody$outboundSchema:
     ConnectIntegrationResourceToProjectRequestBody$Outbound,
     z.ZodTypeDef,
     ConnectIntegrationResourceToProjectRequestBody
-  > = z.object({
-    projectId: z.string(),
-    envVarEnvironments: z.array(
-      smartUnion([EnvVarEnvironments$outboundSchema, z.string()]),
-    ).optional(),
-    makeEnvVarsSensitive: z.boolean().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      projectId: z.string(),
+      envVarEnvironments: z.array(
+        smartUnion([EnvVarEnvironments$outboundSchema, z.string()]),
+      ).optional(),
+      makeEnvVarsSensitive: z.boolean().optional(),
+    })
+  );
 
 export function connectIntegrationResourceToProjectRequestBodyToJSON(
   connectIntegrationResourceToProjectRequestBody:
@@ -108,19 +113,21 @@ export const ConnectIntegrationResourceToProjectRequest$outboundSchema:
     ConnectIntegrationResourceToProjectRequest$Outbound,
     z.ZodTypeDef,
     ConnectIntegrationResourceToProjectRequest
-  > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
-    teamId: z.string().optional(),
-    slug: z.string().optional(),
-    requestBody: z.lazy(() =>
-      ConnectIntegrationResourceToProjectRequestBody$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      requestBody: "RequestBody",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integrationConfigurationId: z.string(),
+      resourceId: z.string(),
+      teamId: z.string().optional(),
+      slug: z.string().optional(),
+      requestBody: z.lazy(() =>
+        ConnectIntegrationResourceToProjectRequestBody$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        requestBody: "RequestBody",
+      });
+    })
+  );
 
 export function connectIntegrationResourceToProjectRequestToJSON(
   connectIntegrationResourceToProjectRequest:

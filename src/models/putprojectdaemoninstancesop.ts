@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -60,7 +63,7 @@ export type PutProjectDaemonInstancesResponseBody = {
 /** @internal */
 export const QueryParamTarget$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamTarget
-> = z.nativeEnum(QueryParamTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamTarget));
 
 /** @internal */
 export type PutProjectDaemonInstancesRequest$Outbound = {
@@ -78,19 +81,25 @@ export const PutProjectDaemonInstancesRequest$outboundSchema: z.ZodType<
   PutProjectDaemonInstancesRequest$Outbound,
   z.ZodTypeDef,
   PutProjectDaemonInstancesRequest
-> = z.object({
-  idOrName: z.string(),
-  daemonName: z.string(),
-  target: QueryParamTarget$outboundSchema.default("production"),
-  customEnvironmentId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.record(z.nullable(z.number().int())).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    daemonName: z.string().refine(matchesPattern$("^[a-zA-Z0-9_-]+$"), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }),
+    target: QueryParamTarget$outboundSchema.default("production"),
+    customEnvironmentId: z.string().refine(matchesPattern$("^env_"), {
+      message: "Value must match pattern ^env_",
+    }).optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.record(z.nullable(z.number().int())).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function putProjectDaemonInstancesRequestToJSON(
   putProjectDaemonInstancesRequest: PutProjectDaemonInstancesRequest,
@@ -107,9 +116,11 @@ export const PutProjectDaemonInstancesResponseBody$inboundSchema: z.ZodType<
   PutProjectDaemonInstancesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ok: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ok: types.boolean(),
+  })
+);
 
 export function putProjectDaemonInstancesResponseBodyFromJSON(
   jsonString: string,

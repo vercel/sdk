@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -12,6 +13,7 @@ export const QueryParamScopeType = {
   Team: "team",
   Project: "project",
   User: "user",
+  App: "app",
   ApiKey: "api-key",
 } as const;
 /**
@@ -61,12 +63,12 @@ export type ListAiGatewayBudgetsRequest = {
 /** @internal */
 export const QueryParamScopeType$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamScopeType
-> = z.nativeEnum(QueryParamScopeType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamScopeType));
 
 /** @internal */
 export const IncludeDefaultCovered$outboundSchema: z.ZodNativeEnum<
   typeof IncludeDefaultCovered
-> = z.nativeEnum(IncludeDefaultCovered);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(IncludeDefaultCovered));
 
 /** @internal */
 export type ListAiGatewayBudgetsRequest$Outbound = {
@@ -83,14 +85,16 @@ export const ListAiGatewayBudgetsRequest$outboundSchema: z.ZodType<
   ListAiGatewayBudgetsRequest$Outbound,
   z.ZodTypeDef,
   ListAiGatewayBudgetsRequest
-> = z.object({
-  scopeType: QueryParamScopeType$outboundSchema.optional(),
-  includeDefaultCovered: IncludeDefaultCovered$outboundSchema.optional(),
-  limit: z.number().int().optional(),
-  cursor: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scopeType: QueryParamScopeType$outboundSchema.optional(),
+    includeDefaultCovered: IncludeDefaultCovered$outboundSchema.optional(),
+    limit: z.number().int().optional(),
+    cursor: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listAiGatewayBudgetsRequestToJSON(
   listAiGatewayBudgetsRequest: ListAiGatewayBudgetsRequest,

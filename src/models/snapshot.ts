@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -123,44 +123,46 @@ export type Snapshot = {
 /** @internal */
 export const SnapshotArchitecture$inboundSchema: z.ZodNativeEnum<
   typeof SnapshotArchitecture
-> = z.nativeEnum(SnapshotArchitecture);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SnapshotArchitecture));
 
 /** @internal */
 export const CreationMethod$inboundSchema: z.ZodNativeEnum<
   typeof CreationMethod
-> = z.nativeEnum(CreationMethod);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreationMethod));
 
 /** @internal */
 export const SnapshotStatus$inboundSchema: z.ZodNativeEnum<
   typeof SnapshotStatus
-> = z.nativeEnum(SnapshotStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SnapshotStatus));
 
 /** @internal */
 export const SnapshotWorkloadType$inboundSchema: z.ZodNativeEnum<
   typeof SnapshotWorkloadType
-> = z.nativeEnum(SnapshotWorkloadType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SnapshotWorkloadType));
 
 /** @internal */
 export const Snapshot$inboundSchema: z.ZodType<
   Snapshot,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  architecture: types.optional(SnapshotArchitecture$inboundSchema),
-  createdAt: types.number(),
-  creationMethod: types.optional(CreationMethod$inboundSchema),
-  expiresAt: types.optional(types.number()),
-  id: types.string(),
-  lastUsedAt: types.number(),
-  parentId: types.optional(types.string()),
-  region: types.optional(types.string()),
-  regions: types.optional(z.array(types.string())),
-  sizeBytes: types.number(),
-  sourceSessionId: types.string(),
-  status: SnapshotStatus$inboundSchema,
-  updatedAt: types.number(),
-  workloadType: types.optional(SnapshotWorkloadType$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    architecture: types.optional(SnapshotArchitecture$inboundSchema),
+    createdAt: types.number(),
+    creationMethod: types.optional(CreationMethod$inboundSchema),
+    expiresAt: types.optional(types.number()),
+    id: types.string(),
+    lastUsedAt: types.number(),
+    parentId: types.optional(types.string()),
+    region: types.optional(types.string()),
+    regions: types.optional(z.array(types.string())),
+    sizeBytes: types.number(),
+    sourceSessionId: types.string(),
+    status: SnapshotStatus$inboundSchema,
+    updatedAt: types.number(),
+    workloadType: types.optional(SnapshotWorkloadType$inboundSchema),
+  })
+);
 
 export function snapshotFromJSON(
   jsonString: string,

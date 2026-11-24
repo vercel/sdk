@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -34,14 +34,16 @@ export const GlobalConfigToken$inboundSchema: z.ZodType<
   GlobalConfigToken,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  edgeConfigId: types.string(),
-  id: types.string(),
-  label: types.string(),
-  partialToken: types.string(),
-  token: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    edgeConfigId: types.string(),
+    id: types.string(),
+    label: types.string(),
+    partialToken: types.string(),
+    token: types.optional(types.string()),
+  })
+);
 
 export function globalConfigTokenFromJSON(
   jsonString: string,

@@ -8,22 +8,37 @@ The payload of the event, if requested.
 import { FiveHundredAndFortyOne } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndFortyOne = {
-  next: {
-    enabled: false,
-    issuerUrls: [],
-  },
-  previous: {
-    enabled: true,
-    issuerUrls: [],
-  },
-  scope: "team",
+  chatId: "<id>",
+  events: [
+    {
+      cacheCreationInputTokens: 8264.37,
+      cacheReadInputTokens: 921.19,
+      eventId: "<id>",
+      inputTokens: 4741.19,
+      modelId: "<id>",
+      outputTokens: 6106.82,
+      timestamp: "<value>",
+      totalTokens: 9845.35,
+    },
+  ],
+  inputTokens: 1369.2,
+  messageId: "<id>",
+  model: "A4",
+  outputTokens: 108.11,
+  timestamp: 9224.89,
+  useCase: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload541Next](../models/usereventpayload541next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload541Previous](../models/usereventpayload541previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `scope`                                                                        | [models.UserEventPayload541Scope](../models/usereventpayload541scope.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `chatId`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `events`                               | [models.Events](../models/events.md)[] | :heavy_check_mark:                     | N/A                                    |
+| `inputTokens`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `model`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `outputTokens`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `timestamp`                            | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `useCase`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |

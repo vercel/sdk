@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { SeventyOne } from "@vercel/sdk/models/twenty.js";
+import { SeventyOne } from "@vercel/sdk/models/usereventpayload25provider.js";
 
 let value: SeventyOne = {};
 ```
@@ -15,4 +15,3 @@ let value: SeventyOne = {};
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `alias`            | *string*           | :heavy_minus_sign: | N/A                |
-| `email`            | *string*           | :heavy_minus_sign: | N/A                |

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -71,11 +71,13 @@ export const WriteSessionCommandStdinRequestBody$outboundSchema: z.ZodType<
   WriteSessionCommandStdinRequestBody$Outbound,
   z.ZodTypeDef,
   WriteSessionCommandStdinRequestBody
-> = z.object({
-  data: z.string().optional(),
-  offset: z.number().int().optional(),
-  close: z.boolean().default(false),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: z.string().optional(),
+    offset: z.number().int().optional(),
+    close: z.boolean().default(false),
+  })
+);
 
 export function writeSessionCommandStdinRequestBodyToJSON(
   writeSessionCommandStdinRequestBody: WriteSessionCommandStdinRequestBody,
@@ -101,18 +103,21 @@ export const WriteSessionCommandStdinRequest$outboundSchema: z.ZodType<
   WriteSessionCommandStdinRequest$Outbound,
   z.ZodTypeDef,
   WriteSessionCommandStdinRequest
-> = z.object({
-  cmdId: z.string(),
-  sessionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => WriteSessionCommandStdinRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cmdId: z.string(),
+    sessionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      WriteSessionCommandStdinRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function writeSessionCommandStdinRequestToJSON(
   writeSessionCommandStdinRequest: WriteSessionCommandStdinRequest,
@@ -129,10 +134,12 @@ export const WriteSessionCommandStdinResponseBody$inboundSchema: z.ZodType<
   WriteSessionCommandStdinResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bytesWritten: types.optional(types.number()),
-  command: SessionCommand$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bytesWritten: types.optional(types.number()),
+    command: SessionCommand$inboundSchema,
+  })
+);
 
 export function writeSessionCommandStdinResponseBodyFromJSON(
   jsonString: string,

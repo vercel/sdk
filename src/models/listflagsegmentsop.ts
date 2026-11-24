@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import { Segment, Segment$inboundSchema } from "./segment.js";
@@ -44,12 +44,14 @@ export const ListFlagSegmentsRequest$outboundSchema: z.ZodType<
   ListFlagSegmentsRequest$Outbound,
   z.ZodTypeDef,
   ListFlagSegmentsRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  withMetadata: z.boolean().default(false),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    withMetadata: z.boolean().default(false),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listFlagSegmentsRequestToJSON(
   listFlagSegmentsRequest: ListFlagSegmentsRequest,
@@ -64,9 +66,11 @@ export const ListFlagSegmentsResponseBody$inboundSchema: z.ZodType<
   ListFlagSegmentsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: z.array(Segment$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: z.array(Segment$inboundSchema),
+  })
+);
 
 export function listFlagSegmentsResponseBodyFromJSON(
   jsonString: string,

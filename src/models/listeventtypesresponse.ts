@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -55,17 +55,19 @@ export type ListEventTypesResponse = {
 /** @internal */
 export const ListEventTypesResponseName$inboundSchema: z.ZodNativeEnum<
   typeof ListEventTypesResponseName
-> = z.nativeEnum(ListEventTypesResponseName);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListEventTypesResponseName));
 
 /** @internal */
 export const ListEventTypesResponseCategories$inboundSchema: z.ZodType<
   ListEventTypesResponseCategories,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.string(),
-  name: ListEventTypesResponseName$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.string(),
+    name: ListEventTypesResponseName$inboundSchema,
+  })
+);
 
 export function listEventTypesResponseCategoriesFromJSON(
   jsonString: string,
@@ -82,12 +84,14 @@ export const ListEventTypesResponse$inboundSchema: z.ZodType<
   ListEventTypesResponse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  categories: z.array(
-    z.lazy(() => ListEventTypesResponseCategories$inboundSchema),
-  ),
-  types: z.array(ListEventType$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    categories: z.array(
+      z.lazy(() => ListEventTypesResponseCategories$inboundSchema),
+    ),
+    types: z.array(ListEventType$inboundSchema),
+  })
+);
 
 export function listEventTypesResponseFromJSON(
   jsonString: string,

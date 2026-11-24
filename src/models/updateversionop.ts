@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -76,7 +76,7 @@ export type UpdateVersionResponseBody = {
 /** @internal */
 export const UpdateVersionAction$outboundSchema: z.ZodNativeEnum<
   typeof UpdateVersionAction
-> = z.nativeEnum(UpdateVersionAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateVersionAction));
 
 /** @internal */
 export type UpdateVersionRequestBody$Outbound = {
@@ -90,11 +90,13 @@ export const UpdateVersionRequestBody$outboundSchema: z.ZodType<
   UpdateVersionRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateVersionRequestBody
-> = z.object({
-  id: z.string(),
-  action: UpdateVersionAction$outboundSchema,
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    action: UpdateVersionAction$outboundSchema,
+    name: z.string().optional(),
+  })
+);
 
 export function updateVersionRequestBodyToJSON(
   updateVersionRequestBody: UpdateVersionRequestBody,
@@ -117,16 +119,19 @@ export const UpdateVersionRequest$outboundSchema: z.ZodType<
   UpdateVersionRequest$Outbound,
   z.ZodTypeDef,
   UpdateVersionRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateVersionRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateVersionRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateVersionRequestToJSON(
   updateVersionRequest: UpdateVersionRequest,
@@ -141,17 +146,19 @@ export const UpdateVersionVersion$inboundSchema: z.ZodType<
   UpdateVersionVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  key: types.string(),
-  lastModified: types.number(),
-  name: types.optional(types.string()),
-  redirectCount: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    key: types.string(),
+    lastModified: types.number(),
+    name: types.optional(types.string()),
+    redirectCount: types.optional(types.number()),
+  })
+);
 
 export function updateVersionVersionFromJSON(
   jsonString: string,
@@ -168,9 +175,11 @@ export const UpdateVersionResponseBody$inboundSchema: z.ZodType<
   UpdateVersionResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  version: z.lazy(() => UpdateVersionVersion$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.lazy(() => UpdateVersionVersion$inboundSchema),
+  })
+);
 
 export function updateVersionResponseBodyFromJSON(
   jsonString: string,

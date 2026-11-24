@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -125,8 +125,8 @@ export type CreateKmsSigningKeyResponseBody = {
 };
 
 /** @internal */
-export const Activation$outboundSchema: z.ZodNativeEnum<typeof Activation> = z
-  .nativeEnum(Activation);
+export const Activation$outboundSchema: z.ZodNativeEnum<typeof Activation> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Activation));
 
 /** @internal */
 export type RevokePreviousAt$Outbound = string | number;
@@ -136,7 +136,7 @@ export const RevokePreviousAt$outboundSchema: z.ZodType<
   RevokePreviousAt$Outbound,
   z.ZodTypeDef,
   RevokePreviousAt
-> = smartUnion([z.string(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() => smartUnion([z.string(), z.number()]));
 
 export function revokePreviousAtToJSON(
   revokePreviousAt: RevokePreviousAt,
@@ -160,13 +160,15 @@ export const CreateKmsSigningKeyRequestBody$outboundSchema: z.ZodType<
   CreateKmsSigningKeyRequestBody$Outbound,
   z.ZodTypeDef,
   CreateKmsSigningKeyRequestBody
-> = z.object({
-  activation: Activation$outboundSchema.optional(),
-  revokePreviousAfterHours: z.number().optional(),
-  revokePreviousAt: smartUnion([z.string(), z.number()]).optional(),
-  importKey: z.string().optional(),
-  importKeyId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    activation: Activation$outboundSchema.optional(),
+    revokePreviousAfterHours: z.number().optional(),
+    revokePreviousAt: smartUnion([z.string(), z.number()]).optional(),
+    importKey: z.string().optional(),
+    importKeyId: z.string().optional(),
+  })
+);
 
 export function createKmsSigningKeyRequestBodyToJSON(
   createKmsSigningKeyRequestBody: CreateKmsSigningKeyRequestBody,
@@ -191,17 +193,19 @@ export const CreateKmsSigningKeyRequest$outboundSchema: z.ZodType<
   CreateKmsSigningKeyRequest$Outbound,
   z.ZodTypeDef,
   CreateKmsSigningKeyRequest
-> = z.object({
-  issuerId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateKmsSigningKeyRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuerId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateKmsSigningKeyRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createKmsSigningKeyRequestToJSON(
   createKmsSigningKeyRequest: CreateKmsSigningKeyRequest,
@@ -216,20 +220,22 @@ export const PublicKey$inboundSchema: z.ZodType<
   PublicKey,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alg: types.optional(types.string()),
-  key_ops: types.optional(z.array(types.string())),
-  kid: types.optional(types.string()),
-  kty: types.optional(types.string()),
-  use: types.optional(types.string()),
-  x5c: types.optional(z.array(types.string())),
-  "x5t#S256": types.optional(types.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "key_ops": "keyOps",
-    "x5t#S256": "x5tNumberS256",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alg: types.optional(types.string()),
+    key_ops: types.optional(z.array(types.string())),
+    kid: types.optional(types.string()),
+    kty: types.optional(types.string()),
+    use: types.optional(types.string()),
+    x5c: types.optional(z.array(types.string())),
+    "x5t#S256": types.optional(types.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "key_ops": "keyOps",
+      "x5t#S256": "x5tNumberS256",
+    });
+  })
+);
 
 export function publicKeyFromJSON(
   jsonString: string,
@@ -244,29 +250,31 @@ export function publicKeyFromJSON(
 /** @internal */
 export const CreateKmsSigningKeyStatus$inboundSchema: z.ZodNativeEnum<
   typeof CreateKmsSigningKeyStatus
-> = z.nativeEnum(CreateKmsSigningKeyStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateKmsSigningKeyStatus));
 
 /** @internal */
 export const CreateKmsSigningKeyResponseBody$inboundSchema: z.ZodType<
   CreateKmsSigningKeyResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  activateAt: types.optional(types.string()),
-  activatedAt: types.optional(types.string()),
-  algorithm: types.string(),
-  certificatePem: types.optional(types.string()),
-  createdAt: types.string(),
-  importKeyId: types.optional(types.string()),
-  issuerId: types.string(),
-  keyId: types.string(),
-  publicKey: types.optional(z.lazy(() => PublicKey$inboundSchema)),
-  publicKeyFingerprint: types.string(),
-  publicKeyPem: types.optional(types.string()),
-  revokeAt: types.optional(types.string()),
-  status: CreateKmsSigningKeyStatus$inboundSchema,
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    activateAt: types.optional(types.string()),
+    activatedAt: types.optional(types.string()),
+    algorithm: types.string(),
+    certificatePem: types.optional(types.string()),
+    createdAt: types.string(),
+    importKeyId: types.optional(types.string()),
+    issuerId: types.string(),
+    keyId: types.string(),
+    publicKey: types.optional(z.lazy(() => PublicKey$inboundSchema)),
+    publicKeyFingerprint: types.string(),
+    publicKeyPem: types.optional(types.string()),
+    revokeAt: types.optional(types.string()),
+    status: CreateKmsSigningKeyStatus$inboundSchema,
+    updatedAt: types.string(),
+  })
+);
 
 export function createKmsSigningKeyResponseBodyFromJSON(
   jsonString: string,

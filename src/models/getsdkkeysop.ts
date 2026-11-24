@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -66,11 +66,13 @@ export const GetSDKKeysRequest$outboundSchema: z.ZodType<
   GetSDKKeysRequest$Outbound,
   z.ZodTypeDef,
   GetSDKKeysRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getSDKKeysRequestToJSON(
   getSDKKeysRequest: GetSDKKeysRequest,
@@ -83,25 +85,27 @@ export function getSDKKeysRequestToJSON(
 /** @internal */
 export const GetSDKKeysType$inboundSchema: z.ZodNativeEnum<
   typeof GetSDKKeysType
-> = z.nativeEnum(GetSDKKeysType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetSDKKeysType));
 
 /** @internal */
 export const GetSDKKeysData$inboundSchema: z.ZodType<
   GetSDKKeysData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.string(),
-  deletedAt: types.optional(types.number()),
-  environment: types.string(),
-  hashKey: types.string(),
-  label: types.optional(types.string()),
-  partialKeyValue: types.string(),
-  projectId: types.string(),
-  type: GetSDKKeysType$inboundSchema,
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.string(),
+    deletedAt: types.optional(types.number()),
+    environment: types.string(),
+    hashKey: types.string(),
+    label: types.optional(types.string()),
+    partialKeyValue: types.string(),
+    projectId: types.string(),
+    type: GetSDKKeysType$inboundSchema,
+    updatedAt: types.number(),
+  })
+);
 
 export function getSDKKeysDataFromJSON(
   jsonString: string,
@@ -118,9 +122,11 @@ export const GetSDKKeysResponseBody$inboundSchema: z.ZodType<
   GetSDKKeysResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: z.array(z.lazy(() => GetSDKKeysData$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: z.array(z.lazy(() => GetSDKKeysData$inboundSchema)),
+  })
+);
 
 export function getSDKKeysResponseBodyFromJSON(
   jsonString: string,

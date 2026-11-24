@@ -5,15 +5,26 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyFive } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndEightyFive } from "@vercel/sdk/models/twohundredandsixtytwo.js";
 
-let value: TwoHundredAndEightyFive = {};
+let value: TwoHundredAndEightyFive = {
+  next: [
+    {
+      envId: "<id>",
+      perimeterId: "<id>",
+    },
+  ],
+  previous: [],
+  projectId: "<id>",
+  projectName: "<value>",
+};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
-| `enabled`          | *boolean*          | :heavy_minus_sign: | N/A                |
-| `price`            | *number*           | :heavy_minus_sign: | N/A                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `next`                                                                           | [models.UserEventPayload285Next](../models/usereventpayload285next.md)[]         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `previous`                                                                       | [models.UserEventPayload285Previous](../models/usereventpayload285previous.md)[] | :heavy_check_mark:                                                               | N/A                                                                              |
+| `projectId`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `projectName`                                                                    | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |

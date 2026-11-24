@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -161,10 +161,12 @@ export const PathCondition$outboundSchema: z.ZodType<
   PathCondition$Outbound,
   z.ZodTypeDef,
   PathCondition
-> = z.object({
-  value: z.string().optional(),
-  syntax: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.string().optional(),
+    syntax: z.string().optional(),
+  })
+);
 
 export function pathConditionToJSON(pathCondition: PathCondition): string {
   return JSON.stringify(PathCondition$outboundSchema.parse(pathCondition));
@@ -184,13 +186,15 @@ export const GenerateRouteConditions$outboundSchema: z.ZodType<
   GenerateRouteConditions$Outbound,
   z.ZodTypeDef,
   GenerateRouteConditions
-> = z.object({
-  field: z.string().optional(),
-  operator: z.string().optional(),
-  key: z.string().optional(),
-  value: z.string().optional(),
-  missing: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    field: z.string().optional(),
+    operator: z.string().optional(),
+    key: z.string().optional(),
+    value: z.string().optional(),
+    missing: z.boolean().optional(),
+  })
+);
 
 export function generateRouteConditionsToJSON(
   generateRouteConditions: GenerateRouteConditions,
@@ -212,11 +216,13 @@ export const GenerateRouteHeaders$outboundSchema: z.ZodType<
   GenerateRouteHeaders$Outbound,
   z.ZodTypeDef,
   GenerateRouteHeaders
-> = z.object({
-  key: z.string().optional(),
-  value: z.string().optional(),
-  op: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: z.string().optional(),
+    value: z.string().optional(),
+    op: z.string().optional(),
+  })
+);
 
 export function generateRouteHeadersToJSON(
   generateRouteHeaders: GenerateRouteHeaders,
@@ -240,14 +246,16 @@ export const Actions$outboundSchema: z.ZodType<
   Actions$Outbound,
   z.ZodTypeDef,
   Actions
-> = z.object({
-  type: z.string().optional(),
-  subType: z.string().optional(),
-  dest: z.string().optional(),
-  status: z.number().int().optional(),
-  headers: z.array(z.lazy(() => GenerateRouteHeaders$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string().optional(),
+    subType: z.string().optional(),
+    dest: z.string().optional(),
+    status: z.number().int().optional(),
+    headers: z.array(z.lazy(() => GenerateRouteHeaders$outboundSchema))
+      .optional(),
+  })
+);
 
 export function actionsToJSON(actions: Actions): string {
   return JSON.stringify(Actions$outboundSchema.parse(actions));
@@ -268,15 +276,17 @@ export const CurrentRoute$outboundSchema: z.ZodType<
   CurrentRoute$Outbound,
   z.ZodTypeDef,
   CurrentRoute
-> = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  pathCondition: z.lazy(() => PathCondition$outboundSchema),
-  caseSensitive: z.boolean().optional(),
-  conditions: z.array(z.lazy(() => GenerateRouteConditions$outboundSchema))
-    .optional(),
-  actions: z.array(z.lazy(() => Actions$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    pathCondition: z.lazy(() => PathCondition$outboundSchema),
+    caseSensitive: z.boolean().optional(),
+    conditions: z.array(z.lazy(() => GenerateRouteConditions$outboundSchema))
+      .optional(),
+    actions: z.array(z.lazy(() => Actions$outboundSchema)),
+  })
+);
 
 export function currentRouteToJSON(currentRoute: CurrentRoute): string {
   return JSON.stringify(CurrentRoute$outboundSchema.parse(currentRoute));
@@ -293,10 +303,12 @@ export const GenerateRouteRequestBody$outboundSchema: z.ZodType<
   GenerateRouteRequestBody$Outbound,
   z.ZodTypeDef,
   GenerateRouteRequestBody
-> = z.object({
-  prompt: z.string(),
-  currentRoute: z.lazy(() => CurrentRoute$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    prompt: z.string(),
+    currentRoute: z.lazy(() => CurrentRoute$outboundSchema).optional(),
+  })
+);
 
 export function generateRouteRequestBodyToJSON(
   generateRouteRequestBody: GenerateRouteRequestBody,
@@ -319,16 +331,19 @@ export const GenerateRouteRequest$outboundSchema: z.ZodType<
   GenerateRouteRequest$Outbound,
   z.ZodTypeDef,
   GenerateRouteRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => GenerateRouteRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => GenerateRouteRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function generateRouteRequestToJSON(
   generateRouteRequest: GenerateRouteRequest,
@@ -341,18 +356,20 @@ export function generateRouteRequestToJSON(
 /** @internal */
 export const GenerateRouteOp$inboundSchema: z.ZodNativeEnum<
   typeof GenerateRouteOp
-> = z.nativeEnum(GenerateRouteOp);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GenerateRouteOp));
 
 /** @internal */
 export const GenerateRouteProjectRoutesHeaders$inboundSchema: z.ZodType<
   GenerateRouteProjectRoutesHeaders,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  key: types.string(),
-  op: GenerateRouteOp$inboundSchema,
-  value: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: types.string(),
+    op: GenerateRouteOp$inboundSchema,
+    value: types.optional(types.string()),
+  })
+);
 
 export function generateRouteProjectRoutesHeadersFromJSON(
   jsonString: string,
@@ -365,28 +382,30 @@ export function generateRouteProjectRoutesHeadersFromJSON(
 }
 
 /** @internal */
-export const SubType$inboundSchema: z.ZodNativeEnum<typeof SubType> = z
-  .nativeEnum(SubType);
+export const SubType$inboundSchema: z.ZodNativeEnum<typeof SubType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SubType));
 
 /** @internal */
 export const GenerateRouteType$inboundSchema: z.ZodNativeEnum<
   typeof GenerateRouteType
-> = z.nativeEnum(GenerateRouteType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GenerateRouteType));
 
 /** @internal */
 export const GenerateRouteActions$inboundSchema: z.ZodType<
   GenerateRouteActions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dest: types.optional(types.string()),
-  headers: types.optional(
-    z.array(z.lazy(() => GenerateRouteProjectRoutesHeaders$inboundSchema)),
-  ),
-  status: types.optional(types.number()),
-  subType: types.optional(SubType$inboundSchema),
-  type: GenerateRouteType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dest: types.optional(types.string()),
+    headers: types.optional(
+      z.array(z.lazy(() => GenerateRouteProjectRoutesHeaders$inboundSchema)),
+    ),
+    status: types.optional(types.number()),
+    subType: types.optional(SubType$inboundSchema),
+    type: GenerateRouteType$inboundSchema,
+  })
+);
 
 export function generateRouteActionsFromJSON(
   jsonString: string,
@@ -401,24 +420,26 @@ export function generateRouteActionsFromJSON(
 /** @internal */
 export const GenerateRouteField$inboundSchema: z.ZodNativeEnum<
   typeof GenerateRouteField
-> = z.nativeEnum(GenerateRouteField);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GenerateRouteField));
 
 /** @internal */
-export const Operator$inboundSchema: z.ZodNativeEnum<typeof Operator> = z
-  .nativeEnum(Operator);
+export const Operator$inboundSchema: z.ZodNativeEnum<typeof Operator> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Operator));
 
 /** @internal */
 export const GenerateRouteProjectRoutesConditions$inboundSchema: z.ZodType<
   GenerateRouteProjectRoutesConditions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  field: GenerateRouteField$inboundSchema,
-  key: types.optional(types.string()),
-  missing: types.boolean(),
-  operator: Operator$inboundSchema,
-  value: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    field: GenerateRouteField$inboundSchema,
+    key: types.optional(types.string()),
+    missing: types.boolean(),
+    operator: Operator$inboundSchema,
+    value: types.optional(types.string()),
+  })
+);
 
 export function generateRouteProjectRoutesConditionsFromJSON(
   jsonString: string,
@@ -432,18 +453,20 @@ export function generateRouteProjectRoutesConditionsFromJSON(
 }
 
 /** @internal */
-export const Syntax$inboundSchema: z.ZodNativeEnum<typeof Syntax> = z
-  .nativeEnum(Syntax);
+export const Syntax$inboundSchema: z.ZodNativeEnum<typeof Syntax> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Syntax));
 
 /** @internal */
 export const GenerateRoutePathCondition$inboundSchema: z.ZodType<
   GenerateRoutePathCondition,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  syntax: Syntax$inboundSchema,
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    syntax: Syntax$inboundSchema,
+    value: types.string(),
+  })
+);
 
 export function generateRoutePathConditionFromJSON(
   jsonString: string,
@@ -460,16 +483,18 @@ export const GenerateRouteRoute$inboundSchema: z.ZodType<
   GenerateRouteRoute,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  actions: z.array(z.lazy(() => GenerateRouteActions$inboundSchema)),
-  caseSensitive: types.optional(types.boolean()),
-  conditions: types.optional(
-    z.array(z.lazy(() => GenerateRouteProjectRoutesConditions$inboundSchema)),
-  ),
-  description: types.string(),
-  name: types.string(),
-  pathCondition: z.lazy(() => GenerateRoutePathCondition$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    actions: z.array(z.lazy(() => GenerateRouteActions$inboundSchema)),
+    caseSensitive: types.optional(types.boolean()),
+    conditions: types.optional(
+      z.array(z.lazy(() => GenerateRouteProjectRoutesConditions$inboundSchema)),
+    ),
+    description: types.string(),
+    name: types.string(),
+    pathCondition: z.lazy(() => GenerateRoutePathCondition$inboundSchema),
+  })
+);
 
 export function generateRouteRouteFromJSON(
   jsonString: string,
@@ -486,10 +511,12 @@ export const GenerateRouteResponseBody$inboundSchema: z.ZodType<
   GenerateRouteResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: types.optional(types.string()),
-  route: types.optional(z.lazy(() => GenerateRouteRoute$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: types.optional(types.string()),
+    route: types.optional(z.lazy(() => GenerateRouteRoute$inboundSchema)),
+  })
+);
 
 export function generateRouteResponseBodyFromJSON(
   jsonString: string,

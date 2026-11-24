@@ -8,19 +8,22 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentyTwo } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyTwo = {
-  alertType: "<value>",
-  groupId: "<id>",
   projectId: "<id>",
-  destinations: {},
+  projectName: "<value>",
+  removedTeamIds: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  repositoryName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `alertType`                                      | *string*                                         | :heavy_check_mark:                               | N/A                                              |
-| `groupId`                                        | *string*                                         | :heavy_check_mark:                               | N/A                                              |
-| `projectId`                                      | *string*                                         | :heavy_check_mark:                               | N/A                                              |
-| `severity`                                       | *string*                                         | :heavy_minus_sign:                               | N/A                                              |
-| `destinations`                                   | [models.Destinations](../models/destinations.md) | :heavy_check_mark:                               | N/A                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `removedTeamIds`   | *string*[]         | :heavy_check_mark: | N/A                |
+| `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |

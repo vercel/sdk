@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -419,9 +419,11 @@ export const StartRollingReleaseRequestBody$outboundSchema: z.ZodType<
   StartRollingReleaseRequestBody$Outbound,
   z.ZodTypeDef,
   StartRollingReleaseRequestBody
-> = z.object({
-  canaryDeploymentId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canaryDeploymentId: z.string(),
+  })
+);
 
 export function startRollingReleaseRequestBodyToJSON(
   startRollingReleaseRequestBody: StartRollingReleaseRequestBody,
@@ -446,17 +448,19 @@ export const StartRollingReleaseRequest$outboundSchema: z.ZodType<
   StartRollingReleaseRequest$Outbound,
   z.ZodTypeDef,
   StartRollingReleaseRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => StartRollingReleaseRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => StartRollingReleaseRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function startRollingReleaseRequestToJSON(
   startRollingReleaseRequest: StartRollingReleaseRequest,
@@ -471,14 +475,16 @@ export const StartRollingReleaseActiveStage$inboundSchema: z.ZodType<
   StartRollingReleaseActiveStage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  duration: types.nullable(types.number()),
-  index: types.number(),
-  isFinalStage: types.boolean(),
-  linearShift: types.optional(types.boolean()),
-  requireApproval: types.boolean(),
-  targetPercentage: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    duration: types.nullable(types.number()),
+    index: types.number(),
+    isFinalStage: types.boolean(),
+    linearShift: types.optional(types.boolean()),
+    requireApproval: types.boolean(),
+    targetPercentage: types.number(),
+  })
+);
 
 export function startRollingReleaseActiveStageFromJSON(
   jsonString: string,
@@ -493,38 +499,44 @@ export function startRollingReleaseActiveStageFromJSON(
 /** @internal */
 export const StartRollingReleaseAdvancementType$inboundSchema: z.ZodNativeEnum<
   typeof StartRollingReleaseAdvancementType
-> = z.nativeEnum(StartRollingReleaseAdvancementType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(StartRollingReleaseAdvancementType)
+);
 
 /** @internal */
 export const StartRollingReleaseReadyState$inboundSchema: z.ZodNativeEnum<
   typeof StartRollingReleaseReadyState
-> = z.nativeEnum(StartRollingReleaseReadyState);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(StartRollingReleaseReadyState)
+);
 
 /** @internal */
 export const StartRollingReleaseSource$inboundSchema: z.ZodNativeEnum<
   typeof StartRollingReleaseSource
-> = z.nativeEnum(StartRollingReleaseSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StartRollingReleaseSource));
 
 /** @internal */
 export const StartRollingReleaseTarget$inboundSchema: z.ZodNativeEnum<
   typeof StartRollingReleaseTarget
-> = z.nativeEnum(StartRollingReleaseTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StartRollingReleaseTarget));
 
 /** @internal */
 export const StartRollingReleaseCanaryDeployment$inboundSchema: z.ZodType<
   StartRollingReleaseCanaryDeployment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  id: types.string(),
-  name: types.string(),
-  readyState: StartRollingReleaseReadyState$inboundSchema,
-  readyStateAt: types.optional(types.number()),
-  source: types.optional(StartRollingReleaseSource$inboundSchema),
-  target: z.nullable(StartRollingReleaseTarget$inboundSchema).optional(),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    id: types.string(),
+    name: types.string(),
+    readyState: StartRollingReleaseReadyState$inboundSchema,
+    readyStateAt: types.optional(types.number()),
+    source: types.optional(StartRollingReleaseSource$inboundSchema),
+    target: z.nullable(StartRollingReleaseTarget$inboundSchema).optional(),
+    url: types.string(),
+  })
+);
 
 export function startRollingReleaseCanaryDeploymentFromJSON(
   jsonString: string,
@@ -539,35 +551,45 @@ export function startRollingReleaseCanaryDeploymentFromJSON(
 
 /** @internal */
 export const StartRollingReleaseRollingReleaseReadyState$inboundSchema:
-  z.ZodNativeEnum<typeof StartRollingReleaseRollingReleaseReadyState> = z
-    .nativeEnum(StartRollingReleaseRollingReleaseReadyState);
+  z.ZodNativeEnum<typeof StartRollingReleaseRollingReleaseReadyState> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(StartRollingReleaseRollingReleaseReadyState)
+    );
 
 /** @internal */
 export const StartRollingReleaseRollingReleaseSource$inboundSchema:
-  z.ZodNativeEnum<typeof StartRollingReleaseRollingReleaseSource> = z
-    .nativeEnum(StartRollingReleaseRollingReleaseSource);
+  z.ZodNativeEnum<typeof StartRollingReleaseRollingReleaseSource> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(StartRollingReleaseRollingReleaseSource)
+    );
 
 /** @internal */
 export const StartRollingReleaseRollingReleaseTarget$inboundSchema:
-  z.ZodNativeEnum<typeof StartRollingReleaseRollingReleaseTarget> = z
-    .nativeEnum(StartRollingReleaseRollingReleaseTarget);
+  z.ZodNativeEnum<typeof StartRollingReleaseRollingReleaseTarget> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(StartRollingReleaseRollingReleaseTarget)
+    );
 
 /** @internal */
 export const StartRollingReleaseCurrentDeployment$inboundSchema: z.ZodType<
   StartRollingReleaseCurrentDeployment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  id: types.string(),
-  name: types.string(),
-  readyState: StartRollingReleaseRollingReleaseReadyState$inboundSchema,
-  readyStateAt: types.optional(types.number()),
-  source: types.optional(StartRollingReleaseRollingReleaseSource$inboundSchema),
-  target: z.nullable(StartRollingReleaseRollingReleaseTarget$inboundSchema)
-    .optional(),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    id: types.string(),
+    name: types.string(),
+    readyState: StartRollingReleaseRollingReleaseReadyState$inboundSchema,
+    readyStateAt: types.optional(types.number()),
+    source: types.optional(
+      StartRollingReleaseRollingReleaseSource$inboundSchema,
+    ),
+    target: z.nullable(StartRollingReleaseRollingReleaseTarget$inboundSchema)
+      .optional(),
+    url: types.string(),
+  })
+);
 
 export function startRollingReleaseCurrentDeploymentFromJSON(
   jsonString: string,
@@ -585,14 +607,16 @@ export const StartRollingReleaseNextStage$inboundSchema: z.ZodType<
   StartRollingReleaseNextStage,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  duration: types.nullable(types.number()),
-  index: types.number(),
-  isFinalStage: types.boolean(),
-  linearShift: types.optional(types.boolean()),
-  requireApproval: types.boolean(),
-  targetPercentage: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    duration: types.nullable(types.number()),
+    index: types.number(),
+    isFinalStage: types.boolean(),
+    linearShift: types.optional(types.boolean()),
+    requireApproval: types.boolean(),
+    targetPercentage: types.number(),
+  })
+);
 
 export function startRollingReleaseNextStageFromJSON(
   jsonString: string,
@@ -609,14 +633,16 @@ export const StartRollingReleaseStages$inboundSchema: z.ZodType<
   StartRollingReleaseStages,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  duration: types.nullable(types.number()),
-  index: types.number(),
-  isFinalStage: types.boolean(),
-  linearShift: types.optional(types.boolean()),
-  requireApproval: types.boolean(),
-  targetPercentage: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    duration: types.nullable(types.number()),
+    index: types.number(),
+    isFinalStage: types.boolean(),
+    linearShift: types.optional(types.boolean()),
+    requireApproval: types.boolean(),
+    targetPercentage: types.number(),
+  })
+);
 
 export function startRollingReleaseStagesFromJSON(
   jsonString: string,
@@ -631,40 +657,44 @@ export function startRollingReleaseStagesFromJSON(
 /** @internal */
 export const StartRollingReleaseState$inboundSchema: z.ZodNativeEnum<
   typeof StartRollingReleaseState
-> = z.nativeEnum(StartRollingReleaseState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StartRollingReleaseState));
 
 /** @internal */
 export const StartRollingReleaseSubstate$inboundSchema: z.ZodNativeEnum<
   typeof StartRollingReleaseSubstate
-> = z.nativeEnum(StartRollingReleaseSubstate);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(StartRollingReleaseSubstate)
+);
 
 /** @internal */
 export const StartRollingReleaseRollingRelease$inboundSchema: z.ZodType<
   StartRollingReleaseRollingRelease,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  activeStage: types.nullable(
-    z.lazy(() => StartRollingReleaseActiveStage$inboundSchema),
-  ),
-  advancementType: StartRollingReleaseAdvancementType$inboundSchema,
-  canaryDeployment: types.nullable(
-    z.lazy(() => StartRollingReleaseCanaryDeployment$inboundSchema),
-  ),
-  currentCanaryPercentage: types.optional(types.number()),
-  currentDeployment: types.nullable(
-    z.lazy(() => StartRollingReleaseCurrentDeployment$inboundSchema),
-  ),
-  nextStage: types.nullable(
-    z.lazy(() => StartRollingReleaseNextStage$inboundSchema),
-  ),
-  queuedDeploymentId: types.nullable(types.string()),
-  stages: z.array(z.lazy(() => StartRollingReleaseStages$inboundSchema)),
-  startedAt: types.number(),
-  state: StartRollingReleaseState$inboundSchema,
-  substate: types.nullable(StartRollingReleaseSubstate$inboundSchema),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    activeStage: types.nullable(
+      z.lazy(() => StartRollingReleaseActiveStage$inboundSchema),
+    ),
+    advancementType: StartRollingReleaseAdvancementType$inboundSchema,
+    canaryDeployment: types.nullable(
+      z.lazy(() => StartRollingReleaseCanaryDeployment$inboundSchema),
+    ),
+    currentCanaryPercentage: types.optional(types.number()),
+    currentDeployment: types.nullable(
+      z.lazy(() => StartRollingReleaseCurrentDeployment$inboundSchema),
+    ),
+    nextStage: types.nullable(
+      z.lazy(() => StartRollingReleaseNextStage$inboundSchema),
+    ),
+    queuedDeploymentId: types.nullable(types.string()),
+    stages: z.array(z.lazy(() => StartRollingReleaseStages$inboundSchema)),
+    startedAt: types.number(),
+    state: StartRollingReleaseState$inboundSchema,
+    substate: types.nullable(StartRollingReleaseSubstate$inboundSchema),
+    updatedAt: types.number(),
+  })
+);
 
 export function startRollingReleaseRollingReleaseFromJSON(
   jsonString: string,
@@ -681,11 +711,13 @@ export const StartRollingReleaseResponseBody$inboundSchema: z.ZodType<
   StartRollingReleaseResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  rollingRelease: types.nullable(
-    z.lazy(() => StartRollingReleaseRollingRelease$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rollingRelease: types.nullable(
+      z.lazy(() => StartRollingReleaseRollingRelease$inboundSchema),
+    ),
+  })
+);
 
 export function startRollingReleaseResponseBodyFromJSON(
   jsonString: string,

@@ -1,25 +1,15 @@
 # To
 
-A set of environments, expressed as explicit slugs, a named preset, or both. At least one of `slugs` or `preset` must be set.
-
-
-## Supported Types
-
-### `models.To1`
+## Example Usage
 
 ```typescript
-const value: models.To1 = {
-  slugs: [
-    "<value 1>",
-  ],
-};
+import { To } from "@vercel/sdk/models/payloadstaticips.js";
+
+let value: To = "vercel";
 ```
 
-### `models.To2`
+## Values
 
 ```typescript
-const value: models.To2 = {
-  preset: "all-custom",
-};
+"vercel" | "workos"
 ```
-

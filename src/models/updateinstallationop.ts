@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -86,12 +87,12 @@ export type UpdateInstallationRequest = {
 /** @internal */
 export const UpdateInstallationStatus$outboundSchema: z.ZodNativeEnum<
   typeof UpdateInstallationStatus
-> = z.nativeEnum(UpdateInstallationStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateInstallationStatus));
 
 /** @internal */
 export const UpdateInstallationType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateInstallationType
-> = z.nativeEnum(UpdateInstallationType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateInstallationType));
 
 /** @internal */
 export type UpdateInstallationDetails$Outbound = {
@@ -104,10 +105,12 @@ export const UpdateInstallationDetails$outboundSchema: z.ZodType<
   UpdateInstallationDetails$Outbound,
   z.ZodTypeDef,
   UpdateInstallationDetails
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    value: z.string().optional(),
+  })
+);
 
 export function updateInstallationDetailsToJSON(
   updateInstallationDetails: UpdateInstallationDetails,
@@ -128,10 +131,12 @@ export const HighlightedDetails$outboundSchema: z.ZodType<
   HighlightedDetails$Outbound,
   z.ZodTypeDef,
   HighlightedDetails
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    value: z.string().optional(),
+  })
+);
 
 export function highlightedDetailsToJSON(
   highlightedDetails: HighlightedDetails,
@@ -160,27 +165,29 @@ export const UpdateInstallationBillingPlan$outboundSchema: z.ZodType<
   UpdateInstallationBillingPlan$Outbound,
   z.ZodTypeDef,
   UpdateInstallationBillingPlan
-> = z.object({
-  id: z.string(),
-  type: UpdateInstallationType$outboundSchema,
-  name: z.string(),
-  description: z.string().optional(),
-  paymentMethodRequired: z.boolean().optional(),
-  cost: z.string().optional(),
-  details: z.array(z.lazy(() => UpdateInstallationDetails$outboundSchema))
-    .optional(),
-  highlightedDetails: z.array(z.lazy(() => HighlightedDetails$outboundSchema))
-    .optional(),
-  effectiveDate: z.string().optional(),
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      additionalProperties: null,
-    }),
-  };
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: UpdateInstallationType$outboundSchema,
+    name: z.string(),
+    description: z.string().optional(),
+    paymentMethodRequired: z.boolean().optional(),
+    cost: z.string().optional(),
+    details: z.array(z.lazy(() => UpdateInstallationDetails$outboundSchema))
+      .optional(),
+    highlightedDetails: z.array(z.lazy(() => HighlightedDetails$outboundSchema))
+      .optional(),
+    effectiveDate: z.string().optional(),
+    additionalProperties: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        additionalProperties: null,
+      }),
+    };
+  })
+);
 
 export function updateInstallationBillingPlanToJSON(
   updateInstallationBillingPlan: UpdateInstallationBillingPlan,
@@ -193,9 +200,8 @@ export function updateInstallationBillingPlanToJSON(
 }
 
 /** @internal */
-export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> = z.nativeEnum(
-  Level,
-);
+export const Level$outboundSchema: z.ZodNativeEnum<typeof Level> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Level));
 
 /** @internal */
 export type Notification1$Outbound = {
@@ -210,12 +216,14 @@ export const Notification1$outboundSchema: z.ZodType<
   Notification1$Outbound,
   z.ZodTypeDef,
   Notification1
-> = z.object({
-  level: Level$outboundSchema,
-  title: z.string(),
-  message: z.string().optional(),
-  href: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    level: Level$outboundSchema,
+    title: z.string(),
+    message: z.string().optional(),
+    href: z.string().optional(),
+  })
+);
 
 export function notification1ToJSON(notification1: Notification1): string {
   return JSON.stringify(Notification1$outboundSchema.parse(notification1));
@@ -229,7 +237,9 @@ export const Notification$outboundSchema: z.ZodType<
   Notification$Outbound,
   z.ZodTypeDef,
   Notification
-> = smartUnion([z.lazy(() => Notification1$outboundSchema), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.lazy(() => Notification1$outboundSchema), z.string()])
+);
 
 export function notificationToJSON(notification: Notification): string {
   return JSON.stringify(Notification$outboundSchema.parse(notification));
@@ -248,16 +258,18 @@ export const UpdateInstallationRequestBody$outboundSchema: z.ZodType<
   UpdateInstallationRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateInstallationRequestBody
-> = z.object({
-  status: UpdateInstallationStatus$outboundSchema.optional(),
-  externalId: z.string().optional(),
-  billingPlan: z.lazy(() => UpdateInstallationBillingPlan$outboundSchema)
-    .optional(),
-  notification: smartUnion([
-    z.lazy(() => Notification1$outboundSchema),
-    z.string(),
-  ]).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: UpdateInstallationStatus$outboundSchema.optional(),
+    externalId: z.string().optional(),
+    billingPlan: z.lazy(() => UpdateInstallationBillingPlan$outboundSchema)
+      .optional(),
+    notification: smartUnion([
+      z.lazy(() => Notification1$outboundSchema),
+      z.string(),
+    ]).optional(),
+  })
+);
 
 export function updateInstallationRequestBodyToJSON(
   updateInstallationRequestBody: UpdateInstallationRequestBody,
@@ -280,15 +292,17 @@ export const UpdateInstallationRequest$outboundSchema: z.ZodType<
   UpdateInstallationRequest$Outbound,
   z.ZodTypeDef,
   UpdateInstallationRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  requestBody: z.lazy(() => UpdateInstallationRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    requestBody: z.lazy(() => UpdateInstallationRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateInstallationRequestToJSON(
   updateInstallationRequest: UpdateInstallationRequest,

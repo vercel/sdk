@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -50,9 +50,11 @@ export const RemoveProjectDomainRequestBody$outboundSchema: z.ZodType<
   RemoveProjectDomainRequestBody$Outbound,
   z.ZodTypeDef,
   RemoveProjectDomainRequestBody
-> = z.object({
-  removeRedirects: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    removeRedirects: z.boolean().optional(),
+  })
+);
 
 export function removeProjectDomainRequestBodyToJSON(
   removeProjectDomainRequestBody: RemoveProjectDomainRequestBody,
@@ -78,18 +80,20 @@ export const RemoveProjectDomainRequest$outboundSchema: z.ZodType<
   RemoveProjectDomainRequest$Outbound,
   z.ZodTypeDef,
   RemoveProjectDomainRequest
-> = z.object({
-  idOrName: z.string(),
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => RemoveProjectDomainRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    domain: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => RemoveProjectDomainRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function removeProjectDomainRequestToJSON(
   removeProjectDomainRequest: RemoveProjectDomainRequest,
@@ -104,7 +108,7 @@ export const RemoveProjectDomainResponseBody$inboundSchema: z.ZodType<
   RemoveProjectDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function removeProjectDomainResponseBodyFromJSON(
   jsonString: string,

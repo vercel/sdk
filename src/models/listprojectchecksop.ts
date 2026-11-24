@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -123,7 +123,7 @@ export type ListProjectChecksResponseBody = {
 /** @internal */
 export const QueryParamBlocks$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamBlocks
-> = z.nativeEnum(QueryParamBlocks);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamBlocks));
 
 /** @internal */
 export type ListProjectChecksRequest$Outbound = {
@@ -138,12 +138,14 @@ export const ListProjectChecksRequest$outboundSchema: z.ZodType<
   ListProjectChecksRequest$Outbound,
   z.ZodTypeDef,
   ListProjectChecksRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  blocks: QueryParamBlocks$outboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    blocks: QueryParamBlocks$outboundSchema.optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listProjectChecksRequestToJSON(
   listProjectChecksRequest: ListProjectChecksRequest,
@@ -156,28 +158,32 @@ export function listProjectChecksRequestToJSON(
 /** @internal */
 export const ListProjectChecksBlocks$inboundSchema: z.ZodNativeEnum<
   typeof ListProjectChecksBlocks
-> = z.nativeEnum(ListProjectChecksBlocks);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListProjectChecksBlocks));
 
 /** @internal */
 export const ListProjectChecksRequires$inboundSchema: z.ZodNativeEnum<
   typeof ListProjectChecksRequires
-> = z.nativeEnum(ListProjectChecksRequires);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListProjectChecksRequires));
 
 /** @internal */
 export const ListProjectChecksSourceProvider$inboundSchema: z.ZodNativeEnum<
   typeof ListProjectChecksSourceProvider
-> = z.nativeEnum(ListProjectChecksSourceProvider);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListProjectChecksSourceProvider)
+);
 
 /** @internal */
 export const ListProjectChecksSource3$inboundSchema: z.ZodType<
   ListProjectChecksSource3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalCheckName: types.string(),
-  kind: types.literal("git-provider"),
-  provider: ListProjectChecksSourceProvider$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalCheckName: types.string(),
+    kind: types.literal("git-provider"),
+    provider: ListProjectChecksSourceProvider$inboundSchema,
+  })
+);
 
 export function listProjectChecksSource3FromJSON(
   jsonString: string,
@@ -194,10 +200,12 @@ export const ListProjectChecksSource2$inboundSchema: z.ZodType<
   ListProjectChecksSource2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: types.literal("webhook"),
-  webhookId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: types.literal("webhook"),
+    webhookId: types.optional(types.string()),
+  })
+);
 
 export function listProjectChecksSource2FromJSON(
   jsonString: string,
@@ -214,13 +222,15 @@ export const ListProjectChecksSource1$inboundSchema: z.ZodType<
   ListProjectChecksSource1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalResourceId: types.optional(types.string()),
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  kind: types.literal("integration"),
-  resourceId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalResourceId: types.optional(types.string()),
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    kind: types.literal("integration"),
+    resourceId: types.optional(types.string()),
+  })
+);
 
 export function listProjectChecksSource1FromJSON(
   jsonString: string,
@@ -237,11 +247,13 @@ export const ListProjectChecksSource$inboundSchema: z.ZodType<
   ListProjectChecksSource,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => ListProjectChecksSource1$inboundSchema),
-  z.lazy(() => ListProjectChecksSource2$inboundSchema),
-  z.lazy(() => ListProjectChecksSource3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => ListProjectChecksSource1$inboundSchema),
+    z.lazy(() => ListProjectChecksSource2$inboundSchema),
+    z.lazy(() => ListProjectChecksSource3$inboundSchema),
+  ])
+);
 
 export function listProjectChecksSourceFromJSON(
   jsonString: string,
@@ -256,31 +268,35 @@ export function listProjectChecksSourceFromJSON(
 /** @internal */
 export const ListProjectChecksSourceKind$inboundSchema: z.ZodNativeEnum<
   typeof ListProjectChecksSourceKind
-> = z.nativeEnum(ListProjectChecksSourceKind);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListProjectChecksSourceKind)
+);
 
 /** @internal */
-export const Checks$inboundSchema: z.ZodType<Checks, z.ZodTypeDef, unknown> = z
-  .object({
-    blocks: ListProjectChecksBlocks$inboundSchema,
-    createdAt: types.number(),
-    deletedAt: types.optional(types.number()),
-    id: types.string(),
-    isRerequestable: types.boolean(),
-    name: types.string(),
-    ownerId: types.string(),
-    projectId: types.string(),
-    requires: ListProjectChecksRequires$inboundSchema,
-    source: z.union([
-      z.lazy(() => ListProjectChecksSource1$inboundSchema),
-      z.lazy(() => ListProjectChecksSource2$inboundSchema),
-      z.lazy(() => ListProjectChecksSource3$inboundSchema),
-    ]),
-    sourceIntegrationConfigurationId: types.optional(types.string()),
-    sourceKind: ListProjectChecksSourceKind$inboundSchema,
-    targets: z.array(types.string()),
-    timeout: types.number(),
-    updatedAt: types.number(),
-  });
+export const Checks$inboundSchema: z.ZodType<Checks, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      blocks: ListProjectChecksBlocks$inboundSchema,
+      createdAt: types.number(),
+      deletedAt: types.optional(types.number()),
+      id: types.string(),
+      isRerequestable: types.boolean(),
+      name: types.string(),
+      ownerId: types.string(),
+      projectId: types.string(),
+      requires: ListProjectChecksRequires$inboundSchema,
+      source: z.union([
+        z.lazy(() => ListProjectChecksSource1$inboundSchema),
+        z.lazy(() => ListProjectChecksSource2$inboundSchema),
+        z.lazy(() => ListProjectChecksSource3$inboundSchema),
+      ]),
+      sourceIntegrationConfigurationId: types.optional(types.string()),
+      sourceKind: ListProjectChecksSourceKind$inboundSchema,
+      targets: z.array(types.string()),
+      timeout: types.number(),
+      updatedAt: types.number(),
+    })
+  );
 
 export function checksFromJSON(
   jsonString: string,
@@ -297,10 +313,12 @@ export const ListProjectChecksResponseBody$inboundSchema: z.ZodType<
   ListProjectChecksResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  availableNativeChecks: z.array(types.string()),
-  checks: z.array(z.lazy(() => Checks$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    availableNativeChecks: z.array(types.string()),
+    checks: z.array(z.lazy(() => Checks$inboundSchema)),
+  })
+);
 
 export function listProjectChecksResponseBodyFromJSON(
   jsonString: string,

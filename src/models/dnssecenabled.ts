@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -48,25 +49,27 @@ export class DNSSECEnabled extends VercelError {
 /** @internal */
 export const DNSSECEnabledCode$inboundSchema: z.ZodNativeEnum<
   typeof DNSSECEnabledCode
-> = z.nativeEnum(DNSSECEnabledCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DNSSECEnabledCode));
 
 /** @internal */
 export const DNSSECEnabled$inboundSchema: z.ZodType<
   DNSSECEnabled,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: DNSSECEnabledCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new DNSSECEnabled(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: DNSSECEnabledCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new DNSSECEnabled(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

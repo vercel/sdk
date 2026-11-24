@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { BadRequest, BadRequest$inboundSchema } from "./badrequest.js";
@@ -41,10 +41,12 @@ export const GetContactInfoSchemaRequest$outboundSchema: z.ZodType<
   GetContactInfoSchemaRequest$Outbound,
   z.ZodTypeDef,
   GetContactInfoSchemaRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+  })
+);
 
 export function getContactInfoSchemaRequestToJSON(
   getContactInfoSchemaRequest: GetContactInfoSchemaRequest,
@@ -62,7 +64,9 @@ export const GetContactInfoSchemaDomainsRegistrarResponseBody$inboundSchema:
     GetContactInfoSchemaDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([BadRequest$inboundSchema, HttpApiDecodeError$inboundSchema]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([BadRequest$inboundSchema, HttpApiDecodeError$inboundSchema])
+  );
 
 export function getContactInfoSchemaDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -85,7 +89,7 @@ export const GetContactInfoSchemaResponseBody$inboundSchema: z.ZodType<
   GetContactInfoSchemaResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getContactInfoSchemaResponseBodyFromJSON(
   jsonString: string,

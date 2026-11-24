@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -929,11 +930,13 @@ export const TypePhoton$outboundSchema: z.ZodType<
   TypePhoton$Outbound,
   z.ZodTypeDef,
   TypePhoton
-> = z.object({
-  projectSecret: z.string().optional(),
-  webhookSecret: z.string().optional(),
-  repairWebhook: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectSecret: z.string().optional(),
+    webhookSecret: z.string().optional(),
+    repairWebhook: z.boolean().optional(),
+  })
+);
 
 export function typePhotonToJSON(typePhoton: TypePhoton): string {
   return JSON.stringify(TypePhoton$outboundSchema.parse(typePhoton));
@@ -951,11 +954,13 @@ export const TypeSendblue$outboundSchema: z.ZodType<
   TypeSendblue$Outbound,
   z.ZodTypeDef,
   TypeSendblue
-> = z.object({
-  apiKeyId: z.string().optional(),
-  apiSecretKey: z.string().optional(),
-  phoneNumbers: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiKeyId: z.string().optional(),
+    apiSecretKey: z.string().optional(),
+    phoneNumbers: z.array(z.string()).optional(),
+  })
+);
 
 export function typeSendblueToJSON(typeSendblue: TypeSendblue): string {
   return JSON.stringify(TypeSendblue$outboundSchema.parse(typeSendblue));
@@ -972,10 +977,12 @@ export const TypeLinq$outboundSchema: z.ZodType<
   TypeLinq$Outbound,
   z.ZodTypeDef,
   TypeLinq
-> = z.object({
-  apiToken: z.string().optional(),
-  phoneNumbers: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiToken: z.string().optional(),
+    phoneNumbers: z.array(z.string()).optional(),
+  })
+);
 
 export function typeLinqToJSON(typeLinq: TypeLinq): string {
   return JSON.stringify(TypeLinq$outboundSchema.parse(typeLinq));
@@ -991,9 +998,11 @@ export const TypeSnowflakeWif$outboundSchema: z.ZodType<
   TypeSnowflakeWif$Outbound,
   z.ZodTypeDef,
   TypeSnowflakeWif
-> = z.object({
-  accountIdentifier: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountIdentifier: z.string().optional(),
+  })
+);
 
 export function typeSnowflakeWifToJSON(
   typeSnowflakeWif: TypeSnowflakeWif,
@@ -1014,10 +1023,12 @@ export const TypeSnowflake$outboundSchema: z.ZodType<
   TypeSnowflake$Outbound,
   z.ZodTypeDef,
   TypeSnowflake
-> = z.object({
-  accountIdentifier: z.string().optional(),
-  defaultSessionRole: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountIdentifier: z.string().optional(),
+    defaultSessionRole: z.string().optional(),
+  })
+);
 
 export function typeSnowflakeToJSON(typeSnowflake: TypeSnowflake): string {
   return JSON.stringify(TypeSnowflake$outboundSchema.parse(typeSnowflake));
@@ -1035,11 +1046,13 @@ export const SlackTeam$outboundSchema: z.ZodType<
   SlackTeam$Outbound,
   z.ZodTypeDef,
   SlackTeam
-> = z.object({
-  id: z.string(),
-  name: z.string().optional(),
-  domain: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string().optional(),
+    domain: z.string().optional(),
+  })
+);
 
 export function slackTeamToJSON(slackTeam: SlackTeam): string {
   return JSON.stringify(SlackTeam$outboundSchema.parse(slackTeam));
@@ -1058,12 +1071,14 @@ export const SlashCommands$outboundSchema: z.ZodType<
   SlashCommands$Outbound,
   z.ZodTypeDef,
   SlashCommands
-> = z.object({
-  command: z.string(),
-  description: z.string(),
-  usageHint: z.string().optional(),
-  shouldEscape: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    command: z.string(),
+    description: z.string(),
+    usageHint: z.string().optional(),
+    shouldEscape: z.boolean().optional(),
+  })
+);
 
 export function slashCommandsToJSON(slashCommands: SlashCommands): string {
   return JSON.stringify(SlashCommands$outboundSchema.parse(slashCommands));
@@ -1072,7 +1087,9 @@ export function slashCommandsToJSON(slashCommands: SlashCommands): string {
 /** @internal */
 export const ConnectConnectorUpdateData6Type$outboundSchema: z.ZodNativeEnum<
   typeof ConnectConnectorUpdateData6Type
-> = z.nativeEnum(ConnectConnectorUpdateData6Type);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ConnectConnectorUpdateData6Type)
+);
 
 /** @internal */
 export type Shortcuts$Outbound = {
@@ -1087,12 +1104,14 @@ export const Shortcuts$outboundSchema: z.ZodType<
   Shortcuts$Outbound,
   z.ZodTypeDef,
   Shortcuts
-> = z.object({
-  type: ConnectConnectorUpdateData6Type$outboundSchema,
-  name: z.string(),
-  callbackId: z.string(),
-  description: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: ConnectConnectorUpdateData6Type$outboundSchema,
+    name: z.string(),
+    callbackId: z.string(),
+    description: z.string(),
+  })
+);
 
 export function shortcutsToJSON(shortcuts: Shortcuts): string {
   return JSON.stringify(Shortcuts$outboundSchema.parse(shortcuts));
@@ -1110,11 +1129,13 @@ export const AppHome$outboundSchema: z.ZodType<
   AppHome$Outbound,
   z.ZodTypeDef,
   AppHome
-> = z.object({
-  homeTabEnabled: z.boolean().optional(),
-  messagesTabEnabled: z.boolean().optional(),
-  messagesTabReadOnlyEnabled: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    homeTabEnabled: z.boolean().optional(),
+    messagesTabEnabled: z.boolean().optional(),
+    messagesTabReadOnlyEnabled: z.boolean().optional(),
+  })
+);
 
 export function appHomeToJSON(appHome: AppHome): string {
   return JSON.stringify(AppHome$outboundSchema.parse(appHome));
@@ -1131,10 +1152,12 @@ export const RichPreviews$outboundSchema: z.ZodType<
   RichPreviews$Outbound,
   z.ZodTypeDef,
   RichPreviews
-> = z.object({
-  isActive: z.boolean().optional(),
-  entityTypes: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isActive: z.boolean().optional(),
+    entityTypes: z.array(z.string()).optional(),
+  })
+);
 
 export function richPreviewsToJSON(richPreviews: RichPreviews): string {
   return JSON.stringify(RichPreviews$outboundSchema.parse(richPreviews));
@@ -1150,9 +1173,11 @@ export const CodeChannels$outboundSchema: z.ZodType<
   CodeChannels$Outbound,
   z.ZodTypeDef,
   CodeChannels
-> = z.object({
-  enabled: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean().optional(),
+  })
+);
 
 export function codeChannelsToJSON(codeChannels: CodeChannels): string {
   return JSON.stringify(CodeChannels$outboundSchema.parse(codeChannels));
@@ -1182,23 +1207,26 @@ export const TypeSlack$outboundSchema: z.ZodType<
   TypeSlack$Outbound,
   z.ZodTypeDef,
   TypeSlack
-> = z.object({
-  appId: z.string().optional(),
-  appName: z.string().optional(),
-  clientId: z.string().optional(),
-  clientSecret: z.string().optional(),
-  slackTeam: z.lazy(() => SlackTeam$outboundSchema).optional(),
-  signingSecret: z.string().optional(),
-  verificationToken: z.string().optional(),
-  botScopes: z.array(z.string()).optional(),
-  userScopes: z.array(z.string()).optional(),
-  slashCommands: z.array(z.lazy(() => SlashCommands$outboundSchema)).optional(),
-  shortcuts: z.array(z.lazy(() => Shortcuts$outboundSchema)).optional(),
-  appHome: z.lazy(() => AppHome$outboundSchema).optional(),
-  richPreviews: z.lazy(() => RichPreviews$outboundSchema).optional(),
-  codeChannels: z.lazy(() => CodeChannels$outboundSchema).optional(),
-  extras: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    appId: z.string().optional(),
+    appName: z.string().optional(),
+    clientId: z.string().optional(),
+    clientSecret: z.string().optional(),
+    slackTeam: z.lazy(() => SlackTeam$outboundSchema).optional(),
+    signingSecret: z.string().optional(),
+    verificationToken: z.string().optional(),
+    botScopes: z.array(z.string()).optional(),
+    userScopes: z.array(z.string()).optional(),
+    slashCommands: z.array(z.lazy(() => SlashCommands$outboundSchema))
+      .optional(),
+    shortcuts: z.array(z.lazy(() => Shortcuts$outboundSchema)).optional(),
+    appHome: z.lazy(() => AppHome$outboundSchema).optional(),
+    richPreviews: z.lazy(() => RichPreviews$outboundSchema).optional(),
+    codeChannels: z.lazy(() => CodeChannels$outboundSchema).optional(),
+    extras: z.record(z.any()).optional(),
+  })
+);
 
 export function typeSlackToJSON(typeSlack: TypeSlack): string {
   return JSON.stringify(TypeSlack$outboundSchema.parse(typeSlack));
@@ -1216,11 +1244,13 @@ export const TypeSalesforce$outboundSchema: z.ZodType<
   TypeSalesforce$Outbound,
   z.ZodTypeDef,
   TypeSalesforce
-> = z.object({
-  consumerKey: z.string().optional(),
-  consumerSecret: z.string().optional(),
-  loginHost: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    consumerKey: z.string().optional(),
+    consumerSecret: z.string().optional(),
+    loginHost: z.string().optional(),
+  })
+);
 
 export function typeSalesforceToJSON(typeSalesforce: TypeSalesforce): string {
   return JSON.stringify(TypeSalesforce$outboundSchema.parse(typeSalesforce));
@@ -1239,12 +1269,14 @@ export const OwnerOrganization$outboundSchema: z.ZodType<
   OwnerOrganization$Outbound,
   z.ZodTypeDef,
   OwnerOrganization
-> = z.object({
-  id: z.string(),
-  slug: z.string(),
-  name: z.string(),
-  logoUrl: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    slug: z.string(),
+    name: z.string(),
+    logoUrl: z.nullable(z.string()).optional(),
+  })
+);
 
 export function ownerOrganizationToJSON(
   ownerOrganization: OwnerOrganization,
@@ -1277,22 +1309,24 @@ export const Application$outboundSchema: z.ZodType<
   Application$Outbound,
   z.ZodTypeDef,
   Application
-> = z.object({
-  id: z.string(),
-  clientId: z.string(),
-  name: z.string(),
-  description: z.nullable(z.string()).optional(),
-  developer: z.nullable(z.string()).optional(),
-  developerUrl: z.nullable(z.string()).optional(),
-  imageUrl: z.nullable(z.string()).optional(),
-  redirectUris: z.array(z.string()).optional(),
-  distribution: z.nullable(z.string()).optional(),
-  webhookResourceTypes: z.array(z.string()).optional(),
-  webhookUrl: z.nullable(z.string()).optional(),
-  webhookEnabled: z.boolean().optional(),
-  createdAt: z.string().optional(),
-  updatedAt: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    clientId: z.string(),
+    name: z.string(),
+    description: z.nullable(z.string()).optional(),
+    developer: z.nullable(z.string()).optional(),
+    developerUrl: z.nullable(z.string()).optional(),
+    imageUrl: z.nullable(z.string()).optional(),
+    redirectUris: z.array(z.string()).optional(),
+    distribution: z.nullable(z.string()).optional(),
+    webhookResourceTypes: z.array(z.string()).optional(),
+    webhookUrl: z.nullable(z.string()).optional(),
+    webhookEnabled: z.boolean().optional(),
+    createdAt: z.string().optional(),
+    updatedAt: z.string().optional(),
+  })
+);
 
 export function applicationToJSON(application: Application): string {
   return JSON.stringify(Application$outboundSchema.parse(application));
@@ -1317,18 +1351,21 @@ export const TypeLinear$outboundSchema: z.ZodType<
   TypeLinear$Outbound,
   z.ZodTypeDef,
   TypeLinear
-> = z.object({
-  appId: z.string().optional(),
-  appName: z.string().optional(),
-  clientId: z.string().optional(),
-  clientSecret: z.string().optional(),
-  webhookSecret: z.string().optional(),
-  appScopes: z.array(z.string()).optional(),
-  userScopes: z.array(z.string()).optional(),
-  ownerOrganization: z.lazy(() => OwnerOrganization$outboundSchema).optional(),
-  application: z.lazy(() => Application$outboundSchema).optional(),
-  extras: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    appId: z.string().optional(),
+    appName: z.string().optional(),
+    clientId: z.string().optional(),
+    clientSecret: z.string().optional(),
+    webhookSecret: z.string().optional(),
+    appScopes: z.array(z.string()).optional(),
+    userScopes: z.array(z.string()).optional(),
+    ownerOrganization: z.lazy(() => OwnerOrganization$outboundSchema)
+      .optional(),
+    application: z.lazy(() => Application$outboundSchema).optional(),
+    extras: z.record(z.any()).optional(),
+  })
+);
 
 export function typeLinearToJSON(typeLinear: TypeLinear): string {
   return JSON.stringify(TypeLinear$outboundSchema.parse(typeLinear));
@@ -1337,7 +1374,9 @@ export function typeLinearToJSON(typeLinear: TypeLinear): string {
 /** @internal */
 export const ConnectConnectorUpdateDataType$outboundSchema: z.ZodNativeEnum<
   typeof ConnectConnectorUpdateDataType
-> = z.nativeEnum(ConnectConnectorUpdateDataType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ConnectConnectorUpdateDataType)
+);
 
 /** @internal */
 export type Owner$Outbound = {
@@ -1352,12 +1391,14 @@ export const Owner$outboundSchema: z.ZodType<
   Owner$Outbound,
   z.ZodTypeDef,
   Owner
-> = z.object({
-  type: ConnectConnectorUpdateDataType$outboundSchema,
-  id: z.number().int(),
-  slug: z.string(),
-  name: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: ConnectConnectorUpdateDataType$outboundSchema,
+    id: z.number().int(),
+    slug: z.string(),
+    name: z.string().optional(),
+  })
+);
 
 export function ownerToJSON(owner: Owner): string {
   return JSON.stringify(Owner$outboundSchema.parse(owner));
@@ -1381,17 +1422,19 @@ export const TypeGithub$outboundSchema: z.ZodType<
   TypeGithub$Outbound,
   z.ZodTypeDef,
   TypeGithub
-> = z.object({
-  appId: z.number().int().optional(),
-  appSlug: z.string().optional(),
-  appName: z.string().optional(),
-  clientId: z.string().optional(),
-  owner: z.lazy(() => Owner$outboundSchema).optional(),
-  clientSecret: z.string().optional(),
-  privateKeyPem: z.string().optional(),
-  webhookSecret: z.string().optional(),
-  extras: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    appId: z.number().int().optional(),
+    appSlug: z.string().optional(),
+    appName: z.string().optional(),
+    clientId: z.string().optional(),
+    owner: z.lazy(() => Owner$outboundSchema).optional(),
+    clientSecret: z.string().optional(),
+    privateKeyPem: z.string().optional(),
+    webhookSecret: z.string().optional(),
+    extras: z.record(z.any()).optional(),
+  })
+);
 
 export function typeGithubToJSON(typeGithub: TypeGithub): string {
   return JSON.stringify(TypeGithub$outboundSchema.parse(typeGithub));
@@ -1409,11 +1452,13 @@ export const ToAdd$outboundSchema: z.ZodType<
   ToAdd$Outbound,
   z.ZodTypeDef,
   ToAdd
-> = z.object({
-  value: z.string(),
-  scope: z.string().optional(),
-  expiresAt: z.number().int().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.string(),
+    scope: z.string().optional(),
+    expiresAt: z.number().int().optional(),
+  })
+);
 
 export function toAddToJSON(toAdd: ToAdd): string {
   return JSON.stringify(ToAdd$outboundSchema.parse(toAdd));
@@ -1427,7 +1472,9 @@ export const ExpiresAt$outboundSchema: z.ZodType<
   ExpiresAt$Outbound,
   z.ZodTypeDef,
   ExpiresAt
-> = smartUnion([z.number().int(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.number().int(), z.string()])
+);
 
 export function expiresAtToJSON(expiresAt: ExpiresAt): string {
   return JSON.stringify(ExpiresAt$outboundSchema.parse(expiresAt));
@@ -1446,12 +1493,14 @@ export const ToUpdate$outboundSchema: z.ZodType<
   ToUpdate$Outbound,
   z.ZodTypeDef,
   ToUpdate
-> = z.object({
-  id: z.string(),
-  value: z.string().optional(),
-  scope: z.string().optional(),
-  expiresAt: smartUnion([z.number().int(), z.string()]).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    value: z.string().optional(),
+    scope: z.string().optional(),
+    expiresAt: smartUnion([z.number().int(), z.string()]).optional(),
+  })
+);
 
 export function toUpdateToJSON(toUpdate: ToUpdate): string {
   return JSON.stringify(ToUpdate$outboundSchema.parse(toUpdate));
@@ -1470,21 +1519,22 @@ export const TypeApiKey$outboundSchema: z.ZodType<
   TypeApiKey$Outbound,
   z.ZodTypeDef,
   TypeApiKey
-> = z.object({
-  toDelete: z.array(z.string()).optional(),
-  toAdd: z.array(z.lazy(() => ToAdd$outboundSchema)).optional(),
-  toUpdate: z.array(z.lazy(() => ToUpdate$outboundSchema)).optional(),
-  instructions: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    toDelete: z.array(z.string()).optional(),
+    toAdd: z.array(z.lazy(() => ToAdd$outboundSchema)).optional(),
+    toUpdate: z.array(z.lazy(() => ToUpdate$outboundSchema)).optional(),
+    instructions: z.string().optional(),
+  })
+);
 
 export function typeApiKeyToJSON(typeApiKey: TypeApiKey): string {
   return JSON.stringify(TypeApiKey$outboundSchema.parse(typeApiKey));
 }
 
 /** @internal */
-export const Use$outboundSchema: z.ZodNativeEnum<typeof Use> = z.nativeEnum(
-  Use,
-);
+export const Use$outboundSchema: z.ZodNativeEnum<typeof Use> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Use));
 
 /** @internal */
 export type Keys$Outbound = {
@@ -1498,22 +1548,24 @@ export type Keys$Outbound = {
 
 /** @internal */
 export const Keys$outboundSchema: z.ZodType<Keys$Outbound, z.ZodTypeDef, Keys> =
-  z.object({
-    kty: z.string(),
-    kid: z.string().optional(),
-    use: Use$outboundSchema.optional(),
-    keyOps: z.array(z.string()).optional(),
-    alg: z.string().optional(),
-    additionalProperties: z.record(z.any()).optional(),
-  }).transform((v) => {
-    return {
-      ...v.additionalProperties,
-      ...remap$(v, {
-        keyOps: "key_ops",
-        additionalProperties: null,
-      }),
-    };
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      kty: z.string(),
+      kid: z.string().optional(),
+      use: Use$outboundSchema.optional(),
+      keyOps: z.array(z.string()).optional(),
+      alg: z.string().optional(),
+      additionalProperties: z.record(z.any()).optional(),
+    }).transform((v) => {
+      return {
+        ...v.additionalProperties,
+        ...remap$(v, {
+          keyOps: "key_ops",
+          additionalProperties: null,
+        }),
+      };
+    })
+  );
 
 export function keysToJSON(keys: Keys): string {
   return JSON.stringify(Keys$outboundSchema.parse(keys));
@@ -1527,17 +1579,19 @@ export type Jwks$Outbound = {
 
 /** @internal */
 export const Jwks$outboundSchema: z.ZodType<Jwks$Outbound, z.ZodTypeDef, Jwks> =
-  z.object({
-    keys: z.array(z.lazy(() => Keys$outboundSchema)),
-    additionalProperties: z.record(z.any()).optional(),
-  }).transform((v) => {
-    return {
-      ...v.additionalProperties,
-      ...remap$(v, {
-        additionalProperties: null,
-      }),
-    };
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      keys: z.array(z.lazy(() => Keys$outboundSchema)),
+      additionalProperties: z.record(z.any()).optional(),
+    }).transform((v) => {
+      return {
+        ...v.additionalProperties,
+        ...remap$(v, {
+          additionalProperties: null,
+        }),
+      };
+    })
+  );
 
 export function jwksToJSON(jwks: Jwks): string {
   return JSON.stringify(Jwks$outboundSchema.parse(jwks));
@@ -1590,96 +1644,100 @@ export const ServerConfig$outboundSchema: z.ZodType<
   ServerConfig$Outbound,
   z.ZodTypeDef,
   ServerConfig
-> = z.object({
-  issuer: z.string().optional(),
-  authorizationEndpoint: z.string().optional(),
-  tokenEndpoint: z.string().optional(),
-  userinfoEndpoint: z.string().optional(),
-  jwksUri: z.string().optional(),
-  jwks: z.lazy(() => Jwks$outboundSchema).optional(),
-  revocationEndpoint: z.string().optional(),
-  introspectionEndpoint: z.string().optional(),
-  endSessionEndpoint: z.string().optional(),
-  deviceAuthorizationEndpoint: z.string().optional(),
-  registrationEndpoint: z.string().optional(),
-  responseTypesSupported: z.array(z.string()).optional(),
-  tokenEndpointAuthMethodsSupported: z.array(z.string()).optional(),
-  tokenEndpointAuthSigningAlgValuesSupported: z.array(z.string()).optional(),
-  scopesSupported: z.array(z.string()).optional(),
-  grantTypesSupported: z.array(z.string()).optional(),
-  authorizationGrantProfilesSupported: z.array(z.string()).optional(),
-  identityChainingRequestedTokenTypesSupported: z.array(z.string()).optional(),
-  responseModesSupported: z.array(z.string()).optional(),
-  subjectTypesSupported: z.array(z.string()).optional(),
-  idTokenSigningAlgValuesSupported: z.array(z.string()).optional(),
-  idTokenEncryptionAlgValuesSupported: z.array(z.string()).optional(),
-  idTokenEncryptionEncValuesSupported: z.array(z.string()).optional(),
-  claimTypesSupported: z.array(z.string()).optional(),
-  claimsSupported: z.array(z.string()).optional(),
-  codeChallengeMethodsSupported: z.array(z.string()).optional(),
-  promptValuesSupported: z.array(z.string()).optional(),
-  claimsParameterSupported: z.boolean().optional(),
-  requestParameterSupported: z.boolean().optional(),
-  requestUriParameterSupported: z.boolean().optional(),
-  requireRequestUriRegistration: z.boolean().optional(),
-  serviceDocumentation: z.string().optional(),
-  opPolicyUri: z.string().optional(),
-  opTosUri: z.string().optional(),
-  logoUri: z.string().optional(),
-  clientIdMetadataDocumentSupported: z.boolean().optional(),
-  authorizationDetailsTypesSupported: z.array(z.string()).optional(),
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      authorizationEndpoint: "authorization_endpoint",
-      tokenEndpoint: "token_endpoint",
-      userinfoEndpoint: "userinfo_endpoint",
-      jwksUri: "jwks_uri",
-      revocationEndpoint: "revocation_endpoint",
-      introspectionEndpoint: "introspection_endpoint",
-      endSessionEndpoint: "end_session_endpoint",
-      deviceAuthorizationEndpoint: "device_authorization_endpoint",
-      registrationEndpoint: "registration_endpoint",
-      responseTypesSupported: "response_types_supported",
-      tokenEndpointAuthMethodsSupported:
-        "token_endpoint_auth_methods_supported",
-      tokenEndpointAuthSigningAlgValuesSupported:
-        "token_endpoint_auth_signing_alg_values_supported",
-      scopesSupported: "scopes_supported",
-      grantTypesSupported: "grant_types_supported",
-      authorizationGrantProfilesSupported:
-        "authorization_grant_profiles_supported",
-      identityChainingRequestedTokenTypesSupported:
-        "identity_chaining_requested_token_types_supported",
-      responseModesSupported: "response_modes_supported",
-      subjectTypesSupported: "subject_types_supported",
-      idTokenSigningAlgValuesSupported: "id_token_signing_alg_values_supported",
-      idTokenEncryptionAlgValuesSupported:
-        "id_token_encryption_alg_values_supported",
-      idTokenEncryptionEncValuesSupported:
-        "id_token_encryption_enc_values_supported",
-      claimTypesSupported: "claim_types_supported",
-      claimsSupported: "claims_supported",
-      codeChallengeMethodsSupported: "code_challenge_methods_supported",
-      promptValuesSupported: "prompt_values_supported",
-      claimsParameterSupported: "claims_parameter_supported",
-      requestParameterSupported: "request_parameter_supported",
-      requestUriParameterSupported: "request_uri_parameter_supported",
-      requireRequestUriRegistration: "require_request_uri_registration",
-      serviceDocumentation: "service_documentation",
-      opPolicyUri: "op_policy_uri",
-      opTosUri: "op_tos_uri",
-      logoUri: "logo_uri",
-      clientIdMetadataDocumentSupported:
-        "client_id_metadata_document_supported",
-      authorizationDetailsTypesSupported:
-        "authorization_details_types_supported",
-      additionalProperties: null,
-    }),
-  };
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuer: z.string().optional(),
+    authorizationEndpoint: z.string().optional(),
+    tokenEndpoint: z.string().optional(),
+    userinfoEndpoint: z.string().optional(),
+    jwksUri: z.string().optional(),
+    jwks: z.lazy(() => Jwks$outboundSchema).optional(),
+    revocationEndpoint: z.string().optional(),
+    introspectionEndpoint: z.string().optional(),
+    endSessionEndpoint: z.string().optional(),
+    deviceAuthorizationEndpoint: z.string().optional(),
+    registrationEndpoint: z.string().optional(),
+    responseTypesSupported: z.array(z.string()).optional(),
+    tokenEndpointAuthMethodsSupported: z.array(z.string()).optional(),
+    tokenEndpointAuthSigningAlgValuesSupported: z.array(z.string()).optional(),
+    scopesSupported: z.array(z.string()).optional(),
+    grantTypesSupported: z.array(z.string()).optional(),
+    authorizationGrantProfilesSupported: z.array(z.string()).optional(),
+    identityChainingRequestedTokenTypesSupported: z.array(z.string())
+      .optional(),
+    responseModesSupported: z.array(z.string()).optional(),
+    subjectTypesSupported: z.array(z.string()).optional(),
+    idTokenSigningAlgValuesSupported: z.array(z.string()).optional(),
+    idTokenEncryptionAlgValuesSupported: z.array(z.string()).optional(),
+    idTokenEncryptionEncValuesSupported: z.array(z.string()).optional(),
+    claimTypesSupported: z.array(z.string()).optional(),
+    claimsSupported: z.array(z.string()).optional(),
+    codeChallengeMethodsSupported: z.array(z.string()).optional(),
+    promptValuesSupported: z.array(z.string()).optional(),
+    claimsParameterSupported: z.boolean().optional(),
+    requestParameterSupported: z.boolean().optional(),
+    requestUriParameterSupported: z.boolean().optional(),
+    requireRequestUriRegistration: z.boolean().optional(),
+    serviceDocumentation: z.string().optional(),
+    opPolicyUri: z.string().optional(),
+    opTosUri: z.string().optional(),
+    logoUri: z.string().optional(),
+    clientIdMetadataDocumentSupported: z.boolean().optional(),
+    authorizationDetailsTypesSupported: z.array(z.string()).optional(),
+    additionalProperties: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        authorizationEndpoint: "authorization_endpoint",
+        tokenEndpoint: "token_endpoint",
+        userinfoEndpoint: "userinfo_endpoint",
+        jwksUri: "jwks_uri",
+        revocationEndpoint: "revocation_endpoint",
+        introspectionEndpoint: "introspection_endpoint",
+        endSessionEndpoint: "end_session_endpoint",
+        deviceAuthorizationEndpoint: "device_authorization_endpoint",
+        registrationEndpoint: "registration_endpoint",
+        responseTypesSupported: "response_types_supported",
+        tokenEndpointAuthMethodsSupported:
+          "token_endpoint_auth_methods_supported",
+        tokenEndpointAuthSigningAlgValuesSupported:
+          "token_endpoint_auth_signing_alg_values_supported",
+        scopesSupported: "scopes_supported",
+        grantTypesSupported: "grant_types_supported",
+        authorizationGrantProfilesSupported:
+          "authorization_grant_profiles_supported",
+        identityChainingRequestedTokenTypesSupported:
+          "identity_chaining_requested_token_types_supported",
+        responseModesSupported: "response_modes_supported",
+        subjectTypesSupported: "subject_types_supported",
+        idTokenSigningAlgValuesSupported:
+          "id_token_signing_alg_values_supported",
+        idTokenEncryptionAlgValuesSupported:
+          "id_token_encryption_alg_values_supported",
+        idTokenEncryptionEncValuesSupported:
+          "id_token_encryption_enc_values_supported",
+        claimTypesSupported: "claim_types_supported",
+        claimsSupported: "claims_supported",
+        codeChallengeMethodsSupported: "code_challenge_methods_supported",
+        promptValuesSupported: "prompt_values_supported",
+        claimsParameterSupported: "claims_parameter_supported",
+        requestParameterSupported: "request_parameter_supported",
+        requestUriParameterSupported: "request_uri_parameter_supported",
+        requireRequestUriRegistration: "require_request_uri_registration",
+        serviceDocumentation: "service_documentation",
+        opPolicyUri: "op_policy_uri",
+        opTosUri: "op_tos_uri",
+        logoUri: "logo_uri",
+        clientIdMetadataDocumentSupported:
+          "client_id_metadata_document_supported",
+        authorizationDetailsTypesSupported:
+          "authorization_details_types_supported",
+        additionalProperties: null,
+      }),
+    };
+  })
+);
 
 export function serverConfigToJSON(serverConfig: ServerConfig): string {
   return JSON.stringify(ServerConfig$outboundSchema.parse(serverConfig));
@@ -1696,10 +1754,12 @@ export const UserAuthorization$outboundSchema: z.ZodType<
   UserAuthorization$Outbound,
   z.ZodTypeDef,
   UserAuthorization
-> = z.object({
-  enabled: z.boolean(),
-  scopes: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean(),
+    scopes: z.array(z.string()).optional(),
+  })
+);
 
 export function userAuthorizationToJSON(
   userAuthorization: UserAuthorization,
@@ -1719,9 +1779,11 @@ export const RefreshTokens$outboundSchema: z.ZodType<
   RefreshTokens$Outbound,
   z.ZodTypeDef,
   RefreshTokens
-> = z.object({
-  enabled: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean(),
+  })
+);
 
 export function refreshTokensToJSON(refreshTokens: RefreshTokens): string {
   return JSON.stringify(RefreshTokens$outboundSchema.parse(refreshTokens));
@@ -1738,10 +1800,12 @@ export const ClientCredentials$outboundSchema: z.ZodType<
   ClientCredentials$Outbound,
   z.ZodTypeDef,
   ClientCredentials
-> = z.object({
-  enabled: z.boolean(),
-  scopes: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean(),
+    scopes: z.array(z.string()).optional(),
+  })
+);
 
 export function clientCredentialsToJSON(
   clientCredentials: ClientCredentials,
@@ -1761,9 +1825,11 @@ export const ForwardedClaims$outboundSchema: z.ZodType<
   ForwardedClaims$Outbound,
   z.ZodTypeDef,
   ForwardedClaims
-> = z.object({
-  idToken: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idToken: z.array(z.string()).optional(),
+  })
+);
 
 export function forwardedClaimsToJSON(
   forwardedClaims: ForwardedClaims,
@@ -1788,16 +1854,18 @@ export const JwtBearer$outboundSchema: z.ZodType<
   JwtBearer$Outbound,
   z.ZodTypeDef,
   JwtBearer
-> = z.object({
-  enabled: z.boolean().optional(),
-  scopes: z.array(z.string()).optional(),
-  sub: z.string().optional(),
-  iss: z.string().optional(),
-  aud: z.string().optional(),
-  additionalClaims: z.record(z.any()).optional(),
-  ttl: z.number().optional(),
-  useClientCredentials: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean().optional(),
+    scopes: z.array(z.string()).optional(),
+    sub: z.string().optional(),
+    iss: z.string().optional(),
+    aud: z.string().optional(),
+    additionalClaims: z.record(z.any()).optional(),
+    ttl: z.number().optional(),
+    useClientCredentials: z.boolean().optional(),
+  })
+);
 
 export function jwtBearerToJSON(jwtBearer: JwtBearer): string {
   return JSON.stringify(JwtBearer$outboundSchema.parse(jwtBearer));
@@ -1815,11 +1883,13 @@ export const ClientAssertion$outboundSchema: z.ZodType<
   ClientAssertion$Outbound,
   z.ZodTypeDef,
   ClientAssertion
-> = z.object({
-  type: z.string().optional(),
-  ttl: z.number().optional(),
-  claims: z.record(z.any()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.string().optional(),
+    ttl: z.number().optional(),
+    claims: z.record(z.any()).optional(),
+  })
+);
 
 export function clientAssertionToJSON(
   clientAssertion: ClientAssertion,
@@ -1855,27 +1925,31 @@ export const TypeOauth$outboundSchema: z.ZodType<
   TypeOauth$Outbound,
   z.ZodTypeDef,
   TypeOauth
-> = z.object({
-  serverUrl: z.string().optional(),
-  serverConfig: z.lazy(() => ServerConfig$outboundSchema).optional(),
-  clientId: z.string().optional(),
-  clientName: z.string().optional(),
-  clientSecret: z.string().optional(),
-  tokenEndpointAuthMethod: z.string().optional(),
-  responseType: z.string().optional(),
-  pkceRequired: z.boolean().optional(),
-  codeChallengeMethod: z.string().optional(),
-  userAuthorization: z.lazy(() => UserAuthorization$outboundSchema).optional(),
-  refreshTokens: z.lazy(() => RefreshTokens$outboundSchema).optional(),
-  clientCredentials: z.lazy(() => ClientCredentials$outboundSchema).optional(),
-  forwardedClaims: z.lazy(() => ForwardedClaims$outboundSchema).optional(),
-  defaultAudience: z.string().optional(),
-  defaultResource: z.string().optional(),
-  defaultTokenExpiresIn: z.number().optional(),
-  authorizationUrlParams: z.record(z.string()).optional(),
-  jwtBearer: z.lazy(() => JwtBearer$outboundSchema).optional(),
-  clientAssertion: z.lazy(() => ClientAssertion$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    serverUrl: z.string().optional(),
+    serverConfig: z.lazy(() => ServerConfig$outboundSchema).optional(),
+    clientId: z.string().optional(),
+    clientName: z.string().optional(),
+    clientSecret: z.string().optional(),
+    tokenEndpointAuthMethod: z.string().optional(),
+    responseType: z.string().optional(),
+    pkceRequired: z.boolean().optional(),
+    codeChallengeMethod: z.string().optional(),
+    userAuthorization: z.lazy(() => UserAuthorization$outboundSchema)
+      .optional(),
+    refreshTokens: z.lazy(() => RefreshTokens$outboundSchema).optional(),
+    clientCredentials: z.lazy(() => ClientCredentials$outboundSchema)
+      .optional(),
+    forwardedClaims: z.lazy(() => ForwardedClaims$outboundSchema).optional(),
+    defaultAudience: z.string().optional(),
+    defaultResource: z.string().optional(),
+    defaultTokenExpiresIn: z.number().optional(),
+    authorizationUrlParams: z.record(z.string()).optional(),
+    jwtBearer: z.lazy(() => JwtBearer$outboundSchema).optional(),
+    clientAssertion: z.lazy(() => ClientAssertion$outboundSchema).optional(),
+  })
+);
 
 export function typeOauthToJSON(typeOauth: TypeOauth): string {
   return JSON.stringify(TypeOauth$outboundSchema.parse(typeOauth));
@@ -1901,20 +1975,22 @@ export const ConnectConnectorUpdateData$outboundSchema: z.ZodType<
   ConnectConnectorUpdateData$Outbound,
   z.ZodTypeDef,
   ConnectConnectorUpdateData
-> = smartUnion([
-  z.lazy(() => TypeOauth$outboundSchema),
-  z.lazy(() => TypeApiKey$outboundSchema),
-  z.lazy(() => TypeGithub$outboundSchema),
-  z.lazy(() => TypeLinear$outboundSchema),
-  z.lazy(() => TypeSalesforce$outboundSchema),
-  z.lazy(() => TypeSlack$outboundSchema),
-  z.lazy(() => TypeSnowflake$outboundSchema),
-  z.lazy(() => TypeSnowflakeWif$outboundSchema),
-  z.lazy(() => TypeLinq$outboundSchema),
-  z.lazy(() => TypeSendblue$outboundSchema),
-  z.lazy(() => TypePhoton$outboundSchema),
-  z.record(z.any()),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => TypeOauth$outboundSchema),
+    z.lazy(() => TypeApiKey$outboundSchema),
+    z.lazy(() => TypeGithub$outboundSchema),
+    z.lazy(() => TypeLinear$outboundSchema),
+    z.lazy(() => TypeSalesforce$outboundSchema),
+    z.lazy(() => TypeSlack$outboundSchema),
+    z.lazy(() => TypeSnowflake$outboundSchema),
+    z.lazy(() => TypeSnowflakeWif$outboundSchema),
+    z.lazy(() => TypeLinq$outboundSchema),
+    z.lazy(() => TypeSendblue$outboundSchema),
+    z.lazy(() => TypePhoton$outboundSchema),
+    z.record(z.any()),
+  ])
+);
 
 export function connectConnectorUpdateDataToJSON(
   connectConnectorUpdateData: ConnectConnectorUpdateData,

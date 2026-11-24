@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -122,6 +122,10 @@ export type RequestAccessToTeamTeamsJoinedFrom = {
   repoId?: string | undefined;
   repoPath?: string | undefined;
   ssoConnectedAt?: number | undefined;
+  /**
+   * How `ssoUserId` and `idpUserId` were made; absent when unknown.
+   */
+  ssoIdFingerprint?: string | undefined;
   ssoUserId?: string | undefined;
 };
 
@@ -142,7 +146,7 @@ export type RequestAccessToTeamResponseBody = {
 /** @internal */
 export const RequestAccessToTeamOrigin$outboundSchema: z.ZodNativeEnum<
   typeof RequestAccessToTeamOrigin
-> = z.nativeEnum(RequestAccessToTeamOrigin);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RequestAccessToTeamOrigin));
 
 /** @internal */
 export type RequestAccessToTeamGitUserId$Outbound = string | number;
@@ -152,7 +156,7 @@ export const RequestAccessToTeamGitUserId$outboundSchema: z.ZodType<
   RequestAccessToTeamGitUserId$Outbound,
   z.ZodTypeDef,
   RequestAccessToTeamGitUserId
-> = smartUnion([z.string(), z.number()]);
+> = /* @__PURE__ */ lazySchema$(() => smartUnion([z.string(), z.number()]));
 
 export function requestAccessToTeamGitUserIdToJSON(
   requestAccessToTeamGitUserId: RequestAccessToTeamGitUserId,
@@ -179,14 +183,16 @@ export const RequestAccessToTeamJoinedFrom$outboundSchema: z.ZodType<
   RequestAccessToTeamJoinedFrom$Outbound,
   z.ZodTypeDef,
   RequestAccessToTeamJoinedFrom
-> = z.object({
-  origin: RequestAccessToTeamOrigin$outboundSchema,
-  commitId: z.string().optional(),
-  repoId: z.string().optional(),
-  repoPath: z.string().optional(),
-  gitUserId: smartUnion([z.string(), z.number()]).optional(),
-  gitUserLogin: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    origin: RequestAccessToTeamOrigin$outboundSchema,
+    commitId: z.string().optional(),
+    repoId: z.string().optional(),
+    repoPath: z.string().optional(),
+    gitUserId: smartUnion([z.string(), z.number()]).optional(),
+    gitUserLogin: z.string().optional(),
+  })
+);
 
 export function requestAccessToTeamJoinedFromToJSON(
   requestAccessToTeamJoinedFrom: RequestAccessToTeamJoinedFrom,
@@ -208,9 +214,11 @@ export const RequestAccessToTeamRequestBody$outboundSchema: z.ZodType<
   RequestAccessToTeamRequestBody$Outbound,
   z.ZodTypeDef,
   RequestAccessToTeamRequestBody
-> = z.object({
-  joinedFrom: z.lazy(() => RequestAccessToTeamJoinedFrom$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    joinedFrom: z.lazy(() => RequestAccessToTeamJoinedFrom$outboundSchema),
+  })
+);
 
 export function requestAccessToTeamRequestBodyToJSON(
   requestAccessToTeamRequestBody: RequestAccessToTeamRequestBody,
@@ -233,14 +241,16 @@ export const RequestAccessToTeamRequest$outboundSchema: z.ZodType<
   RequestAccessToTeamRequest$Outbound,
   z.ZodTypeDef,
   RequestAccessToTeamRequest
-> = z.object({
-  teamId: z.string(),
-  requestBody: z.lazy(() => RequestAccessToTeamRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string(),
+    requestBody: z.lazy(() => RequestAccessToTeamRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function requestAccessToTeamRequestToJSON(
   requestAccessToTeamRequest: RequestAccessToTeamRequest,
@@ -255,9 +265,11 @@ export const Bitbucket$inboundSchema: z.ZodType<
   Bitbucket,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  login: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    login: types.optional(types.string()),
+  })
+);
 
 export function bitbucketFromJSON(
   jsonString: string,
@@ -270,10 +282,12 @@ export function bitbucketFromJSON(
 }
 
 /** @internal */
-export const Github$inboundSchema: z.ZodType<Github, z.ZodTypeDef, unknown> = z
-  .object({
-    login: types.optional(types.string()),
-  });
+export const Github$inboundSchema: z.ZodType<Github, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      login: types.optional(types.string()),
+    })
+  );
 
 export function githubFromJSON(
   jsonString: string,
@@ -286,10 +300,12 @@ export function githubFromJSON(
 }
 
 /** @internal */
-export const Gitlab$inboundSchema: z.ZodType<Gitlab, z.ZodTypeDef, unknown> = z
-  .object({
-    login: types.optional(types.string()),
-  });
+export const Gitlab$inboundSchema: z.ZodType<Gitlab, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      login: types.optional(types.string()),
+    })
+  );
 
 export function gitlabFromJSON(
   jsonString: string,
@@ -306,7 +322,9 @@ export const RequestAccessToTeamTeamsGitUserId$inboundSchema: z.ZodType<
   RequestAccessToTeamTeamsGitUserId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function requestAccessToTeamTeamsGitUserIdFromJSON(
   jsonString: string,
@@ -321,26 +339,31 @@ export function requestAccessToTeamTeamsGitUserIdFromJSON(
 /** @internal */
 export const RequestAccessToTeamTeamsOrigin$inboundSchema: z.ZodNativeEnum<
   typeof RequestAccessToTeamTeamsOrigin
-> = z.nativeEnum(RequestAccessToTeamTeamsOrigin);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(RequestAccessToTeamTeamsOrigin)
+);
 
 /** @internal */
 export const RequestAccessToTeamTeamsJoinedFrom$inboundSchema: z.ZodType<
   RequestAccessToTeamTeamsJoinedFrom,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  commitId: types.optional(types.string()),
-  dsyncConnectedAt: types.optional(types.number()),
-  dsyncUserId: types.optional(types.string()),
-  gitUserId: types.optional(smartUnion([types.string(), types.number()])),
-  gitUserLogin: types.optional(types.string()),
-  idpUserId: types.optional(types.string()),
-  origin: RequestAccessToTeamTeamsOrigin$inboundSchema,
-  repoId: types.optional(types.string()),
-  repoPath: types.optional(types.string()),
-  ssoConnectedAt: types.optional(types.number()),
-  ssoUserId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    commitId: types.optional(types.string()),
+    dsyncConnectedAt: types.optional(types.number()),
+    dsyncUserId: types.optional(types.string()),
+    gitUserId: types.optional(smartUnion([types.string(), types.number()])),
+    gitUserLogin: types.optional(types.string()),
+    idpUserId: types.optional(types.string()),
+    origin: RequestAccessToTeamTeamsOrigin$inboundSchema,
+    repoId: types.optional(types.string()),
+    repoPath: types.optional(types.string()),
+    ssoConnectedAt: types.optional(types.number()),
+    ssoIdFingerprint: types.optional(types.string()),
+    ssoUserId: types.optional(types.string()),
+  })
+);
 
 export function requestAccessToTeamTeamsJoinedFromFromJSON(
   jsonString: string,
@@ -358,18 +381,20 @@ export const RequestAccessToTeamResponseBody$inboundSchema: z.ZodType<
   RequestAccessToTeamResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessRequestedAt: types.optional(types.number()),
-  bitbucket: types.nullable(z.lazy(() => Bitbucket$inboundSchema)),
-  confirmed: types.boolean(),
-  github: types.nullable(z.lazy(() => Github$inboundSchema)),
-  gitlab: types.nullable(z.lazy(() => Gitlab$inboundSchema)),
-  joinedFrom: types.optional(
-    z.lazy(() => RequestAccessToTeamTeamsJoinedFrom$inboundSchema),
-  ),
-  teamName: types.string(),
-  teamSlug: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessRequestedAt: types.optional(types.number()),
+    bitbucket: types.nullable(z.lazy(() => Bitbucket$inboundSchema)),
+    confirmed: types.boolean(),
+    github: types.nullable(z.lazy(() => Github$inboundSchema)),
+    gitlab: types.nullable(z.lazy(() => Gitlab$inboundSchema)),
+    joinedFrom: types.optional(
+      z.lazy(() => RequestAccessToTeamTeamsJoinedFrom$inboundSchema),
+    ),
+    teamName: types.string(),
+    teamSlug: types.string(),
+  })
+);
 
 export function requestAccessToTeamResponseBodyFromJSON(
   jsonString: string,

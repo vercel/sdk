@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteFlagRequest = {
   /**
@@ -46,14 +47,16 @@ export const DeleteFlagRequest$outboundSchema: z.ZodType<
   DeleteFlagRequest$Outbound,
   z.ZodTypeDef,
   DeleteFlagRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  flagIdOrSlug: z.string(),
-  ifMatch: z.string().optional(),
-  withMetadata: z.boolean().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    flagIdOrSlug: z.string(),
+    ifMatch: z.string().optional(),
+    withMetadata: z.boolean().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteFlagRequestToJSON(
   deleteFlagRequest: DeleteFlagRequest,

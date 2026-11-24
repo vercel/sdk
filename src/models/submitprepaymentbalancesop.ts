@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 /**
  * A credit balance for a particular token type
@@ -53,12 +54,14 @@ export const Balances$outboundSchema: z.ZodType<
   Balances$Outbound,
   z.ZodTypeDef,
   Balances
-> = z.object({
-  resourceId: z.string().optional(),
-  credit: z.string().optional(),
-  nameLabel: z.string().optional(),
-  currencyValueInCents: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    resourceId: z.string().optional(),
+    credit: z.string().optional(),
+    nameLabel: z.string().optional(),
+    currencyValueInCents: z.number(),
+  })
+);
 
 export function balancesToJSON(balances: Balances): string {
   return JSON.stringify(Balances$outboundSchema.parse(balances));
@@ -75,10 +78,12 @@ export const SubmitPrepaymentBalancesRequestBody$outboundSchema: z.ZodType<
   SubmitPrepaymentBalancesRequestBody$Outbound,
   z.ZodTypeDef,
   SubmitPrepaymentBalancesRequestBody
-> = z.object({
-  timestamp: z.date().transform(v => v.toISOString()),
-  balances: z.array(z.lazy(() => Balances$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    timestamp: z.date().transform(v => v.toISOString()),
+    balances: z.array(z.lazy(() => Balances$outboundSchema)),
+  })
+);
 
 export function submitPrepaymentBalancesRequestBodyToJSON(
   submitPrepaymentBalancesRequestBody: SubmitPrepaymentBalancesRequestBody,
@@ -101,15 +106,18 @@ export const SubmitPrepaymentBalancesRequest$outboundSchema: z.ZodType<
   SubmitPrepaymentBalancesRequest$Outbound,
   z.ZodTypeDef,
   SubmitPrepaymentBalancesRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  requestBody: z.lazy(() => SubmitPrepaymentBalancesRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    requestBody: z.lazy(() =>
+      SubmitPrepaymentBalancesRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function submitPrepaymentBalancesRequestToJSON(
   submitPrepaymentBalancesRequest: SubmitPrepaymentBalancesRequest,

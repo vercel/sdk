@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -292,15 +292,17 @@ export const GetAliasRequest$outboundSchema: z.ZodType<
   GetAliasRequest$Outbound,
   z.ZodTypeDef,
   GetAliasRequest
-> = z.object({
-  from: z.number().optional(),
-  idOrAlias: z.string(),
-  projectId: z.string().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    from: z.number().optional(),
+    idOrAlias: z.string(),
+    projectId: z.string().optional(),
+    since: z.number().optional(),
+    until: z.number().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getAliasRequestToJSON(
   getAliasRequest: GetAliasRequest,
@@ -313,11 +315,13 @@ export const GetAliasCreator$inboundSchema: z.ZodType<
   GetAliasCreator,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: types.optional(types.string()),
-  uid: types.string(),
-  username: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: types.optional(types.string()),
+    uid: types.string(),
+    username: types.optional(types.string()),
+  })
+);
 
 export function getAliasCreatorFromJSON(
   jsonString: string,
@@ -334,11 +338,13 @@ export const GetAliasDeployment$inboundSchema: z.ZodType<
   GetAliasDeployment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  meta: types.optional(types.string()),
-  url: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    meta: types.optional(types.string()),
+    url: types.optional(types.string()),
+  })
+);
 
 export function getAliasDeploymentFromJSON(
   jsonString: string,
@@ -355,14 +361,16 @@ export const Applications3$inboundSchema: z.ZodType<
   Applications3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  branchAlias: types.optional(types.string()),
-  branchDeploymentId: types.optional(types.string()),
-  deploymentId: types.optional(types.string()),
-  fallbackDeploymentId: types.optional(types.string()),
-  fallbackHost: types.optional(types.string()),
-  projectId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    branchAlias: types.optional(types.string()),
+    branchDeploymentId: types.optional(types.string()),
+    deploymentId: types.optional(types.string()),
+    fallbackDeploymentId: types.optional(types.string()),
+    fallbackHost: types.optional(types.string()),
+    projectId: types.string(),
+  })
+);
 
 export function applications3FromJSON(
   jsonString: string,
@@ -379,11 +387,13 @@ export const GetAliasApplications2$inboundSchema: z.ZodType<
   GetAliasApplications2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  branchAlias: types.string(),
-  fallbackHost: types.string(),
-  projectId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    branchAlias: types.string(),
+    fallbackHost: types.string(),
+    projectId: types.string(),
+  })
+);
 
 export function getAliasApplications2FromJSON(
   jsonString: string,
@@ -400,10 +410,12 @@ export const GetAliasApplications1$inboundSchema: z.ZodType<
   GetAliasApplications1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fallbackHost: types.string(),
-  projectId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fallbackHost: types.string(),
+    projectId: types.string(),
+  })
+);
 
 export function getAliasApplications1FromJSON(
   jsonString: string,
@@ -420,11 +432,13 @@ export const GetAliasApplications$inboundSchema: z.ZodType<
   GetAliasApplications,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(z.lazy(() => GetAliasApplications1$inboundSchema)),
-  z.array(z.lazy(() => GetAliasApplications2$inboundSchema)),
-  z.array(z.lazy(() => Applications3$inboundSchema)),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(z.lazy(() => GetAliasApplications1$inboundSchema)),
+    z.array(z.lazy(() => GetAliasApplications2$inboundSchema)),
+    z.array(z.lazy(() => Applications3$inboundSchema)),
+  ])
+);
 
 export function getAliasApplicationsFromJSON(
   jsonString: string,
@@ -441,9 +455,11 @@ export const GetAliasDefaultApp$inboundSchema: z.ZodType<
   GetAliasDefaultApp,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: types.string(),
+  })
+);
 
 export function getAliasDefaultAppFromJSON(
   jsonString: string,
@@ -460,14 +476,16 @@ export const GetAliasMicrofrontends$inboundSchema: z.ZodType<
   GetAliasMicrofrontends,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  applications: smartUnion([
-    z.array(z.lazy(() => GetAliasApplications1$inboundSchema)),
-    z.array(z.lazy(() => GetAliasApplications2$inboundSchema)),
-    z.array(z.lazy(() => Applications3$inboundSchema)),
-  ]),
-  defaultApp: z.lazy(() => GetAliasDefaultApp$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    applications: smartUnion([
+      z.array(z.lazy(() => GetAliasApplications1$inboundSchema)),
+      z.array(z.lazy(() => GetAliasApplications2$inboundSchema)),
+      z.array(z.lazy(() => Applications3$inboundSchema)),
+    ]),
+    defaultApp: z.lazy(() => GetAliasDefaultApp$inboundSchema),
+  })
+);
 
 export function getAliasMicrofrontendsFromJSON(
   jsonString: string,
@@ -484,12 +502,14 @@ export const ProtectionBypass4$inboundSchema: z.ZodType<
   ProtectionBypass4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  lastUpdatedAt: types.number(),
-  lastUpdatedBy: types.string(),
-  scope: types.literal("email_invite"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    lastUpdatedAt: types.number(),
+    lastUpdatedBy: types.string(),
+    scope: types.literal("email_invite"),
+  })
+);
 
 export function protectionBypass4FromJSON(
   jsonString: string,
@@ -506,11 +526,13 @@ export const ProtectionBypass3$inboundSchema: z.ZodType<
   ProtectionBypass3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.string(),
-  scope: types.literal("alias-protection-override"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.string(),
+    scope: types.literal("alias-protection-override"),
+  })
+);
 
 export function protectionBypass3FromJSON(
   jsonString: string,
@@ -525,20 +547,22 @@ export function protectionBypass3FromJSON(
 /** @internal */
 export const ProtectionBypassAccess$inboundSchema: z.ZodNativeEnum<
   typeof ProtectionBypassAccess
-> = z.nativeEnum(ProtectionBypassAccess);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ProtectionBypassAccess));
 
 /** @internal */
 export const GetAliasProtectionBypass2$inboundSchema: z.ZodType<
   GetAliasProtectionBypass2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  access: ProtectionBypassAccess$inboundSchema,
-  createdAt: types.number(),
-  lastUpdatedAt: types.number(),
-  lastUpdatedBy: types.string(),
-  scope: types.literal("user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    access: ProtectionBypassAccess$inboundSchema,
+    createdAt: types.number(),
+    lastUpdatedAt: types.number(),
+    lastUpdatedBy: types.string(),
+    scope: types.literal("user"),
+  })
+);
 
 export function getAliasProtectionBypass2FromJSON(
   jsonString: string,
@@ -555,12 +579,14 @@ export const GetAliasProtectionBypass1$inboundSchema: z.ZodType<
   GetAliasProtectionBypass1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.string(),
-  expires: types.optional(types.number()),
-  scope: types.literal("shareable-link"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.string(),
+    expires: types.optional(types.number()),
+    scope: types.literal("shareable-link"),
+  })
+);
 
 export function getAliasProtectionBypass1FromJSON(
   jsonString: string,
@@ -577,12 +603,14 @@ export const GetAliasProtectionBypass$inboundSchema: z.ZodType<
   GetAliasProtectionBypass,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetAliasProtectionBypass1$inboundSchema),
-  z.lazy(() => GetAliasProtectionBypass2$inboundSchema),
-  z.lazy(() => ProtectionBypass3$inboundSchema),
-  z.lazy(() => ProtectionBypass4$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetAliasProtectionBypass1$inboundSchema),
+    z.lazy(() => GetAliasProtectionBypass2$inboundSchema),
+    z.lazy(() => ProtectionBypass3$inboundSchema),
+    z.lazy(() => ProtectionBypass4$inboundSchema),
+  ])
+);
 
 export function getAliasProtectionBypassFromJSON(
   jsonString: string,
@@ -599,33 +627,33 @@ export const GetAliasResponseBody$inboundSchema: z.ZodType<
   GetAliasResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.string(),
-  created: types.date(),
-  createdAt: z.nullable(types.number()).optional(),
-  creator: types.optional(z.lazy(() => GetAliasCreator$inboundSchema)),
-  deletedAt: z.nullable(types.number()).optional(),
-  deployment: types.optional(z.lazy(() => GetAliasDeployment$inboundSchema)),
-  deploymentId: types.nullable(types.string()),
-  microfrontends: types.optional(
-    z.lazy(() => GetAliasMicrofrontends$inboundSchema),
-  ),
-  projectId: types.nullable(types.string()),
-  protectionBypass: types.optional(
-    z.record(z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.string(),
+    created: types.date(),
+    createdAt: z.nullable(types.number()).optional(),
+    creator: types.optional(z.lazy(() => GetAliasCreator$inboundSchema)),
+    deletedAt: z.nullable(types.number()).optional(),
+    deployment: types.optional(z.lazy(() => GetAliasDeployment$inboundSchema)),
+    deploymentId: types.nullable(types.string()),
+    microfrontends: types.optional(
+      z.lazy(() => GetAliasMicrofrontends$inboundSchema),
+    ),
+    projectId: types.nullable(types.string()),
+    protectionBypass: types.optional(z.record(z.union([
       z.lazy(() => GetAliasProtectionBypass1$inboundSchema),
       z.lazy(() =>
         GetAliasProtectionBypass2$inboundSchema
       ),
       z.lazy(() => ProtectionBypass3$inboundSchema),
       z.lazy(() => ProtectionBypass4$inboundSchema),
-    ])),
-  ),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  uid: types.string(),
-  updatedAt: z.nullable(types.number()).optional(),
-});
+    ]))),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    uid: types.string(),
+    updatedAt: z.nullable(types.number()).optional(),
+  })
+);
 
 export function getAliasResponseBodyFromJSON(
   jsonString: string,

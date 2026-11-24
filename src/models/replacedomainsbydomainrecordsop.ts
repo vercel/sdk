@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -39,11 +39,13 @@ export const ReplaceDomainsByDomainRecordsRequest$outboundSchema: z.ZodType<
   ReplaceDomainsByDomainRecordsRequest$Outbound,
   z.ZodTypeDef,
   ReplaceDomainsByDomainRecordsRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function replaceDomainsByDomainRecordsRequestToJSON(
   replaceDomainsByDomainRecordsRequest: ReplaceDomainsByDomainRecordsRequest,
@@ -60,9 +62,11 @@ export const ReplaceDomainsByDomainRecordsResponseBody$inboundSchema: z.ZodType<
   ReplaceDomainsByDomainRecordsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  recordIds: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    recordIds: z.array(types.string()),
+  })
+);
 
 export function replaceDomainsByDomainRecordsResponseBodyFromJSON(
   jsonString: string,

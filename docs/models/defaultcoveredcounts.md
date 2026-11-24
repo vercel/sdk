@@ -17,9 +17,10 @@ let value: DefaultCoveredCounts = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `apiKey`           | *number*           | :heavy_check_mark: | N/A                |
-| `project`          | *number*           | :heavy_check_mark: | N/A                |
-| `team`             | *number*           | :heavy_check_mark: | N/A                |
-| `user`             | *number*           | :heavy_check_mark: | N/A                |
+| Field                                       | Type                                        | Required                                    | Description                                 |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| `apiKey`                                    | *number*                                    | :heavy_check_mark:                          | N/A                                         |
+| `app`                                       | *number*                                    | :heavy_minus_sign:                          | Omitted when no app row is default-covered. |
+| `project`                                   | *number*                                    | :heavy_check_mark:                          | N/A                                         |
+| `team`                                      | *number*                                    | :heavy_check_mark:                          | N/A                                         |
+| `user`                                      | *number*                                    | :heavy_check_mark:                          | N/A                                         |

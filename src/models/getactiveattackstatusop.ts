@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -74,12 +74,14 @@ export const GetActiveAttackStatusRequest$outboundSchema: z.ZodType<
   GetActiveAttackStatusRequest$Outbound,
   z.ZodTypeDef,
   GetActiveAttackStatusRequest
-> = z.object({
-  projectId: z.string(),
-  since: z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    since: z.number().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getActiveAttackStatusRequestToJSON(
   getActiveAttackStatusRequest: GetActiveAttackStatusRequest,
@@ -96,20 +98,22 @@ export const AnomalyAlerts$inboundSchema: z.ZodType<
   AnomalyAlerts,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  at_minute: types.string(),
-  avg_requests: types.number(),
-  stddev_requests: types.number(),
-  total_requests_minute: types.number(),
-  zscore: types.number(),
-}).transform((v) => {
-  return remap$(v, {
-    "at_minute": "atMinute",
-    "avg_requests": "avgRequests",
-    "stddev_requests": "stddevRequests",
-    "total_requests_minute": "totalRequestsMinute",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    at_minute: types.string(),
+    avg_requests: types.number(),
+    stddev_requests: types.number(),
+    total_requests_minute: types.number(),
+    zscore: types.number(),
+  }).transform((v) => {
+    return remap$(v, {
+      "at_minute": "atMinute",
+      "avg_requests": "avgRequests",
+      "stddev_requests": "stddevRequests",
+      "total_requests_minute": "totalRequestsMinute",
+    });
+  })
+);
 
 export function anomalyAlertsFromJSON(
   jsonString: string,
@@ -126,10 +130,12 @@ export const DdosAlerts$inboundSchema: z.ZodType<
   DdosAlerts,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  atMinute: types.string(),
-  totalReqs: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    atMinute: types.string(),
+    totalReqs: types.number(),
+  })
+);
 
 export function ddosAlertsFromJSON(
   jsonString: string,
@@ -146,12 +152,16 @@ export const AffectedHostMap$inboundSchema: z.ZodType<
   AffectedHostMap,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  anomalyAlerts: types.optional(
-    z.record(z.lazy(() => AnomalyAlerts$inboundSchema)),
-  ),
-  ddosAlerts: types.optional(z.record(z.lazy(() => DdosAlerts$inboundSchema))),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    anomalyAlerts: types.optional(
+      z.record(z.lazy(() => AnomalyAlerts$inboundSchema)),
+    ),
+    ddosAlerts: types.optional(
+      z.record(z.lazy(() => DdosAlerts$inboundSchema)),
+    ),
+  })
+);
 
 export function affectedHostMapFromJSON(
   jsonString: string,
@@ -168,15 +178,17 @@ export const Anomalies$inboundSchema: z.ZodType<
   Anomalies,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  affectedHostMap: z.record(z.lazy(() => AffectedHostMap$inboundSchema)),
-  atMinute: types.number(),
-  endTime: types.nullable(types.number()),
-  ownerId: types.string(),
-  projectId: types.string(),
-  startTime: types.number(),
-  state: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    affectedHostMap: z.record(z.lazy(() => AffectedHostMap$inboundSchema)),
+    atMinute: types.number(),
+    endTime: types.nullable(types.number()),
+    ownerId: types.string(),
+    projectId: types.string(),
+    startTime: types.number(),
+    state: types.optional(types.string()),
+  })
+);
 
 export function anomaliesFromJSON(
   jsonString: string,
@@ -193,9 +205,11 @@ export const GetActiveAttackStatusResponseBody2$inboundSchema: z.ZodType<
   GetActiveAttackStatusResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  anomalies: z.array(z.lazy(() => Anomalies$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    anomalies: z.array(z.lazy(() => Anomalies$inboundSchema)),
+  })
+);
 
 export function getActiveAttackStatusResponseBody2FromJSON(
   jsonString: string,
@@ -213,7 +227,7 @@ export const GetActiveAttackStatusResponseBody1$inboundSchema: z.ZodType<
   GetActiveAttackStatusResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getActiveAttackStatusResponseBody1FromJSON(
   jsonString: string,
@@ -231,10 +245,12 @@ export const GetActiveAttackStatusResponseBody$inboundSchema: z.ZodType<
   GetActiveAttackStatusResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetActiveAttackStatusResponseBody2$inboundSchema),
-  z.lazy(() => GetActiveAttackStatusResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetActiveAttackStatusResponseBody2$inboundSchema),
+    z.lazy(() => GetActiveAttackStatusResponseBody1$inboundSchema),
+  ])
+);
 
 export function getActiveAttackStatusResponseBodyFromJSON(
   jsonString: string,

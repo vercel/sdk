@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -37,10 +37,12 @@ export const DeleteAllArtifactsRequest$outboundSchema: z.ZodType<
   DeleteAllArtifactsRequest$Outbound,
   z.ZodTypeDef,
   DeleteAllArtifactsRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteAllArtifactsRequestToJSON(
   deleteAllArtifactsRequest: DeleteAllArtifactsRequest,
@@ -55,9 +57,11 @@ export const DeleteAllArtifactsResponseBody$inboundSchema: z.ZodType<
   DeleteAllArtifactsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deletedCount: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deletedCount: types.number(),
+  })
+);
 
 export function deleteAllArtifactsResponseBodyFromJSON(
   jsonString: string,

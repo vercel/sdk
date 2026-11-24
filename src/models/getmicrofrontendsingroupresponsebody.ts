@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -371,12 +371,14 @@ export const GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupToMicrofrontends1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preset: types.optional(
-    GetMicrofrontendsInGroupToMicrofrontendsResponsePreset$inboundSchema,
-  ),
-  slugs: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset: types.optional(
+      GetMicrofrontendsInGroupToMicrofrontendsResponsePreset$inboundSchema,
+    ),
+    slugs: z.array(types.string()),
+  })
+);
 
 export function getMicrofrontendsInGroupToMicrofrontends1FromJSON(
   jsonString: string,
@@ -399,10 +401,12 @@ export const GetMicrofrontendsInGroupMicrofrontendsTo$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupMicrofrontendsTo,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
-  GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
+    GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
+  ])
+);
 
 export function getMicrofrontendsInGroupMicrofrontendsToFromJSON(
   jsonString: string,
@@ -425,13 +429,15 @@ export const GetMicrofrontendsInGroupCustomAllow$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupCustomAllow,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  from: GetMicrofrontendsInGroupFrom$inboundSchema,
-  to: smartUnion([
-    z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
-    GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    from: GetMicrofrontendsInGroupFrom$inboundSchema,
+    to: smartUnion([
+      z.lazy(() => GetMicrofrontendsInGroupToMicrofrontends1$inboundSchema),
+      GetMicrofrontendsInGroupToMicrofrontends2$inboundSchema,
+    ]),
+  })
+);
 
 export function getMicrofrontendsInGroupCustomAllowFromJSON(
   jsonString: string,
@@ -450,12 +456,16 @@ export const GetMicrofrontendsInGroupMicrofrontendsProjects$inboundSchema:
     GetMicrofrontendsInGroupMicrofrontendsProjects,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    customAllow: types.optional(
-      z.array(z.lazy(() => GetMicrofrontendsInGroupCustomAllow$inboundSchema)),
-    ),
-    label: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      customAllow: types.optional(
+        z.array(
+          z.lazy(() => GetMicrofrontendsInGroupCustomAllow$inboundSchema),
+        ),
+      ),
+      label: types.optional(types.string()),
+    })
+  );
 
 export function getMicrofrontendsInGroupMicrofrontendsProjectsFromJSON(
   jsonString: string,
@@ -478,17 +488,17 @@ export const GetMicrofrontendsInGroupTrustedSources$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupTrustedSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enableVercelCiSameRepository: types.optional(types.boolean()),
-  oidcProviders: types.optional(
-    z.record(z.array(GetMicrofrontendsInGroupOidcProviders$inboundSchema)),
-  ),
-  projects: types.optional(
-    z.record(z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enableVercelCiSameRepository: types.optional(types.boolean()),
+    oidcProviders: types.optional(
+      z.record(z.array(GetMicrofrontendsInGroupOidcProviders$inboundSchema)),
+    ),
+    projects: types.optional(z.record(z.lazy(() =>
       GetMicrofrontendsInGroupMicrofrontendsProjects$inboundSchema
-    )),
-  ),
-});
+    ))),
+  })
+);
 
 export function getMicrofrontendsInGroupTrustedSourcesFromJSON(
   jsonString: string,
@@ -504,20 +514,24 @@ export function getMicrofrontendsInGroupTrustedSourcesFromJSON(
 /** @internal */
 export const GetMicrofrontendsInGroupKind$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsInGroupKind
-> = z.nativeEnum(GetMicrofrontendsInGroupKind);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsInGroupKind)
+);
 
 /** @internal */
 export const GetMicrofrontendsInGroupUsageStatus$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupUsageStatus,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bypassThrottleUntil: types.optional(types.number()),
-  exceededAllowanceUntil: types.optional(types.number()),
-  kind: GetMicrofrontendsInGroupKind$inboundSchema,
-  teamThrottled: types.optional(types.boolean()),
-  throttled: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bypassThrottleUntil: types.optional(types.number()),
+    exceededAllowanceUntil: types.optional(types.number()),
+    kind: GetMicrofrontendsInGroupKind$inboundSchema,
+    teamThrottled: types.optional(types.boolean()),
+    throttled: types.optional(types.boolean()),
+  })
+);
 
 export function getMicrofrontendsInGroupUsageStatusFromJSON(
   jsonString: string,
@@ -535,9 +549,11 @@ export const GetMicrofrontendsInGroupVercelFlags$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupVercelFlags,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabledAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabledAt: types.optional(types.number()),
+  })
+);
 
 export function getMicrofrontendsInGroupVercelFlagsFromJSON(
   jsonString: string,
@@ -555,13 +571,15 @@ export const GetMicrofrontendsInGroupWebAnalytics$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupWebAnalytics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: types.optional(types.number()),
-  disabledAt: types.optional(types.number()),
-  enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.literal(true)),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: types.optional(types.number()),
+    disabledAt: types.optional(types.number()),
+    enabledAt: types.optional(types.number()),
+    hasData: types.optional(types.literal(true)),
+    id: types.string(),
+  })
+);
 
 export function getMicrofrontendsInGroupWebAnalyticsFromJSON(
   jsonString: string,
@@ -579,166 +597,171 @@ export const GetMicrofrontendsInGroupProjects$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupProjects,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountId: types.string(),
-  alias: z.array(GetMicrofrontendsInGroupAlias$inboundSchema),
-  analytics: types.optional(GetMicrofrontendsInGroupAnalytics$inboundSchema),
-  appliedCve55182Migration: types.optional(types.boolean()),
-  autoAssignCustomDomains: types.optional(types.boolean()),
-  autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
-  autoExposeSystemEnvs: types.optional(types.boolean()),
-  avatar: z.nullable(types.string()).optional(),
-  avatarDarkMode: z.nullable(types.string()).optional(),
-  blobs: types.optional(GetMicrofrontendsInGroupBlobs$inboundSchema),
-  buildCommand: z.nullable(types.string()).optional(),
-  commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
-  concurrencyBucketName: types.optional(types.string()),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: z.nullable(types.string()).optional(),
-  connectConfigurations: z.nullable(
-    z.array(GetMicrofrontendsInGroupConnectConfigurations$inboundSchema),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  creator: types.optional(GetMicrofrontendsInGroupCreator$inboundSchema),
-  crons: types.optional(GetMicrofrontendsInGroupCrons$inboundSchema),
-  customEnvironments: types.optional(
-    z.array(GetMicrofrontendsInGroupCustomEnvironments$inboundSchema),
-  ),
-  customerSupportCodeVisibility: types.optional(types.boolean()),
-  dataCache: types.optional(GetMicrofrontendsInGroupDataCache$inboundSchema),
-  defaultResourceConfig:
-    GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema,
-  deploymentExpiration:
-    GetMicrofrontendsInGroupDeploymentExpiration$inboundSchema,
-  deploymentPolicy: z.nullable(
-    GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema,
-  ).optional(),
-  devCommand: z.nullable(types.string()).optional(),
-  directoryListing: types.boolean(),
-  dismissedToasts: types.optional(
-    z.array(GetMicrofrontendsInGroupDismissedToasts$inboundSchema),
-  ),
-  enableAffectedProjectsDeployments: types.optional(types.boolean()),
-  enableExternalRewriteCaching: types.optional(types.boolean()),
-  enablePreviewFeedback: z.nullable(types.boolean()).optional(),
-  enableProductionFeedback: z.nullable(types.boolean()).optional(),
-  env: types.optional(z.array(GetMicrofrontendsInGroupEnv$inboundSchema)),
-  expiration: types.optional(GetMicrofrontendsInGroupExpiration$inboundSchema),
-  features: types.optional(GetMicrofrontendsInGroupFeatures$inboundSchema),
-  framework: z.nullable(GetMicrofrontendsInGroupFramework$inboundSchema)
-    .optional(),
-  gitComments: types.optional(
-    GetMicrofrontendsInGroupGitComments$inboundSchema,
-  ),
-  gitForkProtection: types.optional(types.boolean()),
-  gitLFS: types.optional(types.boolean()),
-  gitProviderOptions: types.optional(
-    GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
-  ),
-  hasActiveBranches: types.optional(types.boolean()),
-  hasDeployments: types.optional(types.boolean()),
-  id: types.string(),
-  installCommand: z.nullable(types.string()).optional(),
-  internalRoutes: types.optional(
-    z.array(GetMicrofrontendsInGroupInternalRoutes$inboundSchema),
-  ),
-  ipBuckets: types.optional(
-    z.array(GetMicrofrontendsInGroupIpBuckets$inboundSchema),
-  ),
-  jobs: types.optional(GetMicrofrontendsInGroupJobs$inboundSchema),
-  lastAliasRequest: z.nullable(
-    GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
-  ).optional(),
-  lastRollbackTarget: z.nullable(
-    GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
-  ).optional(),
-  latestDeployments: types.optional(
-    z.array(GetMicrofrontendsInGroupLatestDeployments$inboundSchema),
-  ),
-  link: types.optional(GetMicrofrontendsInGroupLink$inboundSchema),
-  live: types.optional(types.boolean()),
-  microfrontends: types.optional(
-    GetMicrofrontendsInGroupMicrofrontends$inboundSchema,
-  ),
-  name: types.string(),
-  nodeVersion: GetMicrofrontendsInGroupNodeVersion$inboundSchema,
-  oidcTokenConfig: types.optional(
-    GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
-  ),
-  optionsAllowlist: z.nullable(
-    GetMicrofrontendsInGroupOptionsAllowlist$inboundSchema,
-  ).optional(),
-  outputDirectory: z.nullable(types.string()).optional(),
-  passiveConnectConfigurationId: z.nullable(types.string()).optional(),
-  passport: z.nullable(GetMicrofrontendsInGroupPassport$inboundSchema)
-    .optional(),
-  passwordProtection: z.nullable(
-    GetMicrofrontendsInGroupPasswordProtection$inboundSchema,
-  ).optional(),
-  paused: types.optional(types.boolean()),
-  permissions: types.optional(
-    GetMicrofrontendsInGroupPermissions$inboundSchema,
-  ),
-  productionDeploymentsFastLane: types.optional(types.boolean()),
-  protectedSourcemaps: types.optional(types.boolean()),
-  protectionBypass: types.optional(
-    z.record(GetMicrofrontendsInGroupProtectionBypass$inboundSchema),
-  ),
-  protectionConfig: types.optional(
-    GetMicrofrontendsInGroupProtectionConfig$inboundSchema,
-  ),
-  resourceConfig: GetMicrofrontendsInGroupResourceConfig$inboundSchema,
-  rollbackDescription: types.optional(
-    GetMicrofrontendsInGroupRollbackDescription$inboundSchema,
-  ),
-  rollingRelease: z.nullable(
-    GetMicrofrontendsInGroupRollingRelease$inboundSchema,
-  ).optional(),
-  rootDirectory: z.nullable(types.string()).optional(),
-  sandbox: types.optional(GetMicrofrontendsInGroupSandbox$inboundSchema),
-  security: types.optional(GetMicrofrontendsInGroupSecurity$inboundSchema),
-  serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
-  services: types.optional(
-    z.array(GetMicrofrontendsInGroupServices$inboundSchema),
-  ),
-  skewProtectionAllowedDomains: types.optional(z.array(types.string())),
-  skewProtectionBoundaryAt: types.optional(types.number()),
-  skewProtectionMaxAge: types.optional(types.number()),
-  skipGitConnectDuringLink: types.optional(types.boolean()),
-  sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
-  speedInsights: types.optional(
-    GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
-  ),
-  ssoProtection: z.nullable(GetMicrofrontendsInGroupSsoProtection$inboundSchema)
-    .optional(),
-  staticIps: types.optional(GetMicrofrontendsInGroupStaticIps$inboundSchema),
-  targets: types.optional(
-    z.record(types.nullable(GetMicrofrontendsInGroupTargets$inboundSchema)),
-  ),
-  tier: types.optional(GetMicrofrontendsInGroupTier$inboundSchema),
-  tracing: types.optional(GetMicrofrontendsInGroupTracing$inboundSchema),
-  transferCompletedAt: types.optional(types.number()),
-  transferredFromAccountId: types.optional(types.string()),
-  transferStartedAt: types.optional(types.number()),
-  transferToAccountId: types.optional(types.string()),
-  trustedIps: z.nullable(GetMicrofrontendsInGroupTrustedIps$inboundSchema)
-    .optional(),
-  trustedSources: z.nullable(
-    z.lazy(() => GetMicrofrontendsInGroupTrustedSources$inboundSchema),
-  ).optional(),
-  updatedAt: types.optional(types.number()),
-  usageStatus: types.optional(
-    z.lazy(() => GetMicrofrontendsInGroupUsageStatus$inboundSchema),
-  ),
-  v0: types.optional(types.boolean()),
-  v0Created: types.optional(types.boolean()),
-  vercelFlags: types.optional(
-    z.lazy(() => GetMicrofrontendsInGroupVercelFlags$inboundSchema),
-  ),
-  webAnalytics: types.optional(
-    z.lazy(() => GetMicrofrontendsInGroupWebAnalytics$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountId: types.string(),
+    alias: z.array(GetMicrofrontendsInGroupAlias$inboundSchema),
+    analytics: types.optional(GetMicrofrontendsInGroupAnalytics$inboundSchema),
+    appliedCve55182Migration: types.optional(types.boolean()),
+    autoAssignCustomDomains: types.optional(types.boolean()),
+    autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
+    autoExposeSystemEnvs: types.optional(types.boolean()),
+    avatar: z.nullable(types.string()).optional(),
+    avatarDarkMode: z.nullable(types.string()).optional(),
+    blobs: types.optional(GetMicrofrontendsInGroupBlobs$inboundSchema),
+    buildCommand: z.nullable(types.string()).optional(),
+    commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+    concurrencyBucketName: types.optional(types.string()),
+    connectBuildsEnabled: types.optional(types.boolean()),
+    connectConfigurationId: z.nullable(types.string()).optional(),
+    connectConfigurations: z.nullable(
+      z.array(GetMicrofrontendsInGroupConnectConfigurations$inboundSchema),
+    ).optional(),
+    createdAt: types.optional(types.number()),
+    creator: types.optional(GetMicrofrontendsInGroupCreator$inboundSchema),
+    crons: types.optional(GetMicrofrontendsInGroupCrons$inboundSchema),
+    customEnvironments: types.optional(
+      z.array(GetMicrofrontendsInGroupCustomEnvironments$inboundSchema),
+    ),
+    customerSupportCodeVisibility: types.optional(types.boolean()),
+    dataCache: types.optional(GetMicrofrontendsInGroupDataCache$inboundSchema),
+    defaultResourceConfig:
+      GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema,
+    deploymentExpiration:
+      GetMicrofrontendsInGroupDeploymentExpiration$inboundSchema,
+    deploymentPolicy: z.nullable(
+      GetMicrofrontendsInGroupDeploymentPolicy$inboundSchema,
+    ).optional(),
+    devCommand: z.nullable(types.string()).optional(),
+    directoryListing: types.boolean(),
+    dismissedToasts: types.optional(
+      z.array(GetMicrofrontendsInGroupDismissedToasts$inboundSchema),
+    ),
+    enableAffectedProjectsDeployments: types.optional(types.boolean()),
+    enableExternalRewriteCaching: types.optional(types.boolean()),
+    enablePreviewFeedback: z.nullable(types.boolean()).optional(),
+    enableProductionFeedback: z.nullable(types.boolean()).optional(),
+    env: types.optional(z.array(GetMicrofrontendsInGroupEnv$inboundSchema)),
+    expiration: types.optional(
+      GetMicrofrontendsInGroupExpiration$inboundSchema,
+    ),
+    features: types.optional(GetMicrofrontendsInGroupFeatures$inboundSchema),
+    framework: z.nullable(GetMicrofrontendsInGroupFramework$inboundSchema)
+      .optional(),
+    gitComments: types.optional(
+      GetMicrofrontendsInGroupGitComments$inboundSchema,
+    ),
+    gitForkProtection: types.optional(types.boolean()),
+    gitLFS: types.optional(types.boolean()),
+    gitProviderOptions: types.optional(
+      GetMicrofrontendsInGroupGitProviderOptions$inboundSchema,
+    ),
+    hasActiveBranches: types.optional(types.boolean()),
+    hasDeployments: types.optional(types.boolean()),
+    id: types.string(),
+    installCommand: z.nullable(types.string()).optional(),
+    internalRoutes: types.optional(
+      z.array(GetMicrofrontendsInGroupInternalRoutes$inboundSchema),
+    ),
+    ipBuckets: types.optional(
+      z.array(GetMicrofrontendsInGroupIpBuckets$inboundSchema),
+    ),
+    jobs: types.optional(GetMicrofrontendsInGroupJobs$inboundSchema),
+    lastAliasRequest: z.nullable(
+      GetMicrofrontendsInGroupLastAliasRequest$inboundSchema,
+    ).optional(),
+    lastRollbackTarget: z.nullable(
+      GetMicrofrontendsInGroupLastRollbackTarget$inboundSchema,
+    ).optional(),
+    latestDeployments: types.optional(
+      z.array(GetMicrofrontendsInGroupLatestDeployments$inboundSchema),
+    ),
+    link: types.optional(GetMicrofrontendsInGroupLink$inboundSchema),
+    live: types.optional(types.boolean()),
+    microfrontends: types.optional(
+      GetMicrofrontendsInGroupMicrofrontends$inboundSchema,
+    ),
+    name: types.string(),
+    nodeVersion: GetMicrofrontendsInGroupNodeVersion$inboundSchema,
+    oidcTokenConfig: types.optional(
+      GetMicrofrontendsInGroupOidcTokenConfig$inboundSchema,
+    ),
+    optionsAllowlist: z.nullable(
+      GetMicrofrontendsInGroupOptionsAllowlist$inboundSchema,
+    ).optional(),
+    outputDirectory: z.nullable(types.string()).optional(),
+    passiveConnectConfigurationId: z.nullable(types.string()).optional(),
+    passport: z.nullable(GetMicrofrontendsInGroupPassport$inboundSchema)
+      .optional(),
+    passwordProtection: z.nullable(
+      GetMicrofrontendsInGroupPasswordProtection$inboundSchema,
+    ).optional(),
+    paused: types.optional(types.boolean()),
+    permissions: types.optional(
+      GetMicrofrontendsInGroupPermissions$inboundSchema,
+    ),
+    productionDeploymentsFastLane: types.optional(types.boolean()),
+    protectedSourcemaps: types.optional(types.boolean()),
+    protectionBypass: types.optional(
+      z.record(GetMicrofrontendsInGroupProtectionBypass$inboundSchema),
+    ),
+    protectionConfig: types.optional(
+      GetMicrofrontendsInGroupProtectionConfig$inboundSchema,
+    ),
+    resourceConfig: GetMicrofrontendsInGroupResourceConfig$inboundSchema,
+    rollbackDescription: types.optional(
+      GetMicrofrontendsInGroupRollbackDescription$inboundSchema,
+    ),
+    rollingRelease: z.nullable(
+      GetMicrofrontendsInGroupRollingRelease$inboundSchema,
+    ).optional(),
+    rootDirectory: z.nullable(types.string()).optional(),
+    sandbox: types.optional(GetMicrofrontendsInGroupSandbox$inboundSchema),
+    security: types.optional(GetMicrofrontendsInGroupSecurity$inboundSchema),
+    serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
+    services: types.optional(
+      z.array(GetMicrofrontendsInGroupServices$inboundSchema),
+    ),
+    skewProtectionAllowedDomains: types.optional(z.array(types.string())),
+    skewProtectionBoundaryAt: types.optional(types.number()),
+    skewProtectionMaxAge: types.optional(types.number()),
+    skipGitConnectDuringLink: types.optional(types.boolean()),
+    sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+    speedInsights: types.optional(
+      GetMicrofrontendsInGroupSpeedInsights$inboundSchema,
+    ),
+    ssoProtection: z.nullable(
+      GetMicrofrontendsInGroupSsoProtection$inboundSchema,
+    ).optional(),
+    staticIps: types.optional(GetMicrofrontendsInGroupStaticIps$inboundSchema),
+    targets: types.optional(
+      z.record(types.nullable(GetMicrofrontendsInGroupTargets$inboundSchema)),
+    ),
+    tier: types.optional(GetMicrofrontendsInGroupTier$inboundSchema),
+    tracing: types.optional(GetMicrofrontendsInGroupTracing$inboundSchema),
+    transferCompletedAt: types.optional(types.number()),
+    transferredFromAccountId: types.optional(types.string()),
+    transferStartedAt: types.optional(types.number()),
+    transferToAccountId: types.optional(types.string()),
+    trustedIps: z.nullable(GetMicrofrontendsInGroupTrustedIps$inboundSchema)
+      .optional(),
+    trustedSources: z.nullable(
+      z.lazy(() => GetMicrofrontendsInGroupTrustedSources$inboundSchema),
+    ).optional(),
+    updatedAt: types.optional(types.number()),
+    usageStatus: types.optional(
+      z.lazy(() => GetMicrofrontendsInGroupUsageStatus$inboundSchema),
+    ),
+    v0: types.optional(types.boolean()),
+    v0Created: types.optional(types.boolean()),
+    vercelFlags: types.optional(
+      z.lazy(() => GetMicrofrontendsInGroupVercelFlags$inboundSchema),
+    ),
+    webAnalytics: types.optional(
+      z.lazy(() => GetMicrofrontendsInGroupWebAnalytics$inboundSchema),
+    ),
+  })
+);
 
 export function getMicrofrontendsInGroupProjectsFromJSON(
   jsonString: string,
@@ -755,11 +778,13 @@ export const GetMicrofrontendsInGroupResponseBody$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projects: z.array(
-    z.lazy(() => GetMicrofrontendsInGroupProjects$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projects: z.array(
+      z.lazy(() => GetMicrofrontendsInGroupProjects$inboundSchema),
+    ),
+  })
+);
 
 export function getMicrofrontendsInGroupResponseBodyFromJSON(
   jsonString: string,

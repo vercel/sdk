@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -168,18 +168,18 @@ export type ImportResourceResponseBody = {
 };
 
 /** @internal */
-export const Ownership$outboundSchema: z.ZodNativeEnum<typeof Ownership> = z
-  .nativeEnum(Ownership);
+export const Ownership$outboundSchema: z.ZodNativeEnum<typeof Ownership> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Ownership));
 
 /** @internal */
 export const ImportResourceStatus$outboundSchema: z.ZodNativeEnum<
   typeof ImportResourceStatus
-> = z.nativeEnum(ImportResourceStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ImportResourceStatus));
 
 /** @internal */
 export const ImportResourceType$outboundSchema: z.ZodNativeEnum<
   typeof ImportResourceType
-> = z.nativeEnum(ImportResourceType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ImportResourceType));
 
 /** @internal */
 export type ImportResourceDetails$Outbound = {
@@ -192,10 +192,12 @@ export const ImportResourceDetails$outboundSchema: z.ZodType<
   ImportResourceDetails$Outbound,
   z.ZodTypeDef,
   ImportResourceDetails
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    value: z.string().optional(),
+  })
+);
 
 export function importResourceDetailsToJSON(
   importResourceDetails: ImportResourceDetails,
@@ -216,10 +218,12 @@ export const ImportResourceHighlightedDetails$outboundSchema: z.ZodType<
   ImportResourceHighlightedDetails$Outbound,
   z.ZodTypeDef,
   ImportResourceHighlightedDetails
-> = z.object({
-  label: z.string(),
-  value: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+    value: z.string().optional(),
+  })
+);
 
 export function importResourceHighlightedDetailsToJSON(
   importResourceHighlightedDetails: ImportResourceHighlightedDetails,
@@ -252,28 +256,30 @@ export const ImportResourceBillingPlan$outboundSchema: z.ZodType<
   ImportResourceBillingPlan$Outbound,
   z.ZodTypeDef,
   ImportResourceBillingPlan
-> = z.object({
-  id: z.string(),
-  type: ImportResourceType$outboundSchema,
-  name: z.string(),
-  description: z.string().optional(),
-  paymentMethodRequired: z.boolean().optional(),
-  cost: z.string().optional(),
-  details: z.array(z.lazy(() => ImportResourceDetails$outboundSchema))
-    .optional(),
-  highlightedDetails: z.array(
-    z.lazy(() => ImportResourceHighlightedDetails$outboundSchema),
-  ).optional(),
-  effectiveDate: z.string().optional(),
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      additionalProperties: null,
-    }),
-  };
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    type: ImportResourceType$outboundSchema,
+    name: z.string(),
+    description: z.string().optional(),
+    paymentMethodRequired: z.boolean().optional(),
+    cost: z.string().optional(),
+    details: z.array(z.lazy(() => ImportResourceDetails$outboundSchema))
+      .optional(),
+    highlightedDetails: z.array(
+      z.lazy(() => ImportResourceHighlightedDetails$outboundSchema),
+    ).optional(),
+    effectiveDate: z.string().optional(),
+    additionalProperties: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        additionalProperties: null,
+      }),
+    };
+  })
+);
 
 export function importResourceBillingPlanToJSON(
   importResourceBillingPlan: ImportResourceBillingPlan,
@@ -286,7 +292,7 @@ export function importResourceBillingPlanToJSON(
 /** @internal */
 export const ImportResourceLevel$outboundSchema: z.ZodNativeEnum<
   typeof ImportResourceLevel
-> = z.nativeEnum(ImportResourceLevel);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ImportResourceLevel));
 
 /** @internal */
 export type ImportResourceNotification$Outbound = {
@@ -301,12 +307,14 @@ export const ImportResourceNotification$outboundSchema: z.ZodType<
   ImportResourceNotification$Outbound,
   z.ZodTypeDef,
   ImportResourceNotification
-> = z.object({
-  level: ImportResourceLevel$outboundSchema,
-  title: z.string(),
-  message: z.string().optional(),
-  href: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    level: ImportResourceLevel$outboundSchema,
+    title: z.string(),
+    message: z.string().optional(),
+    href: z.string().optional(),
+  })
+);
 
 export function importResourceNotificationToJSON(
   importResourceNotification: ImportResourceNotification,
@@ -328,11 +336,13 @@ export const EnvironmentOverrides$outboundSchema: z.ZodType<
   EnvironmentOverrides$Outbound,
   z.ZodTypeDef,
   EnvironmentOverrides
-> = z.object({
-  development: z.string().optional(),
-  preview: z.string().optional(),
-  production: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    development: z.string().optional(),
+    preview: z.string().optional(),
+    production: z.string().optional(),
+  })
+);
 
 export function environmentOverridesToJSON(
   environmentOverrides: EnvironmentOverrides,
@@ -355,13 +365,15 @@ export const ImportResourceSecrets$outboundSchema: z.ZodType<
   ImportResourceSecrets$Outbound,
   z.ZodTypeDef,
   ImportResourceSecrets
-> = z.object({
-  name: z.string(),
-  value: z.string(),
-  prefix: z.string().optional(),
-  environmentOverrides: z.lazy(() => EnvironmentOverrides$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    value: z.string(),
+    prefix: z.string().optional(),
+    environmentOverrides: z.lazy(() => EnvironmentOverrides$outboundSchema)
+      .optional(),
+  })
+);
 
 export function importResourceSecretsToJSON(
   importResourceSecrets: ImportResourceSecrets,
@@ -382,10 +394,12 @@ export const ImportResourceWhen$outboundSchema: z.ZodType<
   ImportResourceWhen$Outbound,
   z.ZodTypeDef,
   ImportResourceWhen
-> = z.object({
-  role: z.array(z.string()).optional(),
-  environment: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    role: z.array(z.string()).optional(),
+    environment: z.array(z.string()).optional(),
+  })
+);
 
 export function importResourceWhenToJSON(
   importResourceWhen: ImportResourceWhen,
@@ -403,7 +417,9 @@ export const ImportResourceClaims1$outboundSchema: z.ZodType<
   ImportResourceClaims1$Outbound,
   z.ZodTypeDef,
   ImportResourceClaims1
-> = smartUnion([z.string(), z.number(), z.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.string(), z.number(), z.boolean()])
+);
 
 export function importResourceClaims1ToJSON(
   importResourceClaims1: ImportResourceClaims1,
@@ -425,10 +441,12 @@ export const ImportResourceClaims$outboundSchema: z.ZodType<
   ImportResourceClaims$Outbound,
   z.ZodTypeDef,
   ImportResourceClaims
-> = smartUnion([
-  smartUnion([z.string(), z.number(), z.boolean()]),
-  z.array(z.string()),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    smartUnion([z.string(), z.number(), z.boolean()]),
+    z.array(z.string()),
+  ])
+);
 
 export function importResourceClaimsToJSON(
   importResourceClaims: ImportResourceClaims,
@@ -449,17 +467,19 @@ export const ImportResourceClaimRules$outboundSchema: z.ZodType<
   ImportResourceClaimRules$Outbound,
   z.ZodTypeDef,
   ImportResourceClaimRules
-> = z.object({
-  when: z.lazy(() => ImportResourceWhen$outboundSchema).optional(),
-  claims: z.record(
-    z.nullable(
-      smartUnion([
-        smartUnion([z.string(), z.number(), z.boolean()]),
-        z.array(z.string()),
-      ]),
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    when: z.lazy(() => ImportResourceWhen$outboundSchema).optional(),
+    claims: z.record(
+      z.nullable(
+        smartUnion([
+          smartUnion([z.string(), z.number(), z.boolean()]),
+          z.array(z.string()),
+        ]),
+      ),
     ),
-  ),
-});
+  })
+);
 
 export function importResourceClaimRulesToJSON(
   importResourceClaimRules: ImportResourceClaimRules,
@@ -481,12 +501,14 @@ export const CustomClaims$outboundSchema: z.ZodType<
   CustomClaims$Outbound,
   z.ZodTypeDef,
   CustomClaims
-> = z.object({
-  roles: z.array(z.string()).optional(),
-  defaultRole: z.string().optional(),
-  claimRules: z.array(z.lazy(() => ImportResourceClaimRules$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    roles: z.array(z.string()).optional(),
+    defaultRole: z.string().optional(),
+    claimRules: z.array(z.lazy(() => ImportResourceClaimRules$outboundSchema))
+      .optional(),
+  })
+);
 
 export function customClaimsToJSON(customClaims: CustomClaims): string {
   return JSON.stringify(CustomClaims$outboundSchema.parse(customClaims));
@@ -511,21 +533,23 @@ export const ImportResourceRequestBody$outboundSchema: z.ZodType<
   ImportResourceRequestBody$Outbound,
   z.ZodTypeDef,
   ImportResourceRequestBody
-> = z.object({
-  ownership: Ownership$outboundSchema.optional(),
-  productId: z.string(),
-  name: z.string(),
-  status: ImportResourceStatus$outboundSchema,
-  metadata: z.record(z.any()).optional(),
-  billingPlan: z.lazy(() => ImportResourceBillingPlan$outboundSchema)
-    .optional(),
-  notification: z.lazy(() => ImportResourceNotification$outboundSchema)
-    .optional(),
-  extras: z.record(z.any()).optional(),
-  secrets: z.array(z.lazy(() => ImportResourceSecrets$outboundSchema))
-    .optional(),
-  customClaims: z.lazy(() => CustomClaims$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ownership: Ownership$outboundSchema.optional(),
+    productId: z.string(),
+    name: z.string(),
+    status: ImportResourceStatus$outboundSchema,
+    metadata: z.record(z.any()).optional(),
+    billingPlan: z.lazy(() => ImportResourceBillingPlan$outboundSchema)
+      .optional(),
+    notification: z.lazy(() => ImportResourceNotification$outboundSchema)
+      .optional(),
+    extras: z.record(z.any()).optional(),
+    secrets: z.array(z.lazy(() => ImportResourceSecrets$outboundSchema))
+      .optional(),
+    customClaims: z.lazy(() => CustomClaims$outboundSchema).optional(),
+  })
+);
 
 export function importResourceRequestBodyToJSON(
   importResourceRequestBody: ImportResourceRequestBody,
@@ -547,16 +571,18 @@ export const ImportResourceRequest$outboundSchema: z.ZodType<
   ImportResourceRequest$Outbound,
   z.ZodTypeDef,
   ImportResourceRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  resourceId: z.string(),
-  requestBody: z.lazy(() => ImportResourceRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    resourceId: z.string(),
+    requestBody: z.lazy(() => ImportResourceRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function importResourceRequestToJSON(
   importResourceRequest: ImportResourceRequest,
@@ -571,9 +597,11 @@ export const ImportResourceResponseBody$inboundSchema: z.ZodType<
   ImportResourceResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+  })
+);
 
 export function importResourceResponseBodyFromJSON(
   jsonString: string,

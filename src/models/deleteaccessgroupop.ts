@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteAccessGroupRequest = {
   idOrName: string;
@@ -28,11 +29,13 @@ export const DeleteAccessGroupRequest$outboundSchema: z.ZodType<
   DeleteAccessGroupRequest$Outbound,
   z.ZodTypeDef,
   DeleteAccessGroupRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteAccessGroupRequestToJSON(
   deleteAccessGroupRequest: DeleteAccessGroupRequest,

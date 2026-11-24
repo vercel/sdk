@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteOrganizationDsyncGroupRequest = {
   ifMatch?: string | undefined;
@@ -33,17 +37,21 @@ export const DeleteOrganizationDsyncGroupRequest$outboundSchema: z.ZodType<
   DeleteOrganizationDsyncGroupRequest$Outbound,
   z.ZodTypeDef,
   DeleteOrganizationDsyncGroupRequest
-> = z.object({
-  ifMatch: z.string().optional(),
-  organizationId: z.string(),
-  groupId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    ifMatch: "If-Match",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ifMatch: z.string().refine(matchesPattern$("^\"\\d+\"$"), {
+      message: "Value must match pattern ^\"\\d+\"$",
+    }).optional(),
+    organizationId: z.string(),
+    groupId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      ifMatch: "If-Match",
+    });
+  })
+);
 
 export function deleteOrganizationDsyncGroupRequestToJSON(
   deleteOrganizationDsyncGroupRequest: DeleteOrganizationDsyncGroupRequest,

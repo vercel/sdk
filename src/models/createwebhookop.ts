@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -59,6 +59,9 @@ export const CreateWebhookEvents = {
   IntegrationResourceProjectConnected: "integration-resource.project-connected",
   IntegrationResourceProjectDisconnected:
     "integration-resource.project-disconnected",
+  SandboxSessionExpiring: "sandbox.session.expiring",
+  SandboxSessionStarted: "sandbox.session.started",
+  SandboxSessionStopped: "sandbox.session.stopped",
   ProjectCreated: "project.created",
   ProjectRemoved: "project.removed",
   ProjectRenamed: "project.renamed",
@@ -281,6 +284,9 @@ export const CreateWebhookWebhooksEvents = {
   ProjectRollingReleaseApproved: "project.rolling-release.approved",
   ProjectRollingReleaseCompleted: "project.rolling-release.completed",
   ProjectRollingReleaseStarted: "project.rolling-release.started",
+  SandboxSessionExpiring: "sandbox.session.expiring",
+  SandboxSessionStarted: "sandbox.session.started",
+  SandboxSessionStopped: "sandbox.session.stopped",
   TestWebhook: "test-webhook",
   ThreadResolved: "thread.resolved",
   ThreadUnresolved: "thread.unresolved",
@@ -331,7 +337,7 @@ export type CreateWebhookResponseBody = {
 /** @internal */
 export const CreateWebhookEvents$outboundSchema: z.ZodNativeEnum<
   typeof CreateWebhookEvents
-> = z.nativeEnum(CreateWebhookEvents);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateWebhookEvents));
 
 /** @internal */
 export type CreateWebhookRequestBody$Outbound = {
@@ -345,11 +351,13 @@ export const CreateWebhookRequestBody$outboundSchema: z.ZodType<
   CreateWebhookRequestBody$Outbound,
   z.ZodTypeDef,
   CreateWebhookRequestBody
-> = z.object({
-  url: z.string(),
-  events: z.array(CreateWebhookEvents$outboundSchema),
-  projectIds: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    url: z.string(),
+    events: z.array(CreateWebhookEvents$outboundSchema),
+    projectIds: z.array(z.string()).optional(),
+  })
+);
 
 export function createWebhookRequestBodyToJSON(
   createWebhookRequestBody: CreateWebhookRequestBody,
@@ -371,15 +379,17 @@ export const CreateWebhookRequest$outboundSchema: z.ZodType<
   CreateWebhookRequest$Outbound,
   z.ZodTypeDef,
   CreateWebhookRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateWebhookRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateWebhookRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createWebhookRequestToJSON(
   createWebhookRequest: CreateWebhookRequest,
@@ -392,24 +402,28 @@ export function createWebhookRequestToJSON(
 /** @internal */
 export const CreateWebhookWebhooksEvents$inboundSchema: z.ZodNativeEnum<
   typeof CreateWebhookWebhooksEvents
-> = z.nativeEnum(CreateWebhookWebhooksEvents);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateWebhookWebhooksEvents)
+);
 
 /** @internal */
 export const CreateWebhookResponseBody$inboundSchema: z.ZodType<
   CreateWebhookResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alertRuleIds: types.optional(z.array(types.string())),
-  createdAt: types.number(),
-  events: z.array(CreateWebhookWebhooksEvents$inboundSchema),
-  id: types.string(),
-  ownerId: types.string(),
-  projectIds: types.optional(z.array(types.string())),
-  secret: types.string(),
-  updatedAt: types.number(),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alertRuleIds: types.optional(z.array(types.string())),
+    createdAt: types.number(),
+    events: z.array(CreateWebhookWebhooksEvents$inboundSchema),
+    id: types.string(),
+    ownerId: types.string(),
+    projectIds: types.optional(z.array(types.string())),
+    secret: types.string(),
+    updatedAt: types.number(),
+    url: types.string(),
+  })
+);
 
 export function createWebhookResponseBodyFromJSON(
   jsonString: string,

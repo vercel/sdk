@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type GetAiGatewayVirtualModelConfigBySlugRequest = {
   ownerId?: string | undefined;
@@ -31,12 +32,14 @@ export const GetAiGatewayVirtualModelConfigBySlugRequest$outboundSchema:
     GetAiGatewayVirtualModelConfigBySlugRequest$Outbound,
     z.ZodTypeDef,
     GetAiGatewayVirtualModelConfigBySlugRequest
-  > = z.object({
-    ownerId: z.string().optional(),
-    vmcSlug: z.string(),
-    teamId: z.string().optional(),
-    slug: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      ownerId: z.string().optional(),
+      vmcSlug: z.string(),
+      teamId: z.string().optional(),
+      slug: z.string().optional(),
+    })
+  );
 
 export function getAiGatewayVirtualModelConfigBySlugRequestToJSON(
   getAiGatewayVirtualModelConfigBySlugRequest:

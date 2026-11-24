@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -35,10 +35,12 @@ export const RemoveOrganizationTeamRequest$outboundSchema: z.ZodType<
   RemoveOrganizationTeamRequest$Outbound,
   z.ZodTypeDef,
   RemoveOrganizationTeamRequest
-> = z.object({
-  organizationId: z.string(),
-  targetTeamId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizationId: z.string(),
+    targetTeamId: z.string(),
+  })
+);
 
 export function removeOrganizationTeamRequestToJSON(
   removeOrganizationTeamRequest: RemoveOrganizationTeamRequest,
@@ -55,10 +57,12 @@ export const RemoveOrganizationTeamResponseBody$inboundSchema: z.ZodType<
   RemoveOrganizationTeamResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  organizationId: types.string(),
-  teamId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizationId: types.string(),
+    teamId: types.string(),
+  })
+);
 
 export function removeOrganizationTeamResponseBodyFromJSON(
   jsonString: string,

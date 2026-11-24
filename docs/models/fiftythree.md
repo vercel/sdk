@@ -5,19 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyThree } from "@vercel/sdk/models/twenty.js";
+import { FiftyThree } from "@vercel/sdk/models/usereventpayload25provider.js";
 
-let value: FiftyThree = {
-  headerNames: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-};
+let value: FiftyThree = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `headerNames`      | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `previousSecretGracePeriodHours` | *number*                         | :heavy_minus_sign:               | N/A                              |

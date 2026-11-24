@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -42,25 +43,27 @@ export class BadRequest extends VercelError {
 /** @internal */
 export const BadRequestCode$inboundSchema: z.ZodNativeEnum<
   typeof BadRequestCode
-> = z.nativeEnum(BadRequestCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BadRequestCode));
 
 /** @internal */
 export const BadRequest$inboundSchema: z.ZodType<
   BadRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: BadRequestCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new BadRequest(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: BadRequestCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new BadRequest(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

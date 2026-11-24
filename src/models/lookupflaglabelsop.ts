@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -62,11 +62,13 @@ export const LookupFlagLabelsItems$outboundSchema: z.ZodType<
   LookupFlagLabelsItems$Outbound,
   z.ZodTypeDef,
   LookupFlagLabelsItems
-> = z.object({
-  value: z.string(),
-  entityKind: z.string(),
-  attributeKey: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.string(),
+    entityKind: z.string(),
+    attributeKey: z.string(),
+  })
+);
 
 export function lookupFlagLabelsItemsToJSON(
   lookupFlagLabelsItems: LookupFlagLabelsItems,
@@ -86,9 +88,11 @@ export const LookupFlagLabelsRequestBody$outboundSchema: z.ZodType<
   LookupFlagLabelsRequestBody$Outbound,
   z.ZodTypeDef,
   LookupFlagLabelsRequestBody
-> = z.object({
-  items: z.array(z.lazy(() => LookupFlagLabelsItems$outboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(z.lazy(() => LookupFlagLabelsItems$outboundSchema)),
+  })
+);
 
 export function lookupFlagLabelsRequestBodyToJSON(
   lookupFlagLabelsRequestBody: LookupFlagLabelsRequestBody,
@@ -113,17 +117,19 @@ export const LookupFlagLabelsRequest$outboundSchema: z.ZodType<
   LookupFlagLabelsRequest$Outbound,
   z.ZodTypeDef,
   LookupFlagLabelsRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => LookupFlagLabelsRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => LookupFlagLabelsRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function lookupFlagLabelsRequestToJSON(
   lookupFlagLabelsRequest: LookupFlagLabelsRequest,
@@ -138,12 +144,14 @@ export const LookupFlagLabelsData$inboundSchema: z.ZodType<
   LookupFlagLabelsData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attributeKey: types.string(),
-  entityKind: types.string(),
-  label: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attributeKey: types.string(),
+    entityKind: types.string(),
+    label: types.string(),
+    value: types.string(),
+  })
+);
 
 export function lookupFlagLabelsDataFromJSON(
   jsonString: string,
@@ -160,11 +168,13 @@ export const LookupFlagLabelsMissing$inboundSchema: z.ZodType<
   LookupFlagLabelsMissing,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attributeKey: types.string(),
-  entityKind: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attributeKey: types.string(),
+    entityKind: types.string(),
+    value: types.string(),
+  })
+);
 
 export function lookupFlagLabelsMissingFromJSON(
   jsonString: string,
@@ -181,10 +191,12 @@ export const LookupFlagLabelsResponseBody$inboundSchema: z.ZodType<
   LookupFlagLabelsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: z.array(z.lazy(() => LookupFlagLabelsData$inboundSchema)),
-  missing: z.array(z.lazy(() => LookupFlagLabelsMissing$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: z.array(z.lazy(() => LookupFlagLabelsData$inboundSchema)),
+    missing: z.array(z.lazy(() => LookupFlagLabelsMissing$inboundSchema)),
+  })
+);
 
 export function lookupFlagLabelsResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -81,13 +81,15 @@ export type Utm$Outbound = {
 };
 
 /** @internal */
-export const Utm$outboundSchema: z.ZodType<Utm$Outbound, z.ZodTypeDef, Utm> = z
-  .object({
-    utmSource: z.string().optional(),
-    utmMedium: z.string().optional(),
-    utmCampaign: z.string().optional(),
-    utmTerm: z.string().optional(),
-  });
+export const Utm$outboundSchema: z.ZodType<Utm$Outbound, z.ZodTypeDef, Utm> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      utmSource: z.string().optional(),
+      utmMedium: z.string().optional(),
+      utmCampaign: z.string().optional(),
+      utmTerm: z.string().optional(),
+    })
+  );
 
 export function utmToJSON(utm: Utm): string {
   return JSON.stringify(Utm$outboundSchema.parse(utm));
@@ -106,12 +108,14 @@ export const Attribution$outboundSchema: z.ZodType<
   Attribution$Outbound,
   z.ZodTypeDef,
   Attribution
-> = z.object({
-  sessionReferrer: z.string().optional(),
-  landingPage: z.string().optional(),
-  pageBeforeConversionPage: z.string().optional(),
-  utm: z.lazy(() => Utm$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionReferrer: z.string().optional(),
+    landingPage: z.string().optional(),
+    pageBeforeConversionPage: z.string().optional(),
+    utm: z.lazy(() => Utm$outboundSchema).optional(),
+  })
+);
 
 export function attributionToJSON(attribution: Attribution): string {
   return JSON.stringify(Attribution$outboundSchema.parse(attribution));
@@ -129,11 +133,13 @@ export const CreateTeamRequestBody$outboundSchema: z.ZodType<
   CreateTeamRequestBody$Outbound,
   z.ZodTypeDef,
   CreateTeamRequestBody
-> = z.object({
-  slug: z.string(),
-  name: z.string().optional(),
-  attribution: z.lazy(() => Attribution$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    slug: z.string(),
+    name: z.string().optional(),
+    attribution: z.lazy(() => Attribution$outboundSchema).optional(),
+  })
+);
 
 export function createTeamRequestBodyToJSON(
   createTeamRequestBody: CreateTeamRequestBody,
@@ -148,10 +154,12 @@ export const CreateTeamResponseBody$inboundSchema: z.ZodType<
   CreateTeamResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  slug: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    slug: types.string(),
+  })
+);
 
 export function createTeamResponseBodyFromJSON(
   jsonString: string,

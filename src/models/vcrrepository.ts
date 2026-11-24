@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -43,14 +43,16 @@ export const VcrRepository$inboundSchema: z.ZodType<
   VcrRepository,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.string(),
-  id: types.string(),
-  name: types.string(),
-  projectId: types.string(),
-  public: types.boolean(),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.string(),
+    id: types.string(),
+    name: types.string(),
+    projectId: types.string(),
+    public: types.boolean(),
+    updatedAt: types.string(),
+  })
+);
 
 export function vcrRepositoryFromJSON(
   jsonString: string,

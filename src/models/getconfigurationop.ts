@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -406,11 +406,13 @@ export const GetConfigurationRequest$outboundSchema: z.ZodType<
   GetConfigurationRequest$Outbound,
   z.ZodTypeDef,
   GetConfigurationRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getConfigurationRequestToJSON(
   getConfigurationRequest: GetConfigurationRequest,
@@ -424,66 +426,78 @@ export function getConfigurationRequestToJSON(
 export const GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationResponseBodyIntegrationsDisabledReason
-  > = z.nativeEnum(GetConfigurationResponseBodyIntegrationsDisabledReason);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetConfigurationResponseBodyIntegrationsDisabledReason)
+  );
 
 /** @internal */
 export const GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema:
   z.ZodNativeEnum<
     typeof GetConfigurationResponseBodyIntegrationsInstallationType
-  > = z.nativeEnum(GetConfigurationResponseBodyIntegrationsInstallationType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetConfigurationResponseBodyIntegrationsInstallationType)
+  );
 
 /** @internal */
 export const GetConfigurationResponseBodyIntegrationsSource$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsSource> = z
-    .nativeEnum(GetConfigurationResponseBodyIntegrationsSource);
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsSource> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetConfigurationResponseBodyIntegrationsSource)
+    );
 
 /** @internal */
 export const GetConfigurationResponseBodyIntegrationsStatus$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsStatus> = z
-    .nativeEnum(GetConfigurationResponseBodyIntegrationsStatus);
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetConfigurationResponseBodyIntegrationsStatus)
+    );
 
 /** @internal */
 export const GetConfigurationResponseBodyIntegrationsType$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsType> = z
-    .nativeEnum(GetConfigurationResponseBodyIntegrationsType);
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyIntegrationsType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetConfigurationResponseBodyIntegrationsType)
+    );
 
 /** @internal */
 export const GetConfigurationResponseBody2$inboundSchema: z.ZodType<
   GetConfigurationResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  acceptedPoliciesInheritedFromInstallationId: types.optional(types.string()),
-  completedAt: types.optional(types.number()),
-  createdAt: types.number(),
-  customerDeleteRequestedAt: z.nullable(types.number()).optional(),
-  deletedAt: z.nullable(types.number()).optional(),
-  deleteRequestedAt: z.nullable(types.number()).optional(),
-  disabledAt: types.optional(types.number()),
-  disabledReason: types.optional(
-    GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema,
-  ),
-  externalId: types.optional(types.string()),
-  id: types.string(),
-  installationType: types.optional(
-    GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema,
-  ),
-  integrationId: types.string(),
-  ownerId: types.string(),
-  projects: types.optional(z.array(types.string())),
-  scopes: z.array(types.string()),
-  slug: types.string(),
-  source: types.optional(
-    GetConfigurationResponseBodyIntegrationsSource$inboundSchema,
-  ),
-  status: types.optional(
-    GetConfigurationResponseBodyIntegrationsStatus$inboundSchema,
-  ),
-  teamId: z.nullable(types.string()).optional(),
-  type: GetConfigurationResponseBodyIntegrationsType$inboundSchema,
-  updatedAt: types.number(),
-  userId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    acceptedPoliciesInheritedFromInstallationId: types.optional(types.string()),
+    completedAt: types.optional(types.number()),
+    createdAt: types.number(),
+    customerDeleteRequestedAt: z.nullable(types.number()).optional(),
+    deletedAt: z.nullable(types.number()).optional(),
+    deleteRequestedAt: z.nullable(types.number()).optional(),
+    disabledAt: types.optional(types.number()),
+    disabledReason: types.optional(
+      GetConfigurationResponseBodyIntegrationsDisabledReason$inboundSchema,
+    ),
+    externalId: types.optional(types.string()),
+    id: types.string(),
+    installationType: types.optional(
+      GetConfigurationResponseBodyIntegrationsInstallationType$inboundSchema,
+    ),
+    integrationId: types.string(),
+    ownerId: types.string(),
+    projects: types.optional(z.array(types.string())),
+    scopes: z.array(types.string()),
+    slug: types.string(),
+    source: types.optional(
+      GetConfigurationResponseBodyIntegrationsSource$inboundSchema,
+    ),
+    status: types.optional(
+      GetConfigurationResponseBodyIntegrationsStatus$inboundSchema,
+    ),
+    teamId: z.nullable(types.string()).optional(),
+    type: GetConfigurationResponseBodyIntegrationsType$inboundSchema,
+    updatedAt: types.number(),
+    userId: types.string(),
+  })
+);
 
 export function getConfigurationResponseBody2FromJSON(
   jsonString: string,
@@ -497,30 +511,38 @@ export function getConfigurationResponseBody2FromJSON(
 
 /** @internal */
 export const GetConfigurationResponseBodyDisabledReason$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyDisabledReason> = z
-    .nativeEnum(GetConfigurationResponseBodyDisabledReason);
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyDisabledReason> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetConfigurationResponseBodyDisabledReason)
+    );
 
 /** @internal */
 export const GetConfigurationResponseBodyInstallationType$inboundSchema:
-  z.ZodNativeEnum<typeof GetConfigurationResponseBodyInstallationType> = z
-    .nativeEnum(GetConfigurationResponseBodyInstallationType);
+  z.ZodNativeEnum<typeof GetConfigurationResponseBodyInstallationType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetConfigurationResponseBodyInstallationType)
+    );
 
 /** @internal */
 export const GetConfigurationResponseBodyLevel$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationResponseBodyLevel
-> = z.nativeEnum(GetConfigurationResponseBodyLevel);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetConfigurationResponseBodyLevel)
+);
 
 /** @internal */
 export const ResponseBodyNotification$inboundSchema: z.ZodType<
   ResponseBodyNotification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  href: types.optional(types.string()),
-  level: GetConfigurationResponseBodyLevel$inboundSchema,
-  message: types.optional(types.string()),
-  title: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    href: types.optional(types.string()),
+    level: GetConfigurationResponseBodyLevel$inboundSchema,
+    message: types.optional(types.string()),
+    title: types.string(),
+  })
+);
 
 export function responseBodyNotificationFromJSON(
   jsonString: string,
@@ -535,59 +557,67 @@ export function responseBodyNotificationFromJSON(
 /** @internal */
 export const ProjectSelection$inboundSchema: z.ZodNativeEnum<
   typeof ProjectSelection
-> = z.nativeEnum(ProjectSelection);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ProjectSelection));
 
 /** @internal */
 export const GetConfigurationResponseBodySource$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationResponseBodySource
-> = z.nativeEnum(GetConfigurationResponseBodySource);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetConfigurationResponseBodySource)
+);
 
 /** @internal */
 export const GetConfigurationResponseBodyStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationResponseBodyStatus
-> = z.nativeEnum(GetConfigurationResponseBodyStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetConfigurationResponseBodyStatus)
+);
 
 /** @internal */
 export const GetConfigurationResponseBodyType$inboundSchema: z.ZodNativeEnum<
   typeof GetConfigurationResponseBodyType
-> = z.nativeEnum(GetConfigurationResponseBodyType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetConfigurationResponseBodyType)
+);
 
 /** @internal */
 export const GetConfigurationResponseBody1$inboundSchema: z.ZodType<
   GetConfigurationResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  acceptedPoliciesInheritedFromInstallationId: types.optional(types.string()),
-  canConfigureOpenTelemetry: types.optional(types.boolean()),
-  completedAt: types.optional(types.number()),
-  createdAt: types.number(),
-  customerDeleteRequestedAt: z.nullable(types.number()).optional(),
-  deletedAt: z.nullable(types.number()).optional(),
-  deleteRequestedAt: z.nullable(types.number()).optional(),
-  disabledAt: types.optional(types.number()),
-  disabledReason: types.optional(
-    GetConfigurationResponseBodyDisabledReason$inboundSchema,
-  ),
-  externalId: types.optional(types.string()),
-  id: types.string(),
-  installationType: types.optional(
-    GetConfigurationResponseBodyInstallationType$inboundSchema,
-  ),
-  integrationId: types.string(),
-  notification: z.lazy(() => ResponseBodyNotification$inboundSchema),
-  ownerId: types.string(),
-  projects: types.optional(z.array(types.string())),
-  projectSelection: ProjectSelection$inboundSchema,
-  scopes: z.array(types.string()),
-  slug: types.string(),
-  source: types.optional(GetConfigurationResponseBodySource$inboundSchema),
-  status: types.optional(GetConfigurationResponseBodyStatus$inboundSchema),
-  teamId: z.nullable(types.string()).optional(),
-  type: GetConfigurationResponseBodyType$inboundSchema,
-  updatedAt: types.number(),
-  userId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    acceptedPoliciesInheritedFromInstallationId: types.optional(types.string()),
+    canConfigureOpenTelemetry: types.optional(types.boolean()),
+    completedAt: types.optional(types.number()),
+    createdAt: types.number(),
+    customerDeleteRequestedAt: z.nullable(types.number()).optional(),
+    deletedAt: z.nullable(types.number()).optional(),
+    deleteRequestedAt: z.nullable(types.number()).optional(),
+    disabledAt: types.optional(types.number()),
+    disabledReason: types.optional(
+      GetConfigurationResponseBodyDisabledReason$inboundSchema,
+    ),
+    externalId: types.optional(types.string()),
+    id: types.string(),
+    installationType: types.optional(
+      GetConfigurationResponseBodyInstallationType$inboundSchema,
+    ),
+    integrationId: types.string(),
+    notification: z.lazy(() => ResponseBodyNotification$inboundSchema),
+    ownerId: types.string(),
+    projects: types.optional(z.array(types.string())),
+    projectSelection: ProjectSelection$inboundSchema,
+    scopes: z.array(types.string()),
+    slug: types.string(),
+    source: types.optional(GetConfigurationResponseBodySource$inboundSchema),
+    status: types.optional(GetConfigurationResponseBodyStatus$inboundSchema),
+    teamId: z.nullable(types.string()).optional(),
+    type: GetConfigurationResponseBodyType$inboundSchema,
+    updatedAt: types.number(),
+    userId: types.string(),
+  })
+);
 
 export function getConfigurationResponseBody1FromJSON(
   jsonString: string,
@@ -604,10 +634,12 @@ export const GetConfigurationResponseBody$inboundSchema: z.ZodType<
   GetConfigurationResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetConfigurationResponseBody1$inboundSchema),
-  z.lazy(() => GetConfigurationResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetConfigurationResponseBody1$inboundSchema),
+    z.lazy(() => GetConfigurationResponseBody2$inboundSchema),
+  ])
+);
 
 export function getConfigurationResponseBodyFromJSON(
   jsonString: string,

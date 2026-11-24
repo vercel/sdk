@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { matchesPattern as matchesPattern$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -147,6 +148,9 @@ export const GetWebhooksResponseBodyEvents = {
   ProjectRollingReleaseApproved: "project.rolling-release.approved",
   ProjectRollingReleaseCompleted: "project.rolling-release.completed",
   ProjectRollingReleaseStarted: "project.rolling-release.started",
+  SandboxSessionExpiring: "sandbox.session.expiring",
+  SandboxSessionStarted: "sandbox.session.started",
+  SandboxSessionStopped: "sandbox.session.stopped",
   TestWebhook: "test-webhook",
   ThreadResolved: "thread.resolved",
   ThreadUnresolved: "thread.unresolved",
@@ -315,6 +319,9 @@ export const ResponseBodyEvents = {
   ProjectRollingReleaseApproved: "project.rolling-release.approved",
   ProjectRollingReleaseCompleted: "project.rolling-release.completed",
   ProjectRollingReleaseStarted: "project.rolling-release.started",
+  SandboxSessionExpiring: "sandbox.session.expiring",
+  SandboxSessionStarted: "sandbox.session.started",
+  SandboxSessionStopped: "sandbox.session.stopped",
   TestWebhook: "test-webhook",
   ThreadResolved: "thread.resolved",
   ThreadUnresolved: "thread.unresolved",
@@ -460,11 +467,15 @@ export const GetWebhooksRequest$outboundSchema: z.ZodType<
   GetWebhooksRequest$Outbound,
   z.ZodTypeDef,
   GetWebhooksRequest
-> = z.object({
-  projectId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string().refine(matchesPattern$("^[a-zA-z0-9_]+$"), {
+      message: "Value must match pattern ^[a-zA-z0-9_]+$",
+    }).optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getWebhooksRequestToJSON(
   getWebhooksRequest: GetWebhooksRequest,
@@ -477,23 +488,27 @@ export function getWebhooksRequestToJSON(
 /** @internal */
 export const GetWebhooksResponseBodyEvents$inboundSchema: z.ZodNativeEnum<
   typeof GetWebhooksResponseBodyEvents
-> = z.nativeEnum(GetWebhooksResponseBodyEvents);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetWebhooksResponseBodyEvents)
+);
 
 /** @internal */
 export const GetWebhooksResponseBody2$inboundSchema: z.ZodType<
   GetWebhooksResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alertRuleIds: types.optional(z.array(types.string())),
-  createdAt: types.number(),
-  events: z.array(GetWebhooksResponseBodyEvents$inboundSchema),
-  id: types.string(),
-  ownerId: types.string(),
-  projectIds: types.optional(z.array(types.string())),
-  updatedAt: types.number(),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alertRuleIds: types.optional(z.array(types.string())),
+    createdAt: types.number(),
+    events: z.array(GetWebhooksResponseBodyEvents$inboundSchema),
+    id: types.string(),
+    ownerId: types.string(),
+    projectIds: types.optional(z.array(types.string())),
+    updatedAt: types.number(),
+    url: types.string(),
+  })
+);
 
 export function getWebhooksResponseBody2FromJSON(
   jsonString: string,
@@ -508,25 +523,29 @@ export function getWebhooksResponseBody2FromJSON(
 /** @internal */
 export const ResponseBodyEvents$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyEvents
-> = z.nativeEnum(ResponseBodyEvents);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyEvents));
 
 /** @internal */
 export const GetWebhooksResponseBodyFramework$inboundSchema: z.ZodNativeEnum<
   typeof GetWebhooksResponseBodyFramework
-> = z.nativeEnum(GetWebhooksResponseBodyFramework);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetWebhooksResponseBodyFramework)
+);
 
 /** @internal */
 export const GetWebhooksResponseBodyProjectsMetadata$inboundSchema: z.ZodType<
   GetWebhooksResponseBodyProjectsMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  framework: z.nullable(GetWebhooksResponseBodyFramework$inboundSchema)
-    .optional(),
-  id: types.string(),
-  latestDeployment: types.optional(types.string()),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    framework: z.nullable(GetWebhooksResponseBodyFramework$inboundSchema)
+      .optional(),
+    id: types.string(),
+    latestDeployment: types.optional(types.string()),
+    name: types.string(),
+  })
+);
 
 export function getWebhooksResponseBodyProjectsMetadataFromJSON(
   jsonString: string,
@@ -549,21 +568,21 @@ export const GetWebhooksResponseBody1$inboundSchema: z.ZodType<
   GetWebhooksResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alertRuleIds: types.optional(z.array(types.string())),
-  createdAt: types.number(),
-  events: z.array(ResponseBodyEvents$inboundSchema),
-  id: types.string(),
-  ownerId: types.string(),
-  projectIds: types.optional(z.array(types.string())),
-  projectsMetadata: types.nullable(
-    z.array(
-      z.lazy(() => GetWebhooksResponseBodyProjectsMetadata$inboundSchema),
-    ),
-  ),
-  updatedAt: types.number(),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alertRuleIds: types.optional(z.array(types.string())),
+    createdAt: types.number(),
+    events: z.array(ResponseBodyEvents$inboundSchema),
+    id: types.string(),
+    ownerId: types.string(),
+    projectIds: types.optional(z.array(types.string())),
+    projectsMetadata: types.nullable(z.array(z.lazy(() =>
+      GetWebhooksResponseBodyProjectsMetadata$inboundSchema
+    ))),
+    updatedAt: types.number(),
+    url: types.string(),
+  })
+);
 
 export function getWebhooksResponseBody1FromJSON(
   jsonString: string,
@@ -580,10 +599,12 @@ export const GetWebhooksResponseBody$inboundSchema: z.ZodType<
   GetWebhooksResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(z.lazy(() => GetWebhooksResponseBody1$inboundSchema)),
-  z.array(z.lazy(() => GetWebhooksResponseBody2$inboundSchema)),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(z.lazy(() => GetWebhooksResponseBody1$inboundSchema)),
+    z.array(z.lazy(() => GetWebhooksResponseBody2$inboundSchema)),
+  ])
+);
 
 export function getWebhooksResponseBodyFromJSON(
   jsonString: string,

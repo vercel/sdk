@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -747,7 +747,7 @@ export const UpdateFlagValue4$outboundSchema: z.ZodType<
   UpdateFlagValue4$Outbound,
   z.ZodTypeDef,
   UpdateFlagValue4
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function updateFlagValue4ToJSON(
   updateFlagValue4: UpdateFlagValue4,
@@ -770,12 +770,14 @@ export const UpdateFlagVariants$outboundSchema: z.ZodType<
   UpdateFlagVariants$Outbound,
   z.ZodTypeDef,
   UpdateFlagVariants
-> = z.object({
-  id: z.string(),
-  label: z.string().optional(),
-  description: z.string().optional(),
-  value: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    label: z.string().optional(),
+    description: z.string().optional(),
+    value: z.any().optional(),
+  })
+);
 
 export function updateFlagVariantsToJSON(
   updateFlagVariants: UpdateFlagVariants,
@@ -796,10 +798,12 @@ export const UpdateFlagReuse$outboundSchema: z.ZodType<
   UpdateFlagReuse$Outbound,
   z.ZodTypeDef,
   UpdateFlagReuse
-> = z.object({
-  active: z.boolean(),
-  environment: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: z.boolean(),
+    environment: z.string(),
+  })
+);
 
 export function updateFlagReuseToJSON(
   updateFlagReuse: UpdateFlagReuse,
@@ -818,10 +822,12 @@ export const UpdateFlagTargets$outboundSchema: z.ZodType<
   UpdateFlagTargets$Outbound,
   z.ZodTypeDef,
   UpdateFlagTargets
-> = z.object({
-  note: z.string().optional(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: z.string().optional(),
+    value: z.string(),
+  })
+);
 
 export function updateFlagTargetsToJSON(
   updateFlagTargets: UpdateFlagTargets,
@@ -842,10 +848,12 @@ export const UpdateFlagPausedOutcome$outboundSchema: z.ZodType<
   UpdateFlagPausedOutcome$Outbound,
   z.ZodTypeDef,
   UpdateFlagPausedOutcome
-> = z.object({
-  type: z.any().optional(),
-  variantId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    variantId: z.string(),
+  })
+);
 
 export function updateFlagPausedOutcomeToJSON(
   updateFlagPausedOutcome: UpdateFlagPausedOutcome,
@@ -867,11 +875,13 @@ export const UpdateFlagLhs2$outboundSchema: z.ZodType<
   UpdateFlagLhs2$Outbound,
   z.ZodTypeDef,
   UpdateFlagLhs2
-> = z.object({
-  type: z.any().optional(),
-  kind: z.string(),
-  attribute: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    kind: z.string(),
+    attribute: z.string(),
+  })
+);
 
 export function updateFlagLhs2ToJSON(updateFlagLhs2: UpdateFlagLhs2): string {
   return JSON.stringify(UpdateFlagLhs2$outboundSchema.parse(updateFlagLhs2));
@@ -887,9 +897,11 @@ export const UpdateFlagLhs1$outboundSchema: z.ZodType<
   UpdateFlagLhs1$Outbound,
   z.ZodTypeDef,
   UpdateFlagLhs1
-> = z.object({
-  type: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+  })
+);
 
 export function updateFlagLhs1ToJSON(updateFlagLhs1: UpdateFlagLhs1): string {
   return JSON.stringify(UpdateFlagLhs1$outboundSchema.parse(updateFlagLhs1));
@@ -905,10 +917,12 @@ export const UpdateFlagLhs$outboundSchema: z.ZodType<
   UpdateFlagLhs$Outbound,
   z.ZodTypeDef,
   UpdateFlagLhs
-> = smartUnion([
-  z.lazy(() => UpdateFlagLhs2$outboundSchema),
-  z.lazy(() => UpdateFlagLhs1$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagLhs2$outboundSchema),
+    z.lazy(() => UpdateFlagLhs1$outboundSchema),
+  ])
+);
 
 export function updateFlagLhsToJSON(updateFlagLhs: UpdateFlagLhs): string {
   return JSON.stringify(UpdateFlagLhs$outboundSchema.parse(updateFlagLhs));
@@ -917,7 +931,7 @@ export function updateFlagLhsToJSON(updateFlagLhs: UpdateFlagLhs): string {
 /** @internal */
 export const UpdateFlagCmp$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagCmp
-> = z.nativeEnum(UpdateFlagCmp);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFlagCmp));
 
 /** @internal */
 export type UpdateFlagRhs2$Outbound = {
@@ -931,11 +945,13 @@ export const UpdateFlagRhs2$outboundSchema: z.ZodType<
   UpdateFlagRhs2$Outbound,
   z.ZodTypeDef,
   UpdateFlagRhs2
-> = z.object({
-  type: z.any().optional(),
-  pattern: z.string(),
-  flags: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    pattern: z.string(),
+    flags: z.string(),
+  })
+);
 
 export function updateFlagRhs2ToJSON(updateFlagRhs2: UpdateFlagRhs2): string {
   return JSON.stringify(UpdateFlagRhs2$outboundSchema.parse(updateFlagRhs2));
@@ -944,7 +960,7 @@ export function updateFlagRhs2ToJSON(updateFlagRhs2: UpdateFlagRhs2): string {
 /** @internal */
 export const UpdateFlagRhsType$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagRhsType
-> = z.nativeEnum(UpdateFlagRhsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFlagRhsType));
 
 /** @internal */
 export type UpdateFlagItems2$Outbound = {
@@ -958,11 +974,13 @@ export const UpdateFlagItems2$outboundSchema: z.ZodType<
   UpdateFlagItems2$Outbound,
   z.ZodTypeDef,
   UpdateFlagItems2
-> = z.object({
-  label: z.string().optional(),
-  note: z.string().optional(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string().optional(),
+    note: z.string().optional(),
+    value: z.string(),
+  })
+);
 
 export function updateFlagItems2ToJSON(
   updateFlagItems2: UpdateFlagItems2,
@@ -984,11 +1002,13 @@ export const UpdateFlagItems1$outboundSchema: z.ZodType<
   UpdateFlagItems1$Outbound,
   z.ZodTypeDef,
   UpdateFlagItems1
-> = z.object({
-  label: z.string().optional(),
-  note: z.string().optional(),
-  value: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string().optional(),
+    note: z.string().optional(),
+    value: z.number(),
+  })
+);
 
 export function updateFlagItems1ToJSON(
   updateFlagItems1: UpdateFlagItems1,
@@ -1008,10 +1028,12 @@ export const UpdateFlagRhsItems$outboundSchema: z.ZodType<
   UpdateFlagRhsItems$Outbound,
   z.ZodTypeDef,
   UpdateFlagRhsItems
-> = smartUnion([
-  z.lazy(() => UpdateFlagItems1$outboundSchema),
-  z.lazy(() => UpdateFlagItems2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagItems1$outboundSchema),
+    z.lazy(() => UpdateFlagItems2$outboundSchema),
+  ])
+);
 
 export function updateFlagRhsItemsToJSON(
   updateFlagRhsItems: UpdateFlagRhsItems,
@@ -1032,15 +1054,15 @@ export const UpdateFlagRhs1$outboundSchema: z.ZodType<
   UpdateFlagRhs1$Outbound,
   z.ZodTypeDef,
   UpdateFlagRhs1
-> = z.object({
-  type: UpdateFlagRhsType$outboundSchema,
-  items: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: UpdateFlagRhsType$outboundSchema,
+    items: z.array(smartUnion([
       z.lazy(() => UpdateFlagItems1$outboundSchema),
       z.lazy(() => UpdateFlagItems2$outboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function updateFlagRhs1ToJSON(updateFlagRhs1: UpdateFlagRhs1): string {
   return JSON.stringify(UpdateFlagRhs1$outboundSchema.parse(updateFlagRhs1));
@@ -1059,13 +1081,15 @@ export const UpdateFlagRhs$outboundSchema: z.ZodType<
   UpdateFlagRhs$Outbound,
   z.ZodTypeDef,
   UpdateFlagRhs
-> = smartUnion([
-  z.lazy(() => UpdateFlagRhs2$outboundSchema),
-  z.lazy(() => UpdateFlagRhs1$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagRhs2$outboundSchema),
+    z.lazy(() => UpdateFlagRhs1$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+  ])
+);
 
 export function updateFlagRhsToJSON(updateFlagRhs: UpdateFlagRhs): string {
   return JSON.stringify(UpdateFlagRhs$outboundSchema.parse(updateFlagRhs));
@@ -1081,9 +1105,11 @@ export const UpdateFlagCmpOptions$outboundSchema: z.ZodType<
   UpdateFlagCmpOptions$Outbound,
   z.ZodTypeDef,
   UpdateFlagCmpOptions
-> = z.object({
-  ignoreCase: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ignoreCase: z.boolean().optional(),
+  })
+);
 
 export function updateFlagCmpOptionsToJSON(
   updateFlagCmpOptions: UpdateFlagCmpOptions,
@@ -1112,21 +1138,23 @@ export const UpdateFlagConditions$outboundSchema: z.ZodType<
   UpdateFlagConditions$Outbound,
   z.ZodTypeDef,
   UpdateFlagConditions
-> = z.object({
-  lhs: smartUnion([
-    z.lazy(() => UpdateFlagLhs2$outboundSchema),
-    z.lazy(() => UpdateFlagLhs1$outboundSchema),
-  ]),
-  cmp: UpdateFlagCmp$outboundSchema,
-  rhs: smartUnion([
-    z.lazy(() => UpdateFlagRhs2$outboundSchema),
-    z.lazy(() => UpdateFlagRhs1$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-  ]).optional(),
-  cmpOptions: z.lazy(() => UpdateFlagCmpOptions$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lhs: smartUnion([
+      z.lazy(() => UpdateFlagLhs2$outboundSchema),
+      z.lazy(() => UpdateFlagLhs1$outboundSchema),
+    ]),
+    cmp: UpdateFlagCmp$outboundSchema,
+    rhs: smartUnion([
+      z.lazy(() => UpdateFlagRhs2$outboundSchema),
+      z.lazy(() => UpdateFlagRhs1$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+    ]).optional(),
+    cmpOptions: z.lazy(() => UpdateFlagCmpOptions$outboundSchema).optional(),
+  })
+);
 
 export function updateFlagConditionsToJSON(
   updateFlagConditions: UpdateFlagConditions,
@@ -1148,11 +1176,13 @@ export const UpdateFlagOutcomeFeatureFlagsBase$outboundSchema: z.ZodType<
   UpdateFlagOutcomeFeatureFlagsBase$Outbound,
   z.ZodTypeDef,
   UpdateFlagOutcomeFeatureFlagsBase
-> = z.object({
-  type: z.any().optional(),
-  kind: z.string(),
-  attribute: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    kind: z.string(),
+    attribute: z.string(),
+  })
+);
 
 export function updateFlagOutcomeFeatureFlagsBaseToJSON(
   updateFlagOutcomeFeatureFlagsBase: UpdateFlagOutcomeFeatureFlagsBase,
@@ -1175,10 +1205,12 @@ export const UpdateFlagOutcomeSlots$outboundSchema: z.ZodType<
   UpdateFlagOutcomeSlots$Outbound,
   z.ZodTypeDef,
   UpdateFlagOutcomeSlots
-> = z.object({
-  promille: z.number(),
-  durationMs: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    promille: z.number(),
+    durationMs: z.number(),
+  })
+);
 
 export function updateFlagOutcomeSlotsToJSON(
   updateFlagOutcomeSlots: UpdateFlagOutcomeSlots,
@@ -1205,16 +1237,18 @@ export const UpdateFlagOutcome3$outboundSchema: z.ZodType<
   UpdateFlagOutcome3$Outbound,
   z.ZodTypeDef,
   UpdateFlagOutcome3
-> = z.object({
-  type: z.any().optional(),
-  base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsBase$outboundSchema),
-  startTimestamp: z.number(),
-  rollFromVariantId: z.string(),
-  rollToVariantId: z.string(),
-  defaultVariantId: z.string(),
-  slots: z.array(z.lazy(() => UpdateFlagOutcomeSlots$outboundSchema)),
-  finalPromille: z.number().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsBase$outboundSchema),
+    startTimestamp: z.number(),
+    rollFromVariantId: z.string(),
+    rollToVariantId: z.string(),
+    defaultVariantId: z.string(),
+    slots: z.array(z.lazy(() => UpdateFlagOutcomeSlots$outboundSchema)),
+    finalPromille: z.number().optional(),
+  })
+);
 
 export function updateFlagOutcome3ToJSON(
   updateFlagOutcome3: UpdateFlagOutcome3,
@@ -1236,11 +1270,13 @@ export const UpdateFlagOutcomeBase$outboundSchema: z.ZodType<
   UpdateFlagOutcomeBase$Outbound,
   z.ZodTypeDef,
   UpdateFlagOutcomeBase
-> = z.object({
-  type: z.any().optional(),
-  kind: z.string(),
-  attribute: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    kind: z.string(),
+    attribute: z.string(),
+  })
+);
 
 export function updateFlagOutcomeBaseToJSON(
   updateFlagOutcomeBase: UpdateFlagOutcomeBase,
@@ -1263,12 +1299,14 @@ export const UpdateFlagOutcome2$outboundSchema: z.ZodType<
   UpdateFlagOutcome2$Outbound,
   z.ZodTypeDef,
   UpdateFlagOutcome2
-> = z.object({
-  type: z.any().optional(),
-  base: z.lazy(() => UpdateFlagOutcomeBase$outboundSchema),
-  weights: z.record(z.number()),
-  defaultVariantId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    base: z.lazy(() => UpdateFlagOutcomeBase$outboundSchema),
+    weights: z.record(z.number()),
+    defaultVariantId: z.string(),
+  })
+);
 
 export function updateFlagOutcome2ToJSON(
   updateFlagOutcome2: UpdateFlagOutcome2,
@@ -1289,10 +1327,12 @@ export const UpdateFlagOutcome1$outboundSchema: z.ZodType<
   UpdateFlagOutcome1$Outbound,
   z.ZodTypeDef,
   UpdateFlagOutcome1
-> = z.object({
-  type: z.any().optional(),
-  variantId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    variantId: z.string(),
+  })
+);
 
 export function updateFlagOutcome1ToJSON(
   updateFlagOutcome1: UpdateFlagOutcome1,
@@ -1313,11 +1353,13 @@ export const UpdateFlagOutcome$outboundSchema: z.ZodType<
   UpdateFlagOutcome$Outbound,
   z.ZodTypeDef,
   UpdateFlagOutcome
-> = smartUnion([
-  z.lazy(() => UpdateFlagOutcome3$outboundSchema),
-  z.lazy(() => UpdateFlagOutcome2$outboundSchema),
-  z.lazy(() => UpdateFlagOutcome1$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagOutcome3$outboundSchema),
+    z.lazy(() => UpdateFlagOutcome2$outboundSchema),
+    z.lazy(() => UpdateFlagOutcome1$outboundSchema),
+  ])
+);
 
 export function updateFlagOutcomeToJSON(
   updateFlagOutcome: UpdateFlagOutcome,
@@ -1342,15 +1384,17 @@ export const UpdateFlagRules$outboundSchema: z.ZodType<
   UpdateFlagRules$Outbound,
   z.ZodTypeDef,
   UpdateFlagRules
-> = z.object({
-  id: z.string(),
-  conditions: z.array(z.lazy(() => UpdateFlagConditions$outboundSchema)),
-  outcome: smartUnion([
-    z.lazy(() => UpdateFlagOutcome3$outboundSchema),
-    z.lazy(() => UpdateFlagOutcome2$outboundSchema),
-    z.lazy(() => UpdateFlagOutcome1$outboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    conditions: z.array(z.lazy(() => UpdateFlagConditions$outboundSchema)),
+    outcome: smartUnion([
+      z.lazy(() => UpdateFlagOutcome3$outboundSchema),
+      z.lazy(() => UpdateFlagOutcome2$outboundSchema),
+      z.lazy(() => UpdateFlagOutcome1$outboundSchema),
+    ]),
+  })
+);
 
 export function updateFlagRulesToJSON(
   updateFlagRules: UpdateFlagRules,
@@ -1370,11 +1414,13 @@ export const UpdateFlagFallthroughFeatureFlagsBase$outboundSchema: z.ZodType<
   UpdateFlagFallthroughFeatureFlagsBase$Outbound,
   z.ZodTypeDef,
   UpdateFlagFallthroughFeatureFlagsBase
-> = z.object({
-  type: z.any().optional(),
-  kind: z.string(),
-  attribute: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    kind: z.string(),
+    attribute: z.string(),
+  })
+);
 
 export function updateFlagFallthroughFeatureFlagsBaseToJSON(
   updateFlagFallthroughFeatureFlagsBase: UpdateFlagFallthroughFeatureFlagsBase,
@@ -1397,10 +1443,12 @@ export const UpdateFlagFallthroughSlots$outboundSchema: z.ZodType<
   UpdateFlagFallthroughSlots$Outbound,
   z.ZodTypeDef,
   UpdateFlagFallthroughSlots
-> = z.object({
-  promille: z.number(),
-  durationMs: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    promille: z.number(),
+    durationMs: z.number(),
+  })
+);
 
 export function updateFlagFallthroughSlotsToJSON(
   updateFlagFallthroughSlots: UpdateFlagFallthroughSlots,
@@ -1427,16 +1475,18 @@ export const UpdateFlagFallthrough3$outboundSchema: z.ZodType<
   UpdateFlagFallthrough3$Outbound,
   z.ZodTypeDef,
   UpdateFlagFallthrough3
-> = z.object({
-  type: z.any().optional(),
-  base: z.lazy(() => UpdateFlagFallthroughFeatureFlagsBase$outboundSchema),
-  startTimestamp: z.number(),
-  rollFromVariantId: z.string(),
-  rollToVariantId: z.string(),
-  defaultVariantId: z.string(),
-  slots: z.array(z.lazy(() => UpdateFlagFallthroughSlots$outboundSchema)),
-  finalPromille: z.number().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    base: z.lazy(() => UpdateFlagFallthroughFeatureFlagsBase$outboundSchema),
+    startTimestamp: z.number(),
+    rollFromVariantId: z.string(),
+    rollToVariantId: z.string(),
+    defaultVariantId: z.string(),
+    slots: z.array(z.lazy(() => UpdateFlagFallthroughSlots$outboundSchema)),
+    finalPromille: z.number().optional(),
+  })
+);
 
 export function updateFlagFallthrough3ToJSON(
   updateFlagFallthrough3: UpdateFlagFallthrough3,
@@ -1458,11 +1508,13 @@ export const UpdateFlagFallthroughBase$outboundSchema: z.ZodType<
   UpdateFlagFallthroughBase$Outbound,
   z.ZodTypeDef,
   UpdateFlagFallthroughBase
-> = z.object({
-  type: z.any().optional(),
-  kind: z.string(),
-  attribute: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    kind: z.string(),
+    attribute: z.string(),
+  })
+);
 
 export function updateFlagFallthroughBaseToJSON(
   updateFlagFallthroughBase: UpdateFlagFallthroughBase,
@@ -1485,12 +1537,14 @@ export const UpdateFlagFallthrough2$outboundSchema: z.ZodType<
   UpdateFlagFallthrough2$Outbound,
   z.ZodTypeDef,
   UpdateFlagFallthrough2
-> = z.object({
-  type: z.any().optional(),
-  base: z.lazy(() => UpdateFlagFallthroughBase$outboundSchema),
-  weights: z.record(z.number()),
-  defaultVariantId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    base: z.lazy(() => UpdateFlagFallthroughBase$outboundSchema),
+    weights: z.record(z.number()),
+    defaultVariantId: z.string(),
+  })
+);
 
 export function updateFlagFallthrough2ToJSON(
   updateFlagFallthrough2: UpdateFlagFallthrough2,
@@ -1511,10 +1565,12 @@ export const UpdateFlagFallthrough1$outboundSchema: z.ZodType<
   UpdateFlagFallthrough1$Outbound,
   z.ZodTypeDef,
   UpdateFlagFallthrough1
-> = z.object({
-  type: z.any().optional(),
-  variantId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    variantId: z.string(),
+  })
+);
 
 export function updateFlagFallthrough1ToJSON(
   updateFlagFallthrough1: UpdateFlagFallthrough1,
@@ -1535,11 +1591,13 @@ export const UpdateFlagFallthrough$outboundSchema: z.ZodType<
   UpdateFlagFallthrough$Outbound,
   z.ZodTypeDef,
   UpdateFlagFallthrough
-> = smartUnion([
-  z.lazy(() => UpdateFlagFallthrough3$outboundSchema),
-  z.lazy(() => UpdateFlagFallthrough2$outboundSchema),
-  z.lazy(() => UpdateFlagFallthrough1$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagFallthrough3$outboundSchema),
+    z.lazy(() => UpdateFlagFallthrough2$outboundSchema),
+    z.lazy(() => UpdateFlagFallthrough1$outboundSchema),
+  ])
+);
 
 export function updateFlagFallthroughToJSON(
   updateFlagFallthrough: UpdateFlagFallthrough,
@@ -1572,21 +1630,25 @@ export const UpdateFlagEnvironments$outboundSchema: z.ZodType<
   UpdateFlagEnvironments$Outbound,
   z.ZodTypeDef,
   UpdateFlagEnvironments
-> = z.object({
-  active: z.boolean(),
-  reuse: z.lazy(() => UpdateFlagReuse$outboundSchema).optional(),
-  targets: z.record(
-    z.record(z.record(z.array(z.lazy(() => UpdateFlagTargets$outboundSchema)))),
-  ).optional(),
-  pausedOutcome: z.lazy(() => UpdateFlagPausedOutcome$outboundSchema),
-  rules: z.array(z.lazy(() => UpdateFlagRules$outboundSchema)),
-  fallthrough: smartUnion([
-    z.lazy(() => UpdateFlagFallthrough3$outboundSchema),
-    z.lazy(() => UpdateFlagFallthrough2$outboundSchema),
-    z.lazy(() => UpdateFlagFallthrough1$outboundSchema),
-  ]),
-  revision: z.number().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: z.boolean(),
+    reuse: z.lazy(() => UpdateFlagReuse$outboundSchema).optional(),
+    targets: z.record(
+      z.record(
+        z.record(z.array(z.lazy(() => UpdateFlagTargets$outboundSchema))),
+      ),
+    ).optional(),
+    pausedOutcome: z.lazy(() => UpdateFlagPausedOutcome$outboundSchema),
+    rules: z.array(z.lazy(() => UpdateFlagRules$outboundSchema)),
+    fallthrough: smartUnion([
+      z.lazy(() => UpdateFlagFallthrough3$outboundSchema),
+      z.lazy(() => UpdateFlagFallthrough2$outboundSchema),
+      z.lazy(() => UpdateFlagFallthrough1$outboundSchema),
+    ]),
+    revision: z.number().optional(),
+  })
+);
 
 export function updateFlagEnvironmentsToJSON(
   updateFlagEnvironments: UpdateFlagEnvironments,
@@ -1599,7 +1661,7 @@ export function updateFlagEnvironmentsToJSON(
 /** @internal */
 export const UpdateFlagState$outboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagState
-> = z.nativeEnum(UpdateFlagState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFlagState));
 
 /** @internal */
 export type UpdateFlagRequestBody$Outbound = {
@@ -1620,19 +1682,22 @@ export const UpdateFlagRequestBody$outboundSchema: z.ZodType<
   UpdateFlagRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateFlagRequestBody
-> = z.object({
-  createdBy: z.string().optional(),
-  message: z.string().optional(),
-  variants: z.array(z.lazy(() => UpdateFlagVariants$outboundSchema)).optional(),
-  environments: z.record(z.lazy(() => UpdateFlagEnvironments$outboundSchema))
-    .optional(),
-  seed: z.number().optional(),
-  description: z.string().optional(),
-  state: UpdateFlagState$outboundSchema.optional(),
-  maintainerIds: z.array(z.string()).optional(),
-  permanent: z.boolean().optional(),
-  tags: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdBy: z.string().optional(),
+    message: z.string().optional(),
+    variants: z.array(z.lazy(() => UpdateFlagVariants$outboundSchema))
+      .optional(),
+    environments: z.record(z.lazy(() => UpdateFlagEnvironments$outboundSchema))
+      .optional(),
+    seed: z.number().optional(),
+    description: z.string().optional(),
+    state: UpdateFlagState$outboundSchema.optional(),
+    maintainerIds: z.array(z.string()).optional(),
+    permanent: z.boolean().optional(),
+    tags: z.array(z.string()).optional(),
+  })
+);
 
 export function updateFlagRequestBodyToJSON(
   updateFlagRequestBody: UpdateFlagRequestBody,
@@ -1658,19 +1723,21 @@ export const UpdateFlagRequest$outboundSchema: z.ZodType<
   UpdateFlagRequest$Outbound,
   z.ZodTypeDef,
   UpdateFlagRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  flagIdOrSlug: z.string(),
-  ifMatch: z.string().optional(),
-  withMetadata: z.boolean().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateFlagRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    flagIdOrSlug: z.string(),
+    ifMatch: z.string().optional(),
+    withMetadata: z.boolean().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateFlagRequestBody$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateFlagRequestToJSON(
   updateFlagRequest: UpdateFlagRequest,
@@ -1685,9 +1752,11 @@ export const UpdateFlagFallthrough4$inboundSchema: z.ZodType<
   UpdateFlagFallthrough4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("experiment"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("experiment"),
+  })
+);
 
 export function updateFlagFallthrough4FromJSON(
   jsonString: string,
@@ -1703,8 +1772,10 @@ export function updateFlagFallthrough4FromJSON(
 export const UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType,
+    )
   );
 
 /** @internal */
@@ -1713,12 +1784,14 @@ export const UpdateFlagFallthroughFeatureFlagsResponse200Base$inboundSchema:
     UpdateFlagFallthroughFeatureFlagsResponse200Base,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    attribute: types.string(),
-    kind: types.string(),
-    type:
-      UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      attribute: types.string(),
+      kind: types.string(),
+      type:
+        UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+    })
+  );
 
 export function updateFlagFallthroughFeatureFlagsResponse200BaseFromJSON(
   jsonString: string,
@@ -1741,10 +1814,12 @@ export const UpdateFlagFallthroughFeatureFlagsSlots$inboundSchema: z.ZodType<
   UpdateFlagFallthroughFeatureFlagsSlots,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  durationMs: types.number(),
-  promille: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    durationMs: types.number(),
+    promille: types.number(),
+  })
+);
 
 export function updateFlagFallthroughFeatureFlagsSlotsFromJSON(
   jsonString: string,
@@ -1762,20 +1837,22 @@ export const UpdateFlagFallthroughFeatureFlags3$inboundSchema: z.ZodType<
   UpdateFlagFallthroughFeatureFlags3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  base: z.lazy(() =>
-    UpdateFlagFallthroughFeatureFlagsResponse200Base$inboundSchema
-  ),
-  defaultVariantId: types.string(),
-  finalPromille: types.optional(types.number()),
-  rollFromVariantId: types.string(),
-  rollToVariantId: types.string(),
-  slots: z.array(
-    z.lazy(() => UpdateFlagFallthroughFeatureFlagsSlots$inboundSchema),
-  ),
-  startTimestamp: types.number(),
-  type: types.literal("rollout"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    base: z.lazy(() =>
+      UpdateFlagFallthroughFeatureFlagsResponse200Base$inboundSchema
+    ),
+    defaultVariantId: types.string(),
+    finalPromille: types.optional(types.number()),
+    rollFromVariantId: types.string(),
+    rollToVariantId: types.string(),
+    slots: z.array(
+      z.lazy(() => UpdateFlagFallthroughFeatureFlagsSlots$inboundSchema),
+    ),
+    startTimestamp: types.number(),
+    type: types.literal("rollout"),
+  })
+);
 
 export function updateFlagFallthroughFeatureFlags3FromJSON(
   jsonString: string,
@@ -1792,8 +1869,10 @@ export function updateFlagFallthroughFeatureFlags3FromJSON(
 export const UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType$inboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType
-  > = z.nativeEnum(
-    UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType,
+    )
   );
 
 /** @internal */
@@ -1802,12 +1881,14 @@ export const UpdateFlagFallthroughFeatureFlagsResponseBase$inboundSchema:
     UpdateFlagFallthroughFeatureFlagsResponseBase,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    attribute: types.string(),
-    kind: types.string(),
-    type:
-      UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      attribute: types.string(),
+      kind: types.string(),
+      type:
+        UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONType$inboundSchema,
+    })
+  );
 
 export function updateFlagFallthroughFeatureFlagsResponseBaseFromJSON(
   jsonString: string,
@@ -1830,14 +1911,16 @@ export const UpdateFlagFallthroughFeatureFlags2$inboundSchema: z.ZodType<
   UpdateFlagFallthroughFeatureFlags2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  base: z.lazy(() =>
-    UpdateFlagFallthroughFeatureFlagsResponseBase$inboundSchema
-  ),
-  defaultVariantId: types.string(),
-  type: types.literal("split"),
-  weights: z.record(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    base: z.lazy(() =>
+      UpdateFlagFallthroughFeatureFlagsResponseBase$inboundSchema
+    ),
+    defaultVariantId: types.string(),
+    type: types.literal("split"),
+    weights: z.record(types.number()),
+  })
+);
 
 export function updateFlagFallthroughFeatureFlags2FromJSON(
   jsonString: string,
@@ -1855,10 +1938,12 @@ export const UpdateFlagFallthroughFeatureFlags1$inboundSchema: z.ZodType<
   UpdateFlagFallthroughFeatureFlags1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("variant"),
-  variantId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("variant"),
+    variantId: types.string(),
+  })
+);
 
 export function updateFlagFallthroughFeatureFlags1FromJSON(
   jsonString: string,
@@ -1876,12 +1961,14 @@ export const UpdateFlagFeatureFlagsFallthrough$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsFallthrough,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UpdateFlagFallthroughFeatureFlags1$inboundSchema),
-  z.lazy(() => UpdateFlagFallthroughFeatureFlags2$inboundSchema),
-  z.lazy(() => UpdateFlagFallthroughFeatureFlags3$inboundSchema),
-  z.lazy(() => UpdateFlagFallthrough4$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UpdateFlagFallthroughFeatureFlags1$inboundSchema),
+    z.lazy(() => UpdateFlagFallthroughFeatureFlags2$inboundSchema),
+    z.lazy(() => UpdateFlagFallthroughFeatureFlags3$inboundSchema),
+    z.lazy(() => UpdateFlagFallthrough4$inboundSchema),
+  ])
+);
 
 export function updateFlagFeatureFlagsFallthroughFromJSON(
   jsonString: string,
@@ -1896,17 +1983,19 @@ export function updateFlagFeatureFlagsFallthroughFromJSON(
 /** @internal */
 export const UpdateFlagType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagType
-> = z.nativeEnum(UpdateFlagType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFlagType));
 
 /** @internal */
 export const UpdateFlagFeatureFlagsPausedOutcome$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsPausedOutcome,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: UpdateFlagType$inboundSchema,
-  variantId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: UpdateFlagType$inboundSchema,
+    variantId: types.string(),
+  })
+);
 
 export function updateFlagFeatureFlagsPausedOutcomeFromJSON(
   jsonString: string,
@@ -1924,10 +2013,12 @@ export const UpdateFlagFeatureFlagsReuse$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsReuse,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  active: types.boolean(),
-  environment: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: types.boolean(),
+    environment: types.string(),
+  })
+);
 
 export function updateFlagFeatureFlagsReuseFromJSON(
   jsonString: string,
@@ -1942,16 +2033,18 @@ export function updateFlagFeatureFlagsReuseFromJSON(
 /** @internal */
 export const UpdateFlagFeatureFlagsCmp$inboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagFeatureFlagsCmp
-> = z.nativeEnum(UpdateFlagFeatureFlagsCmp);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFlagFeatureFlagsCmp));
 
 /** @internal */
 export const UpdateFlagFeatureFlagsCmpOptions$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsCmpOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ignoreCase: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ignoreCase: types.optional(types.boolean()),
+  })
+);
 
 export function updateFlagFeatureFlagsCmpOptionsFromJSON(
   jsonString: string,
@@ -1968,11 +2061,13 @@ export const UpdateFlagLhsFeatureFlags2$inboundSchema: z.ZodType<
   UpdateFlagLhsFeatureFlags2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attribute: types.string(),
-  kind: types.string(),
-  type: types.literal("entity"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attribute: types.string(),
+    kind: types.string(),
+    type: types.literal("entity"),
+  })
+);
 
 export function updateFlagLhsFeatureFlags2FromJSON(
   jsonString: string,
@@ -1989,9 +2084,11 @@ export const UpdateFlagLhsFeatureFlags1$inboundSchema: z.ZodType<
   UpdateFlagLhsFeatureFlags1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("segment"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("segment"),
+  })
+);
 
 export function updateFlagLhsFeatureFlags1FromJSON(
   jsonString: string,
@@ -2008,10 +2105,12 @@ export const UpdateFlagFeatureFlagsLhs$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsLhs,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UpdateFlagLhsFeatureFlags1$inboundSchema),
-  z.lazy(() => UpdateFlagLhsFeatureFlags2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UpdateFlagLhsFeatureFlags1$inboundSchema),
+    z.lazy(() => UpdateFlagLhsFeatureFlags2$inboundSchema),
+  ])
+);
 
 export function updateFlagFeatureFlagsLhsFromJSON(
   jsonString: string,
@@ -2025,20 +2124,23 @@ export function updateFlagFeatureFlagsLhsFromJSON(
 
 /** @internal */
 export const UpdateFlagRhsFeatureFlagsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateFlagRhsFeatureFlagsResponseType> = z.nativeEnum(
-    UpdateFlagRhsFeatureFlagsResponseType,
-  );
+  z.ZodNativeEnum<typeof UpdateFlagRhsFeatureFlagsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateFlagRhsFeatureFlagsResponseType)
+    );
 
 /** @internal */
 export const UpdateFlagRhs4$inboundSchema: z.ZodType<
   UpdateFlagRhs4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  flags: types.string(),
-  pattern: types.string(),
-  type: UpdateFlagRhsFeatureFlagsResponseType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    flags: types.string(),
+    pattern: types.string(),
+    type: UpdateFlagRhsFeatureFlagsResponseType$inboundSchema,
+  })
+);
 
 export function updateFlagRhs4FromJSON(
   jsonString: string,
@@ -2055,11 +2157,13 @@ export const UpdateFlagItemsFeatureFlags2$inboundSchema: z.ZodType<
   UpdateFlagItemsFeatureFlags2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.optional(types.string()),
-  note: types.optional(types.string()),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.optional(types.string()),
+    note: types.optional(types.string()),
+    value: types.string(),
+  })
+);
 
 export function updateFlagItemsFeatureFlags2FromJSON(
   jsonString: string,
@@ -2076,11 +2180,13 @@ export const UpdateFlagItemsFeatureFlags1$inboundSchema: z.ZodType<
   UpdateFlagItemsFeatureFlags1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.optional(types.string()),
-  note: types.optional(types.string()),
-  value: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.optional(types.string()),
+    note: types.optional(types.string()),
+    value: types.number(),
+  })
+);
 
 export function updateFlagItemsFeatureFlags1FromJSON(
   jsonString: string,
@@ -2097,10 +2203,12 @@ export const UpdateFlagRhsFeatureFlagsItems$inboundSchema: z.ZodType<
   UpdateFlagRhsFeatureFlagsItems,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UpdateFlagItemsFeatureFlags1$inboundSchema),
-  z.lazy(() => UpdateFlagItemsFeatureFlags2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagItemsFeatureFlags1$inboundSchema),
+    z.lazy(() => UpdateFlagItemsFeatureFlags2$inboundSchema),
+  ])
+);
 
 export function updateFlagRhsFeatureFlagsItemsFromJSON(
   jsonString: string,
@@ -2115,22 +2223,24 @@ export function updateFlagRhsFeatureFlagsItemsFromJSON(
 /** @internal */
 export const UpdateFlagRhsFeatureFlagsType$inboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagRhsFeatureFlagsType
-> = z.nativeEnum(UpdateFlagRhsFeatureFlagsType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateFlagRhsFeatureFlagsType)
+);
 
 /** @internal */
 export const UpdateFlagRhs3$inboundSchema: z.ZodType<
   UpdateFlagRhs3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(smartUnion([
       z.lazy(() => UpdateFlagItemsFeatureFlags1$inboundSchema),
       z.lazy(() => UpdateFlagItemsFeatureFlags2$inboundSchema),
-    ]),
-  ),
-  type: UpdateFlagRhsFeatureFlagsType$inboundSchema,
-});
+    ])),
+    type: UpdateFlagRhsFeatureFlagsType$inboundSchema,
+  })
+);
 
 export function updateFlagRhs3FromJSON(
   jsonString: string,
@@ -2147,13 +2257,15 @@ export const UpdateFlagFeatureFlagsRhs$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsRhs,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UpdateFlagRhs4$inboundSchema),
-  z.lazy(() => UpdateFlagRhs3$inboundSchema),
-  types.string(),
-  types.number(),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateFlagRhs4$inboundSchema),
+    z.lazy(() => UpdateFlagRhs3$inboundSchema),
+    types.string(),
+    types.number(),
+    types.boolean(),
+  ])
+);
 
 export function updateFlagFeatureFlagsRhsFromJSON(
   jsonString: string,
@@ -2170,25 +2282,25 @@ export const UpdateFlagFeatureFlagsConditions$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsConditions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cmp: UpdateFlagFeatureFlagsCmp$inboundSchema,
-  cmpOptions: types.optional(
-    z.lazy(() => UpdateFlagFeatureFlagsCmpOptions$inboundSchema),
-  ),
-  lhs: z.union([
-    z.lazy(() => UpdateFlagLhsFeatureFlags1$inboundSchema),
-    z.lazy(() => UpdateFlagLhsFeatureFlags2$inboundSchema),
-  ]),
-  rhs: types.optional(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cmp: UpdateFlagFeatureFlagsCmp$inboundSchema,
+    cmpOptions: types.optional(
+      z.lazy(() => UpdateFlagFeatureFlagsCmpOptions$inboundSchema),
+    ),
+    lhs: z.union([
+      z.lazy(() => UpdateFlagLhsFeatureFlags1$inboundSchema),
+      z.lazy(() => UpdateFlagLhsFeatureFlags2$inboundSchema),
+    ]),
+    rhs: types.optional(smartUnion([
       z.lazy(() => UpdateFlagRhs4$inboundSchema),
       z.lazy(() => UpdateFlagRhs3$inboundSchema),
       types.string(),
       types.number(),
       types.boolean(),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function updateFlagFeatureFlagsConditionsFromJSON(
   jsonString: string,
@@ -2205,9 +2317,11 @@ export const UpdateFlagOutcome4$inboundSchema: z.ZodType<
   UpdateFlagOutcome4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("experiment"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("experiment"),
+  })
+);
 
 export function updateFlagOutcome4FromJSON(
   jsonString: string,
@@ -2223,8 +2337,10 @@ export function updateFlagOutcome4FromJSON(
 export const UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType,
+    )
   );
 
 /** @internal */
@@ -2233,12 +2349,14 @@ export const UpdateFlagOutcomeFeatureFlagsResponse200Base$inboundSchema:
     UpdateFlagOutcomeFeatureFlagsResponse200Base,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    attribute: types.string(),
-    kind: types.string(),
-    type:
-      UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      attribute: types.string(),
+      kind: types.string(),
+      type:
+        UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+    })
+  );
 
 export function updateFlagOutcomeFeatureFlagsResponse200BaseFromJSON(
   jsonString: string,
@@ -2261,10 +2379,12 @@ export const UpdateFlagOutcomeFeatureFlagsSlots$inboundSchema: z.ZodType<
   UpdateFlagOutcomeFeatureFlagsSlots,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  durationMs: types.number(),
-  promille: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    durationMs: types.number(),
+    promille: types.number(),
+  })
+);
 
 export function updateFlagOutcomeFeatureFlagsSlotsFromJSON(
   jsonString: string,
@@ -2282,20 +2402,22 @@ export const UpdateFlagOutcomeFeatureFlags3$inboundSchema: z.ZodType<
   UpdateFlagOutcomeFeatureFlags3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  base: z.lazy(() =>
-    UpdateFlagOutcomeFeatureFlagsResponse200Base$inboundSchema
-  ),
-  defaultVariantId: types.string(),
-  finalPromille: types.optional(types.number()),
-  rollFromVariantId: types.string(),
-  rollToVariantId: types.string(),
-  slots: z.array(
-    z.lazy(() => UpdateFlagOutcomeFeatureFlagsSlots$inboundSchema),
-  ),
-  startTimestamp: types.number(),
-  type: types.literal("rollout"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    base: z.lazy(() =>
+      UpdateFlagOutcomeFeatureFlagsResponse200Base$inboundSchema
+    ),
+    defaultVariantId: types.string(),
+    finalPromille: types.optional(types.number()),
+    rollFromVariantId: types.string(),
+    rollToVariantId: types.string(),
+    slots: z.array(
+      z.lazy(() => UpdateFlagOutcomeFeatureFlagsSlots$inboundSchema),
+    ),
+    startTimestamp: types.number(),
+    type: types.literal("rollout"),
+  })
+);
 
 export function updateFlagOutcomeFeatureFlags3FromJSON(
   jsonString: string,
@@ -2311,19 +2433,23 @@ export function updateFlagOutcomeFeatureFlags3FromJSON(
 export const UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType$inboundSchema:
   z.ZodNativeEnum<
     typeof UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType
-  > = z.nativeEnum(UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType)
+  );
 
 /** @internal */
 export const UpdateFlagOutcomeFeatureFlagsResponseBase$inboundSchema: z.ZodType<
   UpdateFlagOutcomeFeatureFlagsResponseBase,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attribute: types.string(),
-  kind: types.string(),
-  type:
-    UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attribute: types.string(),
+    kind: types.string(),
+    type:
+      UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONType$inboundSchema,
+  })
+);
 
 export function updateFlagOutcomeFeatureFlagsResponseBaseFromJSON(
   jsonString: string,
@@ -2346,12 +2472,14 @@ export const UpdateFlagOutcomeFeatureFlags2$inboundSchema: z.ZodType<
   UpdateFlagOutcomeFeatureFlags2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsResponseBase$inboundSchema),
-  defaultVariantId: types.string(),
-  type: types.literal("split"),
-  weights: z.record(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    base: z.lazy(() => UpdateFlagOutcomeFeatureFlagsResponseBase$inboundSchema),
+    defaultVariantId: types.string(),
+    type: types.literal("split"),
+    weights: z.record(types.number()),
+  })
+);
 
 export function updateFlagOutcomeFeatureFlags2FromJSON(
   jsonString: string,
@@ -2368,10 +2496,12 @@ export const UpdateFlagOutcomeFeatureFlags1$inboundSchema: z.ZodType<
   UpdateFlagOutcomeFeatureFlags1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("variant"),
-  variantId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("variant"),
+    variantId: types.string(),
+  })
+);
 
 export function updateFlagOutcomeFeatureFlags1FromJSON(
   jsonString: string,
@@ -2388,12 +2518,14 @@ export const UpdateFlagFeatureFlagsOutcome$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsOutcome,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UpdateFlagOutcomeFeatureFlags1$inboundSchema),
-  z.lazy(() => UpdateFlagOutcomeFeatureFlags2$inboundSchema),
-  z.lazy(() => UpdateFlagOutcomeFeatureFlags3$inboundSchema),
-  z.lazy(() => UpdateFlagOutcome4$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UpdateFlagOutcomeFeatureFlags1$inboundSchema),
+    z.lazy(() => UpdateFlagOutcomeFeatureFlags2$inboundSchema),
+    z.lazy(() => UpdateFlagOutcomeFeatureFlags3$inboundSchema),
+    z.lazy(() => UpdateFlagOutcome4$inboundSchema),
+  ])
+);
 
 export function updateFlagFeatureFlagsOutcomeFromJSON(
   jsonString: string,
@@ -2410,18 +2542,20 @@ export const UpdateFlagFeatureFlagsRules$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsRules,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  conditions: z.array(
-    z.lazy(() => UpdateFlagFeatureFlagsConditions$inboundSchema),
-  ),
-  id: types.string(),
-  outcome: z.union([
-    z.lazy(() => UpdateFlagOutcomeFeatureFlags1$inboundSchema),
-    z.lazy(() => UpdateFlagOutcomeFeatureFlags2$inboundSchema),
-    z.lazy(() => UpdateFlagOutcomeFeatureFlags3$inboundSchema),
-    z.lazy(() => UpdateFlagOutcome4$inboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    conditions: z.array(
+      z.lazy(() => UpdateFlagFeatureFlagsConditions$inboundSchema),
+    ),
+    id: types.string(),
+    outcome: z.union([
+      z.lazy(() => UpdateFlagOutcomeFeatureFlags1$inboundSchema),
+      z.lazy(() => UpdateFlagOutcomeFeatureFlags2$inboundSchema),
+      z.lazy(() => UpdateFlagOutcomeFeatureFlags3$inboundSchema),
+      z.lazy(() => UpdateFlagOutcome4$inboundSchema),
+    ]),
+  })
+);
 
 export function updateFlagFeatureFlagsRulesFromJSON(
   jsonString: string,
@@ -2438,10 +2572,12 @@ export const UpdateFlagFeatureFlagsTargets$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsTargets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: types.optional(types.string()),
+    value: types.string(),
+  })
+);
 
 export function updateFlagFeatureFlagsTargetsFromJSON(
   jsonString: string,
@@ -2458,28 +2594,28 @@ export const UpdateFlagFeatureFlagsEnvironments$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  active: types.boolean(),
-  fallthrough: z.union([
-    z.lazy(() => UpdateFlagFallthroughFeatureFlags1$inboundSchema),
-    z.lazy(() => UpdateFlagFallthroughFeatureFlags2$inboundSchema),
-    z.lazy(() => UpdateFlagFallthroughFeatureFlags3$inboundSchema),
-    z.lazy(() => UpdateFlagFallthrough4$inboundSchema),
-  ]),
-  pausedOutcome: z.lazy(() =>
-    UpdateFlagFeatureFlagsPausedOutcome$inboundSchema
-  ),
-  reuse: types.optional(
-    z.lazy(() => UpdateFlagFeatureFlagsReuse$inboundSchema),
-  ),
-  revision: types.optional(types.number()),
-  rules: z.array(z.lazy(() => UpdateFlagFeatureFlagsRules$inboundSchema)),
-  targets: types.optional(
-    z.record(z.record(z.record(z.array(z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: types.boolean(),
+    fallthrough: z.union([
+      z.lazy(() => UpdateFlagFallthroughFeatureFlags1$inboundSchema),
+      z.lazy(() => UpdateFlagFallthroughFeatureFlags2$inboundSchema),
+      z.lazy(() => UpdateFlagFallthroughFeatureFlags3$inboundSchema),
+      z.lazy(() => UpdateFlagFallthrough4$inboundSchema),
+    ]),
+    pausedOutcome: z.lazy(() =>
+      UpdateFlagFeatureFlagsPausedOutcome$inboundSchema
+    ),
+    reuse: types.optional(
+      z.lazy(() => UpdateFlagFeatureFlagsReuse$inboundSchema),
+    ),
+    revision: types.optional(types.number()),
+    rules: z.array(z.lazy(() => UpdateFlagFeatureFlagsRules$inboundSchema)),
+    targets: types.optional(z.record(z.record(z.record(z.array(z.lazy(() =>
       UpdateFlagFeatureFlagsTargets$inboundSchema
-    ))))),
-  ),
-});
+    )))))),
+  })
+);
 
 export function updateFlagFeatureFlagsEnvironmentsFromJSON(
   jsonString: string,
@@ -2495,30 +2631,34 @@ export function updateFlagFeatureFlagsEnvironmentsFromJSON(
 /** @internal */
 export const UpdateFlagKind$inboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagKind
-> = z.nativeEnum(UpdateFlagKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFlagKind));
 
 /** @internal */
 export const UpdateFlagFeatureFlagsState$inboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagFeatureFlagsState
-> = z.nativeEnum(UpdateFlagFeatureFlagsState);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateFlagFeatureFlagsState)
+);
 
 /** @internal */
 export const UpdateFlagTypeName$inboundSchema: z.ZodNativeEnum<
   typeof UpdateFlagTypeName
-> = z.nativeEnum(UpdateFlagTypeName);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateFlagTypeName));
 
 /** @internal */
 export const UpdateFlagValue$inboundSchema: z.ZodType<
   UpdateFlagValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  types.string(),
-  types.number(),
-  z.record(z.any()),
-  z.array(z.any()),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    types.string(),
+    types.number(),
+    z.record(z.any()),
+    z.array(z.any()),
+    types.boolean(),
+  ])
+);
 
 export function updateFlagValueFromJSON(
   jsonString: string,
@@ -2535,20 +2675,22 @@ export const UpdateFlagFeatureFlagsVariants$inboundSchema: z.ZodType<
   UpdateFlagFeatureFlagsVariants,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  id: types.string(),
-  label: types.optional(types.string()),
-  value: types.nullable(
-    smartUnion([
-      types.string(),
-      types.number(),
-      z.record(z.any()),
-      z.array(z.any()),
-      types.boolean(),
-    ]),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.optional(types.string()),
+    id: types.string(),
+    label: types.optional(types.string()),
+    value: types.nullable(
+      smartUnion([
+        types.string(),
+        types.number(),
+        z.record(z.any()),
+        z.array(z.any()),
+        types.boolean(),
+      ]),
+    ),
+  })
+);
 
 export function updateFlagFeatureFlagsVariantsFromJSON(
   jsonString: string,
@@ -2565,30 +2707,34 @@ export const UpdateFlagResponseBody$inboundSchema: z.ZodType<
   UpdateFlagResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.string(),
-  description: types.optional(types.string()),
-  environments: z.record(
-    z.lazy(() => UpdateFlagFeatureFlagsEnvironments$inboundSchema),
-  ),
-  id: types.string(),
-  kind: UpdateFlagKind$inboundSchema,
-  maintainerIds: types.optional(z.array(types.string())),
-  ownerId: types.string(),
-  permanent: types.optional(types.boolean()),
-  projectId: types.string(),
-  revision: types.number(),
-  seed: types.number(),
-  seenInProduction: types.optional(types.boolean()),
-  slug: types.string(),
-  state: UpdateFlagFeatureFlagsState$inboundSchema,
-  tags: types.optional(z.array(types.string())),
-  typeName: UpdateFlagTypeName$inboundSchema,
-  updatedAt: types.number(),
-  updatedBy: types.optional(types.string()),
-  variants: z.array(z.lazy(() => UpdateFlagFeatureFlagsVariants$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.string(),
+    description: types.optional(types.string()),
+    environments: z.record(
+      z.lazy(() => UpdateFlagFeatureFlagsEnvironments$inboundSchema),
+    ),
+    id: types.string(),
+    kind: UpdateFlagKind$inboundSchema,
+    maintainerIds: types.optional(z.array(types.string())),
+    ownerId: types.string(),
+    permanent: types.optional(types.boolean()),
+    projectId: types.string(),
+    revision: types.number(),
+    seed: types.number(),
+    seenInProduction: types.optional(types.boolean()),
+    slug: types.string(),
+    state: UpdateFlagFeatureFlagsState$inboundSchema,
+    tags: types.optional(z.array(types.string())),
+    typeName: UpdateFlagTypeName$inboundSchema,
+    updatedAt: types.number(),
+    updatedBy: types.optional(types.string()),
+    variants: z.array(
+      z.lazy(() => UpdateFlagFeatureFlagsVariants$inboundSchema),
+    ),
+  })
+);
 
 export function updateFlagResponseBodyFromJSON(
   jsonString: string,

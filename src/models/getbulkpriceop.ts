@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -83,10 +83,12 @@ export const GetBulkPriceRequestBody$outboundSchema: z.ZodType<
   GetBulkPriceRequestBody$Outbound,
   z.ZodTypeDef,
   GetBulkPriceRequestBody
-> = z.object({
-  domains: z.array(z.string()),
-  years: z.number().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domains: z.array(z.string()),
+    years: z.number().optional(),
+  })
+);
 
 export function getBulkPriceRequestBodyToJSON(
   getBulkPriceRequestBody: GetBulkPriceRequestBody,
@@ -107,14 +109,16 @@ export const GetBulkPriceRequest$outboundSchema: z.ZodType<
   GetBulkPriceRequest$Outbound,
   z.ZodTypeDef,
   GetBulkPriceRequest
-> = z.object({
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => GetBulkPriceRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() => GetBulkPriceRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function getBulkPriceRequestToJSON(
   getBulkPriceRequest: GetBulkPriceRequest,
@@ -129,12 +133,14 @@ export const GetBulkPriceDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   GetBulkPriceDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  BadRequest$inboundSchema,
-  DomainTooShort$inboundSchema,
-  TldNotSupported$inboundSchema,
-  HttpApiDecodeError$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    BadRequest$inboundSchema,
+    DomainTooShort$inboundSchema,
+    TldNotSupported$inboundSchema,
+    HttpApiDecodeError$inboundSchema,
+  ])
+);
 
 export function getBulkPriceDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -157,7 +163,9 @@ export const GetBulkPricePurchasePrice$inboundSchema: z.ZodType<
   GetBulkPricePurchasePrice,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.string()])
+);
 
 export function getBulkPricePurchasePriceFromJSON(
   jsonString: string,
@@ -174,7 +182,9 @@ export const GetBulkPriceRenewalPrice$inboundSchema: z.ZodType<
   GetBulkPriceRenewalPrice,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.string()])
+);
 
 export function getBulkPriceRenewalPriceFromJSON(
   jsonString: string,
@@ -191,7 +201,9 @@ export const GetBulkPriceTransferPrice$inboundSchema: z.ZodType<
   GetBulkPriceTransferPrice,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.string()])
+);
 
 export function getBulkPriceTransferPriceFromJSON(
   jsonString: string,
@@ -208,13 +220,15 @@ export const GetBulkPriceResults$inboundSchema: z.ZodType<
   GetBulkPriceResults,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  years: types.number(),
-  purchasePrice: smartUnion([types.number(), types.string()]),
-  renewalPrice: smartUnion([types.number(), types.string()]),
-  transferPrice: smartUnion([types.number(), types.string()]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    years: types.number(),
+    purchasePrice: smartUnion([types.number(), types.string()]),
+    renewalPrice: smartUnion([types.number(), types.string()]),
+    transferPrice: smartUnion([types.number(), types.string()]),
+  })
+);
 
 export function getBulkPriceResultsFromJSON(
   jsonString: string,
@@ -231,9 +245,11 @@ export const GetBulkPriceResponseBody$inboundSchema: z.ZodType<
   GetBulkPriceResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  results: z.array(z.lazy(() => GetBulkPriceResults$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    results: z.array(z.lazy(() => GetBulkPriceResults$inboundSchema)),
+  })
+);
 
 export function getBulkPriceResponseBodyFromJSON(
   jsonString: string,

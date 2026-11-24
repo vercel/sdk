@@ -8,18 +8,20 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentyEight } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyEight = {
-  protectedProjectCount: 7319.99,
-  protectionEnabled: false,
-  vulnerabilities: [
-    "<value 1>",
-  ],
+  alertType: "<value>",
+  groupId: "<id>",
+  projectId: "<id>",
+  destinations: {},
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `protectedProjectCount` | *number*                | :heavy_check_mark:      | N/A                     |
-| `protectionEnabled`     | *boolean*               | :heavy_check_mark:      | N/A                     |
-| `vulnerabilities`       | *string*[]              | :heavy_check_mark:      | N/A                     |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `alertType`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `groupId`                                                      | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `severity`                                                     | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `destinations`                                                 | [models.PayloadDestinations](../models/payloaddestinations.md) | :heavy_check_mark:                                             | N/A                                                            |
+| `title`                                                        | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |

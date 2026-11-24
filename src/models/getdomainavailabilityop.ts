@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -31,10 +31,12 @@ export const GetDomainAvailabilityRequest$outboundSchema: z.ZodType<
   GetDomainAvailabilityRequest$Outbound,
   z.ZodTypeDef,
   GetDomainAvailabilityRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+  })
+);
 
 export function getDomainAvailabilityRequestToJSON(
   getDomainAvailabilityRequest: GetDomainAvailabilityRequest,
@@ -51,9 +53,11 @@ export const GetDomainAvailabilityResponseBody$inboundSchema: z.ZodType<
   GetDomainAvailabilityResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  available: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    available: types.boolean(),
+  })
+);
 
 export function getDomainAvailabilityResponseBodyFromJSON(
   jsonString: string,

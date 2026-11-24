@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -217,13 +217,15 @@ export const Domains$outboundSchema: z.ZodType<
   Domains$Outbound,
   z.ZodTypeDef,
   Domains
-> = z.object({
-  domainName: z.string(),
-  autoRenew: z.boolean(),
-  years: z.number(),
-  expectedPrice: z.number(),
-  languageCode: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domainName: z.string(),
+    autoRenew: z.boolean(),
+    years: z.number(),
+    expectedPrice: z.number(),
+    languageCode: z.string().optional(),
+  })
+);
 
 export function domainsToJSON(domains: Domains): string {
   return JSON.stringify(Domains$outboundSchema.parse(domains));
@@ -237,7 +239,7 @@ export const BuyDomainsAdditional$outboundSchema: z.ZodType<
   BuyDomainsAdditional$Outbound,
   z.ZodTypeDef,
   BuyDomainsAdditional
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function buyDomainsAdditionalToJSON(
   buyDomainsAdditional: BuyDomainsAdditional,
@@ -269,21 +271,23 @@ export const BuyDomainsContactInformation$outboundSchema: z.ZodType<
   BuyDomainsContactInformation$Outbound,
   z.ZodTypeDef,
   BuyDomainsContactInformation
-> = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string(),
-  phone: z.string(),
-  address1: z.string(),
-  address2: z.string().optional(),
-  city: z.string(),
-  state: z.string(),
-  zip: z.string(),
-  country: z.string(),
-  companyName: z.string().optional(),
-  fax: z.string().optional(),
-  additional: z.lazy(() => BuyDomainsAdditional$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    firstName: z.string(),
+    lastName: z.string(),
+    email: z.string(),
+    phone: z.string(),
+    address1: z.string(),
+    address2: z.string().optional(),
+    city: z.string(),
+    state: z.string(),
+    zip: z.string(),
+    country: z.string(),
+    companyName: z.string().optional(),
+    fax: z.string().optional(),
+    additional: z.lazy(() => BuyDomainsAdditional$outboundSchema).optional(),
+  })
+);
 
 export function buyDomainsContactInformationToJSON(
   buyDomainsContactInformation: BuyDomainsContactInformation,
@@ -306,10 +310,14 @@ export const BuyDomainsRequestBody$outboundSchema: z.ZodType<
   BuyDomainsRequestBody$Outbound,
   z.ZodTypeDef,
   BuyDomainsRequestBody
-> = z.object({
-  domains: z.array(z.lazy(() => Domains$outboundSchema)),
-  contactInformation: z.lazy(() => BuyDomainsContactInformation$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domains: z.array(z.lazy(() => Domains$outboundSchema)),
+    contactInformation: z.lazy(() =>
+      BuyDomainsContactInformation$outboundSchema
+    ),
+  })
+);
 
 export function buyDomainsRequestBodyToJSON(
   buyDomainsRequestBody: BuyDomainsRequestBody,
@@ -330,14 +338,16 @@ export const BuyDomainsRequest$outboundSchema: z.ZodType<
   BuyDomainsRequest$Outbound,
   z.ZodTypeDef,
   BuyDomainsRequest
-> = z.object({
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => BuyDomainsRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() => BuyDomainsRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function buyDomainsRequestToJSON(
   buyDomainsRequest: BuyDomainsRequest,
@@ -353,12 +363,14 @@ export const BuyDomainsDomainsRegistrarResponseResponseBody$inboundSchema:
     BuyDomainsDomainsRegistrarResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Forbidden$inboundSchema,
-    NotAuthorizedForScope$inboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      Forbidden$inboundSchema,
+      NotAuthorizedForScope$inboundSchema.and(
+        z.object({ code: z.literal("not_authorized_for_scope") }),
+      ),
+    ])
+  );
 
 export function buyDomainsDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
@@ -381,20 +393,22 @@ export const BuyDomainsDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   BuyDomainsDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  DomainTooShort$inboundSchema,
-  OrderTooExpensive$inboundSchema,
-  TooManyDomains$inboundSchema,
-  InvalidAdditionalContactInfo$inboundSchema,
-  AdditionalContactInfoRequired$inboundSchema,
-  DuplicateDomains$inboundSchema,
-  ExpectedPriceMismatch$inboundSchema,
-  DomainNotAvailable$inboundSchema,
-  EmojiTldNotSupported$inboundSchema,
-  LanguageCodeRequired$inboundSchema,
-  TldNotSupported$inboundSchema,
-  HttpApiDecodeError$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    DomainTooShort$inboundSchema,
+    OrderTooExpensive$inboundSchema,
+    TooManyDomains$inboundSchema,
+    InvalidAdditionalContactInfo$inboundSchema,
+    AdditionalContactInfoRequired$inboundSchema,
+    DuplicateDomains$inboundSchema,
+    ExpectedPriceMismatch$inboundSchema,
+    DomainNotAvailable$inboundSchema,
+    EmojiTldNotSupported$inboundSchema,
+    LanguageCodeRequired$inboundSchema,
+    TldNotSupported$inboundSchema,
+    HttpApiDecodeError$inboundSchema,
+  ])
+);
 
 export function buyDomainsDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -410,17 +424,19 @@ export function buyDomainsDomainsRegistrarResponseBodyFromJSON(
 /** @internal */
 export const BuyDomainsMethod$inboundSchema: z.ZodNativeEnum<
   typeof BuyDomainsMethod
-> = z.nativeEnum(BuyDomainsMethod);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(BuyDomainsMethod));
 
 /** @internal */
 export const BuyDomainsLinks$inboundSchema: z.ZodType<
   BuyDomainsLinks,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  href: types.string(),
-  method: BuyDomainsMethod$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    href: types.string(),
+    method: BuyDomainsMethod$inboundSchema,
+  })
+);
 
 export function buyDomainsLinksFromJSON(
   jsonString: string,
@@ -437,14 +453,16 @@ export const BuyDomainsResponseBody$inboundSchema: z.ZodType<
   BuyDomainsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  orderId: types.string(),
-  _links: z.record(z.lazy(() => BuyDomainsLinks$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "_links": "links",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    orderId: types.string(),
+    _links: z.record(z.lazy(() => BuyDomainsLinks$inboundSchema)),
+  }).transform((v) => {
+    return remap$(v, {
+      "_links": "links",
+    });
+  })
+);
 
 export function buyDomainsResponseBodyFromJSON(
   jsonString: string,

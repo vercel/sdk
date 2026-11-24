@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -160,6 +160,10 @@ export type NamedSandbox = {
    */
   expiresAt?: number | undefined;
   /**
+   * How long before a session expires, in milliseconds, the `sandbox.session.expiring` webhook is sent. It affects only that webhook. When a deadline is closer than the lead time, the webhook is sent right away: at the start of a session whose timeout is shorter, and after each extension that leaves the deadline within the lead time.
+   */
+  expiryNotificationLeadTime: number;
+  /**
    * The regions the sandbox fails over to. Empty when it does not fail over.
    */
   failoverRegions?: Array<FailoverRegions> | undefined;
@@ -255,23 +259,25 @@ export type NamedSandbox = {
 
 /** @internal */
 export const Architecture$inboundSchema: z.ZodNativeEnum<typeof Architecture> =
-  z.nativeEnum(Architecture);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Architecture));
 
 /** @internal */
 export const FailoverRegions$inboundSchema: z.ZodNativeEnum<
   typeof FailoverRegions
-> = z.nativeEnum(FailoverRegions);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FailoverRegions));
 
 /** @internal */
 export const KeepLastSnapshots$inboundSchema: z.ZodType<
   KeepLastSnapshots,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  deleteEvicted: types.boolean(),
-  expiration: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    deleteEvicted: types.boolean(),
+    expiration: types.optional(types.number()),
+  })
+);
 
 export function keepLastSnapshotsFromJSON(
   jsonString: string,
@@ -286,15 +292,17 @@ export function keepLastSnapshotsFromJSON(
 /** @internal */
 export const NamedSandboxMountsMode$inboundSchema: z.ZodNativeEnum<
   typeof NamedSandboxMountsMode
-> = z.nativeEnum(NamedSandboxMountsMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NamedSandboxMountsMode));
 
 /** @internal */
-export const Mounts$inboundSchema: z.ZodType<Mounts, z.ZodTypeDef, unknown> = z
-  .object({
-    drive: types.string(),
-    mode: types.optional(NamedSandboxMountsMode$inboundSchema),
-    snapshot: types.optional(types.string()),
-  });
+export const Mounts$inboundSchema: z.ZodType<Mounts, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      drive: types.string(),
+      mode: types.optional(NamedSandboxMountsMode$inboundSchema),
+      snapshot: types.optional(types.string()),
+    })
+  );
 
 export function mountsFromJSON(
   jsonString: string,
@@ -309,20 +317,22 @@ export function mountsFromJSON(
 /** @internal */
 export const NamedSandboxMode$inboundSchema: z.ZodNativeEnum<
   typeof NamedSandboxMode
-> = z.nativeEnum(NamedSandboxMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NamedSandboxMode));
 
 /** @internal */
 export const NetworkPolicy$inboundSchema: z.ZodType<
   NetworkPolicy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedCIDRs: types.optional(z.array(types.string())),
-  allowedDomains: types.optional(z.array(types.string())),
-  deniedCIDRs: types.optional(z.array(types.string())),
-  mode: NamedSandboxMode$inboundSchema,
-  s3Key: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedCIDRs: types.optional(z.array(types.string())),
+    allowedDomains: types.optional(z.array(types.string())),
+    deniedCIDRs: types.optional(z.array(types.string())),
+    mode: NamedSandboxMode$inboundSchema,
+    s3Key: types.optional(types.string()),
+  })
+);
 
 export function networkPolicyFromJSON(
   jsonString: string,
@@ -337,51 +347,54 @@ export function networkPolicyFromJSON(
 /** @internal */
 export const NamedSandboxStatus$inboundSchema: z.ZodNativeEnum<
   typeof NamedSandboxStatus
-> = z.nativeEnum(NamedSandboxStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NamedSandboxStatus));
 
 /** @internal */
 export const NamedSandboxWorkloadType$inboundSchema: z.ZodNativeEnum<
   typeof NamedSandboxWorkloadType
-> = z.nativeEnum(NamedSandboxWorkloadType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NamedSandboxWorkloadType));
 
 /** @internal */
 export const NamedSandbox$inboundSchema: z.ZodType<
   NamedSandbox,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  architecture: types.optional(Architecture$inboundSchema),
-  createdAt: types.number(),
-  currentSessionId: types.string(),
-  currentSnapshotId: types.optional(types.string()),
-  cwd: types.optional(types.string()),
-  expiresAt: types.optional(types.number()),
-  failoverRegions: types.optional(z.array(FailoverRegions$inboundSchema)),
-  image: types.optional(types.string()),
-  keepLastSnapshots: types.optional(
-    z.lazy(() => KeepLastSnapshots$inboundSchema),
-  ),
-  memory: types.optional(types.number()),
-  mounts: types.optional(z.record(z.lazy(() => Mounts$inboundSchema))),
-  name: types.string(),
-  networkId: types.optional(types.string()),
-  networkPolicy: types.optional(z.lazy(() => NetworkPolicy$inboundSchema)),
-  persistent: types.boolean(),
-  region: types.optional(types.string()),
-  runtime: types.optional(types.string()),
-  snapshotExpiration: types.optional(types.number()),
-  status: NamedSandboxStatus$inboundSchema,
-  statusUpdatedAt: types.number(),
-  tags: types.optional(z.record(types.string())),
-  timeout: types.optional(types.number()),
-  totalActiveCpuDurationMs: types.optional(types.number()),
-  totalDurationMs: types.optional(types.number()),
-  totalEgressBytes: types.optional(types.number()),
-  totalIngressBytes: types.optional(types.number()),
-  updatedAt: types.number(),
-  vcpus: types.optional(types.number()),
-  workloadType: types.optional(NamedSandboxWorkloadType$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    architecture: types.optional(Architecture$inboundSchema),
+    createdAt: types.number(),
+    currentSessionId: types.string(),
+    currentSnapshotId: types.optional(types.string()),
+    cwd: types.optional(types.string()),
+    expiresAt: types.optional(types.number()),
+    expiryNotificationLeadTime: types.number(),
+    failoverRegions: types.optional(z.array(FailoverRegions$inboundSchema)),
+    image: types.optional(types.string()),
+    keepLastSnapshots: types.optional(
+      z.lazy(() => KeepLastSnapshots$inboundSchema),
+    ),
+    memory: types.optional(types.number()),
+    mounts: types.optional(z.record(z.lazy(() => Mounts$inboundSchema))),
+    name: types.string(),
+    networkId: types.optional(types.string()),
+    networkPolicy: types.optional(z.lazy(() => NetworkPolicy$inboundSchema)),
+    persistent: types.boolean(),
+    region: types.optional(types.string()),
+    runtime: types.optional(types.string()),
+    snapshotExpiration: types.optional(types.number()),
+    status: NamedSandboxStatus$inboundSchema,
+    statusUpdatedAt: types.number(),
+    tags: types.optional(z.record(types.string())),
+    timeout: types.optional(types.number()),
+    totalActiveCpuDurationMs: types.optional(types.number()),
+    totalDurationMs: types.optional(types.number()),
+    totalEgressBytes: types.optional(types.number()),
+    totalIngressBytes: types.optional(types.number()),
+    updatedAt: types.number(),
+    vcpus: types.optional(types.number()),
+    workloadType: types.optional(NamedSandboxWorkloadType$inboundSchema),
+  })
+);
 
 export function namedSandboxFromJSON(
   jsonString: string,

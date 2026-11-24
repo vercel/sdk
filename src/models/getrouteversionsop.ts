@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -74,11 +74,13 @@ export const GetRouteVersionsRequest$outboundSchema: z.ZodType<
   GetRouteVersionsRequest$Outbound,
   z.ZodTypeDef,
   GetRouteVersionsRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getRouteVersionsRequestToJSON(
   getRouteVersionsRequest: GetRouteVersionsRequest,
@@ -93,16 +95,18 @@ export const GetRouteVersionsVersions$inboundSchema: z.ZodType<
   GetRouteVersionsVersions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  lastModified: types.number(),
-  ruleCount: types.optional(types.number()),
-  s3Key: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    lastModified: types.number(),
+    ruleCount: types.optional(types.number()),
+    s3Key: types.string(),
+  })
+);
 
 export function getRouteVersionsVersionsFromJSON(
   jsonString: string,
@@ -119,9 +123,11 @@ export const GetRouteVersionsResponseBody$inboundSchema: z.ZodType<
   GetRouteVersionsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  versions: z.array(z.lazy(() => GetRouteVersionsVersions$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    versions: z.array(z.lazy(() => GetRouteVersionsVersions$inboundSchema)),
+  })
+);
 
 export function getRouteVersionsResponseBodyFromJSON(
   jsonString: string,

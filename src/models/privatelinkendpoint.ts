@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -89,28 +89,30 @@ export type PrivateLinkEndpoint = {
 /** @internal */
 export const PrivateLinkEndpointStatus$inboundSchema: z.ZodNativeEnum<
   typeof PrivateLinkEndpointStatus
-> = z.nativeEnum(PrivateLinkEndpointStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PrivateLinkEndpointStatus));
 
 /** @internal */
 export const PrivateLinkEndpoint$inboundSchema: z.ZodType<
   PrivateLinkEndpoint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  awsDnsEntries: types.optional(z.array(types.string())),
-  awsServiceName: types.string(),
-  createdAt: types.number(),
-  endpointId: types.string(),
-  name: types.string(),
-  privateDnsNames: types.optional(z.array(types.string())),
-  projectId: types.string(),
-  status: PrivateLinkEndpointStatus$inboundSchema,
-  statusMessage: types.optional(types.string()),
-  teamId: types.string(),
-  updatedAt: types.number(),
-  vercelRegion: types.string(),
-  vpcEndpointId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    awsDnsEntries: types.optional(z.array(types.string())),
+    awsServiceName: types.string(),
+    createdAt: types.number(),
+    endpointId: types.string(),
+    name: types.string(),
+    privateDnsNames: types.optional(z.array(types.string())),
+    projectId: types.string(),
+    status: PrivateLinkEndpointStatus$inboundSchema,
+    statusMessage: types.optional(types.string()),
+    teamId: types.string(),
+    updatedAt: types.number(),
+    vercelRegion: types.string(),
+    vpcEndpointId: types.optional(types.string()),
+  })
+);
 
 export function privateLinkEndpointFromJSON(
   jsonString: string,

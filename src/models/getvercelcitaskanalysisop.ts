@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -188,11 +188,13 @@ export const GetVercelCiTaskAnalysisRequest$outboundSchema: z.ZodType<
   GetVercelCiTaskAnalysisRequest$Outbound,
   z.ZodTypeDef,
   GetVercelCiTaskAnalysisRequest
-> = z.object({
-  analysisId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    analysisId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getVercelCiTaskAnalysisRequestToJSON(
   getVercelCiTaskAnalysisRequest: GetVercelCiTaskAnalysisRequest,
@@ -210,10 +212,12 @@ export const GetVercelCiTaskAnalysisVercelCiResponse500Error$inboundSchema:
     GetVercelCiTaskAnalysisVercelCiResponse500Error,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    message: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      message: types.string(),
+    })
+  );
 
 export function getVercelCiTaskAnalysisVercelCiResponse500ErrorFromJSON(
   jsonString: string,
@@ -237,21 +241,23 @@ export const GetVercelCiTaskAnalysisVercelCiResponse500ResponseBody$inboundSchem
     GetVercelCiTaskAnalysisVercelCiResponse500ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      GetVercelCiTaskAnalysisVercelCiResponse500Error$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new GetVercelCiTaskAnalysisVercelCiResponse500ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        GetVercelCiTaskAnalysisVercelCiResponse500Error$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new GetVercelCiTaskAnalysisVercelCiResponse500ResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const GetVercelCiTaskAnalysisVercelCiResponseError$inboundSchema:
@@ -259,12 +265,14 @@ export const GetVercelCiTaskAnalysisVercelCiResponseError$inboundSchema:
     GetVercelCiTaskAnalysisVercelCiResponseError,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    name: types.string(),
-    message: types.string(),
-    limit: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      name: types.string(),
+      message: types.string(),
+      limit: types.number(),
+    })
+  );
 
 export function getVercelCiTaskAnalysisVercelCiResponseErrorFromJSON(
   jsonString: string,
@@ -288,31 +296,35 @@ export const GetVercelCiTaskAnalysisVercelCiResponse429ResponseBody$inboundSchem
     GetVercelCiTaskAnalysisVercelCiResponse429ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      GetVercelCiTaskAnalysisVercelCiResponseError$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new GetVercelCiTaskAnalysisVercelCiResponse429ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        GetVercelCiTaskAnalysisVercelCiResponseError$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new GetVercelCiTaskAnalysisVercelCiResponse429ResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const GetVercelCiTaskAnalysisVercelCiError$inboundSchema: z.ZodType<
   GetVercelCiTaskAnalysisVercelCiError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function getVercelCiTaskAnalysisVercelCiErrorFromJSON(
   jsonString: string,
@@ -331,29 +343,33 @@ export const GetVercelCiTaskAnalysisVercelCiResponseResponseBody$inboundSchema:
     GetVercelCiTaskAnalysisVercelCiResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() => GetVercelCiTaskAnalysisVercelCiError$inboundSchema),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new GetVercelCiTaskAnalysisVercelCiResponseResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() => GetVercelCiTaskAnalysisVercelCiError$inboundSchema),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new GetVercelCiTaskAnalysisVercelCiResponseResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const GetVercelCiTaskAnalysisError$inboundSchema: z.ZodType<
   GetVercelCiTaskAnalysisError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function getVercelCiTaskAnalysisErrorFromJSON(
   jsonString: string,
@@ -371,35 +387,41 @@ export const GetVercelCiTaskAnalysisVercelCiResponseBody$inboundSchema:
     GetVercelCiTaskAnalysisVercelCiResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() => GetVercelCiTaskAnalysisError$inboundSchema),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new GetVercelCiTaskAnalysisVercelCiResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() => GetVercelCiTaskAnalysisError$inboundSchema),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new GetVercelCiTaskAnalysisVercelCiResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const GetVercelCiTaskAnalysisStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetVercelCiTaskAnalysisStatus
-> = z.nativeEnum(GetVercelCiTaskAnalysisStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetVercelCiTaskAnalysisStatus)
+);
 
 /** @internal */
 export const GetVercelCiTaskAnalysisResponseBody$inboundSchema: z.ZodType<
   GetVercelCiTaskAnalysisResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  analysisId: types.string(),
-  status: GetVercelCiTaskAnalysisStatus$inboundSchema,
-  failureReason: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    analysisId: types.string(),
+    status: GetVercelCiTaskAnalysisStatus$inboundSchema,
+    failureReason: types.optional(types.string()),
+  })
+);
 
 export function getVercelCiTaskAnalysisResponseBodyFromJSON(
   jsonString: string,

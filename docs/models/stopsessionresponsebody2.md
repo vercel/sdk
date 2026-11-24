@@ -11,6 +11,7 @@ let value: StopSessionResponseBody2 = {
     currentSessionId: "<id>",
     cwd: "/vercel/sandbox",
     expiresAt: 1750344801629,
+    expiryNotificationLeadTime: 60000,
     failoverRegions: [
       "sfo1",
       "cle1",
@@ -111,6 +112,7 @@ let value: StopSessionResponseBody2 = {
     startedAt: 1750344501629,
     status: "running",
     stoppedAt: 1750344501629,
+    stopReason: "requested",
     timeout: 3600000,
     updatedAt: 1750344501629,
     vcpus: 2,

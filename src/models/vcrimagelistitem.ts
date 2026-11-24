@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -90,31 +90,33 @@ export type VcrImageListItem = {
 /** @internal */
 export const VcrImageListItemKind$inboundSchema: z.ZodNativeEnum<
   typeof VcrImageListItemKind
-> = z.nativeEnum(VcrImageListItemKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VcrImageListItemKind));
 
 /** @internal */
 export const VcrImageListItemStatus$inboundSchema: z.ZodNativeEnum<
   typeof VcrImageListItemStatus
-> = z.nativeEnum(VcrImageListItemStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(VcrImageListItemStatus));
 
 /** @internal */
 export const VcrImageListItem$inboundSchema: z.ZodType<
   VcrImageListItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  arch: types.optional(types.string()),
-  createdAt: types.string(),
-  id: types.string(),
-  kind: VcrImageListItemKind$inboundSchema,
-  manifestDigest: types.string(),
-  platform: types.optional(types.string()),
-  pushedBy: types.optional(types.string()),
-  repositoryId: types.string(),
-  sizeInBytes: types.number(),
-  status: types.nullable(VcrImageListItemStatus$inboundSchema),
-  tags: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    arch: types.optional(types.string()),
+    createdAt: types.string(),
+    id: types.string(),
+    kind: VcrImageListItemKind$inboundSchema,
+    manifestDigest: types.string(),
+    platform: types.optional(types.string()),
+    pushedBy: types.optional(types.string()),
+    repositoryId: types.string(),
+    sizeInBytes: types.number(),
+    status: types.nullable(VcrImageListItemStatus$inboundSchema),
+    tags: z.array(types.string()),
+  })
+);
 
 export function vcrImageListItemFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { Pagination, Pagination$inboundSchema } from "./pagination.js";
@@ -66,11 +66,13 @@ export const GetTeamsRequest$outboundSchema: z.ZodType<
   GetTeamsRequest$Outbound,
   z.ZodTypeDef,
   GetTeamsRequest
-> = z.object({
-  limit: z.number().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    limit: z.number().optional(),
+    since: z.number().optional(),
+    until: z.number().optional(),
+  })
+);
 
 export function getTeamsRequestToJSON(
   getTeamsRequest: GetTeamsRequest,
@@ -83,7 +85,9 @@ export const ResponseBodyTeams$inboundSchema: z.ZodType<
   ResponseBodyTeams,
   z.ZodTypeDef,
   unknown
-> = smartUnion([Team$inboundSchema, TeamLimited$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([Team$inboundSchema, TeamLimited$inboundSchema])
+);
 
 export function responseBodyTeamsFromJSON(
   jsonString: string,
@@ -100,10 +104,12 @@ export const GetTeamsResponseBody2$inboundSchema: z.ZodType<
   GetTeamsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: Pagination$inboundSchema,
-  teams: z.array(smartUnion([Team$inboundSchema, TeamLimited$inboundSchema])),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: Pagination$inboundSchema,
+    teams: z.array(smartUnion([Team$inboundSchema, TeamLimited$inboundSchema])),
+  })
+);
 
 export function getTeamsResponseBody2FromJSON(
   jsonString: string,
@@ -120,10 +126,12 @@ export const GetTeamsResponseBody1$inboundSchema: z.ZodType<
   GetTeamsResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: Pagination$inboundSchema,
-  teams: z.array(Team$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: Pagination$inboundSchema,
+    teams: z.array(Team$inboundSchema),
+  })
+);
 
 export function getTeamsResponseBody1FromJSON(
   jsonString: string,
@@ -140,10 +148,12 @@ export const GetTeamsResponseBody$inboundSchema: z.ZodType<
   GetTeamsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetTeamsResponseBody1$inboundSchema),
-  z.lazy(() => GetTeamsResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetTeamsResponseBody1$inboundSchema),
+    z.lazy(() => GetTeamsResponseBody2$inboundSchema),
+  ])
+);
 
 export function getTeamsResponseBodyFromJSON(
   jsonString: string,

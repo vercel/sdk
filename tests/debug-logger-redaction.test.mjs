@@ -70,6 +70,42 @@ test("redacts the API token and webhook secret from debug logs", async () => {
   assert.doesNotMatch(output, new RegExp(WEBHOOK_SECRET));
 });
 
+test("redacts non-string values under secret-like keys", async () => {
+  const { lines, logger } = captureLogger();
+  const vercel = new Vercel({
+    bearerToken: API_TOKEN,
+    httpClient: new HTTPClient({
+      fetcher: async () =>
+        new Response(
+          JSON.stringify({
+            secret: 9876543210,
+            token: ["token_value_1", "token_value_2"],
+            clientSecret: { value: "nested_secret_value_1" },
+            url: "https://example.com/webhook",
+          }),
+          { status: 200, headers: { "content-type": "application/json" } },
+        ),
+    }),
+    debugLogger: logger,
+  });
+
+  await vercel.webhooks
+    .createWebhook({
+      teamId: "team_1234567890",
+      requestBody: {
+        url: "https://example.com/webhook",
+        events: ["deployment.created"],
+      },
+    })
+    .catch(() => {});
+
+  const output = lines.join("\n");
+  assert.match(output, /https:\/\/example\.com\/webhook/);
+  assert.doesNotMatch(output, /9876543210/);
+  assert.doesNotMatch(output, /token_value_/);
+  assert.doesNotMatch(output, /nested_secret_value_1/);
+});
+
 test("preserves the debug logger redaction across generations", async () => {
   const patch = await readFile(
     ".speakeasy/patches/src/lib/sdks.ts.patch",

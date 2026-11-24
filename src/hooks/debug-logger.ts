@@ -57,7 +57,7 @@ function redactValue(value: unknown): unknown {
   }
   const redacted: Record<string, unknown> = {};
   for (const [key, entry] of Object.entries(value)) {
-    redacted[key] = typeof entry === "string" && isSensitiveKey(key)
+    redacted[key] = entry != null && isSensitiveKey(key)
       ? REDACTED
       : redactValue(entry);
   }

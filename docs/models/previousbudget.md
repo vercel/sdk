@@ -5,7 +5,7 @@ Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in 
 ## Example Usage
 
 ```typescript
-import { PreviousBudget } from "@vercel/sdk/models/twenty.js";
+import { PreviousBudget } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: PreviousBudget = {
   limitAmount: 8723.59,
@@ -18,5 +18,6 @@ let value: PreviousBudget = {
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `alertThresholds`                                                                      | *number*[]                                                                             | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `expiresAt`                                                                            | *number*                                                                               | :heavy_minus_sign:                                                                     | When the budget lapses to the scope's default, in ms since the epoch.                  |
 | `limitAmount`                                                                          | *number*                                                                               | :heavy_check_mark:                                                                     | Spend cap, in dollars.                                                                 |
 | `refreshPeriod`                                                                        | [models.UserEventPayload34RefreshPeriod](../models/usereventpayload34refreshperiod.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |

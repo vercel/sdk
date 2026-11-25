@@ -3,15 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload323Next } from "@vercel/sdk/models/usereventpayload317type.js";
+import { UserEventPayload323Next } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
-let value: UserEventPayload323Next = {
-  functionDefaultMemoryType: "<value>",
-};
+let value: UserEventPayload323Next = {};
 ```
 
 ## Fields
 
-| Field                       | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `functionDefaultMemoryType` | *string*                    | :heavy_check_mark:          | N/A                         |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `branchMatcher`                                    | [models.BranchMatcher](../models/branchmatcher.md) | :heavy_minus_sign:                                 | N/A                                                |

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { PropertyKey, PropertyKey$inboundSchema } from "./propertykey.js";
@@ -24,11 +24,13 @@ export type Issue = {
 };
 
 /** @internal */
-export const Issue$inboundSchema: z.ZodType<Issue, z.ZodTypeDef, unknown> = z
-  .object({
-    path: z.array(PropertyKey$inboundSchema),
-    message: types.string(),
-  });
+export const Issue$inboundSchema: z.ZodType<Issue, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      path: z.array(PropertyKey$inboundSchema),
+      message: types.string(),
+    })
+  );
 
 export function issueFromJSON(
   jsonString: string,

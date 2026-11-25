@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -96,7 +96,7 @@ export type GetBillingPlansResponseBody = {
 /** @internal */
 export const QueryParamSource$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSource
-> = z.nativeEnum(QueryParamSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamSource));
 
 /** @internal */
 export type GetBillingPlansRequest$Outbound = {
@@ -114,15 +114,17 @@ export const GetBillingPlansRequest$outboundSchema: z.ZodType<
   GetBillingPlansRequest$Outbound,
   z.ZodTypeDef,
   GetBillingPlansRequest
-> = z.object({
-  integrationIdOrSlug: z.string(),
-  integrationConfigurationId: z.string().optional(),
-  productIdOrSlug: z.string(),
-  metadata: z.string().optional(),
-  source: QueryParamSource$outboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationIdOrSlug: z.string(),
+    integrationConfigurationId: z.string().optional(),
+    productIdOrSlug: z.string(),
+    metadata: z.string().optional(),
+    source: QueryParamSource$outboundSchema.optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getBillingPlansRequestToJSON(
   getBillingPlansRequest: GetBillingPlansRequest,
@@ -137,10 +139,12 @@ export const GetBillingPlansDetails$inboundSchema: z.ZodType<
   GetBillingPlansDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.string(),
-  value: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.string(),
+    value: types.optional(types.string()),
+  })
+);
 
 export function getBillingPlansDetailsFromJSON(
   jsonString: string,
@@ -157,10 +161,12 @@ export const GetBillingPlansHighlightedDetails$inboundSchema: z.ZodType<
   GetBillingPlansHighlightedDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.string(),
-  value: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.string(),
+    value: types.optional(types.string()),
+  })
+);
 
 export function getBillingPlansHighlightedDetailsFromJSON(
   jsonString: string,
@@ -173,11 +179,13 @@ export function getBillingPlansHighlightedDetailsFromJSON(
 }
 
 /** @internal */
-export const Quote$inboundSchema: z.ZodType<Quote, z.ZodTypeDef, unknown> = z
-  .object({
-    amount: types.string(),
-    line: types.string(),
-  });
+export const Quote$inboundSchema: z.ZodType<Quote, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      amount: types.string(),
+      line: types.string(),
+    })
+  );
 
 export function quoteFromJSON(
   jsonString: string,
@@ -192,39 +200,41 @@ export function quoteFromJSON(
 /** @internal */
 export const GetBillingPlansScope$inboundSchema: z.ZodNativeEnum<
   typeof GetBillingPlansScope
-> = z.nativeEnum(GetBillingPlansScope);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetBillingPlansScope));
 
 /** @internal */
 export const GetBillingPlansType$inboundSchema: z.ZodNativeEnum<
   typeof GetBillingPlansType
-> = z.nativeEnum(GetBillingPlansType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetBillingPlansType));
 
 /** @internal */
-export const Plans$inboundSchema: z.ZodType<Plans, z.ZodTypeDef, unknown> = z
-  .object({
-    cost: types.optional(types.string()),
-    description: types.string(),
-    details: types.optional(
-      z.array(z.lazy(() => GetBillingPlansDetails$inboundSchema)),
-    ),
-    disabled: types.optional(types.boolean()),
-    disabledReason: types.optional(types.string()),
-    effectiveDate: types.optional(types.string()),
-    highlightedDetails: types.optional(
-      z.array(z.lazy(() => GetBillingPlansHighlightedDetails$inboundSchema)),
-    ),
-    id: types.string(),
-    initialCharge: types.optional(types.string()),
-    maximumAmount: types.optional(types.string()),
-    maximumAmountAutoPurchasePerPeriod: types.optional(types.string()),
-    minimumAmount: types.optional(types.string()),
-    name: types.string(),
-    paymentMethodRequired: types.boolean(),
-    preauthorizationAmount: types.optional(types.number()),
-    quote: types.optional(z.array(z.lazy(() => Quote$inboundSchema))),
-    scope: GetBillingPlansScope$inboundSchema,
-    type: GetBillingPlansType$inboundSchema,
-  });
+export const Plans$inboundSchema: z.ZodType<Plans, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cost: types.optional(types.string()),
+      description: types.string(),
+      details: types.optional(
+        z.array(z.lazy(() => GetBillingPlansDetails$inboundSchema)),
+      ),
+      disabled: types.optional(types.boolean()),
+      disabledReason: types.optional(types.string()),
+      effectiveDate: types.optional(types.string()),
+      highlightedDetails: types.optional(
+        z.array(z.lazy(() => GetBillingPlansHighlightedDetails$inboundSchema)),
+      ),
+      id: types.string(),
+      initialCharge: types.optional(types.string()),
+      maximumAmount: types.optional(types.string()),
+      maximumAmountAutoPurchasePerPeriod: types.optional(types.string()),
+      minimumAmount: types.optional(types.string()),
+      name: types.string(),
+      paymentMethodRequired: types.boolean(),
+      preauthorizationAmount: types.optional(types.number()),
+      quote: types.optional(z.array(z.lazy(() => Quote$inboundSchema))),
+      scope: GetBillingPlansScope$inboundSchema,
+      type: GetBillingPlansType$inboundSchema,
+    })
+  );
 
 export function plansFromJSON(
   jsonString: string,
@@ -241,9 +251,11 @@ export const GetBillingPlansResponseBody$inboundSchema: z.ZodType<
   GetBillingPlansResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  plans: z.array(z.lazy(() => Plans$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    plans: z.array(z.lazy(() => Plans$inboundSchema)),
+  })
+);
 
 export function getBillingPlansResponseBodyFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -514,8 +514,10 @@ export type CreateRecordResponseBody =
 
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest10Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest10Type> = z
-    .nativeEnum(CreateRecordRequestBodyDnsRequest10Type);
+  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest10Type> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateRecordRequestBodyDnsRequest10Type)
+    );
 
 /** @internal */
 export type RequestBodyHttps$Outbound = {
@@ -529,11 +531,13 @@ export const RequestBodyHttps$outboundSchema: z.ZodType<
   RequestBodyHttps$Outbound,
   z.ZodTypeDef,
   RequestBodyHttps
-> = z.object({
-  priority: z.nullable(z.number()),
-  target: z.string(),
-  params: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    priority: z.nullable(z.number()),
+    target: z.string(),
+    params: z.string().optional(),
+  })
+);
 
 export function requestBodyHttpsToJSON(
   requestBodyHttps: RequestBodyHttps,
@@ -556,12 +560,14 @@ export const RequestBody10$outboundSchema: z.ZodType<
   RequestBody10$Outbound,
   z.ZodTypeDef,
   RequestBody10
-> = z.object({
-  type: CreateRecordRequestBodyDnsRequest10Type$outboundSchema,
-  ttl: z.number().optional(),
-  https: z.lazy(() => RequestBodyHttps$outboundSchema),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: CreateRecordRequestBodyDnsRequest10Type$outboundSchema,
+    ttl: z.number().optional(),
+    https: z.lazy(() => RequestBodyHttps$outboundSchema),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBody10ToJSON(requestBody10: RequestBody10): string {
   return JSON.stringify(RequestBody10$outboundSchema.parse(requestBody10));
@@ -569,9 +575,10 @@ export function requestBody10ToJSON(requestBody10: RequestBody10): string {
 
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest9Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest9Type> = z.nativeEnum(
-    CreateRecordRequestBodyDnsRequest9Type,
-  );
+  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest9Type> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateRecordRequestBodyDnsRequest9Type)
+    );
 
 /** @internal */
 export type RequestBody9$Outbound = {
@@ -587,13 +594,15 @@ export const RequestBody9$outboundSchema: z.ZodType<
   RequestBody9$Outbound,
   z.ZodTypeDef,
   RequestBody9
-> = z.object({
-  name: z.string(),
-  type: CreateRecordRequestBodyDnsRequest9Type$outboundSchema,
-  ttl: z.number().optional(),
-  value: z.string().optional(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: CreateRecordRequestBodyDnsRequest9Type$outboundSchema,
+    ttl: z.number().optional(),
+    value: z.string().optional(),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBody9ToJSON(requestBody9: RequestBody9): string {
   return JSON.stringify(RequestBody9$outboundSchema.parse(requestBody9));
@@ -601,9 +610,10 @@ export function requestBody9ToJSON(requestBody9: RequestBody9): string {
 
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest8Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest8Type> = z.nativeEnum(
-    CreateRecordRequestBodyDnsRequest8Type,
-  );
+  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest8Type> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateRecordRequestBodyDnsRequest8Type)
+    );
 
 /** @internal */
 export type RequestBody8$Outbound = {
@@ -618,12 +628,14 @@ export const RequestBody8$outboundSchema: z.ZodType<
   RequestBody8$Outbound,
   z.ZodTypeDef,
   RequestBody8
-> = z.object({
-  type: CreateRecordRequestBodyDnsRequest8Type$outboundSchema,
-  ttl: z.number().optional(),
-  value: z.string(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: CreateRecordRequestBodyDnsRequest8Type$outboundSchema,
+    ttl: z.number().optional(),
+    value: z.string(),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBody8ToJSON(requestBody8: RequestBody8): string {
   return JSON.stringify(RequestBody8$outboundSchema.parse(requestBody8));
@@ -631,9 +643,10 @@ export function requestBody8ToJSON(requestBody8: RequestBody8): string {
 
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest7Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest7Type> = z.nativeEnum(
-    CreateRecordRequestBodyDnsRequest7Type,
-  );
+  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest7Type> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateRecordRequestBodyDnsRequest7Type)
+    );
 
 /** @internal */
 export type RequestBodySrv$Outbound = {
@@ -648,12 +661,14 @@ export const RequestBodySrv$outboundSchema: z.ZodType<
   RequestBodySrv$Outbound,
   z.ZodTypeDef,
   RequestBodySrv
-> = z.object({
-  priority: z.nullable(z.number()),
-  weight: z.nullable(z.number()),
-  port: z.nullable(z.number()),
-  target: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    priority: z.nullable(z.number()),
+    weight: z.nullable(z.number()),
+    port: z.nullable(z.number()),
+    target: z.string(),
+  })
+);
 
 export function requestBodySrvToJSON(requestBodySrv: RequestBodySrv): string {
   return JSON.stringify(RequestBodySrv$outboundSchema.parse(requestBodySrv));
@@ -672,12 +687,14 @@ export const RequestBody7$outboundSchema: z.ZodType<
   RequestBody7$Outbound,
   z.ZodTypeDef,
   RequestBody7
-> = z.object({
-  type: CreateRecordRequestBodyDnsRequest7Type$outboundSchema,
-  ttl: z.number().optional(),
-  srv: z.lazy(() => RequestBodySrv$outboundSchema),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: CreateRecordRequestBodyDnsRequest7Type$outboundSchema,
+    ttl: z.number().optional(),
+    srv: z.lazy(() => RequestBodySrv$outboundSchema),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBody7ToJSON(requestBody7: RequestBody7): string {
   return JSON.stringify(RequestBody7$outboundSchema.parse(requestBody7));
@@ -685,9 +702,10 @@ export function requestBody7ToJSON(requestBody7: RequestBody7): string {
 
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest6Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest6Type> = z.nativeEnum(
-    CreateRecordRequestBodyDnsRequest6Type,
-  );
+  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest6Type> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateRecordRequestBodyDnsRequest6Type)
+    );
 
 /** @internal */
 export type RequestBody6$Outbound = {
@@ -704,14 +722,16 @@ export const RequestBody6$outboundSchema: z.ZodType<
   RequestBody6$Outbound,
   z.ZodTypeDef,
   RequestBody6
-> = z.object({
-  name: z.string(),
-  type: CreateRecordRequestBodyDnsRequest6Type$outboundSchema,
-  ttl: z.number().optional(),
-  value: z.string(),
-  mxPriority: z.number(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: CreateRecordRequestBodyDnsRequest6Type$outboundSchema,
+    ttl: z.number().optional(),
+    value: z.string(),
+    mxPriority: z.number(),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBody6ToJSON(requestBody6: RequestBody6): string {
   return JSON.stringify(RequestBody6$outboundSchema.parse(requestBody6));
@@ -719,9 +739,10 @@ export function requestBody6ToJSON(requestBody6: RequestBody6): string {
 
 /** @internal */
 export const CreateRecordRequestBodyDnsRequest5Type$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest5Type> = z.nativeEnum(
-    CreateRecordRequestBodyDnsRequest5Type,
-  );
+  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequest5Type> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateRecordRequestBodyDnsRequest5Type)
+    );
 
 /** @internal */
 export type RequestBody5$Outbound = {
@@ -737,13 +758,15 @@ export const RequestBody5$outboundSchema: z.ZodType<
   RequestBody5$Outbound,
   z.ZodTypeDef,
   RequestBody5
-> = z.object({
-  name: z.string(),
-  type: CreateRecordRequestBodyDnsRequest5Type$outboundSchema,
-  ttl: z.number().optional(),
-  value: z.string().optional(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: CreateRecordRequestBodyDnsRequest5Type$outboundSchema,
+    ttl: z.number().optional(),
+    value: z.string().optional(),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBody5ToJSON(requestBody5: RequestBody5): string {
   return JSON.stringify(RequestBody5$outboundSchema.parse(requestBody5));
@@ -751,9 +774,10 @@ export function requestBody5ToJSON(requestBody5: RequestBody5): string {
 
 /** @internal */
 export const CreateRecordRequestBodyDnsRequestType$outboundSchema:
-  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequestType> = z.nativeEnum(
-    CreateRecordRequestBodyDnsRequestType,
-  );
+  z.ZodNativeEnum<typeof CreateRecordRequestBodyDnsRequestType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateRecordRequestBodyDnsRequestType)
+    );
 
 /** @internal */
 export type RequestBody4$Outbound = {
@@ -769,13 +793,15 @@ export const RequestBody4$outboundSchema: z.ZodType<
   RequestBody4$Outbound,
   z.ZodTypeDef,
   RequestBody4
-> = z.object({
-  name: z.string(),
-  type: CreateRecordRequestBodyDnsRequestType$outboundSchema,
-  ttl: z.number().optional(),
-  value: z.string(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: CreateRecordRequestBodyDnsRequestType$outboundSchema,
+    ttl: z.number().optional(),
+    value: z.string(),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBody4ToJSON(requestBody4: RequestBody4): string {
   return JSON.stringify(RequestBody4$outboundSchema.parse(requestBody4));
@@ -784,7 +810,9 @@ export function requestBody4ToJSON(requestBody4: RequestBody4): string {
 /** @internal */
 export const CreateRecordRequestBodyDnsType$outboundSchema: z.ZodNativeEnum<
   typeof CreateRecordRequestBodyDnsType
-> = z.nativeEnum(CreateRecordRequestBodyDnsType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateRecordRequestBodyDnsType)
+);
 
 /** @internal */
 export type RequestBody3$Outbound = {
@@ -800,13 +828,15 @@ export const RequestBody3$outboundSchema: z.ZodType<
   RequestBody3$Outbound,
   z.ZodTypeDef,
   RequestBody3
-> = z.object({
-  name: z.string(),
-  type: CreateRecordRequestBodyDnsType$outboundSchema,
-  ttl: z.number().optional(),
-  value: z.string(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: CreateRecordRequestBodyDnsType$outboundSchema,
+    ttl: z.number().optional(),
+    value: z.string(),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBody3ToJSON(requestBody3: RequestBody3): string {
   return JSON.stringify(RequestBody3$outboundSchema.parse(requestBody3));
@@ -815,7 +845,9 @@ export function requestBody3ToJSON(requestBody3: RequestBody3): string {
 /** @internal */
 export const CreateRecordRequestBodyType$outboundSchema: z.ZodNativeEnum<
   typeof CreateRecordRequestBodyType
-> = z.nativeEnum(CreateRecordRequestBodyType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateRecordRequestBodyType)
+);
 
 /** @internal */
 export type RequestBody2$Outbound = {
@@ -831,13 +863,15 @@ export const RequestBody2$outboundSchema: z.ZodType<
   RequestBody2$Outbound,
   z.ZodTypeDef,
   RequestBody2
-> = z.object({
-  name: z.string(),
-  type: CreateRecordRequestBodyType$outboundSchema,
-  ttl: z.number().optional(),
-  value: z.string(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: CreateRecordRequestBodyType$outboundSchema,
+    ttl: z.number().optional(),
+    value: z.string(),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBody2ToJSON(requestBody2: RequestBody2): string {
   return JSON.stringify(RequestBody2$outboundSchema.parse(requestBody2));
@@ -846,7 +880,7 @@ export function requestBody2ToJSON(requestBody2: RequestBody2): string {
 /** @internal */
 export const RequestBodyType$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyType
-> = z.nativeEnum(RequestBodyType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RequestBodyType));
 
 /** @internal */
 export type RequestBody1$Outbound = {
@@ -862,13 +896,15 @@ export const RequestBody1$outboundSchema: z.ZodType<
   RequestBody1$Outbound,
   z.ZodTypeDef,
   RequestBody1
-> = z.object({
-  name: z.string(),
-  type: RequestBodyType$outboundSchema,
-  ttl: z.number().optional(),
-  value: z.string(),
-  comment: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    type: RequestBodyType$outboundSchema,
+    ttl: z.number().optional(),
+    value: z.string(),
+    comment: z.string().optional(),
+  })
+);
 
 export function requestBody1ToJSON(requestBody1: RequestBody1): string {
   return JSON.stringify(RequestBody1$outboundSchema.parse(requestBody1));
@@ -892,18 +928,20 @@ export const CreateRecordRequestBody$outboundSchema: z.ZodType<
   CreateRecordRequestBody$Outbound,
   z.ZodTypeDef,
   CreateRecordRequestBody
-> = smartUnion([
-  z.lazy(() => RequestBody6$outboundSchema),
-  z.lazy(() => RequestBody1$outboundSchema),
-  z.lazy(() => RequestBody2$outboundSchema),
-  z.lazy(() => RequestBody3$outboundSchema),
-  z.lazy(() => RequestBody4$outboundSchema),
-  z.lazy(() => RequestBody5$outboundSchema),
-  z.lazy(() => RequestBody7$outboundSchema),
-  z.lazy(() => RequestBody8$outboundSchema),
-  z.lazy(() => RequestBody9$outboundSchema),
-  z.lazy(() => RequestBody10$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => RequestBody6$outboundSchema),
+    z.lazy(() => RequestBody1$outboundSchema),
+    z.lazy(() => RequestBody2$outboundSchema),
+    z.lazy(() => RequestBody3$outboundSchema),
+    z.lazy(() => RequestBody4$outboundSchema),
+    z.lazy(() => RequestBody5$outboundSchema),
+    z.lazy(() => RequestBody7$outboundSchema),
+    z.lazy(() => RequestBody8$outboundSchema),
+    z.lazy(() => RequestBody9$outboundSchema),
+    z.lazy(() => RequestBody10$outboundSchema),
+  ])
+);
 
 export function createRecordRequestBodyToJSON(
   createRecordRequestBody: CreateRecordRequestBody,
@@ -936,27 +974,29 @@ export const CreateRecordRequest$outboundSchema: z.ZodType<
   CreateRecordRequest$Outbound,
   z.ZodTypeDef,
   CreateRecordRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => RequestBody6$outboundSchema),
-    z.lazy(() => RequestBody1$outboundSchema),
-    z.lazy(() => RequestBody2$outboundSchema),
-    z.lazy(() => RequestBody3$outboundSchema),
-    z.lazy(() => RequestBody4$outboundSchema),
-    z.lazy(() => RequestBody5$outboundSchema),
-    z.lazy(() => RequestBody7$outboundSchema),
-    z.lazy(() => RequestBody8$outboundSchema),
-    z.lazy(() => RequestBody9$outboundSchema),
-    z.lazy(() => RequestBody10$outboundSchema),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => RequestBody6$outboundSchema),
+      z.lazy(() => RequestBody1$outboundSchema),
+      z.lazy(() => RequestBody2$outboundSchema),
+      z.lazy(() => RequestBody3$outboundSchema),
+      z.lazy(() => RequestBody4$outboundSchema),
+      z.lazy(() => RequestBody5$outboundSchema),
+      z.lazy(() => RequestBody7$outboundSchema),
+      z.lazy(() => RequestBody8$outboundSchema),
+      z.lazy(() => RequestBody9$outboundSchema),
+      z.lazy(() => RequestBody10$outboundSchema),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createRecordRequestToJSON(
   createRecordRequest: CreateRecordRequest,
@@ -971,9 +1011,11 @@ export const CreateRecordResponseBody2$inboundSchema: z.ZodType<
   CreateRecordResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uid: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uid: types.string(),
+  })
+);
 
 export function createRecordResponseBody2FromJSON(
   jsonString: string,
@@ -990,10 +1032,12 @@ export const CreateRecordResponseBody1$inboundSchema: z.ZodType<
   CreateRecordResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uid: types.optional(types.string()),
-  updated: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uid: types.optional(types.string()),
+    updated: types.number(),
+  })
+);
 
 export function createRecordResponseBody1FromJSON(
   jsonString: string,
@@ -1010,10 +1054,12 @@ export const CreateRecordResponseBody$inboundSchema: z.ZodType<
   CreateRecordResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => CreateRecordResponseBody1$inboundSchema),
-  z.lazy(() => CreateRecordResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CreateRecordResponseBody1$inboundSchema),
+    z.lazy(() => CreateRecordResponseBody2$inboundSchema),
+  ])
+);
 
 export function createRecordResponseBodyFromJSON(
   jsonString: string,

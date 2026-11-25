@@ -9,9 +9,8 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
-import { pathToFunc } from "../lib/url.js";
 import {
   DeleteOrganizationDsyncGroupRequest,
   DeleteOrganizationDsyncGroupRequest$outboundSchema,
@@ -33,7 +32,7 @@ import { Result } from "../types/fp.js";
  * Delete Organization Directory Sync Group Configuration
  *
  * @remarks
- * Delete one organization's Directory Sync group configuration. The last group granting OrgAdmin cannot be removed.
+ * Delete one organization's Directory Sync group configuration. The last group granting OrgAdmin cannot be removed. A deletion that would leave the root team without an owner, or take the Owner role on it from the acting admin, is refused with `organization_lockout` unless `overrideLockout` is set.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -102,11 +101,17 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc(
+  const pathResult = encodePath(
     "/v1/organizations/{organizationId}/dsync/groups/{groupId}",
-  )(pathParams);
+    pathParams,
+  );
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const query = encodeFormQuery({
+    "overrideLockout": payload.overrideLockout,
     "slug": payload.slug,
     "teamId": payload.teamId,
   });
@@ -178,7 +183,7 @@ async function $do(
     | SDKValidationError
   >(
     M.nil(204, z.void()),
-    M.fail([400, 401, 403, 404, 410, 412, 428, "4XX"]),
+    M.fail([400, 401, 403, 404, 409, 410, 412, 428, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

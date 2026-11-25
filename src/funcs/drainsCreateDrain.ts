@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Create a new Drain
  *
  * @remarks
- * Create a new Drain with the provided configuration.
+ * Create a new Drain with the provided configuration. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

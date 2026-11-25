@@ -6,10 +6,8 @@
 import { CreateFlagRequestBody } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagRequestBody = {
-  slug: "<value>",
-  kind: "json",
   environments: {
-    "key": {
+    production: {
       active: true,
       pausedOutcome: {
         type: "<value>",
@@ -25,7 +23,7 @@ let value: CreateFlagRequestBody = {
                 kind: "<value>",
                 attribute: "<value>",
               },
-              cmp: "containsAnyOf",
+              cmp: "gt",
             },
           ],
           outcome: {
@@ -35,11 +33,34 @@ let value: CreateFlagRequestBody = {
               kind: "<value>",
               attribute: "<value>",
             },
-            weights: {},
+            weights: {
+              "key": 6502.53,
+            },
             defaultVariantId: "<id>",
           },
         },
       ],
+      fallthrough: {
+        type: "<value>",
+        base: {
+          type: "<value>",
+          kind: "<value>",
+          attribute: "<value>",
+        },
+        startTimestamp: 5176.11,
+        rollFromVariantId: "<id>",
+        rollToVariantId: "<id>",
+        defaultVariantId: "<id>",
+        slots: [],
+      },
+    },
+    preview: {
+      active: false,
+      pausedOutcome: {
+        type: "<value>",
+        variantId: "<id>",
+      },
+      rules: [],
       fallthrough: {
         type: "<value>",
         base: {
@@ -54,7 +75,21 @@ let value: CreateFlagRequestBody = {
         defaultVariantId: "<id>",
       },
     },
+    development: {
+      active: true,
+      pausedOutcome: {
+        type: "<value>",
+        variantId: "<id>",
+      },
+      rules: [],
+      fallthrough: {
+        type: "<value>",
+        variantId: "<id>",
+      },
+    },
   },
+  slug: "<value>",
+  kind: "json",
 };
 ```
 
@@ -62,10 +97,10 @@ let value: CreateFlagRequestBody = {
 
 | Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
 | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `environments`                                                                                 | [models.CreateFlagEnvironments](../models/createflagenvironments.md)                           | :heavy_check_mark:                                                                             | N/A                                                                                            |
 | `slug`                                                                                         | *string*                                                                                       | :heavy_check_mark:                                                                             | A unique (per project) key for the flag, composed of letters, numbers, dashes, and underscores |
 | `kind`                                                                                         | [models.CreateFlagKind](../models/createflagkind.md)                                           | :heavy_check_mark:                                                                             | The kind of flag                                                                               |
 | `variants`                                                                                     | [models.CreateFlagVariants](../models/createflagvariants.md)[]                                 | :heavy_minus_sign:                                                                             | The variants of the flag                                                                       |
-| `environments`                                                                                 | Record<string, [models.CreateFlagEnvironments](../models/createflagenvironments.md)>           | :heavy_check_mark:                                                                             | The configuration for the flag in different environments                                       |
 | `seed`                                                                                         | *number*                                                                                       | :heavy_minus_sign:                                                                             | A random seed to prevent split points in different flags from having the same targets          |
 | `description`                                                                                  | *string*                                                                                       | :heavy_minus_sign:                                                                             | A description of the flag                                                                      |
 | `state`                                                                                        | [models.CreateFlagState](../models/createflagstate.md)                                         | :heavy_minus_sign:                                                                             | N/A                                                                                            |

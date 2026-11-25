@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -64,13 +64,15 @@ export const RemoveBypassIpRequestBody2$outboundSchema: z.ZodType<
   RemoveBypassIpRequestBody2$Outbound,
   z.ZodTypeDef,
   RemoveBypassIpRequestBody2
-> = z.object({
-  domain: z.string().optional(),
-  projectScope: z.boolean(),
-  sourceIp: z.string().optional(),
-  allSources: z.boolean().optional(),
-  note: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string().optional(),
+    projectScope: z.boolean(),
+    sourceIp: z.string().optional(),
+    allSources: z.boolean().optional(),
+    note: z.string().optional(),
+  })
+);
 
 export function removeBypassIpRequestBody2ToJSON(
   removeBypassIpRequestBody2: RemoveBypassIpRequestBody2,
@@ -94,13 +96,15 @@ export const RemoveBypassIpRequestBody1$outboundSchema: z.ZodType<
   RemoveBypassIpRequestBody1$Outbound,
   z.ZodTypeDef,
   RemoveBypassIpRequestBody1
-> = z.object({
-  domain: z.string(),
-  projectScope: z.boolean().optional(),
-  sourceIp: z.string().optional(),
-  allSources: z.boolean().optional(),
-  note: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    projectScope: z.boolean().optional(),
+    sourceIp: z.string().optional(),
+    allSources: z.boolean().optional(),
+    note: z.string().optional(),
+  })
+);
 
 export function removeBypassIpRequestBody1ToJSON(
   removeBypassIpRequestBody1: RemoveBypassIpRequestBody1,
@@ -120,10 +124,12 @@ export const RemoveBypassIpRequestBody$outboundSchema: z.ZodType<
   RemoveBypassIpRequestBody$Outbound,
   z.ZodTypeDef,
   RemoveBypassIpRequestBody
-> = smartUnion([
-  z.lazy(() => RemoveBypassIpRequestBody1$outboundSchema),
-  z.lazy(() => RemoveBypassIpRequestBody2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => RemoveBypassIpRequestBody1$outboundSchema),
+    z.lazy(() => RemoveBypassIpRequestBody2$outboundSchema),
+  ])
+);
 
 export function removeBypassIpRequestBodyToJSON(
   removeBypassIpRequestBody: RemoveBypassIpRequestBody,
@@ -149,19 +155,21 @@ export const RemoveBypassIpRequest$outboundSchema: z.ZodType<
   RemoveBypassIpRequest$Outbound,
   z.ZodTypeDef,
   RemoveBypassIpRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => RemoveBypassIpRequestBody1$outboundSchema),
-    z.lazy(() => RemoveBypassIpRequestBody2$outboundSchema),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => RemoveBypassIpRequestBody1$outboundSchema),
+      z.lazy(() => RemoveBypassIpRequestBody2$outboundSchema),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function removeBypassIpRequestToJSON(
   removeBypassIpRequest: RemoveBypassIpRequest,
@@ -176,9 +184,11 @@ export const RemoveBypassIpResponseBody$inboundSchema: z.ZodType<
   RemoveBypassIpResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ok: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ok: types.boolean(),
+  })
+);
 
 export function removeBypassIpResponseBodyFromJSON(
   jsonString: string,

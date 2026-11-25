@@ -5,10 +5,14 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixtyThree } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndSixtyThree } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
 let value: FourHundredAndSixtyThree = {
-  plan: "enterprise",
+  entitlement: "<value>",
+  user: {
+    id: "<id>",
+    username: "Aaron82",
+  },
 };
 ```
 
@@ -16,5 +20,6 @@ let value: FourHundredAndSixtyThree = {
 
 | Field                                                            | Type                                                             | Required                                                         | Description                                                      |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `plan`                                                           | [models.UserEventPayloadPlan](../models/usereventpayloadplan.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `trial`                                                          | [models.Trial](../models/trial.md)                               | :heavy_minus_sign:                                               | N/A                                                              |
+| `entitlement`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `previousCanceledAt`                                             | *string*                                                         | :heavy_minus_sign:                                               | N/A                                                              |
+| `user`                                                           | [models.UserEventPayloadUser](../models/usereventpayloaduser.md) | :heavy_check_mark:                                               | N/A                                                              |

@@ -5,13 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndThirtyNine } from "@vercel/sdk/models/usereventpayload317type.js";
+import { ThreeHundredAndThirtyNine } from "@vercel/sdk/models/usereventpayload328previous.js";
 
 let value: ThreeHundredAndThirtyNine = {
-  consolidatedGitCommitStatus: {
-    enabled: false,
-    propagateFailures: false,
-  },
+  createDeployments: "disabled",
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -19,8 +16,8 @@ let value: ThreeHundredAndThirtyNine = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `consolidatedGitCommitStatus`                                                  | [models.ConsolidatedGitCommitStatus](../models/consolidatedgitcommitstatus.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                      | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `createDeployments`                                        | [models.CreateDeployments](../models/createdeployments.md) | :heavy_check_mark:                                         | N/A                                                        |
+| `projectId`                                                | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |
+| `projectName`                                              | *string*                                                   | :heavy_check_mark:                                         | N/A                                                        |

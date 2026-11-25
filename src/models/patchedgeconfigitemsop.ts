@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -117,8 +120,10 @@ export type PatchEdgeConfigItemsResponseBody = {
 
 /** @internal */
 export const PatchEdgeConfigItems1GlobalConfigOperation$outboundSchema:
-  z.ZodNativeEnum<typeof PatchEdgeConfigItems1GlobalConfigOperation> = z
-    .nativeEnum(PatchEdgeConfigItems1GlobalConfigOperation);
+  z.ZodNativeEnum<typeof PatchEdgeConfigItems1GlobalConfigOperation> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PatchEdgeConfigItems1GlobalConfigOperation)
+    );
 
 /** @internal */
 export type One4$Outbound = {
@@ -130,12 +135,14 @@ export type One4$Outbound = {
 
 /** @internal */
 export const One4$outboundSchema: z.ZodType<One4$Outbound, z.ZodTypeDef, One4> =
-  z.object({
-    operation: PatchEdgeConfigItems1GlobalConfigOperation$outboundSchema,
-    key: z.string(),
-    value: z.any().optional(),
-    description: z.nullable(z.string()).optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      operation: PatchEdgeConfigItems1GlobalConfigOperation$outboundSchema,
+      key: z.string(),
+      value: z.any().optional(),
+      description: z.nullable(z.string()).optional(),
+    })
+  );
 
 export function one4ToJSON(one4: One4): string {
   return JSON.stringify(One4$outboundSchema.parse(one4));
@@ -144,7 +151,9 @@ export function one4ToJSON(one4: One4): string {
 /** @internal */
 export const PatchEdgeConfigItems1Operation$outboundSchema: z.ZodNativeEnum<
   typeof PatchEdgeConfigItems1Operation
-> = z.nativeEnum(PatchEdgeConfigItems1Operation);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PatchEdgeConfigItems1Operation)
+);
 
 /** @internal */
 export type PatchEdgeConfigItems13$Outbound = {
@@ -159,12 +168,14 @@ export const PatchEdgeConfigItems13$outboundSchema: z.ZodType<
   PatchEdgeConfigItems13$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigItems13
-> = z.object({
-  operation: PatchEdgeConfigItems1Operation$outboundSchema,
-  key: z.string(),
-  value: z.any().optional(),
-  description: z.nullable(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    operation: PatchEdgeConfigItems1Operation$outboundSchema,
+    key: z.string(),
+    value: z.any().optional(),
+    description: z.nullable(z.string()),
+  })
+);
 
 export function patchEdgeConfigItems13ToJSON(
   patchEdgeConfigItems13: PatchEdgeConfigItems13,
@@ -176,7 +187,7 @@ export function patchEdgeConfigItems13ToJSON(
 
 /** @internal */
 export const OneOperation$outboundSchema: z.ZodNativeEnum<typeof OneOperation> =
-  z.nativeEnum(OneOperation);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OneOperation));
 
 /** @internal */
 export type PatchEdgeConfigItems12$Outbound = {
@@ -191,12 +202,14 @@ export const PatchEdgeConfigItems12$outboundSchema: z.ZodType<
   PatchEdgeConfigItems12$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigItems12
-> = z.object({
-  operation: OneOperation$outboundSchema,
-  key: z.string(),
-  value: z.any().optional(),
-  description: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    operation: OneOperation$outboundSchema,
+    key: z.string(),
+    value: z.any().optional(),
+    description: z.nullable(z.string()).optional(),
+  })
+);
 
 export function patchEdgeConfigItems12ToJSON(
   patchEdgeConfigItems12: PatchEdgeConfigItems12,
@@ -208,8 +221,10 @@ export function patchEdgeConfigItems12ToJSON(
 
 /** @internal */
 export const PatchEdgeConfigItems1GlobalConfigRequestOperation$outboundSchema:
-  z.ZodNativeEnum<typeof PatchEdgeConfigItems1GlobalConfigRequestOperation> = z
-    .nativeEnum(PatchEdgeConfigItems1GlobalConfigRequestOperation);
+  z.ZodNativeEnum<typeof PatchEdgeConfigItems1GlobalConfigRequestOperation> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PatchEdgeConfigItems1GlobalConfigRequestOperation)
+    );
 
 /** @internal */
 export type PatchEdgeConfigItems11$Outbound = {
@@ -224,12 +239,14 @@ export const PatchEdgeConfigItems11$outboundSchema: z.ZodType<
   PatchEdgeConfigItems11$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigItems11
-> = z.object({
-  operation: PatchEdgeConfigItems1GlobalConfigRequestOperation$outboundSchema,
-  key: z.string(),
-  value: z.any().optional(),
-  description: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    operation: PatchEdgeConfigItems1GlobalConfigRequestOperation$outboundSchema,
+    key: z.string(),
+    value: z.any().optional(),
+    description: z.nullable(z.string()).optional(),
+  })
+);
 
 export function patchEdgeConfigItems11ToJSON(
   patchEdgeConfigItems11: PatchEdgeConfigItems11,
@@ -251,12 +268,14 @@ export const PatchEdgeConfigItemsItems1$outboundSchema: z.ZodType<
   PatchEdgeConfigItemsItems1$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigItemsItems1
-> = smartUnion([
-  z.lazy(() => PatchEdgeConfigItems11$outboundSchema),
-  z.lazy(() => PatchEdgeConfigItems12$outboundSchema),
-  z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
-  z.lazy(() => One4$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => PatchEdgeConfigItems11$outboundSchema),
+    z.lazy(() => PatchEdgeConfigItems12$outboundSchema),
+    z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
+    z.lazy(() => One4$outboundSchema),
+  ])
+);
 
 export function patchEdgeConfigItemsItems1ToJSON(
   patchEdgeConfigItemsItems1: PatchEdgeConfigItemsItems1,
@@ -278,12 +297,14 @@ export const PatchEdgeConfigItemsItems$outboundSchema: z.ZodType<
   PatchEdgeConfigItemsItems$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigItemsItems
-> = smartUnion([
-  z.lazy(() => PatchEdgeConfigItems11$outboundSchema),
-  z.lazy(() => PatchEdgeConfigItems12$outboundSchema),
-  z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
-  z.lazy(() => One4$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => PatchEdgeConfigItems11$outboundSchema),
+    z.lazy(() => PatchEdgeConfigItems12$outboundSchema),
+    z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
+    z.lazy(() => One4$outboundSchema),
+  ])
+);
 
 export function patchEdgeConfigItemsItemsToJSON(
   patchEdgeConfigItemsItems: PatchEdgeConfigItemsItems,
@@ -308,16 +329,16 @@ export const PatchEdgeConfigItemsRequestBody$outboundSchema: z.ZodType<
   PatchEdgeConfigItemsRequestBody$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigItemsRequestBody
-> = z.object({
-  items: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(smartUnion([
       z.lazy(() => PatchEdgeConfigItems11$outboundSchema),
       z.lazy(() => PatchEdgeConfigItems12$outboundSchema),
       z.lazy(() => PatchEdgeConfigItems13$outboundSchema),
       z.lazy(() => One4$outboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function patchEdgeConfigItemsRequestBodyToJSON(
   patchEdgeConfigItemsRequestBody: PatchEdgeConfigItemsRequestBody,
@@ -342,17 +363,21 @@ export const PatchEdgeConfigItemsRequest$outboundSchema: z.ZodType<
   PatchEdgeConfigItemsRequest$Outbound,
   z.ZodTypeDef,
   PatchEdgeConfigItemsRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => PatchEdgeConfigItemsRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string().refine(matchesPattern$("^ecfg_"), {
+      message: "Value must match pattern ^ecfg_",
+    }),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => PatchEdgeConfigItemsRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function patchEdgeConfigItemsRequestToJSON(
   patchEdgeConfigItemsRequest: PatchEdgeConfigItemsRequest,
@@ -369,9 +394,11 @@ export const PatchEdgeConfigItemsResponseBody$inboundSchema: z.ZodType<
   PatchEdgeConfigItemsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.string(),
+  })
+);
 
 export function patchEdgeConfigItemsResponseBodyFromJSON(
   jsonString: string,

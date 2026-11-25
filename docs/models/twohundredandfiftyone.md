@@ -5,31 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyOne } from "@vercel/sdk/models/newprojects.js";
+import { TwoHundredAndFiftyOne } from "@vercel/sdk/models/newenvvar.js";
 
 let value: TwoHundredAndFiftyOne = {
-  copiedDomains: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  enabledOrganizationEmu: true,
-  enabledTeamIds: [
-    "<value 1>",
-  ],
+  name: "<value>",
   organizationId: "<id>",
-  teamId: "<id>",
-  teamSlug: "<value>",
+  rootTeamId: "<id>",
+  slug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                    | Type                     | Required                 | Description              |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-| `copiedDomains`          | *string*[]               | :heavy_check_mark:       | N/A                      |
-| `enabledOrganizationEmu` | *boolean*                | :heavy_check_mark:       | N/A                      |
-| `enabledTeamIds`         | *string*[]               | :heavy_check_mark:       | N/A                      |
-| `organizationId`         | *string*                 | :heavy_check_mark:       | N/A                      |
-| `teamId`                 | *string*                 | :heavy_check_mark:       | N/A                      |
-| `teamSlug`               | *string*                 | :heavy_check_mark:       | N/A                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `rootTeamId`       | *string*           | :heavy_check_mark: | N/A                |
+| `slug`             | *string*           | :heavy_check_mark: | N/A                |

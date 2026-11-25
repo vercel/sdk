@@ -8,23 +8,21 @@ The payload of the event, if requested.
 import { FiveHundredAndThirty } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirty = {
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    id: "<id>",
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
+  alertType: "<value>",
+  groupId: "<id>",
+  projectId: "<id>",
+  detectionCount: 7278,
+  detections: [],
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `configuration`                                                                          | [models.UserEventPayload530Configuration](../models/usereventpayload530configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `team`                                                                                   | [models.UserEventPayload530Team](../models/usereventpayload530team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `alertType`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `groupId`                                      | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `severity`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `detectionCount`                               | *number*                                       | :heavy_check_mark:                             | N/A                                            |
+| `detections`                                   | [models.Detections](../models/detections.md)[] | :heavy_check_mark:                             | N/A                                            |

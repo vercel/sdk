@@ -7,11 +7,11 @@ Restrict the list to a single budget scope.
 ```typescript
 import { QueryParamScopeType } from "@vercel/sdk/models/listaigatewaybudgetsop.js";
 
-let value: QueryParamScopeType = "api-key";
+let value: QueryParamScopeType = "app";
 ```
 
 ## Values
 
 ```typescript
-"team" | "project" | "user" | "api-key"
+"team" | "project" | "user" | "app" | "api-key"
 ```

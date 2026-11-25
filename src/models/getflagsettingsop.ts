@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -81,11 +81,13 @@ export const GetFlagSettingsRequest$outboundSchema: z.ZodType<
   GetFlagSettingsRequest$Outbound,
   z.ZodTypeDef,
   GetFlagSettingsRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getFlagSettingsRequestToJSON(
   getFlagSettingsRequest: GetFlagSettingsRequest,
@@ -100,10 +102,12 @@ export const GetFlagSettingsLabels$inboundSchema: z.ZodType<
   GetFlagSettingsLabels,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.string(),
+    value: types.string(),
+  })
+);
 
 export function getFlagSettingsLabelsFromJSON(
   jsonString: string,
@@ -120,13 +124,15 @@ export const GetFlagSettingsAttributes$inboundSchema: z.ZodType<
   GetFlagSettingsAttributes,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  key: types.string(),
-  labels: types.optional(
-    z.array(z.lazy(() => GetFlagSettingsLabels$inboundSchema)),
-  ),
-  type: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: types.string(),
+    labels: types.optional(
+      z.array(z.lazy(() => GetFlagSettingsLabels$inboundSchema)),
+    ),
+    type: types.string(),
+  })
+);
 
 export function getFlagSettingsAttributesFromJSON(
   jsonString: string,
@@ -143,11 +149,13 @@ export const GetFlagSettingsEntities$inboundSchema: z.ZodType<
   GetFlagSettingsEntities,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attributes: z.array(z.lazy(() => GetFlagSettingsAttributes$inboundSchema)),
-  kind: types.string(),
-  label: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attributes: z.array(z.lazy(() => GetFlagSettingsAttributes$inboundSchema)),
+    kind: types.string(),
+    label: types.string(),
+  })
+);
 
 export function getFlagSettingsEntitiesFromJSON(
   jsonString: string,
@@ -164,14 +172,16 @@ export const GetFlagSettingsMetadata$inboundSchema: z.ZodType<
   GetFlagSettingsMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  activeFlagCount: types.number(),
-  archivedFlagCount: types.number(),
-  configUpdatedAt: types.optional(types.number()),
-  packRevision: types.optional(types.number()),
-  packSizeInBytes: types.number(),
-  segmentCount: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    activeFlagCount: types.number(),
+    archivedFlagCount: types.number(),
+    configUpdatedAt: types.optional(types.number()),
+    packRevision: types.optional(types.number()),
+    packSizeInBytes: types.number(),
+    segmentCount: types.number(),
+  })
+);
 
 export function getFlagSettingsMetadataFromJSON(
   jsonString: string,
@@ -186,24 +196,26 @@ export function getFlagSettingsMetadataFromJSON(
 /** @internal */
 export const GetFlagSettingsTypeName$inboundSchema: z.ZodNativeEnum<
   typeof GetFlagSettingsTypeName
-> = z.nativeEnum(GetFlagSettingsTypeName);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetFlagSettingsTypeName));
 
 /** @internal */
 export const GetFlagSettingsResponseBody$inboundSchema: z.ZodType<
   GetFlagSettingsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  enabled: types.boolean(),
-  entities: z.array(z.lazy(() => GetFlagSettingsEntities$inboundSchema)),
-  environments: z.array(types.string()),
-  metadata: z.lazy(() => GetFlagSettingsMetadata$inboundSchema),
-  ownerId: types.optional(types.string()),
-  projectId: types.string(),
-  typeName: GetFlagSettingsTypeName$inboundSchema,
-  updatedAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    enabled: types.boolean(),
+    entities: z.array(z.lazy(() => GetFlagSettingsEntities$inboundSchema)),
+    environments: z.array(types.string()),
+    metadata: z.lazy(() => GetFlagSettingsMetadata$inboundSchema),
+    ownerId: types.optional(types.string()),
+    projectId: types.string(),
+    typeName: GetFlagSettingsTypeName$inboundSchema,
+    updatedAt: types.optional(types.number()),
+  })
+);
 
 export function getFlagSettingsResponseBodyFromJSON(
   jsonString: string,

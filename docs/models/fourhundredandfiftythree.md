@@ -5,20 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFiftyThree } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndFiftyThree } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
 let value: FourHundredAndFiftyThree = {
-  entitlement: "<value>",
-  user: {
-    id: "<id>",
-    username: "Daphnee.Dicki12",
-  },
+  enabled: true,
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `entitlement`                                  | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `user`                                         | [models.PayloadUser](../models/payloaduser.md) | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `domain`           | *string*           | :heavy_minus_sign: | N/A                |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |

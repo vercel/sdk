@@ -5,21 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFortyFive } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndFortyFive } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
 let value: FourHundredAndFortyFive = {
-  enabled: true,
-  environment: "preview",
-  projectId: "<id>",
-  projectName: "<value>",
+  next: "block",
+  previous: "block",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `enabled`                                                    | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |
-| `environment`                                                | [models.PayloadEnvironment](../models/payloadenvironment.md) | :heavy_check_mark:                                           | N/A                                                          |
-| `projectId`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `projectName`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload445Next](../models/usereventpayload445next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload445Previous](../models/usereventpayload445previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `teamSlug`                                                                     | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |

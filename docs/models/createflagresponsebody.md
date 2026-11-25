@@ -22,11 +22,11 @@ let value: CreateFlagResponseBody = {
         rollToVariantId: "<id>",
         slots: [
           {
-            durationMs: 4653.32,
-            promille: 9741.71,
+            durationMs: 363.24,
+            promille: 682.18,
           },
         ],
-        startTimestamp: 7528.64,
+        startTimestamp: 4653.32,
         type: "rollout",
       },
       pausedOutcome: {
@@ -37,7 +37,7 @@ let value: CreateFlagResponseBody = {
         {
           conditions: [
             {
-              cmp: "oneOf",
+              cmp: "before",
               lhs: {
                 type: "segment",
               },
@@ -53,16 +53,21 @@ let value: CreateFlagResponseBody = {
     },
   },
   id: "<id>",
-  kind: "boolean",
+  kind: "string",
   ownerId: "<id>",
   projectId: "<id>",
-  revision: 3280.67,
-  seed: 6761.09,
+  revision: 9459.42,
+  seed: 1157.09,
   slug: "<value>",
-  state: "archived",
+  state: "active",
   typeName: "flag",
-  updatedAt: 1352.12,
-  variants: [],
+  updatedAt: 6761.09,
+  variants: [
+    {
+      id: "<id>",
+      value: 8386.5,
+    },
+  ],
 };
 ```
 

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
   AiGatewayBudgetDefault,
@@ -20,9 +20,11 @@ export const AiGatewayBudgetDefaultList$inboundSchema: z.ZodType<
   AiGatewayBudgetDefaultList,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaults: z.array(AiGatewayBudgetDefault$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaults: z.array(AiGatewayBudgetDefault$inboundSchema),
+  })
+);
 
 export function aiGatewayBudgetDefaultListFromJSON(
   jsonString: string,

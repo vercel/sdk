@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -44,17 +44,19 @@ export type ConnectServiceSync = {
 /** @internal */
 export const ConnectServiceSyncStatus$inboundSchema: z.ZodNativeEnum<
   typeof ConnectServiceSyncStatus
-> = z.nativeEnum(ConnectServiceSyncStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ConnectServiceSyncStatus));
 
 /** @internal */
 export const ConnectServiceSync$inboundSchema: z.ZodType<
   ConnectServiceSync,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  errors: types.optional(z.array(ConnectServiceSyncError$inboundSchema)),
-  status: ConnectServiceSyncStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    errors: types.optional(z.array(ConnectServiceSyncError$inboundSchema)),
+    status: ConnectServiceSyncStatus$inboundSchema,
+  })
+);
 
 export function connectServiceSyncFromJSON(
   jsonString: string,

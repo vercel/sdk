@@ -5,19 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndEightyThree } from "@vercel/sdk/models/usereventjobpayloaddeployhook.js";
+import { OneHundredAndEightyThree } from "@vercel/sdk/models/jobproject.js";
 
 let value: OneHundredAndEightyThree = {
-  team: {
-    id: "<id>",
-  },
+  edgeConfigId: "<id>",
+  edgeConfigSlug: "<value>",
+  edgeConfigTokenIds: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `nextRule`                                                             | [models.NextRule](../models/nextrule.md)                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `previousRule`                                                         | [models.PayloadPreviousRule](../models/payloadpreviousrule.md)         | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload183Team](../models/usereventpayload183team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `edgeConfigId`        | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigSlug`      | *string*              | :heavy_check_mark:    | N/A                   |
+| `edgeConfigTokenIds`  | *string*[]            | :heavy_check_mark:    | ids of deleted tokens |

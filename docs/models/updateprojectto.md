@@ -5,21 +5,20 @@ A set of environments, expressed as explicit slugs, a named preset, or both. At 
 
 ## Supported Types
 
-### `models.UpdateProjectTo1`
+### `models.To1`
 
 ```typescript
-const value: models.UpdateProjectTo1 = {
+const value: models.To1 = {
   slugs: [
     "<value 1>",
-    "<value 2>",
   ],
 };
 ```
 
-### `models.UpdateProjectTo2`
+### `models.To2`
 
 ```typescript
-const value: models.UpdateProjectTo2 = {
+const value: models.To2 = {
   preset: "all-custom",
 };
 ```

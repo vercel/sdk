@@ -3,8 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -41,9 +44,11 @@ export const CreateEdgeConfigTokenRequestBody$outboundSchema: z.ZodType<
   CreateEdgeConfigTokenRequestBody$Outbound,
   z.ZodTypeDef,
   CreateEdgeConfigTokenRequestBody
-> = z.object({
-  label: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string(),
+  })
+);
 
 export function createEdgeConfigTokenRequestBodyToJSON(
   createEdgeConfigTokenRequestBody: CreateEdgeConfigTokenRequestBody,
@@ -68,16 +73,20 @@ export const CreateEdgeConfigTokenRequest$outboundSchema: z.ZodType<
   CreateEdgeConfigTokenRequest$Outbound,
   z.ZodTypeDef,
   CreateEdgeConfigTokenRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateEdgeConfigTokenRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string().refine(matchesPattern$("^ecfg_"), {
+      message: "Value must match pattern ^ecfg_",
+    }),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateEdgeConfigTokenRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createEdgeConfigTokenRequestToJSON(
   createEdgeConfigTokenRequest: CreateEdgeConfigTokenRequest,
@@ -94,10 +103,12 @@ export const CreateEdgeConfigTokenResponseBody$inboundSchema: z.ZodType<
   CreateEdgeConfigTokenResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  token: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    token: types.string(),
+  })
+);
 
 export function createEdgeConfigTokenResponseBodyFromJSON(
   jsonString: string,

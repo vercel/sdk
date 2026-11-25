@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -60,12 +60,12 @@ export type DeleteAuthTokenResponseBody = {
 /** @internal */
 export const QueryParamReason$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamReason
-> = z.nativeEnum(QueryParamReason);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamReason));
 
 /** @internal */
 export const QueryParamLogoutSource$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamLogoutSource
-> = z.nativeEnum(QueryParamLogoutSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamLogoutSource));
 
 /** @internal */
 export type DeleteAuthTokenRequest$Outbound = {
@@ -79,11 +79,13 @@ export const DeleteAuthTokenRequest$outboundSchema: z.ZodType<
   DeleteAuthTokenRequest$Outbound,
   z.ZodTypeDef,
   DeleteAuthTokenRequest
-> = z.object({
-  reason: QueryParamReason$outboundSchema.optional(),
-  logoutSource: QueryParamLogoutSource$outboundSchema.optional(),
-  tokenId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    reason: QueryParamReason$outboundSchema.optional(),
+    logoutSource: QueryParamLogoutSource$outboundSchema.optional(),
+    tokenId: z.string(),
+  })
+);
 
 export function deleteAuthTokenRequestToJSON(
   deleteAuthTokenRequest: DeleteAuthTokenRequest,
@@ -98,9 +100,11 @@ export const DeleteAuthTokenResponseBody$inboundSchema: z.ZodType<
   DeleteAuthTokenResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tokenId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tokenId: types.string(),
+  })
+);
 
 export function deleteAuthTokenResponseBodyFromJSON(
   jsonString: string,

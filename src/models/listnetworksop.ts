@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type ListNetworksRequest = {
   /**
@@ -46,14 +47,16 @@ export const ListNetworksRequest$outboundSchema: z.ZodType<
   ListNetworksRequest$Outbound,
   z.ZodTypeDef,
   ListNetworksRequest
-> = z.object({
-  includeHostedZones: z.boolean().default(true),
-  includePeeringConnections: z.boolean().default(true),
-  includeProjects: z.boolean().default(true),
-  search: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    includeHostedZones: z.boolean().default(true),
+    includePeeringConnections: z.boolean().default(true),
+    includeProjects: z.boolean().default(true),
+    search: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listNetworksRequestToJSON(
   listNetworksRequest: ListNetworksRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -113,7 +113,7 @@ export type UpdateAccessGroupResponseBody = {
 /** @internal */
 export const UpdateAccessGroupRole$outboundSchema: z.ZodNativeEnum<
   typeof UpdateAccessGroupRole
-> = z.nativeEnum(UpdateAccessGroupRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateAccessGroupRole));
 
 /** @internal */
 export type UpdateAccessGroupProjects$Outbound = {
@@ -126,10 +126,12 @@ export const UpdateAccessGroupProjects$outboundSchema: z.ZodType<
   UpdateAccessGroupProjects$Outbound,
   z.ZodTypeDef,
   UpdateAccessGroupProjects
-> = z.object({
-  projectId: z.string(),
-  role: z.nullable(UpdateAccessGroupRole$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    role: z.nullable(UpdateAccessGroupRole$outboundSchema),
+  })
+);
 
 export function updateAccessGroupProjectsToJSON(
   updateAccessGroupProjects: UpdateAccessGroupProjects,
@@ -152,13 +154,15 @@ export const UpdateAccessGroupRequestBody$outboundSchema: z.ZodType<
   UpdateAccessGroupRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateAccessGroupRequestBody
-> = z.object({
-  name: z.string().optional(),
-  projects: z.array(z.lazy(() => UpdateAccessGroupProjects$outboundSchema))
-    .optional(),
-  membersToAdd: z.array(z.string()).optional(),
-  membersToRemove: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    projects: z.array(z.lazy(() => UpdateAccessGroupProjects$outboundSchema))
+      .optional(),
+    membersToAdd: z.array(z.string()).optional(),
+    membersToRemove: z.array(z.string()).optional(),
+  })
+);
 
 export function updateAccessGroupRequestBodyToJSON(
   updateAccessGroupRequestBody: UpdateAccessGroupRequestBody,
@@ -183,16 +187,18 @@ export const UpdateAccessGroupRequest$outboundSchema: z.ZodType<
   UpdateAccessGroupRequest$Outbound,
   z.ZodTypeDef,
   UpdateAccessGroupRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateAccessGroupRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateAccessGroupRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateAccessGroupRequestToJSON(
   updateAccessGroupRequest: UpdateAccessGroupRequest,
@@ -205,25 +211,29 @@ export function updateAccessGroupRequestToJSON(
 /** @internal */
 export const UpdateAccessGroupEntitlements$inboundSchema: z.ZodNativeEnum<
   typeof UpdateAccessGroupEntitlements
-> = z.nativeEnum(UpdateAccessGroupEntitlements);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateAccessGroupEntitlements)
+);
 
 /** @internal */
 export const UpdateAccessGroupResponseBody$inboundSchema: z.ZodType<
   UpdateAccessGroupResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessGroupId: types.string(),
-  createdAt: types.string(),
-  entitlements: z.array(UpdateAccessGroupEntitlements$inboundSchema),
-  membersCount: types.number(),
-  name: types.string(),
-  projectsCount: types.number(),
-  teamId: types.string(),
-  teamPermissions: types.optional(z.array(types.string())),
-  teamRoles: types.optional(z.array(types.string())),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroupId: types.string(),
+    createdAt: types.string(),
+    entitlements: z.array(UpdateAccessGroupEntitlements$inboundSchema),
+    membersCount: types.number(),
+    name: types.string(),
+    projectsCount: types.number(),
+    teamId: types.string(),
+    teamPermissions: types.optional(z.array(types.string())),
+    teamRoles: types.optional(z.array(types.string())),
+    updatedAt: types.string(),
+  })
+);
 
 export function updateAccessGroupResponseBodyFromJSON(
   jsonString: string,

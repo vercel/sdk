@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -80,10 +80,12 @@ export const RestoreRedirectsRequestBody$outboundSchema: z.ZodType<
   RestoreRedirectsRequestBody$Outbound,
   z.ZodTypeDef,
   RestoreRedirectsRequestBody
-> = z.object({
-  name: z.string().optional(),
-  redirects: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    redirects: z.array(z.string()),
+  })
+);
 
 export function restoreRedirectsRequestBodyToJSON(
   restoreRedirectsRequestBody: RestoreRedirectsRequestBody,
@@ -108,17 +110,19 @@ export const RestoreRedirectsRequest$outboundSchema: z.ZodType<
   RestoreRedirectsRequest$Outbound,
   z.ZodTypeDef,
   RestoreRedirectsRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => RestoreRedirectsRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => RestoreRedirectsRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function restoreRedirectsRequestToJSON(
   restoreRedirectsRequest: RestoreRedirectsRequest,
@@ -133,17 +137,19 @@ export const RestoreRedirectsVersion$inboundSchema: z.ZodType<
   RestoreRedirectsVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  key: types.string(),
-  lastModified: types.number(),
-  name: types.optional(types.string()),
-  redirectCount: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    key: types.string(),
+    lastModified: types.number(),
+    name: types.optional(types.string()),
+    redirectCount: types.optional(types.number()),
+  })
+);
 
 export function restoreRedirectsVersionFromJSON(
   jsonString: string,
@@ -160,11 +166,13 @@ export const RestoreRedirectsResponseBody$inboundSchema: z.ZodType<
   RestoreRedirectsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  failedToRestore: z.array(types.string()),
-  restored: z.array(types.string()),
-  version: z.lazy(() => RestoreRedirectsVersion$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    failedToRestore: z.array(types.string()),
+    restored: z.array(types.string()),
+    version: z.lazy(() => RestoreRedirectsVersion$inboundSchema),
+  })
+);
 
 export function restoreRedirectsResponseBodyFromJSON(
   jsonString: string,

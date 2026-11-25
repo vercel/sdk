@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -85,10 +85,12 @@ export const UpdateStaticIpsRequestBody2$outboundSchema: z.ZodType<
   UpdateStaticIpsRequestBody2$Outbound,
   z.ZodTypeDef,
   UpdateStaticIpsRequestBody2
-> = z.object({
-  builds: z.boolean().optional(),
-  regions: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    builds: z.boolean().optional(),
+    regions: z.array(z.string()),
+  })
+);
 
 export function updateStaticIpsRequestBody2ToJSON(
   updateStaticIpsRequestBody2: UpdateStaticIpsRequestBody2,
@@ -111,10 +113,12 @@ export const UpdateStaticIpsRequestBody1$outboundSchema: z.ZodType<
   UpdateStaticIpsRequestBody1$Outbound,
   z.ZodTypeDef,
   UpdateStaticIpsRequestBody1
-> = z.object({
-  builds: z.boolean(),
-  regions: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    builds: z.boolean(),
+    regions: z.array(z.string()).optional(),
+  })
+);
 
 export function updateStaticIpsRequestBody1ToJSON(
   updateStaticIpsRequestBody1: UpdateStaticIpsRequestBody1,
@@ -136,10 +140,12 @@ export const UpdateStaticIpsRequestBody$outboundSchema: z.ZodType<
   UpdateStaticIpsRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateStaticIpsRequestBody
-> = smartUnion([
-  z.lazy(() => UpdateStaticIpsRequestBody1$outboundSchema),
-  z.lazy(() => UpdateStaticIpsRequestBody2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateStaticIpsRequestBody1$outboundSchema),
+    z.lazy(() => UpdateStaticIpsRequestBody2$outboundSchema),
+  ])
+);
 
 export function updateStaticIpsRequestBodyToJSON(
   updateStaticIpsRequestBody: UpdateStaticIpsRequestBody,
@@ -165,19 +171,21 @@ export const UpdateStaticIpsRequest$outboundSchema: z.ZodType<
   UpdateStaticIpsRequest$Outbound,
   z.ZodTypeDef,
   UpdateStaticIpsRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => UpdateStaticIpsRequestBody1$outboundSchema),
-    z.lazy(() => UpdateStaticIpsRequestBody2$outboundSchema),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => UpdateStaticIpsRequestBody1$outboundSchema),
+      z.lazy(() => UpdateStaticIpsRequestBody2$outboundSchema),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateStaticIpsRequestToJSON(
   updateStaticIpsRequest: UpdateStaticIpsRequest,
@@ -192,10 +200,12 @@ export const UpdateStaticIpsAws$inboundSchema: z.ZodType<
   UpdateStaticIpsAws,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  securityGroupId: types.optional(types.string()),
-  subnetIds: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    securityGroupId: types.optional(types.string()),
+    subnetIds: z.array(types.string()),
+  })
+);
 
 export function updateStaticIpsAwsFromJSON(
   jsonString: string,
@@ -210,14 +220,16 @@ export function updateStaticIpsAwsFromJSON(
 /** @internal */
 export const UpdateStaticIpsEnvId2$inboundSchema: z.ZodNativeEnum<
   typeof UpdateStaticIpsEnvId2
-> = z.nativeEnum(UpdateStaticIpsEnvId2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateStaticIpsEnvId2));
 
 /** @internal */
 export const UpdateStaticIpsEnvId$inboundSchema: z.ZodType<
   UpdateStaticIpsEnvId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), UpdateStaticIpsEnvId2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), UpdateStaticIpsEnvId2$inboundSchema])
+);
 
 export function updateStaticIpsEnvIdFromJSON(
   jsonString: string,
@@ -234,16 +246,18 @@ export const UpdateStaticIpsResponseBody$inboundSchema: z.ZodType<
   UpdateStaticIpsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  aws: types.optional(z.lazy(() => UpdateStaticIpsAws$inboundSchema)),
-  buildsEnabled: types.boolean(),
-  connectConfigurationId: types.string(),
-  createdAt: types.number(),
-  dc: types.optional(types.string()),
-  envId: smartUnion([types.string(), UpdateStaticIpsEnvId2$inboundSchema]),
-  passive: types.boolean(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    aws: types.optional(z.lazy(() => UpdateStaticIpsAws$inboundSchema)),
+    buildsEnabled: types.boolean(),
+    connectConfigurationId: types.string(),
+    createdAt: types.number(),
+    dc: types.optional(types.string()),
+    envId: smartUnion([types.string(), UpdateStaticIpsEnvId2$inboundSchema]),
+    passive: types.boolean(),
+    updatedAt: types.number(),
+  })
+);
 
 export function updateStaticIpsResponseBodyFromJSON(
   jsonString: string,

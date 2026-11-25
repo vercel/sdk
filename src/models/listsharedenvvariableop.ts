@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -219,24 +219,26 @@ export const ListSharedEnvVariableRequest$outboundSchema: z.ZodType<
   ListSharedEnvVariableRequest$Outbound,
   z.ZodTypeDef,
   ListSharedEnvVariableRequest
-> = z.object({
-  search: z.string().optional(),
-  projectId: z.string().optional(),
-  ids: z.string().optional(),
-  excludeIdsQueryParameter: z.string().optional(),
-  excludeIdsQueryParameter1: z.string().optional(),
-  excludeProjectIdQueryParameter: z.string().optional(),
-  excludeProjectIdQueryParameter1: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    excludeIdsQueryParameter: "exclude_idsQueryParameter",
-    excludeIdsQueryParameter1: "exclude-idsQueryParameter1",
-    excludeProjectIdQueryParameter: "exclude_projectIdQueryParameter",
-    excludeProjectIdQueryParameter1: "exclude-projectIdQueryParameter1",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    search: z.string().optional(),
+    projectId: z.string().optional(),
+    ids: z.string().optional(),
+    excludeIdsQueryParameter: z.string().optional(),
+    excludeIdsQueryParameter1: z.string().optional(),
+    excludeProjectIdQueryParameter: z.string().optional(),
+    excludeProjectIdQueryParameter1: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      excludeIdsQueryParameter: "exclude_idsQueryParameter",
+      excludeIdsQueryParameter1: "exclude-idsQueryParameter1",
+      excludeProjectIdQueryParameter: "exclude_projectIdQueryParameter",
+      excludeProjectIdQueryParameter1: "exclude-projectIdQueryParameter1",
+    });
+  })
+);
 
 export function listSharedEnvVariableRequestToJSON(
   listSharedEnvVariableRequest: ListSharedEnvVariableRequest,
@@ -254,12 +256,14 @@ export const ListSharedEnvVariableLastEditedByPrincipal2$inboundSchema:
     ListSharedEnvVariableLastEditedByPrincipal2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    avatar: types.optional(types.string()),
-    id: types.string(),
-    name: types.string(),
-    type: types.literal("app"),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      avatar: types.optional(types.string()),
+      id: types.string(),
+      name: types.string(),
+      type: types.literal("app"),
+    })
+  );
 
 export function listSharedEnvVariableLastEditedByPrincipal2FromJSON(
   jsonString: string,
@@ -283,13 +287,15 @@ export const ListSharedEnvVariableLastEditedByPrincipal1$inboundSchema:
     ListSharedEnvVariableLastEditedByPrincipal1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    avatar: types.optional(types.string()),
-    id: types.string(),
-    name: z.nullable(types.string()).optional(),
-    type: types.literal("user"),
-    username: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      avatar: types.optional(types.string()),
+      id: types.string(),
+      name: z.nullable(types.string()).optional(),
+      type: types.literal("user"),
+      username: types.string(),
+    })
+  );
 
 export function listSharedEnvVariableLastEditedByPrincipal1FromJSON(
   jsonString: string,
@@ -310,10 +316,12 @@ export function listSharedEnvVariableLastEditedByPrincipal1FromJSON(
 /** @internal */
 export const ListSharedEnvVariableLastEditedByPrincipal$inboundSchema:
   z.ZodType<ListSharedEnvVariableLastEditedByPrincipal, z.ZodTypeDef, unknown> =
-    z.union([
-      z.lazy(() => ListSharedEnvVariableLastEditedByPrincipal1$inboundSchema),
-      z.lazy(() => ListSharedEnvVariableLastEditedByPrincipal2$inboundSchema),
-    ]);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.union([
+        z.lazy(() => ListSharedEnvVariableLastEditedByPrincipal1$inboundSchema),
+        z.lazy(() => ListSharedEnvVariableLastEditedByPrincipal2$inboundSchema),
+      ])
+    );
 
 export function listSharedEnvVariableLastEditedByPrincipalFromJSON(
   jsonString: string,
@@ -334,51 +342,53 @@ export function listSharedEnvVariableLastEditedByPrincipalFromJSON(
 /** @internal */
 export const SecurityIssues$inboundSchema: z.ZodNativeEnum<
   typeof SecurityIssues
-> = z.nativeEnum(SecurityIssues);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SecurityIssues));
 
 /** @internal */
 export const ListSharedEnvVariableTarget$inboundSchema: z.ZodNativeEnum<
   typeof ListSharedEnvVariableTarget
-> = z.nativeEnum(ListSharedEnvVariableTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListSharedEnvVariableTarget)
+);
 
 /** @internal */
 export const ListSharedEnvVariableType$inboundSchema: z.ZodNativeEnum<
   typeof ListSharedEnvVariableType
-> = z.nativeEnum(ListSharedEnvVariableType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ListSharedEnvVariableType));
 
 /** @internal */
 export const ListSharedEnvVariableData$inboundSchema: z.ZodType<
   ListSharedEnvVariableData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  applyToAllCustomEnvironments: types.optional(types.boolean()),
-  comment: types.optional(types.string()),
-  created: types.date(),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.boolean(),
-  deletedAt: types.optional(types.number()),
-  deletedBy: z.nullable(types.string()).optional(),
-  id: types.string(),
-  key: types.string(),
-  lastEditedByDisplayName: types.optional(types.string()),
-  lastEditedByPrincipal: types.optional(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    applyToAllCustomEnvironments: types.optional(types.boolean()),
+    comment: types.optional(types.string()),
+    created: types.date(),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.boolean(),
+    deletedAt: types.optional(types.number()),
+    deletedBy: z.nullable(types.string()).optional(),
+    id: types.string(),
+    key: types.string(),
+    lastEditedByDisplayName: types.optional(types.string()),
+    lastEditedByPrincipal: types.optional(z.union([
       z.lazy(() => ListSharedEnvVariableLastEditedByPrincipal1$inboundSchema),
       z.lazy(() => ListSharedEnvVariableLastEditedByPrincipal2$inboundSchema),
-    ]),
-  ),
-  ownerId: z.nullable(types.string()).optional(),
-  projectId: types.optional(z.array(types.string())),
-  securityIssues: z.array(SecurityIssues$inboundSchema),
-  target: types.optional(z.array(ListSharedEnvVariableTarget$inboundSchema)),
-  type: types.optional(ListSharedEnvVariableType$inboundSchema),
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.optional(types.string()),
-});
+    ])),
+    ownerId: z.nullable(types.string()).optional(),
+    projectId: types.optional(z.array(types.string())),
+    securityIssues: z.array(SecurityIssues$inboundSchema),
+    target: types.optional(z.array(ListSharedEnvVariableTarget$inboundSchema)),
+    type: types.optional(ListSharedEnvVariableType$inboundSchema),
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.optional(types.string()),
+  })
+);
 
 export function listSharedEnvVariableDataFromJSON(
   jsonString: string,
@@ -395,10 +405,12 @@ export const ListSharedEnvVariableResponseBody$inboundSchema: z.ZodType<
   ListSharedEnvVariableResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: z.array(z.lazy(() => ListSharedEnvVariableData$inboundSchema)),
-  pagination: Pagination$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: z.array(z.lazy(() => ListSharedEnvVariableData$inboundSchema)),
+    pagination: Pagination$inboundSchema,
+  })
+);
 
 export function listSharedEnvVariableResponseBodyFromJSON(
   jsonString: string,

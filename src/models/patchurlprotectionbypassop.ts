@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -151,13 +152,17 @@ export type PatchUrlProtectionBypassRequest = {
 
 /** @internal */
 export const PatchUrlProtectionBypassRequestBodyScope$outboundSchema:
-  z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyScope> = z
-    .nativeEnum(PatchUrlProtectionBypassRequestBodyScope);
+  z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyScope> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PatchUrlProtectionBypassRequestBodyScope)
+    );
 
 /** @internal */
 export const PatchUrlProtectionBypassRequestBodyAction$outboundSchema:
-  z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyAction> = z
-    .nativeEnum(PatchUrlProtectionBypassRequestBodyAction);
+  z.ZodNativeEnum<typeof PatchUrlProtectionBypassRequestBodyAction> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PatchUrlProtectionBypassRequestBodyAction)
+    );
 
 /** @internal */
 export type Override$Outbound = {
@@ -170,10 +175,12 @@ export const Override$outboundSchema: z.ZodType<
   Override$Outbound,
   z.ZodTypeDef,
   Override
-> = z.object({
-  scope: PatchUrlProtectionBypassRequestBodyScope$outboundSchema,
-  action: PatchUrlProtectionBypassRequestBodyAction$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scope: PatchUrlProtectionBypassRequestBodyScope$outboundSchema,
+    action: PatchUrlProtectionBypassRequestBodyAction$outboundSchema,
+  })
+);
 
 export function overrideToJSON(override: Override): string {
   return JSON.stringify(Override$outboundSchema.parse(override));
@@ -189,9 +196,11 @@ export const PatchUrlProtectionBypassRequestBody3$outboundSchema: z.ZodType<
   PatchUrlProtectionBypassRequestBody3$Outbound,
   z.ZodTypeDef,
   PatchUrlProtectionBypassRequestBody3
-> = z.object({
-  override: z.lazy(() => Override$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    override: z.lazy(() => Override$outboundSchema),
+  })
+);
 
 export function patchUrlProtectionBypassRequestBody3ToJSON(
   patchUrlProtectionBypassRequestBody3: PatchUrlProtectionBypassRequestBody3,
@@ -205,9 +214,10 @@ export function patchUrlProtectionBypassRequestBody3ToJSON(
 
 /** @internal */
 export const PatchUrlProtectionBypassScopeAccess$outboundSchema:
-  z.ZodNativeEnum<typeof PatchUrlProtectionBypassScopeAccess> = z.nativeEnum(
-    PatchUrlProtectionBypassScopeAccess,
-  );
+  z.ZodNativeEnum<typeof PatchUrlProtectionBypassScopeAccess> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PatchUrlProtectionBypassScopeAccess)
+    );
 
 /** @internal */
 export type Scope2$Outbound = {
@@ -221,19 +231,21 @@ export const Scope2$outboundSchema: z.ZodType<
   Scope2$Outbound,
   z.ZodTypeDef,
   Scope2
-> = z.object({
-  userId: z.string().optional(),
-  email: z.string(),
-  access: PatchUrlProtectionBypassScopeAccess$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    userId: z.string().optional(),
+    email: z.string(),
+    access: PatchUrlProtectionBypassScopeAccess$outboundSchema,
+  })
+);
 
 export function scope2ToJSON(scope2: Scope2): string {
   return JSON.stringify(Scope2$outboundSchema.parse(scope2));
 }
 
 /** @internal */
-export const ScopeAccess$outboundSchema: z.ZodNativeEnum<typeof ScopeAccess> = z
-  .nativeEnum(ScopeAccess);
+export const ScopeAccess$outboundSchema: z.ZodNativeEnum<typeof ScopeAccess> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ScopeAccess));
 
 /** @internal */
 export type Scope1$Outbound = {
@@ -247,11 +259,13 @@ export const Scope1$outboundSchema: z.ZodType<
   Scope1$Outbound,
   z.ZodTypeDef,
   Scope1
-> = z.object({
-  userId: z.string(),
-  email: z.string().optional(),
-  access: ScopeAccess$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    userId: z.string(),
+    email: z.string().optional(),
+    access: ScopeAccess$outboundSchema,
+  })
+);
 
 export function scope1ToJSON(scope1: Scope1): string {
   return JSON.stringify(Scope1$outboundSchema.parse(scope1));
@@ -265,10 +279,12 @@ export const RequestBodyScope$outboundSchema: z.ZodType<
   RequestBodyScope$Outbound,
   z.ZodTypeDef,
   RequestBodyScope
-> = smartUnion([
-  z.lazy(() => Scope1$outboundSchema),
-  z.lazy(() => Scope2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Scope1$outboundSchema),
+    z.lazy(() => Scope2$outboundSchema),
+  ])
+);
 
 export function requestBodyScopeToJSON(
   requestBodyScope: RequestBodyScope,
@@ -288,12 +304,14 @@ export const PatchUrlProtectionBypassRequestBody2$outboundSchema: z.ZodType<
   PatchUrlProtectionBypassRequestBody2$Outbound,
   z.ZodTypeDef,
   PatchUrlProtectionBypassRequestBody2
-> = z.object({
-  scope: smartUnion([
-    z.lazy(() => Scope1$outboundSchema),
-    z.lazy(() => Scope2$outboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scope: smartUnion([
+      z.lazy(() => Scope1$outboundSchema),
+      z.lazy(() => Scope2$outboundSchema),
+    ]),
+  })
+);
 
 export function patchUrlProtectionBypassRequestBody2ToJSON(
   patchUrlProtectionBypassRequestBody2: PatchUrlProtectionBypassRequestBody2,
@@ -316,10 +334,12 @@ export const RequestBodyRevoke$outboundSchema: z.ZodType<
   RequestBodyRevoke$Outbound,
   z.ZodTypeDef,
   RequestBodyRevoke
-> = z.object({
-  secret: z.string(),
-  regenerate: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    secret: z.string(),
+    regenerate: z.boolean(),
+  })
+);
 
 export function requestBodyRevokeToJSON(
   requestBodyRevoke: RequestBodyRevoke,
@@ -340,10 +360,12 @@ export const PatchUrlProtectionBypassRequestBody1$outboundSchema: z.ZodType<
   PatchUrlProtectionBypassRequestBody1$Outbound,
   z.ZodTypeDef,
   PatchUrlProtectionBypassRequestBody1
-> = z.object({
-  ttl: z.number().optional(),
-  revoke: z.lazy(() => RequestBodyRevoke$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ttl: z.number().optional(),
+    revoke: z.lazy(() => RequestBodyRevoke$outboundSchema).optional(),
+  })
+);
 
 export function patchUrlProtectionBypassRequestBody1ToJSON(
   patchUrlProtectionBypassRequestBody1: PatchUrlProtectionBypassRequestBody1,
@@ -366,11 +388,13 @@ export const PatchUrlProtectionBypassRequestBody$outboundSchema: z.ZodType<
   PatchUrlProtectionBypassRequestBody$Outbound,
   z.ZodTypeDef,
   PatchUrlProtectionBypassRequestBody
-> = smartUnion([
-  z.lazy(() => PatchUrlProtectionBypassRequestBody2$outboundSchema),
-  z.lazy(() => PatchUrlProtectionBypassRequestBody3$outboundSchema),
-  z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => PatchUrlProtectionBypassRequestBody2$outboundSchema),
+    z.lazy(() => PatchUrlProtectionBypassRequestBody3$outboundSchema),
+    z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),
+  ])
+);
 
 export function patchUrlProtectionBypassRequestBodyToJSON(
   patchUrlProtectionBypassRequestBody: PatchUrlProtectionBypassRequestBody,
@@ -399,20 +423,22 @@ export const PatchUrlProtectionBypassRequest$outboundSchema: z.ZodType<
   PatchUrlProtectionBypassRequest$Outbound,
   z.ZodTypeDef,
   PatchUrlProtectionBypassRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => PatchUrlProtectionBypassRequestBody2$outboundSchema),
-    z.lazy(() => PatchUrlProtectionBypassRequestBody3$outboundSchema),
-    z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),
-  ]).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => PatchUrlProtectionBypassRequestBody2$outboundSchema),
+      z.lazy(() => PatchUrlProtectionBypassRequestBody3$outboundSchema),
+      z.lazy(() => PatchUrlProtectionBypassRequestBody1$outboundSchema),
+    ]).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function patchUrlProtectionBypassRequestToJSON(
   patchUrlProtectionBypassRequest: PatchUrlProtectionBypassRequest,

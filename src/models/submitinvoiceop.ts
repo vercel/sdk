@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -140,10 +140,12 @@ export const SubmitInvoicePeriod$outboundSchema: z.ZodType<
   SubmitInvoicePeriod$Outbound,
   z.ZodTypeDef,
   SubmitInvoicePeriod
-> = z.object({
-  start: z.date().transform(v => v.toISOString()),
-  end: z.date().transform(v => v.toISOString()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    start: z.date().transform(v => v.toISOString()),
+    end: z.date().transform(v => v.toISOString()),
+  })
+);
 
 export function submitInvoicePeriodToJSON(
   submitInvoicePeriod: SubmitInvoicePeriod,
@@ -172,18 +174,20 @@ export const SubmitInvoiceItems$outboundSchema: z.ZodType<
   SubmitInvoiceItems$Outbound,
   z.ZodTypeDef,
   SubmitInvoiceItems
-> = z.object({
-  resourceId: z.string().optional(),
-  billingPlanId: z.string(),
-  start: z.date().transform(v => v.toISOString()).optional(),
-  end: z.date().transform(v => v.toISOString()).optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  price: z.string(),
-  quantity: z.number(),
-  units: z.string(),
-  total: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    resourceId: z.string().optional(),
+    billingPlanId: z.string(),
+    start: z.date().transform(v => v.toISOString()).optional(),
+    end: z.date().transform(v => v.toISOString()).optional(),
+    name: z.string(),
+    details: z.string().optional(),
+    price: z.string(),
+    quantity: z.number(),
+    units: z.string(),
+    total: z.string(),
+  })
+);
 
 export function submitInvoiceItemsToJSON(
   submitInvoiceItems: SubmitInvoiceItems,
@@ -209,15 +213,17 @@ export const SubmitInvoiceDiscounts$outboundSchema: z.ZodType<
   SubmitInvoiceDiscounts$Outbound,
   z.ZodTypeDef,
   SubmitInvoiceDiscounts
-> = z.object({
-  resourceId: z.string().optional(),
-  billingPlanId: z.string(),
-  start: z.date().transform(v => v.toISOString()).optional(),
-  end: z.date().transform(v => v.toISOString()).optional(),
-  name: z.string(),
-  details: z.string().optional(),
-  amount: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    resourceId: z.string().optional(),
+    billingPlanId: z.string(),
+    start: z.date().transform(v => v.toISOString()).optional(),
+    end: z.date().transform(v => v.toISOString()).optional(),
+    name: z.string(),
+    details: z.string().optional(),
+    amount: z.string(),
+  })
+);
 
 export function submitInvoiceDiscountsToJSON(
   submitInvoiceDiscounts: SubmitInvoiceDiscounts,
@@ -228,8 +234,8 @@ export function submitInvoiceDiscountsToJSON(
 }
 
 /** @internal */
-export const Result$outboundSchema: z.ZodNativeEnum<typeof Result> = z
-  .nativeEnum(Result);
+export const Result$outboundSchema: z.ZodNativeEnum<typeof Result> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Result));
 
 /** @internal */
 export type Test$Outbound = {
@@ -239,10 +245,12 @@ export type Test$Outbound = {
 
 /** @internal */
 export const Test$outboundSchema: z.ZodType<Test$Outbound, z.ZodTypeDef, Test> =
-  z.object({
-    validate: z.boolean().optional(),
-    result: Result$outboundSchema.optional(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      validate: z.boolean().optional(),
+      result: Result$outboundSchema.optional(),
+    })
+  );
 
 export function testToJSON(test: Test): string {
   return JSON.stringify(Test$outboundSchema.parse(test));
@@ -265,17 +273,19 @@ export const SubmitInvoiceRequestBody$outboundSchema: z.ZodType<
   SubmitInvoiceRequestBody$Outbound,
   z.ZodTypeDef,
   SubmitInvoiceRequestBody
-> = z.object({
-  externalId: z.string().optional(),
-  invoiceDate: z.date().transform(v => v.toISOString()),
-  memo: z.string().optional(),
-  period: z.lazy(() => SubmitInvoicePeriod$outboundSchema),
-  items: z.array(z.lazy(() => SubmitInvoiceItems$outboundSchema)),
-  discounts: z.array(z.lazy(() => SubmitInvoiceDiscounts$outboundSchema))
-    .optional(),
-  final: z.boolean().optional(),
-  test: z.lazy(() => Test$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalId: z.string().optional(),
+    invoiceDate: z.date().transform(v => v.toISOString()),
+    memo: z.string().optional(),
+    period: z.lazy(() => SubmitInvoicePeriod$outboundSchema),
+    items: z.array(z.lazy(() => SubmitInvoiceItems$outboundSchema)),
+    discounts: z.array(z.lazy(() => SubmitInvoiceDiscounts$outboundSchema))
+      .optional(),
+    final: z.boolean().optional(),
+    test: z.lazy(() => Test$outboundSchema).optional(),
+  })
+);
 
 export function submitInvoiceRequestBodyToJSON(
   submitInvoiceRequestBody: SubmitInvoiceRequestBody,
@@ -296,14 +306,16 @@ export const SubmitInvoiceRequest$outboundSchema: z.ZodType<
   SubmitInvoiceRequest$Outbound,
   z.ZodTypeDef,
   SubmitInvoiceRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  requestBody: z.lazy(() => SubmitInvoiceRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    requestBody: z.lazy(() => SubmitInvoiceRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function submitInvoiceRequestToJSON(
   submitInvoiceRequest: SubmitInvoiceRequest,
@@ -318,11 +330,13 @@ export const SubmitInvoiceResponseBody$inboundSchema: z.ZodType<
   SubmitInvoiceResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  invoiceId: types.optional(types.string()),
-  test: types.optional(types.boolean()),
-  validationErrors: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    invoiceId: types.optional(types.string()),
+    test: types.optional(types.boolean()),
+    validationErrors: types.optional(z.array(types.string())),
+  })
+);
 
 export function submitInvoiceResponseBodyFromJSON(
   jsonString: string,

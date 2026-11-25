@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export type DeleteConditionalBypassRequest = {
@@ -35,12 +36,14 @@ export const DeleteConditionalBypassRequest$outboundSchema: z.ZodType<
   DeleteConditionalBypassRequest$Outbound,
   z.ZodTypeDef,
   DeleteConditionalBypassRequest
-> = z.object({
-  projectId: z.string(),
-  slug: z.string().optional(),
-  domain: z.string(),
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    slug: z.string().optional(),
+    domain: z.string(),
+    teamId: z.string().optional(),
+  })
+);
 
 export function deleteConditionalBypassRequestToJSON(
   deleteConditionalBypassRequest: DeleteConditionalBypassRequest,
@@ -55,4 +58,6 @@ export function deleteConditionalBypassRequestToJSON(
 /** @internal */
 export const DeleteConditionalBypassResponseBody$inboundSchema: z.ZodNativeEnum<
   typeof DeleteConditionalBypassResponseBody
-> = z.nativeEnum(DeleteConditionalBypassResponseBody);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteConditionalBypassResponseBody)
+);

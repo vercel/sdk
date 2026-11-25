@@ -5,23 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventy } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndSeventy } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
 let value: TwoHundredAndSeventy = {
-  justification: "<value>",
-  previousStatus: "<value>",
-  projectId: "<id>",
-  url: "https://merry-singing.info/",
+  cause: "<value>",
+  ownerId: "<id>",
+  source: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `approvalScope`                                                  | [models.ApprovalScope](../models/approvalscope.md)               | :heavy_minus_sign:                                               | N/A                                                              |
-| `justification`                                                  | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `kind`                                                           | [models.UserEventPayloadKind](../models/usereventpayloadkind.md) | :heavy_minus_sign:                                               | N/A                                                              |
-| `previousStatus`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `url`                                                            | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `blockReason`      | *string*           | :heavy_minus_sign: | N/A                |
+| `cause`            | *string*           | :heavy_check_mark: | N/A                |
+| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
+| `source`           | *string*           | :heavy_check_mark: | N/A                |

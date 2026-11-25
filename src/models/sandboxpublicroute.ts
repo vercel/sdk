@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -35,12 +35,14 @@ export const SandboxPublicRoute$inboundSchema: z.ZodType<
   SandboxPublicRoute,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  port: types.number(),
-  subdomain: types.string(),
-  system: types.optional(types.literal(true)),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    port: types.number(),
+    subdomain: types.string(),
+    system: types.optional(types.literal(true)),
+    url: types.string(),
+  })
+);
 
 export function sandboxPublicRouteFromJSON(
   jsonString: string,

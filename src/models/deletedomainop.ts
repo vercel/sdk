@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -42,11 +42,13 @@ export const DeleteDomainRequest$outboundSchema: z.ZodType<
   DeleteDomainRequest$Outbound,
   z.ZodTypeDef,
   DeleteDomainRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteDomainRequestToJSON(
   deleteDomainRequest: DeleteDomainRequest,
@@ -61,9 +63,11 @@ export const DeleteDomainResponseBody$inboundSchema: z.ZodType<
   DeleteDomainResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  uid: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uid: types.string(),
+  })
+);
 
 export function deleteDomainResponseBodyFromJSON(
   jsonString: string,

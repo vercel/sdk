@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import {
   collectExtraKeys as collectExtraKeys$,
+  lazySchema as lazySchema$,
   safeParse,
 } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
@@ -208,15 +209,17 @@ export type AggregatePageviewsResponseBody = {
 };
 
 /** @internal */
-export const QueryParam1$outboundSchema: z.ZodNativeEnum<typeof QueryParam1> = z
-  .nativeEnum(QueryParam1);
+export const QueryParam1$outboundSchema: z.ZodNativeEnum<typeof QueryParam1> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParam1));
 
 /** @internal */
 export type By$Outbound = string | string;
 
 /** @internal */
 export const By$outboundSchema: z.ZodType<By$Outbound, z.ZodTypeDef, By> =
-  smartUnion([QueryParam1$outboundSchema, z.string()]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([QueryParam1$outboundSchema, z.string()])
+  );
 
 export function byToJSON(by: By): string {
   return JSON.stringify(By$outboundSchema.parse(by));
@@ -230,7 +233,7 @@ export const Since$outboundSchema: z.ZodType<
   Since$Outbound,
   z.ZodTypeDef,
   Since
-> = smartUnion([z.number(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => smartUnion([z.number(), z.string()]));
 
 export function sinceToJSON(since: Since): string {
   return JSON.stringify(Since$outboundSchema.parse(since));
@@ -244,7 +247,7 @@ export const Until$outboundSchema: z.ZodType<
   Until$Outbound,
   z.ZodTypeDef,
   Until
-> = smartUnion([z.number(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => smartUnion([z.number(), z.string()]));
 
 export function untilToJSON(until: Until): string {
   return JSON.stringify(Until$outboundSchema.parse(until));
@@ -267,16 +270,18 @@ export const AggregatePageviewsRequest$outboundSchema: z.ZodType<
   AggregatePageviewsRequest$Outbound,
   z.ZodTypeDef,
   AggregatePageviewsRequest
-> = z.object({
-  projectId: z.string(),
-  by: z.array(smartUnion([QueryParam1$outboundSchema, z.string()])),
-  since: smartUnion([z.number(), z.string()]),
-  until: smartUnion([z.number(), z.string()]),
-  limit: z.number().int().default(10),
-  filter: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    by: z.array(smartUnion([QueryParam1$outboundSchema, z.string()])),
+    since: smartUnion([z.number(), z.string()]),
+    until: smartUnion([z.number(), z.string()]),
+    limit: z.number().int().default(10),
+    filter: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function aggregatePageviewsRequestToJSON(
   aggregatePageviewsRequest: AggregatePageviewsRequest,
@@ -291,31 +296,33 @@ export const AggregatePageviewsData2$inboundSchema: z.ZodType<
   AggregatePageviewsData2,
   z.ZodTypeDef,
   unknown
-> = collectExtraKeys$(
-  z.object({
-    browserName: types.string(),
-    country: types.string(),
-    deviceType: types.string(),
-    environment: types.string(),
-    flags: types.string(),
-    groupId: types.string(),
-    osName: types.string(),
-    projectId: types.string(),
-    projectName: types.string(),
-    referrerHostname: types.string(),
-    requestHostname: types.string(),
-    requestPath: types.string(),
-    route: types.string(),
-    userId: types.string(),
-    utmCampaign: types.string(),
-    utmContent: types.string(),
-    utmMedium: types.string(),
-    utmSource: types.string(),
-    utmTerm: types.string(),
-    visitorId: types.string(),
-  }).catchall(types.number()),
-  "additionalProperties",
-  true,
+> = /* @__PURE__ */ lazySchema$(() =>
+  collectExtraKeys$(
+    z.object({
+      browserName: types.string(),
+      country: types.string(),
+      deviceType: types.string(),
+      environment: types.string(),
+      flags: types.string(),
+      groupId: types.string(),
+      osName: types.string(),
+      projectId: types.string(),
+      projectName: types.string(),
+      referrerHostname: types.string(),
+      requestHostname: types.string(),
+      requestPath: types.string(),
+      route: types.string(),
+      userId: types.string(),
+      utmCampaign: types.string(),
+      utmContent: types.string(),
+      utmMedium: types.string(),
+      utmSource: types.string(),
+      utmTerm: types.string(),
+      visitorId: types.string(),
+    }).catchall(types.number()),
+    "additionalProperties",
+    true,
+  )
 );
 
 export function aggregatePageviewsData2FromJSON(
@@ -333,29 +340,31 @@ export const AggregatePageviewsData1$inboundSchema: z.ZodType<
   AggregatePageviewsData1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  browserName: types.optional(types.string()),
-  country: types.optional(types.string()),
-  deviceType: types.optional(types.string()),
-  environment: types.optional(types.string()),
-  flags: types.optional(types.string()),
-  groupId: types.optional(types.string()),
-  osName: types.optional(types.string()),
-  projectId: types.optional(types.string()),
-  projectName: types.optional(types.string()),
-  referrerHostname: types.optional(types.string()),
-  requestHostname: types.optional(types.string()),
-  requestPath: types.optional(types.string()),
-  route: types.optional(types.string()),
-  userId: types.optional(types.string()),
-  utmCampaign: types.optional(types.string()),
-  utmContent: types.optional(types.string()),
-  utmMedium: types.optional(types.string()),
-  utmSource: types.optional(types.string()),
-  utmTerm: types.optional(types.string()),
-  visitorId: types.optional(types.string()),
-  timestamp: types.date(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    browserName: types.optional(types.string()),
+    country: types.optional(types.string()),
+    deviceType: types.optional(types.string()),
+    environment: types.optional(types.string()),
+    flags: types.optional(types.string()),
+    groupId: types.optional(types.string()),
+    osName: types.optional(types.string()),
+    projectId: types.optional(types.string()),
+    projectName: types.optional(types.string()),
+    referrerHostname: types.optional(types.string()),
+    requestHostname: types.optional(types.string()),
+    requestPath: types.optional(types.string()),
+    route: types.optional(types.string()),
+    userId: types.optional(types.string()),
+    utmCampaign: types.optional(types.string()),
+    utmContent: types.optional(types.string()),
+    utmMedium: types.optional(types.string()),
+    utmSource: types.optional(types.string()),
+    utmTerm: types.optional(types.string()),
+    visitorId: types.optional(types.string()),
+    timestamp: types.date(),
+  })
+);
 
 export function aggregatePageviewsData1FromJSON(
   jsonString: string,
@@ -372,10 +381,12 @@ export const AggregatePageviewsData$inboundSchema: z.ZodType<
   AggregatePageviewsData,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(z.lazy(() => AggregatePageviewsData1$inboundSchema)),
-  z.array(z.lazy(() => AggregatePageviewsData2$inboundSchema)),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(z.lazy(() => AggregatePageviewsData1$inboundSchema)),
+    z.array(z.lazy(() => AggregatePageviewsData2$inboundSchema)),
+  ])
+);
 
 export function aggregatePageviewsDataFromJSON(
   jsonString: string,
@@ -388,12 +399,14 @@ export function aggregatePageviewsDataFromJSON(
 }
 
 /** @internal */
-export const GroupBy2$inboundSchema: z.ZodNativeEnum<typeof GroupBy2> = z
-  .nativeEnum(GroupBy2);
+export const GroupBy2$inboundSchema: z.ZodNativeEnum<typeof GroupBy2> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GroupBy2));
 
 /** @internal */
 export const GroupBy$inboundSchema: z.ZodType<GroupBy, z.ZodTypeDef, unknown> =
-  smartUnion([types.string(), GroupBy2$inboundSchema]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), GroupBy2$inboundSchema])
+  );
 
 export function groupByFromJSON(
   jsonString: string,
@@ -406,16 +419,18 @@ export function groupByFromJSON(
 }
 
 /** @internal */
-export const Query$inboundSchema: z.ZodType<Query, z.ZodTypeDef, unknown> = z
-  .object({
-    filter: types.optional(types.string()),
-    groupBy: types.optional(
-      z.array(smartUnion([types.string(), GroupBy2$inboundSchema])),
-    ),
-    limit: types.number(),
-    since: types.string(),
-    until: types.string(),
-  });
+export const Query$inboundSchema: z.ZodType<Query, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      filter: types.optional(types.string()),
+      groupBy: types.optional(
+        z.array(smartUnion([types.string(), GroupBy2$inboundSchema])),
+      ),
+      limit: types.number(),
+      since: types.string(),
+      until: types.string(),
+    })
+  );
 
 export function queryFromJSON(
   jsonString: string,
@@ -432,14 +447,16 @@ export const AggregatePageviewsResponseBody$inboundSchema: z.ZodType<
   AggregatePageviewsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: smartUnion([
-    z.array(z.lazy(() => AggregatePageviewsData1$inboundSchema)),
-    z.array(z.lazy(() => AggregatePageviewsData2$inboundSchema)),
-  ]),
-  query: z.lazy(() => Query$inboundSchema),
-  version: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: smartUnion([
+      z.array(z.lazy(() => AggregatePageviewsData1$inboundSchema)),
+      z.array(z.lazy(() => AggregatePageviewsData2$inboundSchema)),
+    ]),
+    query: z.lazy(() => Query$inboundSchema),
+    version: types.number(),
+  })
+);
 
 export function aggregatePageviewsResponseBodyFromJSON(
   jsonString: string,

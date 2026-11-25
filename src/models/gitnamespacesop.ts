@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -55,7 +55,7 @@ export type GitNamespacesResponseBody = {
 /** @internal */
 export const QueryParamProvider$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamProvider
-> = z.nativeEnum(QueryParamProvider);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamProvider));
 
 /** @internal */
 export type GitNamespacesRequest$Outbound = {
@@ -69,11 +69,13 @@ export const GitNamespacesRequest$outboundSchema: z.ZodType<
   GitNamespacesRequest$Outbound,
   z.ZodTypeDef,
   GitNamespacesRequest
-> = z.object({
-  host: z.string().optional(),
-  provider: QueryParamProvider$outboundSchema.optional(),
-  viewerMetadata: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    host: z.string().optional(),
+    provider: QueryParamProvider$outboundSchema.optional(),
+    viewerMetadata: z.boolean().optional(),
+  })
+);
 
 export function gitNamespacesRequestToJSON(
   gitNamespacesRequest: GitNamespacesRequest,
@@ -88,7 +90,9 @@ export const GitNamespacesId$inboundSchema: z.ZodType<
   GitNamespacesId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function gitNamespacesIdFromJSON(
   jsonString: string,
@@ -105,7 +109,9 @@ export const GitNamespacesRole$inboundSchema: z.ZodType<
   GitNamespacesRole,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function gitNamespacesRoleFromJSON(
   jsonString: string,
@@ -118,11 +124,13 @@ export function gitNamespacesRoleFromJSON(
 }
 
 /** @internal */
-export const Viewer$inboundSchema: z.ZodType<Viewer, z.ZodTypeDef, unknown> = z
-  .object({
-    canCreateApp: types.optional(types.boolean()),
-    role: types.optional(smartUnion([types.string(), types.number()])),
-  });
+export const Viewer$inboundSchema: z.ZodType<Viewer, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      canCreateApp: types.optional(types.boolean()),
+      role: types.optional(smartUnion([types.string(), types.number()])),
+    })
+  );
 
 export function viewerFromJSON(
   jsonString: string,
@@ -139,17 +147,19 @@ export const GitNamespacesResponseBody$inboundSchema: z.ZodType<
   GitNamespacesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: smartUnion([types.string(), types.number()]),
-  installationId: types.optional(types.number()),
-  isAccessRestricted: types.optional(types.boolean()),
-  name: types.optional(types.string()),
-  ownerType: types.string(),
-  provider: types.string(),
-  requireReauth: types.optional(types.boolean()),
-  slug: types.string(),
-  viewer: types.optional(z.lazy(() => Viewer$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: smartUnion([types.string(), types.number()]),
+    installationId: types.optional(types.number()),
+    isAccessRestricted: types.optional(types.boolean()),
+    name: types.optional(types.string()),
+    ownerType: types.string(),
+    provider: types.string(),
+    requireReauth: types.optional(types.boolean()),
+    slug: types.string(),
+    viewer: types.optional(z.lazy(() => Viewer$inboundSchema)),
+  })
+);
 
 export function gitNamespacesResponseBodyFromJSON(
   jsonString: string,

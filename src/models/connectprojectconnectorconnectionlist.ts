@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import {
   ConnectPagination,
@@ -34,10 +34,12 @@ export const ConnectProjectConnectorConnectionList$inboundSchema: z.ZodType<
   ConnectProjectConnectorConnectionList,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  connectors: z.array(ConnectProjectConnection$inboundSchema),
-  pagination: ConnectPagination$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connectors: z.array(ConnectProjectConnection$inboundSchema),
+    pagination: ConnectPagination$inboundSchema,
+  })
+);
 
 export function connectProjectConnectorConnectionListFromJSON(
   jsonString: string,

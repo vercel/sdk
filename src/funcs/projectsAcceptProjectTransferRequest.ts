@@ -8,9 +8,8 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
-import { pathToFunc } from "../lib/url.js";
 import {
   AcceptProjectTransferRequestRequest,
   AcceptProjectTransferRequestRequest$outboundSchema,
@@ -99,7 +98,14 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/projects/transfer-request/{code}")(pathParams);
+  const pathResult = encodePath(
+    "/projects/transfer-request/{code}",
+    pathParams,
+  );
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const query = encodeFormQuery({
     "slug": payload.slug,
@@ -170,7 +176,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(202, AcceptProjectTransferRequestResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 404, 409, 410, 422, "4XX"]),
+    M.fail([400, 401, 402, 403, 404, 409, 410, 422, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

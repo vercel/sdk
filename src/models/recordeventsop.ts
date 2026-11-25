@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -76,12 +77,11 @@ export type RecordEventsRequest = {
 /** @internal */
 export const RecordEventsSource$outboundSchema: z.ZodNativeEnum<
   typeof RecordEventsSource
-> = z.nativeEnum(RecordEventsSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RecordEventsSource));
 
 /** @internal */
-export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> = z.nativeEnum(
-  Event,
-);
+export const Event$outboundSchema: z.ZodNativeEnum<typeof Event> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Event));
 
 /** @internal */
 export type RequestBody$Outbound = {
@@ -97,13 +97,15 @@ export const RequestBody$outboundSchema: z.ZodType<
   RequestBody$Outbound,
   z.ZodTypeDef,
   RequestBody
-> = z.object({
-  sessionId: z.string(),
-  source: RecordEventsSource$outboundSchema,
-  event: Event$outboundSchema,
-  hash: z.string(),
-  duration: z.number().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    source: RecordEventsSource$outboundSchema,
+    event: Event$outboundSchema,
+    hash: z.string(),
+    duration: z.number().optional(),
+  })
+);
 
 export function requestBodyToJSON(requestBody: RequestBody): string {
   return JSON.stringify(RequestBody$outboundSchema.parse(requestBody));
@@ -123,19 +125,21 @@ export const RecordEventsRequest$outboundSchema: z.ZodType<
   RecordEventsRequest$Outbound,
   z.ZodTypeDef,
   RecordEventsRequest
-> = z.object({
-  xArtifactClientCi: z.string().optional(),
-  xArtifactClientInteractive: z.number().int().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.array(z.lazy(() => RequestBody$outboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    xArtifactClientCi: "x-artifact-client-ci",
-    xArtifactClientInteractive: "x-artifact-client-interactive",
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    xArtifactClientCi: z.string().optional(),
+    xArtifactClientInteractive: z.number().int().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.array(z.lazy(() => RequestBody$outboundSchema)),
+  }).transform((v) => {
+    return remap$(v, {
+      xArtifactClientCi: "x-artifact-client-ci",
+      xArtifactClientInteractive: "x-artifact-client-interactive",
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function recordEventsRequestToJSON(
   recordEventsRequest: RecordEventsRequest,

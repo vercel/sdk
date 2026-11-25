@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type GetSupportedTldsRequest = {
   teamId?: string | undefined;
@@ -18,9 +19,11 @@ export const GetSupportedTldsRequest$outboundSchema: z.ZodType<
   GetSupportedTldsRequest$Outbound,
   z.ZodTypeDef,
   GetSupportedTldsRequest
-> = z.object({
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+  })
+);
 
 export function getSupportedTldsRequestToJSON(
   getSupportedTldsRequest: GetSupportedTldsRequest,

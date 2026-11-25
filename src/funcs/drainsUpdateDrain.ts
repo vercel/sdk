@@ -8,9 +8,8 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
-import { pathToFunc } from "../lib/url.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -34,7 +33,7 @@ import { Result } from "../types/fp.js";
  * Update an existing Drain
  *
  * @remarks
- * Update the configuration of an existing drain.
+ * Update the configuration of an existing drain. A `delivery` with masked values is rejected, and only a drain connected to a Marketplace store can take its delivery from it. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -99,7 +98,11 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc("/v1/drains/{id}")(pathParams);
+  const pathResult = encodePath("/v1/drains/{id}", pathParams);
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const query = encodeFormQuery({
     "slug": payload.slug,

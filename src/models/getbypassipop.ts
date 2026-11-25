@@ -3,8 +3,12 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -89,16 +93,22 @@ export const GetBypassIpRequest$outboundSchema: z.ZodType<
   GetBypassIpRequest$Outbound,
   z.ZodTypeDef,
   GetBypassIpRequest
-> = z.object({
-  projectId: z.string(),
-  limit: z.number().optional(),
-  sourceIp: z.string().optional(),
-  domain: z.string().optional(),
-  projectScope: z.boolean().optional(),
-  offset: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    limit: z.number().optional(),
+    sourceIp: z.string().optional(),
+    domain: z.string().refine(withinMaxLength$(2544), {
+      message: "Value must be at most 2544 characters long",
+    }).refine(matchesPattern$("([a-z]+[a-z.]+)$", 2544), {
+      message: "Value must match pattern ([a-z]+[a-z.]+)$",
+    }).optional(),
+    projectScope: z.boolean().optional(),
+    offset: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getBypassIpRequestToJSON(
   getBypassIpRequest: GetBypassIpRequest,
@@ -113,15 +123,17 @@ export const GetBypassIpPagination$inboundSchema: z.ZodType<
   GetBypassIpPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Id: types.string(),
-  OwnerId: types.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "Id": "id",
-    "OwnerId": "ownerId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Id: types.string(),
+    OwnerId: types.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "Id": "id",
+      "OwnerId": "ownerId",
+    });
+  })
+);
 
 export function getBypassIpPaginationFromJSON(
   jsonString: string,
@@ -136,46 +148,48 @@ export function getBypassIpPaginationFromJSON(
 /** @internal */
 export const GetBypassIpAction$inboundSchema: z.ZodNativeEnum<
   typeof GetBypassIpAction
-> = z.nativeEnum(GetBypassIpAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetBypassIpAction));
 
 /** @internal */
 export const GetBypassIpResult$inboundSchema: z.ZodType<
   GetBypassIpResult,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  Action: types.optional(GetBypassIpAction$inboundSchema),
-  ActorId: types.optional(types.string()),
-  CreatedAt: types.string(),
-  DeletedAt: types.optional(types.string()),
-  Domain: types.string(),
-  ExpiresAt: z.nullable(types.number()).optional(),
-  Id: types.string(),
-  Ip: types.string(),
-  IsProjectRule: types.optional(types.boolean()),
-  Note: types.optional(types.string()),
-  OwnerId: types.string(),
-  ProjectId: types.optional(types.string()),
-  UpdatedAt: types.string(),
-  UpdatedAtHour: types.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "Action": "action",
-    "ActorId": "actorId",
-    "CreatedAt": "createdAt",
-    "DeletedAt": "deletedAt",
-    "Domain": "domain",
-    "ExpiresAt": "expiresAt",
-    "Id": "id",
-    "Ip": "ip",
-    "IsProjectRule": "isProjectRule",
-    "Note": "note",
-    "OwnerId": "ownerId",
-    "ProjectId": "projectId",
-    "UpdatedAt": "updatedAt",
-    "UpdatedAtHour": "updatedAtHour",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    Action: types.optional(GetBypassIpAction$inboundSchema),
+    ActorId: types.optional(types.string()),
+    CreatedAt: types.string(),
+    DeletedAt: types.optional(types.string()),
+    Domain: types.string(),
+    ExpiresAt: z.nullable(types.number()).optional(),
+    Id: types.string(),
+    Ip: types.string(),
+    IsProjectRule: types.optional(types.boolean()),
+    Note: types.optional(types.string()),
+    OwnerId: types.string(),
+    ProjectId: types.optional(types.string()),
+    UpdatedAt: types.string(),
+    UpdatedAtHour: types.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "Action": "action",
+      "ActorId": "actorId",
+      "CreatedAt": "createdAt",
+      "DeletedAt": "deletedAt",
+      "Domain": "domain",
+      "ExpiresAt": "expiresAt",
+      "Id": "id",
+      "Ip": "ip",
+      "IsProjectRule": "isProjectRule",
+      "Note": "note",
+      "OwnerId": "ownerId",
+      "ProjectId": "projectId",
+      "UpdatedAt": "updatedAt",
+      "UpdatedAtHour": "updatedAtHour",
+    });
+  })
+);
 
 export function getBypassIpResultFromJSON(
   jsonString: string,
@@ -192,10 +206,14 @@ export const GetBypassIpResponseBody$inboundSchema: z.ZodType<
   GetBypassIpResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: types.optional(z.lazy(() => GetBypassIpPagination$inboundSchema)),
-  result: z.array(z.lazy(() => GetBypassIpResult$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: types.optional(
+      z.lazy(() => GetBypassIpPagination$inboundSchema),
+    ),
+    result: z.array(z.lazy(() => GetBypassIpResult$inboundSchema)),
+  })
+);
 
 export function getBypassIpResponseBodyFromJSON(
   jsonString: string,

@@ -4,12 +4,11 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export const SDKKeyType = {
   Server: "server",
-  Mobile: "mobile",
-  Client: "client",
 } as const;
 export type SDKKeyType = ClosedEnum<typeof SDKKeyType>;
 
@@ -36,8 +35,8 @@ export type CreateSDKKeyRequest = {
 };
 
 /** @internal */
-export const SDKKeyType$outboundSchema: z.ZodNativeEnum<typeof SDKKeyType> = z
-  .nativeEnum(SDKKeyType);
+export const SDKKeyType$outboundSchema: z.ZodNativeEnum<typeof SDKKeyType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SDKKeyType));
 
 /** @internal */
 export type CreateSDKKeyRequestBody$Outbound = {
@@ -51,11 +50,13 @@ export const CreateSDKKeyRequestBody$outboundSchema: z.ZodType<
   CreateSDKKeyRequestBody$Outbound,
   z.ZodTypeDef,
   CreateSDKKeyRequestBody
-> = z.object({
-  sdkKeyType: SDKKeyType$outboundSchema,
-  environment: z.string(),
-  label: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sdkKeyType: SDKKeyType$outboundSchema,
+    environment: z.string(),
+    label: z.string().optional(),
+  })
+);
 
 export function createSDKKeyRequestBodyToJSON(
   createSDKKeyRequestBody: CreateSDKKeyRequestBody,
@@ -78,16 +79,19 @@ export const CreateSDKKeyRequest$outboundSchema: z.ZodType<
   CreateSDKKeyRequest$Outbound,
   z.ZodTypeDef,
   CreateSDKKeyRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateSDKKeyRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateSDKKeyRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createSDKKeyRequestToJSON(
   createSDKKeyRequest: CreateSDKKeyRequest,

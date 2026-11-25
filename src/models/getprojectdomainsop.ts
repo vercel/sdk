@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -14,14 +14,14 @@ import { SDKValidationError } from "./sdkvalidationerror.js";
 /**
  * Filters only production domains when set to `true`.
  */
-export const Production = {
+export const QueryParamProduction = {
   True: "true",
   False: "false",
 } as const;
 /**
  * Filters only production domains when set to `true`.
  */
-export type Production = ClosedEnum<typeof Production>;
+export type QueryParamProduction = ClosedEnum<typeof QueryParamProduction>;
 
 /**
  * Filters on the target of the domain. Can be either "production", "preview"
@@ -81,7 +81,7 @@ export type GetProjectDomainsRequest = {
   /**
    * Filters only production domains when set to `true`.
    */
-  production?: Production | undefined;
+  production?: QueryParamProduction | undefined;
   /**
    * Filters on the target of the domain. Can be either "production", "preview"
    */
@@ -219,27 +219,29 @@ export type GetProjectDomainsResponseBody =
   | GetProjectDomainsResponseBody2;
 
 /** @internal */
-export const Production$outboundSchema: z.ZodNativeEnum<typeof Production> = z
-  .nativeEnum(Production);
+export const QueryParamProduction$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamProduction
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamProduction));
 
 /** @internal */
 export const GetProjectDomainsQueryParamTarget$outboundSchema: z.ZodNativeEnum<
   typeof GetProjectDomainsQueryParamTarget
-> = z.nativeEnum(GetProjectDomainsQueryParamTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetProjectDomainsQueryParamTarget)
+);
 
 /** @internal */
 export const QueryParamRedirects$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamRedirects
-> = z.nativeEnum(QueryParamRedirects);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamRedirects));
 
 /** @internal */
-export const Verified$outboundSchema: z.ZodNativeEnum<typeof Verified> = z
-  .nativeEnum(Verified);
+export const Verified$outboundSchema: z.ZodNativeEnum<typeof Verified> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Verified));
 
 /** @internal */
-export const Order$outboundSchema: z.ZodNativeEnum<typeof Order> = z.nativeEnum(
-  Order,
-);
+export const Order$outboundSchema: z.ZodNativeEnum<typeof Order> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Order));
 
 /** @internal */
 export type GetProjectDomainsRequest$Outbound = {
@@ -264,22 +266,24 @@ export const GetProjectDomainsRequest$outboundSchema: z.ZodType<
   GetProjectDomainsRequest$Outbound,
   z.ZodTypeDef,
   GetProjectDomainsRequest
-> = z.object({
-  idOrName: z.string(),
-  production: Production$outboundSchema.default("false"),
-  target: GetProjectDomainsQueryParamTarget$outboundSchema.optional(),
-  customEnvironmentId: z.string().optional(),
-  gitBranch: z.string().optional(),
-  redirects: QueryParamRedirects$outboundSchema.default("true"),
-  redirect: z.string().optional(),
-  verified: Verified$outboundSchema.optional(),
-  limit: z.number().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  order: Order$outboundSchema.default("DESC"),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    production: QueryParamProduction$outboundSchema.default("false"),
+    target: GetProjectDomainsQueryParamTarget$outboundSchema.optional(),
+    customEnvironmentId: z.string().optional(),
+    gitBranch: z.string().optional(),
+    redirects: QueryParamRedirects$outboundSchema.default("true"),
+    redirect: z.string().optional(),
+    verified: Verified$outboundSchema.optional(),
+    limit: z.number().optional(),
+    since: z.number().optional(),
+    until: z.number().optional(),
+    order: Order$outboundSchema.default("DESC"),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getProjectDomainsRequestToJSON(
   getProjectDomainsRequest: GetProjectDomainsRequest,
@@ -294,12 +298,14 @@ export const GetProjectDomainsResponseBodyVerification$inboundSchema: z.ZodType<
   GetProjectDomainsResponseBodyVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  reason: types.string(),
-  type: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    reason: types.string(),
+    type: types.string(),
+    value: types.string(),
+  })
+);
 
 export function getProjectDomainsResponseBodyVerificationFromJSON(
   jsonString: string,
@@ -322,23 +328,23 @@ export const GetProjectDomainsResponseBodyDomains$inboundSchema: z.ZodType<
   GetProjectDomainsResponseBodyDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apexName: types.string(),
-  createdAt: types.optional(types.number()),
-  customEnvironmentId: z.nullable(types.string()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  name: types.string(),
-  projectId: types.string(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  updatedAt: types.optional(types.number()),
-  verification: types.optional(
-    z.array(
-      z.lazy(() => GetProjectDomainsResponseBodyVerification$inboundSchema),
-    ),
-  ),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apexName: types.string(),
+    createdAt: types.optional(types.number()),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    name: types.string(),
+    projectId: types.string(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    updatedAt: types.optional(types.number()),
+    verification: types.optional(z.array(z.lazy(() =>
+      GetProjectDomainsResponseBodyVerification$inboundSchema
+    ))),
+    verified: types.boolean(),
+  })
+);
 
 export function getProjectDomainsResponseBodyDomainsFromJSON(
   jsonString: string,
@@ -356,12 +362,14 @@ export const GetProjectDomainsResponseBody2$inboundSchema: z.ZodType<
   GetProjectDomainsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domains: z.array(
-    z.lazy(() => GetProjectDomainsResponseBodyDomains$inboundSchema),
-  ),
-  pagination: Pagination$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domains: z.array(
+      z.lazy(() => GetProjectDomainsResponseBodyDomains$inboundSchema),
+    ),
+    pagination: Pagination$inboundSchema,
+  })
+);
 
 export function getProjectDomainsResponseBody2FromJSON(
   jsonString: string,
@@ -378,12 +386,14 @@ export const ResponseBodyVerification$inboundSchema: z.ZodType<
   ResponseBodyVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  reason: types.string(),
-  type: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    reason: types.string(),
+    type: types.string(),
+    value: types.string(),
+  })
+);
 
 export function responseBodyVerificationFromJSON(
   jsonString: string,
@@ -400,21 +410,23 @@ export const ResponseBodyDomains$inboundSchema: z.ZodType<
   ResponseBodyDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apexName: types.string(),
-  createdAt: types.optional(types.number()),
-  customEnvironmentId: z.nullable(types.string()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  name: types.string(),
-  projectId: types.string(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  updatedAt: types.optional(types.number()),
-  verification: types.optional(
-    z.array(z.lazy(() => ResponseBodyVerification$inboundSchema)),
-  ),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apexName: types.string(),
+    createdAt: types.optional(types.number()),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    name: types.string(),
+    projectId: types.string(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    updatedAt: types.optional(types.number()),
+    verification: types.optional(
+      z.array(z.lazy(() => ResponseBodyVerification$inboundSchema)),
+    ),
+    verified: types.boolean(),
+  })
+);
 
 export function responseBodyDomainsFromJSON(
   jsonString: string,
@@ -431,11 +443,13 @@ export const GetProjectDomainsResponseBodyPagination$inboundSchema: z.ZodType<
   GetProjectDomainsResponseBodyPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  next: types.nullable(types.number()),
-  prev: types.nullable(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    next: types.nullable(types.number()),
+    prev: types.nullable(types.number()),
+  })
+);
 
 export function getProjectDomainsResponseBodyPaginationFromJSON(
   jsonString: string,
@@ -458,12 +472,14 @@ export const GetProjectDomainsResponseBody1$inboundSchema: z.ZodType<
   GetProjectDomainsResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domains: z.array(z.lazy(() => ResponseBodyDomains$inboundSchema)),
-  pagination: z.lazy(() =>
-    GetProjectDomainsResponseBodyPagination$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domains: z.array(z.lazy(() => ResponseBodyDomains$inboundSchema)),
+    pagination: z.lazy(() =>
+      GetProjectDomainsResponseBodyPagination$inboundSchema
+    ),
+  })
+);
 
 export function getProjectDomainsResponseBody1FromJSON(
   jsonString: string,
@@ -480,10 +496,12 @@ export const GetProjectDomainsResponseBody$inboundSchema: z.ZodType<
   GetProjectDomainsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetProjectDomainsResponseBody1$inboundSchema),
-  z.lazy(() => GetProjectDomainsResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetProjectDomainsResponseBody1$inboundSchema),
+    z.lazy(() => GetProjectDomainsResponseBody2$inboundSchema),
+  ])
+);
 
 export function getProjectDomainsResponseBodyFromJSON(
   jsonString: string,

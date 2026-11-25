@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { Drive, Drive$inboundSchema } from "./drive.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -47,12 +51,18 @@ export const GetDriveRequest$outboundSchema: z.ZodType<
   GetDriveRequest$Outbound,
   z.ZodTypeDef,
   GetDriveRequest
-> = z.object({
-  nameOrId: z.string(),
-  projectId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    nameOrId: z.string().refine(withinMaxLength$(64), {
+      message: "Value must be at most 64 characters long",
+    }).refine(matchesPattern$("^[a-zA-Z0-9_-]+$", 64), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }),
+    projectId: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getDriveRequestToJSON(
   getDriveRequest: GetDriveRequest,
@@ -65,9 +75,11 @@ export const GetDriveResponseBody$inboundSchema: z.ZodType<
   GetDriveResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  drive: Drive$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    drive: Drive$inboundSchema,
+  })
+);
 
 export function getDriveResponseBodyFromJSON(
   jsonString: string,

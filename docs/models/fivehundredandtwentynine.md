@@ -8,26 +8,12 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentyNine } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyNine = {
-  configuration: {
-    id: "<id>",
-  },
-  peering: {
-    accountId: "<id>",
-    id: "<id>",
-    region: "<value>",
-    vpcId: "<id>",
-  },
-  team: {
-    id: "<id>",
-    name: "<value>",
-  },
+  customAlertTitle: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `configuration`                                                                          | [models.UserEventPayload529Configuration](../models/usereventpayload529configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `team`                                                                                   | [models.UserEventPayload529Team](../models/usereventpayload529team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `customAlertTitle` | *string*           | :heavy_check_mark: | N/A                |

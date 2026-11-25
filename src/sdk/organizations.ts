@@ -146,7 +146,7 @@ export class Organizations extends ClientSDK {
    * Update Organization Team Directory Sync Mode
    *
    * @remarks
-   * Select whether one Organization team's memberships are governed by the Organization's Directory Sync or by the team's own directory. The team's own directory connection is kept either way. The root team can follow the Organization's Directory Sync only when no group grants OrgAdmin or at least one OrgAdmin group also grants the Owner role on it.
+   * Select whether one Organization team's memberships are governed by the Organization's Directory Sync or by the team's own directory. The team's own directory connection is kept either way. The root team can follow the Organization's Directory Sync only when no group grants OrgAdmin or at least one OrgAdmin group also grants the Owner role on it. A change of the root team that would leave it without an owner, or take the Owner role on it from the acting admin, is refused with `organization_lockout` unless `overrideLockout` is set.
    */
   async putOrganizationTeamDsync(
     request: PutOrganizationTeamDsyncRequest,
@@ -180,7 +180,7 @@ export class Organizations extends ClientSDK {
    * Create or Replace Organization Directory Sync Group Configuration
    *
    * @remarks
-   * Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin. A group that grants OrgAdmin must also grant the Owner role on the organization's root team, as its default role or for that team.
+   * Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin. A group that grants OrgAdmin must also grant the Owner role on the organization's root team, as its default role or for that team. A save that would leave the root team without an owner, or take the Owner role on it from the acting admin, is refused with `organization_lockout` unless `overrideLockout` is set.
    */
   async putOrganizationDsyncGroup(
     request: PutOrganizationDsyncGroupRequest,
@@ -197,7 +197,7 @@ export class Organizations extends ClientSDK {
    * Delete Organization Directory Sync Group Configuration
    *
    * @remarks
-   * Delete one organization's Directory Sync group configuration. The last group granting OrgAdmin cannot be removed.
+   * Delete one organization's Directory Sync group configuration. The last group granting OrgAdmin cannot be removed. A deletion that would leave the root team without an owner, or take the Owner role on it from the acting admin, is refused with `organization_lockout` unless `overrideLockout` is set.
    */
   async deleteOrganizationDsyncGroup(
     request: DeleteOrganizationDsyncGroupRequest,

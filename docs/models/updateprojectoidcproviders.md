@@ -20,8 +20,8 @@ let value: UpdateProjectOidcProviders = {
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `to`                             | *models.UpdateProjectProjectsTo* | :heavy_check_mark:               | N/A                              |
-| `claims`                         | Record<string, *string*[]>       | :heavy_check_mark:               | N/A                              |
-| `label`                          | *string*                         | :heavy_minus_sign:               | N/A                              |
+| Field                                    | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `to`                                     | *models.UpdateProjectProjectsResponseTo* | :heavy_check_mark:                       | N/A                                      |
+| `claims`                                 | Record<string, *string*[]>               | :heavy_check_mark:                       | N/A                                      |
+| `label`                                  | *string*                                 | :heavy_minus_sign:                       | N/A                                      |

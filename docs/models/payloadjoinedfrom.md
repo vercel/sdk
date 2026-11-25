@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadJoinedFrom } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { PayloadJoinedFrom } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
 let value: PayloadJoinedFrom = {
   origin: "saml",
@@ -20,8 +20,9 @@ let value: PayloadJoinedFrom = {
 | `gitUserId`                                                                | *models.PayloadGitUserId*                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `gitUserLogin`                                                             | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `idpUserId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `origin`                                                                   | [models.UserEventPayload284Origin](../models/usereventpayload284origin.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `origin`                                                                   | [models.UserEventPayload290Origin](../models/usereventpayload290origin.md) | :heavy_check_mark:                                                         | N/A                                                                        |
 | `repoId`                                                                   | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `repoPath`                                                                 | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
 | `ssoConnectedAt`                                                           | *number*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `ssoIdFingerprint`                                                         | *string*                                                                   | :heavy_minus_sign:                                                         | How `ssoUserId` and `idpUserId` were made; absent when unknown.            |
 | `ssoUserId`                                                                | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |

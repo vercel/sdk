@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteAiGatewayVirtualModelConfigBySlugRequest = {
   ownerId?: string | undefined;
@@ -37,15 +38,17 @@ export const DeleteAiGatewayVirtualModelConfigBySlugRequest$outboundSchema:
     DeleteAiGatewayVirtualModelConfigBySlugRequest$Outbound,
     z.ZodTypeDef,
     DeleteAiGatewayVirtualModelConfigBySlugRequest
-  > = z.object({
-    ownerId: z.string().optional(),
-    vmcSlug: z.string(),
-    updatedBy: z.string().optional(),
-    actingIp: z.string().optional(),
-    actingUserAgent: z.string().optional(),
-    teamId: z.string().optional(),
-    slug: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      ownerId: z.string().optional(),
+      vmcSlug: z.string(),
+      updatedBy: z.string().optional(),
+      actingIp: z.string().optional(),
+      actingUserAgent: z.string().optional(),
+      teamId: z.string().optional(),
+      slug: z.string().optional(),
+    })
+  );
 
 export function deleteAiGatewayVirtualModelConfigBySlugRequestToJSON(
   deleteAiGatewayVirtualModelConfigBySlugRequest:

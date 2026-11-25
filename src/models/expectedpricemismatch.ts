@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -50,25 +51,27 @@ export class ExpectedPriceMismatch extends VercelError {
 /** @internal */
 export const ExpectedPriceMismatchCode$inboundSchema: z.ZodNativeEnum<
   typeof ExpectedPriceMismatchCode
-> = z.nativeEnum(ExpectedPriceMismatchCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ExpectedPriceMismatchCode));
 
 /** @internal */
 export const ExpectedPriceMismatch$inboundSchema: z.ZodType<
   ExpectedPriceMismatch,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: ExpectedPriceMismatchCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ExpectedPriceMismatch(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: ExpectedPriceMismatchCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ExpectedPriceMismatch(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

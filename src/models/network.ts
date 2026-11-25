@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -138,9 +138,11 @@ export const ConnectionTesting$inboundSchema: z.ZodType<
   ConnectionTesting,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  available: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    available: types.boolean(),
+  })
+);
 
 export function connectionTestingFromJSON(
   jsonString: string,
@@ -157,9 +159,11 @@ export const HostedZones$inboundSchema: z.ZodType<
   HostedZones,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+  })
+);
 
 export function hostedZonesFromJSON(
   jsonString: string,
@@ -176,9 +180,11 @@ export const PeeringConnections$inboundSchema: z.ZodType<
   PeeringConnections,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+  })
+);
 
 export function peeringConnectionsFromJSON(
   jsonString: string,
@@ -195,9 +201,11 @@ export const PrivateLinks$inboundSchema: z.ZodType<
   PrivateLinks,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+  })
+);
 
 export function privateLinksFromJSON(
   jsonString: string,
@@ -214,10 +222,12 @@ export const Projects$inboundSchema: z.ZodType<
   Projects,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  ids: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    ids: z.array(types.string()),
+  })
+);
 
 export function projectsFromJSON(
   jsonString: string,
@@ -230,34 +240,36 @@ export function projectsFromJSON(
 }
 
 /** @internal */
-export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
-  .nativeEnum(Status);
+export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Status));
 
 /** @internal */
 export const Network$inboundSchema: z.ZodType<Network, z.ZodTypeDef, unknown> =
-  z.object({
-    awsAccountId: types.string(),
-    awsAvailabilityZoneIds: types.optional(z.array(types.string())),
-    awsRegion: types.string(),
-    cidr: types.string(),
-    connectionTesting: types.optional(
-      z.lazy(() => ConnectionTesting$inboundSchema),
-    ),
-    createdAt: types.number(),
-    egressIpAddresses: types.optional(z.array(types.string())),
-    hostedZones: types.optional(z.lazy(() => HostedZones$inboundSchema)),
-    id: types.string(),
-    name: types.string(),
-    peeringConnections: types.optional(
-      z.lazy(() => PeeringConnections$inboundSchema),
-    ),
-    privateLinks: types.optional(z.lazy(() => PrivateLinks$inboundSchema)),
-    projects: types.optional(z.lazy(() => Projects$inboundSchema)),
-    region: types.optional(types.string()),
-    status: Status$inboundSchema,
-    teamId: types.string(),
-    vpcId: types.optional(types.string()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      awsAccountId: types.string(),
+      awsAvailabilityZoneIds: types.optional(z.array(types.string())),
+      awsRegion: types.string(),
+      cidr: types.string(),
+      connectionTesting: types.optional(
+        z.lazy(() => ConnectionTesting$inboundSchema),
+      ),
+      createdAt: types.number(),
+      egressIpAddresses: types.optional(z.array(types.string())),
+      hostedZones: types.optional(z.lazy(() => HostedZones$inboundSchema)),
+      id: types.string(),
+      name: types.string(),
+      peeringConnections: types.optional(
+        z.lazy(() => PeeringConnections$inboundSchema),
+      ),
+      privateLinks: types.optional(z.lazy(() => PrivateLinks$inboundSchema)),
+      projects: types.optional(z.lazy(() => Projects$inboundSchema)),
+      region: types.optional(types.string()),
+      status: Status$inboundSchema,
+      teamId: types.string(),
+      vpcId: types.optional(types.string()),
+    })
+  );
 
 export function networkFromJSON(
   jsonString: string,

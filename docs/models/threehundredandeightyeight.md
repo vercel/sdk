@@ -5,16 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyEight } from "@vercel/sdk/models/oldssoprotection2.js";
+import { ThreeHundredAndEightyEight } from "@vercel/sdk/models/usereventpayload385project.js";
 
-let value: ThreeHundredAndEightyEight = {};
+let value: ThreeHundredAndEightyEight = {
+  projectId: "<id>",
+};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `connectionId`                                                                   | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload388ActorType](../models/usereventpayload388actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `certificateFingerprints`                                                        | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `projectId`                                                                          | *string*                                                                             | :heavy_check_mark:                                                                   | N/A                                                                                  |
+| `projectName`                                                                        | *string*                                                                             | :heavy_minus_sign:                                                                   | Display name for Activity links. Optional for events stored before it was published. |
+| `reasonCode`                                                                         | [models.PayloadReasonCode](../models/payloadreasoncode.md)                           | :heavy_minus_sign:                                                                   | N/A                                                                                  |

@@ -15,7 +15,7 @@ let value: ListEventTypesResponse = {
         "deployment",
       ],
       description: "hopelessly busy for",
-      name: "project-perimeters-updated",
+      name: "project-preview-deployment-suffix",
     },
   ],
 };

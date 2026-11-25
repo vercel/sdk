@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -620,9 +621,11 @@ export const PatchTeamRoles2$outboundSchema: z.ZodType<
   PatchTeamRoles2$Outbound,
   z.ZodTypeDef,
   PatchTeamRoles2
-> = z.object({
-  accessGroupId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroupId: z.string(),
+  })
+);
 
 export function patchTeamRoles2ToJSON(
   patchTeamRoles2: PatchTeamRoles2,
@@ -633,7 +636,7 @@ export function patchTeamRoles2ToJSON(
 /** @internal */
 export const PatchTeamRoles1$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamRoles1
-> = z.nativeEnum(PatchTeamRoles1);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PatchTeamRoles1));
 
 /** @internal */
 export type PatchTeamRoles$Outbound = PatchTeamRoles2$Outbound | string;
@@ -643,10 +646,12 @@ export const PatchTeamRoles$outboundSchema: z.ZodType<
   PatchTeamRoles$Outbound,
   z.ZodTypeDef,
   PatchTeamRoles
-> = smartUnion([
-  z.lazy(() => PatchTeamRoles2$outboundSchema),
-  PatchTeamRoles1$outboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => PatchTeamRoles2$outboundSchema),
+    PatchTeamRoles1$outboundSchema,
+  ])
+);
 
 export function patchTeamRolesToJSON(patchTeamRoles: PatchTeamRoles): string {
   return JSON.stringify(PatchTeamRoles$outboundSchema.parse(patchTeamRoles));
@@ -663,15 +668,15 @@ export const PatchTeamSaml$outboundSchema: z.ZodType<
   PatchTeamSaml$Outbound,
   z.ZodTypeDef,
   PatchTeamSaml
-> = z.object({
-  enforced: z.boolean().optional(),
-  roles: z.record(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enforced: z.boolean().optional(),
+    roles: z.record(smartUnion([
       z.lazy(() => PatchTeamRoles2$outboundSchema),
       PatchTeamRoles1$outboundSchema,
-    ]),
-  ).optional(),
-});
+    ])).optional(),
+  })
+);
 
 export function patchTeamSamlToJSON(patchTeamSaml: PatchTeamSaml): string {
   return JSON.stringify(PatchTeamSaml$outboundSchema.parse(patchTeamSaml));
@@ -687,9 +692,11 @@ export const PatchTeamRemoteCaching$outboundSchema: z.ZodType<
   PatchTeamRemoteCaching$Outbound,
   z.ZodTypeDef,
   PatchTeamRemoteCaching
-> = z.object({
-  enabled: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean().optional(),
+  })
+);
 
 export function patchTeamRemoteCachingToJSON(
   patchTeamRemoteCaching: PatchTeamRemoteCaching,
@@ -702,12 +709,14 @@ export function patchTeamRemoteCachingToJSON(
 /** @internal */
 export const PatchTeamDpAccessRequestsMode$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDpAccessRequestsMode
-> = z.nativeEnum(PatchTeamDpAccessRequestsMode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PatchTeamDpAccessRequestsMode)
+);
 
 /** @internal */
 export const PatchTeamDeploymentType$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDeploymentType
-> = z.nativeEnum(PatchTeamDeploymentType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PatchTeamDeploymentType));
 
 /** @internal */
 export type PatchTeamPasswordProtection$Outbound = {
@@ -720,10 +729,12 @@ export const PatchTeamPasswordProtection$outboundSchema: z.ZodType<
   PatchTeamPasswordProtection$Outbound,
   z.ZodTypeDef,
   PatchTeamPasswordProtection
-> = z.object({
-  deploymentType: PatchTeamDeploymentType$outboundSchema,
-  password: z.nullable(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentType: PatchTeamDeploymentType$outboundSchema,
+    password: z.nullable(z.string()).optional(),
+  })
+);
 
 export function patchTeamPasswordProtectionToJSON(
   patchTeamPasswordProtection: PatchTeamPasswordProtection,
@@ -738,7 +749,9 @@ export function patchTeamPasswordProtectionToJSON(
 /** @internal */
 export const PatchTeamTeamsDeploymentType$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamTeamsDeploymentType
-> = z.nativeEnum(PatchTeamTeamsDeploymentType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PatchTeamTeamsDeploymentType)
+);
 
 /** @internal */
 export type PatchTeamSsoProtection$Outbound = {
@@ -750,11 +763,13 @@ export const PatchTeamSsoProtection$outboundSchema: z.ZodType<
   PatchTeamSsoProtection$Outbound,
   z.ZodTypeDef,
   PatchTeamSsoProtection
-> = z.object({
-  deploymentType: PatchTeamTeamsDeploymentType$outboundSchema.default(
-    "preview",
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentType: PatchTeamTeamsDeploymentType$outboundSchema.default(
+      "preview",
+    ),
+  })
+);
 
 export function patchTeamSsoProtectionToJSON(
   patchTeamSsoProtection: PatchTeamSsoProtection,
@@ -775,13 +790,16 @@ export const PatchTeamDefaultDeploymentProtection$outboundSchema: z.ZodType<
   PatchTeamDefaultDeploymentProtection$Outbound,
   z.ZodTypeDef,
   PatchTeamDefaultDeploymentProtection
-> = z.object({
-  passwordProtection: z.nullable(
-    z.lazy(() => PatchTeamPasswordProtection$outboundSchema),
-  ).optional(),
-  ssoProtection: z.nullable(z.lazy(() => PatchTeamSsoProtection$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    passwordProtection: z.nullable(
+      z.lazy(() => PatchTeamPasswordProtection$outboundSchema),
+    ).optional(),
+    ssoProtection: z.nullable(
+      z.lazy(() => PatchTeamSsoProtection$outboundSchema),
+    ).optional(),
+  })
+);
 
 export function patchTeamDefaultDeploymentProtectionToJSON(
   patchTeamDefaultDeploymentProtection: PatchTeamDefaultDeploymentProtection,
@@ -795,9 +813,10 @@ export function patchTeamDefaultDeploymentProtectionToJSON(
 
 /** @internal */
 export const PatchTeamTeamsRequestDeploymentType$outboundSchema:
-  z.ZodNativeEnum<typeof PatchTeamTeamsRequestDeploymentType> = z.nativeEnum(
-    PatchTeamTeamsRequestDeploymentType,
-  );
+  z.ZodNativeEnum<typeof PatchTeamTeamsRequestDeploymentType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(PatchTeamTeamsRequestDeploymentType)
+    );
 
 /** @internal */
 export type PatchTeamDefaultPassport$Outbound = {
@@ -810,12 +829,14 @@ export const PatchTeamDefaultPassport$outboundSchema: z.ZodType<
   PatchTeamDefaultPassport$Outbound,
   z.ZodTypeDef,
   PatchTeamDefaultPassport
-> = z.object({
-  connectorId: z.string(),
-  deploymentType: PatchTeamTeamsRequestDeploymentType$outboundSchema.default(
-    "all",
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connectorId: z.string(),
+    deploymentType: PatchTeamTeamsRequestDeploymentType$outboundSchema.default(
+      "all",
+    ),
+  })
+);
 
 export function patchTeamDefaultPassportToJSON(
   patchTeamDefaultPassport: PatchTeamDefaultPassport,
@@ -828,22 +849,22 @@ export function patchTeamDefaultPassportToJSON(
 /** @internal */
 export const PatchTeamExpiration$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamExpiration
-> = z.nativeEnum(PatchTeamExpiration);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PatchTeamExpiration));
 
 /** @internal */
 export const ExpirationProduction$outboundSchema: z.ZodNativeEnum<
   typeof ExpirationProduction
-> = z.nativeEnum(ExpirationProduction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ExpirationProduction));
 
 /** @internal */
 export const ExpirationCanceled$outboundSchema: z.ZodNativeEnum<
   typeof ExpirationCanceled
-> = z.nativeEnum(ExpirationCanceled);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ExpirationCanceled));
 
 /** @internal */
 export const ExpirationErrored$outboundSchema: z.ZodNativeEnum<
   typeof ExpirationErrored
-> = z.nativeEnum(ExpirationErrored);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ExpirationErrored));
 
 /** @internal */
 export type PatchTeamDefaultExpirationSettings$Outbound = {
@@ -860,14 +881,16 @@ export const PatchTeamDefaultExpirationSettings$outboundSchema: z.ZodType<
   PatchTeamDefaultExpirationSettings$Outbound,
   z.ZodTypeDef,
   PatchTeamDefaultExpirationSettings
-> = z.object({
-  expiration: PatchTeamExpiration$outboundSchema.optional(),
-  expirationProduction: ExpirationProduction$outboundSchema.optional(),
-  expirationCanceled: ExpirationCanceled$outboundSchema.optional(),
-  expirationErrored: ExpirationErrored$outboundSchema.optional(),
-  keepCurrentRetention: z.boolean().optional(),
-  acknowledgeStorageBilling: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expiration: PatchTeamExpiration$outboundSchema.optional(),
+    expirationProduction: ExpirationProduction$outboundSchema.optional(),
+    expirationCanceled: ExpirationCanceled$outboundSchema.optional(),
+    expirationErrored: ExpirationErrored$outboundSchema.optional(),
+    keepCurrentRetention: z.boolean().optional(),
+    acknowledgeStorageBilling: z.boolean().optional(),
+  })
+);
 
 export function patchTeamDefaultExpirationSettingsToJSON(
   patchTeamDefaultExpirationSettings: PatchTeamDefaultExpirationSettings,
@@ -890,10 +913,12 @@ export const PatchTeamEnvironments2$outboundSchema: z.ZodType<
   PatchTeamEnvironments2$Outbound,
   z.ZodTypeDef,
   PatchTeamEnvironments2
-> = z.object({
-  type: z.literal("custom"),
-  environmentId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("custom"),
+    environmentId: z.string(),
+  })
+);
 
 export function patchTeamEnvironments2ToJSON(
   patchTeamEnvironments2: PatchTeamEnvironments2,
@@ -906,7 +931,9 @@ export function patchTeamEnvironments2ToJSON(
 /** @internal */
 export const PatchTeamEnvironmentsTarget$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamEnvironmentsTarget
-> = z.nativeEnum(PatchTeamEnvironmentsTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PatchTeamEnvironmentsTarget)
+);
 
 /** @internal */
 export type PatchTeamEnvironments1$Outbound = {
@@ -919,10 +946,12 @@ export const PatchTeamEnvironments1$outboundSchema: z.ZodType<
   PatchTeamEnvironments1$Outbound,
   z.ZodTypeDef,
   PatchTeamEnvironments1
-> = z.object({
-  type: z.literal("system"),
-  target: PatchTeamEnvironmentsTarget$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("system"),
+    target: PatchTeamEnvironmentsTarget$outboundSchema,
+  })
+);
 
 export function patchTeamEnvironments1ToJSON(
   patchTeamEnvironments1: PatchTeamEnvironments1,
@@ -942,10 +971,12 @@ export const PatchTeamGitSourcesEnvironments$outboundSchema: z.ZodType<
   PatchTeamGitSourcesEnvironments$Outbound,
   z.ZodTypeDef,
   PatchTeamGitSourcesEnvironments
-> = z.union([
-  z.lazy(() => PatchTeamEnvironments1$outboundSchema),
-  z.lazy(() => PatchTeamEnvironments2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => PatchTeamEnvironments1$outboundSchema),
+    z.lazy(() => PatchTeamEnvironments2$outboundSchema),
+  ])
+);
 
 export function patchTeamGitSourcesEnvironmentsToJSON(
   patchTeamGitSourcesEnvironments: PatchTeamGitSourcesEnvironments,
@@ -969,11 +1000,13 @@ export const PatchTeamSources2$outboundSchema: z.ZodType<
   PatchTeamSources2$Outbound,
   z.ZodTypeDef,
   PatchTeamSources2
-> = z.object({
-  provider: z.literal("gitlab"),
-  namespace: z.string(),
-  project: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: z.literal("gitlab"),
+    namespace: z.string(),
+    project: z.string().optional(),
+  })
+);
 
 export function patchTeamSources2ToJSON(
   patchTeamSources2: PatchTeamSources2,
@@ -986,7 +1019,7 @@ export function patchTeamSources2ToJSON(
 /** @internal */
 export const PatchTeamSourcesProvider$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamSourcesProvider
-> = z.nativeEnum(PatchTeamSourcesProvider);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PatchTeamSourcesProvider));
 
 /** @internal */
 export type PatchTeamSources1$Outbound = {
@@ -1000,11 +1033,13 @@ export const PatchTeamSources1$outboundSchema: z.ZodType<
   PatchTeamSources1$Outbound,
   z.ZodTypeDef,
   PatchTeamSources1
-> = z.object({
-  provider: PatchTeamSourcesProvider$outboundSchema,
-  org: z.string(),
-  repo: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    provider: PatchTeamSourcesProvider$outboundSchema,
+    org: z.string(),
+    repo: z.string().optional(),
+  })
+);
 
 export function patchTeamSources1ToJSON(
   patchTeamSources1: PatchTeamSources1,
@@ -1025,15 +1060,17 @@ export const PatchTeamGitSourcesSources$outboundSchema: z.ZodType<
   PatchTeamGitSourcesSources$Outbound,
   z.ZodTypeDef,
   PatchTeamGitSourcesSources
-> = z.union([
-  z.lazy(() => PatchTeamSources1$outboundSchema).and(
-    z.object({ provider: z.literal("github") }),
-  ),
-  z.lazy(() => PatchTeamSources1$outboundSchema).and(
-    z.object({ provider: z.literal("bitbucket") }),
-  ),
-  z.lazy(() => PatchTeamSources2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => PatchTeamSources1$outboundSchema).and(
+      z.object({ provider: z.literal("github") }),
+    ),
+    z.lazy(() => PatchTeamSources1$outboundSchema).and(
+      z.object({ provider: z.literal("bitbucket") }),
+    ),
+    z.lazy(() => PatchTeamSources2$outboundSchema),
+  ])
+);
 
 export function patchTeamGitSourcesSourcesToJSON(
   patchTeamGitSourcesSources: PatchTeamGitSourcesSources,
@@ -1061,16 +1098,14 @@ export const PatchTeamGitSources1$outboundSchema: z.ZodType<
   PatchTeamGitSources1$Outbound,
   z.ZodTypeDef,
   PatchTeamGitSources1
-> = z.object({
-  enabled: z.boolean(),
-  environments: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean(),
+    environments: z.array(z.union([
       z.lazy(() => PatchTeamEnvironments1$outboundSchema),
       z.lazy(() => PatchTeamEnvironments2$outboundSchema),
-    ]),
-  ),
-  sources: z.array(
-    z.union([
+    ])),
+    sources: z.array(z.union([
       z.lazy(() => PatchTeamSources1$outboundSchema).and(
         z.object({ provider: z.literal("github") }),
       ),
@@ -1078,9 +1113,9 @@ export const PatchTeamGitSources1$outboundSchema: z.ZodType<
         z.object({ provider: z.literal("bitbucket") }),
       ),
       z.lazy(() => PatchTeamSources2$outboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function patchTeamGitSources1ToJSON(
   patchTeamGitSources1: PatchTeamGitSources1,
@@ -1100,10 +1135,12 @@ export const PatchTeamDeploymentPolicyGitSources$outboundSchema: z.ZodType<
   PatchTeamDeploymentPolicyGitSources$Outbound,
   z.ZodTypeDef,
   PatchTeamDeploymentPolicyGitSources
-> = smartUnion([
-  z.array(z.lazy(() => PatchTeamGitSources1$outboundSchema)),
-  z.string(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(z.lazy(() => PatchTeamGitSources1$outboundSchema)),
+    z.string(),
+  ])
+);
 
 export function patchTeamDeploymentPolicyGitSourcesToJSON(
   patchTeamDeploymentPolicyGitSources: PatchTeamDeploymentPolicyGitSources,
@@ -1126,10 +1163,12 @@ export const PatchTeamEnvironmentsTeams2$outboundSchema: z.ZodType<
   PatchTeamEnvironmentsTeams2$Outbound,
   z.ZodTypeDef,
   PatchTeamEnvironmentsTeams2
-> = z.object({
-  type: z.literal("custom"),
-  environmentId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("custom"),
+    environmentId: z.string(),
+  })
+);
 
 export function patchTeamEnvironmentsTeams2ToJSON(
   patchTeamEnvironmentsTeams2: PatchTeamEnvironmentsTeams2,
@@ -1144,7 +1183,9 @@ export function patchTeamEnvironmentsTeams2ToJSON(
 /** @internal */
 export const PatchTeamEnvironmentsTeamsTarget$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamEnvironmentsTeamsTarget
-> = z.nativeEnum(PatchTeamEnvironmentsTeamsTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PatchTeamEnvironmentsTeamsTarget)
+);
 
 /** @internal */
 export type PatchTeamEnvironmentsTeams1$Outbound = {
@@ -1157,10 +1198,12 @@ export const PatchTeamEnvironmentsTeams1$outboundSchema: z.ZodType<
   PatchTeamEnvironmentsTeams1$Outbound,
   z.ZodTypeDef,
   PatchTeamEnvironmentsTeams1
-> = z.object({
-  type: z.literal("system"),
-  target: PatchTeamEnvironmentsTeamsTarget$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.literal("system"),
+    target: PatchTeamEnvironmentsTeamsTarget$outboundSchema,
+  })
+);
 
 export function patchTeamEnvironmentsTeams1ToJSON(
   patchTeamEnvironmentsTeams1: PatchTeamEnvironmentsTeams1,
@@ -1182,10 +1225,12 @@ export const PatchTeamDeploymentSourcesEnvironments$outboundSchema: z.ZodType<
   PatchTeamDeploymentSourcesEnvironments$Outbound,
   z.ZodTypeDef,
   PatchTeamDeploymentSourcesEnvironments
-> = z.union([
-  z.lazy(() => PatchTeamEnvironmentsTeams1$outboundSchema),
-  z.lazy(() => PatchTeamEnvironmentsTeams2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => PatchTeamEnvironmentsTeams1$outboundSchema),
+    z.lazy(() => PatchTeamEnvironmentsTeams2$outboundSchema),
+  ])
+);
 
 export function patchTeamDeploymentSourcesEnvironmentsToJSON(
   patchTeamDeploymentSourcesEnvironments:
@@ -1201,7 +1246,9 @@ export function patchTeamDeploymentSourcesEnvironmentsToJSON(
 /** @internal */
 export const PatchTeamDeploymentSourcesSources$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDeploymentSourcesSources
-> = z.nativeEnum(PatchTeamDeploymentSourcesSources);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(PatchTeamDeploymentSourcesSources)
+);
 
 /** @internal */
 export type PatchTeamDeploymentSources1$Outbound = {
@@ -1217,16 +1264,16 @@ export const PatchTeamDeploymentSources1$outboundSchema: z.ZodType<
   PatchTeamDeploymentSources1$Outbound,
   z.ZodTypeDef,
   PatchTeamDeploymentSources1
-> = z.object({
-  enabled: z.boolean(),
-  environments: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean(),
+    environments: z.array(z.union([
       z.lazy(() => PatchTeamEnvironmentsTeams1$outboundSchema),
       z.lazy(() => PatchTeamEnvironmentsTeams2$outboundSchema),
-    ]),
-  ),
-  sources: z.array(PatchTeamDeploymentSourcesSources$outboundSchema),
-});
+    ])),
+    sources: z.array(PatchTeamDeploymentSourcesSources$outboundSchema),
+  })
+);
 
 export function patchTeamDeploymentSources1ToJSON(
   patchTeamDeploymentSources1: PatchTeamDeploymentSources1,
@@ -1249,10 +1296,12 @@ export const PatchTeamDeploymentPolicyDeploymentSources$outboundSchema:
     PatchTeamDeploymentPolicyDeploymentSources$Outbound,
     z.ZodTypeDef,
     PatchTeamDeploymentPolicyDeploymentSources
-  > = smartUnion([
-    z.array(z.lazy(() => PatchTeamDeploymentSources1$outboundSchema)),
-    z.string(),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(z.lazy(() => PatchTeamDeploymentSources1$outboundSchema)),
+      z.string(),
+    ])
+  );
 
 export function patchTeamDeploymentPolicyDeploymentSourcesToJSON(
   patchTeamDeploymentPolicyDeploymentSources:
@@ -1279,16 +1328,18 @@ export const PatchTeamDeploymentPolicy1$outboundSchema: z.ZodType<
   PatchTeamDeploymentPolicy1$Outbound,
   z.ZodTypeDef,
   PatchTeamDeploymentPolicy1
-> = z.object({
-  gitSources: smartUnion([
-    z.array(z.lazy(() => PatchTeamGitSources1$outboundSchema)),
-    z.string(),
-  ]).optional(),
-  deploymentSources: smartUnion([
-    z.array(z.lazy(() => PatchTeamDeploymentSources1$outboundSchema)),
-    z.string(),
-  ]).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    gitSources: smartUnion([
+      z.array(z.lazy(() => PatchTeamGitSources1$outboundSchema)),
+      z.string(),
+    ]).optional(),
+    deploymentSources: smartUnion([
+      z.array(z.lazy(() => PatchTeamDeploymentSources1$outboundSchema)),
+      z.string(),
+    ]).optional(),
+  })
+);
 
 export function patchTeamDeploymentPolicy1ToJSON(
   patchTeamDeploymentPolicy1: PatchTeamDeploymentPolicy1,
@@ -1308,10 +1359,12 @@ export const PatchTeamDeploymentPolicy$outboundSchema: z.ZodType<
   PatchTeamDeploymentPolicy$Outbound,
   z.ZodTypeDef,
   PatchTeamDeploymentPolicy
-> = smartUnion([
-  z.lazy(() => PatchTeamDeploymentPolicy1$outboundSchema),
-  z.string(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => PatchTeamDeploymentPolicy1$outboundSchema),
+    z.string(),
+  ])
+);
 
 export function patchTeamDeploymentPolicyToJSON(
   patchTeamDeploymentPolicy: PatchTeamDeploymentPolicy,
@@ -1332,9 +1385,11 @@ export const PatchTeamStrictDeploymentProtectionSettings$outboundSchema:
     PatchTeamStrictDeploymentProtectionSettings$Outbound,
     z.ZodTypeDef,
     PatchTeamStrictDeploymentProtectionSettings
-  > = z.object({
-    enabled: z.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      enabled: z.boolean(),
+    })
+  );
 
 export function patchTeamStrictDeploymentProtectionSettingsToJSON(
   patchTeamStrictDeploymentProtectionSettings:
@@ -1357,9 +1412,11 @@ export const PatchTeamStrictShareableLinks$outboundSchema: z.ZodType<
   PatchTeamStrictShareableLinks$Outbound,
   z.ZodTypeDef,
   PatchTeamStrictShareableLinks
-> = z.object({
-  enabled: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean(),
+  })
+);
 
 export function patchTeamStrictShareableLinksToJSON(
   patchTeamStrictShareableLinks: PatchTeamStrictShareableLinks,
@@ -1382,9 +1439,11 @@ export const PatchTeamStrictPasswordProtectionSettings$outboundSchema:
     PatchTeamStrictPasswordProtectionSettings$Outbound,
     z.ZodTypeDef,
     PatchTeamStrictPasswordProtectionSettings
-  > = z.object({
-    enabled: z.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      enabled: z.boolean(),
+    })
+  );
 
 export function patchTeamStrictPasswordProtectionSettingsToJSON(
   patchTeamStrictPasswordProtectionSettings:
@@ -1407,9 +1466,11 @@ export const PatchTeamStrictConnectors$outboundSchema: z.ZodType<
   PatchTeamStrictConnectors$Outbound,
   z.ZodTypeDef,
   PatchTeamStrictConnectors
-> = z.object({
-  enabled: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: z.boolean(),
+  })
+);
 
 export function patchTeamStrictConnectorsToJSON(
   patchTeamStrictConnectors: PatchTeamStrictConnectors,
@@ -1422,7 +1483,7 @@ export function patchTeamStrictConnectorsToJSON(
 /** @internal */
 export const NsnbConfigPreference$outboundSchema: z.ZodNativeEnum<
   typeof NsnbConfigPreference
-> = z.nativeEnum(NsnbConfigPreference);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NsnbConfigPreference));
 
 /** @internal */
 export type NsnbConfig1$Outbound = {
@@ -1434,9 +1495,11 @@ export const NsnbConfig1$outboundSchema: z.ZodType<
   NsnbConfig1$Outbound,
   z.ZodTypeDef,
   NsnbConfig1
-> = z.object({
-  preference: NsnbConfigPreference$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preference: NsnbConfigPreference$outboundSchema,
+  })
+);
 
 export function nsnbConfig1ToJSON(nsnbConfig1: NsnbConfig1): string {
   return JSON.stringify(NsnbConfig1$outboundSchema.parse(nsnbConfig1));
@@ -1450,7 +1513,9 @@ export const PatchTeamNsnbConfig$outboundSchema: z.ZodType<
   PatchTeamNsnbConfig$Outbound,
   z.ZodTypeDef,
   PatchTeamNsnbConfig
-> = smartUnion([z.lazy(() => NsnbConfig1$outboundSchema), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.lazy(() => NsnbConfig1$outboundSchema), z.string()])
+);
 
 export function patchTeamNsnbConfigToJSON(
   patchTeamNsnbConfig: PatchTeamNsnbConfig,
@@ -1470,9 +1535,11 @@ export const DefaultProjectJobsLint$outboundSchema: z.ZodType<
   DefaultProjectJobsLint$Outbound,
   z.ZodTypeDef,
   DefaultProjectJobsLint
-> = z.object({
-  targets: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(z.string()),
+  })
+);
 
 export function defaultProjectJobsLintToJSON(
   defaultProjectJobsLint: DefaultProjectJobsLint,
@@ -1492,9 +1559,11 @@ export const DefaultProjectJobsTypecheck$outboundSchema: z.ZodType<
   DefaultProjectJobsTypecheck$Outbound,
   z.ZodTypeDef,
   DefaultProjectJobsTypecheck
-> = z.object({
-  targets: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(z.string()),
+  })
+);
 
 export function defaultProjectJobsTypecheckToJSON(
   defaultProjectJobsTypecheck: DefaultProjectJobsTypecheck,
@@ -1517,11 +1586,13 @@ export const DefaultProjectJobs1$outboundSchema: z.ZodType<
   DefaultProjectJobs1$Outbound,
   z.ZodTypeDef,
   DefaultProjectJobs1
-> = z.object({
-  lint: z.lazy(() => DefaultProjectJobsLint$outboundSchema).optional(),
-  typecheck: z.lazy(() => DefaultProjectJobsTypecheck$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lint: z.lazy(() => DefaultProjectJobsLint$outboundSchema).optional(),
+    typecheck: z.lazy(() => DefaultProjectJobsTypecheck$outboundSchema)
+      .optional(),
+  })
+);
 
 export function defaultProjectJobs1ToJSON(
   defaultProjectJobs1: DefaultProjectJobs1,
@@ -1541,7 +1612,9 @@ export const PatchTeamDefaultProjectJobs$outboundSchema: z.ZodType<
   PatchTeamDefaultProjectJobs$Outbound,
   z.ZodTypeDef,
   PatchTeamDefaultProjectJobs
-> = smartUnion([z.lazy(() => DefaultProjectJobs1$outboundSchema), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([z.lazy(() => DefaultProjectJobs1$outboundSchema), z.string()])
+);
 
 export function patchTeamDefaultProjectJobsToJSON(
   patchTeamDefaultProjectJobs: PatchTeamDefaultProjectJobs,
@@ -1556,7 +1629,7 @@ export function patchTeamDefaultProjectJobsToJSON(
 /** @internal */
 export const PatchTeamDefault$outboundSchema: z.ZodNativeEnum<
   typeof PatchTeamDefault
-> = z.nativeEnum(PatchTeamDefault);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PatchTeamDefault));
 
 /** @internal */
 export type PatchTeamBuildMachine$Outbound = {
@@ -1568,9 +1641,11 @@ export const PatchTeamBuildMachine$outboundSchema: z.ZodType<
   PatchTeamBuildMachine$Outbound,
   z.ZodTypeDef,
   PatchTeamBuildMachine
-> = z.object({
-  default: PatchTeamDefault$outboundSchema.optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    default: PatchTeamDefault$outboundSchema.optional(),
+  })
+);
 
 export function patchTeamBuildMachineToJSON(
   patchTeamBuildMachine: PatchTeamBuildMachine,
@@ -1590,9 +1665,11 @@ export const PatchTeamResourceConfig$outboundSchema: z.ZodType<
   PatchTeamResourceConfig$Outbound,
   z.ZodTypeDef,
   PatchTeamResourceConfig
-> = z.object({
-  buildMachine: z.lazy(() => PatchTeamBuildMachine$outboundSchema).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    buildMachine: z.lazy(() => PatchTeamBuildMachine$outboundSchema).optional(),
+  })
+);
 
 export function patchTeamResourceConfigToJSON(
   patchTeamResourceConfig: PatchTeamResourceConfig,
@@ -1648,58 +1725,64 @@ export const PatchTeamRequestBody$outboundSchema: z.ZodType<
   PatchTeamRequestBody$Outbound,
   z.ZodTypeDef,
   PatchTeamRequestBody
-> = z.object({
-  avatar: z.nullable(z.string()).optional(),
-  description: z.string().optional(),
-  emailDomain: z.nullable(z.string()).optional(),
-  name: z.string().optional(),
-  previewDeploymentSuffix: z.nullable(z.string()).optional(),
-  regenerateInviteCode: z.boolean().optional(),
-  saml: z.lazy(() => PatchTeamSaml$outboundSchema).optional(),
-  slug: z.string().optional(),
-  enablePreviewFeedback: z.string().optional(),
-  enableProductionFeedback: z.string().optional(),
-  sensitiveEnvironmentVariablePolicy: z.string().optional(),
-  disjunctiveProductionSecretPolicy: z.string().optional(),
-  remoteCaching: z.lazy(() => PatchTeamRemoteCaching$outboundSchema).optional(),
-  hideIpAddresses: z.boolean().optional(),
-  hideIpAddressesInLogDrains: z.boolean().optional(),
-  dpAccessRequestsMode: PatchTeamDpAccessRequestsMode$outboundSchema.optional(),
-  requireVerifiedCommits: z.boolean().optional(),
-  disableRepositoryDispatchEvents: z.boolean().optional(),
-  defaultDeploymentProtection: z.lazy(() =>
-    PatchTeamDefaultDeploymentProtection$outboundSchema
-  ).optional(),
-  defaultPassport: z.nullable(
-    z.lazy(() => PatchTeamDefaultPassport$outboundSchema),
-  ).optional(),
-  defaultExpirationSettings: z.lazy(() =>
-    PatchTeamDefaultExpirationSettings$outboundSchema
-  ).optional(),
-  deploymentPolicy: smartUnion([
-    z.lazy(() => PatchTeamDeploymentPolicy1$outboundSchema),
-    z.string(),
-  ]).optional(),
-  strictDeploymentProtectionSettings: z.lazy(() =>
-    PatchTeamStrictDeploymentProtectionSettings$outboundSchema
-  ).optional(),
-  strictShareableLinks: z.lazy(() =>
-    PatchTeamStrictShareableLinks$outboundSchema
-  ).optional(),
-  strictPasswordProtectionSettings: z.lazy(() =>
-    PatchTeamStrictPasswordProtectionSettings$outboundSchema
-  ).optional(),
-  strictConnectors: z.lazy(() => PatchTeamStrictConnectors$outboundSchema)
-    .optional(),
-  nsnbConfig: smartUnion([z.lazy(() => NsnbConfig1$outboundSchema), z.string()])
-    .optional(),
-  defaultProjectJobs: smartUnion([
-    z.lazy(() => DefaultProjectJobs1$outboundSchema),
-    z.string(),
-  ]).optional(),
-  resourceConfig: z.lazy(() => PatchTeamResourceConfig$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: z.nullable(z.string()).optional(),
+    description: z.string().optional(),
+    emailDomain: z.nullable(z.string()).optional(),
+    name: z.string().optional(),
+    previewDeploymentSuffix: z.nullable(z.string()).optional(),
+    regenerateInviteCode: z.boolean().optional(),
+    saml: z.lazy(() => PatchTeamSaml$outboundSchema).optional(),
+    slug: z.string().optional(),
+    enablePreviewFeedback: z.string().optional(),
+    enableProductionFeedback: z.string().optional(),
+    sensitiveEnvironmentVariablePolicy: z.string().optional(),
+    disjunctiveProductionSecretPolicy: z.string().optional(),
+    remoteCaching: z.lazy(() => PatchTeamRemoteCaching$outboundSchema)
+      .optional(),
+    hideIpAddresses: z.boolean().optional(),
+    hideIpAddressesInLogDrains: z.boolean().optional(),
+    dpAccessRequestsMode: PatchTeamDpAccessRequestsMode$outboundSchema
+      .optional(),
+    requireVerifiedCommits: z.boolean().optional(),
+    disableRepositoryDispatchEvents: z.boolean().optional(),
+    defaultDeploymentProtection: z.lazy(() =>
+      PatchTeamDefaultDeploymentProtection$outboundSchema
+    ).optional(),
+    defaultPassport: z.nullable(
+      z.lazy(() => PatchTeamDefaultPassport$outboundSchema),
+    ).optional(),
+    defaultExpirationSettings: z.lazy(() =>
+      PatchTeamDefaultExpirationSettings$outboundSchema
+    ).optional(),
+    deploymentPolicy: smartUnion([
+      z.lazy(() => PatchTeamDeploymentPolicy1$outboundSchema),
+      z.string(),
+    ]).optional(),
+    strictDeploymentProtectionSettings: z.lazy(() =>
+      PatchTeamStrictDeploymentProtectionSettings$outboundSchema
+    ).optional(),
+    strictShareableLinks: z.lazy(() =>
+      PatchTeamStrictShareableLinks$outboundSchema
+    ).optional(),
+    strictPasswordProtectionSettings: z.lazy(() =>
+      PatchTeamStrictPasswordProtectionSettings$outboundSchema
+    ).optional(),
+    strictConnectors: z.lazy(() => PatchTeamStrictConnectors$outboundSchema)
+      .optional(),
+    nsnbConfig: smartUnion([
+      z.lazy(() => NsnbConfig1$outboundSchema),
+      z.string(),
+    ]).optional(),
+    defaultProjectJobs: smartUnion([
+      z.lazy(() => DefaultProjectJobs1$outboundSchema),
+      z.string(),
+    ]).optional(),
+    resourceConfig: z.lazy(() => PatchTeamResourceConfig$outboundSchema)
+      .optional(),
+  })
+);
 
 export function patchTeamRequestBodyToJSON(
   patchTeamRequestBody: PatchTeamRequestBody,
@@ -1721,15 +1804,17 @@ export const PatchTeamRequest$outboundSchema: z.ZodType<
   PatchTeamRequest$Outbound,
   z.ZodTypeDef,
   PatchTeamRequest
-> = z.object({
-  teamId: z.string(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => PatchTeamRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => PatchTeamRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function patchTeamRequestToJSON(
   patchTeamRequest: PatchTeamRequest,

@@ -1,5 +1,7 @@
 # CreateFlagFeatureFlagsReuse
 
+Allows linking this environment to another environment so this flag will be evaluated with the other flag's configuration
+
 ## Example Usage
 
 ```typescript
@@ -13,7 +15,7 @@ let value: CreateFlagFeatureFlagsReuse = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `active`           | *boolean*          | :heavy_check_mark: | N/A                |
-| `environment`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                              | Type                               | Required                           | Description                        |
+| ---------------------------------- | ---------------------------------- | ---------------------------------- | ---------------------------------- |
+| `active`                           | *boolean*                          | :heavy_check_mark:                 | Whether the reuse is active or not |
+| `environment`                      | *string*                           | :heavy_check_mark:                 | The environment to link to         |

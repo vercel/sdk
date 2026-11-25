@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { smartUnion } from "../types/smartUnion.js";
 
@@ -31,7 +32,7 @@ export type ConnectUpsertProjectConnectionRequest = {
 /** @internal */
 export const Environments1$outboundSchema: z.ZodNativeEnum<
   typeof Environments1
-> = z.nativeEnum(Environments1);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Environments1));
 
 /** @internal */
 export type Environments$Outbound = string | string;
@@ -41,7 +42,9 @@ export const Environments$outboundSchema: z.ZodType<
   Environments$Outbound,
   z.ZodTypeDef,
   Environments
-> = smartUnion([Environments1$outboundSchema, z.string()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([Environments1$outboundSchema, z.string()])
+);
 
 export function environmentsToJSON(environments: Environments): string {
   return JSON.stringify(Environments$outboundSchema.parse(environments));
@@ -57,9 +60,13 @@ export const ConnectUpsertProjectConnectionRequest$outboundSchema: z.ZodType<
   ConnectUpsertProjectConnectionRequest$Outbound,
   z.ZodTypeDef,
   ConnectUpsertProjectConnectionRequest
-> = z.object({
-  environments: z.array(smartUnion([Environments1$outboundSchema, z.string()])),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environments: z.array(
+      smartUnion([Environments1$outboundSchema, z.string()]),
+    ),
+  })
+);
 
 export function connectUpsertProjectConnectionRequestToJSON(
   connectUpsertProjectConnectionRequest: ConnectUpsertProjectConnectionRequest,

@@ -5,19 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/usereventpayload317type.js";
+import { ThreeHundredAndFiftySix } from "@vercel/sdk/models/usereventpayload328previous.js";
 
 let value: ThreeHundredAndFiftySix = {
-  projectId: "<id>",
-  projectName: "<value>",
+  project: {
+    id: "<id>",
+    name: "<value>",
+  },
+  projectMembership: {},
 };
 ```
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `oldOptionsAllowlist`                                          | [models.OldOptionsAllowlist](../models/oldoptionsallowlist.md) | :heavy_minus_sign:                                             | N/A                                                            |
-| `optionsAllowlist`                                             | [models.OptionsAllowlist](../models/optionsallowlist.md)       | :heavy_minus_sign:                                             | N/A                                                            |
-| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
-| `projectName`                                                  | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload356Project](../models/usereventpayload356project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `projectMembership`                                                          | [models.PayloadProjectMembership](../models/payloadprojectmembership.md)     | :heavy_check_mark:                                                           | N/A                                                                          |

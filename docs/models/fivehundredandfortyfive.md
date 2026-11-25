@@ -8,65 +8,26 @@ The payload of the event, if requested.
 import { FiveHundredAndFortyFive } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndFortyFive = {
-  after: {
-    claims: [],
-    clientId: "<id>",
-    createdAt: 3909.82,
-    issuerUrl: "https://severe-chap.biz/",
-    name: "<value>",
-    permissions: [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-    policyId: "<id>",
-    resources: {
-      projectIds: [
-        "<value 1>",
-        "<value 2>",
-      ],
-    },
-    teamId: "<id>",
-    updatedAt: 5550.14,
-  },
-  before: {
-    claims: [
-      {
-        name: "<value>",
-        values: [
-          {
-            value: "<value>",
-            wildcards: false,
-          },
-        ],
-      },
-    ],
-    clientId: "<id>",
-    createdAt: 4506.4,
-    issuerUrl: "https://blind-tuber.org/",
-    name: "<value>",
-    permissions: [
-      "<value 1>",
-      "<value 2>",
-      "<value 3>",
-    ],
-    policyId: "<id>",
-    resources: {
-      projectIds: [
-        "<value 1>",
-        "<value 2>",
-      ],
-    },
-    teamId: "<id>",
-    updatedAt: 2533.67,
-  },
+  chatId: "<id>",
+  events: [],
+  inputTokens: 3909.82,
+  messageId: "<id>",
+  model: "Beetle",
+  outputTokens: 7263.28,
+  timestamp: 1385.2,
+  useCase: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                                                                                                                                | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `after`                                                                                                                                                                                                              | [models.PayloadAfter](../models/payloadafter.md)                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
-| `before`                                                                                                                                                                                                             | [models.PayloadBefore](../models/payloadbefore.md)                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
-| `appName`                                                                                                                                                                                                            | *string*                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |
+| Field                                  | Type                                   | Required                               | Description                            |
+| -------------------------------------- | -------------------------------------- | -------------------------------------- | -------------------------------------- |
+| `chatId`                               | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `events`                               | [models.Events](../models/events.md)[] | :heavy_check_mark:                     | N/A                                    |
+| `inputTokens`                          | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `messageId`                            | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `model`                                | *string*                               | :heavy_check_mark:                     | N/A                                    |
+| `outputTokens`                         | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `timestamp`                            | *number*                               | :heavy_check_mark:                     | N/A                                    |
+| `useCase`                              | *string*                               | :heavy_check_mark:                     | N/A                                    |

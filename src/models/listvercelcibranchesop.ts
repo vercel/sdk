@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -183,12 +183,14 @@ export const ListVercelCiBranchesRequest$outboundSchema: z.ZodType<
   ListVercelCiBranchesRequest$Outbound,
   z.ZodTypeDef,
   ListVercelCiBranchesRequest
-> = z.object({
-  query: z.string().optional(),
-  limit: z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    query: z.string().optional(),
+    limit: z.number().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listVercelCiBranchesRequestToJSON(
   listVercelCiBranchesRequest: ListVercelCiBranchesRequest,
@@ -206,10 +208,12 @@ export const ListVercelCiBranchesVercelCiResponse500Error$inboundSchema:
     ListVercelCiBranchesVercelCiResponse500Error,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    message: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      message: types.string(),
+    })
+  );
 
 export function listVercelCiBranchesVercelCiResponse500ErrorFromJSON(
   jsonString: string,
@@ -233,33 +237,37 @@ export const ListVercelCiBranchesVercelCiResponse500ResponseBody$inboundSchema:
     ListVercelCiBranchesVercelCiResponse500ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      ListVercelCiBranchesVercelCiResponse500Error$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new ListVercelCiBranchesVercelCiResponse500ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        ListVercelCiBranchesVercelCiResponse500Error$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new ListVercelCiBranchesVercelCiResponse500ResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const ListVercelCiBranchesVercelCiResponseError$inboundSchema: z.ZodType<
   ListVercelCiBranchesVercelCiResponseError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  name: types.string(),
-  message: types.string(),
-  limit: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    name: types.string(),
+    message: types.string(),
+    limit: types.number(),
+  })
+);
 
 export function listVercelCiBranchesVercelCiResponseErrorFromJSON(
   jsonString: string,
@@ -283,31 +291,35 @@ export const ListVercelCiBranchesVercelCiResponse429ResponseBody$inboundSchema:
     ListVercelCiBranchesVercelCiResponse429ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      ListVercelCiBranchesVercelCiResponseError$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new ListVercelCiBranchesVercelCiResponse429ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        ListVercelCiBranchesVercelCiResponseError$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new ListVercelCiBranchesVercelCiResponse429ResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const ListVercelCiBranchesVercelCiError$inboundSchema: z.ZodType<
   ListVercelCiBranchesVercelCiError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function listVercelCiBranchesVercelCiErrorFromJSON(
   jsonString: string,
@@ -325,29 +337,33 @@ export const ListVercelCiBranchesVercelCiResponseResponseBody$inboundSchema:
     ListVercelCiBranchesVercelCiResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() => ListVercelCiBranchesVercelCiError$inboundSchema),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new ListVercelCiBranchesVercelCiResponseResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() => ListVercelCiBranchesVercelCiError$inboundSchema),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new ListVercelCiBranchesVercelCiResponseResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const ListVercelCiBranchesError$inboundSchema: z.ZodType<
   ListVercelCiBranchesError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function listVercelCiBranchesErrorFromJSON(
   jsonString: string,
@@ -364,29 +380,33 @@ export const ListVercelCiBranchesVercelCiResponseBody$inboundSchema: z.ZodType<
   ListVercelCiBranchesVercelCiResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => ListVercelCiBranchesError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ListVercelCiBranchesVercelCiResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => ListVercelCiBranchesError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ListVercelCiBranchesVercelCiResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export const Branches$inboundSchema: z.ZodType<
   Branches,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-  count: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+    count: types.number(),
+  })
+);
 
 export function branchesFromJSON(
   jsonString: string,
@@ -403,9 +423,11 @@ export const ListVercelCiBranchesResponseBody$inboundSchema: z.ZodType<
   ListVercelCiBranchesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  branches: z.array(z.lazy(() => Branches$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    branches: z.array(z.lazy(() => Branches$inboundSchema)),
+  })
+);
 
 export function listVercelCiBranchesResponseBodyFromJSON(
   jsonString: string,

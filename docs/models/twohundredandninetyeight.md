@@ -5,21 +5,31 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyEight } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndNinetyEight } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
 let value: TwoHundredAndNinetyEight = {
-  action: "disabled",
-  projectId: "<id>",
-  projectName: "<value>",
+  current: {
+    awsServiceName: "<value>",
+    id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
+  },
+  prev: {
+    awsServiceName: "<value>",
+    id: "<id>",
+    name: "<value>",
+    projectId: "<id>",
+    vercelRegion: "<value>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload298Action](../models/usereventpayload298action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `isEnvVar`                                                                 | *boolean*                                                                  | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `note`                                                                     | *string*                                                                   | :heavy_minus_sign:                                                         | N/A                                                                        |
-| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
-| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `current`                                                                | [models.PayloadCurrent](../models/payloadcurrent.md)                     | :heavy_check_mark:                                                       | N/A                                                                      |
+| `prev`                                                                   | [models.UserEventPayload298Prev](../models/usereventpayload298prev.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `projectName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload298Scope](../models/usereventpayload298scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |

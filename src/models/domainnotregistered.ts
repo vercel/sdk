@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -50,25 +51,27 @@ export class DomainNotRegistered extends VercelError {
 /** @internal */
 export const DomainNotRegisteredCode$inboundSchema: z.ZodNativeEnum<
   typeof DomainNotRegisteredCode
-> = z.nativeEnum(DomainNotRegisteredCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DomainNotRegisteredCode));
 
 /** @internal */
 export const DomainNotRegistered$inboundSchema: z.ZodType<
   DomainNotRegistered,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: DomainNotRegisteredCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new DomainNotRegistered(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: DomainNotRegisteredCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new DomainNotRegistered(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

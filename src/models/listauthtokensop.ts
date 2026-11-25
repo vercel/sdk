@@ -3,13 +3,57 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
+import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
 import { AuthToken, AuthToken$inboundSchema } from "./authtoken.js";
 import { Pagination, Pagination$inboundSchema } from "./pagination.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * Filter by token kind. Omit or use `all` to include every kind.
+ */
+export const ListAuthTokensQueryParamKind = {
+  AccessToken: "access-token",
+  All: "all",
+  App: "app",
+  SignInSession: "sign-in-session",
+} as const;
+/**
+ * Filter by token kind. Omit or use `all` to include every kind.
+ */
+export type ListAuthTokensQueryParamKind = ClosedEnum<
+  typeof ListAuthTokensQueryParamKind
+>;
+
+/**
+ * Filter by token status. Omit or use `all` to include every status.
+ */
+export const ListAuthTokensQueryParamStatus = {
+  Active: "active",
+  All: "all",
+  Expired: "expired",
+  Revoked: "revoked",
+} as const;
+/**
+ * Filter by token status. Omit or use `all` to include every status.
+ */
+export type ListAuthTokensQueryParamStatus = ClosedEnum<
+  typeof ListAuthTokensQueryParamStatus
+>;
+
+export type ListAuthTokensRequest = {
+  /**
+   * Filter by token kind. Omit or use `all` to include every kind.
+   */
+  kind?: ListAuthTokensQueryParamKind | undefined;
+  /**
+   * Filter by token status. Omit or use `all` to include every status.
+   */
+  status?: ListAuthTokensQueryParamStatus | undefined;
+};
 
 export type ListAuthTokensResponseBody2 = {
   /**
@@ -35,14 +79,56 @@ export type ListAuthTokensResponseBody =
   | ListAuthTokensResponseBody2;
 
 /** @internal */
+export const ListAuthTokensQueryParamKind$outboundSchema: z.ZodNativeEnum<
+  typeof ListAuthTokensQueryParamKind
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListAuthTokensQueryParamKind)
+);
+
+/** @internal */
+export const ListAuthTokensQueryParamStatus$outboundSchema: z.ZodNativeEnum<
+  typeof ListAuthTokensQueryParamStatus
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListAuthTokensQueryParamStatus)
+);
+
+/** @internal */
+export type ListAuthTokensRequest$Outbound = {
+  kind?: string | undefined;
+  status?: string | undefined;
+};
+
+/** @internal */
+export const ListAuthTokensRequest$outboundSchema: z.ZodType<
+  ListAuthTokensRequest$Outbound,
+  z.ZodTypeDef,
+  ListAuthTokensRequest
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: ListAuthTokensQueryParamKind$outboundSchema.optional(),
+    status: ListAuthTokensQueryParamStatus$outboundSchema.optional(),
+  })
+);
+
+export function listAuthTokensRequestToJSON(
+  listAuthTokensRequest: ListAuthTokensRequest,
+): string {
+  return JSON.stringify(
+    ListAuthTokensRequest$outboundSchema.parse(listAuthTokensRequest),
+  );
+}
+
+/** @internal */
 export const ListAuthTokensResponseBody2$inboundSchema: z.ZodType<
   ListAuthTokensResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: Pagination$inboundSchema,
-  tokens: z.array(AuthToken$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: Pagination$inboundSchema,
+    tokens: z.array(AuthToken$inboundSchema),
+  })
+);
 
 export function listAuthTokensResponseBody2FromJSON(
   jsonString: string,
@@ -59,11 +145,13 @@ export const ListAuthTokensResponseBodyPagination$inboundSchema: z.ZodType<
   ListAuthTokensResponseBodyPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  next: types.nullable(types.string()),
-  prev: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    next: types.nullable(types.string()),
+    prev: types.nullable(types.string()),
+  })
+);
 
 export function listAuthTokensResponseBodyPaginationFromJSON(
   jsonString: string,
@@ -81,10 +169,14 @@ export const ListAuthTokensResponseBody1$inboundSchema: z.ZodType<
   ListAuthTokensResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: z.lazy(() => ListAuthTokensResponseBodyPagination$inboundSchema),
-  tokens: z.array(AuthToken$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: z.lazy(() =>
+      ListAuthTokensResponseBodyPagination$inboundSchema
+    ),
+    tokens: z.array(AuthToken$inboundSchema),
+  })
+);
 
 export function listAuthTokensResponseBody1FromJSON(
   jsonString: string,
@@ -101,10 +193,12 @@ export const ListAuthTokensResponseBody$inboundSchema: z.ZodType<
   ListAuthTokensResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => ListAuthTokensResponseBody1$inboundSchema),
-  z.lazy(() => ListAuthTokensResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => ListAuthTokensResponseBody1$inboundSchema),
+    z.lazy(() => ListAuthTokensResponseBody2$inboundSchema),
+  ])
+);
 
 export function listAuthTokensResponseBodyFromJSON(
   jsonString: string,

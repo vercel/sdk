@@ -11,5 +11,5 @@ let value: AiGatewayBudgetDefaultScopeType = "project";
 ## Values
 
 ```typescript
-"api-key" | "project" | "team" | "user"
+"api-key" | "app" | "project" | "team" | "user"
 ```

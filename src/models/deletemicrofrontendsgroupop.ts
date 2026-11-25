@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -36,11 +36,13 @@ export const DeleteMicrofrontendsGroupRequest$outboundSchema: z.ZodType<
   DeleteMicrofrontendsGroupRequest$Outbound,
   z.ZodTypeDef,
   DeleteMicrofrontendsGroupRequest
-> = z.object({
-  groupId: z.string(),
-  teamId: z.string(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    groupId: z.string(),
+    teamId: z.string(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteMicrofrontendsGroupRequestToJSON(
   deleteMicrofrontendsGroupRequest: DeleteMicrofrontendsGroupRequest,
@@ -57,7 +59,7 @@ export const DeleteMicrofrontendsGroupResponseBody$inboundSchema: z.ZodType<
   DeleteMicrofrontendsGroupResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function deleteMicrofrontendsGroupResponseBodyFromJSON(
   jsonString: string,

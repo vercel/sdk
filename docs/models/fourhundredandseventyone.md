@@ -5,13 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSeventyOne } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndSeventyOne } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
-let value: FourHundredAndSeventyOne = {};
+let value: FourHundredAndSeventyOne = {
+  nextConcurrentBuilds: 9104.55,
+  previousConcurrentBuilds: 6116.62,
+};
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `remoteCaching`                                                  | [models.PayloadRemoteCaching](../models/payloadremotecaching.md) | :heavy_minus_sign:                                               | Represents configuration for remote caching                      |
+| Field                      | Type                       | Required                   | Description                |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `nextConcurrentBuilds`     | *number*                   | :heavy_check_mark:         | N/A                        |
+| `previousConcurrentBuilds` | *number*                   | :heavy_check_mark:         | N/A                        |

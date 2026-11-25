@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { smartUnion } from "../types/smartUnion.js";
 
 export type CustomEnvironment = {
@@ -66,11 +67,13 @@ export const CustomEnvironment$outboundSchema: z.ZodType<
   CustomEnvironment$Outbound,
   z.ZodTypeDef,
   CustomEnvironment
-> = z.object({
-  projectId: z.string(),
-  customEnvironmentId: z.string(),
-  path: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    customEnvironmentId: z.string(),
+    path: z.string().optional(),
+  })
+);
 
 export function customEnvironmentToJSON(
   customEnvironment: CustomEnvironment,
@@ -92,11 +95,13 @@ export const Branch$outboundSchema: z.ZodType<
   Branch$Outbound,
   z.ZodTypeDef,
   Branch
-> = z.object({
-  projectId: z.string(),
-  branch: z.string(),
-  path: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    branch: z.string(),
+    path: z.string().optional(),
+  })
+);
 
 export function branchToJSON(branch: Branch): string {
   return JSON.stringify(Branch$outboundSchema.parse(branch));
@@ -113,10 +118,12 @@ export const DefaultDeployment$outboundSchema: z.ZodType<
   DefaultDeployment$Outbound,
   z.ZodTypeDef,
   DefaultDeployment
-> = z.object({
-  projectId: z.string(),
-  path: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    path: z.string().optional(),
+  })
+);
 
 export function defaultDeploymentToJSON(
   defaultDeployment: DefaultDeployment,
@@ -137,11 +144,13 @@ export const ConnectTriggerDestinationInput$outboundSchema: z.ZodType<
   ConnectTriggerDestinationInput$Outbound,
   z.ZodTypeDef,
   ConnectTriggerDestinationInput
-> = smartUnion([
-  z.lazy(() => Branch$outboundSchema),
-  z.lazy(() => CustomEnvironment$outboundSchema),
-  z.lazy(() => DefaultDeployment$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Branch$outboundSchema),
+    z.lazy(() => CustomEnvironment$outboundSchema),
+    z.lazy(() => DefaultDeployment$outboundSchema),
+  ])
+);
 
 export function connectTriggerDestinationInputToJSON(
   connectTriggerDestinationInput: ConnectTriggerDestinationInput,

@@ -5,15 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThirtySeven } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndThirtySeven } from "@vercel/sdk/models/usereventpayload385project.js";
 
-let value: FourHundredAndThirtySeven = {};
+let value: FourHundredAndThirtySeven = {
+  next: {
+    enabled: true,
+  },
+  previous: {
+    enabled: true,
+  },
+};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `disabled`                                                                       | *boolean*                                                                        | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload437ActorType](../models/usereventpayload437actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload437Next](../models/usereventpayload437next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload437Previous](../models/usereventpayload437previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

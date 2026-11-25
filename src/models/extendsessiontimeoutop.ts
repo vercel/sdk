@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import { Session, Session$inboundSchema } from "./session.js";
@@ -52,9 +52,11 @@ export const ExtendSessionTimeoutRequestBody$outboundSchema: z.ZodType<
   ExtendSessionTimeoutRequestBody$Outbound,
   z.ZodTypeDef,
   ExtendSessionTimeoutRequestBody
-> = z.object({
-  duration: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    duration: z.number(),
+  })
+);
 
 export function extendSessionTimeoutRequestBodyToJSON(
   extendSessionTimeoutRequestBody: ExtendSessionTimeoutRequestBody,
@@ -79,17 +81,19 @@ export const ExtendSessionTimeoutRequest$outboundSchema: z.ZodType<
   ExtendSessionTimeoutRequest$Outbound,
   z.ZodTypeDef,
   ExtendSessionTimeoutRequest
-> = z.object({
-  sessionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => ExtendSessionTimeoutRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => ExtendSessionTimeoutRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function extendSessionTimeoutRequestToJSON(
   extendSessionTimeoutRequest: ExtendSessionTimeoutRequest,
@@ -106,9 +110,11 @@ export const ExtendSessionTimeoutResponseBody$inboundSchema: z.ZodType<
   ExtendSessionTimeoutResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  session: Session$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    session: Session$inboundSchema,
+  })
+);
 
 export function extendSessionTimeoutResponseBodyFromJSON(
   jsonString: string,

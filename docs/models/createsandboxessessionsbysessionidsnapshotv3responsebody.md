@@ -75,6 +75,7 @@ let value: CreateSandboxesSessionsBySessionIdSnapshotV3ResponseBody = {
     startedAt: 1750344501629,
     status: "running",
     stoppedAt: 1750344501629,
+    stopReason: "requested",
     timeout: 3600000,
     updatedAt: 1750344501629,
     vcpus: 2,

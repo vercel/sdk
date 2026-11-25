@@ -5,18 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyFour } from "@vercel/sdk/models/usereventpayload317type.js";
+import { ThreeHundredAndSixtyFour } from "@vercel/sdk/models/usereventpayload328previous.js";
 
 let value: ThreeHundredAndSixtyFour = {
-  projectId: "<id>",
-  projectName: "<value>",
+  oldPasswordProtection: "prod_deployment_urls_and_all_previews",
+  passwordProtection: "prod_deployment_urls_and_all_previews",
 };
 ```
 
 ## Fields
 
-| Field                | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `projectId`          | *string*             | :heavy_check_mark:   | N/A                  |
-| `projectName`        | *string*             | :heavy_check_mark:   | N/A                  |
-| `targetDeploymentId` | *string*             | :heavy_minus_sign:   | N/A                  |
+| Field                                 | Type                                  | Required                              | Description                           |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| `oldPasswordProtection`               | *models.PayloadOldPasswordProtection* | :heavy_check_mark:                    | N/A                                   |
+| `passwordChanged`                     | *boolean*                             | :heavy_minus_sign:                    | N/A                                   |
+| `passwordProtection`                  | *models.PayloadPasswordProtection*    | :heavy_check_mark:                    | N/A                                   |
+| `projectId`                           | *string*                              | :heavy_minus_sign:                    | N/A                                   |
+| `projectName`                         | *string*                              | :heavy_minus_sign:                    | N/A                                   |

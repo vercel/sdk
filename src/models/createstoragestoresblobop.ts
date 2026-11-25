@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -277,12 +277,16 @@ export type CreateStorageStoresBlobResponseBody = {
 /** @internal */
 export const CreateStorageStoresBlobRegion$outboundSchema: z.ZodNativeEnum<
   typeof CreateStorageStoresBlobRegion
-> = z.nativeEnum(CreateStorageStoresBlobRegion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateStorageStoresBlobRegion)
+);
 
 /** @internal */
 export const CreateStorageStoresBlobAccess$outboundSchema: z.ZodNativeEnum<
   typeof CreateStorageStoresBlobAccess
-> = z.nativeEnum(CreateStorageStoresBlobAccess);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateStorageStoresBlobAccess)
+);
 
 /** @internal */
 export type CreateStorageStoresBlobRequestBody$Outbound = {
@@ -297,12 +301,14 @@ export const CreateStorageStoresBlobRequestBody$outboundSchema: z.ZodType<
   CreateStorageStoresBlobRequestBody$Outbound,
   z.ZodTypeDef,
   CreateStorageStoresBlobRequestBody
-> = z.object({
-  name: z.string(),
-  region: CreateStorageStoresBlobRegion$outboundSchema.optional(),
-  access: CreateStorageStoresBlobAccess$outboundSchema.default("public"),
-  projectId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+    region: CreateStorageStoresBlobRegion$outboundSchema.optional(),
+    access: CreateStorageStoresBlobAccess$outboundSchema.default("public"),
+    projectId: z.string().optional(),
+  })
+);
 
 export function createStorageStoresBlobRequestBodyToJSON(
   createStorageStoresBlobRequestBody: CreateStorageStoresBlobRequestBody,
@@ -317,22 +323,28 @@ export function createStorageStoresBlobRequestBodyToJSON(
 /** @internal */
 export const CreateStorageStoresBlobProviders2$inboundSchema: z.ZodNativeEnum<
   typeof CreateStorageStoresBlobProviders2
-> = z.nativeEnum(CreateStorageStoresBlobProviders2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateStorageStoresBlobProviders2)
+);
 
 /** @internal */
 export const CreateStorageStoresBlobProviders1$inboundSchema: z.ZodNativeEnum<
   typeof CreateStorageStoresBlobProviders1
-> = z.nativeEnum(CreateStorageStoresBlobProviders1);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateStorageStoresBlobProviders1)
+);
 
 /** @internal */
 export const CreateStorageStoresBlobProviders$inboundSchema: z.ZodType<
   CreateStorageStoresBlobProviders,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(CreateStorageStoresBlobProviders1$inboundSchema),
-  CreateStorageStoresBlobProviders2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(CreateStorageStoresBlobProviders1$inboundSchema),
+    CreateStorageStoresBlobProviders2$inboundSchema,
+  ])
+);
 
 export function createStorageStoresBlobProvidersFromJSON(
   jsonString: string,
@@ -349,14 +361,16 @@ export const CreateStorageStoresBlobGit$inboundSchema: z.ZodType<
   CreateStorageStoresBlobGit,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  owners: types.optional(z.array(types.string())),
-  providers: smartUnion([
-    z.array(CreateStorageStoresBlobProviders1$inboundSchema),
-    CreateStorageStoresBlobProviders2$inboundSchema,
-  ]),
-  repos: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    owners: types.optional(z.array(types.string())),
+    providers: smartUnion([
+      z.array(CreateStorageStoresBlobProviders1$inboundSchema),
+      CreateStorageStoresBlobProviders2$inboundSchema,
+    ]),
+    repos: types.optional(z.array(types.string())),
+  })
+);
 
 export function createStorageStoresBlobGitFromJSON(
   jsonString: string,
@@ -373,9 +387,11 @@ export const CreateStorageStoresBlobProjectFilter$inboundSchema: z.ZodType<
   CreateStorageStoresBlobProjectFilter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  git: types.optional(z.lazy(() => CreateStorageStoresBlobGit$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    git: types.optional(z.lazy(() => CreateStorageStoresBlobGit$inboundSchema)),
+  })
+);
 
 export function createStorageStoresBlobProjectFilterFromJSON(
   jsonString: string,
@@ -393,10 +409,12 @@ export const CreateStorageStoresBlobActions$inboundSchema: z.ZodType<
   CreateStorageStoresBlobActions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environments: z.array(types.string()),
-  slug: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environments: z.array(types.string()),
+    slug: types.string(),
+  })
+);
 
 export function createStorageStoresBlobActionsFromJSON(
   jsonString: string,
@@ -413,10 +431,14 @@ export const CreateStorageStoresBlobDeployments$inboundSchema: z.ZodType<
   CreateStorageStoresBlobDeployments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  actions: z.array(z.lazy(() => CreateStorageStoresBlobActions$inboundSchema)),
-  required: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    actions: z.array(
+      z.lazy(() => CreateStorageStoresBlobActions$inboundSchema),
+    ),
+    required: types.boolean(),
+  })
+);
 
 export function createStorageStoresBlobDeploymentsFromJSON(
   jsonString: string,
@@ -432,29 +454,33 @@ export function createStorageStoresBlobDeploymentsFromJSON(
 /** @internal */
 export const CreateStorageStoresBlobFramework$inboundSchema: z.ZodNativeEnum<
   typeof CreateStorageStoresBlobFramework
-> = z.nativeEnum(CreateStorageStoresBlobFramework);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateStorageStoresBlobFramework)
+);
 
 /** @internal */
 export const CreateStorageStoresBlobProjectsMetadata$inboundSchema: z.ZodType<
   CreateStorageStoresBlobProjectsMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deployments: types.optional(
-    z.lazy(() => CreateStorageStoresBlobDeployments$inboundSchema),
-  ),
-  environments: z.array(types.string()),
-  environmentVariables: z.array(types.string()),
-  envVarPrefix: types.nullable(types.string()),
-  framework: z.nullable(CreateStorageStoresBlobFramework$inboundSchema)
-    .optional(),
-  id: types.string(),
-  latestDeployment: types.optional(types.string()),
-  makeEnvVarsSensitive: types.optional(types.boolean()),
-  name: types.string(),
-  projectId: types.string(),
-  secretsOutdated: types.optional(types.literal(true)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deployments: types.optional(
+      z.lazy(() => CreateStorageStoresBlobDeployments$inboundSchema),
+    ),
+    environments: z.array(types.string()),
+    environmentVariables: z.array(types.string()),
+    envVarPrefix: types.nullable(types.string()),
+    framework: z.nullable(CreateStorageStoresBlobFramework$inboundSchema)
+      .optional(),
+    id: types.string(),
+    latestDeployment: types.optional(types.string()),
+    makeEnvVarsSensitive: types.optional(types.boolean()),
+    name: types.string(),
+    projectId: types.string(),
+    secretsOutdated: types.optional(types.literal(true)),
+  })
+);
 
 export function createStorageStoresBlobProjectsMetadataFromJSON(
   jsonString: string,
@@ -475,48 +501,56 @@ export function createStorageStoresBlobProjectsMetadataFromJSON(
 /** @internal */
 export const CreateStorageStoresBlobStatus$inboundSchema: z.ZodNativeEnum<
   typeof CreateStorageStoresBlobStatus
-> = z.nativeEnum(CreateStorageStoresBlobStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateStorageStoresBlobStatus)
+);
 
 /** @internal */
 export const CreateStorageStoresBlobStorageAccess$inboundSchema:
-  z.ZodNativeEnum<typeof CreateStorageStoresBlobStorageAccess> = z.nativeEnum(
-    CreateStorageStoresBlobStorageAccess,
-  );
+  z.ZodNativeEnum<typeof CreateStorageStoresBlobStorageAccess> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateStorageStoresBlobStorageAccess)
+    );
 
 /** @internal */
 export const CreateStorageStoresBlobKind$inboundSchema: z.ZodNativeEnum<
   typeof CreateStorageStoresBlobKind
-> = z.nativeEnum(CreateStorageStoresBlobKind);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateStorageStoresBlobKind)
+);
 
 /** @internal */
 export const CreateStorageStoresBlobStorageRegion$inboundSchema:
-  z.ZodNativeEnum<typeof CreateStorageStoresBlobStorageRegion> = z.nativeEnum(
-    CreateStorageStoresBlobStorageRegion,
-  );
+  z.ZodNativeEnum<typeof CreateStorageStoresBlobStorageRegion> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateStorageStoresBlobStorageRegion)
+    );
 
 /** @internal */
 export const CreateStorageStoresBlobStore$inboundSchema: z.ZodType<
   CreateStorageStoresBlobStore,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectFilter: types.optional(
-    z.lazy(() => CreateStorageStoresBlobProjectFilter$inboundSchema),
-  ),
-  projectsMetadata: z.array(
-    z.lazy(() => CreateStorageStoresBlobProjectsMetadata$inboundSchema),
-  ),
-  status: types.nullable(CreateStorageStoresBlobStatus$inboundSchema),
-  totalConnectedProjects: types.optional(types.number()),
-  usageQuotaExceeded: types.boolean(),
-  access: types.optional(CreateStorageStoresBlobStorageAccess$inboundSchema),
-  kind: types.optional(CreateStorageStoresBlobKind$inboundSchema),
-  projectId: types.optional(types.string()),
-  count: types.number(),
-  isTokenExpired: types.boolean(),
-  region: CreateStorageStoresBlobStorageRegion$inboundSchema,
-  size: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectFilter: types.optional(
+      z.lazy(() => CreateStorageStoresBlobProjectFilter$inboundSchema),
+    ),
+    projectsMetadata: z.array(
+      z.lazy(() => CreateStorageStoresBlobProjectsMetadata$inboundSchema),
+    ),
+    status: types.nullable(CreateStorageStoresBlobStatus$inboundSchema),
+    totalConnectedProjects: types.optional(types.number()),
+    usageQuotaExceeded: types.boolean(),
+    access: types.optional(CreateStorageStoresBlobStorageAccess$inboundSchema),
+    kind: types.optional(CreateStorageStoresBlobKind$inboundSchema),
+    projectId: types.optional(types.string()),
+    count: types.number(),
+    isTokenExpired: types.boolean(),
+    region: CreateStorageStoresBlobStorageRegion$inboundSchema,
+    size: types.number(),
+  })
+);
 
 export function createStorageStoresBlobStoreFromJSON(
   jsonString: string,
@@ -533,11 +567,13 @@ export const CreateStorageStoresBlobResponseBody$inboundSchema: z.ZodType<
   CreateStorageStoresBlobResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  store: types.nullable(
-    z.lazy(() => CreateStorageStoresBlobStore$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    store: types.nullable(
+      z.lazy(() => CreateStorageStoresBlobStore$inboundSchema),
+    ),
+  })
+);
 
 export function createStorageStoresBlobResponseBodyFromJSON(
   jsonString: string,

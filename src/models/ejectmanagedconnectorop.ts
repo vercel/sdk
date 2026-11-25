@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type EjectManagedConnectorRequest = {
   /**
@@ -23,10 +24,12 @@ export const EjectManagedConnectorRequest$outboundSchema: z.ZodType<
   EjectManagedConnectorRequest$Outbound,
   z.ZodTypeDef,
   EjectManagedConnectorRequest
-> = z.object({
-  connector: z.string(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connector: z.string(),
+    slug: z.string().optional(),
+  })
+);
 
 export function ejectManagedConnectorRequestToJSON(
   ejectManagedConnectorRequest: EjectManagedConnectorRequest,

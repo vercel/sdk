@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixtySeven } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndSixtySeven } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
 let value: FourHundredAndSixtySeven = {
-  actorId: "<id>",
-  actorType: "admin",
+  authorized: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `name`                                                                           | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload467ActorType](../models/usereventpayload467actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `authorized`       | *boolean*          | :heavy_check_mark: | N/A                |
+| `email`            | *string*           | :heavy_minus_sign: | N/A                |
+| `reason`           | *string*           | :heavy_minus_sign: | N/A                |

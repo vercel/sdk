@@ -16,6 +16,7 @@ import { globalConfigGetEdgeConfigs } from "../funcs/globalConfigGetEdgeConfigs.
 import { globalConfigGetEdgeConfigSchema } from "../funcs/globalConfigGetEdgeConfigSchema.js";
 import { globalConfigGetEdgeConfigToken } from "../funcs/globalConfigGetEdgeConfigToken.js";
 import { globalConfigGetEdgeConfigTokens } from "../funcs/globalConfigGetEdgeConfigTokens.js";
+import { globalConfigLookupEdgeConfigToken } from "../funcs/globalConfigLookupEdgeConfigToken.js";
 import { globalConfigPatchEdgeConfigItems } from "../funcs/globalConfigPatchEdgeConfigItems.js";
 import { globalConfigPatchEdgeConfigSchema } from "../funcs/globalConfigPatchEdgeConfigSchema.js";
 import { globalConfigRestoreEdgeConfigBackup } from "../funcs/globalConfigRestoreEdgeConfigBackup.js";
@@ -58,6 +59,8 @@ import { GetEdgeConfigTokenRequest } from "../models/getedgeconfigtokenop.js";
 import { GetEdgeConfigTokensRequest } from "../models/getedgeconfigtokensop.js";
 import { GlobalConfigItem } from "../models/globalconfigitem.js";
 import { GlobalConfigToken } from "../models/globalconfigtoken.js";
+import { GlobalConfigTokenMetadata } from "../models/globalconfigtokenmetadata.js";
+import { LookupEdgeConfigTokenRequest } from "../models/lookupedgeconfigtokenop.js";
 import {
   PatchEdgeConfigItemsRequest,
   PatchEdgeConfigItemsResponseBody,
@@ -302,7 +305,7 @@ export class GlobalConfig extends ClientSDK {
    * Get Global Config token meta data
    *
    * @remarks
-   * Return meta data about a Global Config token.
+   * Return metadata about a Global Config token.
    */
   async getEdgeConfigToken(
     request: GetEdgeConfigTokenRequest,
@@ -326,6 +329,23 @@ export class GlobalConfig extends ClientSDK {
     options?: RequestOptions,
   ): Promise<CreateEdgeConfigTokenResponseBody> {
     return unwrapAsync(globalConfigCreateEdgeConfigToken(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Look up a Global Config token
+   *
+   * @remarks
+   * Return metadata about a Global Config token, identified by the token itself. The token is sent in a header so it stays out of URLs.
+   */
+  async lookupEdgeConfigToken(
+    request: LookupEdgeConfigTokenRequest,
+    options?: RequestOptions,
+  ): Promise<GlobalConfigTokenMetadata> {
+    return unwrapAsync(globalConfigLookupEdgeConfigToken(
       this,
       request,
       options,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -32,9 +32,11 @@ export const CreateWebInsightsToggleRequestBody$outboundSchema: z.ZodType<
   CreateWebInsightsToggleRequestBody$Outbound,
   z.ZodTypeDef,
   CreateWebInsightsToggleRequestBody
-> = z.object({
-  value: z.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: z.boolean(),
+  })
+);
 
 export function createWebInsightsToggleRequestBodyToJSON(
   createWebInsightsToggleRequestBody: CreateWebInsightsToggleRequestBody,
@@ -57,15 +59,17 @@ export const CreateWebInsightsToggleRequest$outboundSchema: z.ZodType<
   CreateWebInsightsToggleRequest$Outbound,
   z.ZodTypeDef,
   CreateWebInsightsToggleRequest
-> = z.object({
-  projectId: z.string(),
-  requestBody: z.lazy(() => CreateWebInsightsToggleRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    requestBody: z.lazy(() => CreateWebInsightsToggleRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createWebInsightsToggleRequestToJSON(
   createWebInsightsToggleRequest: CreateWebInsightsToggleRequest,
@@ -82,9 +86,11 @@ export const CreateWebInsightsToggleResponseBody$inboundSchema: z.ZodType<
   CreateWebInsightsToggleResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: types.boolean(),
+  })
+);
 
 export function createWebInsightsToggleResponseBodyFromJSON(
   jsonString: string,

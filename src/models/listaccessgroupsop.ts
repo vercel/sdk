@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -115,16 +115,18 @@ export const ListAccessGroupsRequest$outboundSchema: z.ZodType<
   ListAccessGroupsRequest$Outbound,
   z.ZodTypeDef,
   ListAccessGroupsRequest
-> = z.object({
-  projectId: z.string().optional(),
-  search: z.string().optional(),
-  membersLimit: z.number().int().optional(),
-  projectsLimit: z.number().int().optional(),
-  limit: z.number().int().optional(),
-  next: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string().optional(),
+    search: z.string().optional(),
+    membersLimit: z.number().int().optional(),
+    projectsLimit: z.number().int().optional(),
+    limit: z.number().int().optional(),
+    next: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listAccessGroupsRequestToJSON(
   listAccessGroupsRequest: ListAccessGroupsRequest,
@@ -139,21 +141,23 @@ export const AccessGroups$inboundSchema: z.ZodType<
   AccessGroups,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessGroupId: types.string(),
-  createdAt: types.string(),
-  entitlements: types.optional(z.array(types.string())),
-  isDsyncManaged: types.boolean(),
-  members: types.optional(z.array(types.string())),
-  membersCount: types.number(),
-  name: types.string(),
-  projects: types.optional(z.array(types.string())),
-  projectsCount: types.number(),
-  teamId: types.string(),
-  teamPermissions: types.optional(z.array(types.string())),
-  teamRoles: types.optional(z.array(types.string())),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroupId: types.string(),
+    createdAt: types.string(),
+    entitlements: types.optional(z.array(types.string())),
+    isDsyncManaged: types.boolean(),
+    members: types.optional(z.array(types.string())),
+    membersCount: types.number(),
+    name: types.string(),
+    projects: types.optional(z.array(types.string())),
+    projectsCount: types.number(),
+    teamId: types.string(),
+    teamPermissions: types.optional(z.array(types.string())),
+    teamRoles: types.optional(z.array(types.string())),
+    updatedAt: types.string(),
+  })
+);
 
 export function accessGroupsFromJSON(
   jsonString: string,
@@ -170,10 +174,12 @@ export const ResponseBodyPagination$inboundSchema: z.ZodType<
   ResponseBodyPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    next: types.nullable(types.string()),
+  })
+);
 
 export function responseBodyPaginationFromJSON(
   jsonString: string,
@@ -190,10 +196,12 @@ export const ResponseBody2$inboundSchema: z.ZodType<
   ResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessGroups: z.array(z.lazy(() => AccessGroups$inboundSchema)),
-  pagination: z.lazy(() => ResponseBodyPagination$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroups: z.array(z.lazy(() => AccessGroups$inboundSchema)),
+    pagination: z.lazy(() => ResponseBodyPagination$inboundSchema),
+  })
+);
 
 export function responseBody2FromJSON(
   jsonString: string,
@@ -210,7 +218,7 @@ export const ResponseBody1$inboundSchema: z.ZodType<
   ResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function responseBody1FromJSON(
   jsonString: string,
@@ -227,10 +235,12 @@ export const ListAccessGroupsResponseBody$inboundSchema: z.ZodType<
   ListAccessGroupsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => ResponseBody2$inboundSchema),
-  z.lazy(() => ResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => ResponseBody2$inboundSchema),
+    z.lazy(() => ResponseBody1$inboundSchema),
+  ])
+);
 
 export function listAccessGroupsResponseBodyFromJSON(
   jsonString: string,

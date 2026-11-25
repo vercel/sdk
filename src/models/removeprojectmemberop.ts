@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -44,12 +44,14 @@ export const RemoveProjectMemberRequest$outboundSchema: z.ZodType<
   RemoveProjectMemberRequest$Outbound,
   z.ZodTypeDef,
   RemoveProjectMemberRequest
-> = z.object({
-  idOrName: z.string(),
-  uid: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    uid: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function removeProjectMemberRequestToJSON(
   removeProjectMemberRequest: RemoveProjectMemberRequest,
@@ -64,9 +66,11 @@ export const RemoveProjectMemberResponseBody$inboundSchema: z.ZodType<
   RemoveProjectMemberResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function removeProjectMemberResponseBodyFromJSON(
   jsonString: string,

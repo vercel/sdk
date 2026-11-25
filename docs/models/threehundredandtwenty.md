@@ -5,11 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndTwenty } from "@vercel/sdk/models/usereventpayload317type.js";
+import { ThreeHundredAndTwenty } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
 let value: ThreeHundredAndTwenty = {
-  customEnvironmentId: "<id>",
-  customEnvironmentSlug: "<value>",
+  elasticConcurrencyEnabled: true,
+  oldElasticConcurrencyEnabled: true,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -17,9 +17,11 @@ let value: ThreeHundredAndTwenty = {
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `customEnvironmentId`   | *string*                | :heavy_check_mark:      | N/A                     |
-| `customEnvironmentSlug` | *string*                | :heavy_check_mark:      | N/A                     |
-| `projectId`             | *string*                | :heavy_check_mark:      | N/A                     |
-| `projectName`           | *string*                | :heavy_check_mark:      | N/A                     |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `buildQueueConfiguration`                                                    | [models.BuildQueueConfiguration](../models/buildqueueconfiguration.md)       | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `elasticConcurrencyEnabled`                                                  | *boolean*                                                                    | :heavy_check_mark:                                                           | N/A                                                                          |
+| `oldBuildQueueConfiguration`                                                 | [models.OldBuildQueueConfiguration](../models/oldbuildqueueconfiguration.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `oldElasticConcurrencyEnabled`                                               | *boolean*                                                                    | :heavy_check_mark:                                                           | N/A                                                                          |
+| `projectId`                                                                  | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `projectName`                                                                | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

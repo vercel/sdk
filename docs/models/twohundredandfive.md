@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFive } from "@vercel/sdk/models/newprojects.js";
+import { TwoHundredAndFive } from "@vercel/sdk/models/newenvvar.js";
 
 let value: TwoHundredAndFive = {
-  effectiveAt: 2855.86,
+  action: "disable",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `effectiveAt`      | *number*           | :heavy_check_mark: | N/A                |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload205Action](../models/usereventpayload205action.md) | :heavy_check_mark:                                                         | N/A                                                                        |

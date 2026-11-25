@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -72,10 +72,12 @@ export const AiGatewayEvaluationFallbackCondition1$inboundSchema: z.ZodType<
   AiGatewayEvaluationFallbackCondition1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  confidenceBelow: types.number(),
-  question: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    confidenceBelow: types.number(),
+    question: types.optional(types.string()),
+  })
+);
 
 export function aiGatewayEvaluationFallbackCondition1FromJSON(
   jsonString: string,
@@ -93,10 +95,12 @@ export const AiGatewayEvaluationFallbackCondition2$inboundSchema: z.ZodType<
   AiGatewayEvaluationFallbackCondition2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  probabilityBetween: z.array(types.number()),
-  question: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    probabilityBetween: z.array(types.number()),
+    question: types.optional(types.string()),
+  })
+);
 
 export function aiGatewayEvaluationFallbackCondition2FromJSON(
   jsonString: string,
@@ -114,17 +118,17 @@ export const AiGatewayEvaluationFallbackCondition3$inboundSchema: z.ZodType<
   AiGatewayEvaluationFallbackCondition3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  any: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    any: z.array(smartUnion([
       z.lazy(() => AiGatewayEvaluationFallbackCondition1$inboundSchema),
       z.lazy(() => AiGatewayEvaluationFallbackCondition2$inboundSchema),
       z.lazy(() => AiGatewayEvaluationFallbackCondition3$inboundSchema),
       z.lazy(() => AiGatewayEvaluationFallbackCondition4$inboundSchema),
       z.lazy(() => AiGatewayEvaluationFallbackCondition5$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function aiGatewayEvaluationFallbackCondition3FromJSON(
   jsonString: string,
@@ -142,17 +146,17 @@ export const AiGatewayEvaluationFallbackCondition4$inboundSchema: z.ZodType<
   AiGatewayEvaluationFallbackCondition4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  all: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    all: z.array(smartUnion([
       z.lazy(() => AiGatewayEvaluationFallbackCondition1$inboundSchema),
       z.lazy(() => AiGatewayEvaluationFallbackCondition2$inboundSchema),
       z.lazy(() => AiGatewayEvaluationFallbackCondition3$inboundSchema),
       z.lazy(() => AiGatewayEvaluationFallbackCondition4$inboundSchema),
       z.lazy(() => AiGatewayEvaluationFallbackCondition5$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function aiGatewayEvaluationFallbackCondition4FromJSON(
   jsonString: string,
@@ -170,9 +174,11 @@ export const AiGatewayEvaluationFallbackCondition5$inboundSchema: z.ZodType<
   AiGatewayEvaluationFallbackCondition5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  atLeast: z.lazy(() => AtLeast$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    atLeast: z.lazy(() => AtLeast$inboundSchema),
+  })
+);
 
 export function aiGatewayEvaluationFallbackCondition5FromJSON(
   jsonString: string,
@@ -190,13 +196,15 @@ export const AiGatewayEvaluationFallbackCondition$inboundSchema: z.ZodType<
   AiGatewayEvaluationFallbackCondition,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => AiGatewayEvaluationFallbackCondition1$inboundSchema),
-  z.lazy(() => AiGatewayEvaluationFallbackCondition2$inboundSchema),
-  z.lazy(() => AiGatewayEvaluationFallbackCondition3$inboundSchema),
-  z.lazy(() => AiGatewayEvaluationFallbackCondition4$inboundSchema),
-  z.lazy(() => AiGatewayEvaluationFallbackCondition5$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => AiGatewayEvaluationFallbackCondition1$inboundSchema),
+    z.lazy(() => AiGatewayEvaluationFallbackCondition2$inboundSchema),
+    z.lazy(() => AiGatewayEvaluationFallbackCondition3$inboundSchema),
+    z.lazy(() => AiGatewayEvaluationFallbackCondition4$inboundSchema),
+    z.lazy(() => AiGatewayEvaluationFallbackCondition5$inboundSchema),
+  ])
+);
 
 export function aiGatewayEvaluationFallbackConditionFromJSON(
   jsonString: string,
@@ -211,18 +219,18 @@ export function aiGatewayEvaluationFallbackConditionFromJSON(
 
 /** @internal */
 export const AtLeast$inboundSchema: z.ZodType<AtLeast, z.ZodTypeDef, unknown> =
-  z.object({
-    conditions: z.array(
-      smartUnion([
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      conditions: z.array(smartUnion([
         z.lazy(() => AiGatewayEvaluationFallbackCondition1$inboundSchema),
         z.lazy(() => AiGatewayEvaluationFallbackCondition2$inboundSchema),
         z.lazy(() => AiGatewayEvaluationFallbackCondition3$inboundSchema),
         z.lazy(() => AiGatewayEvaluationFallbackCondition4$inboundSchema),
         z.lazy(() => AiGatewayEvaluationFallbackCondition5$inboundSchema),
-      ]),
-    ),
-    count: types.number(),
-  });
+      ])),
+      count: types.number(),
+    })
+  );
 
 export function atLeastFromJSON(
   jsonString: string,

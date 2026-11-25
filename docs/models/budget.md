@@ -5,7 +5,7 @@ Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in 
 ## Example Usage
 
 ```typescript
-import { Budget } from "@vercel/sdk/models/twenty.js";
+import { Budget } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: Budget = {
   limitAmount: 268.4,
@@ -15,8 +15,9 @@ let value: Budget = {
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `alertThresholds`                                                | *number*[]                                                       | :heavy_minus_sign:                                               | N/A                                                              |
-| `limitAmount`                                                    | *number*                                                         | :heavy_check_mark:                                               | Spend cap, in dollars.                                           |
-| `refreshPeriod`                                                  | [models.PayloadRefreshPeriod](../models/payloadrefreshperiod.md) | :heavy_check_mark:                                               | N/A                                                              |
+| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `alertThresholds`                                                     | *number*[]                                                            | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `expiresAt`                                                           | *number*                                                              | :heavy_minus_sign:                                                    | When the budget lapses to the scope's default, in ms since the epoch. |
+| `limitAmount`                                                         | *number*                                                              | :heavy_check_mark:                                                    | Spend cap, in dollars.                                                |
+| `refreshPeriod`                                                       | [models.PayloadRefreshPeriod](../models/payloadrefreshperiod.md)      | :heavy_check_mark:                                                    | N/A                                                                   |

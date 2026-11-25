@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -80,13 +80,15 @@ export const ListAccessGroupProjectsRequest$outboundSchema: z.ZodType<
   ListAccessGroupProjectsRequest$Outbound,
   z.ZodTypeDef,
   ListAccessGroupProjectsRequest
-> = z.object({
-  idOrName: z.string(),
-  limit: z.number().int().optional(),
-  next: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    limit: z.number().int().optional(),
+    next: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listAccessGroupProjectsRequestToJSON(
   listAccessGroupProjectsRequest: ListAccessGroupProjectsRequest,
@@ -103,10 +105,12 @@ export const ListAccessGroupProjectsPagination$inboundSchema: z.ZodType<
   ListAccessGroupProjectsPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    next: types.nullable(types.string()),
+  })
+);
 
 export function listAccessGroupProjectsPaginationFromJSON(
   jsonString: string,
@@ -123,11 +127,13 @@ export const ListAccessGroupProjectsProject$inboundSchema: z.ZodType<
   ListAccessGroupProjectsProject,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  framework: z.nullable(types.string()).optional(),
-  latestDeploymentId: types.optional(types.string()),
-  name: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    framework: z.nullable(types.string()).optional(),
+    latestDeploymentId: types.optional(types.string()),
+    name: types.optional(types.string()),
+  })
+);
 
 export function listAccessGroupProjectsProjectFromJSON(
   jsonString: string,
@@ -142,20 +148,24 @@ export function listAccessGroupProjectsProjectFromJSON(
 /** @internal */
 export const ListAccessGroupProjectsRole$inboundSchema: z.ZodNativeEnum<
   typeof ListAccessGroupProjectsRole
-> = z.nativeEnum(ListAccessGroupProjectsRole);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListAccessGroupProjectsRole)
+);
 
 /** @internal */
 export const ListAccessGroupProjectsProjects$inboundSchema: z.ZodType<
   ListAccessGroupProjectsProjects,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.string(),
-  project: z.lazy(() => ListAccessGroupProjectsProject$inboundSchema),
-  projectId: types.string(),
-  role: ListAccessGroupProjectsRole$inboundSchema,
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.string(),
+    project: z.lazy(() => ListAccessGroupProjectsProject$inboundSchema),
+    projectId: types.string(),
+    role: ListAccessGroupProjectsRole$inboundSchema,
+    updatedAt: types.string(),
+  })
+);
 
 export function listAccessGroupProjectsProjectsFromJSON(
   jsonString: string,
@@ -172,12 +182,14 @@ export const ListAccessGroupProjectsResponseBody$inboundSchema: z.ZodType<
   ListAccessGroupProjectsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: z.lazy(() => ListAccessGroupProjectsPagination$inboundSchema),
-  projects: z.array(
-    z.lazy(() => ListAccessGroupProjectsProjects$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: z.lazy(() => ListAccessGroupProjectsPagination$inboundSchema),
+    projects: z.array(
+      z.lazy(() => ListAccessGroupProjectsProjects$inboundSchema),
+    ),
+  })
+);
 
 export function listAccessGroupProjectsResponseBodyFromJSON(
   jsonString: string,

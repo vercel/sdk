@@ -5,20 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndTen } from "@vercel/sdk/models/payloadoutcome.js";
+import { FiveHundredAndTen } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
 let value: FiveHundredAndTen = {
-  username: "Donnell59",
-  actorId: "<id>",
-  actorType: "admin",
+  next: {
+    enabled: true,
+    totpVerified: false,
+  },
+  previous: {
+    enabled: true,
+    totpVerified: true,
+  },
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `username`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload510ActorType](../models/usereventpayload510actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `method`                                                                       | [models.PayloadMethod](../models/payloadmethod.md)                             | :heavy_minus_sign:                                                             | N/A                                                                            |
+| `next`                                                                         | [models.UserEventPayload510Next](../models/usereventpayload510next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload510Previous](../models/usereventpayload510previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

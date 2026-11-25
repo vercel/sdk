@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -74,8 +78,10 @@ export type ListSessionSnapshotsResponseBody =
 
 /** @internal */
 export const ListSessionSnapshotsQueryParamSortOrder$outboundSchema:
-  z.ZodNativeEnum<typeof ListSessionSnapshotsQueryParamSortOrder> = z
-    .nativeEnum(ListSessionSnapshotsQueryParamSortOrder);
+  z.ZodNativeEnum<typeof ListSessionSnapshotsQueryParamSortOrder> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ListSessionSnapshotsQueryParamSortOrder)
+    );
 
 /** @internal */
 export type ListSessionSnapshotsRequest$Outbound = {
@@ -93,17 +99,23 @@ export const ListSessionSnapshotsRequest$outboundSchema: z.ZodType<
   ListSessionSnapshotsRequest$Outbound,
   z.ZodTypeDef,
   ListSessionSnapshotsRequest
-> = z.object({
-  project: z.string().optional(),
-  name: z.string().optional(),
-  limit: z.number().default(20),
-  cursor: z.string().optional(),
-  sortOrder: ListSessionSnapshotsQueryParamSortOrder$outboundSchema.default(
-    "desc",
-  ),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    project: z.string().optional(),
+    name: z.string().refine(withinMaxLength$(128), {
+      message: "Value must be at most 128 characters long",
+    }).refine(matchesPattern$("^[a-zA-Z0-9_-]+$", 128), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }).optional(),
+    limit: z.number().default(20),
+    cursor: z.string().optional(),
+    sortOrder: ListSessionSnapshotsQueryParamSortOrder$outboundSchema.default(
+      "desc",
+    ),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listSessionSnapshotsRequestToJSON(
   listSessionSnapshotsRequest: ListSessionSnapshotsRequest,
@@ -118,10 +130,12 @@ export function listSessionSnapshotsRequestToJSON(
 /** @internal */
 export const ListSessionSnapshotsResponseBodyPagination$inboundSchema:
   z.ZodType<ListSessionSnapshotsResponseBodyPagination, z.ZodTypeDef, unknown> =
-    z.object({
-      count: types.number(),
-      next: types.nullable(types.string()),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        count: types.number(),
+        next: types.nullable(types.string()),
+      })
+    );
 
 export function listSessionSnapshotsResponseBodyPaginationFromJSON(
   jsonString: string,
@@ -144,12 +158,14 @@ export const ListSessionSnapshotsResponseBody2$inboundSchema: z.ZodType<
   ListSessionSnapshotsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: z.lazy(() =>
-    ListSessionSnapshotsResponseBodyPagination$inboundSchema
-  ),
-  snapshots: z.array(Snapshot$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: z.lazy(() =>
+      ListSessionSnapshotsResponseBodyPagination$inboundSchema
+    ),
+    snapshots: z.array(Snapshot$inboundSchema),
+  })
+);
 
 export function listSessionSnapshotsResponseBody2FromJSON(
   jsonString: string,
@@ -166,7 +182,7 @@ export const ListSessionSnapshotsResponseBody1$inboundSchema: z.ZodType<
   ListSessionSnapshotsResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function listSessionSnapshotsResponseBody1FromJSON(
   jsonString: string,
@@ -183,10 +199,12 @@ export const ListSessionSnapshotsResponseBody$inboundSchema: z.ZodType<
   ListSessionSnapshotsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => ListSessionSnapshotsResponseBody2$inboundSchema),
-  z.lazy(() => ListSessionSnapshotsResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => ListSessionSnapshotsResponseBody2$inboundSchema),
+    z.lazy(() => ListSessionSnapshotsResponseBody1$inboundSchema),
+  ])
+);
 
 export function listSessionSnapshotsResponseBodyFromJSON(
   jsonString: string,

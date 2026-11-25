@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -69,24 +69,25 @@ export type SandboxNetworkPolicy = {
 };
 
 /** @internal */
-export const Mode$inboundSchema: z.ZodNativeEnum<typeof Mode> = z.nativeEnum(
-  Mode,
-);
+export const Mode$inboundSchema: z.ZodNativeEnum<typeof Mode> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Mode));
 
 /** @internal */
 export const SandboxNetworkPolicy$inboundSchema: z.ZodType<
   SandboxNetworkPolicy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  allowedCIDRs: types.optional(z.array(types.string())),
-  allowedDomains: types.optional(z.array(types.string())),
-  deniedCIDRs: types.optional(z.array(types.string())),
-  forwardRules: types.optional(z.array(SandboxForwardRule$inboundSchema)),
-  injectionRules: types.optional(z.array(SandboxInjectionRule$inboundSchema)),
-  mode: Mode$inboundSchema,
-  responseRules: types.optional(z.array(SandboxResponseRule$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    allowedCIDRs: types.optional(z.array(types.string())),
+    allowedDomains: types.optional(z.array(types.string())),
+    deniedCIDRs: types.optional(z.array(types.string())),
+    forwardRules: types.optional(z.array(SandboxForwardRule$inboundSchema)),
+    injectionRules: types.optional(z.array(SandboxInjectionRule$inboundSchema)),
+    mode: Mode$inboundSchema,
+    responseRules: types.optional(z.array(SandboxResponseRule$inboundSchema)),
+  })
+);
 
 export function sandboxNetworkPolicyFromJSON(
   jsonString: string,

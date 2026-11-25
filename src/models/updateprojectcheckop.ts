@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -146,12 +146,12 @@ export type UpdateProjectCheckResponseBody = {
 /** @internal */
 export const UpdateProjectCheckRequires$outboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectCheckRequires
-> = z.nativeEnum(UpdateProjectCheckRequires);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateProjectCheckRequires));
 
 /** @internal */
 export const UpdateProjectCheckBlocks$outboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectCheckBlocks
-> = z.nativeEnum(UpdateProjectCheckBlocks);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateProjectCheckBlocks));
 
 /** @internal */
 export type UpdateProjectCheckRequestBody$Outbound = {
@@ -168,14 +168,18 @@ export const UpdateProjectCheckRequestBody$outboundSchema: z.ZodType<
   UpdateProjectCheckRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateProjectCheckRequestBody
-> = z.object({
-  name: z.string().optional(),
-  isRerequestable: z.boolean().optional(),
-  requires: UpdateProjectCheckRequires$outboundSchema.default("deployment-url"),
-  targets: z.array(z.string()).optional(),
-  blocks: UpdateProjectCheckBlocks$outboundSchema.default("deployment-alias"),
-  timeout: z.number().default(300),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    isRerequestable: z.boolean().optional(),
+    requires: UpdateProjectCheckRequires$outboundSchema.default(
+      "deployment-url",
+    ),
+    targets: z.array(z.string()).optional(),
+    blocks: UpdateProjectCheckBlocks$outboundSchema.default("deployment-alias"),
+    timeout: z.number().default(300),
+  })
+);
 
 export function updateProjectCheckRequestBodyToJSON(
   updateProjectCheckRequestBody: UpdateProjectCheckRequestBody,
@@ -201,18 +205,20 @@ export const UpdateProjectCheckRequest$outboundSchema: z.ZodType<
   UpdateProjectCheckRequest$Outbound,
   z.ZodTypeDef,
   UpdateProjectCheckRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  checkId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateProjectCheckRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    checkId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateProjectCheckRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateProjectCheckRequestToJSON(
   updateProjectCheckRequest: UpdateProjectCheckRequest,
@@ -225,28 +231,36 @@ export function updateProjectCheckRequestToJSON(
 /** @internal */
 export const UpdateProjectCheckChecksV2Blocks$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectCheckChecksV2Blocks
-> = z.nativeEnum(UpdateProjectCheckChecksV2Blocks);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateProjectCheckChecksV2Blocks)
+);
 
 /** @internal */
 export const UpdateProjectCheckChecksV2Requires$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectCheckChecksV2Requires
-> = z.nativeEnum(UpdateProjectCheckChecksV2Requires);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateProjectCheckChecksV2Requires)
+);
 
 /** @internal */
 export const UpdateProjectCheckSourceProvider$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectCheckSourceProvider
-> = z.nativeEnum(UpdateProjectCheckSourceProvider);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateProjectCheckSourceProvider)
+);
 
 /** @internal */
 export const UpdateProjectCheckSource3$inboundSchema: z.ZodType<
   UpdateProjectCheckSource3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalCheckName: types.string(),
-  kind: types.literal("git-provider"),
-  provider: UpdateProjectCheckSourceProvider$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalCheckName: types.string(),
+    kind: types.literal("git-provider"),
+    provider: UpdateProjectCheckSourceProvider$inboundSchema,
+  })
+);
 
 export function updateProjectCheckSource3FromJSON(
   jsonString: string,
@@ -263,10 +277,12 @@ export const UpdateProjectCheckSource2$inboundSchema: z.ZodType<
   UpdateProjectCheckSource2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: types.literal("webhook"),
-  webhookId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: types.literal("webhook"),
+    webhookId: types.optional(types.string()),
+  })
+);
 
 export function updateProjectCheckSource2FromJSON(
   jsonString: string,
@@ -283,13 +299,15 @@ export const UpdateProjectCheckSource1$inboundSchema: z.ZodType<
   UpdateProjectCheckSource1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalResourceId: types.optional(types.string()),
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  kind: types.literal("integration"),
-  resourceId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalResourceId: types.optional(types.string()),
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    kind: types.literal("integration"),
+    resourceId: types.optional(types.string()),
+  })
+);
 
 export function updateProjectCheckSource1FromJSON(
   jsonString: string,
@@ -306,11 +324,13 @@ export const UpdateProjectCheckSource$inboundSchema: z.ZodType<
   UpdateProjectCheckSource,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UpdateProjectCheckSource1$inboundSchema),
-  z.lazy(() => UpdateProjectCheckSource2$inboundSchema),
-  z.lazy(() => UpdateProjectCheckSource3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UpdateProjectCheckSource1$inboundSchema),
+    z.lazy(() => UpdateProjectCheckSource2$inboundSchema),
+    z.lazy(() => UpdateProjectCheckSource3$inboundSchema),
+  ])
+);
 
 export function updateProjectCheckSourceFromJSON(
   jsonString: string,
@@ -325,34 +345,38 @@ export function updateProjectCheckSourceFromJSON(
 /** @internal */
 export const UpdateProjectCheckSourceKind$inboundSchema: z.ZodNativeEnum<
   typeof UpdateProjectCheckSourceKind
-> = z.nativeEnum(UpdateProjectCheckSourceKind);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateProjectCheckSourceKind)
+);
 
 /** @internal */
 export const UpdateProjectCheckResponseBody$inboundSchema: z.ZodType<
   UpdateProjectCheckResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  blocks: UpdateProjectCheckChecksV2Blocks$inboundSchema,
-  createdAt: types.number(),
-  deletedAt: types.optional(types.number()),
-  id: types.string(),
-  isRerequestable: types.boolean(),
-  name: types.string(),
-  ownerId: types.string(),
-  projectId: types.string(),
-  requires: UpdateProjectCheckChecksV2Requires$inboundSchema,
-  source: z.union([
-    z.lazy(() => UpdateProjectCheckSource1$inboundSchema),
-    z.lazy(() => UpdateProjectCheckSource2$inboundSchema),
-    z.lazy(() => UpdateProjectCheckSource3$inboundSchema),
-  ]),
-  sourceIntegrationConfigurationId: types.optional(types.string()),
-  sourceKind: UpdateProjectCheckSourceKind$inboundSchema,
-  targets: z.array(types.string()),
-  timeout: types.number(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    blocks: UpdateProjectCheckChecksV2Blocks$inboundSchema,
+    createdAt: types.number(),
+    deletedAt: types.optional(types.number()),
+    id: types.string(),
+    isRerequestable: types.boolean(),
+    name: types.string(),
+    ownerId: types.string(),
+    projectId: types.string(),
+    requires: UpdateProjectCheckChecksV2Requires$inboundSchema,
+    source: z.union([
+      z.lazy(() => UpdateProjectCheckSource1$inboundSchema),
+      z.lazy(() => UpdateProjectCheckSource2$inboundSchema),
+      z.lazy(() => UpdateProjectCheckSource3$inboundSchema),
+    ]),
+    sourceIntegrationConfigurationId: types.optional(types.string()),
+    sourceKind: UpdateProjectCheckSourceKind$inboundSchema,
+    targets: z.array(types.string()),
+    timeout: types.number(),
+    updatedAt: types.number(),
+  })
+);
 
 export function updateProjectCheckResponseBodyFromJSON(
   jsonString: string,

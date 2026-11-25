@@ -5,19 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThirtyFour } from "@vercel/sdk/models/newprojects.js";
+import { TwoHundredAndThirtyFour } from "@vercel/sdk/models/newenvvar.js";
 
 let value: TwoHundredAndThirtyFour = {
-  projectId: "<id>",
-  projectName: "<value>",
-  toDeploymentId: "<id>",
+  login: "Haven_Howell19",
+  provider: "apple",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `login`                                                                        | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `provider`                                                                     | [models.UserEventPayload234Provider](../models/usereventpayload234provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |

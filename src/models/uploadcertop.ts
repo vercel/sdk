@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -61,12 +61,14 @@ export const UploadCertRequestBody$outboundSchema: z.ZodType<
   UploadCertRequestBody$Outbound,
   z.ZodTypeDef,
   UploadCertRequestBody
-> = z.object({
-  ca: z.string(),
-  key: z.string(),
-  cert: z.string(),
-  skipValidation: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ca: z.string(),
+    key: z.string(),
+    cert: z.string(),
+    skipValidation: z.boolean().optional(),
+  })
+);
 
 export function uploadCertRequestBodyToJSON(
   uploadCertRequestBody: UploadCertRequestBody,
@@ -88,15 +90,17 @@ export const UploadCertRequest$outboundSchema: z.ZodType<
   UploadCertRequest$Outbound,
   z.ZodTypeDef,
   UploadCertRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UploadCertRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UploadCertRequestBody$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function uploadCertRequestToJSON(
   uploadCertRequest: UploadCertRequest,
@@ -111,13 +115,15 @@ export const UploadCertResponseBody$inboundSchema: z.ZodType<
   UploadCertResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  autoRenew: types.boolean(),
-  cns: z.array(types.string()),
-  createdAt: types.number(),
-  expiresAt: types.number(),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    autoRenew: types.boolean(),
+    cns: z.array(types.string()),
+    createdAt: types.number(),
+    expiresAt: types.number(),
+    id: types.string(),
+  })
+);
 
 export function uploadCertResponseBodyFromJSON(
   jsonString: string,

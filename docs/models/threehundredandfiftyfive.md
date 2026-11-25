@@ -5,19 +5,23 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyFive } from "@vercel/sdk/models/usereventpayload317type.js";
+import { ThreeHundredAndFiftyFive } from "@vercel/sdk/models/usereventpayload328previous.js";
 
 let value: ThreeHundredAndFiftyFive = {
-  projectId: "<id>",
-  projectName: "<value>",
-  source: "<value>",
+  project: {
+    name: "<value>",
+  },
+  removedMembership: {
+    createdAt: 9568.35,
+    role: "PROJECT_VIEWER",
+    uid: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `project`                                                                    | [models.UserEventPayload355Project](../models/usereventpayload355project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `removedMembership`                                                          | [models.RemovedMembership](../models/removedmembership.md)                   | :heavy_check_mark:                                                           | N/A                                                                          |

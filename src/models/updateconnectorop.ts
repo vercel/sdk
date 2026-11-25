@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import {
   ConnectUpdateConnectorRequest,
   ConnectUpdateConnectorRequest$Outbound,
@@ -12,7 +13,7 @@ import {
 
 export type UpdateConnectorRequest = {
   /**
-   * Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`.
+   * Stable connector ID or URL-encoded team- or organization-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`.
    */
   connector: string;
   /**
@@ -39,16 +40,18 @@ export const UpdateConnectorRequest$outboundSchema: z.ZodType<
   UpdateConnectorRequest$Outbound,
   z.ZodTypeDef,
   UpdateConnectorRequest
-> = z.object({
-  connector: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  connectUpdateConnectorRequest: ConnectUpdateConnectorRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    connectUpdateConnectorRequest: "ConnectUpdateConnectorRequest",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connector: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    connectUpdateConnectorRequest: ConnectUpdateConnectorRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      connectUpdateConnectorRequest: "ConnectUpdateConnectorRequest",
+    });
+  })
+);
 
 export function updateConnectorRequestToJSON(
   updateConnectorRequest: UpdateConnectorRequest,

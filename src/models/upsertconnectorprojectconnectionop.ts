@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import {
   ConnectUpsertProjectConnectionRequest,
   ConnectUpsertProjectConnectionRequest$Outbound,
@@ -45,19 +46,21 @@ export const UpsertConnectorProjectConnectionRequest$outboundSchema: z.ZodType<
   UpsertConnectorProjectConnectionRequest$Outbound,
   z.ZodTypeDef,
   UpsertConnectorProjectConnectionRequest
-> = z.object({
-  connector: z.string(),
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  connectUpsertProjectConnectionRequest:
-    ConnectUpsertProjectConnectionRequest$outboundSchema,
-}).transform((v) => {
-  return remap$(v, {
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connector: z.string(),
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
     connectUpsertProjectConnectionRequest:
-      "ConnectUpsertProjectConnectionRequest",
-  });
-});
+      ConnectUpsertProjectConnectionRequest$outboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      connectUpsertProjectConnectionRequest:
+        "ConnectUpsertProjectConnectionRequest",
+    });
+  })
+);
 
 export function upsertConnectorProjectConnectionRequestToJSON(
   upsertConnectorProjectConnectionRequest:

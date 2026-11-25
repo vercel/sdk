@@ -5,22 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFiftyFive } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndFiftyFive } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
-let value: FourHundredAndFiftyFive = {};
+let value: FourHundredAndFiftyFive = {
+  enabled: "on",
+  environment: "production",
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `invitedBy`                                    | [models.InvitedBy](../models/invitedby.md)     | :heavy_minus_sign:                             | N/A                                            |
-| `origin`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `teamPermissions`                              | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `teamRoles`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
-| `teamSlug`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `uid`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `enabled`                                                                      | [models.Enabled](../models/enabled.md)                                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `environment`                                                                  | [models.UserEventPayloadEnvironment](../models/usereventpayloadenvironment.md) | :heavy_check_mark:                                                             | N/A                                                                            |

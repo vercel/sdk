@@ -3,11 +3,25 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
+
+/**
+ * The user-facing kind of the token.
+ */
+export const AuthTokenKind = {
+  AccessToken: "access-token",
+  App: "app",
+  Other: "other",
+  SignInSession: "sign-in-session",
+} as const;
+/**
+ * The user-facing kind of the token.
+ */
+export type AuthTokenKind = ClosedEnum<typeof AuthTokenKind>;
 
 export const AuthTokenScopesOrigin = {
   App: "app",
@@ -122,6 +136,10 @@ export type AuthToken = {
    */
   id: string;
   /**
+   * The user-facing kind of the token.
+   */
+  kind: AuthTokenKind;
+  /**
    * Timestamp (in milliseconds) of when the token was marked as leaked.
    */
   leakedAt?: number | undefined;
@@ -160,19 +178,26 @@ export type AuthToken = {
 };
 
 /** @internal */
+export const AuthTokenKind$inboundSchema: z.ZodNativeEnum<
+  typeof AuthTokenKind
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AuthTokenKind));
+
+/** @internal */
 export const AuthTokenScopesOrigin$inboundSchema: z.ZodNativeEnum<
   typeof AuthTokenScopesOrigin
-> = z.nativeEnum(AuthTokenScopesOrigin);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AuthTokenScopesOrigin));
 
 /** @internal */
 export const Scopes2$inboundSchema: z.ZodType<Scopes2, z.ZodTypeDef, unknown> =
-  z.object({
-    createdAt: types.number(),
-    expiresAt: types.optional(types.number()),
-    origin: types.optional(AuthTokenScopesOrigin$inboundSchema),
-    teamId: types.string(),
-    type: types.literal("team"),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.number(),
+      expiresAt: types.optional(types.number()),
+      origin: types.optional(AuthTokenScopesOrigin$inboundSchema),
+      teamId: types.string(),
+      type: types.literal("team"),
+    })
+  );
 
 export function scopes2FromJSON(
   jsonString: string,
@@ -186,20 +211,22 @@ export function scopes2FromJSON(
 
 /** @internal */
 export const ScopesOrigin$inboundSchema: z.ZodNativeEnum<typeof ScopesOrigin> =
-  z.nativeEnum(ScopesOrigin);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ScopesOrigin));
 
 /** @internal */
 export const AuthTokenScopes1Origin$inboundSchema: z.ZodNativeEnum<
   typeof AuthTokenScopes1Origin
-> = z.nativeEnum(AuthTokenScopes1Origin);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AuthTokenScopes1Origin));
 
 /** @internal */
-export const Sudo$inboundSchema: z.ZodType<Sudo, z.ZodTypeDef, unknown> = z
-  .object({
-    expiresAt: types.number(),
-    origin: AuthTokenScopes1Origin$inboundSchema,
-    verifiedAt: types.optional(types.number()),
-  });
+export const Sudo$inboundSchema: z.ZodType<Sudo, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      expiresAt: types.number(),
+      origin: AuthTokenScopes1Origin$inboundSchema,
+      verifiedAt: types.optional(types.number()),
+    })
+  );
 
 export function sudoFromJSON(
   jsonString: string,
@@ -213,13 +240,15 @@ export function sudoFromJSON(
 
 /** @internal */
 export const Scopes1$inboundSchema: z.ZodType<Scopes1, z.ZodTypeDef, unknown> =
-  z.object({
-    createdAt: types.number(),
-    expiresAt: types.optional(types.number()),
-    origin: types.optional(ScopesOrigin$inboundSchema),
-    sudo: types.optional(z.lazy(() => Sudo$inboundSchema)),
-    type: types.literal("user"),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.number(),
+      expiresAt: types.optional(types.number()),
+      origin: types.optional(ScopesOrigin$inboundSchema),
+      sudo: types.optional(z.lazy(() => Sudo$inboundSchema)),
+      type: types.literal("user"),
+    })
+  );
 
 export function scopes1FromJSON(
   jsonString: string,
@@ -232,11 +261,13 @@ export function scopes1FromJSON(
 }
 
 /** @internal */
-export const Scopes$inboundSchema: z.ZodType<Scopes, z.ZodTypeDef, unknown> = z
-  .union([
-    z.lazy(() => Scopes1$inboundSchema),
-    z.lazy(() => Scopes2$inboundSchema),
-  ]);
+export const Scopes$inboundSchema: z.ZodType<Scopes, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => Scopes1$inboundSchema),
+      z.lazy(() => Scopes2$inboundSchema),
+    ])
+  );
 
 export function scopesFromJSON(
   jsonString: string,
@@ -253,28 +284,29 @@ export const AuthToken$inboundSchema: z.ZodType<
   AuthToken,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  activeAt: types.number(),
-  createdAt: types.number(),
-  expiresAt: types.optional(types.number()),
-  id: types.string(),
-  leakedAt: types.optional(types.number()),
-  leakedUrl: types.optional(types.string()),
-  name: types.string(),
-  origin: types.optional(types.string()),
-  prefix: types.optional(types.string()),
-  revokedAt: types.optional(types.number()),
-  scopes: types.optional(
-    z.array(z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    activeAt: types.number(),
+    createdAt: types.number(),
+    expiresAt: types.optional(types.number()),
+    id: types.string(),
+    kind: AuthTokenKind$inboundSchema,
+    leakedAt: types.optional(types.number()),
+    leakedUrl: types.optional(types.string()),
+    name: types.string(),
+    origin: types.optional(types.string()),
+    prefix: types.optional(types.string()),
+    revokedAt: types.optional(types.number()),
+    scopes: types.optional(z.array(z.union([
       z.lazy(() => Scopes1$inboundSchema),
       z.lazy(() =>
         Scopes2$inboundSchema
       ),
-    ])),
-  ),
-  suffix: types.optional(types.string()),
-  type: types.string(),
-});
+    ]))),
+    suffix: types.optional(types.string()),
+    type: types.string(),
+  })
+);
 
 export function authTokenFromJSON(
   jsonString: string,

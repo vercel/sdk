@@ -5,13 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFiftyNine } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndFiftyNine } from "@vercel/sdk/models/newenvvar.js";
 
 let value: TwoHundredAndFiftyNine = {
-  enforced: false,
+  name: "<value>",
   organizationId: "<id>",
-  organizationSlug: "<value>",
-  previousEnforced: false,
 };
 ```
 
@@ -19,7 +17,5 @@ let value: TwoHundredAndFiftyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `name`             | *string*           | :heavy_check_mark: | N/A                |
 | `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
-| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
-| `previousEnforced` | *boolean*          | :heavy_check_mark: | N/A                |

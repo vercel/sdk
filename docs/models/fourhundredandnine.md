@@ -5,25 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNine } from "@vercel/sdk/models/oldssoprotection2.js";
+import { FourHundredAndNine } from "@vercel/sdk/models/usereventpayload385project.js";
 
 let value: FourHundredAndNine = {
-  previous: {
-    sampleRatePercent: 6251.95,
-    spendLimitInDollars: null,
-  },
-  sampleRatePercent: 9677.09,
-  spendLimitInDollars: 6172.44,
+  name: "<value>",
+  uid: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `analyticsId`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload409Previous](../models/usereventpayload409previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_minus_sign:                                                             | N/A                                                                            |
-| `sampleRatePercent`                                                            | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `spendLimitInDollars`                                                          | *number*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                | Type                 | Required             | Description          |
+| -------------------- | -------------------- | -------------------- | -------------------- |
+| `name`               | *models.PayloadName* | :heavy_check_mark:   | N/A                  |
+| `uid`                | *string*             | :heavy_check_mark:   | N/A                  |

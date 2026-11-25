@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Store } from "@vercel/sdk/models/oldssoprotection2.js";
+import { Store } from "@vercel/sdk/models/usereventpayload385project.js";
 
 let value: Store = {
   id: "<id>",
@@ -17,4 +17,4 @@ let value: Store = {
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | `id`                                                                   | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
 | `name`                                                                 | *string*                                                               | :heavy_minus_sign:                                                     | N/A                                                                    |
-| `type`                                                                 | [models.UserEventPayload416Type](../models/usereventpayload416type.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| `type`                                                                 | [models.UserEventPayload425Type](../models/usereventpayload425type.md) | :heavy_check_mark:                                                     | N/A                                                                    |

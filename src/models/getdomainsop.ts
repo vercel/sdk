@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -160,13 +160,15 @@ export const GetDomainsRequest$outboundSchema: z.ZodType<
   GetDomainsRequest$Outbound,
   z.ZodTypeDef,
   GetDomainsRequest
-> = z.object({
-  limit: z.number().optional(),
-  since: z.number().optional(),
-  until: z.number().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    limit: z.number().optional(),
+    since: z.number().optional(),
+    until: z.number().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getDomainsRequestToJSON(
   getDomainsRequest: GetDomainsRequest,
@@ -181,13 +183,15 @@ export const GetDomainsCreator$inboundSchema: z.ZodType<
   GetDomainsCreator,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  customerId: z.nullable(types.string()).optional(),
-  email: types.string(),
-  id: types.string(),
-  isDomainReseller: types.optional(types.boolean()),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customerId: z.nullable(types.string()).optional(),
+    email: types.string(),
+    id: types.string(),
+    isDomainReseller: types.optional(types.boolean()),
+    username: types.string(),
+  })
+);
 
 export function getDomainsCreatorFromJSON(
   jsonString: string,
@@ -202,37 +206,39 @@ export function getDomainsCreatorFromJSON(
 /** @internal */
 export const GetDomainsEchMode$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainsEchMode
-> = z.nativeEnum(GetDomainsEchMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDomainsEchMode));
 
 /** @internal */
 export const GetDomainsServiceType$inboundSchema: z.ZodNativeEnum<
   typeof GetDomainsServiceType
-> = z.nativeEnum(GetDomainsServiceType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetDomainsServiceType));
 
 /** @internal */
 export const GetDomainsDomains$inboundSchema: z.ZodType<
   GetDomainsDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  boughtAt: types.nullable(types.number()),
-  createdAt: types.number(),
-  creator: z.lazy(() => GetDomainsCreator$inboundSchema),
-  customNameservers: types.optional(z.array(types.string())),
-  echMode: GetDomainsEchMode$inboundSchema,
-  expiresAt: types.nullable(types.number()),
-  id: types.string(),
-  intendedNameservers: z.array(types.string()),
-  name: types.string(),
-  nameservers: z.array(types.string()),
-  renew: types.optional(types.boolean()),
-  serviceType: GetDomainsServiceType$inboundSchema,
-  teamId: types.nullable(types.string()),
-  transferredAt: z.nullable(types.number()).optional(),
-  transferStartedAt: types.optional(types.number()),
-  userId: types.string(),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    boughtAt: types.nullable(types.number()),
+    createdAt: types.number(),
+    creator: z.lazy(() => GetDomainsCreator$inboundSchema),
+    customNameservers: types.optional(z.array(types.string())),
+    echMode: GetDomainsEchMode$inboundSchema,
+    expiresAt: types.nullable(types.number()),
+    id: types.string(),
+    intendedNameservers: z.array(types.string()),
+    name: types.string(),
+    nameservers: z.array(types.string()),
+    renew: types.optional(types.boolean()),
+    serviceType: GetDomainsServiceType$inboundSchema,
+    teamId: types.nullable(types.string()),
+    transferredAt: z.nullable(types.number()).optional(),
+    transferStartedAt: types.optional(types.number()),
+    userId: types.string(),
+    verified: types.boolean(),
+  })
+);
 
 export function getDomainsDomainsFromJSON(
   jsonString: string,
@@ -249,10 +255,12 @@ export const GetDomainsResponseBody$inboundSchema: z.ZodType<
   GetDomainsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domains: z.array(z.lazy(() => GetDomainsDomains$inboundSchema)),
-  pagination: Pagination$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domains: z.array(z.lazy(() => GetDomainsDomains$inboundSchema)),
+    pagination: Pagination$inboundSchema,
+  })
+);
 
 export function getDomainsResponseBodyFromJSON(
   jsonString: string,

@@ -7,7 +7,7 @@ import { PutProjectDaemonInstancesRequest } from "@vercel/sdk/models/putprojectd
 
 let value: PutProjectDaemonInstancesRequest = {
   idOrName: "<value>",
-  daemonName: "<value>",
+  daemonName: "abc",
   teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
   slug: "my-team-url-slug",
 };

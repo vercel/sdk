@@ -1,0 +1,21 @@
+# CreateFlagOutcomeFeatureFlagsRequestBase
+
+## Example Usage
+
+```typescript
+import { CreateFlagOutcomeFeatureFlagsRequestBase } from "@vercel/sdk/models/createflagop.js";
+
+let value: CreateFlagOutcomeFeatureFlagsRequestBase = {
+  type: "<value>",
+  kind: "<value>",
+  attribute: "<value>",
+};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `type`             | *any*              | :heavy_check_mark: | N/A                |
+| `kind`             | *string*           | :heavy_check_mark: | N/A                |
+| `attribute`        | *string*           | :heavy_check_mark: | N/A                |

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -1662,11 +1662,13 @@ export const CancelDeploymentRequest$outboundSchema: z.ZodType<
   CancelDeploymentRequest$Outbound,
   z.ZodTypeDef,
   CancelDeploymentRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function cancelDeploymentRequestToJSON(
   cancelDeploymentRequest: CancelDeploymentRequest,
@@ -1681,7 +1683,9 @@ export const AliasAssignedAt$inboundSchema: z.ZodType<
   AliasAssignedAt,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.boolean()])
+);
 
 export function aliasAssignedAtFromJSON(
   jsonString: string,
@@ -1698,10 +1702,12 @@ export const AliasError$inboundSchema: z.ZodType<
   AliasError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function aliasErrorFromJSON(
   jsonString: string,
@@ -1718,12 +1724,14 @@ export const AliasWarning$inboundSchema: z.ZodType<
   AliasWarning,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(types.string()),
-  code: types.string(),
-  link: types.optional(types.string()),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(types.string()),
+    code: types.string(),
+    link: types.optional(types.string()),
+    message: types.string(),
+  })
+);
 
 export function aliasWarningFromJSON(
   jsonString: string,
@@ -1736,21 +1744,22 @@ export function aliasWarningFromJSON(
 }
 
 /** @internal */
-export const Kinds$inboundSchema: z.ZodNativeEnum<typeof Kinds> = z.nativeEnum(
-  Kinds,
-);
+export const Kinds$inboundSchema: z.ZodNativeEnum<typeof Kinds> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Kinds));
 
 /** @internal */
 export const Subscription$inboundSchema: z.ZodType<
   Subscription,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  collections: z.array(types.string()),
-  dids: types.optional(z.array(types.string())),
-  kinds: types.optional(z.array(Kinds$inboundSchema)),
-  path: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    collections: z.array(types.string()),
+    dids: types.optional(z.array(types.string())),
+    kinds: types.optional(z.array(Kinds$inboundSchema)),
+    path: types.string(),
+  })
+);
 
 export function subscriptionFromJSON(
   jsonString: string,
@@ -1767,10 +1776,12 @@ export const Atproto2$inboundSchema: z.ZodType<
   Atproto2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.literal(true),
-  subscription: z.lazy(() => Subscription$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.literal(true),
+    subscription: z.lazy(() => Subscription$inboundSchema),
+  })
+);
 
 export function atproto2FromJSON(
   jsonString: string,
@@ -1787,9 +1798,11 @@ export const Atproto1$inboundSchema: z.ZodType<
   Atproto1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.literal(false),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.literal(false),
+  })
+);
 
 export function atproto1FromJSON(
   jsonString: string,
@@ -1803,10 +1816,12 @@ export function atproto1FromJSON(
 
 /** @internal */
 export const Atproto$inboundSchema: z.ZodType<Atproto, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Atproto2$inboundSchema),
-    z.lazy(() => Atproto1$inboundSchema),
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() => Atproto2$inboundSchema),
+      z.lazy(() => Atproto1$inboundSchema),
+    ])
+  );
 
 export function atprotoFromJSON(
   jsonString: string,
@@ -1823,11 +1838,13 @@ export const CommitMeta$inboundSchema: z.ZodType<
   CommitMeta,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: types.optional(types.string()),
-  isVerified: types.optional(types.boolean()),
-  name: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: types.optional(types.string()),
+    isVerified: types.optional(types.boolean()),
+    name: types.optional(types.string()),
+  })
+);
 
 export function commitMetaFromJSON(
   jsonString: string,
@@ -1844,7 +1861,9 @@ export const CancelDeploymentId$inboundSchema: z.ZodType<
   CancelDeploymentId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function cancelDeploymentIdFromJSON(
   jsonString: string,
@@ -1858,12 +1877,14 @@ export function cancelDeploymentIdFromJSON(
 
 /** @internal */
 export const GitUser$inboundSchema: z.ZodType<GitUser, z.ZodTypeDef, unknown> =
-  z.object({
-    id: smartUnion([types.string(), types.number()]),
-    login: types.string(),
-    provider: types.optional(types.string()),
-    type: types.optional(types.string()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      id: smartUnion([types.string(), types.number()]),
+      login: types.string(),
+      provider: types.optional(types.string()),
+      type: types.optional(types.string()),
+    })
+  );
 
 export function gitUserFromJSON(
   jsonString: string,
@@ -1880,11 +1901,13 @@ export const VercelUser$inboundSchema: z.ZodType<
   VercelUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  teamRoles: types.optional(z.array(types.string())),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    teamRoles: types.optional(z.array(types.string())),
+    username: types.string(),
+  })
+);
 
 export function vercelUserFromJSON(
   jsonString: string,
@@ -1901,11 +1924,13 @@ export const CancelDeploymentAttribution$inboundSchema: z.ZodType<
   CancelDeploymentAttribution,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  commitMeta: types.optional(z.lazy(() => CommitMeta$inboundSchema)),
-  gitUser: types.optional(z.lazy(() => GitUser$inboundSchema)),
-  vercelUser: types.optional(z.lazy(() => VercelUser$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    commitMeta: types.optional(z.lazy(() => CommitMeta$inboundSchema)),
+    gitUser: types.optional(z.lazy(() => GitUser$inboundSchema)),
+    vercelUser: types.optional(z.lazy(() => VercelUser$inboundSchema)),
+  })
+);
 
 export function cancelDeploymentAttributionFromJSON(
   jsonString: string,
@@ -1918,10 +1943,12 @@ export function cancelDeploymentAttributionFromJSON(
 }
 
 /** @internal */
-export const Build$inboundSchema: z.ZodType<Build, z.ZodTypeDef, unknown> = z
-  .object({
-    env: z.array(types.string()),
-  });
+export const Build$inboundSchema: z.ZodType<Build, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      env: z.array(types.string()),
+    })
+  );
 
 export function buildFromJSON(
   jsonString: string,
@@ -1934,12 +1961,14 @@ export function buildFromJSON(
 }
 
 /** @internal */
-export const Builds$inboundSchema: z.ZodType<Builds, z.ZodTypeDef, unknown> = z
-  .object({
-    config: types.optional(z.record(z.any())),
-    src: types.optional(types.string()),
-    use: types.string(),
-  });
+export const Builds$inboundSchema: z.ZodType<Builds, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      config: types.optional(z.record(z.any())),
+      src: types.optional(types.string()),
+      use: types.string(),
+    })
+  );
 
 export function buildsFromJSON(
   jsonString: string,
@@ -1954,18 +1983,22 @@ export function buildsFromJSON(
 /** @internal */
 export const CancelDeploymentDeploymentsState$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentDeploymentsState
-> = z.nativeEnum(CancelDeploymentDeploymentsState);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CancelDeploymentDeploymentsState)
+);
 
 /** @internal */
 export const DeploymentAlias$inboundSchema: z.ZodType<
   DeploymentAlias,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  completedAt: types.optional(types.number()),
-  startedAt: types.number(),
-  state: CancelDeploymentDeploymentsState$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    completedAt: types.optional(types.number()),
+    startedAt: types.number(),
+    state: CancelDeploymentDeploymentsState$inboundSchema,
+  })
+);
 
 export function deploymentAliasFromJSON(
   jsonString: string,
@@ -1982,13 +2015,15 @@ export const CancelDeploymentChecks$inboundSchema: z.ZodType<
   CancelDeploymentChecks,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "deployment-alias": z.lazy(() => DeploymentAlias$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "deployment-alias": "deploymentAlias",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "deployment-alias": z.lazy(() => DeploymentAlias$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "deployment-alias": "deploymentAlias",
+    });
+  })
+);
 
 export function cancelDeploymentChecksFromJSON(
   jsonString: string,
@@ -2003,34 +2038,38 @@ export function cancelDeploymentChecksFromJSON(
 /** @internal */
 export const ChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof ChecksConclusion
-> = z.nativeEnum(ChecksConclusion);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ChecksConclusion));
 
 /** @internal */
-export const ChecksState$inboundSchema: z.ZodNativeEnum<typeof ChecksState> = z
-  .nativeEnum(ChecksState);
+export const ChecksState$inboundSchema: z.ZodNativeEnum<typeof ChecksState> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ChecksState));
 
 /** @internal */
 export const FunctionMemoryType$inboundSchema: z.ZodNativeEnum<
   typeof FunctionMemoryType
-> = z.nativeEnum(FunctionMemoryType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FunctionMemoryType));
 
 /** @internal */
 export const FunctionType$inboundSchema: z.ZodNativeEnum<typeof FunctionType> =
-  z.nativeEnum(FunctionType);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FunctionType));
 
 /** @internal */
 export const CancelDeploymentConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentConfiguration
-> = z.nativeEnum(CancelDeploymentConfiguration);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CancelDeploymentConfiguration)
+);
 
 /** @internal */
 export const CancelDeploymentBuildQueue$inboundSchema: z.ZodType<
   CancelDeploymentBuildQueue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuration: types.optional(CancelDeploymentConfiguration$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuration: types.optional(CancelDeploymentConfiguration$inboundSchema),
+  })
+);
 
 export function cancelDeploymentBuildQueueFromJSON(
   jsonString: string,
@@ -2045,22 +2084,26 @@ export function cancelDeploymentBuildQueueFromJSON(
 /** @internal */
 export const ElasticConcurrency$inboundSchema: z.ZodNativeEnum<
   typeof ElasticConcurrency
-> = z.nativeEnum(ElasticConcurrency);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ElasticConcurrency));
 
 /** @internal */
 export const CancelDeploymentPurchaseType$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentPurchaseType
-> = z.nativeEnum(CancelDeploymentPurchaseType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CancelDeploymentPurchaseType)
+);
 
 /** @internal */
 export const CancelDeploymentDeploymentsBuildMachine$inboundSchema: z.ZodType<
   CancelDeploymentDeploymentsBuildMachine,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  purchaseType: z.nullable(CancelDeploymentPurchaseType$inboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    purchaseType: z.nullable(CancelDeploymentPurchaseType$inboundSchema)
+      .optional(),
+  })
+);
 
 export function cancelDeploymentDeploymentsBuildMachineFromJSON(
   jsonString: string,
@@ -2083,15 +2126,17 @@ export const CancelDeploymentDeploymentsResourceConfig$inboundSchema: z.ZodType<
   CancelDeploymentDeploymentsResourceConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  buildQueue: types.optional(
-    z.lazy(() => CancelDeploymentBuildQueue$inboundSchema),
-  ),
-  elasticConcurrency: types.optional(ElasticConcurrency$inboundSchema),
-  buildMachine: types.optional(
-    z.lazy(() => CancelDeploymentDeploymentsBuildMachine$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    buildQueue: types.optional(
+      z.lazy(() => CancelDeploymentBuildQueue$inboundSchema),
+    ),
+    elasticConcurrency: types.optional(ElasticConcurrency$inboundSchema),
+    buildMachine: types.optional(
+      z.lazy(() => CancelDeploymentDeploymentsBuildMachine$inboundSchema),
+    ),
+  })
+);
 
 export function cancelDeploymentDeploymentsResourceConfigFromJSON(
   jsonString: string,
@@ -2110,19 +2155,21 @@ export function cancelDeploymentDeploymentsResourceConfigFromJSON(
 }
 
 /** @internal */
-export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> = z
-  .object({
-    functionMemoryType: FunctionMemoryType$inboundSchema,
-    functionTimeout: types.nullable(types.number()),
-    functionType: FunctionType$inboundSchema,
-    isUsingActiveCPU: types.optional(types.boolean()),
-    resourceConfig: types.optional(
-      z.lazy(() => CancelDeploymentDeploymentsResourceConfig$inboundSchema),
-    ),
-    secureComputeFallbackRegion: types.nullable(types.string()),
-    secureComputePrimaryRegion: types.nullable(types.string()),
-    version: types.optional(types.number()),
-  });
+export const Config$inboundSchema: z.ZodType<Config, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      functionMemoryType: FunctionMemoryType$inboundSchema,
+      functionTimeout: types.nullable(types.number()),
+      functionType: FunctionType$inboundSchema,
+      isUsingActiveCPU: types.optional(types.boolean()),
+      resourceConfig: types.optional(
+        z.lazy(() => CancelDeploymentDeploymentsResourceConfig$inboundSchema),
+      ),
+      secureComputeFallbackRegion: types.nullable(types.string()),
+      secureComputePrimaryRegion: types.nullable(types.string()),
+      version: types.optional(types.number()),
+    })
+  );
 
 export function configFromJSON(
   jsonString: string,
@@ -2137,19 +2184,23 @@ export function configFromJSON(
 /** @internal */
 export const CancelDeploymentDeploymentsType$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentDeploymentsType
-> = z.nativeEnum(CancelDeploymentDeploymentsType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CancelDeploymentDeploymentsType)
+);
 
 /** @internal */
 export const CancelDeploymentCreator$inboundSchema: z.ZodType<
   CancelDeploymentCreator,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  avatar: types.optional(types.string()),
-  type: types.optional(CancelDeploymentDeploymentsType$inboundSchema),
-  uid: types.string(),
-  username: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: types.optional(types.string()),
+    type: types.optional(CancelDeploymentDeploymentsType$inboundSchema),
+    uid: types.string(),
+    username: types.optional(types.string()),
+  })
+);
 
 export function cancelDeploymentCreatorFromJSON(
   jsonString: string,
@@ -2162,11 +2213,13 @@ export function cancelDeploymentCreatorFromJSON(
 }
 
 /** @internal */
-export const Crons$inboundSchema: z.ZodType<Crons, z.ZodTypeDef, unknown> = z
-  .object({
-    path: types.string(),
-    schedule: types.string(),
-  });
+export const Crons$inboundSchema: z.ZodType<Crons, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      path: types.string(),
+      schedule: types.string(),
+    })
+  );
 
 export function cronsFromJSON(
   jsonString: string,
@@ -2183,9 +2236,11 @@ export const CustomEnvironment2$inboundSchema: z.ZodType<
   CustomEnvironment2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function customEnvironment2FromJSON(
   jsonString: string,
@@ -2199,19 +2254,22 @@ export function customEnvironment2FromJSON(
 
 /** @internal */
 export const CancelDeploymentCustomEnvironmentType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentCustomEnvironmentType> = z.nativeEnum(
-    CancelDeploymentCustomEnvironmentType,
-  );
+  z.ZodNativeEnum<typeof CancelDeploymentCustomEnvironmentType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CancelDeploymentCustomEnvironmentType)
+    );
 
 /** @internal */
 export const CustomEnvironmentBranchMatcher$inboundSchema: z.ZodType<
   CustomEnvironmentBranchMatcher,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pattern: types.string(),
-  type: CancelDeploymentCustomEnvironmentType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pattern: types.string(),
+    type: CancelDeploymentCustomEnvironmentType$inboundSchema,
+  })
+);
 
 export function customEnvironmentBranchMatcherFromJSON(
   jsonString: string,
@@ -2228,12 +2286,14 @@ export const CustomEnvironmentVerification$inboundSchema: z.ZodType<
   CustomEnvironmentVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  reason: types.string(),
-  type: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    reason: types.string(),
+    type: types.string(),
+    value: types.string(),
+  })
+);
 
 export function customEnvironmentVerificationFromJSON(
   jsonString: string,
@@ -2250,21 +2310,23 @@ export const CustomEnvironmentDomains$inboundSchema: z.ZodType<
   CustomEnvironmentDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apexName: types.string(),
-  createdAt: types.optional(types.number()),
-  customEnvironmentId: z.nullable(types.string()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  name: types.string(),
-  projectId: types.string(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  updatedAt: types.optional(types.number()),
-  verification: types.optional(
-    z.array(z.lazy(() => CustomEnvironmentVerification$inboundSchema)),
-  ),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apexName: types.string(),
+    createdAt: types.optional(types.number()),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    name: types.string(),
+    projectId: types.string(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    updatedAt: types.optional(types.number()),
+    verification: types.optional(
+      z.array(z.lazy(() => CustomEnvironmentVerification$inboundSchema)),
+    ),
+    verified: types.boolean(),
+  })
+);
 
 export function customEnvironmentDomainsFromJSON(
   jsonString: string,
@@ -2279,28 +2341,30 @@ export function customEnvironmentDomainsFromJSON(
 /** @internal */
 export const CustomEnvironmentType$inboundSchema: z.ZodNativeEnum<
   typeof CustomEnvironmentType
-> = z.nativeEnum(CustomEnvironmentType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CustomEnvironmentType));
 
 /** @internal */
 export const CustomEnvironment1$inboundSchema: z.ZodType<
   CustomEnvironment1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  branchMatcher: types.optional(
-    z.lazy(() => CustomEnvironmentBranchMatcher$inboundSchema),
-  ),
-  createdAt: types.number(),
-  currentDeploymentAliases: types.optional(z.array(types.string())),
-  description: types.optional(types.string()),
-  domains: types.optional(
-    z.array(z.lazy(() => CustomEnvironmentDomains$inboundSchema)),
-  ),
-  id: types.string(),
-  slug: types.string(),
-  type: CustomEnvironmentType$inboundSchema,
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    branchMatcher: types.optional(
+      z.lazy(() => CustomEnvironmentBranchMatcher$inboundSchema),
+    ),
+    createdAt: types.number(),
+    currentDeploymentAliases: types.optional(z.array(types.string())),
+    description: types.optional(types.string()),
+    domains: types.optional(
+      z.array(z.lazy(() => CustomEnvironmentDomains$inboundSchema)),
+    ),
+    id: types.string(),
+    slug: types.string(),
+    type: CustomEnvironmentType$inboundSchema,
+    updatedAt: types.number(),
+  })
+);
 
 export function customEnvironment1FromJSON(
   jsonString: string,
@@ -2317,10 +2381,12 @@ export const CancelDeploymentCustomEnvironment$inboundSchema: z.ZodType<
   CancelDeploymentCustomEnvironment,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => CustomEnvironment1$inboundSchema),
-  z.lazy(() => CustomEnvironment2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CustomEnvironment1$inboundSchema),
+    z.lazy(() => CustomEnvironment2$inboundSchema),
+  ])
+);
 
 export function cancelDeploymentCustomEnvironmentFromJSON(
   jsonString: string,
@@ -2337,15 +2403,17 @@ export const Duration$inboundSchema: z.ZodType<
   Duration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  endTime: types.optional(types.number()),
-  endTimeCapped: types.optional(types.number()),
-  startTime: types.optional(types.number()),
-  timeForBilling: types.optional(types.number()),
-  timeToContainerExit: types.optional(types.number()),
-  timeToContainerExitCapped: types.optional(types.number()),
-  timeToReady: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    endTime: types.optional(types.number()),
+    endTimeCapped: types.optional(types.number()),
+    startTime: types.optional(types.number()),
+    timeForBilling: types.optional(types.number()),
+    timeToContainerExit: types.optional(types.number()),
+    timeToContainerExitCapped: types.optional(types.number()),
+    timeToReady: types.optional(types.number()),
+  })
+);
 
 export function durationFromJSON(
   jsonString: string,
@@ -2358,8 +2426,8 @@ export function durationFromJSON(
 }
 
 /** @internal */
-export const Flags2$inboundSchema: z.ZodType<Flags2, z.ZodTypeDef, unknown> = z
-  .object({});
+export const Flags2$inboundSchema: z.ZodType<Flags2, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function flags2FromJSON(
   jsonString: string,
@@ -2376,10 +2444,12 @@ export const FlagsOptions$inboundSchema: z.ZodType<
   FlagsOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.optional(types.string()),
-  value: types.nullable(FlagJSONValue$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.optional(types.string()),
+    value: types.nullable(FlagJSONValue$inboundSchema),
+  })
+);
 
 export function flagsOptionsFromJSON(
   jsonString: string,
@@ -2396,11 +2466,13 @@ export const FlagsDefinitions$inboundSchema: z.ZodType<
   FlagsDefinitions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  options: types.optional(z.array(z.lazy(() => FlagsOptions$inboundSchema))),
-  url: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.optional(types.string()),
+    options: types.optional(z.array(z.lazy(() => FlagsOptions$inboundSchema))),
+    url: types.optional(types.string()),
+  })
+);
 
 export function flagsDefinitionsFromJSON(
   jsonString: string,
@@ -2413,10 +2485,12 @@ export function flagsDefinitionsFromJSON(
 }
 
 /** @internal */
-export const Flags1$inboundSchema: z.ZodType<Flags1, z.ZodTypeDef, unknown> = z
-  .object({
-    definitions: z.record(z.lazy(() => FlagsDefinitions$inboundSchema)),
-  });
+export const Flags1$inboundSchema: z.ZodType<Flags1, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      definitions: z.record(z.lazy(() => FlagsDefinitions$inboundSchema)),
+    })
+  );
 
 export function flags1FromJSON(
   jsonString: string,
@@ -2430,10 +2504,12 @@ export function flags1FromJSON(
 
 /** @internal */
 export const Flags$inboundSchema: z.ZodType<Flags, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Flags1$inboundSchema),
-    z.array(z.lazy(() => Flags2$inboundSchema)),
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() => Flags1$inboundSchema),
+      z.array(z.lazy(() => Flags2$inboundSchema)),
+    ])
+  );
 
 export function flagsFromJSON(
   jsonString: string,
@@ -2448,16 +2524,18 @@ export function flagsFromJSON(
 /** @internal */
 export const CancelDeploymentMode$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentMode
-> = z.nativeEnum(CancelDeploymentMode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CancelDeploymentMode));
 
 /** @internal */
 export const Affinity$inboundSchema: z.ZodType<
   Affinity,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  mode: CancelDeploymentMode$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    mode: CancelDeploymentMode$inboundSchema,
+  })
+);
 
 export function affinityFromJSON(
   jsonString: string,
@@ -2472,16 +2550,20 @@ export function affinityFromJSON(
 /** @internal */
 export const CancelDeploymentArchitecture$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentArchitecture
-> = z.nativeEnum(CancelDeploymentArchitecture);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CancelDeploymentArchitecture)
+);
 
 /** @internal */
 export const ExperimentalTriggers3$inboundSchema: z.ZodType<
   ExperimentalTriggers3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("schedule/v1beta"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("schedule/v1beta"),
+  })
+);
 
 export function experimentalTriggers3FromJSON(
   jsonString: string,
@@ -2498,14 +2580,16 @@ export const ExperimentalTriggers2$inboundSchema: z.ZodType<
   ExperimentalTriggers2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  initialDelaySeconds: types.optional(types.number()),
-  maxConcurrency: types.optional(types.number()),
-  maxDeliveries: types.optional(types.number()),
-  retryAfterSeconds: types.optional(types.number()),
-  topic: types.string(),
-  type: types.literal("queue/v2beta"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    initialDelaySeconds: types.optional(types.number()),
+    maxConcurrency: types.optional(types.number()),
+    maxDeliveries: types.optional(types.number()),
+    retryAfterSeconds: types.optional(types.number()),
+    topic: types.string(),
+    type: types.literal("queue/v2beta"),
+  })
+);
 
 export function experimentalTriggers2FromJSON(
   jsonString: string,
@@ -2522,15 +2606,17 @@ export const ExperimentalTriggers1$inboundSchema: z.ZodType<
   ExperimentalTriggers1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  consumer: types.string(),
-  initialDelaySeconds: types.optional(types.number()),
-  maxConcurrency: types.optional(types.number()),
-  maxDeliveries: types.optional(types.number()),
-  retryAfterSeconds: types.optional(types.number()),
-  topic: types.string(),
-  type: types.literal("queue/v1beta"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    consumer: types.string(),
+    initialDelaySeconds: types.optional(types.number()),
+    maxConcurrency: types.optional(types.number()),
+    maxDeliveries: types.optional(types.number()),
+    retryAfterSeconds: types.optional(types.number()),
+    topic: types.string(),
+    type: types.literal("queue/v1beta"),
+  })
+);
 
 export function experimentalTriggers1FromJSON(
   jsonString: string,
@@ -2547,11 +2633,13 @@ export const ExperimentalTriggers$inboundSchema: z.ZodType<
   ExperimentalTriggers,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => ExperimentalTriggers1$inboundSchema),
-  z.lazy(() => ExperimentalTriggers2$inboundSchema),
-  z.lazy(() => ExperimentalTriggers3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => ExperimentalTriggers1$inboundSchema),
+    z.lazy(() => ExperimentalTriggers2$inboundSchema),
+    z.lazy(() => ExperimentalTriggers3$inboundSchema),
+  ])
+);
 
 export function experimentalTriggersFromJSON(
   jsonString: string,
@@ -2565,14 +2653,16 @@ export function experimentalTriggersFromJSON(
 
 /** @internal */
 export const MaxDuration2$inboundSchema: z.ZodNativeEnum<typeof MaxDuration2> =
-  z.nativeEnum(MaxDuration2);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(MaxDuration2));
 
 /** @internal */
 export const MaxDuration$inboundSchema: z.ZodType<
   MaxDuration,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), MaxDuration2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), MaxDuration2$inboundSchema])
+);
 
 export function maxDurationFromJSON(
   jsonString: string,
@@ -2589,32 +2679,32 @@ export const Functions$inboundSchema: z.ZodType<
   Functions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  affinity: types.optional(z.lazy(() => Affinity$inboundSchema)),
-  architecture: types.optional(CancelDeploymentArchitecture$inboundSchema),
-  excludeFiles: types.optional(types.string()),
-  experimentalTriggers: types.optional(
-    z.array(z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    affinity: types.optional(z.lazy(() => Affinity$inboundSchema)),
+    architecture: types.optional(CancelDeploymentArchitecture$inboundSchema),
+    excludeFiles: types.optional(types.string()),
+    experimentalTriggers: types.optional(z.array(z.union([
       z.lazy(() => ExperimentalTriggers1$inboundSchema),
       z.lazy(() =>
         ExperimentalTriggers2$inboundSchema
       ),
       z.lazy(() => ExperimentalTriggers3$inboundSchema),
-    ])),
-  ),
-  functionFailoverRegions: types.optional(z.array(types.string())),
-  includeFiles: types.optional(types.string()),
-  installCommand: types.optional(types.string()),
-  maxConcurrency: types.optional(types.number()),
-  maxDuration: types.optional(
-    smartUnion([types.number(), MaxDuration2$inboundSchema]),
-  ),
-  memory: types.optional(types.number()),
-  perimeter: types.optional(types.string()),
-  regions: types.optional(z.array(types.string())),
-  runtime: types.optional(types.string()),
-  supportsCancellation: types.optional(types.boolean()),
-});
+    ]))),
+    functionFailoverRegions: types.optional(z.array(types.string())),
+    includeFiles: types.optional(types.string()),
+    installCommand: types.optional(types.string()),
+    maxConcurrency: types.optional(types.number()),
+    maxDuration: types.optional(
+      smartUnion([types.number(), MaxDuration2$inboundSchema]),
+    ),
+    memory: types.optional(types.number()),
+    perimeter: types.optional(types.string()),
+    regions: types.optional(z.array(types.string())),
+    runtime: types.optional(types.string()),
+    supportsCancellation: types.optional(types.boolean()),
+  })
+);
 
 export function functionsFromJSON(
   jsonString: string,
@@ -2629,24 +2719,29 @@ export function functionsFromJSON(
 /** @internal */
 export const CancelDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema:
   z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsResponseOwnerType> =
-    z.nativeEnum(CancelDeploymentGitRepoDeploymentsResponseOwnerType);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CancelDeploymentGitRepoDeploymentsResponseOwnerType)
+    );
 
 /** @internal */
 export const GitRepo5$inboundSchema: z.ZodType<
   GitRepo5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultBranch: types.string(),
-  name: types.string(),
-  owner: types.string(),
-  ownerType: CancelDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema,
-  path: types.string(),
-  private: types.boolean(),
-  repo: types.string(),
-  repoId: types.string(),
-  type: types.literal("cursor-origin"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultBranch: types.string(),
+    name: types.string(),
+    owner: types.string(),
+    ownerType:
+      CancelDeploymentGitRepoDeploymentsResponseOwnerType$inboundSchema,
+    path: types.string(),
+    private: types.boolean(),
+    repo: types.string(),
+    repoId: types.string(),
+    type: types.literal("cursor-origin"),
+  })
+);
 
 export function gitRepo5FromJSON(
   jsonString: string,
@@ -2660,24 +2755,28 @@ export function gitRepo5FromJSON(
 
 /** @internal */
 export const CancelDeploymentGitRepoDeploymentsOwnerType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsOwnerType> = z
-    .nativeEnum(CancelDeploymentGitRepoDeploymentsOwnerType);
+  z.ZodNativeEnum<typeof CancelDeploymentGitRepoDeploymentsOwnerType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CancelDeploymentGitRepoDeploymentsOwnerType)
+    );
 
 /** @internal */
 export const GitRepo4$inboundSchema: z.ZodType<
   GitRepo4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultBranch: types.string(),
-  name: types.string(),
-  org: types.string(),
-  ownerType: CancelDeploymentGitRepoDeploymentsOwnerType$inboundSchema,
-  path: types.string(),
-  private: types.boolean(),
-  repo: types.string(),
-  type: types.literal("vercel"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultBranch: types.string(),
+    name: types.string(),
+    org: types.string(),
+    ownerType: CancelDeploymentGitRepoDeploymentsOwnerType$inboundSchema,
+    path: types.string(),
+    private: types.boolean(),
+    repo: types.string(),
+    type: types.literal("vercel"),
+  })
+);
 
 export function gitRepo4FromJSON(
   jsonString: string,
@@ -2692,25 +2791,29 @@ export function gitRepo4FromJSON(
 /** @internal */
 export const CancelDeploymentGitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentGitRepoOwnerType
-> = z.nativeEnum(CancelDeploymentGitRepoOwnerType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CancelDeploymentGitRepoOwnerType)
+);
 
 /** @internal */
 export const GitRepo3$inboundSchema: z.ZodType<
   GitRepo3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultBranch: types.string(),
-  name: types.string(),
-  owner: types.string(),
-  ownerType: CancelDeploymentGitRepoOwnerType$inboundSchema,
-  path: types.string(),
-  private: types.boolean(),
-  repoUuid: types.string(),
-  slug: types.string(),
-  type: types.literal("bitbucket"),
-  workspaceUuid: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultBranch: types.string(),
+    name: types.string(),
+    owner: types.string(),
+    ownerType: CancelDeploymentGitRepoOwnerType$inboundSchema,
+    path: types.string(),
+    private: types.boolean(),
+    repoUuid: types.string(),
+    slug: types.string(),
+    type: types.literal("bitbucket"),
+    workspaceUuid: types.string(),
+  })
+);
 
 export function gitRepo3FromJSON(
   jsonString: string,
@@ -2725,25 +2828,27 @@ export function gitRepo3FromJSON(
 /** @internal */
 export const GitRepoOwnerType$inboundSchema: z.ZodNativeEnum<
   typeof GitRepoOwnerType
-> = z.nativeEnum(GitRepoOwnerType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GitRepoOwnerType));
 
 /** @internal */
 export const GitRepo2$inboundSchema: z.ZodType<
   GitRepo2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultBranch: types.string(),
-  name: types.string(),
-  org: types.string(),
-  ownerType: GitRepoOwnerType$inboundSchema,
-  path: types.string(),
-  private: types.boolean(),
-  repo: types.string(),
-  repoId: types.number(),
-  repoOwnerId: types.number(),
-  type: types.literal("github"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultBranch: types.string(),
+    name: types.string(),
+    org: types.string(),
+    ownerType: GitRepoOwnerType$inboundSchema,
+    path: types.string(),
+    private: types.boolean(),
+    repo: types.string(),
+    repoId: types.number(),
+    repoOwnerId: types.number(),
+    type: types.literal("github"),
+  })
+);
 
 export function gitRepo2FromJSON(
   jsonString: string,
@@ -2756,25 +2861,27 @@ export function gitRepo2FromJSON(
 }
 
 /** @internal */
-export const OwnerType$inboundSchema: z.ZodNativeEnum<typeof OwnerType> = z
-  .nativeEnum(OwnerType);
+export const OwnerType$inboundSchema: z.ZodNativeEnum<typeof OwnerType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OwnerType));
 
 /** @internal */
 export const GitRepo1$inboundSchema: z.ZodType<
   GitRepo1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultBranch: types.string(),
-  name: types.string(),
-  namespace: types.string(),
-  ownerType: OwnerType$inboundSchema,
-  path: types.string(),
-  private: types.boolean(),
-  projectId: types.number(),
-  type: types.literal("gitlab"),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultBranch: types.string(),
+    name: types.string(),
+    namespace: types.string(),
+    ownerType: OwnerType$inboundSchema,
+    path: types.string(),
+    private: types.boolean(),
+    projectId: types.number(),
+    type: types.literal("gitlab"),
+    url: types.string(),
+  })
+);
 
 export function gitRepo1FromJSON(
   jsonString: string,
@@ -2788,13 +2895,15 @@ export function gitRepo1FromJSON(
 
 /** @internal */
 export const GitRepo$inboundSchema: z.ZodType<GitRepo, z.ZodTypeDef, unknown> =
-  z.union([
-    z.lazy(() => GitRepo1$inboundSchema),
-    z.lazy(() => GitRepo2$inboundSchema),
-    z.lazy(() => GitRepo3$inboundSchema),
-    z.lazy(() => GitRepo4$inboundSchema),
-    z.lazy(() => GitRepo5$inboundSchema),
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => GitRepo1$inboundSchema),
+      z.lazy(() => GitRepo2$inboundSchema),
+      z.lazy(() => GitRepo3$inboundSchema),
+      z.lazy(() => GitRepo4$inboundSchema),
+      z.lazy(() => GitRepo5$inboundSchema),
+    ])
+  );
 
 export function gitRepoFromJSON(
   jsonString: string,
@@ -2810,8 +2919,10 @@ export function gitRepoFromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type,
+    )
   );
 
 /** @internal */
@@ -2819,15 +2930,17 @@ export const GitSource19$inboundSchema: z.ZodType<
   GitSource19,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  owner: types.string(),
-  ref: types.string(),
-  repo: types.string(),
-  repoId: types.string(),
-  sha: types.string(),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    owner: types.string(),
+    ref: types.string(),
+    repo: types.string(),
+    repoId: types.string(),
+    sha: types.string(),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody19Type$inboundSchema,
+  })
+);
 
 export function gitSource19FromJSON(
   jsonString: string,
@@ -2844,11 +2957,13 @@ export const GitSourceAuthor$inboundSchema: z.ZodType<
   GitSourceAuthor,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  date: types.string(),
-  email: types.string(),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    date: types.string(),
+    email: types.string(),
+    name: types.string(),
+  })
+);
 
 export function gitSourceAuthorFromJSON(
   jsonString: string,
@@ -2865,11 +2980,13 @@ export const GitSourceCommitter$inboundSchema: z.ZodType<
   GitSourceCommitter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  date: types.string(),
-  email: types.string(),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    date: types.string(),
+    email: types.string(),
+    name: types.string(),
+  })
+);
 
 export function gitSourceCommitterFromJSON(
   jsonString: string,
@@ -2886,11 +3003,13 @@ export const GitSourceCommitMetadata$inboundSchema: z.ZodType<
   GitSourceCommitMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  author: z.lazy(() => GitSourceAuthor$inboundSchema),
-  committer: z.lazy(() => GitSourceCommitter$inboundSchema),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    author: z.lazy(() => GitSourceAuthor$inboundSchema),
+    committer: z.lazy(() => GitSourceCommitter$inboundSchema),
+    message: types.string(),
+  })
+);
 
 export function gitSourceCommitMetadataFromJSON(
   jsonString: string,
@@ -2906,8 +3025,10 @@ export function gitSourceCommitMetadataFromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody18Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody18Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody18Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody18Type,
+    )
   );
 
 /** @internal */
@@ -2915,19 +3036,21 @@ export const GitSource18$inboundSchema: z.ZodType<
   GitSource18,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  commitMetadata: types.optional(
-    z.lazy(() => GitSourceCommitMetadata$inboundSchema),
-  ),
-  org: types.string(),
-  ref: types.string(),
-  repo: types.string(),
-  repoId: types.optional(types.string()),
-  repoPushedAt: types.optional(types.number()),
-  sha: types.string(),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody18Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    commitMetadata: types.optional(
+      z.lazy(() => GitSourceCommitMetadata$inboundSchema),
+    ),
+    org: types.string(),
+    ref: types.string(),
+    repo: types.string(),
+    repoId: types.optional(types.string()),
+    repoPushedAt: types.optional(types.number()),
+    sha: types.string(),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody18Type$inboundSchema,
+  })
+);
 
 export function gitSource18FromJSON(
   jsonString: string,
@@ -2943,8 +3066,10 @@ export function gitSource18FromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody17Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody17Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody17Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody17Type,
+    )
   );
 
 /** @internal */
@@ -2952,16 +3077,18 @@ export const GitSource17$inboundSchema: z.ZodType<
   GitSource17,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  owner: types.optional(types.string()),
-  ref: types.string(),
-  repoUuid: types.string(),
-  sha: types.string(),
-  slug: types.optional(types.string()),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody17Type$inboundSchema,
-  workspaceUuid: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    owner: types.optional(types.string()),
+    ref: types.string(),
+    repoUuid: types.string(),
+    sha: types.string(),
+    slug: types.optional(types.string()),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody17Type$inboundSchema,
+    workspaceUuid: types.string(),
+  })
+);
 
 export function gitSource17FromJSON(
   jsonString: string,
@@ -2977,8 +3104,10 @@ export function gitSource17FromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody16Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody16Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody16Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody16Type,
+    )
   );
 
 /** @internal */
@@ -2986,13 +3115,15 @@ export const GitSource16$inboundSchema: z.ZodType<
   GitSource16,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectId: types.number(),
-  ref: types.string(),
-  sha: types.string(),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody16Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: types.number(),
+    ref: types.string(),
+    sha: types.string(),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody16Type$inboundSchema,
+  })
+);
 
 export function gitSource16FromJSON(
   jsonString: string,
@@ -3008,8 +3139,10 @@ export function gitSource16FromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody15Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody15Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody15Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody15Type,
+    )
   );
 
 /** @internal */
@@ -3017,15 +3150,17 @@ export const GitSource15$inboundSchema: z.ZodType<
   GitSource15,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  org: types.optional(types.string()),
-  ref: types.string(),
-  repo: types.optional(types.string()),
-  repoId: types.number(),
-  sha: types.string(),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody15Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    org: types.optional(types.string()),
+    ref: types.string(),
+    repo: types.optional(types.string()),
+    repoId: types.number(),
+    sha: types.string(),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody15Type$inboundSchema,
+  })
+);
 
 export function gitSource15FromJSON(
   jsonString: string,
@@ -3041,8 +3176,10 @@ export function gitSource15FromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody14Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody14Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody14Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody14Type,
+    )
   );
 
 /** @internal */
@@ -3050,16 +3187,18 @@ export const GitSource14$inboundSchema: z.ZodType<
   GitSource14,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  host: types.string(),
-  org: types.optional(types.string()),
-  ref: types.string(),
-  repo: types.optional(types.string()),
-  repoId: types.number(),
-  sha: types.string(),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody14Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    host: types.string(),
+    org: types.optional(types.string()),
+    ref: types.string(),
+    repo: types.optional(types.string()),
+    repoId: types.number(),
+    sha: types.string(),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody14Type$inboundSchema,
+  })
+);
 
 export function gitSource14FromJSON(
   jsonString: string,
@@ -3075,8 +3214,10 @@ export function gitSource14FromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody13Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody13Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody13Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody13Type,
+    )
   );
 
 /** @internal */
@@ -3084,15 +3225,17 @@ export const GitSource13$inboundSchema: z.ZodType<
   GitSource13,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  org: types.optional(types.string()),
-  ref: types.string(),
-  repo: types.optional(types.string()),
-  repoId: types.number(),
-  sha: types.string(),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody13Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    org: types.optional(types.string()),
+    ref: types.string(),
+    repo: types.optional(types.string()),
+    repoId: types.number(),
+    sha: types.string(),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody13Type$inboundSchema,
+  })
+);
 
 export function gitSource13FromJSON(
   jsonString: string,
@@ -3108,8 +3251,10 @@ export function gitSource13FromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type,
+    )
   );
 
 /** @internal */
@@ -3117,13 +3262,15 @@ export const GitSource12$inboundSchema: z.ZodType<
   GitSource12,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  gitUrl: types.string(),
-  ref: types.string(),
-  sha: types.string(),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    gitUrl: types.string(),
+    ref: types.string(),
+    sha: types.string(),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody12Type$inboundSchema,
+  })
+);
 
 export function gitSource12FromJSON(
   jsonString: string,
@@ -3139,8 +3286,10 @@ export function gitSource12FromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type,
+    )
   );
 
 /** @internal */
@@ -3148,16 +3297,18 @@ export const GitSource11$inboundSchema: z.ZodType<
   GitSource11,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  owner: types.optional(types.string()),
-  prId: z.nullable(types.number()).optional(),
-  ref: z.nullable(types.string()).optional(),
-  repo: types.optional(types.string()),
-  repoId: types.string(),
-  sha: types.optional(types.string()),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    owner: types.optional(types.string()),
+    prId: z.nullable(types.number()).optional(),
+    ref: z.nullable(types.string()).optional(),
+    repo: types.optional(types.string()),
+    repoId: types.string(),
+    sha: types.optional(types.string()),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody11Type$inboundSchema,
+  })
+);
 
 export function gitSource11FromJSON(
   jsonString: string,
@@ -3174,11 +3325,13 @@ export const CancelDeploymentGitSourceAuthor$inboundSchema: z.ZodType<
   CancelDeploymentGitSourceAuthor,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  date: types.string(),
-  email: types.string(),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    date: types.string(),
+    email: types.string(),
+    name: types.string(),
+  })
+);
 
 export function cancelDeploymentGitSourceAuthorFromJSON(
   jsonString: string,
@@ -3195,11 +3348,13 @@ export const CancelDeploymentGitSourceCommitter$inboundSchema: z.ZodType<
   CancelDeploymentGitSourceCommitter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  date: types.string(),
-  email: types.string(),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    date: types.string(),
+    email: types.string(),
+    name: types.string(),
+  })
+);
 
 export function cancelDeploymentGitSourceCommitterFromJSON(
   jsonString: string,
@@ -3217,11 +3372,13 @@ export const CancelDeploymentGitSourceCommitMetadata$inboundSchema: z.ZodType<
   CancelDeploymentGitSourceCommitMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  author: z.lazy(() => CancelDeploymentGitSourceAuthor$inboundSchema),
-  committer: z.lazy(() => CancelDeploymentGitSourceCommitter$inboundSchema),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    author: z.lazy(() => CancelDeploymentGitSourceAuthor$inboundSchema),
+    committer: z.lazy(() => CancelDeploymentGitSourceCommitter$inboundSchema),
+    message: types.string(),
+  })
+);
 
 export function cancelDeploymentGitSourceCommitMetadataFromJSON(
   jsonString: string,
@@ -3243,8 +3400,10 @@ export function cancelDeploymentGitSourceCommitMetadataFromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type,
+    )
   );
 
 /** @internal */
@@ -3252,20 +3411,22 @@ export const GitSource10$inboundSchema: z.ZodType<
   GitSource10,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  commitMetadata: types.optional(
-    z.lazy(() => CancelDeploymentGitSourceCommitMetadata$inboundSchema),
-  ),
-  org: types.optional(types.string()),
-  prId: z.nullable(types.number()).optional(),
-  ref: z.nullable(types.string()).optional(),
-  repo: types.optional(types.string()),
-  repoId: types.string(),
-  repoPushedAt: types.optional(types.number()),
-  sha: types.string(),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    commitMetadata: types.optional(
+      z.lazy(() => CancelDeploymentGitSourceCommitMetadata$inboundSchema),
+    ),
+    org: types.optional(types.string()),
+    prId: z.nullable(types.number()).optional(),
+    ref: z.nullable(types.string()).optional(),
+    repo: types.optional(types.string()),
+    repoId: types.string(),
+    repoPushedAt: types.optional(types.number()),
+    sha: types.string(),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody10Type$inboundSchema,
+  })
+);
 
 export function gitSource10FromJSON(
   jsonString: string,
@@ -3281,8 +3442,10 @@ export function gitSource10FromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type,
+    )
   );
 
 /** @internal */
@@ -3290,15 +3453,17 @@ export const CancelDeploymentGitSource9$inboundSchema: z.ZodType<
   CancelDeploymentGitSource9,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  owner: types.string(),
-  prId: z.nullable(types.number()).optional(),
-  ref: z.nullable(types.string()).optional(),
-  sha: types.optional(types.string()),
-  slug: types.string(),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    owner: types.string(),
+    prId: z.nullable(types.number()).optional(),
+    ref: z.nullable(types.string()).optional(),
+    sha: types.optional(types.string()),
+    slug: types.string(),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody9Type$inboundSchema,
+  })
+);
 
 export function cancelDeploymentGitSource9FromJSON(
   jsonString: string,
@@ -3314,8 +3479,10 @@ export function cancelDeploymentGitSource9FromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type,
+    )
   );
 
 /** @internal */
@@ -3323,15 +3490,17 @@ export const CancelDeploymentGitSource8$inboundSchema: z.ZodType<
   CancelDeploymentGitSource8,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  prId: z.nullable(types.number()).optional(),
-  ref: z.nullable(types.string()).optional(),
-  repoUuid: types.string(),
-  sha: types.optional(types.string()),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type$inboundSchema,
-  workspaceUuid: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    prId: z.nullable(types.number()).optional(),
+    ref: z.nullable(types.string()).optional(),
+    repoUuid: types.string(),
+    sha: types.optional(types.string()),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody8Type$inboundSchema,
+    workspaceUuid: types.optional(types.string()),
+  })
+);
 
 export function cancelDeploymentGitSource8FromJSON(
   jsonString: string,
@@ -3348,7 +3517,9 @@ export const GitSourceProjectId$inboundSchema: z.ZodType<
   GitSourceProjectId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function gitSourceProjectIdFromJSON(
   jsonString: string,
@@ -3364,8 +3535,10 @@ export function gitSourceProjectIdFromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type,
+    )
   );
 
 /** @internal */
@@ -3373,14 +3546,16 @@ export const CancelDeploymentGitSource7$inboundSchema: z.ZodType<
   CancelDeploymentGitSource7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  prId: z.nullable(types.number()).optional(),
-  projectId: smartUnion([types.string(), types.number()]),
-  ref: z.nullable(types.string()).optional(),
-  sha: types.optional(types.string()),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    prId: z.nullable(types.number()).optional(),
+    projectId: smartUnion([types.string(), types.number()]),
+    ref: z.nullable(types.string()).optional(),
+    sha: types.optional(types.string()),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBody7Type$inboundSchema,
+  })
+);
 
 export function cancelDeploymentGitSource7FromJSON(
   jsonString: string,
@@ -3396,8 +3571,10 @@ export function cancelDeploymentGitSource7FromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType,
+    )
   );
 
 /** @internal */
@@ -3405,15 +3582,17 @@ export const CancelDeploymentGitSource6$inboundSchema: z.ZodType<
   CancelDeploymentGitSource6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  org: types.string(),
-  prId: z.nullable(types.number()).optional(),
-  ref: z.nullable(types.string()).optional(),
-  repo: types.string(),
-  sha: types.optional(types.string()),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    org: types.string(),
+    prId: z.nullable(types.number()).optional(),
+    ref: z.nullable(types.string()).optional(),
+    repo: types.string(),
+    sha: types.optional(types.string()),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+  })
+);
 
 export function cancelDeploymentGitSource6FromJSON(
   jsonString: string,
@@ -3431,7 +3610,9 @@ export const CancelDeploymentGitSourceDeploymentsResponseRepoId$inboundSchema:
     CancelDeploymentGitSourceDeploymentsResponseRepoId,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.string(), types.number()]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), types.number()])
+  );
 
 export function cancelDeploymentGitSourceDeploymentsResponseRepoIdFromJSON(
   jsonString: string,
@@ -3453,8 +3634,10 @@ export function cancelDeploymentGitSourceDeploymentsResponseRepoIdFromJSON(
 export const CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType$inboundSchema:
   z.ZodNativeEnum<
     typeof CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType
-  > = z.nativeEnum(
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType,
+    )
   );
 
 /** @internal */
@@ -3462,14 +3645,16 @@ export const CancelDeploymentGitSource5$inboundSchema: z.ZodType<
   CancelDeploymentGitSource5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  prId: z.nullable(types.number()).optional(),
-  ref: z.nullable(types.string()).optional(),
-  repoId: smartUnion([types.string(), types.number()]),
-  sha: types.optional(types.string()),
-  type:
-    CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    prId: z.nullable(types.number()).optional(),
+    ref: z.nullable(types.string()).optional(),
+    repoId: smartUnion([types.string(), types.number()]),
+    sha: types.optional(types.string()),
+    type:
+      CancelDeploymentGitSourceDeploymentsResponse200ApplicationJSONType$inboundSchema,
+  })
+);
 
 export function cancelDeploymentGitSource5FromJSON(
   jsonString: string,
@@ -3484,22 +3669,26 @@ export function cancelDeploymentGitSource5FromJSON(
 /** @internal */
 export const CancelDeploymentGitSourceDeploymentsResponse200Type$inboundSchema:
   z.ZodNativeEnum<typeof CancelDeploymentGitSourceDeploymentsResponse200Type> =
-    z.nativeEnum(CancelDeploymentGitSourceDeploymentsResponse200Type);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CancelDeploymentGitSourceDeploymentsResponse200Type)
+    );
 
 /** @internal */
 export const CancelDeploymentGitSource4$inboundSchema: z.ZodType<
   CancelDeploymentGitSource4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  host: types.string(),
-  org: types.string(),
-  prId: z.nullable(types.number()).optional(),
-  ref: z.nullable(types.string()).optional(),
-  repo: types.string(),
-  sha: types.optional(types.string()),
-  type: CancelDeploymentGitSourceDeploymentsResponse200Type$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    host: types.string(),
+    org: types.string(),
+    prId: z.nullable(types.number()).optional(),
+    ref: z.nullable(types.string()).optional(),
+    repo: types.string(),
+    sha: types.optional(types.string()),
+    type: CancelDeploymentGitSourceDeploymentsResponse200Type$inboundSchema,
+  })
+);
 
 export function cancelDeploymentGitSource4FromJSON(
   jsonString: string,
@@ -3514,7 +3703,9 @@ export function cancelDeploymentGitSource4FromJSON(
 /** @internal */
 export const CancelDeploymentGitSourceDeploymentsRepoId$inboundSchema:
   z.ZodType<CancelDeploymentGitSourceDeploymentsRepoId, z.ZodTypeDef, unknown> =
-    smartUnion([types.string(), types.number()]);
+    /* @__PURE__ */ lazySchema$(() =>
+      smartUnion([types.string(), types.number()])
+    );
 
 export function cancelDeploymentGitSourceDeploymentsRepoIdFromJSON(
   jsonString: string,
@@ -3534,22 +3725,26 @@ export function cancelDeploymentGitSourceDeploymentsRepoIdFromJSON(
 
 /** @internal */
 export const CancelDeploymentGitSourceDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentGitSourceDeploymentsResponseType> = z
-    .nativeEnum(CancelDeploymentGitSourceDeploymentsResponseType);
+  z.ZodNativeEnum<typeof CancelDeploymentGitSourceDeploymentsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CancelDeploymentGitSourceDeploymentsResponseType)
+    );
 
 /** @internal */
 export const CancelDeploymentGitSource3$inboundSchema: z.ZodType<
   CancelDeploymentGitSource3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  host: types.string(),
-  prId: z.nullable(types.number()).optional(),
-  ref: z.nullable(types.string()).optional(),
-  repoId: smartUnion([types.string(), types.number()]),
-  sha: types.optional(types.string()),
-  type: CancelDeploymentGitSourceDeploymentsResponseType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    host: types.string(),
+    prId: z.nullable(types.number()).optional(),
+    ref: z.nullable(types.string()).optional(),
+    repoId: smartUnion([types.string(), types.number()]),
+    sha: types.optional(types.string()),
+    type: CancelDeploymentGitSourceDeploymentsResponseType$inboundSchema,
+  })
+);
 
 export function cancelDeploymentGitSource3FromJSON(
   jsonString: string,
@@ -3563,22 +3758,26 @@ export function cancelDeploymentGitSource3FromJSON(
 
 /** @internal */
 export const CancelDeploymentGitSourceDeploymentsType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentGitSourceDeploymentsType> = z
-    .nativeEnum(CancelDeploymentGitSourceDeploymentsType);
+  z.ZodNativeEnum<typeof CancelDeploymentGitSourceDeploymentsType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CancelDeploymentGitSourceDeploymentsType)
+    );
 
 /** @internal */
 export const CancelDeploymentGitSource2$inboundSchema: z.ZodType<
   CancelDeploymentGitSource2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  org: types.string(),
-  prId: z.nullable(types.number()).optional(),
-  ref: z.nullable(types.string()).optional(),
-  repo: types.string(),
-  sha: types.optional(types.string()),
-  type: CancelDeploymentGitSourceDeploymentsType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    org: types.string(),
+    prId: z.nullable(types.number()).optional(),
+    ref: z.nullable(types.string()).optional(),
+    repo: types.string(),
+    sha: types.optional(types.string()),
+    type: CancelDeploymentGitSourceDeploymentsType$inboundSchema,
+  })
+);
 
 export function cancelDeploymentGitSource2FromJSON(
   jsonString: string,
@@ -3595,7 +3794,9 @@ export const CancelDeploymentGitSourceRepoId$inboundSchema: z.ZodType<
   CancelDeploymentGitSourceRepoId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function cancelDeploymentGitSourceRepoIdFromJSON(
   jsonString: string,
@@ -3610,20 +3811,24 @@ export function cancelDeploymentGitSourceRepoIdFromJSON(
 /** @internal */
 export const CancelDeploymentGitSourceType$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentGitSourceType
-> = z.nativeEnum(CancelDeploymentGitSourceType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CancelDeploymentGitSourceType)
+);
 
 /** @internal */
 export const CancelDeploymentGitSource1$inboundSchema: z.ZodType<
   CancelDeploymentGitSource1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  prId: z.nullable(types.number()).optional(),
-  ref: z.nullable(types.string()).optional(),
-  repoId: smartUnion([types.string(), types.number()]),
-  sha: types.optional(types.string()),
-  type: CancelDeploymentGitSourceType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    prId: z.nullable(types.number()).optional(),
+    ref: z.nullable(types.string()).optional(),
+    repoId: smartUnion([types.string(), types.number()]),
+    sha: types.optional(types.string()),
+    type: CancelDeploymentGitSourceType$inboundSchema,
+  })
+);
 
 export function cancelDeploymentGitSource1FromJSON(
   jsonString: string,
@@ -3640,27 +3845,29 @@ export const CancelDeploymentGitSource$inboundSchema: z.ZodType<
   CancelDeploymentGitSource,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GitSource19$inboundSchema),
-  z.lazy(() => GitSource14$inboundSchema),
-  z.lazy(() => GitSource17$inboundSchema),
-  z.lazy(() => GitSource18$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource4$inboundSchema),
-  z.lazy(() => GitSource12$inboundSchema),
-  z.lazy(() => GitSource13$inboundSchema),
-  z.lazy(() => GitSource15$inboundSchema),
-  z.lazy(() => GitSource16$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource9$inboundSchema),
-  z.lazy(() => GitSource10$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource7$inboundSchema),
-  z.lazy(() => CancelDeploymentGitSource8$inboundSchema),
-  z.lazy(() => GitSource11$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GitSource19$inboundSchema),
+    z.lazy(() => GitSource14$inboundSchema),
+    z.lazy(() => GitSource17$inboundSchema),
+    z.lazy(() => GitSource18$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource4$inboundSchema),
+    z.lazy(() => GitSource12$inboundSchema),
+    z.lazy(() => GitSource13$inboundSchema),
+    z.lazy(() => GitSource15$inboundSchema),
+    z.lazy(() => GitSource16$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource2$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource3$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource6$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource9$inboundSchema),
+    z.lazy(() => GitSource10$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource1$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource5$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource7$inboundSchema),
+    z.lazy(() => CancelDeploymentGitSource8$inboundSchema),
+    z.lazy(() => GitSource11$inboundSchema),
+  ])
+);
 
 export function cancelDeploymentGitSourceFromJSON(
   jsonString: string,
@@ -3675,21 +3882,23 @@ export function cancelDeploymentGitSourceFromJSON(
 /** @internal */
 export const ContentDispositionType$inboundSchema: z.ZodNativeEnum<
   typeof ContentDispositionType
-> = z.nativeEnum(ContentDispositionType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ContentDispositionType));
 
 /** @internal */
-export const Formats$inboundSchema: z.ZodNativeEnum<typeof Formats> = z
-  .nativeEnum(Formats);
+export const Formats$inboundSchema: z.ZodNativeEnum<typeof Formats> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Formats));
 
 /** @internal */
 export const LocalPatterns$inboundSchema: z.ZodType<
   LocalPatterns,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pathname: types.optional(types.string()),
-  search: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pathname: types.optional(types.string()),
+    search: types.optional(types.string()),
+  })
+);
 
 export function localPatternsFromJSON(
   jsonString: string,
@@ -3702,21 +3911,23 @@ export function localPatternsFromJSON(
 }
 
 /** @internal */
-export const Protocol$inboundSchema: z.ZodNativeEnum<typeof Protocol> = z
-  .nativeEnum(Protocol);
+export const Protocol$inboundSchema: z.ZodNativeEnum<typeof Protocol> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Protocol));
 
 /** @internal */
 export const RemotePatterns$inboundSchema: z.ZodType<
   RemotePatterns,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  hostname: types.string(),
-  pathname: types.optional(types.string()),
-  port: types.optional(types.string()),
-  protocol: types.optional(Protocol$inboundSchema),
-  search: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    hostname: types.string(),
+    pathname: types.optional(types.string()),
+    port: types.optional(types.string()),
+    protocol: types.optional(Protocol$inboundSchema),
+    search: types.optional(types.string()),
+  })
+);
 
 export function remotePatternsFromJSON(
   jsonString: string,
@@ -3729,25 +3940,27 @@ export function remotePatternsFromJSON(
 }
 
 /** @internal */
-export const Images$inboundSchema: z.ZodType<Images, z.ZodTypeDef, unknown> = z
-  .object({
-    contentDispositionType: types.optional(
-      ContentDispositionType$inboundSchema,
-    ),
-    contentSecurityPolicy: types.optional(types.string()),
-    dangerouslyAllowSVG: types.optional(types.boolean()),
-    domains: types.optional(z.array(types.string())),
-    formats: types.optional(z.array(Formats$inboundSchema)),
-    localPatterns: types.optional(
-      z.array(z.lazy(() => LocalPatterns$inboundSchema)),
-    ),
-    minimumCacheTTL: types.optional(types.number()),
-    qualities: types.optional(z.array(types.number())),
-    remotePatterns: types.optional(
-      z.array(z.lazy(() => RemotePatterns$inboundSchema)),
-    ),
-    sizes: types.optional(z.array(types.number())),
-  });
+export const Images$inboundSchema: z.ZodType<Images, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      contentDispositionType: types.optional(
+        ContentDispositionType$inboundSchema,
+      ),
+      contentSecurityPolicy: types.optional(types.string()),
+      dangerouslyAllowSVG: types.optional(types.boolean()),
+      domains: types.optional(z.array(types.string())),
+      formats: types.optional(z.array(Formats$inboundSchema)),
+      localPatterns: types.optional(
+        z.array(z.lazy(() => LocalPatterns$inboundSchema)),
+      ),
+      minimumCacheTTL: types.optional(types.number()),
+      qualities: types.optional(z.array(types.number())),
+      remotePatterns: types.optional(
+        z.array(z.lazy(() => RemotePatterns$inboundSchema)),
+      ),
+      sizes: types.optional(z.array(types.number())),
+    })
+  );
 
 export function imagesFromJSON(
   jsonString: string,
@@ -3762,21 +3975,25 @@ export function imagesFromJSON(
 /** @internal */
 export const CancelDeploymentDeploymentsStatus$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentDeploymentsStatus
-> = z.nativeEnum(CancelDeploymentDeploymentsStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CancelDeploymentDeploymentsStatus)
+);
 
 /** @internal */
 export const Integrations$inboundSchema: z.ZodType<
   Integrations,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  claimedAt: types.optional(types.number()),
-  completedAt: types.optional(types.number()),
-  skippedAt: types.optional(types.number()),
-  skippedBy: types.optional(types.string()),
-  startedAt: types.number(),
-  status: CancelDeploymentDeploymentsStatus$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    claimedAt: types.optional(types.number()),
+    completedAt: types.optional(types.number()),
+    skippedAt: types.optional(types.number()),
+    skippedBy: types.optional(types.string()),
+    startedAt: types.number(),
+    status: CancelDeploymentDeploymentsStatus$inboundSchema,
+  })
+);
 
 export function integrationsFromJSON(
   jsonString: string,
@@ -3791,17 +4008,19 @@ export function integrationsFromJSON(
 /** @internal */
 export const CancelDeploymentReadyState$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentReadyState
-> = z.nativeEnum(CancelDeploymentReadyState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CancelDeploymentReadyState));
 
 /** @internal */
 export const CancelDeploymentOutput$inboundSchema: z.ZodType<
   CancelDeploymentOutput,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  functionName: types.string(),
-  path: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    functionName: types.string(),
+    path: types.string(),
+  })
+);
 
 export function cancelDeploymentOutputFromJSON(
   jsonString: string,
@@ -3815,14 +4034,16 @@ export function cancelDeploymentOutputFromJSON(
 
 /** @internal */
 export const Lambdas$inboundSchema: z.ZodType<Lambdas, z.ZodTypeDef, unknown> =
-  z.object({
-    createdAt: types.optional(types.number()),
-    entrypoint: z.nullable(types.string()).optional(),
-    id: types.string(),
-    readyState: types.optional(CancelDeploymentReadyState$inboundSchema),
-    readyStateAt: types.optional(types.number()),
-    output: z.array(z.lazy(() => CancelDeploymentOutput$inboundSchema)),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.optional(types.number()),
+      entrypoint: z.nullable(types.string()).optional(),
+      id: types.string(),
+      readyState: types.optional(CancelDeploymentReadyState$inboundSchema),
+      readyStateAt: types.optional(types.number()),
+      output: z.array(z.lazy(() => CancelDeploymentOutput$inboundSchema)),
+    })
+  );
 
 export function lambdasFromJSON(
   jsonString: string,
@@ -3837,17 +4058,19 @@ export function lambdasFromJSON(
 /** @internal */
 export const CancelDeploymentState$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentState
-> = z.nativeEnum(CancelDeploymentState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CancelDeploymentState));
 
 /** @internal */
 export const ManualProvisioning$inboundSchema: z.ZodType<
   ManualProvisioning,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  completedAt: types.optional(types.number()),
-  state: CancelDeploymentState$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    completedAt: types.optional(types.number()),
+    state: CancelDeploymentState$inboundSchema,
+  })
+);
 
 export function manualProvisioningFromJSON(
   jsonString: string,
@@ -3862,20 +4085,22 @@ export function manualProvisioningFromJSON(
 /** @internal */
 export const MfeConfigUploadState$inboundSchema: z.ZodNativeEnum<
   typeof MfeConfigUploadState
-> = z.nativeEnum(MfeConfigUploadState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(MfeConfigUploadState));
 
 /** @internal */
 export const CancelDeploymentMicrofrontends2$inboundSchema: z.ZodType<
   CancelDeploymentMicrofrontends2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultAppProjectName: types.string(),
-  defaultRoute: types.optional(types.string()),
-  groupIds: z.array(types.string()),
-  isDefaultApp: types.literal(true),
-  mfeConfigUploadState: types.optional(MfeConfigUploadState$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultAppProjectName: types.string(),
+    defaultRoute: types.optional(types.string()),
+    groupIds: z.array(types.string()),
+    isDefaultApp: types.literal(true),
+    mfeConfigUploadState: types.optional(MfeConfigUploadState$inboundSchema),
+  })
+);
 
 export function cancelDeploymentMicrofrontends2FromJSON(
   jsonString: string,
@@ -3892,12 +4117,14 @@ export const CancelDeploymentMicrofrontends1$inboundSchema: z.ZodType<
   CancelDeploymentMicrofrontends1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultAppProjectName: types.string(),
-  defaultRoute: types.optional(types.string()),
-  groupIds: z.array(types.string()),
-  isDefaultApp: types.optional(types.literal(false)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultAppProjectName: types.string(),
+    defaultRoute: types.optional(types.string()),
+    groupIds: z.array(types.string()),
+    isDefaultApp: types.optional(types.literal(false)),
+  })
+);
 
 export function cancelDeploymentMicrofrontends1FromJSON(
   jsonString: string,
@@ -3914,10 +4141,12 @@ export const CancelDeploymentMicrofrontends$inboundSchema: z.ZodType<
   CancelDeploymentMicrofrontends,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => CancelDeploymentMicrofrontends2$inboundSchema),
-  z.lazy(() => CancelDeploymentMicrofrontends1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CancelDeploymentMicrofrontends2$inboundSchema),
+    z.lazy(() => CancelDeploymentMicrofrontends1$inboundSchema),
+  ])
+);
 
 export function cancelDeploymentMicrofrontendsFromJSON(
   jsonString: string,
@@ -3932,36 +4161,40 @@ export function cancelDeploymentMicrofrontendsFromJSON(
 /** @internal */
 export const CancelDeploymentNodeVersion$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentNodeVersion
-> = z.nativeEnum(CancelDeploymentNodeVersion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CancelDeploymentNodeVersion)
+);
 
 /** @internal */
 export const OidcTokenClaims$inboundSchema: z.ZodType<
   OidcTokenClaims,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  aud: types.string(),
-  custom_environment_id: types.optional(types.string()),
-  deployment_id: types.optional(types.string()),
-  environment: types.string(),
-  iss: types.string(),
-  mfe_group_ids: types.optional(z.array(types.string())),
-  owner: types.string(),
-  owner_id: types.string(),
-  plan: types.optional(types.string()),
-  project: types.string(),
-  project_id: types.string(),
-  scope: types.string(),
-  sub: types.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_environment_id": "customEnvironmentId",
-    "deployment_id": "deploymentId",
-    "mfe_group_ids": "mfeGroupIds",
-    "owner_id": "ownerId",
-    "project_id": "projectId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    aud: types.string(),
+    custom_environment_id: types.optional(types.string()),
+    deployment_id: types.optional(types.string()),
+    environment: types.string(),
+    iss: types.string(),
+    mfe_group_ids: types.optional(z.array(types.string())),
+    owner: types.string(),
+    owner_id: types.string(),
+    plan: types.optional(types.string()),
+    project: types.string(),
+    project_id: types.string(),
+    scope: types.string(),
+    sub: types.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "custom_environment_id": "customEnvironmentId",
+      "deployment_id": "deploymentId",
+      "mfe_group_ids": "mfeGroupIds",
+      "owner_id": "ownerId",
+      "project_id": "projectId",
+    });
+  })
+);
 
 export function oidcTokenClaimsFromJSON(
   jsonString: string,
@@ -3974,23 +4207,25 @@ export function oidcTokenClaimsFromJSON(
 }
 
 /** @internal */
-export const OomReport$inboundSchema: z.ZodNativeEnum<typeof OomReport> = z
-  .nativeEnum(OomReport);
+export const OomReport$inboundSchema: z.ZodNativeEnum<typeof OomReport> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OomReport));
 
 /** @internal */
 export const CancelDeploymentPlan$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentPlan
-> = z.nativeEnum(CancelDeploymentPlan);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CancelDeploymentPlan));
 
 /** @internal */
 export const CancelDeploymentDeploymentsCreator$inboundSchema: z.ZodType<
   CancelDeploymentDeploymentsCreator,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  avatar: types.optional(types.string()),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: types.optional(types.string()),
+    name: types.string(),
+  })
+);
 
 export function cancelDeploymentDeploymentsCreatorFromJSON(
   jsonString: string,
@@ -4005,18 +4240,22 @@ export function cancelDeploymentDeploymentsCreatorFromJSON(
 
 /** @internal */
 export const CancelDeploymentDeploymentsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentDeploymentsResponseType> = z
-    .nativeEnum(CancelDeploymentDeploymentsResponseType);
+  z.ZodNativeEnum<typeof CancelDeploymentDeploymentsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CancelDeploymentDeploymentsResponseType)
+    );
 
 /** @internal */
 export const CancelDeploymentOrigin$inboundSchema: z.ZodType<
   CancelDeploymentOrigin,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: CancelDeploymentDeploymentsResponseType$inboundSchema,
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: CancelDeploymentDeploymentsResponseType$inboundSchema,
+    value: types.string(),
+  })
+);
 
 export function cancelDeploymentOriginFromJSON(
   jsonString: string,
@@ -4033,9 +4272,11 @@ export const CancelDeploymentDeploymentsSource$inboundSchema: z.ZodType<
   CancelDeploymentDeploymentsSource,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: types.string(),
+  })
+);
 
 export function cancelDeploymentDeploymentsSourceFromJSON(
   jsonString: string,
@@ -4052,12 +4293,14 @@ export const Platform$inboundSchema: z.ZodType<
   Platform,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  creator: z.lazy(() => CancelDeploymentDeploymentsCreator$inboundSchema),
-  meta: types.optional(z.record(types.string())),
-  origin: z.lazy(() => CancelDeploymentOrigin$inboundSchema),
-  source: z.lazy(() => CancelDeploymentDeploymentsSource$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    creator: z.lazy(() => CancelDeploymentDeploymentsCreator$inboundSchema),
+    meta: types.optional(z.record(types.string())),
+    origin: z.lazy(() => CancelDeploymentOrigin$inboundSchema),
+    source: z.lazy(() => CancelDeploymentDeploymentsSource$inboundSchema),
+  })
+);
 
 export function platformFromJSON(
   jsonString: string,
@@ -4074,11 +4317,13 @@ export const CancelDeploymentProject$inboundSchema: z.ZodType<
   CancelDeploymentProject,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  framework: z.nullable(types.string()).optional(),
-  id: types.string(),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    framework: z.nullable(types.string()).optional(),
+    id: types.string(),
+    name: types.string(),
+  })
+);
 
 export function cancelDeploymentProjectFromJSON(
   jsonString: string,
@@ -4093,28 +4338,31 @@ export function cancelDeploymentProjectFromJSON(
 /** @internal */
 export const CancelDeploymentFramework$inboundSchema: z.ZodNativeEnum<
   typeof CancelDeploymentFramework
-> = z.nativeEnum(CancelDeploymentFramework);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CancelDeploymentFramework));
 
 /** @internal */
 export const CancelDeploymentDeploymentsNodeVersion$inboundSchema:
-  z.ZodNativeEnum<typeof CancelDeploymentDeploymentsNodeVersion> = z.nativeEnum(
-    CancelDeploymentDeploymentsNodeVersion,
-  );
+  z.ZodNativeEnum<typeof CancelDeploymentDeploymentsNodeVersion> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CancelDeploymentDeploymentsNodeVersion)
+    );
 
 /** @internal */
 export const CancelDeploymentSpeedInsights$inboundSchema: z.ZodType<
   CancelDeploymentSpeedInsights,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: types.optional(types.number()),
-  dataReceivedAt: types.optional(types.number()),
-  disabledAt: types.optional(types.number()),
-  enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.boolean()),
-  id: types.string(),
-  paidAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: types.optional(types.number()),
+    dataReceivedAt: types.optional(types.number()),
+    disabledAt: types.optional(types.number()),
+    enabledAt: types.optional(types.number()),
+    hasData: types.optional(types.boolean()),
+    id: types.string(),
+    paidAt: types.optional(types.number()),
+  })
+);
 
 export function cancelDeploymentSpeedInsightsFromJSON(
   jsonString: string,
@@ -4131,9 +4379,11 @@ export const CancelDeploymentVercelFlags$inboundSchema: z.ZodType<
   CancelDeploymentVercelFlags,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabledAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabledAt: types.optional(types.number()),
+  })
+);
 
 export function cancelDeploymentVercelFlagsFromJSON(
   jsonString: string,
@@ -4150,13 +4400,15 @@ export const CancelDeploymentWebAnalytics$inboundSchema: z.ZodType<
   CancelDeploymentWebAnalytics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: types.optional(types.number()),
-  disabledAt: types.optional(types.number()),
-  enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.literal(true)),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: types.optional(types.number()),
+    disabledAt: types.optional(types.number()),
+    enabledAt: types.optional(types.number()),
+    hasData: types.optional(types.literal(true)),
+    id: types.string(),
+  })
+);
 
 export function cancelDeploymentWebAnalyticsFromJSON(
   jsonString: string,
@@ -4173,26 +4425,28 @@ export const CancelDeploymentProjectSettings$inboundSchema: z.ZodType<
   CancelDeploymentProjectSettings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  buildCommand: z.nullable(types.string()).optional(),
-  commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
-  devCommand: z.nullable(types.string()).optional(),
-  framework: z.nullable(CancelDeploymentFramework$inboundSchema).optional(),
-  installCommand: z.nullable(types.string()).optional(),
-  nodeVersion: types.optional(
-    CancelDeploymentDeploymentsNodeVersion$inboundSchema,
-  ),
-  outputDirectory: z.nullable(types.string()).optional(),
-  speedInsights: types.optional(
-    z.lazy(() => CancelDeploymentSpeedInsights$inboundSchema),
-  ),
-  vercelFlags: types.optional(
-    z.lazy(() => CancelDeploymentVercelFlags$inboundSchema),
-  ),
-  webAnalytics: types.optional(
-    z.lazy(() => CancelDeploymentWebAnalytics$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    buildCommand: z.nullable(types.string()).optional(),
+    commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+    devCommand: z.nullable(types.string()).optional(),
+    framework: z.nullable(CancelDeploymentFramework$inboundSchema).optional(),
+    installCommand: z.nullable(types.string()).optional(),
+    nodeVersion: types.optional(
+      CancelDeploymentDeploymentsNodeVersion$inboundSchema,
+    ),
+    outputDirectory: z.nullable(types.string()).optional(),
+    speedInsights: types.optional(
+      z.lazy(() => CancelDeploymentSpeedInsights$inboundSchema),
+    ),
+    vercelFlags: types.optional(
+      z.lazy(() => CancelDeploymentVercelFlags$inboundSchema),
+    ),
+    webAnalytics: types.optional(
+      z.lazy(() => CancelDeploymentWebAnalytics$inboundSchema),
+    ),
+  })
+);
 
 export function cancelDeploymentProjectSettingsFromJSON(
   jsonString: string,

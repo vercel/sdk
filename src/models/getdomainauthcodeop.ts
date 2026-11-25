@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -59,10 +59,12 @@ export const GetDomainAuthCodeRequest$outboundSchema: z.ZodType<
   GetDomainAuthCodeRequest$Outbound,
   z.ZodTypeDef,
   GetDomainAuthCodeRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+  })
+);
 
 export function getDomainAuthCodeRequestToJSON(
   getDomainAuthCodeRequest: GetDomainAuthCodeRequest,
@@ -78,12 +80,14 @@ export const GetDomainAuthCodeDomainsRegistrarResponseResponseBody$inboundSchema
     GetDomainAuthCodeDomainsRegistrarResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Forbidden$inboundSchema,
-    NotAuthorizedForScope$inboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      Forbidden$inboundSchema,
+      NotAuthorizedForScope$inboundSchema.and(
+        z.object({ code: z.literal("not_authorized_for_scope") }),
+      ),
+    ])
+  );
 
 export function getDomainAuthCodeDomainsRegistrarResponseResponseBodyFromJSON(
   jsonString: string,
@@ -107,10 +111,12 @@ export const GetDomainAuthCodeDomainsRegistrarResponseBody$inboundSchema:
     GetDomainAuthCodeDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    DomainNotRegistered$inboundSchema,
-    HttpApiDecodeError$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      DomainNotRegistered$inboundSchema,
+      HttpApiDecodeError$inboundSchema,
+    ])
+  );
 
 export function getDomainAuthCodeDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -133,9 +139,11 @@ export const GetDomainAuthCodeResponseBody$inboundSchema: z.ZodType<
   GetDomainAuthCodeResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authCode: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authCode: types.string(),
+  })
+);
 
 export function getDomainAuthCodeResponseBodyFromJSON(
   jsonString: string,

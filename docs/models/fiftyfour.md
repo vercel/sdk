@@ -5,18 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiftyFour } from "@vercel/sdk/models/twenty.js";
+import { FiftyFour } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: FiftyFour = {
-  retention: {
-    ceilingMode: "days",
-    defaultMode: "until-requested",
-  },
+  headerNames: [],
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `retention`                                | [models.Retention](../models/retention.md) | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `headerNames`      | *string*[]         | :heavy_check_mark: | N/A                |

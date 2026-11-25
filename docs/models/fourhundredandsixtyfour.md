@@ -5,19 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndSixtyFour } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndSixtyFour } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
-let value: FourHundredAndSixtyFour = {
-  convertedFromTrial: false,
-  invoiceId: "<id>",
-  plan: "hobby",
-};
+let value: FourHundredAndSixtyFour = {};
 ```
 
 ## Fields
 
 | Field                                          | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `convertedFromTrial`                           | *boolean*                                      | :heavy_check_mark:                             | N/A                                            |
-| `invoiceId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `plan`                                         | [models.PayloadPlan](../models/payloadplan.md) | :heavy_check_mark:                             | N/A                                            |
+| `entitlements`                                 | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `invitedBy`                                    | [models.InvitedBy](../models/invitedby.md)     | :heavy_minus_sign:                             | N/A                                            |
+| `origin`                                       | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `role`                                         | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `teamPermissions`                              | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `teamRoles`                                    | *string*[]                                     | :heavy_minus_sign:                             | N/A                                            |
+| `teamSlug`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `uid`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `updatedUid`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `updatedUser`                                  | [models.UpdatedUser](../models/updateduser.md) | :heavy_minus_sign:                             | N/A                                            |

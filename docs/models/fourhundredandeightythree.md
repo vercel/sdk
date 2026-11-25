@@ -5,15 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndEightyThree } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndEightyThree } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
 let value: FourHundredAndEightyThree = {
-  reason: "limits-exceeded",
+  enabled: true,
+  scope: "dashboard",
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `reason`                                                             | [models.UserEventPayloadReason](../models/usereventpayloadreason.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `enabled`                                                                | *boolean*                                                                | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload483Scope](../models/usereventpayload483scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

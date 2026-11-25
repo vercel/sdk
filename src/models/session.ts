@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -49,6 +49,21 @@ export const SessionStatus = {
  * The status of the sandbox.
  */
 export type SessionStatus = ClosedEnum<typeof SessionStatus>;
+
+/**
+ * Why the sandbox stopped: `requested` for a stop requested through the API, `snapshot` for a stop to take a snapshot, `timeout` when the sandbox reached its timeout, `exited` when its main process exited on its own, and `error` when it failed or was stopped by the platform.
+ */
+export const StopReason = {
+  Error: "error",
+  Exited: "exited",
+  Requested: "requested",
+  Snapshot: "snapshot",
+  Timeout: "timeout",
+} as const;
+/**
+ * Why the sandbox stopped: `requested` for a stop requested through the API, `snapshot` for a stop to take a snapshot, `timeout` when the sandbox reached its timeout, `exited` when its main process exited on its own, and `error` when it failed or was stopped by the platform.
+ */
+export type StopReason = ClosedEnum<typeof StopReason>;
 
 /**
  * The workload type of this sandbox.
@@ -151,6 +166,10 @@ export type Session = {
    */
   stoppedAt?: number | undefined;
   /**
+   * Why the sandbox stopped: `requested` for a stop requested through the API, `snapshot` for a stop to take a snapshot, `timeout` when the sandbox reached its timeout, `exited` when its main process exited on its own, and `error` when it failed or was stopped by the platform.
+   */
+  stopReason?: StopReason | undefined;
+  /**
    * The maximum amount of time the sandbox will run for in milliseconds.
    */
   timeout: number;
@@ -171,17 +190,19 @@ export type Session = {
 /** @internal */
 export const SessionArchitecture$inboundSchema: z.ZodNativeEnum<
   typeof SessionArchitecture
-> = z.nativeEnum(SessionArchitecture);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SessionArchitecture));
 
 /** @internal */
 export const NetworkTransfer$inboundSchema: z.ZodType<
   NetworkTransfer,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  egress: types.number(),
-  ingress: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    egress: types.number(),
+    ingress: types.number(),
+  })
+);
 
 export function networkTransferFromJSON(
   jsonString: string,
@@ -196,44 +217,51 @@ export function networkTransferFromJSON(
 /** @internal */
 export const SessionStatus$inboundSchema: z.ZodNativeEnum<
   typeof SessionStatus
-> = z.nativeEnum(SessionStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SessionStatus));
+
+/** @internal */
+export const StopReason$inboundSchema: z.ZodNativeEnum<typeof StopReason> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StopReason));
 
 /** @internal */
 export const SessionWorkloadType$inboundSchema: z.ZodNativeEnum<
   typeof SessionWorkloadType
-> = z.nativeEnum(SessionWorkloadType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(SessionWorkloadType));
 
 /** @internal */
 export const Session$inboundSchema: z.ZodType<Session, z.ZodTypeDef, unknown> =
-  z.object({
-    abortedAt: types.optional(types.number()),
-    activeCpuDurationMs: types.optional(types.number()),
-    architecture: types.optional(SessionArchitecture$inboundSchema),
-    createdAt: types.number(),
-    cwd: types.string(),
-    duration: types.optional(types.number()),
-    id: types.string(),
-    memory: types.number(),
-    networkPolicy: types.optional(SandboxNetworkPolicy$inboundSchema),
-    networkTransfer: types.optional(
-      z.lazy(() => NetworkTransfer$inboundSchema),
-    ),
-    projectId: types.string(),
-    region: types.string(),
-    requestedAt: types.number(),
-    requestedStopAt: types.optional(types.number()),
-    runtime: types.string(),
-    snapshottedAt: types.optional(types.number()),
-    sourceSandboxName: types.string(),
-    sourceSnapshotId: types.optional(types.string()),
-    startedAt: types.optional(types.number()),
-    status: SessionStatus$inboundSchema,
-    stoppedAt: types.optional(types.number()),
-    timeout: types.number(),
-    updatedAt: types.number(),
-    vcpus: types.number(),
-    workloadType: types.optional(SessionWorkloadType$inboundSchema),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      abortedAt: types.optional(types.number()),
+      activeCpuDurationMs: types.optional(types.number()),
+      architecture: types.optional(SessionArchitecture$inboundSchema),
+      createdAt: types.number(),
+      cwd: types.string(),
+      duration: types.optional(types.number()),
+      id: types.string(),
+      memory: types.number(),
+      networkPolicy: types.optional(SandboxNetworkPolicy$inboundSchema),
+      networkTransfer: types.optional(
+        z.lazy(() => NetworkTransfer$inboundSchema),
+      ),
+      projectId: types.string(),
+      region: types.string(),
+      requestedAt: types.number(),
+      requestedStopAt: types.optional(types.number()),
+      runtime: types.string(),
+      snapshottedAt: types.optional(types.number()),
+      sourceSandboxName: types.string(),
+      sourceSnapshotId: types.optional(types.string()),
+      startedAt: types.optional(types.number()),
+      status: SessionStatus$inboundSchema,
+      stoppedAt: types.optional(types.number()),
+      stopReason: types.optional(StopReason$inboundSchema),
+      timeout: types.number(),
+      updatedAt: types.number(),
+      vcpus: types.number(),
+      workloadType: types.optional(SessionWorkloadType$inboundSchema),
+    })
+  );
 
 export function sessionFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -147,11 +147,13 @@ export const ClaimDomainOwnershipRequest$outboundSchema: z.ZodType<
   ClaimDomainOwnershipRequest$Outbound,
   z.ZodTypeDef,
   ClaimDomainOwnershipRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function claimDomainOwnershipRequestToJSON(
   claimDomainOwnershipRequest: ClaimDomainOwnershipRequest,
@@ -168,13 +170,15 @@ export const ClaimDomainOwnershipCreator$inboundSchema: z.ZodType<
   ClaimDomainOwnershipCreator,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  customerId: z.nullable(types.string()).optional(),
-  email: types.string(),
-  id: types.string(),
-  isDomainReseller: types.optional(types.boolean()),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customerId: z.nullable(types.string()).optional(),
+    email: types.string(),
+    id: types.string(),
+    isDomainReseller: types.optional(types.boolean()),
+    username: types.string(),
+  })
+);
 
 export function claimDomainOwnershipCreatorFromJSON(
   jsonString: string,
@@ -189,36 +193,40 @@ export function claimDomainOwnershipCreatorFromJSON(
 /** @internal */
 export const ClaimDomainOwnershipEchMode$inboundSchema: z.ZodNativeEnum<
   typeof ClaimDomainOwnershipEchMode
-> = z.nativeEnum(ClaimDomainOwnershipEchMode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ClaimDomainOwnershipEchMode)
+);
 
 /** @internal */
-export const ServiceType$inboundSchema: z.ZodNativeEnum<typeof ServiceType> = z
-  .nativeEnum(ServiceType);
+export const ServiceType$inboundSchema: z.ZodNativeEnum<typeof ServiceType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ServiceType));
 
 /** @internal */
 export const ClaimDomainOwnershipDomain$inboundSchema: z.ZodType<
   ClaimDomainOwnershipDomain,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  boughtAt: types.nullable(types.number()),
-  createdAt: types.number(),
-  creator: z.lazy(() => ClaimDomainOwnershipCreator$inboundSchema),
-  customNameservers: types.optional(z.array(types.string())),
-  echMode: ClaimDomainOwnershipEchMode$inboundSchema,
-  expiresAt: types.nullable(types.number()),
-  id: types.string(),
-  intendedNameservers: z.array(types.string()),
-  name: types.string(),
-  nameservers: z.array(types.string()),
-  renew: types.optional(types.boolean()),
-  serviceType: ServiceType$inboundSchema,
-  teamId: types.nullable(types.string()),
-  transferredAt: z.nullable(types.number()).optional(),
-  transferStartedAt: types.optional(types.number()),
-  userId: types.string(),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    boughtAt: types.nullable(types.number()),
+    createdAt: types.number(),
+    creator: z.lazy(() => ClaimDomainOwnershipCreator$inboundSchema),
+    customNameservers: types.optional(z.array(types.string())),
+    echMode: ClaimDomainOwnershipEchMode$inboundSchema,
+    expiresAt: types.nullable(types.number()),
+    id: types.string(),
+    intendedNameservers: z.array(types.string()),
+    name: types.string(),
+    nameservers: z.array(types.string()),
+    renew: types.optional(types.boolean()),
+    serviceType: ServiceType$inboundSchema,
+    teamId: types.nullable(types.string()),
+    transferredAt: z.nullable(types.number()).optional(),
+    transferStartedAt: types.optional(types.number()),
+    userId: types.string(),
+    verified: types.boolean(),
+  })
+);
 
 export function claimDomainOwnershipDomainFromJSON(
   jsonString: string,
@@ -235,9 +243,11 @@ export const ClaimDomainOwnershipResponseBody$inboundSchema: z.ZodType<
   ClaimDomainOwnershipResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: z.lazy(() => ClaimDomainOwnershipDomain$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.lazy(() => ClaimDomainOwnershipDomain$inboundSchema),
+  })
+);
 
 export function claimDomainOwnershipResponseBodyFromJSON(
   jsonString: string,

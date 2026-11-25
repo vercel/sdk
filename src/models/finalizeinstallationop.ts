@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type FinalizeInstallationRequest = {
   integrationConfigurationId: string;
@@ -18,9 +19,11 @@ export const FinalizeInstallationRequest$outboundSchema: z.ZodType<
   FinalizeInstallationRequest$Outbound,
   z.ZodTypeDef,
   FinalizeInstallationRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+  })
+);
 
 export function finalizeInstallationRequestToJSON(
   finalizeInstallationRequest: FinalizeInstallationRequest,

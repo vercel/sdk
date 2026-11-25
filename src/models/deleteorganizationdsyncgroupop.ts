@@ -3,12 +3,20 @@
  */
 
 import * as z from "zod/v3";
-import { remap as remap$ } from "../lib/primitives.js";
+import {
+  matchesPattern as matchesPattern$,
+  remap as remap$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteOrganizationDsyncGroupRequest = {
   ifMatch?: string | undefined;
   organizationId: string;
   groupId: string;
+  /**
+   * Delete even if it would leave the root team without an owner or the acting admin without the Owner role on it.
+   */
+  overrideLockout?: boolean | undefined;
   /**
    * The Team identifier to perform the request on behalf of.
    */
@@ -24,6 +32,7 @@ export type DeleteOrganizationDsyncGroupRequest$Outbound = {
   "If-Match"?: string | undefined;
   organizationId: string;
   groupId: string;
+  overrideLockout?: boolean | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
 };
@@ -33,17 +42,22 @@ export const DeleteOrganizationDsyncGroupRequest$outboundSchema: z.ZodType<
   DeleteOrganizationDsyncGroupRequest$Outbound,
   z.ZodTypeDef,
   DeleteOrganizationDsyncGroupRequest
-> = z.object({
-  ifMatch: z.string().optional(),
-  organizationId: z.string(),
-  groupId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    ifMatch: "If-Match",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ifMatch: z.string().refine(matchesPattern$("^\"\\d+\"$"), {
+      message: "Value must match pattern ^\"\\d+\"$",
+    }).optional(),
+    organizationId: z.string(),
+    groupId: z.string(),
+    overrideLockout: z.boolean().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      ifMatch: "If-Match",
+    });
+  })
+);
 
 export function deleteOrganizationDsyncGroupRequestToJSON(
   deleteOrganizationDsyncGroupRequest: DeleteOrganizationDsyncGroupRequest,

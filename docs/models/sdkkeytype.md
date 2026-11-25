@@ -5,11 +5,11 @@
 ```typescript
 import { SDKKeyType } from "@vercel/sdk/models/createsdkkeyop.js";
 
-let value: SDKKeyType = "mobile";
+let value: SDKKeyType = "server";
 ```
 
 ## Values
 
 ```typescript
-"server" | "mobile" | "client"
+"server"
 ```

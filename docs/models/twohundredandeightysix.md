@@ -5,14 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightySix } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndEightySix } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
-let value: TwoHundredAndEightySix = {};
+let value: TwoHundredAndEightySix = {
+  perimeter: {
+    id: "<id>",
+    name: "<value>",
+    version: 5437.16,
+  },
+};
 ```
 
 ## Fields
 
-| Field                             | Type                              | Required                          | Description                       |
-| --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `previewDeploymentSuffix`         | *string*                          | :heavy_minus_sign:                | N/A                               |
-| `previousPreviewDeploymentSuffix` | *string*                          | :heavy_minus_sign:                | N/A                               |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `perimeter`                                | [models.Perimeter](../models/perimeter.md) | :heavy_check_mark:                         | N/A                                        |

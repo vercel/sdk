@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -61,14 +61,16 @@ export const GetEdgeConfigBackupsRequest$outboundSchema: z.ZodType<
   GetEdgeConfigBackupsRequest$Outbound,
   z.ZodTypeDef,
   GetEdgeConfigBackupsRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  next: z.string().optional(),
-  limit: z.number().optional(),
-  metadata: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string(),
+    next: z.string().optional(),
+    limit: z.number().optional(),
+    metadata: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getEdgeConfigBackupsRequestToJSON(
   getEdgeConfigBackupsRequest: GetEdgeConfigBackupsRequest,
@@ -85,12 +87,14 @@ export const GetEdgeConfigBackupsMetadata$inboundSchema: z.ZodType<
   GetEdgeConfigBackupsMetadata,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  itemsBytes: types.optional(types.number()),
-  itemsCount: types.optional(types.number()),
-  updatedAt: types.optional(types.string()),
-  updatedBy: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    itemsBytes: types.optional(types.number()),
+    itemsCount: types.optional(types.number()),
+    updatedAt: types.optional(types.string()),
+    updatedBy: types.optional(types.string()),
+  })
+);
 
 export function getEdgeConfigBackupsMetadataFromJSON(
   jsonString: string,
@@ -104,13 +108,15 @@ export function getEdgeConfigBackupsMetadataFromJSON(
 
 /** @internal */
 export const Backups$inboundSchema: z.ZodType<Backups, z.ZodTypeDef, unknown> =
-  z.object({
-    metadata: types.optional(
-      z.lazy(() => GetEdgeConfigBackupsMetadata$inboundSchema),
-    ),
-    id: types.string(),
-    lastModified: types.number(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      metadata: types.optional(
+        z.lazy(() => GetEdgeConfigBackupsMetadata$inboundSchema),
+      ),
+      id: types.string(),
+      lastModified: types.number(),
+    })
+  );
 
 export function backupsFromJSON(
   jsonString: string,
@@ -127,10 +133,12 @@ export const GetEdgeConfigBackupsPagination$inboundSchema: z.ZodType<
   GetEdgeConfigBackupsPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  hasNext: types.boolean(),
-  next: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    hasNext: types.boolean(),
+    next: types.optional(types.string()),
+  })
+);
 
 export function getEdgeConfigBackupsPaginationFromJSON(
   jsonString: string,
@@ -147,10 +155,12 @@ export const GetEdgeConfigBackupsResponseBody$inboundSchema: z.ZodType<
   GetEdgeConfigBackupsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  backups: z.array(z.lazy(() => Backups$inboundSchema)),
-  pagination: z.lazy(() => GetEdgeConfigBackupsPagination$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    backups: z.array(z.lazy(() => Backups$inboundSchema)),
+    pagination: z.lazy(() => GetEdgeConfigBackupsPagination$inboundSchema),
+  })
+);
 
 export function getEdgeConfigBackupsResponseBodyFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -54,10 +54,12 @@ export const CreateProjectTransferRequestRequestBody$outboundSchema: z.ZodType<
   CreateProjectTransferRequestRequestBody$Outbound,
   z.ZodTypeDef,
   CreateProjectTransferRequestRequestBody
-> = z.object({
-  callbackUrl: z.string().optional(),
-  callbackSecret: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    callbackUrl: z.string().optional(),
+    callbackSecret: z.string().optional(),
+  })
+);
 
 export function createProjectTransferRequestRequestBodyToJSON(
   createProjectTransferRequestRequestBody:
@@ -83,18 +85,20 @@ export const CreateProjectTransferRequestRequest$outboundSchema: z.ZodType<
   CreateProjectTransferRequestRequest$Outbound,
   z.ZodTypeDef,
   CreateProjectTransferRequestRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    CreateProjectTransferRequestRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      CreateProjectTransferRequestRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createProjectTransferRequestRequestToJSON(
   createProjectTransferRequestRequest: CreateProjectTransferRequestRequest,
@@ -111,9 +115,11 @@ export const CreateProjectTransferRequestResponseBody$inboundSchema: z.ZodType<
   CreateProjectTransferRequestResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+  })
+);
 
 export function createProjectTransferRequestResponseBodyFromJSON(
   jsonString: string,

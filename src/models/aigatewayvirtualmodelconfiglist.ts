@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
@@ -28,10 +28,12 @@ export const AiGatewayVirtualModelConfigList$inboundSchema: z.ZodType<
   AiGatewayVirtualModelConfigList,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cursor: types.nullable(types.string()),
-  virtualModelConfigs: z.array(AiGatewayVirtualModelConfig$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: types.nullable(types.string()),
+    virtualModelConfigs: z.array(AiGatewayVirtualModelConfig$inboundSchema),
+  })
+);
 
 export function aiGatewayVirtualModelConfigListFromJSON(
   jsonString: string,

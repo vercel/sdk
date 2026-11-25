@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -83,12 +83,12 @@ export type ListDrivesV1ResponseBody = {
 /** @internal */
 export const QueryParamSortBy$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSortBy
-> = z.nativeEnum(QueryParamSortBy);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamSortBy));
 
 /** @internal */
 export const QueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamSortOrder
-> = z.nativeEnum(QueryParamSortOrder);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamSortOrder));
 
 /** @internal */
 export type ListDrivesV1Request$Outbound = {
@@ -107,16 +107,18 @@ export const ListDrivesV1Request$outboundSchema: z.ZodType<
   ListDrivesV1Request$Outbound,
   z.ZodTypeDef,
   ListDrivesV1Request
-> = z.object({
-  projectId: z.string().optional(),
-  limit: z.number().default(20),
-  cursor: z.string().optional(),
-  sortBy: QueryParamSortBy$outboundSchema.default("createdAt"),
-  namePrefix: z.string().optional(),
-  sortOrder: QueryParamSortOrder$outboundSchema.default("desc"),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string().optional(),
+    limit: z.number().default(20),
+    cursor: z.string().optional(),
+    sortBy: QueryParamSortBy$outboundSchema.default("createdAt"),
+    namePrefix: z.string().optional(),
+    sortOrder: QueryParamSortOrder$outboundSchema.default("desc"),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listDrivesV1RequestToJSON(
   listDrivesV1Request: ListDrivesV1Request,
@@ -131,10 +133,12 @@ export const ListDrivesV1Pagination$inboundSchema: z.ZodType<
   ListDrivesV1Pagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    next: types.nullable(types.string()),
+  })
+);
 
 export function listDrivesV1PaginationFromJSON(
   jsonString: string,
@@ -151,10 +155,12 @@ export const ListDrivesV1ResponseBody$inboundSchema: z.ZodType<
   ListDrivesV1ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  drives: z.array(Drive$inboundSchema),
-  pagination: z.lazy(() => ListDrivesV1Pagination$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    drives: z.array(Drive$inboundSchema),
+    pagination: z.lazy(() => ListDrivesV1Pagination$inboundSchema),
+  })
+);
 
 export function listDrivesV1ResponseBodyFromJSON(
   jsonString: string,

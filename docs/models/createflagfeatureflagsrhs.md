@@ -3,6 +3,25 @@
 
 ## Supported Types
 
+### `models.CreateFlagRhs1`
+
+```typescript
+const value: models.CreateFlagRhs1 = {
+  type: "list",
+  items: [],
+};
+```
+
+### `models.CreateFlagRhs2`
+
+```typescript
+const value: models.CreateFlagRhs2 = {
+  type: "<value>",
+  pattern: "<value>",
+  flags: "<value>",
+};
+```
+
 ### `string`
 
 ```typescript
@@ -13,29 +32,6 @@ const value: string = "<value>";
 
 ```typescript
 const value: number = 1284.03;
-```
-
-### `models.CreateFlagRhs3`
-
-```typescript
-const value: models.CreateFlagRhs3 = {
-  items: [
-    {
-      value: "<value>",
-    },
-  ],
-  type: "list",
-};
-```
-
-### `models.CreateFlagRhs4`
-
-```typescript
-const value: models.CreateFlagRhs4 = {
-  flags: "<value>",
-  pattern: "<value>",
-  type: "regex",
-};
 ```
 
 ### `boolean`

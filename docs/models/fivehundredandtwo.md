@@ -5,16 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndTwo } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FiveHundredAndTwo } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
 let value: FiveHundredAndTwo = {
-  remaining: 4187.06,
+  actorId: "<id>",
+  actorType: "admin",
 };
 ```
 
 ## Fields
 
-| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `context`                                                    | [models.Context](../models/context.md)                       | :heavy_minus_sign:                                           | Absent on events predating the field; those were all logins. |
-| `remaining`                                                  | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload502ActorType](../models/usereventpayload502actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

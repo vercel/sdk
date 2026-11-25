@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -71,10 +71,12 @@ export const DeleteTeamReasons$outboundSchema: z.ZodType<
   DeleteTeamReasons$Outbound,
   z.ZodTypeDef,
   DeleteTeamReasons
-> = z.object({
-  slug: z.string(),
-  description: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    slug: z.string(),
+    description: z.string(),
+  })
+);
 
 export function deleteTeamReasonsToJSON(
   deleteTeamReasons: DeleteTeamReasons,
@@ -94,9 +96,11 @@ export const DeleteTeamRequestBody$outboundSchema: z.ZodType<
   DeleteTeamRequestBody$Outbound,
   z.ZodTypeDef,
   DeleteTeamRequestBody
-> = z.object({
-  reasons: z.array(z.lazy(() => DeleteTeamReasons$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    reasons: z.array(z.lazy(() => DeleteTeamReasons$outboundSchema)).optional(),
+  })
+);
 
 export function deleteTeamRequestBodyToJSON(
   deleteTeamRequestBody: DeleteTeamRequestBody,
@@ -119,16 +123,18 @@ export const DeleteTeamRequest$outboundSchema: z.ZodType<
   DeleteTeamRequest$Outbound,
   z.ZodTypeDef,
   DeleteTeamRequest
-> = z.object({
-  newDefaultTeamId: z.string().optional(),
-  teamId: z.string(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => DeleteTeamRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    newDefaultTeamId: z.string().optional(),
+    teamId: z.string(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => DeleteTeamRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function deleteTeamRequestToJSON(
   deleteTeamRequest: DeleteTeamRequest,
@@ -143,10 +149,12 @@ export const DeleteTeamResponseBody$inboundSchema: z.ZodType<
   DeleteTeamResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  newDefaultTeamIdError: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    newDefaultTeamIdError: types.optional(types.boolean()),
+  })
+);
 
 export function deleteTeamResponseBodyFromJSON(
   jsonString: string,

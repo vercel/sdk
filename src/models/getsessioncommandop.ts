@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -58,9 +58,8 @@ export type GetSessionCommandResponseBody = {
 };
 
 /** @internal */
-export const Wait$outboundSchema: z.ZodNativeEnum<typeof Wait> = z.nativeEnum(
-  Wait,
-);
+export const Wait$outboundSchema: z.ZodNativeEnum<typeof Wait> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Wait));
 
 /** @internal */
 export type GetSessionCommandRequest$Outbound = {
@@ -76,13 +75,15 @@ export const GetSessionCommandRequest$outboundSchema: z.ZodType<
   GetSessionCommandRequest$Outbound,
   z.ZodTypeDef,
   GetSessionCommandRequest
-> = z.object({
-  sessionId: z.string(),
-  cmdId: z.string(),
-  wait: Wait$outboundSchema.default("false"),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sessionId: z.string(),
+    cmdId: z.string(),
+    wait: Wait$outboundSchema.default("false"),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getSessionCommandRequestToJSON(
   getSessionCommandRequest: GetSessionCommandRequest,
@@ -97,9 +98,11 @@ export const GetSessionCommandResponseBody$inboundSchema: z.ZodType<
   GetSessionCommandResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  command: SessionCommand$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    command: SessionCommand$inboundSchema,
+  })
+);
 
 export function getSessionCommandResponseBodyFromJSON(
   jsonString: string,

@@ -5,17 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFortyEight } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndFortyEight } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
-let value: FourHundredAndFortyEight = {
-  deletedCount: 8577.16,
-  inviteIds: [],
-};
+let value: FourHundredAndFortyEight = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deletedCount`     | *number*           | :heavy_check_mark: | N/A                |
-| `inviteIds`        | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `enrolled`                                                                       | *boolean*                                                                        | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload448ActorType](../models/usereventpayload448actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |

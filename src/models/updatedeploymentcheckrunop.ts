@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -422,7 +422,9 @@ export type UpdateDeploymentCheckRunResponseBody =
 /** @internal */
 export const UpdateDeploymentCheckRunStatus$outboundSchema: z.ZodNativeEnum<
   typeof UpdateDeploymentCheckRunStatus
-> = z.nativeEnum(UpdateDeploymentCheckRunStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateDeploymentCheckRunStatus)
+);
 
 /** @internal */
 export type Output$Outbound = {};
@@ -432,15 +434,15 @@ export const Output$outboundSchema: z.ZodType<
   Output$Outbound,
   z.ZodTypeDef,
   Output
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function outputToJSON(output: Output): string {
   return JSON.stringify(Output$outboundSchema.parse(output));
 }
 
 /** @internal */
-export const Conclusion$outboundSchema: z.ZodNativeEnum<typeof Conclusion> = z
-  .nativeEnum(Conclusion);
+export const Conclusion$outboundSchema: z.ZodNativeEnum<typeof Conclusion> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Conclusion));
 
 /** @internal */
 export type UpdateDeploymentCheckRunRequestBody$Outbound = {
@@ -458,15 +460,17 @@ export const UpdateDeploymentCheckRunRequestBody$outboundSchema: z.ZodType<
   UpdateDeploymentCheckRunRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateDeploymentCheckRunRequestBody
-> = z.object({
-  externalId: z.string().optional(),
-  externalUrl: z.string().optional(),
-  status: UpdateDeploymentCheckRunStatus$outboundSchema.optional(),
-  output: z.lazy(() => Output$outboundSchema).optional(),
-  completedAt: z.number().optional(),
-  conclusion: Conclusion$outboundSchema.optional(),
-  conclusionText: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalId: z.string().optional(),
+    externalUrl: z.string().optional(),
+    status: UpdateDeploymentCheckRunStatus$outboundSchema.optional(),
+    output: z.lazy(() => Output$outboundSchema).optional(),
+    completedAt: z.number().optional(),
+    conclusion: Conclusion$outboundSchema.optional(),
+    conclusionText: z.string().optional(),
+  })
+);
 
 export function updateDeploymentCheckRunRequestBodyToJSON(
   updateDeploymentCheckRunRequestBody: UpdateDeploymentCheckRunRequestBody,
@@ -492,18 +496,21 @@ export const UpdateDeploymentCheckRunRequest$outboundSchema: z.ZodType<
   UpdateDeploymentCheckRunRequest$Outbound,
   z.ZodTypeDef,
   UpdateDeploymentCheckRunRequest
-> = z.object({
-  deploymentId: z.string(),
-  checkRunId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateDeploymentCheckRunRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentId: z.string(),
+    checkRunId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      UpdateDeploymentCheckRunRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateDeploymentCheckRunRequestToJSON(
   updateDeploymentCheckRunRequest: UpdateDeploymentCheckRunRequest,
@@ -517,14 +524,18 @@ export function updateDeploymentCheckRunRequestToJSON(
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Blocks$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Blocks> = z
-    .nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Blocks);
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Blocks> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Blocks)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema:
   z.ZodNativeEnum<
     typeof UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion
-  > = z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion)
+  );
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2ExpectationRef$inboundSchema:
@@ -532,12 +543,14 @@ export const UpdateDeploymentCheckRunResponseBodyChecksV2ExpectationRef$inboundS
     UpdateDeploymentCheckRunResponseBodyChecksV2ExpectationRef,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    invocationAttempt: types.number(),
-    invocationId: types.string(),
-    jobDefinitionId: types.string(),
-    jobRunAttempt: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      invocationAttempt: types.number(),
+      invocationId: types.string(),
+      jobDefinitionId: types.string(),
+      jobRunAttempt: types.number(),
+    })
+  );
 
 export function updateDeploymentCheckRunResponseBodyChecksV2ExpectationRefFromJSON(
   jsonString: string,
@@ -557,12 +570,16 @@ export function updateDeploymentCheckRunResponseBodyChecksV2ExpectationRefFromJS
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema:
   z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Requires> =
-    z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Requires);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Requires)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Status> = z
-    .nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Status);
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyChecksV2Status> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunResponseBodyChecksV2Status)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyChecksV2TaskSummary$inboundSchema:
@@ -570,12 +587,14 @@ export const UpdateDeploymentCheckRunResponseBodyChecksV2TaskSummary$inboundSche
     UpdateDeploymentCheckRunResponseBodyChecksV2TaskSummary,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    failed: types.number(),
-    pending: types.number(),
-    succeeded: types.number(),
-    total: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      failed: types.number(),
+      pending: types.number(),
+      succeeded: types.number(),
+      total: types.number(),
+    })
+  );
 
 export function updateDeploymentCheckRunResponseBodyChecksV2TaskSummaryFromJSON(
   jsonString: string,
@@ -596,18 +615,22 @@ export function updateDeploymentCheckRunResponseBodyChecksV2TaskSummaryFromJSON(
 export const UpdateDeploymentCheckRunSourceChecksV2Response200SubKind$inboundSchema:
   z.ZodNativeEnum<
     typeof UpdateDeploymentCheckRunSourceChecksV2Response200SubKind
-  > = z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Response200SubKind);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Response200SubKind)
+  );
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV22$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSourceChecksV22,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  origin: types.literal("platform"),
-  subKind:
-    UpdateDeploymentCheckRunSourceChecksV2Response200SubKind$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    origin: types.literal("platform"),
+    subKind:
+      UpdateDeploymentCheckRunSourceChecksV2Response200SubKind$inboundSchema,
+  })
+);
 
 export function updateDeploymentCheckRunSourceChecksV22FromJSON(
   jsonString: string,
@@ -629,20 +652,25 @@ export function updateDeploymentCheckRunSourceChecksV22FromJSON(
 export const UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema:
   z.ZodNativeEnum<
     typeof UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind
-  > = z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind)
+  );
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV21$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSourceChecksV21,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  invocationAttempt: types.optional(types.number()),
-  invocationId: types.string(),
-  jobDefinitionId: types.string(),
-  origin: types.literal("config"),
-  subKind: UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    invocationAttempt: types.optional(types.number()),
+    invocationId: types.string(),
+    jobDefinitionId: types.string(),
+    origin: types.literal("config"),
+    subKind:
+      UpdateDeploymentCheckRunSourceChecksV2ResponseSubKind$inboundSchema,
+  })
+);
 
 export function updateDeploymentCheckRunSourceChecksV21FromJSON(
   jsonString: string,
@@ -666,10 +694,12 @@ export const UpdateDeploymentCheckRunResponseBodyChecksV2Source$inboundSchema:
     UpdateDeploymentCheckRunResponseBodyChecksV2Source,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => UpdateDeploymentCheckRunSourceChecksV21$inboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSourceChecksV22$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => UpdateDeploymentCheckRunSourceChecksV21$inboundSchema),
+      z.lazy(() => UpdateDeploymentCheckRunSourceChecksV22$inboundSchema),
+    ])
+  );
 
 export function updateDeploymentCheckRunResponseBodyChecksV2SourceFromJSON(
   jsonString: string,
@@ -692,48 +722,48 @@ export const UpdateDeploymentCheckRunResponseBody2$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  blocks: types.optional(
-    UpdateDeploymentCheckRunResponseBodyChecksV2Blocks$inboundSchema,
-  ),
-  completedAt: types.optional(types.number()),
-  conclusion: types.optional(
-    UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema,
-  ),
-  conclusionText: types.optional(types.string()),
-  createdAt: types.number(),
-  deploymentId: types.string(),
-  expectationRef: types.optional(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    blocks: types.optional(
+      UpdateDeploymentCheckRunResponseBodyChecksV2Blocks$inboundSchema,
+    ),
+    completedAt: types.optional(types.number()),
+    conclusion: types.optional(
+      UpdateDeploymentCheckRunResponseBodyChecksV2Conclusion$inboundSchema,
+    ),
+    conclusionText: types.optional(types.string()),
+    createdAt: types.number(),
+    deploymentId: types.string(),
+    expectationRef: types.optional(z.lazy(() =>
       UpdateDeploymentCheckRunResponseBodyChecksV2ExpectationRef$inboundSchema
+    )),
+    expectationRevision: types.optional(types.number()),
+    externalId: types.optional(types.string()),
+    externalUrl: types.optional(types.string()),
+    id: types.string(),
+    name: types.string(),
+    output: types.optional(z.record(z.any())),
+    ownerId: types.string(),
+    projectId: types.optional(types.string()),
+    requires: types.optional(
+      UpdateDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema,
     ),
-  ),
-  expectationRevision: types.optional(types.number()),
-  externalId: types.optional(types.string()),
-  externalUrl: types.optional(types.string()),
-  id: types.string(),
-  name: types.string(),
-  output: types.optional(z.record(z.any())),
-  ownerId: types.string(),
-  projectId: types.optional(types.string()),
-  requires: types.optional(
-    UpdateDeploymentCheckRunResponseBodyChecksV2Requires$inboundSchema,
-  ),
-  startedAt: types.optional(types.number()),
-  status: UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema,
-  targets: types.optional(z.array(types.string())),
-  taskSummary: types.optional(
-    z.lazy(() =>
+    startedAt: types.optional(types.number()),
+    status: UpdateDeploymentCheckRunResponseBodyChecksV2Status$inboundSchema,
+    targets: types.optional(z.array(types.string())),
+    taskSummary: types.optional(z.lazy(() =>
       UpdateDeploymentCheckRunResponseBodyChecksV2TaskSummary$inboundSchema
-    ),
-  ),
-  timeout: types.number(),
-  updatedAt: types.number(),
-  source: z.union([
-    z.lazy(() => UpdateDeploymentCheckRunSourceChecksV21$inboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSourceChecksV22$inboundSchema),
-  ]),
-});
+    )),
+    timeout: types.number(),
+    updatedAt: types.number(),
+    source: z.union([
+      z.lazy(() => UpdateDeploymentCheckRunSourceChecksV21$inboundSchema),
+      z.lazy(() =>
+        UpdateDeploymentCheckRunSourceChecksV22$inboundSchema
+      ),
+    ]),
+  })
+);
 
 export function updateDeploymentCheckRunResponseBody2FromJSON(
   jsonString: string,
@@ -748,13 +778,17 @@ export function updateDeploymentCheckRunResponseBody2FromJSON(
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyBlocks$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyBlocks> = z
-    .nativeEnum(UpdateDeploymentCheckRunResponseBodyBlocks);
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyBlocks> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunResponseBodyBlocks)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyConclusion$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyConclusion> = z
-    .nativeEnum(UpdateDeploymentCheckRunResponseBodyConclusion);
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyConclusion> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunResponseBodyConclusion)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyExpectationRef$inboundSchema:
@@ -762,12 +796,14 @@ export const UpdateDeploymentCheckRunResponseBodyExpectationRef$inboundSchema:
     UpdateDeploymentCheckRunResponseBodyExpectationRef,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    invocationAttempt: types.number(),
-    invocationId: types.string(),
-    jobDefinitionId: types.string(),
-    jobRunAttempt: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      invocationAttempt: types.number(),
+      invocationId: types.string(),
+      jobDefinitionId: types.string(),
+      jobRunAttempt: types.number(),
+    })
+  );
 
 export function updateDeploymentCheckRunResponseBodyExpectationRefFromJSON(
   jsonString: string,
@@ -787,13 +823,17 @@ export function updateDeploymentCheckRunResponseBodyExpectationRefFromJSON(
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyRequires> = z
-    .nativeEnum(UpdateDeploymentCheckRunResponseBodyRequires);
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyRequires> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunResponseBodyRequires)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyStatus> = z
-    .nativeEnum(UpdateDeploymentCheckRunResponseBodyStatus);
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunResponseBodyStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunResponseBodyStatus)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodyTaskSummary$inboundSchema:
@@ -801,12 +841,14 @@ export const UpdateDeploymentCheckRunResponseBodyTaskSummary$inboundSchema:
     UpdateDeploymentCheckRunResponseBodyTaskSummary,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    failed: types.number(),
-    pending: types.number(),
-    succeeded: types.number(),
-    total: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      failed: types.number(),
+      pending: types.number(),
+      succeeded: types.number(),
+      total: types.number(),
+    })
+  );
 
 export function updateDeploymentCheckRunResponseBodyTaskSummaryFromJSON(
   jsonString: string,
@@ -826,27 +868,32 @@ export function updateDeploymentCheckRunResponseBodyTaskSummaryFromJSON(
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Origin> = z
-    .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Origin);
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Origin> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Origin)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunSelectionJob$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSelectionJob> = z.nativeEnum(
-    UpdateDeploymentCheckRunSelectionJob,
-  );
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSelectionJob> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunSelectionJob)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunSelection3$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSelection3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  failIfNoMatch: types.optional(types.boolean()),
-  filters: z.array(types.string()),
-  job: UpdateDeploymentCheckRunSelectionJob$inboundSchema,
-  kind: types.literal("turborepo"),
-  task: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    failIfNoMatch: types.optional(types.boolean()),
+    filters: z.array(types.string()),
+    job: UpdateDeploymentCheckRunSelectionJob$inboundSchema,
+    kind: types.literal("turborepo"),
+    task: types.string(),
+  })
+);
 
 export function updateDeploymentCheckRunSelection3FromJSON(
   jsonString: string,
@@ -864,9 +911,11 @@ export const UpdateDeploymentCheckRunSelection2$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSelection2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: types.literal("deployment"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: types.literal("deployment"),
+  })
+);
 
 export function updateDeploymentCheckRunSelection2FromJSON(
   jsonString: string,
@@ -884,9 +933,11 @@ export const UpdateDeploymentCheckRunSelection1$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSelection1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: types.literal("invocation"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: types.literal("invocation"),
+  })
+);
 
 export function updateDeploymentCheckRunSelection1FromJSON(
   jsonString: string,
@@ -904,11 +955,13 @@ export const UpdateDeploymentCheckRunSourceSelection$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSourceSelection,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UpdateDeploymentCheckRunSelection1$inboundSchema),
-  z.lazy(() => UpdateDeploymentCheckRunSelection2$inboundSchema),
-  z.lazy(() => UpdateDeploymentCheckRunSelection3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UpdateDeploymentCheckRunSelection1$inboundSchema),
+    z.lazy(() => UpdateDeploymentCheckRunSelection2$inboundSchema),
+    z.lazy(() => UpdateDeploymentCheckRunSelection3$inboundSchema),
+  ])
+);
 
 export function updateDeploymentCheckRunSourceSelectionFromJSON(
   jsonString: string,
@@ -928,23 +981,27 @@ export function updateDeploymentCheckRunSourceSelectionFromJSON(
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV2SubKind$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2SubKind> = z
-    .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2SubKind);
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2SubKind> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2SubKind)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunSource5$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSource5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  origin: UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema,
-  selection: z.union([
-    z.lazy(() => UpdateDeploymentCheckRunSelection1$inboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSelection2$inboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSelection3$inboundSchema),
-  ]),
-  subKind: UpdateDeploymentCheckRunSourceChecksV2SubKind$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    origin: UpdateDeploymentCheckRunSourceChecksV2Origin$inboundSchema,
+    selection: z.union([
+      z.lazy(() => UpdateDeploymentCheckRunSelection1$inboundSchema),
+      z.lazy(() => UpdateDeploymentCheckRunSelection2$inboundSchema),
+      z.lazy(() => UpdateDeploymentCheckRunSelection3$inboundSchema),
+    ]),
+    subKind: UpdateDeploymentCheckRunSourceChecksV2SubKind$inboundSchema,
+  })
+);
 
 export function updateDeploymentCheckRunSource5FromJSON(
   jsonString: string,
@@ -958,25 +1015,31 @@ export function updateDeploymentCheckRunSource5FromJSON(
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceOrigin$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceOrigin> = z.nativeEnum(
-    UpdateDeploymentCheckRunSourceOrigin,
-  );
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceOrigin> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunSourceOrigin)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceSubKind$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceSubKind> = z.nativeEnum(
-    UpdateDeploymentCheckRunSourceSubKind,
-  );
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceSubKind> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunSourceSubKind)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunSource4$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSource4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  origin: types.optional(UpdateDeploymentCheckRunSourceOrigin$inboundSchema),
-  subKind: types.optional(UpdateDeploymentCheckRunSourceSubKind$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    origin: types.optional(UpdateDeploymentCheckRunSourceOrigin$inboundSchema),
+    subKind: types.optional(
+      UpdateDeploymentCheckRunSourceSubKind$inboundSchema,
+    ),
+  })
+);
 
 export function updateDeploymentCheckRunSource4FromJSON(
   jsonString: string,
@@ -990,25 +1053,30 @@ export function updateDeploymentCheckRunSource4FromJSON(
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV2ResponseKind$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2ResponseKind> = z
-    .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2ResponseKind);
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2ResponseKind> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2ResponseKind)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceProvider$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceProvider> = z.nativeEnum(
-    UpdateDeploymentCheckRunSourceProvider,
-  );
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceProvider> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunSourceProvider)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunSource3$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSource3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalCheckName: types.string(),
-  kind: UpdateDeploymentCheckRunSourceChecksV2ResponseKind$inboundSchema,
-  provider: UpdateDeploymentCheckRunSourceProvider$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalCheckName: types.string(),
+    kind: UpdateDeploymentCheckRunSourceChecksV2ResponseKind$inboundSchema,
+    provider: UpdateDeploymentCheckRunSourceProvider$inboundSchema,
+  })
+);
 
 export function updateDeploymentCheckRunSource3FromJSON(
   jsonString: string,
@@ -1022,18 +1090,22 @@ export function updateDeploymentCheckRunSource3FromJSON(
 
 /** @internal */
 export const UpdateDeploymentCheckRunSourceChecksV2Kind$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Kind> = z
-    .nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Kind);
+  z.ZodNativeEnum<typeof UpdateDeploymentCheckRunSourceChecksV2Kind> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateDeploymentCheckRunSourceChecksV2Kind)
+    );
 
 /** @internal */
 export const UpdateDeploymentCheckRunSource2$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSource2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  kind: UpdateDeploymentCheckRunSourceChecksV2Kind$inboundSchema,
-  webhookId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    kind: UpdateDeploymentCheckRunSourceChecksV2Kind$inboundSchema,
+    webhookId: types.optional(types.string()),
+  })
+);
 
 export function updateDeploymentCheckRunSource2FromJSON(
   jsonString: string,
@@ -1048,20 +1120,24 @@ export function updateDeploymentCheckRunSource2FromJSON(
 /** @internal */
 export const UpdateDeploymentCheckRunSourceKind$inboundSchema: z.ZodNativeEnum<
   typeof UpdateDeploymentCheckRunSourceKind
-> = z.nativeEnum(UpdateDeploymentCheckRunSourceKind);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateDeploymentCheckRunSourceKind)
+);
 
 /** @internal */
 export const UpdateDeploymentCheckRunSource1$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunSource1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  externalResourceId: types.optional(types.string()),
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  kind: UpdateDeploymentCheckRunSourceKind$inboundSchema,
-  resourceId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    externalResourceId: types.optional(types.string()),
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    kind: UpdateDeploymentCheckRunSourceKind$inboundSchema,
+    resourceId: types.optional(types.string()),
+  })
+);
 
 export function updateDeploymentCheckRunSource1FromJSON(
   jsonString: string,
@@ -1076,13 +1152,15 @@ export function updateDeploymentCheckRunSource1FromJSON(
 /** @internal */
 export const UpdateDeploymentCheckRunResponseBodySource$inboundSchema:
   z.ZodType<UpdateDeploymentCheckRunResponseBodySource, z.ZodTypeDef, unknown> =
-    smartUnion([
-      z.lazy(() => UpdateDeploymentCheckRunSource1$inboundSchema),
-      z.lazy(() => UpdateDeploymentCheckRunSource3$inboundSchema),
-      z.lazy(() => UpdateDeploymentCheckRunSource5$inboundSchema),
-      z.lazy(() => UpdateDeploymentCheckRunSource2$inboundSchema),
-      z.lazy(() => UpdateDeploymentCheckRunSource4$inboundSchema),
-    ]);
+    /* @__PURE__ */ lazySchema$(() =>
+      smartUnion([
+        z.lazy(() => UpdateDeploymentCheckRunSource1$inboundSchema),
+        z.lazy(() => UpdateDeploymentCheckRunSource3$inboundSchema),
+        z.lazy(() => UpdateDeploymentCheckRunSource5$inboundSchema),
+        z.lazy(() => UpdateDeploymentCheckRunSource2$inboundSchema),
+        z.lazy(() => UpdateDeploymentCheckRunSource4$inboundSchema),
+      ])
+    );
 
 export function updateDeploymentCheckRunResponseBodySourceFromJSON(
   jsonString: string,
@@ -1105,50 +1183,52 @@ export const UpdateDeploymentCheckRunResponseBody1$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  blocks: types.optional(
-    UpdateDeploymentCheckRunResponseBodyBlocks$inboundSchema,
-  ),
-  completedAt: types.optional(types.number()),
-  conclusion: types.optional(
-    UpdateDeploymentCheckRunResponseBodyConclusion$inboundSchema,
-  ),
-  conclusionText: types.optional(types.string()),
-  createdAt: types.number(),
-  deploymentId: types.string(),
-  expectationRef: types.optional(
-    z.lazy(() =>
-      UpdateDeploymentCheckRunResponseBodyExpectationRef$inboundSchema
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    blocks: types.optional(
+      UpdateDeploymentCheckRunResponseBodyBlocks$inboundSchema,
     ),
-  ),
-  expectationRevision: types.optional(types.number()),
-  externalId: types.optional(types.string()),
-  externalUrl: types.optional(types.string()),
-  id: types.string(),
-  name: types.string(),
-  output: types.optional(z.record(z.any())),
-  ownerId: types.string(),
-  projectId: types.optional(types.string()),
-  requires: types.optional(
-    UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema,
-  ),
-  startedAt: types.optional(types.number()),
-  status: UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema,
-  targets: types.optional(z.array(types.string())),
-  taskSummary: types.optional(
-    z.lazy(() => UpdateDeploymentCheckRunResponseBodyTaskSummary$inboundSchema),
-  ),
-  timeout: types.number(),
-  updatedAt: types.number(),
-  checkId: types.string(),
-  source: smartUnion([
-    z.lazy(() => UpdateDeploymentCheckRunSource1$inboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSource3$inboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSource5$inboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSource2$inboundSchema),
-    z.lazy(() => UpdateDeploymentCheckRunSource4$inboundSchema),
-  ]),
-});
+    completedAt: types.optional(types.number()),
+    conclusion: types.optional(
+      UpdateDeploymentCheckRunResponseBodyConclusion$inboundSchema,
+    ),
+    conclusionText: types.optional(types.string()),
+    createdAt: types.number(),
+    deploymentId: types.string(),
+    expectationRef: types.optional(z.lazy(() =>
+      UpdateDeploymentCheckRunResponseBodyExpectationRef$inboundSchema
+    )),
+    expectationRevision: types.optional(types.number()),
+    externalId: types.optional(types.string()),
+    externalUrl: types.optional(types.string()),
+    id: types.string(),
+    name: types.string(),
+    output: types.optional(z.record(z.any())),
+    ownerId: types.string(),
+    projectId: types.optional(types.string()),
+    requires: types.optional(
+      UpdateDeploymentCheckRunResponseBodyRequires$inboundSchema,
+    ),
+    startedAt: types.optional(types.number()),
+    status: UpdateDeploymentCheckRunResponseBodyStatus$inboundSchema,
+    targets: types.optional(z.array(types.string())),
+    taskSummary: types.optional(z.lazy(() =>
+      UpdateDeploymentCheckRunResponseBodyTaskSummary$inboundSchema
+    )),
+    timeout: types.number(),
+    updatedAt: types.number(),
+    checkId: types.string(),
+    source: smartUnion([
+      z.lazy(() => UpdateDeploymentCheckRunSource1$inboundSchema),
+      z.lazy(() =>
+        UpdateDeploymentCheckRunSource3$inboundSchema
+      ),
+      z.lazy(() => UpdateDeploymentCheckRunSource5$inboundSchema),
+      z.lazy(() => UpdateDeploymentCheckRunSource2$inboundSchema),
+      z.lazy(() => UpdateDeploymentCheckRunSource4$inboundSchema),
+    ]),
+  })
+);
 
 export function updateDeploymentCheckRunResponseBody1FromJSON(
   jsonString: string,
@@ -1166,10 +1246,12 @@ export const UpdateDeploymentCheckRunResponseBody$inboundSchema: z.ZodType<
   UpdateDeploymentCheckRunResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UpdateDeploymentCheckRunResponseBody1$inboundSchema),
-  z.lazy(() => UpdateDeploymentCheckRunResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateDeploymentCheckRunResponseBody1$inboundSchema),
+    z.lazy(() => UpdateDeploymentCheckRunResponseBody2$inboundSchema),
+  ])
+);
 
 export function updateDeploymentCheckRunResponseBodyFromJSON(
   jsonString: string,

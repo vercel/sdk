@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -53,11 +53,13 @@ export const GetDeploymentFeatureFlagsRequest$outboundSchema: z.ZodType<
   GetDeploymentFeatureFlagsRequest$Outbound,
   z.ZodTypeDef,
   GetDeploymentFeatureFlagsRequest
-> = z.object({
-  deploymentId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getDeploymentFeatureFlagsRequestToJSON(
   getDeploymentFeatureFlagsRequest: GetDeploymentFeatureFlagsRequest,
@@ -74,7 +76,7 @@ export const GetDeploymentFeatureFlagsFlags$inboundSchema: z.ZodType<
   GetDeploymentFeatureFlagsFlags,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getDeploymentFeatureFlagsFlagsFromJSON(
   jsonString: string,
@@ -91,13 +93,15 @@ export const GetDeploymentFeatureFlagsStatus$inboundSchema: z.ZodType<
   GetDeploymentFeatureFlagsStatus,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  deploymentId: types.string(),
-  flagCount: types.number(),
-  projectId: types.string(),
-  responseStatus: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    deploymentId: types.string(),
+    flagCount: types.number(),
+    projectId: types.string(),
+    responseStatus: types.number(),
+  })
+);
 
 export function getDeploymentFeatureFlagsStatusFromJSON(
   jsonString: string,
@@ -114,12 +118,14 @@ export const GetDeploymentFeatureFlagsResponseBody$inboundSchema: z.ZodType<
   GetDeploymentFeatureFlagsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  flags: z.array(z.lazy(() => GetDeploymentFeatureFlagsFlags$inboundSchema)),
-  status: types.nullable(
-    z.lazy(() => GetDeploymentFeatureFlagsStatus$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    flags: z.array(z.lazy(() => GetDeploymentFeatureFlagsFlags$inboundSchema)),
+    status: types.nullable(
+      z.lazy(() => GetDeploymentFeatureFlagsStatus$inboundSchema),
+    ),
+  })
+);
 
 export function getDeploymentFeatureFlagsResponseBodyFromJSON(
   jsonString: string,

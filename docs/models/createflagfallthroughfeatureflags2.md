@@ -6,22 +6,22 @@
 import { CreateFlagFallthroughFeatureFlags2 } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagFallthroughFeatureFlags2 = {
+  type: "<value>",
   base: {
-    attribute: "<value>",
+    type: "<value>",
     kind: "<value>",
-    type: "entity",
+    attribute: "<value>",
   },
-  defaultVariantId: "<id>",
-  type: "split",
   weights: {},
+  defaultVariantId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                              | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `base`                                                                                                             | [models.CreateFlagFallthroughFeatureFlagsResponseBase](../models/createflagfallthroughfeatureflagsresponsebase.md) | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `defaultVariantId`                                                                                                 | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `type`                                                                                                             | *"split"*                                                                                                          | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
-| `weights`                                                                                                          | Record<string, *number*>                                                                                           | :heavy_check_mark:                                                                                                 | N/A                                                                                                                |
+| Field                                                                                                            | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                           | *any*                                                                                                            | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `base`                                                                                                           | [models.CreateFlagFallthroughFeatureFlagsRequestBase](../models/createflagfallthroughfeatureflagsrequestbase.md) | :heavy_check_mark:                                                                                               | N/A                                                                                                              |
+| `weights`                                                                                                        | Record<string, *number*>                                                                                         | :heavy_check_mark:                                                                                               | The distribution for each variant                                                                                |
+| `defaultVariantId`                                                                                               | *string*                                                                                                         | :heavy_check_mark:                                                                                               | This variant will be used when the base attribute does not exist                                                 |

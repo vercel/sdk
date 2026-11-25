@@ -36,7 +36,7 @@ import { Result } from "../types/fp.js";
  * List AI Gateway budget defaults
  *
  * @remarks
- * List the team's AI Gateway budget defaults as a flat per-scope list (one row per team/project/api-key/user scope with a default set). An empty list is a normal state for the dashboard.
+ * List the team's AI Gateway budget defaults as a flat per-scope list (one row per team/project/api-key/user/app scope with a default set). An empty list is a normal state for the dashboard.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

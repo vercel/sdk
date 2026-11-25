@@ -5,35 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFortyNine } from "@vercel/sdk/models/newprojects.js";
+import { TwoHundredAndFortyNine } from "@vercel/sdk/models/newenvvar.js";
 
 let value: TwoHundredAndFortyNine = {
-  directoryGroupId: "<id>",
-  directoryId: "<id>",
-  groupName: "<value>",
-  next: {
-    organizationPermissions: [
-      "OrgAdmin",
-    ],
-    teamRoles: [
-      "BILLING",
-    ],
-    teams: {
-      "key": {
-        teamRoles: [],
-      },
-    },
-  },
   organizationId: "<id>",
+  organizationSlug: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| `directoryGroupId`                                               | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `directoryId`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `groupName`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
-| `next`                                                           | [models.UserEventPayloadNext](../models/usereventpayloadnext.md) | :heavy_check_mark:                                               | N/A                                                              |
-| `organizationId`                                                 | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |

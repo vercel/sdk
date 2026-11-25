@@ -8,9 +8,8 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
-import { pathToFunc } from "../lib/url.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -34,7 +33,7 @@ import { Result } from "../types/fp.js";
  * Update Organization Team Directory Sync Mode
  *
  * @remarks
- * Select whether one Organization team's memberships are governed by the Organization's Directory Sync or by the team's own directory. The team's own directory connection is kept either way. The root team can follow the Organization's Directory Sync only when no group grants OrgAdmin or at least one OrgAdmin group also grants the Owner role on it.
+ * Select whether one Organization team's memberships are governed by the Organization's Directory Sync or by the team's own directory. The team's own directory connection is kept either way. The root team can follow the Organization's Directory Sync only when no group grants OrgAdmin or at least one OrgAdmin group also grants the Owner role on it. A change of the root team that would leave it without an owner, or take the Owner role on it from the acting admin, is refused with `organization_lockout` unless `overrideLockout` is set.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -103,9 +102,14 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc(
+  const pathResult = encodePath(
     "/v1/organizations/{organizationId}/teams/{targetTeamId}/dsync",
-  )(pathParams);
+    pathParams,
+  );
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const query = encodeFormQuery({
     "slug": payload.slug,
@@ -176,7 +180,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, PutOrganizationTeamDsyncResponseBody$inboundSchema),
-    M.fail([400, 401, 403, 404, 410, "4XX"]),
+    M.fail([400, 401, 403, 404, 409, 410, 412, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

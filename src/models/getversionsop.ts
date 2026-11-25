@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -69,11 +69,13 @@ export const GetVersionsRequest$outboundSchema: z.ZodType<
   GetVersionsRequest$Outbound,
   z.ZodTypeDef,
   GetVersionsRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getVersionsRequestToJSON(
   getVersionsRequest: GetVersionsRequest,
@@ -88,17 +90,19 @@ export const Versions$inboundSchema: z.ZodType<
   Versions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  key: types.string(),
-  lastModified: types.number(),
-  name: types.optional(types.string()),
-  redirectCount: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    key: types.string(),
+    lastModified: types.number(),
+    name: types.optional(types.string()),
+    redirectCount: types.optional(types.number()),
+  })
+);
 
 export function versionsFromJSON(
   jsonString: string,
@@ -115,9 +119,11 @@ export const GetVersionsResponseBody$inboundSchema: z.ZodType<
   GetVersionsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  versions: z.array(z.lazy(() => Versions$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    versions: z.array(z.lazy(() => Versions$inboundSchema)),
+  })
+);
 
 export function getVersionsResponseBodyFromJSON(
   jsonString: string,

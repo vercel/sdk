@@ -3,6 +3,8 @@
  */
 
 import * as z from "zod/v3";
+import { matchesPattern as matchesPattern$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type GetEdgeConfigItemRequest = {
   edgeConfigId: string;
@@ -30,12 +32,16 @@ export const GetEdgeConfigItemRequest$outboundSchema: z.ZodType<
   GetEdgeConfigItemRequest$Outbound,
   z.ZodTypeDef,
   GetEdgeConfigItemRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  edgeConfigItemKey: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string().refine(matchesPattern$("^ecfg_"), {
+      message: "Value must match pattern ^ecfg_",
+    }),
+    edgeConfigItemKey: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getEdgeConfigItemRequestToJSON(
   getEdgeConfigItemRequest: GetEdgeConfigItemRequest,

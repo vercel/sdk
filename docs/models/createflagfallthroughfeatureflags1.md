@@ -6,7 +6,7 @@
 import { CreateFlagFallthroughFeatureFlags1 } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagFallthroughFeatureFlags1 = {
-  type: "variant",
+  type: "<value>",
   variantId: "<id>",
 };
 ```
@@ -15,5 +15,5 @@ let value: CreateFlagFallthroughFeatureFlags1 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"variant"*        | :heavy_check_mark: | N/A                |
+| `type`             | *any*              | :heavy_check_mark: | N/A                |
 | `variantId`        | *string*           | :heavy_check_mark: | N/A                |

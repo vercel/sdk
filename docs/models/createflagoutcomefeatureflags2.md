@@ -6,26 +6,26 @@
 import { CreateFlagOutcomeFeatureFlags2 } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagOutcomeFeatureFlags2 = {
+  type: "<value>",
   base: {
-    attribute: "<value>",
+    type: "<value>",
     kind: "<value>",
-    type: "entity",
+    attribute: "<value>",
   },
-  defaultVariantId: "<id>",
-  type: "split",
   weights: {
     "key": 5089.47,
     "key1": 1603.89,
     "key2": 3072.65,
   },
+  defaultVariantId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                                      | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
-| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `base`                                                                                                     | [models.CreateFlagOutcomeFeatureFlagsResponseBase](../models/createflagoutcomefeatureflagsresponsebase.md) | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
-| `defaultVariantId`                                                                                         | *string*                                                                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
-| `type`                                                                                                     | *"split"*                                                                                                  | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
-| `weights`                                                                                                  | Record<string, *number*>                                                                                   | :heavy_check_mark:                                                                                         | N/A                                                                                                        |
+| Field                                                                                                    | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `type`                                                                                                   | *any*                                                                                                    | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `base`                                                                                                   | [models.CreateFlagOutcomeFeatureFlagsRequestBase](../models/createflagoutcomefeatureflagsrequestbase.md) | :heavy_check_mark:                                                                                       | N/A                                                                                                      |
+| `weights`                                                                                                | Record<string, *number*>                                                                                 | :heavy_check_mark:                                                                                       | The distribution for each variant                                                                        |
+| `defaultVariantId`                                                                                       | *string*                                                                                                 | :heavy_check_mark:                                                                                       | This variant will be used when the base attribute does not exist                                         |

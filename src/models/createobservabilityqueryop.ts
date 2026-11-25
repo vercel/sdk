@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -93,7 +93,7 @@ export const CreateObservabilityQueryScope$outboundSchema: z.ZodType<
   CreateObservabilityQueryScope$Outbound,
   z.ZodTypeDef,
   CreateObservabilityQueryScope
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function createObservabilityQueryScopeToJSON(
   createObservabilityQueryScope: CreateObservabilityQueryScope,
@@ -108,7 +108,7 @@ export function createObservabilityQueryScopeToJSON(
 /** @internal */
 export const OrderDirection$outboundSchema: z.ZodNativeEnum<
   typeof OrderDirection
-> = z.nativeEnum(OrderDirection);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OrderDirection));
 
 /** @internal */
 export type Granularity$Outbound = {};
@@ -118,7 +118,7 @@ export const Granularity$outboundSchema: z.ZodType<
   Granularity$Outbound,
   z.ZodTypeDef,
   Granularity
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function granularityToJSON(granularity: Granularity): string {
   return JSON.stringify(Granularity$outboundSchema.parse(granularity));
@@ -146,28 +146,30 @@ export const CreateObservabilityQueryRequestBody$outboundSchema: z.ZodType<
   CreateObservabilityQueryRequestBody$Outbound,
   z.ZodTypeDef,
   CreateObservabilityQueryRequestBody
-> = z.object({
-  metric: z.string(),
-  scope: z.lazy(() => CreateObservabilityQueryScope$outboundSchema),
-  aggregation: z.string().optional(),
-  groupBy: z.array(z.string()).optional(),
-  filter: z.string().optional(),
-  limit: z.number().optional(),
-  orderBy: z.string().optional(),
-  orderDirection: OrderDirection$outboundSchema.optional(),
-  granularity: z.lazy(() => Granularity$outboundSchema).optional(),
-  startTime: z.string().optional(),
-  endTime: z.string().optional(),
-  bucketTimezone: z.string().optional(),
-  additionalProperties: z.record(z.any()).optional(),
-}).transform((v) => {
-  return {
-    ...v.additionalProperties,
-    ...remap$(v, {
-      additionalProperties: null,
-    }),
-  };
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    metric: z.string(),
+    scope: z.lazy(() => CreateObservabilityQueryScope$outboundSchema),
+    aggregation: z.string().optional(),
+    groupBy: z.array(z.string()).optional(),
+    filter: z.string().optional(),
+    limit: z.number().optional(),
+    orderBy: z.string().optional(),
+    orderDirection: OrderDirection$outboundSchema.optional(),
+    granularity: z.lazy(() => Granularity$outboundSchema).optional(),
+    startTime: z.string().optional(),
+    endTime: z.string().optional(),
+    bucketTimezone: z.string().optional(),
+    additionalProperties: z.record(z.any()).optional(),
+  }).transform((v) => {
+    return {
+      ...v.additionalProperties,
+      ...remap$(v, {
+        additionalProperties: null,
+      }),
+    };
+  })
+);
 
 export function createObservabilityQueryRequestBodyToJSON(
   createObservabilityQueryRequestBody: CreateObservabilityQueryRequestBody,
@@ -184,7 +186,7 @@ export const CreateObservabilityQueryResponseBody$inboundSchema: z.ZodType<
   CreateObservabilityQueryResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function createObservabilityQueryResponseBodyFromJSON(
   jsonString: string,

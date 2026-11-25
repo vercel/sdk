@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UpdateDiff } from "@vercel/sdk/models/usereventjobpayloaddeployhook.js";
+import { UpdateDiff } from "@vercel/sdk/models/jobproject.js";
 
 let value: UpdateDiff = {
   changedValue: false,
@@ -17,6 +17,7 @@ let value: UpdateDiff = {
 | `changedComment`                                                    | *boolean*                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `changedGitBranch`                                                  | *boolean*                                                           | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `changedValue`                                                      | *boolean*                                                           | :heavy_check_mark:                                                  | Indicates a value was submitted, not whether its plaintext changed. |
+| `customEnvironmentSlugsById`                                        | Record<string, *string*>                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `key`                                                               | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `newCustomEnvironmentIds`                                           | *string*[]                                                          | :heavy_minus_sign:                                                  | N/A                                                                 |
 | `newKey`                                                            | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |

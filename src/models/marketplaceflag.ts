@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -40,36 +40,38 @@ export type MarketplaceFlag = {
 };
 
 /** @internal */
-export const Category$inboundSchema: z.ZodNativeEnum<typeof Category> = z
-  .nativeEnum(Category);
+export const Category$inboundSchema: z.ZodNativeEnum<typeof Category> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Category));
 
 /** @internal */
 export const MarketplaceFlagState$inboundSchema: z.ZodNativeEnum<
   typeof MarketplaceFlagState
-> = z.nativeEnum(MarketplaceFlagState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(MarketplaceFlagState));
 
 /** @internal */
 export const MarketplaceFlag$inboundSchema: z.ZodType<
   MarketplaceFlag,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  category: types.optional(Category$inboundSchema),
-  createdAt: types.optional(types.number()),
-  description: types.optional(types.string()),
-  externalId: types.string(),
-  id: types.string(),
-  integrationConfigurationId: types.string(),
-  name: types.optional(types.string()),
-  origin: types.string(),
-  ownerId: types.string(),
-  projectId: types.string(),
-  resourceId: types.string(),
-  slug: types.string(),
-  state: MarketplaceFlagState$inboundSchema,
-  typeName: types.literal("marketplaceFlag"),
-  updatedAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    category: types.optional(Category$inboundSchema),
+    createdAt: types.optional(types.number()),
+    description: types.optional(types.string()),
+    externalId: types.string(),
+    id: types.string(),
+    integrationConfigurationId: types.string(),
+    name: types.optional(types.string()),
+    origin: types.string(),
+    ownerId: types.string(),
+    projectId: types.string(),
+    resourceId: types.string(),
+    slug: types.string(),
+    state: MarketplaceFlagState$inboundSchema,
+    typeName: types.literal("marketplaceFlag"),
+    updatedAt: types.optional(types.number()),
+  })
+);
 
 export function marketplaceFlagFromJSON(
   jsonString: string,

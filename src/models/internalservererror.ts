@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -44,25 +45,27 @@ export class InternalServerError extends VercelError {
 /** @internal */
 export const InternalServerErrorCode$inboundSchema: z.ZodNativeEnum<
   typeof InternalServerErrorCode
-> = z.nativeEnum(InternalServerErrorCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(InternalServerErrorCode));
 
 /** @internal */
 export const InternalServerError$inboundSchema: z.ZodType<
   InternalServerError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: InternalServerErrorCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new InternalServerError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: InternalServerErrorCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new InternalServerError(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

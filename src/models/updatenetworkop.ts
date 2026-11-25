@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type UpdateNetworkRequestBody = {
   /**
@@ -38,9 +39,11 @@ export const UpdateNetworkRequestBody$outboundSchema: z.ZodType<
   UpdateNetworkRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateNetworkRequestBody
-> = z.object({
-  name: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string(),
+  })
+);
 
 export function updateNetworkRequestBodyToJSON(
   updateNetworkRequestBody: UpdateNetworkRequestBody,
@@ -63,16 +66,19 @@ export const UpdateNetworkRequest$outboundSchema: z.ZodType<
   UpdateNetworkRequest$Outbound,
   z.ZodTypeDef,
   UpdateNetworkRequest
-> = z.object({
-  networkId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateNetworkRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    networkId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateNetworkRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateNetworkRequestToJSON(
   updateNetworkRequest: UpdateNetworkRequest,

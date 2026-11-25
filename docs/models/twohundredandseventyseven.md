@@ -5,34 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndSeventySeven } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
 let value: TwoHundredAndSeventySeven = {
-  connectorId: "<id>",
-  connectorService: "<value>",
-  connectorType: "<value>",
-  environment: "<value>",
-  externalIssuer: "<value>",
-  externalSubject: "<value>",
-  host: "electric-tooth.org",
   projectId: "<id>",
-  sessionId: "<id>",
+  resourceUrl: "https://usable-swine.net/",
+  type: "script",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `connectorId`      | *string*           | :heavy_check_mark: | N/A                |
-| `connectorService` | *string*           | :heavy_check_mark: | N/A                |
-| `connectorType`    | *string*           | :heavy_check_mark: | N/A                |
-| `emailVerified`    | *boolean*          | :heavy_minus_sign: | N/A                |
-| `environment`      | *string*           | :heavy_check_mark: | N/A                |
-| `externalIssuer`   | *string*           | :heavy_check_mark: | N/A                |
-| `externalSubject`  | *string*           | :heavy_check_mark: | N/A                |
-| `host`             | *string*           | :heavy_check_mark: | N/A                |
-| `installationId`   | *string*           | :heavy_minus_sign: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `sessionId`        | *string*           | :heavy_check_mark: | N/A                |
-| `tenantId`         | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                            | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `projectId`                                                      | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `resourceUrl`                                                    | *string*                                                         | :heavy_check_mark:                                               | N/A                                                              |
+| `type`                                                           | [models.UserEventPayloadType](../models/usereventpayloadtype.md) | :heavy_check_mark:                                               | N/A                                                              |

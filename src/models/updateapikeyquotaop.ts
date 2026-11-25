@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -221,7 +221,9 @@ export type UpdateApiKeyQuotaResponseBody = {
 /** @internal */
 export const UpdateApiKeyQuotaRefreshPeriod$outboundSchema: z.ZodNativeEnum<
   typeof UpdateApiKeyQuotaRefreshPeriod
-> = z.nativeEnum(UpdateApiKeyQuotaRefreshPeriod);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateApiKeyQuotaRefreshPeriod)
+);
 
 /** @internal */
 export type UpdateApiKeyQuotaRequestBody$Outbound = {
@@ -239,15 +241,17 @@ export const UpdateApiKeyQuotaRequestBody$outboundSchema: z.ZodType<
   UpdateApiKeyQuotaRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateApiKeyQuotaRequestBody
-> = z.object({
-  limitAmount: z.number().optional(),
-  includeByokInQuota: z.boolean().optional(),
-  refreshPeriod: UpdateApiKeyQuotaRefreshPeriod$outboundSchema.optional(),
-  active: z.boolean().optional(),
-  archived: z.boolean().optional(),
-  alertThresholds: z.array(z.number()).optional(),
-  justification: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    limitAmount: z.number().optional(),
+    includeByokInQuota: z.boolean().optional(),
+    refreshPeriod: UpdateApiKeyQuotaRefreshPeriod$outboundSchema.optional(),
+    active: z.boolean().optional(),
+    archived: z.boolean().optional(),
+    alertThresholds: z.array(z.number()).optional(),
+    justification: z.string().optional(),
+  })
+);
 
 export function updateApiKeyQuotaRequestBodyToJSON(
   updateApiKeyQuotaRequestBody: UpdateApiKeyQuotaRequestBody,
@@ -270,15 +274,17 @@ export const UpdateApiKeyQuotaRequest$outboundSchema: z.ZodType<
   UpdateApiKeyQuotaRequest$Outbound,
   z.ZodTypeDef,
   UpdateApiKeyQuotaRequest
-> = z.object({
-  apiKeyID: z.string(),
-  requestBody: z.lazy(() => UpdateApiKeyQuotaRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiKeyID: z.string(),
+    requestBody: z.lazy(() => UpdateApiKeyQuotaRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateApiKeyQuotaRequestToJSON(
   updateApiKeyQuotaRequest: UpdateApiKeyQuotaRequest,
@@ -291,10 +297,12 @@ export function updateApiKeyQuotaRequestToJSON(
 /** @internal */
 export const UpdateApiKeyQuotaAiGatewayResponse500Error$inboundSchema:
   z.ZodType<UpdateApiKeyQuotaAiGatewayResponse500Error, z.ZodTypeDef, unknown> =
-    z.object({
-      code: types.string(),
-      message: types.string(),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        code: types.string(),
+        message: types.string(),
+      })
+    );
 
 export function updateApiKeyQuotaAiGatewayResponse500ErrorFromJSON(
   jsonString: string,
@@ -318,33 +326,37 @@ export const UpdateApiKeyQuotaAiGatewayResponse500ResponseBody$inboundSchema:
     UpdateApiKeyQuotaAiGatewayResponse500ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      UpdateApiKeyQuotaAiGatewayResponse500Error$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new UpdateApiKeyQuotaAiGatewayResponse500ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        UpdateApiKeyQuotaAiGatewayResponse500Error$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new UpdateApiKeyQuotaAiGatewayResponse500ResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const UpdateApiKeyQuotaAiGatewayResponseError$inboundSchema: z.ZodType<
   UpdateApiKeyQuotaAiGatewayResponseError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  name: types.string(),
-  message: types.string(),
-  limit: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    name: types.string(),
+    message: types.string(),
+    limit: types.number(),
+  })
+);
 
 export function updateApiKeyQuotaAiGatewayResponseErrorFromJSON(
   jsonString: string,
@@ -368,29 +380,35 @@ export const UpdateApiKeyQuotaAiGatewayResponse429ResponseBody$inboundSchema:
     UpdateApiKeyQuotaAiGatewayResponse429ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() => UpdateApiKeyQuotaAiGatewayResponseError$inboundSchema),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new UpdateApiKeyQuotaAiGatewayResponse429ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        UpdateApiKeyQuotaAiGatewayResponseError$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new UpdateApiKeyQuotaAiGatewayResponse429ResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const UpdateApiKeyQuotaAiGatewayError$inboundSchema: z.ZodType<
   UpdateApiKeyQuotaAiGatewayError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function updateApiKeyQuotaAiGatewayErrorFromJSON(
   jsonString: string,
@@ -408,29 +426,33 @@ export const UpdateApiKeyQuotaAiGatewayResponseResponseBody$inboundSchema:
     UpdateApiKeyQuotaAiGatewayResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() => UpdateApiKeyQuotaAiGatewayError$inboundSchema),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new UpdateApiKeyQuotaAiGatewayResponseResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() => UpdateApiKeyQuotaAiGatewayError$inboundSchema),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new UpdateApiKeyQuotaAiGatewayResponseResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const UpdateApiKeyQuotaError$inboundSchema: z.ZodType<
   UpdateApiKeyQuotaError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function updateApiKeyQuotaErrorFromJSON(
   jsonString: string,
@@ -447,29 +469,33 @@ export const UpdateApiKeyQuotaAiGatewayResponseBody$inboundSchema: z.ZodType<
   UpdateApiKeyQuotaAiGatewayResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => UpdateApiKeyQuotaError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new UpdateApiKeyQuotaAiGatewayResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => UpdateApiKeyQuotaError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new UpdateApiKeyQuotaAiGatewayResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export const UpdateApiKeyQuotaResponseBody$inboundSchema: z.ZodType<
   UpdateApiKeyQuotaResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apiKey: APIKey$inboundSchema,
-  quota: APIKeyQuota$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apiKey: APIKey$inboundSchema,
+    quota: APIKeyQuota$inboundSchema,
+  })
+);
 
 export function updateApiKeyQuotaResponseBodyFromJSON(
   jsonString: string,

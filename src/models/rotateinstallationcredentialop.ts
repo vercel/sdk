@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -43,15 +43,17 @@ export const RotateInstallationCredentialRequestBody$outboundSchema: z.ZodType<
   RotateInstallationCredentialRequestBody$Outbound,
   z.ZodTypeDef,
   RotateInstallationCredentialRequestBody
-> = z.object({
-  clientSecret: z.string(),
-  clientId: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    clientSecret: "client_secret",
-    clientId: "client_id",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientSecret: z.string(),
+    clientId: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      clientSecret: "client_secret",
+      clientId: "client_id",
+    });
+  })
+);
 
 export function rotateInstallationCredentialRequestBodyToJSON(
   rotateInstallationCredentialRequestBody:
@@ -75,16 +77,18 @@ export const RotateInstallationCredentialRequest$outboundSchema: z.ZodType<
   RotateInstallationCredentialRequest$Outbound,
   z.ZodTypeDef,
   RotateInstallationCredentialRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  requestBody: z.lazy(() =>
-    RotateInstallationCredentialRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    requestBody: z.lazy(() =>
+      RotateInstallationCredentialRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function rotateInstallationCredentialRequestToJSON(
   rotateInstallationCredentialRequest: RotateInstallationCredentialRequest,
@@ -97,26 +101,28 @@ export function rotateInstallationCredentialRequestToJSON(
 }
 
 /** @internal */
-export const TokenType$inboundSchema: z.ZodNativeEnum<typeof TokenType> = z
-  .nativeEnum(TokenType);
+export const TokenType$inboundSchema: z.ZodNativeEnum<typeof TokenType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(TokenType));
 
 /** @internal */
 export const RotateInstallationCredentialResponseBody$inboundSchema: z.ZodType<
   RotateInstallationCredentialResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  access_token: types.string(),
-  expires_in: types.number(),
-  scope: types.string(),
-  token_type: TokenType$inboundSchema,
-}).transform((v) => {
-  return remap$(v, {
-    "access_token": "accessToken",
-    "expires_in": "expiresIn",
-    "token_type": "tokenType",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    access_token: types.string(),
+    expires_in: types.number(),
+    scope: types.string(),
+    token_type: TokenType$inboundSchema,
+  }).transform((v) => {
+    return remap$(v, {
+      "access_token": "accessToken",
+      "expires_in": "expiresIn",
+      "token_type": "tokenType",
+    });
+  })
+);
 
 export function rotateInstallationCredentialResponseBodyFromJSON(
   jsonString: string,

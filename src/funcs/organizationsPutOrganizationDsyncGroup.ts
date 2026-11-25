@@ -8,9 +8,8 @@ import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
 import { compactMap } from "../lib/primitives.js";
 import { safeParse } from "../lib/schemas.js";
-import { RequestOptions } from "../lib/sdks.js";
+import { encodePath, RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
-import { pathToFunc } from "../lib/url.js";
 import {
   ConnectionError,
   InvalidRequestError,
@@ -36,7 +35,7 @@ import { Result } from "../types/fp.js";
  * Create or Replace Organization Directory Sync Group Configuration
  *
  * @remarks
- * Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin. A group that grants OrgAdmin must also grant the Owner role on the organization's root team, as its default role or for that team.
+ * Create or replace one organization's Directory Sync group configuration. The directory starts syncing when at least one group grants OrgAdmin. A group that grants OrgAdmin must also grant the Owner role on the organization's root team, as its default role or for that team. A save that would leave the root team without an owner, or take the Owner role on it from the acting admin, is refused with `organization_lockout` unless `overrideLockout` is set.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */
@@ -105,9 +104,14 @@ async function $do(
       charEncoding: "percent",
     }),
   };
-  const path = pathToFunc(
+  const pathResult = encodePath(
     "/v1/organizations/{organizationId}/dsync/groups/{groupId}",
-  )(pathParams);
+    pathParams,
+  );
+  if (!pathResult.ok) {
+    return [pathResult, { status: "invalid" }];
+  }
+  const path = pathResult.value;
 
   const query = encodeFormQuery({
     "slug": payload.slug,
@@ -186,7 +190,7 @@ async function $do(
     | SDKValidationError
   >(
     M.json(200, OrganizationDirectorySyncGroup$inboundSchema),
-    M.fail([400, 401, 403, 404, 410, 412, 428, "4XX"]),
+    M.fail([400, 401, 403, 404, 409, 410, 412, 428, "4XX"]),
     M.fail("5XX"),
   )(response, req);
   if (!result.ok) {

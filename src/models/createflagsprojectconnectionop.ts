@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -51,9 +51,11 @@ export const CreateFlagsProjectConnectionRequestBody$outboundSchema: z.ZodType<
   CreateFlagsProjectConnectionRequestBody$Outbound,
   z.ZodTypeDef,
   CreateFlagsProjectConnectionRequestBody
-> = z.object({
-  consumerProjectId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    consumerProjectId: z.string(),
+  })
+);
 
 export function createFlagsProjectConnectionRequestBodyToJSON(
   createFlagsProjectConnectionRequestBody:
@@ -79,18 +81,20 @@ export const CreateFlagsProjectConnectionRequest$outboundSchema: z.ZodType<
   CreateFlagsProjectConnectionRequest$Outbound,
   z.ZodTypeDef,
   CreateFlagsProjectConnectionRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    CreateFlagsProjectConnectionRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      CreateFlagsProjectConnectionRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createFlagsProjectConnectionRequestToJSON(
   createFlagsProjectConnectionRequest: CreateFlagsProjectConnectionRequest,
@@ -107,14 +111,16 @@ export const CreateFlagsProjectConnectionResponseBody$inboundSchema: z.ZodType<
   CreateFlagsProjectConnectionResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  consumerProjectId: types.string(),
-  consumerProjectName: types.string(),
-  createdAt: types.number(),
-  createdBy: types.string(),
-  sourceProjectId: types.string(),
-  sourceProjectName: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    consumerProjectId: types.string(),
+    consumerProjectName: types.string(),
+    createdAt: types.number(),
+    createdBy: types.string(),
+    sourceProjectId: types.string(),
+    sourceProjectName: types.string(),
+  })
+);
 
 export function createFlagsProjectConnectionResponseBodyFromJSON(
   jsonString: string,

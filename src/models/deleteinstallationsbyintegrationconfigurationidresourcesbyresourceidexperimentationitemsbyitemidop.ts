@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest =
   {
@@ -25,11 +26,13 @@ export const DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceI
     DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest$Outbound,
     z.ZodTypeDef,
     DeleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest
-  > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
-    itemId: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integrationConfigurationId: z.string(),
+      resourceId: z.string(),
+      itemId: z.string(),
+    })
+  );
 
 export function deleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequestToJSON(
   deleteInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationItemsByItemIdRequest:

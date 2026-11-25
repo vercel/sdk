@@ -6,26 +6,28 @@
 import { CreateFlagFeatureFlagsRules } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagFeatureFlagsRules = {
+  id: "<id>",
   conditions: [
     {
-      cmp: "oneOf",
       lhs: {
-        type: "segment",
+        type: "<value>",
+        kind: "<value>",
+        attribute: "<value>",
       },
+      cmp: "endsWith",
     },
   ],
-  id: "<id>",
   outcome: {
+    type: "<value>",
     base: {
-      attribute: "<value>",
+      type: "<value>",
       kind: "<value>",
-      type: "entity",
+      attribute: "<value>",
     },
-    defaultVariantId: "<id>",
-    type: "split",
     weights: {
       "key": 2436.94,
     },
+    defaultVariantId: "<id>",
   },
 };
 ```
@@ -34,6 +36,6 @@ let value: CreateFlagFeatureFlagsRules = {
 
 | Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `conditions`                                                                               | [models.CreateFlagFeatureFlagsConditions](../models/createflagfeatureflagsconditions.md)[] | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `id`                                                                                       | *string*                                                                                   | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `conditions`                                                                               | [models.CreateFlagFeatureFlagsConditions](../models/createflagfeatureflagsconditions.md)[] | :heavy_check_mark:                                                                         | N/A                                                                                        |
 | `outcome`                                                                                  | *models.CreateFlagFeatureFlagsOutcome*                                                     | :heavy_check_mark:                                                                         | N/A                                                                                        |

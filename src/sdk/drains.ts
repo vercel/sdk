@@ -34,7 +34,7 @@ export class Drains extends ClientSDK {
    * Create a new Drain
    *
    * @remarks
-   * Create a new Drain with the provided configuration.
+   * Create a new Drain with the provided configuration. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
    */
   async createDrain(
     request: CreateDrainRequest,
@@ -51,7 +51,7 @@ export class Drains extends ClientSDK {
    * Retrieve a list of all Drains
    *
    * @remarks
-   * Allows to retrieve the list of Drains of the authenticated team.
+   * Allows to retrieve the list of Drains of the authenticated team. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
    */
   async getDrains(
     request: GetDrainsRequest,
@@ -85,7 +85,7 @@ export class Drains extends ClientSDK {
    * Find a Drain by id
    *
    * @remarks
-   * Get the information for a specific Drain by passing the drain id in the URL.
+   * Get the information for a specific Drain by passing the drain id in the URL. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
    */
   async getDrain(
     request: GetDrainRequest,
@@ -102,7 +102,7 @@ export class Drains extends ClientSDK {
    * Update an existing Drain
    *
    * @remarks
-   * Update the configuration of an existing drain.
+   * Update the configuration of an existing drain. A `delivery` with masked values is rejected, and only a drain connected to a Marketplace store can take its delivery from it. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
    */
   async updateDrain(
     request: UpdateDrainRequest,

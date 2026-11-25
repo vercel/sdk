@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { NamedSandbox, NamedSandbox$inboundSchema } from "./namedsandbox.js";
@@ -64,13 +68,19 @@ export const GetNamedSandboxRequest$outboundSchema: z.ZodType<
   GetNamedSandboxRequest$Outbound,
   z.ZodTypeDef,
   GetNamedSandboxRequest
-> = z.object({
-  name: z.string(),
-  projectId: z.string().optional(),
-  resume: z.boolean().default(false),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().refine(withinMaxLength$(128), {
+      message: "Value must be at most 128 characters long",
+    }).refine(matchesPattern$("^[a-zA-Z0-9_-]+$", 128), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }),
+    projectId: z.string().optional(),
+    resume: z.boolean().default(false),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getNamedSandboxRequestToJSON(
   getNamedSandboxRequest: GetNamedSandboxRequest,
@@ -85,12 +95,14 @@ export const GetNamedSandboxResponseBody$inboundSchema: z.ZodType<
   GetNamedSandboxResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  resumed: types.boolean(),
-  routes: z.array(SandboxPublicRoute$inboundSchema),
-  sandbox: NamedSandbox$inboundSchema,
-  session: Session$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    resumed: types.boolean(),
+    routes: z.array(SandboxPublicRoute$inboundSchema),
+    sandbox: NamedSandbox$inboundSchema,
+    session: Session$inboundSchema,
+  })
+);
 
 export function getNamedSandboxResponseBodyFromJSON(
   jsonString: string,

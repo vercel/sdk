@@ -5,12 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyThree } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndSixtyThree } from "@vercel/sdk/models/newenvvar.js";
 
 let value: TwoHundredAndSixtyThree = {
-  cause: "<value>",
-  ownerId: "<id>",
-  source: "<value>",
+  connectionType: "<value>",
+  enforced: false,
+  organizationId: "<id>",
+  organizationSlug: "<value>",
+  sourceTeamId: "<id>",
+  sourceTeamName: "<value>",
 };
 ```
 
@@ -18,7 +21,9 @@ let value: TwoHundredAndSixtyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| `connectionType`   | *string*           | :heavy_check_mark: | N/A                |
+| `enforced`         | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
+| `sourceTeamId`     | *string*           | :heavy_check_mark: | N/A                |
+| `sourceTeamName`   | *string*           | :heavy_check_mark: | N/A                |

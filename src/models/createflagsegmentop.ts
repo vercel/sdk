@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -392,11 +392,13 @@ export const CreateFlagSegmentLhs2$outboundSchema: z.ZodType<
   CreateFlagSegmentLhs2$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentLhs2
-> = z.object({
-  type: z.any().optional(),
-  kind: z.string(),
-  attribute: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    kind: z.string(),
+    attribute: z.string(),
+  })
+);
 
 export function createFlagSegmentLhs2ToJSON(
   createFlagSegmentLhs2: CreateFlagSegmentLhs2,
@@ -416,9 +418,11 @@ export const CreateFlagSegmentLhs1$outboundSchema: z.ZodType<
   CreateFlagSegmentLhs1$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentLhs1
-> = z.object({
-  type: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+  })
+);
 
 export function createFlagSegmentLhs1ToJSON(
   createFlagSegmentLhs1: CreateFlagSegmentLhs1,
@@ -438,10 +442,12 @@ export const CreateFlagSegmentLhs$outboundSchema: z.ZodType<
   CreateFlagSegmentLhs$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentLhs
-> = smartUnion([
-  z.lazy(() => CreateFlagSegmentLhs2$outboundSchema),
-  z.lazy(() => CreateFlagSegmentLhs1$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CreateFlagSegmentLhs2$outboundSchema),
+    z.lazy(() => CreateFlagSegmentLhs1$outboundSchema),
+  ])
+);
 
 export function createFlagSegmentLhsToJSON(
   createFlagSegmentLhs: CreateFlagSegmentLhs,
@@ -454,7 +460,7 @@ export function createFlagSegmentLhsToJSON(
 /** @internal */
 export const CreateFlagSegmentCmp$outboundSchema: z.ZodNativeEnum<
   typeof CreateFlagSegmentCmp
-> = z.nativeEnum(CreateFlagSegmentCmp);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateFlagSegmentCmp));
 
 /** @internal */
 export type CreateFlagSegmentRhs2$Outbound = {
@@ -468,11 +474,13 @@ export const CreateFlagSegmentRhs2$outboundSchema: z.ZodType<
   CreateFlagSegmentRhs2$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentRhs2
-> = z.object({
-  type: z.any().optional(),
-  pattern: z.string(),
-  flags: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    pattern: z.string(),
+    flags: z.string(),
+  })
+);
 
 export function createFlagSegmentRhs2ToJSON(
   createFlagSegmentRhs2: CreateFlagSegmentRhs2,
@@ -485,7 +493,7 @@ export function createFlagSegmentRhs2ToJSON(
 /** @internal */
 export const CreateFlagSegmentRhsType$outboundSchema: z.ZodNativeEnum<
   typeof CreateFlagSegmentRhsType
-> = z.nativeEnum(CreateFlagSegmentRhsType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateFlagSegmentRhsType));
 
 /** @internal */
 export type CreateFlagSegmentItems2$Outbound = {
@@ -499,11 +507,13 @@ export const CreateFlagSegmentItems2$outboundSchema: z.ZodType<
   CreateFlagSegmentItems2$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentItems2
-> = z.object({
-  label: z.string().optional(),
-  note: z.string().optional(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string().optional(),
+    note: z.string().optional(),
+    value: z.string(),
+  })
+);
 
 export function createFlagSegmentItems2ToJSON(
   createFlagSegmentItems2: CreateFlagSegmentItems2,
@@ -525,11 +535,13 @@ export const CreateFlagSegmentItems1$outboundSchema: z.ZodType<
   CreateFlagSegmentItems1$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentItems1
-> = z.object({
-  label: z.string().optional(),
-  note: z.string().optional(),
-  value: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: z.string().optional(),
+    note: z.string().optional(),
+    value: z.number(),
+  })
+);
 
 export function createFlagSegmentItems1ToJSON(
   createFlagSegmentItems1: CreateFlagSegmentItems1,
@@ -549,10 +561,12 @@ export const CreateFlagSegmentRhsItems$outboundSchema: z.ZodType<
   CreateFlagSegmentRhsItems$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentRhsItems
-> = smartUnion([
-  z.lazy(() => CreateFlagSegmentItems1$outboundSchema),
-  z.lazy(() => CreateFlagSegmentItems2$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CreateFlagSegmentItems1$outboundSchema),
+    z.lazy(() => CreateFlagSegmentItems2$outboundSchema),
+  ])
+);
 
 export function createFlagSegmentRhsItemsToJSON(
   createFlagSegmentRhsItems: CreateFlagSegmentRhsItems,
@@ -575,15 +589,15 @@ export const CreateFlagSegmentRhs1$outboundSchema: z.ZodType<
   CreateFlagSegmentRhs1$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentRhs1
-> = z.object({
-  type: CreateFlagSegmentRhsType$outboundSchema,
-  items: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: CreateFlagSegmentRhsType$outboundSchema,
+    items: z.array(smartUnion([
       z.lazy(() => CreateFlagSegmentItems1$outboundSchema),
       z.lazy(() => CreateFlagSegmentItems2$outboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function createFlagSegmentRhs1ToJSON(
   createFlagSegmentRhs1: CreateFlagSegmentRhs1,
@@ -606,13 +620,15 @@ export const CreateFlagSegmentRhs$outboundSchema: z.ZodType<
   CreateFlagSegmentRhs$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentRhs
-> = smartUnion([
-  z.lazy(() => CreateFlagSegmentRhs2$outboundSchema),
-  z.lazy(() => CreateFlagSegmentRhs1$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CreateFlagSegmentRhs2$outboundSchema),
+    z.lazy(() => CreateFlagSegmentRhs1$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+  ])
+);
 
 export function createFlagSegmentRhsToJSON(
   createFlagSegmentRhs: CreateFlagSegmentRhs,
@@ -632,9 +648,11 @@ export const CreateFlagSegmentCmpOptions$outboundSchema: z.ZodType<
   CreateFlagSegmentCmpOptions$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentCmpOptions
-> = z.object({
-  ignoreCase: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ignoreCase: z.boolean().optional(),
+  })
+);
 
 export function createFlagSegmentCmpOptionsToJSON(
   createFlagSegmentCmpOptions: CreateFlagSegmentCmpOptions,
@@ -665,22 +683,24 @@ export const CreateFlagSegmentConditions$outboundSchema: z.ZodType<
   CreateFlagSegmentConditions$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentConditions
-> = z.object({
-  lhs: smartUnion([
-    z.lazy(() => CreateFlagSegmentLhs2$outboundSchema),
-    z.lazy(() => CreateFlagSegmentLhs1$outboundSchema),
-  ]),
-  cmp: CreateFlagSegmentCmp$outboundSchema,
-  rhs: smartUnion([
-    z.lazy(() => CreateFlagSegmentRhs2$outboundSchema),
-    z.lazy(() => CreateFlagSegmentRhs1$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-  ]).optional(),
-  cmpOptions: z.lazy(() => CreateFlagSegmentCmpOptions$outboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lhs: smartUnion([
+      z.lazy(() => CreateFlagSegmentLhs2$outboundSchema),
+      z.lazy(() => CreateFlagSegmentLhs1$outboundSchema),
+    ]),
+    cmp: CreateFlagSegmentCmp$outboundSchema,
+    rhs: smartUnion([
+      z.lazy(() => CreateFlagSegmentRhs2$outboundSchema),
+      z.lazy(() => CreateFlagSegmentRhs1$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+    ]).optional(),
+    cmpOptions: z.lazy(() => CreateFlagSegmentCmpOptions$outboundSchema)
+      .optional(),
+  })
+);
 
 export function createFlagSegmentConditionsToJSON(
   createFlagSegmentConditions: CreateFlagSegmentConditions,
@@ -704,11 +724,13 @@ export const CreateFlagSegmentOutcomeBase$outboundSchema: z.ZodType<
   CreateFlagSegmentOutcomeBase$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentOutcomeBase
-> = z.object({
-  type: z.any().optional(),
-  kind: z.string(),
-  attribute: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    kind: z.string(),
+    attribute: z.string(),
+  })
+);
 
 export function createFlagSegmentOutcomeBaseToJSON(
   createFlagSegmentOutcomeBase: CreateFlagSegmentOutcomeBase,
@@ -732,11 +754,13 @@ export const CreateFlagSegmentOutcome2$outboundSchema: z.ZodType<
   CreateFlagSegmentOutcome2$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentOutcome2
-> = z.object({
-  type: z.any().optional(),
-  base: z.lazy(() => CreateFlagSegmentOutcomeBase$outboundSchema),
-  passPromille: z.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+    base: z.lazy(() => CreateFlagSegmentOutcomeBase$outboundSchema),
+    passPromille: z.number(),
+  })
+);
 
 export function createFlagSegmentOutcome2ToJSON(
   createFlagSegmentOutcome2: CreateFlagSegmentOutcome2,
@@ -756,9 +780,11 @@ export const CreateFlagSegmentOutcome1$outboundSchema: z.ZodType<
   CreateFlagSegmentOutcome1$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentOutcome1
-> = z.object({
-  type: z.any().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: z.any().optional(),
+  })
+);
 
 export function createFlagSegmentOutcome1ToJSON(
   createFlagSegmentOutcome1: CreateFlagSegmentOutcome1,
@@ -778,10 +804,12 @@ export const CreateFlagSegmentOutcome$outboundSchema: z.ZodType<
   CreateFlagSegmentOutcome$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentOutcome
-> = smartUnion([
-  z.lazy(() => CreateFlagSegmentOutcome2$outboundSchema),
-  z.lazy(() => CreateFlagSegmentOutcome1$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CreateFlagSegmentOutcome2$outboundSchema),
+    z.lazy(() => CreateFlagSegmentOutcome1$outboundSchema),
+  ])
+);
 
 export function createFlagSegmentOutcomeToJSON(
   createFlagSegmentOutcome: CreateFlagSegmentOutcome,
@@ -805,14 +833,18 @@ export const CreateFlagSegmentRules$outboundSchema: z.ZodType<
   CreateFlagSegmentRules$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentRules
-> = z.object({
-  id: z.string(),
-  conditions: z.array(z.lazy(() => CreateFlagSegmentConditions$outboundSchema)),
-  outcome: smartUnion([
-    z.lazy(() => CreateFlagSegmentOutcome2$outboundSchema),
-    z.lazy(() => CreateFlagSegmentOutcome1$outboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    conditions: z.array(
+      z.lazy(() => CreateFlagSegmentConditions$outboundSchema),
+    ),
+    outcome: smartUnion([
+      z.lazy(() => CreateFlagSegmentOutcome2$outboundSchema),
+      z.lazy(() => CreateFlagSegmentOutcome1$outboundSchema),
+    ]),
+  })
+);
 
 export function createFlagSegmentRulesToJSON(
   createFlagSegmentRules: CreateFlagSegmentRules,
@@ -833,10 +865,12 @@ export const CreateFlagSegmentInclude$outboundSchema: z.ZodType<
   CreateFlagSegmentInclude$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentInclude
-> = z.object({
-  note: z.string().optional(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: z.string().optional(),
+    value: z.string(),
+  })
+);
 
 export function createFlagSegmentIncludeToJSON(
   createFlagSegmentInclude: CreateFlagSegmentInclude,
@@ -857,10 +891,12 @@ export const CreateFlagSegmentExclude$outboundSchema: z.ZodType<
   CreateFlagSegmentExclude$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentExclude
-> = z.object({
-  note: z.string().optional(),
-  value: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: z.string().optional(),
+    value: z.string(),
+  })
+);
 
 export function createFlagSegmentExcludeToJSON(
   createFlagSegmentExclude: CreateFlagSegmentExclude,
@@ -886,16 +922,18 @@ export const CreateFlagSegmentData$outboundSchema: z.ZodType<
   CreateFlagSegmentData$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentData
-> = z.object({
-  rules: z.array(z.lazy(() => CreateFlagSegmentRules$outboundSchema))
-    .optional(),
-  include: z.record(
-    z.record(z.array(z.lazy(() => CreateFlagSegmentInclude$outboundSchema))),
-  ).optional(),
-  exclude: z.record(
-    z.record(z.array(z.lazy(() => CreateFlagSegmentExclude$outboundSchema))),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    rules: z.array(z.lazy(() => CreateFlagSegmentRules$outboundSchema))
+      .optional(),
+    include: z.record(
+      z.record(z.array(z.lazy(() => CreateFlagSegmentInclude$outboundSchema))),
+    ).optional(),
+    exclude: z.record(
+      z.record(z.array(z.lazy(() => CreateFlagSegmentExclude$outboundSchema))),
+    ).optional(),
+  })
+);
 
 export function createFlagSegmentDataToJSON(
   createFlagSegmentData: CreateFlagSegmentData,
@@ -920,14 +958,16 @@ export const CreateFlagSegmentRequestBody$outboundSchema: z.ZodType<
   CreateFlagSegmentRequestBody$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentRequestBody
-> = z.object({
-  slug: z.string(),
-  createdBy: z.string().optional(),
-  label: z.string(),
-  description: z.string().optional(),
-  data: z.lazy(() => CreateFlagSegmentData$outboundSchema),
-  hint: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    slug: z.string(),
+    createdBy: z.string().optional(),
+    label: z.string(),
+    description: z.string().optional(),
+    data: z.lazy(() => CreateFlagSegmentData$outboundSchema),
+    hint: z.string(),
+  })
+);
 
 export function createFlagSegmentRequestBodyToJSON(
   createFlagSegmentRequestBody: CreateFlagSegmentRequestBody,
@@ -952,17 +992,19 @@ export const CreateFlagSegmentRequest$outboundSchema: z.ZodType<
   CreateFlagSegmentRequest$Outbound,
   z.ZodTypeDef,
   CreateFlagSegmentRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => CreateFlagSegmentRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => CreateFlagSegmentRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function createFlagSegmentRequestToJSON(
   createFlagSegmentRequest: CreateFlagSegmentRequest,
@@ -977,10 +1019,12 @@ export const CreateFlagSegmentFeatureFlagsExclude$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsExclude,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: types.optional(types.string()),
+    value: types.string(),
+  })
+);
 
 export function createFlagSegmentFeatureFlagsExcludeFromJSON(
   jsonString: string,
@@ -998,10 +1042,12 @@ export const CreateFlagSegmentFeatureFlagsInclude$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsInclude,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: types.optional(types.string()),
+    value: types.string(),
+  })
+);
 
 export function createFlagSegmentFeatureFlagsIncludeFromJSON(
   jsonString: string,
@@ -1017,16 +1063,20 @@ export function createFlagSegmentFeatureFlagsIncludeFromJSON(
 /** @internal */
 export const CreateFlagSegmentFeatureFlagsCmp$inboundSchema: z.ZodNativeEnum<
   typeof CreateFlagSegmentFeatureFlagsCmp
-> = z.nativeEnum(CreateFlagSegmentFeatureFlagsCmp);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateFlagSegmentFeatureFlagsCmp)
+);
 
 /** @internal */
 export const CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsCmpOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ignoreCase: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ignoreCase: types.optional(types.boolean()),
+  })
+);
 
 export function createFlagSegmentFeatureFlagsCmpOptionsFromJSON(
   jsonString: string,
@@ -1049,11 +1099,13 @@ export const CreateFlagSegmentLhsFeatureFlags2$inboundSchema: z.ZodType<
   CreateFlagSegmentLhsFeatureFlags2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attribute: types.string(),
-  kind: types.string(),
-  type: types.literal("entity"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attribute: types.string(),
+    kind: types.string(),
+    type: types.literal("entity"),
+  })
+);
 
 export function createFlagSegmentLhsFeatureFlags2FromJSON(
   jsonString: string,
@@ -1070,9 +1122,11 @@ export const CreateFlagSegmentLhsFeatureFlags1$inboundSchema: z.ZodType<
   CreateFlagSegmentLhsFeatureFlags1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("segment"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("segment"),
+  })
+);
 
 export function createFlagSegmentLhsFeatureFlags1FromJSON(
   jsonString: string,
@@ -1089,10 +1143,12 @@ export const CreateFlagSegmentFeatureFlagsLhs$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsLhs,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => CreateFlagSegmentLhsFeatureFlags1$inboundSchema),
-  z.lazy(() => CreateFlagSegmentLhsFeatureFlags2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => CreateFlagSegmentLhsFeatureFlags1$inboundSchema),
+    z.lazy(() => CreateFlagSegmentLhsFeatureFlags2$inboundSchema),
+  ])
+);
 
 export function createFlagSegmentFeatureFlagsLhsFromJSON(
   jsonString: string,
@@ -1106,19 +1162,23 @@ export function createFlagSegmentFeatureFlagsLhsFromJSON(
 
 /** @internal */
 export const CreateFlagSegmentRhsFeatureFlagsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateFlagSegmentRhsFeatureFlagsResponseType> = z
-    .nativeEnum(CreateFlagSegmentRhsFeatureFlagsResponseType);
+  z.ZodNativeEnum<typeof CreateFlagSegmentRhsFeatureFlagsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateFlagSegmentRhsFeatureFlagsResponseType)
+    );
 
 /** @internal */
 export const CreateFlagSegmentRhs4$inboundSchema: z.ZodType<
   CreateFlagSegmentRhs4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  flags: types.string(),
-  pattern: types.string(),
-  type: CreateFlagSegmentRhsFeatureFlagsResponseType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    flags: types.string(),
+    pattern: types.string(),
+    type: CreateFlagSegmentRhsFeatureFlagsResponseType$inboundSchema,
+  })
+);
 
 export function createFlagSegmentRhs4FromJSON(
   jsonString: string,
@@ -1135,11 +1195,13 @@ export const CreateFlagSegmentItemsFeatureFlags2$inboundSchema: z.ZodType<
   CreateFlagSegmentItemsFeatureFlags2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.optional(types.string()),
-  note: types.optional(types.string()),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.optional(types.string()),
+    note: types.optional(types.string()),
+    value: types.string(),
+  })
+);
 
 export function createFlagSegmentItemsFeatureFlags2FromJSON(
   jsonString: string,
@@ -1157,11 +1219,13 @@ export const CreateFlagSegmentItemsFeatureFlags1$inboundSchema: z.ZodType<
   CreateFlagSegmentItemsFeatureFlags1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  label: types.optional(types.string()),
-  note: types.optional(types.string()),
-  value: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    label: types.optional(types.string()),
+    note: types.optional(types.string()),
+    value: types.number(),
+  })
+);
 
 export function createFlagSegmentItemsFeatureFlags1FromJSON(
   jsonString: string,
@@ -1179,10 +1243,12 @@ export const CreateFlagSegmentRhsFeatureFlagsItems$inboundSchema: z.ZodType<
   CreateFlagSegmentRhsFeatureFlagsItems,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => CreateFlagSegmentItemsFeatureFlags1$inboundSchema),
-  z.lazy(() => CreateFlagSegmentItemsFeatureFlags2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CreateFlagSegmentItemsFeatureFlags1$inboundSchema),
+    z.lazy(() => CreateFlagSegmentItemsFeatureFlags2$inboundSchema),
+  ])
+);
 
 export function createFlagSegmentRhsFeatureFlagsItemsFromJSON(
   jsonString: string,
@@ -1197,24 +1263,25 @@ export function createFlagSegmentRhsFeatureFlagsItemsFromJSON(
 
 /** @internal */
 export const CreateFlagSegmentRhsFeatureFlagsType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateFlagSegmentRhsFeatureFlagsType> = z.nativeEnum(
-    CreateFlagSegmentRhsFeatureFlagsType,
-  );
+  z.ZodNativeEnum<typeof CreateFlagSegmentRhsFeatureFlagsType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateFlagSegmentRhsFeatureFlagsType)
+    );
 
 /** @internal */
 export const CreateFlagSegmentRhs3$inboundSchema: z.ZodType<
   CreateFlagSegmentRhs3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  items: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    items: z.array(smartUnion([
       z.lazy(() => CreateFlagSegmentItemsFeatureFlags1$inboundSchema),
       z.lazy(() => CreateFlagSegmentItemsFeatureFlags2$inboundSchema),
-    ]),
-  ),
-  type: CreateFlagSegmentRhsFeatureFlagsType$inboundSchema,
-});
+    ])),
+    type: CreateFlagSegmentRhsFeatureFlagsType$inboundSchema,
+  })
+);
 
 export function createFlagSegmentRhs3FromJSON(
   jsonString: string,
@@ -1231,13 +1298,15 @@ export const CreateFlagSegmentFeatureFlagsRhs$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsRhs,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => CreateFlagSegmentRhs4$inboundSchema),
-  z.lazy(() => CreateFlagSegmentRhs3$inboundSchema),
-  types.string(),
-  types.number(),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CreateFlagSegmentRhs4$inboundSchema),
+    z.lazy(() => CreateFlagSegmentRhs3$inboundSchema),
+    types.string(),
+    types.number(),
+    types.boolean(),
+  ])
+);
 
 export function createFlagSegmentFeatureFlagsRhsFromJSON(
   jsonString: string,
@@ -1254,25 +1323,25 @@ export const CreateFlagSegmentFeatureFlagsConditions$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsConditions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cmp: CreateFlagSegmentFeatureFlagsCmp$inboundSchema,
-  cmpOptions: types.optional(
-    z.lazy(() => CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema),
-  ),
-  lhs: z.union([
-    z.lazy(() => CreateFlagSegmentLhsFeatureFlags1$inboundSchema),
-    z.lazy(() => CreateFlagSegmentLhsFeatureFlags2$inboundSchema),
-  ]),
-  rhs: types.optional(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cmp: CreateFlagSegmentFeatureFlagsCmp$inboundSchema,
+    cmpOptions: types.optional(
+      z.lazy(() => CreateFlagSegmentFeatureFlagsCmpOptions$inboundSchema),
+    ),
+    lhs: z.union([
+      z.lazy(() => CreateFlagSegmentLhsFeatureFlags1$inboundSchema),
+      z.lazy(() => CreateFlagSegmentLhsFeatureFlags2$inboundSchema),
+    ]),
+    rhs: types.optional(smartUnion([
       z.lazy(() => CreateFlagSegmentRhs4$inboundSchema),
       z.lazy(() => CreateFlagSegmentRhs3$inboundSchema),
       types.string(),
       types.number(),
       types.boolean(),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function createFlagSegmentFeatureFlagsConditionsFromJSON(
   jsonString: string,
@@ -1292,19 +1361,23 @@ export function createFlagSegmentFeatureFlagsConditionsFromJSON(
 
 /** @internal */
 export const CreateFlagSegmentOutcomeFeatureFlagsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateFlagSegmentOutcomeFeatureFlagsResponseType> = z
-    .nativeEnum(CreateFlagSegmentOutcomeFeatureFlagsResponseType);
+  z.ZodNativeEnum<typeof CreateFlagSegmentOutcomeFeatureFlagsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateFlagSegmentOutcomeFeatureFlagsResponseType)
+    );
 
 /** @internal */
 export const CreateFlagSegmentOutcomeFeatureFlagsBase$inboundSchema: z.ZodType<
   CreateFlagSegmentOutcomeFeatureFlagsBase,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attribute: types.string(),
-  kind: types.string(),
-  type: CreateFlagSegmentOutcomeFeatureFlagsResponseType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attribute: types.string(),
+    kind: types.string(),
+    type: CreateFlagSegmentOutcomeFeatureFlagsResponseType$inboundSchema,
+  })
+);
 
 export function createFlagSegmentOutcomeFeatureFlagsBaseFromJSON(
   jsonString: string,
@@ -1327,11 +1400,13 @@ export const CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema: z.ZodType<
   CreateFlagSegmentOutcomeFeatureFlags2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  base: z.lazy(() => CreateFlagSegmentOutcomeFeatureFlagsBase$inboundSchema),
-  passPromille: types.number(),
-  type: types.literal("split"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    base: z.lazy(() => CreateFlagSegmentOutcomeFeatureFlagsBase$inboundSchema),
+    passPromille: types.number(),
+    type: types.literal("split"),
+  })
+);
 
 export function createFlagSegmentOutcomeFeatureFlags2FromJSON(
   jsonString: string,
@@ -1349,9 +1424,11 @@ export const CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema: z.ZodType<
   CreateFlagSegmentOutcomeFeatureFlags1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("all"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("all"),
+  })
+);
 
 export function createFlagSegmentOutcomeFeatureFlags1FromJSON(
   jsonString: string,
@@ -1369,10 +1446,12 @@ export const CreateFlagSegmentFeatureFlagsOutcome$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsOutcome,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema),
-  z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema),
+    z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema),
+  ])
+);
 
 export function createFlagSegmentFeatureFlagsOutcomeFromJSON(
   jsonString: string,
@@ -1390,16 +1469,18 @@ export const CreateFlagSegmentFeatureFlagsRules$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsRules,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  conditions: z.array(
-    z.lazy(() => CreateFlagSegmentFeatureFlagsConditions$inboundSchema),
-  ),
-  id: types.string(),
-  outcome: z.union([
-    z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema),
-    z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    conditions: z.array(
+      z.lazy(() => CreateFlagSegmentFeatureFlagsConditions$inboundSchema),
+    ),
+    id: types.string(),
+    outcome: z.union([
+      z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags1$inboundSchema),
+      z.lazy(() => CreateFlagSegmentOutcomeFeatureFlags2$inboundSchema),
+    ]),
+  })
+);
 
 export function createFlagSegmentFeatureFlagsRulesFromJSON(
   jsonString: string,
@@ -1417,21 +1498,19 @@ export const CreateFlagSegmentFeatureFlagsData$inboundSchema: z.ZodType<
   CreateFlagSegmentFeatureFlagsData,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  exclude: types.optional(
-    z.record(z.record(z.array(z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    exclude: types.optional(z.record(z.record(z.array(z.lazy(() =>
       CreateFlagSegmentFeatureFlagsExclude$inboundSchema
-    )))),
-  ),
-  include: types.optional(
-    z.record(z.record(z.array(z.lazy(() =>
+    ))))),
+    include: types.optional(z.record(z.record(z.array(z.lazy(() =>
       CreateFlagSegmentFeatureFlagsInclude$inboundSchema
-    )))),
-  ),
-  rules: types.optional(
-    z.array(z.lazy(() => CreateFlagSegmentFeatureFlagsRules$inboundSchema)),
-  ),
-});
+    ))))),
+    rules: types.optional(z.array(z.lazy(() =>
+      CreateFlagSegmentFeatureFlagsRules$inboundSchema
+    ))),
+  })
+);
 
 export function createFlagSegmentFeatureFlagsDataFromJSON(
   jsonString: string,
@@ -1446,28 +1525,30 @@ export function createFlagSegmentFeatureFlagsDataFromJSON(
 /** @internal */
 export const CreateFlagSegmentTypeName$inboundSchema: z.ZodNativeEnum<
   typeof CreateFlagSegmentTypeName
-> = z.nativeEnum(CreateFlagSegmentTypeName);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(CreateFlagSegmentTypeName));
 
 /** @internal */
 export const CreateFlagSegmentResponseBody$inboundSchema: z.ZodType<
   CreateFlagSegmentResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.optional(types.string()),
-  data: z.lazy(() => CreateFlagSegmentFeatureFlagsData$inboundSchema),
-  description: types.optional(types.string()),
-  hint: types.string(),
-  id: types.string(),
-  label: types.string(),
-  projectId: types.string(),
-  slug: types.string(),
-  typeName: CreateFlagSegmentTypeName$inboundSchema,
-  updatedAt: types.number(),
-  usedByFlags: types.optional(z.array(types.string())),
-  usedBySegments: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.optional(types.string()),
+    data: z.lazy(() => CreateFlagSegmentFeatureFlagsData$inboundSchema),
+    description: types.optional(types.string()),
+    hint: types.string(),
+    id: types.string(),
+    label: types.string(),
+    projectId: types.string(),
+    slug: types.string(),
+    typeName: CreateFlagSegmentTypeName$inboundSchema,
+    updatedAt: types.number(),
+    usedByFlags: types.optional(z.array(types.string())),
+    usedBySegments: types.optional(z.array(types.string())),
+  })
+);
 
 export function createFlagSegmentResponseBodyFromJSON(
   jsonString: string,

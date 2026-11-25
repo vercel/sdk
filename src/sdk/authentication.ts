@@ -24,7 +24,10 @@ import {
   GetAuthTokenRequest,
   GetAuthTokenResponseBody,
 } from "../models/getauthtokenop.js";
-import { ListAuthTokensResponseBody } from "../models/listauthtokensop.js";
+import {
+  ListAuthTokensRequest,
+  ListAuthTokensResponseBody,
+} from "../models/listauthtokensop.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Authentication extends ClientSDK {
@@ -52,10 +55,12 @@ export class Authentication extends ClientSDK {
    * Retrieve a list of the current User's authentication tokens.
    */
   async listAuthTokens(
+    request: ListAuthTokensRequest,
     options?: RequestOptions,
   ): Promise<ListAuthTokensResponseBody> {
     return unwrapAsync(authenticationListAuthTokens(
       this,
+      request,
       options,
     ));
   }

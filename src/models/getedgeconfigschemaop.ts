@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
@@ -36,11 +36,13 @@ export const GetEdgeConfigSchemaRequest$outboundSchema: z.ZodType<
   GetEdgeConfigSchemaRequest$Outbound,
   z.ZodTypeDef,
   GetEdgeConfigSchemaRequest
-> = z.object({
-  edgeConfigId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getEdgeConfigSchemaRequestToJSON(
   getEdgeConfigSchemaRequest: GetEdgeConfigSchemaRequest,
@@ -55,7 +57,7 @@ export const GetEdgeConfigSchemaResponseBody$inboundSchema: z.ZodType<
   GetEdgeConfigSchemaResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getEdgeConfigSchemaResponseBodyFromJSON(
   jsonString: string,

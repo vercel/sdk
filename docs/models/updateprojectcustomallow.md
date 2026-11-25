@@ -19,7 +19,7 @@ let value: UpdateProjectCustomAllow = {
 
 ## Fields
 
-| Field                                    | Type                                     | Required                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `from`                                   | *models.UpdateProjectFrom*               | :heavy_check_mark:                       | N/A                                      |
-| `to`                                     | *models.UpdateProjectProjectsResponseTo* | :heavy_check_mark:                       | N/A                                      |
+| Field                                       | Type                                        | Required                                    | Description                                 |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| `from`                                      | *models.UpdateProjectFrom*                  | :heavy_check_mark:                          | N/A                                         |
+| `to`                                        | *models.UpdateProjectProjectsResponse200To* | :heavy_check_mark:                          | N/A                                         |

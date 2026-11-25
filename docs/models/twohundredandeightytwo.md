@@ -5,26 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndEightyTwo } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
 let value: TwoHundredAndEightyTwo = {
-  next: [
-    {
-      envId: "<id>",
-      perimeterId: "<id>",
-    },
-  ],
-  previous: [],
-  projectId: "<id>",
-  projectName: "<value>",
+  newName: "<value>",
+  oldName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `next`                                                                           | [models.UserEventPayload282Next](../models/usereventpayload282next.md)[]         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `previous`                                                                       | [models.UserEventPayload282Previous](../models/usereventpayload282previous.md)[] | :heavy_check_mark:                                                               | N/A                                                                              |
-| `projectId`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `projectName`                                                                    | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `newName`          | *string*           | :heavy_check_mark: | N/A                |
+| `oldName`          | *string*           | :heavy_check_mark: | N/A                |

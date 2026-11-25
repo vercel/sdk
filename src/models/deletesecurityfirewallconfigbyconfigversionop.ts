@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 export type DeleteSecurityFirewallConfigByConfigVersionRequest = {
@@ -29,9 +30,11 @@ export const DeleteSecurityFirewallConfigByConfigVersionRequest$outboundSchema:
     DeleteSecurityFirewallConfigByConfigVersionRequest$Outbound,
     z.ZodTypeDef,
     DeleteSecurityFirewallConfigByConfigVersionRequest
-  > = z.object({
-    configVersion: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      configVersion: z.string(),
+    })
+  );
 
 export function deleteSecurityFirewallConfigByConfigVersionRequestToJSON(
   deleteSecurityFirewallConfigByConfigVersionRequest:
@@ -48,4 +51,6 @@ export function deleteSecurityFirewallConfigByConfigVersionRequestToJSON(
 export const DeleteSecurityFirewallConfigByConfigVersionResponseBody$inboundSchema:
   z.ZodNativeEnum<
     typeof DeleteSecurityFirewallConfigByConfigVersionResponseBody
-  > = z.nativeEnum(DeleteSecurityFirewallConfigByConfigVersionResponseBody);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(DeleteSecurityFirewallConfigByConfigVersionResponseBody)
+  );

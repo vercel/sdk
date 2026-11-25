@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DeleteConfigurationRequest = {
   id: string;
@@ -28,11 +29,13 @@ export const DeleteConfigurationRequest$outboundSchema: z.ZodType<
   DeleteConfigurationRequest$Outbound,
   z.ZodTypeDef,
   DeleteConfigurationRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteConfigurationRequestToJSON(
   deleteConfigurationRequest: DeleteConfigurationRequest,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -80,35 +80,37 @@ export const UploadArtifactRequest$outboundSchema: z.ZodType<
   UploadArtifactRequest$Outbound,
   z.ZodTypeDef,
   UploadArtifactRequest
-> = z.object({
-  contentLength: z.number(),
-  xArtifactDuration: z.number().optional(),
-  xArtifactClientCi: z.string().optional(),
-  xArtifactClientInteractive: z.number().int().optional(),
-  xArtifactTag: z.string().optional(),
-  xArtifactSha: z.string().optional(),
-  xArtifactDirtyHash: z.string().optional(),
-  hash: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.union([
-    z.instanceof(ReadableStream<Uint8Array>),
-    z.instanceof(Blob),
-    z.instanceof(ArrayBuffer),
-    z.instanceof(Uint8Array),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    contentLength: "Content-Length",
-    xArtifactDuration: "x-artifact-duration",
-    xArtifactClientCi: "x-artifact-client-ci",
-    xArtifactClientInteractive: "x-artifact-client-interactive",
-    xArtifactTag: "x-artifact-tag",
-    xArtifactSha: "x-artifact-sha",
-    xArtifactDirtyHash: "x-artifact-dirty-hash",
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    contentLength: z.number(),
+    xArtifactDuration: z.number().optional(),
+    xArtifactClientCi: z.string().optional(),
+    xArtifactClientInteractive: z.number().int().optional(),
+    xArtifactTag: z.string().optional(),
+    xArtifactSha: z.string().optional(),
+    xArtifactDirtyHash: z.string().optional(),
+    hash: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.union([
+      z.instanceof(ReadableStream<Uint8Array>),
+      z.instanceof(Blob),
+      z.instanceof(ArrayBuffer),
+      z.instanceof(Uint8Array),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      contentLength: "Content-Length",
+      xArtifactDuration: "x-artifact-duration",
+      xArtifactClientCi: "x-artifact-client-ci",
+      xArtifactClientInteractive: "x-artifact-client-interactive",
+      xArtifactTag: "x-artifact-tag",
+      xArtifactSha: "x-artifact-sha",
+      xArtifactDirtyHash: "x-artifact-dirty-hash",
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function uploadArtifactRequestToJSON(
   uploadArtifactRequest: UploadArtifactRequest,
@@ -123,9 +125,11 @@ export const UploadArtifactResponseBody$inboundSchema: z.ZodType<
   UploadArtifactResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  urls: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    urls: z.array(types.string()),
+  })
+);
 
 export function uploadArtifactResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 import {
@@ -52,13 +52,15 @@ export const GetRepositoryImageRequest$outboundSchema: z.ZodType<
   GetRepositoryImageRequest$Outbound,
   z.ZodTypeDef,
   GetRepositoryImageRequest
-> = z.object({
-  projectId: z.string(),
-  idOrName: z.string(),
-  imageIdOrDigest: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    idOrName: z.string(),
+    imageIdOrDigest: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getRepositoryImageRequestToJSON(
   getRepositoryImageRequest: GetRepositoryImageRequest,
@@ -73,9 +75,11 @@ export const GetRepositoryImageResponseBody$inboundSchema: z.ZodType<
   GetRepositoryImageResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  image: VcrImageDetail$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    image: VcrImageDetail$inboundSchema,
+  })
+);
 
 export function getRepositoryImageResponseBodyFromJSON(
   jsonString: string,

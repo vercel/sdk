@@ -8,18 +8,20 @@ The payload of the event, if requested.
 import { FiveHundredAndThirtyTwo } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtyTwo = {
-  cadence: "weekly",
-  projectIds: [],
-  team: {
-    id: "<id>",
-  },
+  alertType: "<value>",
+  groupId: "<id>",
+  projectId: "<id>",
+  destinations: {},
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
-| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
-| `team`                                                                 | [models.UserEventPayload532Team](../models/usereventpayload532team.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `alertType`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `groupId`                                                      | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `projectId`                                                    | *string*                                                       | :heavy_check_mark:                                             | N/A                                                            |
+| `severity`                                                     | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |
+| `destinations`                                                 | [models.PayloadDestinations](../models/payloaddestinations.md) | :heavy_check_mark:                                             | N/A                                                            |
+| `title`                                                        | *string*                                                       | :heavy_minus_sign:                                             | N/A                                                            |

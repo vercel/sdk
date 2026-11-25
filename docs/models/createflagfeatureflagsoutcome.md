@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.CreateFlagOutcomeFeatureFlags1 = {
-  type: "variant",
+  type: "<value>",
   variantId: "<id>",
 };
 ```
@@ -16,18 +16,18 @@ const value: models.CreateFlagOutcomeFeatureFlags1 = {
 
 ```typescript
 const value: models.CreateFlagOutcomeFeatureFlags2 = {
+  type: "<value>",
   base: {
-    attribute: "<value>",
+    type: "<value>",
     kind: "<value>",
-    type: "entity",
+    attribute: "<value>",
   },
-  defaultVariantId: "<id>",
-  type: "split",
   weights: {
     "key": 5089.47,
     "key1": 1603.89,
     "key2": 3072.65,
   },
+  defaultVariantId: "<id>",
 };
 ```
 
@@ -35,30 +35,17 @@ const value: models.CreateFlagOutcomeFeatureFlags2 = {
 
 ```typescript
 const value: models.CreateFlagOutcomeFeatureFlags3 = {
+  type: "<value>",
   base: {
-    attribute: "<value>",
+    type: "<value>",
     kind: "<value>",
-    type: "entity",
+    attribute: "<value>",
   },
-  defaultVariantId: "<id>",
+  startTimestamp: 7880.29,
   rollFromVariantId: "<id>",
   rollToVariantId: "<id>",
-  slots: [
-    {
-      durationMs: 4563.45,
-      promille: 1604.87,
-    },
-  ],
-  startTimestamp: 8874.69,
-  type: "rollout",
-};
-```
-
-### `models.CreateFlagOutcome4`
-
-```typescript
-const value: models.CreateFlagOutcome4 = {
-  type: "experiment",
+  defaultVariantId: "<id>",
+  slots: [],
 };
 ```
 

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -144,8 +144,10 @@ export type AddProjectMemberResponseBody = {
 
 /** @internal */
 export const AddProjectMemberRequestBodyProjectMembersRole$outboundSchema:
-  z.ZodNativeEnum<typeof AddProjectMemberRequestBodyProjectMembersRole> = z
-    .nativeEnum(AddProjectMemberRequestBodyProjectMembersRole);
+  z.ZodNativeEnum<typeof AddProjectMemberRequestBodyProjectMembersRole> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(AddProjectMemberRequestBodyProjectMembersRole)
+    );
 
 /** @internal */
 export type AddProjectMemberRequestBody3$Outbound = {
@@ -160,12 +162,14 @@ export const AddProjectMemberRequestBody3$outboundSchema: z.ZodType<
   AddProjectMemberRequestBody3$Outbound,
   z.ZodTypeDef,
   AddProjectMemberRequestBody3
-> = z.object({
-  uid: z.string().optional(),
-  username: z.string().optional(),
-  email: z.string(),
-  role: AddProjectMemberRequestBodyProjectMembersRole$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uid: z.string().optional(),
+    username: z.string().optional(),
+    email: z.string(),
+    role: AddProjectMemberRequestBodyProjectMembersRole$outboundSchema,
+  })
+);
 
 export function addProjectMemberRequestBody3ToJSON(
   addProjectMemberRequestBody3: AddProjectMemberRequestBody3,
@@ -180,7 +184,9 @@ export function addProjectMemberRequestBody3ToJSON(
 /** @internal */
 export const AddProjectMemberRequestBodyRole$outboundSchema: z.ZodNativeEnum<
   typeof AddProjectMemberRequestBodyRole
-> = z.nativeEnum(AddProjectMemberRequestBodyRole);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(AddProjectMemberRequestBodyRole)
+);
 
 /** @internal */
 export type AddProjectMemberRequestBody2$Outbound = {
@@ -195,12 +201,14 @@ export const AddProjectMemberRequestBody2$outboundSchema: z.ZodType<
   AddProjectMemberRequestBody2$Outbound,
   z.ZodTypeDef,
   AddProjectMemberRequestBody2
-> = z.object({
-  uid: z.string().optional(),
-  username: z.string(),
-  email: z.string().optional(),
-  role: AddProjectMemberRequestBodyRole$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uid: z.string().optional(),
+    username: z.string(),
+    email: z.string().optional(),
+    role: AddProjectMemberRequestBodyRole$outboundSchema,
+  })
+);
 
 export function addProjectMemberRequestBody2ToJSON(
   addProjectMemberRequestBody2: AddProjectMemberRequestBody2,
@@ -215,7 +223,7 @@ export function addProjectMemberRequestBody2ToJSON(
 /** @internal */
 export const RequestBodyRole$outboundSchema: z.ZodNativeEnum<
   typeof RequestBodyRole
-> = z.nativeEnum(RequestBodyRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RequestBodyRole));
 
 /** @internal */
 export type AddProjectMemberRequestBody1$Outbound = {
@@ -230,12 +238,14 @@ export const AddProjectMemberRequestBody1$outboundSchema: z.ZodType<
   AddProjectMemberRequestBody1$Outbound,
   z.ZodTypeDef,
   AddProjectMemberRequestBody1
-> = z.object({
-  uid: z.string(),
-  username: z.string().optional(),
-  email: z.string().optional(),
-  role: RequestBodyRole$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    uid: z.string(),
+    username: z.string().optional(),
+    email: z.string().optional(),
+    role: RequestBodyRole$outboundSchema,
+  })
+);
 
 export function addProjectMemberRequestBody1ToJSON(
   addProjectMemberRequestBody1: AddProjectMemberRequestBody1,
@@ -258,11 +268,13 @@ export const AddProjectMemberRequestBody$outboundSchema: z.ZodType<
   AddProjectMemberRequestBody$Outbound,
   z.ZodTypeDef,
   AddProjectMemberRequestBody
-> = smartUnion([
-  z.lazy(() => AddProjectMemberRequestBody1$outboundSchema),
-  z.lazy(() => AddProjectMemberRequestBody2$outboundSchema),
-  z.lazy(() => AddProjectMemberRequestBody3$outboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => AddProjectMemberRequestBody1$outboundSchema),
+    z.lazy(() => AddProjectMemberRequestBody2$outboundSchema),
+    z.lazy(() => AddProjectMemberRequestBody3$outboundSchema),
+  ])
+);
 
 export function addProjectMemberRequestBodyToJSON(
   addProjectMemberRequestBody: AddProjectMemberRequestBody,
@@ -290,20 +302,22 @@ export const AddProjectMemberRequest$outboundSchema: z.ZodType<
   AddProjectMemberRequest$Outbound,
   z.ZodTypeDef,
   AddProjectMemberRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: smartUnion([
-    z.lazy(() => AddProjectMemberRequestBody1$outboundSchema),
-    z.lazy(() => AddProjectMemberRequestBody2$outboundSchema),
-    z.lazy(() => AddProjectMemberRequestBody3$outboundSchema),
-  ]),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: smartUnion([
+      z.lazy(() => AddProjectMemberRequestBody1$outboundSchema),
+      z.lazy(() => AddProjectMemberRequestBody2$outboundSchema),
+      z.lazy(() => AddProjectMemberRequestBody3$outboundSchema),
+    ]),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function addProjectMemberRequestToJSON(
   addProjectMemberRequest: AddProjectMemberRequest,
@@ -318,9 +332,11 @@ export const AddProjectMemberResponseBody$inboundSchema: z.ZodType<
   AddProjectMemberResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function addProjectMemberResponseBodyFromJSON(
   jsonString: string,

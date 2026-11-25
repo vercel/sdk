@@ -1,11 +1,11 @@
 # UserEventPayloadBudget
 
-Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
+`api-key` defaults may cover only some key spend attributions.
 
 ## Example Usage
 
 ```typescript
-import { UserEventPayloadBudget } from "@vercel/sdk/models/twenty.js";
+import { UserEventPayloadBudget } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: UserEventPayloadBudget = {
   limitAmount: 5322.24,
@@ -18,5 +18,7 @@ let value: UserEventPayloadBudget = {
 | Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            |
 | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
 | `alertThresholds`                                                                      | *number*[]                                                                             | :heavy_minus_sign:                                                                     | N/A                                                                                    |
+| `expiresAt`                                                                            | *number*                                                                               | :heavy_minus_sign:                                                                     | When the budget lapses to the scope's default, in ms since the epoch.                  |
 | `limitAmount`                                                                          | *number*                                                                               | :heavy_check_mark:                                                                     | Spend cap, in dollars.                                                                 |
 | `refreshPeriod`                                                                        | [models.UserEventPayload36RefreshPeriod](../models/usereventpayload36refreshperiod.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `appliesTo`                                                                            | [models.PayloadAppliesTo](../models/payloadappliesto.md)[]                             | :heavy_minus_sign:                                                                     | N/A                                                                                    |

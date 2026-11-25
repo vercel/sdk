@@ -13,5 +13,5 @@ let value: ListVercelCiInvocationsQueryParamProvider = "gitlab";
 ## Values
 
 ```typescript
-"github" | "gitlab" | "bitbucket" | "vercel"
+"github" | "gitlab" | "bitbucket" | "vercel" | "cursor-origin"
 ```

@@ -34,7 +34,7 @@ import { Result } from "../types/fp.js";
  * Retrieve a list of all Drains
  *
  * @remarks
- * Allows to retrieve the list of Drains of the authenticated team.
+ * Allows to retrieve the list of Drains of the authenticated team. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
  */

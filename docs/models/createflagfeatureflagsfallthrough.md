@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.CreateFlagFallthroughFeatureFlags1 = {
-  type: "variant",
+  type: "<value>",
   variantId: "<id>",
 };
 ```
@@ -16,14 +16,14 @@ const value: models.CreateFlagFallthroughFeatureFlags1 = {
 
 ```typescript
 const value: models.CreateFlagFallthroughFeatureFlags2 = {
+  type: "<value>",
   base: {
-    attribute: "<value>",
+    type: "<value>",
     kind: "<value>",
-    type: "entity",
+    attribute: "<value>",
   },
-  defaultVariantId: "<id>",
-  type: "split",
   weights: {},
+  defaultVariantId: "<id>",
 };
 ```
 
@@ -31,25 +31,17 @@ const value: models.CreateFlagFallthroughFeatureFlags2 = {
 
 ```typescript
 const value: models.CreateFlagFallthroughFeatureFlags3 = {
+  type: "<value>",
   base: {
-    attribute: "<value>",
+    type: "<value>",
     kind: "<value>",
-    type: "entity",
+    attribute: "<value>",
   },
-  defaultVariantId: "<id>",
+  startTimestamp: 4507.34,
   rollFromVariantId: "<id>",
   rollToVariantId: "<id>",
+  defaultVariantId: "<id>",
   slots: [],
-  startTimestamp: 734.08,
-  type: "rollout",
-};
-```
-
-### `models.CreateFlagFallthrough4`
-
-```typescript
-const value: models.CreateFlagFallthrough4 = {
-  type: "experiment",
 };
 ```
 

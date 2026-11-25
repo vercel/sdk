@@ -7,7 +7,7 @@
 
 ```typescript
 const value: models.CreateFlagLhsFeatureFlags1 = {
-  type: "segment",
+  type: "<value>",
 };
 ```
 
@@ -15,9 +15,9 @@ const value: models.CreateFlagLhsFeatureFlags1 = {
 
 ```typescript
 const value: models.CreateFlagLhsFeatureFlags2 = {
-  attribute: "<value>",
+  type: "<value>",
   kind: "<value>",
-  type: "entity",
+  attribute: "<value>",
 };
 ```
 

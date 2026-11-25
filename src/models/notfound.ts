@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -41,25 +42,27 @@ export class NotFound extends VercelError {
 
 /** @internal */
 export const NotFoundCode$inboundSchema: z.ZodNativeEnum<typeof NotFoundCode> =
-  z.nativeEnum(NotFoundCode);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NotFoundCode));
 
 /** @internal */
 export const NotFound$inboundSchema: z.ZodType<
   NotFound,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: NotFoundCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new NotFound(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: NotFoundCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new NotFound(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import {
@@ -44,11 +44,13 @@ export const ListOrganizationTeamsRequest$outboundSchema: z.ZodType<
   ListOrganizationTeamsRequest$Outbound,
   z.ZodTypeDef,
   ListOrganizationTeamsRequest
-> = z.object({
-  organizationId: z.string(),
-  cursor: z.string().optional(),
-  includeMemberCount: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizationId: z.string(),
+    cursor: z.string().optional(),
+    includeMemberCount: z.boolean().optional(),
+  })
+);
 
 export function listOrganizationTeamsRequestToJSON(
   listOrganizationTeamsRequest: ListOrganizationTeamsRequest,
@@ -65,10 +67,12 @@ export const ListOrganizationTeamsResponseBody$inboundSchema: z.ZodType<
   ListOrganizationTeamsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cursor: types.optional(types.string()),
-  teams: z.array(OrganizationTeamListItem$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cursor: types.optional(types.string()),
+    teams: z.array(OrganizationTeamListItem$inboundSchema),
+  })
+);
 
 export function listOrganizationTeamsResponseBodyFromJSON(
   jsonString: string,

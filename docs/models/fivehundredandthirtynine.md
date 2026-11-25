@@ -8,18 +8,23 @@ The payload of the event, if requested.
 import { FiveHundredAndThirtyNine } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtyNine = {
-  next: {
-    access: "unlimited",
+  configuration: {
+    id: "<id>",
   },
-  previous: {
-    access: "unlimited",
+  peering: {
+    id: "<id>",
+  },
+  team: {
+    id: "<id>",
+    name: "<value>",
   },
 };
 ```
 
 ## Fields
 
-| Field                                | Type                                 | Required                             | Description                          |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-| `next`                               | *models.UserEventPayload539Next*     | :heavy_check_mark:                   | N/A                                  |
-| `previous`                           | *models.UserEventPayload539Previous* | :heavy_check_mark:                   | N/A                                  |
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `configuration`                                                                          | [models.UserEventPayload539Configuration](../models/usereventpayload539configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `team`                                                                                   | [models.UserEventPayload539Team](../models/usereventpayload539team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

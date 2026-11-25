@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -159,7 +159,7 @@ export const StageRoutesHeaders$outboundSchema: z.ZodType<
   StageRoutesHeaders$Outbound,
   z.ZodTypeDef,
   StageRoutesHeaders
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function stageRoutesHeadersToJSON(
   stageRoutesHeaders: StageRoutesHeaders,
@@ -172,7 +172,7 @@ export function stageRoutesHeadersToJSON(
 /** @internal */
 export const StageRoutesType$outboundSchema: z.ZodNativeEnum<
   typeof StageRoutesType
-> = z.nativeEnum(StageRoutesType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(StageRoutesType));
 
 /** @internal */
 export type StageRoutesHas$Outbound = {
@@ -186,11 +186,13 @@ export const StageRoutesHas$outboundSchema: z.ZodType<
   StageRoutesHas$Outbound,
   z.ZodTypeDef,
   StageRoutesHas
-> = z.object({
-  type: StageRoutesType$outboundSchema.optional(),
-  key: z.string().optional(),
-  value: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: StageRoutesType$outboundSchema.optional(),
+    key: z.string().optional(),
+    value: z.string().optional(),
+  })
+);
 
 export function stageRoutesHasToJSON(stageRoutesHas: StageRoutesHas): string {
   return JSON.stringify(StageRoutesHas$outboundSchema.parse(stageRoutesHas));
@@ -199,7 +201,9 @@ export function stageRoutesHasToJSON(stageRoutesHas: StageRoutesHas): string {
 /** @internal */
 export const StageRoutesProjectRoutesType$outboundSchema: z.ZodNativeEnum<
   typeof StageRoutesProjectRoutesType
-> = z.nativeEnum(StageRoutesProjectRoutesType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(StageRoutesProjectRoutesType)
+);
 
 /** @internal */
 export type Missing$Outbound = {
@@ -213,11 +217,13 @@ export const Missing$outboundSchema: z.ZodType<
   Missing$Outbound,
   z.ZodTypeDef,
   Missing
-> = z.object({
-  type: StageRoutesProjectRoutesType$outboundSchema.optional(),
-  key: z.string().optional(),
-  value: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: StageRoutesProjectRoutesType$outboundSchema.optional(),
+    key: z.string().optional(),
+    value: z.string().optional(),
+  })
+);
 
 export function missingToJSON(missing: Missing): string {
   return JSON.stringify(Missing$outboundSchema.parse(missing));
@@ -225,12 +231,14 @@ export function missingToJSON(missing: Missing): string {
 
 /** @internal */
 export const StageRoutesProjectRoutesRequestType$outboundSchema:
-  z.ZodNativeEnum<typeof StageRoutesProjectRoutesRequestType> = z.nativeEnum(
-    StageRoutesProjectRoutesRequestType,
-  );
+  z.ZodNativeEnum<typeof StageRoutesProjectRoutesRequestType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(StageRoutesProjectRoutesRequestType)
+    );
 
 /** @internal */
-export const Op$outboundSchema: z.ZodNativeEnum<typeof Op> = z.nativeEnum(Op);
+export const Op$outboundSchema: z.ZodNativeEnum<typeof Op> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Op));
 
 /** @internal */
 export type StageRoutesTarget$Outbound = {};
@@ -240,7 +248,7 @@ export const StageRoutesTarget$outboundSchema: z.ZodType<
   StageRoutesTarget$Outbound,
   z.ZodTypeDef,
   StageRoutesTarget
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function stageRoutesTargetToJSON(
   stageRoutesTarget: StageRoutesTarget,
@@ -264,13 +272,15 @@ export const StageRoutesTransforms$outboundSchema: z.ZodType<
   StageRoutesTransforms$Outbound,
   z.ZodTypeDef,
   StageRoutesTransforms
-> = z.object({
-  type: StageRoutesProjectRoutesRequestType$outboundSchema.optional(),
-  op: Op$outboundSchema.optional(),
-  target: z.lazy(() => StageRoutesTarget$outboundSchema).optional(),
-  args: z.any().optional(),
-  env: z.array(z.string()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: StageRoutesProjectRoutesRequestType$outboundSchema.optional(),
+    op: Op$outboundSchema.optional(),
+    target: z.lazy(() => StageRoutesTarget$outboundSchema).optional(),
+    args: z.any().optional(),
+    env: z.array(z.string()).optional(),
+  })
+);
 
 export function stageRoutesTransformsToJSON(
   stageRoutesTransforms: StageRoutesTransforms,
@@ -298,18 +308,20 @@ export const Route$outboundSchema: z.ZodType<
   Route$Outbound,
   z.ZodTypeDef,
   Route
-> = z.object({
-  src: z.string(),
-  dest: z.string().optional(),
-  headers: z.lazy(() => StageRoutesHeaders$outboundSchema).optional(),
-  caseSensitive: z.boolean().optional(),
-  status: z.number().int().optional(),
-  has: z.array(z.lazy(() => StageRoutesHas$outboundSchema)).optional(),
-  missing: z.array(z.lazy(() => Missing$outboundSchema)).optional(),
-  transforms: z.array(z.lazy(() => StageRoutesTransforms$outboundSchema))
-    .optional(),
-  respectOriginCacheControl: z.boolean().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    src: z.string(),
+    dest: z.string().optional(),
+    headers: z.lazy(() => StageRoutesHeaders$outboundSchema).optional(),
+    caseSensitive: z.boolean().optional(),
+    status: z.number().int().optional(),
+    has: z.array(z.lazy(() => StageRoutesHas$outboundSchema)).optional(),
+    missing: z.array(z.lazy(() => Missing$outboundSchema)).optional(),
+    transforms: z.array(z.lazy(() => StageRoutesTransforms$outboundSchema))
+      .optional(),
+    respectOriginCacheControl: z.boolean().optional(),
+  })
+);
 
 export function routeToJSON(route: Route): string {
   return JSON.stringify(Route$outboundSchema.parse(route));
@@ -329,13 +341,15 @@ export const Routes$outboundSchema: z.ZodType<
   Routes$Outbound,
   z.ZodTypeDef,
   Routes
-> = z.object({
-  id: z.string(),
-  name: z.string(),
-  description: z.string().optional(),
-  enabled: z.boolean().optional(),
-  route: z.lazy(() => Route$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    name: z.string(),
+    description: z.string().optional(),
+    enabled: z.boolean().optional(),
+    route: z.lazy(() => Route$outboundSchema),
+  })
+);
 
 export function routesToJSON(routes: Routes): string {
   return JSON.stringify(Routes$outboundSchema.parse(routes));
@@ -352,10 +366,12 @@ export const StageRoutesRequestBody$outboundSchema: z.ZodType<
   StageRoutesRequestBody$Outbound,
   z.ZodTypeDef,
   StageRoutesRequestBody
-> = z.object({
-  overwrite: z.boolean().optional(),
-  routes: z.array(z.lazy(() => Routes$outboundSchema)).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    overwrite: z.boolean().optional(),
+    routes: z.array(z.lazy(() => Routes$outboundSchema)).optional(),
+  })
+);
 
 export function stageRoutesRequestBodyToJSON(
   stageRoutesRequestBody: StageRoutesRequestBody,
@@ -378,16 +394,18 @@ export const StageRoutesRequest$outboundSchema: z.ZodType<
   StageRoutesRequest$Outbound,
   z.ZodTypeDef,
   StageRoutesRequest
-> = z.object({
-  projectId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => StageRoutesRequestBody$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => StageRoutesRequestBody$outboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function stageRoutesRequestToJSON(
   stageRoutesRequest: StageRoutesRequest,
@@ -402,16 +420,18 @@ export const StageRoutesVersion$inboundSchema: z.ZodType<
   StageRoutesVersion,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(types.string()),
-  createdBy: types.string(),
-  id: types.string(),
-  isLive: types.optional(types.boolean()),
-  isStaging: types.optional(types.boolean()),
-  lastModified: types.number(),
-  ruleCount: types.optional(types.number()),
-  s3Key: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(types.string()),
+    createdBy: types.string(),
+    id: types.string(),
+    isLive: types.optional(types.boolean()),
+    isStaging: types.optional(types.boolean()),
+    lastModified: types.number(),
+    ruleCount: types.optional(types.number()),
+    s3Key: types.string(),
+  })
+);
 
 export function stageRoutesVersionFromJSON(
   jsonString: string,
@@ -428,9 +448,11 @@ export const StageRoutesResponseBody$inboundSchema: z.ZodType<
   StageRoutesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  version: z.lazy(() => StageRoutesVersion$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    version: z.lazy(() => StageRoutesVersion$inboundSchema),
+  })
+);
 
 export function stageRoutesResponseBodyFromJSON(
   jsonString: string,

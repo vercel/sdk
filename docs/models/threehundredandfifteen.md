@@ -5,19 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFifteen } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { ThreeHundredAndFifteen } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
-let value: ThreeHundredAndFifteen = {
-  autoAssignCustomDomains: true,
-  projectId: "<id>",
-  projectName: "<value>",
-};
+let value: ThreeHundredAndFifteen = {};
 ```
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `autoAssignCustomDomains` | *boolean*                 | :heavy_check_mark:        | N/A                       |
-| `projectId`               | *string*                  | :heavy_check_mark:        | N/A                       |
-| `projectName`             | *string*                  | :heavy_check_mark:        | N/A                       |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `projectId`        | *string*           | :heavy_minus_sign: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `target`           | *string*[]         | :heavy_minus_sign: | N/A                |
+| `updated`          | *boolean*          | :heavy_minus_sign: | N/A                |

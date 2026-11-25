@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import {
   ConnectTriggerDestinationInput,
   ConnectTriggerDestinationInput$Outbound,
@@ -29,9 +30,11 @@ export const ConnectReplaceTriggerDestinationsRequest$outboundSchema: z.ZodType<
   ConnectReplaceTriggerDestinationsRequest$Outbound,
   z.ZodTypeDef,
   ConnectReplaceTriggerDestinationsRequest
-> = z.object({
-  destinations: z.array(ConnectTriggerDestinationInput$outboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    destinations: z.array(ConnectTriggerDestinationInput$outboundSchema),
+  })
+);
 
 export function connectReplaceTriggerDestinationsRequestToJSON(
   connectReplaceTriggerDestinationsRequest:

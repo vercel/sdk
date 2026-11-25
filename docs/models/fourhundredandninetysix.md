@@ -5,12 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNinetySix } from "@vercel/sdk/models/fourhundredandthirtyfive.js";
+import { FourHundredAndNinetySix } from "@vercel/sdk/models/fourhundredandfortyfour.js";
 
 let value: FourHundredAndNinetySix = {
-  actorId: "<id>",
-  actorType: "admin",
-  autoBlockPrevented: true,
+  recoveryCodes: 3905.94,
+  totp: true,
 };
 ```
 
@@ -18,8 +17,9 @@ let value: FourHundredAndNinetySix = {
 
 | Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload496ActorType](../models/usereventpayload496actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `autoBlockPrevented`                                                             | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
-| `preventUntil`                                                                   | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorId`                                                                        | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | Human-readable admin who performed the removal.                                  |
+| `actorType`                                                                      | [models.UserEventPayload496ActorType](../models/usereventpayload496actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
 | `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `recoveryCodes`                                                                  | *number*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `totp`                                                                           | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |

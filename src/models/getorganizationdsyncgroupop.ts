@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type GetOrganizationDsyncGroupRequest = {
   organizationId: string;
@@ -30,12 +31,14 @@ export const GetOrganizationDsyncGroupRequest$outboundSchema: z.ZodType<
   GetOrganizationDsyncGroupRequest$Outbound,
   z.ZodTypeDef,
   GetOrganizationDsyncGroupRequest
-> = z.object({
-  organizationId: z.string(),
-  groupId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    organizationId: z.string(),
+    groupId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getOrganizationDsyncGroupRequestToJSON(
   getOrganizationDsyncGroupRequest: GetOrganizationDsyncGroupRequest,

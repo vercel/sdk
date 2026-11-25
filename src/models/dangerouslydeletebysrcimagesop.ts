@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type DangerouslyDeleteBySrcImagesRequestBody = {
   revalidationDeadlineSeconds?: number | undefined;
@@ -34,10 +35,12 @@ export const DangerouslyDeleteBySrcImagesRequestBody$outboundSchema: z.ZodType<
   DangerouslyDeleteBySrcImagesRequestBody$Outbound,
   z.ZodTypeDef,
   DangerouslyDeleteBySrcImagesRequestBody
-> = z.object({
-  revalidationDeadlineSeconds: z.number().int().optional(),
-  srcImages: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    revalidationDeadlineSeconds: z.number().int().optional(),
+    srcImages: z.array(z.string()),
+  })
+);
 
 export function dangerouslyDeleteBySrcImagesRequestBodyToJSON(
   dangerouslyDeleteBySrcImagesRequestBody:
@@ -63,18 +66,20 @@ export const DangerouslyDeleteBySrcImagesRequest$outboundSchema: z.ZodType<
   DangerouslyDeleteBySrcImagesRequest$Outbound,
   z.ZodTypeDef,
   DangerouslyDeleteBySrcImagesRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() =>
-    DangerouslyDeleteBySrcImagesRequestBody$outboundSchema
-  ).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() =>
+      DangerouslyDeleteBySrcImagesRequestBody$outboundSchema
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function dangerouslyDeleteBySrcImagesRequestToJSON(
   dangerouslyDeleteBySrcImagesRequest: DangerouslyDeleteBySrcImagesRequest,

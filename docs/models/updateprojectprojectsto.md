@@ -1,12 +1,14 @@
 # UpdateProjectProjectsTo
 
+A set of environments, expressed as explicit slugs, a named preset, or both. At least one of `slugs` or `preset` must be set.
+
 
 ## Supported Types
 
-### `models.UpdateProjectToProjects1`
+### `models.UpdateProjectTo1`
 
 ```typescript
-const value: models.UpdateProjectToProjects1 = {
+const value: models.UpdateProjectTo1 = {
   slugs: [
     "<value 1>",
     "<value 2>",
@@ -14,10 +16,10 @@ const value: models.UpdateProjectToProjects1 = {
 };
 ```
 
-### `models.UpdateProjectToProjects2`
+### `models.UpdateProjectTo2`
 
 ```typescript
-const value: models.UpdateProjectToProjects2 = {
+const value: models.UpdateProjectTo2 = {
   preset: "all-custom",
 };
 ```

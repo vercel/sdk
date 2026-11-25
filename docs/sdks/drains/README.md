@@ -13,7 +13,7 @@
 
 ## createDrain
 
-Create a new Drain with the provided configuration.
+Create a new Drain with the provided configuration. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
 
 ### Example Usage
 
@@ -88,7 +88,7 @@ run();
 
 ## getDrains
 
-Allows to retrieve the list of Drains of the authenticated team.
+Allows to retrieve the list of Drains of the authenticated team. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
 
 ### Example Usage
 
@@ -240,7 +240,7 @@ run();
 
 ## getDrain
 
-Get the information for a specific Drain by passing the drain id in the URL.
+Get the information for a specific Drain by passing the drain id in the URL. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
 
 ### Example Usage
 
@@ -317,7 +317,7 @@ run();
 
 ## updateDrain
 
-Update the configuration of an existing drain.
+Update the configuration of an existing drain. A `delivery` with masked values is rejected, and only a drain connected to a Marketplace store can take its delivery from it. Endpoint and header values of a drain connected to a Marketplace store are masked for every caller.
 
 ### Example Usage
 

@@ -4,6 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -78,12 +79,12 @@ export type InviteUserToTeamRequest = {
 /** @internal */
 export const InviteUserToTeamRole$outboundSchema: z.ZodNativeEnum<
   typeof InviteUserToTeamRole
-> = z.nativeEnum(InviteUserToTeamRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(InviteUserToTeamRole));
 
 /** @internal */
 export const InviteUserToTeamTeamsRole$outboundSchema: z.ZodNativeEnum<
   typeof InviteUserToTeamTeamsRole
-> = z.nativeEnum(InviteUserToTeamTeamsRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(InviteUserToTeamTeamsRole));
 
 /** @internal */
 export type InviteUserToTeamProjects$Outbound = {
@@ -96,10 +97,12 @@ export const InviteUserToTeamProjects$outboundSchema: z.ZodType<
   InviteUserToTeamProjects$Outbound,
   z.ZodTypeDef,
   InviteUserToTeamProjects
-> = z.object({
-  projectId: z.string(),
-  role: InviteUserToTeamTeamsRole$outboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    role: InviteUserToTeamTeamsRole$outboundSchema,
+  })
+);
 
 export function inviteUserToTeamProjectsToJSON(
   inviteUserToTeamProjects: InviteUserToTeamProjects,
@@ -121,12 +124,14 @@ export const InviteUserToTeamRequestBody$outboundSchema: z.ZodType<
   InviteUserToTeamRequestBody$Outbound,
   z.ZodTypeDef,
   InviteUserToTeamRequestBody
-> = z.object({
-  email: z.string(),
-  role: InviteUserToTeamRole$outboundSchema.default("VIEWER"),
-  projects: z.array(z.lazy(() => InviteUserToTeamProjects$outboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: z.string(),
+    role: InviteUserToTeamRole$outboundSchema.default("VIEWER"),
+    projects: z.array(z.lazy(() => InviteUserToTeamProjects$outboundSchema))
+      .optional(),
+  })
+);
 
 export function inviteUserToTeamRequestBodyToJSON(
   inviteUserToTeamRequestBody: InviteUserToTeamRequestBody,
@@ -150,16 +155,19 @@ export const InviteUserToTeamRequest$outboundSchema: z.ZodType<
   InviteUserToTeamRequest$Outbound,
   z.ZodTypeDef,
   InviteUserToTeamRequest
-> = z.object({
-  teamId: z.string(),
-  slug: z.string().optional(),
-  requestBody: z.array(z.lazy(() => InviteUserToTeamRequestBody$outboundSchema))
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string(),
+    slug: z.string().optional(),
+    requestBody: z.array(
+      z.lazy(() => InviteUserToTeamRequestBody$outboundSchema),
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function inviteUserToTeamRequestToJSON(
   inviteUserToTeamRequest: InviteUserToTeamRequest,

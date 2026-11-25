@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -43,11 +43,13 @@ export type AiGatewayRule = {
 };
 
 /** @internal */
-export const Action$inboundSchema: z.ZodType<Action, z.ZodTypeDef, unknown> = z
-  .object({
-    reason: types.optional(types.string()),
-    rewriteModel: types.optional(types.string()),
-  });
+export const Action$inboundSchema: z.ZodType<Action, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      reason: types.optional(types.string()),
+      rewriteModel: types.optional(types.string()),
+    })
+  );
 
 export function actionFromJSON(
   jsonString: string,
@@ -60,10 +62,12 @@ export function actionFromJSON(
 }
 
 /** @internal */
-export const Match$inboundSchema: z.ZodType<Match, z.ZodTypeDef, unknown> = z
-  .object({
-    model: types.optional(types.string()),
-  });
+export const Match$inboundSchema: z.ZodType<Match, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      model: types.optional(types.string()),
+    })
+  );
 
 export function matchFromJSON(
   jsonString: string,
@@ -76,29 +80,30 @@ export function matchFromJSON(
 }
 
 /** @internal */
-export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
-  Type,
-);
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Type));
 
 /** @internal */
 export const AiGatewayRule$inboundSchema: z.ZodType<
   AiGatewayRule,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(z.lazy(() => Action$inboundSchema)),
-  createdAt: types.number(),
-  createdBy: types.optional(types.string()),
-  deleted: types.optional(types.boolean()),
-  description: types.optional(types.string()),
-  enabled: types.boolean(),
-  match: types.optional(z.lazy(() => Match$inboundSchema)),
-  ownerId: types.string(),
-  ruleId: types.string(),
-  type: Type$inboundSchema,
-  updatedAt: types.number(),
-  updatedBy: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(z.lazy(() => Action$inboundSchema)),
+    createdAt: types.number(),
+    createdBy: types.optional(types.string()),
+    deleted: types.optional(types.boolean()),
+    description: types.optional(types.string()),
+    enabled: types.boolean(),
+    match: types.optional(z.lazy(() => Match$inboundSchema)),
+    ownerId: types.string(),
+    ruleId: types.string(),
+    type: Type$inboundSchema,
+    updatedAt: types.number(),
+    updatedBy: types.optional(types.string()),
+  })
+);
 
 export function aiGatewayRuleFromJSON(
   jsonString: string,

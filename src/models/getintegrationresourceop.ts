@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -178,10 +178,12 @@ export const GetIntegrationResourceRequest$outboundSchema: z.ZodType<
   GetIntegrationResourceRequest$Outbound,
   z.ZodTypeDef,
   GetIntegrationResourceRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-  resourceId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+    resourceId: z.string(),
+  })
+);
 
 export function getIntegrationResourceRequestToJSON(
   getIntegrationResourceRequest: GetIntegrationResourceRequest,
@@ -198,12 +200,14 @@ export const GetIntegrationResourceClaims$inboundSchema: z.ZodType<
   GetIntegrationResourceClaims,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  types.string(),
-  types.number(),
-  z.array(types.string()),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    types.string(),
+    types.number(),
+    z.array(types.string()),
+    types.boolean(),
+  ])
+);
 
 export function getIntegrationResourceClaimsFromJSON(
   jsonString: string,
@@ -220,10 +224,12 @@ export const GetIntegrationResourceWhen$inboundSchema: z.ZodType<
   GetIntegrationResourceWhen,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environment: types.optional(z.array(types.string())),
-  role: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environment: types.optional(z.array(types.string())),
+    role: types.optional(z.array(types.string())),
+  })
+);
 
 export function getIntegrationResourceWhenFromJSON(
   jsonString: string,
@@ -240,19 +246,23 @@ export const GetIntegrationResourceClaimRules$inboundSchema: z.ZodType<
   GetIntegrationResourceClaimRules,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  claims: z.record(
-    types.nullable(
-      smartUnion([
-        types.string(),
-        types.number(),
-        z.array(types.string()),
-        types.boolean(),
-      ]),
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    claims: z.record(
+      types.nullable(
+        smartUnion([
+          types.string(),
+          types.number(),
+          z.array(types.string()),
+          types.boolean(),
+        ]),
+      ),
     ),
-  ),
-  when: types.optional(z.lazy(() => GetIntegrationResourceWhen$inboundSchema)),
-});
+    when: types.optional(
+      z.lazy(() => GetIntegrationResourceWhen$inboundSchema),
+    ),
+  })
+);
 
 export function getIntegrationResourceClaimRulesFromJSON(
   jsonString: string,
@@ -269,13 +279,15 @@ export const GetIntegrationResourceCustomClaims$inboundSchema: z.ZodType<
   GetIntegrationResourceCustomClaims,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  claimRules: types.optional(
-    z.array(z.lazy(() => GetIntegrationResourceClaimRules$inboundSchema)),
-  ),
-  defaultRole: types.optional(types.string()),
-  roles: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    claimRules: types.optional(
+      z.array(z.lazy(() => GetIntegrationResourceClaimRules$inboundSchema)),
+    ),
+    defaultRole: types.optional(types.string()),
+    roles: types.optional(z.array(types.string())),
+  })
+);
 
 export function getIntegrationResourceCustomClaimsFromJSON(
   jsonString: string,
@@ -293,13 +305,15 @@ export const GetIntegrationResourceMetadata$inboundSchema: z.ZodType<
   GetIntegrationResourceMetadata,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  types.string(),
-  types.number(),
-  z.array(types.string()),
-  z.array(types.number()),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    types.string(),
+    types.number(),
+    z.array(types.string()),
+    z.array(types.number()),
+    types.boolean(),
+  ])
+);
 
 export function getIntegrationResourceMetadataFromJSON(
   jsonString: string,
@@ -314,19 +328,23 @@ export function getIntegrationResourceMetadataFromJSON(
 /** @internal */
 export const GetIntegrationResourceLevel$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourceLevel
-> = z.nativeEnum(GetIntegrationResourceLevel);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetIntegrationResourceLevel)
+);
 
 /** @internal */
 export const GetIntegrationResourceNotification$inboundSchema: z.ZodType<
   GetIntegrationResourceNotification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  href: types.optional(types.string()),
-  level: GetIntegrationResourceLevel$inboundSchema,
-  message: types.optional(types.string()),
-  title: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    href: types.optional(types.string()),
+    level: GetIntegrationResourceLevel$inboundSchema,
+    message: types.optional(types.string()),
+    title: types.string(),
+  })
+);
 
 export function getIntegrationResourceNotificationFromJSON(
   jsonString: string,
@@ -342,14 +360,18 @@ export function getIntegrationResourceNotificationFromJSON(
 /** @internal */
 export const GetIntegrationResourceTarget$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourceTarget
-> = z.nativeEnum(GetIntegrationResourceTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetIntegrationResourceTarget)
+);
 
 /** @internal */
 export const AppUrls$inboundSchema: z.ZodType<AppUrls, z.ZodTypeDef, unknown> =
-  z.object({
-    target: GetIntegrationResourceTarget$inboundSchema,
-    url: types.string(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      target: GetIntegrationResourceTarget$inboundSchema,
+      url: types.string(),
+    })
+  );
 
 export function appUrlsFromJSON(
   jsonString: string,
@@ -366,9 +388,11 @@ export const Authentication$inboundSchema: z.ZodType<
   Authentication,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  appUrls: types.optional(z.array(z.lazy(() => AppUrls$inboundSchema))),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    appUrls: types.optional(z.array(z.lazy(() => AppUrls$inboundSchema))),
+  })
+);
 
 export function authenticationFromJSON(
   jsonString: string,
@@ -385,10 +409,12 @@ export const Experimentation$inboundSchema: z.ZodType<
   Experimentation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  edgeConfigId: types.optional(types.string()),
-  globalConfigId: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: types.optional(types.string()),
+    globalConfigId: types.optional(types.string()),
+  })
+);
 
 export function experimentationFromJSON(
   jsonString: string,
@@ -405,10 +431,14 @@ export const ProtocolSettings$inboundSchema: z.ZodType<
   ProtocolSettings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authentication: types.optional(z.lazy(() => Authentication$inboundSchema)),
-  experimentation: types.optional(z.lazy(() => Experimentation$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authentication: types.optional(z.lazy(() => Authentication$inboundSchema)),
+    experimentation: types.optional(
+      z.lazy(() => Experimentation$inboundSchema),
+    ),
+  })
+);
 
 export function protocolSettingsFromJSON(
   jsonString: string,
@@ -423,41 +453,45 @@ export function protocolSettingsFromJSON(
 /** @internal */
 export const GetIntegrationResourceStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourceStatus
-> = z.nativeEnum(GetIntegrationResourceStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetIntegrationResourceStatus)
+);
 
 /** @internal */
 export const GetIntegrationResourceResponseBody$inboundSchema: z.ZodType<
   GetIntegrationResourceResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  billingPlanId: types.optional(types.string()),
-  customClaims: types.optional(
-    z.lazy(() => GetIntegrationResourceCustomClaims$inboundSchema),
-  ),
-  id: types.string(),
-  internalId: types.string(),
-  metadata: types.optional(
-    z.record(
-      smartUnion([
-        types.string(),
-        types.number(),
-        z.array(types.string()),
-        z.array(types.number()),
-        types.boolean(),
-      ]),
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    billingPlanId: types.optional(types.string()),
+    customClaims: types.optional(
+      z.lazy(() => GetIntegrationResourceCustomClaims$inboundSchema),
     ),
-  ),
-  name: types.string(),
-  notification: types.optional(
-    z.lazy(() => GetIntegrationResourceNotification$inboundSchema),
-  ),
-  productId: types.string(),
-  protocolSettings: types.optional(
-    z.lazy(() => ProtocolSettings$inboundSchema),
-  ),
-  status: types.optional(GetIntegrationResourceStatus$inboundSchema),
-});
+    id: types.string(),
+    internalId: types.string(),
+    metadata: types.optional(
+      z.record(
+        smartUnion([
+          types.string(),
+          types.number(),
+          z.array(types.string()),
+          z.array(types.number()),
+          types.boolean(),
+        ]),
+      ),
+    ),
+    name: types.string(),
+    notification: types.optional(
+      z.lazy(() => GetIntegrationResourceNotification$inboundSchema),
+    ),
+    productId: types.string(),
+    protocolSettings: types.optional(
+      z.lazy(() => ProtocolSettings$inboundSchema),
+    ),
+    status: types.optional(GetIntegrationResourceStatus$inboundSchema),
+  })
+);
 
 export function getIntegrationResourceResponseBodyFromJSON(
   jsonString: string,

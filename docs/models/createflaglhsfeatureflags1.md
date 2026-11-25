@@ -6,7 +6,7 @@
 import { CreateFlagLhsFeatureFlags1 } from "@vercel/sdk/models/createflagop.js";
 
 let value: CreateFlagLhsFeatureFlags1 = {
-  type: "segment",
+  type: "<value>",
 };
 ```
 
@@ -14,4 +14,4 @@ let value: CreateFlagLhsFeatureFlags1 = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *"segment"*        | :heavy_check_mark: | N/A                |
+| `type`             | *any*              | :heavy_check_mark: | N/A                |

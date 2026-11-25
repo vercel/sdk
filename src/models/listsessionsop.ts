@@ -3,7 +3,11 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -78,7 +82,9 @@ export type ListSessionsResponseBody =
 /** @internal */
 export const ListSessionsQueryParamSortOrder$outboundSchema: z.ZodNativeEnum<
   typeof ListSessionsQueryParamSortOrder
-> = z.nativeEnum(ListSessionsQueryParamSortOrder);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(ListSessionsQueryParamSortOrder)
+);
 
 /** @internal */
 export type ListSessionsRequest$Outbound = {
@@ -96,15 +102,21 @@ export const ListSessionsRequest$outboundSchema: z.ZodType<
   ListSessionsRequest$Outbound,
   z.ZodTypeDef,
   ListSessionsRequest
-> = z.object({
-  project: z.string().optional(),
-  name: z.string().optional(),
-  limit: z.number().default(20),
-  cursor: z.string().optional(),
-  sortOrder: ListSessionsQueryParamSortOrder$outboundSchema.default("desc"),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    project: z.string().optional(),
+    name: z.string().refine(withinMaxLength$(128), {
+      message: "Value must be at most 128 characters long",
+    }).refine(matchesPattern$("^[a-zA-Z0-9_-]+$", 128), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }).optional(),
+    limit: z.number().default(20),
+    cursor: z.string().optional(),
+    sortOrder: ListSessionsQueryParamSortOrder$outboundSchema.default("desc"),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listSessionsRequestToJSON(
   listSessionsRequest: ListSessionsRequest,
@@ -119,10 +131,12 @@ export const ListSessionsResponseBodyPagination$inboundSchema: z.ZodType<
   ListSessionsResponseBodyPagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  count: types.number(),
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    count: types.number(),
+    next: types.nullable(types.string()),
+  })
+);
 
 export function listSessionsResponseBodyPaginationFromJSON(
   jsonString: string,
@@ -140,10 +154,12 @@ export const ListSessionsResponseBody2$inboundSchema: z.ZodType<
   ListSessionsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: z.lazy(() => ListSessionsResponseBodyPagination$inboundSchema),
-  sessions: z.array(Session$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: z.lazy(() => ListSessionsResponseBodyPagination$inboundSchema),
+    sessions: z.array(Session$inboundSchema),
+  })
+);
 
 export function listSessionsResponseBody2FromJSON(
   jsonString: string,
@@ -160,7 +176,7 @@ export const ListSessionsResponseBody1$inboundSchema: z.ZodType<
   ListSessionsResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function listSessionsResponseBody1FromJSON(
   jsonString: string,
@@ -177,10 +193,12 @@ export const ListSessionsResponseBody$inboundSchema: z.ZodType<
   ListSessionsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => ListSessionsResponseBody2$inboundSchema),
-  z.lazy(() => ListSessionsResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => ListSessionsResponseBody2$inboundSchema),
+    z.lazy(() => ListSessionsResponseBody1$inboundSchema),
+  ])
+);
 
 export function listSessionsResponseBodyFromJSON(
   jsonString: string,

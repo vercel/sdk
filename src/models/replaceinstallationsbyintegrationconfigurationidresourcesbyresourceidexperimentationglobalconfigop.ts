@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -63,9 +63,11 @@ export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResource
     ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestBody$Outbound,
     z.ZodTypeDef,
     ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestBody
-  > = z.object({
-    data: z.record(z.any()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      data: z.record(z.any()),
+    })
+  );
 
 export function replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestBodyToJSON(
   replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestBody:
@@ -95,17 +97,19 @@ export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResource
     ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest$Outbound,
     z.ZodTypeDef,
     ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest
-  > = z.object({
-    integrationConfigurationId: z.string(),
-    resourceId: z.string(),
-    requestBody: z.lazy(() =>
-      ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestBody$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      requestBody: "RequestBody",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      integrationConfigurationId: z.string(),
+      resourceId: z.string(),
+      requestBody: z.lazy(() =>
+        ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestBody$outboundSchema
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        requestBody: "RequestBody",
+      });
+    })
+  );
 
 export function replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequestToJSON(
   replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigRequest:
@@ -123,8 +127,10 @@ export function replaceInstallationsByIntegrationConfigurationIdResourcesByResou
 export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose$inboundSchema:
   z.ZodNativeEnum<
     typeof ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose
-  > = z.nativeEnum(
-    ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose,
+    )
   );
 
 /** @internal */
@@ -133,14 +139,16 @@ export const ReplaceInstallationsByIntegrationConfigurationIdResourcesByResource
     ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    digest: types.string(),
-    items: z.record(types.nullable(GlobalConfigItemValue$inboundSchema)),
-    purpose: types.optional(
-      ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose$inboundSchema,
-    ),
-    updatedAt: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      digest: types.string(),
+      items: z.record(types.nullable(GlobalConfigItemValue$inboundSchema)),
+      purpose: types.optional(
+        ReplaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigPurpose$inboundSchema,
+      ),
+      updatedAt: types.number(),
+    })
+  );
 
 export function replaceInstallationsByIntegrationConfigurationIdResourcesByResourceIdExperimentationGlobalConfigResponseBodyFromJSON(
   jsonString: string,

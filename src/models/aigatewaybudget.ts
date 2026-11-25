@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -19,6 +19,7 @@ export type RefreshPeriod = ClosedEnum<typeof RefreshPeriod>;
 
 export const ScopeType = {
   ApiKey: "api-key",
+  App: "app",
   Project: "project",
   Team: "team",
   User: "user",
@@ -43,13 +44,17 @@ export type AiGatewayBudget = {
   createdAt: number;
   currentByokSpend: number;
   currentSpend: number;
+  /**
+   * When a member's own budget change lapses and the user default applies again, in ms since the epoch. Absent means the budget is permanent.
+   */
+  expiresAt?: number | undefined;
   includeByokInQuota: boolean;
   limitAmount: number;
   name?: string | undefined;
   quotaEntityId: string;
   refreshPeriod: RefreshPeriod;
   /**
-   * The native Vercel id of the scoped entity. Team/project ids already carry their prefix, so this equals `quotaEntityId` (`team_…` / `prj_…`); for the api-key scope it is the api key id (the `api_key_id_` prefix stripped).
+   * The native Vercel id of the scoped entity. Team/project ids already carry their prefix, so this equals `quotaEntityId` (`team_…` / `prj_…`); user and app scopes also use the quota entity id (`usr_<userId>` / `app_<appId>`); for the api-key scope it is the api key id (the `api_key_id_` prefix stripped).
    */
   scopeId: string;
   scopeType: ScopeType;
@@ -63,38 +68,41 @@ export type AiGatewayBudget = {
 /** @internal */
 export const RefreshPeriod$inboundSchema: z.ZodNativeEnum<
   typeof RefreshPeriod
-> = z.nativeEnum(RefreshPeriod);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(RefreshPeriod));
 
 /** @internal */
-export const ScopeType$inboundSchema: z.ZodNativeEnum<typeof ScopeType> = z
-  .nativeEnum(ScopeType);
+export const ScopeType$inboundSchema: z.ZodNativeEnum<typeof ScopeType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ScopeType));
 
 /** @internal */
-export const Source$inboundSchema: z.ZodNativeEnum<typeof Source> = z
-  .nativeEnum(Source);
+export const Source$inboundSchema: z.ZodNativeEnum<typeof Source> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Source));
 
 /** @internal */
 export const AiGatewayBudget$inboundSchema: z.ZodType<
   AiGatewayBudget,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  active: types.boolean(),
-  alertThresholds: types.optional(z.array(types.number())),
-  archived: types.boolean(),
-  createdAt: types.number(),
-  currentByokSpend: types.number(),
-  currentSpend: types.number(),
-  includeByokInQuota: types.boolean(),
-  limitAmount: types.number(),
-  name: types.optional(types.string()),
-  quotaEntityId: types.string(),
-  refreshPeriod: RefreshPeriod$inboundSchema,
-  scopeId: types.string(),
-  scopeType: ScopeType$inboundSchema,
-  source: types.optional(Source$inboundSchema),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    active: types.boolean(),
+    alertThresholds: types.optional(z.array(types.number())),
+    archived: types.boolean(),
+    createdAt: types.number(),
+    currentByokSpend: types.number(),
+    currentSpend: types.number(),
+    expiresAt: types.optional(types.number()),
+    includeByokInQuota: types.boolean(),
+    limitAmount: types.number(),
+    name: types.optional(types.string()),
+    quotaEntityId: types.string(),
+    refreshPeriod: RefreshPeriod$inboundSchema,
+    scopeId: types.string(),
+    scopeType: ScopeType$inboundSchema,
+    source: types.optional(Source$inboundSchema),
+    updatedAt: types.number(),
+  })
+);
 
 export function aiGatewayBudgetFromJSON(
   jsonString: string,

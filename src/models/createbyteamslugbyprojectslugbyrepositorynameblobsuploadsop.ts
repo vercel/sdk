@@ -3,6 +3,11 @@
  */
 
 import * as z from "zod/v3";
+import {
+  matchesPattern as matchesPattern$,
+  withinMaxLength as withinMaxLength$,
+} from "../lib/primitives.js";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest = {
   /**
@@ -43,13 +48,54 @@ export const CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest$ou
     CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest$Outbound,
     z.ZodTypeDef,
     CreateByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest
-  > = z.object({
-    teamSlug: z.string(),
-    projectSlug: z.string(),
-    repositoryName: z.string(),
-    mount: z.string().optional(),
-    from: z.string().optional(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      teamSlug: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9](?:[a-z0-9_-]{0,46}[a-z0-9])?$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9](?:[a-z0-9_-]{0,46}[a-z0-9])?$",
+        },
+      ),
+      projectSlug: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?$",
+        },
+      ),
+      repositoryName: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$("^[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$", 255),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$",
+        },
+      ),
+      mount: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(matchesPattern$("^[A-Za-z0-9_+.-]+:[A-Fa-f0-9]+$", 255), {
+        message: "Value must match pattern ^[A-Za-z0-9_+.-]+:[A-Fa-f0-9]+$",
+      }).optional(),
+      from: z.string().refine(withinMaxLength$(255), {
+        message: "Value must be at most 255 characters long",
+      }).refine(
+        matchesPattern$(
+          "^[a-z0-9](?:[a-z0-9_-]{0,46}[a-z0-9])?\\\\/[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?\\\\/[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$",
+          255,
+        ),
+        {
+          message:
+            "Value must match pattern ^[a-z0-9](?:[a-z0-9_-]{0,46}[a-z0-9])?\\\\/[a-z0-9](?:[a-z0-9-]{0,46}[a-z0-9])?\\\\/[a-z0-9]+(?:(?:\\\\.|_|__|-+)[a-z0-9]+)*$",
+        },
+      ).optional(),
+    })
+  );
 
 export function createByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequestToJSON(
   createByTeamSlugByProjectSlugByRepositoryNameBlobsUploadsRequest:

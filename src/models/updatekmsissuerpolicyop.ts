@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -96,7 +96,7 @@ export type UpdateKmsIssuerPolicyResponseBody =
 /** @internal */
 export const PathParamKind$outboundSchema: z.ZodNativeEnum<
   typeof PathParamKind
-> = z.nativeEnum(PathParamKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PathParamKind));
 
 /** @internal */
 export type UpdateKmsIssuerPolicyRequestBody$Outbound = {
@@ -109,10 +109,12 @@ export const UpdateKmsIssuerPolicyRequestBody$outboundSchema: z.ZodType<
   UpdateKmsIssuerPolicyRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateKmsIssuerPolicyRequestBody
-> = z.object({
-  environments: z.array(z.string()).optional(),
-  tokenClaims: z.nullable(z.record(z.any())).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environments: z.array(z.string()).optional(),
+    tokenClaims: z.nullable(z.record(z.any())).optional(),
+  })
+);
 
 export function updateKmsIssuerPolicyRequestBodyToJSON(
   updateKmsIssuerPolicyRequestBody: UpdateKmsIssuerPolicyRequestBody,
@@ -139,19 +141,21 @@ export const UpdateKmsIssuerPolicyRequest$outboundSchema: z.ZodType<
   UpdateKmsIssuerPolicyRequest$Outbound,
   z.ZodTypeDef,
   UpdateKmsIssuerPolicyRequest
-> = z.object({
-  issuerId: z.string(),
-  kind: PathParamKind$outboundSchema,
-  policyKey: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateKmsIssuerPolicyRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuerId: z.string(),
+    kind: PathParamKind$outboundSchema,
+    policyKey: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateKmsIssuerPolicyRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateKmsIssuerPolicyRequestToJSON(
   updateKmsIssuerPolicyRequest: UpdateKmsIssuerPolicyRequest,
@@ -168,13 +172,15 @@ export const UpdateKmsIssuerPolicyResponseBody3$inboundSchema: z.ZodType<
   UpdateKmsIssuerPolicyResponseBody3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.string(),
-  integrationId: types.string(),
-  kind: types.literal("integration-tokens-grant"),
-  tokenClaims: types.optional(z.record(z.any())),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.string(),
+    integrationId: types.string(),
+    kind: types.literal("integration-tokens-grant"),
+    tokenClaims: types.optional(z.record(z.any())),
+    updatedAt: types.string(),
+  })
+);
 
 export function updateKmsIssuerPolicyResponseBody3FromJSON(
   jsonString: string,
@@ -192,13 +198,15 @@ export const UpdateKmsIssuerPolicyResponseBody2$inboundSchema: z.ZodType<
   UpdateKmsIssuerPolicyResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.string(),
-  createdAt: types.string(),
-  kind: types.literal("connex-grant"),
-  tokenClaims: types.optional(z.record(z.any())),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.string(),
+    createdAt: types.string(),
+    kind: types.literal("connex-grant"),
+    tokenClaims: types.optional(z.record(z.any())),
+    updatedAt: types.string(),
+  })
+);
 
 export function updateKmsIssuerPolicyResponseBody2FromJSON(
   jsonString: string,
@@ -216,15 +224,17 @@ export const UpdateKmsIssuerPolicyResponseBody1$inboundSchema: z.ZodType<
   UpdateKmsIssuerPolicyResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.string(),
-  environments: z.array(types.string()),
-  kind: types.literal("project-grant"),
-  projectId: types.string(),
-  teamId: types.string(),
-  tokenClaims: types.optional(z.record(z.any())),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.string(),
+    environments: z.array(types.string()),
+    kind: types.literal("project-grant"),
+    projectId: types.string(),
+    teamId: types.string(),
+    tokenClaims: types.optional(z.record(z.any())),
+    updatedAt: types.string(),
+  })
+);
 
 export function updateKmsIssuerPolicyResponseBody1FromJSON(
   jsonString: string,
@@ -242,11 +252,13 @@ export const UpdateKmsIssuerPolicyResponseBody$inboundSchema: z.ZodType<
   UpdateKmsIssuerPolicyResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UpdateKmsIssuerPolicyResponseBody1$inboundSchema),
-  z.lazy(() => UpdateKmsIssuerPolicyResponseBody2$inboundSchema),
-  z.lazy(() => UpdateKmsIssuerPolicyResponseBody3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UpdateKmsIssuerPolicyResponseBody1$inboundSchema),
+    z.lazy(() => UpdateKmsIssuerPolicyResponseBody2$inboundSchema),
+    z.lazy(() => UpdateKmsIssuerPolicyResponseBody3$inboundSchema),
+  ])
+);
 
 export function updateKmsIssuerPolicyResponseBodyFromJSON(
   jsonString: string,

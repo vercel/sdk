@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -63,7 +63,7 @@ export type GetFlagsProjectConnectionsResponseBody =
 /** @internal */
 export const QueryParamRole$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamRole
-> = z.nativeEnum(QueryParamRole);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamRole));
 
 /** @internal */
 export type GetFlagsProjectConnectionsRequest$Outbound = {
@@ -78,12 +78,14 @@ export const GetFlagsProjectConnectionsRequest$outboundSchema: z.ZodType<
   GetFlagsProjectConnectionsRequest$Outbound,
   z.ZodTypeDef,
   GetFlagsProjectConnectionsRequest
-> = z.object({
-  projectIdOrName: z.string(),
-  role: QueryParamRole$outboundSchema.optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    role: QueryParamRole$outboundSchema.optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getFlagsProjectConnectionsRequestToJSON(
   getFlagsProjectConnectionsRequest: GetFlagsProjectConnectionsRequest,
@@ -98,14 +100,16 @@ export function getFlagsProjectConnectionsRequestToJSON(
 /** @internal */
 export const GetFlagsProjectConnectionsResponseBodyData$inboundSchema:
   z.ZodType<GetFlagsProjectConnectionsResponseBodyData, z.ZodTypeDef, unknown> =
-    z.object({
-      consumerProjectId: types.string(),
-      consumerProjectName: types.optional(types.string()),
-      createdAt: types.number(),
-      createdBy: types.string(),
-      sourceProjectId: types.string(),
-      sourceProjectName: types.optional(types.string()),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        consumerProjectId: types.string(),
+        consumerProjectName: types.optional(types.string()),
+        createdAt: types.number(),
+        createdBy: types.string(),
+        sourceProjectId: types.string(),
+        sourceProjectName: types.optional(types.string()),
+      })
+    );
 
 export function getFlagsProjectConnectionsResponseBodyDataFromJSON(
   jsonString: string,
@@ -128,11 +132,13 @@ export const GetFlagsProjectConnectionsResponseBody2$inboundSchema: z.ZodType<
   GetFlagsProjectConnectionsResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: z.array(
-    z.lazy(() => GetFlagsProjectConnectionsResponseBodyData$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: z.array(
+      z.lazy(() => GetFlagsProjectConnectionsResponseBodyData$inboundSchema),
+    ),
+  })
+);
 
 export function getFlagsProjectConnectionsResponseBody2FromJSON(
   jsonString: string,
@@ -155,7 +161,7 @@ export const GetFlagsProjectConnectionsResponseBody1$inboundSchema: z.ZodType<
   GetFlagsProjectConnectionsResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function getFlagsProjectConnectionsResponseBody1FromJSON(
   jsonString: string,
@@ -178,10 +184,12 @@ export const GetFlagsProjectConnectionsResponseBody$inboundSchema: z.ZodType<
   GetFlagsProjectConnectionsResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetFlagsProjectConnectionsResponseBody2$inboundSchema),
-  z.lazy(() => GetFlagsProjectConnectionsResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetFlagsProjectConnectionsResponseBody2$inboundSchema),
+    z.lazy(() => GetFlagsProjectConnectionsResponseBody1$inboundSchema),
+  ])
+);
 
 export function getFlagsProjectConnectionsResponseBodyFromJSON(
   jsonString: string,

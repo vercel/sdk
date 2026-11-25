@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -171,11 +171,13 @@ export const GetSharedEnvVarRequest$outboundSchema: z.ZodType<
   GetSharedEnvVarRequest$Outbound,
   z.ZodTypeDef,
   GetSharedEnvVarRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getSharedEnvVarRequestToJSON(
   getSharedEnvVarRequest: GetSharedEnvVarRequest,
@@ -190,12 +192,14 @@ export const GetSharedEnvVarLastEditedByPrincipal2$inboundSchema: z.ZodType<
   GetSharedEnvVarLastEditedByPrincipal2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  avatar: types.optional(types.string()),
-  id: types.string(),
-  name: types.string(),
-  type: types.literal("app"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: types.optional(types.string()),
+    id: types.string(),
+    name: types.string(),
+    type: types.literal("app"),
+  })
+);
 
 export function getSharedEnvVarLastEditedByPrincipal2FromJSON(
   jsonString: string,
@@ -213,13 +217,15 @@ export const GetSharedEnvVarLastEditedByPrincipal1$inboundSchema: z.ZodType<
   GetSharedEnvVarLastEditedByPrincipal1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  avatar: types.optional(types.string()),
-  id: types.string(),
-  name: z.nullable(types.string()).optional(),
-  type: types.literal("user"),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    avatar: types.optional(types.string()),
+    id: types.string(),
+    name: z.nullable(types.string()).optional(),
+    type: types.literal("user"),
+    username: types.string(),
+  })
+);
 
 export function getSharedEnvVarLastEditedByPrincipal1FromJSON(
   jsonString: string,
@@ -237,10 +243,12 @@ export const GetSharedEnvVarLastEditedByPrincipal$inboundSchema: z.ZodType<
   GetSharedEnvVarLastEditedByPrincipal,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetSharedEnvVarLastEditedByPrincipal1$inboundSchema),
-  z.lazy(() => GetSharedEnvVarLastEditedByPrincipal2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetSharedEnvVarLastEditedByPrincipal1$inboundSchema),
+    z.lazy(() => GetSharedEnvVarLastEditedByPrincipal2$inboundSchema),
+  ])
+);
 
 export function getSharedEnvVarLastEditedByPrincipalFromJSON(
   jsonString: string,
@@ -256,45 +264,45 @@ export function getSharedEnvVarLastEditedByPrincipalFromJSON(
 /** @internal */
 export const GetSharedEnvVarTarget$inboundSchema: z.ZodNativeEnum<
   typeof GetSharedEnvVarTarget
-> = z.nativeEnum(GetSharedEnvVarTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetSharedEnvVarTarget));
 
 /** @internal */
 export const GetSharedEnvVarType$inboundSchema: z.ZodNativeEnum<
   typeof GetSharedEnvVarType
-> = z.nativeEnum(GetSharedEnvVarType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetSharedEnvVarType));
 
 /** @internal */
 export const GetSharedEnvVarResponseBody$inboundSchema: z.ZodType<
   GetSharedEnvVarResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  applyToAllCustomEnvironments: types.optional(types.boolean()),
-  comment: types.optional(types.string()),
-  created: types.optional(types.date()),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
-  deletedAt: types.optional(types.number()),
-  deletedBy: z.nullable(types.string()).optional(),
-  id: types.optional(types.string()),
-  key: types.optional(types.string()),
-  lastEditedByDisplayName: types.optional(types.string()),
-  lastEditedByPrincipal: types.optional(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    applyToAllCustomEnvironments: types.optional(types.boolean()),
+    comment: types.optional(types.string()),
+    created: types.optional(types.date()),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.optional(types.boolean()),
+    deletedAt: types.optional(types.number()),
+    deletedBy: z.nullable(types.string()).optional(),
+    id: types.optional(types.string()),
+    key: types.optional(types.string()),
+    lastEditedByDisplayName: types.optional(types.string()),
+    lastEditedByPrincipal: types.optional(z.union([
       z.lazy(() => GetSharedEnvVarLastEditedByPrincipal1$inboundSchema),
       z.lazy(() => GetSharedEnvVarLastEditedByPrincipal2$inboundSchema),
-    ]),
-  ),
-  ownerId: z.nullable(types.string()).optional(),
-  projectId: types.optional(z.array(types.string())),
-  target: types.optional(z.array(GetSharedEnvVarTarget$inboundSchema)),
-  type: types.optional(GetSharedEnvVarType$inboundSchema),
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.optional(types.string()),
-});
+    ])),
+    ownerId: z.nullable(types.string()).optional(),
+    projectId: types.optional(z.array(types.string())),
+    target: types.optional(z.array(GetSharedEnvVarTarget$inboundSchema)),
+    type: types.optional(GetSharedEnvVarType$inboundSchema),
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.optional(types.string()),
+  })
+);
 
 export function getSharedEnvVarResponseBodyFromJSON(
   jsonString: string,

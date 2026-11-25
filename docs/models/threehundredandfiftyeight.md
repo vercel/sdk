@@ -5,20 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFiftyEight } from "@vercel/sdk/models/usereventpayload317type.js";
+import { ThreeHundredAndFiftyEight } from "@vercel/sdk/models/usereventpayload328previous.js";
 
 let value: ThreeHundredAndFiftyEight = {
-  oldPasswordProtection: "preview",
-  passwordProtection: "all_except_custom_domains",
+  destinationAccountName: "<value>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                 | Type                                  | Required                              | Description                           |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `oldPasswordProtection`               | *models.PayloadOldPasswordProtection* | :heavy_check_mark:                    | N/A                                   |
-| `passwordChanged`                     | *boolean*                             | :heavy_minus_sign:                    | N/A                                   |
-| `passwordProtection`                  | *models.PayloadPasswordProtection*    | :heavy_check_mark:                    | N/A                                   |
-| `projectId`                           | *string*                              | :heavy_minus_sign:                    | N/A                                   |
-| `projectName`                         | *string*                              | :heavy_minus_sign:                    | N/A                                   |
+| Field                    | Type                     | Required                 | Description              |
+| ------------------------ | ------------------------ | ------------------------ | ------------------------ |
+| `destinationAccountName` | *string*                 | :heavy_check_mark:       | N/A                      |
+| `previousProjectId`      | *string*                 | :heavy_minus_sign:       | N/A                      |
+| `projectName`            | *string*                 | :heavy_check_mark:       | N/A                      |
+| `transferId`             | *string*                 | :heavy_minus_sign:       | N/A                      |

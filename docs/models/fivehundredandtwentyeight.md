@@ -8,18 +8,14 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentyEight } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyEight = {
-  protectedProjectCount: 7319.99,
-  protectionEnabled: false,
-  vulnerabilities: [
-    "<value 1>",
-  ],
+  nextProjectCount: 7936.52,
+  previousProjectCount: 8712.89,
 };
 ```
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `protectedProjectCount` | *number*                | :heavy_check_mark:      | N/A                     |
-| `protectionEnabled`     | *boolean*               | :heavy_check_mark:      | N/A                     |
-| `vulnerabilities`       | *string*[]              | :heavy_check_mark:      | N/A                     |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `nextProjectCount`     | *number*               | :heavy_check_mark:     | N/A                    |
+| `previousProjectCount` | *number*               | :heavy_check_mark:     | N/A                    |

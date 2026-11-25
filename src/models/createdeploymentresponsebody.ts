@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -66,22 +66,24 @@ export const CreateDeploymentResponseBody1$inboundSchema: z.ZodType<
   CreateDeploymentResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(z.array(types.string())),
-  aliasAssigned: types.boolean(),
-  aliasError: z.nullable(CreateDeploymentResponseBodyAliasError$inboundSchema)
-    .optional(),
-  aliasWarning: z.nullable(
-    CreateDeploymentResponseBodyAliasWarning$inboundSchema,
-  ).optional(),
-  duration: CreateDeploymentResponseBodyDuration$inboundSchema,
-  errorCode: types.optional(types.string()),
-  errorMessage: z.nullable(types.string()).optional(),
-  id: types.string(),
-  readyState: CreateDeploymentResponseBodyReadyState$inboundSchema,
-  target: z.nullable(CreateDeploymentResponseBodyTarget$inboundSchema)
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(z.array(types.string())),
+    aliasAssigned: types.boolean(),
+    aliasError: z.nullable(CreateDeploymentResponseBodyAliasError$inboundSchema)
+      .optional(),
+    aliasWarning: z.nullable(
+      CreateDeploymentResponseBodyAliasWarning$inboundSchema,
+    ).optional(),
+    duration: CreateDeploymentResponseBodyDuration$inboundSchema,
+    errorCode: types.optional(types.string()),
+    errorMessage: z.nullable(types.string()).optional(),
+    id: types.string(),
+    readyState: CreateDeploymentResponseBodyReadyState$inboundSchema,
+    target: z.nullable(CreateDeploymentResponseBodyTarget$inboundSchema)
+      .optional(),
+  })
+);
 
 export function createDeploymentResponseBody1FromJSON(
   jsonString: string,
@@ -98,10 +100,12 @@ export const CreateDeploymentResponseBody$inboundSchema: z.ZodType<
   CreateDeploymentResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  CreateDeploymentResponseBody2$inboundSchema,
-  z.lazy(() => CreateDeploymentResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    CreateDeploymentResponseBody2$inboundSchema,
+    z.lazy(() => CreateDeploymentResponseBody1$inboundSchema),
+  ])
+);
 
 export function createDeploymentResponseBodyFromJSON(
   jsonString: string,

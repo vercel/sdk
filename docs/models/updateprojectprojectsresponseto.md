@@ -3,22 +3,21 @@
 
 ## Supported Types
 
-### `models.UpdateProjectToProjectsResponse1`
+### `models.UpdateProjectToProjects1`
 
 ```typescript
-const value: models.UpdateProjectToProjectsResponse1 = {
+const value: models.UpdateProjectToProjects1 = {
   slugs: [
     "<value 1>",
     "<value 2>",
-    "<value 3>",
   ],
 };
 ```
 
-### `models.UpdateProjectToProjectsResponse2`
+### `models.UpdateProjectToProjects2`
 
 ```typescript
-const value: models.UpdateProjectToProjectsResponse2 = {
+const value: models.UpdateProjectToProjects2 = {
   preset: "all-custom",
 };
 ```

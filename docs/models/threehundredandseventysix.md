@@ -5,13 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSeventySix } from "@vercel/sdk/models/usereventpayload317type.js";
+import { ThreeHundredAndSeventySix } from "@vercel/sdk/models/usereventpayload328previous.js";
 
 let value: ThreeHundredAndSeventySix = {
-  next: {
-    skewProtectionMaxAge: 1251.84,
-  },
-  previous: {},
+  gitForkProtection: true,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -19,9 +16,8 @@ let value: ThreeHundredAndSeventySix = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload376Next](../models/usereventpayload376next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload376Previous](../models/usereventpayload376previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field               | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `gitForkProtection` | *boolean*           | :heavy_check_mark:  | N/A                 |
+| `projectId`         | *string*            | :heavy_check_mark:  | N/A                 |
+| `projectName`       | *string*            | :heavy_check_mark:  | N/A                 |

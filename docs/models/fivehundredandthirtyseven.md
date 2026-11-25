@@ -8,15 +8,16 @@ The payload of the event, if requested.
 import { FiveHundredAndThirtySeven } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtySeven = {
-  chatId: "<id>",
-  messageId: "<id>",
+  protectedProjectCount: 1795.88,
+  protectionEnabled: true,
+  vulnerabilities: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `chatId`           | *string*           | :heavy_check_mark: | N/A                |
-| `chatTitle`        | *string*           | :heavy_minus_sign: | N/A                |
-| `messageId`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                   | Type                    | Required                | Description             |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `protectedProjectCount` | *number*                | :heavy_check_mark:      | N/A                     |
+| `protectionEnabled`     | *boolean*               | :heavy_check_mark:      | N/A                     |
+| `vulnerabilities`       | *string*[]              | :heavy_check_mark:      | N/A                     |

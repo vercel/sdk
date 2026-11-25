@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 
 /**
@@ -12,6 +13,7 @@ export const ArchiveAiGatewayBudgetQueryParamScopeType = {
   Team: "team",
   Project: "project",
   User: "user",
+  App: "app",
 } as const;
 /**
  * The budget scope to archive.
@@ -34,6 +36,10 @@ export type ArchiveAiGatewayBudgetRequest = {
    */
   userId?: string | undefined;
   /**
+   * Required when scopeType is \"app\". The id of a Vercel App (`cl_…`).
+   */
+  appId?: string | undefined;
+  /**
    * Why the budget is being changed, up to 500 characters. Recorded in the activity log and audit log drains, and sent in the ai-gateway.budget.updated webhook.
    */
   justification?: string | undefined;
@@ -49,14 +55,17 @@ export type ArchiveAiGatewayBudgetRequest = {
 
 /** @internal */
 export const ArchiveAiGatewayBudgetQueryParamScopeType$outboundSchema:
-  z.ZodNativeEnum<typeof ArchiveAiGatewayBudgetQueryParamScopeType> = z
-    .nativeEnum(ArchiveAiGatewayBudgetQueryParamScopeType);
+  z.ZodNativeEnum<typeof ArchiveAiGatewayBudgetQueryParamScopeType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(ArchiveAiGatewayBudgetQueryParamScopeType)
+    );
 
 /** @internal */
 export type ArchiveAiGatewayBudgetRequest$Outbound = {
   scopeType: string;
   projectId?: string | undefined;
   userId?: string | undefined;
+  appId?: string | undefined;
   justification?: string | undefined;
   teamId?: string | undefined;
   slug?: string | undefined;
@@ -67,14 +76,17 @@ export const ArchiveAiGatewayBudgetRequest$outboundSchema: z.ZodType<
   ArchiveAiGatewayBudgetRequest$Outbound,
   z.ZodTypeDef,
   ArchiveAiGatewayBudgetRequest
-> = z.object({
-  scopeType: ArchiveAiGatewayBudgetQueryParamScopeType$outboundSchema,
-  projectId: z.string().optional(),
-  userId: z.string().optional(),
-  justification: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    scopeType: ArchiveAiGatewayBudgetQueryParamScopeType$outboundSchema,
+    projectId: z.string().optional(),
+    userId: z.string().optional(),
+    appId: z.string().optional(),
+    justification: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function archiveAiGatewayBudgetRequestToJSON(
   archiveAiGatewayBudgetRequest: ArchiveAiGatewayBudgetRequest,

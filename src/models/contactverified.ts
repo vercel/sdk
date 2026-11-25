@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -20,9 +20,11 @@ export const ContactVerified$inboundSchema: z.ZodType<
   ContactVerified,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  verified: types.literal(true),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    verified: types.literal(true),
+  })
+);
 
 export function contactVerifiedFromJSON(
   jsonString: string,

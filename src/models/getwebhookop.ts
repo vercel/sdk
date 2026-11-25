@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -146,6 +146,9 @@ export const GetWebhookEvents = {
   ProjectRollingReleaseApproved: "project.rolling-release.approved",
   ProjectRollingReleaseCompleted: "project.rolling-release.completed",
   ProjectRollingReleaseStarted: "project.rolling-release.started",
+  SandboxSessionExpiring: "sandbox.session.expiring",
+  SandboxSessionStarted: "sandbox.session.started",
+  SandboxSessionStopped: "sandbox.session.stopped",
   TestWebhook: "test-webhook",
   ThreadResolved: "thread.resolved",
   ThreadUnresolved: "thread.unresolved",
@@ -199,11 +202,13 @@ export const GetWebhookRequest$outboundSchema: z.ZodType<
   GetWebhookRequest$Outbound,
   z.ZodTypeDef,
   GetWebhookRequest
-> = z.object({
-  id: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getWebhookRequestToJSON(
   getWebhookRequest: GetWebhookRequest,
@@ -216,23 +221,25 @@ export function getWebhookRequestToJSON(
 /** @internal */
 export const GetWebhookEvents$inboundSchema: z.ZodNativeEnum<
   typeof GetWebhookEvents
-> = z.nativeEnum(GetWebhookEvents);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetWebhookEvents));
 
 /** @internal */
 export const GetWebhookResponseBody$inboundSchema: z.ZodType<
   GetWebhookResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alertRuleIds: types.optional(z.array(types.string())),
-  createdAt: types.number(),
-  events: z.array(GetWebhookEvents$inboundSchema),
-  id: types.string(),
-  ownerId: types.string(),
-  projectIds: types.optional(z.array(types.string())),
-  updatedAt: types.number(),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alertRuleIds: types.optional(z.array(types.string())),
+    createdAt: types.number(),
+    events: z.array(GetWebhookEvents$inboundSchema),
+    id: types.string(),
+    ownerId: types.string(),
+    projectIds: types.optional(z.array(types.string())),
+    updatedAt: types.number(),
+    url: types.string(),
+  })
+);
 
 export function getWebhookResponseBodyFromJSON(
   jsonString: string,

@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -597,10 +597,12 @@ export const GetOrderRequest$outboundSchema: z.ZodType<
   GetOrderRequest$Outbound,
   z.ZodTypeDef,
   GetOrderRequest
-> = z.object({
-  orderId: z.string(),
-  teamId: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    orderId: z.string(),
+    teamId: z.string().optional(),
+  })
+);
 
 export function getOrderRequestToJSON(
   getOrderRequest: GetOrderRequest,
@@ -613,12 +615,14 @@ export const GetOrderDomainsRegistrarResponseBody$inboundSchema: z.ZodType<
   GetOrderDomainsRegistrarResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  NotAuthorizedForScope$inboundSchema.and(
-    z.object({ code: z.literal("not_authorized_for_scope") }),
-  ),
-  Forbidden$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    NotAuthorizedForScope$inboundSchema.and(
+      z.object({ code: z.literal("not_authorized_for_scope") }),
+    ),
+    Forbidden$inboundSchema,
+  ])
+);
 
 export function getOrderDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -633,19 +637,22 @@ export function getOrderDomainsRegistrarResponseBodyFromJSON(
 
 /** @internal */
 export const GetOrderDomainsDomainsRegistrarStatus$inboundSchema:
-  z.ZodNativeEnum<typeof GetOrderDomainsDomainsRegistrarStatus> = z.nativeEnum(
-    GetOrderDomainsDomainsRegistrarStatus,
-  );
+  z.ZodNativeEnum<typeof GetOrderDomainsDomainsRegistrarStatus> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetOrderDomainsDomainsRegistrarStatus)
+    );
 
 /** @internal */
 export const GetOrderErrorDomainsRegistrar2$inboundSchema: z.ZodType<
   GetOrderErrorDomainsRegistrar2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  details: types.optional(z.any()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    details: types.optional(z.any()),
+  })
+);
 
 export function getOrderErrorDomainsRegistrar2FromJSON(
   jsonString: string,
@@ -660,7 +667,7 @@ export function getOrderErrorDomainsRegistrar2FromJSON(
 /** @internal */
 export const GetOrder1InvalidField$inboundSchema: z.ZodNativeEnum<
   typeof GetOrder1InvalidField
-> = z.nativeEnum(GetOrder1InvalidField);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetOrder1InvalidField));
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Error10Details$inboundSchema:
@@ -668,9 +675,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Error10Details,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    invalidField: types.optional(GetOrder1InvalidField$inboundSchema),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      invalidField: types.optional(GetOrder1InvalidField$inboundSchema),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Error10DetailsFromJSON(
   jsonString: string,
@@ -692,12 +701,14 @@ export const GetOrder1DomainsRegistrar10$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar10,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("invalid-contact"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Error10Details$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("invalid-contact"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Error10Details$inboundSchema
+    ),
+  })
+);
 
 export function getOrder1DomainsRegistrar10FromJSON(
   jsonString: string,
@@ -714,9 +725,11 @@ export const GetOrder1DomainsRegistrar9$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar9,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("unavailable-legal"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("unavailable-legal"),
+  })
+);
 
 export function getOrder1DomainsRegistrar9FromJSON(
   jsonString: string,
@@ -733,9 +746,11 @@ export const GetOrder1DomainsRegistrar8$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar8,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("price-change"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("price-change"),
+  })
+);
 
 export function getOrder1DomainsRegistrar8FromJSON(
   jsonString: string,
@@ -752,9 +767,11 @@ export const GetOrder1DomainsRegistrar7$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("account-transfer-required"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("account-transfer-required"),
+  })
+);
 
 export function getOrder1DomainsRegistrar7FromJSON(
   jsonString: string,
@@ -772,9 +789,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3ErrorDetails,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    numDaysUntilTransferrable: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      numDaysUntilTransferrable: types.number(),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3ErrorDetailsFromJSON(
   jsonString: string,
@@ -796,12 +815,14 @@ export const GetOrder1DomainsRegistrar6$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("cannot-transfer-in-until"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3ErrorDetails$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("cannot-transfer-in-until"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3ErrorDetails$inboundSchema
+    ),
+  })
+);
 
 export function getOrder1DomainsRegistrar6FromJSON(
   jsonString: string,
@@ -818,9 +839,11 @@ export const GetOrder1DomainsRegistrar5$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("claims-notice-required"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("claims-notice-required"),
+  })
+);
 
 export function getOrder1DomainsRegistrar5FromJSON(
   jsonString: string,
@@ -837,9 +860,11 @@ export const GetOrder1DomainsRegistrar4$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("incorrect-auth-code"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("incorrect-auth-code"),
+  })
+);
 
 export function getOrder1DomainsRegistrar4FromJSON(
   jsonString: string,
@@ -856,9 +881,11 @@ export const GetOrder1DomainsRegistrar3$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("client-transfer-prohibited"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("client-transfer-prohibited"),
+  })
+);
 
 export function getOrder1DomainsRegistrar3FromJSON(
   jsonString: string,
@@ -876,9 +903,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Details,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    detectedLanguageCode: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      detectedLanguageCode: types.string(),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3DetailsFromJSON(
   jsonString: string,
@@ -900,12 +929,14 @@ export const GetOrder1DomainsRegistrar2$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("incorrect-language-code"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Details$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("incorrect-language-code"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains3Details$inboundSchema
+    ),
+  })
+);
 
 export function getOrder1DomainsRegistrar2FromJSON(
   jsonString: string,
@@ -923,9 +954,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsDetails,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    detectedLanguageCode: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      detectedLanguageCode: types.string(),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsDetailsFromJSON(
   jsonString: string,
@@ -947,12 +980,14 @@ export const GetOrder1DomainsRegistrar1$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrar1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("unsupported-language-code"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsDetails$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("unsupported-language-code"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomainsDetails$inboundSchema
+    ),
+  })
+);
 
 export function getOrder1DomainsRegistrar1FromJSON(
   jsonString: string,
@@ -969,18 +1004,20 @@ export const GetOrderErrorDomainsRegistrar1$inboundSchema: z.ZodType<
   GetOrderErrorDomainsRegistrar1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetOrder1DomainsRegistrar1$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrar2$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrar3$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrar4$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrar5$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrar6$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrar7$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrar8$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrar9$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrar10$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetOrder1DomainsRegistrar1$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrar2$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrar3$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrar4$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrar5$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrar6$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrar7$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrar8$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrar9$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrar10$inboundSchema),
+  ])
+);
 
 export function getOrderErrorDomainsRegistrar1FromJSON(
   jsonString: string,
@@ -997,21 +1034,23 @@ export const GetOrderDomainsDomainsRegistrarError$inboundSchema: z.ZodType<
   GetOrderDomainsDomainsRegistrarError,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetOrderErrorDomainsRegistrar2$inboundSchema),
-  z.union([
-    z.lazy(() => GetOrder1DomainsRegistrar1$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrar2$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrar3$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrar4$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrar5$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrar6$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrar7$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrar8$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrar9$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrar10$inboundSchema),
-  ]),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetOrderErrorDomainsRegistrar2$inboundSchema),
+    z.union([
+      z.lazy(() => GetOrder1DomainsRegistrar1$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrar2$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrar3$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrar4$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrar5$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrar6$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrar7$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrar8$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrar9$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrar10$inboundSchema),
+    ]),
+  ])
+);
 
 export function getOrderDomainsDomainsRegistrarErrorFromJSON(
   jsonString: string,
@@ -1029,15 +1068,15 @@ export const Domains3$inboundSchema: z.ZodType<
   Domains3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  purchaseType: types.literal("transfer"),
-  autoRenew: types.boolean(),
-  years: types.number(),
-  domainName: types.string(),
-  status: GetOrderDomainsDomainsRegistrarStatus$inboundSchema,
-  price: types.number(),
-  error: types.optional(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    purchaseType: types.literal("transfer"),
+    autoRenew: types.boolean(),
+    years: types.number(),
+    domainName: types.string(),
+    status: GetOrderDomainsDomainsRegistrarStatus$inboundSchema,
+    price: types.number(),
+    error: types.optional(smartUnion([
       z.lazy(() => GetOrderErrorDomainsRegistrar2$inboundSchema),
       z.union([
         z.lazy(() => GetOrder1DomainsRegistrar1$inboundSchema),
@@ -1051,9 +1090,9 @@ export const Domains3$inboundSchema: z.ZodType<
         z.lazy(() => GetOrder1DomainsRegistrar9$inboundSchema),
         z.lazy(() => GetOrder1DomainsRegistrar10$inboundSchema),
       ]),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function domains3FromJSON(
   jsonString: string,
@@ -1068,17 +1107,19 @@ export function domains3FromJSON(
 /** @internal */
 export const GetOrderDomainsStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetOrderDomainsStatus
-> = z.nativeEnum(GetOrderDomainsStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetOrderDomainsStatus));
 
 /** @internal */
 export const GetOrderError2$inboundSchema: z.ZodType<
   GetOrderError2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  details: types.optional(z.any()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    details: types.optional(z.any()),
+  })
+);
 
 export function getOrderError2FromJSON(
   jsonString: string,
@@ -1093,7 +1134,7 @@ export function getOrderError2FromJSON(
 /** @internal */
 export const OneInvalidField$inboundSchema: z.ZodNativeEnum<
   typeof OneInvalidField
-> = z.nativeEnum(OneInvalidField);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OneInvalidField));
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDetails$inboundSchema:
@@ -1101,9 +1142,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDeta
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDetails,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    invalidField: types.optional(OneInvalidField$inboundSchema),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      invalidField: types.optional(OneInvalidField$inboundSchema),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDetailsFromJSON(
   jsonString: string,
@@ -1125,12 +1168,14 @@ export const GetOrder110$inboundSchema: z.ZodType<
   GetOrder110,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("invalid-contact"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDetails$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("invalid-contact"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDetails$inboundSchema
+    ),
+  })
+);
 
 export function getOrder110FromJSON(
   jsonString: string,
@@ -1147,9 +1192,11 @@ export const GetOrder19$inboundSchema: z.ZodType<
   GetOrder19,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("unavailable-legal"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("unavailable-legal"),
+  })
+);
 
 export function getOrder19FromJSON(
   jsonString: string,
@@ -1166,9 +1213,11 @@ export const GetOrder18$inboundSchema: z.ZodType<
   GetOrder18,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("price-change"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("price-change"),
+  })
+);
 
 export function getOrder18FromJSON(
   jsonString: string,
@@ -1185,9 +1234,11 @@ export const GetOrder17$inboundSchema: z.ZodType<
   GetOrder17,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("account-transfer-required"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("account-transfer-required"),
+  })
+);
 
 export function getOrder17FromJSON(
   jsonString: string,
@@ -1205,9 +1256,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONDetails$inboundS
     GetOrder1DomainsRegistrarResponse200ApplicationJSONDetails,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    numDaysUntilTransferrable: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      numDaysUntilTransferrable: types.number(),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONDetailsFromJSON(
   jsonString: string,
@@ -1229,12 +1282,14 @@ export const GetOrder16$inboundSchema: z.ZodType<
   GetOrder16,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("cannot-transfer-in-until"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONDetails$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("cannot-transfer-in-until"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200ApplicationJSONDetails$inboundSchema
+    ),
+  })
+);
 
 export function getOrder16FromJSON(
   jsonString: string,
@@ -1251,9 +1306,11 @@ export const GetOrder15$inboundSchema: z.ZodType<
   GetOrder15,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("claims-notice-required"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("claims-notice-required"),
+  })
+);
 
 export function getOrder15FromJSON(
   jsonString: string,
@@ -1270,9 +1327,11 @@ export const GetOrder1DomainsRegistrarResponse2004$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse2004,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("incorrect-auth-code"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("incorrect-auth-code"),
+  })
+);
 
 export function getOrder1DomainsRegistrarResponse2004FromJSON(
   jsonString: string,
@@ -1290,9 +1349,11 @@ export const GetOrder1DomainsRegistrarResponse2003$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse2003,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("client-transfer-prohibited"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("client-transfer-prohibited"),
+  })
+);
 
 export function getOrder1DomainsRegistrarResponse2003FromJSON(
   jsonString: string,
@@ -1311,9 +1372,11 @@ export const GetOrder1DomainsRegistrarResponse200Details$inboundSchema:
     GetOrder1DomainsRegistrarResponse200Details,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    detectedLanguageCode: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      detectedLanguageCode: types.string(),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200DetailsFromJSON(
   jsonString: string,
@@ -1336,12 +1399,14 @@ export const GetOrder1DomainsRegistrarResponse2002$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse2002,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("incorrect-language-code"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200Details$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("incorrect-language-code"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200Details$inboundSchema
+    ),
+  })
+);
 
 export function getOrder1DomainsRegistrarResponse2002FromJSON(
   jsonString: string,
@@ -1360,9 +1425,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Details,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    detectedLanguageCode: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      detectedLanguageCode: types.string(),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2DetailsFromJSON(
   jsonString: string,
@@ -1384,12 +1451,14 @@ export const GetOrder1DomainsRegistrarResponse2001$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse2001,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("unsupported-language-code"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Details$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("unsupported-language-code"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains2Details$inboundSchema
+    ),
+  })
+);
 
 export function getOrder1DomainsRegistrarResponse2001FromJSON(
   jsonString: string,
@@ -1407,18 +1476,20 @@ export const GetOrderError1$inboundSchema: z.ZodType<
   GetOrderError1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetOrder1DomainsRegistrarResponse2001$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrarResponse2002$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrarResponse2003$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrarResponse2004$inboundSchema),
-  z.lazy(() => GetOrder15$inboundSchema),
-  z.lazy(() => GetOrder16$inboundSchema),
-  z.lazy(() => GetOrder17$inboundSchema),
-  z.lazy(() => GetOrder18$inboundSchema),
-  z.lazy(() => GetOrder19$inboundSchema),
-  z.lazy(() => GetOrder110$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetOrder1DomainsRegistrarResponse2001$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrarResponse2002$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrarResponse2003$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrarResponse2004$inboundSchema),
+    z.lazy(() => GetOrder15$inboundSchema),
+    z.lazy(() => GetOrder16$inboundSchema),
+    z.lazy(() => GetOrder17$inboundSchema),
+    z.lazy(() => GetOrder18$inboundSchema),
+    z.lazy(() => GetOrder19$inboundSchema),
+    z.lazy(() => GetOrder110$inboundSchema),
+  ])
+);
 
 export function getOrderError1FromJSON(
   jsonString: string,
@@ -1435,21 +1506,23 @@ export const GetOrderDomainsError$inboundSchema: z.ZodType<
   GetOrderDomainsError,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetOrderError2$inboundSchema),
-  z.union([
-    z.lazy(() => GetOrder1DomainsRegistrarResponse2001$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrarResponse2002$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrarResponse2003$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrarResponse2004$inboundSchema),
-    z.lazy(() => GetOrder15$inboundSchema),
-    z.lazy(() => GetOrder16$inboundSchema),
-    z.lazy(() => GetOrder17$inboundSchema),
-    z.lazy(() => GetOrder18$inboundSchema),
-    z.lazy(() => GetOrder19$inboundSchema),
-    z.lazy(() => GetOrder110$inboundSchema),
-  ]),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetOrderError2$inboundSchema),
+    z.union([
+      z.lazy(() => GetOrder1DomainsRegistrarResponse2001$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrarResponse2002$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrarResponse2003$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrarResponse2004$inboundSchema),
+      z.lazy(() => GetOrder15$inboundSchema),
+      z.lazy(() => GetOrder16$inboundSchema),
+      z.lazy(() => GetOrder17$inboundSchema),
+      z.lazy(() => GetOrder18$inboundSchema),
+      z.lazy(() => GetOrder19$inboundSchema),
+      z.lazy(() => GetOrder110$inboundSchema),
+    ]),
+  ])
+);
 
 export function getOrderDomainsErrorFromJSON(
   jsonString: string,
@@ -1466,14 +1539,14 @@ export const Domains2$inboundSchema: z.ZodType<
   Domains2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  purchaseType: types.literal("renewal"),
-  years: types.number(),
-  domainName: types.string(),
-  status: GetOrderDomainsStatus$inboundSchema,
-  price: types.number(),
-  error: types.optional(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    purchaseType: types.literal("renewal"),
+    years: types.number(),
+    domainName: types.string(),
+    status: GetOrderDomainsStatus$inboundSchema,
+    price: types.number(),
+    error: types.optional(smartUnion([
       z.lazy(() => GetOrderError2$inboundSchema),
       z.union([
         z.lazy(() => GetOrder1DomainsRegistrarResponse2001$inboundSchema),
@@ -1487,9 +1560,9 @@ export const Domains2$inboundSchema: z.ZodType<
         z.lazy(() => GetOrder19$inboundSchema),
         z.lazy(() => GetOrder110$inboundSchema),
       ]),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function domains2FromJSON(
   jsonString: string,
@@ -1504,17 +1577,19 @@ export function domains2FromJSON(
 /** @internal */
 export const DomainsStatus$inboundSchema: z.ZodNativeEnum<
   typeof DomainsStatus
-> = z.nativeEnum(DomainsStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DomainsStatus));
 
 /** @internal */
 export const GetOrderErrorDomainsRegistrarResponse2$inboundSchema: z.ZodType<
   GetOrderErrorDomainsRegistrarResponse2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  details: types.optional(z.any()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    details: types.optional(z.any()),
+  })
+);
 
 export function getOrderErrorDomainsRegistrarResponse2FromJSON(
   jsonString: string,
@@ -1529,7 +1604,7 @@ export function getOrderErrorDomainsRegistrarResponse2FromJSON(
 
 /** @internal */
 export const InvalidField$inboundSchema: z.ZodNativeEnum<typeof InvalidField> =
-  z.nativeEnum(InvalidField);
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(InvalidField));
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error10Details$inboundSchema:
@@ -1537,9 +1612,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error10Details,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    invalidField: types.optional(InvalidField$inboundSchema),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      invalidField: types.optional(InvalidField$inboundSchema),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error10DetailsFromJSON(
   jsonString: string,
@@ -1557,13 +1634,15 @@ export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyD
 }
 
 /** @internal */
-export const One10$inboundSchema: z.ZodType<One10, z.ZodTypeDef, unknown> = z
-  .object({
-    code: types.literal("invalid-contact"),
-    details: z.lazy(() =>
-      GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error10Details$inboundSchema
-    ),
-  });
+export const One10$inboundSchema: z.ZodType<One10, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.literal("invalid-contact"),
+      details: z.lazy(() =>
+        GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error10Details$inboundSchema
+      ),
+    })
+  );
 
 export function one10FromJSON(
   jsonString: string,
@@ -1576,10 +1655,12 @@ export function one10FromJSON(
 }
 
 /** @internal */
-export const One9$inboundSchema: z.ZodType<One9, z.ZodTypeDef, unknown> = z
-  .object({
-    code: types.literal("unavailable-legal"),
-  });
+export const One9$inboundSchema: z.ZodType<One9, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.literal("unavailable-legal"),
+    })
+  );
 
 export function one9FromJSON(
   jsonString: string,
@@ -1592,10 +1673,12 @@ export function one9FromJSON(
 }
 
 /** @internal */
-export const One8$inboundSchema: z.ZodType<One8, z.ZodTypeDef, unknown> = z
-  .object({
-    code: types.literal("price-change"),
-  });
+export const One8$inboundSchema: z.ZodType<One8, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.literal("price-change"),
+    })
+  );
 
 export function one8FromJSON(
   jsonString: string,
@@ -1608,10 +1691,12 @@ export function one8FromJSON(
 }
 
 /** @internal */
-export const One7$inboundSchema: z.ZodType<One7, z.ZodTypeDef, unknown> = z
-  .object({
-    code: types.literal("account-transfer-required"),
-  });
+export const One7$inboundSchema: z.ZodType<One7, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.literal("account-transfer-required"),
+    })
+  );
 
 export function one7FromJSON(
   jsonString: string,
@@ -1629,9 +1714,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error6Details,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    numDaysUntilTransferrable: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      numDaysUntilTransferrable: types.number(),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error6DetailsFromJSON(
   jsonString: string,
@@ -1653,12 +1740,14 @@ export const GetOrder1DomainsRegistrarResponse6$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("cannot-transfer-in-until"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error6Details$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("cannot-transfer-in-until"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Error6Details$inboundSchema
+    ),
+  })
+);
 
 export function getOrder1DomainsRegistrarResponse6FromJSON(
   jsonString: string,
@@ -1676,9 +1765,11 @@ export const GetOrder1DomainsRegistrarResponse5$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("claims-notice-required"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("claims-notice-required"),
+  })
+);
 
 export function getOrder1DomainsRegistrarResponse5FromJSON(
   jsonString: string,
@@ -1696,9 +1787,11 @@ export const GetOrder1DomainsRegistrarResponse4$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("incorrect-auth-code"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("incorrect-auth-code"),
+  })
+);
 
 export function getOrder1DomainsRegistrarResponse4FromJSON(
   jsonString: string,
@@ -1716,9 +1809,11 @@ export const GetOrder1DomainsRegistrarResponse3$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("client-transfer-prohibited"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("client-transfer-prohibited"),
+  })
+);
 
 export function getOrder1DomainsRegistrarResponse3FromJSON(
   jsonString: string,
@@ -1737,9 +1832,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorDetails,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    detectedLanguageCode: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      detectedLanguageCode: types.string(),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorDetailsFromJSON(
   jsonString: string,
@@ -1761,12 +1858,14 @@ export const GetOrder1DomainsRegistrarResponse2$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("incorrect-language-code"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorDetails$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("incorrect-language-code"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1ErrorDetails$inboundSchema
+    ),
+  })
+);
 
 export function getOrder1DomainsRegistrarResponse2FromJSON(
   jsonString: string,
@@ -1785,9 +1884,11 @@ export const GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDoma
     GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Details,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    detectedLanguageCode: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      detectedLanguageCode: types.string(),
+    })
+  );
 
 export function getOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1DetailsFromJSON(
   jsonString: string,
@@ -1809,12 +1910,14 @@ export const GetOrder1DomainsRegistrarResponse1$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponse1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("unsupported-language-code"),
-  details: z.lazy(() =>
-    GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Details$inboundSchema
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("unsupported-language-code"),
+    details: z.lazy(() =>
+      GetOrder1DomainsRegistrarResponse200ApplicationJSONResponseBodyDomains1Details$inboundSchema
+    ),
+  })
+);
 
 export function getOrder1DomainsRegistrarResponse1FromJSON(
   jsonString: string,
@@ -1832,18 +1935,20 @@ export const GetOrderErrorDomainsRegistrarResponse1$inboundSchema: z.ZodType<
   GetOrderErrorDomainsRegistrarResponse1,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => GetOrder1DomainsRegistrarResponse1$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrarResponse2$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrarResponse3$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrarResponse4$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrarResponse5$inboundSchema),
-  z.lazy(() => GetOrder1DomainsRegistrarResponse6$inboundSchema),
-  z.lazy(() => One7$inboundSchema),
-  z.lazy(() => One8$inboundSchema),
-  z.lazy(() => One9$inboundSchema),
-  z.lazy(() => One10$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => GetOrder1DomainsRegistrarResponse1$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrarResponse2$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrarResponse3$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrarResponse4$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrarResponse5$inboundSchema),
+    z.lazy(() => GetOrder1DomainsRegistrarResponse6$inboundSchema),
+    z.lazy(() => One7$inboundSchema),
+    z.lazy(() => One8$inboundSchema),
+    z.lazy(() => One9$inboundSchema),
+    z.lazy(() => One10$inboundSchema),
+  ])
+);
 
 export function getOrderErrorDomainsRegistrarResponse1FromJSON(
   jsonString: string,
@@ -1861,21 +1966,23 @@ export const DomainsError$inboundSchema: z.ZodType<
   DomainsError,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => GetOrderErrorDomainsRegistrarResponse2$inboundSchema),
-  z.union([
-    z.lazy(() => GetOrder1DomainsRegistrarResponse1$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrarResponse2$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrarResponse3$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrarResponse4$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrarResponse5$inboundSchema),
-    z.lazy(() => GetOrder1DomainsRegistrarResponse6$inboundSchema),
-    z.lazy(() => One7$inboundSchema),
-    z.lazy(() => One8$inboundSchema),
-    z.lazy(() => One9$inboundSchema),
-    z.lazy(() => One10$inboundSchema),
-  ]),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => GetOrderErrorDomainsRegistrarResponse2$inboundSchema),
+    z.union([
+      z.lazy(() => GetOrder1DomainsRegistrarResponse1$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrarResponse2$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrarResponse3$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrarResponse4$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrarResponse5$inboundSchema),
+      z.lazy(() => GetOrder1DomainsRegistrarResponse6$inboundSchema),
+      z.lazy(() => One7$inboundSchema),
+      z.lazy(() => One8$inboundSchema),
+      z.lazy(() => One9$inboundSchema),
+      z.lazy(() => One10$inboundSchema),
+    ]),
+  ])
+);
 
 export function domainsErrorFromJSON(
   jsonString: string,
@@ -1892,15 +1999,15 @@ export const Domains1$inboundSchema: z.ZodType<
   Domains1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  purchaseType: types.literal("purchase"),
-  autoRenew: types.boolean(),
-  years: types.number(),
-  domainName: types.string(),
-  status: DomainsStatus$inboundSchema,
-  price: types.number(),
-  error: types.optional(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    purchaseType: types.literal("purchase"),
+    autoRenew: types.boolean(),
+    years: types.number(),
+    domainName: types.string(),
+    status: DomainsStatus$inboundSchema,
+    price: types.number(),
+    error: types.optional(smartUnion([
       z.lazy(() => GetOrderErrorDomainsRegistrarResponse2$inboundSchema),
       z.union([
         z.lazy(() => GetOrder1DomainsRegistrarResponse1$inboundSchema),
@@ -1914,9 +2021,9 @@ export const Domains1$inboundSchema: z.ZodType<
         z.lazy(() => One9$inboundSchema),
         z.lazy(() => One10$inboundSchema),
       ]),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function domains1FromJSON(
   jsonString: string,
@@ -1933,11 +2040,13 @@ export const GetOrderDomains$inboundSchema: z.ZodType<
   GetOrderDomains,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => Domains1$inboundSchema),
-  z.lazy(() => Domains2$inboundSchema),
-  z.lazy(() => Domains3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => Domains1$inboundSchema),
+    z.lazy(() => Domains2$inboundSchema),
+    z.lazy(() => Domains3$inboundSchema),
+  ])
+);
 
 export function getOrderDomainsFromJSON(
   jsonString: string,
@@ -1952,14 +2061,16 @@ export function getOrderDomainsFromJSON(
 /** @internal */
 export const GetOrderStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetOrderStatus
-> = z.nativeEnum(GetOrderStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(GetOrderStatus));
 
 /** @internal */
-export const Error2$inboundSchema: z.ZodType<Error2, z.ZodTypeDef, unknown> = z
-  .object({
-    code: types.string(),
-    details: types.optional(z.any()),
-  });
+export const Error2$inboundSchema: z.ZodType<Error2, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      details: types.optional(z.any()),
+    })
+  );
 
 export function error2FromJSON(
   jsonString: string,
@@ -1972,10 +2083,12 @@ export function error2FromJSON(
 }
 
 /** @internal */
-export const One6$inboundSchema: z.ZodType<One6, z.ZodTypeDef, unknown> = z
-  .object({
-    code: types.literal("domain-mismatch"),
-  });
+export const One6$inboundSchema: z.ZodType<One6, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.literal("domain-mismatch"),
+    })
+  );
 
 export function one6FromJSON(
   jsonString: string,
@@ -1992,10 +2105,12 @@ export const GetOrder1DomainsRegistrarDetails$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  message: types.string(),
-  domainNames: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    message: types.string(),
+    domainNames: z.array(types.string()),
+  })
+);
 
 export function getOrder1DomainsRegistrarDetailsFromJSON(
   jsonString: string,
@@ -2008,11 +2123,13 @@ export function getOrder1DomainsRegistrarDetailsFromJSON(
 }
 
 /** @internal */
-export const One5$inboundSchema: z.ZodType<One5, z.ZodTypeDef, unknown> = z
-  .object({
-    code: types.literal("claims-required"),
-    details: z.lazy(() => GetOrder1DomainsRegistrarDetails$inboundSchema),
-  });
+export const One5$inboundSchema: z.ZodType<One5, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.literal("claims-required"),
+      details: z.lazy(() => GetOrder1DomainsRegistrarDetails$inboundSchema),
+    })
+  );
 
 export function one5FromJSON(
   jsonString: string,
@@ -2029,9 +2146,11 @@ export const GetOrder14$inboundSchema: z.ZodType<
   GetOrder14,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("unexpected-error"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("unexpected-error"),
+  })
+);
 
 export function getOrder14FromJSON(
   jsonString: string,
@@ -2048,10 +2167,12 @@ export const GetOrder1Details$inboundSchema: z.ZodType<
   GetOrder1Details,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expectedPrice: types.number(),
-  actualPrice: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expectedPrice: types.number(),
+    actualPrice: types.optional(types.number()),
+  })
+);
 
 export function getOrder1DetailsFromJSON(
   jsonString: string,
@@ -2068,10 +2189,12 @@ export const GetOrder13$inboundSchema: z.ZodType<
   GetOrder13,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("price-mismatch"),
-  details: z.lazy(() => GetOrder1Details$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("price-mismatch"),
+    details: z.lazy(() => GetOrder1Details$inboundSchema),
+  })
+);
 
 export function getOrder13FromJSON(
   jsonString: string,
@@ -2084,11 +2207,13 @@ export function getOrder13FromJSON(
 }
 
 /** @internal */
-export const Tlds$inboundSchema: z.ZodType<Tlds, z.ZodTypeDef, unknown> = z
-  .object({
-    tldName: types.string(),
-    endsAt: types.string(),
-  });
+export const Tlds$inboundSchema: z.ZodType<Tlds, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      tldName: types.string(),
+      endsAt: types.string(),
+    })
+  );
 
 export function tldsFromJSON(
   jsonString: string,
@@ -2105,9 +2230,11 @@ export const OneDetails$inboundSchema: z.ZodType<
   OneDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  tlds: z.array(z.lazy(() => Tlds$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    tlds: z.array(z.lazy(() => Tlds$inboundSchema)),
+  })
+);
 
 export function oneDetailsFromJSON(
   jsonString: string,
@@ -2124,10 +2251,12 @@ export const GetOrder12$inboundSchema: z.ZodType<
   GetOrder12,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("tld-outage"),
-  details: z.lazy(() => OneDetails$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("tld-outage"),
+    details: z.lazy(() => OneDetails$inboundSchema),
+  })
+);
 
 export function getOrder12FromJSON(
   jsonString: string,
@@ -2140,17 +2269,19 @@ export function getOrder12FromJSON(
 }
 
 /** @internal */
-export const OneReason$inboundSchema: z.ZodNativeEnum<typeof OneReason> = z
-  .nativeEnum(OneReason);
+export const OneReason$inboundSchema: z.ZodNativeEnum<typeof OneReason> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(OneReason));
 
 /** @internal */
 export const GetOrder1DomainsRegistrarResponseDetails$inboundSchema: z.ZodType<
   GetOrder1DomainsRegistrarResponseDetails,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  reason: OneReason$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    reason: OneReason$inboundSchema,
+  })
+);
 
 export function getOrder1DomainsRegistrarResponseDetailsFromJSON(
   jsonString: string,
@@ -2173,12 +2304,14 @@ export const GetOrder11$inboundSchema: z.ZodType<
   GetOrder11,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.literal("payment-failed"),
-  details: types.optional(
-    z.lazy(() => GetOrder1DomainsRegistrarResponseDetails$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.literal("payment-failed"),
+    details: types.optional(
+      z.lazy(() => GetOrder1DomainsRegistrarResponseDetails$inboundSchema),
+    ),
+  })
+);
 
 export function getOrder11FromJSON(
   jsonString: string,
@@ -2191,15 +2324,17 @@ export function getOrder11FromJSON(
 }
 
 /** @internal */
-export const Error1$inboundSchema: z.ZodType<Error1, z.ZodTypeDef, unknown> = z
-  .union([
-    z.lazy(() => GetOrder11$inboundSchema),
-    z.lazy(() => GetOrder12$inboundSchema),
-    z.lazy(() => GetOrder13$inboundSchema),
-    z.lazy(() => GetOrder14$inboundSchema),
-    z.lazy(() => One5$inboundSchema),
-    z.lazy(() => One6$inboundSchema),
-  ]);
+export const Error1$inboundSchema: z.ZodType<Error1, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() => GetOrder11$inboundSchema),
+      z.lazy(() => GetOrder12$inboundSchema),
+      z.lazy(() => GetOrder13$inboundSchema),
+      z.lazy(() => GetOrder14$inboundSchema),
+      z.lazy(() => One5$inboundSchema),
+      z.lazy(() => One6$inboundSchema),
+    ])
+  );
 
 export function error1FromJSON(
   jsonString: string,
@@ -2216,17 +2351,19 @@ export const GetOrderError$inboundSchema: z.ZodType<
   GetOrderError,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => Error2$inboundSchema),
-  z.union([
-    z.lazy(() => GetOrder11$inboundSchema),
-    z.lazy(() => GetOrder12$inboundSchema),
-    z.lazy(() => GetOrder13$inboundSchema),
-    z.lazy(() => GetOrder14$inboundSchema),
-    z.lazy(() => One5$inboundSchema),
-    z.lazy(() => One6$inboundSchema),
-  ]),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Error2$inboundSchema),
+    z.union([
+      z.lazy(() => GetOrder11$inboundSchema),
+      z.lazy(() => GetOrder12$inboundSchema),
+      z.lazy(() => GetOrder13$inboundSchema),
+      z.lazy(() => GetOrder14$inboundSchema),
+      z.lazy(() => One5$inboundSchema),
+      z.lazy(() => One6$inboundSchema),
+    ]),
+  ])
+);
 
 export function getOrderErrorFromJSON(
   jsonString: string,
@@ -2243,30 +2380,30 @@ export const GetOrderResponseBody$inboundSchema: z.ZodType<
   GetOrderResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  orderId: types.string(),
-  domains: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    orderId: types.string(),
+    domains: z.array(z.union([
       z.lazy(() => Domains1$inboundSchema),
       z.lazy(() => Domains2$inboundSchema),
       z.lazy(() => Domains3$inboundSchema),
-    ]),
-  ),
-  status: GetOrderStatus$inboundSchema,
-  error: types.optional(
-    smartUnion([
+    ])),
+    status: GetOrderStatus$inboundSchema,
+    error: types.optional(smartUnion([
       z.lazy(() => Error2$inboundSchema),
       z.union([
         z.lazy(() => GetOrder11$inboundSchema),
-        z.lazy(() => GetOrder12$inboundSchema),
+        z.lazy(() =>
+          GetOrder12$inboundSchema
+        ),
         z.lazy(() => GetOrder13$inboundSchema),
         z.lazy(() => GetOrder14$inboundSchema),
         z.lazy(() => One5$inboundSchema),
         z.lazy(() => One6$inboundSchema),
       ]),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function getOrderResponseBodyFromJSON(
   jsonString: string,

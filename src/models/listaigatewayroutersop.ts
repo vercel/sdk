@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 
 export type ListAiGatewayRoutersRequest = {
   /**
@@ -31,11 +32,13 @@ export const ListAiGatewayRoutersRequest$outboundSchema: z.ZodType<
   ListAiGatewayRoutersRequest$Outbound,
   z.ZodTypeDef,
   ListAiGatewayRoutersRequest
-> = z.object({
-  ownerId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ownerId: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listAiGatewayRoutersRequestToJSON(
   listAiGatewayRoutersRequest: ListAiGatewayRoutersRequest,

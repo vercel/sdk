@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -221,13 +221,15 @@ export const ListVercelCiJobRunsRequest$outboundSchema: z.ZodType<
   ListVercelCiJobRunsRequest$Outbound,
   z.ZodTypeDef,
   ListVercelCiJobRunsRequest
-> = z.object({
-  invocationId: z.string(),
-  attempt: z.string(),
-  jobDefinitionId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    invocationId: z.string(),
+    attempt: z.string(),
+    jobDefinitionId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listVercelCiJobRunsRequestToJSON(
   listVercelCiJobRunsRequest: ListVercelCiJobRunsRequest,
@@ -243,10 +245,12 @@ export const ListVercelCiJobRunsVercelCiResponse500Error$inboundSchema:
     ListVercelCiJobRunsVercelCiResponse500Error,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    message: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      message: types.string(),
+    })
+  );
 
 export function listVercelCiJobRunsVercelCiResponse500ErrorFromJSON(
   jsonString: string,
@@ -270,33 +274,37 @@ export const ListVercelCiJobRunsVercelCiResponse500ResponseBody$inboundSchema:
     ListVercelCiJobRunsVercelCiResponse500ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() =>
-      ListVercelCiJobRunsVercelCiResponse500Error$inboundSchema
-    ),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new ListVercelCiJobRunsVercelCiResponse500ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        ListVercelCiJobRunsVercelCiResponse500Error$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new ListVercelCiJobRunsVercelCiResponse500ResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const ListVercelCiJobRunsVercelCiResponseError$inboundSchema: z.ZodType<
   ListVercelCiJobRunsVercelCiResponseError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  name: types.string(),
-  message: types.string(),
-  limit: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    name: types.string(),
+    message: types.string(),
+    limit: types.number(),
+  })
+);
 
 export function listVercelCiJobRunsVercelCiResponseErrorFromJSON(
   jsonString: string,
@@ -320,29 +328,35 @@ export const ListVercelCiJobRunsVercelCiResponse429ResponseBody$inboundSchema:
     ListVercelCiJobRunsVercelCiResponse429ResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() => ListVercelCiJobRunsVercelCiResponseError$inboundSchema),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new ListVercelCiJobRunsVercelCiResponse429ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() =>
+        ListVercelCiJobRunsVercelCiResponseError$inboundSchema
+      ),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new ListVercelCiJobRunsVercelCiResponse429ResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const ListVercelCiJobRunsVercelCiError$inboundSchema: z.ZodType<
   ListVercelCiJobRunsVercelCiError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function listVercelCiJobRunsVercelCiErrorFromJSON(
   jsonString: string,
@@ -360,29 +374,33 @@ export const ListVercelCiJobRunsVercelCiResponseResponseBody$inboundSchema:
     ListVercelCiJobRunsVercelCiResponseResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    error: z.lazy(() => ListVercelCiJobRunsVercelCiError$inboundSchema),
-    request$: z.instanceof(Request),
-    response$: z.instanceof(Response),
-    body$: z.string(),
-  })
-    .transform((v) => {
-      return new ListVercelCiJobRunsVercelCiResponseResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
-      });
-    });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      error: z.lazy(() => ListVercelCiJobRunsVercelCiError$inboundSchema),
+      request$: z.instanceof(Request),
+      response$: z.instanceof(Response),
+      body$: z.string(),
+    })
+      .transform((v) => {
+        return new ListVercelCiJobRunsVercelCiResponseResponseBody(v, {
+          request: v.request$,
+          response: v.response$,
+          body: v.body$,
+        });
+      })
+  );
 
 /** @internal */
 export const ListVercelCiJobRunsError$inboundSchema: z.ZodType<
   ListVercelCiJobRunsError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function listVercelCiJobRunsErrorFromJSON(
   jsonString: string,
@@ -399,25 +417,29 @@ export const ListVercelCiJobRunsVercelCiResponseBody$inboundSchema: z.ZodType<
   ListVercelCiJobRunsVercelCiResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => ListVercelCiJobRunsError$inboundSchema),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new ListVercelCiJobRunsVercelCiResponseBody(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => ListVercelCiJobRunsError$inboundSchema),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new ListVercelCiJobRunsVercelCiResponseBody(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);
 
 /** @internal */
 export const Started$inboundSchema: z.ZodType<Started, z.ZodTypeDef, unknown> =
-  z.object({
-    startedAt: types.number(),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      startedAt: types.number(),
+    })
+  );
 
 export function startedFromJSON(
   jsonString: string,
@@ -434,10 +456,12 @@ export const ListVercelCiJobRunsConclusion3$inboundSchema: z.ZodType<
   ListVercelCiJobRunsConclusion3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  result: types.literal("skipped"),
-  reason: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    result: types.literal("skipped"),
+    reason: types.string(),
+  })
+);
 
 export function listVercelCiJobRunsConclusion3FromJSON(
   jsonString: string,
@@ -454,10 +478,12 @@ export const ListVercelCiJobRunsConclusion2$inboundSchema: z.ZodType<
   ListVercelCiJobRunsConclusion2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  result: types.literal("failed"),
-  reason: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    result: types.literal("failed"),
+    reason: types.string(),
+  })
+);
 
 export function listVercelCiJobRunsConclusion2FromJSON(
   jsonString: string,
@@ -474,9 +500,11 @@ export const ListVercelCiJobRunsConclusion1$inboundSchema: z.ZodType<
   ListVercelCiJobRunsConclusion1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  result: types.literal("succeeded"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    result: types.literal("succeeded"),
+  })
+);
 
 export function listVercelCiJobRunsConclusion1FromJSON(
   jsonString: string,
@@ -493,11 +521,13 @@ export const ListVercelCiJobRunsConclusion$inboundSchema: z.ZodType<
   ListVercelCiJobRunsConclusion,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => ListVercelCiJobRunsConclusion1$inboundSchema),
-  z.lazy(() => ListVercelCiJobRunsConclusion2$inboundSchema),
-  z.lazy(() => ListVercelCiJobRunsConclusion3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => ListVercelCiJobRunsConclusion1$inboundSchema),
+    z.lazy(() => ListVercelCiJobRunsConclusion2$inboundSchema),
+    z.lazy(() => ListVercelCiJobRunsConclusion3$inboundSchema),
+  ])
+);
 
 export function listVercelCiJobRunsConclusionFromJSON(
   jsonString: string,
@@ -514,14 +544,16 @@ export const ListVercelCiJobRunsCompleted$inboundSchema: z.ZodType<
   ListVercelCiJobRunsCompleted,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  completedAt: types.number(),
-  conclusion: z.union([
-    z.lazy(() => ListVercelCiJobRunsConclusion1$inboundSchema),
-    z.lazy(() => ListVercelCiJobRunsConclusion2$inboundSchema),
-    z.lazy(() => ListVercelCiJobRunsConclusion3$inboundSchema),
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    completedAt: types.number(),
+    conclusion: z.union([
+      z.lazy(() => ListVercelCiJobRunsConclusion1$inboundSchema),
+      z.lazy(() => ListVercelCiJobRunsConclusion2$inboundSchema),
+      z.lazy(() => ListVercelCiJobRunsConclusion3$inboundSchema),
+    ]),
+  })
+);
 
 export function listVercelCiJobRunsCompletedFromJSON(
   jsonString: string,
@@ -535,17 +567,19 @@ export function listVercelCiJobRunsCompletedFromJSON(
 
 /** @internal */
 export const JobRuns$inboundSchema: z.ZodType<JobRuns, z.ZodTypeDef, unknown> =
-  z.object({
-    invocationId: types.string(),
-    invocationAttempt: types.number(),
-    jobDefinitionId: types.string(),
-    attempt: types.number(),
-    createdAt: types.number(),
-    started: types.optional(z.lazy(() => Started$inboundSchema)),
-    completed: types.optional(
-      z.lazy(() => ListVercelCiJobRunsCompleted$inboundSchema),
-    ),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      invocationId: types.string(),
+      invocationAttempt: types.number(),
+      jobDefinitionId: types.string(),
+      attempt: types.number(),
+      createdAt: types.number(),
+      started: types.optional(z.lazy(() => Started$inboundSchema)),
+      completed: types.optional(
+        z.lazy(() => ListVercelCiJobRunsCompleted$inboundSchema),
+      ),
+    })
+  );
 
 export function jobRunsFromJSON(
   jsonString: string,
@@ -562,9 +596,11 @@ export const ListVercelCiJobRunsResponseBody$inboundSchema: z.ZodType<
   ListVercelCiJobRunsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  jobRuns: z.array(z.lazy(() => JobRuns$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    jobRuns: z.array(z.lazy(() => JobRuns$inboundSchema)),
+  })
+);
 
 export function listVercelCiJobRunsResponseBodyFromJSON(
   jsonString: string,

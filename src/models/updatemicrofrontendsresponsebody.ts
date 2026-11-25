@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -354,20 +354,24 @@ export type UpdateMicrofrontendsResponseBody = {
 
 /** @internal */
 export const UpdateMicrofrontendsToProjectsResponsePreset$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsToProjectsResponsePreset> = z
-    .nativeEnum(UpdateMicrofrontendsToProjectsResponsePreset);
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsToProjectsResponsePreset> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateMicrofrontendsToProjectsResponsePreset)
+    );
 
 /** @internal */
 export const UpdateMicrofrontendsToProjects1$inboundSchema: z.ZodType<
   UpdateMicrofrontendsToProjects1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preset: types.optional(
-    UpdateMicrofrontendsToProjectsResponsePreset$inboundSchema,
-  ),
-  slugs: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset: types.optional(
+      UpdateMicrofrontendsToProjectsResponsePreset$inboundSchema,
+    ),
+    slugs: z.array(types.string()),
+  })
+);
 
 export function updateMicrofrontendsToProjects1FromJSON(
   jsonString: string,
@@ -384,10 +388,12 @@ export const UpdateMicrofrontendsProjectsTo$inboundSchema: z.ZodType<
   UpdateMicrofrontendsProjectsTo,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
-  UpdateMicrofrontendsToProjects2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
+    UpdateMicrofrontendsToProjects2$inboundSchema,
+  ])
+);
 
 export function updateMicrofrontendsProjectsToFromJSON(
   jsonString: string,
@@ -404,13 +410,15 @@ export const UpdateMicrofrontendsCustomAllow$inboundSchema: z.ZodType<
   UpdateMicrofrontendsCustomAllow,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  from: UpdateMicrofrontendsFrom$inboundSchema,
-  to: smartUnion([
-    z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
-    UpdateMicrofrontendsToProjects2$inboundSchema,
-  ]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    from: UpdateMicrofrontendsFrom$inboundSchema,
+    to: smartUnion([
+      z.lazy(() => UpdateMicrofrontendsToProjects1$inboundSchema),
+      UpdateMicrofrontendsToProjects2$inboundSchema,
+    ]),
+  })
+);
 
 export function updateMicrofrontendsCustomAllowFromJSON(
   jsonString: string,
@@ -427,12 +435,14 @@ export const UpdateMicrofrontendsProjects$inboundSchema: z.ZodType<
   UpdateMicrofrontendsProjects,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  customAllow: types.optional(
-    z.array(z.lazy(() => UpdateMicrofrontendsCustomAllow$inboundSchema)),
-  ),
-  label: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    customAllow: types.optional(
+      z.array(z.lazy(() => UpdateMicrofrontendsCustomAllow$inboundSchema)),
+    ),
+    label: types.optional(types.string()),
+  })
+);
 
 export function updateMicrofrontendsProjectsFromJSON(
   jsonString: string,
@@ -449,15 +459,17 @@ export const UpdateMicrofrontendsTrustedSources$inboundSchema: z.ZodType<
   UpdateMicrofrontendsTrustedSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enableVercelCiSameRepository: types.optional(types.boolean()),
-  oidcProviders: types.optional(
-    z.record(z.array(UpdateMicrofrontendsOidcProviders$inboundSchema)),
-  ),
-  projects: types.optional(
-    z.record(z.lazy(() => UpdateMicrofrontendsProjects$inboundSchema)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enableVercelCiSameRepository: types.optional(types.boolean()),
+    oidcProviders: types.optional(
+      z.record(z.array(UpdateMicrofrontendsOidcProviders$inboundSchema)),
+    ),
+    projects: types.optional(
+      z.record(z.lazy(() => UpdateMicrofrontendsProjects$inboundSchema)),
+    ),
+  })
+);
 
 export function updateMicrofrontendsTrustedSourcesFromJSON(
   jsonString: string,
@@ -473,20 +485,22 @@ export function updateMicrofrontendsTrustedSourcesFromJSON(
 /** @internal */
 export const UpdateMicrofrontendsKind$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsKind
-> = z.nativeEnum(UpdateMicrofrontendsKind);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateMicrofrontendsKind));
 
 /** @internal */
 export const UpdateMicrofrontendsUsageStatus$inboundSchema: z.ZodType<
   UpdateMicrofrontendsUsageStatus,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bypassThrottleUntil: types.optional(types.number()),
-  exceededAllowanceUntil: types.optional(types.number()),
-  kind: UpdateMicrofrontendsKind$inboundSchema,
-  teamThrottled: types.optional(types.boolean()),
-  throttled: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bypassThrottleUntil: types.optional(types.number()),
+    exceededAllowanceUntil: types.optional(types.number()),
+    kind: UpdateMicrofrontendsKind$inboundSchema,
+    teamThrottled: types.optional(types.boolean()),
+    throttled: types.optional(types.boolean()),
+  })
+);
 
 export function updateMicrofrontendsUsageStatusFromJSON(
   jsonString: string,
@@ -503,9 +517,11 @@ export const UpdateMicrofrontendsVercelFlags$inboundSchema: z.ZodType<
   UpdateMicrofrontendsVercelFlags,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabledAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabledAt: types.optional(types.number()),
+  })
+);
 
 export function updateMicrofrontendsVercelFlagsFromJSON(
   jsonString: string,
@@ -522,13 +538,15 @@ export const UpdateMicrofrontendsWebAnalytics$inboundSchema: z.ZodType<
   UpdateMicrofrontendsWebAnalytics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: types.optional(types.number()),
-  disabledAt: types.optional(types.number()),
-  enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.literal(true)),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: types.optional(types.number()),
+    disabledAt: types.optional(types.number()),
+    enabledAt: types.optional(types.number()),
+    hasData: types.optional(types.literal(true)),
+    id: types.string(),
+  })
+);
 
 export function updateMicrofrontendsWebAnalyticsFromJSON(
   jsonString: string,
@@ -545,156 +563,162 @@ export const UpdateMicrofrontendsResponseBody$inboundSchema: z.ZodType<
   UpdateMicrofrontendsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accountId: types.string(),
-  alias: z.array(UpdateMicrofrontendsAlias$inboundSchema),
-  analytics: types.optional(UpdateMicrofrontendsAnalytics$inboundSchema),
-  appliedCve55182Migration: types.optional(types.boolean()),
-  autoAssignCustomDomains: types.optional(types.boolean()),
-  autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
-  autoExposeSystemEnvs: types.optional(types.boolean()),
-  avatar: z.nullable(types.string()).optional(),
-  avatarDarkMode: z.nullable(types.string()).optional(),
-  blobs: types.optional(UpdateMicrofrontendsBlobs$inboundSchema),
-  buildCommand: z.nullable(types.string()).optional(),
-  commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
-  concurrencyBucketName: types.optional(types.string()),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: z.nullable(types.string()).optional(),
-  connectConfigurations: z.nullable(
-    z.array(UpdateMicrofrontendsConnectConfigurations$inboundSchema),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  creator: types.optional(UpdateMicrofrontendsCreator$inboundSchema),
-  crons: types.optional(UpdateMicrofrontendsCrons$inboundSchema),
-  customEnvironments: types.optional(
-    z.array(UpdateMicrofrontendsCustomEnvironments$inboundSchema),
-  ),
-  customerSupportCodeVisibility: types.optional(types.boolean()),
-  dataCache: types.optional(UpdateMicrofrontendsDataCache$inboundSchema),
-  defaultResourceConfig:
-    UpdateMicrofrontendsDefaultResourceConfig$inboundSchema,
-  deploymentExpiration: UpdateMicrofrontendsDeploymentExpiration$inboundSchema,
-  deploymentPolicy: z.nullable(
-    UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
-  ).optional(),
-  devCommand: z.nullable(types.string()).optional(),
-  directoryListing: types.boolean(),
-  dismissedToasts: types.optional(
-    z.array(UpdateMicrofrontendsDismissedToasts$inboundSchema),
-  ),
-  enableAffectedProjectsDeployments: types.optional(types.boolean()),
-  enableExternalRewriteCaching: types.optional(types.boolean()),
-  enablePreviewFeedback: z.nullable(types.boolean()).optional(),
-  enableProductionFeedback: z.nullable(types.boolean()).optional(),
-  env: types.optional(z.array(UpdateMicrofrontendsEnv$inboundSchema)),
-  expiration: types.optional(UpdateMicrofrontendsExpiration$inboundSchema),
-  features: types.optional(UpdateMicrofrontendsFeatures$inboundSchema),
-  framework: z.nullable(UpdateMicrofrontendsFramework$inboundSchema).optional(),
-  gitComments: types.optional(UpdateMicrofrontendsGitComments$inboundSchema),
-  gitForkProtection: types.optional(types.boolean()),
-  gitLFS: types.optional(types.boolean()),
-  gitProviderOptions: types.optional(
-    UpdateMicrofrontendsGitProviderOptions$inboundSchema,
-  ),
-  hasActiveBranches: types.optional(types.boolean()),
-  hasDeployments: types.optional(types.boolean()),
-  id: types.string(),
-  installCommand: z.nullable(types.string()).optional(),
-  internalRoutes: types.optional(
-    z.array(UpdateMicrofrontendsInternalRoutes$inboundSchema),
-  ),
-  ipBuckets: types.optional(
-    z.array(UpdateMicrofrontendsIpBuckets$inboundSchema),
-  ),
-  jobs: types.optional(UpdateMicrofrontendsJobs$inboundSchema),
-  lastAliasRequest: z.nullable(
-    UpdateMicrofrontendsLastAliasRequest$inboundSchema,
-  ).optional(),
-  lastRollbackTarget: z.nullable(
-    UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
-  ).optional(),
-  latestDeployments: types.optional(
-    z.array(UpdateMicrofrontendsLatestDeployments$inboundSchema),
-  ),
-  link: types.optional(UpdateMicrofrontendsLink$inboundSchema),
-  live: types.optional(types.boolean()),
-  microfrontends: types.optional(
-    UpdateMicrofrontendsMicrofrontends$inboundSchema,
-  ),
-  name: types.string(),
-  nodeVersion: UpdateMicrofrontendsNodeVersion$inboundSchema,
-  oidcTokenConfig: types.optional(
-    UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
-  ),
-  optionsAllowlist: z.nullable(
-    UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
-  ).optional(),
-  outputDirectory: z.nullable(types.string()).optional(),
-  passiveConnectConfigurationId: z.nullable(types.string()).optional(),
-  passport: z.nullable(UpdateMicrofrontendsPassport$inboundSchema).optional(),
-  passwordProtection: z.nullable(
-    UpdateMicrofrontendsPasswordProtection$inboundSchema,
-  ).optional(),
-  paused: types.optional(types.boolean()),
-  permissions: types.optional(UpdateMicrofrontendsPermissions$inboundSchema),
-  productionDeploymentsFastLane: types.optional(types.boolean()),
-  protectedSourcemaps: types.optional(types.boolean()),
-  protectionBypass: types.optional(
-    z.record(UpdateMicrofrontendsProtectionBypass$inboundSchema),
-  ),
-  protectionConfig: types.optional(
-    UpdateMicrofrontendsProtectionConfig$inboundSchema,
-  ),
-  resourceConfig: UpdateMicrofrontendsResourceConfig$inboundSchema,
-  rollbackDescription: types.optional(
-    UpdateMicrofrontendsRollbackDescription$inboundSchema,
-  ),
-  rollingRelease: z.nullable(UpdateMicrofrontendsRollingRelease$inboundSchema)
-    .optional(),
-  rootDirectory: z.nullable(types.string()).optional(),
-  sandbox: types.optional(UpdateMicrofrontendsSandbox$inboundSchema),
-  security: types.optional(UpdateMicrofrontendsSecurity$inboundSchema),
-  serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
-  services: types.optional(z.array(UpdateMicrofrontendsServices$inboundSchema)),
-  skewProtectionAllowedDomains: types.optional(z.array(types.string())),
-  skewProtectionBoundaryAt: types.optional(types.number()),
-  skewProtectionMaxAge: types.optional(types.number()),
-  skipGitConnectDuringLink: types.optional(types.boolean()),
-  sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
-  speedInsights: types.optional(
-    UpdateMicrofrontendsSpeedInsights$inboundSchema,
-  ),
-  ssoProtection: z.nullable(UpdateMicrofrontendsSsoProtection$inboundSchema)
-    .optional(),
-  staticIps: types.optional(UpdateMicrofrontendsStaticIps$inboundSchema),
-  targets: types.optional(
-    z.record(types.nullable(UpdateMicrofrontendsTargets$inboundSchema)),
-  ),
-  tier: types.optional(UpdateMicrofrontendsTier$inboundSchema),
-  tracing: types.optional(UpdateMicrofrontendsTracing$inboundSchema),
-  transferCompletedAt: types.optional(types.number()),
-  transferredFromAccountId: types.optional(types.string()),
-  transferStartedAt: types.optional(types.number()),
-  transferToAccountId: types.optional(types.string()),
-  trustedIps: z.nullable(UpdateMicrofrontendsTrustedIps$inboundSchema)
-    .optional(),
-  trustedSources: z.nullable(
-    z.lazy(() => UpdateMicrofrontendsTrustedSources$inboundSchema),
-  ).optional(),
-  updatedAt: types.optional(types.number()),
-  usageStatus: types.optional(
-    z.lazy(() => UpdateMicrofrontendsUsageStatus$inboundSchema),
-  ),
-  v0: types.optional(types.boolean()),
-  v0Created: types.optional(types.boolean()),
-  vercelFlags: types.optional(
-    z.lazy(() => UpdateMicrofrontendsVercelFlags$inboundSchema),
-  ),
-  webAnalytics: types.optional(
-    z.lazy(() => UpdateMicrofrontendsWebAnalytics$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accountId: types.string(),
+    alias: z.array(UpdateMicrofrontendsAlias$inboundSchema),
+    analytics: types.optional(UpdateMicrofrontendsAnalytics$inboundSchema),
+    appliedCve55182Migration: types.optional(types.boolean()),
+    autoAssignCustomDomains: types.optional(types.boolean()),
+    autoAssignCustomDomainsUpdatedBy: types.optional(types.string()),
+    autoExposeSystemEnvs: types.optional(types.boolean()),
+    avatar: z.nullable(types.string()).optional(),
+    avatarDarkMode: z.nullable(types.string()).optional(),
+    blobs: types.optional(UpdateMicrofrontendsBlobs$inboundSchema),
+    buildCommand: z.nullable(types.string()).optional(),
+    commandForIgnoringBuildStep: z.nullable(types.string()).optional(),
+    concurrencyBucketName: types.optional(types.string()),
+    connectBuildsEnabled: types.optional(types.boolean()),
+    connectConfigurationId: z.nullable(types.string()).optional(),
+    connectConfigurations: z.nullable(
+      z.array(UpdateMicrofrontendsConnectConfigurations$inboundSchema),
+    ).optional(),
+    createdAt: types.optional(types.number()),
+    creator: types.optional(UpdateMicrofrontendsCreator$inboundSchema),
+    crons: types.optional(UpdateMicrofrontendsCrons$inboundSchema),
+    customEnvironments: types.optional(
+      z.array(UpdateMicrofrontendsCustomEnvironments$inboundSchema),
+    ),
+    customerSupportCodeVisibility: types.optional(types.boolean()),
+    dataCache: types.optional(UpdateMicrofrontendsDataCache$inboundSchema),
+    defaultResourceConfig:
+      UpdateMicrofrontendsDefaultResourceConfig$inboundSchema,
+    deploymentExpiration:
+      UpdateMicrofrontendsDeploymentExpiration$inboundSchema,
+    deploymentPolicy: z.nullable(
+      UpdateMicrofrontendsDeploymentPolicy$inboundSchema,
+    ).optional(),
+    devCommand: z.nullable(types.string()).optional(),
+    directoryListing: types.boolean(),
+    dismissedToasts: types.optional(
+      z.array(UpdateMicrofrontendsDismissedToasts$inboundSchema),
+    ),
+    enableAffectedProjectsDeployments: types.optional(types.boolean()),
+    enableExternalRewriteCaching: types.optional(types.boolean()),
+    enablePreviewFeedback: z.nullable(types.boolean()).optional(),
+    enableProductionFeedback: z.nullable(types.boolean()).optional(),
+    env: types.optional(z.array(UpdateMicrofrontendsEnv$inboundSchema)),
+    expiration: types.optional(UpdateMicrofrontendsExpiration$inboundSchema),
+    features: types.optional(UpdateMicrofrontendsFeatures$inboundSchema),
+    framework: z.nullable(UpdateMicrofrontendsFramework$inboundSchema)
+      .optional(),
+    gitComments: types.optional(UpdateMicrofrontendsGitComments$inboundSchema),
+    gitForkProtection: types.optional(types.boolean()),
+    gitLFS: types.optional(types.boolean()),
+    gitProviderOptions: types.optional(
+      UpdateMicrofrontendsGitProviderOptions$inboundSchema,
+    ),
+    hasActiveBranches: types.optional(types.boolean()),
+    hasDeployments: types.optional(types.boolean()),
+    id: types.string(),
+    installCommand: z.nullable(types.string()).optional(),
+    internalRoutes: types.optional(
+      z.array(UpdateMicrofrontendsInternalRoutes$inboundSchema),
+    ),
+    ipBuckets: types.optional(
+      z.array(UpdateMicrofrontendsIpBuckets$inboundSchema),
+    ),
+    jobs: types.optional(UpdateMicrofrontendsJobs$inboundSchema),
+    lastAliasRequest: z.nullable(
+      UpdateMicrofrontendsLastAliasRequest$inboundSchema,
+    ).optional(),
+    lastRollbackTarget: z.nullable(
+      UpdateMicrofrontendsLastRollbackTarget$inboundSchema,
+    ).optional(),
+    latestDeployments: types.optional(
+      z.array(UpdateMicrofrontendsLatestDeployments$inboundSchema),
+    ),
+    link: types.optional(UpdateMicrofrontendsLink$inboundSchema),
+    live: types.optional(types.boolean()),
+    microfrontends: types.optional(
+      UpdateMicrofrontendsMicrofrontends$inboundSchema,
+    ),
+    name: types.string(),
+    nodeVersion: UpdateMicrofrontendsNodeVersion$inboundSchema,
+    oidcTokenConfig: types.optional(
+      UpdateMicrofrontendsOidcTokenConfig$inboundSchema,
+    ),
+    optionsAllowlist: z.nullable(
+      UpdateMicrofrontendsOptionsAllowlist$inboundSchema,
+    ).optional(),
+    outputDirectory: z.nullable(types.string()).optional(),
+    passiveConnectConfigurationId: z.nullable(types.string()).optional(),
+    passport: z.nullable(UpdateMicrofrontendsPassport$inboundSchema).optional(),
+    passwordProtection: z.nullable(
+      UpdateMicrofrontendsPasswordProtection$inboundSchema,
+    ).optional(),
+    paused: types.optional(types.boolean()),
+    permissions: types.optional(UpdateMicrofrontendsPermissions$inboundSchema),
+    productionDeploymentsFastLane: types.optional(types.boolean()),
+    protectedSourcemaps: types.optional(types.boolean()),
+    protectionBypass: types.optional(
+      z.record(UpdateMicrofrontendsProtectionBypass$inboundSchema),
+    ),
+    protectionConfig: types.optional(
+      UpdateMicrofrontendsProtectionConfig$inboundSchema,
+    ),
+    resourceConfig: UpdateMicrofrontendsResourceConfig$inboundSchema,
+    rollbackDescription: types.optional(
+      UpdateMicrofrontendsRollbackDescription$inboundSchema,
+    ),
+    rollingRelease: z.nullable(UpdateMicrofrontendsRollingRelease$inboundSchema)
+      .optional(),
+    rootDirectory: z.nullable(types.string()).optional(),
+    sandbox: types.optional(UpdateMicrofrontendsSandbox$inboundSchema),
+    security: types.optional(UpdateMicrofrontendsSecurity$inboundSchema),
+    serverlessFunctionZeroConfigFailover: types.optional(types.boolean()),
+    services: types.optional(
+      z.array(UpdateMicrofrontendsServices$inboundSchema),
+    ),
+    skewProtectionAllowedDomains: types.optional(z.array(types.string())),
+    skewProtectionBoundaryAt: types.optional(types.number()),
+    skewProtectionMaxAge: types.optional(types.number()),
+    skipGitConnectDuringLink: types.optional(types.boolean()),
+    sourceFilesOutsideRootDirectory: types.optional(types.boolean()),
+    speedInsights: types.optional(
+      UpdateMicrofrontendsSpeedInsights$inboundSchema,
+    ),
+    ssoProtection: z.nullable(UpdateMicrofrontendsSsoProtection$inboundSchema)
+      .optional(),
+    staticIps: types.optional(UpdateMicrofrontendsStaticIps$inboundSchema),
+    targets: types.optional(
+      z.record(types.nullable(UpdateMicrofrontendsTargets$inboundSchema)),
+    ),
+    tier: types.optional(UpdateMicrofrontendsTier$inboundSchema),
+    tracing: types.optional(UpdateMicrofrontendsTracing$inboundSchema),
+    transferCompletedAt: types.optional(types.number()),
+    transferredFromAccountId: types.optional(types.string()),
+    transferStartedAt: types.optional(types.number()),
+    transferToAccountId: types.optional(types.string()),
+    trustedIps: z.nullable(UpdateMicrofrontendsTrustedIps$inboundSchema)
+      .optional(),
+    trustedSources: z.nullable(
+      z.lazy(() => UpdateMicrofrontendsTrustedSources$inboundSchema),
+    ).optional(),
+    updatedAt: types.optional(types.number()),
+    usageStatus: types.optional(
+      z.lazy(() => UpdateMicrofrontendsUsageStatus$inboundSchema),
+    ),
+    v0: types.optional(types.boolean()),
+    v0Created: types.optional(types.boolean()),
+    vercelFlags: types.optional(
+      z.lazy(() => UpdateMicrofrontendsVercelFlags$inboundSchema),
+    ),
+    webAnalytics: types.optional(
+      z.lazy(() => UpdateMicrofrontendsWebAnalytics$inboundSchema),
+    ),
+  })
+);
 
 export function updateMicrofrontendsResponseBodyFromJSON(
   jsonString: string,

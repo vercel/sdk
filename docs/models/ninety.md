@@ -5,15 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { Ninety } from "@vercel/sdk/models/usereventpayloadresources.js";
+import { Ninety } from "@vercel/sdk/models/usereventpayload82resourcestype.js";
 
-let value: Ninety = {
-  subscriptionId: "<id>",
-};
+let value: Ninety = {};
 ```
 
 ## Fields
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `subscriptionId`   | *string*           | :heavy_check_mark: | N/A                |
+| `avatar`           | *string*           | :heavy_minus_sign: | N/A                |

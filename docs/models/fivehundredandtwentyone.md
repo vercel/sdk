@@ -8,21 +8,20 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentyOne } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyOne = {
-  alertType: "<value>",
-  groupId: "<id>",
+  digest: "<value>",
   projectId: "<id>",
-  detectionCount: 3367.52,
-  detections: [],
+  projectName: "<value>",
+  reference: "<value>",
+  repositoryName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `alertType`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `groupId`                                      | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
-| `severity`                                     | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `detectionCount`                               | *number*                                       | :heavy_check_mark:                             | N/A                                            |
-| `detections`                                   | [models.Detections](../models/detections.md)[] | :heavy_check_mark:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `digest`           | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `reference`        | *string*           | :heavy_check_mark: | N/A                |
+| `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |

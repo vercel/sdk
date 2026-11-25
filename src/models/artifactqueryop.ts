@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -59,9 +59,11 @@ export const ArtifactQueryRequestBody$outboundSchema: z.ZodType<
   ArtifactQueryRequestBody$Outbound,
   z.ZodTypeDef,
   ArtifactQueryRequestBody
-> = z.object({
-  hashes: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    hashes: z.array(z.string()),
+  })
+);
 
 export function artifactQueryRequestBodyToJSON(
   artifactQueryRequestBody: ArtifactQueryRequestBody,
@@ -83,15 +85,17 @@ export const ArtifactQueryRequest$outboundSchema: z.ZodType<
   ArtifactQueryRequest$Outbound,
   z.ZodTypeDef,
   ArtifactQueryRequest
-> = z.object({
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => ArtifactQueryRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => ArtifactQueryRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function artifactQueryRequestToJSON(
   artifactQueryRequest: ArtifactQueryRequest,
@@ -106,9 +110,11 @@ export const ResponseBodyError$inboundSchema: z.ZodType<
   ResponseBodyError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    message: types.string(),
+  })
+);
 
 export function responseBodyErrorFromJSON(
   jsonString: string,
@@ -125,9 +131,11 @@ export const ArtifactQueryResponseBody2$inboundSchema: z.ZodType<
   ArtifactQueryResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => ResponseBodyError$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => ResponseBodyError$inboundSchema),
+  })
+);
 
 export function artifactQueryResponseBody2FromJSON(
   jsonString: string,
@@ -144,13 +152,15 @@ export const ArtifactQueryResponseBody1$inboundSchema: z.ZodType<
   ArtifactQueryResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dirtyHash: types.optional(types.string()),
-  sha: types.optional(types.string()),
-  size: types.number(),
-  tag: types.optional(types.string()),
-  taskDurationMs: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dirtyHash: types.optional(types.string()),
+    sha: types.optional(types.string()),
+    size: types.number(),
+    tag: types.optional(types.string()),
+    taskDurationMs: types.number(),
+  })
+);
 
 export function artifactQueryResponseBody1FromJSON(
   jsonString: string,
@@ -167,10 +177,12 @@ export const ArtifactQueryResponseBody$inboundSchema: z.ZodType<
   ArtifactQueryResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => ArtifactQueryResponseBody1$inboundSchema),
-  z.lazy(() => ArtifactQueryResponseBody2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => ArtifactQueryResponseBody1$inboundSchema),
+    z.lazy(() => ArtifactQueryResponseBody2$inboundSchema),
+  ])
+);
 
 export function artifactQueryResponseBodyFromJSON(
   jsonString: string,

@@ -5,12 +5,12 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtyFour } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndSixtyFour } from "@vercel/sdk/models/newenvvar.js";
 
 let value: TwoHundredAndSixtyFour = {
-  cause: "<value>",
-  ownerId: "<id>",
-  source: "<value>",
+  connectionType: "<value>",
+  organizationId: "<id>",
+  organizationSlug: "<value>",
 };
 ```
 
@@ -18,7 +18,6 @@ let value: TwoHundredAndSixtyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `blockReason`      | *string*           | :heavy_minus_sign: | N/A                |
-| `cause`            | *string*           | :heavy_check_mark: | N/A                |
-| `ownerId`          | *string*           | :heavy_check_mark: | N/A                |
-| `source`           | *string*           | :heavy_check_mark: | N/A                |
+| `connectionType`   | *string*           | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |

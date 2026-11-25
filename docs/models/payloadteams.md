@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadTeams } from "@vercel/sdk/models/newprojects.js";
+import { PayloadTeams } from "@vercel/sdk/models/newenvvar.js";
 
 let value: PayloadTeams = {
   teamRoles: [
@@ -16,4 +16,4 @@ let value: PayloadTeams = {
 
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `teamRoles`                                                                        | [models.UserEventPayload249TeamRoles](../models/usereventpayload249teamroles.md)[] | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `teamRoles`                                                                        | [models.UserEventPayload254TeamRoles](../models/usereventpayload254teamroles.md)[] | :heavy_check_mark:                                                                 | N/A                                                                                |

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -2906,20 +2906,24 @@ export type UploadProjectAvatarToProjectsResponsePreset = ClosedEnum<
 /** @internal */
 export const UploadProjectAvatarChecksState$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarChecksState
-> = z.nativeEnum(UploadProjectAvatarChecksState);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarChecksState)
+);
 
 /** @internal */
 export const UploadProjectAvatarProjectsCreator$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsCreator,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  email: types.string(),
-  githubLogin: types.optional(types.string()),
-  gitlabLogin: types.optional(types.string()),
-  uid: types.string(),
-  username: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: types.string(),
+    githubLogin: types.optional(types.string()),
+    gitlabLogin: types.optional(types.string()),
+    uid: types.string(),
+    username: types.string(),
+  })
+);
 
 export function uploadProjectAvatarProjectsCreatorFromJSON(
   jsonString: string,
@@ -2937,29 +2941,31 @@ export const UploadProjectAvatarOidcTokenClaims$inboundSchema: z.ZodType<
   UploadProjectAvatarOidcTokenClaims,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  aud: types.string(),
-  custom_environment_id: types.optional(types.string()),
-  deployment_id: types.optional(types.string()),
-  environment: types.string(),
-  iss: types.string(),
-  mfe_group_ids: types.optional(z.array(types.string())),
-  owner: types.string(),
-  owner_id: types.string(),
-  plan: types.optional(types.string()),
-  project: types.string(),
-  project_id: types.string(),
-  scope: types.string(),
-  sub: types.string(),
-}).transform((v) => {
-  return remap$(v, {
-    "custom_environment_id": "customEnvironmentId",
-    "deployment_id": "deploymentId",
-    "mfe_group_ids": "mfeGroupIds",
-    "owner_id": "ownerId",
-    "project_id": "projectId",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    aud: types.string(),
+    custom_environment_id: types.optional(types.string()),
+    deployment_id: types.optional(types.string()),
+    environment: types.string(),
+    iss: types.string(),
+    mfe_group_ids: types.optional(z.array(types.string())),
+    owner: types.string(),
+    owner_id: types.string(),
+    plan: types.optional(types.string()),
+    project: types.string(),
+    project_id: types.string(),
+    scope: types.string(),
+    sub: types.string(),
+  }).transform((v) => {
+    return remap$(v, {
+      "custom_environment_id": "customEnvironmentId",
+      "deployment_id": "deploymentId",
+      "mfe_group_ids": "mfeGroupIds",
+      "owner_id": "ownerId",
+      "project_id": "projectId",
+    });
+  })
+);
 
 export function uploadProjectAvatarOidcTokenClaimsFromJSON(
   jsonString: string,
@@ -2975,76 +2981,86 @@ export function uploadProjectAvatarOidcTokenClaimsFromJSON(
 /** @internal */
 export const UploadProjectAvatarPlan$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarPlan
-> = z.nativeEnum(UploadProjectAvatarPlan);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarPlan));
 
 /** @internal */
 export const UploadProjectAvatarReadyState$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarReadyState
-> = z.nativeEnum(UploadProjectAvatarReadyState);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarReadyState)
+);
 
 /** @internal */
 export const UploadProjectAvatarReadySubstate$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarReadySubstate
-> = z.nativeEnum(UploadProjectAvatarReadySubstate);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarReadySubstate)
+);
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponse200Type$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponse200Type> = z
-    .nativeEnum(UploadProjectAvatarProjectsResponse200Type);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponse200Type> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsResponse200Type)
+    );
 
 /** @internal */
 export const UploadProjectAvatarLatestDeployments$inboundSchema: z.ZodType<
   UploadProjectAvatarLatestDeployments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(z.array(types.string())),
-  aliasAssigned: z.nullable(UploadProjectAvatarAliasAssigned$inboundSchema)
-    .optional(),
-  aliasError: z.nullable(UploadProjectAvatarAliasError$inboundSchema)
-    .optional(),
-  aliasFinal: z.nullable(types.string()).optional(),
-  automaticAliases: types.optional(z.array(types.string())),
-  branchMatcher: types.optional(
-    UploadProjectAvatarProjectsBranchMatcher$inboundSchema,
-  ),
-  buildingAt: types.optional(types.number()),
-  builds: types.optional(z.array(UploadProjectAvatarBuilds$inboundSchema)),
-  checksConclusion: types.optional(
-    UploadProjectAvatarChecksConclusion$inboundSchema,
-  ),
-  checksState: types.optional(UploadProjectAvatarChecksState$inboundSchema),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: types.optional(types.string()),
-  createdAt: types.number(),
-  createdIn: types.string(),
-  creator: types.nullable(
-    z.lazy(() => UploadProjectAvatarProjectsCreator$inboundSchema),
-  ),
-  deletedAt: types.optional(types.number()),
-  deploymentHostname: types.string(),
-  forced: types.optional(types.boolean()),
-  id: types.string(),
-  meta: types.optional(z.record(types.string())),
-  monorepoManager: z.nullable(types.string()).optional(),
-  name: types.string(),
-  oidcTokenClaims: types.optional(
-    z.lazy(() => UploadProjectAvatarOidcTokenClaims$inboundSchema),
-  ),
-  plan: UploadProjectAvatarPlan$inboundSchema,
-  previewCommentsEnabled: types.optional(types.boolean()),
-  private: types.boolean(),
-  readyAt: types.optional(types.number()),
-  readyState: UploadProjectAvatarReadyState$inboundSchema,
-  readySubstate: types.optional(UploadProjectAvatarReadySubstate$inboundSchema),
-  requestedAt: types.optional(types.number()),
-  target: z.nullable(types.string()).optional(),
-  teamId: z.nullable(types.string()).optional(),
-  type: UploadProjectAvatarProjectsResponse200Type$inboundSchema,
-  url: types.string(),
-  userId: types.optional(types.string()),
-  withCache: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(z.array(types.string())),
+    aliasAssigned: z.nullable(UploadProjectAvatarAliasAssigned$inboundSchema)
+      .optional(),
+    aliasError: z.nullable(UploadProjectAvatarAliasError$inboundSchema)
+      .optional(),
+    aliasFinal: z.nullable(types.string()).optional(),
+    automaticAliases: types.optional(z.array(types.string())),
+    branchMatcher: types.optional(
+      UploadProjectAvatarProjectsBranchMatcher$inboundSchema,
+    ),
+    buildingAt: types.optional(types.number()),
+    builds: types.optional(z.array(UploadProjectAvatarBuilds$inboundSchema)),
+    checksConclusion: types.optional(
+      UploadProjectAvatarChecksConclusion$inboundSchema,
+    ),
+    checksState: types.optional(UploadProjectAvatarChecksState$inboundSchema),
+    connectBuildsEnabled: types.optional(types.boolean()),
+    connectConfigurationId: types.optional(types.string()),
+    createdAt: types.number(),
+    createdIn: types.string(),
+    creator: types.nullable(
+      z.lazy(() => UploadProjectAvatarProjectsCreator$inboundSchema),
+    ),
+    deletedAt: types.optional(types.number()),
+    deploymentHostname: types.string(),
+    forced: types.optional(types.boolean()),
+    id: types.string(),
+    meta: types.optional(z.record(types.string())),
+    monorepoManager: z.nullable(types.string()).optional(),
+    name: types.string(),
+    oidcTokenClaims: types.optional(
+      z.lazy(() => UploadProjectAvatarOidcTokenClaims$inboundSchema),
+    ),
+    plan: UploadProjectAvatarPlan$inboundSchema,
+    previewCommentsEnabled: types.optional(types.boolean()),
+    private: types.boolean(),
+    readyAt: types.optional(types.number()),
+    readyState: UploadProjectAvatarReadyState$inboundSchema,
+    readySubstate: types.optional(
+      UploadProjectAvatarReadySubstate$inboundSchema,
+    ),
+    requestedAt: types.optional(types.number()),
+    target: z.nullable(types.string()).optional(),
+    teamId: z.nullable(types.string()).optional(),
+    type: UploadProjectAvatarProjectsResponse200Type$inboundSchema,
+    url: types.string(),
+    userId: types.optional(types.string()),
+    withCache: types.optional(types.boolean()),
+  })
+);
 
 export function uploadProjectAvatarLatestDeploymentsFromJSON(
   jsonString: string,
@@ -3063,13 +3079,15 @@ export const UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBo
     UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    createdAt: types.optional(types.number()),
-    id: types.string(),
-    name: types.string(),
-    ref: types.string(),
-    url: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.optional(types.number()),
+      id: types.string(),
+      name: types.string(),
+      ref: types.string(),
+      url: types.string(),
+    })
+  );
 
 export function uploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooksFromJSON(
   jsonString: string,
@@ -3091,23 +3109,23 @@ export const UploadProjectAvatarLink8$inboundSchema: z.ZodType<
   UploadProjectAvatarLink8,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  deployHooks: z.array(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    deployHooks: z.array(z.lazy(() =>
       UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBody8DeployHooks$inboundSchema
-    ),
-  ),
-  gitCredentialId: types.string(),
-  owner: types.string(),
-  ownerId: types.string(),
-  productionBranch: types.string(),
-  repo: types.string(),
-  repoId: types.string(),
-  sourceless: types.optional(types.boolean()),
-  type: types.literal("cursor-origin"),
-  updatedAt: types.optional(types.number()),
-});
+    )),
+    gitCredentialId: types.string(),
+    owner: types.string(),
+    ownerId: types.string(),
+    productionBranch: types.string(),
+    repo: types.string(),
+    repoId: types.string(),
+    sourceless: types.optional(types.boolean()),
+    type: types.literal("cursor-origin"),
+    updatedAt: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarLink8FromJSON(
   jsonString: string,
@@ -3125,13 +3143,15 @@ export const UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBo
     UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    createdAt: types.optional(types.number()),
-    id: types.string(),
-    name: types.string(),
-    ref: types.string(),
-    url: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.optional(types.number()),
+      id: types.string(),
+      name: types.string(),
+      ref: types.string(),
+      url: types.string(),
+    })
+  );
 
 export function uploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooksFromJSON(
   jsonString: string,
@@ -3153,22 +3173,22 @@ export const UploadProjectAvatarLink7$inboundSchema: z.ZodType<
   UploadProjectAvatarLink7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  deployHooks: z.array(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    deployHooks: z.array(z.lazy(() =>
       UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBody7DeployHooks$inboundSchema
-    ),
-  ),
-  gitCredentialId: types.string(),
-  org: types.string(),
-  productionBranch: types.string(),
-  repo: types.string(),
-  repoId: types.string(),
-  sourceless: types.optional(types.boolean()),
-  type: types.literal("v0"),
-  updatedAt: types.optional(types.number()),
-});
+    )),
+    gitCredentialId: types.string(),
+    org: types.string(),
+    productionBranch: types.string(),
+    repo: types.string(),
+    repoId: types.string(),
+    sourceless: types.optional(types.boolean()),
+    type: types.literal("v0"),
+    updatedAt: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarLink7FromJSON(
   jsonString: string,
@@ -3186,13 +3206,15 @@ export const UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBo
     UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    createdAt: types.optional(types.number()),
-    id: types.string(),
-    name: types.string(),
-    ref: types.string(),
-    url: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.optional(types.number()),
+      id: types.string(),
+      name: types.string(),
+      ref: types.string(),
+      url: types.string(),
+    })
+  );
 
 export function uploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooksFromJSON(
   jsonString: string,
@@ -3214,22 +3236,22 @@ export const UploadProjectAvatarLink6$inboundSchema: z.ZodType<
   UploadProjectAvatarLink6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  deployHooks: z.array(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    deployHooks: z.array(z.lazy(() =>
       UploadProjectAvatarLinkProjectsResponse200ApplicationJSONResponseBodyDeployHooks$inboundSchema
-    ),
-  ),
-  gitCredentialId: types.string(),
-  org: types.string(),
-  productionBranch: types.string(),
-  repo: types.string(),
-  repoId: types.string(),
-  sourceless: types.optional(types.boolean()),
-  type: types.literal("vercel"),
-  updatedAt: types.optional(types.number()),
-});
+    )),
+    gitCredentialId: types.string(),
+    org: types.string(),
+    productionBranch: types.string(),
+    repo: types.string(),
+    repoId: types.string(),
+    sourceless: types.optional(types.boolean()),
+    type: types.literal("vercel"),
+    updatedAt: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarLink6FromJSON(
   jsonString: string,
@@ -3247,13 +3269,15 @@ export const UploadProjectAvatarLinkProjectsResponse200ApplicationJSONDeployHook
     UploadProjectAvatarLinkProjectsResponse200ApplicationJSONDeployHooks,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    createdAt: types.optional(types.number()),
-    id: types.string(),
-    name: types.string(),
-    ref: types.string(),
-    url: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.optional(types.number()),
+      id: types.string(),
+      name: types.string(),
+      ref: types.string(),
+      url: types.string(),
+    })
+  );
 
 export function uploadProjectAvatarLinkProjectsResponse200ApplicationJSONDeployHooksFromJSON(
   jsonString: string,
@@ -3275,24 +3299,24 @@ export const UploadProjectAvatarLink5$inboundSchema: z.ZodType<
   UploadProjectAvatarLink5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  deployHooks: z.array(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    deployHooks: z.array(z.lazy(() =>
       UploadProjectAvatarLinkProjectsResponse200ApplicationJSONDeployHooks$inboundSchema
-    ),
-  ),
-  gitCredentialId: types.string(),
-  name: types.string(),
-  owner: types.string(),
-  productionBranch: types.string(),
-  slug: types.string(),
-  sourceless: types.optional(types.boolean()),
-  type: types.literal("bitbucket"),
-  updatedAt: types.optional(types.number()),
-  uuid: types.string(),
-  workspaceUuid: types.string(),
-});
+    )),
+    gitCredentialId: types.string(),
+    name: types.string(),
+    owner: types.string(),
+    productionBranch: types.string(),
+    slug: types.string(),
+    sourceless: types.optional(types.boolean()),
+    type: types.literal("bitbucket"),
+    updatedAt: types.optional(types.number()),
+    uuid: types.string(),
+    workspaceUuid: types.string(),
+  })
+);
 
 export function uploadProjectAvatarLink5FromJSON(
   jsonString: string,
@@ -3310,13 +3334,15 @@ export const UploadProjectAvatarLinkProjectsResponse200DeployHooks$inboundSchema
     UploadProjectAvatarLinkProjectsResponse200DeployHooks,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    createdAt: types.optional(types.number()),
-    id: types.string(),
-    name: types.string(),
-    ref: types.string(),
-    url: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.optional(types.number()),
+      id: types.string(),
+      name: types.string(),
+      ref: types.string(),
+      url: types.string(),
+    })
+  );
 
 export function uploadProjectAvatarLinkProjectsResponse200DeployHooksFromJSON(
   jsonString: string,
@@ -3339,25 +3365,25 @@ export const UploadProjectAvatarLink4$inboundSchema: z.ZodType<
   UploadProjectAvatarLink4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  deployHooks: z.array(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    deployHooks: z.array(z.lazy(() =>
       UploadProjectAvatarLinkProjectsResponse200DeployHooks$inboundSchema
-    ),
-  ),
-  gitCredentialId: types.string(),
-  productionBranch: types.string(),
-  projectId: types.string(),
-  projectName: types.string(),
-  projectNamespace: types.string(),
-  projectNameWithNamespace: types.string(),
-  projectOwnerId: types.optional(types.number()),
-  projectUrl: types.string(),
-  sourceless: types.optional(types.boolean()),
-  type: types.literal("gitlab"),
-  updatedAt: types.optional(types.number()),
-});
+    )),
+    gitCredentialId: types.string(),
+    productionBranch: types.string(),
+    projectId: types.string(),
+    projectName: types.string(),
+    projectNamespace: types.string(),
+    projectNameWithNamespace: types.string(),
+    projectOwnerId: types.optional(types.number()),
+    projectUrl: types.string(),
+    sourceless: types.optional(types.boolean()),
+    type: types.literal("gitlab"),
+    updatedAt: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarLink4FromJSON(
   jsonString: string,
@@ -3375,13 +3401,15 @@ export const UploadProjectAvatarLinkProjectsResponseDeployHooks$inboundSchema:
     UploadProjectAvatarLinkProjectsResponseDeployHooks,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    createdAt: types.optional(types.number()),
-    id: types.string(),
-    name: types.string(),
-    ref: types.string(),
-    url: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      createdAt: types.optional(types.number()),
+      id: types.string(),
+      name: types.string(),
+      ref: types.string(),
+      url: types.string(),
+    })
+  );
 
 export function uploadProjectAvatarLinkProjectsResponseDeployHooksFromJSON(
   jsonString: string,
@@ -3404,24 +3432,24 @@ export const UploadProjectAvatarLink3$inboundSchema: z.ZodType<
   UploadProjectAvatarLink3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  deployHooks: z.array(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    deployHooks: z.array(z.lazy(() =>
       UploadProjectAvatarLinkProjectsResponseDeployHooks$inboundSchema
-    ),
-  ),
-  gitCredentialId: types.string(),
-  host: types.string(),
-  org: types.string(),
-  productionBranch: types.string(),
-  repo: types.optional(types.string()),
-  repoId: types.optional(types.number()),
-  repoOwnerId: types.optional(types.number()),
-  sourceless: types.optional(types.boolean()),
-  type: types.literal("github-custom-host"),
-  updatedAt: types.optional(types.number()),
-});
+    )),
+    gitCredentialId: types.string(),
+    host: types.string(),
+    org: types.string(),
+    productionBranch: types.string(),
+    repo: types.optional(types.string()),
+    repoId: types.optional(types.number()),
+    repoOwnerId: types.optional(types.number()),
+    sourceless: types.optional(types.boolean()),
+    type: types.literal("github-custom-host"),
+    updatedAt: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarLink3FromJSON(
   jsonString: string,
@@ -3436,13 +3464,15 @@ export function uploadProjectAvatarLink3FromJSON(
 /** @internal */
 export const UploadProjectAvatarLinkProjectsDeployHooks$inboundSchema:
   z.ZodType<UploadProjectAvatarLinkProjectsDeployHooks, z.ZodTypeDef, unknown> =
-    z.object({
-      createdAt: types.optional(types.number()),
-      id: types.string(),
-      name: types.string(),
-      ref: types.string(),
-      url: types.string(),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        createdAt: types.optional(types.number()),
+        id: types.string(),
+        name: types.string(),
+        ref: types.string(),
+        url: types.string(),
+      })
+    );
 
 export function uploadProjectAvatarLinkProjectsDeployHooksFromJSON(
   jsonString: string,
@@ -3465,21 +3495,23 @@ export const UploadProjectAvatarLink2$inboundSchema: z.ZodType<
   UploadProjectAvatarLink2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  deployHooks: z.array(
-    z.lazy(() => UploadProjectAvatarLinkProjectsDeployHooks$inboundSchema),
-  ),
-  gitCredentialId: types.string(),
-  org: types.string(),
-  productionBranch: types.string(),
-  repo: types.optional(types.string()),
-  repoId: types.optional(types.number()),
-  repoOwnerId: types.optional(types.number()),
-  sourceless: types.optional(types.boolean()),
-  type: types.literal("github-limited"),
-  updatedAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    deployHooks: z.array(
+      z.lazy(() => UploadProjectAvatarLinkProjectsDeployHooks$inboundSchema),
+    ),
+    gitCredentialId: types.string(),
+    org: types.string(),
+    productionBranch: types.string(),
+    repo: types.optional(types.string()),
+    repoId: types.optional(types.number()),
+    repoOwnerId: types.optional(types.number()),
+    sourceless: types.optional(types.boolean()),
+    type: types.literal("github-limited"),
+    updatedAt: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarLink2FromJSON(
   jsonString: string,
@@ -3496,13 +3528,15 @@ export const UploadProjectAvatarLinkDeployHooks$inboundSchema: z.ZodType<
   UploadProjectAvatarLinkDeployHooks,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  id: types.string(),
-  name: types.string(),
-  ref: types.string(),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    id: types.string(),
+    name: types.string(),
+    ref: types.string(),
+    url: types.string(),
+  })
+);
 
 export function uploadProjectAvatarLinkDeployHooksFromJSON(
   jsonString: string,
@@ -3520,21 +3554,23 @@ export const UploadProjectAvatarLink1$inboundSchema: z.ZodType<
   UploadProjectAvatarLink1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.optional(types.number()),
-  deployHooks: z.array(
-    z.lazy(() => UploadProjectAvatarLinkDeployHooks$inboundSchema),
-  ),
-  gitCredentialId: types.string(),
-  org: types.string(),
-  productionBranch: types.string(),
-  repo: types.optional(types.string()),
-  repoId: types.optional(types.number()),
-  repoOwnerId: types.optional(types.number()),
-  sourceless: types.optional(types.boolean()),
-  type: types.literal("github"),
-  updatedAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.optional(types.number()),
+    deployHooks: z.array(
+      z.lazy(() => UploadProjectAvatarLinkDeployHooks$inboundSchema),
+    ),
+    gitCredentialId: types.string(),
+    org: types.string(),
+    productionBranch: types.string(),
+    repo: types.optional(types.string()),
+    repoId: types.optional(types.number()),
+    repoOwnerId: types.optional(types.number()),
+    sourceless: types.optional(types.boolean()),
+    type: types.literal("github"),
+    updatedAt: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarLink1FromJSON(
   jsonString: string,
@@ -3551,16 +3587,18 @@ export const UploadProjectAvatarLink$inboundSchema: z.ZodType<
   UploadProjectAvatarLink,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarLink1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarLink2$inboundSchema),
-  z.lazy(() => UploadProjectAvatarLink3$inboundSchema),
-  z.lazy(() => UploadProjectAvatarLink4$inboundSchema),
-  z.lazy(() => UploadProjectAvatarLink5$inboundSchema),
-  z.lazy(() => UploadProjectAvatarLink6$inboundSchema),
-  z.lazy(() => UploadProjectAvatarLink7$inboundSchema),
-  z.lazy(() => UploadProjectAvatarLink8$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarLink1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarLink2$inboundSchema),
+    z.lazy(() => UploadProjectAvatarLink3$inboundSchema),
+    z.lazy(() => UploadProjectAvatarLink4$inboundSchema),
+    z.lazy(() => UploadProjectAvatarLink5$inboundSchema),
+    z.lazy(() => UploadProjectAvatarLink6$inboundSchema),
+    z.lazy(() => UploadProjectAvatarLink7$inboundSchema),
+    z.lazy(() => UploadProjectAvatarLink8$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarLinkFromJSON(
   jsonString: string,
@@ -3577,12 +3615,14 @@ export const UploadProjectAvatarMicrofrontends3$inboundSchema: z.ZodType<
   UploadProjectAvatarMicrofrontends3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.literal(false),
-  freeProjectForLegacyLimits: types.optional(types.boolean()),
-  groupIds: z.array(z.any()),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.literal(false),
+    freeProjectForLegacyLimits: types.optional(types.boolean()),
+    groupIds: z.array(z.any()),
+    updatedAt: types.number(),
+  })
+);
 
 export function uploadProjectAvatarMicrofrontends3FromJSON(
   jsonString: string,
@@ -3600,16 +3640,18 @@ export const UploadProjectAvatarMicrofrontends2$inboundSchema: z.ZodType<
   UploadProjectAvatarMicrofrontends2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultRoute: types.optional(types.string()),
-  doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
-  enabled: types.literal(true),
-  freeProjectForLegacyLimits: types.optional(types.boolean()),
-  groupIds: z.array(types.string()),
-  isDefaultApp: types.optional(types.literal(false)),
-  routeObservabilityToThisProject: types.optional(types.boolean()),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultRoute: types.optional(types.string()),
+    doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
+    enabled: types.literal(true),
+    freeProjectForLegacyLimits: types.optional(types.boolean()),
+    groupIds: z.array(types.string()),
+    isDefaultApp: types.optional(types.literal(false)),
+    routeObservabilityToThisProject: types.optional(types.boolean()),
+    updatedAt: types.number(),
+  })
+);
 
 export function uploadProjectAvatarMicrofrontends2FromJSON(
   jsonString: string,
@@ -3627,14 +3669,16 @@ export const UploadProjectAvatarMicrofrontends1$inboundSchema: z.ZodType<
   UploadProjectAvatarMicrofrontends1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultRoute: types.optional(types.string()),
-  enabled: types.literal(true),
-  freeProjectForLegacyLimits: types.optional(types.boolean()),
-  groupIds: z.array(types.string()),
-  isDefaultApp: types.literal(true),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultRoute: types.optional(types.string()),
+    enabled: types.literal(true),
+    freeProjectForLegacyLimits: types.optional(types.boolean()),
+    groupIds: z.array(types.string()),
+    isDefaultApp: types.literal(true),
+    updatedAt: types.number(),
+  })
+);
 
 export function uploadProjectAvatarMicrofrontends1FromJSON(
   jsonString: string,
@@ -3652,11 +3696,13 @@ export const UploadProjectAvatarMicrofrontends$inboundSchema: z.ZodType<
   UploadProjectAvatarMicrofrontends,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarMicrofrontends1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarMicrofrontends2$inboundSchema),
-  z.lazy(() => UploadProjectAvatarMicrofrontends3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UploadProjectAvatarMicrofrontends1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarMicrofrontends2$inboundSchema),
+    z.lazy(() => UploadProjectAvatarMicrofrontends3$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarMicrofrontendsFromJSON(
   jsonString: string,
@@ -3671,22 +3717,28 @@ export function uploadProjectAvatarMicrofrontendsFromJSON(
 /** @internal */
 export const UploadProjectAvatarNodeVersion$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarNodeVersion
-> = z.nativeEnum(UploadProjectAvatarNodeVersion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarNodeVersion)
+);
 
 /** @internal */
 export const UploadProjectAvatarIssuerMode$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarIssuerMode
-> = z.nativeEnum(UploadProjectAvatarIssuerMode);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarIssuerMode)
+);
 
 /** @internal */
 export const UploadProjectAvatarOidcTokenConfig$inboundSchema: z.ZodType<
   UploadProjectAvatarOidcTokenConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.optional(types.boolean()),
-  issuerMode: types.optional(UploadProjectAvatarIssuerMode$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.optional(types.boolean()),
+    issuerMode: types.optional(UploadProjectAvatarIssuerMode$inboundSchema),
+  })
+);
 
 export function uploadProjectAvatarOidcTokenConfigFromJSON(
   jsonString: string,
@@ -3704,9 +3756,11 @@ export const UploadProjectAvatarPaths$inboundSchema: z.ZodType<
   UploadProjectAvatarPaths,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    value: types.string(),
+  })
+);
 
 export function uploadProjectAvatarPathsFromJSON(
   jsonString: string,
@@ -3723,9 +3777,11 @@ export const UploadProjectAvatarOptionsAllowlist$inboundSchema: z.ZodType<
   UploadProjectAvatarOptionsAllowlist,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  paths: z.array(z.lazy(() => UploadProjectAvatarPaths$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    paths: z.array(z.lazy(() => UploadProjectAvatarPaths$inboundSchema)),
+  })
+);
 
 export function uploadProjectAvatarOptionsAllowlistFromJSON(
   jsonString: string,
@@ -3741,17 +3797,21 @@ export function uploadProjectAvatarOptionsAllowlistFromJSON(
 /** @internal */
 export const UploadProjectAvatarDeploymentType$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarDeploymentType
-> = z.nativeEnum(UploadProjectAvatarDeploymentType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarDeploymentType)
+);
 
 /** @internal */
 export const UploadProjectAvatarPassport$inboundSchema: z.ZodType<
   UploadProjectAvatarPassport,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  connectorId: types.string(),
-  deploymentType: UploadProjectAvatarDeploymentType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    connectorId: types.string(),
+    deploymentType: UploadProjectAvatarDeploymentType$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarPassportFromJSON(
   jsonString: string,
@@ -3765,17 +3825,21 @@ export function uploadProjectAvatarPassportFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarProjectsDeploymentType$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsDeploymentType> = z
-    .nativeEnum(UploadProjectAvatarProjectsDeploymentType);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsDeploymentType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsDeploymentType)
+    );
 
 /** @internal */
 export const UploadProjectAvatarPasswordProtection$inboundSchema: z.ZodType<
   UploadProjectAvatarPasswordProtection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentType: UploadProjectAvatarProjectsDeploymentType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentType: UploadProjectAvatarProjectsDeploymentType$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarPasswordProtectionFromJSON(
   jsonString: string,
@@ -3793,376 +3857,402 @@ export const UploadProjectAvatarPermissions$inboundSchema: z.ZodType<
   UploadProjectAvatarPermissions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
-  agent: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayApiKey: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayApiKeyBypassAll: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayApiKeyOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayApiKeySpendAttribution: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  aiGatewayApiKeyZdrExemption: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayBudget: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayBudgetOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayByokCredentials: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayCredits: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayGuardrails: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayPrivateModels: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayRules: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewaySettings: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayTranscripts: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayTranscriptsSettings: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  aiGatewayUsage: types.optional(z.array(ACLAction$inboundSchema)),
-  aiGatewayVirtualModelConfigs: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  alertRules: types.optional(z.array(ACLAction$inboundSchema)),
-  alerts: types.optional(z.array(ACLAction$inboundSchema)),
-  aliasGlobal: types.optional(z.array(ACLAction$inboundSchema)),
-  aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
-  aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
-  analytics: types.optional(z.array(ACLAction$inboundSchema)),
-  analyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
-  analyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
-  apiKey: types.optional(z.array(ACLAction$inboundSchema)),
-  apiKeyAiGateway: types.optional(z.array(ACLAction$inboundSchema)),
-  apiKeyOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
-  auditLog: types.optional(z.array(ACLAction$inboundSchema)),
-  automation: types.optional(z.array(ACLAction$inboundSchema)),
-  billingAddress: types.optional(z.array(ACLAction$inboundSchema)),
-  billingInformation: types.optional(z.array(ACLAction$inboundSchema)),
-  billingInvoice: types.optional(z.array(ACLAction$inboundSchema)),
-  billingInvoiceEmailRecipient: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  billingInvoiceLanguage: types.optional(z.array(ACLAction$inboundSchema)),
-  billingPlan: types.optional(z.array(ACLAction$inboundSchema)),
-  billingPurchaseOrder: types.optional(z.array(ACLAction$inboundSchema)),
-  billingRefund: types.optional(z.array(ACLAction$inboundSchema)),
-  billingTaxId: types.optional(z.array(ACLAction$inboundSchema)),
-  blob: types.optional(z.array(ACLAction$inboundSchema)),
-  blobStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
-  budget: types.optional(z.array(ACLAction$inboundSchema)),
-  buildMachine: types.optional(z.array(ACLAction$inboundSchema)),
-  buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
-  bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),
-  cacheArtifact: types.optional(z.array(ACLAction$inboundSchema)),
-  cacheArtifactUsageEvent: types.optional(z.array(ACLAction$inboundSchema)),
-  ciInvocations: types.optional(z.array(ACLAction$inboundSchema)),
-  ciLogs: types.optional(z.array(ACLAction$inboundSchema)),
-  codeChecks: types.optional(z.array(ACLAction$inboundSchema)),
-  codeOwners: types.optional(z.array(ACLAction$inboundSchema)),
-  concurrentBuilds: types.optional(z.array(ACLAction$inboundSchema)),
-  connect: types.optional(z.array(ACLAction$inboundSchema)),
-  connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
-  connectConfigurationLink: types.optional(z.array(ACLAction$inboundSchema)),
-  connectLogs: types.optional(z.array(ACLAction$inboundSchema)),
-  connexClient: types.optional(z.array(ACLAction$inboundSchema)),
-  connexClientAccess: types.optional(z.array(ACLAction$inboundSchema)),
-  connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
-  connexContact: types.optional(z.array(ACLAction$inboundSchema)),
-  connexInstallation: types.optional(z.array(ACLAction$inboundSchema)),
-  connexToken: types.optional(z.array(ACLAction$inboundSchema)),
-  cursorOriginInstallation: types.optional(z.array(ACLAction$inboundSchema)),
-  dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
-  dataCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
-  defaultDeploymentProtection: types.optional(z.array(ACLAction$inboundSchema)),
-  deployment: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentBuildLogs: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentCheck: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentCheckPreview: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentCheckReRunFromProductionBranch: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  deploymentPolicy: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentPreview: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentPrivate: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentProductionGit: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentPromote: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentProtectionException: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  deploymentRollback: types.optional(z.array(ACLAction$inboundSchema)),
-  deploymentV0: types.optional(z.array(ACLAction$inboundSchema)),
-  desktopDevice: types.optional(z.array(ACLAction$inboundSchema)),
-  domain: types.optional(z.array(ACLAction$inboundSchema)),
-  domainAcceptDelegation: types.optional(z.array(ACLAction$inboundSchema)),
-  domainAuthCodes: types.optional(z.array(ACLAction$inboundSchema)),
-  domainCertificate: types.optional(z.array(ACLAction$inboundSchema)),
-  domainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
-  domainMove: types.optional(z.array(ACLAction$inboundSchema)),
-  domainPurchase: types.optional(z.array(ACLAction$inboundSchema)),
-  domainRecord: types.optional(z.array(ACLAction$inboundSchema)),
-  domainTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
-  drain: types.optional(z.array(ACLAction$inboundSchema)),
-  drive: types.optional(z.array(ACLAction$inboundSchema)),
-  edgeCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
-  edgeConfig: types.optional(z.array(ACLAction$inboundSchema)),
-  edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),
-  edgeConfigSchema: types.optional(z.array(ACLAction$inboundSchema)),
-  edgeConfigToken: types.optional(z.array(ACLAction$inboundSchema)),
-  emaSetup: types.optional(z.array(ACLAction$inboundSchema)),
-  endpointVerification: types.optional(z.array(ACLAction$inboundSchema)),
-  environments: types.optional(z.array(ACLAction$inboundSchema)),
-  event: types.optional(z.array(ACLAction$inboundSchema)),
-  fileUpload: types.optional(z.array(ACLAction$inboundSchema)),
-  flagsExplorerSubscription: types.optional(z.array(ACLAction$inboundSchema)),
-  gitCredentialGrant: types.optional(z.array(ACLAction$inboundSchema)),
-  githubUsage: types.optional(z.array(ACLAction$inboundSchema)),
-  gitRepository: types.optional(z.array(ACLAction$inboundSchema)),
-  imageOptimizationNewPrice: types.optional(z.array(ACLAction$inboundSchema)),
-  integration: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationAccount: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationConfigurationProjects: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  integrationConfigurationRole: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  integrationConfigurationTransfer: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  integrationDeploymentAction: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationEvent: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationLog: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationPullRequest: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationResource: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationResourceData: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationResourceReplCommand: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  integrationResourceSecrets: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationSSOSession: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationStrict: types.optional(z.array(ACLAction$inboundSchema)),
-  integrationVercelConfigurationOverride: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  ipBlocking: types.optional(z.array(ACLAction$inboundSchema)),
-  job: types.optional(z.array(ACLAction$inboundSchema)),
-  jobGlobal: types.optional(z.array(ACLAction$inboundSchema)),
-  kmsIssuer: types.optional(z.array(ACLAction$inboundSchema)),
-  kmsProjectGrant: types.optional(z.array(ACLAction$inboundSchema)),
-  logDrain: types.optional(z.array(ACLAction$inboundSchema)),
-  logs: types.optional(z.array(ACLAction$inboundSchema)),
-  logsPreset: types.optional(z.array(ACLAction$inboundSchema)),
-  marketplaceBillingData: types.optional(z.array(ACLAction$inboundSchema)),
-  marketplaceExperimentationEdgeConfigData: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  marketplaceExperimentationItem: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  marketplaceFlexCommit: types.optional(z.array(ACLAction$inboundSchema)),
-  marketplaceInstallationMember: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  marketplaceInvoice: types.optional(z.array(ACLAction$inboundSchema)),
-  marketplaceSettings: types.optional(z.array(ACLAction$inboundSchema)),
-  messageboard: types.optional(z.array(ACLAction$inboundSchema)),
-  messageboardChannel: types.optional(z.array(ACLAction$inboundSchema)),
-  messageboardMessage: types.optional(z.array(ACLAction$inboundSchema)),
-  messageboardModeration: types.optional(z.array(ACLAction$inboundSchema)),
-  messageboardReaction: types.optional(z.array(ACLAction$inboundSchema)),
-  messageboardTask: types.optional(z.array(ACLAction$inboundSchema)),
-  Monitoring: types.optional(z.array(ACLAction$inboundSchema)),
-  monitoringAlert: types.optional(z.array(ACLAction$inboundSchema)),
-  monitoringChart: types.optional(z.array(ACLAction$inboundSchema)),
-  monitoringQuery: types.optional(z.array(ACLAction$inboundSchema)),
-  monitoringSettings: types.optional(z.array(ACLAction$inboundSchema)),
-  notificationCustomerBudget: types.optional(z.array(ACLAction$inboundSchema)),
-  notificationDeploymentFailed: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  notificationDomainConfiguration: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  notificationDomainExpire: types.optional(z.array(ACLAction$inboundSchema)),
-  notificationDomainMoved: types.optional(z.array(ACLAction$inboundSchema)),
-  notificationDomainPurchase: types.optional(z.array(ACLAction$inboundSchema)),
-  notificationDomainRenewal: types.optional(z.array(ACLAction$inboundSchema)),
-  notificationDomainTransfer: types.optional(z.array(ACLAction$inboundSchema)),
-  notificationDomainUnverified: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  NotificationMonitoringAlert: types.optional(z.array(ACLAction$inboundSchema)),
-  notificationPaymentFailed: types.optional(z.array(ACLAction$inboundSchema)),
-  notificationPreferences: types.optional(z.array(ACLAction$inboundSchema)),
-  notificationStatementOfReasons: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  notificationUsageAlert: types.optional(z.array(ACLAction$inboundSchema)),
-  oauth2Application: types.optional(z.array(ACLAction$inboundSchema)),
-  oauth2Connection: types.optional(z.array(ACLAction$inboundSchema)),
-  observabilityConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
-  observabilityData: types.optional(z.array(ACLAction$inboundSchema)),
-  observabilityFunnel: types.optional(z.array(ACLAction$inboundSchema)),
-  observabilityNotebook: types.optional(z.array(ACLAction$inboundSchema)),
-  oidcFederationPolicy: types.optional(z.array(ACLAction$inboundSchema)),
-  onDemandBuild: types.optional(z.array(ACLAction$inboundSchema)),
-  onDemandConcurrency: types.optional(z.array(ACLAction$inboundSchema)),
-  openTelemetryEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
-  optionsAllowlist: types.optional(z.array(ACLAction$inboundSchema)),
-  organization: types.optional(z.array(ACLAction$inboundSchema)),
-  organizationAdmin: types.optional(z.array(ACLAction$inboundSchema)),
-  organizationDomain: types.optional(z.array(ACLAction$inboundSchema)),
-  organizationMember: types.optional(z.array(ACLAction$inboundSchema)),
-  organizationTeam: types.optional(z.array(ACLAction$inboundSchema)),
-  ownEvent: types.optional(z.array(ACLAction$inboundSchema)),
-  pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
-  passwordProtection: types.optional(z.array(ACLAction$inboundSchema)),
-  passwordProtectionInvoiceItem: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  paymentMethod: types.optional(z.array(ACLAction$inboundSchema)),
-  perimeter: types.optional(z.array(ACLAction$inboundSchema)),
-  perimeterLink: types.optional(z.array(ACLAction$inboundSchema)),
-  permissions: types.optional(z.array(ACLAction$inboundSchema)),
-  postgres: types.optional(z.array(ACLAction$inboundSchema)),
-  postgresStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
-  previewDeploymentSuffix: types.optional(z.array(ACLAction$inboundSchema)),
-  privateCloudAccount: types.optional(z.array(ACLAction$inboundSchema)),
-  privateLinkEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
-  privateNpmUsage: types.optional(z.array(ACLAction$inboundSchema)),
-  productionAliasProtectionBypass: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  productionShareableLink: types.optional(z.array(ACLAction$inboundSchema)),
-  project: types.optional(z.array(ACLAction$inboundSchema)),
-  projectAccessGroup: types.optional(z.array(ACLAction$inboundSchema)),
-  projectAnalyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
-  projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
-  projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
-  projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDeploymentExpiration: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDeploymentProtectionStrict: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  projectDomain: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDomainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDomainMove: types.optional(z.array(ACLAction$inboundSchema)),
-  projectDomainVerify: types.optional(z.array(ACLAction$inboundSchema)),
-  projectEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
-  projectEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
-  projectEnvVarsUnownedByIntegration: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
-  projectFlags: types.optional(z.array(ACLAction$inboundSchema)),
-  projectFlagsOverride: types.optional(z.array(ACLAction$inboundSchema)),
-  projectFlagsOverrideProduction: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  projectFlagsProduction: types.optional(z.array(ACLAction$inboundSchema)),
-  projectFlagsSdkKey: types.optional(z.array(ACLAction$inboundSchema)),
-  projectFromV0: types.optional(z.array(ACLAction$inboundSchema)),
-  projectId: types.optional(z.array(ACLAction$inboundSchema)),
-  projectIntegrationConfiguration: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  projectLink: types.optional(z.array(ACLAction$inboundSchema)),
-  projectMember: types.optional(z.array(ACLAction$inboundSchema)),
-  projectMonitoring: types.optional(z.array(ACLAction$inboundSchema)),
-  projectOIDCToken: types.optional(z.array(ACLAction$inboundSchema)),
-  projectPermissions: types.optional(z.array(ACLAction$inboundSchema)),
-  projectProductionBranch: types.optional(z.array(ACLAction$inboundSchema)),
-  projectProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
-  projectRollingRelease: types.optional(z.array(ACLAction$inboundSchema)),
-  projectRoutes: types.optional(z.array(ACLAction$inboundSchema)),
-  projectSetting: types.optional(z.array(ACLAction$inboundSchema)),
-  projectSupportCase: types.optional(z.array(ACLAction$inboundSchema)),
-  projectSupportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
-  projectTier: types.optional(z.array(ACLAction$inboundSchema)),
-  projectTransfer: types.optional(z.array(ACLAction$inboundSchema)),
-  projectTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
-  projectTransferOut: types.optional(z.array(ACLAction$inboundSchema)),
-  projectTransferRequest: types.optional(z.array(ACLAction$inboundSchema)),
-  projectUsage: types.optional(z.array(ACLAction$inboundSchema)),
-  proTrialOnboarding: types.optional(z.array(ACLAction$inboundSchema)),
-  rateLimit: types.optional(z.array(ACLAction$inboundSchema)),
-  redis: types.optional(z.array(ACLAction$inboundSchema)),
-  redisStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
-  remoteCaching: types.optional(z.array(ACLAction$inboundSchema)),
-  repository: types.optional(z.array(ACLAction$inboundSchema)),
-  samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
-  schedule: types.optional(z.array(ACLAction$inboundSchema)),
-  schedulePreview: types.optional(z.array(ACLAction$inboundSchema)),
-  seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
-  secret: types.optional(z.array(ACLAction$inboundSchema)),
-  securityConfig: types.optional(z.array(ACLAction$inboundSchema)),
-  securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
-  sensitiveEnvironmentVariablePolicy: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  setting: types.optional(z.array(ACLAction$inboundSchema)),
-  shareableLink: types.optional(z.array(ACLAction$inboundSchema)),
-  shareableLinkStrict: types.optional(z.array(ACLAction$inboundSchema)),
-  sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),
-  sharedEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
-  sharedEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
-  skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
-  space: types.optional(z.array(ACLAction$inboundSchema)),
-  spaceRun: types.optional(z.array(ACLAction$inboundSchema)),
-  storeIsLocked: types.optional(z.array(ACLAction$inboundSchema)),
-  storeTokenSetSensitive: types.optional(z.array(ACLAction$inboundSchema)),
-  storeTransfer: types.optional(z.array(ACLAction$inboundSchema)),
-  supportCase: types.optional(z.array(ACLAction$inboundSchema)),
-  supportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
-  team: types.optional(z.array(ACLAction$inboundSchema)),
-  teamAccessRequest: types.optional(z.array(ACLAction$inboundSchema)),
-  teamFellowMembership: types.optional(z.array(ACLAction$inboundSchema)),
-  teamGitExclusivity: types.optional(z.array(ACLAction$inboundSchema)),
-  teamInvite: types.optional(z.array(ACLAction$inboundSchema)),
-  teamInviteCode: types.optional(z.array(ACLAction$inboundSchema)),
-  teamInviteLink: types.optional(z.array(ACLAction$inboundSchema)),
-  teamJoin: types.optional(z.array(ACLAction$inboundSchema)),
-  teamMemberMfaStatus: types.optional(z.array(ACLAction$inboundSchema)),
-  teamMicrofrontends: types.optional(z.array(ACLAction$inboundSchema)),
-  teamOwnMembership: types.optional(z.array(ACLAction$inboundSchema)),
-  teamOwnMembershipDisconnectSAML: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  teamSudo: types.optional(z.array(ACLAction$inboundSchema)),
-  teamTokenInvalidation: types.optional(z.array(ACLAction$inboundSchema)),
-  token: types.optional(z.array(ACLAction$inboundSchema)),
-  toolbarComment: types.optional(z.array(ACLAction$inboundSchema)),
-  trustedIps: types.optional(z.array(ACLAction$inboundSchema)),
-  trustedSources: types.optional(z.array(ACLAction$inboundSchema)),
-  usage: types.optional(z.array(ACLAction$inboundSchema)),
-  usageCycle: types.optional(z.array(ACLAction$inboundSchema)),
-  user: types.optional(z.array(ACLAction$inboundSchema)),
-  userConnection: types.optional(z.array(ACLAction$inboundSchema)),
-  userMfaConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
-  userPreference: types.optional(z.array(ACLAction$inboundSchema)),
-  userSudo: types.optional(z.array(ACLAction$inboundSchema)),
-  v0Chat: types.optional(z.array(ACLAction$inboundSchema)),
-  vcrRepository: types.optional(z.array(ACLAction$inboundSchema)),
-  vercelAppInstallation: types.optional(z.array(ACLAction$inboundSchema)),
-  vercelAppInstallationRequest: types.optional(
-    z.array(ACLAction$inboundSchema),
-  ),
-  vercelAuth: types.optional(z.array(ACLAction$inboundSchema)),
-  vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
-  vpcPeeringConnection: types.optional(z.array(ACLAction$inboundSchema)),
-  webAnalytics: types.optional(z.array(ACLAction$inboundSchema)),
-  webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
-  webAuthn: types.optional(z.array(ACLAction$inboundSchema)),
-  webhook: types.optional(z.array(ACLAction$inboundSchema)),
-  "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
-  workflowRunData: types.optional(z.array(ACLAction$inboundSchema)),
-}).transform((v) => {
-  return remap$(v, {
-    "Monitoring": "monitoring",
-    "NotificationMonitoringAlert": "notificationMonitoringAlert",
-    "projectFlagsSdkKey": "projectFlagsSDKKey",
-    "webhook-event": "webhookEvent",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroup: types.optional(z.array(ACLAction$inboundSchema)),
+    agent: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayApiKey: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayApiKeyBypassAll: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayApiKeyOwnedBySelf: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    aiGatewayApiKeySpendAttribution: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    aiGatewayApiKeyZdrExemption: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    aiGatewayBudget: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayBudgetOwnedBySelf: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    aiGatewayByokCredentials: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayCredits: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayGuardrails: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayPrivateModels: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayRules: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewaySettings: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayTranscripts: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayTranscriptsSettings: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    aiGatewayUsage: types.optional(z.array(ACLAction$inboundSchema)),
+    aiGatewayVirtualModelConfigs: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    alertRules: types.optional(z.array(ACLAction$inboundSchema)),
+    alerts: types.optional(z.array(ACLAction$inboundSchema)),
+    aliasGlobal: types.optional(z.array(ACLAction$inboundSchema)),
+    aliasProject: types.optional(z.array(ACLAction$inboundSchema)),
+    aliasProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
+    analytics: types.optional(z.array(ACLAction$inboundSchema)),
+    analyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
+    analyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
+    apiKey: types.optional(z.array(ACLAction$inboundSchema)),
+    apiKeyAiGateway: types.optional(z.array(ACLAction$inboundSchema)),
+    apiKeyOwnedBySelf: types.optional(z.array(ACLAction$inboundSchema)),
+    auditLog: types.optional(z.array(ACLAction$inboundSchema)),
+    automation: types.optional(z.array(ACLAction$inboundSchema)),
+    billingAddress: types.optional(z.array(ACLAction$inboundSchema)),
+    billingInformation: types.optional(z.array(ACLAction$inboundSchema)),
+    billingInvoice: types.optional(z.array(ACLAction$inboundSchema)),
+    billingInvoiceEmailRecipient: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    billingInvoiceLanguage: types.optional(z.array(ACLAction$inboundSchema)),
+    billingPlan: types.optional(z.array(ACLAction$inboundSchema)),
+    billingPurchaseOrder: types.optional(z.array(ACLAction$inboundSchema)),
+    billingRefund: types.optional(z.array(ACLAction$inboundSchema)),
+    billingTaxId: types.optional(z.array(ACLAction$inboundSchema)),
+    blob: types.optional(z.array(ACLAction$inboundSchema)),
+    blobStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+    budget: types.optional(z.array(ACLAction$inboundSchema)),
+    buildMachine: types.optional(z.array(ACLAction$inboundSchema)),
+    buildMachineDefault: types.optional(z.array(ACLAction$inboundSchema)),
+    bulkRedirects: types.optional(z.array(ACLAction$inboundSchema)),
+    cacheArtifact: types.optional(z.array(ACLAction$inboundSchema)),
+    cacheArtifactUsageEvent: types.optional(z.array(ACLAction$inboundSchema)),
+    ciInvocations: types.optional(z.array(ACLAction$inboundSchema)),
+    ciLogs: types.optional(z.array(ACLAction$inboundSchema)),
+    codeChecks: types.optional(z.array(ACLAction$inboundSchema)),
+    codeOwners: types.optional(z.array(ACLAction$inboundSchema)),
+    concurrentBuilds: types.optional(z.array(ACLAction$inboundSchema)),
+    connect: types.optional(z.array(ACLAction$inboundSchema)),
+    connectConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+    connectConfigurationLink: types.optional(z.array(ACLAction$inboundSchema)),
+    connectLogs: types.optional(z.array(ACLAction$inboundSchema)),
+    connexClient: types.optional(z.array(ACLAction$inboundSchema)),
+    connexClientAccess: types.optional(z.array(ACLAction$inboundSchema)),
+    connexClientProject: types.optional(z.array(ACLAction$inboundSchema)),
+    connexContact: types.optional(z.array(ACLAction$inboundSchema)),
+    connexInstallation: types.optional(z.array(ACLAction$inboundSchema)),
+    connexToken: types.optional(z.array(ACLAction$inboundSchema)),
+    cursorOriginInstallation: types.optional(z.array(ACLAction$inboundSchema)),
+    dataCacheBillingSettings: types.optional(z.array(ACLAction$inboundSchema)),
+    dataCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
+    defaultDeploymentProtection: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    deployment: types.optional(z.array(ACLAction$inboundSchema)),
+    deploymentBuildLogs: types.optional(z.array(ACLAction$inboundSchema)),
+    deploymentCheck: types.optional(z.array(ACLAction$inboundSchema)),
+    deploymentCheckPreview: types.optional(z.array(ACLAction$inboundSchema)),
+    deploymentCheckReRunFromProductionBranch: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    deploymentPolicy: types.optional(z.array(ACLAction$inboundSchema)),
+    deploymentPreview: types.optional(z.array(ACLAction$inboundSchema)),
+    deploymentPrivate: types.optional(z.array(ACLAction$inboundSchema)),
+    deploymentProductionGit: types.optional(z.array(ACLAction$inboundSchema)),
+    deploymentPromote: types.optional(z.array(ACLAction$inboundSchema)),
+    deploymentProtectionException: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    deploymentRollback: types.optional(z.array(ACLAction$inboundSchema)),
+    deploymentV0: types.optional(z.array(ACLAction$inboundSchema)),
+    desktopDevice: types.optional(z.array(ACLAction$inboundSchema)),
+    domain: types.optional(z.array(ACLAction$inboundSchema)),
+    domainAcceptDelegation: types.optional(z.array(ACLAction$inboundSchema)),
+    domainAuthCodes: types.optional(z.array(ACLAction$inboundSchema)),
+    domainCertificate: types.optional(z.array(ACLAction$inboundSchema)),
+    domainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
+    domainMove: types.optional(z.array(ACLAction$inboundSchema)),
+    domainPurchase: types.optional(z.array(ACLAction$inboundSchema)),
+    domainRecord: types.optional(z.array(ACLAction$inboundSchema)),
+    domainTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
+    drain: types.optional(z.array(ACLAction$inboundSchema)),
+    drive: types.optional(z.array(ACLAction$inboundSchema)),
+    edgeCacheNamespace: types.optional(z.array(ACLAction$inboundSchema)),
+    edgeConfig: types.optional(z.array(ACLAction$inboundSchema)),
+    edgeConfigItem: types.optional(z.array(ACLAction$inboundSchema)),
+    edgeConfigSchema: types.optional(z.array(ACLAction$inboundSchema)),
+    edgeConfigToken: types.optional(z.array(ACLAction$inboundSchema)),
+    emaSetup: types.optional(z.array(ACLAction$inboundSchema)),
+    endpointVerification: types.optional(z.array(ACLAction$inboundSchema)),
+    environments: types.optional(z.array(ACLAction$inboundSchema)),
+    event: types.optional(z.array(ACLAction$inboundSchema)),
+    fileUpload: types.optional(z.array(ACLAction$inboundSchema)),
+    flagsExplorerSubscription: types.optional(z.array(ACLAction$inboundSchema)),
+    gitCredentialGrant: types.optional(z.array(ACLAction$inboundSchema)),
+    githubUsage: types.optional(z.array(ACLAction$inboundSchema)),
+    gitRepository: types.optional(z.array(ACLAction$inboundSchema)),
+    imageOptimizationNewPrice: types.optional(z.array(ACLAction$inboundSchema)),
+    integration: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationAccount: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationConfigurationProjects: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    integrationConfigurationRole: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    integrationConfigurationTransfer: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    integrationDeploymentAction: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    integrationEvent: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationLog: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationPullRequest: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationResource: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationResourceData: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationResourceReplCommand: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    integrationResourceSecrets: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    integrationSSOSession: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationStrict: types.optional(z.array(ACLAction$inboundSchema)),
+    integrationVercelConfigurationOverride: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    ipBlocking: types.optional(z.array(ACLAction$inboundSchema)),
+    job: types.optional(z.array(ACLAction$inboundSchema)),
+    jobGlobal: types.optional(z.array(ACLAction$inboundSchema)),
+    kmsIssuer: types.optional(z.array(ACLAction$inboundSchema)),
+    kmsProjectGrant: types.optional(z.array(ACLAction$inboundSchema)),
+    logDrain: types.optional(z.array(ACLAction$inboundSchema)),
+    logs: types.optional(z.array(ACLAction$inboundSchema)),
+    logsPreset: types.optional(z.array(ACLAction$inboundSchema)),
+    marketplaceBillingData: types.optional(z.array(ACLAction$inboundSchema)),
+    marketplaceExperimentationEdgeConfigData: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    marketplaceExperimentationItem: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    marketplaceFlexCommit: types.optional(z.array(ACLAction$inboundSchema)),
+    marketplaceInstallationMember: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    marketplaceInvoice: types.optional(z.array(ACLAction$inboundSchema)),
+    marketplaceSettings: types.optional(z.array(ACLAction$inboundSchema)),
+    messageboard: types.optional(z.array(ACLAction$inboundSchema)),
+    messageboardChannel: types.optional(z.array(ACLAction$inboundSchema)),
+    messageboardMessage: types.optional(z.array(ACLAction$inboundSchema)),
+    messageboardModeration: types.optional(z.array(ACLAction$inboundSchema)),
+    messageboardReaction: types.optional(z.array(ACLAction$inboundSchema)),
+    messageboardTask: types.optional(z.array(ACLAction$inboundSchema)),
+    Monitoring: types.optional(z.array(ACLAction$inboundSchema)),
+    monitoringAlert: types.optional(z.array(ACLAction$inboundSchema)),
+    monitoringChart: types.optional(z.array(ACLAction$inboundSchema)),
+    monitoringQuery: types.optional(z.array(ACLAction$inboundSchema)),
+    monitoringSettings: types.optional(z.array(ACLAction$inboundSchema)),
+    notificationCustomerBudget: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    notificationDeploymentFailed: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    notificationDomainConfiguration: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    notificationDomainExpire: types.optional(z.array(ACLAction$inboundSchema)),
+    notificationDomainMoved: types.optional(z.array(ACLAction$inboundSchema)),
+    notificationDomainPurchase: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    notificationDomainRenewal: types.optional(z.array(ACLAction$inboundSchema)),
+    notificationDomainTransfer: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    notificationDomainUnverified: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    NotificationMonitoringAlert: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    notificationPaymentFailed: types.optional(z.array(ACLAction$inboundSchema)),
+    notificationPreferences: types.optional(z.array(ACLAction$inboundSchema)),
+    notificationStatementOfReasons: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    notificationUsageAlert: types.optional(z.array(ACLAction$inboundSchema)),
+    oauth2Application: types.optional(z.array(ACLAction$inboundSchema)),
+    oauth2Connection: types.optional(z.array(ACLAction$inboundSchema)),
+    observabilityConfiguration: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    observabilityData: types.optional(z.array(ACLAction$inboundSchema)),
+    observabilityFunnel: types.optional(z.array(ACLAction$inboundSchema)),
+    observabilityNotebook: types.optional(z.array(ACLAction$inboundSchema)),
+    oidcFederationPolicy: types.optional(z.array(ACLAction$inboundSchema)),
+    onDemandBuild: types.optional(z.array(ACLAction$inboundSchema)),
+    onDemandConcurrency: types.optional(z.array(ACLAction$inboundSchema)),
+    openTelemetryEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
+    optionsAllowlist: types.optional(z.array(ACLAction$inboundSchema)),
+    organization: types.optional(z.array(ACLAction$inboundSchema)),
+    organizationAdmin: types.optional(z.array(ACLAction$inboundSchema)),
+    organizationDomain: types.optional(z.array(ACLAction$inboundSchema)),
+    organizationMember: types.optional(z.array(ACLAction$inboundSchema)),
+    organizationTeam: types.optional(z.array(ACLAction$inboundSchema)),
+    ownEvent: types.optional(z.array(ACLAction$inboundSchema)),
+    pageIntegrity: types.optional(z.array(ACLAction$inboundSchema)),
+    passwordProtection: types.optional(z.array(ACLAction$inboundSchema)),
+    passwordProtectionInvoiceItem: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    paymentMethod: types.optional(z.array(ACLAction$inboundSchema)),
+    perimeter: types.optional(z.array(ACLAction$inboundSchema)),
+    perimeterLink: types.optional(z.array(ACLAction$inboundSchema)),
+    permissions: types.optional(z.array(ACLAction$inboundSchema)),
+    postgres: types.optional(z.array(ACLAction$inboundSchema)),
+    postgresStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+    previewDeploymentSuffix: types.optional(z.array(ACLAction$inboundSchema)),
+    privateCloudAccount: types.optional(z.array(ACLAction$inboundSchema)),
+    privateLinkEndpoint: types.optional(z.array(ACLAction$inboundSchema)),
+    privateNpmUsage: types.optional(z.array(ACLAction$inboundSchema)),
+    productionAliasProtectionBypass: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    productionShareableLink: types.optional(z.array(ACLAction$inboundSchema)),
+    project: types.optional(z.array(ACLAction$inboundSchema)),
+    projectAccessGroup: types.optional(z.array(ACLAction$inboundSchema)),
+    projectAnalyticsSampling: types.optional(z.array(ACLAction$inboundSchema)),
+    projectAnalyticsUsage: types.optional(z.array(ACLAction$inboundSchema)),
+    projectCheck: types.optional(z.array(ACLAction$inboundSchema)),
+    projectCheckRun: types.optional(z.array(ACLAction$inboundSchema)),
+    projectDeploymentExpiration: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    projectDeploymentHook: types.optional(z.array(ACLAction$inboundSchema)),
+    projectDeploymentProtectionStrict: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    projectDomain: types.optional(z.array(ACLAction$inboundSchema)),
+    projectDomainCheckConfig: types.optional(z.array(ACLAction$inboundSchema)),
+    projectDomainMove: types.optional(z.array(ACLAction$inboundSchema)),
+    projectDomainVerify: types.optional(z.array(ACLAction$inboundSchema)),
+    projectEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
+    projectEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+    projectEnvVarsUnownedByIntegration: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    projectEvent: types.optional(z.array(ACLAction$inboundSchema)),
+    projectFlags: types.optional(z.array(ACLAction$inboundSchema)),
+    projectFlagsOverride: types.optional(z.array(ACLAction$inboundSchema)),
+    projectFlagsOverrideProduction: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    projectFlagsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+    projectFlagsSdkKey: types.optional(z.array(ACLAction$inboundSchema)),
+    projectFromV0: types.optional(z.array(ACLAction$inboundSchema)),
+    projectId: types.optional(z.array(ACLAction$inboundSchema)),
+    projectIntegrationConfiguration: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    projectLink: types.optional(z.array(ACLAction$inboundSchema)),
+    projectMember: types.optional(z.array(ACLAction$inboundSchema)),
+    projectMonitoring: types.optional(z.array(ACLAction$inboundSchema)),
+    projectOIDCToken: types.optional(z.array(ACLAction$inboundSchema)),
+    projectPermissions: types.optional(z.array(ACLAction$inboundSchema)),
+    projectProductionBranch: types.optional(z.array(ACLAction$inboundSchema)),
+    projectProtectionBypass: types.optional(z.array(ACLAction$inboundSchema)),
+    projectRollingRelease: types.optional(z.array(ACLAction$inboundSchema)),
+    projectRoutes: types.optional(z.array(ACLAction$inboundSchema)),
+    projectSetting: types.optional(z.array(ACLAction$inboundSchema)),
+    projectSupportCase: types.optional(z.array(ACLAction$inboundSchema)),
+    projectSupportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
+    projectTier: types.optional(z.array(ACLAction$inboundSchema)),
+    projectTransfer: types.optional(z.array(ACLAction$inboundSchema)),
+    projectTransferIn: types.optional(z.array(ACLAction$inboundSchema)),
+    projectTransferOut: types.optional(z.array(ACLAction$inboundSchema)),
+    projectTransferRequest: types.optional(z.array(ACLAction$inboundSchema)),
+    projectUsage: types.optional(z.array(ACLAction$inboundSchema)),
+    proTrialOnboarding: types.optional(z.array(ACLAction$inboundSchema)),
+    rateLimit: types.optional(z.array(ACLAction$inboundSchema)),
+    redis: types.optional(z.array(ACLAction$inboundSchema)),
+    redisStoreTokenSet: types.optional(z.array(ACLAction$inboundSchema)),
+    remoteCaching: types.optional(z.array(ACLAction$inboundSchema)),
+    repository: types.optional(z.array(ACLAction$inboundSchema)),
+    samlConfig: types.optional(z.array(ACLAction$inboundSchema)),
+    schedule: types.optional(z.array(ACLAction$inboundSchema)),
+    schedulePreview: types.optional(z.array(ACLAction$inboundSchema)),
+    seawallConfig: types.optional(z.array(ACLAction$inboundSchema)),
+    secret: types.optional(z.array(ACLAction$inboundSchema)),
+    securityConfig: types.optional(z.array(ACLAction$inboundSchema)),
+    securityPlusConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+    sensitiveEnvironmentVariablePolicy: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    setting: types.optional(z.array(ACLAction$inboundSchema)),
+    shareableLink: types.optional(z.array(ACLAction$inboundSchema)),
+    shareableLinkStrict: types.optional(z.array(ACLAction$inboundSchema)),
+    sharedEnvVarConnection: types.optional(z.array(ACLAction$inboundSchema)),
+    sharedEnvVars: types.optional(z.array(ACLAction$inboundSchema)),
+    sharedEnvVarsProduction: types.optional(z.array(ACLAction$inboundSchema)),
+    skewProtection: types.optional(z.array(ACLAction$inboundSchema)),
+    space: types.optional(z.array(ACLAction$inboundSchema)),
+    spaceRun: types.optional(z.array(ACLAction$inboundSchema)),
+    storeIsLocked: types.optional(z.array(ACLAction$inboundSchema)),
+    storeTokenSetSensitive: types.optional(z.array(ACLAction$inboundSchema)),
+    storeTransfer: types.optional(z.array(ACLAction$inboundSchema)),
+    supportCase: types.optional(z.array(ACLAction$inboundSchema)),
+    supportCaseComment: types.optional(z.array(ACLAction$inboundSchema)),
+    team: types.optional(z.array(ACLAction$inboundSchema)),
+    teamAccessRequest: types.optional(z.array(ACLAction$inboundSchema)),
+    teamFellowMembership: types.optional(z.array(ACLAction$inboundSchema)),
+    teamGitExclusivity: types.optional(z.array(ACLAction$inboundSchema)),
+    teamInvite: types.optional(z.array(ACLAction$inboundSchema)),
+    teamInviteCode: types.optional(z.array(ACLAction$inboundSchema)),
+    teamInviteLink: types.optional(z.array(ACLAction$inboundSchema)),
+    teamJoin: types.optional(z.array(ACLAction$inboundSchema)),
+    teamMemberMfaStatus: types.optional(z.array(ACLAction$inboundSchema)),
+    teamMicrofrontends: types.optional(z.array(ACLAction$inboundSchema)),
+    teamOwnMembership: types.optional(z.array(ACLAction$inboundSchema)),
+    teamOwnMembershipDisconnectSAML: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    teamSudo: types.optional(z.array(ACLAction$inboundSchema)),
+    teamTokenInvalidation: types.optional(z.array(ACLAction$inboundSchema)),
+    token: types.optional(z.array(ACLAction$inboundSchema)),
+    toolbarComment: types.optional(z.array(ACLAction$inboundSchema)),
+    trustedIps: types.optional(z.array(ACLAction$inboundSchema)),
+    trustedSources: types.optional(z.array(ACLAction$inboundSchema)),
+    usage: types.optional(z.array(ACLAction$inboundSchema)),
+    usageCycle: types.optional(z.array(ACLAction$inboundSchema)),
+    user: types.optional(z.array(ACLAction$inboundSchema)),
+    userConnection: types.optional(z.array(ACLAction$inboundSchema)),
+    userMfaConfiguration: types.optional(z.array(ACLAction$inboundSchema)),
+    userPreference: types.optional(z.array(ACLAction$inboundSchema)),
+    userSudo: types.optional(z.array(ACLAction$inboundSchema)),
+    v0Chat: types.optional(z.array(ACLAction$inboundSchema)),
+    vcrRepository: types.optional(z.array(ACLAction$inboundSchema)),
+    vercelAppInstallation: types.optional(z.array(ACLAction$inboundSchema)),
+    vercelAppInstallationRequest: types.optional(
+      z.array(ACLAction$inboundSchema),
+    ),
+    vercelAuth: types.optional(z.array(ACLAction$inboundSchema)),
+    vercelRun: types.optional(z.array(ACLAction$inboundSchema)),
+    vpcPeeringConnection: types.optional(z.array(ACLAction$inboundSchema)),
+    webAnalytics: types.optional(z.array(ACLAction$inboundSchema)),
+    webAnalyticsPlan: types.optional(z.array(ACLAction$inboundSchema)),
+    webAuthn: types.optional(z.array(ACLAction$inboundSchema)),
+    webhook: types.optional(z.array(ACLAction$inboundSchema)),
+    "webhook-event": types.optional(z.array(ACLAction$inboundSchema)),
+    workflowRunData: types.optional(z.array(ACLAction$inboundSchema)),
+  }).transform((v) => {
+    return remap$(v, {
+      "Monitoring": "monitoring",
+      "NotificationMonitoringAlert": "notificationMonitoringAlert",
+      "projectFlagsSdkKey": "projectFlagsSDKKey",
+      "webhook-event": "webhookEvent",
+    });
+  })
+);
 
 export function uploadProjectAvatarPermissionsFromJSON(
   jsonString: string,
@@ -4179,13 +4269,15 @@ export const UploadProjectAvatarProtectionBypass2$inboundSchema: z.ZodType<
   UploadProjectAvatarProtectionBypass2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  createdBy: types.string(),
-  isEnvVar: types.optional(types.boolean()),
-  note: types.optional(types.string()),
-  scope: types.literal("automation-bypass"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    createdBy: types.string(),
+    isEnvVar: types.optional(types.boolean()),
+    note: types.optional(types.string()),
+    scope: types.literal("automation-bypass"),
+  })
+);
 
 export function uploadProjectAvatarProtectionBypass2FromJSON(
   jsonString: string,
@@ -4203,13 +4295,15 @@ export const UploadProjectAvatarProtectionBypass1$inboundSchema: z.ZodType<
   UploadProjectAvatarProtectionBypass1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configurationId: types.string(),
-  createdAt: types.number(),
-  createdBy: types.string(),
-  integrationId: types.string(),
-  scope: types.literal("integration-automation-bypass"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configurationId: types.string(),
+    createdAt: types.number(),
+    createdBy: types.string(),
+    integrationId: types.string(),
+    scope: types.literal("integration-automation-bypass"),
+  })
+);
 
 export function uploadProjectAvatarProtectionBypass1FromJSON(
   jsonString: string,
@@ -4227,10 +4321,12 @@ export const UploadProjectAvatarProtectionBypass$inboundSchema: z.ZodType<
   UploadProjectAvatarProtectionBypass,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarProtectionBypass1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarProtectionBypass2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarProtectionBypass1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarProtectionBypass2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarProtectionBypassFromJSON(
   jsonString: string,
@@ -4248,9 +4344,11 @@ export const UploadProjectAvatarSandboxUrls$inboundSchema: z.ZodType<
   UploadProjectAvatarSandboxUrls,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  inheritDeploymentProtection: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    inheritDeploymentProtection: types.optional(types.boolean()),
+  })
+);
 
 export function uploadProjectAvatarSandboxUrlsFromJSON(
   jsonString: string,
@@ -4267,11 +4365,13 @@ export const UploadProjectAvatarProtectionConfig$inboundSchema: z.ZodType<
   UploadProjectAvatarProtectionConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  sandboxUrls: types.optional(
-    z.lazy(() => UploadProjectAvatarSandboxUrls$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    sandboxUrls: types.optional(
+      z.lazy(() => UploadProjectAvatarSandboxUrls$inboundSchema),
+    ),
+  })
+);
 
 export function uploadProjectAvatarProtectionConfigFromJSON(
   jsonString: string,
@@ -4287,13 +4387,16 @@ export function uploadProjectAvatarProtectionConfigFromJSON(
 /** @internal */
 export const UploadProjectAvatarProjectsBuildMachineElasticReason$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarProjectsBuildMachineElasticReason> =
-    z.nativeEnum(UploadProjectAvatarProjectsBuildMachineElasticReason);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsBuildMachineElasticReason)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsDirection$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsDirection> = z.nativeEnum(
-    UploadProjectAvatarProjectsDirection,
-  );
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsDirection> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsDirection)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsBuildMachineElasticTransition$inboundSchema:
@@ -4301,11 +4404,13 @@ export const UploadProjectAvatarProjectsBuildMachineElasticTransition$inboundSch
     UploadProjectAvatarProjectsBuildMachineElasticTransition,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    algorithmVersion: types.string(),
-    at: types.number(),
-    direction: UploadProjectAvatarProjectsDirection$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      algorithmVersion: types.string(),
+      at: types.number(),
+      direction: UploadProjectAvatarProjectsDirection$inboundSchema,
+    })
+  );
 
 export function uploadProjectAvatarProjectsBuildMachineElasticTransitionFromJSON(
   jsonString: string,
@@ -4324,29 +4429,37 @@ export function uploadProjectAvatarProjectsBuildMachineElasticTransitionFromJSON
 
 /** @internal */
 export const UploadProjectAvatarProjectsBuildMachineSelection$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsBuildMachineSelection> = z
-    .nativeEnum(UploadProjectAvatarProjectsBuildMachineSelection);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsBuildMachineSelection> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsBuildMachineSelection)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsBuildMachineType$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsBuildMachineType> = z
-    .nativeEnum(UploadProjectAvatarProjectsBuildMachineType);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsBuildMachineType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsBuildMachineType)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsConfiguration$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsConfiguration> = z
-    .nativeEnum(UploadProjectAvatarProjectsConfiguration);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsConfiguration> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsConfiguration)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsBuildQueue$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsBuildQueue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuration: types.optional(
-    UploadProjectAvatarProjectsConfiguration$inboundSchema,
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuration: types.optional(
+      UploadProjectAvatarProjectsConfiguration$inboundSchema,
+    ),
+  })
+);
 
 export function uploadProjectAvatarProjectsBuildQueueFromJSON(
   jsonString: string,
@@ -4362,7 +4475,9 @@ export function uploadProjectAvatarProjectsBuildQueueFromJSON(
 /** @internal */
 export const UploadProjectAvatarProjectsFunctionDefaultMemoryType$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarProjectsFunctionDefaultMemoryType> =
-    z.nativeEnum(UploadProjectAvatarProjectsFunctionDefaultMemoryType);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsFunctionDefaultMemoryType)
+    );
 
 /** @internal */
 export const UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema:
@@ -4370,11 +4485,13 @@ export const UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema:
     UploadProjectAvatarElasticBuildMachineProjects4,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: types.literal("turbo"),
-    memory: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cores: types.number(),
+      label: types.literal("turbo"),
+      memory: types.number(),
+    })
+  );
 
 export function uploadProjectAvatarElasticBuildMachineProjects4FromJSON(
   jsonString: string,
@@ -4398,11 +4515,13 @@ export const UploadProjectAvatarElasticBuildMachineProjects3$inboundSchema:
     UploadProjectAvatarElasticBuildMachineProjects3,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: types.literal("14cpu-28gb"),
-    memory: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cores: types.number(),
+      label: types.literal("14cpu-28gb"),
+      memory: types.number(),
+    })
+  );
 
 export function uploadProjectAvatarElasticBuildMachineProjects3FromJSON(
   jsonString: string,
@@ -4426,11 +4545,13 @@ export const UploadProjectAvatarElasticBuildMachineProjects2$inboundSchema:
     UploadProjectAvatarElasticBuildMachineProjects2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: types.literal("enhanced"),
-    memory: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cores: types.number(),
+      label: types.literal("enhanced"),
+      memory: types.number(),
+    })
+  );
 
 export function uploadProjectAvatarElasticBuildMachineProjects2FromJSON(
   jsonString: string,
@@ -4454,11 +4575,13 @@ export const UploadProjectAvatarElasticBuildMachineProjects1$inboundSchema:
     UploadProjectAvatarElasticBuildMachineProjects1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    cores: types.number(),
-    label: types.literal("standard"),
-    memory: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      cores: types.number(),
+      label: types.literal("standard"),
+      memory: types.number(),
+    })
+  );
 
 export function uploadProjectAvatarElasticBuildMachineProjects1FromJSON(
   jsonString: string,
@@ -4482,12 +4605,22 @@ export const UploadProjectAvatarProjectsElasticBuildMachine$inboundSchema:
     UploadProjectAvatarProjectsElasticBuildMachine,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    z.lazy(() => UploadProjectAvatarElasticBuildMachineProjects1$inboundSchema),
-    z.lazy(() => UploadProjectAvatarElasticBuildMachineProjects2$inboundSchema),
-    z.lazy(() => UploadProjectAvatarElasticBuildMachineProjects3$inboundSchema),
-    z.lazy(() => UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      z.lazy(() =>
+        UploadProjectAvatarElasticBuildMachineProjects1$inboundSchema
+      ),
+      z.lazy(() =>
+        UploadProjectAvatarElasticBuildMachineProjects2$inboundSchema
+      ),
+      z.lazy(() =>
+        UploadProjectAvatarElasticBuildMachineProjects3$inboundSchema
+      ),
+      z.lazy(() =>
+        UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema
+      ),
+    ])
+  );
 
 export function uploadProjectAvatarProjectsElasticBuildMachineFromJSON(
   jsonString: string,
@@ -4510,37 +4643,35 @@ export const UploadProjectAvatarResourceConfig$inboundSchema: z.ZodType<
   UploadProjectAvatarResourceConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  buildMachineElasticLastUpdated: types.optional(types.number()),
-  buildMachineElasticReason: types.optional(
-    UploadProjectAvatarProjectsBuildMachineElasticReason$inboundSchema,
-  ),
-  buildMachineElasticTransition: types.optional(
-    z.lazy(() =>
-      UploadProjectAvatarProjectsBuildMachineElasticTransition$inboundSchema
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    buildMachineElasticLastUpdated: types.optional(types.number()),
+    buildMachineElasticReason: types.optional(
+      UploadProjectAvatarProjectsBuildMachineElasticReason$inboundSchema,
     ),
-  ),
-  buildMachineSelection: types.optional(
-    UploadProjectAvatarProjectsBuildMachineSelection$inboundSchema,
-  ),
-  buildMachineType: types.optional(
-    UploadProjectAvatarProjectsBuildMachineType$inboundSchema,
-  ),
-  buildQueue: types.optional(
-    z.lazy(() => UploadProjectAvatarProjectsBuildQueue$inboundSchema),
-  ),
-  elasticConcurrencyEnabled: types.optional(types.boolean()),
-  enableFunctionsBeta: types.optional(types.boolean()),
-  fluid: types.optional(types.boolean()),
-  functionDefaultMemoryType: types.optional(
-    UploadProjectAvatarProjectsFunctionDefaultMemoryType$inboundSchema,
-  ),
-  functionDefaultRegions: z.array(types.string()),
-  functionDefaultTimeout: types.optional(types.number()),
-  functionZeroConfigFailover: types.optional(types.boolean()),
-  isNSNBDisabled: types.optional(types.boolean()),
-  elasticBuildMachine: types.optional(
-    z.union([
+    buildMachineElasticTransition: types.optional(z.lazy(() =>
+      UploadProjectAvatarProjectsBuildMachineElasticTransition$inboundSchema
+    )),
+    buildMachineSelection: types.optional(
+      UploadProjectAvatarProjectsBuildMachineSelection$inboundSchema,
+    ),
+    buildMachineType: types.optional(
+      UploadProjectAvatarProjectsBuildMachineType$inboundSchema,
+    ),
+    buildQueue: types.optional(z.lazy(() =>
+      UploadProjectAvatarProjectsBuildQueue$inboundSchema
+    )),
+    elasticConcurrencyEnabled: types.optional(types.boolean()),
+    enableFunctionsBeta: types.optional(types.boolean()),
+    fluid: types.optional(types.boolean()),
+    functionDefaultMemoryType: types.optional(
+      UploadProjectAvatarProjectsFunctionDefaultMemoryType$inboundSchema,
+    ),
+    functionDefaultRegions: z.array(types.string()),
+    functionDefaultTimeout: types.optional(types.number()),
+    functionZeroConfigFailover: types.optional(types.boolean()),
+    isNSNBDisabled: types.optional(types.boolean()),
+    elasticBuildMachine: types.optional(z.union([
       z.lazy(() =>
         UploadProjectAvatarElasticBuildMachineProjects1$inboundSchema
       ),
@@ -4553,9 +4684,9 @@ export const UploadProjectAvatarResourceConfig$inboundSchema: z.ZodType<
       z.lazy(() =>
         UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema
       ),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function uploadProjectAvatarResourceConfigFromJSON(
   jsonString: string,
@@ -4572,9 +4703,11 @@ export const UploadProjectAvatarPrincipal5$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipal5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("system"),
+  })
+);
 
 export function uploadProjectAvatarPrincipal5FromJSON(
   jsonString: string,
@@ -4591,10 +4724,12 @@ export const UploadProjectAvatarPrincipalIntegration$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipalIntegration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configurationId: types.string(),
-  integrationId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configurationId: types.string(),
+    integrationId: types.string(),
+  })
+);
 
 export function uploadProjectAvatarPrincipalIntegrationFromJSON(
   jsonString: string,
@@ -4617,12 +4752,14 @@ export const UploadProjectAvatarPrincipal4$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipal4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integration: z.lazy(() =>
-    UploadProjectAvatarPrincipalIntegration$inboundSchema
-  ),
-  type: types.literal("integration"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration: z.lazy(() =>
+      UploadProjectAvatarPrincipalIntegration$inboundSchema
+    ),
+    type: types.literal("integration"),
+  })
+);
 
 export function uploadProjectAvatarPrincipal4FromJSON(
   jsonString: string,
@@ -4639,10 +4776,12 @@ export const UploadProjectAvatarPrincipalApp$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipalApp,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.optional(types.string()),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.optional(types.string()),
+    id: types.string(),
+  })
+);
 
 export function uploadProjectAvatarPrincipalAppFromJSON(
   jsonString: string,
@@ -4659,10 +4798,12 @@ export const UploadProjectAvatarPrincipal3$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipal3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  app: z.lazy(() => UploadProjectAvatarPrincipalApp$inboundSchema),
-  type: types.literal("app"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    app: z.lazy(() => UploadProjectAvatarPrincipalApp$inboundSchema),
+    type: types.literal("app"),
+  })
+);
 
 export function uploadProjectAvatarPrincipal3FromJSON(
   jsonString: string,
@@ -4679,9 +4820,11 @@ export const UploadProjectAvatarPrincipalProject$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipalProject,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function uploadProjectAvatarPrincipalProjectFromJSON(
   jsonString: string,
@@ -4699,10 +4842,12 @@ export const UploadProjectAvatarPrincipal2$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipal2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  project: z.lazy(() => UploadProjectAvatarPrincipalProject$inboundSchema),
-  type: types.literal("project"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    project: z.lazy(() => UploadProjectAvatarPrincipalProject$inboundSchema),
+    type: types.literal("project"),
+  })
+);
 
 export function uploadProjectAvatarPrincipal2FromJSON(
   jsonString: string,
@@ -4719,10 +4864,12 @@ export const UploadProjectAvatarViaProjectsIntegration$inboundSchema: z.ZodType<
   UploadProjectAvatarViaProjectsIntegration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configurationId: types.string(),
-  integrationId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configurationId: types.string(),
+    integrationId: types.string(),
+  })
+);
 
 export function uploadProjectAvatarViaProjectsIntegrationFromJSON(
   jsonString: string,
@@ -4745,12 +4892,14 @@ export const UploadProjectAvatarViaProjects2$inboundSchema: z.ZodType<
   UploadProjectAvatarViaProjects2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integration: z.lazy(() =>
-    UploadProjectAvatarViaProjectsIntegration$inboundSchema
-  ),
-  type: types.literal("integration"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration: z.lazy(() =>
+      UploadProjectAvatarViaProjectsIntegration$inboundSchema
+    ),
+    type: types.literal("integration"),
+  })
+);
 
 export function uploadProjectAvatarViaProjects2FromJSON(
   jsonString: string,
@@ -4767,10 +4916,12 @@ export const UploadProjectAvatarViaProjectsApp$inboundSchema: z.ZodType<
   UploadProjectAvatarViaProjectsApp,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.optional(types.string()),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.optional(types.string()),
+    id: types.string(),
+  })
+);
 
 export function uploadProjectAvatarViaProjectsAppFromJSON(
   jsonString: string,
@@ -4787,10 +4938,12 @@ export const UploadProjectAvatarViaProjects1$inboundSchema: z.ZodType<
   UploadProjectAvatarViaProjects1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  app: z.lazy(() => UploadProjectAvatarViaProjectsApp$inboundSchema),
-  type: types.literal("app"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    app: z.lazy(() => UploadProjectAvatarViaProjectsApp$inboundSchema),
+    type: types.literal("app"),
+  })
+);
 
 export function uploadProjectAvatarViaProjects1FromJSON(
   jsonString: string,
@@ -4807,10 +4960,12 @@ export const UploadProjectAvatarPrincipalVia$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipalVia,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarViaProjects1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarViaProjects2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarViaProjects1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarViaProjects2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarPrincipalViaFromJSON(
   jsonString: string,
@@ -4827,9 +4982,11 @@ export const UploadProjectAvatarPrincipalUser$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipalUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function uploadProjectAvatarPrincipalUserFromJSON(
   jsonString: string,
@@ -4846,16 +5003,18 @@ export const UploadProjectAvatarPrincipal1$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipal1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("user"),
-  via: types.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("user"),
+    via: types.nullable(z.union([
       z.lazy(() => UploadProjectAvatarViaProjects1$inboundSchema),
       z.lazy(() => UploadProjectAvatarViaProjects2$inboundSchema),
-    ]),
-  ),
-  user: z.lazy(() => UploadProjectAvatarPrincipalUser$inboundSchema),
-});
+    ])),
+    user: z.lazy(() =>
+      UploadProjectAvatarPrincipalUser$inboundSchema
+    ),
+  })
+);
 
 export function uploadProjectAvatarPrincipal1FromJSON(
   jsonString: string,
@@ -4872,13 +5031,15 @@ export const UploadProjectAvatarPrincipal$inboundSchema: z.ZodType<
   UploadProjectAvatarPrincipal,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UploadProjectAvatarPrincipal1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarPrincipal2$inboundSchema),
-  z.lazy(() => UploadProjectAvatarPrincipal3$inboundSchema),
-  z.lazy(() => UploadProjectAvatarPrincipal4$inboundSchema),
-  z.lazy(() => UploadProjectAvatarPrincipal5$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UploadProjectAvatarPrincipal1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarPrincipal2$inboundSchema),
+    z.lazy(() => UploadProjectAvatarPrincipal3$inboundSchema),
+    z.lazy(() => UploadProjectAvatarPrincipal4$inboundSchema),
+    z.lazy(() => UploadProjectAvatarPrincipal5$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarPrincipalFromJSON(
   jsonString: string,
@@ -4895,21 +5056,21 @@ export const UploadProjectAvatarRollbackDescription$inboundSchema: z.ZodType<
   UploadProjectAvatarRollbackDescription,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.number(),
-  description: types.string(),
-  principal: types.optional(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.number(),
+    description: types.string(),
+    principal: types.optional(z.union([
       z.lazy(() => UploadProjectAvatarPrincipal1$inboundSchema),
       z.lazy(() => UploadProjectAvatarPrincipal2$inboundSchema),
       z.lazy(() => UploadProjectAvatarPrincipal3$inboundSchema),
       z.lazy(() => UploadProjectAvatarPrincipal4$inboundSchema),
       z.lazy(() => UploadProjectAvatarPrincipal5$inboundSchema),
-    ]),
-  ),
-  userId: types.optional(types.string()),
-  username: types.optional(types.string()),
-});
+    ])),
+    userId: types.optional(types.string()),
+    username: types.optional(types.string()),
+  })
+);
 
 export function uploadProjectAvatarRollbackDescriptionFromJSON(
   jsonString: string,
@@ -4927,12 +5088,14 @@ export const UploadProjectAvatarStages$inboundSchema: z.ZodType<
   UploadProjectAvatarStages,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  duration: types.optional(types.number()),
-  linearShift: types.optional(types.boolean()),
-  requireApproval: types.optional(types.boolean()),
-  targetPercentage: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    duration: types.optional(types.number()),
+    linearShift: types.optional(types.boolean()),
+    requireApproval: types.optional(types.boolean()),
+    targetPercentage: types.number(),
+  })
+);
 
 export function uploadProjectAvatarStagesFromJSON(
   jsonString: string,
@@ -4949,13 +5112,15 @@ export const UploadProjectAvatarRollingRelease$inboundSchema: z.ZodType<
   UploadProjectAvatarRollingRelease,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canaryResponseHeader: types.optional(types.boolean()),
-  stages: z.nullable(
-    z.array(z.lazy(() => UploadProjectAvatarStages$inboundSchema)),
-  ).optional(),
-  target: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canaryResponseHeader: types.optional(types.boolean()),
+    stages: z.nullable(
+      z.array(z.lazy(() => UploadProjectAvatarStages$inboundSchema)),
+    ).optional(),
+    target: types.string(),
+  })
+);
 
 export function uploadProjectAvatarRollingReleaseFromJSON(
   jsonString: string,
@@ -4970,24 +5135,28 @@ export function uploadProjectAvatarRollingReleaseFromJSON(
 /** @internal */
 export const UploadProjectAvatarFailoverRegions$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarFailoverRegions
-> = z.nativeEnum(UploadProjectAvatarFailoverRegions);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarFailoverRegions)
+);
 
 /** @internal */
 export const UploadProjectAvatarRegion$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarRegion
-> = z.nativeEnum(UploadProjectAvatarRegion);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarRegion));
 
 /** @internal */
 export const UploadProjectAvatarSandbox$inboundSchema: z.ZodType<
   UploadProjectAvatarSandbox,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  failoverRegions: types.optional(
-    z.array(UploadProjectAvatarFailoverRegions$inboundSchema),
-  ),
-  region: types.optional(UploadProjectAvatarRegion$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    failoverRegions: types.optional(
+      z.array(UploadProjectAvatarFailoverRegions$inboundSchema),
+    ),
+    region: types.optional(UploadProjectAvatarRegion$inboundSchema),
+  })
+);
 
 export function uploadProjectAvatarSandboxFromJSON(
   jsonString: string,
@@ -5002,17 +5171,21 @@ export function uploadProjectAvatarSandboxFromJSON(
 /** @internal */
 export const UploadProjectAvatarLogHeaders2$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarLogHeaders2
-> = z.nativeEnum(UploadProjectAvatarLogHeaders2);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarLogHeaders2)
+);
 
 /** @internal */
 export const UploadProjectAvatarLogHeaders$inboundSchema: z.ZodType<
   UploadProjectAvatarLogHeaders,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(types.string()),
-  UploadProjectAvatarLogHeaders2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(types.string()),
+    UploadProjectAvatarLogHeaders2$inboundSchema,
+  ])
+);
 
 export function uploadProjectAvatarLogHeadersFromJSON(
   jsonString: string,
@@ -5028,8 +5201,10 @@ export function uploadProjectAvatarLogHeadersFromJSON(
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction
-  > = z.nativeEnum(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction,
+    )
   );
 
 /** @internal */
@@ -5037,12 +5212,14 @@ export const UploadProjectAvatarAiBots$inboundSchema: z.ZodType<
   UploadProjectAvatarAiBots,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
-  ),
-  active: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityAction$inboundSchema,
+    ),
+    active: types.boolean(),
+  })
+);
 
 export function uploadProjectAvatarAiBotsFromJSON(
   jsonString: string,
@@ -5056,20 +5233,24 @@ export function uploadProjectAvatarAiBotsFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponseAction$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseAction> = z
-    .nativeEnum(UploadProjectAvatarProjectsResponseAction);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseAction> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsResponseAction)
+    );
 
 /** @internal */
 export const UploadProjectAvatarBotFilter$inboundSchema: z.ZodType<
   UploadProjectAvatarBotFilter,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(
-    UploadProjectAvatarProjectsResponseAction$inboundSchema,
-  ),
-  active: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(
+      UploadProjectAvatarProjectsResponseAction$inboundSchema,
+    ),
+    active: types.boolean(),
+  })
+);
 
 export function uploadProjectAvatarBotFilterFromJSON(
   jsonString: string,
@@ -5083,20 +5264,24 @@ export function uploadProjectAvatarBotFilterFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponse200Action$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponse200Action> = z
-    .nativeEnum(UploadProjectAvatarProjectsResponse200Action);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponse200Action> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsResponse200Action)
+    );
 
 /** @internal */
 export const UploadProjectAvatarOwasp$inboundSchema: z.ZodType<
   UploadProjectAvatarOwasp,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(
-    UploadProjectAvatarProjectsResponse200Action$inboundSchema,
-  ),
-  active: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(
+      UploadProjectAvatarProjectsResponse200Action$inboundSchema,
+    ),
+    active: types.boolean(),
+  })
+);
 
 export function uploadProjectAvatarOwaspFromJSON(
   jsonString: string,
@@ -5112,19 +5297,23 @@ export function uploadProjectAvatarOwaspFromJSON(
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONAction
-  > = z.nativeEnum(UploadProjectAvatarProjectsResponse200ApplicationJSONAction);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(UploadProjectAvatarProjectsResponse200ApplicationJSONAction)
+  );
 
 /** @internal */
 export const UploadProjectAvatarTrafficSources$inboundSchema: z.ZodType<
   UploadProjectAvatarTrafficSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONAction$inboundSchema,
-  ),
-  active: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONAction$inboundSchema,
+    ),
+    active: types.boolean(),
+  })
+);
 
 export function uploadProjectAvatarTrafficSourcesFromJSON(
   jsonString: string,
@@ -5140,8 +5329,10 @@ export function uploadProjectAvatarTrafficSourcesFromJSON(
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction
-  > = z.nativeEnum(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction,
+    )
   );
 
 /** @internal */
@@ -5149,12 +5340,14 @@ export const UploadProjectAvatarVercelRuleset$inboundSchema: z.ZodType<
   UploadProjectAvatarVercelRuleset,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
-  ),
-  active: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+    ),
+    active: types.boolean(),
+  })
+);
 
 export function uploadProjectAvatarVercelRulesetFromJSON(
   jsonString: string,
@@ -5171,22 +5364,26 @@ export const UploadProjectAvatarManagedRules$inboundSchema: z.ZodType<
   UploadProjectAvatarManagedRules,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ai_bots: z.lazy(() => UploadProjectAvatarAiBots$inboundSchema),
-  bot_filter: z.lazy(() => UploadProjectAvatarBotFilter$inboundSchema),
-  owasp: z.lazy(() => UploadProjectAvatarOwasp$inboundSchema),
-  traffic_sources: z.lazy(() =>
-    UploadProjectAvatarTrafficSources$inboundSchema
-  ),
-  vercel_ruleset: z.lazy(() => UploadProjectAvatarVercelRuleset$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "ai_bots": "aiBots",
-    "bot_filter": "botFilter",
-    "traffic_sources": "trafficSources",
-    "vercel_ruleset": "vercelRuleset",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ai_bots: z.lazy(() => UploadProjectAvatarAiBots$inboundSchema),
+    bot_filter: z.lazy(() => UploadProjectAvatarBotFilter$inboundSchema),
+    owasp: z.lazy(() => UploadProjectAvatarOwasp$inboundSchema),
+    traffic_sources: z.lazy(() =>
+      UploadProjectAvatarTrafficSources$inboundSchema
+    ),
+    vercel_ruleset: z.lazy(() =>
+      UploadProjectAvatarVercelRuleset$inboundSchema
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "ai_bots": "aiBots",
+      "bot_filter": "botFilter",
+      "traffic_sources": "trafficSources",
+      "vercel_ruleset": "vercelRuleset",
+    });
+  })
+);
 
 export function uploadProjectAvatarManagedRulesFromJSON(
   jsonString: string,
@@ -5201,23 +5398,28 @@ export function uploadProjectAvatarManagedRulesFromJSON(
 /** @internal */
 export const UploadProjectAvatarProjectsAction$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarProjectsAction
-> = z.nativeEnum(UploadProjectAvatarProjectsAction);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarProjectsAction)
+);
 
 /** @internal */
 export const UploadProjectAvatarLogHeadersProjects2$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarLogHeadersProjects2> = z.nativeEnum(
-    UploadProjectAvatarLogHeadersProjects2,
-  );
+  z.ZodNativeEnum<typeof UploadProjectAvatarLogHeadersProjects2> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarLogHeadersProjects2)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsLogHeaders$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsLogHeaders,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(types.string()),
-  UploadProjectAvatarLogHeadersProjects2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(types.string()),
+    UploadProjectAvatarLogHeadersProjects2$inboundSchema,
+  ])
+);
 
 export function uploadProjectAvatarProjectsLogHeadersFromJSON(
   jsonString: string,
@@ -5234,29 +5436,33 @@ export function uploadProjectAvatarProjectsLogHeadersFromJSON(
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction
-  > = z.nativeEnum(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction,
+    )
   );
 
 /** @internal */
 export const UploadProjectAvatarAlgo$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarAlgo
-> = z.nativeEnum(UploadProjectAvatarAlgo);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarAlgo));
 
 /** @internal */
 export const UploadProjectAvatarRateLimit$inboundSchema: z.ZodType<
   UploadProjectAvatarRateLimit,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: z.nullable(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction$inboundSchema,
-  ).optional(),
-  algo: UploadProjectAvatarAlgo$inboundSchema,
-  keys: z.array(types.string()),
-  limit: types.number(),
-  window: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: z.nullable(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodySecurityRulesetsAction$inboundSchema,
+    ).optional(),
+    algo: UploadProjectAvatarAlgo$inboundSchema,
+    keys: z.array(types.string()),
+    limit: types.number(),
+    window: types.number(),
+  })
+);
 
 export function uploadProjectAvatarRateLimitFromJSON(
   jsonString: string,
@@ -5273,10 +5479,12 @@ export const UploadProjectAvatarRedirect$inboundSchema: z.ZodType<
   UploadProjectAvatarRedirect,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  location: types.string(),
-  permanent: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    location: types.string(),
+    permanent: types.boolean(),
+  })
+);
 
 export function uploadProjectAvatarRedirectFromJSON(
   jsonString: string,
@@ -5293,22 +5501,25 @@ export const UploadProjectAvatarRulesets$inboundSchema: z.ZodType<
   UploadProjectAvatarRulesets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: UploadProjectAvatarProjectsAction$inboundSchema,
-  actionDuration: z.nullable(types.string()).optional(),
-  bypassSystem: z.nullable(types.boolean()).optional(),
-  logHeaders: types.optional(
-    smartUnion([
-      z.array(types.string()),
-      UploadProjectAvatarLogHeadersProjects2$inboundSchema,
-    ]),
-  ),
-  rateLimit: z.nullable(
-    z.lazy(() => UploadProjectAvatarRateLimit$inboundSchema),
-  ).optional(),
-  redirect: z.nullable(z.lazy(() => UploadProjectAvatarRedirect$inboundSchema))
-    .optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: UploadProjectAvatarProjectsAction$inboundSchema,
+    actionDuration: z.nullable(types.string()).optional(),
+    bypassSystem: z.nullable(types.boolean()).optional(),
+    logHeaders: types.optional(
+      smartUnion([
+        z.array(types.string()),
+        UploadProjectAvatarLogHeadersProjects2$inboundSchema,
+      ]),
+    ),
+    rateLimit: z.nullable(
+      z.lazy(() => UploadProjectAvatarRateLimit$inboundSchema),
+    ).optional(),
+    redirect: z.nullable(
+      z.lazy(() => UploadProjectAvatarRedirect$inboundSchema),
+    ).optional(),
+  })
+);
 
 export function uploadProjectAvatarRulesetsFromJSON(
   jsonString: string,
@@ -5325,36 +5536,38 @@ export const UploadProjectAvatarSecurity$inboundSchema: z.ZodType<
   UploadProjectAvatarSecurity,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  attackModeActiveUntil: z.nullable(types.number()).optional(),
-  attackModeEnabled: types.optional(types.boolean()),
-  attackModeUpdatedAt: types.optional(types.number()),
-  botIdEnabled: types.optional(types.boolean()),
-  firewallBypassIps: types.optional(z.array(types.string())),
-  firewallConfigVersion: types.optional(types.number()),
-  firewallEnabled: types.optional(types.boolean()),
-  firewallSeawallEnabled: types.optional(types.boolean()),
-  firewallUpdatedAt: types.optional(types.number()),
-  ja3Enabled: types.optional(types.boolean()),
-  ja4Enabled: types.optional(types.boolean()),
-  log_headers: types.optional(
-    smartUnion([
-      z.array(types.string()),
-      UploadProjectAvatarLogHeaders2$inboundSchema,
-    ]),
-  ),
-  managedRules: z.nullable(
-    z.lazy(() => UploadProjectAvatarManagedRules$inboundSchema),
-  ).optional(),
-  pageIntegrityEnabled: types.optional(types.boolean()),
-  rulesets: types.optional(
-    z.record(z.lazy(() => UploadProjectAvatarRulesets$inboundSchema)),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "log_headers": "logHeaders",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    attackModeActiveUntil: z.nullable(types.number()).optional(),
+    attackModeEnabled: types.optional(types.boolean()),
+    attackModeUpdatedAt: types.optional(types.number()),
+    botIdEnabled: types.optional(types.boolean()),
+    firewallBypassIps: types.optional(z.array(types.string())),
+    firewallConfigVersion: types.optional(types.number()),
+    firewallEnabled: types.optional(types.boolean()),
+    firewallSeawallEnabled: types.optional(types.boolean()),
+    firewallUpdatedAt: types.optional(types.number()),
+    ja3Enabled: types.optional(types.boolean()),
+    ja4Enabled: types.optional(types.boolean()),
+    log_headers: types.optional(
+      smartUnion([
+        z.array(types.string()),
+        UploadProjectAvatarLogHeaders2$inboundSchema,
+      ]),
+    ),
+    managedRules: z.nullable(
+      z.lazy(() => UploadProjectAvatarManagedRules$inboundSchema),
+    ).optional(),
+    pageIntegrityEnabled: types.optional(types.boolean()),
+    rulesets: types.optional(
+      z.record(z.lazy(() => UploadProjectAvatarRulesets$inboundSchema)),
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "log_headers": "logHeaders",
+    });
+  })
+);
 
 export function uploadProjectAvatarSecurityFromJSON(
   jsonString: string,
@@ -5368,26 +5581,33 @@ export function uploadProjectAvatarSecurityFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarProjectsFramework$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsFramework> = z.nativeEnum(
-    UploadProjectAvatarProjectsFramework,
-  );
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsFramework> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsFramework)
+    );
 
 /** @internal */
 export const UploadProjectAvatarServiceType$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarServiceType
-> = z.nativeEnum(UploadProjectAvatarServiceType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarServiceType)
+);
 
 /** @internal */
 export const UploadProjectAvatarServices$inboundSchema: z.ZodType<
   UploadProjectAvatarServices,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  framework: types.optional(UploadProjectAvatarProjectsFramework$inboundSchema),
-  runtime: types.optional(types.string()),
-  serviceName: types.string(),
-  serviceType: types.optional(UploadProjectAvatarServiceType$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    framework: types.optional(
+      UploadProjectAvatarProjectsFramework$inboundSchema,
+    ),
+    runtime: types.optional(types.string()),
+    serviceName: types.string(),
+    serviceType: types.optional(UploadProjectAvatarServiceType$inboundSchema),
+  })
+);
 
 export function uploadProjectAvatarServicesFromJSON(
   jsonString: string,
@@ -5404,15 +5624,17 @@ export const UploadProjectAvatarSpeedInsights$inboundSchema: z.ZodType<
   UploadProjectAvatarSpeedInsights,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: types.optional(types.number()),
-  dataReceivedAt: types.optional(types.number()),
-  disabledAt: types.optional(types.number()),
-  enabledAt: types.optional(types.number()),
-  hasData: types.optional(types.boolean()),
-  id: types.string(),
-  paidAt: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: types.optional(types.number()),
+    dataReceivedAt: types.optional(types.number()),
+    disabledAt: types.optional(types.number()),
+    enabledAt: types.optional(types.number()),
+    hasData: types.optional(types.boolean()),
+    id: types.string(),
+    paidAt: types.optional(types.number()),
+  })
+);
 
 export function uploadProjectAvatarSpeedInsightsFromJSON(
   jsonString: string,
@@ -5428,35 +5650,43 @@ export function uploadProjectAvatarSpeedInsightsFromJSON(
 export const UploadProjectAvatarApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarApril2026SecurityIncidentMigrationAppliedFrom
-  > = z.nativeEnum(
-    UploadProjectAvatarApril2026SecurityIncidentMigrationAppliedFrom,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UploadProjectAvatarApril2026SecurityIncidentMigrationAppliedFrom,
+    )
   );
 
 /** @internal */
 export const UploadProjectAvatarCve55182MigrationAppliedFrom$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarCve55182MigrationAppliedFrom> = z
-    .nativeEnum(UploadProjectAvatarCve55182MigrationAppliedFrom);
+  z.ZodNativeEnum<typeof UploadProjectAvatarCve55182MigrationAppliedFrom> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarCve55182MigrationAppliedFrom)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponseDeploymentType$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseDeploymentType> = z
-    .nativeEnum(UploadProjectAvatarProjectsResponseDeploymentType);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsResponseDeploymentType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsResponseDeploymentType)
+    );
 
 /** @internal */
 export const UploadProjectAvatarSsoProtection$inboundSchema: z.ZodType<
   UploadProjectAvatarSsoProtection,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  april2026SecurityIncidentMigrationAppliedFrom: z.nullable(
-    UploadProjectAvatarApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema,
-  ).optional(),
-  cve55182MigrationAppliedFrom: z.nullable(
-    UploadProjectAvatarCve55182MigrationAppliedFrom$inboundSchema,
-  ).optional(),
-  deploymentType:
-    UploadProjectAvatarProjectsResponseDeploymentType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    april2026SecurityIncidentMigrationAppliedFrom: z.nullable(
+      UploadProjectAvatarApril2026SecurityIncidentMigrationAppliedFrom$inboundSchema,
+    ).optional(),
+    cve55182MigrationAppliedFrom: z.nullable(
+      UploadProjectAvatarCve55182MigrationAppliedFrom$inboundSchema,
+    ).optional(),
+    deploymentType:
+      UploadProjectAvatarProjectsResponseDeploymentType$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarSsoProtectionFromJSON(
   jsonString: string,
@@ -5473,11 +5703,13 @@ export const UploadProjectAvatarStaticIps$inboundSchema: z.ZodType<
   UploadProjectAvatarStaticIps,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  builds: types.boolean(),
-  enabled: types.boolean(),
-  regions: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    builds: types.boolean(),
+    enabled: types.boolean(),
+    regions: z.array(types.string()),
+  })
+);
 
 export function uploadProjectAvatarStaticIpsFromJSON(
   jsonString: string,
@@ -5494,7 +5726,9 @@ export const UploadProjectAvatarProjectsAliasAssigned$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsAliasAssigned,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.boolean()])
+);
 
 export function uploadProjectAvatarProjectsAliasAssignedFromJSON(
   jsonString: string,
@@ -5517,10 +5751,12 @@ export const UploadProjectAvatarProjectsAliasError$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsAliasError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function uploadProjectAvatarProjectsAliasErrorFromJSON(
   jsonString: string,
@@ -5537,8 +5773,10 @@ export function uploadProjectAvatarProjectsAliasErrorFromJSON(
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyTargetsType
-  > = z.nativeEnum(
-    UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyTargetsType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyTargetsType,
+    )
   );
 
 /** @internal */
@@ -5547,11 +5785,13 @@ export const UploadProjectAvatarProjectsResponseBranchMatcher$inboundSchema:
     UploadProjectAvatarProjectsResponseBranchMatcher,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    pattern: types.string(),
-    type:
-      UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      pattern: types.string(),
+      type:
+        UploadProjectAvatarProjectsResponse200ApplicationJSONResponseBodyTargetsType$inboundSchema,
+    })
+  );
 
 export function uploadProjectAvatarProjectsResponseBranchMatcherFromJSON(
   jsonString: string,
@@ -5574,11 +5814,13 @@ export const UploadProjectAvatarProjectsBuilds$inboundSchema: z.ZodType<
   UploadProjectAvatarProjectsBuilds,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dest: types.optional(types.string()),
-  src: types.optional(types.string()),
-  use: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dest: types.optional(types.string()),
+    src: types.optional(types.string()),
+    use: types.string(),
+  })
+);
 
 export function uploadProjectAvatarProjectsBuildsFromJSON(
   jsonString: string,
@@ -5592,25 +5834,30 @@ export function uploadProjectAvatarProjectsBuildsFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarProjectsChecksConclusion$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsChecksConclusion> = z
-    .nativeEnum(UploadProjectAvatarProjectsChecksConclusion);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsChecksConclusion> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsChecksConclusion)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsChecksState$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsChecksState> = z.nativeEnum(
-    UploadProjectAvatarProjectsChecksState,
-  );
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsChecksState> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsChecksState)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponseCreator$inboundSchema:
   z.ZodType<UploadProjectAvatarProjectsResponseCreator, z.ZodTypeDef, unknown> =
-    z.object({
-      email: types.string(),
-      githubLogin: types.optional(types.string()),
-      gitlabLogin: types.optional(types.string()),
-      uid: types.string(),
-      username: types.string(),
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        email: types.string(),
+        githubLogin: types.optional(types.string()),
+        gitlabLogin: types.optional(types.string()),
+        uid: types.string(),
+        username: types.string(),
+      })
+    );
 
 export function uploadProjectAvatarProjectsResponseCreatorFromJSON(
   jsonString: string,
@@ -5631,29 +5878,31 @@ export function uploadProjectAvatarProjectsResponseCreatorFromJSON(
 /** @internal */
 export const UploadProjectAvatarProjectsOidcTokenClaims$inboundSchema:
   z.ZodType<UploadProjectAvatarProjectsOidcTokenClaims, z.ZodTypeDef, unknown> =
-    z.object({
-      aud: types.string(),
-      custom_environment_id: types.optional(types.string()),
-      deployment_id: types.optional(types.string()),
-      environment: types.string(),
-      iss: types.string(),
-      mfe_group_ids: types.optional(z.array(types.string())),
-      owner: types.string(),
-      owner_id: types.string(),
-      plan: types.optional(types.string()),
-      project: types.string(),
-      project_id: types.string(),
-      scope: types.string(),
-      sub: types.string(),
-    }).transform((v) => {
-      return remap$(v, {
-        "custom_environment_id": "customEnvironmentId",
-        "deployment_id": "deploymentId",
-        "mfe_group_ids": "mfeGroupIds",
-        "owner_id": "ownerId",
-        "project_id": "projectId",
-      });
-    });
+    /* @__PURE__ */ lazySchema$(() =>
+      z.object({
+        aud: types.string(),
+        custom_environment_id: types.optional(types.string()),
+        deployment_id: types.optional(types.string()),
+        environment: types.string(),
+        iss: types.string(),
+        mfe_group_ids: types.optional(z.array(types.string())),
+        owner: types.string(),
+        owner_id: types.string(),
+        plan: types.optional(types.string()),
+        project: types.string(),
+        project_id: types.string(),
+        scope: types.string(),
+        sub: types.string(),
+      }).transform((v) => {
+        return remap$(v, {
+          "custom_environment_id": "customEnvironmentId",
+          "deployment_id": "deploymentId",
+          "mfe_group_ids": "mfeGroupIds",
+          "owner_id": "ownerId",
+          "project_id": "projectId",
+        });
+      })
+    );
 
 export function uploadProjectAvatarProjectsOidcTokenClaimsFromJSON(
   jsonString: string,
@@ -5674,87 +5923,95 @@ export function uploadProjectAvatarProjectsOidcTokenClaimsFromJSON(
 /** @internal */
 export const UploadProjectAvatarProjectsPlan$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarProjectsPlan
-> = z.nativeEnum(UploadProjectAvatarProjectsPlan);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarProjectsPlan)
+);
 
 /** @internal */
 export const UploadProjectAvatarProjectsReadyState$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsReadyState> = z.nativeEnum(
-    UploadProjectAvatarProjectsReadyState,
-  );
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsReadyState> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsReadyState)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsReadySubstate$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsReadySubstate> = z
-    .nativeEnum(UploadProjectAvatarProjectsReadySubstate);
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsReadySubstate> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsReadySubstate)
+    );
 
 /** @internal */
 export const UploadProjectAvatarProjectsResponse200ApplicationJSONType$inboundSchema:
   z.ZodNativeEnum<
     typeof UploadProjectAvatarProjectsResponse200ApplicationJSONType
-  > = z.nativeEnum(UploadProjectAvatarProjectsResponse200ApplicationJSONType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(UploadProjectAvatarProjectsResponse200ApplicationJSONType)
+  );
 
 /** @internal */
 export const UploadProjectAvatarTargets$inboundSchema: z.ZodType<
   UploadProjectAvatarTargets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(z.array(types.string())),
-  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
-    .optional(),
-  aliasError: z.nullable(
-    z.lazy(() => UploadProjectAvatarProjectsAliasError$inboundSchema),
-  ).optional(),
-  aliasFinal: z.nullable(types.string()).optional(),
-  automaticAliases: types.optional(z.array(types.string())),
-  branchMatcher: types.optional(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(z.array(types.string())),
+    aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
+      .optional(),
+    aliasError: z.nullable(
+      z.lazy(() => UploadProjectAvatarProjectsAliasError$inboundSchema),
+    ).optional(),
+    aliasFinal: z.nullable(types.string()).optional(),
+    automaticAliases: types.optional(z.array(types.string())),
+    branchMatcher: types.optional(z.lazy(() =>
       UploadProjectAvatarProjectsResponseBranchMatcher$inboundSchema
+    )),
+    buildingAt: types.optional(types.number()),
+    builds: types.optional(z.array(z.lazy(() =>
+      UploadProjectAvatarProjectsBuilds$inboundSchema
+    ))),
+    checksConclusion: types.optional(
+      UploadProjectAvatarProjectsChecksConclusion$inboundSchema,
     ),
-  ),
-  buildingAt: types.optional(types.number()),
-  builds: types.optional(
-    z.array(z.lazy(() => UploadProjectAvatarProjectsBuilds$inboundSchema)),
-  ),
-  checksConclusion: types.optional(
-    UploadProjectAvatarProjectsChecksConclusion$inboundSchema,
-  ),
-  checksState: types.optional(
-    UploadProjectAvatarProjectsChecksState$inboundSchema,
-  ),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: types.optional(types.string()),
-  createdAt: types.number(),
-  createdIn: types.string(),
-  creator: types.nullable(
-    z.lazy(() => UploadProjectAvatarProjectsResponseCreator$inboundSchema),
-  ),
-  deletedAt: types.optional(types.number()),
-  deploymentHostname: types.string(),
-  forced: types.optional(types.boolean()),
-  id: types.string(),
-  meta: types.optional(z.record(types.string())),
-  monorepoManager: z.nullable(types.string()).optional(),
-  name: types.string(),
-  oidcTokenClaims: types.optional(
-    z.lazy(() => UploadProjectAvatarProjectsOidcTokenClaims$inboundSchema),
-  ),
-  plan: UploadProjectAvatarProjectsPlan$inboundSchema,
-  previewCommentsEnabled: types.optional(types.boolean()),
-  private: types.boolean(),
-  readyAt: types.optional(types.number()),
-  readyState: UploadProjectAvatarProjectsReadyState$inboundSchema,
-  readySubstate: types.optional(
-    UploadProjectAvatarProjectsReadySubstate$inboundSchema,
-  ),
-  requestedAt: types.optional(types.number()),
-  target: z.nullable(types.string()).optional(),
-  teamId: z.nullable(types.string()).optional(),
-  type: UploadProjectAvatarProjectsResponse200ApplicationJSONType$inboundSchema,
-  url: types.string(),
-  userId: types.optional(types.string()),
-  withCache: types.optional(types.boolean()),
-});
+    checksState: types.optional(
+      UploadProjectAvatarProjectsChecksState$inboundSchema,
+    ),
+    connectBuildsEnabled: types.optional(types.boolean()),
+    connectConfigurationId: types.optional(types.string()),
+    createdAt: types.number(),
+    createdIn: types.string(),
+    creator: types.nullable(z.lazy(() =>
+      UploadProjectAvatarProjectsResponseCreator$inboundSchema
+    )),
+    deletedAt: types.optional(types.number()),
+    deploymentHostname: types.string(),
+    forced: types.optional(types.boolean()),
+    id: types.string(),
+    meta: types.optional(z.record(types.string())),
+    monorepoManager: z.nullable(types.string()).optional(),
+    name: types.string(),
+    oidcTokenClaims: types.optional(z.lazy(() =>
+      UploadProjectAvatarProjectsOidcTokenClaims$inboundSchema
+    )),
+    plan: UploadProjectAvatarProjectsPlan$inboundSchema,
+    previewCommentsEnabled: types.optional(types.boolean()),
+    private: types.boolean(),
+    readyAt: types.optional(types.number()),
+    readyState: UploadProjectAvatarProjectsReadyState$inboundSchema,
+    readySubstate: types.optional(
+      UploadProjectAvatarProjectsReadySubstate$inboundSchema,
+    ),
+    requestedAt: types.optional(types.number()),
+    target: z.nullable(types.string()).optional(),
+    teamId: z.nullable(types.string()).optional(),
+    type:
+      UploadProjectAvatarProjectsResponse200ApplicationJSONType$inboundSchema,
+    url: types.string(),
+    userId: types.optional(types.string()),
+    withCache: types.optional(types.boolean()),
+  })
+);
 
 export function uploadProjectAvatarTargetsFromJSON(
   jsonString: string,
@@ -5769,29 +6026,35 @@ export function uploadProjectAvatarTargetsFromJSON(
 /** @internal */
 export const UploadProjectAvatarTier$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarTier
-> = z.nativeEnum(UploadProjectAvatarTier);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UploadProjectAvatarTier));
 
 /** @internal */
 export const UploadProjectAvatarDestination$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarDestination
-> = z.nativeEnum(UploadProjectAvatarDestination);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarDestination)
+);
 
 /** @internal */
 export const UploadProjectAvatarProjectsEnv$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarProjectsEnv
-> = z.nativeEnum(UploadProjectAvatarProjectsEnv);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarProjectsEnv)
+);
 
 /** @internal */
 export const UploadProjectAvatarSamplingRules$inboundSchema: z.ZodType<
   UploadProjectAvatarSamplingRules,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  destination: types.optional(UploadProjectAvatarDestination$inboundSchema),
-  env: types.optional(UploadProjectAvatarProjectsEnv$inboundSchema),
-  rate: types.number(),
-  requestPath: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    destination: types.optional(UploadProjectAvatarDestination$inboundSchema),
+    env: types.optional(UploadProjectAvatarProjectsEnv$inboundSchema),
+    rate: types.number(),
+    requestPath: types.optional(types.string()),
+  })
+);
 
 export function uploadProjectAvatarSamplingRulesFromJSON(
   jsonString: string,
@@ -5808,13 +6071,15 @@ export const UploadProjectAvatarTracing$inboundSchema: z.ZodType<
   UploadProjectAvatarTracing,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domains: types.optional(types.string()),
-  ignorePaths: types.optional(z.array(types.string())),
-  samplingRules: types.optional(
-    z.array(z.lazy(() => UploadProjectAvatarSamplingRules$inboundSchema)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domains: types.optional(types.string()),
+    ignorePaths: types.optional(z.array(types.string())),
+    samplingRules: types.optional(
+      z.array(z.lazy(() => UploadProjectAvatarSamplingRules$inboundSchema)),
+    ),
+  })
+);
 
 export function uploadProjectAvatarTracingFromJSON(
   jsonString: string,
@@ -5829,17 +6094,21 @@ export function uploadProjectAvatarTracingFromJSON(
 /** @internal */
 export const UploadProjectAvatarTrustedIpsProjectsDeploymentType$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarTrustedIpsProjectsDeploymentType> =
-    z.nativeEnum(UploadProjectAvatarTrustedIpsProjectsDeploymentType);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarTrustedIpsProjectsDeploymentType)
+    );
 
 /** @internal */
 export const UploadProjectAvatarTrustedIps2$inboundSchema: z.ZodType<
   UploadProjectAvatarTrustedIps2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentType:
-    UploadProjectAvatarTrustedIpsProjectsDeploymentType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentType:
+      UploadProjectAvatarTrustedIpsProjectsDeploymentType$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarTrustedIps2FromJSON(
   jsonString: string,
@@ -5856,10 +6125,12 @@ export const UploadProjectAvatarTrustedIpsAddresses$inboundSchema: z.ZodType<
   UploadProjectAvatarTrustedIpsAddresses,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  note: types.optional(types.string()),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    note: types.optional(types.string()),
+    value: types.string(),
+  })
+);
 
 export function uploadProjectAvatarTrustedIpsAddressesFromJSON(
   jsonString: string,
@@ -5874,26 +6145,32 @@ export function uploadProjectAvatarTrustedIpsAddressesFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarTrustedIpsDeploymentType$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarTrustedIpsDeploymentType> = z
-    .nativeEnum(UploadProjectAvatarTrustedIpsDeploymentType);
+  z.ZodNativeEnum<typeof UploadProjectAvatarTrustedIpsDeploymentType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarTrustedIpsDeploymentType)
+    );
 
 /** @internal */
 export const UploadProjectAvatarTrustedIpsProtectionMode$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarTrustedIpsProtectionMode> = z
-    .nativeEnum(UploadProjectAvatarTrustedIpsProtectionMode);
+  z.ZodNativeEnum<typeof UploadProjectAvatarTrustedIpsProtectionMode> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarTrustedIpsProtectionMode)
+    );
 
 /** @internal */
 export const UploadProjectAvatarTrustedIps1$inboundSchema: z.ZodType<
   UploadProjectAvatarTrustedIps1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  addresses: z.array(
-    z.lazy(() => UploadProjectAvatarTrustedIpsAddresses$inboundSchema),
-  ),
-  deploymentType: UploadProjectAvatarTrustedIpsDeploymentType$inboundSchema,
-  protectionMode: UploadProjectAvatarTrustedIpsProtectionMode$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    addresses: z.array(
+      z.lazy(() => UploadProjectAvatarTrustedIpsAddresses$inboundSchema),
+    ),
+    deploymentType: UploadProjectAvatarTrustedIpsDeploymentType$inboundSchema,
+    protectionMode: UploadProjectAvatarTrustedIpsProtectionMode$inboundSchema,
+  })
+);
 
 export function uploadProjectAvatarTrustedIps1FromJSON(
   jsonString: string,
@@ -5910,10 +6187,12 @@ export const UploadProjectAvatarTrustedIps$inboundSchema: z.ZodType<
   UploadProjectAvatarTrustedIps,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarTrustedIps1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarTrustedIps2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UploadProjectAvatarTrustedIps1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarTrustedIps2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarTrustedIpsFromJSON(
   jsonString: string,
@@ -5928,17 +6207,21 @@ export function uploadProjectAvatarTrustedIpsFromJSON(
 /** @internal */
 export const UploadProjectAvatarToProjectsPreset$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarToProjectsPreset
-> = z.nativeEnum(UploadProjectAvatarToProjectsPreset);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarToProjectsPreset)
+);
 
 /** @internal */
 export const UploadProjectAvatarTo2$inboundSchema: z.ZodType<
   UploadProjectAvatarTo2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preset: UploadProjectAvatarToProjectsPreset$inboundSchema,
-  slugs: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset: UploadProjectAvatarToProjectsPreset$inboundSchema,
+    slugs: types.optional(z.array(types.string())),
+  })
+);
 
 export function uploadProjectAvatarTo2FromJSON(
   jsonString: string,
@@ -5953,17 +6236,21 @@ export function uploadProjectAvatarTo2FromJSON(
 /** @internal */
 export const UploadProjectAvatarToPreset$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarToPreset
-> = z.nativeEnum(UploadProjectAvatarToPreset);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarToPreset)
+);
 
 /** @internal */
 export const UploadProjectAvatarTo1$inboundSchema: z.ZodType<
   UploadProjectAvatarTo1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preset: types.optional(UploadProjectAvatarToPreset$inboundSchema),
-  slugs: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset: types.optional(UploadProjectAvatarToPreset$inboundSchema),
+    slugs: z.array(types.string()),
+  })
+);
 
 export function uploadProjectAvatarTo1FromJSON(
   jsonString: string,
@@ -5980,10 +6267,12 @@ export const UploadProjectAvatarTo$inboundSchema: z.ZodType<
   UploadProjectAvatarTo,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarTo1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarTo2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UploadProjectAvatarTo1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarTo2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarToFromJSON(
   jsonString: string,
@@ -6000,14 +6289,16 @@ export const UploadProjectAvatarOidcProviders$inboundSchema: z.ZodType<
   UploadProjectAvatarOidcProviders,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  to: smartUnion([
-    z.lazy(() => UploadProjectAvatarTo1$inboundSchema),
-    z.lazy(() => UploadProjectAvatarTo2$inboundSchema),
-  ]),
-  claims: z.record(z.array(types.string())),
-  label: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    to: smartUnion([
+      z.lazy(() => UploadProjectAvatarTo1$inboundSchema),
+      z.lazy(() => UploadProjectAvatarTo2$inboundSchema),
+    ]),
+    claims: z.record(z.array(types.string())),
+    label: types.optional(types.string()),
+  })
+);
 
 export function uploadProjectAvatarOidcProvidersFromJSON(
   jsonString: string,
@@ -6021,19 +6312,22 @@ export function uploadProjectAvatarOidcProvidersFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarFromProjectsPreset$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarFromProjectsPreset> = z.nativeEnum(
-    UploadProjectAvatarFromProjectsPreset,
-  );
+  z.ZodNativeEnum<typeof UploadProjectAvatarFromProjectsPreset> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarFromProjectsPreset)
+    );
 
 /** @internal */
 export const UploadProjectAvatarFrom2$inboundSchema: z.ZodType<
   UploadProjectAvatarFrom2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preset: UploadProjectAvatarFromProjectsPreset$inboundSchema,
-  slugs: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset: UploadProjectAvatarFromProjectsPreset$inboundSchema,
+    slugs: types.optional(z.array(types.string())),
+  })
+);
 
 export function uploadProjectAvatarFrom2FromJSON(
   jsonString: string,
@@ -6048,17 +6342,21 @@ export function uploadProjectAvatarFrom2FromJSON(
 /** @internal */
 export const UploadProjectAvatarFromPreset$inboundSchema: z.ZodNativeEnum<
   typeof UploadProjectAvatarFromPreset
-> = z.nativeEnum(UploadProjectAvatarFromPreset);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UploadProjectAvatarFromPreset)
+);
 
 /** @internal */
 export const UploadProjectAvatarFrom1$inboundSchema: z.ZodType<
   UploadProjectAvatarFrom1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preset: types.optional(UploadProjectAvatarFromPreset$inboundSchema),
-  slugs: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset: types.optional(UploadProjectAvatarFromPreset$inboundSchema),
+    slugs: z.array(types.string()),
+  })
+);
 
 export function uploadProjectAvatarFrom1FromJSON(
   jsonString: string,
@@ -6075,10 +6373,12 @@ export const UploadProjectAvatarFrom$inboundSchema: z.ZodType<
   UploadProjectAvatarFrom,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => UploadProjectAvatarFrom1$inboundSchema),
-  z.lazy(() => UploadProjectAvatarFrom2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => UploadProjectAvatarFrom1$inboundSchema),
+    z.lazy(() => UploadProjectAvatarFrom2$inboundSchema),
+  ])
+);
 
 export function uploadProjectAvatarFromFromJSON(
   jsonString: string,
@@ -6092,18 +6392,22 @@ export function uploadProjectAvatarFromFromJSON(
 
 /** @internal */
 export const UploadProjectAvatarToProjectsResponse200Preset$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarToProjectsResponse200Preset> = z
-    .nativeEnum(UploadProjectAvatarToProjectsResponse200Preset);
+  z.ZodNativeEnum<typeof UploadProjectAvatarToProjectsResponse200Preset> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarToProjectsResponse200Preset)
+    );
 
 /** @internal */
 export const UploadProjectAvatarToProjects2$inboundSchema: z.ZodType<
   UploadProjectAvatarToProjects2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  preset: UploadProjectAvatarToProjectsResponse200Preset$inboundSchema,
-  slugs: types.optional(z.array(types.string())),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    preset: UploadProjectAvatarToProjectsResponse200Preset$inboundSchema,
+    slugs: types.optional(z.array(types.string())),
+  })
+);
 
 export function uploadProjectAvatarToProjects2FromJSON(
   jsonString: string,
@@ -6117,5 +6421,7 @@ export function uploadProjectAvatarToProjects2FromJSON(
 
 /** @internal */
 export const UploadProjectAvatarToProjectsResponsePreset$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarToProjectsResponsePreset> = z
-    .nativeEnum(UploadProjectAvatarToProjectsResponsePreset);
+  z.ZodNativeEnum<typeof UploadProjectAvatarToProjectsResponsePreset> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarToProjectsResponsePreset)
+    );

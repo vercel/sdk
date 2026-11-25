@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -148,9 +148,11 @@ export const GetIntegrationResourcesRequest$outboundSchema: z.ZodType<
   GetIntegrationResourcesRequest$Outbound,
   z.ZodTypeDef,
   GetIntegrationResourcesRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+  })
+);
 
 export function getIntegrationResourcesRequestToJSON(
   getIntegrationResourcesRequest: GetIntegrationResourcesRequest,
@@ -167,13 +169,15 @@ export const GetIntegrationResourcesMetadata$inboundSchema: z.ZodType<
   GetIntegrationResourcesMetadata,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  types.string(),
-  types.number(),
-  z.array(types.string()),
-  z.array(types.number()),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    types.string(),
+    types.number(),
+    z.array(types.string()),
+    z.array(types.number()),
+    types.boolean(),
+  ])
+);
 
 export function getIntegrationResourcesMetadataFromJSON(
   jsonString: string,
@@ -188,19 +192,23 @@ export function getIntegrationResourcesMetadataFromJSON(
 /** @internal */
 export const GetIntegrationResourcesLevel$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourcesLevel
-> = z.nativeEnum(GetIntegrationResourcesLevel);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetIntegrationResourcesLevel)
+);
 
 /** @internal */
 export const GetIntegrationResourcesNotification$inboundSchema: z.ZodType<
   GetIntegrationResourcesNotification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  href: types.optional(types.string()),
-  level: GetIntegrationResourcesLevel$inboundSchema,
-  message: types.optional(types.string()),
-  title: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    href: types.optional(types.string()),
+    level: GetIntegrationResourcesLevel$inboundSchema,
+    message: types.optional(types.string()),
+    title: types.string(),
+  })
+);
 
 export function getIntegrationResourcesNotificationFromJSON(
   jsonString: string,
@@ -216,17 +224,21 @@ export function getIntegrationResourcesNotificationFromJSON(
 /** @internal */
 export const GetIntegrationResourcesTarget$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourcesTarget
-> = z.nativeEnum(GetIntegrationResourcesTarget);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetIntegrationResourcesTarget)
+);
 
 /** @internal */
 export const GetIntegrationResourcesAppUrls$inboundSchema: z.ZodType<
   GetIntegrationResourcesAppUrls,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  target: GetIntegrationResourcesTarget$inboundSchema,
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    target: GetIntegrationResourcesTarget$inboundSchema,
+    url: types.string(),
+  })
+);
 
 export function getIntegrationResourcesAppUrlsFromJSON(
   jsonString: string,
@@ -243,11 +255,13 @@ export const GetIntegrationResourcesAuthentication$inboundSchema: z.ZodType<
   GetIntegrationResourcesAuthentication,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  appUrls: types.optional(
-    z.array(z.lazy(() => GetIntegrationResourcesAppUrls$inboundSchema)),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    appUrls: types.optional(
+      z.array(z.lazy(() => GetIntegrationResourcesAppUrls$inboundSchema)),
+    ),
+  })
+);
 
 export function getIntegrationResourcesAuthenticationFromJSON(
   jsonString: string,
@@ -265,13 +279,15 @@ export const GetIntegrationResourcesExperimentation$inboundSchema: z.ZodType<
   GetIntegrationResourcesExperimentation,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  edgeConfigId: types.optional(types.string()),
-  edgeConfigSyncingEnabled: types.optional(types.boolean()),
-  edgeConfigTokenId: types.optional(types.string()),
-  globalConfigId: types.optional(types.string()),
-  globalConfigSyncingEnabled: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    edgeConfigId: types.optional(types.string()),
+    edgeConfigSyncingEnabled: types.optional(types.boolean()),
+    edgeConfigTokenId: types.optional(types.string()),
+    globalConfigId: types.optional(types.string()),
+    globalConfigSyncingEnabled: types.optional(types.boolean()),
+  })
+);
 
 export function getIntegrationResourcesExperimentationFromJSON(
   jsonString: string,
@@ -289,14 +305,16 @@ export const GetIntegrationResourcesProtocolSettings$inboundSchema: z.ZodType<
   GetIntegrationResourcesProtocolSettings,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  authentication: types.optional(
-    z.lazy(() => GetIntegrationResourcesAuthentication$inboundSchema),
-  ),
-  experimentation: types.optional(
-    z.lazy(() => GetIntegrationResourcesExperimentation$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    authentication: types.optional(
+      z.lazy(() => GetIntegrationResourcesAuthentication$inboundSchema),
+    ),
+    experimentation: types.optional(
+      z.lazy(() => GetIntegrationResourcesExperimentation$inboundSchema),
+    ),
+  })
+);
 
 export function getIntegrationResourcesProtocolSettingsFromJSON(
   jsonString: string,
@@ -317,38 +335,42 @@ export function getIntegrationResourcesProtocolSettingsFromJSON(
 /** @internal */
 export const GetIntegrationResourcesStatus$inboundSchema: z.ZodNativeEnum<
   typeof GetIntegrationResourcesStatus
-> = z.nativeEnum(GetIntegrationResourcesStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetIntegrationResourcesStatus)
+);
 
 /** @internal */
 export const GetIntegrationResourcesResources$inboundSchema: z.ZodType<
   GetIntegrationResourcesResources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  billingPlanId: types.optional(types.string()),
-  internalId: types.string(),
-  metadata: types.optional(
-    z.record(
-      smartUnion([
-        types.string(),
-        types.number(),
-        z.array(types.string()),
-        z.array(types.number()),
-        types.boolean(),
-      ]),
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    billingPlanId: types.optional(types.string()),
+    internalId: types.string(),
+    metadata: types.optional(
+      z.record(
+        smartUnion([
+          types.string(),
+          types.number(),
+          z.array(types.string()),
+          z.array(types.number()),
+          types.boolean(),
+        ]),
+      ),
     ),
-  ),
-  name: types.string(),
-  notification: types.optional(
-    z.lazy(() => GetIntegrationResourcesNotification$inboundSchema),
-  ),
-  partnerId: types.string(),
-  productId: types.string(),
-  protocolSettings: types.optional(
-    z.lazy(() => GetIntegrationResourcesProtocolSettings$inboundSchema),
-  ),
-  status: types.optional(GetIntegrationResourcesStatus$inboundSchema),
-});
+    name: types.string(),
+    notification: types.optional(
+      z.lazy(() => GetIntegrationResourcesNotification$inboundSchema),
+    ),
+    partnerId: types.string(),
+    productId: types.string(),
+    protocolSettings: types.optional(
+      z.lazy(() => GetIntegrationResourcesProtocolSettings$inboundSchema),
+    ),
+    status: types.optional(GetIntegrationResourcesStatus$inboundSchema),
+  })
+);
 
 export function getIntegrationResourcesResourcesFromJSON(
   jsonString: string,
@@ -365,11 +387,13 @@ export const GetIntegrationResourcesResponseBody$inboundSchema: z.ZodType<
   GetIntegrationResourcesResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  resources: z.array(
-    z.lazy(() => GetIntegrationResourcesResources$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    resources: z.array(
+      z.lazy(() => GetIntegrationResourcesResources$inboundSchema),
+    ),
+  })
+);
 
 export function getIntegrationResourcesResponseBodyFromJSON(
   jsonString: string,

@@ -5,12 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEighteen } from "@vercel/sdk/models/usereventpayload317type.js";
+import { ThreeHundredAndEighteen } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
 let value: ThreeHundredAndEighteen = {
-  customEnvironmentId: "<id>",
-  customEnvironmentSlug: "<value>",
-  enableSchedulesByDefault: true,
+  action: "disabled",
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -18,10 +16,8 @@ let value: ThreeHundredAndEighteen = {
 
 ## Fields
 
-| Field                      | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `customEnvironmentId`      | *string*                   | :heavy_check_mark:         | N/A                        |
-| `customEnvironmentSlug`    | *string*                   | :heavy_check_mark:         | N/A                        |
-| `enableSchedulesByDefault` | *boolean*                  | :heavy_check_mark:         | N/A                        |
-| `projectId`                | *string*                   | :heavy_check_mark:         | N/A                        |
-| `projectName`              | *string*                   | :heavy_check_mark:         | N/A                        |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload318Action](../models/usereventpayload318action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

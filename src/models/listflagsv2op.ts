@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -87,7 +87,7 @@ export type ListFlagsV2ResponseBody = {
 /** @internal */
 export const QueryParamState$outboundSchema: z.ZodNativeEnum<
   typeof QueryParamState
-> = z.nativeEnum(QueryParamState);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(QueryParamState));
 
 /** @internal */
 export type ListFlagsV2Request$Outbound = {
@@ -109,19 +109,21 @@ export const ListFlagsV2Request$outboundSchema: z.ZodType<
   ListFlagsV2Request$Outbound,
   z.ZodTypeDef,
   ListFlagsV2Request
-> = z.object({
-  projectIdOrName: z.string(),
-  state: QueryParamState$outboundSchema.optional(),
-  limit: z.number().int().default(25),
-  cursor: z.string().optional(),
-  search: z.string().optional(),
-  tags: z.array(z.string()).optional(),
-  createdBy: z.string().optional(),
-  maintainerIds: z.array(z.string()).optional(),
-  includeMarketplaceFlags: z.boolean().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectIdOrName: z.string(),
+    state: QueryParamState$outboundSchema.optional(),
+    limit: z.number().int().default(25),
+    cursor: z.string().optional(),
+    search: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+    createdBy: z.string().optional(),
+    maintainerIds: z.array(z.string()).optional(),
+    includeMarketplaceFlags: z.boolean().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function listFlagsV2RequestToJSON(
   listFlagsV2Request: ListFlagsV2Request,
@@ -136,9 +138,11 @@ export const ListFlagsV2Pagination$inboundSchema: z.ZodType<
   ListFlagsV2Pagination,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  next: types.nullable(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    next: types.nullable(types.string()),
+  })
+);
 
 export function listFlagsV2PaginationFromJSON(
   jsonString: string,
@@ -155,10 +159,12 @@ export const ListFlagsV2Data$inboundSchema: z.ZodType<
   ListFlagsV2Data,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  Flag$inboundSchema.and(z.object({ typeName: z.literal("flag") })),
-  MarketplaceFlag$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    Flag$inboundSchema.and(z.object({ typeName: z.literal("flag") })),
+    MarketplaceFlag$inboundSchema,
+  ])
+);
 
 export function listFlagsV2DataFromJSON(
   jsonString: string,
@@ -175,15 +181,17 @@ export const ListFlagsV2ResponseBody$inboundSchema: z.ZodType<
   ListFlagsV2ResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pagination: z.lazy(() => ListFlagsV2Pagination$inboundSchema),
-  data: z.array(
-    z.union([
-      Flag$inboundSchema.and(z.object({ typeName: z.literal("flag") })),
-      MarketplaceFlag$inboundSchema,
-    ]),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pagination: z.lazy(() => ListFlagsV2Pagination$inboundSchema),
+    data: z.array(
+      z.union([
+        Flag$inboundSchema.and(z.object({ typeName: z.literal("flag") })),
+        MarketplaceFlag$inboundSchema,
+      ]),
+    ),
+  })
+);
 
 export function listFlagsV2ResponseBodyFromJSON(
   jsonString: string,

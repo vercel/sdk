@@ -5,17 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndTwentyFour } from "@vercel/sdk/models/oldssoprotection2.js";
+import { FourHundredAndTwentyFour } from "@vercel/sdk/models/usereventpayload385project.js";
 
 let value: FourHundredAndTwentyFour = {
-  billingConsent: "security-review-usage-billing-v1",
-  source: "<value>",
+  storeType: "postgres",
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `billingConsent`                                     | [models.BillingConsent](../models/billingconsent.md) | :heavy_check_mark:                                   | N/A                                                  |
-| `source`                                             | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `storeType`                                | [models.StoreType](../models/storetype.md) | :heavy_check_mark:                         | N/A                                        |

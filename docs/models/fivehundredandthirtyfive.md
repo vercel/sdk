@@ -8,7 +8,9 @@ The payload of the event, if requested.
 import { FiveHundredAndThirtyFive } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtyFive = {
-  chatId: "<id>",
+  ciEnabled: true,
+  organizationId: "<id>",
+  repository: "<value>",
 };
 ```
 
@@ -16,5 +18,6 @@ let value: FiveHundredAndThirtyFive = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `chatId`           | *string*           | :heavy_check_mark: | N/A                |
-| `chatTitle`        | *string*           | :heavy_minus_sign: | N/A                |
+| `ciEnabled`        | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `repository`       | *string*           | :heavy_check_mark: | N/A                |

@@ -3,7 +3,8 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { matchesPattern as matchesPattern$ } from "../lib/primitives.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -57,14 +58,23 @@ export const RestartProjectDaemonInstanceRequest$outboundSchema: z.ZodType<
   RestartProjectDaemonInstanceRequest$Outbound,
   z.ZodTypeDef,
   RestartProjectDaemonInstanceRequest
-> = z.object({
-  idOrName: z.string(),
-  daemonName: z.string(),
-  instanceId: z.string(),
-  customEnvironmentId: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    daemonName: z.string().refine(matchesPattern$("^[a-zA-Z0-9_-]+$"), {
+      message: "Value must match pattern ^[a-zA-Z0-9_-]+$",
+    }),
+    instanceId: z.string().refine(
+      matchesPattern$("^dmni_[0-9a-hjkmnp-tv-z]{26}$"),
+      { message: "Value must match pattern ^dmni_[0-9a-hjkmnp-tv-z]{26}$" },
+    ),
+    customEnvironmentId: z.string().refine(matchesPattern$("^env_"), {
+      message: "Value must match pattern ^env_",
+    }).optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function restartProjectDaemonInstanceRequestToJSON(
   restartProjectDaemonInstanceRequest: RestartProjectDaemonInstanceRequest,
@@ -81,9 +91,11 @@ export const RestartProjectDaemonInstanceResponseBody$inboundSchema: z.ZodType<
   RestartProjectDaemonInstanceResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  ok: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    ok: types.boolean(),
+  })
+);
 
 export function restartProjectDaemonInstanceResponseBodyFromJSON(
   jsonString: string,

@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod/v3";
+import { lazySchema as lazySchema$ } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import * as types from "../types/primitives.js";
 import { VercelError } from "./vercelerror.js";
@@ -48,25 +49,27 @@ export class DuplicateDomains extends VercelError {
 /** @internal */
 export const DuplicateDomainsCode$inboundSchema: z.ZodNativeEnum<
   typeof DuplicateDomainsCode
-> = z.nativeEnum(DuplicateDomainsCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DuplicateDomainsCode));
 
 /** @internal */
 export const DuplicateDomains$inboundSchema: z.ZodType<
   DuplicateDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  status: types.number(),
-  code: DuplicateDomainsCode$inboundSchema,
-  message: types.string(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new DuplicateDomains(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    status: types.number(),
+    code: DuplicateDomainsCode$inboundSchema,
+    message: types.string(),
+    request$: z.instanceof(Request),
+    response$: z.instanceof(Response),
+    body$: z.string(),
+  })
+    .transform((v) => {
+      return new DuplicateDomains(v, {
+        request: v.request$,
+        response: v.response$,
+        body: v.body$,
+      });
+    })
+);

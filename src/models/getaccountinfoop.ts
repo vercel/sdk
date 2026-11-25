@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -20,11 +20,23 @@ export type Contact = {
   name?: string | undefined;
 };
 
+/**
+ * Up to 3 contacts for the integration. `contact` comes first, followed by the confirmed owners of the team, longest-standing first. For a personal account, the account owner.
+ */
+export type Contacts = {
+  email: string;
+  name?: string | undefined;
+};
+
 export type GetAccountInfoResponseBody = {
   /**
    * The best contact for the integration, which can change as team members and their roles change.
    */
   contact: Contact | null;
+  /**
+   * Up to 3 contacts for the integration. `contact` comes first, followed by the confirmed owners of the team, longest-standing first. For a personal account, the account owner.
+   */
+  contacts: Array<Contacts>;
   /**
    * The name of the team the installation is tied to.
    */
@@ -45,9 +57,11 @@ export const GetAccountInfoRequest$outboundSchema: z.ZodType<
   GetAccountInfoRequest$Outbound,
   z.ZodTypeDef,
   GetAccountInfoRequest
-> = z.object({
-  integrationConfigurationId: z.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: z.string(),
+  })
+);
 
 export function getAccountInfoRequestToJSON(
   getAccountInfoRequest: GetAccountInfoRequest,
@@ -59,10 +73,12 @@ export function getAccountInfoRequestToJSON(
 
 /** @internal */
 export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> =
-  z.object({
-    email: types.string(),
-    name: types.optional(types.string()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      email: types.string(),
+      name: types.optional(types.string()),
+    })
+  );
 
 export function contactFromJSON(
   jsonString: string,
@@ -75,15 +91,40 @@ export function contactFromJSON(
 }
 
 /** @internal */
+export const Contacts$inboundSchema: z.ZodType<
+  Contacts,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    email: types.string(),
+    name: types.optional(types.string()),
+  })
+);
+
+export function contactsFromJSON(
+  jsonString: string,
+): SafeParseResult<Contacts, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Contacts$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Contacts' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetAccountInfoResponseBody$inboundSchema: z.ZodType<
   GetAccountInfoResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  contact: types.nullable(z.lazy(() => Contact$inboundSchema)),
-  name: types.optional(types.string()),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    contact: types.nullable(z.lazy(() => Contact$inboundSchema)),
+    contacts: z.array(z.lazy(() => Contacts$inboundSchema)),
+    name: types.optional(types.string()),
+    url: types.string(),
+  })
+);
 
 export function getAccountInfoResponseBodyFromJSON(
   jsonString: string,

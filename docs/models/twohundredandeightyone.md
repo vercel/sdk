@@ -5,21 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEightyOne } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndEightyOne } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
 let value: TwoHundredAndEightyOne = {
-  perimeter: {
-    id: "<id>",
-    name: "<value>",
-    version: 4667.2,
-  },
-  sourceVersion: 5726.32,
+  justification: "<value>",
+  pattern: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                    | Type                                                     | Required                                                 | Description                                              |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| `perimeter`                                              | [models.PayloadPerimeter](../models/payloadperimeter.md) | :heavy_check_mark:                                       | N/A                                                      |
-| `sourceVersion`                                          | *number*                                                 | :heavy_check_mark:                                       | N/A                                                      |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `justification`        | *string*               | :heavy_check_mark:     | N/A                    |
+| `pattern`              | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectId`            | *string*               | :heavy_check_mark:     | N/A                    |
+| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
+| `additionalProperties` | Record<string, *any*>  | :heavy_minus_sign:     | N/A                    |

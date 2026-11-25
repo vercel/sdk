@@ -5,15 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSixtyNine } from "@vercel/sdk/models/usereventjobpayloaddeployhook.js";
+import { OneHundredAndSixtyNine } from "@vercel/sdk/models/jobproject.js";
 
 let value: OneHundredAndSixtyNine = {
-  driveName: "<value>",
-  projectId: "<id>",
-  projectName: "<value>",
-  region: "<value>",
-  snapshotId: "<id>",
-  snapshotName: "<value>",
+  drainName: "<value>",
+  drainUrl: "https://creative-scarification.org",
 };
 ```
 
@@ -21,9 +17,7 @@ let value: OneHundredAndSixtyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `driveName`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `region`           | *string*           | :heavy_check_mark: | N/A                |
-| `snapshotId`       | *string*           | :heavy_check_mark: | N/A                |
-| `snapshotName`     | *string*           | :heavy_check_mark: | N/A                |
+| `drainName`        | *string*           | :heavy_check_mark: | N/A                |
+| `drainUrl`         | *string*           | :heavy_check_mark: | N/A                |
+| `id`               | *string*           | :heavy_minus_sign: | N/A                |
+| `integrationName`  | *string*           | :heavy_minus_sign: | N/A                |

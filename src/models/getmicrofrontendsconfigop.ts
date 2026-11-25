@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -31,7 +31,7 @@ export type ApplicationsLocal = string | number;
 /**
  * Development configuration for the child application.
  */
-export type ApplicationsDevelopment = {
+export type GetMicrofrontendsConfigApplicationsDevelopment = {
   /**
    * Fallback for local development, could point to any environment. If not provided for child apps, the fallback of the default app will be used. If passing a string, include the protocol (optional), host (required) and port (optional). For example: `https://this.ismyhost:8080`. If omitted, the protocol defaults to HTTPS. If omitted, the port defaults to `80` for HTTP and `443` for HTTPS. See https://vercel.com/docs/microfrontends/local-development.
    */
@@ -69,7 +69,7 @@ export type Applications2 = {
   /**
    * Development configuration for the child application.
    */
-  development?: ApplicationsDevelopment | undefined;
+  development?: GetMicrofrontendsConfigApplicationsDevelopment | undefined;
   /**
    * The name used to run the application, e.g. the `name` field in the `package.json`. This is used by the local proxy to map the application config to the locally running app. This is only necessary when the application name does not match the `name` used in `package.json`. See https://vercel.com/docs/microfrontends/configuration#application-naming.
    */
@@ -86,7 +86,7 @@ export type Local = string | number;
 /**
  * Development configuration for the default application.
  */
-export type Development = {
+export type ApplicationsDevelopment = {
   /**
    * Fallback for local development, could point to any environment. This is required for the default app. This value is used as the fallback for child apps as well if they do not have a fallback. If passing a string, include the protocol (optional), host (required) and port (optional). For example: `https://this.ismyhost:8080`. If omitted, the protocol defaults to HTTPS. If omitted, the port defaults to `80` for HTTP and `443` for HTTPS. See https://vercel.com/docs/microfrontends/local-development.
    */
@@ -102,7 +102,7 @@ export type Applications1 = {
   /**
    * Development configuration for the default application.
    */
-  development: Development;
+  development: ApplicationsDevelopment;
   /**
    * The name used to run the application, e.g. the `name` field in the `package.json`. This is used by the local proxy to map the application config to the locally running app. This is only necessary when the application name does not match the `name` used in `package.json`. See https://vercel.com/docs/microfrontends/configuration#application-naming.
    */
@@ -177,11 +177,13 @@ export const GetMicrofrontendsConfigRequest$outboundSchema: z.ZodType<
   GetMicrofrontendsConfigRequest$Outbound,
   z.ZodTypeDef,
   GetMicrofrontendsConfigRequest
-> = z.object({
-  deploymentId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function getMicrofrontendsConfigRequestToJSON(
   getMicrofrontendsConfigRequest: GetMicrofrontendsConfigRequest,
@@ -198,7 +200,9 @@ export const ApplicationsLocal$inboundSchema: z.ZodType<
   ApplicationsLocal,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function applicationsLocalFromJSON(
   jsonString: string,
@@ -211,33 +215,44 @@ export function applicationsLocalFromJSON(
 }
 
 /** @internal */
-export const ApplicationsDevelopment$inboundSchema: z.ZodType<
-  ApplicationsDevelopment,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  fallback: types.optional(types.string()),
-  local: types.optional(smartUnion([types.string(), types.number()])),
-  task: types.optional(types.string()),
-});
+export const GetMicrofrontendsConfigApplicationsDevelopment$inboundSchema:
+  z.ZodType<
+    GetMicrofrontendsConfigApplicationsDevelopment,
+    z.ZodTypeDef,
+    unknown
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      fallback: types.optional(types.string()),
+      local: types.optional(smartUnion([types.string(), types.number()])),
+      task: types.optional(types.string()),
+    })
+  );
 
-export function applicationsDevelopmentFromJSON(
+export function getMicrofrontendsConfigApplicationsDevelopmentFromJSON(
   jsonString: string,
-): SafeParseResult<ApplicationsDevelopment, SDKValidationError> {
+): SafeParseResult<
+  GetMicrofrontendsConfigApplicationsDevelopment,
+  SDKValidationError
+> {
   return safeParse(
     jsonString,
-    (x) => ApplicationsDevelopment$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ApplicationsDevelopment' from JSON`,
+    (x) =>
+      GetMicrofrontendsConfigApplicationsDevelopment$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'GetMicrofrontendsConfigApplicationsDevelopment' from JSON`,
   );
 }
 
 /** @internal */
 export const Routing$inboundSchema: z.ZodType<Routing, z.ZodTypeDef, unknown> =
-  z.object({
-    flag: types.optional(types.string()),
-    group: types.optional(types.string()),
-    paths: z.array(types.string()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      flag: types.optional(types.string()),
+      group: types.optional(types.string()),
+      paths: z.array(types.string()),
+    })
+  );
 
 export function routingFromJSON(
   jsonString: string,
@@ -254,15 +269,19 @@ export const Applications2$inboundSchema: z.ZodType<
   Applications2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  assetPrefix: types.optional(types.string()),
-  development: types.optional(
-    z.lazy(() => ApplicationsDevelopment$inboundSchema),
-  ),
-  packageName: types.optional(types.string()),
-  routing: z.array(z.lazy(() => Routing$inboundSchema)),
-  projectId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    assetPrefix: types.optional(types.string()),
+    development: types.optional(
+      z.lazy(() =>
+        GetMicrofrontendsConfigApplicationsDevelopment$inboundSchema
+      ),
+    ),
+    packageName: types.optional(types.string()),
+    routing: z.array(z.lazy(() => Routing$inboundSchema)),
+    projectId: types.string(),
+  })
+);
 
 export function applications2FromJSON(
   jsonString: string,
@@ -276,7 +295,9 @@ export function applications2FromJSON(
 
 /** @internal */
 export const Local$inboundSchema: z.ZodType<Local, z.ZodTypeDef, unknown> =
-  smartUnion([types.string(), types.number()]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), types.number()])
+  );
 
 export function localFromJSON(
   jsonString: string,
@@ -289,23 +310,25 @@ export function localFromJSON(
 }
 
 /** @internal */
-export const Development$inboundSchema: z.ZodType<
-  Development,
+export const ApplicationsDevelopment$inboundSchema: z.ZodType<
+  ApplicationsDevelopment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fallback: types.string(),
-  local: types.optional(smartUnion([types.string(), types.number()])),
-  task: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fallback: types.string(),
+    local: types.optional(smartUnion([types.string(), types.number()])),
+    task: types.optional(types.string()),
+  })
+);
 
-export function developmentFromJSON(
+export function applicationsDevelopmentFromJSON(
   jsonString: string,
-): SafeParseResult<Development, SDKValidationError> {
+): SafeParseResult<ApplicationsDevelopment, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Development$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Development' from JSON`,
+    (x) => ApplicationsDevelopment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationsDevelopment' from JSON`,
   );
 }
 
@@ -314,11 +337,13 @@ export const Applications1$inboundSchema: z.ZodType<
   Applications1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  development: z.lazy(() => Development$inboundSchema),
-  packageName: types.optional(types.string()),
-  projectId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    development: z.lazy(() => ApplicationsDevelopment$inboundSchema),
+    packageName: types.optional(types.string()),
+    projectId: types.string(),
+  })
+);
 
 export function applications1FromJSON(
   jsonString: string,
@@ -335,10 +360,12 @@ export const Applications$inboundSchema: z.ZodType<
   Applications,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => Applications1$inboundSchema),
-  z.lazy(() => Applications2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Applications1$inboundSchema),
+    z.lazy(() => Applications2$inboundSchema),
+  ])
+);
 
 export function applicationsFromJSON(
   jsonString: string,
@@ -352,10 +379,12 @@ export function applicationsFromJSON(
 
 /** @internal */
 export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> =
-  z.object({
-    disableOverrides: types.optional(types.boolean()),
-    localProxyPort: types.optional(types.number()),
-  });
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      disableOverrides: types.optional(types.boolean()),
+      localProxyPort: types.optional(types.number()),
+    })
+  );
 
 export function optionsFromJSON(
   jsonString: string,
@@ -370,28 +399,32 @@ export function optionsFromJSON(
 /** @internal */
 export const GetMicrofrontendsConfigVersion$inboundSchema: z.ZodNativeEnum<
   typeof GetMicrofrontendsConfigVersion
-> = z.nativeEnum(GetMicrofrontendsConfigVersion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetMicrofrontendsConfigVersion)
+);
 
 /** @internal */
 export const GetMicrofrontendsConfigConfig$inboundSchema: z.ZodType<
   GetMicrofrontendsConfigConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  $schema: types.optional(types.string()),
-  applications: z.record(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    $schema: types.optional(types.string()),
+    applications: z.record(smartUnion([
       z.lazy(() => Applications1$inboundSchema),
       z.lazy(() => Applications2$inboundSchema),
-    ]),
-  ),
-  options: types.optional(z.lazy(() => Options$inboundSchema)),
-  version: types.optional(GetMicrofrontendsConfigVersion$inboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    "$schema": "dollarSchema",
-  });
-});
+    ])),
+    options: types.optional(z.lazy(() =>
+      Options$inboundSchema
+    )),
+    version: types.optional(GetMicrofrontendsConfigVersion$inboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      "$schema": "dollarSchema",
+    });
+  })
+);
 
 export function getMicrofrontendsConfigConfigFromJSON(
   jsonString: string,
@@ -408,11 +441,13 @@ export const GetMicrofrontendsConfigResponseBody$inboundSchema: z.ZodType<
   GetMicrofrontendsConfigResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  config: types.nullable(
-    z.lazy(() => GetMicrofrontendsConfigConfig$inboundSchema),
-  ),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    config: types.nullable(
+      z.lazy(() => GetMicrofrontendsConfigConfig$inboundSchema),
+    ),
+  })
+);
 
 export function getMicrofrontendsConfigResponseBodyFromJSON(
   jsonString: string,

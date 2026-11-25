@@ -8,22 +8,18 @@ The payload of the event, if requested.
 import { FiveHundredAndFortyOne } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndFortyOne = {
-  next: {
-    enabled: false,
-    issuerUrls: [],
+  cadence: "weekly",
+  projectIds: [],
+  team: {
+    id: "<id>",
   },
-  previous: {
-    enabled: true,
-    issuerUrls: [],
-  },
-  scope: "team",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload541Next](../models/usereventpayload541next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload541Previous](../models/usereventpayload541previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `scope`                                                                        | [models.UserEventPayload541Scope](../models/usereventpayload541scope.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload541Team](../models/usereventpayload541team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

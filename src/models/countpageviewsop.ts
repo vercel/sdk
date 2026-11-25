@@ -5,6 +5,7 @@
 import * as z from "zod/v3";
 import {
   collectExtraKeys as collectExtraKeys$,
+  lazySchema as lazySchema$,
   safeParse,
 } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
@@ -130,7 +131,7 @@ export const CountPageviewsQueryParamSince$outboundSchema: z.ZodType<
   CountPageviewsQueryParamSince$Outbound,
   z.ZodTypeDef,
   CountPageviewsQueryParamSince
-> = smartUnion([z.number(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => smartUnion([z.number(), z.string()]));
 
 export function countPageviewsQueryParamSinceToJSON(
   countPageviewsQueryParamSince: CountPageviewsQueryParamSince,
@@ -150,7 +151,7 @@ export const CountPageviewsQueryParamUntil$outboundSchema: z.ZodType<
   CountPageviewsQueryParamUntil$Outbound,
   z.ZodTypeDef,
   CountPageviewsQueryParamUntil
-> = smartUnion([z.number(), z.string()]);
+> = /* @__PURE__ */ lazySchema$(() => smartUnion([z.number(), z.string()]));
 
 export function countPageviewsQueryParamUntilToJSON(
   countPageviewsQueryParamUntil: CountPageviewsQueryParamUntil,
@@ -177,14 +178,16 @@ export const CountPageviewsRequest$outboundSchema: z.ZodType<
   CountPageviewsRequest$Outbound,
   z.ZodTypeDef,
   CountPageviewsRequest
-> = z.object({
-  projectId: z.string(),
-  since: smartUnion([z.number(), z.string()]).optional(),
-  until: smartUnion([z.number(), z.string()]).optional(),
-  filter: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: z.string(),
+    since: smartUnion([z.number(), z.string()]).optional(),
+    until: smartUnion([z.number(), z.string()]).optional(),
+    filter: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function countPageviewsRequestToJSON(
   countPageviewsRequest: CountPageviewsRequest,
@@ -199,10 +202,12 @@ export const CountPageviewsData2$inboundSchema: z.ZodType<
   CountPageviewsData2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pageviews: types.number(),
-  visitors: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pageviews: types.number(),
+    visitors: types.number(),
+  })
+);
 
 export function countPageviewsData2FromJSON(
   jsonString: string,
@@ -219,31 +224,33 @@ export const CountPageviewsData1$inboundSchema: z.ZodType<
   CountPageviewsData1,
   z.ZodTypeDef,
   unknown
-> = collectExtraKeys$(
-  z.object({
-    browserName: types.string(),
-    country: types.string(),
-    deviceType: types.string(),
-    environment: types.string(),
-    flags: types.string(),
-    groupId: types.string(),
-    osName: types.string(),
-    projectId: types.string(),
-    projectName: types.string(),
-    referrerHostname: types.string(),
-    requestHostname: types.string(),
-    requestPath: types.string(),
-    route: types.string(),
-    userId: types.string(),
-    utmCampaign: types.string(),
-    utmContent: types.string(),
-    utmMedium: types.string(),
-    utmSource: types.string(),
-    utmTerm: types.string(),
-    visitorId: types.string(),
-  }).catchall(types.number()),
-  "additionalProperties",
-  true,
+> = /* @__PURE__ */ lazySchema$(() =>
+  collectExtraKeys$(
+    z.object({
+      browserName: types.string(),
+      country: types.string(),
+      deviceType: types.string(),
+      environment: types.string(),
+      flags: types.string(),
+      groupId: types.string(),
+      osName: types.string(),
+      projectId: types.string(),
+      projectName: types.string(),
+      referrerHostname: types.string(),
+      requestHostname: types.string(),
+      requestPath: types.string(),
+      route: types.string(),
+      userId: types.string(),
+      utmCampaign: types.string(),
+      utmContent: types.string(),
+      utmMedium: types.string(),
+      utmSource: types.string(),
+      utmTerm: types.string(),
+      visitorId: types.string(),
+    }).catchall(types.number()),
+    "additionalProperties",
+    true,
+  )
 );
 
 export function countPageviewsData1FromJSON(
@@ -261,10 +268,12 @@ export const CountPageviewsData$inboundSchema: z.ZodType<
   CountPageviewsData,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => CountPageviewsData1$inboundSchema),
-  z.lazy(() => CountPageviewsData2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => CountPageviewsData1$inboundSchema),
+    z.lazy(() => CountPageviewsData2$inboundSchema),
+  ])
+);
 
 export function countPageviewsDataFromJSON(
   jsonString: string,
@@ -281,11 +290,13 @@ export const CountPageviewsQuery$inboundSchema: z.ZodType<
   CountPageviewsQuery,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  filter: types.optional(types.string()),
-  since: types.string(),
-  until: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    filter: types.optional(types.string()),
+    since: types.string(),
+    until: types.string(),
+  })
+);
 
 export function countPageviewsQueryFromJSON(
   jsonString: string,
@@ -302,14 +313,16 @@ export const CountPageviewsResponseBody$inboundSchema: z.ZodType<
   CountPageviewsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  data: smartUnion([
-    z.lazy(() => CountPageviewsData1$inboundSchema),
-    z.lazy(() => CountPageviewsData2$inboundSchema),
-  ]),
-  query: z.lazy(() => CountPageviewsQuery$inboundSchema),
-  version: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    data: smartUnion([
+      z.lazy(() => CountPageviewsData1$inboundSchema),
+      z.lazy(() => CountPageviewsData2$inboundSchema),
+    ]),
+    query: z.lazy(() => CountPageviewsQuery$inboundSchema),
+    version: types.number(),
+  })
+);
 
 export function countPageviewsResponseBodyFromJSON(
   jsonString: string,

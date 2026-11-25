@@ -5,19 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEighty } from "@vercel/sdk/models/payloaddsyncmode.js";
+import { TwoHundredAndEighty } from "@vercel/sdk/models/twohundredandsixtyseven.js";
 
 let value: TwoHundredAndEighty = {
-  perimeter: {
-    id: "<id>",
-    name: "<value>",
-    version: 9659.32,
-  },
+  justification: "<value>",
+  previousStatus: "<value>",
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `perimeter`                                | [models.Perimeter](../models/perimeter.md) | :heavy_check_mark:                         | N/A                                        |
+| Field                                          | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `headerName`                                   | *string*                                       | :heavy_minus_sign:                             | N/A                                            |
+| `justification`                                | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `kind`                                         | [models.PayloadKind](../models/payloadkind.md) | :heavy_minus_sign:                             | N/A                                            |
+| `previousStatus`                               | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `projectId`                                    | *string*                                       | :heavy_check_mark:                             | N/A                                            |
+| `url`                                          | *string*                                       | :heavy_minus_sign:                             | N/A                                            |

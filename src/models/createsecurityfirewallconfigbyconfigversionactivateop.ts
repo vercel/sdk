@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -1170,9 +1170,11 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRequest$outbound
     CreateSecurityFirewallConfigByConfigVersionActivateRequest$Outbound,
     z.ZodTypeDef,
     CreateSecurityFirewallConfigByConfigVersionActivateRequest
-  > = z.object({
-    configVersion: z.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      configVersion: z.string(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRequestToJSON(
   createSecurityFirewallConfigByConfigVersionActivateRequest:
@@ -1190,7 +1192,7 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateChanges$inboundS
     CreateSecurityFirewallConfigByConfigVersionActivateChanges,
     z.ZodTypeDef,
     unknown
-  > = z.object({});
+  > = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function createSecurityFirewallConfigByConfigVersionActivateChangesFromJSON(
   jsonString: string,
@@ -1211,13 +1213,17 @@ export function createSecurityFirewallConfigByConfigVersionActivateChangesFromJS
 export const CreateSecurityFirewallConfigByConfigVersionActivateOp$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateOp
-  > = z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateOp);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateOp)
+  );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateType$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateType
-  > = z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateType);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateType)
+  );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateValue$inboundSchema:
@@ -1225,7 +1231,9 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateValue$inboundSch
     CreateSecurityFirewallConfigByConfigVersionActivateValue,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.string(), types.number(), z.array(types.string())]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), types.number(), z.array(types.string())])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateValueFromJSON(
   jsonString: string,
@@ -1248,15 +1256,18 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditio
     CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    key: types.optional(types.string()),
-    neg: types.optional(types.boolean()),
-    op: CreateSecurityFirewallConfigByConfigVersionActivateOp$inboundSchema,
-    type: CreateSecurityFirewallConfigByConfigVersionActivateType$inboundSchema,
-    value: types.optional(
-      smartUnion([types.string(), types.number(), z.array(types.string())]),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      key: types.optional(types.string()),
+      neg: types.optional(types.boolean()),
+      op: CreateSecurityFirewallConfigByConfigVersionActivateOp$inboundSchema,
+      type:
+        CreateSecurityFirewallConfigByConfigVersionActivateType$inboundSchema,
+      value: types.optional(
+        smartUnion([types.string(), types.number(), z.array(types.string())]),
+      ),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateSecurityConditionsFromJSON(
   jsonString: string,
@@ -1279,13 +1290,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup$i
     CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    conditions: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      conditions: z.array(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateSecurityConditions$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateConditionGroupFromJSON(
   jsonString: string,
@@ -1308,17 +1319,17 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateConditions$inbou
     CreateSecurityFirewallConfigByConfigVersionActivateConditions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    active: types.boolean(),
-    conditionGroup: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      active: types.boolean(),
+      conditionGroup: z.array(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateConditionGroup$inboundSchema
-      ),
-    ),
-    description: types.optional(types.string()),
-    id: types.string(),
-    name: types.string(),
-  });
+      )),
+      description: types.optional(types.string()),
+      id: types.string(),
+      name: types.string(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateConditionsFromJSON(
   jsonString: string,
@@ -1339,8 +1350,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateConditionsFro
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsGenAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsGenAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsGenAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsGenAction,
+    )
   );
 
 /** @internal */
@@ -1349,11 +1362,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateGen$inboundSchem
     CreateSecurityFirewallConfigByConfigVersionActivateGen,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsGenAction$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsGenAction$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateGenFromJSON(
   jsonString: string,
@@ -1374,8 +1389,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateGenFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction,
+    )
   );
 
 /** @internal */
@@ -1384,11 +1401,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateJava$inboundSche
     CreateSecurityFirewallConfigByConfigVersionActivateJava,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityAction$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateJavaFromJSON(
   jsonString: string,
@@ -1409,8 +1428,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateJavaFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction,
+    )
   );
 
 /** @internal */
@@ -1419,11 +1440,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateLfi$inboundSchem
     CreateSecurityFirewallConfigByConfigVersionActivateLfi,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponseAction$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateLfiFromJSON(
   jsonString: string,
@@ -1444,8 +1467,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateLfiFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action,
+    )
   );
 
 /** @internal */
@@ -1454,11 +1479,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateMa$inboundSchema
     CreateSecurityFirewallConfigByConfigVersionActivateMa,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200Action$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateMaFromJSON(
   jsonString: string,
@@ -1480,8 +1507,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateMaFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction,
+    )
   );
 
 /** @internal */
@@ -1490,11 +1519,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivatePhp$inboundSchem
     CreateSecurityFirewallConfigByConfigVersionActivatePhp,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONAction$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivatePhpFromJSON(
   jsonString: string,
@@ -1515,8 +1546,10 @@ export function createSecurityFirewallConfigByConfigVersionActivatePhpFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction,
+    )
   );
 
 /** @internal */
@@ -1525,11 +1558,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRce$inboundSchem
     CreateSecurityFirewallConfigByConfigVersionActivateRce,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRceFromJSON(
   jsonString: string,
@@ -1550,8 +1585,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateRceFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction,
+    )
   );
 
 /** @internal */
@@ -1560,11 +1597,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRfi$inboundSchem
     CreateSecurityFirewallConfigByConfigVersionActivateRfi,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsAction$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRfiFromJSON(
   jsonString: string,
@@ -1585,8 +1624,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateRfiFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction,
+    )
   );
 
 /** @internal */
@@ -1595,11 +1636,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateSd$inboundSchema
     CreateSecurityFirewallConfigByConfigVersionActivateSd,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSdAction$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateSdFromJSON(
   jsonString: string,
@@ -1621,8 +1664,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateSdFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction,
+    )
   );
 
 /** @internal */
@@ -1631,11 +1676,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateSf$inboundSchema
     CreateSecurityFirewallConfigByConfigVersionActivateSf,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSfAction$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateSfFromJSON(
   jsonString: string,
@@ -1657,8 +1704,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateSfFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction,
+    )
   );
 
 /** @internal */
@@ -1667,11 +1716,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateSqli$inboundSche
     CreateSecurityFirewallConfigByConfigVersionActivateSqli,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsSqliAction$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateSqliFromJSON(
   jsonString: string,
@@ -1692,8 +1743,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateSqliFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction,
+    )
   );
 
 /** @internal */
@@ -1702,11 +1755,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateXss$inboundSchem
     CreateSecurityFirewallConfigByConfigVersionActivateXss,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema,
-    active: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyCrsXssAction$inboundSchema,
+      active: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateXssFromJSON(
   jsonString: string,
@@ -1729,41 +1784,43 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateCrs$inboundSchem
     CreateSecurityFirewallConfigByConfigVersionActivateCrs,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    gen: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateGen$inboundSchema
-    ),
-    java: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateJava$inboundSchema
-    ),
-    lfi: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateLfi$inboundSchema
-    ),
-    ma: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateMa$inboundSchema
-    ),
-    php: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivatePhp$inboundSchema
-    ),
-    rce: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRce$inboundSchema
-    ),
-    rfi: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRfi$inboundSchema
-    ),
-    sd: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateSd$inboundSchema
-    ),
-    sf: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateSf$inboundSchema
-    ),
-    sqli: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateSqli$inboundSchema
-    ),
-    xss: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateXss$inboundSchema
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      gen: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateGen$inboundSchema
+      ),
+      java: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateJava$inboundSchema
+      ),
+      lfi: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateLfi$inboundSchema
+      ),
+      ma: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateMa$inboundSchema
+      ),
+      php: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivatePhp$inboundSchema
+      ),
+      rce: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateRce$inboundSchema
+      ),
+      rfi: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateRfi$inboundSchema
+      ),
+      sd: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateSd$inboundSchema
+      ),
+      sf: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateSf$inboundSchema
+      ),
+      sqli: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateSqli$inboundSchema
+      ),
+      xss: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateXss$inboundSchema
+      ),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateCrsFromJSON(
   jsonString: string,
@@ -1784,7 +1841,9 @@ export function createSecurityFirewallConfigByConfigVersionActivateCrsFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateAction
-  > = z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateAction);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateAction)
+  );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateIps$inboundSchema:
@@ -1792,14 +1851,16 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateIps$inboundSchem
     CreateSecurityFirewallConfigByConfigVersionActivateIps,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateAction$inboundSchema,
-    hostname: types.string(),
-    id: types.string(),
-    ip: types.string(),
-    notes: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateAction$inboundSchema,
+      hostname: types.string(),
+      id: types.string(),
+      ip: types.string(),
+      notes: types.optional(types.string()),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateIpsFromJSON(
   jsonString: string,
@@ -1820,8 +1881,8 @@ export function createSecurityFirewallConfigByConfigVersionActivateIpsFromJSON(
 export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeaders2$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeaders2
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeaders2,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateLogHeaders2)
   );
 
 /** @internal */
@@ -1830,10 +1891,12 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeaders$inbou
     CreateSecurityFirewallConfigByConfigVersionActivateLogHeaders,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(types.string()),
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeaders2$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(types.string()),
+      CreateSecurityFirewallConfigByConfigVersionActivateLogHeaders2$inboundSchema,
+    ])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateLogHeadersFromJSON(
   jsonString: string,
@@ -1854,8 +1917,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateLogHeadersFro
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction,
+    )
   );
 
 /** @internal */
@@ -1864,15 +1929,17 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateAiBots$inboundSc
     CreateSecurityFirewallConfigByConfigVersionActivateAiBots,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: types.optional(
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema,
-    ),
-    active: types.boolean(),
-    updatedAt: types.optional(types.string()),
-    userId: types.optional(types.string()),
-    username: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: types.optional(
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesAction$inboundSchema,
+      ),
+      active: types.boolean(),
+      updatedAt: types.optional(types.string()),
+      userId: types.optional(types.string()),
+      username: types.optional(types.string()),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateAiBotsFromJSON(
   jsonString: string,
@@ -1893,8 +1960,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateAiBotsFromJSO
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesBotProtectionAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesBotProtectionAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesBotProtectionAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesBotProtectionAction,
+    )
   );
 
 /** @internal */
@@ -1903,15 +1972,17 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateBotProtection$in
     CreateSecurityFirewallConfigByConfigVersionActivateBotProtection,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: types.optional(
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesBotProtectionAction$inboundSchema,
-    ),
-    active: types.boolean(),
-    updatedAt: types.optional(types.string()),
-    userId: types.optional(types.string()),
-    username: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: types.optional(
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesBotProtectionAction$inboundSchema,
+      ),
+      active: types.boolean(),
+      updatedAt: types.optional(types.string()),
+      userId: types.optional(types.string()),
+      username: types.optional(types.string()),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateBotProtectionFromJSON(
   jsonString: string,
@@ -1932,8 +2003,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateBotProtection
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction,
+    )
   );
 
 /** @internal */
@@ -1942,15 +2015,17 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateOwasp$inboundSch
     CreateSecurityFirewallConfigByConfigVersionActivateOwasp,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: types.optional(
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema,
-    ),
-    active: types.boolean(),
-    updatedAt: types.optional(types.string()),
-    userId: types.optional(types.string()),
-    username: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: types.optional(
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesOwaspAction$inboundSchema,
+      ),
+      active: types.boolean(),
+      updatedAt: types.optional(types.string()),
+      userId: types.optional(types.string()),
+      username: types.optional(types.string()),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateOwaspFromJSON(
   jsonString: string,
@@ -1971,8 +2046,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateOwaspFromJSON
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction,
+    )
   );
 
 /** @internal */
@@ -1981,15 +2058,17 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateTrafficSources$i
     CreateSecurityFirewallConfigByConfigVersionActivateTrafficSources,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: types.optional(
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction$inboundSchema,
-    ),
-    active: types.boolean(),
-    updatedAt: types.optional(types.string()),
-    userId: types.optional(types.string()),
-    username: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: types.optional(
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesTrafficSourcesAction$inboundSchema,
+      ),
+      active: types.boolean(),
+      updatedAt: types.optional(types.string()),
+      userId: types.optional(types.string()),
+      username: types.optional(types.string()),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateTrafficSourcesFromJSON(
   jsonString: string,
@@ -2010,8 +2089,10 @@ export function createSecurityFirewallConfigByConfigVersionActivateTrafficSource
 export const CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction,
+    )
   );
 
 /** @internal */
@@ -2020,15 +2101,17 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateVercelRuleset$in
     CreateSecurityFirewallConfigByConfigVersionActivateVercelRuleset,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: types.optional(
-      CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema,
-    ),
-    active: types.boolean(),
-    updatedAt: types.optional(types.string()),
-    userId: types.optional(types.string()),
-    username: types.optional(types.string()),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: types.optional(
+        CreateSecurityFirewallConfigByConfigVersionActivateSecurityResponse200ApplicationJSONResponseBodyManagedRulesVercelRulesetAction$inboundSchema,
+      ),
+      active: types.boolean(),
+      updatedAt: types.optional(types.string()),
+      userId: types.optional(types.string()),
+      username: types.optional(types.string()),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateVercelRulesetFromJSON(
   jsonString: string,
@@ -2051,40 +2134,32 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateManagedRules$inb
     CreateSecurityFirewallConfigByConfigVersionActivateManagedRules,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    ai_bots: types.optional(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      ai_bots: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateAiBots$inboundSchema
-      ),
-    ),
-    bot_protection: types.optional(
-      z.lazy(() =>
+      )),
+      bot_protection: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateBotProtection$inboundSchema
-      ),
-    ),
-    owasp: types.optional(
-      z.lazy(() =>
+      )),
+      owasp: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateOwasp$inboundSchema
-      ),
-    ),
-    traffic_sources: types.optional(
-      z.lazy(() =>
+      )),
+      traffic_sources: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateTrafficSources$inboundSchema
-      ),
-    ),
-    vercel_ruleset: types.optional(
-      z.lazy(() =>
+      )),
+      vercel_ruleset: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateVercelRuleset$inboundSchema
-      ),
-    ),
-  }).transform((v) => {
-    return remap$(v, {
-      "ai_bots": "aiBots",
-      "bot_protection": "botProtection",
-      "traffic_sources": "trafficSources",
-      "vercel_ruleset": "vercelRuleset",
-    });
-  });
+      )),
+    }).transform((v) => {
+      return remap$(v, {
+        "ai_bots": "aiBots",
+        "bot_protection": "botProtection",
+        "traffic_sources": "trafficSources",
+        "vercel_ruleset": "vercelRuleset",
+      });
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateManagedRulesFromJSON(
   jsonString: string,
@@ -2105,16 +2180,20 @@ export function createSecurityFirewallConfigByConfigVersionActivateManagedRulesF
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction,
+    )
   );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2,
+    )
   );
 
 /** @internal */
@@ -2123,10 +2202,12 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityLog
     CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityLogHeaders,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(types.string()),
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(types.string()),
+      CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2$inboundSchema,
+    ])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityLogHeadersFromJSON(
   jsonString: string,
@@ -2147,16 +2228,20 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurity
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction,
+    )
   );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo,
+    )
   );
 
 /** @internal */
@@ -2165,16 +2250,18 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRat
     CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimit,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: z.nullable(
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction$inboundSchema,
-    ).optional(),
-    algo:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo$inboundSchema,
-    keys: z.array(types.string()),
-    limit: types.number(),
-    window: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: z.nullable(
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONAction$inboundSchema,
+      ).optional(),
+      algo:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAlgo$inboundSchema,
+      keys: z.array(types.string()),
+      limit: types.number(),
+      window: types.number(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimitFromJSON(
   jsonString: string,
@@ -2197,10 +2284,12 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRed
     CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirect,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    location: types.string(),
-    permanent: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      location: types.string(),
+      permanent: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirectFromJSON(
   jsonString: string,
@@ -2223,28 +2312,26 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMit
     CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigate,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction$inboundSchema,
-    actionDuration: z.nullable(types.string()).optional(),
-    bypassSystem: z.nullable(types.boolean()).optional(),
-    logHeaders: types.optional(
-      smartUnion([
-        z.array(types.string()),
-        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2$inboundSchema,
-      ]),
-    ),
-    rateLimit: z.nullable(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponseAction$inboundSchema,
+      actionDuration: z.nullable(types.string()).optional(),
+      bypassSystem: z.nullable(types.boolean()).optional(),
+      logHeaders: types.optional(
+        smartUnion([
+          z.array(types.string()),
+          CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2$inboundSchema,
+        ]),
+      ),
+      rateLimit: z.nullable(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRateLimit$inboundSchema
-      ),
-    ).optional(),
-    redirect: z.nullable(
-      z.lazy(() =>
+      )).optional(),
+      redirect: z.nullable(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityRedirect$inboundSchema
-      ),
-    ).optional(),
-  });
+      )).optional(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigateFromJSON(
   jsonString: string,
@@ -2267,13 +2354,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAct
     CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    mitigate: types.optional(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      mitigate: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityMitigate$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityActionFromJSON(
   jsonString: string,
@@ -2294,16 +2381,20 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurity
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp,
+    )
   );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType,
+    )
   );
 
 /** @internal */
@@ -2312,7 +2403,9 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityVal
     CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityValue,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.string(), types.number(), z.array(types.string())]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), types.number(), z.array(types.string())])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityValueFromJSON(
   jsonString: string,
@@ -2335,17 +2428,19 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityCon
     CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    key: types.optional(types.string()),
-    neg: types.optional(types.boolean()),
-    op:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp$inboundSchema,
-    type:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType$inboundSchema,
-    value: types.optional(
-      smartUnion([types.string(), types.number(), z.array(types.string())]),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      key: types.optional(types.string()),
+      neg: types.optional(types.boolean()),
+      op:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityOp$inboundSchema,
+      type:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityType$inboundSchema,
+      value: types.optional(
+        smartUnion([types.string(), types.number(), z.array(types.string())]),
+      ),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionsFromJSON(
   jsonString: string,
@@ -2368,13 +2463,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityCon
     CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    conditions: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      conditions: z.array(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditions$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroupFromJSON(
   jsonString: string,
@@ -2397,22 +2492,22 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRules2$inboundSc
     CreateSecurityFirewallConfigByConfigVersionActivateRules2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction$inboundSchema
-    ),
-    active: types.boolean(),
-    conditionGroup: z.array(
-      z.lazy(() =>
-        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityAction$inboundSchema
       ),
-    ),
-    description: types.optional(types.string()),
-    id: types.string(),
-    name: types.string(),
-    valid: types.literal(false),
-    validationErrors: z.array(types.string()),
-  });
+      active: types.boolean(),
+      conditionGroup: z.array(z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityConditionGroup$inboundSchema
+      )),
+      description: types.optional(types.string()),
+      id: types.string(),
+      name: types.string(),
+      valid: types.literal(false),
+      validationErrors: z.array(types.string()),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRules2FromJSON(
   jsonString: string,
@@ -2433,16 +2528,20 @@ export function createSecurityFirewallConfigByConfigVersionActivateRules2FromJSO
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action,
+    )
   );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2,
+    )
   );
 
 /** @internal */
@@ -2451,10 +2550,12 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesLogHeaders$
     CreateSecurityFirewallConfigByConfigVersionActivateRulesLogHeaders,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(types.string()),
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(types.string()),
+      CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2$inboundSchema,
+    ])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesLogHeadersFromJSON(
   jsonString: string,
@@ -2475,16 +2576,18 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesLogHeade
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction,
+    )
   );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesAlgo$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesAlgo
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesAlgo,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateRulesAlgo)
   );
 
 /** @internal */
@@ -2493,16 +2596,18 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesRateLimit$i
     CreateSecurityFirewallConfigByConfigVersionActivateRulesRateLimit,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: z.nullable(
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
-    ).optional(),
-    algo:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesAlgo$inboundSchema,
-    keys: z.array(types.string()),
-    limit: types.number(),
-    window: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: z.nullable(
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200ApplicationJSONResponseBodyAction$inboundSchema,
+      ).optional(),
+      algo:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesAlgo$inboundSchema,
+      keys: z.array(types.string()),
+      limit: types.number(),
+      window: types.number(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesRateLimitFromJSON(
   jsonString: string,
@@ -2525,10 +2630,12 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesRedirect$in
     CreateSecurityFirewallConfigByConfigVersionActivateRulesRedirect,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    location: types.string(),
-    permanent: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      location: types.string(),
+      permanent: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesRedirectFromJSON(
   jsonString: string,
@@ -2551,28 +2658,26 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesMitigate$in
     CreateSecurityFirewallConfigByConfigVersionActivateRulesMitigate,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action$inboundSchema,
-    actionDuration: z.nullable(types.string()).optional(),
-    bypassSystem: z.nullable(types.boolean()).optional(),
-    logHeaders: types.optional(
-      smartUnion([
-        z.array(types.string()),
-        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2$inboundSchema,
-      ]),
-    ),
-    rateLimit: z.nullable(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesSecurityResponse200Action$inboundSchema,
+      actionDuration: z.nullable(types.string()).optional(),
+      bypassSystem: z.nullable(types.boolean()).optional(),
+      logHeaders: types.optional(
+        smartUnion([
+          z.array(types.string()),
+          CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse200ApplicationJson2$inboundSchema,
+        ]),
+      ),
+      rateLimit: z.nullable(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesRateLimit$inboundSchema
-      ),
-    ).optional(),
-    redirect: z.nullable(
-      z.lazy(() =>
+      )).optional(),
+      redirect: z.nullable(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesRedirect$inboundSchema
-      ),
-    ).optional(),
-  });
+      )).optional(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesMitigateFromJSON(
   jsonString: string,
@@ -2595,13 +2700,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesAction$inbo
     CreateSecurityFirewallConfigByConfigVersionActivateRulesAction,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    mitigate: types.optional(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      mitigate: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesMitigate$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesActionFromJSON(
   jsonString: string,
@@ -2622,14 +2727,16 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesActionFr
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesOp$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesOp
-  > = z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateRulesOp);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateRulesOp)
+  );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesType$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesType
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateRulesType)
   );
 
 /** @internal */
@@ -2638,7 +2745,9 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesValue$inbou
     CreateSecurityFirewallConfigByConfigVersionActivateRulesValue,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.string(), types.number(), z.array(types.string())]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), types.number(), z.array(types.string())])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesValueFromJSON(
   jsonString: string,
@@ -2661,17 +2770,19 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesConditions$
     CreateSecurityFirewallConfigByConfigVersionActivateRulesConditions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    key: types.optional(types.string()),
-    neg: types.optional(types.boolean()),
-    op:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesOp$inboundSchema,
-    type:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesType$inboundSchema,
-    value: types.optional(
-      smartUnion([types.string(), types.number(), z.array(types.string())]),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      key: types.optional(types.string()),
+      neg: types.optional(types.boolean()),
+      op:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesOp$inboundSchema,
+      type:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesType$inboundSchema,
+      value: types.optional(
+        smartUnion([types.string(), types.number(), z.array(types.string())]),
+      ),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesConditionsFromJSON(
   jsonString: string,
@@ -2694,13 +2805,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesConditionGr
     CreateSecurityFirewallConfigByConfigVersionActivateRulesConditionGroup,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    conditions: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      conditions: z.array(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesConditions$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesConditionGroupFromJSON(
   jsonString: string,
@@ -2723,22 +2834,22 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRules1$inboundSc
     CreateSecurityFirewallConfigByConfigVersionActivateRules1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesAction$inboundSchema
-    ),
-    active: types.boolean(),
-    conditionGroup: z.array(
-      z.lazy(() =>
-        CreateSecurityFirewallConfigByConfigVersionActivateRulesConditionGroup$inboundSchema
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesAction$inboundSchema
       ),
-    ),
-    description: types.optional(types.string()),
-    id: types.string(),
-    name: types.string(),
-    valid: types.literal(true),
-    validationErrors: z.nullable(z.any()).optional(),
-  });
+      active: types.boolean(),
+      conditionGroup: z.array(z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesConditionGroup$inboundSchema
+      )),
+      description: types.optional(types.string()),
+      id: types.string(),
+      name: types.string(),
+      valid: types.literal(true),
+      validationErrors: z.nullable(z.any()).optional(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRules1FromJSON(
   jsonString: string,
@@ -2761,14 +2872,16 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRules$inboundSch
     CreateSecurityFirewallConfigByConfigVersionActivateRules,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRules1$inboundSchema
-    ),
-    z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRules2$inboundSchema
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateRules1$inboundSchema
+      ),
+      z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateRules2$inboundSchema
+      ),
+    ])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesFromJSON(
   jsonString: string,
@@ -2789,16 +2902,20 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesFromJSON
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction,
+    )
   );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2,
+    )
   );
 
 /** @internal */
@@ -2807,10 +2924,12 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsLogHeade
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsLogHeaders,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(types.string()),
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(types.string()),
+      CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2$inboundSchema,
+    ])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsLogHeadersFromJSON(
   jsonString: string,
@@ -2831,16 +2950,20 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesetsLogHe
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction,
+    )
   );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAlgo$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAlgo
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAlgo,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAlgo,
+    )
   );
 
 /** @internal */
@@ -2849,16 +2972,18 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRateLimi
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRateLimit,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: z.nullable(
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction$inboundSchema,
-    ).optional(),
-    algo:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAlgo$inboundSchema,
-    keys: z.array(types.string()),
-    limit: types.number(),
-    window: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: z.nullable(
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponseAction$inboundSchema,
+      ).optional(),
+      algo:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAlgo$inboundSchema,
+      keys: z.array(types.string()),
+      limit: types.number(),
+      window: types.number(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsRateLimitFromJSON(
   jsonString: string,
@@ -2881,10 +3006,12 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRedirect
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRedirect,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    location: types.string(),
-    permanent: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      location: types.string(),
+      permanent: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsRedirectFromJSON(
   jsonString: string,
@@ -2907,28 +3034,26 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesets2$inboun
     CreateSecurityFirewallConfigByConfigVersionActivateRulesets2,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction$inboundSchema,
-    actionDuration: z.nullable(types.string()).optional(),
-    bypassSystem: z.nullable(types.boolean()).optional(),
-    logHeaders: types.optional(
-      smartUnion([
-        z.array(types.string()),
-        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2$inboundSchema,
-      ]),
-    ),
-    rateLimit: z.nullable(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAction$inboundSchema,
+      actionDuration: z.nullable(types.string()).optional(),
+      bypassSystem: z.nullable(types.boolean()).optional(),
+      logHeaders: types.optional(
+        smartUnion([
+          z.array(types.string()),
+          CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurity2$inboundSchema,
+        ]),
+      ),
+      rateLimit: z.nullable(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRateLimit$inboundSchema
-      ),
-    ).optional(),
-    redirect: z.nullable(
-      z.lazy(() =>
+      )).optional(),
+      redirect: z.nullable(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesetsRedirect$inboundSchema
-      ),
-    ).optional(),
-  });
+      )).optional(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesets2FromJSON(
   jsonString: string,
@@ -2949,16 +3074,18 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesets2From
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsOp$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsOp
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsOp,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(CreateSecurityFirewallConfigByConfigVersionActivateRulesetsOp)
   );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsType$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsType
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsType,
+    )
   );
 
 /** @internal */
@@ -2967,7 +3094,9 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsValue$in
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsValue,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.string(), types.number(), z.array(types.string())]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.string(), types.number(), z.array(types.string())])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsValueFromJSON(
   jsonString: string,
@@ -2990,17 +3119,19 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditio
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditions,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    key: types.optional(types.string()),
-    neg: types.optional(types.boolean()),
-    op:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsOp$inboundSchema,
-    type:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsType$inboundSchema,
-    value: types.optional(
-      smartUnion([types.string(), types.number(), z.array(types.string())]),
-    ),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      key: types.optional(types.string()),
+      neg: types.optional(types.boolean()),
+      op:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsOp$inboundSchema,
+      type:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsType$inboundSchema,
+      value: types.optional(
+        smartUnion([types.string(), types.number(), z.array(types.string())]),
+      ),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsConditionsFromJSON(
   jsonString: string,
@@ -3023,13 +3154,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditio
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditionGroup,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    conditions: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      conditions: z.array(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditions$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsConditionGroupFromJSON(
   jsonString: string,
@@ -3050,16 +3181,20 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesetsCondi
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action,
+    )
   );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002,
+    )
   );
 
 /** @internal */
@@ -3068,10 +3203,12 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurity
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityLogHeaders,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(types.string()),
-    CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002$inboundSchema,
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(types.string()),
+      CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002$inboundSchema,
+    ])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityLogHeadersFromJSON(
   jsonString: string,
@@ -3092,16 +3229,20 @@ export function createSecurityFirewallConfigByConfigVersionActivateRulesetsSecur
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction,
+    )
   );
 
 /** @internal */
 export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo$inboundSchema:
   z.ZodNativeEnum<
     typeof CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo
-  > = z.nativeEnum(
-    CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo,
+    )
   );
 
 /** @internal */
@@ -3110,16 +3251,18 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurity
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimit,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action: z.nullable(
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction$inboundSchema,
-    ).optional(),
-    algo:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo$inboundSchema,
-    keys: z.array(types.string()),
-    limit: types.number(),
-    window: types.number(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action: z.nullable(
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200ApplicationJSONAction$inboundSchema,
+      ).optional(),
+      algo:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityAlgo$inboundSchema,
+      keys: z.array(types.string()),
+      limit: types.number(),
+      window: types.number(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimitFromJSON(
   jsonString: string,
@@ -3142,10 +3285,12 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurity
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirect,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    location: types.string(),
-    permanent: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      location: types.string(),
+      permanent: types.boolean(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirectFromJSON(
   jsonString: string,
@@ -3168,28 +3313,26 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsMitigate
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsMitigate,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    action:
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action$inboundSchema,
-    actionDuration: z.nullable(types.string()).optional(),
-    bypassSystem: z.nullable(types.boolean()).optional(),
-    logHeaders: types.optional(
-      smartUnion([
-        z.array(types.string()),
-        CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002$inboundSchema,
-      ]),
-    ),
-    rateLimit: z.nullable(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      action:
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityResponse200Action$inboundSchema,
+      actionDuration: z.nullable(types.string()).optional(),
+      bypassSystem: z.nullable(types.boolean()).optional(),
+      logHeaders: types.optional(
+        smartUnion([
+          z.array(types.string()),
+          CreateSecurityFirewallConfigByConfigVersionActivateLogHeadersSecurityResponse2002$inboundSchema,
+        ]),
+      ),
+      rateLimit: z.nullable(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRateLimit$inboundSchema
-      ),
-    ).optional(),
-    redirect: z.nullable(
-      z.lazy(() =>
+      )).optional(),
+      redirect: z.nullable(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesetsSecurityRedirect$inboundSchema
-      ),
-    ).optional(),
-  });
+      )).optional(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsMitigateFromJSON(
   jsonString: string,
@@ -3212,13 +3355,13 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAction$i
     CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAction,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    mitigate: types.optional(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      mitigate: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesetsMitigate$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsActionFromJSON(
   jsonString: string,
@@ -3241,22 +3384,20 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesets1$inboun
     CreateSecurityFirewallConfigByConfigVersionActivateRulesets1,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    active: types.boolean(),
-    conditionGroup: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      active: types.boolean(),
+      conditionGroup: z.array(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesetsConditionGroup$inboundSchema
-      ),
-    ),
-    description: types.optional(types.string()),
-    id: types.string(),
-    name: types.string(),
-    action: types.optional(
-      z.lazy(() =>
+      )),
+      description: types.optional(types.string()),
+      id: types.string(),
+      name: types.string(),
+      action: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateRulesetsAction$inboundSchema
-      ),
-    ),
-  });
+      )),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesets1FromJSON(
   jsonString: string,
@@ -3279,14 +3420,16 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateRulesets$inbound
     CreateSecurityFirewallConfigByConfigVersionActivateRulesets,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([
-    z.array(z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesets1$inboundSchema
-    )),
-    z.record(z.lazy(() =>
-      CreateSecurityFirewallConfigByConfigVersionActivateRulesets2$inboundSchema
-    )),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.array(z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesets1$inboundSchema
+      )),
+      z.record(z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateRulesets2$inboundSchema
+      )),
+    ])
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateRulesetsFromJSON(
   jsonString: string,
@@ -3309,55 +3452,43 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateResponseBody$inb
     CreateSecurityFirewallConfigByConfigVersionActivateResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    botIdEnabled: types.optional(types.boolean()),
-    changes: z.array(
-      z.lazy(() =>
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      botIdEnabled: types.optional(types.boolean()),
+      changes: z.array(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateChanges$inboundSchema
-      ),
-    ),
-    conditions: types.optional(
-      z.array(z.lazy(() =>
-        CreateSecurityFirewallConfigByConfigVersionActivateConditions$inboundSchema
       )),
-    ),
-    crs: types.optional(
-      z.lazy(() =>
+      conditions: types.optional(z.array(z.lazy(() =>
+        CreateSecurityFirewallConfigByConfigVersionActivateConditions$inboundSchema
+      ))),
+      crs: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateCrs$inboundSchema
-      ),
-    ),
-    firewallEnabled: types.boolean(),
-    id: types.string(),
-    ips: z.array(
-      z.lazy(() =>
+      )),
+      firewallEnabled: types.boolean(),
+      id: types.string(),
+      ips: z.array(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateIps$inboundSchema
+      )),
+      logHeaders: types.optional(
+        smartUnion([
+          z.array(types.string()),
+          CreateSecurityFirewallConfigByConfigVersionActivateLogHeaders2$inboundSchema,
+        ]),
       ),
-    ),
-    logHeaders: types.optional(
-      smartUnion([
-        z.array(types.string()),
-        CreateSecurityFirewallConfigByConfigVersionActivateLogHeaders2$inboundSchema,
-      ]),
-    ),
-    managedRules: types.optional(
-      z.lazy(() =>
+      managedRules: types.optional(z.lazy(() =>
         CreateSecurityFirewallConfigByConfigVersionActivateManagedRules$inboundSchema
-      ),
-    ),
-    ownerId: types.string(),
-    projectKey: types.string(),
-    rules: z.array(
-      smartUnion([
+      )),
+      ownerId: types.string(),
+      projectKey: types.string(),
+      rules: z.array(smartUnion([
         z.lazy(() =>
           CreateSecurityFirewallConfigByConfigVersionActivateRules1$inboundSchema
         ),
         z.lazy(() =>
           CreateSecurityFirewallConfigByConfigVersionActivateRules2$inboundSchema
         ),
-      ]),
-    ),
-    rulesets: types.optional(
-      smartUnion([
+      ])),
+      rulesets: types.optional(smartUnion([
         z.array(
           z.lazy(() =>
             CreateSecurityFirewallConfigByConfigVersionActivateRulesets1$inboundSchema
@@ -3368,11 +3499,11 @@ export const CreateSecurityFirewallConfigByConfigVersionActivateResponseBody$inb
             CreateSecurityFirewallConfigByConfigVersionActivateRulesets2$inboundSchema
           ),
         ),
-      ]),
-    ),
-    updatedAt: types.string(),
-    version: types.number(),
-  });
+      ])),
+      updatedAt: types.string(),
+      version: types.number(),
+    })
+  );
 
 export function createSecurityFirewallConfigByConfigVersionActivateResponseBodyFromJSON(
   jsonString: string,

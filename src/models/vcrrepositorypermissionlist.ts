@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
@@ -28,10 +28,12 @@ export const VcrRepositoryPermissionList$inboundSchema: z.ZodType<
   VcrRepositoryPermissionList,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  nextCursor: types.optional(types.string()),
-  permissions: z.array(VcrRepositoryPermission$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    nextCursor: types.optional(types.string()),
+    permissions: z.array(VcrRepositoryPermission$inboundSchema),
+  })
+);
 
 export function vcrRepositoryPermissionListFromJSON(
   jsonString: string,

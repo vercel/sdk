@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -177,7 +177,9 @@ export type SearchRepoResponseBody =
 /** @internal */
 export const SearchRepoQueryParamProvider$outboundSchema: z.ZodNativeEnum<
   typeof SearchRepoQueryParamProvider
-> = z.nativeEnum(SearchRepoQueryParamProvider);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(SearchRepoQueryParamProvider)
+);
 
 /** @internal */
 export type SearchRepoRequest$Outbound = {
@@ -195,15 +197,17 @@ export const SearchRepoRequest$outboundSchema: z.ZodType<
   SearchRepoRequest$Outbound,
   z.ZodTypeDef,
   SearchRepoRequest
-> = z.object({
-  query: z.string().optional(),
-  namespaceId: z.nullable(z.any()).optional(),
-  provider: SearchRepoQueryParamProvider$outboundSchema.optional(),
-  installationId: z.string().optional(),
-  host: z.string().optional(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    query: z.string().optional(),
+    namespaceId: z.nullable(z.any()).optional(),
+    provider: SearchRepoQueryParamProvider$outboundSchema.optional(),
+    installationId: z.string().optional(),
+    host: z.string().optional(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function searchRepoRequestToJSON(
   searchRepoRequest: SearchRepoRequest,
@@ -218,7 +222,9 @@ export const NamespaceId$inboundSchema: z.ZodType<
   NamespaceId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function namespaceIdFromJSON(
   jsonString: string,
@@ -232,18 +238,22 @@ export function namespaceIdFromJSON(
 
 /** @internal */
 export const SearchRepoResponseBodyIntegrationsProvider$inboundSchema:
-  z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsProvider> = z
-    .nativeEnum(SearchRepoResponseBodyIntegrationsProvider);
+  z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsProvider> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(SearchRepoResponseBodyIntegrationsProvider)
+    );
 
 /** @internal */
 export const ResponseBodyGitAccount$inboundSchema: z.ZodType<
   ResponseBodyGitAccount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  namespaceId: types.nullable(smartUnion([types.string(), types.number()])),
-  provider: SearchRepoResponseBodyIntegrationsProvider$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    namespaceId: types.nullable(smartUnion([types.string(), types.number()])),
+    provider: SearchRepoResponseBodyIntegrationsProvider$inboundSchema,
+  })
+);
 
 export function responseBodyGitAccountFromJSON(
   jsonString: string,
@@ -260,7 +270,9 @@ export const ResponseBodyId$inboundSchema: z.ZodType<
   ResponseBodyId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function responseBodyIdFromJSON(
   jsonString: string,
@@ -277,7 +289,9 @@ export const SearchRepoResponseBodyId$inboundSchema: z.ZodType<
   SearchRepoResponseBodyId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number()])
+);
 
 export function searchRepoResponseBodyIdFromJSON(
   jsonString: string,
@@ -294,10 +308,12 @@ export const SearchRepoResponseBodyOwner$inboundSchema: z.ZodType<
   SearchRepoResponseBodyOwner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: smartUnion([types.string(), types.number()]),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: smartUnion([types.string(), types.number()]),
+    name: types.string(),
+  })
+);
 
 export function searchRepoResponseBodyOwnerFromJSON(
   jsonString: string,
@@ -312,31 +328,37 @@ export function searchRepoResponseBodyOwnerFromJSON(
 /** @internal */
 export const SearchRepoResponseBodyOwnerType$inboundSchema: z.ZodNativeEnum<
   typeof SearchRepoResponseBodyOwnerType
-> = z.nativeEnum(SearchRepoResponseBodyOwnerType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(SearchRepoResponseBodyOwnerType)
+);
 
 /** @internal */
 export const SearchRepoResponseBodyIntegrationsResponseProvider$inboundSchema:
-  z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsResponseProvider> = z
-    .nativeEnum(SearchRepoResponseBodyIntegrationsResponseProvider);
+  z.ZodNativeEnum<typeof SearchRepoResponseBodyIntegrationsResponseProvider> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(SearchRepoResponseBodyIntegrationsResponseProvider)
+    );
 
 /** @internal */
 export const ResponseBodyRepos$inboundSchema: z.ZodType<
   ResponseBodyRepos,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  defaultBranch: types.string(),
-  id: smartUnion([types.string(), types.number()]),
-  name: types.string(),
-  namespace: types.string(),
-  owner: z.lazy(() => SearchRepoResponseBodyOwner$inboundSchema),
-  ownerType: SearchRepoResponseBodyOwnerType$inboundSchema,
-  private: types.boolean(),
-  provider: SearchRepoResponseBodyIntegrationsResponseProvider$inboundSchema,
-  slug: types.string(),
-  updatedAt: types.number(),
-  url: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    defaultBranch: types.string(),
+    id: smartUnion([types.string(), types.number()]),
+    name: types.string(),
+    namespace: types.string(),
+    owner: z.lazy(() => SearchRepoResponseBodyOwner$inboundSchema),
+    ownerType: SearchRepoResponseBodyOwnerType$inboundSchema,
+    private: types.boolean(),
+    provider: SearchRepoResponseBodyIntegrationsResponseProvider$inboundSchema,
+    slug: types.string(),
+    updatedAt: types.number(),
+    url: types.string(),
+  })
+);
 
 export function responseBodyReposFromJSON(
   jsonString: string,
@@ -353,10 +375,12 @@ export const ResponseBody4$inboundSchema: z.ZodType<
   ResponseBody4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  gitAccount: z.lazy(() => ResponseBodyGitAccount$inboundSchema),
-  repos: z.array(z.lazy(() => ResponseBodyRepos$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    gitAccount: z.lazy(() => ResponseBodyGitAccount$inboundSchema),
+    repos: z.array(z.lazy(() => ResponseBodyRepos$inboundSchema)),
+  })
+);
 
 export function responseBody4FromJSON(
   jsonString: string,
@@ -373,10 +397,12 @@ export const GitAccount$inboundSchema: z.ZodType<
   GitAccount,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  namespaceId: types.nullable(types.string()),
-  provider: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    namespaceId: types.nullable(types.string()),
+    provider: types.string(),
+  })
+);
 
 export function gitAccountFromJSON(
   jsonString: string,
@@ -393,10 +419,12 @@ export const ResponseBodyOwner$inboundSchema: z.ZodType<
   ResponseBodyOwner,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-  name: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    name: types.string(),
+  })
+);
 
 export function responseBodyOwnerFromJSON(
   jsonString: string,
@@ -411,28 +439,32 @@ export function responseBodyOwnerFromJSON(
 /** @internal */
 export const ResponseBodyOwnerType$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyOwnerType
-> = z.nativeEnum(ResponseBodyOwnerType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyOwnerType));
 
 /** @internal */
 export const SearchRepoResponseBodyProvider$inboundSchema: z.ZodNativeEnum<
   typeof SearchRepoResponseBodyProvider
-> = z.nativeEnum(SearchRepoResponseBodyProvider);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(SearchRepoResponseBodyProvider)
+);
 
 /** @internal */
-export const Repos$inboundSchema: z.ZodType<Repos, z.ZodTypeDef, unknown> = z
-  .object({
-    defaultBranch: types.string(),
-    id: types.string(),
-    name: types.string(),
-    namespace: types.string(),
-    owner: z.lazy(() => ResponseBodyOwner$inboundSchema),
-    ownerType: ResponseBodyOwnerType$inboundSchema,
-    private: types.boolean(),
-    provider: SearchRepoResponseBodyProvider$inboundSchema,
-    slug: types.string(),
-    updatedAt: types.number(),
-    url: types.string(),
-  });
+export const Repos$inboundSchema: z.ZodType<Repos, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      defaultBranch: types.string(),
+      id: types.string(),
+      name: types.string(),
+      namespace: types.string(),
+      owner: z.lazy(() => ResponseBodyOwner$inboundSchema),
+      ownerType: ResponseBodyOwnerType$inboundSchema,
+      private: types.boolean(),
+      provider: SearchRepoResponseBodyProvider$inboundSchema,
+      slug: types.string(),
+      updatedAt: types.number(),
+      url: types.string(),
+    })
+  );
 
 export function reposFromJSON(
   jsonString: string,
@@ -449,10 +481,12 @@ export const SearchRepoResponseBody3$inboundSchema: z.ZodType<
   SearchRepoResponseBody3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  gitAccount: z.lazy(() => GitAccount$inboundSchema),
-  repos: z.array(z.lazy(() => Repos$inboundSchema)),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    gitAccount: z.lazy(() => GitAccount$inboundSchema),
+    repos: z.array(z.lazy(() => Repos$inboundSchema)),
+  })
+);
 
 export function searchRepoResponseBody3FromJSON(
   jsonString: string,
@@ -467,17 +501,19 @@ export function searchRepoResponseBody3FromJSON(
 /** @internal */
 export const ResponseBodyCode$inboundSchema: z.ZodNativeEnum<
   typeof ResponseBodyCode
-> = z.nativeEnum(ResponseBodyCode);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ResponseBodyCode));
 
 /** @internal */
 export const SearchRepoResponseBodyError$inboundSchema: z.ZodType<
   SearchRepoResponseBodyError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: ResponseBodyCode$inboundSchema,
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: ResponseBodyCode$inboundSchema,
+    message: types.string(),
+  })
+);
 
 export function searchRepoResponseBodyErrorFromJSON(
   jsonString: string,
@@ -494,9 +530,11 @@ export const SearchRepoResponseBody2$inboundSchema: z.ZodType<
   SearchRepoResponseBody2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  error: z.lazy(() => SearchRepoResponseBodyError$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    error: z.lazy(() => SearchRepoResponseBodyError$inboundSchema),
+  })
+);
 
 export function searchRepoResponseBody2FromJSON(
   jsonString: string,
@@ -513,7 +551,7 @@ export const SearchRepoResponseBody1$inboundSchema: z.ZodType<
   SearchRepoResponseBody1,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function searchRepoResponseBody1FromJSON(
   jsonString: string,
@@ -530,12 +568,14 @@ export const SearchRepoResponseBody$inboundSchema: z.ZodType<
   SearchRepoResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => SearchRepoResponseBody3$inboundSchema),
-  z.lazy(() => ResponseBody4$inboundSchema),
-  z.lazy(() => SearchRepoResponseBody2$inboundSchema),
-  z.lazy(() => SearchRepoResponseBody1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => SearchRepoResponseBody3$inboundSchema),
+    z.lazy(() => ResponseBody4$inboundSchema),
+    z.lazy(() => SearchRepoResponseBody2$inboundSchema),
+    z.lazy(() => SearchRepoResponseBody1$inboundSchema),
+  ])
+);
 
 export function searchRepoResponseBodyFromJSON(
   jsonString: string,

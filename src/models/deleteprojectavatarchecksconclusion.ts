@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -1495,11 +1495,13 @@ export const DeleteProjectAvatarRequest$outboundSchema: z.ZodType<
   DeleteProjectAvatarRequest$Outbound,
   z.ZodTypeDef,
   DeleteProjectAvatarRequest
-> = z.object({
-  idOrName: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    idOrName: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+  })
+);
 
 export function deleteProjectAvatarRequestToJSON(
   deleteProjectAvatarRequest: DeleteProjectAvatarRequest,
@@ -1512,7 +1514,9 @@ export function deleteProjectAvatarRequestToJSON(
 /** @internal */
 export const DeleteProjectAvatarConfiguredBy$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarConfiguredBy
-> = z.nativeEnum(DeleteProjectAvatarConfiguredBy);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarConfiguredBy)
+);
 
 /** @internal */
 export const DeleteProjectAvatarProjectsResponseAliasAssigned$inboundSchema:
@@ -1520,7 +1524,9 @@ export const DeleteProjectAvatarProjectsResponseAliasAssigned$inboundSchema:
     DeleteProjectAvatarProjectsResponseAliasAssigned,
     z.ZodTypeDef,
     unknown
-  > = smartUnion([types.number(), types.boolean()]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([types.number(), types.boolean()])
+  );
 
 export function deleteProjectAvatarProjectsResponseAliasAssignedFromJSON(
   jsonString: string,
@@ -1544,10 +1550,12 @@ export const DeleteProjectAvatarProjectsResponseAliasError$inboundSchema:
     DeleteProjectAvatarProjectsResponseAliasError,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    code: types.string(),
-    message: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      code: types.string(),
+      message: types.string(),
+    })
+  );
 
 export function deleteProjectAvatarProjectsResponseAliasErrorFromJSON(
   jsonString: string,
@@ -1569,8 +1577,10 @@ export function deleteProjectAvatarProjectsResponseAliasErrorFromJSON(
 export const DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType$inboundSchema:
   z.ZodNativeEnum<
     typeof DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType
-  > = z.nativeEnum(
-    DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType,
+    )
   );
 
 /** @internal */
@@ -1579,11 +1589,13 @@ export const DeleteProjectAvatarProjectsResponse200BranchMatcher$inboundSchema:
     DeleteProjectAvatarProjectsResponse200BranchMatcher,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    pattern: types.string(),
-    type:
-      DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      pattern: types.string(),
+      type:
+        DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyAliasType$inboundSchema,
+    })
+  );
 
 export function deleteProjectAvatarProjectsResponse200BranchMatcherFromJSON(
   jsonString: string,
@@ -1606,11 +1618,13 @@ export const DeleteProjectAvatarProjectsResponseBuilds$inboundSchema: z.ZodType<
   DeleteProjectAvatarProjectsResponseBuilds,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dest: types.optional(types.string()),
-  src: types.optional(types.string()),
-  use: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dest: types.optional(types.string()),
+    src: types.optional(types.string()),
+    use: types.string(),
+  })
+);
 
 export function deleteProjectAvatarProjectsResponseBuildsFromJSON(
   jsonString: string,
@@ -1631,12 +1645,16 @@ export function deleteProjectAvatarProjectsResponseBuildsFromJSON(
 /** @internal */
 export const DeleteProjectAvatarProjectsResponseChecksConclusion$inboundSchema:
   z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponseChecksConclusion> =
-    z.nativeEnum(DeleteProjectAvatarProjectsResponseChecksConclusion);
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarProjectsResponseChecksConclusion)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarProjectsResponseChecksState$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponseChecksState> = z
-    .nativeEnum(DeleteProjectAvatarProjectsResponseChecksState);
+  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponseChecksState> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarProjectsResponseChecksState)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarProjectsResponse200Creator$inboundSchema:
@@ -1644,13 +1662,15 @@ export const DeleteProjectAvatarProjectsResponse200Creator$inboundSchema:
     DeleteProjectAvatarProjectsResponse200Creator,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    email: types.string(),
-    githubLogin: types.optional(types.string()),
-    gitlabLogin: types.optional(types.string()),
-    uid: types.string(),
-    username: types.string(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      email: types.string(),
+      githubLogin: types.optional(types.string()),
+      gitlabLogin: types.optional(types.string()),
+      uid: types.string(),
+      username: types.string(),
+    })
+  );
 
 export function deleteProjectAvatarProjectsResponse200CreatorFromJSON(
   jsonString: string,
@@ -1674,29 +1694,31 @@ export const DeleteProjectAvatarProjectsResponseOidcTokenClaims$inboundSchema:
     DeleteProjectAvatarProjectsResponseOidcTokenClaims,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    aud: types.string(),
-    custom_environment_id: types.optional(types.string()),
-    deployment_id: types.optional(types.string()),
-    environment: types.string(),
-    iss: types.string(),
-    mfe_group_ids: types.optional(z.array(types.string())),
-    owner: types.string(),
-    owner_id: types.string(),
-    plan: types.optional(types.string()),
-    project: types.string(),
-    project_id: types.string(),
-    scope: types.string(),
-    sub: types.string(),
-  }).transform((v) => {
-    return remap$(v, {
-      "custom_environment_id": "customEnvironmentId",
-      "deployment_id": "deploymentId",
-      "mfe_group_ids": "mfeGroupIds",
-      "owner_id": "ownerId",
-      "project_id": "projectId",
-    });
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      aud: types.string(),
+      custom_environment_id: types.optional(types.string()),
+      deployment_id: types.optional(types.string()),
+      environment: types.string(),
+      iss: types.string(),
+      mfe_group_ids: types.optional(z.array(types.string())),
+      owner: types.string(),
+      owner_id: types.string(),
+      plan: types.optional(types.string()),
+      project: types.string(),
+      project_id: types.string(),
+      scope: types.string(),
+      sub: types.string(),
+    }).transform((v) => {
+      return remap$(v, {
+        "custom_environment_id": "customEnvironmentId",
+        "deployment_id": "deploymentId",
+        "mfe_group_ids": "mfeGroupIds",
+        "owner_id": "ownerId",
+        "project_id": "projectId",
+      });
+    })
+  );
 
 export function deleteProjectAvatarProjectsResponseOidcTokenClaimsFromJSON(
   jsonString: string,
@@ -1716,25 +1738,33 @@ export function deleteProjectAvatarProjectsResponseOidcTokenClaimsFromJSON(
 
 /** @internal */
 export const DeleteProjectAvatarProjectsResponsePlan$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponsePlan> = z
-    .nativeEnum(DeleteProjectAvatarProjectsResponsePlan);
+  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponsePlan> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarProjectsResponsePlan)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarProjectsResponseReadyState$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponseReadyState> = z
-    .nativeEnum(DeleteProjectAvatarProjectsResponseReadyState);
+  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponseReadyState> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarProjectsResponseReadyState)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarProjectsResponseReadySubstate$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponseReadySubstate> = z
-    .nativeEnum(DeleteProjectAvatarProjectsResponseReadySubstate);
+  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponseReadySubstate> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarProjectsResponseReadySubstate)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema:
   z.ZodNativeEnum<
     typeof DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType
-  > = z.nativeEnum(
-    DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType,
+    )
   );
 
 /** @internal */
@@ -1742,68 +1772,64 @@ export const DeleteProjectAvatarDeployment$inboundSchema: z.ZodType<
   DeleteProjectAvatarDeployment,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alias: types.optional(z.array(types.string())),
-  aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
-    .optional(),
-  aliasError: z.nullable(
-    z.lazy(() => DeleteProjectAvatarProjectsResponseAliasError$inboundSchema),
-  ).optional(),
-  aliasFinal: z.nullable(types.string()).optional(),
-  automaticAliases: types.optional(z.array(types.string())),
-  branchMatcher: types.optional(
-    z.lazy(() =>
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alias: types.optional(z.array(types.string())),
+    aliasAssigned: z.nullable(smartUnion([types.number(), types.boolean()]))
+      .optional(),
+    aliasError: z.nullable(
+      z.lazy(() => DeleteProjectAvatarProjectsResponseAliasError$inboundSchema),
+    ).optional(),
+    aliasFinal: z.nullable(types.string()).optional(),
+    automaticAliases: types.optional(z.array(types.string())),
+    branchMatcher: types.optional(z.lazy(() =>
       DeleteProjectAvatarProjectsResponse200BranchMatcher$inboundSchema
+    )),
+    buildingAt: types.optional(types.number()),
+    builds: types.optional(z.array(z.lazy(() =>
+      DeleteProjectAvatarProjectsResponseBuilds$inboundSchema
+    ))),
+    checksConclusion: types.optional(
+      DeleteProjectAvatarProjectsResponseChecksConclusion$inboundSchema,
     ),
-  ),
-  buildingAt: types.optional(types.number()),
-  builds: types.optional(
-    z.array(
-      z.lazy(() => DeleteProjectAvatarProjectsResponseBuilds$inboundSchema),
+    checksState: types.optional(
+      DeleteProjectAvatarProjectsResponseChecksState$inboundSchema,
     ),
-  ),
-  checksConclusion: types.optional(
-    DeleteProjectAvatarProjectsResponseChecksConclusion$inboundSchema,
-  ),
-  checksState: types.optional(
-    DeleteProjectAvatarProjectsResponseChecksState$inboundSchema,
-  ),
-  connectBuildsEnabled: types.optional(types.boolean()),
-  connectConfigurationId: types.optional(types.string()),
-  createdAt: types.number(),
-  createdIn: types.string(),
-  creator: types.nullable(
-    z.lazy(() => DeleteProjectAvatarProjectsResponse200Creator$inboundSchema),
-  ),
-  deletedAt: types.optional(types.number()),
-  deploymentHostname: types.string(),
-  forced: types.optional(types.boolean()),
-  id: types.string(),
-  meta: types.optional(z.record(types.string())),
-  monorepoManager: z.nullable(types.string()).optional(),
-  name: types.string(),
-  oidcTokenClaims: types.optional(
-    z.lazy(() =>
+    connectBuildsEnabled: types.optional(types.boolean()),
+    connectConfigurationId: types.optional(types.string()),
+    createdAt: types.number(),
+    createdIn: types.string(),
+    creator: types.nullable(z.lazy(() =>
+      DeleteProjectAvatarProjectsResponse200Creator$inboundSchema
+    )),
+    deletedAt: types.optional(types.number()),
+    deploymentHostname: types.string(),
+    forced: types.optional(types.boolean()),
+    id: types.string(),
+    meta: types.optional(z.record(types.string())),
+    monorepoManager: z.nullable(types.string()).optional(),
+    name: types.string(),
+    oidcTokenClaims: types.optional(z.lazy(() =>
       DeleteProjectAvatarProjectsResponseOidcTokenClaims$inboundSchema
+    )),
+    plan: DeleteProjectAvatarProjectsResponsePlan$inboundSchema,
+    previewCommentsEnabled: types.optional(types.boolean()),
+    private: types.boolean(),
+    readyAt: types.optional(types.number()),
+    readyState: DeleteProjectAvatarProjectsResponseReadyState$inboundSchema,
+    readySubstate: types.optional(
+      DeleteProjectAvatarProjectsResponseReadySubstate$inboundSchema,
     ),
-  ),
-  plan: DeleteProjectAvatarProjectsResponsePlan$inboundSchema,
-  previewCommentsEnabled: types.optional(types.boolean()),
-  private: types.boolean(),
-  readyAt: types.optional(types.number()),
-  readyState: DeleteProjectAvatarProjectsResponseReadyState$inboundSchema,
-  readySubstate: types.optional(
-    DeleteProjectAvatarProjectsResponseReadySubstate$inboundSchema,
-  ),
-  requestedAt: types.optional(types.number()),
-  target: z.nullable(types.string()).optional(),
-  teamId: z.nullable(types.string()).optional(),
-  type:
-    DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
-  url: types.string(),
-  userId: types.optional(types.string()),
-  withCache: types.optional(types.boolean()),
-});
+    requestedAt: types.optional(types.number()),
+    target: z.nullable(types.string()).optional(),
+    teamId: z.nullable(types.string()).optional(),
+    type:
+      DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+    url: types.string(),
+    userId: types.optional(types.string()),
+    withCache: types.optional(types.boolean()),
+  })
+);
 
 export function deleteProjectAvatarDeploymentFromJSON(
   jsonString: string,
@@ -1818,33 +1844,37 @@ export function deleteProjectAvatarDeploymentFromJSON(
 /** @internal */
 export const DeleteProjectAvatarEnvironment$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarEnvironment
-> = z.nativeEnum(DeleteProjectAvatarEnvironment);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarEnvironment)
+);
 
 /** @internal */
 export const DeleteProjectAvatarTarget$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarTarget
-> = z.nativeEnum(DeleteProjectAvatarTarget);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteProjectAvatarTarget));
 
 /** @internal */
 export const DeleteProjectAvatarAlias$inboundSchema: z.ZodType<
   DeleteProjectAvatarAlias,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuredBy: z.nullable(DeleteProjectAvatarConfiguredBy$inboundSchema)
-    .optional(),
-  configuredChangedAt: z.nullable(types.number()).optional(),
-  createdAt: z.nullable(types.number()).optional(),
-  deployment: types.nullable(
-    z.lazy(() => DeleteProjectAvatarDeployment$inboundSchema),
-  ),
-  domain: types.string(),
-  environment: DeleteProjectAvatarEnvironment$inboundSchema,
-  gitBranch: z.nullable(types.string()).optional(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  target: DeleteProjectAvatarTarget$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuredBy: z.nullable(DeleteProjectAvatarConfiguredBy$inboundSchema)
+      .optional(),
+    configuredChangedAt: z.nullable(types.number()).optional(),
+    createdAt: z.nullable(types.number()).optional(),
+    deployment: types.nullable(
+      z.lazy(() => DeleteProjectAvatarDeployment$inboundSchema),
+    ),
+    domain: types.string(),
+    environment: DeleteProjectAvatarEnvironment$inboundSchema,
+    gitBranch: z.nullable(types.string()).optional(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    target: DeleteProjectAvatarTarget$inboundSchema,
+  })
+);
 
 export function deleteProjectAvatarAliasFromJSON(
   jsonString: string,
@@ -1861,15 +1891,17 @@ export const DeleteProjectAvatarAnalytics$inboundSchema: z.ZodType<
   DeleteProjectAvatarAnalytics,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  canceledAt: z.nullable(types.number()).optional(),
-  disabledAt: types.number(),
-  enabledAt: types.number(),
-  id: types.string(),
-  paidAt: types.optional(types.number()),
-  sampleRatePercent: z.nullable(types.number()).optional(),
-  spendLimitInDollars: z.nullable(types.number()).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    canceledAt: z.nullable(types.number()).optional(),
+    disabledAt: types.number(),
+    enabledAt: types.number(),
+    id: types.string(),
+    paidAt: types.optional(types.number()),
+    sampleRatePercent: z.nullable(types.number()).optional(),
+    spendLimitInDollars: z.nullable(types.number()).optional(),
+  })
+);
 
 export function deleteProjectAvatarAnalyticsFromJSON(
   jsonString: string,
@@ -1886,9 +1918,11 @@ export const DeleteProjectAvatarBlobs$inboundSchema: z.ZodType<
   DeleteProjectAvatarBlobs,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  isDefaultApp: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    isDefaultApp: types.optional(types.boolean()),
+  })
+);
 
 export function deleteProjectAvatarBlobsFromJSON(
   jsonString: string,
@@ -1905,10 +1939,12 @@ export const DeleteProjectAvatarAws$inboundSchema: z.ZodType<
   DeleteProjectAvatarAws,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  securityGroupId: types.optional(types.string()),
-  subnetIds: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    securityGroupId: types.optional(types.string()),
+    subnetIds: z.array(types.string()),
+  })
+);
 
 export function deleteProjectAvatarAwsFromJSON(
   jsonString: string,
@@ -1923,14 +1959,16 @@ export function deleteProjectAvatarAwsFromJSON(
 /** @internal */
 export const DeleteProjectAvatarEnvId2$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarEnvId2
-> = z.nativeEnum(DeleteProjectAvatarEnvId2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteProjectAvatarEnvId2));
 
 /** @internal */
 export const DeleteProjectAvatarEnvId$inboundSchema: z.ZodType<
   DeleteProjectAvatarEnvId,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), DeleteProjectAvatarEnvId2$inboundSchema]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), DeleteProjectAvatarEnvId2$inboundSchema])
+);
 
 export function deleteProjectAvatarEnvIdFromJSON(
   jsonString: string,
@@ -1947,16 +1985,21 @@ export const DeleteProjectAvatarConnectConfigurations$inboundSchema: z.ZodType<
   DeleteProjectAvatarConnectConfigurations,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  aws: types.optional(z.lazy(() => DeleteProjectAvatarAws$inboundSchema)),
-  buildsEnabled: types.boolean(),
-  connectConfigurationId: types.string(),
-  createdAt: types.number(),
-  dc: types.optional(types.string()),
-  envId: smartUnion([types.string(), DeleteProjectAvatarEnvId2$inboundSchema]),
-  passive: types.boolean(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    aws: types.optional(z.lazy(() => DeleteProjectAvatarAws$inboundSchema)),
+    buildsEnabled: types.boolean(),
+    connectConfigurationId: types.string(),
+    createdAt: types.number(),
+    dc: types.optional(types.string()),
+    envId: smartUnion([
+      types.string(),
+      DeleteProjectAvatarEnvId2$inboundSchema,
+    ]),
+    passive: types.boolean(),
+    updatedAt: types.number(),
+  })
+);
 
 export function deleteProjectAvatarConnectConfigurationsFromJSON(
   jsonString: string,
@@ -1979,9 +2022,11 @@ export const DeleteProjectAvatarCreator5$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreator5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("system"),
+  })
+);
 
 export function deleteProjectAvatarCreator5FromJSON(
   jsonString: string,
@@ -1998,10 +2043,12 @@ export const DeleteProjectAvatarCreatorIntegration$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreatorIntegration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configurationId: types.string(),
-  integrationId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configurationId: types.string(),
+    integrationId: types.string(),
+  })
+);
 
 export function deleteProjectAvatarCreatorIntegrationFromJSON(
   jsonString: string,
@@ -2019,12 +2066,14 @@ export const DeleteProjectAvatarCreator4$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreator4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integration: z.lazy(() =>
-    DeleteProjectAvatarCreatorIntegration$inboundSchema
-  ),
-  type: types.literal("integration"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration: z.lazy(() =>
+      DeleteProjectAvatarCreatorIntegration$inboundSchema
+    ),
+    type: types.literal("integration"),
+  })
+);
 
 export function deleteProjectAvatarCreator4FromJSON(
   jsonString: string,
@@ -2041,10 +2090,12 @@ export const DeleteProjectAvatarCreatorApp$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreatorApp,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.optional(types.string()),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.optional(types.string()),
+    id: types.string(),
+  })
+);
 
 export function deleteProjectAvatarCreatorAppFromJSON(
   jsonString: string,
@@ -2061,10 +2112,12 @@ export const DeleteProjectAvatarCreator3$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreator3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  app: z.lazy(() => DeleteProjectAvatarCreatorApp$inboundSchema),
-  type: types.literal("app"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    app: z.lazy(() => DeleteProjectAvatarCreatorApp$inboundSchema),
+    type: types.literal("app"),
+  })
+);
 
 export function deleteProjectAvatarCreator3FromJSON(
   jsonString: string,
@@ -2081,9 +2134,11 @@ export const DeleteProjectAvatarCreatorProject$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreatorProject,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function deleteProjectAvatarCreatorProjectFromJSON(
   jsonString: string,
@@ -2100,10 +2155,12 @@ export const DeleteProjectAvatarCreator2$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreator2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  project: z.lazy(() => DeleteProjectAvatarCreatorProject$inboundSchema),
-  type: types.literal("project"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    project: z.lazy(() => DeleteProjectAvatarCreatorProject$inboundSchema),
+    type: types.literal("project"),
+  })
+);
 
 export function deleteProjectAvatarCreator2FromJSON(
   jsonString: string,
@@ -2120,10 +2177,12 @@ export const DeleteProjectAvatarViaIntegration$inboundSchema: z.ZodType<
   DeleteProjectAvatarViaIntegration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configurationId: types.string(),
-  integrationId: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configurationId: types.string(),
+    integrationId: types.string(),
+  })
+);
 
 export function deleteProjectAvatarViaIntegrationFromJSON(
   jsonString: string,
@@ -2140,10 +2199,12 @@ export const DeleteProjectAvatarVia2$inboundSchema: z.ZodType<
   DeleteProjectAvatarVia2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integration: z.lazy(() => DeleteProjectAvatarViaIntegration$inboundSchema),
-  type: types.literal("integration"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integration: z.lazy(() => DeleteProjectAvatarViaIntegration$inboundSchema),
+    type: types.literal("integration"),
+  })
+);
 
 export function deleteProjectAvatarVia2FromJSON(
   jsonString: string,
@@ -2160,10 +2221,12 @@ export const DeleteProjectAvatarViaApp$inboundSchema: z.ZodType<
   DeleteProjectAvatarViaApp,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.optional(types.string()),
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.optional(types.string()),
+    id: types.string(),
+  })
+);
 
 export function deleteProjectAvatarViaAppFromJSON(
   jsonString: string,
@@ -2180,10 +2243,12 @@ export const DeleteProjectAvatarVia1$inboundSchema: z.ZodType<
   DeleteProjectAvatarVia1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  app: z.lazy(() => DeleteProjectAvatarViaApp$inboundSchema),
-  type: types.literal("app"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    app: z.lazy(() => DeleteProjectAvatarViaApp$inboundSchema),
+    type: types.literal("app"),
+  })
+);
 
 export function deleteProjectAvatarVia1FromJSON(
   jsonString: string,
@@ -2200,10 +2265,12 @@ export const DeleteProjectAvatarCreatorVia$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreatorVia,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DeleteProjectAvatarVia1$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarVia2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => DeleteProjectAvatarVia1$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarVia2$inboundSchema),
+  ])
+);
 
 export function deleteProjectAvatarCreatorViaFromJSON(
   jsonString: string,
@@ -2220,9 +2287,11 @@ export const DeleteProjectAvatarCreatorUser$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreatorUser,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  id: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+  })
+);
 
 export function deleteProjectAvatarCreatorUserFromJSON(
   jsonString: string,
@@ -2239,16 +2308,18 @@ export const DeleteProjectAvatarCreator1$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreator1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("user"),
-  via: types.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("user"),
+    via: types.nullable(z.union([
       z.lazy(() => DeleteProjectAvatarVia1$inboundSchema),
       z.lazy(() => DeleteProjectAvatarVia2$inboundSchema),
-    ]),
-  ),
-  user: z.lazy(() => DeleteProjectAvatarCreatorUser$inboundSchema),
-});
+    ])),
+    user: z.lazy(() =>
+      DeleteProjectAvatarCreatorUser$inboundSchema
+    ),
+  })
+);
 
 export function deleteProjectAvatarCreator1FromJSON(
   jsonString: string,
@@ -2265,13 +2336,15 @@ export const DeleteProjectAvatarCreator$inboundSchema: z.ZodType<
   DeleteProjectAvatarCreator,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DeleteProjectAvatarCreator1$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarCreator2$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarCreator3$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarCreator4$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarCreator5$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => DeleteProjectAvatarCreator1$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarCreator2$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarCreator3$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarCreator4$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarCreator5$inboundSchema),
+  ])
+);
 
 export function deleteProjectAvatarCreatorFromJSON(
   jsonString: string,
@@ -2286,21 +2359,23 @@ export function deleteProjectAvatarCreatorFromJSON(
 /** @internal */
 export const DeleteProjectAvatarSource$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarSource
-> = z.nativeEnum(DeleteProjectAvatarSource);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteProjectAvatarSource));
 
 /** @internal */
 export const DeleteProjectAvatarDefinitions$inboundSchema: z.ZodType<
   DeleteProjectAvatarDefinitions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  description: types.optional(types.string()),
-  host: types.string(),
-  hostInferred: types.optional(types.boolean()),
-  path: types.string(),
-  schedule: types.string(),
-  source: types.optional(DeleteProjectAvatarSource$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    description: types.optional(types.string()),
+    host: types.string(),
+    hostInferred: types.optional(types.boolean()),
+    path: types.string(),
+    schedule: types.string(),
+    source: types.optional(DeleteProjectAvatarSource$inboundSchema),
+  })
+);
 
 export function deleteProjectAvatarDefinitionsFromJSON(
   jsonString: string,
@@ -2317,15 +2392,17 @@ export const DeleteProjectAvatarCrons$inboundSchema: z.ZodType<
   DeleteProjectAvatarCrons,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  definitions: z.array(
-    z.lazy(() => DeleteProjectAvatarDefinitions$inboundSchema),
-  ),
-  deploymentId: types.nullable(types.string()),
-  disabledAt: types.nullable(types.number()),
-  enabledAt: types.number(),
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    definitions: z.array(
+      z.lazy(() => DeleteProjectAvatarDefinitions$inboundSchema),
+    ),
+    deploymentId: types.nullable(types.string()),
+    disabledAt: types.nullable(types.number()),
+    enabledAt: types.number(),
+    updatedAt: types.number(),
+  })
+);
 
 export function deleteProjectAvatarCronsFromJSON(
   jsonString: string,
@@ -2341,8 +2418,10 @@ export function deleteProjectAvatarCronsFromJSON(
 export const DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType$inboundSchema:
   z.ZodNativeEnum<
     typeof DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType
-  > = z.nativeEnum(
-    DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType,
+    )
   );
 
 /** @internal */
@@ -2350,11 +2429,13 @@ export const DeleteProjectAvatarBranchMatcher$inboundSchema: z.ZodType<
   DeleteProjectAvatarBranchMatcher,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pattern: types.string(),
-  type:
-    DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pattern: types.string(),
+    type:
+      DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyCustomEnvironmentsType$inboundSchema,
+  })
+);
 
 export function deleteProjectAvatarBranchMatcherFromJSON(
   jsonString: string,
@@ -2371,12 +2452,14 @@ export const DeleteProjectAvatarVerification$inboundSchema: z.ZodType<
   DeleteProjectAvatarVerification,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  reason: types.string(),
-  type: types.string(),
-  value: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    reason: types.string(),
+    type: types.string(),
+    value: types.string(),
+  })
+);
 
 export function deleteProjectAvatarVerificationFromJSON(
   jsonString: string,
@@ -2393,21 +2476,23 @@ export const DeleteProjectAvatarDomains$inboundSchema: z.ZodType<
   DeleteProjectAvatarDomains,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  apexName: types.string(),
-  createdAt: types.optional(types.number()),
-  customEnvironmentId: z.nullable(types.string()).optional(),
-  gitBranch: z.nullable(types.string()).optional(),
-  name: types.string(),
-  projectId: types.string(),
-  redirect: z.nullable(types.string()).optional(),
-  redirectStatusCode: z.nullable(types.number()).optional(),
-  updatedAt: types.optional(types.number()),
-  verification: types.optional(
-    z.array(z.lazy(() => DeleteProjectAvatarVerification$inboundSchema)),
-  ),
-  verified: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    apexName: types.string(),
+    createdAt: types.optional(types.number()),
+    customEnvironmentId: z.nullable(types.string()).optional(),
+    gitBranch: z.nullable(types.string()).optional(),
+    name: types.string(),
+    projectId: types.string(),
+    redirect: z.nullable(types.string()).optional(),
+    redirectStatusCode: z.nullable(types.number()).optional(),
+    updatedAt: types.optional(types.number()),
+    verification: types.optional(
+      z.array(z.lazy(() => DeleteProjectAvatarVerification$inboundSchema)),
+    ),
+    verified: types.boolean(),
+  })
+);
 
 export function deleteProjectAvatarDomainsFromJSON(
   jsonString: string,
@@ -2422,28 +2507,30 @@ export function deleteProjectAvatarDomainsFromJSON(
 /** @internal */
 export const DeleteProjectAvatarType$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarType
-> = z.nativeEnum(DeleteProjectAvatarType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteProjectAvatarType));
 
 /** @internal */
 export const DeleteProjectAvatarCustomEnvironments$inboundSchema: z.ZodType<
   DeleteProjectAvatarCustomEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  branchMatcher: types.optional(
-    z.lazy(() => DeleteProjectAvatarBranchMatcher$inboundSchema),
-  ),
-  createdAt: types.number(),
-  currentDeploymentAliases: types.optional(z.array(types.string())),
-  description: types.optional(types.string()),
-  domains: types.optional(
-    z.array(z.lazy(() => DeleteProjectAvatarDomains$inboundSchema)),
-  ),
-  id: types.string(),
-  slug: types.string(),
-  type: DeleteProjectAvatarType$inboundSchema,
-  updatedAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    branchMatcher: types.optional(
+      z.lazy(() => DeleteProjectAvatarBranchMatcher$inboundSchema),
+    ),
+    createdAt: types.number(),
+    currentDeploymentAliases: types.optional(z.array(types.string())),
+    description: types.optional(types.string()),
+    domains: types.optional(
+      z.array(z.lazy(() => DeleteProjectAvatarDomains$inboundSchema)),
+    ),
+    id: types.string(),
+    slug: types.string(),
+    type: DeleteProjectAvatarType$inboundSchema,
+    updatedAt: types.number(),
+  })
+);
 
 export function deleteProjectAvatarCustomEnvironmentsFromJSON(
   jsonString: string,
@@ -2461,11 +2548,13 @@ export const DeleteProjectAvatarDataCache$inboundSchema: z.ZodType<
   DeleteProjectAvatarDataCache,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storageSizeBytes: z.nullable(types.number()).optional(),
-  unlimited: types.optional(types.boolean()),
-  userDisabled: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storageSizeBytes: z.nullable(types.number()).optional(),
+    unlimited: types.optional(types.boolean()),
+    userDisabled: types.boolean(),
+  })
+);
 
 export function deleteProjectAvatarDataCacheFromJSON(
   jsonString: string,
@@ -2479,13 +2568,17 @@ export function deleteProjectAvatarDataCacheFromJSON(
 
 /** @internal */
 export const DeleteProjectAvatarBuildMachineElasticReason$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarBuildMachineElasticReason> = z
-    .nativeEnum(DeleteProjectAvatarBuildMachineElasticReason);
+  z.ZodNativeEnum<typeof DeleteProjectAvatarBuildMachineElasticReason> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarBuildMachineElasticReason)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarDirection$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarDirection
-> = z.nativeEnum(DeleteProjectAvatarDirection);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarDirection)
+);
 
 /** @internal */
 export const DeleteProjectAvatarBuildMachineElasticTransition$inboundSchema:
@@ -2493,11 +2586,13 @@ export const DeleteProjectAvatarBuildMachineElasticTransition$inboundSchema:
     DeleteProjectAvatarBuildMachineElasticTransition,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    algorithmVersion: types.string(),
-    at: types.number(),
-    direction: DeleteProjectAvatarDirection$inboundSchema,
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      algorithmVersion: types.string(),
+      at: types.number(),
+      direction: DeleteProjectAvatarDirection$inboundSchema,
+    })
+  );
 
 export function deleteProjectAvatarBuildMachineElasticTransitionFromJSON(
   jsonString: string,
@@ -2517,27 +2612,37 @@ export function deleteProjectAvatarBuildMachineElasticTransitionFromJSON(
 
 /** @internal */
 export const DeleteProjectAvatarBuildMachineSelection$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarBuildMachineSelection> = z
-    .nativeEnum(DeleteProjectAvatarBuildMachineSelection);
+  z.ZodNativeEnum<typeof DeleteProjectAvatarBuildMachineSelection> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarBuildMachineSelection)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarBuildMachineType$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarBuildMachineType
-> = z.nativeEnum(DeleteProjectAvatarBuildMachineType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarBuildMachineType)
+);
 
 /** @internal */
 export const DeleteProjectAvatarConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarConfiguration
-> = z.nativeEnum(DeleteProjectAvatarConfiguration);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarConfiguration)
+);
 
 /** @internal */
 export const DeleteProjectAvatarBuildQueue$inboundSchema: z.ZodType<
   DeleteProjectAvatarBuildQueue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  configuration: types.optional(DeleteProjectAvatarConfiguration$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    configuration: types.optional(
+      DeleteProjectAvatarConfiguration$inboundSchema,
+    ),
+  })
+);
 
 export function deleteProjectAvatarBuildQueueFromJSON(
   jsonString: string,
@@ -2551,19 +2656,23 @@ export function deleteProjectAvatarBuildQueueFromJSON(
 
 /** @internal */
 export const DeleteProjectAvatarFunctionDefaultMemoryType$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarFunctionDefaultMemoryType> = z
-    .nativeEnum(DeleteProjectAvatarFunctionDefaultMemoryType);
+  z.ZodNativeEnum<typeof DeleteProjectAvatarFunctionDefaultMemoryType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarFunctionDefaultMemoryType)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarElasticBuildMachine4$inboundSchema: z.ZodType<
   DeleteProjectAvatarElasticBuildMachine4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cores: types.number(),
-  label: types.literal("turbo"),
-  memory: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cores: types.number(),
+    label: types.literal("turbo"),
+    memory: types.number(),
+  })
+);
 
 export function deleteProjectAvatarElasticBuildMachine4FromJSON(
   jsonString: string,
@@ -2586,11 +2695,13 @@ export const DeleteProjectAvatarElasticBuildMachine3$inboundSchema: z.ZodType<
   DeleteProjectAvatarElasticBuildMachine3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cores: types.number(),
-  label: types.literal("14cpu-28gb"),
-  memory: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cores: types.number(),
+    label: types.literal("14cpu-28gb"),
+    memory: types.number(),
+  })
+);
 
 export function deleteProjectAvatarElasticBuildMachine3FromJSON(
   jsonString: string,
@@ -2613,11 +2724,13 @@ export const DeleteProjectAvatarElasticBuildMachine2$inboundSchema: z.ZodType<
   DeleteProjectAvatarElasticBuildMachine2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cores: types.number(),
-  label: types.literal("enhanced"),
-  memory: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cores: types.number(),
+    label: types.literal("enhanced"),
+    memory: types.number(),
+  })
+);
 
 export function deleteProjectAvatarElasticBuildMachine2FromJSON(
   jsonString: string,
@@ -2640,11 +2753,13 @@ export const DeleteProjectAvatarElasticBuildMachine1$inboundSchema: z.ZodType<
   DeleteProjectAvatarElasticBuildMachine1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  cores: types.number(),
-  label: types.literal("standard"),
-  memory: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    cores: types.number(),
+    label: types.literal("standard"),
+    memory: types.number(),
+  })
+);
 
 export function deleteProjectAvatarElasticBuildMachine1FromJSON(
   jsonString: string,
@@ -2667,12 +2782,14 @@ export const DeleteProjectAvatarElasticBuildMachine$inboundSchema: z.ZodType<
   DeleteProjectAvatarElasticBuildMachine,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DeleteProjectAvatarElasticBuildMachine1$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarElasticBuildMachine2$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarElasticBuildMachine3$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarElasticBuildMachine4$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => DeleteProjectAvatarElasticBuildMachine1$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarElasticBuildMachine2$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarElasticBuildMachine3$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarElasticBuildMachine4$inboundSchema),
+  ])
+);
 
 export function deleteProjectAvatarElasticBuildMachineFromJSON(
   jsonString: string,
@@ -2690,44 +2807,44 @@ export const DeleteProjectAvatarDefaultResourceConfig$inboundSchema: z.ZodType<
   DeleteProjectAvatarDefaultResourceConfig,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  buildMachineElasticLastUpdated: types.optional(types.number()),
-  buildMachineElasticReason: types.optional(
-    DeleteProjectAvatarBuildMachineElasticReason$inboundSchema,
-  ),
-  buildMachineElasticTransition: types.optional(
-    z.lazy(() =>
-      DeleteProjectAvatarBuildMachineElasticTransition$inboundSchema
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    buildMachineElasticLastUpdated: types.optional(types.number()),
+    buildMachineElasticReason: types.optional(
+      DeleteProjectAvatarBuildMachineElasticReason$inboundSchema,
     ),
-  ),
-  buildMachineSelection: types.optional(
-    DeleteProjectAvatarBuildMachineSelection$inboundSchema,
-  ),
-  buildMachineType: types.optional(
-    DeleteProjectAvatarBuildMachineType$inboundSchema,
-  ),
-  buildQueue: types.optional(
-    z.lazy(() => DeleteProjectAvatarBuildQueue$inboundSchema),
-  ),
-  elasticConcurrencyEnabled: types.optional(types.boolean()),
-  enableFunctionsBeta: types.optional(types.boolean()),
-  fluid: types.optional(types.boolean()),
-  functionDefaultMemoryType: types.optional(
-    DeleteProjectAvatarFunctionDefaultMemoryType$inboundSchema,
-  ),
-  functionDefaultRegions: z.array(types.string()),
-  functionDefaultTimeout: types.optional(types.number()),
-  functionZeroConfigFailover: types.optional(types.boolean()),
-  isNSNBDisabled: types.optional(types.boolean()),
-  elasticBuildMachine: types.optional(
-    z.union([
+    buildMachineElasticTransition: types.optional(z.lazy(() =>
+      DeleteProjectAvatarBuildMachineElasticTransition$inboundSchema
+    )),
+    buildMachineSelection: types.optional(
+      DeleteProjectAvatarBuildMachineSelection$inboundSchema,
+    ),
+    buildMachineType: types.optional(
+      DeleteProjectAvatarBuildMachineType$inboundSchema,
+    ),
+    buildQueue: types.optional(z.lazy(() =>
+      DeleteProjectAvatarBuildQueue$inboundSchema
+    )),
+    elasticConcurrencyEnabled: types.optional(types.boolean()),
+    enableFunctionsBeta: types.optional(types.boolean()),
+    fluid: types.optional(types.boolean()),
+    functionDefaultMemoryType: types.optional(
+      DeleteProjectAvatarFunctionDefaultMemoryType$inboundSchema,
+    ),
+    functionDefaultRegions: z.array(types.string()),
+    functionDefaultTimeout: types.optional(types.number()),
+    functionZeroConfigFailover: types.optional(types.boolean()),
+    isNSNBDisabled: types.optional(types.boolean()),
+    elasticBuildMachine: types.optional(z.union([
       z.lazy(() => DeleteProjectAvatarElasticBuildMachine1$inboundSchema),
-      z.lazy(() => DeleteProjectAvatarElasticBuildMachine2$inboundSchema),
+      z.lazy(() =>
+        DeleteProjectAvatarElasticBuildMachine2$inboundSchema
+      ),
       z.lazy(() => DeleteProjectAvatarElasticBuildMachine3$inboundSchema),
       z.lazy(() => DeleteProjectAvatarElasticBuildMachine4$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function deleteProjectAvatarDefaultResourceConfigFromJSON(
   jsonString: string,
@@ -2750,13 +2867,15 @@ export const DeleteProjectAvatarDeploymentExpiration$inboundSchema: z.ZodType<
   DeleteProjectAvatarDeploymentExpiration,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentsToKeep: types.optional(types.number()),
-  expirationDays: types.optional(types.number()),
-  expirationDaysCanceled: types.optional(types.number()),
-  expirationDaysErrored: types.optional(types.number()),
-  expirationDaysProduction: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentsToKeep: types.optional(types.number()),
+    expirationDays: types.optional(types.number()),
+    expirationDaysCanceled: types.optional(types.number()),
+    expirationDaysErrored: types.optional(types.number()),
+    expirationDaysProduction: types.optional(types.number()),
+  })
+);
 
 export function deleteProjectAvatarDeploymentExpirationFromJSON(
   jsonString: string,
@@ -2779,10 +2898,12 @@ export const DeleteProjectAvatarEnvironments2$inboundSchema: z.ZodType<
   DeleteProjectAvatarEnvironments2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environmentId: types.string(),
-  type: types.literal("custom"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environmentId: types.string(),
+    type: types.literal("custom"),
+  })
+);
 
 export function deleteProjectAvatarEnvironments2FromJSON(
   jsonString: string,
@@ -2796,19 +2917,22 @@ export function deleteProjectAvatarEnvironments2FromJSON(
 
 /** @internal */
 export const DeleteProjectAvatarEnvironmentsTarget$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarEnvironmentsTarget> = z.nativeEnum(
-    DeleteProjectAvatarEnvironmentsTarget,
-  );
+  z.ZodNativeEnum<typeof DeleteProjectAvatarEnvironmentsTarget> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarEnvironmentsTarget)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarEnvironments1$inboundSchema: z.ZodType<
   DeleteProjectAvatarEnvironments1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  target: DeleteProjectAvatarEnvironmentsTarget$inboundSchema,
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    target: DeleteProjectAvatarEnvironmentsTarget$inboundSchema,
+    type: types.literal("system"),
+  })
+);
 
 export function deleteProjectAvatarEnvironments1FromJSON(
   jsonString: string,
@@ -2825,10 +2949,12 @@ export const DeleteProjectAvatarEnvironments$inboundSchema: z.ZodType<
   DeleteProjectAvatarEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DeleteProjectAvatarEnvironments1$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarEnvironments2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => DeleteProjectAvatarEnvironments1$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarEnvironments2$inboundSchema),
+  ])
+);
 
 export function deleteProjectAvatarEnvironmentsFromJSON(
   jsonString: string,
@@ -2843,23 +2969,23 @@ export function deleteProjectAvatarEnvironmentsFromJSON(
 /** @internal */
 export const DeleteProjectAvatarSources$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarSources
-> = z.nativeEnum(DeleteProjectAvatarSources);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteProjectAvatarSources));
 
 /** @internal */
 export const DeleteProjectAvatarDeploymentSources$inboundSchema: z.ZodType<
   DeleteProjectAvatarDeploymentSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  environments: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    environments: z.array(z.union([
       z.lazy(() => DeleteProjectAvatarEnvironments1$inboundSchema),
       z.lazy(() => DeleteProjectAvatarEnvironments2$inboundSchema),
-    ]),
-  ),
-  sources: z.array(DeleteProjectAvatarSources$inboundSchema),
-});
+    ])),
+    sources: z.array(DeleteProjectAvatarSources$inboundSchema),
+  })
+);
 
 export function deleteProjectAvatarDeploymentSourcesFromJSON(
   jsonString: string,
@@ -2877,10 +3003,12 @@ export const DeleteProjectAvatarEnvironmentsProjects2$inboundSchema: z.ZodType<
   DeleteProjectAvatarEnvironmentsProjects2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  environmentId: types.string(),
-  type: types.literal("custom"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    environmentId: types.string(),
+    type: types.literal("custom"),
+  })
+);
 
 export function deleteProjectAvatarEnvironmentsProjects2FromJSON(
   jsonString: string,
@@ -2900,18 +3028,22 @@ export function deleteProjectAvatarEnvironmentsProjects2FromJSON(
 
 /** @internal */
 export const DeleteProjectAvatarEnvironmentsProjectsTarget$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarEnvironmentsProjectsTarget> = z
-    .nativeEnum(DeleteProjectAvatarEnvironmentsProjectsTarget);
+  z.ZodNativeEnum<typeof DeleteProjectAvatarEnvironmentsProjectsTarget> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarEnvironmentsProjectsTarget)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarEnvironmentsProjects1$inboundSchema: z.ZodType<
   DeleteProjectAvatarEnvironmentsProjects1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  target: DeleteProjectAvatarEnvironmentsProjectsTarget$inboundSchema,
-  type: types.literal("system"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    target: DeleteProjectAvatarEnvironmentsProjectsTarget$inboundSchema,
+    type: types.literal("system"),
+  })
+);
 
 export function deleteProjectAvatarEnvironmentsProjects1FromJSON(
   jsonString: string,
@@ -2934,10 +3066,12 @@ export const DeleteProjectAvatarProjectsEnvironments$inboundSchema: z.ZodType<
   DeleteProjectAvatarProjectsEnvironments,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DeleteProjectAvatarEnvironmentsProjects1$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarEnvironmentsProjects2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => DeleteProjectAvatarEnvironmentsProjects1$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarEnvironmentsProjects2$inboundSchema),
+  ])
+);
 
 export function deleteProjectAvatarProjectsEnvironmentsFromJSON(
   jsonString: string,
@@ -2960,11 +3094,13 @@ export const DeleteProjectAvatarSources2$inboundSchema: z.ZodType<
   DeleteProjectAvatarSources2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  namespace: types.string(),
-  project: types.optional(types.string()),
-  provider: types.literal("gitlab"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    namespace: types.string(),
+    project: types.optional(types.string()),
+    provider: types.literal("gitlab"),
+  })
+);
 
 export function deleteProjectAvatarSources2FromJSON(
   jsonString: string,
@@ -2979,18 +3115,22 @@ export function deleteProjectAvatarSources2FromJSON(
 /** @internal */
 export const DeleteProjectAvatarSourcesProvider$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarSourcesProvider
-> = z.nativeEnum(DeleteProjectAvatarSourcesProvider);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarSourcesProvider)
+);
 
 /** @internal */
 export const DeleteProjectAvatarSources1$inboundSchema: z.ZodType<
   DeleteProjectAvatarSources1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  org: types.string(),
-  provider: DeleteProjectAvatarSourcesProvider$inboundSchema,
-  repo: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    org: types.string(),
+    provider: DeleteProjectAvatarSourcesProvider$inboundSchema,
+    repo: types.optional(types.string()),
+  })
+);
 
 export function deleteProjectAvatarSources1FromJSON(
   jsonString: string,
@@ -3007,15 +3147,17 @@ export const DeleteProjectAvatarProjectsSources$inboundSchema: z.ZodType<
   DeleteProjectAvatarProjectsSources,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DeleteProjectAvatarSources1$inboundSchema).and(
-    z.object({ provider: z.literal("bitbucket") }),
-  ),
-  z.lazy(() => DeleteProjectAvatarSources1$inboundSchema).and(
-    z.object({ provider: z.literal("github") }),
-  ),
-  z.lazy(() => DeleteProjectAvatarSources2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => DeleteProjectAvatarSources1$inboundSchema).and(
+      z.object({ provider: z.literal("bitbucket") }),
+    ),
+    z.lazy(() => DeleteProjectAvatarSources1$inboundSchema).and(
+      z.object({ provider: z.literal("github") }),
+    ),
+    z.lazy(() => DeleteProjectAvatarSources2$inboundSchema),
+  ])
+);
 
 export function deleteProjectAvatarProjectsSourcesFromJSON(
   jsonString: string,
@@ -3033,16 +3175,14 @@ export const DeleteProjectAvatarGitSources$inboundSchema: z.ZodType<
   DeleteProjectAvatarGitSources,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  enabled: types.boolean(),
-  environments: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    enabled: types.boolean(),
+    environments: z.array(z.union([
       z.lazy(() => DeleteProjectAvatarEnvironmentsProjects1$inboundSchema),
       z.lazy(() => DeleteProjectAvatarEnvironmentsProjects2$inboundSchema),
-    ]),
-  ),
-  sources: z.array(
-    z.union([
+    ])),
+    sources: z.array(z.union([
       z.lazy(() => DeleteProjectAvatarSources1$inboundSchema).and(
         z.object({ provider: z.literal("bitbucket") }),
       ),
@@ -3050,9 +3190,9 @@ export const DeleteProjectAvatarGitSources$inboundSchema: z.ZodType<
         z.object({ provider: z.literal("github") }),
       ),
       z.lazy(() => DeleteProjectAvatarSources2$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function deleteProjectAvatarGitSourcesFromJSON(
   jsonString: string,
@@ -3069,14 +3209,16 @@ export const DeleteProjectAvatarDeploymentPolicy$inboundSchema: z.ZodType<
   DeleteProjectAvatarDeploymentPolicy,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  deploymentSources: z.nullable(
-    z.array(z.lazy(() => DeleteProjectAvatarDeploymentSources$inboundSchema)),
-  ).optional(),
-  gitSources: z.nullable(
-    z.array(z.lazy(() => DeleteProjectAvatarGitSources$inboundSchema)),
-  ).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deploymentSources: z.nullable(
+      z.array(z.lazy(() => DeleteProjectAvatarDeploymentSources$inboundSchema)),
+    ).optional(),
+    gitSources: z.nullable(
+      z.array(z.lazy(() => DeleteProjectAvatarGitSources$inboundSchema)),
+    ).optional(),
+  })
+);
 
 export function deleteProjectAvatarDeploymentPolicyFromJSON(
   jsonString: string,
@@ -3092,14 +3234,16 @@ export function deleteProjectAvatarDeploymentPolicyFromJSON(
 /** @internal */
 export const DeleteProjectAvatarAction$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarAction
-> = z.nativeEnum(DeleteProjectAvatarAction);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteProjectAvatarAction));
 
 /** @internal */
 export const DeleteProjectAvatarValueCurrentValue$inboundSchema: z.ZodType<
   DeleteProjectAvatarValueCurrentValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number(), types.boolean()])
+);
 
 export function deleteProjectAvatarValueCurrentValueFromJSON(
   jsonString: string,
@@ -3117,7 +3261,9 @@ export const DeleteProjectAvatarValuePreviousValue$inboundSchema: z.ZodType<
   DeleteProjectAvatarValuePreviousValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.string(), types.number(), types.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.string(), types.number(), types.boolean()])
+);
 
 export function deleteProjectAvatarValuePreviousValueFromJSON(
   jsonString: string,
@@ -3135,10 +3281,16 @@ export const DeleteProjectAvatarValue3$inboundSchema: z.ZodType<
   DeleteProjectAvatarValue3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
-  previousValue: smartUnion([types.string(), types.number(), types.boolean()]),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currentValue: smartUnion([types.string(), types.number(), types.boolean()]),
+    previousValue: smartUnion([
+      types.string(),
+      types.number(),
+      types.boolean(),
+    ]),
+  })
+);
 
 export function deleteProjectAvatarValue3FromJSON(
   jsonString: string,
@@ -3155,12 +3307,14 @@ export const DeleteProjectAvatarValue$inboundSchema: z.ZodType<
   DeleteProjectAvatarValue,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => DeleteProjectAvatarValue3$inboundSchema),
-  types.string(),
-  types.number(),
-  types.boolean(),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => DeleteProjectAvatarValue3$inboundSchema),
+    types.string(),
+    types.number(),
+    types.boolean(),
+  ])
+);
 
 export function deleteProjectAvatarValueFromJSON(
   jsonString: string,
@@ -3177,19 +3331,19 @@ export const DeleteProjectAvatarDismissedToasts$inboundSchema: z.ZodType<
   DeleteProjectAvatarDismissedToasts,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: DeleteProjectAvatarAction$inboundSchema,
-  dismissedAt: types.number(),
-  key: types.string(),
-  value: types.nullable(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: DeleteProjectAvatarAction$inboundSchema,
+    dismissedAt: types.number(),
+    key: types.string(),
+    value: types.nullable(smartUnion([
       z.lazy(() => DeleteProjectAvatarValue3$inboundSchema),
       types.string(),
       types.number(),
       types.boolean(),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function deleteProjectAvatarDismissedToastsFromJSON(
   jsonString: string,
@@ -3207,10 +3361,12 @@ export const DeleteProjectAvatarContentHint17$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint17,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  projectId: types.string(),
-  type: types.literal("flags-connection-string"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    projectId: types.string(),
+    type: types.literal("flags-connection-string"),
+  })
+);
 
 export function deleteProjectAvatarContentHint17FromJSON(
   jsonString: string,
@@ -3227,13 +3383,15 @@ export const DeleteProjectAvatarContentHint16$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint16,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  integrationConfigurationId: types.string(),
-  integrationId: types.string(),
-  integrationProductId: types.string(),
-  storeId: types.string(),
-  type: types.literal("integration-store-secret"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    integrationConfigurationId: types.string(),
+    integrationId: types.string(),
+    integrationProductId: types.string(),
+    storeId: types.string(),
+    type: types.literal("integration-store-secret"),
+  })
+);
 
 export function deleteProjectAvatarContentHint16FromJSON(
   jsonString: string,
@@ -3250,10 +3408,12 @@ export const DeleteProjectAvatarContentHint15$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint15,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-no-ssl"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-no-ssl"),
+  })
+);
 
 export function deleteProjectAvatarContentHint15FromJSON(
   jsonString: string,
@@ -3270,10 +3430,12 @@ export const DeleteProjectAvatarContentHint14$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint14,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-database"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-database"),
+  })
+);
 
 export function deleteProjectAvatarContentHint14FromJSON(
   jsonString: string,
@@ -3290,10 +3452,12 @@ export const DeleteProjectAvatarContentHint13$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint13,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-password"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-password"),
+  })
+);
 
 export function deleteProjectAvatarContentHint13FromJSON(
   jsonString: string,
@@ -3310,10 +3474,12 @@ export const DeleteProjectAvatarContentHint12$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint12,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-host"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-host"),
+  })
+);
 
 export function deleteProjectAvatarContentHint12FromJSON(
   jsonString: string,
@@ -3330,10 +3496,12 @@ export const DeleteProjectAvatarContentHint11$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint11,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-user"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-user"),
+  })
+);
 
 export function deleteProjectAvatarContentHint11FromJSON(
   jsonString: string,
@@ -3350,10 +3518,12 @@ export const DeleteProjectAvatarContentHint10$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint10,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-prisma-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-prisma-url"),
+  })
+);
 
 export function deleteProjectAvatarContentHint10FromJSON(
   jsonString: string,
@@ -3370,10 +3540,12 @@ export const DeleteProjectAvatarContentHint9$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint9,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url-non-pooling"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url-non-pooling"),
+  })
+);
 
 export function deleteProjectAvatarContentHint9FromJSON(
   jsonString: string,
@@ -3390,10 +3562,12 @@ export const DeleteProjectAvatarContentHint8$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint8,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("postgres-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("postgres-url"),
+  })
+);
 
 export function deleteProjectAvatarContentHint8FromJSON(
   jsonString: string,
@@ -3410,10 +3584,12 @@ export const DeleteProjectAvatarContentHint7$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint7,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-webhook-public-key"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-webhook-public-key"),
+  })
+);
 
 export function deleteProjectAvatarContentHint7FromJSON(
   jsonString: string,
@@ -3430,10 +3606,12 @@ export const DeleteProjectAvatarContentHint6$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint6,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-store-id"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-store-id"),
+  })
+);
 
 export function deleteProjectAvatarContentHint6FromJSON(
   jsonString: string,
@@ -3450,10 +3628,12 @@ export const DeleteProjectAvatarContentHint5$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint5,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("blob-read-write-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("blob-read-write-token"),
+  })
+);
 
 export function deleteProjectAvatarContentHint5FromJSON(
   jsonString: string,
@@ -3470,10 +3650,12 @@ export const DeleteProjectAvatarContentHint4$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint4,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-read-only-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-read-only-token"),
+  })
+);
 
 export function deleteProjectAvatarContentHint4FromJSON(
   jsonString: string,
@@ -3490,10 +3672,12 @@ export const DeleteProjectAvatarContentHint3$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-token"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-token"),
+  })
+);
 
 export function deleteProjectAvatarContentHint3FromJSON(
   jsonString: string,
@@ -3510,10 +3694,12 @@ export const DeleteProjectAvatarContentHint2$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-rest-api-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-rest-api-url"),
+  })
+);
 
 export function deleteProjectAvatarContentHint2FromJSON(
   jsonString: string,
@@ -3530,10 +3716,12 @@ export const DeleteProjectAvatarContentHint1$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  storeId: types.string(),
-  type: types.literal("redis-url"),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    storeId: types.string(),
+    type: types.literal("redis-url"),
+  })
+);
 
 export function deleteProjectAvatarContentHint1FromJSON(
   jsonString: string,
@@ -3550,25 +3738,27 @@ export const DeleteProjectAvatarContentHint$inboundSchema: z.ZodType<
   DeleteProjectAvatarContentHint,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DeleteProjectAvatarContentHint1$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint2$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint3$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint4$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint5$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint6$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint7$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint8$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint9$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint10$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint11$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint12$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint13$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint14$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint15$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint16$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarContentHint17$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => DeleteProjectAvatarContentHint1$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint2$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint3$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint4$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint5$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint6$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint7$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint8$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint9$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint10$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint11$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint12$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint13$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint14$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint15$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint16$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarContentHint17$inboundSchema),
+  ])
+);
 
 export function deleteProjectAvatarContentHintFromJSON(
   jsonString: string,
@@ -3584,8 +3774,10 @@ export function deleteProjectAvatarContentHintFromJSON(
 export const DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType$inboundSchema:
   z.ZodNativeEnum<
     typeof DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType
-  > = z.nativeEnum(
-    DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType,
+    )
   );
 
 /** @internal */
@@ -3593,11 +3785,13 @@ export const DeleteProjectAvatarInternalContentHint$inboundSchema: z.ZodType<
   DeleteProjectAvatarInternalContentHint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  encryptedValue: types.string(),
-  type:
-    DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    encryptedValue: types.string(),
+    type:
+      DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyEnvType$inboundSchema,
+  })
+);
 
 export function deleteProjectAvatarInternalContentHintFromJSON(
   jsonString: string,
@@ -3613,22 +3807,24 @@ export function deleteProjectAvatarInternalContentHintFromJSON(
 /** @internal */
 export const DeleteProjectAvatarTarget2$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarTarget2
-> = z.nativeEnum(DeleteProjectAvatarTarget2);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteProjectAvatarTarget2));
 
 /** @internal */
 export const DeleteProjectAvatarTarget1$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarTarget1
-> = z.nativeEnum(DeleteProjectAvatarTarget1);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteProjectAvatarTarget1));
 
 /** @internal */
 export const DeleteProjectAvatarProjectsTarget$inboundSchema: z.ZodType<
   DeleteProjectAvatarProjectsTarget,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.array(DeleteProjectAvatarTarget1$inboundSchema),
-  DeleteProjectAvatarTarget2$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.array(DeleteProjectAvatarTarget1$inboundSchema),
+    DeleteProjectAvatarTarget2$inboundSchema,
+  ])
+);
 
 export function deleteProjectAvatarProjectsTargetFromJSON(
   jsonString: string,
@@ -3643,23 +3839,27 @@ export function deleteProjectAvatarProjectsTargetFromJSON(
 /** @internal */
 export const DeleteProjectAvatarProjectsType$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarProjectsType
-> = z.nativeEnum(DeleteProjectAvatarProjectsType);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarProjectsType)
+);
 
 /** @internal */
 export const DeleteProjectAvatarVisibility$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarVisibility
-> = z.nativeEnum(DeleteProjectAvatarVisibility);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarVisibility)
+);
 
 /** @internal */
 export const DeleteProjectAvatarEnv$inboundSchema: z.ZodType<
   DeleteProjectAvatarEnv,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  comment: types.optional(types.string()),
-  configurationId: z.nullable(types.string()).optional(),
-  contentHint: z.nullable(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    comment: types.optional(types.string()),
+    configurationId: z.nullable(types.string()).optional(),
+    contentHint: z.nullable(z.union([
       z.lazy(() => DeleteProjectAvatarContentHint1$inboundSchema),
       z.lazy(() => DeleteProjectAvatarContentHint2$inboundSchema),
       z.lazy(() => DeleteProjectAvatarContentHint3$inboundSchema),
@@ -3677,35 +3877,35 @@ export const DeleteProjectAvatarEnv$inboundSchema: z.ZodType<
       z.lazy(() => DeleteProjectAvatarContentHint15$inboundSchema),
       z.lazy(() => DeleteProjectAvatarContentHint16$inboundSchema),
       z.lazy(() => DeleteProjectAvatarContentHint17$inboundSchema),
-    ]),
-  ).optional(),
-  createdAt: types.optional(types.number()),
-  createdBy: z.nullable(types.string()).optional(),
-  customEnvironmentIds: types.optional(z.array(types.string())),
-  decrypted: types.optional(types.boolean()),
-  edgeConfigId: z.nullable(types.string()).optional(),
-  edgeConfigTokenId: z.nullable(types.string()).optional(),
-  gitBranch: types.optional(types.string()),
-  id: types.optional(types.string()),
-  internalContentHint: z.nullable(
-    z.lazy(() => DeleteProjectAvatarInternalContentHint$inboundSchema),
-  ).optional(),
-  key: types.string(),
-  legacyValue: types.optional(types.string()),
-  sunsetSecretId: types.optional(types.string()),
-  target: types.optional(
-    smartUnion([
-      z.array(DeleteProjectAvatarTarget1$inboundSchema),
-      DeleteProjectAvatarTarget2$inboundSchema,
-    ]),
-  ),
-  type: DeleteProjectAvatarProjectsType$inboundSchema,
-  updatedAt: types.optional(types.number()),
-  updatedBy: z.nullable(types.string()).optional(),
-  value: types.string(),
-  visibility: types.optional(DeleteProjectAvatarVisibility$inboundSchema),
-  vsmValue: types.optional(types.string()),
-});
+    ])).optional(),
+    createdAt: types.optional(types.number()),
+    createdBy: z.nullable(types.string()).optional(),
+    customEnvironmentIds: types.optional(z.array(types.string())),
+    decrypted: types.optional(types.boolean()),
+    edgeConfigId: z.nullable(types.string()).optional(),
+    edgeConfigTokenId: z.nullable(types.string()).optional(),
+    gitBranch: types.optional(types.string()),
+    id: types.optional(types.string()),
+    internalContentHint: z.nullable(z.lazy(() =>
+      DeleteProjectAvatarInternalContentHint$inboundSchema
+    )).optional(),
+    key: types.string(),
+    legacyValue: types.optional(types.string()),
+    sunsetSecretId: types.optional(types.string()),
+    target: types.optional(
+      smartUnion([
+        z.array(DeleteProjectAvatarTarget1$inboundSchema),
+        DeleteProjectAvatarTarget2$inboundSchema,
+      ]),
+    ),
+    type: DeleteProjectAvatarProjectsType$inboundSchema,
+    updatedAt: types.optional(types.number()),
+    updatedBy: z.nullable(types.string()).optional(),
+    value: types.string(),
+    visibility: types.optional(DeleteProjectAvatarVisibility$inboundSchema),
+    vsmValue: types.optional(types.string()),
+  })
+);
 
 export function deleteProjectAvatarEnvFromJSON(
   jsonString: string,
@@ -3722,10 +3922,12 @@ export const DeleteProjectAvatarExpiration2$inboundSchema: z.ZodType<
   DeleteProjectAvatarExpiration2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  lockedAt: types.number(),
-  lockedBy: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    lockedAt: types.number(),
+    lockedBy: types.string(),
+  })
+);
 
 export function deleteProjectAvatarExpiration2FromJSON(
   jsonString: string,
@@ -3742,9 +3944,11 @@ export const DeleteProjectAvatarExpiration1$inboundSchema: z.ZodType<
   DeleteProjectAvatarExpiration1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expiresAt: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expiresAt: types.number(),
+  })
+);
 
 export function deleteProjectAvatarExpiration1FromJSON(
   jsonString: string,
@@ -3761,10 +3965,12 @@ export const DeleteProjectAvatarExpiration$inboundSchema: z.ZodType<
   DeleteProjectAvatarExpiration,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => DeleteProjectAvatarExpiration2$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarExpiration1$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => DeleteProjectAvatarExpiration2$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarExpiration1$inboundSchema),
+  ])
+);
 
 export function deleteProjectAvatarExpirationFromJSON(
   jsonString: string,
@@ -3781,9 +3987,11 @@ export const DeleteProjectAvatarFeatures$inboundSchema: z.ZodType<
   DeleteProjectAvatarFeatures,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  webAnalytics: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    webAnalytics: types.optional(types.boolean()),
+  })
+);
 
 export function deleteProjectAvatarFeaturesFromJSON(
   jsonString: string,
@@ -3798,17 +4006,21 @@ export function deleteProjectAvatarFeaturesFromJSON(
 /** @internal */
 export const DeleteProjectAvatarFramework$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarFramework
-> = z.nativeEnum(DeleteProjectAvatarFramework);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarFramework)
+);
 
 /** @internal */
 export const DeleteProjectAvatarGitComments$inboundSchema: z.ZodType<
   DeleteProjectAvatarGitComments,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  onCommit: types.boolean(),
-  onPullRequest: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    onCommit: types.boolean(),
+    onPullRequest: types.boolean(),
+  })
+);
 
 export function deleteProjectAvatarGitCommentsFromJSON(
   jsonString: string,
@@ -3826,10 +4038,12 @@ export const DeleteProjectAvatarConsolidatedGitCommitStatus$inboundSchema:
     DeleteProjectAvatarConsolidatedGitCommitStatus,
     z.ZodTypeDef,
     unknown
-  > = z.object({
-    enabled: types.boolean(),
-    propagateFailures: types.boolean(),
-  });
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      enabled: types.boolean(),
+      propagateFailures: types.boolean(),
+    })
+  );
 
 export function deleteProjectAvatarConsolidatedGitCommitStatusFromJSON(
   jsonString: string,
@@ -3849,24 +4063,29 @@ export function deleteProjectAvatarConsolidatedGitCommitStatusFromJSON(
 
 /** @internal */
 export const DeleteProjectAvatarCreateDeployments$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarCreateDeployments> = z.nativeEnum(
-    DeleteProjectAvatarCreateDeployments,
-  );
+  z.ZodNativeEnum<typeof DeleteProjectAvatarCreateDeployments> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarCreateDeployments)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarGitProviderOptions$inboundSchema: z.ZodType<
   DeleteProjectAvatarGitProviderOptions,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  consolidatedGitCommitStatus: types.optional(
-    z.lazy(() => DeleteProjectAvatarConsolidatedGitCommitStatus$inboundSchema),
-  ),
-  createDeployments: DeleteProjectAvatarCreateDeployments$inboundSchema,
-  disableRepositoryDispatchEvents: types.optional(types.boolean()),
-  gitCommitStatus: types.optional(types.boolean()),
-  requireVerifiedCommits: types.optional(types.boolean()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    consolidatedGitCommitStatus: types.optional(
+      z.lazy(() =>
+        DeleteProjectAvatarConsolidatedGitCommitStatus$inboundSchema
+      ),
+    ),
+    createDeployments: DeleteProjectAvatarCreateDeployments$inboundSchema,
+    disableRepositoryDispatchEvents: types.optional(types.boolean()),
+    gitCommitStatus: types.optional(types.boolean()),
+    requireVerifiedCommits: types.optional(types.boolean()),
+  })
+);
 
 export function deleteProjectAvatarGitProviderOptionsFromJSON(
   jsonString: string,
@@ -3884,9 +4103,11 @@ export const DeleteProjectAvatarHasProjectsValue$inboundSchema: z.ZodType<
   DeleteProjectAvatarHasProjectsValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eq: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eq: types.string(),
+  })
+);
 
 export function deleteProjectAvatarHasProjectsValueFromJSON(
   jsonString: string,
@@ -3904,10 +4125,12 @@ export const DeleteProjectAvatarHas2$inboundSchema: z.ZodType<
   DeleteProjectAvatarHas2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  type: types.literal("host"),
-  value: z.lazy(() => DeleteProjectAvatarHasProjectsValue$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    type: types.literal("host"),
+    value: z.lazy(() => DeleteProjectAvatarHasProjectsValue$inboundSchema),
+  })
+);
 
 export function deleteProjectAvatarHas2FromJSON(
   jsonString: string,
@@ -3922,16 +4145,18 @@ export function deleteProjectAvatarHas2FromJSON(
 /** @internal */
 export const DeleteProjectAvatarHasKey$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarHasKey
-> = z.nativeEnum(DeleteProjectAvatarHasKey);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(DeleteProjectAvatarHasKey));
 
 /** @internal */
 export const DeleteProjectAvatarHasValue$inboundSchema: z.ZodType<
   DeleteProjectAvatarHasValue,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  eq: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    eq: types.string(),
+  })
+);
 
 export function deleteProjectAvatarHasValueFromJSON(
   jsonString: string,
@@ -3948,11 +4173,13 @@ export const DeleteProjectAvatarHas1$inboundSchema: z.ZodType<
   DeleteProjectAvatarHas1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  key: DeleteProjectAvatarHasKey$inboundSchema,
-  type: types.literal("header"),
-  value: z.lazy(() => DeleteProjectAvatarHasValue$inboundSchema),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    key: DeleteProjectAvatarHasKey$inboundSchema,
+    type: types.literal("header"),
+    value: z.lazy(() => DeleteProjectAvatarHasValue$inboundSchema),
+  })
+);
 
 export function deleteProjectAvatarHas1FromJSON(
   jsonString: string,
@@ -3969,10 +4196,12 @@ export const DeleteProjectAvatarInternalRoutesHas$inboundSchema: z.ZodType<
   DeleteProjectAvatarInternalRoutesHas,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => DeleteProjectAvatarHas1$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarHas2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => DeleteProjectAvatarHas1$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarHas2$inboundSchema),
+  ])
+);
 
 export function deleteProjectAvatarInternalRoutesHasFromJSON(
   jsonString: string,
@@ -3987,17 +4216,21 @@ export function deleteProjectAvatarInternalRoutesHasFromJSON(
 
 /** @internal */
 export const DeleteProjectAvatarInternalRoutesAction$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarInternalRoutesAction> = z
-    .nativeEnum(DeleteProjectAvatarInternalRoutesAction);
+  z.ZodNativeEnum<typeof DeleteProjectAvatarInternalRoutesAction> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarInternalRoutesAction)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarInternalRoutesMitigate$inboundSchema: z.ZodType<
   DeleteProjectAvatarInternalRoutesMitigate,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: DeleteProjectAvatarInternalRoutesAction$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: DeleteProjectAvatarInternalRoutesAction$inboundSchema,
+  })
+);
 
 export function deleteProjectAvatarInternalRoutesMitigateFromJSON(
   jsonString: string,
@@ -4020,18 +4253,18 @@ export const DeleteProjectAvatarInternalRoutes2$inboundSchema: z.ZodType<
   DeleteProjectAvatarInternalRoutes2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  has: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    has: z.array(z.union([
       z.lazy(() => DeleteProjectAvatarHas1$inboundSchema),
       z.lazy(() => DeleteProjectAvatarHas2$inboundSchema),
-    ]),
-  ),
-  mitigate: z.lazy(() =>
-    DeleteProjectAvatarInternalRoutesMitigate$inboundSchema
-  ),
-  src: types.optional(types.string()),
-});
+    ])),
+    mitigate: z.lazy(() =>
+      DeleteProjectAvatarInternalRoutesMitigate$inboundSchema
+    ),
+    src: types.optional(types.string()),
+  })
+);
 
 export function deleteProjectAvatarInternalRoutes2FromJSON(
   jsonString: string,
@@ -4049,11 +4282,13 @@ export const DeleteProjectAvatarInternalRoutes1$inboundSchema: z.ZodType<
   DeleteProjectAvatarInternalRoutes1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  expiry: types.optional(types.number()),
-  src: types.string(),
-  status: types.number(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    expiry: types.optional(types.number()),
+    src: types.string(),
+    status: types.number(),
+  })
+);
 
 export function deleteProjectAvatarInternalRoutes1FromJSON(
   jsonString: string,
@@ -4071,10 +4306,12 @@ export const DeleteProjectAvatarInternalRoutes$inboundSchema: z.ZodType<
   DeleteProjectAvatarInternalRoutes,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  z.lazy(() => DeleteProjectAvatarInternalRoutes1$inboundSchema),
-  z.lazy(() => DeleteProjectAvatarInternalRoutes2$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => DeleteProjectAvatarInternalRoutes1$inboundSchema),
+    z.lazy(() => DeleteProjectAvatarInternalRoutes2$inboundSchema),
+  ])
+);
 
 export function deleteProjectAvatarInternalRoutesFromJSON(
   jsonString: string,
@@ -4091,11 +4328,13 @@ export const DeleteProjectAvatarIpBuckets$inboundSchema: z.ZodType<
   DeleteProjectAvatarIpBuckets,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  bucket: types.string(),
-  default: types.optional(types.boolean()),
-  supportUntil: types.optional(types.number()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    bucket: types.string(),
+    default: types.optional(types.boolean()),
+    supportUntil: types.optional(types.number()),
+  })
+);
 
 export function deleteProjectAvatarIpBucketsFromJSON(
   jsonString: string,
@@ -4112,9 +4351,11 @@ export const DeleteProjectAvatarFlagDefinitionsPresent$inboundSchema: z.ZodType<
   DeleteProjectAvatarFlagDefinitionsPresent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function deleteProjectAvatarFlagDefinitionsPresentFromJSON(
   jsonString: string,
@@ -4137,9 +4378,11 @@ export const DeleteProjectAvatarHealthCheck$inboundSchema: z.ZodType<
   DeleteProjectAvatarHealthCheck,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function deleteProjectAvatarHealthCheckFromJSON(
   jsonString: string,
@@ -4156,9 +4399,11 @@ export const DeleteProjectAvatarLint$inboundSchema: z.ZodType<
   DeleteProjectAvatarLint,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function deleteProjectAvatarLintFromJSON(
   jsonString: string,
@@ -4175,9 +4420,11 @@ export const DeleteProjectAvatarMfeConfigPresent$inboundSchema: z.ZodType<
   DeleteProjectAvatarMfeConfigPresent,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function deleteProjectAvatarMfeConfigPresentFromJSON(
   jsonString: string,
@@ -4195,9 +4442,11 @@ export const DeleteProjectAvatarTypecheck$inboundSchema: z.ZodType<
   DeleteProjectAvatarTypecheck,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  targets: z.array(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    targets: z.array(types.string()),
+  })
+);
 
 export function deleteProjectAvatarTypecheckFromJSON(
   jsonString: string,
@@ -4214,27 +4463,29 @@ export const DeleteProjectAvatarJobs$inboundSchema: z.ZodType<
   DeleteProjectAvatarJobs,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  "flag-definitions-present": types.optional(
-    z.lazy(() => DeleteProjectAvatarFlagDefinitionsPresent$inboundSchema),
-  ),
-  "health-check": types.optional(
-    z.lazy(() => DeleteProjectAvatarHealthCheck$inboundSchema),
-  ),
-  lint: types.optional(z.lazy(() => DeleteProjectAvatarLint$inboundSchema)),
-  "mfe-config-present": types.optional(
-    z.lazy(() => DeleteProjectAvatarMfeConfigPresent$inboundSchema),
-  ),
-  typecheck: types.optional(
-    z.lazy(() => DeleteProjectAvatarTypecheck$inboundSchema),
-  ),
-}).transform((v) => {
-  return remap$(v, {
-    "flag-definitions-present": "flagDefinitionsPresent",
-    "health-check": "healthCheck",
-    "mfe-config-present": "mfeConfigPresent",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    "flag-definitions-present": types.optional(
+      z.lazy(() => DeleteProjectAvatarFlagDefinitionsPresent$inboundSchema),
+    ),
+    "health-check": types.optional(
+      z.lazy(() => DeleteProjectAvatarHealthCheck$inboundSchema),
+    ),
+    lint: types.optional(z.lazy(() => DeleteProjectAvatarLint$inboundSchema)),
+    "mfe-config-present": types.optional(
+      z.lazy(() => DeleteProjectAvatarMfeConfigPresent$inboundSchema),
+    ),
+    typecheck: types.optional(
+      z.lazy(() => DeleteProjectAvatarTypecheck$inboundSchema),
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      "flag-definitions-present": "flagDefinitionsPresent",
+      "health-check": "healthCheck",
+      "mfe-config-present": "mfeConfigPresent",
+    });
+  })
+);
 
 export function deleteProjectAvatarJobsFromJSON(
   jsonString: string,
@@ -4249,26 +4500,32 @@ export function deleteProjectAvatarJobsFromJSON(
 /** @internal */
 export const DeleteProjectAvatarJobStatus$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarJobStatus
-> = z.nativeEnum(DeleteProjectAvatarJobStatus);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarJobStatus)
+);
 
 /** @internal */
 export const DeleteProjectAvatarProjectsResponseType$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponseType> = z
-    .nativeEnum(DeleteProjectAvatarProjectsResponseType);
+  z.ZodNativeEnum<typeof DeleteProjectAvatarProjectsResponseType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarProjectsResponseType)
+    );
 
 /** @internal */
 export const DeleteProjectAvatarLastAliasRequest$inboundSchema: z.ZodType<
   DeleteProjectAvatarLastAliasRequest,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  fromDeploymentId: types.nullable(types.string()),
-  fromRollingReleaseId: types.optional(types.string()),
-  jobStatus: DeleteProjectAvatarJobStatus$inboundSchema,
-  requestedAt: types.number(),
-  toDeploymentId: types.string(),
-  type: DeleteProjectAvatarProjectsResponseType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    fromDeploymentId: types.nullable(types.string()),
+    fromRollingReleaseId: types.optional(types.string()),
+    jobStatus: DeleteProjectAvatarJobStatus$inboundSchema,
+    requestedAt: types.number(),
+    toDeploymentId: types.string(),
+    type: DeleteProjectAvatarProjectsResponseType$inboundSchema,
+  })
+);
 
 export function deleteProjectAvatarLastAliasRequestFromJSON(
   jsonString: string,
@@ -4286,7 +4543,7 @@ export const DeleteProjectAvatarLastRollbackTarget$inboundSchema: z.ZodType<
   DeleteProjectAvatarLastRollbackTarget,
   z.ZodTypeDef,
   unknown
-> = z.object({});
+> = /* @__PURE__ */ lazySchema$(() => z.object({}));
 
 export function deleteProjectAvatarLastRollbackTargetFromJSON(
   jsonString: string,
@@ -4304,7 +4561,9 @@ export const DeleteProjectAvatarAliasAssigned$inboundSchema: z.ZodType<
   DeleteProjectAvatarAliasAssigned,
   z.ZodTypeDef,
   unknown
-> = smartUnion([types.number(), types.boolean()]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([types.number(), types.boolean()])
+);
 
 export function deleteProjectAvatarAliasAssignedFromJSON(
   jsonString: string,
@@ -4321,10 +4580,12 @@ export const DeleteProjectAvatarAliasError$inboundSchema: z.ZodType<
   DeleteProjectAvatarAliasError,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  code: types.string(),
-  message: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    code: types.string(),
+    message: types.string(),
+  })
+);
 
 export function deleteProjectAvatarAliasErrorFromJSON(
   jsonString: string,
@@ -4340,8 +4601,10 @@ export function deleteProjectAvatarAliasErrorFromJSON(
 export const DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType$inboundSchema:
   z.ZodNativeEnum<
     typeof DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType
-  > = z.nativeEnum(
-    DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType,
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType,
+    )
   );
 
 /** @internal */
@@ -4349,11 +4612,13 @@ export const DeleteProjectAvatarProjectsBranchMatcher$inboundSchema: z.ZodType<
   DeleteProjectAvatarProjectsBranchMatcher,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  pattern: types.string(),
-  type:
-    DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType$inboundSchema,
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    pattern: types.string(),
+    type:
+      DeleteProjectAvatarProjectsResponse200ApplicationJSONResponseBodyLatestDeploymentsType$inboundSchema,
+  })
+);
 
 export function deleteProjectAvatarProjectsBranchMatcherFromJSON(
   jsonString: string,
@@ -4376,11 +4641,13 @@ export const DeleteProjectAvatarBuilds$inboundSchema: z.ZodType<
   DeleteProjectAvatarBuilds,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  dest: types.optional(types.string()),
-  src: types.optional(types.string()),
-  use: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    dest: types.optional(types.string()),
+    src: types.optional(types.string()),
+    use: types.string(),
+  })
+);
 
 export function deleteProjectAvatarBuildsFromJSON(
   jsonString: string,
@@ -4395,4 +4662,6 @@ export function deleteProjectAvatarBuildsFromJSON(
 /** @internal */
 export const DeleteProjectAvatarChecksConclusion$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarChecksConclusion
-> = z.nativeEnum(DeleteProjectAvatarChecksConclusion);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarChecksConclusion)
+);

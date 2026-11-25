@@ -5,11 +5,11 @@
 ```typescript
 import { CreateFlagRhsFeatureFlagsResponseType } from "@vercel/sdk/models/createflagop.js";
 
-let value: CreateFlagRhsFeatureFlagsResponseType = "regex";
+let value: CreateFlagRhsFeatureFlagsResponseType = "list/inline";
 ```
 
 ## Values
 
 ```typescript
-"regex"
+"list" | "list/inline"
 ```

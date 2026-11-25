@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -189,10 +189,12 @@ export const UpdateKmsIssuerRequestBody$outboundSchema: z.ZodType<
   UpdateKmsIssuerRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateKmsIssuerRequestBody
-> = z.object({
-  name: z.string().optional(),
-  claimsSchema: z.nullable(z.record(z.any())).optional(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    name: z.string().optional(),
+    claimsSchema: z.nullable(z.record(z.any())).optional(),
+  })
+);
 
 export function updateKmsIssuerRequestBodyToJSON(
   updateKmsIssuerRequestBody: UpdateKmsIssuerRequestBody,
@@ -215,17 +217,19 @@ export const UpdateKmsIssuerRequest$outboundSchema: z.ZodType<
   UpdateKmsIssuerRequest$Outbound,
   z.ZodTypeDef,
   UpdateKmsIssuerRequest
-> = z.object({
-  issuerId: z.string(),
-  teamId: z.string().optional(),
-  slug: z.string().optional(),
-  requestBody: z.lazy(() => UpdateKmsIssuerRequestBody$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    issuerId: z.string(),
+    teamId: z.string().optional(),
+    slug: z.string().optional(),
+    requestBody: z.lazy(() => UpdateKmsIssuerRequestBody$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateKmsIssuerRequestToJSON(
   updateKmsIssuerRequest: UpdateKmsIssuerRequest,
@@ -238,30 +242,34 @@ export function updateKmsIssuerRequestToJSON(
 /** @internal */
 export const UpdateKmsIssuerAlgorithm$inboundSchema: z.ZodNativeEnum<
   typeof UpdateKmsIssuerAlgorithm
-> = z.nativeEnum(UpdateKmsIssuerAlgorithm);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateKmsIssuerAlgorithm));
 
 /** @internal */
 export const UpdateKmsIssuerDiscoveryLayout$inboundSchema: z.ZodNativeEnum<
   typeof UpdateKmsIssuerDiscoveryLayout
-> = z.nativeEnum(UpdateKmsIssuerDiscoveryLayout);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UpdateKmsIssuerDiscoveryLayout)
+);
 
 /** @internal */
 export const UpdateKmsIssuerOrigin$inboundSchema: z.ZodNativeEnum<
   typeof UpdateKmsIssuerOrigin
-> = z.nativeEnum(UpdateKmsIssuerOrigin);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateKmsIssuerOrigin));
 
 /** @internal */
 export const UpdateKmsIssuerPolicies3$inboundSchema: z.ZodType<
   UpdateKmsIssuerPolicies3,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.string(),
-  integrationId: types.string(),
-  kind: types.literal("integration-tokens-grant"),
-  tokenClaims: types.optional(z.record(z.any())),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.string(),
+    integrationId: types.string(),
+    kind: types.literal("integration-tokens-grant"),
+    tokenClaims: types.optional(z.record(z.any())),
+    updatedAt: types.string(),
+  })
+);
 
 export function updateKmsIssuerPolicies3FromJSON(
   jsonString: string,
@@ -278,13 +286,15 @@ export const UpdateKmsIssuerPolicies2$inboundSchema: z.ZodType<
   UpdateKmsIssuerPolicies2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  clientId: types.string(),
-  createdAt: types.string(),
-  kind: types.literal("connex-grant"),
-  tokenClaims: types.optional(z.record(z.any())),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    clientId: types.string(),
+    createdAt: types.string(),
+    kind: types.literal("connex-grant"),
+    tokenClaims: types.optional(z.record(z.any())),
+    updatedAt: types.string(),
+  })
+);
 
 export function updateKmsIssuerPolicies2FromJSON(
   jsonString: string,
@@ -301,15 +311,17 @@ export const UpdateKmsIssuerPolicies1$inboundSchema: z.ZodType<
   UpdateKmsIssuerPolicies1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  createdAt: types.string(),
-  environments: z.array(types.string()),
-  kind: types.literal("project-grant"),
-  projectId: types.string(),
-  teamId: types.string(),
-  tokenClaims: types.optional(z.record(z.any())),
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    createdAt: types.string(),
+    environments: z.array(types.string()),
+    kind: types.literal("project-grant"),
+    projectId: types.string(),
+    teamId: types.string(),
+    tokenClaims: types.optional(z.record(z.any())),
+    updatedAt: types.string(),
+  })
+);
 
 export function updateKmsIssuerPolicies1FromJSON(
   jsonString: string,
@@ -326,11 +338,13 @@ export const UpdateKmsIssuerPolicies$inboundSchema: z.ZodType<
   UpdateKmsIssuerPolicies,
   z.ZodTypeDef,
   unknown
-> = z.union([
-  z.lazy(() => UpdateKmsIssuerPolicies1$inboundSchema),
-  z.lazy(() => UpdateKmsIssuerPolicies2$inboundSchema),
-  z.lazy(() => UpdateKmsIssuerPolicies3$inboundSchema),
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.union([
+    z.lazy(() => UpdateKmsIssuerPolicies1$inboundSchema),
+    z.lazy(() => UpdateKmsIssuerPolicies2$inboundSchema),
+    z.lazy(() => UpdateKmsIssuerPolicies3$inboundSchema),
+  ])
+);
 
 export function updateKmsIssuerPoliciesFromJSON(
   jsonString: string,
@@ -347,20 +361,22 @@ export const UpdateKmsIssuerPublicKey$inboundSchema: z.ZodType<
   UpdateKmsIssuerPublicKey,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  alg: types.optional(types.string()),
-  key_ops: types.optional(z.array(types.string())),
-  kid: types.optional(types.string()),
-  kty: types.optional(types.string()),
-  use: types.optional(types.string()),
-  x5c: types.optional(z.array(types.string())),
-  "x5t#S256": types.optional(types.string()),
-}).transform((v) => {
-  return remap$(v, {
-    "key_ops": "keyOps",
-    "x5t#S256": "x5tNumberS256",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alg: types.optional(types.string()),
+    key_ops: types.optional(z.array(types.string())),
+    kid: types.optional(types.string()),
+    kty: types.optional(types.string()),
+    use: types.optional(types.string()),
+    x5c: types.optional(z.array(types.string())),
+    "x5t#S256": types.optional(types.string()),
+  }).transform((v) => {
+    return remap$(v, {
+      "key_ops": "keyOps",
+      "x5t#S256": "x5tNumberS256",
+    });
+  })
+);
 
 export function updateKmsIssuerPublicKeyFromJSON(
   jsonString: string,
@@ -375,31 +391,33 @@ export function updateKmsIssuerPublicKeyFromJSON(
 /** @internal */
 export const UpdateKmsIssuerStatus$inboundSchema: z.ZodNativeEnum<
   typeof UpdateKmsIssuerStatus
-> = z.nativeEnum(UpdateKmsIssuerStatus);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UpdateKmsIssuerStatus));
 
 /** @internal */
 export const UpdateKmsIssuerSigningKeys$inboundSchema: z.ZodType<
   UpdateKmsIssuerSigningKeys,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  activateAt: types.optional(types.string()),
-  activatedAt: types.optional(types.string()),
-  algorithm: types.string(),
-  certificatePem: types.optional(types.string()),
-  createdAt: types.string(),
-  importKeyId: types.optional(types.string()),
-  issuerId: types.string(),
-  keyId: types.string(),
-  publicKey: types.optional(
-    z.lazy(() => UpdateKmsIssuerPublicKey$inboundSchema),
-  ),
-  publicKeyFingerprint: types.string(),
-  publicKeyPem: types.optional(types.string()),
-  revokeAt: types.optional(types.string()),
-  status: UpdateKmsIssuerStatus$inboundSchema,
-  updatedAt: types.string(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    activateAt: types.optional(types.string()),
+    activatedAt: types.optional(types.string()),
+    algorithm: types.string(),
+    certificatePem: types.optional(types.string()),
+    createdAt: types.string(),
+    importKeyId: types.optional(types.string()),
+    issuerId: types.string(),
+    keyId: types.string(),
+    publicKey: types.optional(
+      z.lazy(() => UpdateKmsIssuerPublicKey$inboundSchema),
+    ),
+    publicKeyFingerprint: types.string(),
+    publicKeyPem: types.optional(types.string()),
+    revokeAt: types.optional(types.string()),
+    status: UpdateKmsIssuerStatus$inboundSchema,
+    updatedAt: types.string(),
+  })
+);
 
 export function updateKmsIssuerSigningKeysFromJSON(
   jsonString: string,
@@ -416,26 +434,28 @@ export const UpdateKmsIssuerResponseBody$inboundSchema: z.ZodType<
   UpdateKmsIssuerResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  algorithm: UpdateKmsIssuerAlgorithm$inboundSchema,
-  claimsSchema: types.optional(z.record(z.any())),
-  createdAt: types.string(),
-  discoveryLayout: UpdateKmsIssuerDiscoveryLayout$inboundSchema,
-  id: types.string(),
-  managedBy: types.optional(types.string()),
-  name: types.string(),
-  origin: UpdateKmsIssuerOrigin$inboundSchema,
-  ownerId: types.string(),
-  policies: z.array(
-    z.union([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    algorithm: UpdateKmsIssuerAlgorithm$inboundSchema,
+    claimsSchema: types.optional(z.record(z.any())),
+    createdAt: types.string(),
+    discoveryLayout: UpdateKmsIssuerDiscoveryLayout$inboundSchema,
+    id: types.string(),
+    managedBy: types.optional(types.string()),
+    name: types.string(),
+    origin: UpdateKmsIssuerOrigin$inboundSchema,
+    ownerId: types.string(),
+    policies: z.array(z.union([
       z.lazy(() => UpdateKmsIssuerPolicies1$inboundSchema),
       z.lazy(() => UpdateKmsIssuerPolicies2$inboundSchema),
       z.lazy(() => UpdateKmsIssuerPolicies3$inboundSchema),
-    ]),
-  ),
-  signingKeys: z.array(z.lazy(() => UpdateKmsIssuerSigningKeys$inboundSchema)),
-  updatedAt: types.string(),
-});
+    ])),
+    signingKeys: z.array(z.lazy(() =>
+      UpdateKmsIssuerSigningKeys$inboundSchema
+    )),
+    updatedAt: types.string(),
+  })
+);
 
 export function updateKmsIssuerResponseBodyFromJSON(
   jsonString: string,

@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
 import { smartUnion } from "../types/smartUnion.js";
@@ -64,9 +64,11 @@ export const SearchDomainsRequestBody$outboundSchema: z.ZodType<
   SearchDomainsRequestBody$Outbound,
   z.ZodTypeDef,
   SearchDomainsRequestBody
-> = z.object({
-  domains: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domains: z.array(z.string()),
+  })
+);
 
 export function searchDomainsRequestBodyToJSON(
   searchDomainsRequestBody: SearchDomainsRequestBody,
@@ -87,14 +89,16 @@ export const SearchDomainsRequest$outboundSchema: z.ZodType<
   SearchDomainsRequest$Outbound,
   z.ZodTypeDef,
   SearchDomainsRequest
-> = z.object({
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => SearchDomainsRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() => SearchDomainsRequestBody$outboundSchema),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function searchDomainsRequestToJSON(
   searchDomainsRequest: SearchDomainsRequest,
@@ -109,14 +113,16 @@ export const Results2$inboundSchema: z.ZodType<
   Results2,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  available: types.literal(true),
-  years: types.number(),
-  price: types.number(),
-  renewalPrice: types.number(),
-  premium: types.boolean(),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    available: types.literal(true),
+    years: types.number(),
+    price: types.number(),
+    renewalPrice: types.number(),
+    premium: types.boolean(),
+  })
+);
 
 export function results2FromJSON(
   jsonString: string,
@@ -133,10 +139,12 @@ export const Results1$inboundSchema: z.ZodType<
   Results1,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  domain: types.string(),
-  available: types.literal(false),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: types.string(),
+    available: types.literal(false),
+  })
+);
 
 export function results1FromJSON(
   jsonString: string,
@@ -150,10 +158,12 @@ export function results1FromJSON(
 
 /** @internal */
 export const Results$inboundSchema: z.ZodType<Results, z.ZodTypeDef, unknown> =
-  smartUnion([
-    z.lazy(() => Results2$inboundSchema),
-    z.lazy(() => Results1$inboundSchema),
-  ]);
+  /* @__PURE__ */ lazySchema$(() =>
+    smartUnion([
+      z.lazy(() => Results2$inboundSchema),
+      z.lazy(() => Results1$inboundSchema),
+    ])
+  );
 
 export function resultsFromJSON(
   jsonString: string,
@@ -170,14 +180,14 @@ export const SearchDomainsResponseBody$inboundSchema: z.ZodType<
   SearchDomainsResponseBody,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  results: z.array(
-    smartUnion([
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    results: z.array(smartUnion([
       z.lazy(() => Results2$inboundSchema),
       z.lazy(() => Results1$inboundSchema),
-    ]),
-  ),
-});
+    ])),
+  })
+);
 
 export function searchDomainsResponseBodyFromJSON(
   jsonString: string,

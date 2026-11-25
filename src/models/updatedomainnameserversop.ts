@@ -4,7 +4,7 @@
 
 import * as z from "zod/v3";
 import { remap as remap$ } from "../lib/primitives.js";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import { smartUnion } from "../types/smartUnion.js";
 import {
@@ -56,9 +56,11 @@ export const UpdateDomainNameserversRequestBody$outboundSchema: z.ZodType<
   UpdateDomainNameserversRequestBody$Outbound,
   z.ZodTypeDef,
   UpdateDomainNameserversRequestBody
-> = z.object({
-  nameservers: z.array(z.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    nameservers: z.array(z.string()),
+  })
+);
 
 export function updateDomainNameserversRequestBodyToJSON(
   updateDomainNameserversRequestBody: UpdateDomainNameserversRequestBody,
@@ -82,15 +84,19 @@ export const UpdateDomainNameserversRequest$outboundSchema: z.ZodType<
   UpdateDomainNameserversRequest$Outbound,
   z.ZodTypeDef,
   UpdateDomainNameserversRequest
-> = z.object({
-  domain: z.string(),
-  teamId: z.string().optional(),
-  requestBody: z.lazy(() => UpdateDomainNameserversRequestBody$outboundSchema),
-}).transform((v) => {
-  return remap$(v, {
-    requestBody: "RequestBody",
-  });
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    domain: z.string(),
+    teamId: z.string().optional(),
+    requestBody: z.lazy(() =>
+      UpdateDomainNameserversRequestBody$outboundSchema
+    ),
+  }).transform((v) => {
+    return remap$(v, {
+      requestBody: "RequestBody",
+    });
+  })
+);
 
 export function updateDomainNameserversRequestToJSON(
   updateDomainNameserversRequest: UpdateDomainNameserversRequest,
@@ -108,12 +114,14 @@ export const UpdateDomainNameserversDomainsRegistrarResponseBody$inboundSchema:
     UpdateDomainNameserversDomainsRegistrarResponseBody,
     z.ZodTypeDef,
     unknown
-  > = z.union([
-    Forbidden$inboundSchema,
-    NotAuthorizedForScope$inboundSchema.and(
-      z.object({ code: z.literal("not_authorized_for_scope") }),
-    ),
-  ]);
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.union([
+      Forbidden$inboundSchema,
+      NotAuthorizedForScope$inboundSchema.and(
+        z.object({ code: z.literal("not_authorized_for_scope") }),
+      ),
+    ])
+  );
 
 export function updateDomainNameserversDomainsRegistrarResponseBodyFromJSON(
   jsonString: string,
@@ -136,10 +144,12 @@ export const UpdateDomainNameserversResponseBody$inboundSchema: z.ZodType<
   UpdateDomainNameserversResponseBody,
   z.ZodTypeDef,
   unknown
-> = smartUnion([
-  DomainNotRegistered$inboundSchema,
-  HttpApiDecodeError$inboundSchema,
-]);
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    DomainNotRegistered$inboundSchema,
+    HttpApiDecodeError$inboundSchema,
+  ])
+);
 
 export function updateDomainNameserversResponseBodyFromJSON(
   jsonString: string,

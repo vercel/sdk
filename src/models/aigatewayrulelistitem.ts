@@ -3,7 +3,7 @@
  */
 
 import * as z from "zod/v3";
-import { safeParse } from "../lib/schemas.js";
+import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
@@ -50,10 +50,12 @@ export const AiGatewayRuleListItemAction$inboundSchema: z.ZodType<
   AiGatewayRuleListItemAction,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  reason: types.optional(types.string()),
-  rewriteModel: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    reason: types.optional(types.string()),
+    rewriteModel: types.optional(types.string()),
+  })
+);
 
 export function aiGatewayRuleListItemActionFromJSON(
   jsonString: string,
@@ -70,9 +72,11 @@ export const AiGatewayRuleListItemMatch$inboundSchema: z.ZodType<
   AiGatewayRuleListItemMatch,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  model: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    model: types.optional(types.string()),
+  })
+);
 
 export function aiGatewayRuleListItemMatchFromJSON(
   jsonString: string,
@@ -87,30 +91,34 @@ export function aiGatewayRuleListItemMatchFromJSON(
 /** @internal */
 export const AiGatewayRuleListItemType$inboundSchema: z.ZodNativeEnum<
   typeof AiGatewayRuleListItemType
-> = z.nativeEnum(AiGatewayRuleListItemType);
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(AiGatewayRuleListItemType));
 
 /** @internal */
 export const AiGatewayRuleListItem$inboundSchema: z.ZodType<
   AiGatewayRuleListItem,
   z.ZodTypeDef,
   unknown
-> = z.object({
-  action: types.optional(
-    z.lazy(() => AiGatewayRuleListItemAction$inboundSchema),
-  ),
-  createdAt: types.number(),
-  createdBy: types.optional(types.string()),
-  deleted: types.optional(types.boolean()),
-  description: types.optional(types.string()),
-  enabled: types.boolean(),
-  match: types.optional(z.lazy(() => AiGatewayRuleListItemMatch$inboundSchema)),
-  ownerId: types.string(),
-  ruleId: types.string(),
-  shadowedBy: types.optional(types.string()),
-  type: AiGatewayRuleListItemType$inboundSchema,
-  updatedAt: types.number(),
-  updatedBy: types.optional(types.string()),
-});
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    action: types.optional(
+      z.lazy(() => AiGatewayRuleListItemAction$inboundSchema),
+    ),
+    createdAt: types.number(),
+    createdBy: types.optional(types.string()),
+    deleted: types.optional(types.boolean()),
+    description: types.optional(types.string()),
+    enabled: types.boolean(),
+    match: types.optional(
+      z.lazy(() => AiGatewayRuleListItemMatch$inboundSchema),
+    ),
+    ownerId: types.string(),
+    ruleId: types.string(),
+    shadowedBy: types.optional(types.string()),
+    type: AiGatewayRuleListItemType$inboundSchema,
+    updatedAt: types.number(),
+    updatedBy: types.optional(types.string()),
+  })
+);
 
 export function aiGatewayRuleListItemFromJSON(
   jsonString: string,

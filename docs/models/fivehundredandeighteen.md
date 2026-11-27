@@ -10,17 +10,12 @@ import { FiveHundredAndEighteen } from "@vercel/sdk/models/payloadoutcome.js";
 let value: FiveHundredAndEighteen = {
   email: "Mazie.Turcotte@hotmail.com",
   prevEmail: "<value>",
-  actorId: "<id>",
-  actorType: "admin",
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `email`                                                                          | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `prevEmail`                                                                      | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | Okta user id.                                                                    |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload518ActorType](../models/usereventpayload518actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `email`            | *string*           | :heavy_check_mark: | N/A                |
+| `prevEmail`        | *string*           | :heavy_check_mark: | N/A                |

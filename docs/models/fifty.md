@@ -8,14 +8,14 @@ The payload of the event, if requested.
 import { Fifty } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: Fifty = {
-  enabled: true,
-  mode: "shadow",
+  countries: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `enabled`                                                            | *boolean*                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
-| `mode`                                                               | [models.UserEventPayload50Mode](../models/usereventpayload50mode.md) | :heavy_check_mark:                                                   | N/A                                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `countries`        | *string*[]         | :heavy_check_mark: | N/A                |

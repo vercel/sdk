@@ -10,9 +10,7 @@ import { FiveHundredAndTwentySix } from "@vercel/sdk/models/payloadoutcome.js";
 let value: FiveHundredAndTwentySix = {
   projectId: "<id>",
   projectName: "<value>",
-  removedTeamIds: [
-    "<value 1>",
-  ],
+  public: true,
   repositoryName: "<value>",
 };
 ```
@@ -23,5 +21,5 @@ let value: FiveHundredAndTwentySix = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `projectId`        | *string*           | :heavy_check_mark: | N/A                |
 | `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `removedTeamIds`   | *string*[]         | :heavy_check_mark: | N/A                |
+| `public`           | *boolean*          | :heavy_check_mark: | N/A                |
 | `repositoryName`   | *string*           | :heavy_check_mark: | N/A                |

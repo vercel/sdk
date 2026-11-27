@@ -5,32 +5,27 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndThirtyNine } from "@vercel/sdk/models/usereventpayload82resourcestype.js";
+import { OneHundredAndThirtyNine } from "@vercel/sdk/models/eightythree.js";
 
 let value: OneHundredAndThirtyNine = {
-  job: {
-    headInfo: {
-      owner: "<value>",
-      ownerId: "<id>",
-      ref: "<value>",
-      repo: "<value>",
-      repoId: "<id>",
-      sha: "<value>",
-    },
-    installationId: "<id>",
-    owner: "<value>",
-    prId: 3075.54,
-    projectId: "<id>",
-    provider: "cursor-origin",
-    repo: "<value>",
-    repoId: "<id>",
-    type: "cursor-origin-now-comment",
-  },
+  url: "https://funny-safe.org",
 };
 ```
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `job`               | *models.PayloadJob* | :heavy_check_mark:  | N/A                 |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `alias`                                                                      | *string*[]                                                                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `deployment`                                                                 | [models.UserEventPayloadDeployment](../models/usereventpayloaddeployment.md) | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `deploymentId`                                                               | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `forced`                                                                     | *boolean*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `gitCredentialSource`                                                        | [models.GitCredentialSource](../models/gitcredentialsource.md)               | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `name`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `plan`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `project`                                                                    | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `projectId`                                                                  | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `regions`                                                                    | *string*[]                                                                   | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `target`                                                                     | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `type`                                                                       | *string*                                                                     | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `url`                                                                        | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |

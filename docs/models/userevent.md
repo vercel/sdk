@@ -14,9 +14,7 @@ let value: UserEvent = {
   createdAt: 1632859321020,
   entities: [],
   id: "uev_bfmMjiMnXfnPbT97dGdpJbCN",
-  payload: {
-    deletedCount: 3458,
-  },
+  payload: {},
   principalId: "<id>",
   text: "You logged in via GitHub",
   type: "login",

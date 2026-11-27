@@ -8,29 +8,14 @@ The payload of the event, if requested.
 import { FortySeven } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: FortySeven = {
-  moderationPolicyCount: 1316.08,
-  piiRedaction: {
-    from: false,
-    to: true,
+  privateProvider: {
+    slug: "<value>",
   },
-  policiesAdded: [
-    "<value 1>",
-    "<value 2>",
-    "<value 3>",
-  ],
-  policiesModified: [],
-  policiesRemoved: [
-    "<value 1>",
-  ],
 };
 ```
 
 ## Fields
 
-| Field                                            | Type                                             | Required                                         | Description                                      |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| `moderationPolicyCount`                          | *number*                                         | :heavy_check_mark:                               | N/A                                              |
-| `piiRedaction`                                   | [models.PiiRedaction](../models/piiredaction.md) | :heavy_check_mark:                               | N/A                                              |
-| `policiesAdded`                                  | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |
-| `policiesModified`                               | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |
-| `policiesRemoved`                                | *string*[]                                       | :heavy_check_mark:                               | N/A                                              |
+| Field                                                  | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `privateProvider`                                      | [models.PrivateProvider](../models/privateprovider.md) | :heavy_check_mark:                                     | N/A                                                    |

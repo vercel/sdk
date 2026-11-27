@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndNinetyThree } from "@vercel/sdk/models/fourhundredandfortyfour.js";
+import { FourHundredAndNinetyThree } from "@vercel/sdk/models/fourhundredandfortyfive.js";
 
 let value: FourHundredAndNinetyThree = {
-  organizationId: "<id>",
+  reason: "limits-exceeded",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `reason`                                                             | [models.UserEventPayloadReason](../models/usereventpayloadreason.md) | :heavy_check_mark:                                                   | N/A                                                                  |

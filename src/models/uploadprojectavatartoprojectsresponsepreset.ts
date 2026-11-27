@@ -374,6 +374,10 @@ export type UploadProjectAvatarMicrofrontends2 = {
    */
   defaultRoute?: string | undefined;
   /**
+   * Whether requests routed to this microfrontend skip the default app's managed rulesets (OWASP Core Ruleset, Bot Protection, AI Bots), so only this project's own managed rulesets apply to its routes. The default app's custom firewall rules apply either way.
+   */
+  doNotInheritDefaultAppManagedRules?: boolean | undefined;
+  /**
    * Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
    */
   doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
@@ -1816,17 +1820,6 @@ export type UploadProjectAvatarProjectsBuildMachineSelection = ClosedEnum<
   typeof UploadProjectAvatarProjectsBuildMachineSelection
 >;
 
-export const UploadProjectAvatarProjectsBuildMachineType = {
-  Fourteencpu28gb: "14cpu-28gb",
-  Basic: "basic",
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-export type UploadProjectAvatarProjectsBuildMachineType = ClosedEnum<
-  typeof UploadProjectAvatarProjectsBuildMachineType
->;
-
 export const UploadProjectAvatarProjectsConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -1838,16 +1831,6 @@ export type UploadProjectAvatarProjectsConfiguration = ClosedEnum<
 export type UploadProjectAvatarProjectsBuildQueue = {
   configuration?: UploadProjectAvatarProjectsConfiguration | undefined;
 };
-
-export const UploadProjectAvatarProjectsFunctionDefaultMemoryType = {
-  Performance: "performance",
-  PerformanceXl: "performance_xl",
-  Standard: "standard",
-  StandardLegacy: "standard_legacy",
-} as const;
-export type UploadProjectAvatarProjectsFunctionDefaultMemoryType = ClosedEnum<
-  typeof UploadProjectAvatarProjectsFunctionDefaultMemoryType
->;
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
@@ -1891,6 +1874,30 @@ export type UploadProjectAvatarProjectsElasticBuildMachine =
   | UploadProjectAvatarElasticBuildMachineProjects3
   | UploadProjectAvatarElasticBuildMachineProjects4;
 
+export const UploadProjectAvatarProjectsFunctionDefaultMemoryType = {
+  Performance: "performance",
+  PerformanceXl: "performance_xl",
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+} as const;
+export type UploadProjectAvatarProjectsFunctionDefaultMemoryType = ClosedEnum<
+  typeof UploadProjectAvatarProjectsFunctionDefaultMemoryType
+>;
+
+export const UploadProjectAvatarProjectsBuildMachineType = {
+  Basic: "basic",
+  Elastic: "elastic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+export type UploadProjectAvatarProjectsBuildMachineType = ClosedEnum<
+  typeof UploadProjectAvatarProjectsBuildMachineType
+>;
+
+/**
+ * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+ */
 export type UploadProjectAvatarResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -1902,8 +1909,13 @@ export type UploadProjectAvatarResourceConfig = {
   buildMachineSelection?:
     | UploadProjectAvatarProjectsBuildMachineSelection
     | undefined;
-  buildMachineType?: UploadProjectAvatarProjectsBuildMachineType | undefined;
   buildQueue?: UploadProjectAvatarProjectsBuildQueue | undefined;
+  elasticBuildMachine?:
+    | UploadProjectAvatarElasticBuildMachineProjects1
+    | UploadProjectAvatarElasticBuildMachineProjects2
+    | UploadProjectAvatarElasticBuildMachineProjects3
+    | UploadProjectAvatarElasticBuildMachineProjects4
+    | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -1914,12 +1926,7 @@ export type UploadProjectAvatarResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  elasticBuildMachine?:
-    | UploadProjectAvatarElasticBuildMachineProjects1
-    | UploadProjectAvatarElasticBuildMachineProjects2
-    | UploadProjectAvatarElasticBuildMachineProjects3
-    | UploadProjectAvatarElasticBuildMachineProjects4
-    | undefined;
+  buildMachineType?: UploadProjectAvatarProjectsBuildMachineType | undefined;
 };
 
 /**
@@ -3643,6 +3650,7 @@ export const UploadProjectAvatarMicrofrontends2$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     defaultRoute: types.optional(types.string()),
+    doNotInheritDefaultAppManagedRules: types.optional(types.boolean()),
     doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
     enabled: types.literal(true),
     freeProjectForLegacyLimits: types.optional(types.boolean()),
@@ -4435,13 +4443,6 @@ export const UploadProjectAvatarProjectsBuildMachineSelection$inboundSchema:
     );
 
 /** @internal */
-export const UploadProjectAvatarProjectsBuildMachineType$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsBuildMachineType> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(UploadProjectAvatarProjectsBuildMachineType)
-    );
-
-/** @internal */
 export const UploadProjectAvatarProjectsConfiguration$inboundSchema:
   z.ZodNativeEnum<typeof UploadProjectAvatarProjectsConfiguration> =
     /* @__PURE__ */ lazySchema$(() =>
@@ -4471,13 +4472,6 @@ export function uploadProjectAvatarProjectsBuildQueueFromJSON(
     `Failed to parse 'UploadProjectAvatarProjectsBuildQueue' from JSON`,
   );
 }
-
-/** @internal */
-export const UploadProjectAvatarProjectsFunctionDefaultMemoryType$inboundSchema:
-  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsFunctionDefaultMemoryType> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(UploadProjectAvatarProjectsFunctionDefaultMemoryType)
-    );
 
 /** @internal */
 export const UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema:
@@ -4639,6 +4633,20 @@ export function uploadProjectAvatarProjectsElasticBuildMachineFromJSON(
 }
 
 /** @internal */
+export const UploadProjectAvatarProjectsFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsFunctionDefaultMemoryType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsFunctionDefaultMemoryType)
+    );
+
+/** @internal */
+export const UploadProjectAvatarProjectsBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<typeof UploadProjectAvatarProjectsBuildMachineType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UploadProjectAvatarProjectsBuildMachineType)
+    );
+
+/** @internal */
 export const UploadProjectAvatarResourceConfig$inboundSchema: z.ZodType<
   UploadProjectAvatarResourceConfig,
   z.ZodTypeDef,
@@ -4655,22 +4663,9 @@ export const UploadProjectAvatarResourceConfig$inboundSchema: z.ZodType<
     buildMachineSelection: types.optional(
       UploadProjectAvatarProjectsBuildMachineSelection$inboundSchema,
     ),
-    buildMachineType: types.optional(
-      UploadProjectAvatarProjectsBuildMachineType$inboundSchema,
-    ),
     buildQueue: types.optional(z.lazy(() =>
       UploadProjectAvatarProjectsBuildQueue$inboundSchema
     )),
-    elasticConcurrencyEnabled: types.optional(types.boolean()),
-    enableFunctionsBeta: types.optional(types.boolean()),
-    fluid: types.optional(types.boolean()),
-    functionDefaultMemoryType: types.optional(
-      UploadProjectAvatarProjectsFunctionDefaultMemoryType$inboundSchema,
-    ),
-    functionDefaultRegions: z.array(types.string()),
-    functionDefaultTimeout: types.optional(types.number()),
-    functionZeroConfigFailover: types.optional(types.boolean()),
-    isNSNBDisabled: types.optional(types.boolean()),
     elasticBuildMachine: types.optional(z.union([
       z.lazy(() =>
         UploadProjectAvatarElasticBuildMachineProjects1$inboundSchema
@@ -4685,6 +4680,19 @@ export const UploadProjectAvatarResourceConfig$inboundSchema: z.ZodType<
         UploadProjectAvatarElasticBuildMachineProjects4$inboundSchema
       ),
     ])),
+    elasticConcurrencyEnabled: types.optional(types.boolean()),
+    enableFunctionsBeta: types.optional(types.boolean()),
+    fluid: types.optional(types.boolean()),
+    functionDefaultMemoryType: types.optional(
+      UploadProjectAvatarProjectsFunctionDefaultMemoryType$inboundSchema,
+    ),
+    functionDefaultRegions: z.array(types.string()),
+    functionDefaultTimeout: types.optional(types.number()),
+    functionZeroConfigFailover: types.optional(types.boolean()),
+    isNSNBDisabled: types.optional(types.boolean()),
+    buildMachineType: types.optional(
+      UploadProjectAvatarProjectsBuildMachineType$inboundSchema,
+    ),
   })
 );
 

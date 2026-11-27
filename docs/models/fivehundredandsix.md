@@ -5,16 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndSix } from "@vercel/sdk/models/fourhundredandfortyfour.js";
+import { FiveHundredAndSix } from "@vercel/sdk/models/fourhundredandfortyfive.js";
 
 let value: FiveHundredAndSix = {
-  scope: "organization",
+  actorId: "<id>",
+  actorType: "admin",
+  autoBlockPrevented: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `scope`                                                                  | [models.UserEventPayload506Scope](../models/usereventpayload506scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |
-| `scopeId`                                                                | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `actorId`                                                                        | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| `actorType`                                                                      | [models.UserEventPayload506ActorType](../models/usereventpayload506actortype.md) | :heavy_check_mark:                                                               | N/A                                                                              |
+| `autoBlockPrevented`                                                             | *boolean*                                                                        | :heavy_check_mark:                                                               | N/A                                                                              |
+| `preventUntil`                                                                   | *number*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `reason`                                                                         | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |

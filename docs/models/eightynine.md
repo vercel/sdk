@@ -5,18 +5,16 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { EightyNine } from "@vercel/sdk/models/usereventpayload82resourcestype.js";
+import { EightyNine } from "@vercel/sdk/models/eightythree.js";
 
 let value: EightyNine = {
-  autoExposeSystemEnvs: true,
-  projectName: "<value>",
+  sessionId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                  | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `autoExposeSystemEnvs` | *boolean*              | :heavy_check_mark:     | N/A                    |
-| `projectId`            | *string*               | :heavy_minus_sign:     | N/A                    |
-| `projectName`          | *string*               | :heavy_check_mark:     | N/A                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `name`             | *string*           | :heavy_minus_sign: | N/A                |
+| `sessionId`        | *string*           | :heavy_check_mark: | N/A                |

@@ -5,19 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndThree } from "@vercel/sdk/models/newenvvar.js";
+import { TwoHundredAndThree } from "@vercel/sdk/models/usereventpayload195oldenvvartype.js";
 
 let value: TwoHundredAndThree = {
-  consumerProjectId: "<id>",
+  active: false,
   projectId: "<id>",
+  rulesetName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `consumerProjectId`   | *string*              | :heavy_check_mark:    | N/A                   |
-| `consumerProjectName` | *string*              | :heavy_minus_sign:    | N/A                   |
-| `projectId`           | *string*              | :heavy_check_mark:    | N/A                   |
-| `projectName`         | *string*              | :heavy_minus_sign:    | N/A                   |
+| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `action`                                                                   | [models.UserEventPayload203Action](../models/usereventpayload203action.md) | :heavy_minus_sign:                                                         | N/A                                                                        |
+| `active`                                                                   | *boolean*                                                                  | :heavy_check_mark:                                                         | N/A                                                                        |
+| `projectId`                                                                | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| `rulesetName`                                                              | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |

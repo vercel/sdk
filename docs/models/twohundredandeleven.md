@@ -5,13 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEleven } from "@vercel/sdk/models/newenvvar.js";
+import { TwoHundredAndEleven } from "@vercel/sdk/models/usereventpayload195oldenvvartype.js";
 
 let value: TwoHundredAndEleven = {
-  configurationId: "<id>",
-  integrationId: "<id>",
-  integrationName: "<value>",
-  integrationSlug: "<value>",
+  fromDeploymentId: "<id>",
+  projectId: "<id>",
+  projectName: "<value>",
+  toDeploymentId: "<id>",
 };
 ```
 
@@ -19,7 +19,8 @@ let value: TwoHundredAndEleven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `configurationId`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationId`    | *string*           | :heavy_check_mark: | N/A                |
-| `integrationName`  | *string*           | :heavy_check_mark: | N/A                |
-| `integrationSlug`  | *string*           | :heavy_check_mark: | N/A                |
+| `fromDeploymentId` | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
+| `reason`           | *string*           | :heavy_minus_sign: | N/A                |
+| `toDeploymentId`   | *string*           | :heavy_check_mark: | N/A                |

@@ -9,6 +9,7 @@ import { FortyFive } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: FortyFive = {
   privateModel: {
+    providerSlug: "<value>",
     slug: "<value>",
   },
 };
@@ -16,6 +17,6 @@ let value: FortyFive = {
 
 ## Fields
 
-| Field                                                          | Type                                                           | Required                                                       | Description                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `privateModel`                                                 | [models.PayloadPrivateModel](../models/payloadprivatemodel.md) | :heavy_check_mark:                                             | N/A                                                            |
+| Field                                            | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `privateModel`                                   | [models.PrivateModel](../models/privatemodel.md) | :heavy_check_mark:                               | N/A                                              |

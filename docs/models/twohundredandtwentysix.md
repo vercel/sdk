@@ -5,13 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndTwentySix } from "@vercel/sdk/models/newenvvar.js";
+import { TwoHundredAndTwentySix } from "@vercel/sdk/models/usereventpayload195oldenvvartype.js";
 
 let value: TwoHundredAndTwentySix = {
-  accessTokenRotation: false,
   integrationId: "<id>",
   integrationName: "<value>",
   integrationSlug: "<value>",
+  previousSecretExpiresAt: 525.59,
 };
 ```
 
@@ -19,8 +19,7 @@ let value: TwoHundredAndTwentySix = {
 
 | Field                     | Type                      | Required                  | Description               |
 | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `accessTokenRotation`     | *boolean*                 | :heavy_check_mark:        | N/A                       |
 | `integrationId`           | *string*                  | :heavy_check_mark:        | N/A                       |
 | `integrationName`         | *string*                  | :heavy_check_mark:        | N/A                       |
 | `integrationSlug`         | *string*                  | :heavy_check_mark:        | N/A                       |
-| `permanentTokensExpireAt` | *number*                  | :heavy_minus_sign:        | N/A                       |
+| `previousSecretExpiresAt` | *number*                  | :heavy_check_mark:        | N/A                       |

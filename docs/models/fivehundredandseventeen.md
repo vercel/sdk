@@ -5,17 +5,28 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FiveHundredAndSeventeen } from "@vercel/sdk/models/payloadoutcome.js";
+import { FiveHundredAndSeventeen } from "@vercel/sdk/models/fourhundredandfortyfive.js";
 
 let value: FiveHundredAndSeventeen = {
-  email: "Leonardo.Streich45@gmail.com",
-  prevEmail: "<value>",
+  decision: {
+    authoritative: true,
+    basis: "none",
+    emailDomain: "<value>",
+    emailVerified: false,
+    hostedDomainMatch: false,
+    mxOutcome: "google",
+  },
+  outcome: "account-matched",
+  provider: "google",
+  providerSubjectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `email`            | *string*           | :heavy_check_mark: | N/A                |
-| `prevEmail`        | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `decision`                                                                     | [models.PayloadDecision](../models/payloaddecision.md)                         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `outcome`                                                                      | [models.PayloadOutcome](../models/payloadoutcome.md)                           | :heavy_check_mark:                                                             | N/A                                                                            |
+| `provider`                                                                     | [models.UserEventPayload517Provider](../models/usereventpayload517provider.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `providerSubjectId`                                                            | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

@@ -5,21 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndThree } from "@vercel/sdk/models/usereventpayload385project.js";
+import { FourHundredAndThree } from "@vercel/sdk/models/threehundredandeightysix.js";
 
 let value: FourHundredAndThree = {
+  processes: "preserve",
   projectId: "<id>",
-  projectName: "<value>",
-  snapshotId: "<id>",
-  targetRegions: [],
+  sandboxName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_check_mark: | N/A                |
-| `snapshotId`       | *string*           | :heavy_check_mark: | N/A                |
-| `targetRegions`    | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                                      | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `processes`                                | [models.Processes](../models/processes.md) | :heavy_check_mark:                         | N/A                                        |
+| `projectId`                                | *string*                                   | :heavy_check_mark:                         | N/A                                        |
+| `sandboxName`                              | *string*                                   | :heavy_check_mark:                         | N/A                                        |

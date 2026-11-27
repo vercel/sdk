@@ -1086,17 +1086,6 @@ export type CreateProjectBuildMachineSelection = ClosedEnum<
   typeof CreateProjectBuildMachineSelection
 >;
 
-export const CreateProjectBuildMachineType = {
-  Fourteencpu28gb: "14cpu-28gb",
-  Basic: "basic",
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-export type CreateProjectBuildMachineType = ClosedEnum<
-  typeof CreateProjectBuildMachineType
->;
-
 export const CreateProjectProjectsConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -1108,16 +1097,6 @@ export type CreateProjectProjectsConfiguration = ClosedEnum<
 export type CreateProjectProjectsResponseBuildQueue = {
   configuration?: CreateProjectProjectsConfiguration | undefined;
 };
-
-export const CreateProjectFunctionDefaultMemoryType = {
-  Performance: "performance",
-  PerformanceXl: "performance_xl",
-  Standard: "standard",
-  StandardLegacy: "standard_legacy",
-} as const;
-export type CreateProjectFunctionDefaultMemoryType = ClosedEnum<
-  typeof CreateProjectFunctionDefaultMemoryType
->;
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
@@ -1161,6 +1140,30 @@ export type ElasticBuildMachine =
   | ElasticBuildMachine3
   | ElasticBuildMachine4;
 
+export const CreateProjectFunctionDefaultMemoryType = {
+  Performance: "performance",
+  PerformanceXl: "performance_xl",
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+} as const;
+export type CreateProjectFunctionDefaultMemoryType = ClosedEnum<
+  typeof CreateProjectFunctionDefaultMemoryType
+>;
+
+export const CreateProjectBuildMachineType = {
+  Basic: "basic",
+  Elastic: "elastic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+export type CreateProjectBuildMachineType = ClosedEnum<
+  typeof CreateProjectBuildMachineType
+>;
+
+/**
+ * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+ */
 export type DefaultResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -1170,8 +1173,13 @@ export type DefaultResourceConfig = {
     | CreateProjectBuildMachineElasticTransition
     | undefined;
   buildMachineSelection?: CreateProjectBuildMachineSelection | undefined;
-  buildMachineType?: CreateProjectBuildMachineType | undefined;
   buildQueue?: CreateProjectProjectsResponseBuildQueue | undefined;
+  elasticBuildMachine?:
+    | ElasticBuildMachine1
+    | ElasticBuildMachine2
+    | ElasticBuildMachine3
+    | ElasticBuildMachine4
+    | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -1182,12 +1190,7 @@ export type DefaultResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  elasticBuildMachine?:
-    | ElasticBuildMachine1
-    | ElasticBuildMachine2
-    | ElasticBuildMachine3
-    | ElasticBuildMachine4
-    | undefined;
+  buildMachineType?: CreateProjectBuildMachineType | undefined;
 };
 
 /**
@@ -3301,13 +3304,6 @@ export const CreateProjectBuildMachineSelection$inboundSchema: z.ZodNativeEnum<
 );
 
 /** @internal */
-export const CreateProjectBuildMachineType$inboundSchema: z.ZodNativeEnum<
-  typeof CreateProjectBuildMachineType
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.nativeEnum(CreateProjectBuildMachineType)
-);
-
-/** @internal */
 export const CreateProjectProjectsConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof CreateProjectProjectsConfiguration
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -3342,13 +3338,6 @@ export function createProjectProjectsResponseBuildQueueFromJSON(
     `Failed to parse 'CreateProjectProjectsResponseBuildQueue' from JSON`,
   );
 }
-
-/** @internal */
-export const CreateProjectFunctionDefaultMemoryType$inboundSchema:
-  z.ZodNativeEnum<typeof CreateProjectFunctionDefaultMemoryType> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(CreateProjectFunctionDefaultMemoryType)
-    );
 
 /** @internal */
 export const ElasticBuildMachine4$inboundSchema: z.ZodType<
@@ -3467,6 +3456,20 @@ export function elasticBuildMachineFromJSON(
 }
 
 /** @internal */
+export const CreateProjectFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<typeof CreateProjectFunctionDefaultMemoryType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(CreateProjectFunctionDefaultMemoryType)
+    );
+
+/** @internal */
+export const CreateProjectBuildMachineType$inboundSchema: z.ZodNativeEnum<
+  typeof CreateProjectBuildMachineType
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(CreateProjectBuildMachineType)
+);
+
+/** @internal */
 export const DefaultResourceConfig$inboundSchema: z.ZodType<
   DefaultResourceConfig,
   z.ZodTypeDef,
@@ -3483,12 +3486,15 @@ export const DefaultResourceConfig$inboundSchema: z.ZodType<
     buildMachineSelection: types.optional(
       CreateProjectBuildMachineSelection$inboundSchema,
     ),
-    buildMachineType: types.optional(
-      CreateProjectBuildMachineType$inboundSchema,
-    ),
     buildQueue: types.optional(
       z.lazy(() => CreateProjectProjectsResponseBuildQueue$inboundSchema),
     ),
+    elasticBuildMachine: types.optional(z.union([
+      z.lazy(() => ElasticBuildMachine1$inboundSchema),
+      z.lazy(() => ElasticBuildMachine2$inboundSchema),
+      z.lazy(() => ElasticBuildMachine3$inboundSchema),
+      z.lazy(() => ElasticBuildMachine4$inboundSchema),
+    ])),
     elasticConcurrencyEnabled: types.optional(types.boolean()),
     enableFunctionsBeta: types.optional(types.boolean()),
     fluid: types.optional(types.boolean()),
@@ -3499,13 +3505,8 @@ export const DefaultResourceConfig$inboundSchema: z.ZodType<
     functionDefaultTimeout: types.optional(types.number()),
     functionZeroConfigFailover: types.optional(types.boolean()),
     isNSNBDisabled: types.optional(types.boolean()),
-    elasticBuildMachine: types.optional(
-      z.union([
-        z.lazy(() => ElasticBuildMachine1$inboundSchema),
-        z.lazy(() => ElasticBuildMachine2$inboundSchema),
-        z.lazy(() => ElasticBuildMachine3$inboundSchema),
-        z.lazy(() => ElasticBuildMachine4$inboundSchema),
-      ]),
+    buildMachineType: types.optional(
+      CreateProjectBuildMachineType$inboundSchema,
     ),
   })
 );

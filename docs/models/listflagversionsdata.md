@@ -16,54 +16,19 @@ let value: ListFlagVersionsData = {
           type: "entity",
         },
         defaultVariantId: "<id>",
-        rollFromVariantId: "<id>",
-        rollToVariantId: "<id>",
-        slots: [],
-        startTimestamp: 3353.29,
-        type: "rollout",
+        type: "split",
+        weights: {},
       },
       pausedOutcome: {
         type: "variant",
         variantId: "<id>",
       },
-      rules: [
-        {
-          conditions: [
-            {
-              cmp: "gt",
-              lhs: {
-                attribute: "<value>",
-                kind: "<value>",
-                type: "entity",
-              },
-            },
-          ],
-          id: "<id>",
-          outcome: {
-            base: {
-              attribute: "<value>",
-              kind: "<value>",
-              type: "entity",
-            },
-            defaultVariantId: "<id>",
-            rollFromVariantId: "<id>",
-            rollToVariantId: "<id>",
-            slots: [],
-            startTimestamp: 7374.95,
-            type: "rollout",
-          },
-        },
-      ],
+      rules: [],
     },
   },
-  seed: 2298.63,
+  seed: 7513.46,
   state: "active",
-  variants: [
-    {
-      id: "<id>",
-      value: 711.35,
-    },
-  ],
+  variants: [],
 };
 ```
 

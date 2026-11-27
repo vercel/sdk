@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { FiveHundredAndFiftyFour } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndFiftyFour = {
-  after: {
+  policy: {
     claims: [],
     clientId: "<id>",
     createdAt: 2698.46,
@@ -21,43 +21,10 @@ let value: FiveHundredAndFiftyFour = {
     ],
     policyId: "<id>",
     resources: {
-      projectIds: [
-        "<value 1>",
-        "<value 2>",
-      ],
+      projectIds: [],
     },
     teamId: "<id>",
-    updatedAt: 251.64,
-  },
-  before: {
-    claims: [
-      {
-        name: "<value>",
-        values: [
-          {
-            value: "<value>",
-            wildcards: false,
-          },
-        ],
-      },
-    ],
-    clientId: "<id>",
-    createdAt: 2955.06,
-    issuerUrl: "https://assured-glider.info",
-    name: null,
-    permissions: [
-      "<value 1>",
-      "<value 2>",
-    ],
-    policyId: "<id>",
-    resources: {
-      projectIds: [
-        "<value 1>",
-        "<value 2>",
-      ],
-    },
-    teamId: "<id>",
-    updatedAt: 6595.33,
+    updatedAt: 8603.17,
   },
 };
 ```
@@ -66,6 +33,5 @@ let value: FiveHundredAndFiftyFour = {
 
 | Field                                                                                                                                                                                                                | Type                                                                                                                                                                                                                 | Required                                                                                                                                                                                                             | Description                                                                                                                                                                                                          |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `after`                                                                                                                                                                                                              | [models.PayloadAfter](../models/payloadafter.md)                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
-| `before`                                                                                                                                                                                                             | [models.PayloadBefore](../models/payloadbefore.md)                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
+| `policy`                                                                                                                                                                                                             | [models.Policy](../models/policy.md)                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                                   | A full point-in-time snapshot of an OIDC exchange policy, captured on every lifecycle event so the audit trail records exactly what the policy looked like. Mirrors the management endpoints' public response shape. |
 | `appName`                                                                                                                                                                                                            | *string*                                                                                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                                                                   | N/A                                                                                                                                                                                                                  |

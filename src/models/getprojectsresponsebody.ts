@@ -23,7 +23,7 @@ import {
 import {
   GetProjectsResponseBody3,
   GetProjectsResponseBody3$inboundSchema,
-} from "./getprojectsresponsebodyelasticbuildmachine.js";
+} from "./getprojectsresponsebodybuildmachinetype.js";
 import {
   GetProjectsResponseBodyAliasAssigned,
   GetProjectsResponseBodyAliasAssigned$inboundSchema,
@@ -357,6 +357,9 @@ export type GetProjectsResponseBody1 = {
   passport?: ResponseBodyPassport | null | undefined;
   passwordProtection?: ResponseBodyPasswordProtection | null | undefined;
   paused?: boolean | undefined;
+  /**
+   * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+   */
   resourceConfig: GetProjectsResponseBodyResourceConfig;
   /**
    * Project-level rolling release configuration that defines how deployments should be gradually rolled out

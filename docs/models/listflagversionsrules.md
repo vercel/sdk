@@ -9,7 +9,17 @@ let value: ListFlagVersionsRules = {
   conditions: [],
   id: "<id>",
   outcome: {
-    type: "experiment",
+    base: {
+      attribute: "<value>",
+      kind: "<value>",
+      type: "entity",
+    },
+    defaultVariantId: "<id>",
+    rollFromVariantId: "<id>",
+    rollToVariantId: "<id>",
+    slots: [],
+    startTimestamp: 2943.86,
+    type: "rollout",
   },
 };
 ```

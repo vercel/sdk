@@ -12,7 +12,7 @@ let value: ListEventType = {
     "deployment",
   ],
   description: "mummify medium whirlwind vanish via glaring yum",
-  name: "project-build-logs-and-source-protection-updated",
+  name: "project-build-command-updated",
 };
 ```
 

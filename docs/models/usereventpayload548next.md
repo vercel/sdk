@@ -3,34 +3,34 @@
 
 ## Supported Types
 
-### `models.UserEventNextPayload1`
+### `models.UserEventNext1`
 
 ```typescript
-const value: models.UserEventNextPayload1 = {
-  access: "none",
+const value: models.UserEventNext1 = {
+  access: "default",
 };
 ```
 
-### `models.UserEventNextPayload1`
+### `models.UserEventNext1`
 
 ```typescript
-const value: models.UserEventNextPayload1 = {
-  access: "none",
+const value: models.UserEventNext1 = {
+  access: "default",
 };
 ```
 
-### `models.UserEventNextPayload1`
+### `models.UserEventNext1`
 
 ```typescript
-const value: models.UserEventNextPayload1 = {
-  access: "none",
+const value: models.UserEventNext1 = {
+  access: "default",
 };
 ```
 
-### `models.UserEventNextPayload2`
+### `models.UserEventNext2`
 
 ```typescript
-const value: models.UserEventNextPayload2 = {
+const value: models.UserEventNext2 = {
   access: "limited",
   limit: "<value>",
 };

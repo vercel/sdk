@@ -395,24 +395,17 @@ export type UpdateFlagRequest = {
   requestBody?: UpdateFlagRequestBody | undefined;
 };
 
-export type UpdateFlagFallthrough4 = {
-  type: "experiment";
-};
-
-export const UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType =
-  {
-    Entity: "entity",
-  } as const;
-export type UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType =
-  ClosedEnum<
-    typeof UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType
-  >;
+export const UpdateFlagFallthroughFeatureFlagsResponse200Type = {
+  Entity: "entity",
+} as const;
+export type UpdateFlagFallthroughFeatureFlagsResponse200Type = ClosedEnum<
+  typeof UpdateFlagFallthroughFeatureFlagsResponse200Type
+>;
 
 export type UpdateFlagFallthroughFeatureFlagsResponse200Base = {
   attribute: string;
   kind: string;
-  type:
-    UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType;
+  type: UpdateFlagFallthroughFeatureFlagsResponse200Type;
 };
 
 export type UpdateFlagFallthroughFeatureFlagsSlots = {
@@ -460,8 +453,7 @@ export type UpdateFlagFallthroughFeatureFlags1 = {
 export type UpdateFlagFeatureFlagsFallthrough =
   | UpdateFlagFallthroughFeatureFlags1
   | UpdateFlagFallthroughFeatureFlags2
-  | UpdateFlagFallthroughFeatureFlags3
-  | UpdateFlagFallthrough4;
+  | UpdateFlagFallthroughFeatureFlags3;
 
 export const UpdateFlagType = {
   Variant: "variant",
@@ -581,23 +573,17 @@ export type UpdateFlagFeatureFlagsConditions = {
   rhs?: UpdateFlagRhs4 | UpdateFlagRhs3 | string | number | boolean | undefined;
 };
 
-export type UpdateFlagOutcome4 = {
-  type: "experiment";
-};
-
-export const UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType =
-  {
-    Entity: "entity",
-  } as const;
-export type UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType =
-  ClosedEnum<
-    typeof UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType
-  >;
+export const UpdateFlagOutcomeFeatureFlagsResponse200Type = {
+  Entity: "entity",
+} as const;
+export type UpdateFlagOutcomeFeatureFlagsResponse200Type = ClosedEnum<
+  typeof UpdateFlagOutcomeFeatureFlagsResponse200Type
+>;
 
 export type UpdateFlagOutcomeFeatureFlagsResponse200Base = {
   attribute: string;
   kind: string;
-  type: UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType;
+  type: UpdateFlagOutcomeFeatureFlagsResponse200Type;
 };
 
 export type UpdateFlagOutcomeFeatureFlagsSlots = {
@@ -645,8 +631,7 @@ export type UpdateFlagOutcomeFeatureFlags1 = {
 export type UpdateFlagFeatureFlagsOutcome =
   | UpdateFlagOutcomeFeatureFlags1
   | UpdateFlagOutcomeFeatureFlags2
-  | UpdateFlagOutcomeFeatureFlags3
-  | UpdateFlagOutcome4;
+  | UpdateFlagOutcomeFeatureFlags3;
 
 export type UpdateFlagFeatureFlagsRules = {
   conditions: Array<UpdateFlagFeatureFlagsConditions>;
@@ -654,8 +639,7 @@ export type UpdateFlagFeatureFlagsRules = {
   outcome:
     | UpdateFlagOutcomeFeatureFlags1
     | UpdateFlagOutcomeFeatureFlags2
-    | UpdateFlagOutcomeFeatureFlags3
-    | UpdateFlagOutcome4;
+    | UpdateFlagOutcomeFeatureFlags3;
 };
 
 export type UpdateFlagFeatureFlagsTargets = {
@@ -668,8 +652,7 @@ export type UpdateFlagFeatureFlagsEnvironments = {
   fallthrough:
     | UpdateFlagFallthroughFeatureFlags1
     | UpdateFlagFallthroughFeatureFlags2
-    | UpdateFlagFallthroughFeatureFlags3
-    | UpdateFlagFallthrough4;
+    | UpdateFlagFallthroughFeatureFlags3;
   pausedOutcome: UpdateFlagFeatureFlagsPausedOutcome;
   reuse?: UpdateFlagFeatureFlagsReuse | undefined;
   revision?: number | undefined;
@@ -1748,35 +1731,11 @@ export function updateFlagRequestToJSON(
 }
 
 /** @internal */
-export const UpdateFlagFallthrough4$inboundSchema: z.ZodType<
-  UpdateFlagFallthrough4,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    type: types.literal("experiment"),
-  })
-);
-
-export function updateFlagFallthrough4FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagFallthrough4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagFallthrough4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagFallthrough4' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType
-  > = /* @__PURE__ */ lazySchema$(() =>
-    z.nativeEnum(
-      UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType,
-    )
-  );
+export const UpdateFlagFallthroughFeatureFlagsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagFallthroughFeatureFlagsResponse200Type> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateFlagFallthroughFeatureFlagsResponse200Type)
+    );
 
 /** @internal */
 export const UpdateFlagFallthroughFeatureFlagsResponse200Base$inboundSchema:
@@ -1788,8 +1747,7 @@ export const UpdateFlagFallthroughFeatureFlagsResponse200Base$inboundSchema:
     z.object({
       attribute: types.string(),
       kind: types.string(),
-      type:
-        UpdateFlagFallthroughFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+      type: UpdateFlagFallthroughFeatureFlagsResponse200Type$inboundSchema,
     })
   );
 
@@ -1966,7 +1924,6 @@ export const UpdateFlagFeatureFlagsFallthrough$inboundSchema: z.ZodType<
     z.lazy(() => UpdateFlagFallthroughFeatureFlags1$inboundSchema),
     z.lazy(() => UpdateFlagFallthroughFeatureFlags2$inboundSchema),
     z.lazy(() => UpdateFlagFallthroughFeatureFlags3$inboundSchema),
-    z.lazy(() => UpdateFlagFallthrough4$inboundSchema),
   ])
 );
 
@@ -2313,35 +2270,11 @@ export function updateFlagFeatureFlagsConditionsFromJSON(
 }
 
 /** @internal */
-export const UpdateFlagOutcome4$inboundSchema: z.ZodType<
-  UpdateFlagOutcome4,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    type: types.literal("experiment"),
-  })
-);
-
-export function updateFlagOutcome4FromJSON(
-  jsonString: string,
-): SafeParseResult<UpdateFlagOutcome4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UpdateFlagOutcome4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UpdateFlagOutcome4' from JSON`,
-  );
-}
-
-/** @internal */
-export const UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType
-  > = /* @__PURE__ */ lazySchema$(() =>
-    z.nativeEnum(
-      UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType,
-    )
-  );
+export const UpdateFlagOutcomeFeatureFlagsResponse200Type$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateFlagOutcomeFeatureFlagsResponse200Type> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateFlagOutcomeFeatureFlagsResponse200Type)
+    );
 
 /** @internal */
 export const UpdateFlagOutcomeFeatureFlagsResponse200Base$inboundSchema:
@@ -2353,8 +2286,7 @@ export const UpdateFlagOutcomeFeatureFlagsResponse200Base$inboundSchema:
     z.object({
       attribute: types.string(),
       kind: types.string(),
-      type:
-        UpdateFlagOutcomeFeatureFlagsResponse200ApplicationJSONResponseBodyType$inboundSchema,
+      type: UpdateFlagOutcomeFeatureFlagsResponse200Type$inboundSchema,
     })
   );
 
@@ -2523,7 +2455,6 @@ export const UpdateFlagFeatureFlagsOutcome$inboundSchema: z.ZodType<
     z.lazy(() => UpdateFlagOutcomeFeatureFlags1$inboundSchema),
     z.lazy(() => UpdateFlagOutcomeFeatureFlags2$inboundSchema),
     z.lazy(() => UpdateFlagOutcomeFeatureFlags3$inboundSchema),
-    z.lazy(() => UpdateFlagOutcome4$inboundSchema),
   ])
 );
 
@@ -2552,7 +2483,6 @@ export const UpdateFlagFeatureFlagsRules$inboundSchema: z.ZodType<
       z.lazy(() => UpdateFlagOutcomeFeatureFlags1$inboundSchema),
       z.lazy(() => UpdateFlagOutcomeFeatureFlags2$inboundSchema),
       z.lazy(() => UpdateFlagOutcomeFeatureFlags3$inboundSchema),
-      z.lazy(() => UpdateFlagOutcome4$inboundSchema),
     ]),
   })
 );
@@ -2601,7 +2531,6 @@ export const UpdateFlagFeatureFlagsEnvironments$inboundSchema: z.ZodType<
       z.lazy(() => UpdateFlagFallthroughFeatureFlags1$inboundSchema),
       z.lazy(() => UpdateFlagFallthroughFeatureFlags2$inboundSchema),
       z.lazy(() => UpdateFlagFallthroughFeatureFlags3$inboundSchema),
-      z.lazy(() => UpdateFlagFallthrough4$inboundSchema),
     ]),
     pausedOutcome: z.lazy(() =>
       UpdateFlagFeatureFlagsPausedOutcome$inboundSchema

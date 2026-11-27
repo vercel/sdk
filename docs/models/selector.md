@@ -13,5 +13,5 @@ let value: Selector = "tps";
 ## Values
 
 ```typescript
-"cost" | "tps" | "ttft"
+"cost" | "intelligence" | "tps" | "ttft"
 ```

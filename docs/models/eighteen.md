@@ -9,15 +9,21 @@ import { Eighteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Eighteen = {
   boardId: "<id>",
+  channelId: "<id>",
+  fields: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
   operationId: "<id>",
-  visibility: "team",
 };
 ```
 
 ## Fields
 
-| Field                                        | Type                                         | Required                                     | Description                                  |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| `boardId`                                    | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `operationId`                                | *string*                                     | :heavy_check_mark:                           | N/A                                          |
-| `visibility`                                 | [models.Visibility](../models/visibility.md) | :heavy_check_mark:                           | N/A                                          |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `boardId`          | *string*           | :heavy_check_mark: | N/A                |
+| `channelId`        | *string*           | :heavy_check_mark: | N/A                |
+| `fields`           | *string*[]         | :heavy_check_mark: | N/A                |
+| `operationId`      | *string*           | :heavy_check_mark: | N/A                |

@@ -8,8 +8,8 @@ The payload of the event, if requested.
 import { FortyThree } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: FortyThree = {
-  added: [],
-  removed: [],
+  amount: "211.93",
+  purchaseIntentId: "<id>",
 };
 ```
 
@@ -17,5 +17,5 @@ let value: FortyThree = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `added`            | *string*[]         | :heavy_check_mark: | N/A                |
-| `removed`          | *string*[]         | :heavy_check_mark: | N/A                |
+| `amount`           | *string*           | :heavy_check_mark: | N/A                |
+| `purchaseIntentId` | *string*           | :heavy_check_mark: | N/A                |

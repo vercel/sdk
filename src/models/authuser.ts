@@ -338,7 +338,23 @@ export type AuthUserResourceConfig = {
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
+  messageboardAttachmentBytes?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
   messageboardBoards?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  messageboardChannelsPerBoard?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  messageboardMessages?: number | undefined;
+  /**
+   * An object containing infomation related to the amount of platform resources may be allocated to the User account.
+   */
+  messageboardStoredAttachmentBytes?: number | undefined;
   /**
    * An object containing infomation related to the amount of platform resources may be allocated to the User account.
    */
@@ -1072,7 +1088,11 @@ export const AuthUserResourceConfig$inboundSchema: z.ZodType<
     imageOptimizationType: types.optional(types.string()),
     integrationStores: types.optional(types.number()),
     kvDatabases: types.optional(types.number()),
+    messageboardAttachmentBytes: types.optional(types.number()),
     messageboardBoards: types.optional(types.number()),
+    messageboardChannelsPerBoard: types.optional(types.number()),
+    messageboardMessages: types.optional(types.number()),
+    messageboardStoredAttachmentBytes: types.optional(types.number()),
     microfrontendGroupsPerTeam: types.optional(types.number()),
     microfrontendProjectsPerGroup: types.optional(types.number()),
     nodeType: types.optional(types.string()),

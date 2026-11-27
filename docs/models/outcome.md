@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Outcome } from "@vercel/sdk/models/newenvvar.js";
+import { Outcome } from "@vercel/sdk/models/usereventpayload195oldenvvartype.js";
 
 let value: Outcome = "failure";
 ```

@@ -767,17 +767,6 @@ export type GetProjectsResponseBodyProjectsBuildMachineSelection = ClosedEnum<
   typeof GetProjectsResponseBodyProjectsBuildMachineSelection
 >;
 
-export const GetProjectsResponseBodyProjectsBuildMachineType = {
-  Fourteencpu28gb: "14cpu-28gb",
-  Basic: "basic",
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-export type GetProjectsResponseBodyProjectsBuildMachineType = ClosedEnum<
-  typeof GetProjectsResponseBodyProjectsBuildMachineType
->;
-
 export const GetProjectsResponseBodyProjectsResponseConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -791,15 +780,6 @@ export type GetProjectsResponseBodyProjectsBuildQueue = {
     | GetProjectsResponseBodyProjectsResponseConfiguration
     | undefined;
 };
-
-export const GetProjectsResponseBodyProjectsFunctionDefaultMemoryType = {
-  Performance: "performance",
-  PerformanceXl: "performance_xl",
-  Standard: "standard",
-  StandardLegacy: "standard_legacy",
-} as const;
-export type GetProjectsResponseBodyProjectsFunctionDefaultMemoryType =
-  ClosedEnum<typeof GetProjectsResponseBodyProjectsFunctionDefaultMemoryType>;
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
@@ -843,6 +823,29 @@ export type GetProjectsResponseBodyProjectsElasticBuildMachine =
   | GetProjectsElasticBuildMachineProjectsResponse3
   | GetProjectsElasticBuildMachineProjectsResponse4;
 
+export const GetProjectsResponseBodyProjectsFunctionDefaultMemoryType = {
+  Performance: "performance",
+  PerformanceXl: "performance_xl",
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+} as const;
+export type GetProjectsResponseBodyProjectsFunctionDefaultMemoryType =
+  ClosedEnum<typeof GetProjectsResponseBodyProjectsFunctionDefaultMemoryType>;
+
+export const GetProjectsResponseBodyProjectsBuildMachineType = {
+  Basic: "basic",
+  Elastic: "elastic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+export type GetProjectsResponseBodyProjectsBuildMachineType = ClosedEnum<
+  typeof GetProjectsResponseBodyProjectsBuildMachineType
+>;
+
+/**
+ * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+ */
 export type ResponseBodyDefaultResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -854,10 +857,13 @@ export type ResponseBodyDefaultResourceConfig = {
   buildMachineSelection?:
     | GetProjectsResponseBodyProjectsBuildMachineSelection
     | undefined;
-  buildMachineType?:
-    | GetProjectsResponseBodyProjectsBuildMachineType
-    | undefined;
   buildQueue?: GetProjectsResponseBodyProjectsBuildQueue | undefined;
+  elasticBuildMachine?:
+    | GetProjectsElasticBuildMachineProjectsResponse1
+    | GetProjectsElasticBuildMachineProjectsResponse2
+    | GetProjectsElasticBuildMachineProjectsResponse3
+    | GetProjectsElasticBuildMachineProjectsResponse4
+    | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -868,11 +874,8 @@ export type ResponseBodyDefaultResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  elasticBuildMachine?:
-    | GetProjectsElasticBuildMachineProjectsResponse1
-    | GetProjectsElasticBuildMachineProjectsResponse2
-    | GetProjectsElasticBuildMachineProjectsResponse3
-    | GetProjectsElasticBuildMachineProjectsResponse4
+  buildMachineType?:
+    | GetProjectsResponseBodyProjectsBuildMachineType
     | undefined;
 };
 
@@ -2903,13 +2906,6 @@ export const GetProjectsResponseBodyProjectsBuildMachineSelection$inboundSchema:
     );
 
 /** @internal */
-export const GetProjectsResponseBodyProjectsBuildMachineType$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsBuildMachineType> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(GetProjectsResponseBodyProjectsBuildMachineType)
-    );
-
-/** @internal */
 export const GetProjectsResponseBodyProjectsResponseConfiguration$inboundSchema:
   z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsResponseConfiguration> =
     /* @__PURE__ */ lazySchema$(() =>
@@ -2944,14 +2940,6 @@ export function getProjectsResponseBodyProjectsBuildQueueFromJSON(
     `Failed to parse 'GetProjectsResponseBodyProjectsBuildQueue' from JSON`,
   );
 }
-
-/** @internal */
-export const GetProjectsResponseBodyProjectsFunctionDefaultMemoryType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetProjectsResponseBodyProjectsFunctionDefaultMemoryType
-  > = /* @__PURE__ */ lazySchema$(() =>
-    z.nativeEnum(GetProjectsResponseBodyProjectsFunctionDefaultMemoryType)
-  );
 
 /** @internal */
 export const GetProjectsElasticBuildMachineProjectsResponse4$inboundSchema:
@@ -3113,6 +3101,21 @@ export function getProjectsResponseBodyProjectsElasticBuildMachineFromJSON(
 }
 
 /** @internal */
+export const GetProjectsResponseBodyProjectsFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetProjectsResponseBodyProjectsFunctionDefaultMemoryType
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetProjectsResponseBodyProjectsFunctionDefaultMemoryType)
+  );
+
+/** @internal */
+export const GetProjectsResponseBodyProjectsBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectsResponseBodyProjectsBuildMachineType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetProjectsResponseBodyProjectsBuildMachineType)
+    );
+
+/** @internal */
 export const ResponseBodyDefaultResourceConfig$inboundSchema: z.ZodType<
   ResponseBodyDefaultResourceConfig,
   z.ZodTypeDef,
@@ -3129,22 +3132,9 @@ export const ResponseBodyDefaultResourceConfig$inboundSchema: z.ZodType<
     buildMachineSelection: types.optional(
       GetProjectsResponseBodyProjectsBuildMachineSelection$inboundSchema,
     ),
-    buildMachineType: types.optional(
-      GetProjectsResponseBodyProjectsBuildMachineType$inboundSchema,
-    ),
     buildQueue: types.optional(z.lazy(() =>
       GetProjectsResponseBodyProjectsBuildQueue$inboundSchema
     )),
-    elasticConcurrencyEnabled: types.optional(types.boolean()),
-    enableFunctionsBeta: types.optional(types.boolean()),
-    fluid: types.optional(types.boolean()),
-    functionDefaultMemoryType: types.optional(
-      GetProjectsResponseBodyProjectsFunctionDefaultMemoryType$inboundSchema,
-    ),
-    functionDefaultRegions: z.array(types.string()),
-    functionDefaultTimeout: types.optional(types.number()),
-    functionZeroConfigFailover: types.optional(types.boolean()),
-    isNSNBDisabled: types.optional(types.boolean()),
     elasticBuildMachine: types.optional(z.union([
       z.lazy(() =>
         GetProjectsElasticBuildMachineProjectsResponse1$inboundSchema
@@ -3159,6 +3149,19 @@ export const ResponseBodyDefaultResourceConfig$inboundSchema: z.ZodType<
         GetProjectsElasticBuildMachineProjectsResponse4$inboundSchema
       ),
     ])),
+    elasticConcurrencyEnabled: types.optional(types.boolean()),
+    enableFunctionsBeta: types.optional(types.boolean()),
+    fluid: types.optional(types.boolean()),
+    functionDefaultMemoryType: types.optional(
+      GetProjectsResponseBodyProjectsFunctionDefaultMemoryType$inboundSchema,
+    ),
+    functionDefaultRegions: z.array(types.string()),
+    functionDefaultTimeout: types.optional(types.number()),
+    functionZeroConfigFailover: types.optional(types.boolean()),
+    isNSNBDisabled: types.optional(types.boolean()),
+    buildMachineType: types.optional(
+      GetProjectsResponseBodyProjectsBuildMachineType$inboundSchema,
+    ),
   })
 );
 

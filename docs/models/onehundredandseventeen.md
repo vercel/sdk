@@ -5,7 +5,7 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventeen } from "@vercel/sdk/models/usereventpayload82resourcestype.js";
+import { OneHundredAndSeventeen } from "@vercel/sdk/models/eightythree.js";
 
 let value: OneHundredAndSeventeen = {
   configuration: {
@@ -23,10 +23,9 @@ let value: OneHundredAndSeventeen = {
 
 ## Fields
 
-| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `buildsEnabled`                                                                    | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `configuration`                                                                    | [models.UserEventPayloadConfiguration](../models/usereventpayloadconfiguration.md) | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `passive`                                                                          | *boolean*                                                                          | :heavy_minus_sign:                                                                 | N/A                                                                                |
-| `project`                                                                          | [models.UserEventPayload117Project](../models/usereventpayload117project.md)       | :heavy_check_mark:                                                                 | N/A                                                                                |
-| `team`                                                                             | [models.PayloadTeam](../models/payloadteam.md)                                     | :heavy_check_mark:                                                                 | N/A                                                                                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `buildsEnabled`                                                              | *boolean*                                                                    | :heavy_minus_sign:                                                           | N/A                                                                          |
+| `configuration`                                                              | [models.PayloadConfiguration](../models/payloadconfiguration.md)             | :heavy_check_mark:                                                           | N/A                                                                          |
+| `project`                                                                    | [models.UserEventPayload117Project](../models/usereventpayload117project.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `team`                                                                       | [models.UserEventPayload117Team](../models/usereventpayload117team.md)       | :heavy_check_mark:                                                           | N/A                                                                          |

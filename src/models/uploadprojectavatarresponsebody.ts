@@ -235,6 +235,9 @@ export type UploadProjectAvatarResponseBody = {
   customEnvironments?: Array<UploadProjectAvatarCustomEnvironments> | undefined;
   customerSupportCodeVisibility?: boolean | undefined;
   dataCache?: UploadProjectAvatarDataCache | undefined;
+  /**
+   * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+   */
   defaultResourceConfig: UploadProjectAvatarDefaultResourceConfig;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
@@ -300,6 +303,9 @@ export type UploadProjectAvatarResponseBody = {
     | { [k: string]: UploadProjectAvatarProtectionBypass }
     | undefined;
   protectionConfig?: UploadProjectAvatarProtectionConfig | undefined;
+  /**
+   * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+   */
   resourceConfig: UploadProjectAvatarResourceConfig;
   /**
    * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.

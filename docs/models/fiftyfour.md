@@ -7,13 +7,11 @@ The payload of the event, if requested.
 ```typescript
 import { FiftyFour } from "@vercel/sdk/models/usereventpayload27provider.js";
 
-let value: FiftyFour = {
-  headerNames: [],
-};
+let value: FiftyFour = {};
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `headerNames`      | *string*[]         | :heavy_check_mark: | N/A                |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `previousSecretGracePeriodHours` | *number*                         | :heavy_minus_sign:               | N/A                              |

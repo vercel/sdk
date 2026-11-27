@@ -379,6 +379,10 @@ export type GetProjectMicrofrontends2 = {
    */
   defaultRoute?: string | undefined;
   /**
+   * Whether requests routed to this microfrontend skip the default app's managed rulesets (OWASP Core Ruleset, Bot Protection, AI Bots), so only this project's own managed rulesets apply to its routes. The default app's custom firewall rules apply either way.
+   */
+  doNotInheritDefaultAppManagedRules?: boolean | undefined;
+  /**
    * Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
    */
   doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
@@ -1817,17 +1821,6 @@ export type GetProjectProjectsBuildMachineSelection = ClosedEnum<
   typeof GetProjectProjectsBuildMachineSelection
 >;
 
-export const GetProjectProjectsBuildMachineType = {
-  Fourteencpu28gb: "14cpu-28gb",
-  Basic: "basic",
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-export type GetProjectProjectsBuildMachineType = ClosedEnum<
-  typeof GetProjectProjectsBuildMachineType
->;
-
 export const GetProjectProjectsConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -1839,16 +1832,6 @@ export type GetProjectProjectsConfiguration = ClosedEnum<
 export type GetProjectProjectsBuildQueue = {
   configuration?: GetProjectProjectsConfiguration | undefined;
 };
-
-export const GetProjectProjectsFunctionDefaultMemoryType = {
-  Performance: "performance",
-  PerformanceXl: "performance_xl",
-  Standard: "standard",
-  StandardLegacy: "standard_legacy",
-} as const;
-export type GetProjectProjectsFunctionDefaultMemoryType = ClosedEnum<
-  typeof GetProjectProjectsFunctionDefaultMemoryType
->;
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
@@ -1892,6 +1875,30 @@ export type GetProjectProjectsElasticBuildMachine =
   | GetProjectElasticBuildMachineProjects3
   | GetProjectElasticBuildMachineProjects4;
 
+export const GetProjectProjectsFunctionDefaultMemoryType = {
+  Performance: "performance",
+  PerformanceXl: "performance_xl",
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+} as const;
+export type GetProjectProjectsFunctionDefaultMemoryType = ClosedEnum<
+  typeof GetProjectProjectsFunctionDefaultMemoryType
+>;
+
+export const GetProjectProjectsBuildMachineType = {
+  Basic: "basic",
+  Elastic: "elastic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+export type GetProjectProjectsBuildMachineType = ClosedEnum<
+  typeof GetProjectProjectsBuildMachineType
+>;
+
+/**
+ * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+ */
 export type GetProjectResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -1901,8 +1908,13 @@ export type GetProjectResourceConfig = {
     | GetProjectProjectsBuildMachineElasticTransition
     | undefined;
   buildMachineSelection?: GetProjectProjectsBuildMachineSelection | undefined;
-  buildMachineType?: GetProjectProjectsBuildMachineType | undefined;
   buildQueue?: GetProjectProjectsBuildQueue | undefined;
+  elasticBuildMachine?:
+    | GetProjectElasticBuildMachineProjects1
+    | GetProjectElasticBuildMachineProjects2
+    | GetProjectElasticBuildMachineProjects3
+    | GetProjectElasticBuildMachineProjects4
+    | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -1913,12 +1925,7 @@ export type GetProjectResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  elasticBuildMachine?:
-    | GetProjectElasticBuildMachineProjects1
-    | GetProjectElasticBuildMachineProjects2
-    | GetProjectElasticBuildMachineProjects3
-    | GetProjectElasticBuildMachineProjects4
-    | undefined;
+  buildMachineType?: GetProjectProjectsBuildMachineType | undefined;
 };
 
 /**
@@ -3594,6 +3601,7 @@ export const GetProjectMicrofrontends2$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     defaultRoute: types.optional(types.string()),
+    doNotInheritDefaultAppManagedRules: types.optional(types.boolean()),
     doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
     enabled: types.literal(true),
     freeProjectForLegacyLimits: types.optional(types.boolean()),
@@ -4372,13 +4380,6 @@ export const GetProjectProjectsBuildMachineSelection$inboundSchema:
     );
 
 /** @internal */
-export const GetProjectProjectsBuildMachineType$inboundSchema: z.ZodNativeEnum<
-  typeof GetProjectProjectsBuildMachineType
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.nativeEnum(GetProjectProjectsBuildMachineType)
-);
-
-/** @internal */
 export const GetProjectProjectsConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof GetProjectProjectsConfiguration
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -4407,13 +4408,6 @@ export function getProjectProjectsBuildQueueFromJSON(
     `Failed to parse 'GetProjectProjectsBuildQueue' from JSON`,
   );
 }
-
-/** @internal */
-export const GetProjectProjectsFunctionDefaultMemoryType$inboundSchema:
-  z.ZodNativeEnum<typeof GetProjectProjectsFunctionDefaultMemoryType> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(GetProjectProjectsFunctionDefaultMemoryType)
-    );
 
 /** @internal */
 export const GetProjectElasticBuildMachineProjects4$inboundSchema: z.ZodType<
@@ -4537,6 +4531,20 @@ export function getProjectProjectsElasticBuildMachineFromJSON(
 }
 
 /** @internal */
+export const GetProjectProjectsFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<typeof GetProjectProjectsFunctionDefaultMemoryType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetProjectProjectsFunctionDefaultMemoryType)
+    );
+
+/** @internal */
+export const GetProjectProjectsBuildMachineType$inboundSchema: z.ZodNativeEnum<
+  typeof GetProjectProjectsBuildMachineType
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(GetProjectProjectsBuildMachineType)
+);
+
+/** @internal */
 export const GetProjectResourceConfig$inboundSchema: z.ZodType<
   GetProjectResourceConfig,
   z.ZodTypeDef,
@@ -4555,11 +4563,16 @@ export const GetProjectResourceConfig$inboundSchema: z.ZodType<
     buildMachineSelection: types.optional(
       GetProjectProjectsBuildMachineSelection$inboundSchema,
     ),
-    buildMachineType: types.optional(
-      GetProjectProjectsBuildMachineType$inboundSchema,
-    ),
     buildQueue: types.optional(
       z.lazy(() => GetProjectProjectsBuildQueue$inboundSchema),
+    ),
+    elasticBuildMachine: types.optional(
+      z.union([
+        z.lazy(() => GetProjectElasticBuildMachineProjects1$inboundSchema),
+        z.lazy(() => GetProjectElasticBuildMachineProjects2$inboundSchema),
+        z.lazy(() => GetProjectElasticBuildMachineProjects3$inboundSchema),
+        z.lazy(() => GetProjectElasticBuildMachineProjects4$inboundSchema),
+      ]),
     ),
     elasticConcurrencyEnabled: types.optional(types.boolean()),
     enableFunctionsBeta: types.optional(types.boolean()),
@@ -4571,13 +4584,8 @@ export const GetProjectResourceConfig$inboundSchema: z.ZodType<
     functionDefaultTimeout: types.optional(types.number()),
     functionZeroConfigFailover: types.optional(types.boolean()),
     isNSNBDisabled: types.optional(types.boolean()),
-    elasticBuildMachine: types.optional(
-      z.union([
-        z.lazy(() => GetProjectElasticBuildMachineProjects1$inboundSchema),
-        z.lazy(() => GetProjectElasticBuildMachineProjects2$inboundSchema),
-        z.lazy(() => GetProjectElasticBuildMachineProjects3$inboundSchema),
-        z.lazy(() => GetProjectElasticBuildMachineProjects4$inboundSchema),
-      ]),
+    buildMachineType: types.optional(
+      GetProjectProjectsBuildMachineType$inboundSchema,
     ),
   })
 );

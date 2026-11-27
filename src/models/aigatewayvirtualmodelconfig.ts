@@ -118,10 +118,21 @@ export type Three = {
   when: AiGatewayEvaluationFallbackCondition;
 };
 
+export const Effort = {
+  High: "high",
+  Low: "low",
+  Medium: "medium",
+  Minimal: "minimal",
+  None: "none",
+  Xhigh: "xhigh",
+} as const;
+export type Effort = ClosedEnum<typeof Effort>;
+
 /**
  * For kind=router: ordered candidates, bare slugs/references or `{ slug, ...attributes }`. For kind=alias: ordered fallback model slugs, optionally led by one conditional `{ model, when }` entry, used when the primary model's answers match `when`.
  */
 export type Two = {
+  effort?: Effort | undefined;
   /**
    * Highest task level the member handles, in [0, 1]. Read by the intelligence selector.
    */
@@ -143,6 +154,7 @@ export type ProviderTimeouts = {
  */
 export const Selector = {
   Cost: "cost",
+  Intelligence: "intelligence",
   Tps: "tps",
   Ttft: "ttft",
 } as const;
@@ -159,6 +171,10 @@ export type SelectorOptions = {
    * For kind=router: option slices keyed by selector name; each selector owns its slice's shape.
    */
   cost?: { [k: string]: any } | undefined;
+  /**
+   * For kind=router: option slices keyed by selector name; each selector owns its slice's shape.
+   */
+  intelligence?: { [k: string]: any } | undefined;
   /**
    * For kind=router: option slices keyed by selector name; each selector owns its slice's shape.
    */
@@ -217,6 +233,10 @@ export type AiGatewayVirtualModelConfig = {
    * Allow fallback from fast to standard providers on failure.
    */
   allowFallbackFromFast?: boolean | undefined;
+  /**
+   * For the team's `auto` router: the Vercel default version the team last saved against.
+   */
+  autoRouterDefaultVersion?: number | undefined;
   /**
    * For kind=relay: URL the gateway forwards requests to as a transparent proxy.
    */
@@ -444,9 +464,14 @@ export function threeFromJSON(
 }
 
 /** @internal */
+export const Effort$inboundSchema: z.ZodNativeEnum<typeof Effort> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Effort));
+
+/** @internal */
 export const Two$inboundSchema: z.ZodType<Two, z.ZodTypeDef, unknown> =
   /* @__PURE__ */ lazySchema$(() =>
     z.object({
+      effort: types.optional(Effort$inboundSchema),
       intelligence: types.optional(types.number()),
       slug: types.string(),
     })
@@ -515,6 +540,7 @@ export const SelectorOptions$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     cost: types.optional(z.record(z.any())),
+    intelligence: types.optional(z.record(z.any())),
     tps: types.optional(z.record(z.any())),
     ttft: types.optional(z.record(z.any())),
   })
@@ -550,6 +576,7 @@ export const AiGatewayVirtualModelConfig$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     allowFallbackFromFast: types.optional(types.boolean()),
+    autoRouterDefaultVersion: types.optional(types.number()),
     baseUrl: types.optional(types.string()),
     byokCredentialIds: types.optional(z.array(types.string())),
     caching: types.optional(Caching$inboundSchema),

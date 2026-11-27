@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { OldBuildQueueConfiguration } from "@vercel/sdk/models/twohundredandsixtyseven.js";
+import { OldBuildQueueConfiguration } from "@vercel/sdk/models/usereventpayloaddsyncmode.js";
 
 let value: OldBuildQueueConfiguration = "SKIP_NAMESPACE_QUEUE";
 ```

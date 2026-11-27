@@ -5,17 +5,17 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndFiftyTwo } from "@vercel/sdk/models/fourhundredandfortyfour.js";
+import { FourHundredAndFiftyTwo } from "@vercel/sdk/models/fourhundredandfortyfive.js";
 
 let value: FourHundredAndFiftyTwo = {
-  action: "updated",
-  targetId: "<id>",
+  next: {},
+  previous: {},
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload452Action](../models/usereventpayload452action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
-| `targetId`                                                                 | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload452Next](../models/usereventpayload452next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload452Previous](../models/usereventpayload452previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |

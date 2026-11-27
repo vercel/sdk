@@ -5,21 +5,25 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndEightyFour } from "@vercel/sdk/models/usereventpayload328previous.js";
+import { ThreeHundredAndEightyFour } from "@vercel/sdk/models/threehundredandtwentyfive.js";
 
 let value: ThreeHundredAndEightyFour = {
-  oldSsoProtection: {
-    deploymentType: "preview",
+  next: {
+    skewProtectionAllowedDomains: [
+      "<value 1>",
+    ],
   },
-  ssoProtection: null,
+  previous: {},
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `oldSsoProtection`               | *models.PayloadOldSsoProtection* | :heavy_check_mark:               | N/A                              |
-| `projectId`                      | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `projectName`                    | *string*                         | :heavy_minus_sign:               | N/A                              |
-| `ssoProtection`                  | *models.PayloadSsoProtection*    | :heavy_check_mark:               | N/A                              |
+| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `next`                                                                         | [models.UserEventPayload384Next](../models/usereventpayload384next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
+| `previous`                                                                     | [models.UserEventPayload384Previous](../models/usereventpayload384previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |

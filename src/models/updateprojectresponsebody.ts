@@ -1098,6 +1098,9 @@ export type UpdateProjectResponseBody = {
   customEnvironments?: Array<UpdateProjectCustomEnvironments> | undefined;
   customerSupportCodeVisibility?: boolean | undefined;
   dataCache?: UpdateProjectDataCache | undefined;
+  /**
+   * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+   */
   defaultResourceConfig: UpdateProjectDefaultResourceConfig;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
@@ -1164,6 +1167,9 @@ export type UpdateProjectResponseBody = {
   protectedSourcemaps?: boolean | undefined;
   protectionBypass?: { [k: string]: UpdateProjectProtectionBypass } | undefined;
   protectionConfig?: UpdateProjectProtectionConfig | undefined;
+  /**
+   * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+   */
   resourceConfig: UpdateProjectProjectsResourceConfig;
   /**
    * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.

@@ -24,11 +24,8 @@ let value: Rules = {
       type: "entity",
     },
     defaultVariantId: "<id>",
-    rollFromVariantId: "<id>",
-    rollToVariantId: "<id>",
-    slots: [],
-    startTimestamp: 2235.64,
-    type: "rollout",
+    type: "split",
+    weights: {},
   },
 };
 ```

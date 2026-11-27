@@ -1,21 +1,24 @@
 # UserEventPayloadPrevious
 
-## Example Usage
+
+## Supported Types
+
+### `models.Previous1`
 
 ```typescript
-import { UserEventPayloadPrevious } from "@vercel/sdk/models/usereventpayload27provider.js";
-
-let value: UserEventPayloadPrevious = {
+const value: models.Previous1 = {
   maximumMonthlySpend: "<value>",
   minimumBalance: "<value>",
   targetBalance: "<value>",
 };
 ```
 
-## Fields
+### `models.Previous2`
 
-| Field                 | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `maximumMonthlySpend` | *string*              | :heavy_check_mark:    | N/A                   |
-| `minimumBalance`      | *string*              | :heavy_check_mark:    | N/A                   |
-| `targetBalance`       | *string*              | :heavy_check_mark:    | N/A                   |
+```typescript
+const value: models.Previous2 = {
+  deferredInvoiceTargetBalance: "<value>",
+  maximumMonthlySpend: "<value>",
+};
+```
+

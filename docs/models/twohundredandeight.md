@@ -5,15 +5,15 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndEight } from "@vercel/sdk/models/newenvvar.js";
+import { TwoHundredAndEight } from "@vercel/sdk/models/usereventpayload195oldenvvartype.js";
 
 let value: TwoHundredAndEight = {
-  effectiveAt: 4377.89,
+  source: "enable",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `effectiveAt`      | *number*           | :heavy_check_mark: | N/A                |
+| Field                                              | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `source`                                           | [models.PayloadSource](../models/payloadsource.md) | :heavy_check_mark:                                 | N/A                                                |

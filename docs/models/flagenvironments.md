@@ -14,22 +14,42 @@ let value: FlagEnvironments = {
       type: "entity",
     },
     defaultVariantId: "<id>",
-    rollFromVariantId: "<id>",
-    rollToVariantId: "<id>",
-    slots: [
-      {
-        durationMs: 5899.46,
-        promille: 942.23,
-      },
-    ],
-    startTimestamp: 5343.5,
-    type: "rollout",
+    type: "split",
+    weights: {
+      "key": 5343.5,
+      "key1": 3649.27,
+      "key2": 6701.22,
+    },
   },
   pausedOutcome: {
     type: "variant",
     variantId: "<id>",
   },
-  rules: [],
+  rules: [
+    {
+      conditions: [
+        {
+          cmp: "contains",
+          lhs: {
+            attribute: "<value>",
+            kind: "<value>",
+            type: "entity",
+          },
+        },
+      ],
+      id: "<id>",
+      outcome: {
+        base: {
+          attribute: "<value>",
+          kind: "<value>",
+          type: "entity",
+        },
+        defaultVariantId: "<id>",
+        type: "split",
+        weights: {},
+      },
+    },
+  ],
 };
 ```
 

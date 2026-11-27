@@ -5,20 +5,19 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndSixtyFour } from "@vercel/sdk/models/usereventpayload328previous.js";
+import { ThreeHundredAndSixtyFour } from "@vercel/sdk/models/threehundredandtwentyfive.js";
 
 let value: ThreeHundredAndSixtyFour = {
-  oldPasswordProtection: "prod_deployment_urls_and_all_previews",
-  passwordProtection: "prod_deployment_urls_and_all_previews",
+  projectId: "<id>",
+  projectName: "<value>",
+  removeVercelRequestHeaders: false,
 };
 ```
 
 ## Fields
 
-| Field                                 | Type                                  | Required                              | Description                           |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `oldPasswordProtection`               | *models.PayloadOldPasswordProtection* | :heavy_check_mark:                    | N/A                                   |
-| `passwordChanged`                     | *boolean*                             | :heavy_minus_sign:                    | N/A                                   |
-| `passwordProtection`                  | *models.PayloadPasswordProtection*    | :heavy_check_mark:                    | N/A                                   |
-| `projectId`                           | *string*                              | :heavy_minus_sign:                    | N/A                                   |
-| `projectName`                         | *string*                              | :heavy_minus_sign:                    | N/A                                   |
+| Field                        | Type                         | Required                     | Description                  |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| `projectId`                  | *string*                     | :heavy_check_mark:           | N/A                          |
+| `projectName`                | *string*                     | :heavy_check_mark:           | N/A                          |
+| `removeVercelRequestHeaders` | *boolean*                    | :heavy_check_mark:           | N/A                          |

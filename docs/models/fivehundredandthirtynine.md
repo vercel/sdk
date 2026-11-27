@@ -12,7 +12,10 @@ let value: FiveHundredAndThirtyNine = {
     id: "<id>",
   },
   peering: {
+    accountId: "<id>",
     id: "<id>",
+    region: "<value>",
+    vpcId: "<id>",
   },
   team: {
     id: "<id>",
@@ -26,5 +29,5 @@ let value: FiveHundredAndThirtyNine = {
 | Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              |
 | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | `configuration`                                                                          | [models.UserEventPayload539Configuration](../models/usereventpayload539configuration.md) | :heavy_check_mark:                                                                       | N/A                                                                                      |
-| `peering`                                                                                | [models.PayloadPeering](../models/payloadpeering.md)                                     | :heavy_check_mark:                                                                       | N/A                                                                                      |
+| `peering`                                                                                | [models.Peering](../models/peering.md)                                                   | :heavy_check_mark:                                                                       | N/A                                                                                      |
 | `team`                                                                                   | [models.UserEventPayload539Team](../models/usereventpayload539team.md)                   | :heavy_check_mark:                                                                       | N/A                                                                                      |

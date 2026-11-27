@@ -664,10 +664,12 @@ export class GlobalConfig extends ClientSDK {
   }
 
   /**
-   * Get Global Config token meta data
+   * Deprecated: Use `GET /v1/global-config/:edgeConfigId/token` with the `x-vercel-global-config-token` header instead. Get Global Config token metadata
    *
    * @remarks
    * Return metadata about a Global Config token.
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   async getEdgeConfigToken(
     request: GetEdgeConfigTokenRequest,

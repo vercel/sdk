@@ -15,6 +15,7 @@ let value: FiveHundredAndFortyEight = {
   previous: {
     access: "unlimited",
   },
+  userId: "<id>",
 };
 ```
 
@@ -24,3 +25,5 @@ let value: FiveHundredAndFortyEight = {
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
 | `next`                               | *models.UserEventPayload548Next*     | :heavy_check_mark:                   | N/A                                  |
 | `previous`                           | *models.UserEventPayload548Previous* | :heavy_check_mark:                   | N/A                                  |
+| `userId`                             | *string*                             | :heavy_check_mark:                   | N/A                                  |
+| `userName`                           | *string*                             | :heavy_minus_sign:                   | N/A                                  |

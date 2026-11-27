@@ -5,23 +5,21 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/twohundredandsixtyseven.js";
+import { TwoHundredAndSixtySeven } from "@vercel/sdk/models/usereventpayloaddsyncmode.js";
 
 let value: TwoHundredAndSixtySeven = {
-  mode: "team",
+  enabled: false,
   organizationId: "<id>",
-  previousMode: "organization",
-  teamId: "<id>",
-  teamName: "<value>",
+  organizationSlug: "<value>",
+  previousEnabled: true,
 };
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `mode`                                                                           | [models.UserEventPayload267Mode](../models/usereventpayload267mode.md)           | :heavy_check_mark:                                                               | N/A                                                                              |
-| `organizationId`                                                                 | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `previousMode`                                                                   | [models.UserEventPayloadPreviousMode](../models/usereventpayloadpreviousmode.md) | :heavy_check_mark:                                                               | N/A                                                                              |
-| `teamId`                                                                         | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
-| `teamName`                                                                       | *string*                                                                         | :heavy_check_mark:                                                               | N/A                                                                              |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
+| `organizationId`   | *string*           | :heavy_check_mark: | N/A                |
+| `organizationSlug` | *string*           | :heavy_check_mark: | N/A                |
+| `previousEnabled`  | *boolean*          | :heavy_check_mark: | N/A                |

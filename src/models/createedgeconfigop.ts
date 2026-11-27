@@ -32,7 +32,7 @@ export type CreateEdgeConfigRequest = {
 export type CreateEdgeConfigResponseBody = {
   createdAt: number;
   /**
-   * The ID of the user who created the Global Config, optional because it is not always set.
+   * The ID of the principal who created the Global Config, optional because it is not always set.
    */
   createdBy?: string | undefined;
   digest: string;

@@ -25,7 +25,7 @@ let value: ListFlagVersionsResponseBody = {
         variants: [
           {
             id: "<id>",
-            value: 711.35,
+            value: 40.79,
           },
         ],
       },

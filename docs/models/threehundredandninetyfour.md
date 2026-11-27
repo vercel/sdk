@@ -5,16 +5,22 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndNinetyFour } from "@vercel/sdk/models/usereventpayload385project.js";
+import { ThreeHundredAndNinetyFour } from "@vercel/sdk/models/threehundredandeightysix.js";
 
-let value: ThreeHundredAndNinetyFour = {};
+let value: ThreeHundredAndNinetyFour = {
+  certificateFingerprints: [],
+  connectionId: "<id>",
+  created: false,
+};
 ```
 
 ## Fields
 
-| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `connectionId`                                                                   | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorName`                                                                      | *string*                                                                         | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `actorType`                                                                      | [models.UserEventPayload394ActorType](../models/usereventpayload394actortype.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
-| `certificateFingerprints`                                                        | *string*[]                                                                       | :heavy_minus_sign:                                                               | N/A                                                                              |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `attributeMappingChanged`                                              | *true*                                                                 | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `certificateFingerprints`                                              | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
+| `connectionId`                                                         | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `created`                                                              | *boolean*                                                              | :heavy_check_mark:                                                     | N/A                                                                    |
+| `previousCertificateFingerprints`                                      | *string*[]                                                             | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `rebind`                                                               | *true*                                                                 | :heavy_minus_sign:                                                     | The IdP or the user id rule changed, so members re-bind by email once. |

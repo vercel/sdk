@@ -19,6 +19,7 @@ export type CreateSpeedInsightsToggleRequest = {
 };
 
 export type CreateSpeedInsightsToggleResponseBody = {
+  changed: boolean;
   value: boolean;
 };
 
@@ -89,6 +90,7 @@ export const CreateSpeedInsightsToggleResponseBody$inboundSchema: z.ZodType<
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
+    changed: types.boolean(),
     value: types.boolean(),
   })
 );

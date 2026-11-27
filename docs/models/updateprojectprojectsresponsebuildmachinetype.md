@@ -5,11 +5,11 @@
 ```typescript
 import { UpdateProjectProjectsResponseBuildMachineType } from "@vercel/sdk/models/updateprojectprincipalvia.js";
 
-let value: UpdateProjectProjectsResponseBuildMachineType = "14cpu-28gb";
+let value: UpdateProjectProjectsResponseBuildMachineType = "basic";
 ```
 
 ## Values
 
 ```typescript
-"14cpu-28gb" | "basic" | "enhanced" | "standard" | "turbo"
+"basic" | "elastic" | "enhanced" | "standard" | "turbo"
 ```

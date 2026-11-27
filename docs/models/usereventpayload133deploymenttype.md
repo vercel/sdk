@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPayload133DeploymentType } from "@vercel/sdk/models/usereventpayload82resourcestype.js";
+import { UserEventPayload133DeploymentType } from "@vercel/sdk/models/eightythree.js";
 
 let value: UserEventPayload133DeploymentType = "all_except_custom_domains";
 ```

@@ -3,15 +3,15 @@
 ## Example Usage
 
 ```typescript
-import { UserEventPrevious1 } from "@vercel/sdk/models/payloadoutcome.js";
+import { UserEventPrevious1 } from "@vercel/sdk/models/fourhundredandfortyfive.js";
 
 let value: UserEventPrevious1 = {
-  access: "unlimited",
+  accessGroupId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                | Type                                                 | Required                                             | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `access`                                             | [models.PreviousAccess](../models/previousaccess.md) | :heavy_check_mark:                                   | N/A                                                  |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `accessGroupId`    | *string*           | :heavy_check_mark: | N/A                |

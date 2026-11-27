@@ -1,19 +1,23 @@
 # UserEventPayload437Previous
 
+Mirrors the `security-review` setting value in `@api/api-settings`.
+
 ## Example Usage
 
 ```typescript
-import { UserEventPayload437Previous } from "@vercel/sdk/models/usereventpayload385project.js";
+import { UserEventPayload437Previous } from "@vercel/sdk/models/threehundredandeightysix.js";
 
 let value: UserEventPayload437Previous = {
   enabled: false,
+  projectScope: "selected",
 };
 ```
 
 ## Fields
 
-| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `enabled`                                                                                    | *boolean*                                                                                    | :heavy_check_mark:                                                                           | N/A                                                                                          |
-| `repositoryScope`                                                                            | [models.UserEventPayload437RepositoryScope](../models/usereventpayload437repositoryscope.md) | :heavy_minus_sign:                                                                           | N/A                                                                                          |
-| `attachScreenshots`                                                                          | *boolean*                                                                                    | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `enabled`                                                            | *boolean*                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
+| `projectIds`                                                         | *string*[]                                                           | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `projectScope`                                                       | [models.PayloadProjectScope](../models/payloadprojectscope.md)       | :heavy_check_mark:                                                   | N/A                                                                  |
+| `repositoryScope`                                                    | [models.PayloadRepositoryScope](../models/payloadrepositoryscope.md) | :heavy_minus_sign:                                                   | N/A                                                                  |

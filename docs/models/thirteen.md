@@ -9,6 +9,7 @@ import { Thirteen } from "@vercel/sdk/models/userevent.js";
 
 let value: Thirteen = {
   boardId: "<id>",
+  grantId: "<id>",
   operationId: "<id>",
 };
 ```
@@ -18,4 +19,5 @@ let value: Thirteen = {
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `boardId`          | *string*           | :heavy_check_mark: | N/A                |
+| `grantId`          | *string*           | :heavy_check_mark: | N/A                |
 | `operationId`      | *string*           | :heavy_check_mark: | N/A                |

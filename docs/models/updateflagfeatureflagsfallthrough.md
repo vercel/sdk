@@ -52,11 +52,3 @@ const value: models.UpdateFlagFallthroughFeatureFlags3 = {
 };
 ```
 
-### `models.UpdateFlagFallthrough4`
-
-```typescript
-const value: models.UpdateFlagFallthrough4 = {
-  type: "experiment",
-};
-```
-

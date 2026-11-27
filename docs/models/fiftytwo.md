@@ -7,14 +7,13 @@ The payload of the event, if requested.
 ```typescript
 import { FiftyTwo } from "@vercel/sdk/models/usereventpayload27provider.js";
 
-let value: FiftyTwo = {};
+let value: FiftyTwo = {
+  endpointOrigin: "<value>",
+};
 ```
 
 ## Fields
 
-| Field                                          | Type                                           | Required                                       | Description                                    |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `failureMode`                                  | [models.FailureMode](../models/failuremode.md) | :heavy_minus_sign:                             | N/A                                            |
-| `mode`                                         | [models.PayloadMode](../models/payloadmode.md) | :heavy_minus_sign:                             | N/A                                            |
-| `rolloutPercent`                               | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
-| `timeoutMs`                                    | *number*                                       | :heavy_minus_sign:                             | N/A                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `endpointOrigin`   | *string*           | :heavy_check_mark: | N/A                |

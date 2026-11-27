@@ -36,6 +36,10 @@ export type UpdateMicrofrontendsRequestBody = {
    * Whether domains in this project should route as a microfrontend. Can only be set for child applications.
    */
   doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
+  /**
+   * Whether requests routed to this project skip the default application's managed rulesets, so only this project's own managed rulesets apply. Can only be set for child applications.
+   */
+  doNotInheritDefaultAppManagedRules?: boolean | undefined;
 };
 
 export type UpdateMicrofrontendsRequest = {
@@ -633,17 +637,6 @@ export type UpdateMicrofrontendsBuildMachineSelection = ClosedEnum<
   typeof UpdateMicrofrontendsBuildMachineSelection
 >;
 
-export const UpdateMicrofrontendsBuildMachineType = {
-  Fourteencpu28gb: "14cpu-28gb",
-  Basic: "basic",
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-export type UpdateMicrofrontendsBuildMachineType = ClosedEnum<
-  typeof UpdateMicrofrontendsBuildMachineType
->;
-
 export const UpdateMicrofrontendsConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -655,16 +648,6 @@ export type UpdateMicrofrontendsConfiguration = ClosedEnum<
 export type UpdateMicrofrontendsBuildQueue = {
   configuration?: UpdateMicrofrontendsConfiguration | undefined;
 };
-
-export const UpdateMicrofrontendsFunctionDefaultMemoryType = {
-  Performance: "performance",
-  PerformanceXl: "performance_xl",
-  Standard: "standard",
-  StandardLegacy: "standard_legacy",
-} as const;
-export type UpdateMicrofrontendsFunctionDefaultMemoryType = ClosedEnum<
-  typeof UpdateMicrofrontendsFunctionDefaultMemoryType
->;
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
@@ -708,6 +691,30 @@ export type UpdateMicrofrontendsElasticBuildMachine =
   | UpdateMicrofrontendsElasticBuildMachine3
   | UpdateMicrofrontendsElasticBuildMachine4;
 
+export const UpdateMicrofrontendsFunctionDefaultMemoryType = {
+  Performance: "performance",
+  PerformanceXl: "performance_xl",
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+} as const;
+export type UpdateMicrofrontendsFunctionDefaultMemoryType = ClosedEnum<
+  typeof UpdateMicrofrontendsFunctionDefaultMemoryType
+>;
+
+export const UpdateMicrofrontendsBuildMachineType = {
+  Basic: "basic",
+  Elastic: "elastic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+export type UpdateMicrofrontendsBuildMachineType = ClosedEnum<
+  typeof UpdateMicrofrontendsBuildMachineType
+>;
+
+/**
+ * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+ */
 export type UpdateMicrofrontendsDefaultResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -717,8 +724,13 @@ export type UpdateMicrofrontendsDefaultResourceConfig = {
     | UpdateMicrofrontendsBuildMachineElasticTransition
     | undefined;
   buildMachineSelection?: UpdateMicrofrontendsBuildMachineSelection | undefined;
-  buildMachineType?: UpdateMicrofrontendsBuildMachineType | undefined;
   buildQueue?: UpdateMicrofrontendsBuildQueue | undefined;
+  elasticBuildMachine?:
+    | UpdateMicrofrontendsElasticBuildMachine1
+    | UpdateMicrofrontendsElasticBuildMachine2
+    | UpdateMicrofrontendsElasticBuildMachine3
+    | UpdateMicrofrontendsElasticBuildMachine4
+    | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -729,12 +741,7 @@ export type UpdateMicrofrontendsDefaultResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  elasticBuildMachine?:
-    | UpdateMicrofrontendsElasticBuildMachine1
-    | UpdateMicrofrontendsElasticBuildMachine2
-    | UpdateMicrofrontendsElasticBuildMachine3
-    | UpdateMicrofrontendsElasticBuildMachine4
-    | undefined;
+  buildMachineType?: UpdateMicrofrontendsBuildMachineType | undefined;
 };
 
 /**
@@ -1514,6 +1521,7 @@ export type UpdateMicrofrontendsRequestBody$Outbound = {
   defaultRoute?: string | undefined;
   routeObservabilityToThisProject?: boolean | undefined;
   doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
+  doNotInheritDefaultAppManagedRules?: boolean | undefined;
 };
 
 /** @internal */
@@ -1529,6 +1537,7 @@ export const UpdateMicrofrontendsRequestBody$outboundSchema: z.ZodType<
     defaultRoute: z.string().optional(),
     routeObservabilityToThisProject: z.boolean().optional(),
     doNotRouteWithMicrofrontendsRouting: z.boolean().optional(),
+    doNotInheritDefaultAppManagedRules: z.boolean().optional(),
   })
 );
 
@@ -2696,13 +2705,6 @@ export const UpdateMicrofrontendsBuildMachineSelection$inboundSchema:
     );
 
 /** @internal */
-export const UpdateMicrofrontendsBuildMachineType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsBuildMachineType> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(UpdateMicrofrontendsBuildMachineType)
-    );
-
-/** @internal */
 export const UpdateMicrofrontendsConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof UpdateMicrofrontendsConfiguration
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2731,13 +2733,6 @@ export function updateMicrofrontendsBuildQueueFromJSON(
     `Failed to parse 'UpdateMicrofrontendsBuildQueue' from JSON`,
   );
 }
-
-/** @internal */
-export const UpdateMicrofrontendsFunctionDefaultMemoryType$inboundSchema:
-  z.ZodNativeEnum<typeof UpdateMicrofrontendsFunctionDefaultMemoryType> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(UpdateMicrofrontendsFunctionDefaultMemoryType)
-    );
 
 /** @internal */
 export const UpdateMicrofrontendsElasticBuildMachine4$inboundSchema: z.ZodType<
@@ -2886,6 +2881,20 @@ export function updateMicrofrontendsElasticBuildMachineFromJSON(
 }
 
 /** @internal */
+export const UpdateMicrofrontendsFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsFunctionDefaultMemoryType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateMicrofrontendsFunctionDefaultMemoryType)
+    );
+
+/** @internal */
+export const UpdateMicrofrontendsBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<typeof UpdateMicrofrontendsBuildMachineType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UpdateMicrofrontendsBuildMachineType)
+    );
+
+/** @internal */
 export const UpdateMicrofrontendsDefaultResourceConfig$inboundSchema: z.ZodType<
   UpdateMicrofrontendsDefaultResourceConfig,
   z.ZodTypeDef,
@@ -2902,12 +2911,17 @@ export const UpdateMicrofrontendsDefaultResourceConfig$inboundSchema: z.ZodType<
     buildMachineSelection: types.optional(
       UpdateMicrofrontendsBuildMachineSelection$inboundSchema,
     ),
-    buildMachineType: types.optional(
-      UpdateMicrofrontendsBuildMachineType$inboundSchema,
-    ),
     buildQueue: types.optional(z.lazy(() =>
       UpdateMicrofrontendsBuildQueue$inboundSchema
     )),
+    elasticBuildMachine: types.optional(z.union([
+      z.lazy(() => UpdateMicrofrontendsElasticBuildMachine1$inboundSchema),
+      z.lazy(() =>
+        UpdateMicrofrontendsElasticBuildMachine2$inboundSchema
+      ),
+      z.lazy(() => UpdateMicrofrontendsElasticBuildMachine3$inboundSchema),
+      z.lazy(() => UpdateMicrofrontendsElasticBuildMachine4$inboundSchema),
+    ])),
     elasticConcurrencyEnabled: types.optional(types.boolean()),
     enableFunctionsBeta: types.optional(types.boolean()),
     fluid: types.optional(types.boolean()),
@@ -2918,14 +2932,9 @@ export const UpdateMicrofrontendsDefaultResourceConfig$inboundSchema: z.ZodType<
     functionDefaultTimeout: types.optional(types.number()),
     functionZeroConfigFailover: types.optional(types.boolean()),
     isNSNBDisabled: types.optional(types.boolean()),
-    elasticBuildMachine: types.optional(z.union([
-      z.lazy(() => UpdateMicrofrontendsElasticBuildMachine1$inboundSchema),
-      z.lazy(() =>
-        UpdateMicrofrontendsElasticBuildMachine2$inboundSchema
-      ),
-      z.lazy(() => UpdateMicrofrontendsElasticBuildMachine3$inboundSchema),
-      z.lazy(() => UpdateMicrofrontendsElasticBuildMachine4$inboundSchema),
-    ])),
+    buildMachineType: types.optional(
+      UpdateMicrofrontendsBuildMachineType$inboundSchema,
+    ),
   })
 );
 

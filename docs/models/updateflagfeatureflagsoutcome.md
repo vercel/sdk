@@ -50,11 +50,3 @@ const value: models.UpdateFlagOutcomeFeatureFlags3 = {
 };
 ```
 
-### `models.UpdateFlagOutcome4`
-
-```typescript
-const value: models.UpdateFlagOutcome4 = {
-  type: "experiment",
-};
-```
-

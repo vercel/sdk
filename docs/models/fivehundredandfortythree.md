@@ -8,14 +8,12 @@ The payload of the event, if requested.
 import { FiveHundredAndFortyThree } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndFortyThree = {
-  id: "<id>",
-  url: "https://cloudy-cappelletti.name",
+  tier: "pro",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `id`               | *string*           | :heavy_check_mark: | N/A                |
-| `url`              | *string*           | :heavy_check_mark: | N/A                |
+| Field                            | Type                             | Required                         | Description                      |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `tier`                           | [models.Tier](../models/tier.md) | :heavy_check_mark:               | N/A                              |

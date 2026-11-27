@@ -5,13 +5,10 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { ThreeHundredAndFortyFive } from "@vercel/sdk/models/usereventpayload328previous.js";
+import { ThreeHundredAndFortyFive } from "@vercel/sdk/models/threehundredandtwentyfive.js";
 
 let value: ThreeHundredAndFortyFive = {
-  consolidatedGitCommitStatus: {
-    enabled: false,
-    propagateFailures: false,
-  },
+  gitLFS: false,
   projectId: "<id>",
   projectName: "<value>",
 };
@@ -19,8 +16,8 @@ let value: ThreeHundredAndFortyFive = {
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `consolidatedGitCommitStatus`                                                  | [models.ConsolidatedGitCommitStatus](../models/consolidatedgitcommitstatus.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectId`                                                                    | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
-| `projectName`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `gitLFS`           | *boolean*          | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

@@ -8,12 +8,14 @@ The payload of the event, if requested.
 import { FiftyOne } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: FiftyOne = {
-  endpointOrigin: "<value>",
+  enabled: false,
+  mode: "enforce",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `endpointOrigin`   | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `enabled`                                                            | *boolean*                                                            | :heavy_check_mark:                                                   | N/A                                                                  |
+| `mode`                                                               | [models.UserEventPayload51Mode](../models/usereventpayload51mode.md) | :heavy_check_mark:                                                   | N/A                                                                  |

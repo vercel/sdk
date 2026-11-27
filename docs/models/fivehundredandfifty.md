@@ -8,26 +8,17 @@ The payload of the event, if requested.
 import { FiveHundredAndFifty } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndFifty = {
-  next: {
-    enabled: false,
-    issuerUrls: [
-      "<value 1>",
-    ],
-  },
-  previous: {
-    enabled: false,
-    issuerUrls: [
-      "<value 1>",
-    ],
-  },
-  scope: "organization",
+  deploymentId: "<id>",
+  projectId: "<id>",
+  runId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `next`                                                                         | [models.UserEventPayload550Next](../models/usereventpayload550next.md)         | :heavy_check_mark:                                                             | N/A                                                                            |
-| `previous`                                                                     | [models.UserEventPayload550Previous](../models/usereventpayload550previous.md) | :heavy_check_mark:                                                             | N/A                                                                            |
-| `scope`                                                                        | [models.UserEventPayload550Scope](../models/usereventpayload550scope.md)       | :heavy_check_mark:                                                             | N/A                                                                            |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
+| `runId`            | *string*           | :heavy_check_mark: | N/A                |

@@ -11,5 +11,5 @@ let value: UserEventPayload6Action = "deleted";
 ## Values
 
 ```typescript
-"added" | "deleted" | "rotated"
+"created" | "deleted" | "updated"
 ```

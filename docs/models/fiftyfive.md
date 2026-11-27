@@ -8,15 +8,14 @@ The payload of the event, if requested.
 import { FiftyFive } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: FiftyFive = {
-  retention: {
-    ceilingMode: "days",
-    defaultMode: "days",
-  },
+  headerNames: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                      | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `retention`                                | [models.Retention](../models/retention.md) | :heavy_check_mark:                         | N/A                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `headerNames`      | *string*[]         | :heavy_check_mark: | N/A                |

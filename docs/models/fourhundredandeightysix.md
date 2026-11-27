@@ -5,13 +5,13 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { FourHundredAndEightySix } from "@vercel/sdk/models/fourhundredandfortyfour.js";
+import { FourHundredAndEightySix } from "@vercel/sdk/models/fourhundredandfortyfive.js";
 
 let value: FourHundredAndEightySix = {
-  tokenTypes: [
+  domain: "whirlwind-bob.info",
+  ips: [
     "<value 1>",
     "<value 2>",
-    "<value 3>",
   ],
 };
 ```
@@ -20,4 +20,5 @@ let value: FourHundredAndEightySix = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `tokenTypes`       | *string*[]         | :heavy_check_mark: | N/A                |
+| `domain`           | *string*           | :heavy_check_mark: | N/A                |
+| `ips`              | *string*[]         | :heavy_check_mark: | N/A                |

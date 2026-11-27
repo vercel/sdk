@@ -614,17 +614,6 @@ export type GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection =
     typeof GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection
   >;
 
-export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineType = {
-  Fourteencpu28gb: "14cpu-28gb",
-  Basic: "basic",
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-export type GetMicrofrontendsInGroupMicrofrontendsBuildMachineType = ClosedEnum<
-  typeof GetMicrofrontendsInGroupMicrofrontendsBuildMachineType
->;
-
 export const GetMicrofrontendsInGroupConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -636,17 +625,6 @@ export type GetMicrofrontendsInGroupConfiguration = ClosedEnum<
 export type GetMicrofrontendsInGroupBuildQueue = {
   configuration?: GetMicrofrontendsInGroupConfiguration | undefined;
 };
-
-export const GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType = {
-  Performance: "performance",
-  PerformanceXl: "performance_xl",
-  Standard: "standard",
-  StandardLegacy: "standard_legacy",
-} as const;
-export type GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType =
-  ClosedEnum<
-    typeof GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType
-  >;
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
@@ -690,6 +668,31 @@ export type GetMicrofrontendsInGroupMicrofrontendsElasticBuildMachine =
   | GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends3
   | GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4;
 
+export const GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType = {
+  Performance: "performance",
+  PerformanceXl: "performance_xl",
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+} as const;
+export type GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType =
+  ClosedEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType
+  >;
+
+export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineType = {
+  Basic: "basic",
+  Elastic: "elastic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+export type GetMicrofrontendsInGroupMicrofrontendsBuildMachineType = ClosedEnum<
+  typeof GetMicrofrontendsInGroupMicrofrontendsBuildMachineType
+>;
+
+/**
+ * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+ */
 export type GetMicrofrontendsInGroupDefaultResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -701,10 +704,13 @@ export type GetMicrofrontendsInGroupDefaultResourceConfig = {
   buildMachineSelection?:
     | GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection
     | undefined;
-  buildMachineType?:
-    | GetMicrofrontendsInGroupMicrofrontendsBuildMachineType
-    | undefined;
   buildQueue?: GetMicrofrontendsInGroupBuildQueue | undefined;
+  elasticBuildMachine?:
+    | GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends1
+    | GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2
+    | GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends3
+    | GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4
+    | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -715,11 +721,8 @@ export type GetMicrofrontendsInGroupDefaultResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  elasticBuildMachine?:
-    | GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends1
-    | GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends2
-    | GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends3
-    | GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4
+  buildMachineType?:
+    | GetMicrofrontendsInGroupMicrofrontendsBuildMachineType
     | undefined;
 };
 
@@ -2679,14 +2682,6 @@ export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection$inbound
   );
 
 /** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetMicrofrontendsInGroupMicrofrontendsBuildMachineType
-  > = /* @__PURE__ */ lazySchema$(() =>
-    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsBuildMachineType)
-  );
-
-/** @internal */
 export const GetMicrofrontendsInGroupConfiguration$inboundSchema:
   z.ZodNativeEnum<typeof GetMicrofrontendsInGroupConfiguration> =
     /* @__PURE__ */ lazySchema$(() =>
@@ -2716,16 +2711,6 @@ export function getMicrofrontendsInGroupBuildQueueFromJSON(
     `Failed to parse 'GetMicrofrontendsInGroupBuildQueue' from JSON`,
   );
 }
-
-/** @internal */
-export const GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType$inboundSchema:
-  z.ZodNativeEnum<
-    typeof GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType
-  > = /* @__PURE__ */ lazySchema$(() =>
-    z.nativeEnum(
-      GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType,
-    )
-  );
 
 /** @internal */
 export const GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4$inboundSchema:
@@ -2882,6 +2867,24 @@ export function getMicrofrontendsInGroupMicrofrontendsElasticBuildMachineFromJSO
 }
 
 /** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(
+      GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType,
+    )
+  );
+
+/** @internal */
+export const GetMicrofrontendsInGroupMicrofrontendsBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<
+    typeof GetMicrofrontendsInGroupMicrofrontendsBuildMachineType
+  > = /* @__PURE__ */ lazySchema$(() =>
+    z.nativeEnum(GetMicrofrontendsInGroupMicrofrontendsBuildMachineType)
+  );
+
+/** @internal */
 export const GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema:
   z.ZodType<
     GetMicrofrontendsInGroupDefaultResourceConfig,
@@ -2899,22 +2902,9 @@ export const GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema:
       buildMachineSelection: types.optional(
         GetMicrofrontendsInGroupMicrofrontendsBuildMachineSelection$inboundSchema,
       ),
-      buildMachineType: types.optional(
-        GetMicrofrontendsInGroupMicrofrontendsBuildMachineType$inboundSchema,
-      ),
       buildQueue: types.optional(z.lazy(() =>
         GetMicrofrontendsInGroupBuildQueue$inboundSchema
       )),
-      elasticConcurrencyEnabled: types.optional(types.boolean()),
-      enableFunctionsBeta: types.optional(types.boolean()),
-      fluid: types.optional(types.boolean()),
-      functionDefaultMemoryType: types.optional(
-        GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType$inboundSchema,
-      ),
-      functionDefaultRegions: z.array(types.string()),
-      functionDefaultTimeout: types.optional(types.number()),
-      functionZeroConfigFailover: types.optional(types.boolean()),
-      isNSNBDisabled: types.optional(types.boolean()),
       elasticBuildMachine: types.optional(z.union([
         z.lazy(() =>
           GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends1$inboundSchema
@@ -2929,6 +2919,19 @@ export const GetMicrofrontendsInGroupDefaultResourceConfig$inboundSchema:
           GetMicrofrontendsInGroupElasticBuildMachineMicrofrontends4$inboundSchema
         ),
       ])),
+      elasticConcurrencyEnabled: types.optional(types.boolean()),
+      enableFunctionsBeta: types.optional(types.boolean()),
+      fluid: types.optional(types.boolean()),
+      functionDefaultMemoryType: types.optional(
+        GetMicrofrontendsInGroupMicrofrontendsFunctionDefaultMemoryType$inboundSchema,
+      ),
+      functionDefaultRegions: z.array(types.string()),
+      functionDefaultTimeout: types.optional(types.number()),
+      functionZeroConfigFailover: types.optional(types.boolean()),
+      isNSNBDisabled: types.optional(types.boolean()),
+      buildMachineType: types.optional(
+        GetMicrofrontendsInGroupMicrofrontendsBuildMachineType$inboundSchema,
+      ),
     })
   );
 

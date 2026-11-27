@@ -5,11 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwentyFour } from "@vercel/sdk/models/usereventpayload82resourcestype.js";
+import { OneHundredAndTwentyFour } from "@vercel/sdk/models/eightythree.js";
 
 let value: OneHundredAndTwentyFour = {
+  gitlabEmail: "<value>",
   gitlabLogin: "<value>",
-  gitlabUserId: 6971.48,
 };
 ```
 
@@ -17,5 +17,8 @@ let value: OneHundredAndTwentyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
+| `gitlabEmail`      | *string*           | :heavy_check_mark: | N/A                |
 | `gitlabLogin`      | *string*           | :heavy_check_mark: | N/A                |
-| `gitlabUserId`     | *number*           | :heavy_check_mark: | N/A                |
+| `gitlabName`       | *string*           | :heavy_minus_sign: | N/A                |
+| `zeitAccount`      | *string*           | :heavy_minus_sign: | N/A                |
+| `zeitAccountType`  | *string*           | :heavy_minus_sign: | N/A                |

@@ -8,12 +8,22 @@ The payload of the event, if requested.
 import { FiveHundredAndFortyTwo } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndFortyTwo = {
-  tier: "pro",
+  cadence: "weekly",
+  projectIds: [
+    "<value 1>",
+    "<value 2>",
+    "<value 3>",
+  ],
+  team: {
+    id: "<id>",
+  },
 };
 ```
 
 ## Fields
 
-| Field                            | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `tier`                           | [models.Tier](../models/tier.md) | :heavy_check_mark:               | N/A                              |
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `cadence`                                                              | [models.Cadence](../models/cadence.md)                                 | :heavy_check_mark:                                                     | N/A                                                                    |
+| `projectIds`                                                           | *string*[]                                                             | :heavy_check_mark:                                                     | N/A                                                                    |
+| `team`                                                                 | [models.UserEventPayload542Team](../models/usereventpayload542team.md) | :heavy_check_mark:                                                     | N/A                                                                    |

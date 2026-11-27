@@ -8,12 +8,14 @@ The payload of the event, if requested.
 import { FiveHundredAndTwentyNine } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndTwentyNine = {
-  customAlertTitle: "<value>",
+  nextProjectCount: 7562.25,
+  previousProjectCount: 2161.59,
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `customAlertTitle` | *string*           | :heavy_check_mark: | N/A                |
+| Field                  | Type                   | Required               | Description            |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `nextProjectCount`     | *number*               | :heavy_check_mark:     | N/A                    |
+| `previousProjectCount` | *number*               | :heavy_check_mark:     | N/A                    |

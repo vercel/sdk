@@ -5,11 +5,11 @@
 ```typescript
 import { UploadProjectAvatarProjectsBuildMachineType } from "@vercel/sdk/models/uploadprojectavatartoprojectsresponsepreset.js";
 
-let value: UploadProjectAvatarProjectsBuildMachineType = "14cpu-28gb";
+let value: UploadProjectAvatarProjectsBuildMachineType = "basic";
 ```
 
 ## Values
 
 ```typescript
-"14cpu-28gb" | "basic" | "enhanced" | "standard" | "turbo"
+"basic" | "elastic" | "enhanced" | "standard" | "turbo"
 ```

@@ -18,7 +18,7 @@ let value: ListFlagVersionsVersions = {
     variants: [
       {
         id: "<id>",
-        value: 711.35,
+        value: 40.79,
       },
     ],
   },

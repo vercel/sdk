@@ -60,9 +60,12 @@ import {
   GetProjectsResponseBodyProjectsNodeVersion$inboundSchema,
   GetProjectsResponseBodyProjectsResponse200Creator,
   GetProjectsResponseBodyProjectsResponse200Creator$inboundSchema,
-} from "./getprojectsresponsebodyelasticbuildmachine.js";
+} from "./getprojectsresponsebodybuildmachinetype.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
 
+/**
+ * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+ */
 export type GetProjectsResponseBodyProjectsResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -74,8 +77,8 @@ export type GetProjectsResponseBodyProjectsResourceConfig = {
   buildMachineSelection?:
     | GetProjectsResponseBodyBuildMachineSelection
     | undefined;
-  buildMachineType?: GetProjectsResponseBodyBuildMachineType | undefined;
   buildQueue?: GetProjectsResponseBodyBuildQueue | undefined;
+  elasticBuildMachine?: GetProjectsResponseBodyElasticBuildMachine | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -86,7 +89,7 @@ export type GetProjectsResponseBodyProjectsResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  elasticBuildMachine?: GetProjectsResponseBodyElasticBuildMachine | undefined;
+  buildMachineType?: GetProjectsResponseBodyBuildMachineType | undefined;
 };
 
 /**
@@ -1135,6 +1138,9 @@ export type ResponseBodyProjects = {
     | null
     | undefined;
   paused?: boolean | undefined;
+  /**
+   * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+   */
   resourceConfig: GetProjectsResponseBodyProjectsResourceConfig;
   /**
    * Project-level rolling release configuration that defines how deployments should be gradually rolled out
@@ -1617,11 +1623,11 @@ export const GetProjectsResponseBodyProjectsResourceConfig$inboundSchema:
       buildMachineSelection: types.optional(
         GetProjectsResponseBodyBuildMachineSelection$inboundSchema,
       ),
-      buildMachineType: types.optional(
-        GetProjectsResponseBodyBuildMachineType$inboundSchema,
-      ),
       buildQueue: types.optional(
         GetProjectsResponseBodyBuildQueue$inboundSchema,
+      ),
+      elasticBuildMachine: types.optional(
+        GetProjectsResponseBodyElasticBuildMachine$inboundSchema,
       ),
       elasticConcurrencyEnabled: types.optional(types.boolean()),
       enableFunctionsBeta: types.optional(types.boolean()),
@@ -1633,8 +1639,8 @@ export const GetProjectsResponseBodyProjectsResourceConfig$inboundSchema:
       functionDefaultTimeout: types.optional(types.number()),
       functionZeroConfigFailover: types.optional(types.boolean()),
       isNSNBDisabled: types.optional(types.boolean()),
-      elasticBuildMachine: types.optional(
-        GetProjectsResponseBodyElasticBuildMachine$inboundSchema,
+      buildMachineType: types.optional(
+        GetProjectsResponseBodyBuildMachineType$inboundSchema,
       ),
     })
   );

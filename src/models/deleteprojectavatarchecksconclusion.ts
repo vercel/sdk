@@ -600,17 +600,6 @@ export type DeleteProjectAvatarBuildMachineSelection = ClosedEnum<
   typeof DeleteProjectAvatarBuildMachineSelection
 >;
 
-export const DeleteProjectAvatarBuildMachineType = {
-  Fourteencpu28gb: "14cpu-28gb",
-  Basic: "basic",
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-export type DeleteProjectAvatarBuildMachineType = ClosedEnum<
-  typeof DeleteProjectAvatarBuildMachineType
->;
-
 export const DeleteProjectAvatarConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -622,16 +611,6 @@ export type DeleteProjectAvatarConfiguration = ClosedEnum<
 export type DeleteProjectAvatarBuildQueue = {
   configuration?: DeleteProjectAvatarConfiguration | undefined;
 };
-
-export const DeleteProjectAvatarFunctionDefaultMemoryType = {
-  Performance: "performance",
-  PerformanceXl: "performance_xl",
-  Standard: "standard",
-  StandardLegacy: "standard_legacy",
-} as const;
-export type DeleteProjectAvatarFunctionDefaultMemoryType = ClosedEnum<
-  typeof DeleteProjectAvatarFunctionDefaultMemoryType
->;
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
@@ -675,6 +654,30 @@ export type DeleteProjectAvatarElasticBuildMachine =
   | DeleteProjectAvatarElasticBuildMachine3
   | DeleteProjectAvatarElasticBuildMachine4;
 
+export const DeleteProjectAvatarFunctionDefaultMemoryType = {
+  Performance: "performance",
+  PerformanceXl: "performance_xl",
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+} as const;
+export type DeleteProjectAvatarFunctionDefaultMemoryType = ClosedEnum<
+  typeof DeleteProjectAvatarFunctionDefaultMemoryType
+>;
+
+export const DeleteProjectAvatarBuildMachineType = {
+  Basic: "basic",
+  Elastic: "elastic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+export type DeleteProjectAvatarBuildMachineType = ClosedEnum<
+  typeof DeleteProjectAvatarBuildMachineType
+>;
+
+/**
+ * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+ */
 export type DeleteProjectAvatarDefaultResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -684,8 +687,13 @@ export type DeleteProjectAvatarDefaultResourceConfig = {
     | DeleteProjectAvatarBuildMachineElasticTransition
     | undefined;
   buildMachineSelection?: DeleteProjectAvatarBuildMachineSelection | undefined;
-  buildMachineType?: DeleteProjectAvatarBuildMachineType | undefined;
   buildQueue?: DeleteProjectAvatarBuildQueue | undefined;
+  elasticBuildMachine?:
+    | DeleteProjectAvatarElasticBuildMachine1
+    | DeleteProjectAvatarElasticBuildMachine2
+    | DeleteProjectAvatarElasticBuildMachine3
+    | DeleteProjectAvatarElasticBuildMachine4
+    | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -696,12 +704,7 @@ export type DeleteProjectAvatarDefaultResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  elasticBuildMachine?:
-    | DeleteProjectAvatarElasticBuildMachine1
-    | DeleteProjectAvatarElasticBuildMachine2
-    | DeleteProjectAvatarElasticBuildMachine3
-    | DeleteProjectAvatarElasticBuildMachine4
-    | undefined;
+  buildMachineType?: DeleteProjectAvatarBuildMachineType | undefined;
 };
 
 /**
@@ -2618,13 +2621,6 @@ export const DeleteProjectAvatarBuildMachineSelection$inboundSchema:
     );
 
 /** @internal */
-export const DeleteProjectAvatarBuildMachineType$inboundSchema: z.ZodNativeEnum<
-  typeof DeleteProjectAvatarBuildMachineType
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.nativeEnum(DeleteProjectAvatarBuildMachineType)
-);
-
-/** @internal */
 export const DeleteProjectAvatarConfiguration$inboundSchema: z.ZodNativeEnum<
   typeof DeleteProjectAvatarConfiguration
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2653,13 +2649,6 @@ export function deleteProjectAvatarBuildQueueFromJSON(
     `Failed to parse 'DeleteProjectAvatarBuildQueue' from JSON`,
   );
 }
-
-/** @internal */
-export const DeleteProjectAvatarFunctionDefaultMemoryType$inboundSchema:
-  z.ZodNativeEnum<typeof DeleteProjectAvatarFunctionDefaultMemoryType> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(DeleteProjectAvatarFunctionDefaultMemoryType)
-    );
 
 /** @internal */
 export const DeleteProjectAvatarElasticBuildMachine4$inboundSchema: z.ZodType<
@@ -2803,6 +2792,20 @@ export function deleteProjectAvatarElasticBuildMachineFromJSON(
 }
 
 /** @internal */
+export const DeleteProjectAvatarFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<typeof DeleteProjectAvatarFunctionDefaultMemoryType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(DeleteProjectAvatarFunctionDefaultMemoryType)
+    );
+
+/** @internal */
+export const DeleteProjectAvatarBuildMachineType$inboundSchema: z.ZodNativeEnum<
+  typeof DeleteProjectAvatarBuildMachineType
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(DeleteProjectAvatarBuildMachineType)
+);
+
+/** @internal */
 export const DeleteProjectAvatarDefaultResourceConfig$inboundSchema: z.ZodType<
   DeleteProjectAvatarDefaultResourceConfig,
   z.ZodTypeDef,
@@ -2819,12 +2822,17 @@ export const DeleteProjectAvatarDefaultResourceConfig$inboundSchema: z.ZodType<
     buildMachineSelection: types.optional(
       DeleteProjectAvatarBuildMachineSelection$inboundSchema,
     ),
-    buildMachineType: types.optional(
-      DeleteProjectAvatarBuildMachineType$inboundSchema,
-    ),
     buildQueue: types.optional(z.lazy(() =>
       DeleteProjectAvatarBuildQueue$inboundSchema
     )),
+    elasticBuildMachine: types.optional(z.union([
+      z.lazy(() => DeleteProjectAvatarElasticBuildMachine1$inboundSchema),
+      z.lazy(() =>
+        DeleteProjectAvatarElasticBuildMachine2$inboundSchema
+      ),
+      z.lazy(() => DeleteProjectAvatarElasticBuildMachine3$inboundSchema),
+      z.lazy(() => DeleteProjectAvatarElasticBuildMachine4$inboundSchema),
+    ])),
     elasticConcurrencyEnabled: types.optional(types.boolean()),
     enableFunctionsBeta: types.optional(types.boolean()),
     fluid: types.optional(types.boolean()),
@@ -2835,14 +2843,9 @@ export const DeleteProjectAvatarDefaultResourceConfig$inboundSchema: z.ZodType<
     functionDefaultTimeout: types.optional(types.number()),
     functionZeroConfigFailover: types.optional(types.boolean()),
     isNSNBDisabled: types.optional(types.boolean()),
-    elasticBuildMachine: types.optional(z.union([
-      z.lazy(() => DeleteProjectAvatarElasticBuildMachine1$inboundSchema),
-      z.lazy(() =>
-        DeleteProjectAvatarElasticBuildMachine2$inboundSchema
-      ),
-      z.lazy(() => DeleteProjectAvatarElasticBuildMachine3$inboundSchema),
-      z.lazy(() => DeleteProjectAvatarElasticBuildMachine4$inboundSchema),
-    ])),
+    buildMachineType: types.optional(
+      DeleteProjectAvatarBuildMachineType$inboundSchema,
+    ),
   })
 );
 

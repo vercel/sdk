@@ -8,7 +8,7 @@ The payload of the event, if requested.
 import { FortyNine } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: FortyNine = {
-  countries: [
+  regions: [
     "<value 1>",
     "<value 2>",
     "<value 3>",
@@ -20,4 +20,4 @@ let value: FortyNine = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `countries`        | *string*[]         | :heavy_check_mark: | N/A                |
+| `regions`          | *string*[]         | :heavy_check_mark: | N/A                |

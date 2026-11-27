@@ -5,15 +5,20 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndFive } from "@vercel/sdk/models/newenvvar.js";
+import { TwoHundredAndFive } from "@vercel/sdk/models/usereventpayload195oldenvvartype.js";
 
 let value: TwoHundredAndFive = {
-  action: "disable",
+  newOwnerId: "<id>",
+  previousOwnerId: "<id>",
+  projectId: "<id>",
 };
 ```
 
 ## Fields
 
-| Field                                                                      | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `action`                                                                   | [models.UserEventPayload205Action](../models/usereventpayload205action.md) | :heavy_check_mark:                                                         | N/A                                                                        |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `newOwnerId`       | *string*           | :heavy_check_mark: | N/A                |
+| `previousOwnerId`  | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |

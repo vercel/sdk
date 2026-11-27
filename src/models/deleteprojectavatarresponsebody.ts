@@ -235,6 +235,9 @@ export type DeleteProjectAvatarResponseBody = {
   customEnvironments?: Array<DeleteProjectAvatarCustomEnvironments> | undefined;
   customerSupportCodeVisibility?: boolean | undefined;
   dataCache?: DeleteProjectAvatarDataCache | undefined;
+  /**
+   * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+   */
   defaultResourceConfig: DeleteProjectAvatarDefaultResourceConfig;
   /**
    * Retention policies for deployments. These are enforced at the project level, but we also maintain an instance of this at the team level as a default policy that gets applied to new projects.
@@ -300,6 +303,9 @@ export type DeleteProjectAvatarResponseBody = {
     | { [k: string]: DeleteProjectAvatarProtectionBypass }
     | undefined;
   protectionConfig?: DeleteProjectAvatarProtectionConfig | undefined;
+  /**
+   * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+   */
   resourceConfig: DeleteProjectAvatarResourceConfig;
   /**
    * Description of why a project was rolled back, and by whom. Note that lastAliasRequest contains the from/to details of the rollback.

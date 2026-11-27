@@ -12,7 +12,22 @@ let value: UpdateFlagResponseBody = {
     "key": {
       active: true,
       fallthrough: {
-        type: "experiment",
+        base: {
+          attribute: "<value>",
+          kind: "<value>",
+          type: "entity",
+        },
+        defaultVariantId: "<id>",
+        rollFromVariantId: "<id>",
+        rollToVariantId: "<id>",
+        slots: [
+          {
+            durationMs: 2920.38,
+            promille: 2566.4,
+          },
+        ],
+        startTimestamp: 8016.19,
+        type: "rollout",
       },
       pausedOutcome: {
         type: "variant",
@@ -29,27 +44,29 @@ let value: UpdateFlagResponseBody = {
               type: "entity",
             },
             defaultVariantId: "<id>",
-            rollFromVariantId: "<id>",
-            rollToVariantId: "<id>",
-            slots: [],
-            startTimestamp: 7445.29,
-            type: "rollout",
+            type: "split",
+            weights: {},
           },
         },
       ],
     },
   },
   id: "<id>",
-  kind: "string",
+  kind: "number",
   ownerId: "<id>",
   projectId: "<id>",
-  revision: 9833.71,
-  seed: 5458.06,
+  revision: 7716.55,
+  seed: 1677.13,
   slug: "<value>",
-  state: "archived",
+  state: "active",
   typeName: "flag",
-  updatedAt: 1677.13,
-  variants: [],
+  updatedAt: 8861.16,
+  variants: [
+    {
+      id: "<id>",
+      value: 6323.34,
+    },
+  ],
 };
 ```
 

@@ -8,8 +8,12 @@ The payload of the event, if requested.
 import { FiveHundredAndThirtyFour } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndThirtyFour = {
-  enabled: true,
-  repositoryId: "<id>",
+  alertType: "<value>",
+  groupId: "<id>",
+  projectId: "<id>",
+  alertId: "<id>",
+  startedAt: 1943.86,
+  title: "<value>",
 };
 ```
 
@@ -17,7 +21,11 @@ let value: FiveHundredAndThirtyFour = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `enabled`          | *boolean*          | :heavy_check_mark: | N/A                |
-| `organizationId`   | *string*           | :heavy_minus_sign: | N/A                |
-| `repository`       | *string*           | :heavy_minus_sign: | N/A                |
-| `repositoryId`     | *string*           | :heavy_check_mark: | N/A                |
+| `alertType`        | *string*           | :heavy_check_mark: | N/A                |
+| `groupId`          | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `severity`         | *string*           | :heavy_minus_sign: | N/A                |
+| `alertId`          | *string*           | :heavy_check_mark: | N/A                |
+| `resolvedAt`       | *number*           | :heavy_minus_sign: | N/A                |
+| `startedAt`        | *number*           | :heavy_check_mark: | N/A                |
+| `title`            | *string*           | :heavy_check_mark: | N/A                |

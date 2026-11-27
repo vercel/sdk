@@ -32,12 +32,14 @@ import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Get Global Config token meta data
+ * Deprecated: Use `GET /v1/global-config/:edgeConfigId/token` with the `x-vercel-global-config-token` header instead. Get Global Config token metadata
  *
  * @remarks
  * Return metadata about a Global Config token.
  *
  * If set, this operation will use {@link Security.bearerToken} from the global security.
+ *
+ * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export function globalConfigGetEdgeConfigToken(
   client: VercelCore,

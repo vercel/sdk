@@ -17,7 +17,7 @@
 * [getEdgeConfigItem](#getedgeconfigitem) - Get a Global Config item
 * [getEdgeConfigTokens](#getedgeconfigtokens) - Get all tokens of a Global Config
 * [deleteEdgeConfigTokens](#deleteedgeconfigtokens) - Delete one or more Global Config tokens
-* [getEdgeConfigToken](#getedgeconfigtoken) - Get Global Config token meta data
+* [~~getEdgeConfigToken~~](#getedgeconfigtoken) - Deprecated: Use `GET /v1/global-config/:edgeConfigId/token` with the `x-vercel-global-config-token` header instead. Get Global Config token metadata :warning: **Deprecated**
 * [createEdgeConfigToken](#createedgeconfigtoken) - Create a Global Config token
 * [lookupEdgeConfigToken](#lookupedgeconfigtoken) - Look up a Global Config token
 * [getEdgeConfigBackup](#getedgeconfigbackup) - Get Global Config backup
@@ -1055,9 +1055,11 @@ run();
 | --------------- | --------------- | --------------- |
 | models.SDKError | 4XX, 5XX        | \*/\*           |
 
-## getEdgeConfigToken
+## ~~getEdgeConfigToken~~
 
 Return metadata about a Global Config token.
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 

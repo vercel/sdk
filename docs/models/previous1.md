@@ -3,15 +3,19 @@
 ## Example Usage
 
 ```typescript
-import { Previous1 } from "@vercel/sdk/models/fourhundredandfortyfour.js";
+import { Previous1 } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: Previous1 = {
-  accessGroupId: "<id>",
+  maximumMonthlySpend: "<value>",
+  minimumBalance: "<value>",
+  targetBalance: "<value>",
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `accessGroupId`    | *string*           | :heavy_check_mark: | N/A                |
+| Field                 | Type                  | Required              | Description           |
+| --------------------- | --------------------- | --------------------- | --------------------- |
+| `maximumMonthlySpend` | *string*              | :heavy_check_mark:    | N/A                   |
+| `minimumBalance`      | *string*              | :heavy_check_mark:    | N/A                   |
+| `targetBalance`       | *string*              | :heavy_check_mark:    | N/A                   |

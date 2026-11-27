@@ -22,16 +22,12 @@ let value: CreateFlagFeatureFlagsResponseRules = {
       type: "entity",
     },
     defaultVariantId: "<id>",
-    rollFromVariantId: "<id>",
-    rollToVariantId: "<id>",
-    slots: [
-      {
-        durationMs: 373.97,
-        promille: 7472.35,
-      },
-    ],
-    startTimestamp: 3844.78,
-    type: "rollout",
+    type: "split",
+    weights: {
+      "key": 3844.78,
+      "key1": 2437.03,
+      "key2": 2227.43,
+    },
   },
 };
 ```

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PayloadDsyncMode } from "@vercel/sdk/models/newenvvar.js";
+import { PayloadDsyncMode } from "@vercel/sdk/models/usereventpayload195oldenvvartype.js";
 
 let value: PayloadDsyncMode = "team";
 ```

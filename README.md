@@ -473,7 +473,7 @@ run();
 * [getEdgeConfigItem](docs/sdks/globalconfig/README.md#getedgeconfigitem) - Get a Global Config item
 * [getEdgeConfigTokens](docs/sdks/globalconfig/README.md#getedgeconfigtokens) - Get all tokens of a Global Config
 * [deleteEdgeConfigTokens](docs/sdks/globalconfig/README.md#deleteedgeconfigtokens) - Delete one or more Global Config tokens
-* [getEdgeConfigToken](docs/sdks/globalconfig/README.md#getedgeconfigtoken) - Get Global Config token meta data
+* [~~getEdgeConfigToken~~](docs/sdks/globalconfig/README.md#getedgeconfigtoken) - Deprecated: Use `GET /v1/global-config/:edgeConfigId/token` with the `x-vercel-global-config-token` header instead. Get Global Config token metadata :warning: **Deprecated**
 * [createEdgeConfigToken](docs/sdks/globalconfig/README.md#createedgeconfigtoken) - Create a Global Config token
 * [lookupEdgeConfigToken](docs/sdks/globalconfig/README.md#lookupedgeconfigtoken) - Look up a Global Config token
 * [getEdgeConfigBackup](docs/sdks/globalconfig/README.md#getedgeconfigbackup) - Get Global Config backup
@@ -1040,7 +1040,6 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`globalConfigGetEdgeConfigItems`](docs/sdks/globalconfig/README.md#getedgeconfigitems) - Get Global Config items
 - [`globalConfigGetEdgeConfigs`](docs/sdks/globalconfig/README.md#getedgeconfigs) - Get Global Configs
 - [`globalConfigGetEdgeConfigSchema`](docs/sdks/globalconfig/README.md#getedgeconfigschema) - Get Global Config schema
-- [`globalConfigGetEdgeConfigToken`](docs/sdks/globalconfig/README.md#getedgeconfigtoken) - Get Global Config token meta data
 - [`globalConfigGetEdgeConfigTokens`](docs/sdks/globalconfig/README.md#getedgeconfigtokens) - Get all tokens of a Global Config
 - [`globalConfigLookupEdgeConfigToken`](docs/sdks/globalconfig/README.md#lookupedgeconfigtoken) - Look up a Global Config token
 - [`globalConfigPatchEdgeConfigItems`](docs/sdks/globalconfig/README.md#patchedgeconfigitems) - Update Global Config items in batch
@@ -1310,6 +1309,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - ~~[`checksGetCheck`](docs/sdks/checks/README.md#getcheck)~~ - Get a single check :warning: **Deprecated**
 - ~~[`checksRerequestCheck`](docs/sdks/checks/README.md#rerequestcheck)~~ - Rerequest a check :warning: **Deprecated**
 - ~~[`checksUpdateCheck`](docs/sdks/checks/README.md#updatecheck)~~ - Update a check :warning: **Deprecated**
+- ~~[`globalConfigGetEdgeConfigToken`](docs/sdks/globalconfig/README.md#getedgeconfigtoken)~~ - Deprecated: Use `GET /v1/global-config/:edgeConfigId/token` with the `x-vercel-global-config-token` header instead. Get Global Config token metadata :warning: **Deprecated**
 - ~~[`marketplaceUpdateResourceSecrets`](docs/sdks/marketplace/README.md#updateresourcesecrets)~~ - Deprecated: true. Update Resource Secrets (Deprecated) :warning: **Deprecated**
 - ~~[`sandboxesDeleteDrive`](docs/sdks/sandboxes/README.md#deletedrive)~~ - Deprecated: Use DELETE /v1/drives/:nameOrId. Requires the read-write:drive app scope instead of read-write:sandbox, and drive:delete instead of vercelRun:delete.
 Emits drive-deleted activity events instead of sandbox-drive-deleted. Delete a drive :warning: **Deprecated**

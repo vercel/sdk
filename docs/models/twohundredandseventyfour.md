@@ -5,11 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndSeventyFour } from "@vercel/sdk/models/twohundredandsixtyseven.js";
+import { TwoHundredAndSeventyFour } from "@vercel/sdk/models/usereventpayloaddsyncmode.js";
 
 let value: TwoHundredAndSeventyFour = {
   headerName: "<value>",
-  justification: null,
+  justification: "<value>",
   previousStatus: "<value>",
   projectId: "<id>",
 };

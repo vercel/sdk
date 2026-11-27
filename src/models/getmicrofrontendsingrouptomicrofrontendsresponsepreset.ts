@@ -383,6 +383,10 @@ export type GetMicrofrontendsInGroupMicrofrontends2 = {
    */
   defaultRoute?: string | undefined;
   /**
+   * Whether requests routed to this microfrontend skip the default app's managed rulesets (OWASP Core Ruleset, Bot Protection, AI Bots), so only this project's own managed rulesets apply to its routes. The default app's custom firewall rules apply either way.
+   */
+  doNotInheritDefaultAppManagedRules?: boolean | undefined;
+  /**
    * Whether to add microfrontends routing to aliases. This means domains in this project will route as a microfrontend.
    */
   doNotRouteWithMicrofrontendsRouting?: boolean | undefined;
@@ -1825,17 +1829,6 @@ export type GetMicrofrontendsInGroupBuildMachineSelection = ClosedEnum<
   typeof GetMicrofrontendsInGroupBuildMachineSelection
 >;
 
-export const GetMicrofrontendsInGroupBuildMachineType = {
-  Fourteencpu28gb: "14cpu-28gb",
-  Basic: "basic",
-  Enhanced: "enhanced",
-  Standard: "standard",
-  Turbo: "turbo",
-} as const;
-export type GetMicrofrontendsInGroupBuildMachineType = ClosedEnum<
-  typeof GetMicrofrontendsInGroupBuildMachineType
->;
-
 export const GetMicrofrontendsInGroupMicrofrontendsConfiguration = {
   SkipNamespaceQueue: "SKIP_NAMESPACE_QUEUE",
   WaitForNamespaceQueue: "WAIT_FOR_NAMESPACE_QUEUE",
@@ -1849,16 +1842,6 @@ export type GetMicrofrontendsInGroupMicrofrontendsBuildQueue = {
     | GetMicrofrontendsInGroupMicrofrontendsConfiguration
     | undefined;
 };
-
-export const GetMicrofrontendsInGroupFunctionDefaultMemoryType = {
-  Performance: "performance",
-  PerformanceXl: "performance_xl",
-  Standard: "standard",
-  StandardLegacy: "standard_legacy",
-} as const;
-export type GetMicrofrontendsInGroupFunctionDefaultMemoryType = ClosedEnum<
-  typeof GetMicrofrontendsInGroupFunctionDefaultMemoryType
->;
 
 /**
  * Server-owned Elastic assignment; responses may fall back to the legacy label. Not accepted as input. Memory is measured in MiB.
@@ -1902,6 +1885,30 @@ export type GetMicrofrontendsInGroupElasticBuildMachine =
   | GetMicrofrontendsInGroupElasticBuildMachine3
   | GetMicrofrontendsInGroupElasticBuildMachine4;
 
+export const GetMicrofrontendsInGroupFunctionDefaultMemoryType = {
+  Performance: "performance",
+  PerformanceXl: "performance_xl",
+  Standard: "standard",
+  StandardLegacy: "standard_legacy",
+} as const;
+export type GetMicrofrontendsInGroupFunctionDefaultMemoryType = ClosedEnum<
+  typeof GetMicrofrontendsInGroupFunctionDefaultMemoryType
+>;
+
+export const GetMicrofrontendsInGroupBuildMachineType = {
+  Basic: "basic",
+  Elastic: "elastic",
+  Enhanced: "enhanced",
+  Standard: "standard",
+  Turbo: "turbo",
+} as const;
+export type GetMicrofrontendsInGroupBuildMachineType = ClosedEnum<
+  typeof GetMicrofrontendsInGroupBuildMachineType
+>;
+
+/**
+ * Project resource config returned by the API. `buildMachineType` is a fixed machine type or `elastic`; the active Elastic machine is reported through `elasticBuildMachine`.
+ */
 export type GetMicrofrontendsInGroupResourceConfig = {
   buildMachineElasticLastUpdated?: number | undefined;
   buildMachineElasticReason?:
@@ -1913,8 +1920,13 @@ export type GetMicrofrontendsInGroupResourceConfig = {
   buildMachineSelection?:
     | GetMicrofrontendsInGroupBuildMachineSelection
     | undefined;
-  buildMachineType?: GetMicrofrontendsInGroupBuildMachineType | undefined;
   buildQueue?: GetMicrofrontendsInGroupMicrofrontendsBuildQueue | undefined;
+  elasticBuildMachine?:
+    | GetMicrofrontendsInGroupElasticBuildMachine1
+    | GetMicrofrontendsInGroupElasticBuildMachine2
+    | GetMicrofrontendsInGroupElasticBuildMachine3
+    | GetMicrofrontendsInGroupElasticBuildMachine4
+    | undefined;
   elasticConcurrencyEnabled?: boolean | undefined;
   enableFunctionsBeta?: boolean | undefined;
   fluid?: boolean | undefined;
@@ -1925,12 +1937,7 @@ export type GetMicrofrontendsInGroupResourceConfig = {
   functionDefaultTimeout?: number | undefined;
   functionZeroConfigFailover?: boolean | undefined;
   isNSNBDisabled?: boolean | undefined;
-  elasticBuildMachine?:
-    | GetMicrofrontendsInGroupElasticBuildMachine1
-    | GetMicrofrontendsInGroupElasticBuildMachine2
-    | GetMicrofrontendsInGroupElasticBuildMachine3
-    | GetMicrofrontendsInGroupElasticBuildMachine4
-    | undefined;
+  buildMachineType?: GetMicrofrontendsInGroupBuildMachineType | undefined;
 };
 
 /**
@@ -3708,6 +3715,7 @@ export const GetMicrofrontendsInGroupMicrofrontends2$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     defaultRoute: types.optional(types.string()),
+    doNotInheritDefaultAppManagedRules: types.optional(types.boolean()),
     doNotRouteWithMicrofrontendsRouting: types.optional(types.boolean()),
     enabled: types.literal(true),
     freeProjectForLegacyLimits: types.optional(types.boolean()),
@@ -4550,13 +4558,6 @@ export const GetMicrofrontendsInGroupBuildMachineSelection$inboundSchema:
     );
 
 /** @internal */
-export const GetMicrofrontendsInGroupBuildMachineType$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupBuildMachineType> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(GetMicrofrontendsInGroupBuildMachineType)
-    );
-
-/** @internal */
 export const GetMicrofrontendsInGroupMicrofrontendsConfiguration$inboundSchema:
   z.ZodNativeEnum<typeof GetMicrofrontendsInGroupMicrofrontendsConfiguration> =
     /* @__PURE__ */ lazySchema$(() =>
@@ -4592,13 +4593,6 @@ export function getMicrofrontendsInGroupMicrofrontendsBuildQueueFromJSON(
     `Failed to parse 'GetMicrofrontendsInGroupMicrofrontendsBuildQueue' from JSON`,
   );
 }
-
-/** @internal */
-export const GetMicrofrontendsInGroupFunctionDefaultMemoryType$inboundSchema:
-  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupFunctionDefaultMemoryType> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(GetMicrofrontendsInGroupFunctionDefaultMemoryType)
-    );
 
 /** @internal */
 export const GetMicrofrontendsInGroupElasticBuildMachine4$inboundSchema:
@@ -4752,6 +4746,20 @@ export function getMicrofrontendsInGroupElasticBuildMachineFromJSON(
 }
 
 /** @internal */
+export const GetMicrofrontendsInGroupFunctionDefaultMemoryType$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupFunctionDefaultMemoryType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupFunctionDefaultMemoryType)
+    );
+
+/** @internal */
+export const GetMicrofrontendsInGroupBuildMachineType$inboundSchema:
+  z.ZodNativeEnum<typeof GetMicrofrontendsInGroupBuildMachineType> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(GetMicrofrontendsInGroupBuildMachineType)
+    );
+
+/** @internal */
 export const GetMicrofrontendsInGroupResourceConfig$inboundSchema: z.ZodType<
   GetMicrofrontendsInGroupResourceConfig,
   z.ZodTypeDef,
@@ -4768,22 +4776,9 @@ export const GetMicrofrontendsInGroupResourceConfig$inboundSchema: z.ZodType<
     buildMachineSelection: types.optional(
       GetMicrofrontendsInGroupBuildMachineSelection$inboundSchema,
     ),
-    buildMachineType: types.optional(
-      GetMicrofrontendsInGroupBuildMachineType$inboundSchema,
-    ),
     buildQueue: types.optional(z.lazy(() =>
       GetMicrofrontendsInGroupMicrofrontendsBuildQueue$inboundSchema
     )),
-    elasticConcurrencyEnabled: types.optional(types.boolean()),
-    enableFunctionsBeta: types.optional(types.boolean()),
-    fluid: types.optional(types.boolean()),
-    functionDefaultMemoryType: types.optional(
-      GetMicrofrontendsInGroupFunctionDefaultMemoryType$inboundSchema,
-    ),
-    functionDefaultRegions: z.array(types.string()),
-    functionDefaultTimeout: types.optional(types.number()),
-    functionZeroConfigFailover: types.optional(types.boolean()),
-    isNSNBDisabled: types.optional(types.boolean()),
     elasticBuildMachine: types.optional(z.union([
       z.lazy(() => GetMicrofrontendsInGroupElasticBuildMachine1$inboundSchema),
       z.lazy(() =>
@@ -4794,6 +4789,19 @@ export const GetMicrofrontendsInGroupResourceConfig$inboundSchema: z.ZodType<
         GetMicrofrontendsInGroupElasticBuildMachine4$inboundSchema
       ),
     ])),
+    elasticConcurrencyEnabled: types.optional(types.boolean()),
+    enableFunctionsBeta: types.optional(types.boolean()),
+    fluid: types.optional(types.boolean()),
+    functionDefaultMemoryType: types.optional(
+      GetMicrofrontendsInGroupFunctionDefaultMemoryType$inboundSchema,
+    ),
+    functionDefaultRegions: z.array(types.string()),
+    functionDefaultTimeout: types.optional(types.number()),
+    functionZeroConfigFailover: types.optional(types.boolean()),
+    isNSNBDisabled: types.optional(types.boolean()),
+    buildMachineType: types.optional(
+      GetMicrofrontendsInGroupBuildMachineType$inboundSchema,
+    ),
   })
 );
 

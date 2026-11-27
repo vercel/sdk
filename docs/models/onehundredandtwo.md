@@ -5,22 +5,18 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndTwo } from "@vercel/sdk/models/usereventpayload82resourcestype.js";
+import { OneHundredAndTwo } from "@vercel/sdk/models/eightythree.js";
 
 let value: OneHundredAndTwo = {
-  bulkRedirectsLimit: 3413.73,
-  prevBulkRedirectsLimit: 3468.03,
-  project: {
-    id: "<id>",
-    name: "<value>",
-  },
+  productAliases: [
+    "<value 1>",
+  ],
 };
 ```
 
 ## Fields
 
-| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `bulkRedirectsLimit`                                                   | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `prevBulkRedirectsLimit`                                               | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
-| `project`                                                              | [models.UserEventPayloadProject](../models/usereventpayloadproject.md) | :heavy_check_mark:                                                     | N/A                                                                    |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `subscriptionId`   | *string*           | :heavy_minus_sign: | N/A                |
+| `productAliases`   | *string*[]         | :heavy_check_mark: | N/A                |

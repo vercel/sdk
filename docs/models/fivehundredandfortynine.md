@@ -8,17 +8,18 @@ The payload of the event, if requested.
 import { FiveHundredAndFortyNine } from "@vercel/sdk/models/payloadoutcome.js";
 
 let value: FiveHundredAndFortyNine = {
-  deploymentId: "<id>",
-  projectId: "<id>",
-  runId: "<id>",
+  next: {
+    access: "none",
+  },
+  previous: {
+    access: "unlimited",
+  },
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `deploymentId`     | *string*           | :heavy_check_mark: | N/A                |
-| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
-| `projectName`      | *string*           | :heavy_minus_sign: | N/A                |
-| `runId`            | *string*           | :heavy_check_mark: | N/A                |
+| Field                                | Type                                 | Required                             | Description                          |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `next`                               | *models.UserEventPayload549Next*     | :heavy_check_mark:                   | N/A                                  |
+| `previous`                           | *models.UserEventPayload549Previous* | :heavy_check_mark:                   | N/A                                  |

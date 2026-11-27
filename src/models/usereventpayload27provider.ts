@@ -8,51 +8,10 @@ import { lazySchema as lazySchema$, safeParse } from "../lib/schemas.js";
 import { ClosedEnum } from "../types/enums.js";
 import { Result as SafeParseResult } from "../types/fp.js";
 import * as types from "../types/primitives.js";
+import { smartUnion } from "../types/smartUnion.js";
 import { SDKValidationError } from "./sdkvalidationerror.js";
-import {
-  PayloadPermissions,
-  PayloadPermissions$inboundSchema,
-  UserEventPayload82ResourcesType,
-  UserEventPayload82ResourcesType$inboundSchema,
-} from "./usereventpayload82resourcestype.js";
 
-export type Items = {
-  type: UserEventPayload82ResourcesType;
-};
-
-export const UserEventPayload82Type = {
-  List: "list",
-} as const;
-export type UserEventPayload82Type = ClosedEnum<typeof UserEventPayload82Type>;
-
-/**
- * Specific project IDs or all projects on the team (`['*']`).
- */
-export type PayloadProjectIds = {
-  items: Items;
-  required: true;
-  type: UserEventPayload82Type;
-};
-
-export type Resources = {
-  /**
-   * Specific project IDs or all projects on the team (`['*']`).
-   */
-  projectIds: PayloadProjectIds;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type EightyTwo = {
-  appId?: string | undefined;
-  appName: string;
-  organizationId?: string | undefined;
-  permissions?: Array<PayloadPermissions> | undefined;
-  resources?: Resources | undefined;
-};
-
-export const UserEventPayload81Permissions = {
+export const UserEventPayload82Permissions = {
   ManageSpeedInsights: "manage:speed-insights",
   ManageWebAnalytics: "manage:web-analytics",
   ReadWriteAccessGroup: "read-write:access-group",
@@ -135,6 +94,7 @@ export const UserEventPayload81Permissions = {
   ReadSpeedInsights: "read:speed-insights",
   ReadTeam: "read:team",
   ReadVcr: "read:vcr",
+  ReadVercelCi: "read:vercel-ci",
   ReadWebAnalytics: "read:web-analytics",
   ReadWebhooks: "read:webhooks",
   UseAiGateway: "use:ai-gateway",
@@ -143,25 +103,25 @@ export const UserEventPayload81Permissions = {
     "use:project-flags-overrides-non-production",
   UseProjectFlagsOverridesProduction: "use:project-flags-overrides-production",
 } as const;
-export type UserEventPayload81Permissions = ClosedEnum<
-  typeof UserEventPayload81Permissions
+export type UserEventPayload82Permissions = ClosedEnum<
+  typeof UserEventPayload82Permissions
 >;
 
-export const UserEventPayload81AfterType = {
+export const UserEventPayload82AfterType = {
   String: "string",
 } as const;
-export type UserEventPayload81AfterType = ClosedEnum<
-  typeof UserEventPayload81AfterType
+export type UserEventPayload82AfterType = ClosedEnum<
+  typeof UserEventPayload82AfterType
 >;
 
 export type UserEventPayloadItems = {
-  type: UserEventPayload81AfterType;
+  type: UserEventPayload82AfterType;
 };
 
-export const UserEventPayload81Type = {
+export const UserEventPayload82Type = {
   List: "list",
 } as const;
-export type UserEventPayload81Type = ClosedEnum<typeof UserEventPayload81Type>;
+export type UserEventPayload82Type = ClosedEnum<typeof UserEventPayload82Type>;
 
 /**
  * Specific project IDs or all projects on the team (`['*']`).
@@ -169,7 +129,7 @@ export type UserEventPayload81Type = ClosedEnum<typeof UserEventPayload81Type>;
 export type UserEventPayloadProjectIds = {
   items: UserEventPayloadItems;
   required: true;
-  type: UserEventPayload81Type;
+  type: UserEventPayload82Type;
 };
 
 export type UserEventPayloadResources = {
@@ -180,7 +140,7 @@ export type UserEventPayloadResources = {
 };
 
 export type After = {
-  permissions?: Array<UserEventPayload81Permissions> | undefined;
+  permissions?: Array<UserEventPayload82Permissions> | undefined;
   resources?: UserEventPayloadResources | undefined;
 };
 
@@ -267,6 +227,7 @@ export const UserEventPayloadPermissions = {
   ReadSpeedInsights: "read:speed-insights",
   ReadTeam: "read:team",
   ReadVcr: "read:vcr",
+  ReadVercelCi: "read:vercel-ci",
   ReadWebAnalytics: "read:web-analytics",
   ReadWebhooks: "read:webhooks",
   UseAiGateway: "use:ai-gateway",
@@ -279,38 +240,38 @@ export type UserEventPayloadPermissions = ClosedEnum<
   typeof UserEventPayloadPermissions
 >;
 
-export const UserEventPayload81BeforeResourcesType = {
+export const UserEventPayload82BeforeResourcesType = {
   String: "string",
 } as const;
-export type UserEventPayload81BeforeResourcesType = ClosedEnum<
-  typeof UserEventPayload81BeforeResourcesType
+export type UserEventPayload82BeforeResourcesType = ClosedEnum<
+  typeof UserEventPayload82BeforeResourcesType
 >;
 
 export type PayloadItems = {
-  type: UserEventPayload81BeforeResourcesType;
+  type: UserEventPayload82BeforeResourcesType;
 };
 
-export const UserEventPayload81BeforeType = {
+export const UserEventPayload82BeforeType = {
   List: "list",
 } as const;
-export type UserEventPayload81BeforeType = ClosedEnum<
-  typeof UserEventPayload81BeforeType
+export type UserEventPayload82BeforeType = ClosedEnum<
+  typeof UserEventPayload82BeforeType
 >;
 
 /**
  * Specific project IDs or all projects on the team (`['*']`).
  */
-export type UserEventPayload81ProjectIds = {
+export type UserEventPayload82ProjectIds = {
   items: PayloadItems;
   required: true;
-  type: UserEventPayload81BeforeType;
+  type: UserEventPayload82BeforeType;
 };
 
 export type PayloadResources = {
   /**
    * Specific project IDs or all projects on the team (`['*']`).
    */
-  projectIds: UserEventPayload81ProjectIds;
+  projectIds: UserEventPayload82ProjectIds;
 };
 
 export type Before = {
@@ -321,7 +282,7 @@ export type Before = {
 /**
  * The payload of the event, if requested.
  */
-export type EightyOne = {
+export type EightyTwo = {
   after?: After | undefined;
   appId?: string | undefined;
   appName: string;
@@ -416,6 +377,7 @@ export const NextPermissions = {
   ReadTeam: "read:team",
   ReadUser: "read:user",
   ReadVcr: "read:vcr",
+  ReadVercelCi: "read:vercel-ci",
   ReadWebAnalytics: "read:web-analytics",
   ReadWebhooks: "read:webhooks",
   UseAiGateway: "use:ai-gateway",
@@ -438,7 +400,7 @@ export type NextScopes = ClosedEnum<typeof NextScopes>;
 /**
  * The payload of the event, if requested.
  */
-export type Eighty = {
+export type EightyOne = {
   appId?: string | undefined;
   appName: string;
   nextPermissions?: Array<NextPermissions> | undefined;
@@ -448,7 +410,7 @@ export type Eighty = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyNine = {
+export type Eighty = {
   appId?: string | undefined;
   appName: string;
 };
@@ -539,6 +501,7 @@ export const Permissions = {
   ReadTeam: "read:team",
   ReadUser: "read:user",
   ReadVcr: "read:vcr",
+  ReadVercelCi: "read:vercel-ci",
   ReadWebAnalytics: "read:web-analytics",
   ReadWebhooks: "read:webhooks",
   UseAiGateway: "use:ai-gateway",
@@ -561,7 +524,7 @@ export type PayloadScopes = ClosedEnum<typeof PayloadScopes>;
 /**
  * The payload of the event, if requested.
  */
-export type SeventyEight = {
+export type SeventyNine = {
   appId?: string | undefined;
   appName: string;
   permissions?: Array<Permissions> | undefined;
@@ -571,7 +534,7 @@ export type SeventyEight = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventySeven = {
+export type SeventyEight = {
   alias?: string | undefined;
   aliasId?: string | undefined;
   userId?: string | undefined;
@@ -581,7 +544,7 @@ export type SeventySeven = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventySix = {
+export type SeventySeven = {
   alias?: string | undefined;
   userId?: string | undefined;
   username?: string | undefined;
@@ -590,24 +553,24 @@ export type SeventySix = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyFive = {
+export type SeventySix = {
   alias: string;
   deploymentUrl: string;
 };
 
-export const UserEventPayload74Action = {
+export const UserEventPayload75Action = {
   Created: "created",
   Removed: "removed",
 } as const;
-export type UserEventPayload74Action = ClosedEnum<
-  typeof UserEventPayload74Action
+export type UserEventPayload75Action = ClosedEnum<
+  typeof UserEventPayload75Action
 >;
 
 /**
  * The payload of the event, if requested.
  */
-export type SeventyFour = {
-  action: UserEventPayload74Action;
+export type SeventyFive = {
+  action: UserEventPayload75Action;
   alias: string;
   projectId?: string | undefined;
   projectName: string;
@@ -616,7 +579,7 @@ export type SeventyFour = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyThree = {
+export type SeventyFour = {
   alias?: string | undefined;
   aliasId?: string | undefined;
   projectId?: string | undefined;
@@ -626,7 +589,7 @@ export type SeventyThree = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyTwo = {
+export type SeventyThree = {
   alias?: string | undefined;
   email?: string | undefined;
 };
@@ -634,14 +597,14 @@ export type SeventyTwo = {
 /**
  * The payload of the event, if requested.
  */
-export type SeventyOne = {
+export type SeventyTwo = {
   alias?: string | undefined;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type Seventy = {
+export type SeventyOne = {
   alias?: string | undefined;
   email?: string | undefined;
   username?: string | undefined;
@@ -650,7 +613,7 @@ export type Seventy = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyNine = {
+export type Seventy = {
   alias: string;
   aliasId: string;
   deploymentId: string | null;
@@ -668,7 +631,7 @@ export type OldTeam = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyEight = {
+export type SixtyNine = {
   alias: string;
   name?: string | undefined;
   newTeam?: NewTeam | undefined;
@@ -709,7 +672,7 @@ export type PayloadDeployment = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtySeven = {
+export type SixtyEight = {
   aliasCount: number;
   deployment?: PayloadDeployment | null | undefined;
   projectId: string;
@@ -749,7 +712,7 @@ export type Deployment = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtySix = {
+export type SixtySeven = {
   alias?: string | undefined;
   aliasId?: string | undefined;
   aliasUpdatedAt?: number | undefined;
@@ -767,17 +730,17 @@ export type SixtySix = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyFive = {
+export type SixtySix = {
   currency?: string | undefined;
   price?: number | undefined;
 };
 
-export type UserEventPayload64AccessGroup = {
+export type UserEventPayload65AccessGroup = {
   id: string;
   name?: string | undefined;
 };
 
-export type UserEventPayload64User = {
+export type UserEventPayload65User = {
   id: string;
   username?: string | undefined;
 };
@@ -785,13 +748,13 @@ export type UserEventPayload64User = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyFour = {
-  accessGroup: UserEventPayload64AccessGroup;
+export type SixtyFive = {
+  accessGroup: UserEventPayload65AccessGroup;
   directoryType?: string | undefined;
-  user: UserEventPayload64User;
+  user: UserEventPayload65User;
 };
 
-export type UserEventPayload63AccessGroup = {
+export type UserEventPayload64AccessGroup = {
   id: string;
   name: string;
 };
@@ -799,8 +762,8 @@ export type UserEventPayload63AccessGroup = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyThree = {
-  accessGroup: UserEventPayload63AccessGroup;
+export type SixtyFour = {
+  accessGroup: UserEventPayload64AccessGroup;
   entitlementsAdded?: Array<string> | undefined;
   entitlementsRemoved?: Array<string> | undefined;
   name?: string | undefined;
@@ -840,7 +803,7 @@ export type PayloadProject = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyTwo = {
+export type SixtyThree = {
   accessGroup: UserEventPayloadAccessGroup;
   nextRole?: NextRole | null | undefined;
   previousRole?: PreviousRole | undefined;
@@ -855,7 +818,7 @@ export type PayloadAccessGroup = {
 /**
  * The payload of the event, if requested.
  */
-export type SixtyOne = {
+export type SixtyTwo = {
   accessGroup: PayloadAccessGroup;
   author?: string | undefined;
 };
@@ -868,7 +831,7 @@ export type AccessGroup = {
 /**
  * The payload of the event, if requested.
  */
-export type Sixty = {
+export type SixtyOne = {
   accessGroup: AccessGroup;
   entitlements?: Array<string> | undefined;
   teamPermissions?: Array<string> | undefined;
@@ -913,7 +876,7 @@ export type PayloadVirtualModelConfig = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftyNine = {
+export type Sixty = {
   changedFields?: Array<PayloadChangedFields> | undefined;
   virtualModelConfig: PayloadVirtualModelConfig;
 };
@@ -927,7 +890,7 @@ export type VirtualModelConfig = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftyEight = {
+export type FiftyNine = {
   virtualModelConfig: VirtualModelConfig;
 };
 
@@ -949,7 +912,7 @@ export type PayloadRule = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftySeven = {
+export type FiftyEight = {
   changedFields?: Array<ChangedFields> | undefined;
   enabled?: boolean | undefined;
   previousRewriteModel?: string | undefined;
@@ -966,7 +929,7 @@ export type Rule = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftySix = {
+export type FiftySeven = {
   rule: Rule;
 };
 
@@ -992,21 +955,21 @@ export type Retention = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftyFive = {
+export type FiftySix = {
   retention: Retention;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type FiftyFour = {
+export type FiftyFive = {
   headerNames: Array<string>;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type FiftyThree = {
+export type FiftyFour = {
   previousSecretGracePeriodHours?: number | undefined;
 };
 
@@ -1025,7 +988,7 @@ export type PayloadMode = ClosedEnum<typeof PayloadMode>;
 /**
  * The payload of the event, if requested.
  */
-export type FiftyTwo = {
+export type FiftyThree = {
   failureMode?: FailureMode | undefined;
   mode?: PayloadMode | undefined;
   rolloutPercent?: number | undefined;
@@ -1035,35 +998,35 @@ export type FiftyTwo = {
 /**
  * The payload of the event, if requested.
  */
-export type FiftyOne = {
+export type FiftyTwo = {
   endpointOrigin: string;
 };
 
-export const UserEventPayload50Mode = {
+export const UserEventPayload51Mode = {
   Enforce: "enforce",
   Shadow: "shadow",
 } as const;
-export type UserEventPayload50Mode = ClosedEnum<typeof UserEventPayload50Mode>;
+export type UserEventPayload51Mode = ClosedEnum<typeof UserEventPayload51Mode>;
+
+/**
+ * The payload of the event, if requested.
+ */
+export type FiftyOne = {
+  enabled: boolean;
+  mode: UserEventPayload51Mode;
+};
 
 /**
  * The payload of the event, if requested.
  */
 export type Fifty = {
-  enabled: boolean;
-  mode: UserEventPayload50Mode;
-};
-
-/**
- * The payload of the event, if requested.
- */
-export type FortyNine = {
   countries: Array<string>;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type FortyEight = {
+export type FortyNine = {
   regions: Array<string>;
 };
 
@@ -1075,7 +1038,7 @@ export type PiiRedaction = {
 /**
  * The payload of the event, if requested.
  */
-export type FortySeven = {
+export type FortyEight = {
   moderationPolicyCount: number;
   piiRedaction: PiiRedaction;
   policiesAdded: Array<string>;
@@ -1090,7 +1053,7 @@ export type PrivateProvider = {
 /**
  * The payload of the event, if requested.
  */
-export type FortySix = {
+export type FortySeven = {
   privateProvider: PrivateProvider;
 };
 
@@ -1101,7 +1064,7 @@ export type PayloadPrivateModel = {
 /**
  * The payload of the event, if requested.
  */
-export type FortyFive = {
+export type FortySix = {
   privateModel: PayloadPrivateModel;
 };
 
@@ -1113,14 +1076,14 @@ export type PrivateModel = {
 /**
  * The payload of the event, if requested.
  */
-export type FortyFour = {
+export type FortyFive = {
   privateModel: PrivateModel;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type FortyThree = {
+export type FortyFour = {
   added: Array<string>;
   removed: Array<string>;
 };
@@ -1128,7 +1091,7 @@ export type FortyThree = {
 /**
  * The payload of the event, if requested.
  */
-export type FortyTwo = {
+export type FortyThree = {
   amount: string;
   purchaseIntentId: string;
 };
@@ -1142,7 +1105,7 @@ export type UserEventPayloadCredential = {
 /**
  * The payload of the event, if requested.
  */
-export type FortyOne = {
+export type FortyTwo = {
   added: Array<string>;
   changed: Array<string>;
   credential: UserEventPayloadCredential;
@@ -1165,7 +1128,7 @@ export type PayloadCredential = {
 /**
  * The payload of the event, if requested.
  */
-export type Forty = {
+export type FortyOne = {
   changes?: Changes | undefined;
   credential: PayloadCredential;
 };
@@ -1179,31 +1142,31 @@ export type Credential = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyNine = {
+export type Forty = {
   credential: Credential;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyEight = {
+export type ThirtyNine = {
   enabled: boolean;
 };
 
-export const UserEventPayload37RefreshPeriod = {
+export const UserEventPayload38RefreshPeriod = {
   Daily: "daily",
   Monthly: "monthly",
   None: "none",
   Weekly: "weekly",
 } as const;
-export type UserEventPayload37RefreshPeriod = ClosedEnum<
-  typeof UserEventPayload37RefreshPeriod
+export type UserEventPayload38RefreshPeriod = ClosedEnum<
+  typeof UserEventPayload38RefreshPeriod
 >;
 
 /**
  * Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
  */
-export type UserEventPayload37Budget = {
+export type UserEventPayload38Budget = {
   alertThresholds?: Array<number> | undefined;
   /**
    * When the budget lapses to the scope's default, in ms since the epoch.
@@ -1213,27 +1176,27 @@ export type UserEventPayload37Budget = {
    * Spend cap, in dollars.
    */
   limitAmount: number;
-  refreshPeriod: UserEventPayload37RefreshPeriod;
+  refreshPeriod: UserEventPayload38RefreshPeriod;
 };
 
-export const UserEventPayload37Change = {
+export const UserEventPayload38Change = {
   Disable: "disable",
   Enable: "enable",
   Remove: "remove",
   Set: "set",
 } as const;
-export type UserEventPayload37Change = ClosedEnum<
-  typeof UserEventPayload37Change
+export type UserEventPayload38Change = ClosedEnum<
+  typeof UserEventPayload38Change
 >;
 
-export const UserEventPayload37PreviousBudgetRefreshPeriod = {
+export const UserEventPayload38PreviousBudgetRefreshPeriod = {
   Daily: "daily",
   Monthly: "monthly",
   None: "none",
   Weekly: "weekly",
 } as const;
-export type UserEventPayload37PreviousBudgetRefreshPeriod = ClosedEnum<
-  typeof UserEventPayload37PreviousBudgetRefreshPeriod
+export type UserEventPayload38PreviousBudgetRefreshPeriod = ClosedEnum<
+  typeof UserEventPayload38PreviousBudgetRefreshPeriod
 >;
 
 /**
@@ -1249,7 +1212,7 @@ export type UserEventPayloadPreviousBudget = {
    * Spend cap, in dollars.
    */
   limitAmount: number;
-  refreshPeriod: UserEventPayload37PreviousBudgetRefreshPeriod;
+  refreshPeriod: UserEventPayload38PreviousBudgetRefreshPeriod;
 };
 
 export const UserEventPayloadScopeType = {
@@ -1265,7 +1228,7 @@ export type UserEventPayloadScopeType = ClosedEnum<
 /**
  * The payload of the event, if requested.
  */
-export type ThirtySeven = {
+export type ThirtyEight = {
   /**
    * Associates the event with a Vercel App; rendered when `appName` is absent.
    */
@@ -1274,8 +1237,8 @@ export type ThirtySeven = {
   /**
    * Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
    */
-  budget?: UserEventPayload37Budget | null | undefined;
-  change: UserEventPayload37Change;
+  budget?: UserEventPayload38Budget | null | undefined;
+  change: UserEventPayload38Change;
   justification?: string | undefined;
   /**
    * Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
@@ -1294,14 +1257,14 @@ export type ThirtySeven = {
   userName?: string | undefined;
 };
 
-export const UserEventPayload36RefreshPeriod = {
+export const UserEventPayload37RefreshPeriod = {
   Daily: "daily",
   Monthly: "monthly",
   None: "none",
   Weekly: "weekly",
 } as const;
-export type UserEventPayload36RefreshPeriod = ClosedEnum<
-  typeof UserEventPayload36RefreshPeriod
+export type UserEventPayload37RefreshPeriod = ClosedEnum<
+  typeof UserEventPayload37RefreshPeriod
 >;
 
 export const PayloadAppliesTo = {
@@ -1323,7 +1286,7 @@ export type UserEventPayloadBudget = {
    * Spend cap, in dollars.
    */
   limitAmount: number;
-  refreshPeriod: UserEventPayload36RefreshPeriod;
+  refreshPeriod: UserEventPayload37RefreshPeriod;
   appliesTo?: Array<PayloadAppliesTo> | undefined;
 };
 
@@ -1335,14 +1298,14 @@ export const UserEventPayloadChange = {
 } as const;
 export type UserEventPayloadChange = ClosedEnum<typeof UserEventPayloadChange>;
 
-export const UserEventPayload36PreviousBudgetRefreshPeriod = {
+export const UserEventPayload37PreviousBudgetRefreshPeriod = {
   Daily: "daily",
   Monthly: "monthly",
   None: "none",
   Weekly: "weekly",
 } as const;
-export type UserEventPayload36PreviousBudgetRefreshPeriod = ClosedEnum<
-  typeof UserEventPayload36PreviousBudgetRefreshPeriod
+export type UserEventPayload37PreviousBudgetRefreshPeriod = ClosedEnum<
+  typeof UserEventPayload37PreviousBudgetRefreshPeriod
 >;
 
 export const UserEventPayloadAppliesTo = {
@@ -1366,7 +1329,7 @@ export type PayloadPreviousBudget = {
    * Spend cap, in dollars.
    */
   limitAmount: number;
-  refreshPeriod: UserEventPayload36PreviousBudgetRefreshPeriod;
+  refreshPeriod: UserEventPayload37PreviousBudgetRefreshPeriod;
   appliesTo?: Array<UserEventPayloadAppliesTo> | undefined;
 };
 
@@ -1382,7 +1345,7 @@ export type PayloadScopeType = ClosedEnum<typeof PayloadScopeType>;
 /**
  * The payload of the event, if requested.
  */
-export type ThirtySix = {
+export type ThirtySeven = {
   /**
    * `api-key` defaults may cover only some key spend attributions.
    */
@@ -1402,6 +1365,7 @@ export const PayloadChange = {
   Enable: "enable",
   EnableCommitment: "enable-commitment",
   Update: "update",
+  UpdateCommitment: "update-commitment",
 } as const;
 export type PayloadChange = ClosedEnum<typeof PayloadChange>;
 
@@ -1410,11 +1374,18 @@ export type Commitment = {
   maximumMonthlySpend: string | null;
 };
 
-export type UserEventPayloadPrevious = {
+export type Previous2 = {
+  deferredInvoiceTargetBalance: string;
+  maximumMonthlySpend: string | null;
+};
+
+export type Previous1 = {
   maximumMonthlySpend: string | null;
   minimumBalance: string;
   targetBalance: string;
 };
+
+export type UserEventPayloadPrevious = Previous1 | Previous2;
 
 export type Settings = {
   maximumMonthlySpend: string | null;
@@ -1425,10 +1396,10 @@ export type Settings = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyFive = {
+export type ThirtySix = {
   change: PayloadChange;
   commitment?: Commitment | undefined;
-  previous?: UserEventPayloadPrevious | undefined;
+  previous?: Previous1 | Previous2 | undefined;
   settings?: Settings | undefined;
 };
 
@@ -1471,14 +1442,14 @@ export const Change = {
 } as const;
 export type Change = ClosedEnum<typeof Change>;
 
-export const UserEventPayload34RefreshPeriod = {
+export const UserEventPayload35RefreshPeriod = {
   Daily: "daily",
   Monthly: "monthly",
   None: "none",
   Weekly: "weekly",
 } as const;
-export type UserEventPayload34RefreshPeriod = ClosedEnum<
-  typeof UserEventPayload34RefreshPeriod
+export type UserEventPayload35RefreshPeriod = ClosedEnum<
+  typeof UserEventPayload35RefreshPeriod
 >;
 
 /**
@@ -1494,13 +1465,13 @@ export type PreviousBudget = {
    * Spend cap, in dollars.
    */
   limitAmount: number;
-  refreshPeriod: UserEventPayload34RefreshPeriod;
+  refreshPeriod: UserEventPayload35RefreshPeriod;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyFour = {
+export type ThirtyFive = {
   apiKey: UserEventPayloadApiKey;
   /**
    * Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
@@ -1522,11 +1493,11 @@ export type PayloadApiKey = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyThree = {
+export type ThirtyFour = {
   apiKey: PayloadApiKey;
 };
 
-export type UserEventPayload32ApiKey = {
+export type UserEventPayload33ApiKey = {
   id: string;
   name: string;
 };
@@ -1558,8 +1529,8 @@ export type Budget = {
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyTwo = {
-  apiKey: UserEventPayload32ApiKey;
+export type ThirtyThree = {
+  apiKey: UserEventPayload33ApiKey;
   /**
    * Spend budget on an AI Gateway API key, scope, or budget default, as surfaced in activity messages. Defined locally (rather than imported from `@api/pubsub-types`) because `@api/pubsub-types` already depends on `@api/events`; importing it here would create a circular dependency. Must stay structurally aligned with `APIKeyBudget` in `@api/pubsub-types/event-payloads/api-keys`.
    */
@@ -1579,24 +1550,24 @@ export type UserEventPayloadAccessPolicy = {
   name: string;
 };
 
-export const UserEventPayload31Kind = {
+export const UserEventPayload32Kind = {
   IamAccessGroup: "iam-access-group",
   Project: "project",
   Team: "team",
   User: "user",
 } as const;
-export type UserEventPayload31Kind = ClosedEnum<typeof UserEventPayload31Kind>;
+export type UserEventPayload32Kind = ClosedEnum<typeof UserEventPayload32Kind>;
 
 export type Member = {
   id: string;
-  kind: UserEventPayload31Kind;
+  kind: UserEventPayload32Kind;
   name?: string | undefined;
 };
 
 /**
  * The payload of the event, if requested.
  */
-export type ThirtyOne = {
+export type ThirtyTwo = {
   accessPolicy: UserEventPayloadAccessPolicy;
   member: Member;
 };
@@ -1609,7 +1580,7 @@ export type PayloadAccessPolicy = {
 /**
  * The payload of the event, if requested.
  */
-export type Thirty = {
+export type ThirtyOne = {
   accessPolicy: PayloadAccessPolicy;
   previousName?: string | undefined;
 };
@@ -1622,22 +1593,22 @@ export type AccessPolicy = {
 /**
  * The payload of the event, if requested.
  */
-export type TwentyNine = {
+export type Thirty = {
   accessPolicy: AccessPolicy;
 };
 
 /**
  * Present on new events only. Equivalent to "stripe" when absent.
  */
-export const UserEventPayload28Provider = {
+export const UserEventPayload29Provider = {
   Chatgpt: "chatgpt",
   Stripe: "stripe",
 } as const;
 /**
  * Present on new events only. Equivalent to "stripe" when absent.
  */
-export type UserEventPayload28Provider = ClosedEnum<
-  typeof UserEventPayload28Provider
+export type UserEventPayload29Provider = ClosedEnum<
+  typeof UserEventPayload29Provider
 >;
 
 export const FromPlan = {
@@ -1655,11 +1626,11 @@ export type ToPlan = ClosedEnum<typeof ToPlan>;
 /**
  * The payload of the event, if requested.
  */
-export type TwentyEight = {
+export type TwentyNine = {
   /**
    * Present on new events only. Equivalent to "stripe" when absent.
    */
-  provider?: UserEventPayload28Provider | undefined;
+  provider?: UserEventPayload29Provider | undefined;
   /**
    * Present on new events only. Equivalent to `stripeAccount` when absent.
    */
@@ -1681,6 +1652,54 @@ export type TwentyEight = {
 /**
  * Present on new events only. Equivalent to "stripe" when absent.
  */
+export const UserEventPayload28Provider = {
+  Chatgpt: "chatgpt",
+  Stripe: "stripe",
+} as const;
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
+export type UserEventPayload28Provider = ClosedEnum<
+  typeof UserEventPayload28Provider
+>;
+
+export const ActorType = {
+  Admin: "admin",
+} as const;
+export type ActorType = ClosedEnum<typeof ActorType>;
+
+/**
+ * The payload of the event, if requested.
+ */
+export type TwentyEight = {
+  /**
+   * Present on new events only. Equivalent to "stripe" when absent.
+   */
+  provider?: UserEventPayload28Provider | undefined;
+  /**
+   * Present on new events only. Equivalent to `stripeAccount` when absent.
+   */
+  providerAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe". Equivalent to `providerAccount`.
+   */
+  stripeAccount?: string | undefined;
+  /**
+   * Present when `provider` is "stripe".
+   */
+  stripeOrganisation?: string | undefined;
+  teamId: string;
+  /**
+   * Okta user id.
+   */
+  actorId: string;
+  actorName?: string | undefined;
+  actorType: ActorType;
+};
+
+/**
+ * Present on new events only. Equivalent to "stripe" when absent.
+ */
 export const UserEventPayload27Provider = {
   Chatgpt: "chatgpt",
   Stripe: "stripe",
@@ -1693,109 +1712,17 @@ export type UserEventPayload27Provider = ClosedEnum<
 >;
 
 /** @internal */
-export const Items$inboundSchema: z.ZodType<Items, z.ZodTypeDef, unknown> =
-  /* @__PURE__ */ lazySchema$(() =>
-    z.object({
-      type: UserEventPayload82ResourcesType$inboundSchema,
-    })
-  );
-
-export function itemsFromJSON(
-  jsonString: string,
-): SafeParseResult<Items, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Items$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Items' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload82Type$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload82Type
-> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload82Type));
-
-/** @internal */
-export const PayloadProjectIds$inboundSchema: z.ZodType<
-  PayloadProjectIds,
-  z.ZodTypeDef,
-  unknown
+export const UserEventPayload82Permissions$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload82Permissions
 > = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    items: z.lazy(() => Items$inboundSchema),
-    required: types.literal(true),
-    type: UserEventPayload82Type$inboundSchema,
-  })
-);
-
-export function payloadProjectIdsFromJSON(
-  jsonString: string,
-): SafeParseResult<PayloadProjectIds, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PayloadProjectIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PayloadProjectIds' from JSON`,
-  );
-}
-
-/** @internal */
-export const Resources$inboundSchema: z.ZodType<
-  Resources,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    projectIds: z.lazy(() => PayloadProjectIds$inboundSchema),
-  })
-);
-
-export function resourcesFromJSON(
-  jsonString: string,
-): SafeParseResult<Resources, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Resources$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Resources' from JSON`,
-  );
-}
-
-/** @internal */
-export const EightyTwo$inboundSchema: z.ZodType<
-  EightyTwo,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    appId: types.optional(types.string()),
-    appName: types.string(),
-    organizationId: types.optional(types.string()),
-    permissions: types.optional(z.array(PayloadPermissions$inboundSchema)),
-    resources: types.optional(z.lazy(() => Resources$inboundSchema)),
-  })
-);
-
-export function eightyTwoFromJSON(
-  jsonString: string,
-): SafeParseResult<EightyTwo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => EightyTwo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'EightyTwo' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload81Permissions$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload81Permissions
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.nativeEnum(UserEventPayload81Permissions)
+  z.nativeEnum(UserEventPayload82Permissions)
 );
 
 /** @internal */
-export const UserEventPayload81AfterType$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload81AfterType
+export const UserEventPayload82AfterType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload82AfterType
 > = /* @__PURE__ */ lazySchema$(() =>
-  z.nativeEnum(UserEventPayload81AfterType)
+  z.nativeEnum(UserEventPayload82AfterType)
 );
 
 /** @internal */
@@ -1805,7 +1732,7 @@ export const UserEventPayloadItems$inboundSchema: z.ZodType<
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    type: UserEventPayload81AfterType$inboundSchema,
+    type: UserEventPayload82AfterType$inboundSchema,
   })
 );
 
@@ -1820,9 +1747,9 @@ export function userEventPayloadItemsFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload81Type$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload81Type
-> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload81Type));
+export const UserEventPayload82Type$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload82Type
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload82Type));
 
 /** @internal */
 export const UserEventPayloadProjectIds$inboundSchema: z.ZodType<
@@ -1833,7 +1760,7 @@ export const UserEventPayloadProjectIds$inboundSchema: z.ZodType<
   z.object({
     items: z.lazy(() => UserEventPayloadItems$inboundSchema),
     required: types.literal(true),
-    type: UserEventPayload81Type$inboundSchema,
+    type: UserEventPayload82Type$inboundSchema,
   })
 );
 
@@ -1873,7 +1800,7 @@ export const After$inboundSchema: z.ZodType<After, z.ZodTypeDef, unknown> =
   /* @__PURE__ */ lazySchema$(() =>
     z.object({
       permissions: types.optional(
-        z.array(UserEventPayload81Permissions$inboundSchema),
+        z.array(UserEventPayload82Permissions$inboundSchema),
       ),
       resources: types.optional(
         z.lazy(() => UserEventPayloadResources$inboundSchema),
@@ -1899,10 +1826,10 @@ export const UserEventPayloadPermissions$inboundSchema: z.ZodNativeEnum<
 );
 
 /** @internal */
-export const UserEventPayload81BeforeResourcesType$inboundSchema:
-  z.ZodNativeEnum<typeof UserEventPayload81BeforeResourcesType> =
+export const UserEventPayload82BeforeResourcesType$inboundSchema:
+  z.ZodNativeEnum<typeof UserEventPayload82BeforeResourcesType> =
     /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(UserEventPayload81BeforeResourcesType)
+      z.nativeEnum(UserEventPayload82BeforeResourcesType)
     );
 
 /** @internal */
@@ -1912,7 +1839,7 @@ export const PayloadItems$inboundSchema: z.ZodType<
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    type: UserEventPayload81BeforeResourcesType$inboundSchema,
+    type: UserEventPayload82BeforeResourcesType$inboundSchema,
   })
 );
 
@@ -1927,32 +1854,32 @@ export function payloadItemsFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload81BeforeType$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload81BeforeType
+export const UserEventPayload82BeforeType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload82BeforeType
 > = /* @__PURE__ */ lazySchema$(() =>
-  z.nativeEnum(UserEventPayload81BeforeType)
+  z.nativeEnum(UserEventPayload82BeforeType)
 );
 
 /** @internal */
-export const UserEventPayload81ProjectIds$inboundSchema: z.ZodType<
-  UserEventPayload81ProjectIds,
+export const UserEventPayload82ProjectIds$inboundSchema: z.ZodType<
+  UserEventPayload82ProjectIds,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     items: z.lazy(() => PayloadItems$inboundSchema),
     required: types.literal(true),
-    type: UserEventPayload81BeforeType$inboundSchema,
+    type: UserEventPayload82BeforeType$inboundSchema,
   })
 );
 
-export function userEventPayload81ProjectIdsFromJSON(
+export function userEventPayload82ProjectIdsFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload81ProjectIds, SDKValidationError> {
+): SafeParseResult<UserEventPayload82ProjectIds, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload81ProjectIds$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload81ProjectIds' from JSON`,
+    (x) => UserEventPayload82ProjectIds$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload82ProjectIds' from JSON`,
   );
 }
 
@@ -1963,7 +1890,7 @@ export const PayloadResources$inboundSchema: z.ZodType<
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    projectIds: z.lazy(() => UserEventPayload81ProjectIds$inboundSchema),
+    projectIds: z.lazy(() => UserEventPayload82ProjectIds$inboundSchema),
   })
 );
 
@@ -1999,8 +1926,8 @@ export function beforeFromJSON(
 }
 
 /** @internal */
-export const EightyOne$inboundSchema: z.ZodType<
-  EightyOne,
+export const EightyTwo$inboundSchema: z.ZodType<
+  EightyTwo,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2011,6 +1938,39 @@ export const EightyOne$inboundSchema: z.ZodType<
     before: types.optional(z.lazy(() => Before$inboundSchema)),
     installationId: types.optional(types.string()),
     organizationId: types.optional(types.string()),
+  })
+);
+
+export function eightyTwoFromJSON(
+  jsonString: string,
+): SafeParseResult<EightyTwo, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EightyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EightyTwo' from JSON`,
+  );
+}
+
+/** @internal */
+export const NextPermissions$inboundSchema: z.ZodNativeEnum<
+  typeof NextPermissions
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NextPermissions));
+
+/** @internal */
+export const NextScopes$inboundSchema: z.ZodNativeEnum<typeof NextScopes> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NextScopes));
+
+/** @internal */
+export const EightyOne$inboundSchema: z.ZodType<
+  EightyOne,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    appId: types.optional(types.string()),
+    appName: types.string(),
+    nextPermissions: types.optional(z.array(NextPermissions$inboundSchema)),
+    nextScopes: z.array(NextScopes$inboundSchema),
   })
 );
 
@@ -2025,22 +1985,11 @@ export function eightyOneFromJSON(
 }
 
 /** @internal */
-export const NextPermissions$inboundSchema: z.ZodNativeEnum<
-  typeof NextPermissions
-> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NextPermissions));
-
-/** @internal */
-export const NextScopes$inboundSchema: z.ZodNativeEnum<typeof NextScopes> =
-  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(NextScopes));
-
-/** @internal */
 export const Eighty$inboundSchema: z.ZodType<Eighty, z.ZodTypeDef, unknown> =
   /* @__PURE__ */ lazySchema$(() =>
     z.object({
       appId: types.optional(types.string()),
       appName: types.string(),
-      nextPermissions: types.optional(z.array(NextPermissions$inboundSchema)),
-      nextScopes: z.array(NextScopes$inboundSchema),
     })
   );
 
@@ -2055,6 +2004,15 @@ export function eightyFromJSON(
 }
 
 /** @internal */
+export const Permissions$inboundSchema: z.ZodNativeEnum<typeof Permissions> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Permissions));
+
+/** @internal */
+export const PayloadScopes$inboundSchema: z.ZodNativeEnum<
+  typeof PayloadScopes
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PayloadScopes));
+
+/** @internal */
 export const SeventyNine$inboundSchema: z.ZodType<
   SeventyNine,
   z.ZodTypeDef,
@@ -2063,6 +2021,8 @@ export const SeventyNine$inboundSchema: z.ZodType<
   z.object({
     appId: types.optional(types.string()),
     appName: types.string(),
+    permissions: types.optional(z.array(Permissions$inboundSchema)),
+    scopes: z.array(PayloadScopes$inboundSchema),
   })
 );
 
@@ -2077,25 +2037,16 @@ export function seventyNineFromJSON(
 }
 
 /** @internal */
-export const Permissions$inboundSchema: z.ZodNativeEnum<typeof Permissions> =
-  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Permissions));
-
-/** @internal */
-export const PayloadScopes$inboundSchema: z.ZodNativeEnum<
-  typeof PayloadScopes
-> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PayloadScopes));
-
-/** @internal */
 export const SeventyEight$inboundSchema: z.ZodType<
   SeventyEight,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    appId: types.optional(types.string()),
-    appName: types.string(),
-    permissions: types.optional(z.array(Permissions$inboundSchema)),
-    scopes: z.array(PayloadScopes$inboundSchema),
+    alias: types.optional(types.string()),
+    aliasId: types.optional(types.string()),
+    userId: types.optional(types.string()),
+    username: types.optional(types.string()),
   })
 );
 
@@ -2117,7 +2068,6 @@ export const SeventySeven$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     alias: types.optional(types.string()),
-    aliasId: types.optional(types.string()),
     userId: types.optional(types.string()),
     username: types.optional(types.string()),
   })
@@ -2140,9 +2090,8 @@ export const SeventySix$inboundSchema: z.ZodType<
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    alias: types.optional(types.string()),
-    userId: types.optional(types.string()),
-    username: types.optional(types.string()),
+    alias: types.string(),
+    deploymentUrl: types.string(),
   })
 );
 
@@ -2157,14 +2106,21 @@ export function seventySixFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload75Action$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload75Action
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload75Action));
+
+/** @internal */
 export const SeventyFive$inboundSchema: z.ZodType<
   SeventyFive,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
+    action: UserEventPayload75Action$inboundSchema,
     alias: types.string(),
-    deploymentUrl: types.string(),
+    projectId: types.optional(types.string()),
+    projectName: types.string(),
   })
 );
 
@@ -2179,21 +2135,16 @@ export function seventyFiveFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload74Action$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload74Action
-> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload74Action));
-
-/** @internal */
 export const SeventyFour$inboundSchema: z.ZodType<
   SeventyFour,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    action: UserEventPayload74Action$inboundSchema,
-    alias: types.string(),
+    alias: types.optional(types.string()),
+    aliasId: types.optional(types.string()),
     projectId: types.optional(types.string()),
-    projectName: types.string(),
+    projectName: types.optional(types.string()),
   })
 );
 
@@ -2215,9 +2166,7 @@ export const SeventyThree$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     alias: types.optional(types.string()),
-    aliasId: types.optional(types.string()),
-    projectId: types.optional(types.string()),
-    projectName: types.optional(types.string()),
+    email: types.optional(types.string()),
   })
 );
 
@@ -2239,7 +2188,6 @@ export const SeventyTwo$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     alias: types.optional(types.string()),
-    email: types.optional(types.string()),
   })
 );
 
@@ -2261,6 +2209,8 @@ export const SeventyOne$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     alias: types.optional(types.string()),
+    email: types.optional(types.string()),
+    username: types.optional(types.string()),
   })
 );
 
@@ -2278,9 +2228,10 @@ export function seventyOneFromJSON(
 export const Seventy$inboundSchema: z.ZodType<Seventy, z.ZodTypeDef, unknown> =
   /* @__PURE__ */ lazySchema$(() =>
     z.object({
-      alias: types.optional(types.string()),
-      email: types.optional(types.string()),
-      username: types.optional(types.string()),
+      alias: types.string(),
+      aliasId: types.string(),
+      deploymentId: types.nullable(types.string()),
+      name: types.optional(types.string()),
     })
   );
 
@@ -2291,30 +2242,6 @@ export function seventyFromJSON(
     jsonString,
     (x) => Seventy$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'Seventy' from JSON`,
-  );
-}
-
-/** @internal */
-export const SixtyNine$inboundSchema: z.ZodType<
-  SixtyNine,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    alias: types.string(),
-    aliasId: types.string(),
-    deploymentId: types.nullable(types.string()),
-    name: types.optional(types.string()),
-  })
-);
-
-export function sixtyNineFromJSON(
-  jsonString: string,
-): SafeParseResult<SixtyNine, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SixtyNine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SixtyNine' from JSON`,
   );
 }
 
@@ -2355,8 +2282,8 @@ export function oldTeamFromJSON(
 }
 
 /** @internal */
-export const SixtyEight$inboundSchema: z.ZodType<
-  SixtyEight,
+export const SixtyNine$inboundSchema: z.ZodType<
+  SixtyNine,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2368,13 +2295,13 @@ export const SixtyEight$inboundSchema: z.ZodType<
   })
 );
 
-export function sixtyEightFromJSON(
+export function sixtyNineFromJSON(
   jsonString: string,
-): SafeParseResult<SixtyEight, SDKValidationError> {
+): SafeParseResult<SixtyNine, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SixtyEight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SixtyEight' from JSON`,
+    (x) => SixtyNine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SixtyNine' from JSON`,
   );
 }
 
@@ -2414,8 +2341,8 @@ export function payloadDeploymentFromJSON(
 }
 
 /** @internal */
-export const SixtySeven$inboundSchema: z.ZodType<
-  SixtySeven,
+export const SixtyEight$inboundSchema: z.ZodType<
+  SixtyEight,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2427,13 +2354,13 @@ export const SixtySeven$inboundSchema: z.ZodType<
   })
 );
 
-export function sixtySevenFromJSON(
+export function sixtyEightFromJSON(
   jsonString: string,
-): SafeParseResult<SixtySeven, SDKValidationError> {
+): SafeParseResult<SixtyEight, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SixtySeven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SixtySeven' from JSON`,
+    (x) => SixtyEight$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SixtyEight' from JSON`,
   );
 }
 
@@ -2473,8 +2400,8 @@ export function deploymentFromJSON(
 }
 
 /** @internal */
-export const SixtySix$inboundSchema: z.ZodType<
-  SixtySix,
+export const SixtySeven$inboundSchema: z.ZodType<
+  SixtySeven,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2494,6 +2421,28 @@ export const SixtySix$inboundSchema: z.ZodType<
   })
 );
 
+export function sixtySevenFromJSON(
+  jsonString: string,
+): SafeParseResult<SixtySeven, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SixtySeven$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SixtySeven' from JSON`,
+  );
+}
+
+/** @internal */
+export const SixtySix$inboundSchema: z.ZodType<
+  SixtySix,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    currency: types.optional(types.string()),
+    price: types.optional(types.number()),
+  })
+);
+
 export function sixtySixFromJSON(
   jsonString: string,
 ): SafeParseResult<SixtySix, SDKValidationError> {
@@ -2505,14 +2454,59 @@ export function sixtySixFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload65AccessGroup$inboundSchema: z.ZodType<
+  UserEventPayload65AccessGroup,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    name: types.optional(types.string()),
+  })
+);
+
+export function userEventPayload65AccessGroupFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload65AccessGroup, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload65AccessGroup$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload65AccessGroup' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload65User$inboundSchema: z.ZodType<
+  UserEventPayload65User,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    id: types.string(),
+    username: types.optional(types.string()),
+  })
+);
+
+export function userEventPayload65UserFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload65User, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload65User$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload65User' from JSON`,
+  );
+}
+
+/** @internal */
 export const SixtyFive$inboundSchema: z.ZodType<
   SixtyFive,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    currency: types.optional(types.string()),
-    price: types.optional(types.number()),
+    accessGroup: z.lazy(() => UserEventPayload65AccessGroup$inboundSchema),
+    directoryType: types.optional(types.string()),
+    user: z.lazy(() => UserEventPayload65User$inboundSchema),
   })
 );
 
@@ -2534,7 +2528,7 @@ export const UserEventPayload64AccessGroup$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     id: types.string(),
-    name: types.optional(types.string()),
+    name: types.string(),
   })
 );
 
@@ -2549,28 +2543,6 @@ export function userEventPayload64AccessGroupFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload64User$inboundSchema: z.ZodType<
-  UserEventPayload64User,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    id: types.string(),
-    username: types.optional(types.string()),
-  })
-);
-
-export function userEventPayload64UserFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload64User, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload64User$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload64User' from JSON`,
-  );
-}
-
-/** @internal */
 export const SixtyFour$inboundSchema: z.ZodType<
   SixtyFour,
   z.ZodTypeDef,
@@ -2578,51 +2550,6 @@ export const SixtyFour$inboundSchema: z.ZodType<
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     accessGroup: z.lazy(() => UserEventPayload64AccessGroup$inboundSchema),
-    directoryType: types.optional(types.string()),
-    user: z.lazy(() => UserEventPayload64User$inboundSchema),
-  })
-);
-
-export function sixtyFourFromJSON(
-  jsonString: string,
-): SafeParseResult<SixtyFour, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => SixtyFour$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SixtyFour' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload63AccessGroup$inboundSchema: z.ZodType<
-  UserEventPayload63AccessGroup,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    id: types.string(),
-    name: types.string(),
-  })
-);
-
-export function userEventPayload63AccessGroupFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload63AccessGroup, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload63AccessGroup$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload63AccessGroup' from JSON`,
-  );
-}
-
-/** @internal */
-export const SixtyThree$inboundSchema: z.ZodType<
-  SixtyThree,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    accessGroup: z.lazy(() => UserEventPayload63AccessGroup$inboundSchema),
     entitlementsAdded: types.optional(z.array(types.string())),
     entitlementsRemoved: types.optional(z.array(types.string())),
     name: types.optional(types.string()),
@@ -2634,13 +2561,13 @@ export const SixtyThree$inboundSchema: z.ZodType<
   })
 );
 
-export function sixtyThreeFromJSON(
+export function sixtyFourFromJSON(
   jsonString: string,
-): SafeParseResult<SixtyThree, SDKValidationError> {
+): SafeParseResult<SixtyFour, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SixtyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SixtyThree' from JSON`,
+    (x) => SixtyFour$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SixtyFour' from JSON`,
   );
 }
 
@@ -2697,8 +2624,8 @@ export function payloadProjectFromJSON(
 }
 
 /** @internal */
-export const SixtyTwo$inboundSchema: z.ZodType<
-  SixtyTwo,
+export const SixtyThree$inboundSchema: z.ZodType<
+  SixtyThree,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2715,13 +2642,13 @@ export const SixtyTwo$inboundSchema: z.ZodType<
   })
 );
 
-export function sixtyTwoFromJSON(
+export function sixtyThreeFromJSON(
   jsonString: string,
-): SafeParseResult<SixtyTwo, SDKValidationError> {
+): SafeParseResult<SixtyThree, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SixtyTwo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SixtyTwo' from JSON`,
+    (x) => SixtyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SixtyThree' from JSON`,
   );
 }
 
@@ -2748,8 +2675,8 @@ export function payloadAccessGroupFromJSON(
 }
 
 /** @internal */
-export const SixtyOne$inboundSchema: z.ZodType<
-  SixtyOne,
+export const SixtyTwo$inboundSchema: z.ZodType<
+  SixtyTwo,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2759,13 +2686,13 @@ export const SixtyOne$inboundSchema: z.ZodType<
   })
 );
 
-export function sixtyOneFromJSON(
+export function sixtyTwoFromJSON(
   jsonString: string,
-): SafeParseResult<SixtyOne, SDKValidationError> {
+): SafeParseResult<SixtyTwo, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => SixtyOne$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'SixtyOne' from JSON`,
+    (x) => SixtyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SixtyTwo' from JSON`,
   );
 }
 
@@ -2792,23 +2719,26 @@ export function accessGroupFromJSON(
 }
 
 /** @internal */
-export const Sixty$inboundSchema: z.ZodType<Sixty, z.ZodTypeDef, unknown> =
-  /* @__PURE__ */ lazySchema$(() =>
-    z.object({
-      accessGroup: z.lazy(() => AccessGroup$inboundSchema),
-      entitlements: types.optional(z.array(types.string())),
-      teamPermissions: types.optional(z.array(types.string())),
-      teamRoles: types.optional(z.array(types.string())),
-    })
-  );
+export const SixtyOne$inboundSchema: z.ZodType<
+  SixtyOne,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessGroup: z.lazy(() => AccessGroup$inboundSchema),
+    entitlements: types.optional(z.array(types.string())),
+    teamPermissions: types.optional(z.array(types.string())),
+    teamRoles: types.optional(z.array(types.string())),
+  })
+);
 
-export function sixtyFromJSON(
+export function sixtyOneFromJSON(
   jsonString: string,
-): SafeParseResult<Sixty, SDKValidationError> {
+): SafeParseResult<SixtyOne, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Sixty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Sixty' from JSON`,
+    (x) => SixtyOne$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SixtyOne' from JSON`,
   );
 }
 
@@ -2841,24 +2771,23 @@ export function payloadVirtualModelConfigFromJSON(
 }
 
 /** @internal */
-export const FiftyNine$inboundSchema: z.ZodType<
-  FiftyNine,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    changedFields: types.optional(z.array(PayloadChangedFields$inboundSchema)),
-    virtualModelConfig: z.lazy(() => PayloadVirtualModelConfig$inboundSchema),
-  })
-);
+export const Sixty$inboundSchema: z.ZodType<Sixty, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      changedFields: types.optional(
+        z.array(PayloadChangedFields$inboundSchema),
+      ),
+      virtualModelConfig: z.lazy(() => PayloadVirtualModelConfig$inboundSchema),
+    })
+  );
 
-export function fiftyNineFromJSON(
+export function sixtyFromJSON(
   jsonString: string,
-): SafeParseResult<FiftyNine, SDKValidationError> {
+): SafeParseResult<Sixty, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FiftyNine$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FiftyNine' from JSON`,
+    (x) => Sixty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Sixty' from JSON`,
   );
 }
 
@@ -2886,8 +2815,8 @@ export function virtualModelConfigFromJSON(
 }
 
 /** @internal */
-export const FiftyEight$inboundSchema: z.ZodType<
-  FiftyEight,
+export const FiftyNine$inboundSchema: z.ZodType<
+  FiftyNine,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2896,13 +2825,13 @@ export const FiftyEight$inboundSchema: z.ZodType<
   })
 );
 
-export function fiftyEightFromJSON(
+export function fiftyNineFromJSON(
   jsonString: string,
-): SafeParseResult<FiftyEight, SDKValidationError> {
+): SafeParseResult<FiftyNine, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FiftyEight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FiftyEight' from JSON`,
+    (x) => FiftyNine$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FiftyNine' from JSON`,
   );
 }
 
@@ -2936,8 +2865,8 @@ export function payloadRuleFromJSON(
 }
 
 /** @internal */
-export const FiftySeven$inboundSchema: z.ZodType<
-  FiftySeven,
+export const FiftyEight$inboundSchema: z.ZodType<
+  FiftyEight,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2949,13 +2878,13 @@ export const FiftySeven$inboundSchema: z.ZodType<
   })
 );
 
-export function fiftySevenFromJSON(
+export function fiftyEightFromJSON(
   jsonString: string,
-): SafeParseResult<FiftySeven, SDKValidationError> {
+): SafeParseResult<FiftyEight, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FiftySeven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FiftySeven' from JSON`,
+    (x) => FiftyEight$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FiftyEight' from JSON`,
   );
 }
 
@@ -2981,8 +2910,8 @@ export function ruleFromJSON(
 }
 
 /** @internal */
-export const FiftySix$inboundSchema: z.ZodType<
-  FiftySix,
+export const FiftySeven$inboundSchema: z.ZodType<
+  FiftySeven,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -2991,13 +2920,13 @@ export const FiftySix$inboundSchema: z.ZodType<
   })
 );
 
-export function fiftySixFromJSON(
+export function fiftySevenFromJSON(
   jsonString: string,
-): SafeParseResult<FiftySix, SDKValidationError> {
+): SafeParseResult<FiftySeven, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FiftySix$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FiftySix' from JSON`,
+    (x) => FiftySeven$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FiftySeven' from JSON`,
   );
 }
 
@@ -3034,13 +2963,34 @@ export function retentionFromJSON(
 }
 
 /** @internal */
+export const FiftySix$inboundSchema: z.ZodType<
+  FiftySix,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    retention: z.lazy(() => Retention$inboundSchema),
+  })
+);
+
+export function fiftySixFromJSON(
+  jsonString: string,
+): SafeParseResult<FiftySix, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FiftySix$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FiftySix' from JSON`,
+  );
+}
+
+/** @internal */
 export const FiftyFive$inboundSchema: z.ZodType<
   FiftyFive,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    retention: z.lazy(() => Retention$inboundSchema),
+    headerNames: z.array(types.string()),
   })
 );
 
@@ -3061,7 +3011,7 @@ export const FiftyFour$inboundSchema: z.ZodType<
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    headerNames: z.array(types.string()),
+    previousSecretGracePeriodHours: types.optional(types.number()),
   })
 );
 
@@ -3076,13 +3026,24 @@ export function fiftyFourFromJSON(
 }
 
 /** @internal */
+export const FailureMode$inboundSchema: z.ZodNativeEnum<typeof FailureMode> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FailureMode));
+
+/** @internal */
+export const PayloadMode$inboundSchema: z.ZodNativeEnum<typeof PayloadMode> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PayloadMode));
+
+/** @internal */
 export const FiftyThree$inboundSchema: z.ZodType<
   FiftyThree,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    previousSecretGracePeriodHours: types.optional(types.number()),
+    failureMode: types.optional(FailureMode$inboundSchema),
+    mode: types.optional(PayloadMode$inboundSchema),
+    rolloutPercent: types.optional(types.number()),
+    timeoutMs: types.optional(types.number()),
   })
 );
 
@@ -3097,24 +3058,13 @@ export function fiftyThreeFromJSON(
 }
 
 /** @internal */
-export const FailureMode$inboundSchema: z.ZodNativeEnum<typeof FailureMode> =
-  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FailureMode));
-
-/** @internal */
-export const PayloadMode$inboundSchema: z.ZodNativeEnum<typeof PayloadMode> =
-  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PayloadMode));
-
-/** @internal */
 export const FiftyTwo$inboundSchema: z.ZodType<
   FiftyTwo,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    failureMode: types.optional(FailureMode$inboundSchema),
-    mode: types.optional(PayloadMode$inboundSchema),
-    rolloutPercent: types.optional(types.number()),
-    timeoutMs: types.optional(types.number()),
+    endpointOrigin: types.string(),
   })
 );
 
@@ -3129,13 +3079,19 @@ export function fiftyTwoFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload51Mode$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload51Mode
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload51Mode));
+
+/** @internal */
 export const FiftyOne$inboundSchema: z.ZodType<
   FiftyOne,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    endpointOrigin: types.string(),
+    enabled: types.boolean(),
+    mode: UserEventPayload51Mode$inboundSchema,
   })
 );
 
@@ -3150,16 +3106,10 @@ export function fiftyOneFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload50Mode$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload50Mode
-> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload50Mode));
-
-/** @internal */
 export const Fifty$inboundSchema: z.ZodType<Fifty, z.ZodTypeDef, unknown> =
   /* @__PURE__ */ lazySchema$(() =>
     z.object({
-      enabled: types.boolean(),
-      mode: UserEventPayload50Mode$inboundSchema,
+      countries: z.array(types.string()),
     })
   );
 
@@ -3180,7 +3130,7 @@ export const FortyNine$inboundSchema: z.ZodType<
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    countries: z.array(types.string()),
+    regions: z.array(types.string()),
   })
 );
 
@@ -3191,27 +3141,6 @@ export function fortyNineFromJSON(
     jsonString,
     (x) => FortyNine$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'FortyNine' from JSON`,
-  );
-}
-
-/** @internal */
-export const FortyEight$inboundSchema: z.ZodType<
-  FortyEight,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    regions: z.array(types.string()),
-  })
-);
-
-export function fortyEightFromJSON(
-  jsonString: string,
-): SafeParseResult<FortyEight, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FortyEight$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FortyEight' from JSON`,
   );
 }
 
@@ -3238,8 +3167,8 @@ export function piiRedactionFromJSON(
 }
 
 /** @internal */
-export const FortySeven$inboundSchema: z.ZodType<
-  FortySeven,
+export const FortyEight$inboundSchema: z.ZodType<
+  FortyEight,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -3252,13 +3181,13 @@ export const FortySeven$inboundSchema: z.ZodType<
   })
 );
 
-export function fortySevenFromJSON(
+export function fortyEightFromJSON(
   jsonString: string,
-): SafeParseResult<FortySeven, SDKValidationError> {
+): SafeParseResult<FortyEight, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FortySeven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FortySeven' from JSON`,
+    (x) => FortyEight$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FortyEight' from JSON`,
   );
 }
 
@@ -3284,8 +3213,8 @@ export function privateProviderFromJSON(
 }
 
 /** @internal */
-export const FortySix$inboundSchema: z.ZodType<
-  FortySix,
+export const FortySeven$inboundSchema: z.ZodType<
+  FortySeven,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -3294,13 +3223,13 @@ export const FortySix$inboundSchema: z.ZodType<
   })
 );
 
-export function fortySixFromJSON(
+export function fortySevenFromJSON(
   jsonString: string,
-): SafeParseResult<FortySix, SDKValidationError> {
+): SafeParseResult<FortySeven, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FortySix$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FortySix' from JSON`,
+    (x) => FortySeven$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FortySeven' from JSON`,
   );
 }
 
@@ -3326,8 +3255,8 @@ export function payloadPrivateModelFromJSON(
 }
 
 /** @internal */
-export const FortyFive$inboundSchema: z.ZodType<
-  FortyFive,
+export const FortySix$inboundSchema: z.ZodType<
+  FortySix,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -3336,13 +3265,13 @@ export const FortyFive$inboundSchema: z.ZodType<
   })
 );
 
-export function fortyFiveFromJSON(
+export function fortySixFromJSON(
   jsonString: string,
-): SafeParseResult<FortyFive, SDKValidationError> {
+): SafeParseResult<FortySix, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FortyFive$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FortyFive' from JSON`,
+    (x) => FortySix$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FortySix' from JSON`,
   );
 }
 
@@ -3369,13 +3298,35 @@ export function privateModelFromJSON(
 }
 
 /** @internal */
+export const FortyFive$inboundSchema: z.ZodType<
+  FortyFive,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    privateModel: z.lazy(() => PrivateModel$inboundSchema),
+  })
+);
+
+export function fortyFiveFromJSON(
+  jsonString: string,
+): SafeParseResult<FortyFive, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FortyFive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FortyFive' from JSON`,
+  );
+}
+
+/** @internal */
 export const FortyFour$inboundSchema: z.ZodType<
   FortyFour,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    privateModel: z.lazy(() => PrivateModel$inboundSchema),
+    added: z.array(types.string()),
+    removed: z.array(types.string()),
   })
 );
 
@@ -3396,8 +3347,8 @@ export const FortyThree$inboundSchema: z.ZodType<
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    added: z.array(types.string()),
-    removed: z.array(types.string()),
+    amount: types.string(),
+    purchaseIntentId: types.string(),
   })
 );
 
@@ -3408,28 +3359,6 @@ export function fortyThreeFromJSON(
     jsonString,
     (x) => FortyThree$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'FortyThree' from JSON`,
-  );
-}
-
-/** @internal */
-export const FortyTwo$inboundSchema: z.ZodType<
-  FortyTwo,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    amount: types.string(),
-    purchaseIntentId: types.string(),
-  })
-);
-
-export function fortyTwoFromJSON(
-  jsonString: string,
-): SafeParseResult<FortyTwo, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => FortyTwo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FortyTwo' from JSON`,
   );
 }
 
@@ -3457,8 +3386,8 @@ export function userEventPayloadCredentialFromJSON(
 }
 
 /** @internal */
-export const FortyOne$inboundSchema: z.ZodType<
-  FortyOne,
+export const FortyTwo$inboundSchema: z.ZodType<
+  FortyTwo,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -3470,13 +3399,13 @@ export const FortyOne$inboundSchema: z.ZodType<
   })
 );
 
-export function fortyOneFromJSON(
+export function fortyTwoFromJSON(
   jsonString: string,
-): SafeParseResult<FortyOne, SDKValidationError> {
+): SafeParseResult<FortyTwo, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => FortyOne$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'FortyOne' from JSON`,
+    (x) => FortyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FortyTwo' from JSON`,
   );
 }
 
@@ -3525,21 +3454,24 @@ export function payloadCredentialFromJSON(
 }
 
 /** @internal */
-export const Forty$inboundSchema: z.ZodType<Forty, z.ZodTypeDef, unknown> =
-  /* @__PURE__ */ lazySchema$(() =>
-    z.object({
-      changes: types.optional(z.lazy(() => Changes$inboundSchema)),
-      credential: z.lazy(() => PayloadCredential$inboundSchema),
-    })
-  );
+export const FortyOne$inboundSchema: z.ZodType<
+  FortyOne,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    changes: types.optional(z.lazy(() => Changes$inboundSchema)),
+    credential: z.lazy(() => PayloadCredential$inboundSchema),
+  })
+);
 
-export function fortyFromJSON(
+export function fortyOneFromJSON(
   jsonString: string,
-): SafeParseResult<Forty, SDKValidationError> {
+): SafeParseResult<FortyOne, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Forty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Forty' from JSON`,
+    (x) => FortyOne$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FortyOne' from JSON`,
   );
 }
 
@@ -3567,13 +3499,31 @@ export function credentialFromJSON(
 }
 
 /** @internal */
+export const Forty$inboundSchema: z.ZodType<Forty, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      credential: z.lazy(() => Credential$inboundSchema),
+    })
+  );
+
+export function fortyFromJSON(
+  jsonString: string,
+): SafeParseResult<Forty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Forty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Forty' from JSON`,
+  );
+}
+
+/** @internal */
 export const ThirtyNine$inboundSchema: z.ZodType<
   ThirtyNine,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    credential: z.lazy(() => Credential$inboundSchema),
+    enabled: types.boolean(),
   })
 );
 
@@ -3588,13 +3538,98 @@ export function thirtyNineFromJSON(
 }
 
 /** @internal */
+export const UserEventPayload38RefreshPeriod$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload38RefreshPeriod
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.nativeEnum(UserEventPayload38RefreshPeriod)
+);
+
+/** @internal */
+export const UserEventPayload38Budget$inboundSchema: z.ZodType<
+  UserEventPayload38Budget,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alertThresholds: types.optional(z.array(types.number())),
+    expiresAt: types.optional(types.number()),
+    limitAmount: types.number(),
+    refreshPeriod: UserEventPayload38RefreshPeriod$inboundSchema,
+  })
+);
+
+export function userEventPayload38BudgetFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayload38Budget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayload38Budget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload38Budget' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload38Change$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload38Change
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload38Change));
+
+/** @internal */
+export const UserEventPayload38PreviousBudgetRefreshPeriod$inboundSchema:
+  z.ZodNativeEnum<typeof UserEventPayload38PreviousBudgetRefreshPeriod> =
+    /* @__PURE__ */ lazySchema$(() =>
+      z.nativeEnum(UserEventPayload38PreviousBudgetRefreshPeriod)
+    );
+
+/** @internal */
+export const UserEventPayloadPreviousBudget$inboundSchema: z.ZodType<
+  UserEventPayloadPreviousBudget,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    alertThresholds: types.optional(z.array(types.number())),
+    expiresAt: types.optional(types.number()),
+    limitAmount: types.number(),
+    refreshPeriod: UserEventPayload38PreviousBudgetRefreshPeriod$inboundSchema,
+  })
+);
+
+export function userEventPayloadPreviousBudgetFromJSON(
+  jsonString: string,
+): SafeParseResult<UserEventPayloadPreviousBudget, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UserEventPayloadPreviousBudget$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayloadPreviousBudget' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayloadScopeType$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayloadScopeType
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayloadScopeType));
+
+/** @internal */
 export const ThirtyEight$inboundSchema: z.ZodType<
   ThirtyEight,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    enabled: types.boolean(),
+    appId: types.optional(types.string()),
+    appName: types.optional(types.string()),
+    budget: z.nullable(z.lazy(() => UserEventPayload38Budget$inboundSchema))
+      .optional(),
+    change: UserEventPayload38Change$inboundSchema,
+    justification: types.optional(types.string()),
+    previousBudget: z.nullable(
+      z.lazy(() => UserEventPayloadPreviousBudget$inboundSchema),
+    ).optional(),
+    projectId: types.optional(types.string()),
+    projectName: types.optional(types.string()),
+    scopeType: UserEventPayloadScopeType$inboundSchema,
+    userId: types.optional(types.string()),
+    userName: types.optional(types.string()),
   })
 );
 
@@ -3616,112 +3651,6 @@ export const UserEventPayload37RefreshPeriod$inboundSchema: z.ZodNativeEnum<
 );
 
 /** @internal */
-export const UserEventPayload37Budget$inboundSchema: z.ZodType<
-  UserEventPayload37Budget,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    alertThresholds: types.optional(z.array(types.number())),
-    expiresAt: types.optional(types.number()),
-    limitAmount: types.number(),
-    refreshPeriod: UserEventPayload37RefreshPeriod$inboundSchema,
-  })
-);
-
-export function userEventPayload37BudgetFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayload37Budget, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayload37Budget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload37Budget' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload37Change$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload37Change
-> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload37Change));
-
-/** @internal */
-export const UserEventPayload37PreviousBudgetRefreshPeriod$inboundSchema:
-  z.ZodNativeEnum<typeof UserEventPayload37PreviousBudgetRefreshPeriod> =
-    /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(UserEventPayload37PreviousBudgetRefreshPeriod)
-    );
-
-/** @internal */
-export const UserEventPayloadPreviousBudget$inboundSchema: z.ZodType<
-  UserEventPayloadPreviousBudget,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    alertThresholds: types.optional(z.array(types.number())),
-    expiresAt: types.optional(types.number()),
-    limitAmount: types.number(),
-    refreshPeriod: UserEventPayload37PreviousBudgetRefreshPeriod$inboundSchema,
-  })
-);
-
-export function userEventPayloadPreviousBudgetFromJSON(
-  jsonString: string,
-): SafeParseResult<UserEventPayloadPreviousBudget, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => UserEventPayloadPreviousBudget$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayloadPreviousBudget' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayloadScopeType$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayloadScopeType
-> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayloadScopeType));
-
-/** @internal */
-export const ThirtySeven$inboundSchema: z.ZodType<
-  ThirtySeven,
-  z.ZodTypeDef,
-  unknown
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.object({
-    appId: types.optional(types.string()),
-    appName: types.optional(types.string()),
-    budget: z.nullable(z.lazy(() => UserEventPayload37Budget$inboundSchema))
-      .optional(),
-    change: UserEventPayload37Change$inboundSchema,
-    justification: types.optional(types.string()),
-    previousBudget: z.nullable(
-      z.lazy(() => UserEventPayloadPreviousBudget$inboundSchema),
-    ).optional(),
-    projectId: types.optional(types.string()),
-    projectName: types.optional(types.string()),
-    scopeType: UserEventPayloadScopeType$inboundSchema,
-    userId: types.optional(types.string()),
-    userName: types.optional(types.string()),
-  })
-);
-
-export function thirtySevenFromJSON(
-  jsonString: string,
-): SafeParseResult<ThirtySeven, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => ThirtySeven$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtySeven' from JSON`,
-  );
-}
-
-/** @internal */
-export const UserEventPayload36RefreshPeriod$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload36RefreshPeriod
-> = /* @__PURE__ */ lazySchema$(() =>
-  z.nativeEnum(UserEventPayload36RefreshPeriod)
-);
-
-/** @internal */
 export const PayloadAppliesTo$inboundSchema: z.ZodNativeEnum<
   typeof PayloadAppliesTo
 > = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PayloadAppliesTo));
@@ -3736,7 +3665,7 @@ export const UserEventPayloadBudget$inboundSchema: z.ZodType<
     alertThresholds: types.optional(z.array(types.number())),
     expiresAt: types.optional(types.number()),
     limitAmount: types.number(),
-    refreshPeriod: UserEventPayload36RefreshPeriod$inboundSchema,
+    refreshPeriod: UserEventPayload37RefreshPeriod$inboundSchema,
     appliesTo: types.optional(z.array(PayloadAppliesTo$inboundSchema)),
   })
 );
@@ -3757,10 +3686,10 @@ export const UserEventPayloadChange$inboundSchema: z.ZodNativeEnum<
 > = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayloadChange));
 
 /** @internal */
-export const UserEventPayload36PreviousBudgetRefreshPeriod$inboundSchema:
-  z.ZodNativeEnum<typeof UserEventPayload36PreviousBudgetRefreshPeriod> =
+export const UserEventPayload37PreviousBudgetRefreshPeriod$inboundSchema:
+  z.ZodNativeEnum<typeof UserEventPayload37PreviousBudgetRefreshPeriod> =
     /* @__PURE__ */ lazySchema$(() =>
-      z.nativeEnum(UserEventPayload36PreviousBudgetRefreshPeriod)
+      z.nativeEnum(UserEventPayload37PreviousBudgetRefreshPeriod)
     );
 
 /** @internal */
@@ -3778,7 +3707,7 @@ export const PayloadPreviousBudget$inboundSchema: z.ZodType<
     alertThresholds: types.optional(z.array(types.number())),
     expiresAt: types.optional(types.number()),
     limitAmount: types.number(),
-    refreshPeriod: UserEventPayload36PreviousBudgetRefreshPeriod$inboundSchema,
+    refreshPeriod: UserEventPayload37PreviousBudgetRefreshPeriod$inboundSchema,
     appliesTo: types.optional(z.array(UserEventPayloadAppliesTo$inboundSchema)),
   })
 );
@@ -3799,8 +3728,8 @@ export const PayloadScopeType$inboundSchema: z.ZodNativeEnum<
 > = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(PayloadScopeType));
 
 /** @internal */
-export const ThirtySix$inboundSchema: z.ZodType<
-  ThirtySix,
+export const ThirtySeven$inboundSchema: z.ZodType<
+  ThirtySeven,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -3816,13 +3745,13 @@ export const ThirtySix$inboundSchema: z.ZodType<
   })
 );
 
-export function thirtySixFromJSON(
+export function thirtySevenFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtySix, SDKValidationError> {
+): SafeParseResult<ThirtySeven, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtySix$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtySix' from JSON`,
+    (x) => ThirtySeven$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtySeven' from JSON`,
   );
 }
 
@@ -3854,8 +3783,30 @@ export function commitmentFromJSON(
 }
 
 /** @internal */
-export const UserEventPayloadPrevious$inboundSchema: z.ZodType<
-  UserEventPayloadPrevious,
+export const Previous2$inboundSchema: z.ZodType<
+  Previous2,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    deferredInvoiceTargetBalance: types.string(),
+    maximumMonthlySpend: types.nullable(types.string()),
+  })
+);
+
+export function previous2FromJSON(
+  jsonString: string,
+): SafeParseResult<Previous2, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Previous2$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Previous2' from JSON`,
+  );
+}
+
+/** @internal */
+export const Previous1$inboundSchema: z.ZodType<
+  Previous1,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -3864,6 +3815,28 @@ export const UserEventPayloadPrevious$inboundSchema: z.ZodType<
     minimumBalance: types.string(),
     targetBalance: types.string(),
   })
+);
+
+export function previous1FromJSON(
+  jsonString: string,
+): SafeParseResult<Previous1, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Previous1$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Previous1' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayloadPrevious$inboundSchema: z.ZodType<
+  UserEventPayloadPrevious,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  smartUnion([
+    z.lazy(() => Previous1$inboundSchema),
+    z.lazy(() => Previous2$inboundSchema),
+  ])
 );
 
 export function userEventPayloadPreviousFromJSON(
@@ -3900,28 +3873,31 @@ export function settingsFromJSON(
 }
 
 /** @internal */
-export const ThirtyFive$inboundSchema: z.ZodType<
-  ThirtyFive,
+export const ThirtySix$inboundSchema: z.ZodType<
+  ThirtySix,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
     change: PayloadChange$inboundSchema,
     commitment: types.optional(z.lazy(() => Commitment$inboundSchema)),
-    previous: types.optional(
-      z.lazy(() => UserEventPayloadPrevious$inboundSchema),
-    ),
-    settings: types.optional(z.lazy(() => Settings$inboundSchema)),
+    previous: types.optional(smartUnion([
+      z.lazy(() => Previous1$inboundSchema),
+      z.lazy(() => Previous2$inboundSchema),
+    ])),
+    settings: types.optional(z.lazy(() =>
+      Settings$inboundSchema
+    )),
   })
 );
 
-export function thirtyFiveFromJSON(
+export function thirtySixFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyFive, SDKValidationError> {
+): SafeParseResult<ThirtySix, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyFive$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyFive' from JSON`,
+    (x) => ThirtySix$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtySix' from JSON`,
   );
 }
 
@@ -3983,10 +3959,10 @@ export const Change$inboundSchema: z.ZodNativeEnum<typeof Change> =
   /* @__PURE__ */ lazySchema$(() => z.nativeEnum(Change));
 
 /** @internal */
-export const UserEventPayload34RefreshPeriod$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload34RefreshPeriod
+export const UserEventPayload35RefreshPeriod$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload35RefreshPeriod
 > = /* @__PURE__ */ lazySchema$(() =>
-  z.nativeEnum(UserEventPayload34RefreshPeriod)
+  z.nativeEnum(UserEventPayload35RefreshPeriod)
 );
 
 /** @internal */
@@ -3999,7 +3975,7 @@ export const PreviousBudget$inboundSchema: z.ZodType<
     alertThresholds: types.optional(z.array(types.number())),
     expiresAt: types.optional(types.number()),
     limitAmount: types.number(),
-    refreshPeriod: UserEventPayload34RefreshPeriod$inboundSchema,
+    refreshPeriod: UserEventPayload35RefreshPeriod$inboundSchema,
   })
 );
 
@@ -4014,8 +3990,8 @@ export function previousBudgetFromJSON(
 }
 
 /** @internal */
-export const ThirtyFour$inboundSchema: z.ZodType<
-  ThirtyFour,
+export const ThirtyFive$inboundSchema: z.ZodType<
+  ThirtyFive,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -4029,13 +4005,13 @@ export const ThirtyFour$inboundSchema: z.ZodType<
   })
 );
 
-export function thirtyFourFromJSON(
+export function thirtyFiveFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyFour, SDKValidationError> {
+): SafeParseResult<ThirtyFive, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyFour$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyFour' from JSON`,
+    (x) => ThirtyFive$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyFive' from JSON`,
   );
 }
 
@@ -4062,8 +4038,8 @@ export function payloadApiKeyFromJSON(
 }
 
 /** @internal */
-export const ThirtyThree$inboundSchema: z.ZodType<
-  ThirtyThree,
+export const ThirtyFour$inboundSchema: z.ZodType<
+  ThirtyFour,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -4072,19 +4048,19 @@ export const ThirtyThree$inboundSchema: z.ZodType<
   })
 );
 
-export function thirtyThreeFromJSON(
+export function thirtyFourFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyThree, SDKValidationError> {
+): SafeParseResult<ThirtyFour, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyThree$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyThree' from JSON`,
+    (x) => ThirtyFour$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyFour' from JSON`,
   );
 }
 
 /** @internal */
-export const UserEventPayload32ApiKey$inboundSchema: z.ZodType<
-  UserEventPayload32ApiKey,
+export const UserEventPayload33ApiKey$inboundSchema: z.ZodType<
+  UserEventPayload33ApiKey,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -4094,13 +4070,13 @@ export const UserEventPayload32ApiKey$inboundSchema: z.ZodType<
   })
 );
 
-export function userEventPayload32ApiKeyFromJSON(
+export function userEventPayload33ApiKeyFromJSON(
   jsonString: string,
-): SafeParseResult<UserEventPayload32ApiKey, SDKValidationError> {
+): SafeParseResult<UserEventPayload33ApiKey, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => UserEventPayload32ApiKey$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'UserEventPayload32ApiKey' from JSON`,
+    (x) => UserEventPayload33ApiKey$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UserEventPayload33ApiKey' from JSON`,
   );
 }
 
@@ -4131,26 +4107,26 @@ export function budgetFromJSON(
 }
 
 /** @internal */
-export const ThirtyTwo$inboundSchema: z.ZodType<
-  ThirtyTwo,
+export const ThirtyThree$inboundSchema: z.ZodType<
+  ThirtyThree,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    apiKey: z.lazy(() => UserEventPayload32ApiKey$inboundSchema),
+    apiKey: z.lazy(() => UserEventPayload33ApiKey$inboundSchema),
     budget: z.nullable(z.lazy(() => Budget$inboundSchema)).optional(),
     bypassAll: types.optional(types.boolean()),
     zdrExemption: types.optional(types.boolean()),
   })
 );
 
-export function thirtyTwoFromJSON(
+export function thirtyThreeFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyTwo, SDKValidationError> {
+): SafeParseResult<ThirtyThree, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyTwo$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyTwo' from JSON`,
+    (x) => ThirtyThree$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyThree' from JSON`,
   );
 }
 
@@ -4177,16 +4153,16 @@ export function userEventPayloadAccessPolicyFromJSON(
 }
 
 /** @internal */
-export const UserEventPayload31Kind$inboundSchema: z.ZodNativeEnum<
-  typeof UserEventPayload31Kind
-> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload31Kind));
+export const UserEventPayload32Kind$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload32Kind
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload32Kind));
 
 /** @internal */
 export const Member$inboundSchema: z.ZodType<Member, z.ZodTypeDef, unknown> =
   /* @__PURE__ */ lazySchema$(() =>
     z.object({
       id: types.string(),
-      kind: UserEventPayload31Kind$inboundSchema,
+      kind: UserEventPayload32Kind$inboundSchema,
       name: types.optional(types.string()),
     })
   );
@@ -4202,8 +4178,8 @@ export function memberFromJSON(
 }
 
 /** @internal */
-export const ThirtyOne$inboundSchema: z.ZodType<
-  ThirtyOne,
+export const ThirtyTwo$inboundSchema: z.ZodType<
+  ThirtyTwo,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
@@ -4213,13 +4189,13 @@ export const ThirtyOne$inboundSchema: z.ZodType<
   })
 );
 
-export function thirtyOneFromJSON(
+export function thirtyTwoFromJSON(
   jsonString: string,
-): SafeParseResult<ThirtyOne, SDKValidationError> {
+): SafeParseResult<ThirtyTwo, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ThirtyOne$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ThirtyOne' from JSON`,
+    (x) => ThirtyTwo$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyTwo' from JSON`,
   );
 }
 
@@ -4246,21 +4222,24 @@ export function payloadAccessPolicyFromJSON(
 }
 
 /** @internal */
-export const Thirty$inboundSchema: z.ZodType<Thirty, z.ZodTypeDef, unknown> =
-  /* @__PURE__ */ lazySchema$(() =>
-    z.object({
-      accessPolicy: z.lazy(() => PayloadAccessPolicy$inboundSchema),
-      previousName: types.optional(types.string()),
-    })
-  );
+export const ThirtyOne$inboundSchema: z.ZodType<
+  ThirtyOne,
+  z.ZodTypeDef,
+  unknown
+> = /* @__PURE__ */ lazySchema$(() =>
+  z.object({
+    accessPolicy: z.lazy(() => PayloadAccessPolicy$inboundSchema),
+    previousName: types.optional(types.string()),
+  })
+);
 
-export function thirtyFromJSON(
+export function thirtyOneFromJSON(
   jsonString: string,
-): SafeParseResult<Thirty, SDKValidationError> {
+): SafeParseResult<ThirtyOne, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Thirty$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Thirty' from JSON`,
+    (x) => ThirtyOne$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ThirtyOne' from JSON`,
   );
 }
 
@@ -4287,13 +4266,51 @@ export function accessPolicyFromJSON(
 }
 
 /** @internal */
+export const Thirty$inboundSchema: z.ZodType<Thirty, z.ZodTypeDef, unknown> =
+  /* @__PURE__ */ lazySchema$(() =>
+    z.object({
+      accessPolicy: z.lazy(() => AccessPolicy$inboundSchema),
+    })
+  );
+
+export function thirtyFromJSON(
+  jsonString: string,
+): SafeParseResult<Thirty, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Thirty$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Thirty' from JSON`,
+  );
+}
+
+/** @internal */
+export const UserEventPayload29Provider$inboundSchema: z.ZodNativeEnum<
+  typeof UserEventPayload29Provider
+> = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload29Provider));
+
+/** @internal */
+export const FromPlan$inboundSchema: z.ZodNativeEnum<typeof FromPlan> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FromPlan));
+
+/** @internal */
+export const ToPlan$inboundSchema: z.ZodNativeEnum<typeof ToPlan> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ToPlan));
+
+/** @internal */
 export const TwentyNine$inboundSchema: z.ZodType<
   TwentyNine,
   z.ZodTypeDef,
   unknown
 > = /* @__PURE__ */ lazySchema$(() =>
   z.object({
-    accessPolicy: z.lazy(() => AccessPolicy$inboundSchema),
+    provider: types.optional(UserEventPayload29Provider$inboundSchema),
+    providerAccount: types.optional(types.string()),
+    stripeAccount: types.optional(types.string()),
+    stripeOrganisation: types.optional(types.string()),
+    fromPlan: FromPlan$inboundSchema,
+    resourceId: types.string(),
+    teamId: types.string(),
+    toPlan: ToPlan$inboundSchema,
   })
 );
 
@@ -4313,12 +4330,8 @@ export const UserEventPayload28Provider$inboundSchema: z.ZodNativeEnum<
 > = /* @__PURE__ */ lazySchema$(() => z.nativeEnum(UserEventPayload28Provider));
 
 /** @internal */
-export const FromPlan$inboundSchema: z.ZodNativeEnum<typeof FromPlan> =
-  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(FromPlan));
-
-/** @internal */
-export const ToPlan$inboundSchema: z.ZodNativeEnum<typeof ToPlan> =
-  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ToPlan));
+export const ActorType$inboundSchema: z.ZodNativeEnum<typeof ActorType> =
+  /* @__PURE__ */ lazySchema$(() => z.nativeEnum(ActorType));
 
 /** @internal */
 export const TwentyEight$inboundSchema: z.ZodType<
@@ -4331,10 +4344,10 @@ export const TwentyEight$inboundSchema: z.ZodType<
     providerAccount: types.optional(types.string()),
     stripeAccount: types.optional(types.string()),
     stripeOrganisation: types.optional(types.string()),
-    fromPlan: FromPlan$inboundSchema,
-    resourceId: types.string(),
     teamId: types.string(),
-    toPlan: ToPlan$inboundSchema,
+    actorId: types.string(),
+    actorName: types.optional(types.string()),
+    actorType: ActorType$inboundSchema,
   })
 );
 

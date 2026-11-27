@@ -5,12 +5,11 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { OneHundredAndSeventySeven } from "@vercel/sdk/models/jobproject.js";
+import { OneHundredAndSeventySeven } from "@vercel/sdk/models/usereventjobpayload1405provider.js";
 
 let value: OneHundredAndSeventySeven = {
-  edgeConfigDigest: "<value>",
-  edgeConfigId: "<id>",
-  edgeConfigSlug: "<value>",
+  projectId: "<id>",
+  projectName: "<value>",
 };
 ```
 
@@ -18,6 +17,5 @@ let value: OneHundredAndSeventySeven = {
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `edgeConfigDigest` | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigId`     | *string*           | :heavy_check_mark: | N/A                |
-| `edgeConfigSlug`   | *string*           | :heavy_check_mark: | N/A                |
+| `projectId`        | *string*           | :heavy_check_mark: | N/A                |
+| `projectName`      | *string*           | :heavy_check_mark: | N/A                |

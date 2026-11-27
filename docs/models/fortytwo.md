@@ -8,14 +8,25 @@ The payload of the event, if requested.
 import { FortyTwo } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: FortyTwo = {
-  amount: "192.34",
-  purchaseIntentId: "<id>",
+  added: [],
+  changed: [
+    "<value 1>",
+    "<value 2>",
+  ],
+  credential: {
+    id: "<id>",
+    name: "<value>",
+    providerSlug: "<value>",
+  },
+  removed: [],
 };
 ```
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `amount`           | *string*           | :heavy_check_mark: | N/A                |
-| `purchaseIntentId` | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `added`                                                                      | *string*[]                                                                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| `changed`                                                                    | *string*[]                                                                   | :heavy_check_mark:                                                           | N/A                                                                          |
+| `credential`                                                                 | [models.UserEventPayloadCredential](../models/usereventpayloadcredential.md) | :heavy_check_mark:                                                           | N/A                                                                          |
+| `removed`                                                                    | *string*[]                                                                   | :heavy_check_mark:                                                           | N/A                                                                          |

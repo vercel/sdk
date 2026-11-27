@@ -52,11 +52,3 @@ const value: models.CreateFlagOutcomeFeatureFlagsResponse3 = {
 };
 ```
 
-### `models.CreateFlagOutcome4`
-
-```typescript
-const value: models.CreateFlagOutcome4 = {
-  type: "experiment",
-};
-```
-

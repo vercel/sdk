@@ -3,16 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { Previous2 } from "@vercel/sdk/models/fourhundredandfortyfour.js";
+import { Previous2 } from "@vercel/sdk/models/usereventpayload27provider.js";
 
 let value: Previous2 = {
-  teamRoles: [],
+  deferredInvoiceTargetBalance: "<value>",
+  maximumMonthlySpend: "<value>",
 };
 ```
 
 ## Fields
 
-| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `teamPermissions`                                                                          | [models.UserEventPreviousTeamPermissions](../models/usereventpreviousteampermissions.md)[] | :heavy_minus_sign:                                                                         | N/A                                                                                        |
-| `teamRoles`                                                                                | [models.UserEventPreviousTeamRoles](../models/usereventpreviousteamroles.md)[]             | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| Field                          | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `deferredInvoiceTargetBalance` | *string*                       | :heavy_check_mark:             | N/A                            |
+| `maximumMonthlySpend`          | *string*                       | :heavy_check_mark:             | N/A                            |

@@ -5,23 +5,24 @@ The payload of the event, if requested.
 ## Example Usage
 
 ```typescript
-import { TwoHundredAndNinetyEight } from "@vercel/sdk/models/twohundredandsixtyseven.js";
+import { TwoHundredAndNinetyEight } from "@vercel/sdk/models/usereventpayloaddsyncmode.js";
 
 let value: TwoHundredAndNinetyEight = {
   current: {
     awsServiceName: "<value>",
+    configurationId: "<id>",
     id: "<id>",
     name: "<value>",
-    projectId: "<id>",
     vercelRegion: "<value>",
   },
   prev: {
     awsServiceName: "<value>",
+    configurationId: "<id>",
     id: "<id>",
     name: "<value>",
-    projectId: "<id>",
     vercelRegion: "<value>",
   },
+  scope: "network",
 };
 ```
 
@@ -29,7 +30,7 @@ let value: TwoHundredAndNinetyEight = {
 
 | Field                                                                    | Type                                                                     | Required                                                                 | Description                                                              |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `current`                                                                | [models.PayloadCurrent](../models/payloadcurrent.md)                     | :heavy_check_mark:                                                       | N/A                                                                      |
-| `prev`                                                                   | [models.UserEventPayload298Prev](../models/usereventpayload298prev.md)   | :heavy_check_mark:                                                       | N/A                                                                      |
-| `projectName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `scope`                                                                  | [models.UserEventPayload298Scope](../models/usereventpayload298scope.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `current`                                                                | [models.Current](../models/current.md)                                   | :heavy_check_mark:                                                       | N/A                                                                      |
+| `networkName`                                                            | *string*                                                                 | :heavy_minus_sign:                                                       | N/A                                                                      |
+| `prev`                                                                   | [models.UserEventPayloadPrev](../models/usereventpayloadprev.md)         | :heavy_check_mark:                                                       | N/A                                                                      |
+| `scope`                                                                  | [models.UserEventPayload298Scope](../models/usereventpayload298scope.md) | :heavy_check_mark:                                                       | N/A                                                                      |

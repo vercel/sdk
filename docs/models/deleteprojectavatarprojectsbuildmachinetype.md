@@ -5,11 +5,11 @@
 ```typescript
 import { DeleteProjectAvatarProjectsBuildMachineType } from "@vercel/sdk/models/deleteprojectavatartoprojectsresponsepreset.js";
 
-let value: DeleteProjectAvatarProjectsBuildMachineType = "basic";
+let value: DeleteProjectAvatarProjectsBuildMachineType = "elastic";
 ```
 
 ## Values
 
 ```typescript
-"14cpu-28gb" | "basic" | "enhanced" | "standard" | "turbo"
+"basic" | "elastic" | "enhanced" | "standard" | "turbo"
 ```

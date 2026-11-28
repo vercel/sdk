@@ -264,11 +264,12 @@ export const GetVercelCiJobDefinitionVercelCiResponse500ResponseBody$inboundSche
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiJobDefinitionVercelCiResponse500ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiJobDefinitionVercelCiResponse500ResponseBody(
+          data,
+          { request: request$, response: response$, body: body$ },
+        );
       })
   );
 
@@ -319,11 +320,12 @@ export const GetVercelCiJobDefinitionVercelCiResponse429ResponseBody$inboundSche
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiJobDefinitionVercelCiResponse429ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiJobDefinitionVercelCiResponse429ResponseBody(
+          data,
+          { request: request$, response: response$, body: body$ },
+        );
       })
   );
 
@@ -364,10 +366,12 @@ export const GetVercelCiJobDefinitionVercelCiResponseResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiJobDefinitionVercelCiResponseResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiJobDefinitionVercelCiResponseResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -408,10 +412,12 @@ export const GetVercelCiJobDefinitionVercelCiResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiJobDefinitionVercelCiResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiJobDefinitionVercelCiResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );

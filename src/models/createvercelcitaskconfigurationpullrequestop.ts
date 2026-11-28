@@ -331,9 +331,11 @@ export const CreateVercelCiTaskConfigurationPullRequestVercelCiResponse500Respon
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new CreateVercelCiTaskConfigurationPullRequestVercelCiResponse500ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -384,9 +386,11 @@ export const CreateVercelCiTaskConfigurationPullRequestVercelCiResponse429Respon
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new CreateVercelCiTaskConfigurationPullRequestVercelCiResponse429ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -435,9 +439,11 @@ export const CreateVercelCiTaskConfigurationPullRequestVercelCiResponseResponseB
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new CreateVercelCiTaskConfigurationPullRequestVercelCiResponseResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -487,9 +493,11 @@ export const CreateVercelCiTaskConfigurationPullRequestVercelCiResponseBody$inbo
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new CreateVercelCiTaskConfigurationPullRequestVercelCiResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );

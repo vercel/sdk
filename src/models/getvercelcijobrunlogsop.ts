@@ -289,10 +289,12 @@ export const GetVercelCiJobRunLogsVercelCiResponse500ResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiJobRunLogsVercelCiResponse500ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiJobRunLogsVercelCiResponse500ResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -341,10 +343,12 @@ export const GetVercelCiJobRunLogsVercelCiResponse429ResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiJobRunLogsVercelCiResponse429ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiJobRunLogsVercelCiResponse429ResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -386,10 +390,12 @@ export const GetVercelCiJobRunLogsVercelCiResponseResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiJobRunLogsVercelCiResponseResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiJobRunLogsVercelCiResponseResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -429,10 +435,12 @@ export const GetVercelCiJobRunLogsVercelCiResponseBody$inboundSchema: z.ZodType<
     body$: z.string(),
   })
     .transform((v) => {
-      return new GetVercelCiJobRunLogsVercelCiResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
+      const { request$, response$, body$, ...data } = v;
+
+      return new GetVercelCiJobRunLogsVercelCiResponseBody(data, {
+        request: request$,
+        response: response$,
+        body: body$,
       });
     })
 );

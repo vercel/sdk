@@ -320,10 +320,12 @@ export const CreateApiKeysResponse500ResponseBody$inboundSchema: z.ZodType<
     body$: z.string(),
   })
     .transform((v) => {
-      return new CreateApiKeysResponse500ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
+      const { request$, response$, body$, ...data } = v;
+
+      return new CreateApiKeysResponse500ResponseBody(data, {
+        request: request$,
+        response: response$,
+        body: body$,
       });
     })
 );
@@ -365,10 +367,12 @@ export const CreateApiKeysResponse429ResponseBody$inboundSchema: z.ZodType<
     body$: z.string(),
   })
     .transform((v) => {
-      return new CreateApiKeysResponse429ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
+      const { request$, response$, body$, ...data } = v;
+
+      return new CreateApiKeysResponse429ResponseBody(data, {
+        request: request$,
+        response: response$,
+        body: body$,
       });
     })
 );
@@ -408,10 +412,12 @@ export const CreateApiKeysResponse403ResponseBody$inboundSchema: z.ZodType<
     body$: z.string(),
   })
     .transform((v) => {
-      return new CreateApiKeysResponse403ResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
+      const { request$, response$, body$, ...data } = v;
+
+      return new CreateApiKeysResponse403ResponseBody(data, {
+        request: request$,
+        response: response$,
+        body: body$,
       });
     })
 );
@@ -451,10 +457,12 @@ export const CreateApiKeysResponseResponseBody$inboundSchema: z.ZodType<
     body$: z.string(),
   })
     .transform((v) => {
-      return new CreateApiKeysResponseResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
+      const { request$, response$, body$, ...data } = v;
+
+      return new CreateApiKeysResponseResponseBody(data, {
+        request: request$,
+        response: response$,
+        body: body$,
       });
     })
 );

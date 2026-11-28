@@ -577,11 +577,12 @@ export const GetVercelCiInvocationTreeVercelCiResponse500ResponseBody$inboundSch
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiInvocationTreeVercelCiResponse500ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiInvocationTreeVercelCiResponse500ResponseBody(
+          data,
+          { request: request$, response: response$, body: body$ },
+        );
       })
   );
 
@@ -632,11 +633,12 @@ export const GetVercelCiInvocationTreeVercelCiResponse429ResponseBody$inboundSch
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiInvocationTreeVercelCiResponse429ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiInvocationTreeVercelCiResponse429ResponseBody(
+          data,
+          { request: request$, response: response$, body: body$ },
+        );
       })
   );
 
@@ -677,10 +679,12 @@ export const GetVercelCiInvocationTreeVercelCiResponseResponseBody$inboundSchema
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiInvocationTreeVercelCiResponseResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiInvocationTreeVercelCiResponseResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -721,10 +725,12 @@ export const GetVercelCiInvocationTreeVercelCiResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiInvocationTreeVercelCiResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiInvocationTreeVercelCiResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );

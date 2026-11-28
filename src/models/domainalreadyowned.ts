@@ -66,10 +66,12 @@ export const DomainAlreadyOwned$inboundSchema: z.ZodType<
     body$: z.string(),
   })
     .transform((v) => {
-      return new DomainAlreadyOwned(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
+      const { request$, response$, body$, ...data } = v;
+
+      return new DomainAlreadyOwned(data, {
+        request: request$,
+        response: response$,
+        body: body$,
       });
     })
 );

@@ -282,9 +282,11 @@ export const GetVercelCiRepositorySettingsVercelCiResponse500ResponseBody$inboun
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new GetVercelCiRepositorySettingsVercelCiResponse500ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -336,9 +338,11 @@ export const GetVercelCiRepositorySettingsVercelCiResponse429ResponseBody$inboun
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new GetVercelCiRepositorySettingsVercelCiResponse429ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -385,9 +389,11 @@ export const GetVercelCiRepositorySettingsVercelCiResponseResponseBody$inboundSc
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new GetVercelCiRepositorySettingsVercelCiResponseResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -429,10 +435,12 @@ export const GetVercelCiRepositorySettingsVercelCiResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiRepositorySettingsVercelCiResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiRepositorySettingsVercelCiResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );

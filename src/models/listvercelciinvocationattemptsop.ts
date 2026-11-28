@@ -403,9 +403,11 @@ export const ListVercelCiInvocationAttemptsVercelCiResponse500ResponseBody$inbou
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new ListVercelCiInvocationAttemptsVercelCiResponse500ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -457,9 +459,11 @@ export const ListVercelCiInvocationAttemptsVercelCiResponse429ResponseBody$inbou
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new ListVercelCiInvocationAttemptsVercelCiResponse429ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -509,9 +513,11 @@ export const ListVercelCiInvocationAttemptsVercelCiResponseResponseBody$inboundS
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new ListVercelCiInvocationAttemptsVercelCiResponseResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -553,10 +559,12 @@ export const ListVercelCiInvocationAttemptsVercelCiResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new ListVercelCiInvocationAttemptsVercelCiResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new ListVercelCiInvocationAttemptsVercelCiResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );

@@ -284,10 +284,12 @@ export const ListVercelCiJobRunsVercelCiResponse500ResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new ListVercelCiJobRunsVercelCiResponse500ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new ListVercelCiJobRunsVercelCiResponse500ResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -338,10 +340,12 @@ export const ListVercelCiJobRunsVercelCiResponse429ResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new ListVercelCiJobRunsVercelCiResponse429ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new ListVercelCiJobRunsVercelCiResponse429ResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -382,10 +386,12 @@ export const ListVercelCiJobRunsVercelCiResponseResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new ListVercelCiJobRunsVercelCiResponseResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new ListVercelCiJobRunsVercelCiResponseResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -425,10 +431,12 @@ export const ListVercelCiJobRunsVercelCiResponseBody$inboundSchema: z.ZodType<
     body$: z.string(),
   })
     .transform((v) => {
-      return new ListVercelCiJobRunsVercelCiResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
+      const { request$, response$, body$, ...data } = v;
+
+      return new ListVercelCiJobRunsVercelCiResponseBody(data, {
+        request: request$,
+        response: response$,
+        body: body$,
       });
     })
 );

@@ -292,9 +292,11 @@ export const CreateVercelCiTaskAnalysisVercelCiResponse500ResponseBody$inboundSc
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new CreateVercelCiTaskAnalysisVercelCiResponse500ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -346,9 +348,11 @@ export const CreateVercelCiTaskAnalysisVercelCiResponse429ResponseBody$inboundSc
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new CreateVercelCiTaskAnalysisVercelCiResponse429ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -397,11 +401,12 @@ export const CreateVercelCiTaskAnalysisVercelCiResponseResponseBody$inboundSchem
       body$: z.string(),
     })
       .transform((v) => {
-        return new CreateVercelCiTaskAnalysisVercelCiResponseResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
+        const { request$, response$, body$, ...data } = v;
+
+        return new CreateVercelCiTaskAnalysisVercelCiResponseResponseBody(
+          data,
+          { request: request$, response: response$, body: body$ },
+        );
       })
   );
 
@@ -441,10 +446,12 @@ export const CreateVercelCiTaskAnalysisVercelCiResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new CreateVercelCiTaskAnalysisVercelCiResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new CreateVercelCiTaskAnalysisVercelCiResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );

@@ -330,9 +330,11 @@ export const UpdateVercelCiRepositorySettingsVercelCiResponse500ResponseBody$inb
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new UpdateVercelCiRepositorySettingsVercelCiResponse500ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -384,9 +386,11 @@ export const UpdateVercelCiRepositorySettingsVercelCiResponse429ResponseBody$inb
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new UpdateVercelCiRepositorySettingsVercelCiResponse429ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -436,9 +440,11 @@ export const UpdateVercelCiRepositorySettingsVercelCiResponseResponseBody$inboun
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new UpdateVercelCiRepositorySettingsVercelCiResponseResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -480,10 +486,12 @@ export const UpdateVercelCiRepositorySettingsVercelCiResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new UpdateVercelCiRepositorySettingsVercelCiResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new UpdateVercelCiRepositorySettingsVercelCiResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );

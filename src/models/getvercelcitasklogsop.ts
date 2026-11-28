@@ -361,10 +361,12 @@ export const GetVercelCiTaskLogsVercelCiResponse500ResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiTaskLogsVercelCiResponse500ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiTaskLogsVercelCiResponse500ResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -415,10 +417,12 @@ export const GetVercelCiTaskLogsVercelCiResponse429ResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiTaskLogsVercelCiResponse429ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiTaskLogsVercelCiResponse429ResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -459,10 +463,12 @@ export const GetVercelCiTaskLogsVercelCiResponseResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiTaskLogsVercelCiResponseResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiTaskLogsVercelCiResponseResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -502,10 +508,12 @@ export const GetVercelCiTaskLogsVercelCiResponseBody$inboundSchema: z.ZodType<
     body$: z.string(),
   })
     .transform((v) => {
-      return new GetVercelCiTaskLogsVercelCiResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
+      const { request$, response$, body$, ...data } = v;
+
+      return new GetVercelCiTaskLogsVercelCiResponseBody(data, {
+        request: request$,
+        response: response$,
+        body: body$,
       });
     })
 );

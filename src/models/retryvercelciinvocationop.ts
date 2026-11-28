@@ -243,11 +243,12 @@ export const RetryVercelCiInvocationVercelCiResponse500ResponseBody$inboundSchem
       body$: z.string(),
     })
       .transform((v) => {
-        return new RetryVercelCiInvocationVercelCiResponse500ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
+        const { request$, response$, body$, ...data } = v;
+
+        return new RetryVercelCiInvocationVercelCiResponse500ResponseBody(
+          data,
+          { request: request$, response: response$, body: body$ },
+        );
       })
   );
 
@@ -298,11 +299,12 @@ export const RetryVercelCiInvocationVercelCiResponse429ResponseBody$inboundSchem
       body$: z.string(),
     })
       .transform((v) => {
-        return new RetryVercelCiInvocationVercelCiResponse429ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
+        const { request$, response$, body$, ...data } = v;
+
+        return new RetryVercelCiInvocationVercelCiResponse429ResponseBody(
+          data,
+          { request: request$, response: response$, body: body$ },
+        );
       })
   );
 
@@ -343,10 +345,12 @@ export const RetryVercelCiInvocationVercelCiResponseResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new RetryVercelCiInvocationVercelCiResponseResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new RetryVercelCiInvocationVercelCiResponseResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -387,10 +391,12 @@ export const RetryVercelCiInvocationVercelCiResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new RetryVercelCiInvocationVercelCiResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new RetryVercelCiInvocationVercelCiResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );

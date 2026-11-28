@@ -66,10 +66,12 @@ export const BoughtTooRecently$inboundSchema: z.ZodType<
     body$: z.string(),
   })
     .transform((v) => {
-      return new BoughtTooRecently(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
+      const { request$, response$, body$, ...data } = v;
+
+      return new BoughtTooRecently(data, {
+        request: request$,
+        response: response$,
+        body: body$,
       });
     })
 );

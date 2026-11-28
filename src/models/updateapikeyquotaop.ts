@@ -336,10 +336,12 @@ export const UpdateApiKeyQuotaAiGatewayResponse500ResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new UpdateApiKeyQuotaAiGatewayResponse500ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new UpdateApiKeyQuotaAiGatewayResponse500ResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -390,10 +392,12 @@ export const UpdateApiKeyQuotaAiGatewayResponse429ResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new UpdateApiKeyQuotaAiGatewayResponse429ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new UpdateApiKeyQuotaAiGatewayResponse429ResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -434,10 +438,12 @@ export const UpdateApiKeyQuotaAiGatewayResponseResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new UpdateApiKeyQuotaAiGatewayResponseResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new UpdateApiKeyQuotaAiGatewayResponseResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -477,10 +483,12 @@ export const UpdateApiKeyQuotaAiGatewayResponseBody$inboundSchema: z.ZodType<
     body$: z.string(),
   })
     .transform((v) => {
-      return new UpdateApiKeyQuotaAiGatewayResponseBody(v, {
-        request: v.request$,
-        response: v.response$,
-        body: v.body$,
+      const { request$, response$, body$, ...data } = v;
+
+      return new UpdateApiKeyQuotaAiGatewayResponseBody(data, {
+        request: request$,
+        response: response$,
+        body: body$,
       });
     })
 );

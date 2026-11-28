@@ -251,11 +251,12 @@ export const GetVercelCiTaskAnalysisVercelCiResponse500ResponseBody$inboundSchem
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiTaskAnalysisVercelCiResponse500ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiTaskAnalysisVercelCiResponse500ResponseBody(
+          data,
+          { request: request$, response: response$, body: body$ },
+        );
       })
   );
 
@@ -306,11 +307,12 @@ export const GetVercelCiTaskAnalysisVercelCiResponse429ResponseBody$inboundSchem
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiTaskAnalysisVercelCiResponse429ResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiTaskAnalysisVercelCiResponse429ResponseBody(
+          data,
+          { request: request$, response: response$, body: body$ },
+        );
       })
   );
 
@@ -351,10 +353,12 @@ export const GetVercelCiTaskAnalysisVercelCiResponseResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiTaskAnalysisVercelCiResponseResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiTaskAnalysisVercelCiResponseResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
@@ -395,10 +399,12 @@ export const GetVercelCiTaskAnalysisVercelCiResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new GetVercelCiTaskAnalysisVercelCiResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new GetVercelCiTaskAnalysisVercelCiResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );

@@ -258,9 +258,11 @@ export const ListVercelCiTaskAnalysisTasksVercelCiResponse500ResponseBody$inboun
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new ListVercelCiTaskAnalysisTasksVercelCiResponse500ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -312,9 +314,11 @@ export const ListVercelCiTaskAnalysisTasksVercelCiResponse429ResponseBody$inboun
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new ListVercelCiTaskAnalysisTasksVercelCiResponse429ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -361,9 +365,11 @@ export const ListVercelCiTaskAnalysisTasksVercelCiResponseResponseBody$inboundSc
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new ListVercelCiTaskAnalysisTasksVercelCiResponseResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -405,10 +411,12 @@ export const ListVercelCiTaskAnalysisTasksVercelCiResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new ListVercelCiTaskAnalysisTasksVercelCiResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new ListVercelCiTaskAnalysisTasksVercelCiResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );

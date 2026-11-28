@@ -283,9 +283,11 @@ export const ListVercelCiTaskDefinitionsVercelCiResponse500ResponseBody$inboundS
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new ListVercelCiTaskDefinitionsVercelCiResponse500ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -337,9 +339,11 @@ export const ListVercelCiTaskDefinitionsVercelCiResponse429ResponseBody$inboundS
       body$: z.string(),
     })
       .transform((v) => {
+        const { request$, response$, body$, ...data } = v;
+
         return new ListVercelCiTaskDefinitionsVercelCiResponse429ResponseBody(
-          v,
-          { request: v.request$, response: v.response$, body: v.body$ },
+          data,
+          { request: request$, response: response$, body: body$ },
         );
       })
   );
@@ -388,11 +392,12 @@ export const ListVercelCiTaskDefinitionsVercelCiResponseResponseBody$inboundSche
       body$: z.string(),
     })
       .transform((v) => {
-        return new ListVercelCiTaskDefinitionsVercelCiResponseResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
-        });
+        const { request$, response$, body$, ...data } = v;
+
+        return new ListVercelCiTaskDefinitionsVercelCiResponseResponseBody(
+          data,
+          { request: request$, response: response$, body: body$ },
+        );
       })
   );
 
@@ -432,10 +437,12 @@ export const ListVercelCiTaskDefinitionsVercelCiResponseBody$inboundSchema:
       body$: z.string(),
     })
       .transform((v) => {
-        return new ListVercelCiTaskDefinitionsVercelCiResponseBody(v, {
-          request: v.request$,
-          response: v.response$,
-          body: v.body$,
+        const { request$, response$, body$, ...data } = v;
+
+        return new ListVercelCiTaskDefinitionsVercelCiResponseBody(data, {
+          request: request$,
+          response: response$,
+          body: body$,
         });
       })
   );
